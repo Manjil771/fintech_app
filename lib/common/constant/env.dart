@@ -14,19 +14,19 @@ class Env {
 
 class EnvValue {
   static final Env development = Env(
-    baseUrl: 'https://newsapi.ayaanshtech.com.np/api',
-    imageUrl: 'https://newsapi.ayaanshtech.com.np/api',
+    baseUrl: 'https://mbank.com.np/api',
+    imageUrl: 'https://mbank.com.np/api',
     appEnvironment: AppEnvironment.Development,
   );
 
   static final Env staging = Env(
-    baseUrl: 'https://newsapi.ayaanshtech.com.np/api',
-    imageUrl: 'https://newsapi.ayaanshtech.com.np/api',
+    baseUrl: 'https://mbank.com.np/api',
+    imageUrl: 'https://mbank.com.np/api',
     appEnvironment: AppEnvironment.Stage,
   );
   static final Env production = Env(
-    baseUrl: 'https://newsapi.ayaanshtech.com.np/api',
-    imageUrl: 'https://newsapi.ayaanshtech.com.np/api',
+    baseUrl: 'https://mbank.com.np/api',
+    imageUrl: 'https://mbank.com.np/api',
     appEnvironment: AppEnvironment.Production,
   );
 }

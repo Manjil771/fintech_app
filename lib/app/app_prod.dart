@@ -1,3 +1,5 @@
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
@@ -8,8 +10,6 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/global_error_widget.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 
 class AppProd extends StatefulWidget {
   final Env env;
