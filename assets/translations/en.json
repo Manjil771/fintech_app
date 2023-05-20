@@ -1,0 +1,6 @@
+{
+  "appName": "This app",
+  "auth": {
+    "unableToLogin": "Unable to login"
+  }
+}

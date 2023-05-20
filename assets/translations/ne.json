@@ -1,0 +1,6 @@
+{
+  "appName": "This app",
+  "auth": {
+    "unableToLogin": "लगइन गर्न असमर्थ"
+  }
+}

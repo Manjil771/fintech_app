@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">BoilerPlate</string>
+  <string name="facebook_app_id">3870191599685081</string>
+  <string name="fb_login_protocol_scheme">fb3870191599685081</string>
+   <string name="ads_app_id">ca-app-pub-4132281826176228~6947090687</string>
+  <!-- <string name="facebook_app_id">1294437190975030</string> -->
+  <!-- <string name="fb_login_protocol_scheme">fb1294437190975030</string> -->
+</resources>

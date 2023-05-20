@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">[STAGE] BoilerPlate</string>
+  <string name="facebook_app_id">3870191599685081</string>
+  <string name="fb_login_protocol_scheme">fb3870191599685081</string>
+   <string name="ads_app_id">ca-app-pub-3940256099942544~3347511713</string>
+</resources>
