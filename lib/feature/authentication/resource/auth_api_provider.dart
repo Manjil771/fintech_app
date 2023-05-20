@@ -9,16 +9,6 @@ class AuthApiProvider {
     required this.baseUrl,
   });
 
-  Future<dynamic> googleSignIn({required String accessToken}) async {
-    final Map<String, dynamic> body = {'access_token': accessToken};
-    return await apiProvider.post('$baseUrl/auth/google/token', body);
-  }
-
-  Future<dynamic> facebookSignIn({required String accessToken}) async {
-    final Map<String, dynamic> body = {'access_token': accessToken};
-    return await apiProvider.post('$baseUrl/auth/facebook/token', body);
-  }
-
   Future<dynamic> fetchProfile({required String token}) async {
     return await apiProvider.get('$baseUrl/user/profile', token: token);
   }
