@@ -1,42 +1,81 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:io';
 
-import 'package:ismart/common/util/log.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:http_parser/http_parser.dart' as parse;
+import 'package:ismart/common/http/custom_exception.dart';
+import 'package:ismart/common/http/dio_client.dart';
+import 'package:ismart/common/util/log.dart';
 import 'package:mime/mime.dart';
 
-import 'custom_exception.dart';
-
 class ApiProvider {
-  String token = '';
+  final String baseUrl;
 
-  final Dio _dioGet = Dio(
-    BaseOptions(receiveDataWhenStatusError: true),
-  );
+  ApiProvider({
+    required this.baseUrl,
+  });
 
-  void setToken(String token) {
-    this.token = token;
+  Future<Map<String, dynamic>> post(
+    String url,
+    dynamic body, {
+    String token = '',
+    bool isRefreshRequest = false,
+    Map<String, String> header = const {},
+  }) async {
+    dynamic responseJson;
+    final DioClient _dioClient = DioClient(baseUrl: baseUrl);
+
+    try {
+      final Map<String, String> _requestHeader = {
+        'content-type': 'application/x-www-form-encoded',
+        'accept': 'application/json',
+        'App-Authorizer': '647061697361',
+        'origin': '*',
+        ...header,
+        // // ...await DeviceUtils.deviceInfoHeader,
+      };
+
+      if (token.isNotEmpty) {
+        _requestHeader['Authorization'] = 'Bearer ' + token;
+      }
+      final dynamic response = await _dioClient.post(
+        Uri.parse(url),
+        data: body,
+        options: Options(headers: _requestHeader),
+      );
+      responseJson = _response(response, url);
+    } on DioError catch (e) {
+      print(e);
+      responseJson = await _handleErrorResponse(e);
+    }
+    return responseJson;
   }
 
-  Future<Map<String, dynamic>> post(String url, dynamic body,
-      {String token = '', bool isRefreshRequest = false}) async {
-    dynamic responseJson;
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  Future<dynamic> patch(
+    String url,
+    dynamic body, {
+    required int? userId,
+    String token = '',
+    bool isRefreshRequest = false,
+  }) async {
+    final DioClient _dioClient = DioClient(
+      baseUrl: baseUrl,
     );
+
+    dynamic responseJson;
     try {
       final Map<String, String> header = {
         'content-type': 'application/json',
         'accept': 'application/json',
-        'origin': '*'
+        'origin': '*',
+        // // ...await DeviceUtils.deviceInfoHeader,
       };
-
       if (token.isNotEmpty) {
         header['Authorization'] = 'Bearer ' + token;
       }
-      final dynamic response = await _dio.postUri(
+      final dynamic response = await _dioClient.patch(
         Uri.parse(url),
         data: body,
         options: Options(headers: header),
@@ -48,23 +87,33 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<dynamic> patch(String url, dynamic body,
-      {String token = '', bool isRefreshRequest = false}) async {
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  Future<dynamic> put(
+    String url,
+    dynamic body, {
+    required int? userId,
+    String token = '',
+    bool isRefreshRequest = false,
+  }) async {
+    final DioClient _dioClient = DioClient(
+      baseUrl: baseUrl,
     );
+
     dynamic responseJson;
     try {
       final Map<String, String> header = {
         'content-type': 'application/json',
         'accept': 'application/json',
-        'origin': '*'
+        'origin': '*',
+        // ...await DeviceUtils.deviceInfoHeader,
       };
       if (token.isNotEmpty) {
         header['Authorization'] = 'Bearer ' + token;
       }
-      final dynamic response = await _dio.patchUri(Uri.parse(url),
-          data: body, options: Options(headers: header));
+      final dynamic response = await _dioClient.put(
+        Uri.parse(url),
+        data: body,
+        options: Options(headers: header),
+      );
       responseJson = _response(response, url);
     } on DioError catch (e) {
       responseJson = await _handleErrorResponse(e);
@@ -72,52 +121,41 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<dynamic> put(String url, dynamic body,
-      {String token = '', bool isRefreshRequest = false}) async {
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  Future<dynamic> get(
+    Uri url, {
+    required int? userId,
+    String token = '',
+    bool isRefreshRequest = false,
+    int timeOut = 30,
+  }) async {
+    final DioClient _dioClient = DioClient(
+      baseUrl: baseUrl,
     );
-    dynamic responseJson;
-    try {
-      final Map<String, String> header = {
-        'content-type': 'application/json',
-        'accept': 'application/json',
-        'origin': '*'
-      };
-      if (token.isNotEmpty) {
-        header['Authorization'] = 'Bearer ' + token;
-      }
-      final dynamic response = await _dio.putUri(Uri.parse(url),
-          data: body, options: Options(headers: header));
-      responseJson = _response(response, url);
-    } on DioError catch (e) {
-      responseJson = await _handleErrorResponse(e);
-    }
-    return responseJson;
-  }
 
-  Future<dynamic> get(String url,
-      {String token = '',
-      bool isRefreshRequest = false,
-      Map<String, dynamic>? queryParams}) async {
     dynamic responseJson;
 
     try {
       final Map<String, String> header = {
         'content-type': 'application/json',
         'accept': 'application/json',
-        'origin': '*'
+        'origin': '*',
+        'App-Authorizer': "647061697361",
+        // // ...await DeviceUtils.deviceInfoHeader,
       };
+
       if (token.isNotEmpty) {
         header['Authorization'] = 'Bearer ' + token;
       }
-      final dynamic response = await _dioGet.get(url,
-          options: Options(
-            headers: header,
-          ),
-          queryParameters: queryParams);
+      final dynamic response = await _dioClient.get(
+        url,
+        options: Options(
+          headers: header,
+          sendTimeout: timeOut * 1000,
+          receiveTimeout: timeOut * 1000,
+        ),
+      );
 
-      responseJson = _response(response, url, cacheResult: true);
+      responseJson = _response(response, url.toString(), cacheResult: true);
     } on DioError catch (e, s) {
       responseJson = await _handleErrorResponse(e);
       Log.e(e);
@@ -126,22 +164,24 @@ class ApiProvider {
     return responseJson;
   }
 
-  Future<dynamic> delete(String url, {String token = '', dynamic body}) async {
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  Future<dynamic> delete(String url,
+      {required int? userId, String token = '', dynamic body}) async {
+    final DioClient _dio = DioClient(
+      baseUrl: baseUrl,
     );
     dynamic responseJson;
     try {
       final Map<String, String> header = {
         'content-type': 'application/json',
         'accept': 'application/json',
-        'origin': '*'
+        'origin': '*',
+        // // ...await DeviceUtils.deviceInfoHeader,
       };
       debugPrint('TOKEN ' + token);
       if (token.isNotEmpty) {
         header['Authorization'] = 'Bearer ' + token;
       }
-      final dynamic response = await _dio.deleteUri(Uri.parse(url),
+      final dynamic response = await _dio.delete(Uri.parse(url),
           data: body, options: Options(headers: header));
       responseJson = await _response(response, url);
       responseJson['status'] = response.statusCode;
@@ -151,14 +191,17 @@ class ApiProvider {
     return responseJson;
   }
 
-  upload(String url, File file, {String token = ''}) async {
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  upload(String url, File file,
+      {required int? userId, String token = ''}) async {
+    final DioClient _dio = DioClient(
+      baseUrl: baseUrl,
     );
+    dynamic responseJson;
     try {
       final Map<String, String> header = {
         'accept': 'application/json',
-        'origin': '*'
+        'origin': '*',
+        // ...await DeviceUtils.deviceInfoHeader,
       };
       if (token.isNotEmpty) {
         header['Authorization'] = 'Bearer ' + token;
@@ -166,7 +209,6 @@ class ApiProvider {
       final String fileName = file.path.split('/').last;
       // final String _extention = file.path.split('.').last;
       final String type = lookupMimeType(file.path)!.split('/').first;
-      print(type);
 
       final FormData formData = FormData.fromMap(<String, dynamic>{
         'file': await MultipartFile.fromFile(
@@ -175,69 +217,150 @@ class ApiProvider {
           contentType: parse.MediaType('image', file.path.split('.').last),
         ),
       });
-      final Response<dynamic> response = await _dio.post<dynamic>(url,
-          data: formData, options: Options(headers: header));
+      final Response<dynamic> response = await _dio.post(
+        Uri.parse(url),
+        data: formData,
+        options: Options(headers: header),
+        onSendProgress: (count, total) {},
+      );
 
-      print(response.data.toString());
-      return _response(response, url);
+      responseJson = _response(response, url);
     } on DioError catch (e) {
-      // responseJson = await _handleErrorResponse(e);
+      responseJson = await _handleErrorResponse(e);
       Log.e(e);
-    } catch (e) {
-      print("Hllo");
     }
+    return responseJson;
   }
 
-  download(String url, String localPath) async {
-    final Dio _dio = Dio(
-      BaseOptions(receiveDataWhenStatusError: true),
+  uploadToAWS(
+    String url,
+    File file,
+    String filename, {
+    required int? userId,
+    String token = '',
+    required Function(int, int) onSendProgress,
+  }) async {
+    final DioClient _dio = DioClient(
+      baseUrl: baseUrl,
     );
-    // dynamic responseJson = <String, dynamic>{};
+    dynamic responseJson;
     try {
-      final Response<dynamic> response = await _dio.get<dynamic>(
-        url,
-        options: Options(
-            responseType: ResponseType.bytes,
-            followRedirects: false,
-            validateStatus: (status) {
-              if (status == null) {
-                return false;
-              }
-              return status < 500;
-            }),
-      );
-      final File file = File(localPath);
-      final raf = file.openSync(mode: FileMode.write);
-      raf.writeFromSync(response.data);
-      await raf.close();
-      final Map<String, dynamic> _res = {
-        "data": file,
-        "statusCode": 200,
+      final Map<String, String> header = {
+        'accept': 'application/json',
+        'origin': '*',
+        "content-type": "video/quicktime",
+        'content-length': (await file.length()).toString(),
       };
-      return _res;
+
+      final String type = lookupMimeType(file.path)!.split('/').first;
+      print(type);
+
+      final FormData formData = FormData.fromMap(<String, dynamic>{
+        'file': await MultipartFile.fromFile(
+          file.path,
+          filename: filename,
+          contentType: parse.MediaType('video', file.path.split('.').last),
+        ),
+      });
+
+      final Response<dynamic> response = await _dio.put(
+        Uri.parse(url),
+        data: file.openRead(),
+        options: Options(headers: {
+          Headers.contentLengthHeader: await file.length(),
+          Headers.contentTypeHeader:
+              parse.MediaType('video', file.path.split('.').last).toString(),
+        }),
+        onSendProgress: (count, total) {
+          print(count / total);
+          onSendProgress(count, total);
+        },
+      );
+
+      responseJson = _response(response, url);
+    } on DioError catch (e) {
+      responseJson = await _handleErrorResponse(e);
+      Log.e(e);
+    }
+    return responseJson;
+  }
+
+  Future<File?> download(String url, String localPath,
+      {required int userId, required String token}) async {
+    final DioClient _dio = DioClient(
+      baseUrl: baseUrl,
+    );
+    try {
+      final Map<String, String> header = {
+        'accept': 'application/json',
+        'origin': '*',
+        'App-Authorizer': "647061697361",
+        // ...await DeviceUtils.deviceInfoHeader,
+      };
+
+      if (token.isNotEmpty) {
+        header['Authorization'] = 'Bearer ' + token;
+      }
+
+      final Response<dynamic> response = await _dio.get(
+        Uri.parse(url),
+        options: Options(
+          responseType: ResponseType.bytes,
+          followRedirects: false,
+          headers: header,
+          validateStatus: (status) {
+            if (status == null) {
+              return false;
+            }
+            return status < 500;
+          },
+        ),
+      );
+      if (response.statusCode != null) {
+        if (response.statusCode! >= 200 && response.statusCode! < 300) {
+          final File file = File(localPath);
+          final raf = file.openSync(mode: FileMode.write);
+          raf.writeFromSync(response.data);
+          await raf.close();
+          return file;
+        } else {
+          return null;
+        }
+      } else {
+        return null;
+      }
     } on DioError catch (e) {
       Log.e(e);
       // responseJson = await _handleErrorResponse(e);
+      return null;
     } catch (e) {
       Log.e("Error in downlodng");
+      return null;
     }
   }
 
   _handleErrorResponse(DioError e) async {
     if (e.toString().toLowerCase().contains("socketexception")) {
-      throw NoInternetException('No Internet connection');
+      throw NoInternetException('No Internet connection', 1000);
     } else {
       if (e.response != null) {
         return await _response(e.response!, "");
       } else {
-        throw FetchDataException('An error occurred while fetching data.');
+        throw FetchDataException(
+          'An error occurred while fetching data.',
+          e.response?.statusCode,
+        );
       }
     }
   }
 
   Future<Map<String, dynamic>> _response(Response response, String url,
       {bool cacheResult = false}) async {
-    final Map<String, dynamic> res = response.data is Map ? response.data : {};
+    final Map<String, dynamic> res = response.data is Map
+        ? response.data
+        : (response.data is List)
+            ? {"data": response.data}
+            : {};
 
     final responseJson = <String, dynamic>{};
     responseJson['data'] = res;
@@ -259,38 +382,89 @@ class ApiProvider {
       case 201:
         return responseJson;
       case 400:
-        throw BadRequestException(getErrorMessage(res));
+        throw BadRequestException(
+            getErrorMessage(res, 400), response.statusCode);
       case 404:
-        throw ResourceNotFoundException(getErrorMessage(res));
+        throw ResourceNotFoundException(
+            getErrorMessage(res, 404), response.statusCode);
       case 422:
-        responseJson['error'] = getErrorMessage(res);
-        throw BadRequestException(getErrorMessage(res));
+        responseJson['error'] = getErrorMessage(res, response.statusCode);
+        throw BadRequestException(
+            getErrorMessage(res, 404), response.statusCode);
+      case 429:
+        responseJson['error'] = getErrorMessage(res, response.statusCode);
+        throw BadRequestException(
+            "You've made too many requests. Please try again after a while.",
+            response.statusCode);
       case 401:
       case 403:
-        throw UnauthorisedException(getErrorMessage(res));
+        throw UnauthorisedException(
+            getErrorMessage(res, 404), response.statusCode);
       case 500:
-        throw InternalServerErrorException(getErrorMessage(res));
+        throw InternalServerErrorException(
+            getErrorMessage(res, 404), response.statusCode);
+
+      // This is PayWell Specific Custom Server Exception with any specific message on Gateway level blockage.
+      case 506:
+        throw CustomServerException(
+            jsonDecode(response.data)['message'] ??
+                "Feature not available. Please check back again.",
+            response.statusCode);
       default:
         throw NoInternetException(
-            'Error occured while Communication with Server');
+            'Error occured while Communication with Server', 1000);
     }
   }
 
-  String getErrorMessage(dynamic res) {
+  String getErrorMessage(dynamic res, [int? statusCode]) {
     String message = "";
     try {
+      print(res);
       debugPrint("-------------------GET ERROR ------------------");
+      if (res["data"] is Map) {
+        if (res["data"]?["message"] is String &&
+            (res["data"]?["message"] ?? "").toString().isNotEmpty) {
+          message = res["data"]?["message"];
+          return message;
+        }
+      }
+      if (res["message"] is String) {
+        message = res["message"];
+        return message;
+      }
       if (res["message"] is List) {
         final List<dynamic> messages = res['message'][0]["messages"];
-        messages.forEach((dynamic element) {
+        for (var element in messages) {
           message += (element as Map<String, dynamic>)['message'] + '\n';
-        });
-      } else if (res["message"] is String) {
-        message = res["message"];
+        }
+        return message;
+      }
+      if (res["data"] is String) {
+        message = res["data"] ?? "";
       }
     } catch (e) {
-      return message;
+      return message.isEmpty
+          ? _getErroMessageAccordingtoStatusCode(statusCode)
+          : message;
     }
-    return message;
+    return message.isEmpty
+        ? _getErroMessageAccordingtoStatusCode(statusCode)
+        : message;
+  }
+
+  String _getErroMessageAccordingtoStatusCode(int? statusCode) {
+    if (statusCode == 400) {
+      return "Bad Request";
+    } else if (statusCode == 404) {
+      return "Resource Not Found";
+    } else if (statusCode == 422) {
+      return "Bad Request";
+    } else if (statusCode == 403 || statusCode == 402 || statusCode == 401) {
+      return "Unauthorized";
+    } else if (statusCode == 500) {
+      return "Internal Server Error";
+    } else {
+      return "Something went wrong";
+    }
   }
 }
