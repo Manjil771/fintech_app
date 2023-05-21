@@ -41,7 +41,7 @@ class UserRepository {
       _token = '';
       _isLoggedIn.value = false;
       _user.value = null;
-      await SharedPref.deleteToken();
+      await SharedPref.deleteAccessToken();
       await SharedPref.deleteUser();
       return true;
     } on Exception catch (_) {
@@ -52,7 +52,7 @@ class UserRepository {
 
   Future<bool> persistToken(String token) async {
     try {
-      await SharedPref.setToken(token);
+      await SharedPref.setAccessToken(token);
       _isLoggedIn.value = true;
       return true;
     } on Exception catch (_) {
@@ -63,7 +63,7 @@ class UserRepository {
 
   Future<String> fetchToken() async {
     try {
-      final token = await SharedPref.getToken();
+      final token = await SharedPref.getAccessToken();
       if (token.isNotEmpty) {
         _token = token;
       }
