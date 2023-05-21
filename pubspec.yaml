@@ -46,6 +46,8 @@ dependencies:
   #Firebase
   firebase_core: ^2.13.0
   firebase_messaging: ^14.6.1
+  local_auth: ^2.1.6
+  flutter_secure_storage: ^8.0.0
 
 dev_dependencies:
   flutter_test:
