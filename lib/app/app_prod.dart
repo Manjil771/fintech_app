@@ -12,7 +12,7 @@ import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
 
 class AppProd extends StatefulWidget {
-  final Env env;
+  final CoOperative env;
   const AppProd({Key? key, required this.env}) : super(key: key);
 
   @override

@@ -1,8 +1,8 @@
 import 'package:bloc/bloc.dart';
+import 'package:equatable/equatable.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
-import 'package:equatable/equatable.dart';
 
 part 'startup_state.dart';
 
@@ -18,9 +18,15 @@ class StartupCubit extends Cubit<StartupState> {
     final isFirstTime = await SharedPref.getFirstTimeAppOpen();
     await userRepository.initialState();
     await Future.delayed(const Duration(seconds: 2));
+
+    if (isFirstTime) {
+      await SharedPref.setFirstTimeAppOpen(false);
+    }
     emit(StartupSuccess(
+      // isFirstTime: isFirstTime,
       isFirstTime: isFirstTime,
-      isLogged: userRepository.isLoggedIn.value,
+      // isLogged: userRepository.isLoggedIn.value,
+      isLogged: false,
     ));
   }
 }

@@ -11,7 +11,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 
 class AppDev extends StatefulWidget {
-  final Env env;
+  final CoOperative env;
   const AppDev({Key? key, required this.env}) : super(key: key);
 
   @override

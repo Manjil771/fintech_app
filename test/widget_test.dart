@@ -5,15 +5,15 @@
 // gestures. You can also use WidgetTester to find child widgets in the widget
 // tree, read text, and verify that the values of widget properties are correct.
 
-import 'package:ismart/app/app_prod.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
+import 'package:ismart/app/app_prod.dart';
+import 'package:ismart/common/constant/env.dart';
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
     // Build our app and trigger a frame.
-    await tester.pumpWidget(AppProd(env: EnvValue.production));
+    await tester.pumpWidget(AppProd(env: CoOperativeValue.development));
 
     // Verify that our counter starts at 0.
     expect(find.text('0'), findsOneWidget);

@@ -1,11 +1,11 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:ismart/app/app_dev.dart';
 import 'package:ismart/app/local_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/log.dart';
-import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -13,7 +13,7 @@ Future<void> main() async {
 
   runZonedGuarded(() {
     runApp(
-      LocalWrapper(child: AppDev(env: EnvValue.staging)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.development)),
     );
   }, (e, s) {
     Log.e(e);

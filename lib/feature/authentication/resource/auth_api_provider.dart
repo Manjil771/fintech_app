@@ -22,4 +22,29 @@ class AuthApiProvider {
       token: token,
     );
   }
+
+  Future<dynamic> loginUser({
+    required String username,
+    required String password,
+    String? otpCode,
+  }) async {
+    final _body = {
+      "mobile_no": "$username",
+      "password": "$password",
+      "fcm_token": "fcm"
+    };
+    if (password.length == 4) {
+      _body.remove("password");
+      _body['pin'] = password;
+    }
+
+    if (otpCode != null) {
+      _body['otp'] = otpCode;
+    }
+    final url = '$baseUrl/login/';
+    return await apiProvider.post(
+      url,
+      _body,
+    );
+  }
 }

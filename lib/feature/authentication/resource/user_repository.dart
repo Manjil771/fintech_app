@@ -13,7 +13,7 @@ import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
 class UserRepository {
   ApiProvider apiProvider;
   late AuthApiProvider authApiProvider;
-  Env env;
+  CoOperative env;
 
   String _token = '';
   final ValueNotifier<User?> _user = ValueNotifier(null);
@@ -116,6 +116,31 @@ class UserRepository {
       return DataResponse.success(_user.value!);
     } on CustomException catch (e) {
       return DataResponse.error(e.message!);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<User>> loginUser({
+    required String username,
+    required String password,
+    String? otpCode,
+  }) async {
+    try {
+      final _res = await authApiProvider.loginUser(
+        username: username,
+        password: password,
+        otpCode: otpCode,
+      );
+
+      _user.value = User.fromJson(_res['data']['user']);
+
+      return DataResponse.success(_user.value);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message!, e.statusCode);
     } catch (e) {
       return DataResponse.error(e.toString());
     }

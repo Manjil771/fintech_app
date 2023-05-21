@@ -1,32 +1,33 @@
-import 'package:ismart/common/enum/environment.dart';
-
-class Env {
-  Env({
+class CoOperative {
+  CoOperative({
+    required this.clientCode,
+    required this.coOperativeName,
+    required this.bannerImage,
+    required this.coOperativeLogo,
     required this.baseUrl,
-    required this.imageUrl,
-    required this.appEnvironment,
   });
 
   final String baseUrl;
-  final String imageUrl;
-  final AppEnvironment appEnvironment;
+  final String clientCode;
+  final String coOperativeName;
+  final String bannerImage;
+  final String coOperativeLogo;
 }
 
-class EnvValue {
-  static final Env development = Env(
-    baseUrl: 'https://mbank.com.np/api',
-    imageUrl: 'https://mbank.com.np/api',
-    appEnvironment: AppEnvironment.Development,
+class CoOperativeValue {
+  static final CoOperative chandraGiriCoOperative = CoOperative(
+    baseUrl: '113.78.8.200:1231',
+    bannerImage: 'assets/chandragiri.png',
+    clientCode: 'CHAN6566',
+    coOperativeName: 'ChandraGiri CoOperative',
+    coOperativeLogo: 'assets/chandragiri.png',
   );
 
-  static final Env staging = Env(
-    baseUrl: 'https://mbank.com.np/api',
-    imageUrl: 'https://mbank.com.np/api',
-    appEnvironment: AppEnvironment.Stage,
-  );
-  static final Env production = Env(
-    baseUrl: 'https://mbank.com.np/api',
-    imageUrl: 'https://mbank.com.np/api',
-    appEnvironment: AppEnvironment.Production,
+  static final CoOperative development = CoOperative(
+    baseUrl: 'https://pwapi.silkinv.com/api',
+    bannerImage: '',
+    clientCode: '',
+    coOperativeName: '',
+    coOperativeLogo: '',
   );
 }

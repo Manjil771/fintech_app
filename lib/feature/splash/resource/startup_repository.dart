@@ -8,7 +8,7 @@ class StartUpRepository {
   ApiProvider apiProvider;
   late StartUpApiProvider startupApiProvider;
   UserRepository userRepository;
-  Env env;
+  CoOperative env;
 
   StartUpRepository({
     required this.env,

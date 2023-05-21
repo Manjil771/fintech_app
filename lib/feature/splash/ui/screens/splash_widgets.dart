@@ -1,9 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class SplashWidget extends StatelessWidget {
   @override
@@ -17,8 +18,10 @@ class SplashWidget extends StatelessWidget {
           if (state.isFirstTime) {
             NavigationService.pushReplacementNamed(
                 routeName: Routes.onboarding);
-          } else {
+          } else if (state.isLogged) {
             NavigationService.pushReplacementNamed(routeName: Routes.dashboard);
+          } else {
+            NavigationService.pushReplacement(target: const LoginPage());
           }
         }
       },
@@ -28,7 +31,7 @@ class SplashWidget extends StatelessWidget {
           child: Center(
             child: Text(
               "Splash",
-              style: _textTheme.headline6,
+              style: _textTheme.titleLarge,
             ),
           ),
         ),
