@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/feature/authentication/model/user.dart';
+import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 class LoginCubit extends Cubit<CommonState> {
@@ -21,7 +21,7 @@ class LoginCubit extends Cubit<CommonState> {
       otpCode: otpCode,
     );
     if (res.status == Status.Success && res.data != null) {
-      emit(CommonStateSuccess<User>(data: res.data!));
+      emit(CommonStateSuccess<LoginResponseValue>(data: res.data!));
     } else {
       emit(
         CommonError(

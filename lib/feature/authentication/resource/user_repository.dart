@@ -7,6 +7,7 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
 
@@ -25,6 +26,7 @@ class UserRepository {
     authApiProvider = AuthApiProvider(
       baseUrl: env.baseUrl,
       apiProvider: apiProvider,
+      coOperative: env,
     );
 
     print(authApiProvider);
@@ -33,7 +35,7 @@ class UserRepository {
   Future initialState() async {
     _token = await fetchToken();
     _isLoggedIn.value = _token.isNotEmpty;
-    _user.value = await SharedPref.getUser();
+    // _user.value = await SharedPref.getUser();
   }
 
   Future<bool> logout() async {
@@ -107,21 +109,21 @@ class UserRepository {
     }
   }
 
-  Future<DataResponse<User>> fetchProfile() async {
-    try {
-      final _res = await authApiProvider.fetchProfile(token: token);
-      final _result = Map<String, dynamic>.from(_res);
-      _user.value = User.fromJson(_result['data']);
-      SharedPref.setUser(_user.value!);
-      return DataResponse.success(_user.value!);
-    } on CustomException catch (e) {
-      return DataResponse.error(e.message!);
-    } catch (e) {
-      return DataResponse.error(e.toString());
-    }
-  }
+  // Future<DataResponse<User>> fetchProfile() async {
+  //   try {
+  //     final _res = await authApiProvider.fetchProfile(token: token);
+  //     final _result = Map<String, dynamic>.from(_res);
+  //     _user.value = User.fromJson(_result['data']);
+  //     SharedPref.setUser(_user.value!);
+  //     return DataResponse.success(_user.value!);
+  //   } on CustomException catch (e) {
+  //     return DataResponse.error(e.message!);
+  //   } catch (e) {
+  //     return DataResponse.error(e.toString());
+  //   }
+  // }
 
-  Future<DataResponse<User>> loginUser({
+  Future<DataResponse<LoginResponseValue>> loginUser({
     required String username,
     required String password,
     String? otpCode,
@@ -133,9 +135,23 @@ class UserRepository {
         otpCode: otpCode,
       );
 
-      _user.value = User.fromJson(_res['data']['user']);
+      String _accessToken = _res['data']?['access_token'] ?? "";
+      String _refreshToken = _res['data']?['refresh_token'] ?? "";
 
-      return DataResponse.success(_user.value);
+      if (_accessToken.isNotEmpty && _refreshToken.isNotEmpty) {
+        persistToken(_accessToken);
+        _token = _accessToken;
+
+        return DataResponse.success(LoginResponseValue.Success);
+      } else {
+        String error = _res['data']['error'] ?? "";
+        String errorDescription = _res['data']['error_description'] ?? "";
+        if (error.toLowerCase().contains("access_denied") &&
+            errorDescription.toLowerCase().contains("otp")) {
+          return DataResponse.success(LoginResponseValue.OTPVerification);
+        }
+        return DataResponse.error(errorDescription);
+      }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;

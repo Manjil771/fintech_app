@@ -1,17 +1,21 @@
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/util/url_utils.dart';
 
 class AuthApiProvider {
   final ApiProvider apiProvider;
+  final CoOperative coOperative;
   final String baseUrl;
 
   const AuthApiProvider({
     required this.apiProvider,
     required this.baseUrl,
+    required this.coOperative,
   });
 
-  Future<dynamic> fetchProfile({required String token}) async {
-    return await apiProvider.get('$baseUrl/user/profile', token: token);
-  }
+  // Future<dynamic> fetchProfile({required String token}) async {
+  //   return await apiProvider.get('$baseUrl/user/profile', token: token);
+  // }
 
   Future<dynamic> sendNotificationToken(
       {required String notificationToken, required String token}) async {
@@ -29,22 +33,22 @@ class AuthApiProvider {
     String? otpCode,
   }) async {
     final _body = {
-      "mobile_no": "$username",
+      "client_id": coOperative.clientCode,
+      "client_secret": coOperative.clientSecret,
       "password": "$password",
-      "fcm_token": "fcm"
+      "grant_type": "password",
+      "username": coOperative.clientCode + username,
+      "deviceUniqueIdentifier": "newaDeavice"
     };
-    if (password.length == 4) {
-      _body.remove("password");
-      _body['pin'] = password;
-    }
-
     if (otpCode != null) {
       _body['otp'] = otpCode;
     }
-    final url = '$baseUrl/login/';
+
+    final _uri = UrlUtils.getUri(
+        url: coOperative.baseUrl + "oauth/token", params: _body);
     return await apiProvider.post(
-      url,
-      _body,
+      _uri.toString(),
+      {},
     );
   }
 }
