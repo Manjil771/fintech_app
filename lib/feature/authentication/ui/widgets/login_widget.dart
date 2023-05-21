@@ -47,6 +47,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     final height = SizeUtils.height;
     final width = SizeUtils.width;
+    final _theme = Theme.of(context);
     return PageWrapper(
       // backgroundColor: Colors.white,
       padding: EdgeInsets.zero,
@@ -95,8 +96,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         },
                         child: Text(
                           "Forgot PIN ?",
-                          style:
-                              TextStyle(color: Theme.of(context).primaryColor),
+                          style: TextStyle(color: _theme.primaryColor),
                         )),
                     const Spacer(),
                     TextButton(
@@ -106,8 +106,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         },
                         child: Text(
                           "Can't Login ?",
-                          style:
-                              TextStyle(color: Theme.of(context).primaryColor),
+                          style: TextStyle(color: _theme.primaryColor),
                         )),
                   ],
                 ),
@@ -119,10 +118,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                             username: phoneController.text,
                             password: passwordController.text,
                           );
-                      // TODO Invoke authentication cubit here
-                      // authController.login(
-                      //     phone: phoneController.text,
-                      //     password: passwordController.text);
                     }),
                 SizedBox(height: height * 0.014),
                 ValueListenableBuilder<bool>(
@@ -162,7 +157,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               ),
                               Text(
                                 "User Biometric to Login",
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: _theme.textTheme.labelMedium,
                               ),
                             ],
                           ),
@@ -224,13 +219,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                     children: [
                       Text(
                         "Discover our Products",
-                        style: TextStyle(
-                            fontSize: 18,
-                            color: Theme.of(context).primaryColor),
+                        style:
+                            TextStyle(fontSize: 18, color: _theme.primaryColor),
                       ),
                       Icon(
                         CupertinoIcons.forward,
-                        color: Theme.of(context).primaryColor,
+                        color: _theme.primaryColor,
                       )
                     ],
                   ),
@@ -248,7 +242,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       //         children: [
       //           LoginWidgetDetail(context),
       //           Container(
-      //               color: Theme.of(context).primaryColor.withOpacity(0.1),
+      //               color: _theme.primaryColor.withOpacity(0.1),
       //               height: double.infinity,
       //               width: double.infinity,
       //               child: const Center(child: CircularProgressIndicator())),
@@ -272,7 +266,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   //   return Column(
   //     crossAxisAlignment: CrossAxisAlignment.start,
   //     children: [
-  //       Text(name, style: Theme.of(context).textTheme.titleLarge),
+  //       Text(name, style: _theme.textTheme.titleLarge),
   //       SizedBox(height: height * 0.014),
   //       TextFormField(
   //         controller: controller,
