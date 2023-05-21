@@ -1,3 +1,3 @@
 class Fonts {
-  static const String montserrat = "Montserrat";
+  static const String montserrat = "poppin";
 }

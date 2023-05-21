@@ -10,6 +10,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -44,8 +45,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   Widget build(BuildContext context) {
     final height = SizeUtils.height;
     final width = SizeUtils.width;
-    return Scaffold(
-      backgroundColor: Colors.white,
+    return PageWrapper(
+      // backgroundColor: Colors.white,
+      padding: EdgeInsets.zero,
       body: Padding(
         padding: const EdgeInsets.all(20.0),
         child: ListView(

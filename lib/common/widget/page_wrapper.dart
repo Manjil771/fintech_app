@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/enum/floating_action_button_type.dart';
+import 'package:ismart/common/util/size_utils.dart';
 
 class PageWrapper extends StatefulWidget {
   final bool useOwnAppBar;
@@ -6,12 +9,37 @@ class PageWrapper extends StatefulWidget {
   final bool useOwnScaffold;
   final bool showAppBar;
   final PreferredSizeWidget? appBar;
+  final String? title;
+  final Widget? leadingAppIcon;
+  final List<Widget> appActions;
+  final EdgeInsets? padding;
+  final double appBarLeftPadding;
+  final double appBarRightPadding;
+  final Widget? floatinActionButton;
+  final Widget? bottomNavBar;
+  final Color? backgroundColor;
+  final FloatingActionButtonLocation floatingActionButtonLocation;
+  final FloatingActionButtonType floatingActionButtonType;
+  final Function()? onBackPressed;
   const PageWrapper({
     this.useOwnAppBar = false,
     required this.body,
     this.useOwnScaffold = false,
     this.showAppBar = true,
     this.appBar,
+    this.appActions = const [],
+    this.leadingAppIcon,
+    this.title,
+    this.padding,
+    this.bottomNavBar,
+    this.appBarLeftPadding = CustomTheme.symmetricHozPadding,
+    this.appBarRightPadding = CustomTheme.symmetricHozPadding,
+    this.floatinActionButton,
+    this.backgroundColor,
+    this.floatingActionButtonLocation =
+        FloatingActionButtonLocation.centerDocked,
+    this.floatingActionButtonType = FloatingActionButtonType.Button,
+    this.onBackPressed,
   });
   @override
   _PageWrapperState createState() => _PageWrapperState();
@@ -24,10 +52,51 @@ class _PageWrapperState extends State<PageWrapper> {
       return widget.body;
     } else {
       return Scaffold(
-        appBar: widget.showAppBar
-            ? (widget.useOwnAppBar ? widget.appBar : AppBar())
-            : null,
-        body: widget.body,
+        floatingActionButton:
+            widget.floatingActionButtonType == FloatingActionButtonType.Button
+                ? (widget.floatinActionButton != null
+                    ? AnimatedSwitcher(
+                        duration: const Duration(milliseconds: 50),
+                        child: MediaQuery.of(context).viewInsets.bottom > 0
+                            ? Container()
+                            : Column(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Container(
+                                    padding: EdgeInsets.only(
+                                      left: CustomTheme.symmetricHozPadding,
+                                      right: CustomTheme.symmetricHozPadding,
+                                      bottom: 20.hp,
+                                    ),
+                                    child: widget.floatinActionButton,
+                                  ),
+                                ],
+                              ),
+                      )
+                    : null)
+                : widget.floatinActionButton,
+        backgroundColor: widget.backgroundColor,
+        bottomNavigationBar: widget.bottomNavBar,
+        floatingActionButtonLocation: widget.floatingActionButtonLocation,
+        // appBar: widget.showAppBar
+        //     ? (widget.useOwnAppBar
+        //         ? widget.appBar
+        //         : CustomAppBar(
+        //             actions: widget.appActions,
+        //             title: widget.title,
+        //             leftPadding: widget.appBarLeftPadding,
+        //             rightPadding: widget.appBarLeftPadding,
+        //             leadingIcon: widget.leadingAppIcon,
+        //             onBackPressed: widget.onBackPressed,
+        //           ))
+        //     : null,
+        body: Container(
+          padding: widget.padding ??
+              const EdgeInsets.symmetric(
+                horizontal: CustomTheme.symmetricHozPadding,
+              ),
+          child: widget.body,
+        ),
       );
     }
   }

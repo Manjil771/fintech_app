@@ -35,7 +35,7 @@ class CustomTextField extends FormField<String> {
     VoidCallback? onTap,
     Widget? prefix,
     int maxLine = 1,
-    double borderRadius = 100,
+    double borderRadius = 15,
     Widget? trailingTitle,
     bool obscureText = false,
     double suffixIconSize = 28,
@@ -135,9 +135,7 @@ class CustomTextField extends FormField<String> {
                               Expanded(
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: type == TextFieldType.Filled
-                                        ? CustomTheme.lightGray
-                                        : Colors.transparent,
+                                    color: CustomTheme.lightGray,
                                     borderRadius:
                                         BorderRadius.circular(borderRadius),
                                     border: type == TextFieldType.Outline
@@ -191,7 +189,8 @@ class CustomTextField extends FormField<String> {
                                       ),
                                       if (showSearchIcon)
                                         CustomIconButton(
-                                          backgroundColor: Colors.transparent,
+                                          backgroundColor:
+                                              CustomTheme.lightGray,
                                           icon: suffixIcon ?? Icons.search,
                                           shadow: false,
                                           iconSize: suffixIconSize,

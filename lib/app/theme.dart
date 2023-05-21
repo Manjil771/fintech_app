@@ -2,9 +2,9 @@ import 'package:ismart/common/constant/fonts.dart';
 import 'package:flutter/material.dart';
 
 class CustomTheme {
-  static const Color primaryColor = Color(0xff68A037);
+  static const Color primaryColor = Color(0xFF010C80);
   static const double symmetricHozPadding = 13.0;
-  static const Color lightGray = Color(0xFF707070);
+  static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);
   static const Color darkGray = Color(0xFF3E3E3E);
   static const Color lightTextColor = Color(0xff131313);
@@ -30,26 +30,26 @@ class CustomTheme {
         const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: backgroundColor,
     iconTheme: const IconThemeData(color: darkerBlack),
-    bottomAppBarColor: Colors.white,
     fontFamily: Fonts.montserrat,
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           color: lightTextColor, fontWeight: FontWeight.bold, fontSize: 24),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
           color: lightTextColor, fontWeight: FontWeight.bold, fontSize: 22),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
           color: lightTextColor, fontWeight: FontWeight.bold, fontSize: 20),
-      headline4: TextStyle(fontSize: 18, color: lightTextColor),
-      headline5: TextStyle(color: lightTextColor, fontSize: 16),
-      headline6: TextStyle(
+      headlineMedium: TextStyle(fontSize: 18, color: lightTextColor),
+      headlineSmall: TextStyle(color: lightTextColor, fontSize: 16),
+      titleLarge: TextStyle(
           color: lightTextColor, fontSize: 14, fontWeight: FontWeight.w300),
-      caption: TextStyle(color: lightTextColor, fontSize: 8),
-      subtitle2: TextStyle(color: lightTextColor, fontSize: 12),
-      subtitle1: TextStyle(color: lightTextColor, fontSize: 10),
-      button: TextStyle(color: lightTextColor, fontSize: 12),
-      bodyText1: TextStyle(fontSize: 12, color: lightTextColor),
-      bodyText2: TextStyle(fontSize: 10, color: lightTextColor),
+      bodySmall: TextStyle(color: lightTextColor, fontSize: 8),
+      titleSmall: TextStyle(color: lightTextColor, fontSize: 12),
+      titleMedium: TextStyle(color: lightTextColor, fontSize: 10),
+      labelLarge: TextStyle(color: lightTextColor, fontSize: 12),
+      bodyLarge: TextStyle(fontSize: 12, color: lightTextColor),
+      bodyMedium: TextStyle(fontSize: 10, color: lightTextColor),
     ),
+    bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -61,25 +61,25 @@ class CustomTheme {
         const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: darkGray,
     iconTheme: const IconThemeData(color: Colors.white),
-    bottomAppBarColor: darkGray,
     fontFamily: Fonts.montserrat,
     textTheme: const TextTheme(
-      headline1: TextStyle(
+      displayLarge: TextStyle(
           color: darkTextColor, fontWeight: FontWeight.bold, fontSize: 24),
-      headline2: TextStyle(
+      displayMedium: TextStyle(
           color: darkTextColor, fontWeight: FontWeight.bold, fontSize: 22),
-      headline3: TextStyle(
+      displaySmall: TextStyle(
           color: darkTextColor, fontWeight: FontWeight.bold, fontSize: 20),
-      headline4: TextStyle(fontSize: 18, color: darkTextColor),
-      headline5: TextStyle(color: darkTextColor, fontSize: 16),
-      headline6: TextStyle(
+      headlineMedium: TextStyle(fontSize: 18, color: darkTextColor),
+      headlineSmall: TextStyle(color: darkTextColor, fontSize: 16),
+      titleLarge: TextStyle(
           color: darkTextColor, fontSize: 14, fontWeight: FontWeight.w300),
-      caption: TextStyle(color: darkTextColor, fontSize: 8),
-      subtitle2: TextStyle(color: darkTextColor, fontSize: 12),
-      subtitle1: TextStyle(color: darkTextColor, fontSize: 10),
-      button: TextStyle(color: darkTextColor, fontSize: 12),
-      bodyText1: TextStyle(fontSize: 12, color: darkTextColor),
-      bodyText2: TextStyle(fontSize: 10, color: darkTextColor),
+      bodySmall: TextStyle(color: darkTextColor, fontSize: 8),
+      titleSmall: TextStyle(color: darkTextColor, fontSize: 12),
+      titleMedium: TextStyle(color: darkTextColor, fontSize: 10),
+      labelLarge: TextStyle(color: darkTextColor, fontSize: 12),
+      bodyLarge: TextStyle(fontSize: 12, color: darkTextColor),
+      bodyMedium: TextStyle(fontSize: 10, color: darkTextColor),
     ),
+    bottomAppBarTheme: const BottomAppBarTheme(color: darkGray),
   );
 }
