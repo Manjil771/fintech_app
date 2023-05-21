@@ -382,8 +382,9 @@ class ApiProvider {
       case 201:
         return responseJson;
       case 400:
-        throw BadRequestException(
-            getErrorMessage(res, 400), response.statusCode);
+        return responseJson;
+      // throw BadRequestException(
+      //     getErrorMessage(res, 400), response.statusCode);
       case 404:
         throw ResourceNotFoundException(
             getErrorMessage(res, 404), response.statusCode);
