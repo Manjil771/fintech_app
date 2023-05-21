@@ -1,9 +1,9 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
-import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MultiRepositoryWrapper extends StatelessWidget {
   final Widget child;
@@ -22,7 +22,9 @@ class MultiRepositoryWrapper extends StatelessWidget {
         //   lazy: true,
         // ),
         RepositoryProvider<ApiProvider>(
-          create: (context) => ApiProvider(),
+          create: (context) => ApiProvider(
+            baseUrl: env.baseUrl,
+          ),
           lazy: true,
         ),
         RepositoryProvider<UserRepository>(
