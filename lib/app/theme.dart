@@ -1,5 +1,5 @@
-import 'package:ismart/common/constant/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/fonts.dart';
 
 class CustomTheme {
   static const Color primaryColor = Color(0xFF010C80);
@@ -9,6 +9,8 @@ class CustomTheme {
   static const Color darkGray = Color(0xFF3E3E3E);
   static const Color lightTextColor = Color(0xff131313);
   static const Color yellow = Color(0xFFFFC107);
+  static const Color green = Colors.green;
+
   static const Color backgroundColor = Color(0xFFF8F6F8);
   static const Color googleColor = Color(0xFFDB4437);
   static const Color facebookColor = Color(0xFF4267B2);
