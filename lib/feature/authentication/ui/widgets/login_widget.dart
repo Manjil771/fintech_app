@@ -2,7 +2,6 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
@@ -18,7 +17,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
-import 'package:ismart/feature/dashboard/ui/screens/dashboard_page.dart';
+import 'package:ismart/feature/dashboard/mobileTopup/ui/screens/dashboard_page.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -56,6 +55,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
     return PageWrapper(
+      showAppBar: false,
       padding: EdgeInsets.zero,
       body: BlocListener<LoginCubit, CommonState>(
         listener: (context, state) {
@@ -92,7 +92,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             );
           }
         },
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 100,

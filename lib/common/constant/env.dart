@@ -28,7 +28,7 @@ class CoOperativeValue {
 
   static final CoOperative development = CoOperative(
     baseUrl: 'http://103.198.9.222:1231/',
-    bannerImage: '',
+    bannerImage: 'assets/images/Group 1105.png',
     clientCode: 'VBMRDWEVFV',
     coOperativeName: '',
     coOperativeLogo: '',
