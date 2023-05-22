@@ -19,4 +19,5 @@ class LocaleKeys {
   static const pleaseEnterValidField = "auth.pleaseEnterValidField";
 
   static const dashboard = "dashboard.dashboard";
+  static const error = "error.error";
 }
