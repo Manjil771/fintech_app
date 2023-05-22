@@ -4,7 +4,7 @@ description: A new Flutter project.
 version: 0.0.1+1
 
 environment:
-  sdk: ">=2.16.0 <3.0.0"
+  sdk: ">=2.17.6 <3.0.0"
 
 dependencies:
   flutter:
@@ -12,7 +12,7 @@ dependencies:
 
   # ui  widgets
   cupertino_icons: ^1.0.4
-  flutter_svg: ^2.0.6
+  flutter_svg: ^1.1.4
 
   cached_network_image: ^3.2.0
   flutter_cache_manager: ^3.3.0
