@@ -1,7 +1,8 @@
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/feature/dashboard/mobileTopup/ui/screens/dashboard_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
-import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
+import 'package:ismart/feature/services/internet/ui/widgets/internet_screen.dart';
+import 'package:ismart/feature/services/topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -22,11 +23,15 @@ class RouteGenerator {
         );
       case Routes.mobileTopup:
         return MaterialPageRoute(
-            builder: (_) => MobileTopupScreen(),
+            builder: (_) => const MobileTopupScreen(),
             settings: RouteSettings(name: settings.name));
       case Routes.transactionPinScreen:
         return MaterialPageRoute(
             builder: (_) => TransactionPinScreen(),
+            settings: RouteSettings(name: settings.name));
+      case Routes.internetList:
+        return MaterialPageRoute(
+            builder: (_) => InternetListWidget(),
             settings: RouteSettings(name: settings.name));
       default:
         return MaterialPageRoute(
