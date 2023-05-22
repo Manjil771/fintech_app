@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/dashboard/ui/screens/dashboard_page.dart';
+import 'package:ismart/feature/dashboard/mobileTopup/ui/screens/dashboard_page.dart';
 
 import '../../../../../common/widget/common_button.dart';
 import '../../../../../common/widget/common_text_field.dart';

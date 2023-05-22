@@ -1,5 +1,5 @@
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/feature/dashboard/ui/screens/dashboard_page.dart';
+import 'package:ismart/feature/dashboard/mobileTopup/ui/screens/dashboard_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/dashboard/ui/widgets/dashboard_widget.dart';
+
+import '../../../widgets/dashboard_widgets.dart';
 
 class DashboardPage extends StatelessWidget {
   const DashboardPage({Key? key}) : super(key: key);

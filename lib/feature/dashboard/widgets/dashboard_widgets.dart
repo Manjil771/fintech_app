@@ -5,7 +5,6 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
-import 'package:ismart/feature/dashboard/ui/screens/dashboard_page.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/services/Topup/ui/widgets/mobile_topup_widget.dart';
 import '../../../../common/widget/custom_pin_field.dart';
@@ -99,14 +98,5 @@ class DashboardWidget extends StatelessWidget {
         ],
       ),
     );
-  }
-}
-
-class MyWidget extends StatelessWidget {
-  const MyWidget({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return const Placeholder();
   }
 }
