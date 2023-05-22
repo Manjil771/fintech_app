@@ -4,6 +4,8 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 
 class SplashWidget extends StatelessWidget {
@@ -16,10 +18,9 @@ class SplashWidget extends StatelessWidget {
       listener: (context, state) {
         if (state is StartupSuccess) {
           if (state.isFirstTime) {
-            NavigationService.pushReplacementNamed(
-                routeName: Routes.onboarding);
+            NavigationService.push(target: OnboardPage());
           } else if (state.isLogged) {
-            NavigationService.pushReplacementNamed(routeName: Routes.dashboard);
+            NavigationService.pushReplacement(target: const DashboardPage());
           } else {
             NavigationService.pushReplacement(target: const LoginPage());
           }

@@ -1,0 +1,59 @@
+import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/http/custom_exception.dart';
+import 'package:ismart/common/http/response.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
+
+class UtilityPaymentRepository {
+  ApiProvider apiProvider;
+  late UtilityPaymentAPIProvider utilityPaymentAPIProvider;
+  UserRepository userRepository;
+  CoOperative env;
+
+  UtilityPaymentRepository({
+    required this.env,
+    required this.userRepository,
+    required this.apiProvider,
+  }) {
+    utilityPaymentAPIProvider = UtilityPaymentAPIProvider(
+      baseUrl: env.baseUrl,
+      apiProvider: apiProvider,
+      userRepository: userRepository,
+    );
+  }
+
+  final String _myQrCode = "";
+
+  String get myQrCode => _myQrCode;
+
+  Future<DataResponse<String>> getTopup({
+    required String serviceIdentifier,
+    required String accountNumber,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+  }) async {
+    try {
+      if (_myQrCode.isNotEmpty) {
+        return DataResponse.success(_myQrCode);
+      }
+      final _res = await utilityPaymentAPIProvider.getTopup(
+        serviceIdentifier: serviceIdentifier,
+        accountNumber: accountNumber,
+        phoneNumber: phoneNumber,
+        amount: amount,
+        mpin: mpin,
+      );
+
+      return DataResponse.success(_myQrCode);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+}
