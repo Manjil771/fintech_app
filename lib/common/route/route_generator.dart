@@ -22,7 +22,7 @@ class RouteGenerator {
         );
       case Routes.mobileTopup:
         return MaterialPageRoute(
-            builder: (_) => MobileTopupScreen(),
+            builder: (_) => const MobileTopupScreen(),
             settings: RouteSettings(name: settings.name));
       case Routes.transactionPinScreen:
         return MaterialPageRoute(
