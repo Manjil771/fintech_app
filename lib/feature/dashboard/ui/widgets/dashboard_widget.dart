@@ -13,6 +13,8 @@ class DashboardWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: Container(
+        width: _width,
+        height: _height,
         child: const Text("Dashboard"),
       ),
     );

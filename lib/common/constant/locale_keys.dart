@@ -17,4 +17,6 @@ class LocaleKeys {
   static const enterValidPhoneNumber = "auth.enterValidPhoneNumber";
   static const email = "auth.email";
   static const pleaseEnterValidField = "auth.pleaseEnterValidField";
+
+  static const dashboard = "dashboard.dashboard";
 }
