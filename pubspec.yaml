@@ -12,7 +12,7 @@ dependencies:
 
   # ui  widgets
   cupertino_icons: ^1.0.4
-  flutter_svg: ^1.0.3
+  flutter_svg: ^2.0.6
 
   cached_network_image: ^3.2.0
   flutter_cache_manager: ^3.3.0

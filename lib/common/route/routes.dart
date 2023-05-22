@@ -2,4 +2,6 @@ class Routes {
   static const root = "/";
   static const onboarding = "/onboarding";
   static const dashboard = "/dashboard";
+  static const mobileTopup = "/mobile_topup";
+  static const transactionPinScreen = "/transaction_pin_screen";
 }

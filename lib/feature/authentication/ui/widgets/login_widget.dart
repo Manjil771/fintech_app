@@ -55,6 +55,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
     return PageWrapper(
+      showAppBar: false,
       padding: EdgeInsets.zero,
       body: BlocListener<LoginCubit, CommonState>(
         listener: (context, state) {
@@ -91,7 +92,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             );
           }
         },
-        child: Column(
+        child: ListView(
           children: [
             const SizedBox(
               height: 100,

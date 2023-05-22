@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/enum/floating_action_button_type.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/ismart_appbar.dart';
 
 class PageWrapper extends StatefulWidget {
   final bool useOwnAppBar;
@@ -78,18 +79,9 @@ class _PageWrapperState extends State<PageWrapper> {
         backgroundColor: widget.backgroundColor,
         bottomNavigationBar: widget.bottomNavBar,
         floatingActionButtonLocation: widget.floatingActionButtonLocation,
-        // appBar: widget.showAppBar
-        //     ? (widget.useOwnAppBar
-        //         ? widget.appBar
-        //         : CustomAppBar(
-        //             actions: widget.appActions,
-        //             title: widget.title,
-        //             leftPadding: widget.appBarLeftPadding,
-        //             rightPadding: widget.appBarLeftPadding,
-        //             leadingIcon: widget.leadingAppIcon,
-        //             onBackPressed: widget.onBackPressed,
-        //           ))
-        //     : null,
+        appBar: widget.showAppBar
+            ? (widget.useOwnAppBar ? widget.appBar : myAppbar(context))
+            : null,
         body: Container(
           padding: widget.padding ??
               const EdgeInsets.symmetric(
