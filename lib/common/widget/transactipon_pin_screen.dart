@@ -1,10 +1,21 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
 
-class TransactionPinScreen extends StatelessWidget {
+class TransactionPinScreen extends StatefulWidget {
+  final Function(String) onValueCallback;
+
+  const TransactionPinScreen({super.key, required this.onValueCallback});
+  @override
+  State<TransactionPinScreen> createState() => _TransactionPinScreenState();
+}
+
+class _TransactionPinScreenState extends State<TransactionPinScreen> {
+  String pinValue = "";
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -25,7 +36,7 @@ class TransactionPinScreen extends StatelessWidget {
                   children: [
                     SvgPicture.asset(
                       Assets.verify,
-                      color: Color(0xff4E4E4E),
+                      color: const Color(0xff4E4E4E),
                       height: size.height * 0.05,
                     ),
                     SizedBox(height: size.height * 0.02),
@@ -38,13 +49,23 @@ class TransactionPinScreen extends StatelessWidget {
                         style: Theme.of(context).textTheme.headlineSmall),
                     SizedBox(height: size.height * 0.04),
                     CustomPinCodeField(
-                      onChanged: (p0) {},
+                      length: 5,
+                      onChanged: (p0) {
+                        pinValue = p0;
+                      },
                     ),
                     SizedBox(height: size.height * 0.04),
-                    CustomRoundedButtom(title: "Proceed", onPressed: () {}),
+                    CustomRoundedButtom(
+                      title: "Proceed",
+                      onPressed: () {
+                        widget.onValueCallback(pinValue);
+                      },
+                    ),
                     SizedBox(height: size.height * 0.01),
                     TextButton(
-                        onPressed: () {},
+                        onPressed: () {
+                          NavigationService.pop();
+                        },
                         child: Text(
                           "Cancel",
                           style: TextStyle(

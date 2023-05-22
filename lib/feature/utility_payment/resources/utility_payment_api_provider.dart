@@ -1,0 +1,38 @@
+import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/util/url_utils.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
+
+class UtilityPaymentAPIProvider {
+  UtilityPaymentAPIProvider({
+    required this.baseUrl,
+    required this.apiProvider,
+    required this.userRepository,
+  });
+
+  final ApiProvider apiProvider;
+  final UserRepository userRepository;
+
+  final String baseUrl;
+
+  getTopup({
+    required String serviceIdentifier,
+    required String accountNumber,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+  }) async {
+    final _params = {
+      "service_identifier": "$serviceIdentifier",
+      "account_number": "$accountNumber",
+      "phone_number": "$phoneNumber",
+      "amount": "$amount",
+      "mPin": "$mpin",
+    };
+    final url = UrlUtils.getUri(url: baseUrl + "api/topup", params: _params);
+    return await apiProvider.post(
+      url.toString(),
+      {},
+      token: userRepository.token,
+    );
+  }
+}

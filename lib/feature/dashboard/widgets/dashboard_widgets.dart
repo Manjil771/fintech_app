@@ -76,7 +76,7 @@ class DashboardWidget extends StatelessWidget {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  NavigationService.push(target: MobileTopUpWidget());
+                  NavigationService.push(target: const MobileTopupScreen());
                 },
                 child: Column(
                   children: [
