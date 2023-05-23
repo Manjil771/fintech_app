@@ -1,9 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/services/Topup/ui/widgets/mobile_topup_widget.dart';
@@ -56,7 +60,7 @@ class DashboardWidget extends StatelessWidget {
     "Government Payment",
     "Broker",
   ];
-
+  final image = CoOperativeValue.development.bannerImage;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

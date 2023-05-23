@@ -16,10 +16,6 @@ class RouteGenerator {
           builder: (_) => OnboardPage(),
           settings: RouteSettings(name: settings.name),
         );
-      // case Routes.mobileTopup:
-      //   return MaterialPageRoute(
-      //       builder: (_) => const MobileTopupScreen(),
-      //       settings: RouteSettings(name: settings.name));
 
       default:
         return MaterialPageRoute(

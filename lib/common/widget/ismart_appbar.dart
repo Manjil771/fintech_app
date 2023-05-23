@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ismart/common/constant/assets.dart';
 
 AppBar myAppbar(context) {
   Size size = MediaQuery.of(context).size;
@@ -16,13 +17,12 @@ AppBar myAppbar(context) {
       child: const Padding(
         padding: EdgeInsets.all(8.0),
         child: CircleAvatar(
-          backgroundImage: AssetImage(
-              "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png"),
+          backgroundImage: AssetImage(Assets.profilePicture),
         ),
       ),
     ),
     title: Image.asset(
-      "assets/ismartlogo.png",
+      Assets.logoImage,
       height: size.width * 0.135,
     ),
     actions: [
@@ -31,14 +31,14 @@ AppBar myAppbar(context) {
           // Get.to(() => const NotificationScreen());
         },
         child: SvgPicture.asset(
-          "assets/icons/Notification.svg",
+          Assets.notificationIcon,
           height: size.height * 0.025,
         ),
       ),
       Padding(
         padding: const EdgeInsets.symmetric(horizontal: 18.0),
         child: SvgPicture.asset(
-          "assets/icons/search.svg",
+          Assets.searchIcon,
           height: size.height * 0.025,
         ),
       ),

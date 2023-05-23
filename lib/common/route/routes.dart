@@ -4,4 +4,5 @@ class Routes {
   static const dashboard = "/dashboard";
   static const mobileTopup = "/mobile_topup";
   static const transactionPinScreen = "/transaction_pin_screen";
+  static const internetList = "/internet_list";
 }
