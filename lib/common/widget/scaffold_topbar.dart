@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/env.dart';
 
+import '../navigation/navigation_service.dart';
+
 class ScaffoldTopBar extends StatelessWidget {
   final String name;
   final bool back;
@@ -23,7 +25,9 @@ class ScaffoldTopBar extends StatelessWidget {
           ? Row(
               children: [
                 IconButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    NavigationService.pop();
+                  },
                   icon: const Icon(
                     Icons.arrow_back,
                     color: Colors.white,

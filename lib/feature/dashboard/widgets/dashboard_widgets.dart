@@ -72,7 +72,6 @@ class DashboardWidget extends StatelessWidget {
       // showAppBar: true,
       body: Column(
         children: [
-          ScaffoldTopBar(name: "as", back: true),
           Expanded(
             child: GridView.builder(
               itemCount: 12,
