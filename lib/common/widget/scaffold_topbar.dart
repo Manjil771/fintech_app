@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/env.dart';
 
 class ScaffoldTopBar extends StatelessWidget {
   final String name;
@@ -14,8 +15,8 @@ class ScaffoldTopBar extends StatelessWidget {
         borderRadius: const BorderRadius.only(
             topLeft: Radius.circular(12), topRight: Radius.circular(12)),
         color: Theme.of(context).primaryColor,
-        image: const DecorationImage(
-            image: AssetImage("assets/images/Group 1105.png"),
+        image: DecorationImage(
+            image: AssetImage(CoOperativeValue.development.bannerImage),
             fit: BoxFit.cover),
       ),
       child: back == true
