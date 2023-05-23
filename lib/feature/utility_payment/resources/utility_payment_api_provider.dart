@@ -35,4 +35,20 @@ class UtilityPaymentAPIProvider {
       token: userRepository.token,
     );
   }
+
+  fetchDetails(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    final _params = {
+      "service_identifier": "$serviceIdentifier",
+      ...accountDetails,
+    };
+    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint", params: _params);
+    return await apiProvider.get(
+      url,
+      token: userRepository.token,
+      userId: 0,
+    );
+  }
 }

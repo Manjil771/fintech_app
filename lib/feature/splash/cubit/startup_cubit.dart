@@ -24,8 +24,8 @@ class StartupCubit extends Cubit<StartupState> {
     }
     emit(StartupSuccess(
       isFirstTime: isFirstTime,
-      // isLogged: userRepository.isLoggedIn.value,
-      isLogged: false,
+      isLogged: userRepository.isLoggedIn.value,
+      // isLogged: false,
     ));
   }
 }

@@ -37,4 +37,27 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
       );
     }
   }
+
+  fetchDetails({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required String apiEndpoint,
+  }) async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.fetchDetails(
+      serviceIdentifier: serviceIdentifier,
+      accountDetails: accountDetails,
+      apiEndpoint: apiEndpoint,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
 }

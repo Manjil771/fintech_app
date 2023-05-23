@@ -2,6 +2,8 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/models/key_value.dart';
+import 'package:ismart/common/util/parse_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
@@ -44,6 +46,29 @@ class UtilityPaymentRepository {
       );
       print(_res);
       return DataResponse.success(_res['data']?['message'] ?? "");
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<List<KeyValue>>> fetchDetails(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchDetails(
+        serviceIdentifier: serviceIdentifier,
+        accountDetails: accountDetails,
+        apiEndpoint: apiEndpoint,
+      );
+      List<KeyValue> _values = ParseUtils.parseKeyValue(_res['data']);
+      print(_values);
+      return DataResponse.success(_values);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;
