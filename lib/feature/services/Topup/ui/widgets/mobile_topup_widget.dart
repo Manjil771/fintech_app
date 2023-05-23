@@ -3,9 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
+import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 import '../../../../../common/widget/common_button.dart';
 import '../../../../../common/widget/common_text_field.dart';
@@ -18,6 +21,19 @@ class MobileTopUpWidget extends StatefulWidget {
 class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
   final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
+  final ValueNotifier<TopupType> _topUpType = ValueNotifier(TopupType.None);
+  void updateTopupType(String number) {
+    _topUpType.value = RegexUtils.checkPhoneNumberType(number);
+  }
+
+  @override
+  void initState() {
+    _mobileNumberController.addListener(() {
+      updateTopupType(_mobileNumberController.text);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -98,7 +114,9 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                               onValueCallback: (mpin) {
                                 NavigationService.pop();
                                 context.read<UtilityPaymentCubit>().getTopUp(
-                                      serviceIdentifier: "ntc_prepaid_topup",
+                                      serviceIdentifier: TopUpUtils()
+                                          .getTopUpServiceType(
+                                              type: _topUpType.value),
                                       accountNumber:
                                           "001001-001-111-0001001", // TODO Update dynamic account number
                                       phoneNumber: _mobileNumberController.text,
@@ -118,14 +136,16 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           style: Theme.of(context).textTheme.titleMedium,
                         ),
                         TextButton(
-                            onPressed: () {},
-                            child: Text(
-                              "View All",
-                              style: TextStyle(
-                                  color: Theme.of(context).primaryColor,
-                                  fontFamily: "popinmedium",
-                                  fontSize: 16),
-                            ))
+                          onPressed: () {},
+                          child: Text(
+                            "View All",
+                            style: TextStyle(
+                              color: Theme.of(context).primaryColor,
+                              fontFamily: "popinmedium",
+                              fontSize: 16,
+                            ),
+                          ),
+                        )
                       ],
                     )
                     // ),
