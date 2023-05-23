@@ -5,4 +5,6 @@ class Routes {
   static const mobileTopup = "/mobile_topup";
   static const transactionPinScreen = "/transaction_pin_screen";
   static const internetList = "/internet_list";
+  static const internetUsername = "/find_internet_user";
+  static const internetPaymentDetail = "/internet_payment_detail";
 }
