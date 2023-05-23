@@ -1,0 +1,10 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:ismart/feature/services/internet/ui/widget/internet_list_widget.dart';
+
+class InternetPaymentPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return InternetPageWidget();
+  }
+}

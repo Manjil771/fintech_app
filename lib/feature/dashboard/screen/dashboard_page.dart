@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-
 import '../widgets/dashboard_widgets.dart';
 
 class DashboardPage extends StatelessWidget {
