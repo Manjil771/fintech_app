@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/material.dart' as mp;
 import 'package:flutter/services.dart';
 
 enum TextSizeType { Width, Height }
@@ -23,41 +21,33 @@ class TextUtils {
     };
   }
 
+  static String replaceSpecialCharecterWithSpace(String text,
+      {String replace = ' '}) {
+    return text
+        .replaceAll(RegExp('[^A-Za-z0-9]'), replace)
+        .capitalize(allWords: false);
+  }
+
   static bool validateEmail(String email) {
     return RegExp(
             r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
         .hasMatch(email);
   }
 
-  static double getRequiredTextSize({
-    required String mytext,
-    required TextStyle style,
-    required double maxWidth,
-    TextAlign textAlign = TextAlign.left,
-    required BuildContext context,
-    TextSizeType sizeType = TextSizeType.Height,
-  }) {
-    final textScaleFactor = MediaQuery.textScaleFactorOf(context);
-    final textHeightBehaviour = DefaultTextStyle.of(context).textHeightBehavior;
-    const textWidthBasis = TextWidthBasis.parent;
-    final span = TextSpan(
-      text: mytext,
-      style: style,
-    );
-    final tp = TextPainter(
-      textAlign: textAlign,
-      text: span,
-      textDirection: mp.TextDirection.ltr,
-      textScaleFactor: textScaleFactor,
-      textHeightBehavior: textHeightBehaviour,
-      textWidthBasis: textWidthBasis,
-    );
-    tp.layout(maxWidth: maxWidth);
-    if (sizeType == TextSizeType.Height) {
-      return tp.size.height;
-    } else {
-      return tp.size.width;
-    }
+  static String replaceEmptyWithDash(dynamic value) {
+    return (value?.toString() ?? "").isNotEmpty ? value.toString() : "-";
+  }
+
+  static String formatTemplateMessage(
+      {required String templateMessage,
+      String recipientName = "",
+      String senderName = ""}) {
+    String temp = templateMessage;
+    temp = temp.replaceAll("<%= recipient_name %>",
+        recipientName.isNotEmpty ? recipientName : "_recipient_name_");
+    temp = temp.replaceAll("<%= sender_name %>",
+        senderName.isNotEmpty ? senderName : "_sender_name_");
+    return temp;
   }
 
   static List<TextInputFormatter> get textOnlyFormater =>
@@ -68,15 +58,6 @@ class TextUtils {
 
   static List<TextInputFormatter> get decimalInputFormater =>
       [FilteringTextInputFormatter.allow(RegExp("[0-9.]"))];
-
-  static String filterSpecialCharacterExceptPlus(String val) {
-    return val
-        .replaceAll(RegExp('[^+0-9]'), "")
-        .trim()
-        .replaceAll("+977", "")
-        .replaceAll("977", "")
-        .trim();
-  }
 }
 
 extension Capitalize on String {
@@ -93,18 +74,6 @@ extension Capitalize on String {
       return capitalized.join(' ');
     } else {
       return substring(0, 1).toUpperCase() + substring(1).toLowerCase();
-    }
-  }
-
-  String nameShortcut() {
-    final List<String> _items =
-        split(" ").map((e) => e.trim()).where((e) => e.isNotEmpty).toList();
-    if (_items.isEmpty) {
-      return "";
-    } else if (_items.length == 1) {
-      return _items[0];
-    } else {
-      return "${_items.first[0]}${_items.last[0]}";
     }
   }
 }
