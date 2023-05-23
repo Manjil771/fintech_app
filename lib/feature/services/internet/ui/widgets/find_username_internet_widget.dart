@@ -8,7 +8,12 @@ import 'package:ismart/common/widget/scaffold_topbar.dart';
 import '../../../../../common/route/routes.dart';
 import '../../../../../common/util/size_utils.dart';
 
-class FindInternetUserWidget extends StatelessWidget {
+class FindInternetUserWidget extends StatefulWidget {
+  @override
+  State<FindInternetUserWidget> createState() => _FindInternetUserWidgetState();
+}
+
+class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -76,7 +81,8 @@ class FindInternetUserWidget extends StatelessWidget {
                     title: "Procced",
                     onPressed: () {
                       NavigationService.pushNamed(
-                          routeName: Routes.internetPaymentDetail);
+                        routeName: Routes.internetPaymentDetail,
+                      );
                     })
               ],
             ),

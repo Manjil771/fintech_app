@@ -51,7 +51,8 @@ class InternetListWidget extends StatelessWidget {
                       return InkWell(
                         onTap: () {
                           NavigationService.pushNamed(
-                              routeName: Routes.internetUsername);
+                            routeName: Routes.internetUsername,
+                          );
                         },
                         child: Column(
                           children: [
