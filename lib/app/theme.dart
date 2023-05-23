@@ -32,7 +32,7 @@ class CustomTheme {
         const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: backgroundColor,
     iconTheme: const IconThemeData(color: darkerBlack),
-    fontFamily: Fonts.montserrat,
+    fontFamily: Fonts.poppin,
     textTheme: const TextTheme(
       displayLarge: TextStyle(
           color: lightTextColor, fontWeight: FontWeight.bold, fontSize: 24),
@@ -63,7 +63,7 @@ class CustomTheme {
         const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: darkGray,
     iconTheme: const IconThemeData(color: Colors.white),
-    fontFamily: Fonts.montserrat,
+    fontFamily: Fonts.poppin,
     textTheme: const TextTheme(
       displayLarge: TextStyle(
           color: darkTextColor, fontWeight: FontWeight.bold, fontSize: 24),

@@ -35,9 +35,6 @@ class UtilityPaymentRepository {
     required String mpin,
   }) async {
     try {
-      if (_myQrCode.isNotEmpty) {
-        return DataResponse.success(_myQrCode);
-      }
       final _res = await utilityPaymentAPIProvider.getTopup(
         serviceIdentifier: serviceIdentifier,
         accountNumber: accountNumber,
@@ -45,8 +42,8 @@ class UtilityPaymentRepository {
         amount: amount,
         mpin: mpin,
       );
-
-      return DataResponse.success(_myQrCode);
+      print(_res);
+      return DataResponse.success(_res['data']?['message'] ?? "");
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;

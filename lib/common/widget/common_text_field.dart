@@ -57,7 +57,7 @@ class CustomTextField extends FormField<String> {
               hintText: hintText,
               prefix: prefix,
               hintStyle: const TextStyle(
-                fontFamily: Fonts.montserrat,
+                fontFamily: Fonts.poppin,
                 fontWeight: FontWeight.w400,
                 fontSize: 14,
                 color: CustomTheme.gray,
@@ -104,7 +104,7 @@ class CustomTextField extends FormField<String> {
                                   text: TextSpan(
                                     text: title,
                                     style: const TextStyle(
-                                      fontFamily: Fonts.montserrat,
+                                      fontFamily: Fonts.poppin,
                                       fontWeight: FontWeight.w700,
                                       fontSize: 14,
                                       color: CustomTheme.lightTextColor,
@@ -114,7 +114,7 @@ class CustomTextField extends FormField<String> {
                                         const TextSpan(
                                           text: "*",
                                           style: TextStyle(
-                                            fontFamily: Fonts.montserrat,
+                                            fontFamily: Fonts.poppin,
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,
                                             color: CustomTheme.primaryColor,
@@ -165,7 +165,7 @@ class CustomTextField extends FormField<String> {
                                           maxLength: maxLength,
                                           onChanged: onChangedHandler,
                                           textInputAction: textInputAction,
-                                          // enablemontserratactiveSelection:
+                                          // enablepoppinactiveSelection:
                                           //     !readOnly,
                                           readOnly: readOnly,
                                           maxLines: maxLine,
@@ -181,7 +181,7 @@ class CustomTextField extends FormField<String> {
                                           },
                                           onTap: onTap,
                                           style: const TextStyle(
-                                            fontFamily: Fonts.montserrat,
+                                            fontFamily: Fonts.poppin,
                                             fontWeight: FontWeight.w400,
                                             fontSize: 14,
                                             color: CustomTheme.lightTextColor,
@@ -214,7 +214,7 @@ class CustomTextField extends FormField<String> {
                         child: Text(
                           state.errorText!,
                           style: const TextStyle(
-                            fontFamily: Fonts.montserrat,
+                            fontFamily: Fonts.poppin,
                             fontWeight: FontWeight.w400,
                             fontSize: 10,
                             color: Colors.red,
@@ -255,7 +255,7 @@ class _CustomTextFieldState extends FormFieldState<String> {
     if (_controller != null) {
       _registerController();
     }
-    // Make sure to update the montserratnal [FormFieldState] value to sync up with
+    // Make sure to update the poppinnal [FormFieldState] value to sync up with
     // text editing controller value.
     setValue(_effectiveController.text);
   }
