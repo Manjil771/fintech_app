@@ -115,13 +115,15 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                     CustomRoundedButtom(
                         title: "Procced",
                         onPressed: () {
-                          context.read<UtilityPaymentCubit>().fetchDetails(
-                                serviceIdentifier: "worldlink_online_topup",
-                                accountDetails: {
-                                  "wlink_username": _usernameController.text,
-                                },
-                                apiEndpoint: "api/wlinkpackages",
-                              );
+                          if (_formKey.currentState!.validate()) {
+                            context.read<UtilityPaymentCubit>().fetchDetails(
+                                  serviceIdentifier: "worldlink_online_topup",
+                                  accountDetails: {
+                                    "wlink_username": _usernameController.text,
+                                  },
+                                  apiEndpoint: "api/wlinkpackages",
+                                );
+                          }
                           // NavigationService.pushNamed(
                           //   routeName: Routes.internetPaymentDetail,
                           // );
