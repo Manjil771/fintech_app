@@ -5,9 +5,10 @@ import '../navigation/navigation_service.dart';
 
 class ScaffoldTopBar extends StatelessWidget {
   final String name;
-  final bool back;
+  final bool showBackButton;
 
-  const ScaffoldTopBar({super.key, required this.name, required this.back});
+  const ScaffoldTopBar(
+      {super.key, required this.name, this.showBackButton = true});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +22,7 @@ class ScaffoldTopBar extends StatelessWidget {
             image: AssetImage(CoOperativeValue.development.bannerImage),
             fit: BoxFit.cover),
       ),
-      child: back == true
+      child: showBackButton
           ? Row(
               children: [
                 IconButton(
