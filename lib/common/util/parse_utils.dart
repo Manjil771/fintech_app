@@ -25,6 +25,26 @@ class ParseUtils {
     return _temp;
   }
 
+  // T? findValue<T>({required List<KeyValue> properties, required String name}) {
+  //   final _index = properties.indexWhere(
+  //       (e) => e.title == name && (T is dynamic ? true : e.value is T));
+  //   if (_index == -1) {
+  //     return null;
+  //   } else {
+  //     return  [_index].value;
+  //   }
+  // }
+
+  String findValueString(String name,
+      {required List<KeyValue> properties, String emptyString = "-"}) {
+    final _index = properties.indexWhere((e) => e.title == name);
+    if (_index == -1) {
+      return emptyString;
+    } else {
+      return properties[_index].value.toString();
+    }
+  }
+
   // static List<Steps> generateSteps(Map<String, dynamic> json) {
   //   final List<Map<String, dynamic>> response = List.from(
   //       json["response_object"] is Map ? [] : (json["response_object"] ?? []));
