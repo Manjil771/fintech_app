@@ -10,4 +10,7 @@ class Assets {
 
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String searchIcon = "assets/icons/search.svg";
+  static const String sendMoneyIcon =
+      "assets/icons/mingcute_send-plane-fill.svg";
+  static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
 }
