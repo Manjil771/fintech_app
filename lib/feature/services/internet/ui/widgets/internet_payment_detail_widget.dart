@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -7,7 +8,17 @@ import 'package:ismart/feature/services/internet/ui/widgets/payment_detail_widge
 
 import '../../../../../common/util/size_utils.dart';
 
-class InternetPaymentDeatilWidget extends StatelessWidget {
+class InternetPaymentDeatilWidget extends StatefulWidget {
+  final List<KeyValue> detailFetchData;
+
+  const InternetPaymentDeatilWidget({super.key, required this.detailFetchData});
+  @override
+  State<InternetPaymentDeatilWidget> createState() =>
+      _InternetPaymentDeatilWidgetState();
+}
+
+class _InternetPaymentDeatilWidgetState
+    extends State<InternetPaymentDeatilWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

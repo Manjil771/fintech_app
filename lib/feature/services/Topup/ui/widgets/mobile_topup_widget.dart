@@ -8,10 +8,8 @@ import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
-import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 import '../../../../../common/widget/common_button.dart';
 import '../../../../../common/widget/common_text_field.dart';
@@ -148,27 +146,34 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                       ),
                       SizedBox(height: size.height * 0.04),
                       CustomRoundedButtom(
-                          title: "Done",
-                          onPressed: () {
-                            NavigationService.push(
-                              target: TransactionPinScreen(
-                                onValueCallback: (mpin) {
-                                  NavigationService.pop();
-                                  context.read<UtilityPaymentCubit>().getTopUp(
-                                        serviceIdentifier: TopUpUtils()
-                                            .getTopUpServiceType(
-                                                type: _topUpType.value),
-                                        accountNumber:
-                                            "001001-001-111-0001001", // TODO Update dynamic account number
-                                        phoneNumber:
-                                            _mobileNumberController.text,
-                                        amount: _amountController.text,
-                                        mpin: mpin,
-                                      );
+                        title: "Done",
+                        onPressed: () {
+                          context.read<UtilityPaymentCubit>().fetchDetails(
+                                serviceIdentifier: "worldlink_online_topup",
+                                accountDetails: {
+                                  "wlink_username": "online_renew"
                                 },
-                              ),
-                            );
-                          }),
+                                apiEndpoint: "api/wlinkpackages",
+                              );
+                          // NavigationService.push(
+                          //   target: TransactionPinScreen(
+                          //     onValueCallback: (mpin) {
+                          //       NavigationService.pop();
+                          //       context.read<UtilityPaymentCubit>().getTopUp(
+                          //             serviceIdentifier: TopUpUtils()
+                          //                 .getTopUpServiceType(
+                          //                     type: _topUpType.value),
+                          //             accountNumber:
+                          //                 "001001-001-111-0001001", // TODO Update dynamic account number
+                          //             phoneNumber: _mobileNumberController.text,
+                          //             amount: _amountController.text,
+                          //             mpin: mpin,
+                          //           );
+                          //     },
+                          //   ),
+                          // );
+                        },
+                      ),
                       SizedBox(height: size.height * 0.04),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
