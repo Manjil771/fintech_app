@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../../../../../common/util/size_utils.dart';
 
 class PaymentDetailWidget extends StatelessWidget {
