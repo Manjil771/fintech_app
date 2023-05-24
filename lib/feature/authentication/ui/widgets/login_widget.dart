@@ -178,9 +178,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   context: NavigationService.context,
                                 );
                                 if (authenticated) {
-                                  String phone =
+                                  final String phone =
                                       await SecureStorageService.appPhoneNumber;
-                                  String password =
+                                  final String password =
                                       await SecureStorageService.appPassword;
                                   if (phone.isNotEmpty && password.isNotEmpty) {
                                     // TODO Invoke login cubit
