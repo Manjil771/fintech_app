@@ -22,8 +22,8 @@ class CommonContainer extends StatelessWidget {
     required this.body,
     required this.topbarName,
     this.onButtonPressed,
-    required this.title,
-    required this.detail,
+    this.title = "",
+    this.detail = "",
   });
   @override
   Widget build(BuildContext context) {
@@ -33,29 +33,31 @@ class CommonContainer extends StatelessWidget {
     return Column(
       children: [
         ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
-        Container(
-          decoration: const BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.only(
-                  bottomLeft: Radius.circular(12),
-                  bottomRight: Radius.circular(12))),
-          width: double.infinity,
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(title, style: _textTheme.titleLarge),
-              Text(
-                detail,
-                style: Theme.of(context).textTheme.displaySmall,
-              ),
-              SizedBox(height: _height * 0.01),
-              Text("Choose Service Provider", style: _textTheme.titleMedium),
-              showRoundBotton
-                  ? CustomRoundedButtom(title: buttonName, onPressed: () {})
-                  : Container(),
-            ],
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                    bottomLeft: Radius.circular(12),
+                    bottomRight: Radius.circular(12))),
+            width: double.infinity,
+            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(title, style: _textTheme.titleLarge),
+                Text(
+                  detail,
+                  style: Theme.of(context).textTheme.displaySmall,
+                ),
+                SizedBox(height: _height * 0.01),
+                Expanded(child: body),
+                showRoundBotton
+                    ? CustomRoundedButtom(title: buttonName, onPressed: () {})
+                    : Container(),
+              ],
+            ),
           ),
         )
       ],

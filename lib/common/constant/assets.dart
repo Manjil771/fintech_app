@@ -13,4 +13,18 @@ class Assets {
   static const String sendMoneyIcon =
       "assets/icons/mingcute_send-plane-fill.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
+  static const String topupPaymentIcon = "assets/icons/Top up payment.svg";
+  static const String electricityIcon = "assets/icons/Electricity payment.svg";
+  static const String internetIcon = "assets/icons/internet payment.svg";
+  static const String airlineIcon = "assets/icons/airline.svg";
+  static const String waterIcon = "assets/icons/drinking Water payment.svg";
+  static const String insuranceIcon = "assets/icons/Insurance payment.svg";
+  static const String busIcon = "assets/icons/Bus payment.svg";
+  static const String tvIcon = "assets/icons/TV Payment.svg";
+  static const String dataPackIcon = "assets/icons/Data pack.svg";
+  static const String ridepaymentIcon = "assets/icons/ride.svg";
+  static const String governmentIcon = "assets/icons/Government payment.svg";
+  static const String brokerIcon = "assets/icons/broker.svg";
+  static const String landlineIcon =
+      "assets/icons/landline-1-svgrepo-com 1.svg";
 }

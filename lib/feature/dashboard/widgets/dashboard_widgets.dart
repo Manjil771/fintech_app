@@ -11,55 +11,8 @@ import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 
 class DashboardWidget extends StatelessWidget {
-  DashboardWidget({Key? key}) : super(key: key);
-  final screens = [
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    InternetListScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-  ];
+  const DashboardWidget({Key? key}) : super(key: key);
 
-  final List images = [
-    "Top up payment.svg",
-    "Electricity payment.svg",
-    "internet payment.svg",
-    "airline.svg",
-    "drinking Water payment.svg",
-    "Insurance payment.svg",
-    "Bus payment.svg",
-    "TV Payment.svg",
-    "Data pack.svg",
-    "ride.svg",
-    "Government payment.svg",
-    "broker.svg",
-    "landline-1-svgrepo-com 1.svg",
-  ];
-  final names = [
-    "Top Up",
-    "Electricity",
-    "Internet",
-    "Air Ticket",
-    "Water",
-    "Insurance",
-    "Bus Ticket",
-    "Television",
-    "Data Packs",
-    "Ride",
-    "Government Payment",
-    "Broker",
-  ];
-
-  final image = CoOperativeValue.development.bannerImage;
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;

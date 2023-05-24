@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/service_screen.dart';
-import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 
 class DashboardTabbarWidget extends StatelessWidget {
   const DashboardTabbarWidget({Key? key}) : super(key: key);
@@ -10,8 +9,8 @@ class DashboardTabbarWidget extends StatelessWidget {
       initialIndex: 0,
       length: 3,
       child: Column(
-        children: [
-          const TabBar(
+        children: const [
+          TabBar(
             isScrollable: true,
             labelColor: Colors.black,
             unselectedLabelColor: Color(0xFF989898),
@@ -27,11 +26,15 @@ class DashboardTabbarWidget extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                ServicesScreen(
-                  showAllService: false,
+                ServicesPage(
+                  showAllServices: false,
                 ),
-                InternetListScreen(),
-                ServicesScreen(),
+                Center(
+                  child: Text("Graph"),
+                ),
+                Center(
+                  child: Text("Favorite"),
+                ),
               ],
             ),
           )
