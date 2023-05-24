@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
-import 'package:ismart/feature/services/internet/ui/widgets/payment_detail_widget.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
 
 class InternetPaymentDeatilWidget extends StatefulWidget {
-  final List<KeyValue> detailFetchData;
+  final UtilityResponseData detailFetchData;
 
   const InternetPaymentDeatilWidget({super.key, required this.detailFetchData});
   @override
@@ -21,6 +21,18 @@ class _InternetPaymentDeatilWidgetState
     extends State<InternetPaymentDeatilWidget> {
   @override
   Widget build(BuildContext context) {
+    final bool _renewOption = widget.detailFetchData
+            .findValue<List>(primaryKey: "packages")
+            ?.isNotEmpty ??
+        false;
+    final _packageOptions = List.from((_renewOption
+            ? widget.detailFetchData
+                .findValue(primaryKey: "available_renew_options")
+            : widget.detailFetchData
+                .findValue(primaryKey: "package_options")) ??
+        []);
+    final bool _isPackageAvailable = _packageOptions.isNotEmpty;
+
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
@@ -63,23 +75,55 @@ class _InternetPaymentDeatilWidgetState
                         style: _textTheme.titleMedium,
                       ),
                       SizedBox(height: _height * 0.01),
-                      const PaymentDetailWidget(
-                          title: "Customer Name", details: "Prateek Kharel"),
+                      KeyValueTile(
+                        title: "Customer Name",
+                        value: widget.detailFetchData
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "customerName",
+                            )
+                            .toString(),
+                      ),
                       SizedBox(height: _height * 0.008),
-                      const PaymentDetailWidget(
-                          title: "Customer ID", details: "pk42052"),
+                      KeyValueTile(
+                        title: "Customer ID",
+                        value: widget.detailFetchData
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "wlinkUserName",
+                            )
+                            .toString(),
+                      ),
                       SizedBox(height: _height * 0.008),
-                      const PaymentDetailWidget(
-                          title: "Subscribed Package",
-                          details:
-                              "PHOTON Lite 200Mbps/ 12 Months (1TV) New Year "
-                              "Offer"),
+                      KeyValueTile(
+                        title: "Subscribed Package",
+                        value: widget.detailFetchData
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "subscribedPackageName",
+                            )
+                            .toString(),
+                      ),
                       SizedBox(height: _height * 0.008),
-                      const PaymentDetailWidget(
-                          title: "Subscription Type", details: "Unlimited"),
+                      KeyValueTile(
+                        title: "Subscription Type",
+                        value: widget.detailFetchData
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "subscribedPackageType",
+                            )
+                            .toString(),
+                      ),
                       SizedBox(height: _height * 0.008),
-                      const PaymentDetailWidget(
-                          title: "Days Remaining", details: "52 Days"),
+                      KeyValueTile(
+                        title: "Days Remaining",
+                        value: widget.detailFetchData
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "paymentMessage",
+                            )
+                            .toString(),
+                      ),
                     ],
                   ),
                 ),
