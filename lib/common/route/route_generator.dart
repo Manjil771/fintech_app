@@ -35,7 +35,11 @@ class RouteGenerator {
           builder: (_) => const FindInternetUserScreen(),
           settings: RouteSettings(name: settings.name),
         );
-
+      // case Routes.internetPaymentDetail:
+      //   return MaterialPageRoute(
+      //     builder: (_) => InternetPaymentDeatilScreen(),
+      //     settings: RouteSettings(name: settings.name),
+      //   );
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreens(),
