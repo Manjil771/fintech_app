@@ -125,6 +125,12 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                                   },
                                   apiEndpoint: "api/wlinkpackages",
                                 );
+
+                            // context.read<UtilityPaymentCubit>().fetchDetails(
+                            //       serviceIdentifier: "",
+                            //       accountDetails: {},
+                            //       apiEndpoint: "get/neaofficecode",
+                            //     );
                           }
                           // NavigationService.pushNamed(
                           //   routeName: Routes.internetPaymentDetail,
