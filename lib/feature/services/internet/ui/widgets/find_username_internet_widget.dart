@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -11,6 +10,7 @@ import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_payment_detail_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
 
@@ -33,6 +33,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
+          print(state);
           if (state is CommonLoading && _isLoading == false) {
             _isLoading = true;
             showLoadingDialogBox(context);
@@ -41,15 +42,15 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             NavigationService.pop();
           }
 
-          if (state is CommonDataFetchSuccess<KeyValue>) {
-            List<KeyValue> _keyValues = state.data;
-            if (_keyValues.isNotEmpty) {
-              NavigationService.push(
-                target: InternetPaymentDeatilScreen(
-                  detailFetchData: _keyValues,
-                ),
-              );
-            }
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            UtilityResponseData _response = state.data;
+            // if (_keyValues.isNotEmpty) {
+            NavigationService.push(
+              target: InternetPaymentDeatilScreen(
+                detailFetchData: _response,
+              ),
+            );
+            // }
           }
         },
         child: Form(
@@ -108,6 +109,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                     SizedBox(height: _height * 0.03),
                     CustomTextField(
                       hintText: "abcd123",
+                      controller: _usernameController,
                       validator: (val) =>
                           FormValidator.validateFieldNotEmpty(val, "Username"),
                     ),
