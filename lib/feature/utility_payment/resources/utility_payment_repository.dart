@@ -2,9 +2,8 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/common/models/key_value.dart';
-import 'package:ismart/common/util/parse_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
 class UtilityPaymentRepository {
@@ -56,7 +55,7 @@ class UtilityPaymentRepository {
     }
   }
 
-  Future<DataResponse<List<KeyValue>>> fetchDetails(
+  Future<DataResponse<UtilityResponseData>> fetchDetails(
       {required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,
       required String apiEndpoint}) async {
@@ -66,9 +65,10 @@ class UtilityPaymentRepository {
         accountDetails: accountDetails,
         apiEndpoint: apiEndpoint,
       );
-      List<KeyValue> _values = ParseUtils.parseKeyValue(_res['data']);
-      print(_values);
-      return DataResponse.success(_values);
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;
