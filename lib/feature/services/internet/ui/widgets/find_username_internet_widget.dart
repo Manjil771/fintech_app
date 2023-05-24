@@ -56,7 +56,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
           key: _formKey,
           child: Column(
             children: [
-              const ScaffoldTopBar(name: "Payment", back: true),
+              const ScaffoldTopBar(name: "Payment", showBackButton: true),
               Container(
                 decoration: const BoxDecoration(
                     color: Colors.white,

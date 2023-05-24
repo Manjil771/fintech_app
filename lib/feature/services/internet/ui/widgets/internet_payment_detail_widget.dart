@@ -28,7 +28,7 @@ class _InternetPaymentDeatilWidgetState
     return PageWrapper(
       body: ListView(
         children: [
-          const ScaffoldTopBar(name: "Payment", back: true),
+          const ScaffoldTopBar(name: "Payment"),
           Container(
             decoration: const BoxDecoration(
                 borderRadius: BorderRadius.only(

@@ -10,8 +10,7 @@ class CustomTheme {
   static const Color lightTextColor = Color(0xff131313);
   static const Color yellow = Color(0xFFFFC107);
   static const Color green = Colors.green;
-
-  static const Color backgroundColor = Color(0xFFF8F6F8);
+  static const Color backgroundColor = Color(0xFFECF4FF);
   static const Color googleColor = Color(0xFFDB4437);
   static const Color facebookColor = Color(0xFF4267B2);
   static const Color twitter = Color(0xFF1DA1F2);
@@ -20,8 +19,8 @@ class CustomTheme {
   static const Color orangeColor = Color(0xFFEF8767);
   static const Color shadowColor = Color(0x1A000000);
   static const Color darkerBlack = Color(0xff060606);
-
   static const Color darkTextColor = Color(0xfff8f8f8);
+  static const Color white = Colors.white;
 
   static ThemeData lightTheme = ThemeData(
     primarySwatch: Colors.blue,

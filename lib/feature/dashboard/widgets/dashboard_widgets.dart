@@ -4,6 +4,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/dashboard/widgets/dashboard_user_widget.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 
@@ -68,6 +69,7 @@ class DashboardWidget extends StatelessWidget {
       // showAppBar: true,
       body: Column(
         children: [
+          const DashBoardUserWidget(),
           Expanded(
             child: GridView.builder(
               itemCount: 12,

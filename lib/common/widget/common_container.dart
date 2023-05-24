@@ -32,7 +32,7 @@ class CommonContainer extends StatelessWidget {
     final _height = SizeUtils.height;
     return Column(
       children: [
-        ScaffoldTopBar(name: topbarName, back: showBackBotton),
+        ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
         Container(
           decoration: const BoxDecoration(
               color: Colors.white,
