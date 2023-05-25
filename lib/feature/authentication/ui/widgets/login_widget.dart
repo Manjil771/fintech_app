@@ -17,7 +17,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
-import 'package:ismart/feature/dashboard/mobileTopup/ui/screens/dashboard_page.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
