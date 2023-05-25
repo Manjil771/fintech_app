@@ -10,4 +10,6 @@ class Routes {
   static const sendMoney = "/send_money";
   static const anyBank = "/any_bank";
   static const profileScreen = "/profile_screen";
+  static const electricityPayment = "/electricity_payment";
+  static const electricityPaymentDetail = "/electricity_payment_detail";
 }

@@ -5,6 +5,8 @@ import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
+import 'package:ismart/feature/services/electricity/screen/electricity_payment_detail_page.dart';
+import 'package:ismart/feature/services/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
@@ -60,11 +62,17 @@ class RouteGenerator {
           builder: (_) => const ProfilePage(),
           settings: RouteSettings(name: settings.name),
         );
-      // case Routes.internetPaymentDetail:
-      //   return MaterialPageRoute(
-      //     builder: (_) => InternetPaymentDeatilScreen(),
-      //     settings: RouteSettings(name: settings.name),
-      //   );
+      case Routes.electricityPayment:
+        return MaterialPageRoute(
+          builder: (_) => const ElectricityPaymentPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.electricityPaymentDetail:
+        return MaterialPageRoute(
+          builder: (_) => const ElectricityPaymentDetailPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreens(),

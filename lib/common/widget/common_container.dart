@@ -62,7 +62,8 @@ class CommonContainer extends StatelessWidget {
               body,
               SizedBox(height: _height * 0.03),
               showRoundBotton
-                  ? CustomRoundedButtom(title: buttonName, onPressed: () {})
+                  ? CustomRoundedButtom(
+                      title: buttonName, onPressed: onButtonPressed)
                   : Container(),
             ],
           ),

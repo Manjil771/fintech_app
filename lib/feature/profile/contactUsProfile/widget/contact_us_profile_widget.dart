@@ -33,36 +33,38 @@ class ContactUsProfileWidget extends StatelessWidget {
                 ),
               ),
               const Divider(height: 20, color: Colors.black54),
-              GridView.builder(
-                itemCount: images.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 0.8 / 0.3),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    // _makePhoneCall(urls[index]);
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        width: _width * 0.07,
-                        height: _width * 0.07,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.black),
+              Expanded(
+                child: GridView.builder(
+                  itemCount: images.length,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2, childAspectRatio: 0.8 / 0.3),
+                  itemBuilder: (context, index) => InkWell(
+                    onTap: () {
+                      // _makePhoneCall(urls[index]);
+                    },
+                    child: Row(
+                      children: [
+                        Container(
+                          width: _width * 0.07,
+                          height: _width * 0.07,
+                          margin: const EdgeInsets.symmetric(horizontal: 8),
+                          padding: const EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            border: Border.all(color: Colors.black),
+                          ),
+                          child:
+                              SvgPicture.asset("assets/icons/${images[index]}"),
                         ),
-                        child:
-                            SvgPicture.asset("assets/icons/${images[index]}"),
-                      ),
-                      Expanded(
-                        child: Text(
-                          details[index],
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 12),
+                        Expanded(
+                          child: Text(
+                            details[index],
+                            overflow: TextOverflow.ellipsis,
+                            style: const TextStyle(fontSize: 12),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               )
