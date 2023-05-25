@@ -3,8 +3,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 
 import '../../../../services/Topup/ui/screens/mobile_topup.dart';
@@ -104,7 +104,8 @@ class ServicesWidget extends StatelessWidget {
               ? Container()
               : TextButton(
                   onPressed: () {
-                    NavigationService.push(target: const AllServiceScreen());
+                    NavigationService.pushNamed(
+                        routeName: Routes.allServicesDashboard);
                   },
                   child: const Text("View More"))
         ],

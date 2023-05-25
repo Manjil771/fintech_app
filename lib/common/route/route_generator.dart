@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
+import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
 import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
@@ -33,6 +36,21 @@ class RouteGenerator {
       case Routes.internetUsername:
         return MaterialPageRoute(
           builder: (_) => const FindInternetUserScreen(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.allServicesDashboard:
+        return MaterialPageRoute(
+          builder: (_) => const AllServiceScreen(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.sendMoney:
+        return MaterialPageRoute(
+          builder: (_) => const SendMoneyPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.anyBank:
+        return MaterialPageRoute(
+          builder: (_) => const AnyBankpage(),
           settings: RouteSettings(name: settings.name),
         );
       // case Routes.internetPaymentDetail:

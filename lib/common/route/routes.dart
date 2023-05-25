@@ -6,4 +6,7 @@ class Routes {
   static const transactionPinScreen = "/transaction_pin_screen";
   static const internetList = "/internet_list";
   static const internetUsername = "/find_internet_user";
+  static const allServicesDashboard = "/all_services_dashboard";
+  static const sendMoney = "/send_money";
+  static const anyBank = "/any_bank";
 }
