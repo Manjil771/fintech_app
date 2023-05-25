@@ -20,7 +20,7 @@ class CommonDetailBox extends StatelessWidget {
       this.verticalPadding = 10.0,
       this.horizontalPadding = 20.0,
       required this.title,
-      this.trailingIcon = Assets.backButtonIcon,
+      this.trailingIcon = Assets.forwardButtonIcon,
       this.detail = "",
       required this.onBoxPressed});
 

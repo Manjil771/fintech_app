@@ -9,4 +9,5 @@ class Routes {
   static const allServicesDashboard = "/all_services_dashboard";
   static const sendMoney = "/send_money";
   static const anyBank = "/any_bank";
+  static const profileScreen = "/profile_screen";
 }
