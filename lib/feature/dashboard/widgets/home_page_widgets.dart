@@ -58,27 +58,32 @@ class HomePageWidget extends StatelessWidget {
               )),
               SizedBox(width: _width * 0.2),
               Expanded(
-                  child: Container(
-                decoration: BoxDecoration(
-                    color: CustomTheme.white,
-                    borderRadius: BorderRadius.circular(12)),
-                height: _height * 0.08,
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    CircleAvatar(
-                      backgroundColor: _theme.primaryColor.withOpacity(0.16),
-                      child: Padding(
-                        padding: const EdgeInsets.all(8.0),
-                        child: SvgPicture.asset(
-                          Assets.reveiceMoneyIcon,
-                          color: _theme.primaryColor,
+                  child: InkWell(
+                onTap: () {
+                  NavigationService.pushNamed(routeName: Routes.reveiveMoney);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: CustomTheme.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  height: _height * 0.08,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: _theme.primaryColor.withOpacity(0.16),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(
+                            Assets.reveiceMoneyIcon,
+                            color: _theme.primaryColor,
+                          ),
                         ),
                       ),
-                    ),
-                    SizedBox(width: _width * 0.02),
-                    const Text("Receive"),
-                  ],
+                      SizedBox(width: _width * 0.02),
+                      const Text("Receive"),
+                    ],
+                  ),
                 ),
               ))
             ],

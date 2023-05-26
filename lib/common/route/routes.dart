@@ -14,4 +14,8 @@ class Routes {
   static const electricityPaymentDetail = "/electricity_payment_detail";
   static const internalCooperative = "/internal_cooperative";
   static const otherCooperative = "/other_cooperative";
+  static const reveiveMoney = "/receive_money";
+  static const mobileBanking = "/mobile_banking";
+  static const loadViaCard = "/load_via_card";
+  static const connectIps = "/connect_ips";
 }

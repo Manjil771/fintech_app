@@ -3,6 +3,10 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
+import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
+import 'package:ismart/feature/receiveMoney/loadViacard/screen/load_via_card_page.dart';
+import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_bannking_page.dart';
+import 'package:ismart/feature/receiveMoney/screens/receive_money_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
@@ -82,6 +86,26 @@ class RouteGenerator {
       case Routes.otherCooperative:
         return MaterialPageRoute(
           builder: (_) => const OtherCooperativePage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.reveiveMoney:
+        return MaterialPageRoute(
+          builder: (_) => const ReceiveMoneyPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.mobileBanking:
+        return MaterialPageRoute(
+          builder: (_) => const MobileBankingPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.connectIps:
+        return MaterialPageRoute(
+          builder: (_) => const ConnectIpsPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.loadViaCard:
+        return MaterialPageRoute(
+          builder: (_) => const LoadViaCardPage(),
           settings: RouteSettings(name: settings.name),
         );
       default:

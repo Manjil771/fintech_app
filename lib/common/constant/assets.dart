@@ -37,4 +37,9 @@ class Assets {
   static const String historyIcon = "assets/icons/Transaction history.svg";
   static const String moreIcon = "assets/icons/More.svg";
   static const String qrCodeIcon = "assets/icons/qrcode.svg";
+  static const String mobileBanking = "assets/icons/mobilebanking.svg";
+  static const String cardIcon = "assets/icons/Group 1103.svg";
+  static const String connectIpsIcon = "assets/icons/Connect ips.svg";
+  static const String sapatiIcon = "assets/icons/request sapati.svg";
+  static const String remittanceIcon = "assets/icons/Group 958.svg";
 }
