@@ -42,4 +42,11 @@ class Assets {
   static const String connectIpsIcon = "assets/icons/Connect ips.svg";
   static const String sapatiIcon = "assets/icons/request sapati.svg";
   static const String remittanceIcon = "assets/icons/Group 958.svg";
+  static const String accountInfo = "assets/icons/account info.svg";
+  static const String balanceInquiry = "assets/icons/accrued interest.svg";
+  static const String statement = "assets/icons/Group 1096.svg";
+  static const String loanIcon = "assets/icons/Group 1097.svg";
+  static const String fundTransferIcon =
+      "assets/icons/money-send-svgrepo-com 1.svg";
+  static const String chequeBookIcon = "assets/icons/Group 1098.svg";
 }

@@ -13,46 +13,39 @@ class ScaffoldTopBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 10),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.only(
-            topLeft: Radius.circular(12), topRight: Radius.circular(12)),
-        color: Theme.of(context).primaryColor,
-        image: DecorationImage(
-            image: AssetImage(CoOperativeValue.development.bannerImage),
-            fit: BoxFit.cover),
-      ),
-      child: showBackButton
-          ? Row(
-              children: [
-                IconButton(
-                  onPressed: () {
-                    NavigationService.pop();
-                  },
-                  icon: const Icon(
-                    Icons.arrow_back,
-                    color: Colors.white,
-                  ),
-                ),
-                Expanded(
-                    child: Center(
-                  child: Text(
-                    name,
-                    style: const TextStyle(
-                        color: Colors.white,
-                        fontFamily: "popinsemibold",
-                        fontSize: 23),
-                  ),
-                )),
-              ],
-            )
-          : Center(
+        padding: const EdgeInsets.symmetric(vertical: 10),
+        decoration: BoxDecoration(
+          borderRadius: const BorderRadius.only(
+              topLeft: Radius.circular(12), topRight: Radius.circular(12)),
+          color: Theme.of(context).primaryColor,
+          image: DecorationImage(
+              image: AssetImage(CoOperativeValue.development.bannerImage),
+              fit: BoxFit.cover),
+        ),
+        child: Row(
+          children: [
+            showBackButton
+                ? IconButton(
+                    onPressed: () {
+                      NavigationService.pop();
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                      color: Colors.white,
+                    ),
+                  )
+                : Container(),
+            Expanded(
+                child: Center(
               child: Text(
                 name,
-                style:
-                    const TextStyle(fontFamily: "popinsemibold", fontSize: 23),
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontFamily: "popinsemibold",
+                    fontSize: 23),
               ),
-            ),
-    );
+            )),
+          ],
+        ));
   }
 }

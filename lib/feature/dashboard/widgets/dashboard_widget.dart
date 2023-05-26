@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/banking/screen/banking_page.dart';
 import 'package:ismart/feature/dashboard/screen/home_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -17,7 +18,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
 
   final screens = [
     const HomePage(),
-    const Text("2"),
+    const Bankingpage(),
     const Text("3"),
     const Text("4"),
     const Text("5"),
