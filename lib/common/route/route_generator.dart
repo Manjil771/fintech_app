@@ -4,6 +4,8 @@ import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/all_
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
+import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
 import 'package:ismart/feature/services/electricity/screen/electricity_payment_detail_page.dart';
 import 'package:ismart/feature/services/electricity/screen/electricity_payment_page.dart';
@@ -72,7 +74,16 @@ class RouteGenerator {
           builder: (_) => const ElectricityPaymentDetailPage(),
           settings: RouteSettings(name: settings.name),
         );
-
+      case Routes.internalCooperative:
+        return MaterialPageRoute(
+          builder: (_) => const InternalCooperativePage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.otherCooperative:
+        return MaterialPageRoute(
+          builder: (_) => const OtherCooperativePage(),
+          settings: RouteSettings(name: settings.name),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreens(),

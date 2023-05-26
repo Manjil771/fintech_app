@@ -26,14 +26,20 @@ class SendMoneyWidget extends StatelessWidget {
               ),
               const Divider(thickness: 1),
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.pushNamed(
+                      routeName: Routes.internalCooperative);
+                },
                 title: "Internal Cooperative",
                 detail: "Send Money to accounts maintained at same banks",
                 leadingIcon: Assets.bankTransfer,
               ),
               const Divider(thickness: 1),
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.pushNamed(
+                      routeName: Routes.otherCooperative);
+                },
                 title: "Other Cooperative",
                 detail:
                     "Send Money to accounts maintained at different Cooperative",
