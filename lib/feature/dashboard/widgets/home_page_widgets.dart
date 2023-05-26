@@ -6,24 +6,24 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_tabbar_widget.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_user_widget.dart';
+import 'package:ismart/feature/dashboard/widgets/home_page_tabbar_widget.dart';
+import 'package:ismart/feature/dashboard/widgets/home_page_user_widget.dart';
 
-class DashboardWidget extends StatelessWidget {
-  const DashboardWidget({Key? key}) : super(key: key);
+class HomePageWidget extends StatelessWidget {
+  const HomePageWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      // showAppBar: true,
+      padding: EdgeInsets.zero,
+      showAppBar: false,
       body: Column(
         children: [
-          const DashBoardUserWidget(),
+          const HomePageUserWidget(),
           SizedBox(height: _height * 0.02),
           Row(
             children: [
@@ -83,7 +83,7 @@ class DashboardWidget extends StatelessWidget {
               ))
             ],
           ),
-          const Expanded(child: DashboardTabbarWidget())
+          const Expanded(child: HomePageTabbarWidget())
         ],
       ),
     );

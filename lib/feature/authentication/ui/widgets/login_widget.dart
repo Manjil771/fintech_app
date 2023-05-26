@@ -27,8 +27,6 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  // final AuthController authController = Get.put(AuthController());
-
   final TextEditingController phoneController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();

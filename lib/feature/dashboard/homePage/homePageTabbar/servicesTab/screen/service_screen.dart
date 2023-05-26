@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/widget/service_widget.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/service_widget.dart';
 
 class ServicesPage extends StatelessWidget {
   final bool showAllServices;

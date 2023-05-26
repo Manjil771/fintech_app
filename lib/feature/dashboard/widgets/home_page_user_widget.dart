@@ -5,14 +5,14 @@ import 'package:ismart/common/constant/env.dart';
 
 import '../../../common/util/size_utils.dart';
 
-class DashBoardUserWidget extends StatefulWidget {
-  const DashBoardUserWidget({Key? key}) : super(key: key);
+class HomePageUserWidget extends StatefulWidget {
+  const HomePageUserWidget({Key? key}) : super(key: key);
 
   @override
-  State<DashBoardUserWidget> createState() => _DashBoardUserWidgetState();
+  State<HomePageUserWidget> createState() => _HomePageUserWidgetState();
 }
 
-class _DashBoardUserWidgetState extends State<DashBoardUserWidget> {
+class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   bool showAmountDetail = false;
 
   @override

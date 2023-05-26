@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/all_service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';

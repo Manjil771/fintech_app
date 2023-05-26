@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
 
-class DashboardTabbarWidget extends StatelessWidget {
-  const DashboardTabbarWidget({Key? key}) : super(key: key);
+class HomePageTabbarWidget extends StatelessWidget {
+  const HomePageTabbarWidget({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(

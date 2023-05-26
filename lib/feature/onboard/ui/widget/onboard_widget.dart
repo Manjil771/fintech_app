@@ -11,7 +11,7 @@ class OnboardWidget extends StatelessWidget {
       body: Center(
         child: Text(
           "Onboarding page",
-          style: _textTheme.headline6,
+          style: _textTheme.titleLarge,
         ),
       ),
     );

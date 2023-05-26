@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
+
+import '../../../dashboard/screen/dashboard_page.dart';
 
 class SplashWidget extends StatelessWidget {
   @override

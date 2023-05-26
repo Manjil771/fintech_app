@@ -32,4 +32,9 @@ class Assets {
   static const String walletIcon = "assets/icons/Group 978.svg";
   static const String logoutIcon = "assets/icons/logout.svg";
   static const String profileIcon = "assets/icons/Personal information.svg";
+  static const String homeIcon = "assets/icons/Home unselected.svg";
+  static const String bankingIcon = "assets/icons/Banking.svg";
+  static const String historyIcon = "assets/icons/Transaction history.svg";
+  static const String moreIcon = "assets/icons/More.svg";
+  static const String qrCodeIcon = "assets/icons/qrcode.svg";
 }
