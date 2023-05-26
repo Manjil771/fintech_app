@@ -27,4 +27,9 @@ class Assets {
   static const String brokerIcon = "assets/icons/broker.svg";
   static const String landlineIcon =
       "assets/icons/landline-1-svgrepo-com 1.svg";
+  static const String forwardButtonIcon = "assets/icons/arrowright.svg";
+  static const String bankTransfer = "assets/icons/Bank transfer.svg";
+  static const String walletIcon = "assets/icons/Group 978.svg";
+  static const String logoutIcon = "assets/icons/logout.svg";
+  static const String profileIcon = "assets/icons/Personal information.svg";
 }

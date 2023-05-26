@@ -3,30 +3,28 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/dashboard/dashboardTabbar/servicesTab/screen/all_service_screen.dart';
-import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
-
-import '../../../../services/Topup/ui/screens/mobile_topup.dart';
 
 class ServicesWidget extends StatelessWidget {
   final bool showAllService;
   ServicesWidget({Key? key, this.showAllService = true}) : super(key: key);
   final screens = [
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    InternetListScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
-    const MobileTopupScreen(),
+    Routes.mobileTopup,
+    Routes.electricityPayment,
+    Routes.internetList,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
+    Routes.mobileTopup,
   ];
 
   final List images = [
@@ -81,7 +79,7 @@ class ServicesWidget extends StatelessWidget {
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  NavigationService.push(target: screens[index]);
+                  NavigationService.pushNamed(routeName: screens[index]);
                 },
                 child: Column(
                   children: [
@@ -104,7 +102,8 @@ class ServicesWidget extends StatelessWidget {
               ? Container()
               : TextButton(
                   onPressed: () {
-                    NavigationService.push(target: const AllServiceScreen());
+                    NavigationService.pushNamed(
+                        routeName: Routes.allServicesDashboard);
                   },
                   child: const Text("View More"))
         ],

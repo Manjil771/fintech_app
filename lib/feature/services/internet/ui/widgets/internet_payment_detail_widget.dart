@@ -32,7 +32,6 @@ class _InternetPaymentDeatilWidgetState
                 .findValue(primaryKey: "package_options")) ??
         []);
     final bool _isPackageAvailable = _packageOptions.isNotEmpty;
-
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;

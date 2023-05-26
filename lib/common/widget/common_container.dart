@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
-
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
@@ -9,13 +8,18 @@ class CommonContainer extends StatelessWidget {
   final String topbarName;
   final String title;
   final String buttonName;
-
   final String detail;
   final bool showBackBotton;
   final bool showRoundBotton;
+  final bool showTitleText;
+  final double verticalPadding;
+  final double horizontalPadding;
 
   final Function()? onButtonPressed;
   const CommonContainer({
+    this.verticalPadding = 20.0,
+    this.horizontalPadding = 20.0,
+    this.showTitleText = true,
     this.showBackBotton = true,
     this.buttonName = "Button Name",
     this.showRoundBotton = true,
@@ -30,34 +34,38 @@ class CommonContainer extends StatelessWidget {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-    return Column(
+    return ListView(
       children: [
         ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
-        Expanded(
-          child: Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12))),
-            width: double.infinity,
-            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Text(title, style: _textTheme.titleLarge),
-                Text(
-                  detail,
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                SizedBox(height: _height * 0.01),
-                Expanded(child: body),
-                showRoundBotton
-                    ? CustomRoundedButtom(title: buttonName, onPressed: () {})
-                    : Container(),
-              ],
-            ),
+        Container(
+          decoration: const BoxDecoration(
+              color: Colors.white,
+              borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12))),
+          width: double.infinity,
+          padding: EdgeInsets.symmetric(
+              horizontal: horizontalPadding, vertical: verticalPadding),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              showTitleText
+                  ? Text(title, style: _textTheme.titleLarge)
+                  : Container(),
+              showTitleText
+                  ? Text(
+                      detail,
+                      style: _textTheme.displaySmall,
+                    )
+                  : Container(),
+              body,
+              SizedBox(height: _height * 0.03),
+              showRoundBotton
+                  ? CustomRoundedButtom(
+                      title: buttonName, onPressed: onButtonPressed)
+                  : Container(),
+            ],
           ),
         )
       ],

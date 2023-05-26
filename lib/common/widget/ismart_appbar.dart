@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 
 AppBar myAppbar(context) {
   Size size = MediaQuery.of(context).size;
@@ -12,7 +14,7 @@ AppBar myAppbar(context) {
     centerTitle: true,
     leading: InkWell(
       onTap: () {
-        // Get.to(() => ProfileScreen());
+        NavigationService.pushNamed(routeName: Routes.profileScreen);
       },
       child: const Padding(
         padding: EdgeInsets.all(8.0),
