@@ -26,7 +26,10 @@ class ReceiveMoneyWidget extends StatelessWidget {
               ),
               const Divider(thickness: 1),
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.pushNamed(
+                      routeName: Routes.internetbanking);
+                },
                 title: "Internet Banking",
                 detail:
                     "Make financial transactions through internet using your preferred devices.",
@@ -52,7 +55,9 @@ class ReceiveMoneyWidget extends StatelessWidget {
               ),
               const Divider(thickness: 1),
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.pushNamed(routeName: Routes.requestSapati);
+                },
                 title: "Request Sapati",
                 detail: "Lend money from your friends using app",
                 leadingIcon: Assets.sapatiIcon,

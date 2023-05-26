@@ -18,4 +18,6 @@ class Routes {
   static const mobileBanking = "/mobile_banking";
   static const loadViaCard = "/load_via_card";
   static const connectIps = "/connect_ips";
+  static const internetbanking = "/internet_banking";
+  static const requestSapati = "/request_sapati";
 }
