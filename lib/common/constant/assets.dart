@@ -32,4 +32,21 @@ class Assets {
   static const String walletIcon = "assets/icons/Group 978.svg";
   static const String logoutIcon = "assets/icons/logout.svg";
   static const String profileIcon = "assets/icons/Personal information.svg";
+  static const String homeIcon = "assets/icons/Home unselected.svg";
+  static const String bankingIcon = "assets/icons/Banking.svg";
+  static const String historyIcon = "assets/icons/Transaction history.svg";
+  static const String moreIcon = "assets/icons/More.svg";
+  static const String qrCodeIcon = "assets/icons/qrcode.svg";
+  static const String mobileBanking = "assets/icons/mobilebanking.svg";
+  static const String cardIcon = "assets/icons/Group 1103.svg";
+  static const String connectIpsIcon = "assets/icons/Connect ips.svg";
+  static const String sapatiIcon = "assets/icons/request sapati.svg";
+  static const String remittanceIcon = "assets/icons/Group 958.svg";
+  static const String accountInfo = "assets/icons/account info.svg";
+  static const String balanceInquiry = "assets/icons/accrued interest.svg";
+  static const String statement = "assets/icons/Group 1096.svg";
+  static const String loanIcon = "assets/icons/Group 1097.svg";
+  static const String fundTransferIcon =
+      "assets/icons/money-send-svgrepo-com 1.svg";
+  static const String chequeBookIcon = "assets/icons/Group 1098.svg";
 }

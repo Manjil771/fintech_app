@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 
-class DashboardPage extends StatelessWidget {
-  const DashboardPage({Key? key}) : super(key: key);
+class MainScreenPage extends StatelessWidget {
+  const MainScreenPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

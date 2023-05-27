@@ -12,4 +12,12 @@ class Routes {
   static const profileScreen = "/profile_screen";
   static const electricityPayment = "/electricity_payment";
   static const electricityPaymentDetail = "/electricity_payment_detail";
+  static const internalCooperative = "/internal_cooperative";
+  static const otherCooperative = "/other_cooperative";
+  static const reveiveMoney = "/receive_money";
+  static const mobileBanking = "/mobile_banking";
+  static const loadViaCard = "/load_via_card";
+  static const connectIps = "/connect_ips";
+  static const internetbanking = "/internet_banking";
+  static const requestSapati = "/request_sapati";
 }
