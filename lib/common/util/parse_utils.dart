@@ -3,7 +3,8 @@ import 'package:ismart/common/models/key_value.dart';
 class ParseUtils {
   static List<KeyValue> parseKeyValue<T>(T json) {
     List<KeyValue> _temp = [];
-    if (T is List) {
+    if (json is List) {
+      print("isList");
       _temp = [
         KeyValue(title: "data", value: json),
       ];
