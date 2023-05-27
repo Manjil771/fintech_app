@@ -1,0 +1,64 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/models/key_value.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/widget/custom_icon_button.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/search_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+
+class ElectricitySearchWidget extends StatelessWidget {
+  final ValueChanged<KeyValue> onChanged;
+  const ElectricitySearchWidget({Key? key, required this.onChanged})
+      : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      lazy: false,
+      create: (context) => UtilityPaymentCubit(
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
+      )..fetchDetails(
+          serviceIdentifier: "",
+          accountDetails: {},
+          apiEndpoint: "get/neaofficecode",
+        ),
+      child: PageWrapper(
+        leadingAppIcon: CustomIconButton(
+          icon: Icons.close_rounded,
+          shadow: false,
+          backgroundColor: Colors.red,
+          onPressed: () {
+            NavigationService.pop();
+          },
+        ),
+        title: "Counters",
+        padding: EdgeInsets.zero,
+        body: BlocBuilder<UtilityPaymentCubit, CommonState>(
+          builder: (context, state) {
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              final _counters = state.data.findValue(primaryKey: "data");
+              return SearchWidgets(
+                onChanged: onChanged,
+                hideValue: true,
+                items: List.generate(
+                  _counters?.length ?? 0,
+                  (index) => KeyValue(
+                    title: _counters?[index]["office"],
+                    value: _counters?[index]["officeCode"],
+                  ),
+                ),
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
+      ),
+    );
+  }
+}
