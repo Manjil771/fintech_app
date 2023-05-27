@@ -80,8 +80,6 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                 },
                 apiEndpoint: "api/getneabill",
               );
-          // NavigationService.pushNamed(
-          //     routeName: Routes.electricityPaymentDetail);
         },
         topbarName: "Payment",
       ),
