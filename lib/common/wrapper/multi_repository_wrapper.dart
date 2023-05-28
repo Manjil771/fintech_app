@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
@@ -46,6 +47,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
 
         RepositoryProvider<UtilityPaymentRepository>(
           create: (context) => UtilityPaymentRepository(
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider<SendToBankRepository>(
+          create: (context) => SendToBankRepository(
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
