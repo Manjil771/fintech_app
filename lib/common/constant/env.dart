@@ -18,7 +18,7 @@ class CoOperative {
 
 class CoOperativeValue {
   static final CoOperative chandraGiriCoOperative = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
+    baseUrl: 'http://202.63.242.139:9091/',
     bannerImage: 'assets/chandragiri.png',
     clientCode: 'CHAN6566',
     coOperativeName: 'ChandraGiri CoOperative',
@@ -27,11 +27,19 @@ class CoOperativeValue {
   );
 
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
+    baseUrl: 'https://mbank.com.np/',
     bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'VBMRDWEVFV',
+    clientCode: 'H6FXNHXS61',
     coOperativeName: '',
     coOperativeLogo: '',
-    clientSecret: "199204",
+    clientSecret: "175391",
   );
+  // static final CoOperative development = CoOperative(
+  //   baseUrl: 'http://202.63.242.139:9091/',
+  //   bannerImage: "assets/images/isamrt_banner.jpg",
+  //   clientCode: 'VBMRDWEVFV',
+  //   coOperativeName: '',
+  //   coOperativeLogo: '',
+  //   clientSecret: "199204",
+  // );
 }
