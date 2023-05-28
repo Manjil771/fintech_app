@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
+import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
+import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 
 class AnyBankpage extends StatelessWidget {
   const AnyBankpage({Key? key}) : super(key: key);
@@ -10,6 +13,16 @@ class AnyBankpage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return const AnyBankWidget();
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (_) => BankChargeCubit(
+            sendToBankRepository:
+                RepositoryProvider.of<SendToBankRepository>(context),
+          ),
+        ),
+      ],
+      child: const AnyBankWidget(),
+    );
   }
 }
