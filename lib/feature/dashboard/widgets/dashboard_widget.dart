@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
+import 'package:ismart/feature/customerDetail/customer_Detail_Screen%20copy.dart';
 import 'package:ismart/feature/dashboard/screen/home_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -20,9 +23,14 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const Text("3"),
-    const Text("4"),
+    const CustomerDEtailScreen(),
     const Text("5"),
   ];
+
+  @override
+  void initState() {
+    context.read<CustomerDetailCubit>().fetchCustomerDetail();
+  }
 
   @override
   Widget build(BuildContext context) {

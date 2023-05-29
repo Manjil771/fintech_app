@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
@@ -61,6 +62,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
           ),
           lazy: true,
         ),
+        RepositoryProvider(
+          create: (context) => CustomerDetailRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            coOperative: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        )
       ],
       child: child,
     );

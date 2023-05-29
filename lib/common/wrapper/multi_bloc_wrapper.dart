@@ -3,6 +3,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class MultiBlocWrapper extends StatelessWidget {
   final Widget child;
@@ -15,6 +17,12 @@ class MultiBlocWrapper extends StatelessWidget {
         BlocProvider(
           create: (context) => LoginCubit(
             userRepository: RepositoryProvider.of<UserRepository>(context),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => CustomerDetailCubit(
+            customerDetailRepository:
+                RepositoryProvider.of<CustomerDetailRepository>(context),
           ),
         )
       ],

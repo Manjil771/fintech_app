@@ -26,20 +26,20 @@ class CoOperativeValue {
     clientSecret: "",
   );
 
-  static final CoOperative development = CoOperative(
-    baseUrl: 'https://mbank.com.np/',
-    bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'H6FXNHXS61',
-    coOperativeName: '',
-    coOperativeLogo: '',
-    clientSecret: "175391",
-  );
   // static final CoOperative development = CoOperative(
-  //   baseUrl: 'http://202.63.242.139:9091/',
+  //   baseUrl: 'https://mbank.com.np/',
   //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'VBMRDWEVFV',
+  //   clientCode: 'H6FXNHXS61',
   //   coOperativeName: '',
   //   coOperativeLogo: '',
-  //   clientSecret: "199204",
+  //   clientSecret: "175391",
   // );
+  static final CoOperative development = CoOperative(
+    baseUrl: 'http://103.198.9.222:1231/',
+    bannerImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'VBMRDWEVFV',
+    coOperativeName: '',
+    coOperativeLogo: '',
+    clientSecret: "199204",
+  );
 }

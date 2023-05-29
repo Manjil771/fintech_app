@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
@@ -165,8 +166,12 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                                       serviceIdentifier: TopUpUtils()
                                           .getTopUpServiceType(
                                               type: _topUpType.value),
-                                      accountNumber:
-                                          "001001-001-102-0001002", // TODO Update dynamic account number
+                                      accountNumber: RepositoryProvider.of<
+                                              CustomerDetailRepository>(context)
+                                          .accountsList
+                                          .value
+                                          .first
+                                          .accountNumber, // TODO Update dynamic account number
                                       phoneNumber: _mobileNumberController.text,
                                       amount: _amountController.text,
                                       mpin: mpin,

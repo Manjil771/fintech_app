@@ -1,0 +1,25 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/http/response.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+
+class CustomerDetailCubit extends Cubit<CommonState> {
+  final CustomerDetailRepository customerDetailRepository;
+  CustomerDetailCubit({required this.customerDetailRepository})
+      : super(CommonInitial());
+  Future<dynamic> fetchCustomerDetail() async {
+    emit(CommonLoading());
+    try {
+      final response = await customerDetailRepository.getCustomerDetail();
+
+      if (response.status == Status.Success && response.data != null) {
+        emit(CommonStateSuccess<dynamic>(data: response.data!));
+      } else {
+        emit(CommonError(
+            message: response.message ?? "Error fetching customer detail."));
+      }
+    } catch (e) {
+      emit(CommonError(message: e.toString()));
+    }
+  }
+}
