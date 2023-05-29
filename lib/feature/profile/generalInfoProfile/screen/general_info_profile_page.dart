@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/profile/generalInfoProfile/widget/general_info_profile_widget.dart';
 
-class GeneralInfoProfilePage extends StatelessWidget {
+class GeneralInfoProfilePage extends StatefulWidget {
   const GeneralInfoProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<GeneralInfoProfilePage> createState() => _GeneralInfoProfilePageState();
+}
+
+class _GeneralInfoProfilePageState extends State<GeneralInfoProfilePage> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/profile/widget/profile_widget.dart';
 
-class ProfilePage extends StatelessWidget {
+class ProfilePage extends StatefulWidget {
   const ProfilePage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfilePage> createState() => _ProfilePageState();
+}
+
+class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

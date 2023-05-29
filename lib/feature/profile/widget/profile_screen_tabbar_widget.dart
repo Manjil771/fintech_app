@@ -4,8 +4,14 @@ import 'package:ismart/feature/profile/accountListProfile/screen/acoount_list_pr
 import 'package:ismart/feature/profile/contactUsProfile/screen/contact_us_profile_page.dart';
 import 'package:ismart/feature/profile/generalInfoProfile/screen/general_info_profile_page.dart';
 
-class ProfileTabBarWidget extends StatelessWidget {
+class ProfileTabBarWidget extends StatefulWidget {
   const ProfileTabBarWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileTabBarWidget> createState() => _ProfileTabBarWidgetState();
+}
+
+class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

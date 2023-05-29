@@ -7,6 +7,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -15,8 +16,6 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
-
-import '../../../../../common/widget/common_text_field.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
   @override

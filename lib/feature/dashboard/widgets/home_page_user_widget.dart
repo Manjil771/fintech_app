@@ -60,19 +60,19 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                         mainAxisSize: MainAxisSize.min,
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
-                          const Text(
+                          Text(
                             "Welcome",
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontFamily: "popinsemibold",
+                            style: _textTheme.headlineMedium?.copyWith(
+                              color: CustomTheme.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           Text(
                             val.fullName,
                             overflow: TextOverflow.ellipsis,
-                            style: const TextStyle(
-                              fontSize: 18,
-                              fontFamily: "popinsemibold",
+                            style: _textTheme.headlineMedium?.copyWith(
+                              color: CustomTheme.white,
+                              fontWeight: FontWeight.bold,
                             ),
                           ),
                           // const Spacer(),
@@ -83,10 +83,10 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                   children: [
                                     Text(
                                       "${val.accountDetail[0].accountType} A/C : ${val.accountDetail[0].mainCode}",
-                                      style: const TextStyle(
-                                        fontSize: 10,
-                                        color: Colors.white,
-                                        fontFamily: "popin",
+                                      style: _textTheme.titleSmall?.copyWith(
+                                        color: CustomTheme.white,
+                                        fontSize: 11,
+                                        fontWeight: FontWeight.bold,
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
@@ -102,10 +102,9 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                   alignment: Alignment.centerRight,
                                   child: Text(
                                     "Interest Rate: ${val.accountDetail[0].interestRate} %",
-                                    style: const TextStyle(
-                                      fontSize: 10,
-                                      color: Colors.white,
-                                      fontFamily: "popin",
+                                    style: _textTheme.titleSmall?.copyWith(
+                                      color: CustomTheme.white,
+                                      fontWeight: FontWeight.bold,
                                     ),
                                   ),
                                 ),
