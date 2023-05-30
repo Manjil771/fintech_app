@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/widget/account_detail_box.dart';
+import 'package:ismart/common/widget/account_list_box.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -83,62 +83,10 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               InkWell(
                                 onTap: () {
                                   showDialog(
-                                    context: context,
-                                    builder: (context) => Center(
-                                      child: Container(
-                                        padding:
-                                            EdgeInsets.symmetric(vertical: 12),
-                                        margin: EdgeInsets.symmetric(
-                                            horizontal: 18, vertical: 100),
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(18),
-                                          color: CustomTheme.white,
-                                        ),
-                                        width: double.infinity,
-                                        child: Scaffold(
-                                          backgroundColor: CustomTheme.white,
-                                          body: Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Padding(
-                                                  padding:
-                                                      const EdgeInsets.all(10),
-                                                  child: Text(
-                                                    "Select an Account",
-                                                    style:
-                                                        _textTheme.displaySmall,
-                                                  ),
-                                                ),
-                                                Expanded(
-                                                  child: ListView.builder(
-                                                    itemCount: val
-                                                        .accountDetail.length,
-                                                    itemBuilder:
-                                                        (context, index) {
-                                                      return AccountDetailBox(
-                                                        accountBalance: val
-                                                            .accountDetail[
-                                                                index]
-                                                            .availableBalance,
-                                                        accountNumber: val
-                                                            .accountDetail[
-                                                                index]
-                                                            .mainCode,
-                                                        branchName: val
-                                                            .accountDetail[
-                                                                index]
-                                                            .branchName,
-                                                      );
-                                                    },
-                                                  ),
-                                                )
-                                              ]),
-                                        ),
-                                      ),
-                                    ),
-                                  );
+                                      context: context,
+                                      builder: (context) => AccountDetailBox(
+                                            customerDetail: customerDetail,
+                                          ));
                                 },
                                 child: Row(
                                   children: [
