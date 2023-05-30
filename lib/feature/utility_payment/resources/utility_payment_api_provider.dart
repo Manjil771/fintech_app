@@ -28,7 +28,7 @@ class UtilityPaymentAPIProvider {
       "amount": "$amount",
       "mPin": "$mpin",
     };
-    final url = UrlUtils.getUri(url: baseUrl + "api/topup", params: _params);
+    final url = UrlUtils.getUri(url: baseUrl + "/api/topup", params: _params);
     return await apiProvider.post(
       url.toString(),
       {},
