@@ -6,8 +6,8 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
-import 'package:ismart/feature/customerDetail/customer_Detail_Screen%20copy.dart';
 import 'package:ismart/feature/dashboard/screen/home_page.dart';
+import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({Key? key}) : super(key: key);
@@ -23,7 +23,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const Text("3"),
-    const CustomerDEtailScreen(),
+    MiniStatementPage(),
     const Text("5"),
   ];
 

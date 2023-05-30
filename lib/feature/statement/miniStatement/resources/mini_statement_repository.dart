@@ -6,19 +6,21 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
+import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
+import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_api_provider.dart';
 
-class CustomerDetailRepository {
+class MiniStatementRepository {
   final ApiProvider apiProvider;
-  late CustomerAPIProvider customerAPIProvider;
+  late MiniStatementAPIProvider miniStatementAPIProvider;
   final CoOperative coOperative;
   final UserRepository userRepository;
 
-  CustomerDetailRepository({
+  MiniStatementRepository({
     required this.apiProvider,
     required this.coOperative,
     required this.userRepository,
   }) {
-    customerAPIProvider = CustomerAPIProvider(
+    miniStatementAPIProvider = MiniStatementAPIProvider(
       apiProvider: apiProvider,
       baseUrl: coOperative.baseUrl,
       coOperative: coOperative,
@@ -26,13 +28,12 @@ class CustomerDetailRepository {
     );
   }
 
-  ValueNotifier<CustomerDetailModel?> customerDetailModel = ValueNotifier(null);
-
-  final ValueNotifier<List<AccountDetail>> accountsList = ValueNotifier([]);
-
-  Future<DataResponse<CustomerDetailModel>> getCustomerDetail() async {
+  Future<DataResponse<MiniStatementModel>> getMiniStatement(
+      accountNumbner, mPin) async {
     try {
-      final _res = await customerAPIProvider.fetchCustomerDetail();
+      final _res = await miniStatementAPIProvider.fetchMiniStatement(
+          accountNumbner, mPin);
+      print(_res.toString());
 
       if (_res['data']['details'] != null) {
         // Parse Data from API
@@ -43,12 +44,10 @@ class CustomerDetailRepository {
         if (_userMap.isEmpty) {
           return DataResponse.error("Error fetching data.");
         }
-        CustomerDetailModel _user = CustomerDetailModel.fromJson(_userMap);
+        MiniStatementModel _miniStatement =
+            MiniStatementModel.fromJson(_userMap);
 
-        customerDetailModel.value = _user;
-
-        accountsList.value = _user.accountDetail;
-        return DataResponse.success(_user);
+        return DataResponse.success(_miniStatement);
       } else {
         return DataResponse.error("error message");
       }

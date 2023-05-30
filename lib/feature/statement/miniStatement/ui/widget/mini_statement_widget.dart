@@ -6,48 +6,53 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
+import 'package:ismart/feature/statement/miniStatement/cubit/mini_statement_cubit.dart';
+import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 
-class CustomerDEtailWidget extends StatefulWidget {
+class MiniStatementWidget extends StatefulWidget {
+  const MiniStatementWidget({Key? key}) : super(key: key);
+
   @override
-  State<CustomerDEtailWidget> createState() => _CustomerDEtailWidgetState();
+  State<MiniStatementWidget> createState() => _MiniStatementWidgetState();
 }
 
-class _CustomerDEtailWidgetState extends State<CustomerDEtailWidget> {
+class _MiniStatementWidgetState extends State<MiniStatementWidget> {
+  ValueNotifier<MiniStatementModel?> miniStatementDetail = ValueNotifier(null);
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
-      final cubit = context.read<CustomerDetailCubit>().fetchCustomerDetail();
+      final cubit = context
+          .read<MiniStatementCubit>()
+          .fetchMiniStatement("001GS4000386", "778899");
     });
   }
 
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    bool _isLoading = false;
-
     return PageWrapper(
       showAppBar: false,
-      body: BlocListener<CustomerDetailCubit, CommonState>(
-        listener: (CustomerDetailCubit, CommonState) {
-          if (CommonState is CommonLoading && _isLoading == false) {
+      body: BlocBuilder<MiniStatementCubit, CommonState>(
+        builder: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
             _isLoading = true;
             showLoadingDialogBox(context);
-          } else if (CommonState is! CommonLoading && _isLoading) {
+          } else if (state is! CommonLoading && _isLoading) {
             _isLoading = false;
             NavigationService.pop();
           }
 
-          if (CommonState is CommonStateSuccess) {
-            const Text("Adsa");
-          } else if (CommonState is CommonError) {
+          if (state is CommonStateSuccess) {
+            Text("tect");
+          } else if (state is CommonError) {
             showPopUpDialog(
               context: context,
-              message: CommonState.message,
+              message: state.message,
               title: "Error",
               showCancelButton: false,
               buttonCallback: () {
@@ -55,8 +60,8 @@ class _CustomerDEtailWidgetState extends State<CustomerDEtailWidget> {
               },
             );
           }
+          return Container();
         },
-        child: const Text("Success"),
       ),
     );
   }

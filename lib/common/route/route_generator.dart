@@ -19,7 +19,7 @@ import 'package:ismart/feature/services/internet/ui/screens/find_username_intern
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 
-import '../../feature/services/Topup/ui/screens/mobile_topup.dart';
+import '../../feature/services/Topup/ui/screens/mobile_topup_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
