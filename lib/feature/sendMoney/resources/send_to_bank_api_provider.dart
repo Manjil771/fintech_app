@@ -1,4 +1,5 @@
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 class SendToBankAPIProvider {
@@ -87,7 +88,9 @@ class SendToBankAPIProvider {
   sendMoneyToBank({
     required Map<String, dynamic> payloadData,
   }) async {
-    final url = "$baseUrl/nchl/process-bank-transfer";
+    final url = "$baseUrl/api/ips/transfer/";
+
+    Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
 
     return await apiProvider.post(
       url,

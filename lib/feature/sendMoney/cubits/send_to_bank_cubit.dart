@@ -11,47 +11,36 @@ class SendToBankCubit extends Cubit<CommonState> {
     required this.sendToBankRepository,
   }) : super(CommonInitial());
 
-  // sendMoneyToBank({
-  //   required String destinationBankName,
-  //   required String mpin,
-  //   required String amount,
-  //   required String remarks,
-  //   required String purpose,
-  //   required String destinationBankInstrumentCode,
-  //   required String destinationBankAccountName,
-  //   required String destinationBankAccountNumber,
-  //   required String serviceCharge,
-  //   required String totalAmount,
-  //   required String gatewayCharge,
-  //   required String adminCommission,
-  //   required bool isMobile,
-  // }) async {
-  //   emit(CommonLoading());
+  sendMoneyToBank({
+    required String charge,
+    required String amount,
+    required String mpin,
+    required String remarks,
+    required String destinationBankInstrumentCode,
+    required String destinationBankAccountName,
+    required String destinationBankAccountNumber,
+    required String destinationBankName,
+  }) async {
+    emit(CommonLoading());
 
-  //   final res = await sendToBankRepository.sendMoneyToBank(
-  //     userLoginID: userRepository.user.value!.phone,
-  //     amount: totalCalculatedAmount.toString(),
-  //     mpin: mpin,
-  //     remarks: remarks,
-  //     adminCommission: adminCommission,
-  //     destinationBankAccountName: destinationBankAccountName,
-  //     destinationBankAccountNumber: destinationBankAccountNumber,
-  //     destinationBankInstrumentCode: destinationBankInstrumentCode,
-  //     destinationBankName: destinationBankName,
-  //     gatewayCharge: gatewayCharge,
-  //     purpose: purpose,
-  //     serviceCharge: serviceCharge,
-  //     totalAmount: totalCalculatedAmount.toString(),
-  //     isMobile: isMobile,
-  //   );
-  //   if (res.status == Status.Success && res.data != null) {
-  //     emit(CommonStateSuccess(data: res.data!));
-  //   } else {
-  //     emit(CommonError(
-  //       message: res.message ?? "Error fetching wallet balance.",
-  //     ));
-  //   }
-  // }
+    final res = await sendToBankRepository.sendMoneyToBank(
+      amount: amount,
+      mpin: mpin,
+      remarks: remarks,
+      destinationBankAccountName: destinationBankAccountName,
+      destinationBankAccountNumber: destinationBankAccountNumber,
+      destinationBankInstrumentCode: destinationBankInstrumentCode,
+      serviceCharge: charge,
+      destinationBankName: destinationBankName,
+    );
+    if (res.status == Status.Success && res.data != null) {
+      emit(CommonStateSuccess(data: res.data!));
+    } else {
+      emit(CommonError(
+        message: res.message ?? "Error fetching wallet balance.",
+      ));
+    }
+  }
 
   fetchBanksList() async {
     emit(CommonLoading());
