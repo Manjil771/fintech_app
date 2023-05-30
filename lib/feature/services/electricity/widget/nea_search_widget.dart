@@ -25,7 +25,7 @@ class ElectricitySearchWidget extends StatelessWidget {
       )..fetchDetails(
           serviceIdentifier: "",
           accountDetails: {},
-          apiEndpoint: "get/neaofficecode",
+          apiEndpoint: "/get/neaofficecode",
         ),
       child: PageWrapper(
         leadingAppIcon: CustomIconButton(
