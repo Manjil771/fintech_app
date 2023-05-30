@@ -8,8 +8,10 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
+import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 
 class AnyBankWidget extends StatefulWidget {
@@ -39,6 +41,29 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     return PageWrapper(
       body: MultiBlocListener(
         listeners: [
+          BlocListener<SendToBankCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoading && _isLoading == false) {
+                _isLoading = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading) {
+                _isLoading = false;
+                NavigationService.pop();
+              }
+              if (state is CommonStateSuccess) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.data,
+                  title: "Message",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false,
+                );
+              }
+            },
+            child: Container(),
+          ),
           BlocListener<BankChargeCubit, CommonState>(
             listener: (context, state) {
               if (state is CommonLoading && _isLoading == false) {
@@ -105,8 +130,21 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   title: "Amount",
                   hintText: "NPR ",
                   controller: _amountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
+                  onChanged: (val) {
+                    if (val != _amountController.text) {
+                      charges = null;
+                      setState(() {});
+                    }
+                  },
+                  validator: (val) {
+                    if ((int.tryParse(val ?? "") ?? 0) < 100) {
+                      return "Minimum bank tranfer amount is Rs. 100";
+                    } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
+                      return "Maximum bank transfer amount is Rs. 2,00,000";
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 if (charges != null)
                   Text(
@@ -122,12 +160,15 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
+                  controller: _remarksController,
+                  validator: (value) =>
+                      FormValidator.validateFieldNotEmpty(value, "Remarks"),
                 ),
               ],
             ),
           ),
           topbarName: "Send Money",
-          buttonName: charges != null ? "Send" : "Check Transfer",
+          buttonName: charges != null ? "Confirm" : "Check Transfer",
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
               if (charges == null) {
@@ -136,7 +177,18 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       bankId: selectedBank?.bankId ?? "",
                     );
               } else {
-                // Call bank transfer API
+                context.read<SendToBankCubit>().sendMoneyToBank(
+                      charge: charges.toString(),
+                      amount: _amountController.text,
+                      // mpin: "70074",
+                      mpin: "24878",
+                      remarks: _remarksController.text,
+                      destinationBankInstrumentCode: selectedBank?.bankId ?? "",
+                      destinationBankAccountName: _accountNameController.text,
+                      destinationBankAccountNumber:
+                          _accountNumberController.text,
+                      destinationBankName: selectedBank?.bankName ?? "",
+                    );
               }
             }
           },

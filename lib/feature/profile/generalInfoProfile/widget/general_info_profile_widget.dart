@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 
 class GeneralInfoProfileWidget extends StatefulWidget {
   const GeneralInfoProfileWidget({Key? key}) : super(key: key);

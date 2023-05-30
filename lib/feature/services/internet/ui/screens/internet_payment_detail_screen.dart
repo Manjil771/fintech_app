@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/common/models/key_value.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/feature/services/internet/ui/widgets/internet_payment_detail_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class InternetPaymentDeatilScreen extends StatelessWidget {
   final UtilityResponseData detailFetchData;
@@ -9,8 +11,14 @@ class InternetPaymentDeatilScreen extends StatelessWidget {
   const InternetPaymentDeatilScreen({super.key, required this.detailFetchData});
   @override
   Widget build(BuildContext context) {
-    return InternetPaymentDeatilWidget(
-      detailFetchData: detailFetchData,
+    return BlocProvider(
+      create: (context) => UtilityPaymentCubit(
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
+      ),
+      child: InternetPaymentDeatilWidget(
+        detailFetchData: detailFetchData,
+      ),
     );
   }
 }

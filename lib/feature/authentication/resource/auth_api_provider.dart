@@ -45,7 +45,7 @@ class AuthApiProvider {
     }
 
     final _uri = UrlUtils.getUri(
-        url: coOperative.baseUrl + "oauth/token", params: _body);
+        url: coOperative.baseUrl + "/oauth/token", params: _body);
     return await apiProvider.post(
       _uri.toString(),
       {},

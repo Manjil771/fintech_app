@@ -78,7 +78,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                   "office_code": selectedCounter?.value ?? "",
                   "customerId": _customerIDController.text,
                 },
-                apiEndpoint: "api/getneabill",
+                apiEndpoint: "/api/getneabill",
               );
         },
         topbarName: "Payment",
