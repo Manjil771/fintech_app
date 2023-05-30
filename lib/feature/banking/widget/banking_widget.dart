@@ -20,7 +20,7 @@ class BankingWidget extends StatelessWidget {
           topbarName: "Banking",
           showTitleText: false,
           body: Container(
-            height: _height * 1,
+            height: _height * 0.6,
             child: GridView.builder(
               itemCount: itemName.length,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(

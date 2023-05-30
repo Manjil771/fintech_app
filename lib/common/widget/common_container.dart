@@ -51,14 +51,17 @@ class CommonContainer extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               showTitleText
-                  ? Text(title, style: _textTheme.titleLarge)
+                  ? Text(title,
+                      style: _textTheme.displaySmall!
+                          .copyWith(fontWeight: FontWeight.bold))
                   : Container(),
               showTitleText
                   ? Text(
                       detail,
-                      style: _textTheme.displaySmall,
+                      style: _textTheme.titleLarge,
                     )
                   : Container(),
+              SizedBox(height: _height * 0.01),
               body,
               SizedBox(height: _height * 0.03),
               showRoundBotton

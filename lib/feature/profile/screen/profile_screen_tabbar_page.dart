@@ -2,8 +2,14 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/profile/widget/profile_screen_tabbar_widget.dart';
 
-class ProfileTabbarPage extends StatelessWidget {
+class ProfileTabbarPage extends StatefulWidget {
   const ProfileTabbarPage({Key? key}) : super(key: key);
+
+  @override
+  State<ProfileTabbarPage> createState() => _ProfileTabbarPageState();
+}
+
+class _ProfileTabbarPageState extends State<ProfileTabbarPage> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
