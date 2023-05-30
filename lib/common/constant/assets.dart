@@ -49,4 +49,5 @@ class Assets {
   static const String fundTransferIcon =
       "assets/icons/money-send-svgrepo-com 1.svg";
   static const String chequeBookIcon = "assets/icons/Group 1098.svg";
+  static const String personIcon = "assets/icons/Account Number.svg";
 }

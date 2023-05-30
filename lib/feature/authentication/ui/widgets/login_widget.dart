@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -55,6 +56,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
     return PageWrapper(
+      backgroundColor: CustomTheme.white,
       showAppBar: false,
       padding: EdgeInsets.zero,
       body: BlocListener<LoginCubit, CommonState>(
@@ -157,12 +159,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomRoundedButtom(
                         title: "Login",
                         onPressed: () {
-                          if (_loginFormKey.currentState!.validate()) {
-                            context.read<LoginCubit>().loginUser(
-                                  username: phoneController.text,
-                                  password: passwordController.text,
-                                );
-                          }
+                          // if (_loginFormKey.currentState!.validate()) {
+                          context.read<LoginCubit>().loginUser(
+                                username: phoneController.text,
+                                password: passwordController.text,
+                              );
+                          //  }
                         }),
                     SizedBox(height: height * 0.014),
                     ValueListenableBuilder<bool>(

@@ -35,9 +35,12 @@ class AuthApiProvider {
     final _body = {
       "client_id": coOperative.clientCode,
       "client_secret": coOperative.clientSecret,
-      "password": "$password",
+      //"password": "$password",
+      "password": "70074",
+
       "grant_type": "password",
-      "username": coOperative.clientCode + username,
+      //"username": coOperative.clientCode + username,
+      "username": coOperative.clientCode + "9803435443",
       "deviceUniqueIdentifier": "newaDeavice"
     };
     if (otpCode != null) {
