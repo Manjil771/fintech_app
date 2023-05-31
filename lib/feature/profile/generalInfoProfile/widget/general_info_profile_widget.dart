@@ -8,9 +8,12 @@ import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 
 class GeneralInfoProfileWidget extends StatefulWidget {
-  const GeneralInfoProfileWidget({Key? key}) : super(key: key);
+  final ValueNotifier<CustomerDetailModel?> customerDetail;
+  const GeneralInfoProfileWidget({Key? key, required this.customerDetail})
+      : super(key: key);
 
   @override
   State<GeneralInfoProfileWidget> createState() =>
@@ -26,6 +29,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    final _detail = widget.customerDetail.value!;
     return PageWrapper(
       padding: EdgeInsets.zero,
       showAppBar: false,
@@ -47,7 +51,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                 detail: "Phone Number, Name , Address etc.",
               ),
               Container(
-                color: Theme.of(context).primaryColor.withOpacity(0.1),
+                color: _theme.scaffoldBackgroundColor,
                 height: _height * 0.19,
                 padding: const EdgeInsets.symmetric(horizontal: 12),
                 child: Column(
@@ -57,12 +61,15 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                       children: [
                         Expanded(
                           child: buildDetails(
-                              context, "Banking.svg", "Saving A/C", " A/C"),
+                              context,
+                              "Banking.svg",
+                              "Account Type",
+                              "${_detail.accountDetail[0].accountType} A/C"),
                         ),
                         SizedBox(
                           width: _width * 0.4,
-                          child: buildDetails(
-                              context, "clientcode.svg", "Client Code", "1234"),
+                          child: buildDetails(context, "clientcode.svg",
+                              "Client Code", "${_detail.accountDetail[0].id}"),
                         )
                       ],
                     ),
@@ -73,7 +80,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                               context,
                               "accrued interest.svg",
                               "Accrued Interest",
-                              "NPR tail[0].accruedInterest}"),
+                              "NPR ${_detail.accountDetail[0].accruedInterest}"),
                         ),
                         SizedBox(
                           width: _width * 0.4,
@@ -81,7 +88,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                               context,
                               "interest rate profile.svg",
                               "Interest Rate",
-                              "{userController.accountDetail[0].interestRate}%"),
+                              "${_detail.accountDetail[0].interestRate} %"),
                         ),
                       ],
                     ),
@@ -92,7 +99,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                               context,
                               "actual balance profile page.svg",
                               "Actual Balance",
-                              "NPR ail[0].actualBalance}"),
+                              "NPR ${_detail.accountDetail[0].actualBalance}"),
                         ),
                         SizedBox(
                           width: _width * 0.4,
@@ -100,7 +107,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                               context,
                               "money-send-svgrepo-com 1.svg",
                               "Available Bal.",
-                              "NPR .availableBalance}"),
+                              "NPR ${_detail.accountDetail[0].availableBalance}"),
                         ),
                       ],
                     )
@@ -110,7 +117,9 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
               // : Container(),
               ,
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.pushReplacement(target: LoginPage());
+                },
                 leadingIcon: Assets.logoutIcon,
                 title: "Logout",
                 detail: "Logout from this application.",
@@ -140,7 +149,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
             ),
             Text(
               value,
-              style: Theme.of(context).textTheme.bodySmall,
+              style: Theme.of(context).textTheme.bodyMedium,
             ),
           ],
         )

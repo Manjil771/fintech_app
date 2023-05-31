@@ -82,7 +82,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     ]),
                   ),
                   SizedBox(height: _height * 0.01),
-                  const Expanded(child: ProfileTabbarPage())
+                  Expanded(
+                      child: ProfileTabbarPage(
+                    customerDetail: customerDetail,
+                  ))
                 ],
               );
             } else {

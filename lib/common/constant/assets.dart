@@ -51,4 +51,5 @@ class Assets {
   static const String chequeBookIcon = "assets/icons/Group 1098.svg";
   static const String personIcon = "assets/icons/Account Number.svg";
   static const String miniStatement = "assets/icons/ministatement.svg";
+  static const String arrowRight = "assets/icons/arrowright.svg";
 }
