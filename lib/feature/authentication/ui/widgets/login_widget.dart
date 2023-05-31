@@ -71,6 +71,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
           if (state is CommonStateSuccess<LoginResponseValue>) {
             if (state.data == LoginResponseValue.Success) {
+              SecureStorageService.setAppPassword(passwordController.text);
               NavigationService.pushReplacement(
                 target: const DashboardPage(),
               );
@@ -161,6 +162,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         onPressed: () {
                           // if (_loginFormKey.currentState!.validate()) {
                           context.read<LoginCubit>().loginUser(
+                                // username: "9813894737", password: "778899",
                                 username: phoneController.text,
                                 password: passwordController.text,
                               );

@@ -27,7 +27,6 @@ class MiniStatementRepository {
       userRepository: userRepository,
     );
   }
-
   Future<DataResponse<MiniStatementModel>> getMiniStatement(
       accountNumbner, mPin) async {
     try {
