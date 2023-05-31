@@ -73,9 +73,9 @@ class ServicesWidget extends StatelessWidget {
         children: [
           Expanded(
             child: GridView.builder(
-              itemCount: showAllService ? 12 : 6,
+              itemCount: showAllService ? 12 : 8,
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3,
+                crossAxisCount: 4,
               ),
               itemBuilder: (context, index) => InkWell(
                 onTap: () {

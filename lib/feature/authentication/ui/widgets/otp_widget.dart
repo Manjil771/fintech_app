@@ -62,7 +62,7 @@ class _OTPWidgetState extends State<OTPWidget> {
                     child: CustomPinCodeField(
                       length: 6,
                       fieldHeight: 50,
-                      fieldWidth: 50,
+                      fieldWidth: 45,
                       controller: _textController,
                       validator: (val) {
                         if (val == null) {

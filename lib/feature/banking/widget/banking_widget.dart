@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/statement/screen/statement_page.dart';
 
 class BankingWidget extends StatelessWidget {
   BankingWidget({Key? key}) : super(key: key);
@@ -26,6 +28,9 @@ class BankingWidget extends StatelessWidget {
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2),
               itemBuilder: (context, index) => CommonGridViewContainer(
+                onContainerPress: () {
+                  NavigationService.push(target: StatementPage());
+                },
                 margin: const EdgeInsets.all(8),
                 containerImage: images[index],
                 title: itemName[index],

@@ -2,7 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/widget/account_list_box.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
@@ -79,6 +82,13 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                           Row(
                             children: [
                               InkWell(
+                                onTap: () {
+                                  showDialog(
+                                      context: context,
+                                      builder: (context) => AccountDetailBox(
+                                            customerDetail: customerDetail,
+                                          ));
+                                },
                                 child: Row(
                                   children: [
                                     Text(
@@ -91,7 +101,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                     ),
                                     SizedBox(width: _width * 0.02),
                                     SvgPicture.asset(
-                                      "assets/icons/downarrow.svg",
+                                      Assets.arrowRight,
                                       height: _height * 0.01,
                                     ),
                                   ],

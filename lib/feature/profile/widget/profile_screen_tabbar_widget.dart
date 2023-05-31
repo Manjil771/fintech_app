@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/profile/accountListProfile/screen/acoount_list_profile_page.dart';
 import 'package:ismart/feature/profile/contactUsProfile/screen/contact_us_profile_page.dart';
 import 'package:ismart/feature/profile/generalInfoProfile/screen/general_info_profile_page.dart';
 
 class ProfileTabBarWidget extends StatefulWidget {
-  const ProfileTabBarWidget({Key? key}) : super(key: key);
+  final ValueNotifier<CustomerDetailModel?> customerDetail;
+
+  const ProfileTabBarWidget({Key? key, required this.customerDetail})
+      : super(key: key);
 
   @override
   State<ProfileTabBarWidget> createState() => _ProfileTabBarWidgetState();
@@ -21,7 +25,7 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
     return DefaultTabController(
         length: 3,
         child: Column(
-          children: const [
+          children: [
             TabBar(
               isScrollable: true,
               labelColor: Colors.black,
@@ -38,8 +42,10 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
             Expanded(
               child: TabBarView(
                 children: [
-                  GeneralInfoProfilePage(),
-                  AccountListProfilePage(),
+                  GeneralInfoProfilePage(
+                    customerDetail: widget.customerDetail,
+                  ),
+                  AccountListProfilePage(customerDetail: widget.customerDetail),
                   ContactUsProfilePage(),
                 ],
               ),

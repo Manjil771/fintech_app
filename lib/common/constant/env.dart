@@ -26,16 +26,25 @@ class CoOperativeValue {
     clientSecret: "",
   );
 
+  // // DEV
+  // static final CoOperative development = CoOperative(
+  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+  //   bannerImage: "assets/images/isamrt_banner.jpg",
+  //   clientCode: 'VBMRDWEVFV',
+  //   coOperativeName: '',
+  //   coOperativeLogo: '',
+  //   clientSecret: "199204",
+  // );
+
   // DEV
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
     clientCode: 'VBMRDWEVFV',
     coOperativeName: '',
     coOperativeLogo: '',
     clientSecret: "199204",
   );
-
   // LIVE
 
   // static final CoOperative development = CoOperative(
