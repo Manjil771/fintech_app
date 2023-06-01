@@ -7,6 +7,7 @@ class Assets {
 
   static const String profilePicture =
       "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png";
+  static const String ismartLogo = "assets/ismartlogo.png";
 
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String searchIcon = "assets/icons/search.svg";

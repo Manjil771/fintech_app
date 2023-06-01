@@ -18,6 +18,7 @@ import 'package:ismart/feature/services/electricity/screen/electricity_payment_p
 import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
+import 'package:ismart/feature/statement/screen/statement_page.dart';
 
 import '../../feature/services/Topup/ui/screens/mobile_topup_page.dart';
 
@@ -118,6 +119,11 @@ class RouteGenerator {
       case Routes.requestSapati:
         return MaterialPageRoute(
           builder: (_) => const RequestSapatiPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.statementPage:
+        return MaterialPageRoute(
+          builder: (_) => const StatementPage(),
           settings: RouteSettings(name: settings.name),
         );
       default:

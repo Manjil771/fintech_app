@@ -20,4 +20,5 @@ class Routes {
   static const connectIps = "/connect_ips";
   static const internetbanking = "/internet_banking";
   static const requestSapati = "/request_sapati";
+  static const statementPage = "/statement_page";
 }

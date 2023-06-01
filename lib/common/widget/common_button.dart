@@ -12,7 +12,7 @@ class CustomRoundedButtom extends StatefulWidget {
     this.padding,
     this.color,
     this.horizontalPadding = 12,
-    this.verticalPadding = 16,
+    this.verticalPadding = 12,
     this.fontSize = 14,
     this.textColor = Colors.white,
     this.fontWeight = FontWeight.w700,

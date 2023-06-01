@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsProfileWidget extends StatelessWidget {
   ContactUsProfileWidget({Key? key}) : super(key: key);
@@ -75,13 +76,13 @@ class ContactUsProfileWidget extends StatelessWidget {
     );
   }
 
-  // Future<void> _makePhoneCall(String url) async {
-  //   if (await canLaunchUrl(Uri.parse(url))) {
-  //     await launchUrl(Uri.parse(url));
-  //   } else {
-  //     throw 'Could not launch $url';
-  //   }
-  // }
+  Future<void> _makePhoneCall(String url) async {
+    if (await canLaunchUrl(Uri.parse(url))) {
+      await launchUrl(Uri.parse(url));
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
 
   final List images = [
     "contact us page profile call.svg",
@@ -100,6 +101,6 @@ class ContactUsProfileWidget extends StatelessWidget {
 final List urls = [
   "",
   "https://www.devanasoft.com.np/",
-  "tel:9866556708",
-  "mailto:dibashthapa447@gmail.com?subject=Greetings&body=Hello%20World",
+  "https://www.google.com/maps/search/?api=1&query=27.714774,85.347024",
+  "mailto:info@devanasoft.com.np?subject=Greetings&body=Hello%",
 ];
