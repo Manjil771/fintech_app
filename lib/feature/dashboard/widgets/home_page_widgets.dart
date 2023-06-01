@@ -51,12 +51,15 @@ class HomePageWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: _width * 0.02),
-                      const Text("Send"),
+                      Text(
+                        "Send",
+                        style: _textTheme.titleSmall,
+                      ),
                     ],
                   ),
                 ),
               )),
-              SizedBox(width: _width * 0.2),
+              SizedBox(width: _width * 0.15),
               Expanded(
                   child: InkWell(
                 onTap: () {
@@ -81,7 +84,10 @@ class HomePageWidget extends StatelessWidget {
                         ),
                       ),
                       SizedBox(width: _width * 0.02),
-                      const Text("Receive"),
+                      Text(
+                        "Receive",
+                        style: _textTheme.titleSmall,
+                      ),
                     ],
                   ),
                 ),

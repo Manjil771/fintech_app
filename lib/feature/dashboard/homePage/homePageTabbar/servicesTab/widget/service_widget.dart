@@ -5,6 +5,8 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
 
 class ServicesWidget extends StatelessWidget {
   final bool showAllService;
@@ -28,7 +30,6 @@ class ServicesWidget extends StatelessWidget {
   ];
 
   final List images = [
-    Assets.topupPaymentIcon,
     Assets.topupPaymentIcon,
     Assets.electricityIcon,
     Assets.internetIcon,
@@ -91,6 +92,7 @@ class ServicesWidget extends StatelessWidget {
                     Expanded(
                       child: Text(
                         "${names[index]}".toString(),
+                        style: _textTheme.titleSmall,
                       ),
                     ),
                   ],
@@ -102,8 +104,7 @@ class ServicesWidget extends StatelessWidget {
               ? Container()
               : TextButton(
                   onPressed: () {
-                    NavigationService.pushNamed(
-                        routeName: Routes.allServicesDashboard);
+                    NavigationService.push(target: AllServiceScreen());
                   },
                   child: const Text("View More"))
         ],

@@ -5,7 +5,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
@@ -134,13 +134,13 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             children: [
                               Text(
                                 "Actual Balance",
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: _textTheme.titleSmall,
                               ),
                               Text(
                                 showAmountDetail
                                     ? "NPR ${val.accountDetail[0].actualBalance}"
                                     : "XXXXXXXXX",
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: _textTheme.titleLarge,
                               ),
                             ],
                           ),
@@ -160,13 +160,13 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             children: [
                               Text(
                                 "Interest Accrued",
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: _textTheme.titleSmall,
                               ),
                               Text(
                                 showAmountDetail
                                     ? "NPR ${val.accountDetail[0].accruedInterest}"
                                     : "XXXXXXXXX",
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: _textTheme.titleLarge,
                               ),
                             ],
                           ),
