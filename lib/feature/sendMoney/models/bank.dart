@@ -17,7 +17,7 @@ class Bank {
   });
 
   factory Bank.fromJson(Map<String, dynamic> json) => Bank(
-        bankId: json["bankId"] ?? "",
+        bankId: json["bankId"] ?? json["bankCode"] ?? "",
         refBankId: json["refBankId"] ?? "",
         bankName: json["bankName"] ?? "",
         enabled: json["enabled"] ?? "",

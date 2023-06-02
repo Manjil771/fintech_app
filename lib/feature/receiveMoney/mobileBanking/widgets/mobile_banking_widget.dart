@@ -142,8 +142,13 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
                 //       fontSize: 12,
                 //     ),
                 //   ),
-                const SizedBox(
-                  height: 10,
+                CustomTextField(
+                  title: "Amount",
+                  hintText: "NPR 0",
+                  controller: _amountController,
+                  //   validator: (value) =>
+                  //       FormValidator.validateFieldNotEmpty(value, "Remarks"),
+                  // ),
                 ),
                 CustomTextField(
                   title: "Remarks",
@@ -174,7 +179,7 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
 
                     destinationBankInstrumentCode: selectedBank?.bankId ?? "",
                     //destinationBankAccountName: _accountNameController.text,
-                    destinationBankAccountNumber: "02805080442084",
+                    destinationBankAccountNumber: "00100101000002886000001",
                     //destinationBankName: selectedBank?.bankName ?? "",
                   );
             }

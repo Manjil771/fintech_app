@@ -14,7 +14,7 @@ class ReceiveFromBankAPIProvider {
   });
 
   getBanksList() async {
-    final url = "$baseUrl/api/load_from_bank/ebanks";
+    final url = "$baseUrl/api/load_from_bank/mbanks";
     // final url = "https://www.mbank.com.np/api/load_from_bank/ebanks";
 
     return await apiProvider.get(
@@ -90,9 +90,10 @@ class ReceiveFromBankAPIProvider {
   receiveMoneyFromBank({
     required Map<String, dynamic> payloadData,
   }) async {
-    final url = "$baseUrl/api/load_from_bank/payment/";
+    final url = "$baseUrl/api/load_from_bank/payment";
+    // final url = "$baseUrl/api/load_from_bank/payment/ebanks";
 
-    Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
+    // Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
 
     return await apiProvider.post(
       url,
