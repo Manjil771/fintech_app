@@ -4,10 +4,13 @@ import 'dart:io';
 
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:http_parser/http_parser.dart' as parse;
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/dio_client.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/log.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:mime/mime.dart';
 
 class ApiProvider {
@@ -383,8 +386,7 @@ class ApiProvider {
         return responseJson;
       case 400:
         return responseJson;
-      // throw BadRequestException(
-      //     getErrorMessage(res, 400), response.statusCode);
+
       case 404:
         throw ResourceNotFoundException(
             getErrorMessage(res, 404), response.statusCode);
@@ -399,8 +401,10 @@ class ApiProvider {
             response.statusCode);
       case 401:
       case 403:
+        RepositoryProvider.of<UserRepository>(NavigationService.context)
+            .logout();
         throw UnauthorisedException(
-            getErrorMessage(res, 404), response.statusCode);
+            getErrorMessage(res, 401), response.statusCode);
       case 500:
         throw InternalServerErrorException(
             getErrorMessage(res, 404), response.statusCode);
