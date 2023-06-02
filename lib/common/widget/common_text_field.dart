@@ -195,7 +195,7 @@ class CustomTextField extends FormField<String> {
                                           icon: suffixIcon ?? Icons.search,
                                           shadow: false,
                                           iconSize: suffixIconSize,
-                                          iconColor: CustomTheme.lightGray,
+                                          iconColor: CustomTheme.darkGray,
                                           onPressed: onSuffixPressed,
                                         ),
                                     ],
