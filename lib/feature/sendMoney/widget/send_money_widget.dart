@@ -5,6 +5,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
 
 class SendMoneyWidget extends StatelessWidget {
   const SendMoneyWidget({Key? key}) : super(key: key);
@@ -47,7 +48,11 @@ class SendMoneyWidget extends StatelessWidget {
               ),
               const Divider(thickness: 1),
               CommonDetailBox(
-                onBoxPressed: () {},
+                onBoxPressed: () {
+                  NavigationService.push(
+                    target: const WalletTransferScreen(),
+                  );
+                },
                 title: "Wallet",
                 detail: "Check balance on your wallets",
                 leadingIcon: Assets.walletIcon,

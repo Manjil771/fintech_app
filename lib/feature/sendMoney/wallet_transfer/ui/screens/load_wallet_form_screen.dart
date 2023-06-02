@@ -1,0 +1,41 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/resoures/wallet_load_repository.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/widgets/load_wallet_form_widget.dart';
+
+class LoadWalletFormScreen extends StatelessWidget {
+  const LoadWalletFormScreen({Key? key, required this.selectedWallet})
+      : super(key: key);
+
+  final WalletModel selectedWallet;
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => WalletListCubit(
+            walletLoadRepository:
+                RepositoryProvider.of<WalletLoadRepository>(context),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => WalletSendCubit(
+            walletLoadRepository:
+                RepositoryProvider.of<WalletLoadRepository>(context),
+          ),
+        )
+      ],
+      child: LoadWalletFormWidget(
+        selectedWallet: selectedWallet,
+      ),
+    );
+  }
+}
