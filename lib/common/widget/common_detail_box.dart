@@ -9,7 +9,7 @@ class CommonDetailBox extends StatelessWidget {
   final String trailingIcon;
   final double verticalPadding;
   final double horizontalPadding;
-
+  final bool showTrailingIcon;
   final String title;
   final String detail;
   final VoidCallback onBoxPressed;
@@ -20,6 +20,7 @@ class CommonDetailBox extends StatelessWidget {
       this.verticalPadding = 10.0,
       this.horizontalPadding = 20.0,
       required this.title,
+      this.showTrailingIcon = true,
       this.trailingIcon = Assets.forwardButtonIcon,
       this.detail = "",
       required this.onBoxPressed});
@@ -55,11 +56,13 @@ class CommonDetailBox extends StatelessWidget {
               ),
             ),
             SizedBox(width: _width * 0.05),
-            SvgPicture.asset(
-              trailingIcon,
-              color: CustomTheme.darkerBlack,
-              height: _height * 0.02,
-            ),
+            showTrailingIcon
+                ? SvgPicture.asset(
+                    trailingIcon,
+                    color: CustomTheme.darkerBlack,
+                    height: _height * 0.02,
+                  )
+                : Container(),
           ],
         ),
       ),
