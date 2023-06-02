@@ -37,24 +37,24 @@ class CoOperativeValue {
   // );
 
   // DEV
-  static final CoOperative development = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'VBMRDWEVFV',
-    coOperativeName: '',
-    coOperativeLogo: '',
-    clientSecret: "199204",
-  );
-  // LIVE
-
   // static final CoOperative development = CoOperative(
-  //   baseUrl: 'https://mbank.com.np', // 9802013689 :97684
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'H6FXNHXS61',
+  //   clientCode: 'VBMRDWEVFV',
   //   coOperativeName: '',
   //   coOperativeLogo: '',
-  //   clientSecret: "175391",
+  //   clientSecret: "199204",
   // );
+  // LIVE
+
+  static final CoOperative development = CoOperative(
+    baseUrl: 'https://mbank.com.np', // 9802013689 :97684
+    bannerImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'H6FXNHXS61',
+    coOperativeName: '',
+    coOperativeLogo: '',
+    clientSecret: "175391",
+  );
 
   // Staging
   // static final CoOperative development = CoOperative(
