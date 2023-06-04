@@ -1,5 +1,6 @@
 class Assets {
   static const String logoImage = "assets/ismartlogo.png";
+  static const String splashImage = "assets/images/splashscreen.jpg";
   static const String translateImage = "assets/icons/languagetranslate.svg";
   static const String groupIcon = "assets/icons/Group 1035.svg";
   static const String verify = "assets/icons/verify your number.svg";
