@@ -1,11 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/payment_web_view.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/receiveMoney/mobileBanking/screen/receive_money_bank_list_screen.dart';
+import 'package:ismart/feature/sendMoney/models/bank.dart';
 
-class MobileBankingWidget extends StatelessWidget {
+class MobileBankingWidget extends StatefulWidget {
   const MobileBankingWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MobileBankingWidget> createState() => _MobileBankingWidgetState();
+}
+
+class _MobileBankingWidgetState extends State<MobileBankingWidget> {
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController();
+  final TextEditingController _bankNameController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Bank? selectedBank;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -14,32 +34,106 @@ class MobileBankingWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
-        body: Column(
-          children: [
-            CustomTextField(
-              hintText: "Select Bank",
-              title: "Select Bank",
-            ),
+        body: Form(
+          key: _formKey,
+          child: Column(
+            children: [
+              CustomTextField(
+                hintText: "Select Bank",
+                title: "Select Bank",
+                readOnly: true,
+                controller: _bankNameController,
+                validator: (val) {
+                  if (selectedBank == null) {
+                    return "Please select a bank to proceed.";
+                  }
+                  return null;
+                },
+                onTap: () {
+                  NavigationService.push(
+                    target: ReceiveMoneyBankListScreen(
+                      onBankSelected: (val) {
+                        NavigationService.pop();
 
-            CustomTextField(
-              title: "Amount",
-              hintText: "NPR ",
-            ),
-            //TODO :need to add amount selection box
-            CustomTextField(
-              title: "Charge",
-              hintText: "NPR 10.00",
-            ),
-            CustomTextField(
-              title: "Remarks",
-              hintText: "Remarks",
-            ),
-          ],
+                        selectedBank = val;
+                        _bankNameController.text = val.bankName;
+                        setState(() {});
+                      },
+                    ),
+                  );
+                },
+              ),
+
+              CustomTextField(
+                title: "Amount",
+                hintText: "NPR ",
+                controller: _amountController,
+                validator: (val) {
+                  if ((int.tryParse(val ?? "") ?? 0) < 100) {
+                    return "Minimum amount is Rs. 100";
+                  } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
+                    return "Maximum amount is Rs. 2,00,000";
+                  } else {
+                    return null;
+                  }
+                },
+              ),
+              //TODO :need to add amount selection box
+              // CustomTextField(
+              //   title: "Charge",
+              //   hintText: "NPR 10.00",
+              // ),
+              CustomTextField(
+                title: "Remarks",
+                hintText: "Remarks",
+                controller: _remarksController,
+                validator: (value) =>
+                    FormValidator.validateFieldNotEmpty(value, "Remarks"),
+              ),
+            ],
+          ),
         ),
         topbarName: "Receive Money",
         buttonName: "Proceed",
         onButtonPressed: () {
-          //TODO : Send Button Navigate to mpin screen
+          if (_formKey.currentState!.validate()) {
+            final _body = {
+              "accountNo":
+                  RepositoryProvider.of<CustomerDetailRepository>(context)
+                      .accountsList
+                      .value
+                      .first
+                      .accountNumber,
+              "amount": _amountController.text,
+              "bankCode": selectedBank?.bankId ?? "",
+              "remarks": _remarksController.text,
+              "payment_type": "mobilecheckout"
+            };
+            const _url = "https://mbank.com.np" "/api/load_from_bank/payment/";
+            final url = UrlUtils.getUri(url: _url, params: _body);
+
+            print(url.toString());
+            NavigationService.push(
+              target: PaymentWebView(
+                urlRequest: URLRequest(url: url, headers: {
+                  "Authorization":
+                      "Bearer 87b34403-2f70-46ca-8769-ed499c1614b3",
+                }),
+                receiptUrl: "receiptUrl",
+              ),
+            );
+            // context.read<ReceiveMoneyCubit>().loadFromBank(
+            //       bankCode: selectedBank?.bankId ?? "",
+            //       amount: _amountController.text,
+            //       remarks: _remarksController.text,
+            //       accountNumber:
+            //           RepositoryProvider.of<CustomerDetailRepository>(context)
+            //               .accountsList
+            //               .value
+            //               .first
+            //               .accountNumber,
+            //     );
+          }
         },
         title: "Mobile Banking",
         detail: "Load fund instantly from mobile banking.",
