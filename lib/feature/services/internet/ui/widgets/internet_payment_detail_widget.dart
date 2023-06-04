@@ -1,9 +1,14 @@
+import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
+import 'package:ismart/feature/services/internet/worldlink/widgets/worldlink_search_widget.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
@@ -19,6 +24,31 @@ class InternetPaymentDeatilWidget extends StatefulWidget {
 
 class _InternetPaymentDeatilWidgetState
     extends State<InternetPaymentDeatilWidget> {
+  final TextEditingController _packageController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+  bool _changePackage = false;
+  final bool _isLoading = false;
+  String _selectedPackageId = "";
+
+  double _dueAmount = 0;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+
+    _dueAmount = double.tryParse(widget.detailFetchData
+                .findValue(primaryKey: "due_amount_till_now")
+                ?.toString() ??
+            "0") ??
+        0;
+    _amountController.text = ((double.tryParse(widget.detailFetchData
+                    .findValueString("amount", emptyString: "")) ??
+                0) +
+            _dueAmount)
+        .toString();
+  }
+
   @override
   Widget build(BuildContext context) {
     final bool _renewOption = widget.detailFetchData
@@ -26,11 +56,11 @@ class _InternetPaymentDeatilWidgetState
             ?.isNotEmpty ??
         false;
     final _packageOptions = List.from((_renewOption
-            ? widget.detailFetchData
-                .findValue(primaryKey: "available_renew_options")
+            ? widget.detailFetchData.findValue(primaryKey: "packages")
             : widget.detailFetchData
                 .findValue(primaryKey: "package_options")) ??
         []);
+
     final bool _isPackageAvailable = _packageOptions.isNotEmpty;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
@@ -126,21 +156,93 @@ class _InternetPaymentDeatilWidgetState
                     ],
                   ),
                 ),
-                SizedBox(height: _height * 0.02),
-                CustomTextField(title: "Amount", hintText: "Enter the amount"),
-                SizedBox(height: _height * 0.01),
-                Container(
-                  padding: const EdgeInsets.only(top: 7),
-                  height: _height * 0.12,
-                  width: double.infinity,
-                  child: GridView.builder(
-                    itemCount: 6,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                    itemBuilder: (context, index) => amountBox(context, index),
+                if (_isPackageAvailable)
+                  CustomCheckbox(
+                    leftMargin: CustomTheme.symmetricHozPadding,
+                    selected: _changePackage,
+                    onChanged: (val) {
+                      setState(() {
+                        _changePackage = val;
+                      });
+                    },
+                    title: "Change Package",
                   ),
-                ),
+                SizedBox(height: _height * 0.02),
+                if (_isPackageAvailable)
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 200),
+                    transitionBuilder: (child, animation) {
+                      return SizeTransition(
+                        sizeFactor: animation,
+                        axis: Axis.vertical,
+                        child: child,
+                      );
+                    },
+                    child: _changePackage
+                        ? OpenContainer(
+                            closedColor: Colors.transparent,
+                            closedElevation: 0.0,
+                            openElevation: 0,
+                            transitionType: ContainerTransitionType.fade,
+                            closedBuilder: (context, open) {
+                              return CustomTextField(
+                                margin: const EdgeInsets.only(
+                                  left: CustomTheme.symmetricHozPadding,
+                                  right: CustomTheme.symmetricHozPadding,
+                                ),
+                                controller: _packageController,
+                                title: "",
+                                hintText: "Renew Options",
+                                showSearchIcon: true,
+                                readOnly: true,
+                                required: true,
+                                suffixIcon: Icons.keyboard_arrow_down_rounded,
+                                onTap: open,
+                                validator: (val) {
+                                  return FormValidator.validateFieldNotEmpty(
+                                    val,
+                                    "Renew Options",
+                                  );
+                                },
+                              );
+                            },
+                            openBuilder: (context, close) {
+                              return WorldlinkSearchWidgets(
+                                useServiceResponse: widget.detailFetchData,
+                                renewOptions: _renewOption,
+                                onChanged: (val) {
+                                  _packageController.text = val["text"] ?? "";
+                                  _selectedPackageId =
+                                      val["id"]?.toString() ?? "";
+                                  _amountController.text = ((double.tryParse(
+                                                  val["amount"]?.toString() ??
+                                                      "0") ??
+                                              0) +
+                                          _dueAmount)
+                                      .toString();
+                                },
+                              );
+                            },
+                          )
+                        : Container(),
+                  ),
+                if (_changePackage || (_isPackageAvailable == false))
+                  SizedBox(height: 20.hp),
+
+                // CustomTextField(title: "Amount", hintText: "Enter the amount"),
+                SizedBox(height: _height * 0.01),
+                // Container(
+                //   padding: const EdgeInsets.only(top: 7),
+                //   height: _height * 0.12,
+                //   width: double.infinity,
+                //   child: GridView.builder(
+                //     itemCount: 6,
+                //     gridDelegate:
+                //         const SliverGridDelegateWithFixedCrossAxisCount(
+                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
+                //     itemBuilder: (context, index) => amountBox(context, index),
+                //   ),
+                // ),
                 SizedBox(height: _height * 0.03),
                 CustomRoundedButtom(title: "Proceed", onPressed: () {}),
               ],
@@ -151,16 +253,16 @@ class _InternetPaymentDeatilWidgetState
     );
   }
 
-  amountBox(context, index) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 7),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.black),
-      ),
-      child: Center(child: Text(amount[index].toString())),
-    );
-  }
+  // amountBox(context, index) {
+  //   return Container(
+  //     margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 7),
+  //     decoration: BoxDecoration(
+  //       borderRadius: BorderRadius.circular(8),
+  //       border: Border.all(color: Colors.black),
+  //     ),
+  //     child: Center(child: Text(amount[index].toString())),
+  //   );
+  // }
 
-  final List amount = [100, 200, 500, 1000, 2000, 5000];
+  // final List amount = [100, 200, 500, 1000, 2000, 5000];
 }
