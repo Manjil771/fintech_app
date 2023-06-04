@@ -4,23 +4,30 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 
-AppBar myAppbar(context) {
-  Size size = MediaQuery.of(context).size;
+AppBar myAppbar({bool showBackButton = false}) {
+  Size size = MediaQuery.of(NavigationService.context).size;
   return AppBar(
-    backgroundColor: Theme.of(context).scaffoldBackgroundColor,
+    backgroundColor:
+        Theme.of(NavigationService.context).scaffoldBackgroundColor,
     elevation: 0,
     iconTheme: const IconThemeData(color: Colors.black),
     automaticallyImplyLeading: false,
     centerTitle: true,
     leading: InkWell(
       onTap: () {
-        NavigationService.pushNamed(routeName: Routes.profileScreen);
+        if (showBackButton) {
+          NavigationService.pop();
+        } else {
+          NavigationService.pushNamed(routeName: Routes.profileScreen);
+        }
       },
-      child: const Padding(
-        padding: EdgeInsets.all(8.0),
-        child: CircleAvatar(
-          backgroundImage: AssetImage(Assets.profilePicture),
-        ),
+      child: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: showBackButton
+            ? const Icon(Icons.arrow_back_ios)
+            : const CircleAvatar(
+                backgroundImage: AssetImage(Assets.profilePicture),
+              ),
       ),
     ),
     title: Image.asset(
