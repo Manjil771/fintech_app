@@ -136,7 +136,7 @@ class CustomTextField extends FormField<String> {
                               Expanded(
                                 child: Container(
                                   decoration: BoxDecoration(
-                                    color: CustomTheme.lightGray,
+                                    color: CustomTheme.white,
                                     borderRadius:
                                         BorderRadius.circular(borderRadius),
                                     border: type == TextFieldType.Outline
@@ -190,8 +190,7 @@ class CustomTextField extends FormField<String> {
                                       ),
                                       if (showSearchIcon)
                                         CustomIconButton(
-                                          backgroundColor:
-                                              CustomTheme.lightGray,
+                                          backgroundColor: Colors.transparent,
                                           icon: suffixIcon ?? Icons.search,
                                           shadow: false,
                                           iconSize: suffixIconSize,
