@@ -402,7 +402,7 @@ class ApiProvider {
       case 401:
       case 403:
         RepositoryProvider.of<UserRepository>(NavigationService.context)
-            .logout();
+            .logout(isSessionExpired: true);
         throw UnauthorisedException(
             getErrorMessage(res, 401), response.statusCode);
       case 500:
