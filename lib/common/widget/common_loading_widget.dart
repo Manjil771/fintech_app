@@ -8,7 +8,7 @@ class CommonLoadingWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Center(
       child: Image.asset(
-        Assets.logoImage,
+        Assets.loader,
         height: 100,
         width: 100,
       ),
