@@ -41,17 +41,18 @@ class UserRepository {
     // _user.value = await SharedPref.getUser();
   }
 
-  Future<bool> logout() async {
+  Future<bool> logout({bool isSessionExpired = false}) async {
     try {
       _token = '';
       _isLoggedIn.value = false;
       _user.value = null;
       await SharedPref.deleteAccessToken();
       await SharedPref.deleteUser();
-      SnackBarUtils.showErrorBar(
-        context: NavigationService.context,
-        message: "Session expired. Please re-login",
-      );
+      if (isSessionExpired)
+        SnackBarUtils.showErrorBar(
+          context: NavigationService.context,
+          message: "Session expired. Please re-login",
+        );
       NavigationService.pushReplacement(target: const LoginPage());
       return true;
     } on Exception catch (_) {

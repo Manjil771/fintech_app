@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -118,7 +119,8 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
               ,
               CommonDetailBox(
                 onBoxPressed: () {
-                  NavigationService.pushReplacement(target: LoginPage());
+                  RepositoryProvider.of<UserRepository>(context).logout();
+                  NavigationService.pushReplacement(target: const LoginPage());
                 },
                 leadingIcon: Assets.logoutIcon,
                 title: "Logout",
