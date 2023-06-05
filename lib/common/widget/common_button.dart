@@ -18,6 +18,7 @@ class CustomRoundedButtom extends StatefulWidget {
     this.fontWeight = FontWeight.w700,
     this.horizontalMargin = 0,
     this.icon,
+    this.iconColor,
   }) : super(key: key);
   final String title;
   final Function()? onPressed;
@@ -32,6 +33,7 @@ class CustomRoundedButtom extends StatefulWidget {
   final FontWeight fontWeight;
   final double horizontalMargin;
   final IconData? icon;
+  final Color? iconColor;
 
   @override
   CustomRoundedButtomState createState() => CustomRoundedButtomState();
@@ -77,7 +79,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                       padding: EdgeInsets.symmetric(horizontal: 4.wp),
                       child: Icon(
                         widget.icon,
-                        color: Colors.white,
+                        color: widget.iconColor ?? Colors.white,
                         size: 22,
                       ),
                     ),
