@@ -16,7 +16,6 @@ class MiniStatementAPIProvider {
     required this.coOperative,
     required this.userRepository,
   });
-
   Future<dynamic> fetchMiniStatement(accountNumber, mPin) async {
     final _body = {
       "account_number": accountNumber,

@@ -7,6 +7,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/screen/home_page.dart';
+import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -23,7 +24,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const Text("3"),
-    MiniStatementPage(),
+    RecentTransactionScreen(),
     const Text("5"),
   ];
 

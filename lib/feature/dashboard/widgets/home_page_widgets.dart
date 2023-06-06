@@ -6,6 +6,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/feature/dashboard/widgets/home_page_tabbar_widget.dart';
 import 'package:ismart/feature/dashboard/widgets/home_page_user_widget.dart';
 

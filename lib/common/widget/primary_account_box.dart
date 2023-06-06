@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
-class PrimaryAccount extends StatelessWidget {
-  const PrimaryAccount({Key? key}) : super(key: key);
+class PrimaryAccountBox extends StatelessWidget {
+  const PrimaryAccountBox({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,7 @@ class PrimaryAccount extends StatelessWidget {
         height: _width * 0.35,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.black45),
+          border: Border.all(color: _theme.primaryColor, width: 2),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,7 +32,7 @@ class PrimaryAccount extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(
-                  "assets/icons/Wallet amount.svg",
+                  Assets.walletIcon,
                   height: _height * 0.023,
                   color: _theme.primaryColor,
                 ),
@@ -85,6 +86,14 @@ class PrimaryAccount extends StatelessWidget {
                   "ER65596565",
                   style: _textTheme.labelMedium,
                 ),
+                Spacer(),
+                RotatedBox(
+                  quarterTurns: 5,
+                  child: SvgPicture.asset(
+                    Assets.arrowRight,
+                    height: _height * 0.02,
+                  ),
+                )
               ],
             )
           ],
