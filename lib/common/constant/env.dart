@@ -17,14 +17,14 @@ class CoOperative {
 }
 
 class CoOperativeValue {
-  static final CoOperative chandraGiriCoOperative = CoOperative(
-    baseUrl: 'http://202.63.242.139:9091/',
-    bannerImage: 'assets/chandragiri.png',
-    clientCode: 'CHAN6566',
-    coOperativeName: 'ChandraGiri CoOperative',
-    coOperativeLogo: 'assets/chandragiri.png',
-    clientSecret: "",
-  );
+  // static final CoOperative chandraGiriCoOperative = CoOperative(
+  //   baseUrl: 'http://202.63.242.139:9091/',
+  //   bannerImage: 'assets/chandragiri.png',
+  //   clientCode: 'CHAN6566',
+  //   coOperativeName: 'ChandraGiri CoOperative',
+  //   coOperativeLogo: 'assets/chandragiri.png',
+  //   clientSecret: "",
+  // );
 
   // DEV
   // static final CoOperative development = CoOperative(
@@ -56,13 +56,13 @@ class CoOperativeValue {
   //   clientSecret: "199204",
   // );
   // // LIVE
-  // Staging
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'https://mbank.com.np/',
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'H6FXNHXS61',
-  //   coOperativeName: '',
-  //   coOperativeLogo: '',
-  //   clientSecret: "175391",
-  // );
+  // DEV
+  static final CoOperative development = CoOperative(
+    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+    bannerImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'VBMRDWEVFV',
+    coOperativeName: '',
+    coOperativeLogo: '',
+    clientSecret: "199204",
+  );
 }

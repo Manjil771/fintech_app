@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -62,10 +63,26 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
           }
         },
         builder: (context, state) {
-          if (state is CommonStateSuccess<RecentTransactionModel>) {
+          if (state is CommonStateSuccess<List<RecentTransactionModel>>) {
             return CommonContainer(
+                showBackBotton: false,
+                showRoundBotton: false,
                 body: Container(
-                  child: Text("state.data.details[0].amount.toString()"),
+                  height: _height * 0.65,
+                  child: ListView.builder(
+                    itemCount: state.data.length,
+                    itemBuilder: (context, index) {
+                      final _detail = state.data[index];
+                      return TransactionDetailBox(
+                        status: _detail.status,
+                        imageUrl: _detail.iconUrl,
+                        amount: _detail.amount.toString(),
+                        dateTime: _detail.date.toString(),
+                        desc: _detail.serviceTo,
+                        title: _detail.service,
+                      );
+                    },
+                  ),
                 ),
                 showTitleText: false,
                 // title: "Mini Statement",

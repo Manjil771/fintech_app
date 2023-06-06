@@ -12,7 +12,7 @@ String recentTransactionModelToJson(List<RecentTransactionModel> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class RecentTransactionModel {
-  int amount;
+  double amount;
   String service;
   String serviceTo;
   String accountNumber;
@@ -24,8 +24,8 @@ class RecentTransactionModel {
   int id;
   DateTime createdDate;
   String destination;
-  int charge;
-  int totalAmount;
+  double charge;
+  double totalAmount;
   RequestDetail requestDetail;
   ResponseDetail responseDetail;
   String iconUrl;

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 
 import '../navigation/navigation_service.dart';
@@ -19,7 +20,8 @@ class ScaffoldTopBar extends StatelessWidget {
               topLeft: Radius.circular(12), topRight: Radius.circular(12)),
           color: Theme.of(context).primaryColor,
           image: DecorationImage(
-              image: AssetImage(CoOperativeValue.development.bannerImage),
+              image: AssetImage(
+                  RepositoryProvider.of<CoOperative>(context).bannerImage),
               fit: BoxFit.cover),
         ),
         child: Row(

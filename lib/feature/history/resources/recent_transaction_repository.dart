@@ -29,23 +29,29 @@ class RecentTransactionRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<RecentTransactionModel>> getRecentTransaction() async {
+  Future<DataResponse<List<RecentTransactionModel>>>
+      getRecentTransaction() async {
+    List<RecentTransactionModel> _recentTxnList = [];
     try {
       final _res = await recentTransactionApiProvider.fetchRecentTransaction();
 
       if (_res['data']['details'] != null) {
         // Parse Data from API
 
-        final Map<String, dynamic> _userMap =
-            Map<String, dynamic>.from(_res['details'] ?? {});
+        final List _userMap = List.from(_res["data"]['details'] ?? []);
 
         if (_userMap.isEmpty) {
           return DataResponse.error("Error fetching data.");
         }
-        RecentTransactionModel _recentTransaction =
-            RecentTransactionModel.fromJson(_userMap);
 
-        return DataResponse.success(_recentTransaction);
+        _userMap.forEach((element) {
+          RecentTransactionModel _txn =
+              RecentTransactionModel.fromJson(element);
+
+          _recentTxnList.add(_txn);
+        });
+
+        return DataResponse.success(_recentTxnList);
       } else {
         return DataResponse.error("error message");
       }

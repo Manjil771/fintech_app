@@ -53,7 +53,8 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              CoOperativeValue.development.bannerImage),
+                              RepositoryProvider.of<CoOperative>(context)
+                                  .bannerImage),
                           fit: BoxFit.fitWidth,
                         ),
                         borderRadius: BorderRadius.circular(15),

@@ -19,7 +19,8 @@ class RecentTransactionCubit extends Cubit<CommonState> {
       final response = await recentTransactionRepository.getRecentTransaction();
 
       if (response.status == Status.Success && response.data != null) {
-        emit(CommonStateSuccess<RecentTransactionModel>(data: response.data!));
+        emit(CommonStateSuccess<List<RecentTransactionModel>>(
+            data: response.data!));
       } else {
         emit(CommonError(
             message: response.message ?? "Error fetching customer detail."));
