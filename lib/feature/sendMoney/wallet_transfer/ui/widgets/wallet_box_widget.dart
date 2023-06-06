@@ -1,0 +1,46 @@
+import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
+
+class WalletBoxWidget extends StatelessWidget {
+  const WalletBoxWidget({Key? key, required this.wallet}) : super(key: key);
+
+  final WalletModel wallet;
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    return InkWell(
+      onTap: () {
+        NavigationService.push(
+          target: LoadWalletFormScreen(
+            selectedWallet: wallet,
+          ),
+        );
+      },
+      child: Container(
+        padding: const EdgeInsets.all(30),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
+        width: _width * 0.2,
+        height: _width * 0.4,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          color: CustomTheme.gray,
+        ),
+        child: Column(
+          children: [
+            CustomCachedNetworkImage(url: wallet.icon, fit: BoxFit.cover),
+            SizedBox(height: _height * 0.01),
+            Text(wallet.name),
+          ],
+        ),
+      ),
+    );
+  }
+}

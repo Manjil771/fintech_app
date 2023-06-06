@@ -17,6 +17,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
+import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 
@@ -34,15 +35,30 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final ValueNotifier<bool> _isBiometricEnabled = ValueNotifier(false);
   final GlobalKey<FormState> _loginFormKey = GlobalKey<FormState>();
+
+  final ValueNotifier<bool> _hasExistingLoginSaved = ValueNotifier(false);
+
+  String _existingPhoneNumber = "";
   bool _isLoading = false;
+
+  bool _isBiometricLogin = false;
   _checkBiometric() async {
     bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
+
+    _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    _hasExistingLoginSaved.value = false;
   }
   // 9803435443
   // 70074
+
+  String _getPhoneNumber() {
+    if (phoneController.text.isNotEmpty) return phoneController.text;
+    return _existingPhoneNumber;
+  }
 
   @override
   void initState() {
@@ -60,7 +76,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       showAppBar: false,
       padding: EdgeInsets.zero,
       body: BlocListener<LoginCubit, CommonState>(
-        listener: (context, state) {
+        listener: (context, state) async {
           if (state is CommonLoading && _isLoading == false) {
             _isLoading = true;
             showLoadingDialogBox(context);
@@ -71,10 +87,31 @@ class _LoginWidgetState extends State<LoginWidget> {
 
           if (state is CommonStateSuccess<LoginResponseValue>) {
             if (state.data == LoginResponseValue.Success) {
-              SecureStorageService.setAppPassword(passwordController.text);
-              NavigationService.pushReplacement(
-                target: const DashboardPage(),
-              );
+              if (!_isBiometricLogin) {
+                SecureStorageService.setAppPhoneNumber(_getPhoneNumber());
+                SecureStorageService.setAppPassword(
+                  passwordController.text,
+                );
+              }
+              _hasExistingLoginSaved.value = true;
+              if (await FingerPrintUtils.hasFingerPrint & !_isBiometricLogin) {
+                NavigationService.pushReplacement(
+                  target: BiometricLoginPage(
+                    onValueCallback: (p0) {
+                      if (p0) {
+                        SharedPref.setBiometricLogin(true);
+                      }
+                      NavigationService.pushReplacement(
+                        target: const DashboardPage(),
+                      );
+                    },
+                  ),
+                );
+              } else {
+                NavigationService.pushReplacement(
+                  target: const DashboardPage(),
+                );
+              }
             } else if (state.data == LoginResponseValue.OTPVerification) {
               NavigationService.push(
                 target: OTPWidget(
@@ -119,15 +156,25 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     SizedBox(height: height * 0.03),
-                    CustomTextField(
-                      title: "Mobile Number",
-                      controller: phoneController,
-                      validator: (value) =>
-                          FormValidator.validatePhoneNumber(value),
-                    ),
+                    ValueListenableBuilder<bool>(
+                        valueListenable: _hasExistingLoginSaved,
+                        builder: (context, val, _) {
+                          if (!val) {
+                            return CustomTextField(
+                              title: "Mobile Number",
+                              hintText: "Mobile Number",
+                              controller: phoneController,
+                              validator: (value) =>
+                                  FormValidator.validatePhoneNumber(value),
+                            );
+                          } else {
+                            return Container();
+                          }
+                        }),
                     SizedBox(height: height * 0.014),
                     CustomTextField(
-                      title: "MPIN",
+                      title: "Security pin",
+                      hintText: "Security pin",
                       controller: passwordController,
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
@@ -163,7 +210,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           // if (_loginFormKey.currentState!.validate()) {
                           context.read<LoginCubit>().loginUser(
                                 // username: "9813894737", password: "778899",
-                                username: phoneController.text,
+                                username: _getPhoneNumber(),
                                 password: passwordController.text,
                               );
                           //  }
@@ -184,13 +231,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       await SecureStorageService.appPhoneNumber;
                                   final String password =
                                       await SecureStorageService.appPassword;
+                                  _isBiometricLogin = true;
+                                  print(_isBiometricLogin);
                                   if (phone.isNotEmpty && password.isNotEmpty) {
-                                    // TODO Invoke login cubit
-                                    // authController.login(
-                                    //   phone: phone,
-                                    //   password: password,
-                                    //   isBiometricLogin: true,
-                                    // );
+                                    context.read<LoginCubit>().loginUser(
+                                          username: phone,
+                                          password: password,
+                                        );
                                   }
                                 }
                               },

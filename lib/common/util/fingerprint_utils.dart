@@ -39,7 +39,9 @@ class FingerPrintUtils {
     try {
       final localAuth = LocalAuthentication();
       final bool canCheckBiometrics = await localAuth.canCheckBiometrics;
-      return canCheckBiometrics;
+      final List<BiometricType> availableBiometrics =
+          await localAuth.getAvailableBiometrics();
+      return canCheckBiometrics && availableBiometrics.isNotEmpty;
     } on PlatformException catch (_) {
       return false;
     } catch (e) {

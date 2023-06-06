@@ -22,9 +22,11 @@ class PageWrapper extends StatefulWidget {
   final FloatingActionButtonLocation floatingActionButtonLocation;
   final FloatingActionButtonType floatingActionButtonType;
   final Function()? onBackPressed;
+  final bool showBackButton;
   const PageWrapper({
     this.useOwnAppBar = false,
     required this.body,
+    this.showBackButton = false,
     this.useOwnScaffold = false,
     this.showAppBar = true,
     this.appBar,
@@ -80,7 +82,9 @@ class _PageWrapperState extends State<PageWrapper> {
         bottomNavigationBar: widget.bottomNavBar,
         floatingActionButtonLocation: widget.floatingActionButtonLocation,
         appBar: widget.showAppBar
-            ? (widget.useOwnAppBar ? widget.appBar : myAppbar(context))
+            ? (widget.useOwnAppBar
+                ? widget.appBar
+                : myAppbar(showBackButton: widget.showBackButton))
             : null,
         body: Container(
           padding: widget.padding ??

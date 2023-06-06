@@ -6,10 +6,13 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 
 class UserRepository {
   ApiProvider apiProvider;
@@ -38,13 +41,19 @@ class UserRepository {
     // _user.value = await SharedPref.getUser();
   }
 
-  Future<bool> logout() async {
+  Future<bool> logout({bool isSessionExpired = false}) async {
     try {
       _token = '';
       _isLoggedIn.value = false;
       _user.value = null;
       await SharedPref.deleteAccessToken();
       await SharedPref.deleteUser();
+      if (isSessionExpired)
+        SnackBarUtils.showErrorBar(
+          context: NavigationService.context,
+          message: "Session expired. Please re-login",
+        );
+      NavigationService.pushReplacement(target: const LoginPage());
       return true;
     } on Exception catch (_) {
       print('custom exception is been obtained');

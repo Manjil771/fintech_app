@@ -1,0 +1,39 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/http/response.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_transfer_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/resoures/wallet_load_repository.dart';
+
+class WalletSendCubit extends Cubit<CommonState> {
+  final WalletLoadRepository walletLoadRepository;
+  WalletSendCubit({required this.walletLoadRepository})
+      : super(CommonInitial());
+
+  sendToWallet({
+    required String walletId,
+    required String amount,
+    required String customerName,
+    required String walletAccountNumber,
+    required String validationIdentifier,
+  }) async {
+    emit(CommonLoading());
+    try {
+      final response = await walletLoadRepository.sendToWallet(
+        walletId: walletId,
+        amount: amount,
+        validationIdentifier: validationIdentifier,
+        customerName: customerName,
+        walletAccountNumber: walletAccountNumber,
+      );
+
+      if (response.status == Status.Success && response.data != null) {
+        emit(CommonStateSuccess<WalletTransferModel>(data: response.data!));
+      } else {
+        emit(CommonError(
+            message: response.message ?? "Error fetching wallet list."));
+      }
+    } catch (e) {
+      emit(CommonError(message: e.toString()));
+    }
+  }
+}

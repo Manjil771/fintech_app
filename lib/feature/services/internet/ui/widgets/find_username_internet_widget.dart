@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_payment_detail_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -44,13 +45,22 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
-            // if (_keyValues.isNotEmpty) {
-            NavigationService.push(
-              target: InternetPaymentDeatilScreen(
-                detailFetchData: _response,
-              ),
-            );
-            // }
+            if (_response.code == "M0000") {
+              NavigationService.push(
+                target: InternetPaymentDeatilScreen(
+                  detailFetchData: _response,
+                ),
+              );
+            } else {
+              showPopUpDialog(
+                  context: context,
+                  message: _response.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false);
+            }
           }
         },
         child: Form(

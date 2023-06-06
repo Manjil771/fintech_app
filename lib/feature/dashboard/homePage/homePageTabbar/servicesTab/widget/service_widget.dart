@@ -100,13 +100,14 @@ class ServicesWidget extends StatelessWidget {
               ),
             ),
           ),
-          showAllService
-              ? Container()
-              : TextButton(
-                  onPressed: () {
-                    NavigationService.push(target: AllServiceScreen());
-                  },
-                  child: const Text("View More"))
+          // showAllService
+          //     ? Container()
+          //     : TextButton(
+          //         onPressed: () {
+          //           NavigationService.pushNamed(
+          //               routeName: Routes.allServicesDashboard);
+          //         },
+          //         child: const Text("View More"))
         ],
       ),
     );

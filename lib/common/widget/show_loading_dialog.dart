@@ -30,17 +30,17 @@ class LoadingDialogBox extends StatelessWidget {
             mainAxisSize: MainAxisSize.min,
             children: [
               Image.asset(
-                Assets.logoImage,
+                Assets.loader,
                 height: 80,
                 width: 80,
               ),
-              const SizedBox(height: 14),
-              Text(
-                "Loading...",
-                style: _textTheme.titleLarge!.copyWith(
-                  color: Colors.white,
-                ),
-              ),
+              // const SizedBox(height: 14),
+              // Text(
+              //   "Loading...",
+              //   style: _textTheme.titleLarge!.copyWith(
+              //     color: Colors.white,
+              //   ),
+              // ),
             ],
           ),
         ),
