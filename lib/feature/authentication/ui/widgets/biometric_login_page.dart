@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -77,6 +78,7 @@ class BiometricLoginPage extends StatelessWidget {
           CustomRoundedButtom(
             title: "Continue without Biometric",
             onPressed: () {
+              SharedPref.setBiometricLogin(false);
               NavigationService.pushReplacement(
                 target: const DashboardPage(),
               );

@@ -15,14 +15,15 @@ class SplashWidget extends StatelessWidget {
     return BlocListener<StartupCubit, StartupState>(
       listener: (context, state) {
         if (state is StartupSuccess) {
+          NavigationService.push(target: const LoginPage());
           // if (state.isFirstTime) {
           //   NavigationService.push(target: OnboardPage());
           // } else
-          if (state.isLogged) {
-            NavigationService.pushReplacement(target: const DashboardPage());
-          } else {
-            NavigationService.pushReplacement(target: const LoginPage());
-          }
+          // if (state.isLogged) {
+          //   NavigationService.pushReplacement(target: const DashboardPage());
+          // } else {
+          //   NavigationService.pushReplacement(target: const LoginPage());
+          // }
         }
       },
       child: Scaffold(

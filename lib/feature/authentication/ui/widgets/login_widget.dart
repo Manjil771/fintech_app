@@ -40,6 +40,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   String _existingPhoneNumber = "";
   bool _isLoading = false;
+
+  bool _isBiometricLogin = false;
   _checkBiometric() async {
     bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
@@ -48,6 +50,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    _hasExistingLoginSaved.value = false;
   }
   // 9803435443
   // 70074
@@ -84,12 +87,14 @@ class _LoginWidgetState extends State<LoginWidget> {
 
           if (state is CommonStateSuccess<LoginResponseValue>) {
             if (state.data == LoginResponseValue.Success) {
-              SecureStorageService.setAppPhoneNumber(phoneController.text);
-              SecureStorageService.setAppPassword(
-                passwordController.text,
-              );
+              if (!_isBiometricLogin) {
+                SecureStorageService.setAppPhoneNumber(_getPhoneNumber());
+                SecureStorageService.setAppPassword(
+                  passwordController.text,
+                );
+              }
               _hasExistingLoginSaved.value = true;
-              if (await FingerPrintUtils.hasFingerPrint) {
+              if (await FingerPrintUtils.hasFingerPrint & !_isBiometricLogin) {
                 NavigationService.pushReplacement(
                   target: BiometricLoginPage(
                     onValueCallback: (p0) {
@@ -157,6 +162,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           if (!val) {
                             return CustomTextField(
                               title: "Mobile Number",
+                              hintText: "Mobile Number",
                               controller: phoneController,
                               validator: (value) =>
                                   FormValidator.validatePhoneNumber(value),
@@ -167,7 +173,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                         }),
                     SizedBox(height: height * 0.014),
                     CustomTextField(
-                      title: "MPIN",
+                      title: "Security pin",
+                      hintText: "Security pin",
                       controller: passwordController,
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
@@ -224,6 +231,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       await SecureStorageService.appPhoneNumber;
                                   final String password =
                                       await SecureStorageService.appPassword;
+                                  _isBiometricLogin = true;
+                                  print(_isBiometricLogin);
                                   if (phone.isNotEmpty && password.isNotEmpty) {
                                     context.read<LoginCubit>().loginUser(
                                           username: phone,

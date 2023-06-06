@@ -29,7 +29,6 @@ class ServicesWidget extends StatelessWidget {
 
   final List images = [
     Assets.topupPaymentIcon,
-    Assets.topupPaymentIcon,
     Assets.electricityIcon,
     Assets.internetIcon,
     Assets.airlineIcon,
@@ -98,14 +97,14 @@ class ServicesWidget extends StatelessWidget {
               ),
             ),
           ),
-          showAllService
-              ? Container()
-              : TextButton(
-                  onPressed: () {
-                    NavigationService.pushNamed(
-                        routeName: Routes.allServicesDashboard);
-                  },
-                  child: const Text("View More"))
+          // showAllService
+          //     ? Container()
+          //     : TextButton(
+          //         onPressed: () {
+          //           NavigationService.pushNamed(
+          //               routeName: Routes.allServicesDashboard);
+          //         },
+          //         child: const Text("View More"))
         ],
       ),
     );
