@@ -49,6 +49,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
+      showAppBar: false,
       body: BlocConsumer<MiniStatementCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
@@ -155,7 +156,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           }
                         }),
                     DataTable(
-                      columns: [
+                      columns: const [
                         DataColumn(label: Text("DR/CR")),
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
@@ -183,7 +184,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                   ],
                 ),
                 onButtonPressed: () {
-                  NavigationService.push(target: DashboardPage());
+                  NavigationService.push(target: const DashboardPage());
                 },
                 buttonName: "Close",
                 title: "Mini Statement",
