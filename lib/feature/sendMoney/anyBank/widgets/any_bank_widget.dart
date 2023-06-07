@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
@@ -177,18 +178,26 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       bankId: selectedBank?.bankId ?? "",
                     );
               } else {
-                context.read<SendToBankCubit>().sendMoneyToBank(
-                      charge: charges.toString(),
-                      amount: _amountController.text,
-                      // mpin: "70074",
-                      mpin: "24878",
-                      remarks: _remarksController.text,
-                      destinationBankInstrumentCode: selectedBank?.bankId ?? "",
-                      destinationBankAccountName: _accountNameController.text,
-                      destinationBankAccountNumber:
-                          _accountNumberController.text,
-                      destinationBankName: selectedBank?.bankName ?? "",
-                    );
+                NavigationService.push(
+                  target: TransactionPinScreen(
+                    onValueCallback: (pin) {
+                      NavigationService.pop();
+                      context.read<SendToBankCubit>().sendMoneyToBank(
+                            charge: charges.toString(),
+                            amount: _amountController.text,
+                            mpin: pin,
+                            remarks: _remarksController.text,
+                            destinationBankInstrumentCode:
+                                selectedBank?.bankId ?? "",
+                            destinationBankAccountName:
+                                _accountNameController.text,
+                            destinationBankAccountNumber:
+                                _accountNumberController.text,
+                            destinationBankName: selectedBank?.bankName ?? "",
+                          );
+                    },
+                  ),
+                );
               }
             }
           },
