@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/enum/text_field_type.dart';
 
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-enum TextFieldType { Outline, Filled }
 
 class CustomPinCodeField extends StatelessWidget {
   final TextEditingController? controller;
@@ -53,15 +53,19 @@ class CustomPinCodeField extends StatelessWidget {
               ? const EdgeInsets.only(right: 10)
               : EdgeInsets.zero,
           activeColor: theme.primaryColor,
-          activeFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
+          activeFillColor: type == TextFieldType.Filled
+              ? CustomTheme.lightGray
+              : Colors.transparent,
           selectedColor: theme.primaryColor,
-          selectedFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
-          inactiveFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
-          inactiveColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.grey,
+          selectedFillColor: type == TextFieldType.Filled
+              ? CustomTheme.lightGray
+              : Colors.transparent,
+          inactiveFillColor: type == TextFieldType.Filled
+              ? CustomTheme.lightGray
+              : Colors.transparent,
+          inactiveColor: type == TextFieldType.Filled
+              ? CustomTheme.lightGray
+              : Colors.grey,
         ),
         mainAxisAlignment: mainAxisAlignment,
         animationType: AnimationType.fade,
