@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
@@ -124,6 +125,11 @@ class RouteGenerator {
       case Routes.statementPage:
         return MaterialPageRoute(
           builder: (_) => const StatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.balanceInquiry:
+        return MaterialPageRoute(
+          builder: (_) => const BalanceInquiryPage(),
           settings: RouteSettings(name: settings.name),
         );
       default:

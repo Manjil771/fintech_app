@@ -31,7 +31,7 @@ class BankingWidget extends StatelessWidget {
                   crossAxisCount: 2),
               itemBuilder: (context, index) => CommonGridViewContainer(
                 onContainerPress: () {
-                  NavigationService.push(target: StatementPage());
+                  NavigationService.pushNamed(routeName: onPress[index]);
                 },
                 margin: const EdgeInsets.all(8),
                 containerImage: images[index],
@@ -59,23 +59,11 @@ class BankingWidget extends StatelessWidget {
     Assets.chequeBookIcon,
   ];
   final onPress = [
-    () {
-      NavigationService.pushNamed(routeName: Routes.profileScreen);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.profileScreen);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.statementPage);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.profileScreen);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.profileScreen);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.profileScreen);
-    },
+    Routes.profileScreen,
+    Routes.balanceInquiry,
+    Routes.statementPage,
+    Routes.profileScreen,
+    Routes.anyBank,
+    Routes.profileScreen,
   ];
 }

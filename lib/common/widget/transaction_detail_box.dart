@@ -43,9 +43,8 @@ class TransactionDetailBox extends StatelessWidget {
               color: Colors.white,
             ),
             child: Image.network(
-                RepositoryProvider.of<CoOperative>(context).baseUrl +
-                    "/" +
-                    imageUrl),
+                RepositoryProvider.of<CoOperative>(context).baseUrl + imageUrl),
+            // child: Image.network("http://103.198.9.222:1231$imageUrl"),
           ),
           SizedBox(width: _width * 0.05),
           Expanded(

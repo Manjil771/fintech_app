@@ -1,3 +1,5 @@
+import 'package:ismart/common/constant/assets.dart';
+
 class CoOperative {
   CoOperative({
     required this.clientCode,
@@ -62,7 +64,7 @@ class CoOperativeValue {
     bannerImage: "assets/images/isamrt_banner.jpg",
     clientCode: 'VBMRDWEVFV',
     coOperativeName: '',
-    coOperativeLogo: '',
+    coOperativeLogo: Assets.ismartLogo,
     clientSecret: "199204",
   );
 }
