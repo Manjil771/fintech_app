@@ -4,12 +4,11 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
 
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-
-import '../../../common/util/size_utils.dart';
 
 class HomePageUserWidget extends StatefulWidget {
   const HomePageUserWidget({Key? key}) : super(key: key);

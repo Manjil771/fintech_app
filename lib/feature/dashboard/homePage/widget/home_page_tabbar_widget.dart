@@ -26,9 +26,12 @@ class HomePageTabbarWidget extends StatelessWidget {
           Expanded(
             child: TabBarView(
               children: [
-                ServicesPage(
-                  showAllServices: false,
+                Center(
+                  child: Text("Graph"),
                 ),
+                // ServicesPage(
+                //   showAllServices: false,
+                // ),
                 Center(
                   child: Text("Graph"),
                 ),
