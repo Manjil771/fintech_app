@@ -22,4 +22,5 @@ class Routes {
   static const requestSapati = "/request_sapati";
   static const statementPage = "/statement_page";
   static const balanceInquiry = "/balance_inquiry";
+  static const chequeScreen = "/cheque_Screen";
 }

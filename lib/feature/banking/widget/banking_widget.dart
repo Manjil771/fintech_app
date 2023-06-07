@@ -64,6 +64,6 @@ class BankingWidget extends StatelessWidget {
     Routes.statementPage,
     Routes.profileScreen,
     Routes.anyBank,
-    Routes.profileScreen,
+    Routes.chequeScreen,
   ];
 }
