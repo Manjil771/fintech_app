@@ -10,6 +10,7 @@ import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/qrCode/scanQr/screen/scan_qr_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -25,7 +26,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   final screens = [
     const HomePage(),
     const Bankingpage(),
-    const Text("3"),
+    ScanQrPage(),
     RecentTransactionScreen(),
     Center(
       child: ElevatedButton(
@@ -52,7 +53,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       ),
       floatinActionButton: FloatingActionButton(
         backgroundColor: _theme.primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          NavigationService.push(target: ScanQrPage());
+        },
         child: SvgPicture.asset(
           Assets.qrCodeIcon,
           height: 30,
