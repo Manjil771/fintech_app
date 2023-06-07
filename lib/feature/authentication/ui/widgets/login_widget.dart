@@ -12,6 +12,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -49,8 +50,9 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
+    print("Existing Number: $_existingPhoneNumber");
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
-    _hasExistingLoginSaved.value = false;
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
   }
   // 9803435443
   // 70074
@@ -164,6 +166,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               title: "Mobile Number",
                               hintText: "Mobile Number",
                               controller: phoneController,
+                              textInputType: TextInputType.phone,
                               validator: (value) =>
                                   FormValidator.validatePhoneNumber(value),
                             );
@@ -172,10 +175,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    CustomTextField(
+                    CustomPasswordField(
                       title: "Security pin",
                       hintText: "Security pin",
                       controller: passwordController,
+                      textInputType: TextInputType.number,
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
