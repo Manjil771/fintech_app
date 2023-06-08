@@ -8,6 +8,7 @@ import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
   final Widget body;
+  final String accountTitle;
   final bool showAccountSelection;
   final String topbarName;
   final String title;
@@ -21,6 +22,7 @@ class CommonContainer extends StatelessWidget {
 
   final Function()? onButtonPressed;
   const CommonContainer({
+    this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,
     this.horizontalPadding = 20.0,
@@ -69,12 +71,11 @@ class CommonContainer extends StatelessWidget {
                     : Container(),
                 SizedBox(height: _height * 0.01),
                 showAccountSelection
-                    ? Container()
-                    : Column(
+                    ? Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            title,
+                            accountTitle,
                             style: TextStyle(
                               fontFamily: Fonts.poppin,
                               fontWeight: FontWeight.w600,
@@ -84,7 +85,8 @@ class CommonContainer extends StatelessWidget {
                           ),
                           PrimaryAccountBox(),
                         ],
-                      ),
+                      )
+                    : Container(),
                 SizedBox(height: _height * 0.01),
                 body,
                 SizedBox(height: _height * 0.03),

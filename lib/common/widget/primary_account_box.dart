@@ -4,8 +4,6 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class PrimaryAccountBox extends StatefulWidget {
-  PrimaryAccountBox({Key? key}) : super(key: key);
-
   @override
   State<PrimaryAccountBox> createState() => _PrimaryAccountBoxState();
 }
@@ -30,8 +28,9 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
         width: double.infinity,
         height: _width * 0.35,
         decoration: BoxDecoration(
+          color: _theme.scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: _theme.primaryColor, width: 2),
+          border: Border.all(color: _theme.scaffoldBackgroundColor, width: 2),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,

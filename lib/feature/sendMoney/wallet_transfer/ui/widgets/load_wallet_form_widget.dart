@@ -122,7 +122,11 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           )
         ],
         child: CommonContainer(
+          showAccountSelection: true,
           topbarName: "Load Wallet",
+          title: "Load ${widget.selectedWallet.name}",
+          detail:
+              "Load money to your preferred ${widget.selectedWallet.name} account",
           buttonName: _isAccountValidated ? "Load Wallet" : "Check Transfer",
           onButtonPressed: () {
             if (!_isAccountValidated && _validationResult == null) {
@@ -140,15 +144,6 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  "Load ${widget.selectedWallet.name}",
-                  style: Theme.of(context).textTheme.titleLarge,
-                ),
-                Text(
-                  "Load money to your preferred ${widget.selectedWallet.name} account.",
-                  style: Theme.of(context).textTheme.displaySmall,
-                ),
-                SizedBox(height: size.height * 0.01),
                 Text(
                   widget.selectedWallet.descOneFieldName,
                   style: Theme.of(context).textTheme.titleMedium,

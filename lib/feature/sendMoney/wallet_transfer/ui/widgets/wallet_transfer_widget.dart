@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -18,14 +19,16 @@ class WalletTransferWidget extends StatefulWidget {
 class _WalletTransferWidgetState extends State<WalletTransferWidget> {
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        title: "Wallet Transfer",
+        detail: "Load Money to your preffered wallet account",
         showRoundBotton: false,
-        topbarName: "Banking",
-        showTitleText: false,
+        topbarName: "Send Money",
+        showTitleText: true,
         body: Container(
-          height: size.height * 0.6,
+          height: _height * 0.6,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -36,22 +39,6 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Container(
-                padding: const EdgeInsets.fromLTRB(20, 20, 30, 20),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Wallet Transfer",
-                      style: Theme.of(context).textTheme.titleLarge,
-                    ),
-                    Text(
-                      "Load Money to your preffered wallet account",
-                      style: Theme.of(context).textTheme.displaySmall,
-                    ),
-                  ],
-                ),
-              ),
               BlocBuilder<WalletListCubit, CommonState>(
                 builder: (context, state) {
                   if (state is CommonLoading) {
@@ -85,7 +72,7 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
   }
 
   // walletBox(context, index) {
-  //   Size size = MediaQuery.of(context).size;
+  //   Size _= MediaQuery.of(context)._
   //   return InkWell(
   //     onTap: () {
   //       NavigationService.push(
@@ -97,8 +84,8 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
   //     child: Container(
   //       padding: const EdgeInsets.all(30),
   //       margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
-  //       width: size.width * 0.2,
-  //       height: size.width * 0.4,
+  //       width: _width * 0.2,
+  //       height: _width * 0.4,
   //       decoration: BoxDecoration(
   //         borderRadius: BorderRadius.circular(20),
   //         color: CustomTheme.gray,
@@ -106,7 +93,7 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
   //       child: Column(
   //         children: [
   //           Expanded(child: Image.asset("assets/images/${images[index]}")),
-  //           SizedBox(height: size.height * 0.01),
+  //           SizedBox(height: _height * 0.01),
   //           Text(names[index]),
   //         ],
   //       ),

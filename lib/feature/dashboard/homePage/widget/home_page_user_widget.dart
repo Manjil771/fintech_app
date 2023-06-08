@@ -100,10 +100,14 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
-                                    SvgPicture.asset(
-                                      Assets.arrowRight,
-                                      height: _height * 0.01,
-                                    ),
+                                    RotatedBox(
+                                      quarterTurns: 5,
+                                      child: SvgPicture.asset(
+                                        Assets.arrowRight,
+                                        color: CustomTheme.white,
+                                        height: _height * 0.015,
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
