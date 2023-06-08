@@ -16,8 +16,10 @@ class ServicesApiProvider {
       required this.userRepository});
 
   Future<dynamic> fetchServices() async {
-    final _params = {"withService": true};
+    final _params = {"withService": "true"};
     final _uri = UrlUtils.getUri(
         url: coOperative.baseUrl + "/api/category", params: _params);
+    return await apiProvider.get(Uri.parse(_uri.toString()),
+        userId: 0, token: userRepository.token);
   }
 }

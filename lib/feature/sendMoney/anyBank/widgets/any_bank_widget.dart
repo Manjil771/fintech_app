@@ -190,7 +190,6 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             val, "Phone Number"),
                       )
                     : CustomTextField(
-                        title: "Account Holder Name",
                         hintText: "Account Holder Name",
                         controller: _accountNameController,
                         validator: (val) => FormValidator.validateFieldNotEmpty(

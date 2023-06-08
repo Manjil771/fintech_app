@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -47,36 +48,6 @@ class _ServicesWidgetState extends State<ServicesWidget> {
     Routes.mobileTopup,
   ];
 
-  final List images = [
-    Assets.topupPaymentIcon,
-    Assets.electricityIcon,
-    Assets.internetIcon,
-    Assets.airlineIcon,
-    Assets.waterIcon,
-    Assets.insuranceIcon,
-    Assets.busIcon,
-    Assets.tvIcon,
-    Assets.dataPackIcon,
-    Assets.ridepaymentIcon,
-    Assets.governmentIcon,
-    Assets.brokerIcon,
-    Assets.landlineIcon,
-  ];
-
-  final names = [
-    "Top Up",
-    "Electricity",
-    "Internet",
-    "Air Ticket",
-    "Water",
-    "Insurance",
-    "Bus Ticket",
-    "Television",
-    "Data Packs",
-    "Ride",
-    "Government Payment",
-    "Broker",
-  ];
   bool _isLoading = false;
 
   @override
@@ -86,11 +57,11 @@ class _ServicesWidgetState extends State<ServicesWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Container(
-        padding: const EdgeInsets.symmetric(vertical: 18),
-        decoration: BoxDecoration(
-            color: CustomTheme.white, borderRadius: BorderRadius.circular(18)),
-        child: BlocConsumer<ServicesCubit, CommonState>(
-            listener: (context, state) {
+      padding: const EdgeInsets.symmetric(vertical: 18),
+      decoration: BoxDecoration(
+          color: CustomTheme.white, borderRadius: BorderRadius.circular(18)),
+      child: BlocConsumer<ServicesCubit, CommonState>(
+        listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
             _isLoading = true;
             showLoadingDialogBox(context);
@@ -110,86 +81,72 @@ class _ServicesWidgetState extends State<ServicesWidget> {
               },
             );
           }
-        }, builder: (context, state) {
-          if (state is CommonStateSuccess<List<ServiceModel>>) {
-            return Container(
-              child: Text("scccess"),
+        },
+        builder: (context, state) {
+          if (state is CommonStateSuccess<List<ServicesModel>>) {
+            return Column(
+              children: [
+                Expanded(
+                  child: Container(
+                      child: GridView.builder(
+                    itemCount: widget.showAllService
+                        ? state.data.length
+                        : state.data.length >= 8
+                            ? 8
+                            : state.data.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 4,
+                    ),
+                    itemBuilder: (context, index) => InkWell(
+                      onTap: () {
+                        NavigationService.pushNamed(routeName: screens[index]);
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                            height: _height * 0.03,
+                            child: SvgPicture.network(
+                              //"http://103.198.9.222:1231${state.data[index].imageUrl}",
+
+                              placeholderBuilder: (BuildContext context) =>
+                                  Center(child: CircularProgressIndicator()),
+
+                              "${RepositoryProvider.of<CoOperative>(context).baseUrl}${state.data[index].imageUrl}",
+                            ),
+                          ),
+                          SizedBox(height: _height * 0.02),
+                          Expanded(
+                            child: Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 5),
+                              child: Text(
+                                "${state.data[index].name}",
+                                textAlign: TextAlign.center,
+                                style: _textTheme.titleSmall,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  )),
+                ),
+                widget.showAllService
+                    ? TextButton(
+                        onPressed: () {
+                          NavigationService.pushNamed(
+                              routeName: Routes.allServicesDashboard);
+                        },
+                        child: const Text("View More"))
+                    : Container(),
+              ],
             );
           } else {
-            return Text(state.toString());
+            return Container();
           }
-          //     builder: (context, state) {
-          //       if (state is CommonStateSuccess<List<ServiceModel>>) {
-          //         return Container(
-          //           height: 500,
-          //           width: 500,
-          //           child: GridView.builder(
-          //             itemCount: widget.showAllService ? 12 : 8,
-          //             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          //               crossAxisCount: 4,
-          //             ),
-          //             itemBuilder: (context, index) => InkWell(
-          //               onTap: () {
-          //                 NavigationService.pushNamed(routeName: screens[index]);
-          //               },
-          //               child: Column(
-          //                 children: [
-          //                   SvgPicture.asset(
-          //                     "${images[index]}",
-          //                     height: _height * 0.03,
-          //                   ),
-          //                   SizedBox(height: _height * 0.02),
-          //                   Expanded(
-          //                     child: Text(
-          //                       "${names[index]}".toString(),
-          //                       style: _textTheme.titleSmall,
-          //                     ),
-          //                   ),
-          //                 ],
-          //               ),
-          //             ),
-          //           ),
-          //         );
-          //       } else {
-          //         return Container();
-          //       }
-          //     },
-          //   ),
-        }));
+        },
+      ),
+    );
   }
 }
-//  Expanded(
-//             child: GridView.builder(
-//               itemCount: widget.showAllService ? 12 : 8,
-//               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//                 crossAxisCount: 4,
-//               ),
-//               itemBuilder: (context, index) => InkWell(
-//                 onTap: () {
-//                   NavigationService.pushNamed(routeName: screens[index]);
-//                 },
-//                 child: Column(
-//                   children: [
-//                     SvgPicture.asset(
-//                       "${images[index]}",
-//                       height: _height * 0.03,
-//                     ),
-//                     SizedBox(height: _height * 0.02),
-//                     Expanded(
-//                       child: Text(
-//                         "${names[index]}".toString(),
-//                         style: _textTheme.titleSmall,
-//                       ),
-//                     ),
-//                   ],
-//                 ),
-//               ),
-//             ),
-//           ),  // showAllService
-          //     ? Container()
-          //     : TextButton(
-          //         onPressed: () {
-          //           NavigationService.pushNamed(
-          //               routeName: Routes.allServicesDashboard);
-          //         },
-          //         child: const Text("View More"))

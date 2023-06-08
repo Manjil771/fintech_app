@@ -18,55 +18,40 @@ class ServicesRepository {
   final CoOperative coOperative;
   final UserRepository userRepository;
 
-  late ServicesApiProvider serviceApiProvider;
+  late ServicesApiProvider servicesApiProvider;
 
   ServicesRepository({
     required this.apiProvider,
     required this.coOperative,
     required this.userRepository,
   }) {
-    serviceApiProvider = ServicesApiProvider(
+    servicesApiProvider = ServicesApiProvider(
         apiProvider: apiProvider,
         baseUrl: coOperative.baseUrl,
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<ServiceModel>> getServices() async {
-    List<ServiceModel> _servicesList = [];
+  Future<DataResponse<List<ServicesModel>>> getServiceList() async {
+    List<ServicesModel> _recentTxnList = [];
     try {
-      final _res = await serviceApiProvider.fetchServices();
-      print(_res.toString());
+      final _res = await servicesApiProvider.fetchServices();
 
       if (_res['data']['details'] != null) {
         // Parse Data from API
 
-        final Map<String, dynamic> _userMap =
-            Map<String, dynamic>.from(_res['data']?['details'] ?? {});
+        final List _userMap = List.from(_res["data"]['details'] ?? []);
 
         if (_userMap.isEmpty) {
           return DataResponse.error("Error fetching data.");
         }
-        ServiceModel _miniStatement = ServiceModel.fromJson(_userMap);
 
-        return DataResponse.success(_miniStatement);
-        // final _res = await serviceApiProvider.fetchServices();
+        _userMap.forEach((element) {
+          ServicesModel _txn = ServicesModel.fromJson(element);
 
-        // if (_res['data']['details'] != null) {
-        //   // Parse Data from API
+          _recentTxnList.add(_txn);
+        });
 
-        //   final List _serviceMap = List.from(_res["data"]['details'] ?? {});
-
-        //   if (_serviceMap.isEmpty) {
-        //     return DataResponse.error("Error fetching data.");
-        //   }
-
-        //   _serviceMap.forEach((element) {
-        //     ServiceModel _txn = ServiceModel.fromJson(element);
-
-        //     _servicesList.add(_txn);
-        //   });
-
-        //   return DataResponse.success(_servicesList);
+        return DataResponse.success(_recentTxnList);
       } else {
         return DataResponse.error("error message");
       }
