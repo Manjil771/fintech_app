@@ -103,9 +103,9 @@ class CustomTextField extends FormField<String> {
                                 RichText(
                                   text: TextSpan(
                                     text: title,
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontFamily: Fonts.poppin,
-                                      fontWeight: FontWeight.w700,
+                                      fontWeight: FontWeight.w600,
                                       fontSize: 14,
                                       color: CustomTheme.lightTextColor,
                                     ),

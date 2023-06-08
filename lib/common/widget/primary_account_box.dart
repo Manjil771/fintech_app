@@ -3,8 +3,15 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
-class PrimaryAccountBox extends StatelessWidget {
-  const PrimaryAccountBox({Key? key}) : super(key: key);
+class PrimaryAccountBox extends StatefulWidget {
+  PrimaryAccountBox({Key? key}) : super(key: key);
+
+  @override
+  State<PrimaryAccountBox> createState() => _PrimaryAccountBoxState();
+}
+
+class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
+  bool showAmount = false;
 
   @override
   Widget build(BuildContext context) {
@@ -38,11 +45,24 @@ class PrimaryAccountBox extends StatelessWidget {
                 ),
                 SizedBox(width: _width * 0.03),
                 Text(
-                  "NPR 123546846",
+                  showAmount ? "XXXXXXXXX" : "NPR 123546846",
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontFamily: "popinsemibold",
                       color: _theme.primaryColor),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        showAmount = !showAmount;
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      "assets/icons/akar-icons_eye-slashed.svg",
+                      height: _height * 0.025,
+                    ),
+                  ),
                 ),
                 const Spacer(),
                 Container(
