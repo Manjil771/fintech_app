@@ -62,13 +62,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       SizedBox(width: _width * 0.02),
                       Text(
                         "Send",
-                        style: _textTheme.titleSmall,
+                        style: _textTheme.titleLarge,
                       ),
                     ],
                   ),
                 ),
               )),
-              SizedBox(width: _width * 0.15),
+              SizedBox(width: _width * 0.1),
               Expanded(
                   child: InkWell(
                 onTap: () {
@@ -95,7 +95,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       SizedBox(width: _width * 0.02),
                       Text(
                         "Receive",
-                        style: _textTheme.titleSmall,
+                        style: _textTheme.titleLarge,
                       ),
                     ],
                   ),

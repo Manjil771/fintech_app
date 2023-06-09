@@ -54,7 +54,7 @@ class CoOperativeValue {
     bannerImage: "assets/images/isamrt_banner.jpg",
     clientCode: 'EHVNI7CZJ3',
     coOperativeName: '',
-    coOperativeLogo: '',
+    coOperativeLogo: Assets.ismartLogo,
     clientSecret: "126489",
   );
   // // LIVE

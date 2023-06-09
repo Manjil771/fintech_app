@@ -89,48 +89,53 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                 Expanded(
                   child: Container(
                       child: GridView.builder(
-                    itemCount: widget.showAllService
-                        ? state.data.length
-                        : state.data.length >= 8
-                            ? 8
-                            : state.data.length,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 4,
-                    ),
-                    itemBuilder: (context, index) => InkWell(
-                      onTap: () {
-                        NavigationService.pushNamed(routeName: screens[index]);
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                            height: _height * 0.03,
-                            child: SvgPicture.network(
-                              //"http://103.198.9.222:1231${state.data[index].imageUrl}",
-
-                              placeholderBuilder: (BuildContext context) =>
-                                  Center(child: CircularProgressIndicator()),
-
-                              "${RepositoryProvider.of<CoOperative>(context).baseUrl}${state.data[index].imageUrl}",
-                            ),
+                          itemCount: widget.showAllService
+                              ? state.data.length
+                              : state.data.length >= 8
+                                  ? 8
+                                  : state.data.length,
+                          gridDelegate:
+                              const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 4,
                           ),
-                          SizedBox(height: _height * 0.02),
-                          Expanded(
-                            child: Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(horizontal: 5),
-                              child: Text(
-                                "${state.data[index].name}",
-                                textAlign: TextAlign.center,
-                                style: _textTheme.titleSmall,
+                          itemBuilder: (context, index) {
+                            return InkWell(
+                              onTap: () {
+                                NavigationService.pushNamed(
+                                    routeName: screens[index]);
+                              },
+                              child: Column(
+                                children: [
+                                  Container(
+                                    height: _height * 0.03,
+                                    child: SvgPicture.network(
+                                      "https://ismart.devanasoft.com.np/${state.data[index].imageUrl}",
+                                      // "https://ismart.devanasoft.com.np/ismart/serviceIcon/${state.data[index].imageUrl}
+
+                                      placeholderBuilder:
+                                          (BuildContext context) => Center(
+                                              child:
+                                                  CircularProgressIndicator()),
+
+                                      //"${RepositoryProvider.of<CoOperative>(context).baseUrl}${state.data[index].imageUrl}",
+                                    ),
+                                  ),
+                                  SizedBox(height: _height * 0.02),
+                                  Expanded(
+                                    child: Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 5),
+                                      child: Text(
+                                        "${state.data[index].name}",
+                                        textAlign: TextAlign.center,
+                                        style: _textTheme.titleSmall,
+                                      ),
+                                    ),
+                                  ),
+                                ],
                               ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  )),
+                            );
+                          })),
                 ),
                 widget.showAllService
                     ? TextButton(

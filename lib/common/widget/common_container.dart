@@ -12,6 +12,7 @@ class CommonContainer extends StatelessWidget {
   final bool showAccountSelection;
   final String topbarName;
   final String title;
+  final bool showDetail;
   final String buttonName;
   final String detail;
   final bool showBackBotton;
@@ -22,6 +23,7 @@ class CommonContainer extends StatelessWidget {
 
   final Function()? onButtonPressed;
   const CommonContainer({
+    this.showDetail = true,
     this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,
@@ -63,7 +65,7 @@ class CommonContainer extends StatelessWidget {
                         style: _textTheme.displaySmall!
                             .copyWith(fontWeight: FontWeight.bold))
                     : Container(),
-                showTitleText
+                showDetail
                     ? Text(
                         detail,
                         style: _textTheme.titleLarge,
