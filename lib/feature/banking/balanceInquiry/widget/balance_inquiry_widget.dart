@@ -31,6 +31,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showRoundBotton: false,
         body: Column(
           children: [

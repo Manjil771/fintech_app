@@ -34,6 +34,7 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         body: Form(
           key: _formKey,
           child: Column(

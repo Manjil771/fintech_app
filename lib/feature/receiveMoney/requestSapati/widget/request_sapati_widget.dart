@@ -9,6 +9,7 @@ class RequestSapatiWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         accountTitle: "To Account",
         body: Column(

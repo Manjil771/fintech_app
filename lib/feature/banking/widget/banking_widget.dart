@@ -19,6 +19,7 @@ class BankingWidget extends StatelessWidget {
       padding: EdgeInsets.zero,
       showAppBar: false,
       body: CommonContainer(
+          showDetail: false,
           showRoundBotton: false,
           showBackBotton: false,
           topbarName: "Banking",

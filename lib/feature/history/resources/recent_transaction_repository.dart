@@ -53,7 +53,7 @@ class RecentTransactionRepository {
 
         return DataResponse.success(_recentTxnList);
       } else {
-        return DataResponse.error("error message");
+        return DataResponse.error("No Transaction");
       }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {

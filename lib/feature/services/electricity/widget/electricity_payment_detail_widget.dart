@@ -13,6 +13,8 @@ class ElectricityPaymentDetailWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: false,
+
         title: "NEA Payment",
         detail: "Pay for your electricity bill from here.",
         topbarName: "Payment",

@@ -14,6 +14,7 @@ class OtherCooperativeWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         body: Column(
           children: [

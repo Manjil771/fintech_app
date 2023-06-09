@@ -17,6 +17,7 @@ class ChooseAccountMiniStatementWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         accountTitle: "Select Account",
         topbarName: "Statement",

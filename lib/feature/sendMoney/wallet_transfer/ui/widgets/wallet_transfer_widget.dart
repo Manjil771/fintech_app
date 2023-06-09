@@ -22,6 +22,7 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: false,
         title: "Wallet Transfer",
         detail: "Load Money to your preffered wallet account",
         showRoundBotton: false,

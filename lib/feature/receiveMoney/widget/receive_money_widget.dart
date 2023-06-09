@@ -12,6 +12,7 @@ class ReceiveMoneyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+          showDetail: true,
           showTitleText: false,
           horizontalPadding: 0,
           body: Column(

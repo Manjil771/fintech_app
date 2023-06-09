@@ -13,6 +13,7 @@ class SendMoneyWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+          showDetail: false,
           showTitleText: false,
           horizontalPadding: 0,
           body: Column(

@@ -23,7 +23,7 @@ class CommonContainer extends StatelessWidget {
 
   final Function()? onButtonPressed;
   const CommonContainer({
-    this.showDetail = true,
+    required this.showDetail,
     this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,

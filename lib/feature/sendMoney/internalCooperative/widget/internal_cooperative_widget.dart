@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -14,6 +15,7 @@ class InternalCooperativeWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         body: Column(
           children: [

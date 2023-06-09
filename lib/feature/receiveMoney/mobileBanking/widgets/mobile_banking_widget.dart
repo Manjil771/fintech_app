@@ -85,6 +85,7 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
           // )
         ],
         child: CommonContainer(
+          showDetail: true,
           showAccountSelection: true,
           accountTitle: "To Account",
           body: Form(

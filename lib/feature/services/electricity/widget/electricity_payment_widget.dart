@@ -29,6 +29,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         title: "NEA Payment",
         detail: "Pay for your electricity bill from here.",
         body: BlocListener<UtilityPaymentCubit, CommonState>(

@@ -48,6 +48,7 @@ class _ChooseAccountFullStatementWidgetState
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         topbarName: "Statement",
         title: "Full Statement",

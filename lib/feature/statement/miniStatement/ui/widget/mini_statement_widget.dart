@@ -74,6 +74,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         builder: (context, state) {
           if (state is CommonStateSuccess<MiniStatementModel>) {
             return CommonContainer(
+                showDetail: true,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

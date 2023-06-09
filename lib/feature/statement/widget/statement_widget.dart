@@ -18,6 +18,7 @@ class StatementWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: false,
         topbarName: "Statement",
         title: "Statement",
         detail: "Select the type of statement you want to  view",

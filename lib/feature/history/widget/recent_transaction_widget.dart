@@ -65,6 +65,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
         builder: (context, state) {
           if (state is CommonStateSuccess<List<RecentTransactionModel>>) {
             return CommonContainer(
+                showDetail: true,
                 showBackBotton: false,
                 showRoundBotton: false,
                 body: Container(

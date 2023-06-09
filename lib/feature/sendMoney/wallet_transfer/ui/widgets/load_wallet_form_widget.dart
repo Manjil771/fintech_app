@@ -122,6 +122,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           )
         ],
         child: CommonContainer(
+          showDetail: true,
           showAccountSelection: true,
           topbarName: "Load Wallet",
           title: "Load ${widget.selectedWallet.name}",

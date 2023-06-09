@@ -82,6 +82,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             }
           },
           child: CommonContainer(
+            showDetail: true,
             showAccountSelection: true,
             accountTitle: "From Account",
             buttonName: "Proceed",

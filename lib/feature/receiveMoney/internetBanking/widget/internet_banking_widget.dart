@@ -34,6 +34,7 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
         showAccountSelection: true,
         accountTitle: "To Account",
         body: Form(

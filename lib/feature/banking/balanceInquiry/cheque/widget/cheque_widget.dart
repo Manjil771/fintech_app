@@ -15,6 +15,7 @@ class ChequeWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
         body: CommonContainer(
+      showDetail: false,
       body: SizedBox(
         height: _height / 2.3,
         child: DefaultTabController(

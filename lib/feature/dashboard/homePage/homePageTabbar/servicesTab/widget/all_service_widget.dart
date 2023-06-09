@@ -13,6 +13,7 @@ class AllServiceWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
         body: CommonContainer(
+      showDetail: false,
       showTitleText: false,
       showRoundBotton: false,
       topbarName: "All Services",

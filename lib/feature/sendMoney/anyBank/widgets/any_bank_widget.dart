@@ -83,6 +83,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
           )
         ],
         child: CommonContainer(
+          showDetail: true,
           showAccountSelection: true,
           body: Form(
             key: _formKey,
