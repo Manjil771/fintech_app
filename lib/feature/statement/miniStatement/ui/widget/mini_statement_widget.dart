@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -32,12 +31,9 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         .customerDetailModel;
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        final cubit = context
-            .read<MiniStatementCubit>()
-            //.fetchMiniStatement(accountNumbner: "001001-001-102-0001002");
-            .fetchMiniStatement(
-                accountNumbner:
-                    customerDetail.value!.accountDetail[0].accountNumber);
+        final cubit = context.read<MiniStatementCubit>().fetchMiniStatement(
+            accountNumbner:
+                customerDetail.value!.accountDetail[0].accountNumber);
       },
     );
   }

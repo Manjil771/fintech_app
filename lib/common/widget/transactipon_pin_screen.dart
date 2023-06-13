@@ -2,6 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/fingerprint_utils.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
 
@@ -16,8 +20,25 @@ class TransactionPinScreen extends StatefulWidget {
 class _TransactionPinScreenState extends State<TransactionPinScreen> {
   String pinValue = "";
 
+  final ValueNotifier<bool> _isBiometricEnabled = ValueNotifier(false);
+  @override
+  void initState() {
+    _checkBiometric();
+    super.initState();
+  }
+
+  _checkBiometric() async {
+    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
+      _isBiometricEnabled.value = true;
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    final width = SizeUtils.width;
+    final height = SizeUtils.height;
+    final _theme = Theme.of(context);
     Size size = MediaQuery.of(context).size;
     return Scaffold(
       body: SafeArea(
@@ -62,6 +83,47 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       },
                     ),
                     SizedBox(height: size.height * 0.01),
+                    SizedBox(height: height * 0.014),
+                    ValueListenableBuilder<bool>(
+                        valueListenable: _isBiometricEnabled,
+                        builder: (context, val, _) {
+                          if (val) {
+                            return InkWell(
+                              onTap: () async {
+                                bool authenticated =
+                                    await FingerPrintUtils.verifyFingerPrint(
+                                  context: NavigationService.context,
+                                );
+                                if (authenticated) {
+                                  final String password =
+                                      await SecureStorageService.appPassword;
+
+                                  if (password.isNotEmpty) {
+                                    widget.onValueCallback(password);
+                                  }
+                                }
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Icon(
+                                    Icons.fingerprint,
+                                    size: 35,
+                                  ),
+                                  SizedBox(
+                                    width: width * 0.03,
+                                  ),
+                                  Text(
+                                    "User Biometric ",
+                                    style: _theme.textTheme.labelMedium,
+                                  ),
+                                ],
+                              ),
+                            );
+                          } else {
+                            return Container();
+                          }
+                        }),
                     TextButton(
                         onPressed: () {
                           NavigationService.pop();

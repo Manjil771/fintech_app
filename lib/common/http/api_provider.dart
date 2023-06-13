@@ -130,6 +130,7 @@ class ApiProvider {
     String token = '',
     bool isRefreshRequest = false,
     int timeOut = 30,
+    Map<String, dynamic>? extraHeaders,
   }) async {
     final DioClient _dioClient = DioClient(
       baseUrl: baseUrl,
@@ -143,6 +144,7 @@ class ApiProvider {
         'accept': 'application/json',
         'origin': '*',
         'App-Authorizer': "647061697361",
+        ...extraHeaders ?? {},
         // // ...await DeviceUtils.deviceInfoHeader,
       };
 
@@ -417,7 +419,8 @@ class ApiProvider {
             response.statusCode);
       default:
         throw NoInternetException(
-            'Error occured while Communication with Server', 1000);
+            'Error occured while Communication with Server',
+            response.statusCode);
     }
   }
 

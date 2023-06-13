@@ -85,6 +85,21 @@ class SendToBankAPIProvider {
     );
   }
 
+  accountValidation({
+    required Map<String, dynamic> payloadData,
+  }) async {
+    final url = "$baseUrl/api/account/validation/";
+
+    Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
+
+    final _res = await apiProvider.get(
+      _uri,
+      token: userRepository.token,
+      userId: -1,
+    );
+    return _res;
+  }
+
   sendMoneyToBank({
     required Map<String, dynamic> payloadData,
   }) async {

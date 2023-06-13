@@ -49,23 +49,23 @@ class CustomPinCodeField extends StatelessWidget {
           fieldHeight: fieldHeight ?? 60,
           fieldWidth: fieldWidth ?? 60,
           borderWidth: 1,
+          errorBorderColor: Colors.red,
           fieldOuterPadding: mainAxisAlignment == MainAxisAlignment.start
               ? const EdgeInsets.only(right: 10)
               : EdgeInsets.zero,
           activeColor: theme.primaryColor,
           activeFillColor: type == TextFieldType.Filled
-              ? CustomTheme.lightGray
+              ? CustomTheme.gray
               : Colors.transparent,
           selectedColor: theme.primaryColor,
           selectedFillColor: type == TextFieldType.Filled
-              ? CustomTheme.lightGray
+              ? CustomTheme.gray
               : Colors.transparent,
           inactiveFillColor: type == TextFieldType.Filled
-              ? CustomTheme.lightGray
+              ? CustomTheme.gray
               : Colors.transparent,
-          inactiveColor: type == TextFieldType.Filled
-              ? CustomTheme.lightGray
-              : Colors.grey,
+          inactiveColor:
+              type == TextFieldType.Filled ? CustomTheme.gray : Colors.grey,
         ),
         mainAxisAlignment: mainAxisAlignment,
         animationType: AnimationType.fade,
