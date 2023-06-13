@@ -153,15 +153,12 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           }
                         }),
                     DataTable(
-
                       headingRowHeight: 40,
                       dataTextStyle:
-                          TextStyle(fontSize: 12, color: Colors.black),
-                      headingRowColor: MaterialStatePropertyAll(Colors.black12),
-                      columns: [
-
+                          const TextStyle(fontSize: 12, color: Colors.black),
+                      headingRowColor:
+                          const MaterialStatePropertyAll(Colors.black12),
                       columns: const [
-
                         DataColumn(label: Text("DR/CR")),
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),

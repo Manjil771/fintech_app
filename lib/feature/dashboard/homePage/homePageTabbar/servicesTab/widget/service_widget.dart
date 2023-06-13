@@ -4,7 +4,6 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -12,12 +11,11 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/service_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
 
 class ServicesWidget extends StatefulWidget {
   final bool showAllService;
-  ServicesWidget({Key? key, this.showAllService = true}) : super(key: key);
+  const ServicesWidget({Key? key, this.showAllService = true})
+      : super(key: key);
 
   @override
   State<ServicesWidget> createState() => _ServicesWidgetState();
@@ -99,26 +97,42 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                             crossAxisCount: 4,
                           ),
                           itemBuilder: (context, index) {
+                            final _imageUrl =
+                                "https://ismart.devanasoft.com.np/${state.data[index].imageUrl}";
                             return InkWell(
                               onTap: () {
                                 NavigationService.pushNamed(
-                                    routeName: screens[index]);
+                                  routeName: screens[index],
+                                );
                               },
                               child: Column(
                                 children: [
                                   Container(
                                     height: _height * 0.03,
-                                    child: SvgPicture.network(
-                                      "https://ismart.devanasoft.com.np/${state.data[index].imageUrl}",
-                                      // "https://ismart.devanasoft.com.np/ismart/serviceIcon/${state.data[index].imageUrl}
-
-                                      placeholderBuilder:
-                                          (BuildContext context) => Center(
-                                              child:
-                                                  CircularProgressIndicator()),
-
-                                      //"${RepositoryProvider.of<CoOperative>(context).baseUrl}${state.data[index].imageUrl}",
-                                    ),
+                                    child: _imageUrl
+                                            .toLowerCase()
+                                            .contains("svg")
+                                        ? SvgPicture.network(
+                                            _imageUrl,
+                                            placeholderBuilder:
+                                                (BuildContext context) =>
+                                                    Center(
+                                              child: Image.asset(
+                                                Assets.logoImage,
+                                              ),
+                                            ),
+                                          )
+                                        : Image.network(
+                                            _imageUrl,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return Center(
+                                                child: Image.asset(
+                                                  Assets.logoImage,
+                                                ),
+                                              );
+                                            },
+                                          ),
                                   ),
                                   SizedBox(height: _height * 0.02),
                                   Expanded(

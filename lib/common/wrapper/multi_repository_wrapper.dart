@@ -127,17 +127,17 @@ class MultiRepositoryWrapper extends StatelessWidget {
           lazy: true,
         ),
         RepositoryProvider(
-
           create: (context) => ServicesRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             coOperative: RepositoryProvider.of<CoOperative>(context),
-
+          ),
+        ),
+        RepositoryProvider(
           create: (context) => InternalTransferRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),
-
           ),
           lazy: true,
         )

@@ -1,4 +1,3 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -41,7 +40,6 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-
       body: BlocListener<InternalTransferCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && _isLoading == false) {
@@ -138,10 +136,10 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                       FormValidator.validateFieldNotEmpty(val, "Remarks"),
                 )
               ],
-
             ),
           ),
           topbarName: "Send Money",
+          showDetail: false,
           onButtonPressed: () {
             if (_formKey.currentState!.validate() && internalBranch != null) {
               print(internalBranch);
