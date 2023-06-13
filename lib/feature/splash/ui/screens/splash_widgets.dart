@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 
 class SplashWidget extends StatelessWidget {
@@ -15,7 +14,7 @@ class SplashWidget extends StatelessWidget {
     return BlocListener<StartupCubit, StartupState>(
       listener: (context, state) {
         if (state is StartupSuccess) {
-          NavigationService.push(target: const LoginPage());
+          NavigationService.pushReplacement(target: const LoginPage());
           // if (state.isFirstTime) {
           //   NavigationService.push(target: OnboardPage());
           // } else

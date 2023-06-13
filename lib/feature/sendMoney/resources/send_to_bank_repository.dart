@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
@@ -51,26 +52,45 @@ class SendToBankRepository {
   Future<DataResponse<String>> getBankCharges({
     required String amount,
     required String bankId,
+    required String destinationBankInstrumentCode,
+    required String destinationBankAccountName,
+    required String destinationBankAccountNumber,
   }) async {
-    List<Bank> _banksList = [];
+    Map<String, dynamic> accountValidationPayload = {
+      "destinationBankId": destinationBankInstrumentCode,
+      "destinationAccountName": destinationBankAccountName,
+      "destinationAccountNumber": destinationBankAccountNumber,
+    };
     try {
-      final _res = await sendToBankAPIProvider.getBankCharges(
-        bankId: bankId,
-        amount: amount,
-      );
-      final _result = Map<String, dynamic>.from(_res);
-      if (_result['data']['details'] != null) {
-        return DataResponse.success(
-            (_result['data']['details'] ?? "").toString());
+      final _res = await sendToBankAPIProvider.accountValidation(
+          payloadData: accountValidationPayload);
+
+      if (_res['data']?['code'] == "M0000") {
+        final _res = await sendToBankAPIProvider.getBankCharges(
+          bankId: bankId,
+          amount: amount,
+        );
+        final _result = Map<String, dynamic>.from(_res);
+        if (_result['data']['details'] != null) {
+          return DataResponse.success(
+              (_result['data']['details'] ?? "").toString());
+        } else {
+          return DataResponse.error("Error fetching balance data.");
+        }
       } else {
-        return DataResponse.error("Error fetching balance data.");
+        return DataResponse.error("Bank account validation failed.");
       }
     } on CustomException catch (e) {
-      if (e is SessionExpireErrorException) {
-        rethrow;
-      }
+      print(e);
+      // if (e is SessionExpireErrorException) {
+      //   rethrow;
+      // }
       return DataResponse.error(e.message!, e.statusCode);
+    } on DioError catch (dio) {
+      print(dio);
+      return DataResponse.error("message");
     } catch (e) {
+      print(e);
       return DataResponse.error(e.toString());
     }
   }
@@ -84,48 +104,51 @@ class SendToBankRepository {
     required String destinationBankAccountName,
     required String destinationBankAccountNumber,
     required String serviceCharge,
+    required String sendingAccount,
   }) async {
-    Map<String, dynamic> sendToBankPayload = {
-      // "account_number": "00100101000002886000001",
-      // "account_number": "002001-001-102-0001010",
-      "account_number": "001001-001-102-0001002",
-
-      "amount": 100,
-      "charge": serviceCharge,
-      "destination_bank_id": destinationBankInstrumentCode,
-      "destination_bank_name": destinationBankName,
-      "destination_branch_id": "1",
-      "destination_branch_name": "",
-      "destination_name": destinationBankAccountName,
-      "destination_account_number": destinationBankAccountNumber,
-      "scheme_id": "1",
-      "remarks": remarks,
-      "mPin": mpin,
-      "skipValidation": true,
-    };
-
     try {
-      final _res = await sendToBankAPIProvider.sendMoneyToBank(
-        payloadData: sendToBankPayload,
-      );
-      final _result = Map<String, dynamic>.from(_res);
-      if (_result['data']?['details'] != null) {
-        return DataResponse.success(_result['data']?['details']);
-      } else {
-        return DataResponse.error(
-            "Error while sending money. Please try again.");
+      Map<String, dynamic> sendToBankPayload = {
+        // "account_number": "00100101000002886000001",
+        // "account_number": "002001-001-102-0001010",
+        "account_number": sendingAccount,
+
+        "amount": amount,
+        "charge": serviceCharge,
+        "destination_bank_id": destinationBankInstrumentCode,
+        "destination_bank_name": destinationBankName,
+        "destination_branch_id": "1",
+        "destination_branch_name": "",
+        "destination_name": destinationBankAccountName,
+        "destination_account_number": destinationBankAccountNumber,
+        "scheme_id": "1",
+        "remarks": remarks,
+        "mPin": mpin,
+        "skipValidation": true,
+      };
+
+      try {
+        final _res = await sendToBankAPIProvider.sendMoneyToBank(
+          payloadData: sendToBankPayload,
+        );
+        final _result = Map<String, dynamic>.from(_res);
+        if (_result['data']?['details'] != null) {
+          return DataResponse.success(_result['data']?['details']);
+        } else {
+          return DataResponse.error(
+              "Error while sending money. Please try again.");
+        }
+      } on CustomException catch (e) {
+        if (e is SessionExpireErrorException) {
+          rethrow;
+        }
+
+        return DataResponse.error(e.message!, e.statusCode);
+      } catch (e) {
+        return DataResponse.error(e.toString());
       }
-    } on CustomException catch (e) {
-      if (e is SessionExpireErrorException) {
-        rethrow;
-      }
-      // if (e.statusCode == 400) {
-      //   return DataResponse.error(
-      //       "User validation error. Please recheck details.", e.statusCode);
-      // }
-      return DataResponse.error(e.message!, e.statusCode);
-    } catch (e) {
-      return DataResponse.error(e.toString());
+    } on Exception {
+      return DataResponse.error(
+          "Bank validation failed. Please check your account details");
     }
   }
 }

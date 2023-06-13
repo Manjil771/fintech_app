@@ -4,11 +4,14 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
@@ -75,8 +78,22 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 NavigationService.pop();
               }
               if (state is CommonStateSuccess) {
+                SnackBarUtils.showSuccessBar(
+                  context: context,
+                  message: "Account validated successfully.",
+                );
                 charges = state.data;
                 setState(() {});
+              } else if (state is CommonError) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false,
+                );
               }
             },
             child: Container(),
@@ -241,25 +258,44 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
           topbarName: "Send Money",
           buttonName: charges != null ? "Confirm" : "Check Transfer",
           onButtonPressed: () {
+            // NavigationService.push(target: const LimitScreen());
             if (_formKey.currentState!.validate()) {
               if (charges == null) {
                 context.read<BankChargeCubit>().getBankCharges(
                       amount: _amountController.text,
                       bankId: selectedBank?.bankId ?? "",
+                      destinationAccountName: _accountNameController.text,
+                      destinationAccountNumber: _accountNumberController.text,
+                      destinationBankId: selectedBank?.bankId ?? "",
                     );
               } else {
-                context.read<SendToBankCubit>().sendMoneyToBank(
-                      charge: charges.toString(),
-                      amount: _amountController.text,
-                      // mpin: "70074",
-                      mpin: "24878",
-                      remarks: _remarksController.text,
-                      destinationBankInstrumentCode: selectedBank?.bankId ?? "",
-                      destinationBankAccountName: _accountNameController.text,
-                      destinationBankAccountNumber:
-                          _accountNumberController.text,
-                      destinationBankName: selectedBank?.bankName ?? "",
-                    );
+                NavigationService.push(
+                  target: TransactionPinScreen(
+                    onValueCallback: (pin) {
+                      NavigationService.pop();
+                      context.read<SendToBankCubit>().sendMoneyToBank(
+                            charge: charges.toString(),
+                            amount: _amountController.text,
+                            mpin: pin,
+                            remarks: _remarksController.text,
+                            destinationBankInstrumentCode:
+                                selectedBank?.bankId ?? "",
+                            destinationBankAccountName:
+                                _accountNameController.text,
+                            destinationBankAccountNumber:
+                                _accountNumberController.text,
+                            destinationBankName: selectedBank?.bankName ?? "",
+                            sendingAccount:
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .accountsList
+                                    .value
+                                    .first
+                                    .accountNumber,
+                          );
+                    },
+                  ),
+                );
               }
             }
           },
