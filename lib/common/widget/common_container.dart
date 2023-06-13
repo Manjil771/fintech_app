@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
   final Widget body;
+  final String accountTitle;
+  final bool showAccountSelection;
   final String topbarName;
   final String title;
+  final bool showDetail;
   final String buttonName;
   final String detail;
   final bool showBackBotton;
@@ -17,6 +23,9 @@ class CommonContainer extends StatelessWidget {
 
   final Function()? onButtonPressed;
   const CommonContainer({
+    required this.showDetail,
+    this.accountTitle = "From Account",
+    this.showAccountSelection = false,
     this.verticalPadding = 20.0,
     this.horizontalPadding = 20.0,
     this.showTitleText = true,
@@ -56,10 +65,28 @@ class CommonContainer extends StatelessWidget {
                         style: _textTheme.displaySmall!
                             .copyWith(fontWeight: FontWeight.bold))
                     : Container(),
-                showTitleText
+                showDetail
                     ? Text(
                         detail,
                         style: _textTheme.titleLarge,
+                      )
+                    : Container(),
+                SizedBox(height: _height * 0.01),
+                showAccountSelection
+                    ? Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(
+                            accountTitle,
+                            style: TextStyle(
+                              fontFamily: Fonts.poppin,
+                              fontWeight: FontWeight.w600,
+                              fontSize: 14,
+                              color: CustomTheme.lightTextColor,
+                            ),
+                          ),
+                          PrimaryAccountBox(),
+                        ],
                       )
                     : Container(),
                 SizedBox(height: _height * 0.01),

@@ -11,6 +11,7 @@ class Assets {
 
   static const String profilePicture =
       "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png";
+  static const String ismartLogo = "assets/ismartlogo.png";
 
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String searchIcon = "assets/icons/search.svg";
@@ -56,4 +57,6 @@ class Assets {
   static const String personIcon = "assets/icons/Account Number.svg";
   static const String miniStatement = "assets/icons/ministatement.svg";
   static const String arrowRight = "assets/icons/arrowright.svg";
+  static const String arrowUp = "assets/icons/arrowdownfull.svg";
+  static const String arrowDown = "assets/icons/arrowupfull.svg";
 }

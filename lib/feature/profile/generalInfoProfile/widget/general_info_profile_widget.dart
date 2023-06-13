@@ -13,7 +13,7 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 
 class GeneralInfoProfileWidget extends StatefulWidget {
   final ValueNotifier<CustomerDetailModel?> customerDetail;
-  const GeneralInfoProfileWidget({Key? key, required this.customerDetail})
+  GeneralInfoProfileWidget({Key? key, required this.customerDetail})
       : super(key: key);
 
   @override
@@ -44,75 +44,83 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
             child: Column(children: [
               CommonDetailBox(
                 onBoxPressed: () {
-                  showPersonalDetail = !showPersonalDetail;
+                  setState(() {
+                    showPersonalDetail = !showPersonalDetail;
+                  });
                   print(showPersonalDetail.toString());
                 },
                 leadingIcon: Assets.profileIcon,
                 title: "Personal Details",
                 detail: "Phone Number, Name , Address etc.",
               ),
-              Container(
-                color: _theme.scaffoldBackgroundColor,
-                height: _height * 0.19,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "Banking.svg",
-                              "Account Type",
-                              "${_detail.accountDetail[0].accountType} A/C"),
-                        ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(context, "clientcode.svg",
-                              "Client Code", "${_detail.accountDetail[0].id}"),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "accrued interest.svg",
-                              "Accrued Interest",
-                              "NPR ${_detail.accountDetail[0].accruedInterest}"),
-                        ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(
-                              context,
-                              "interest rate profile.svg",
-                              "Interest Rate",
-                              "${_detail.accountDetail[0].interestRate} %"),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "actual balance profile page.svg",
-                              "Actual Balance",
-                              "NPR ${_detail.accountDetail[0].actualBalance}"),
-                        ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(
-                              context,
-                              "money-send-svgrepo-com 1.svg",
-                              "Available Bal.",
-                              "NPR ${_detail.accountDetail[0].availableBalance}"),
-                        ),
-                      ],
-                    )
-                  ],
+              Visibility(
+                visible: showPersonalDetail,
+                child: Container(
+                  color: _theme.scaffoldBackgroundColor,
+                  height: _height * 0.19,
+                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Row(
+                        children: [
+                          Expanded(
+                            child: buildDetails(
+                                context,
+                                "Banking.svg",
+                                "Account Type",
+                                "${_detail.accountDetail[0].accountType} A/C"),
+                          ),
+                          SizedBox(
+                            width: _width * 0.4,
+                            child: buildDetails(
+                                context,
+                                "clientcode.svg",
+                                "Client Code",
+                                "${_detail.accountDetail[0].id}"),
+                          )
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: buildDetails(
+                                context,
+                                "accrued interest.svg",
+                                "Accrued Interest",
+                                "NPR ${_detail.accountDetail[0].accruedInterest}"),
+                          ),
+                          SizedBox(
+                            width: _width * 0.4,
+                            child: buildDetails(
+                                context,
+                                "interest rate profile.svg",
+                                "Interest Rate",
+                                "${_detail.accountDetail[0].interestRate} %"),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: buildDetails(
+                                context,
+                                "actual balance profile page.svg",
+                                "Actual Balance",
+                                "NPR ${_detail.accountDetail[0].actualBalance}"),
+                          ),
+                          SizedBox(
+                            width: _width * 0.4,
+                            child: buildDetails(
+                                context,
+                                "money-send-svgrepo-com 1.svg",
+                                "Available Bal.",
+                                "NPR ${_detail.accountDetail[0].availableBalance}"),
+                          ),
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               )
               // : Container(),

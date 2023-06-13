@@ -34,6 +34,9 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
+        showAccountSelection: true,
+        accountTitle: "To Account",
         body: Form(
           key: _formKey,
           child: Column(
@@ -124,8 +127,8 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
             );
           }
         },
-        title: "Mobile Banking",
-        detail: "Load fund instantly from mobile banking.",
+        title: "Internet Banking",
+        detail: "Load fund instantly from internet banking.",
       ),
     );
   }

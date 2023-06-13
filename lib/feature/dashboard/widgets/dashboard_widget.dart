@@ -3,10 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
-import 'package:ismart/feature/dashboard/screen/home_page.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
+import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/qrCode/scanQr/screen/scan_qr_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -22,9 +26,17 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   final screens = [
     const HomePage(),
     const Bankingpage(),
-    const Text("3"),
-    MiniStatementPage(),
-    const Text("5"),
+    ScanQrPage(),
+    RecentTransactionScreen(),
+    Center(
+      child: ElevatedButton(
+          child: Text("asdsad"),
+          onPressed: () {
+            NavigationService.push(
+              target: ServicesPage(showAllServices: true),
+            );
+          }),
+    )
   ];
 
   @override
@@ -41,7 +53,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       ),
       floatinActionButton: FloatingActionButton(
         backgroundColor: _theme.primaryColor,
-        onPressed: () {},
+        onPressed: () {
+          NavigationService.push(target: ScanQrPage());
+        },
         child: SvgPicture.asset(
           Assets.qrCodeIcon,
           height: 30,

@@ -6,7 +6,6 @@ class Bank {
   final String lastModifiedOn;
   final String swiftCode;
   final String iconUrl;
-
   Bank({
     required this.bankId,
     required this.refBankId,

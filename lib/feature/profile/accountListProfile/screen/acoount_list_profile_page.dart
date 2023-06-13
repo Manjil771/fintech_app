@@ -4,11 +4,17 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/profile/accountListProfile/widget/account_list_profile_widget.dart';
 import 'package:ismart/feature/profile/generalInfoProfile/widget/general_info_profile_widget.dart';
 
-class AccountListProfilePage extends StatelessWidget {
+class AccountListProfilePage extends StatefulWidget {
   final ValueNotifier<CustomerDetailModel?> customerDetail;
 
   const AccountListProfilePage({Key? key, required this.customerDetail})
       : super(key: key);
+
+  @override
+  State<AccountListProfilePage> createState() => _AccountListProfilePageState();
+}
+
+class _AccountListProfilePageState extends State<AccountListProfilePage> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -16,7 +22,7 @@ class AccountListProfilePage extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return AccountListProfileWidget(
-      customerDetail: customerDetail,
+      customerDetail: widget.customerDetail,
     );
   }
 }

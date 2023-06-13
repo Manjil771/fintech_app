@@ -1,3 +1,5 @@
+import 'package:ismart/common/constant/assets.dart';
+
 class CoOperative {
   CoOperative({
     required this.clientCode,
@@ -17,23 +19,13 @@ class CoOperative {
 }
 
 class CoOperativeValue {
-  static final CoOperative chandraGiriCoOperative = CoOperative(
-    baseUrl: 'http://202.63.242.139:9091/',
-    bannerImage: 'assets/chandragiri.png',
-    clientCode: 'CHAN6566',
-    coOperativeName: 'ChandraGiri CoOperative',
-    coOperativeLogo: 'assets/chandragiri.png',
-    clientSecret: "",
-  );
-
-  // // DEV
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'VBMRDWEVFV',
-  //   coOperativeName: '',
-  //   coOperativeLogo: '',
-  //   clientSecret: "199204",
+  // static final CoOperative chandraGiriCoOperative = CoOperative(
+  //   baseUrl: 'http://202.63.242.139:9091/',
+  //   bannerImage: 'assets/chandragiri.png',
+  //   clientCode: 'CHAN6566',
+  //   coOperativeName: 'ChandraGiri CoOperative',
+  //   coOperativeLogo: 'assets/chandragiri.png',
+  //   clientSecret: "",
   // );
 
   // DEV
@@ -47,6 +39,7 @@ class CoOperativeValue {
   // );
   // LIVE
 
+  // DEV
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'https://mbank.com.np', // 9802013689 :97684
   //   bannerImage: "assets/images/isamrt_banner.jpg",
@@ -56,23 +49,22 @@ class CoOperativeValue {
   //   clientSecret: "175391",
   // );
 
-  // iSmart Build
   static final CoOperative development = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np', // 9802013689 :97684
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
     clientCode: 'EHVNI7CZJ3',
     coOperativeName: '',
-    coOperativeLogo: '',
+    coOperativeLogo: Assets.ismartLogo,
     clientSecret: "126489",
   );
-
-  // Staging
+  // // LIVE
+  // DEV
   // static final CoOperative development = CoOperative(
-  //   baseUrl: 'https://mbank.com.np/',
+  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'H6FXNHXS61',
+  //   clientCode: 'VBMRDWEVFV',
   //   coOperativeName: '',
-  //   coOperativeLogo: '',
-  //   clientSecret: "175391",
+  //   coOperativeLogo: Assets.ismartLogo,
+  //   clientSecret: "199204",
   // );
 }

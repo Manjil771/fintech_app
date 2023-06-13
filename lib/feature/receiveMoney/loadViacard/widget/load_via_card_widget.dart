@@ -14,6 +14,9 @@ class LoadViaCardWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showDetail: true,
+        showAccountSelection: true,
+        accountTitle: "To Account",
         body: Column(
           children: [
             CustomTextField(

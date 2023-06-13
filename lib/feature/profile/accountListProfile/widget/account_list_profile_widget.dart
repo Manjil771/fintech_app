@@ -30,104 +30,122 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     final _detail = widget.customerDetail.value!;
+    bool showPrimaryAccount = false;
+    bool showSecondaryAccount = false;
+
     return PageWrapper(
       padding: EdgeInsets.zero,
       showAppBar: false,
-      body: ListView(
+      body: Column(
         children: [
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 15),
-            decoration: BoxDecoration(
-                color: CustomTheme.white,
-                borderRadius: BorderRadius.circular(12)),
-            child: Column(children: [
-              CommonDetailBox(
-                onBoxPressed: () {
-                  showPersonalDetail = !showPersonalDetail;
-                  print(showPersonalDetail.toString());
-                },
-                leadingIcon: Assets.profileIcon,
-                title: "Personal Details",
-                detail: "Phone Number, Name , Address etc.",
-              ),
-              Container(
-                color: _theme.scaffoldBackgroundColor,
-                height: _height * 0.19,
-                padding: const EdgeInsets.symmetric(horizontal: 12),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    Row(
+          Expanded(
+            child: ListView.builder(
+                itemCount: widget.customerDetail.value!.accountDetail.length,
+                itemBuilder: (context, index) {
+                  final _detail = widget.customerDetail.value!;
+
+                  return Container(
+                    color: Colors.white,
+                    child: Column(
                       children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "Banking.svg",
-                              "Account Type",
-                              "${_detail.accountDetail[0].accountType} A/C"),
+                        ExpansionTile(
+                          title: CommonDetailBox(
+                              showTrailingIcon: false,
+                              leadingIcon: Assets.profileIcon,
+                              title: accountType[index],
+                              detail:
+                                  "A/C : ${_detail.accountDetail[index].mainCode}",
+                              onBoxPressed: () {
+                                //if (_detail.accountDetail[index] == 0) {
+                                setState(() {
+                                  showPrimaryAccount = !showPrimaryAccount;
+                                });
+                                print(showPrimaryAccount);
+                                //}
+                              }),
+                          children: [
+                            Container(
+                              color: _theme.scaffoldBackgroundColor,
+                              height: _height * 0.19,
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 12),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: buildDetails(
+                                            context,
+                                            "Banking.svg",
+                                            "Account Type",
+                                            "${_detail.accountDetail[index].accountType} A/C"),
+                                      ),
+                                      SizedBox(
+                                        width: _width * 0.4,
+                                        child: buildDetails(
+                                            context,
+                                            "clientcode.svg",
+                                            "Client Code",
+                                            "${_detail.accountDetail[index].id}"),
+                                      )
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: buildDetails(
+                                            context,
+                                            "accrued interest.svg",
+                                            "Accrued Interest",
+                                            "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                      ),
+                                      SizedBox(
+                                        width: _width * 0.4,
+                                        child: buildDetails(
+                                            context,
+                                            "interest rate profile.svg",
+                                            "Interest Rate",
+                                            "${_detail.accountDetail[index].interestRate} %"),
+                                      ),
+                                    ],
+                                  ),
+                                  Row(
+                                    children: [
+                                      Expanded(
+                                        child: buildDetails(
+                                            context,
+                                            "actual balance profile page.svg",
+                                            "Actual Balance",
+                                            "NPR ${_detail.accountDetail[index].actualBalance}"),
+                                      ),
+                                      SizedBox(
+                                        width: _width * 0.4,
+                                        child: buildDetails(
+                                            context,
+                                            "money-send-svgrepo-com 1.svg",
+                                            "Available Bal.",
+                                            "NPR ${_detail.accountDetail[index].availableBalance}"),
+                                      ),
+                                    ],
+                                  )
+                                ],
+                              ),
+                            ),
+                          ],
                         ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(context, "clientcode.svg",
-                              "Client Code", "${_detail.accountDetail[0].id}"),
-                        )
                       ],
                     ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "accrued interest.svg",
-                              "Accrued Interest",
-                              "NPR ${_detail.accountDetail[0].accruedInterest}"),
-                        ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(
-                              context,
-                              "interest rate profile.svg",
-                              "Interest Rate",
-                              "${_detail.accountDetail[0].interestRate} %"),
-                        ),
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: buildDetails(
-                              context,
-                              "actual balance profile page.svg",
-                              "Actual Balance",
-                              "NPR ${_detail.accountDetail[0].actualBalance}"),
-                        ),
-                        SizedBox(
-                          width: _width * 0.4,
-                          child: buildDetails(
-                              context,
-                              "money-send-svgrepo-com 1.svg",
-                              "Available Bal.",
-                              "NPR ${_detail.accountDetail[0].availableBalance}"),
-                        ),
-                      ],
-                    )
-                  ],
-                ),
-              )
-              // : Container(),
-              ,
-              CommonDetailBox(
-                onBoxPressed: () {},
-                leadingIcon: Assets.logoutIcon,
-                title: "Logout",
-                detail: "Logout from this application.",
-              ),
-            ]),
+                  );
+                }),
           ),
         ],
       ),
     );
   }
+
+  final List accountType = ["Primary Account", "Secondary Account"];
 
   buildDetails(BuildContext context, images, title, value) {
     Size size = MediaQuery.of(context).size;

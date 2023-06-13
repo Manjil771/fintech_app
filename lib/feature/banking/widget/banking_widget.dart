@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
@@ -15,8 +16,10 @@ class BankingWidget extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
     return PageWrapper(
+      padding: EdgeInsets.zero,
       showAppBar: false,
       body: CommonContainer(
+          showDetail: false,
           showRoundBotton: false,
           showBackBotton: false,
           topbarName: "Banking",
@@ -29,7 +32,7 @@ class BankingWidget extends StatelessWidget {
                   crossAxisCount: 2),
               itemBuilder: (context, index) => CommonGridViewContainer(
                 onContainerPress: () {
-                  NavigationService.push(target: StatementPage());
+                  NavigationService.pushNamed(routeName: onPress[index]);
                 },
                 margin: const EdgeInsets.all(8),
                 containerImage: images[index],
@@ -55,5 +58,13 @@ class BankingWidget extends StatelessWidget {
     Assets.loanIcon,
     Assets.fundTransferIcon,
     Assets.chequeBookIcon,
+  ];
+  final onPress = [
+    Routes.profileScreen,
+    Routes.balanceInquiry,
+    Routes.statementPage,
+    Routes.profileScreen,
+    Routes.anyBank,
+    Routes.chequeScreen,
   ];
 }

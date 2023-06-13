@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/enum/text_field_type.dart';
+
 
 import 'package:pin_code_fields/pin_code_fields.dart';
 
@@ -44,10 +47,10 @@ class CustomPinCodeField extends StatelessWidget {
         errorTextMargin: const EdgeInsets.only(bottom: 5, top: 5),
         controller: controller,
         pinTheme: PinTheme(
-          shape: PinCodeFieldShape.circle,
+          shape: PinCodeFieldShape.box,
           borderRadius: BorderRadius.circular(5),
           fieldHeight: fieldHeight ?? 60,
-          fieldWidth: fieldWidth ?? 60,
+          fieldWidth: fieldWidth ?? SizeUtils.width * 0.13,
           borderWidth: 1,
           errorBorderColor: Colors.red,
           fieldOuterPadding: mainAxisAlignment == MainAxisAlignment.start

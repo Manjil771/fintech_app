@@ -71,6 +71,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         builder: (context, state) {
           if (state is CommonStateSuccess<MiniStatementModel>) {
             return CommonContainer(
+                showDetail: true,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -152,7 +153,15 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           }
                         }),
                     DataTable(
+
+                      headingRowHeight: 40,
+                      dataTextStyle:
+                          TextStyle(fontSize: 12, color: Colors.black),
+                      headingRowColor: MaterialStatePropertyAll(Colors.black12),
+                      columns: [
+
                       columns: const [
+
                         DataColumn(label: Text("DR/CR")),
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
@@ -160,8 +169,13 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       rows: state.data.ministatementList
                           .map((e) => DataRow(
                                 cells: [
-                                  DataCell(
-                                      Text(e.credit == false ? "Cr" : "Dr")),
+                                  DataCell(Text(
+                                    e.credit ? "Dr" : "Cr",
+                                    style: TextStyle(
+                                        color: e.credit
+                                            ? Colors.red
+                                            : Colors.green),
+                                  )),
                                   DataCell(Text(e.transactionDate.toString())),
                                   DataCell(Text(e.amount.toString())),
                                 ],

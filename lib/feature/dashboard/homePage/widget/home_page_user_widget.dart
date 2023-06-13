@@ -1,15 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-
-import '../../../common/util/size_utils.dart';
 
 class HomePageUserWidget extends StatefulWidget {
   const HomePageUserWidget({Key? key}) : super(key: key);
@@ -22,6 +21,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   bool showAmountDetail = false;
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
   ValueNotifier<dynamic> accountDetail = ValueNotifier([]);
+  String formattedDate = DateFormat('a').format(DateTime.now());
 
   @override
   void initState() {
@@ -53,7 +53,8 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                       decoration: BoxDecoration(
                         image: DecorationImage(
                           image: AssetImage(
-                              CoOperativeValue.development.bannerImage),
+                              RepositoryProvider.of<CoOperative>(context)
+                                  .bannerImage),
                           fit: BoxFit.fitWidth,
                         ),
                         borderRadius: BorderRadius.circular(15),
@@ -64,9 +65,12 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text(
-                            "Welcome",
+                            formattedDate == 'AM'
+                                ? 'Good Morning,'
+                                : 'Good Afternoon,',
                             style: _textTheme.headlineMedium?.copyWith(
                               color: CustomTheme.white,
+                              fontSize: 14,
                               fontWeight: FontWeight.bold,
                             ),
                           ),
@@ -91,19 +95,26 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                 },
                                 child: Row(
                                   children: [
-                                    Text(
-                                      "${val.accountDetail[0].accountType} A/C : ${val.accountDetail[0].mainCode}",
-                                      style: _textTheme.titleSmall?.copyWith(
-                                        color: CustomTheme.white,
-                                        fontSize: 11,
-                                        fontWeight: FontWeight.bold,
+                                    Container(
+                                      width: _width * 0.4,
+                                      child: Text(
+                                        "${val.accountDetail[0].accountType} A/C :\n${val.accountDetail[0].mainCode}",
+                                        style: _textTheme.titleSmall?.copyWith(
+                                          color: CustomTheme.white,
+                                          fontSize: 11,
+                                          fontWeight: FontWeight.bold,
+                                        ),
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
-                                    SvgPicture.asset(
-                                      Assets.arrowRight,
-                                      height: _height * 0.01,
-                                    ),
+                                    RotatedBox(
+                                      quarterTurns: 5,
+                                      child: SvgPicture.asset(
+                                        Assets.arrowRight,
+                                        color: CustomTheme.white,
+                                        height: _height * 0.015,
+                                      ),
+                                    )
                                   ],
                                 ),
                               ),
@@ -134,13 +145,14 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             children: [
                               Text(
                                 "Actual Balance",
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: _textTheme.titleSmall,
                               ),
                               Text(
                                 showAmountDetail
                                     ? "NPR ${val.accountDetail[0].actualBalance}"
                                     : "XXXXXXXXX",
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: _textTheme.titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -160,13 +172,14 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             children: [
                               Text(
                                 "Interest Accrued",
-                                style: Theme.of(context).textTheme.labelMedium,
+                                style: _textTheme.titleSmall,
                               ),
                               Text(
                                 showAmountDetail
                                     ? "NPR ${val.accountDetail[0].accruedInterest}"
                                     : "XXXXXXXXX",
-                                style: Theme.of(context).textTheme.titleMedium,
+                                style: _textTheme.titleLarge!
+                                    .copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),

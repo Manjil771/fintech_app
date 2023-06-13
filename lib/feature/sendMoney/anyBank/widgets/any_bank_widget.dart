@@ -25,6 +25,7 @@ class AnyBankWidget extends StatefulWidget {
 }
 
 class _AnyBankWidgetState extends State<AnyBankWidget> {
+  bool mobilePhoneTransfer = false;
   final TextEditingController _selectedBankController = TextEditingController();
   final TextEditingController _accountNumberController =
       TextEditingController();
@@ -99,11 +100,73 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
           )
         ],
         child: CommonContainer(
+          showDetail: true,
+          showAccountSelection: true,
           body: Form(
             key: _formKey,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(18),
+                      color: Colors.black12),
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              mobilePhoneTransfer = false;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(12),
+                              color: mobilePhoneTransfer
+                                  ? Colors.black12
+                                  : Colors.white,
+                            ),
+                            height: _height * 0.04,
+                            child: Center(
+                              child: Text(
+                                "Account Number",
+                                style: _textTheme.titleSmall,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: _width * 0.05),
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {
+                              mobilePhoneTransfer = true;
+                            });
+                          },
+                          child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: mobilePhoneTransfer
+                                  ? Colors.white
+                                  : Colors.black12,
+                            ),
+                            height: _height * 0.04,
+                            child: Center(
+                              child: Text(
+                                "Mobile Number",
+                                style: _textTheme.titleSmall,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SizedBox(height: _height * 0.02),
                 CustomTextField(
                   hintText: "Select Bank",
                   title: "Select Bank",
@@ -131,18 +194,26 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   },
                 ),
                 CustomTextField(
-                  title: "Destination Account",
+                  title: "Account Number",
                   hintText: "Destination Account Number",
                   controller: _accountNumberController,
                   validator: (val) => FormValidator.validateFieldNotEmpty(
                       val, "Account Number"),
                 ),
-                CustomTextField(
-                  hintText: "Account Holder Name",
-                  controller: _accountNameController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Account Name"),
-                ),
+                mobilePhoneTransfer
+                    ? CustomTextField(
+                        title: "Mobile Number",
+                        hintText: "Account Holder Phone Number",
+                        //controller: _accountNameController,
+                        validator: (val) => FormValidator.validateFieldNotEmpty(
+                            val, "Phone Number"),
+                      )
+                    : CustomTextField(
+                        hintText: "Account Holder Name",
+                        controller: _accountNameController,
+                        validator: (val) => FormValidator.validateFieldNotEmpty(
+                            val, "Account Name"),
+                      ),
                 CustomTextField(
                   title: "Amount",
                   hintText: "NPR ",

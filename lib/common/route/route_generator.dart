@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
+import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
 import 'package:ismart/feature/receiveMoney/internetBanking/screen/internet_banking_page.dart';
 import 'package:ismart/feature/receiveMoney/loadViacard/screen/load_via_card_page.dart';
-import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_bannking_page.dart';
+import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_banking_page.dart';
 import 'package:ismart/feature/receiveMoney/requestSapati/screen/request_sapati_page.dart';
 import 'package:ismart/feature/receiveMoney/screens/receive_money_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
@@ -18,6 +20,7 @@ import 'package:ismart/feature/services/electricity/screen/electricity_payment_p
 import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
+import 'package:ismart/feature/statement/screen/statement_page.dart';
 
 import '../../feature/services/Topup/ui/screens/mobile_topup_page.dart';
 
@@ -118,6 +121,21 @@ class RouteGenerator {
       case Routes.requestSapati:
         return MaterialPageRoute(
           builder: (_) => const RequestSapatiPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.statementPage:
+        return MaterialPageRoute(
+          builder: (_) => const StatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.balanceInquiry:
+        return MaterialPageRoute(
+          builder: (_) => const BalanceInquiryPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.chequeScreen:
+        return MaterialPageRoute(
+          builder: (_) => const ChequePage(),
           settings: RouteSettings(name: settings.name),
         );
       default:

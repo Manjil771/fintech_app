@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
-class PrimaryAccount extends StatelessWidget {
-  const PrimaryAccount({Key? key}) : super(key: key);
+class PrimaryAccountBox extends StatefulWidget {
+  @override
+  State<PrimaryAccountBox> createState() => _PrimaryAccountBoxState();
+}
+
+class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
+  bool showAmount = false;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +28,9 @@ class PrimaryAccount extends StatelessWidget {
         width: double.infinity,
         height: _width * 0.35,
         decoration: BoxDecoration(
+          color: _theme.scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.black45),
+          border: Border.all(color: _theme.scaffoldBackgroundColor, width: 2),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -31,17 +38,30 @@ class PrimaryAccount extends StatelessWidget {
             Row(
               children: [
                 SvgPicture.asset(
-                  "assets/icons/Wallet amount.svg",
+                  Assets.walletIcon,
                   height: _height * 0.023,
                   color: _theme.primaryColor,
                 ),
                 SizedBox(width: _width * 0.03),
                 Text(
-                  "NPR 123546846",
+                  showAmount ? "XXXXXXXXX" : "NPR 123546846",
                   style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 16,
                       fontFamily: "popinsemibold",
                       color: _theme.primaryColor),
+                ),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      setState(() {
+                        showAmount = !showAmount;
+                      });
+                    },
+                    child: SvgPicture.asset(
+                      "assets/icons/akar-icons_eye-slashed.svg",
+                      height: _height * 0.025,
+                    ),
+                  ),
                 ),
                 const Spacer(),
                 Container(
@@ -85,6 +105,14 @@ class PrimaryAccount extends StatelessWidget {
                   "ER65596565",
                   style: _textTheme.labelMedium,
                 ),
+                Spacer(),
+                RotatedBox(
+                  quarterTurns: 5,
+                  child: SvgPicture.asset(
+                    Assets.arrowRight,
+                    height: _height * 0.02,
+                  ),
+                )
               ],
             )
           ],
