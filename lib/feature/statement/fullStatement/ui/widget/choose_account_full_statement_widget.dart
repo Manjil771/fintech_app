@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -20,24 +21,6 @@ class _ChooseAccountFullStatementWidgetState
     extends State<ChooseAccountFullStatementWidget> {
   DateTime fromDate = DateTime.now().subtract(Duration(days: 90));
   DateTime toDate = DateTime.now();
-  Future<void> _selectDate(BuildContext context, bool isFromDate) async {
-    final DateTime? picked = await showDatePicker(
-      context: context,
-      initialDate: DateTime.now(),
-      firstDate: DateTime(2020),
-      lastDate: DateTime.now(),
-    );
-
-    if (picked != null && picked != (isFromDate ? fromDate : toDate)) {
-      setState(() {
-        if (isFromDate) {
-          fromDate = picked;
-        } else {
-          toDate = picked;
-        }
-      });
-    }
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -63,9 +46,10 @@ class _ChooseAccountFullStatementWidgetState
         body: Column(
           children: [
             CustomTextField(
+              customHintTextStyle: true,
               readOnly: true,
               onTap: () async {
-                DateTime? picked = await showDatePicker(
+                final DateTime? picked = await showDatePicker(
                     context: context,
                     initialDate: fromDate,
                     firstDate: DateTime(2015, 8),
@@ -74,15 +58,18 @@ class _ChooseAccountFullStatementWidgetState
                   fromDate = picked!;
                 });
               },
+              showSuffixImage: true,
               title: "From Date",
               hintText: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
             ),
             CustomTextField(
+              showSuffixImage: true,
+              customHintTextStyle: true,
               readOnly: true,
               hintText: "${toDate.year}-${toDate.month}-${toDate.day}",
               title: "To Date",
               onTap: () async {
-                DateTime? picked = await showDatePicker(
+                final DateTime? picked = await showDatePicker(
                     context: context,
                     initialDate: fromDate,
                     firstDate: DateTime(2015, 8),

@@ -20,7 +20,11 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
 
     return InkWell(
       onTap: () {
-        // showDialog(context: context, builder: (context) => const AccountList());
+        // showDialog(
+        //                               context: context,
+        //                               builder: (context) => AccountDetailBox(
+        //                                     customerDetail: customerDetail,
+        //                                   ));
       },
       child: Container(
         margin: const EdgeInsets.symmetric(vertical: 15),
@@ -44,7 +48,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                 ),
                 SizedBox(width: _width * 0.03),
                 Text(
-                  showAmount ? "XXXXXXXXX" : "NPR 123546846",
+                  showAmount ? "XXXXXXXX" : "NPR 123468.00",
                   style: TextStyle(
                       fontSize: 16,
                       fontFamily: "popinsemibold",
@@ -59,11 +63,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                     },
                     child: SvgPicture.asset(
                       "assets/icons/akar-icons_eye-slashed.svg",
-                      height: _height * 0.025,
+                      height: _height * 0.030,
                     ),
                   ),
                 ),
-                const Spacer(),
                 Container(
                   width: _width * 0.2,
                   height: _width * 0.06,

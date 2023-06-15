@@ -32,8 +32,7 @@ class _FullStatementPageState extends State<FullStatementPage> {
         fullStatementRepository:
             RepositoryProvider.of<FullStatementRepository>(context),
       ),
-      child:
-          FullStatementWidget(fromDate: widget.fromDate, toDate: widget.toDate),
+      child: FullStatementWidget(),
     );
   }
 }
