@@ -161,9 +161,9 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           TextStyle(fontSize: 12, color: Colors.black),
                       headingRowColor: MaterialStatePropertyAll(Colors.black12),
                       columns: [
-                        DataColumn(label: Text("DR/CR")),
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
+                        DataColumn(label: Text("Remarks")),
                       ],
                       rows: state.data.ministatementList
                           .map((e) => DataRow(

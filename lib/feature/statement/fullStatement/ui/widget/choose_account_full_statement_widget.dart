@@ -18,9 +18,8 @@ class ChooseAccountFullStatementWidget extends StatefulWidget {
 
 class _ChooseAccountFullStatementWidgetState
     extends State<ChooseAccountFullStatementWidget> {
-  DateTime? fromDate;
-
-  DateTime? toDate;
+  DateTime fromDate = DateTime.now().subtract(Duration(days: 90));
+  DateTime toDate = DateTime.now();
   Future<void> _selectDate(BuildContext context, bool isFromDate) async {
     final DateTime? picked = await showDatePicker(
       context: context,
@@ -55,57 +54,46 @@ class _ChooseAccountFullStatementWidgetState
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {
-          NavigationService.push(target: FullStatementPage());
+          NavigationService.push(
+              target: FullStatementPage(
+            fromDate: fromDate,
+            toDate: toDate,
+          ));
         },
-        body: Column(children: [
-          CustomTextField(
-            hintText: "From Date:$fromDate  To Date :$toDate",
-            onTap: () {
-              showDialog(
-                context: context,
-                builder: (context) => AlertDialog(
-                  title: Text('Select Date Range'),
-                  content: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      ElevatedButton(
-                        child: Text(fromDate != null
-                            ? 'From Date: ${fromDate.toString().split(' ')[0]}'
-                            : 'Select From Date'),
-                        onPressed: () => _selectDate(context, true),
-                      ),
-                      ElevatedButton(
-                        child: Text(toDate != null
-                            ? 'To Date: ${toDate.toString().split(' ')[0]}'
-                            : 'Select To Date'),
-                        onPressed: () => _selectDate(context, false),
-                      ),
-                    ],
-                  ),
-                  actions: [
-                    ElevatedButton(
-                      child: Text('Cancel'),
-                      onPressed: () => Navigator.of(context).pop(),
-                    ),
-                    ElevatedButton(
-                      child: Text('OK'),
-                      onPressed: () {
-                        // Do something with the selected dates
-                        print(
-                            'From Date: ${fromDate!.year}-${fromDate!.month}-${fromDate!.day}');
-                        print(
-                            'To Date:${toDate!.year}-${toDate!.month}-${toDate!.day}');
-                        Navigator.of(context).pop();
-                      },
-                    ),
-                  ],
-                ),
-              );
-            },
-            readOnly: true,
-            title: "Select Date",
-          ),
-        ]),
+        body: Column(
+          children: [
+            CustomTextField(
+              readOnly: true,
+              onTap: () async {
+                DateTime? picked = await showDatePicker(
+                    context: context,
+                    initialDate: fromDate,
+                    firstDate: DateTime(2015, 8),
+                    lastDate: DateTime.now());
+                setState(() {
+                  fromDate = picked!;
+                });
+              },
+              title: "From Date",
+              hintText: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
+            ),
+            CustomTextField(
+              readOnly: true,
+              hintText: "${toDate.year}-${toDate.month}-${toDate.day}",
+              title: "To Date",
+              onTap: () async {
+                DateTime? picked = await showDatePicker(
+                    context: context,
+                    initialDate: fromDate,
+                    firstDate: DateTime(2015, 8),
+                    lastDate: DateTime.now());
+                setState(() {
+                  toDate = picked!;
+                });
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

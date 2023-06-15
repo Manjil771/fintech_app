@@ -6,7 +6,7 @@ class Assets {
   static const String translateImage = "assets/icons/languagetranslate.svg";
   static const String groupIcon = "assets/icons/Group 1035.svg";
   static const String verify = "assets/icons/verify your number.svg";
-  static const String loader = "assets/icons/ismart_loader.gif";
+  static const String loader = "assets/icons/ismart_loader_test2.gif";
   //TODO :need to add user image to profile picture
 
   static const String profilePicture =

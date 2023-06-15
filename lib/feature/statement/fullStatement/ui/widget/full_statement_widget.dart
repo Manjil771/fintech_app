@@ -7,6 +7,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
@@ -18,7 +19,12 @@ import 'package:ismart/feature/statement/miniStatement/cubit/mini_statement_cubi
 import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 
 class FullStatementWidget extends StatefulWidget {
-  const FullStatementWidget({Key? key}) : super(key: key);
+  final DateTime fromDate;
+  final DateTime toDate;
+
+  const FullStatementWidget(
+      {Key? key, required this.fromDate, required this.toDate})
+      : super(key: key);
 
   @override
   State<FullStatementWidget> createState() => _FullStatementWidgetState();
@@ -36,8 +42,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         final cubit = context.read<FullStatementCubit>().fetchFullStatement(
-            accountNumbner:
-                customerDetail.value!.accountDetail[0].accountNumber);
+            accountNumber: customerDetail.value!.accountDetail[0].accountNumber,
+            fromDate: widget.fromDate,
+            toDate: widget.toDate);
       },
     );
   }
@@ -104,10 +111,11 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                         if (state is CommonStateSuccess<FullStatementModel>) {
                           return Column(
                             children: [
-                              Text(
-                                  "Account Details ${state.data.accountNumber}",
-                                  style:
-                                      Theme.of(context).textTheme.titleLarge),
+                              PrimaryAccountBox(),
+                              // Text(
+                              //     "Account Details ${state.data.accountNumber}",
+                              //     style:
+                              //         Theme.of(context).textTheme.titleLarge),
                               SizedBox(height: _height * 0.01),
                               Container(
                                 padding: const EdgeInsets.all(18),
