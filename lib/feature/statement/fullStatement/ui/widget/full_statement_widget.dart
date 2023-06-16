@@ -433,8 +433,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                       .toString(),
                                                   imageUrl: "",
                                                   status: data.credit == 0
-                                                      ? "Withdrawl"
-                                                      : "Deposit");
+                                                      ? "Deposit"
+                                                      : "Withdrawl");
                                             },
                                           ),
                                         ),

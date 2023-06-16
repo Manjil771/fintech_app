@@ -45,10 +45,20 @@ class StatementDetailBox extends StatelessWidget {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: isCredit
-                      ? Colors.red.withOpacity(0.08)
-                      : Colors.green.withOpacity(0.08),
+                      ? Colors.green.withOpacity(0.08)
+                      : Colors.red.withOpacity(0.08),
                 ),
-                child: SvgPicture.asset(Assets.arrowUp)),
+                child: isCredit
+                    ? SvgPicture.asset(
+                        Assets.arrowUp,
+                      )
+                    : RotatedBox(
+                        quarterTurns: 10,
+                        child: SvgPicture.asset(
+                          Assets.arrowUp,
+                          color: Colors.red,
+                        ),
+                      )),
             SizedBox(width: _width * 0.04),
             Expanded(
               child: Column(

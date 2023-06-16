@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -74,7 +73,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         builder: (context, state) {
           if (state is CommonStateSuccess<MiniStatementModel>) {
             return CommonContainer(
-                showDetail: true,
+                showDetail: false,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -83,6 +82,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                         builder: (context, val, _) {
                           if (val != null) {
                             return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                     "Account Details ${val.accountDetail[0].mainCode}",
@@ -149,6 +149,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                     ],
                                   ),
                                 ),
+                                SizedBox(height: _height * 0.02),
                               ],
                             );
                           } else {
@@ -163,20 +164,27 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       columns: [
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
-                        DataColumn(label: Text("Remarks")),
+                        DataColumn(label: Text("Status")),
                       ],
                       rows: state.data.ministatementList
                           .map((e) => DataRow(
                                 cells: [
                                   DataCell(Text(
-                                    e.credit ? "Dr" : "Cr",
+                                      "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.year}")),
+                                  DataCell(Text(
+                                    e.amount.toString(),
                                     style: TextStyle(
                                         color: e.credit
-                                            ? Colors.red
-                                            : Colors.green),
+                                            ? Colors.green
+                                            : Colors.red),
                                   )),
-                                  DataCell(Text(e.transactionDate.toString())),
-                                  DataCell(Text(e.amount.toString())),
+                                  DataCell(Text(
+                                    e.credit ? "Deposit" : "Withdrawl",
+                                    style: TextStyle(
+                                        color: e.credit
+                                            ? Colors.green
+                                            : Colors.red),
+                                  )),
                                 ],
                               ))
                           .toList(),
@@ -197,7 +205,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                 },
                 buttonName: "Close",
                 title: "Mini Statement",
-                detail: "Select the Account you want to view statement of.",
+                detail: "",
                 topbarName: "Statement");
           } else {
             return Container();
