@@ -88,7 +88,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             buttonName: "Proceed",
             topbarName: "Payment",
             title: "Mobile Top Up",
-            detail: "Load money to your preferred eSewa account.",
+            detail: "Topup your mobile number.",
             body: Column(
               children: [
                 Row(

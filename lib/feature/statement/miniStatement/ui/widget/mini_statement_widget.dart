@@ -138,9 +138,9 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                           Text(
                                             "NPR ${val.accountDetail[0].actualBalance}",
                                             style: TextStyle(
-                                                fontFamily: "popinBold",
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500,
+                                                fontFamily: "popinBold",
                                                 color: Theme.of(context)
                                                     .primaryColor),
                                           ),

@@ -60,4 +60,5 @@ class Assets {
   static const String arrowUp = "assets/icons/arrowdownfull.svg";
   static const String arrowDown = "assets/icons/arrowupfull.svg";
   static const String filterIcon = "assets/icons/Filter list.svg";
+  static const String errorImage = "assets/images/error.png";
 }

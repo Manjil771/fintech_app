@@ -9,13 +9,6 @@ import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_
 import 'package:ismart/feature/statement/miniStatement/ui/widget/mini_statement_widget.dart';
 
 class FullStatementPage extends StatefulWidget {
-  final DateTime fromDate;
-  final DateTime toDate;
-
-  const FullStatementPage(
-      {Key? key, required this.fromDate, required this.toDate})
-      : super(key: key);
-
   @override
   State<FullStatementPage> createState() => _FullStatementPageState();
 }

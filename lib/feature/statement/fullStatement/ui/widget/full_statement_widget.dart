@@ -10,6 +10,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -35,11 +36,15 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   List numberOfDays = [15, 30, 90];
 
   DateTime fromDate = DateTime.now();
+  DateTime fromDateAlert = DateTime.now();
+
   DateTime toDate = DateTime.now();
   ValueNotifier<FullStatementModel?> fullStatementDetail = ValueNotifier(null);
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
   void getData() {
-    // DateTime fromDate = DateTime.now().subtract(Duration(days: startDay));
+    DateTime fromDate = fromDateAlert == DateTime.now()
+        ? DateTime.now().subtract(Duration(days: startDay))
+        : fromDateAlert;
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
     WidgetsBinding.instance.addPostFrameCallback(
@@ -121,12 +126,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                       builder: (context, state) {
                         if (state is CommonStateSuccess<FullStatementModel>) {
                           return Column(
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              // PrimaryAccountBox(),
-                              // Text(
-                              //     "Account Details ${state.data.accountNumber}",
-                              //     style:
-                              //         Theme.of(context).textTheme.titleLarge),
                               Row(
                                 children: [
                                   Expanded(
@@ -139,9 +140,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           return InkWell(
                                             onTap: () {
                                               setState(() {
+                                                fromDateAlert = DateTime.now();
                                                 selectedDays = index;
                                                 startDay = numberOfDays[index];
-                                                print(startDay);
                                               });
                                               getData();
                                             },
@@ -153,9 +154,13 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                   borderRadius:
                                                       BorderRadius.circular(8),
                                                   border: Border.all(
-                                                      color: selectedDays ==
-                                                              index
-                                                          ? _theme.primaryColor
+                                                      color: fromDateAlert !=
+                                                              DateTime.now()
+                                                          ? selectedDays ==
+                                                                  index
+                                                              ? _theme
+                                                                  .primaryColor
+                                                              : Colors.black54
                                                           : Colors.black54)),
                                               child: Center(
                                                   child: Text(
@@ -164,10 +169,13 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                     .copyWith(
                                                         fontWeight:
                                                             FontWeight.bold,
-                                                        color: selectedDays ==
-                                                                index
-                                                            ? _theme
-                                                                .primaryColor
+                                                        color: fromDateAlert !=
+                                                                DateTime.now()
+                                                            ? selectedDays ==
+                                                                    index
+                                                                ? _theme
+                                                                    .primaryColor
+                                                                : Colors.black54
                                                             : Colors.black54),
                                               )),
                                             ),
@@ -181,109 +189,113 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                       showDialog(
                                         context: context,
                                         builder: (context) {
-                                          return Center(
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Colors.white,
-                                                borderRadius:
-                                                    BorderRadius.circular(18),
-                                              ),
-                                              height: _height * 0.7,
-                                              width: _width * 0.9,
-                                              child: Scaffold(
-                                                backgroundColor:
-                                                    CustomTheme.white,
-                                                body: Padding(
-                                                  padding: const EdgeInsets.all(
-                                                      18.0),
-                                                  child: Column(
-                                                      crossAxisAlignment:
-                                                          CrossAxisAlignment
-                                                              .start,
-                                                      children: [
-                                                        Text(
-                                                          "Filter",
-                                                          style: _textTheme
-                                                              .labelLarge!
-                                                              .copyWith(
-                                                                  fontSize: 18,
-                                                                  fontWeight:
-                                                                      FontWeight
-                                                                          .bold),
-                                                        ),
-                                                        PrimaryAccountBox(),
-                                                        CustomTextField(
-                                                          customHintTextStyle:
-                                                              true,
-                                                          readOnly: true,
-                                                          onTap: () async {
-                                                            final DateTime?
-                                                                picked =
-                                                                await showDatePicker(
-                                                                    context:
-                                                                        context,
-                                                                    initialDate:
-                                                                        fromDate,
-                                                                    firstDate:
-                                                                        DateTime(
-                                                                            2015,
-                                                                            8),
-                                                                    lastDate:
-                                                                        DateTime
-                                                                            .now());
-                                                            setState(() {
-                                                              fromDate =
-                                                                  picked!;
-                                                            });
-                                                          },
-                                                          showSuffixImage: true,
-                                                          title: "From Date",
-                                                          hintText:
-                                                              "${fromDate.year}-${fromDate.month}-${fromDate!.day}",
-                                                        ),
-                                                        CustomTextField(
-                                                          showSuffixImage: true,
-                                                          customHintTextStyle:
-                                                              true,
-                                                          readOnly: true,
-                                                          hintText:
-                                                              "${toDate.year}-${toDate.month}-${toDate.day}",
-                                                          title: "To Date",
-                                                          onTap: () async {
-                                                            final DateTime?
-                                                                picked =
-                                                                await showDatePicker(
-                                                                    context:
-                                                                        context,
-                                                                    initialDate:
-                                                                        DateTime
-                                                                            .now(),
-                                                                    firstDate:
-                                                                        DateTime(
-                                                                            2015,
-                                                                            8),
-                                                                    lastDate:
-                                                                        DateTime
-                                                                            .now());
-                                                            setState(() {
-                                                              toDate = picked!;
-                                                            });
-                                                          },
-                                                        ),
-                                                        CustomRoundedButtom(
-                                                            title: "View",
-                                                            onPressed: () {
-                                                              print(fromDate);
-                                                              print(toDate);
-                                                              getData();
-                                                              NavigationService
-                                                                  .pop();
-                                                            })
-                                                      ]),
+                                          return StatefulBuilder(
+                                              builder: (context, setState) {
+                                            return AlertDialog(
+                                              actionsPadding: EdgeInsets.zero,
+                                              actions: [
+                                                Container(
+                                                  decoration: BoxDecoration(
+                                                    color: Colors.white,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            18),
+                                                  ),
+                                                  child: Padding(
+                                                    padding:
+                                                        const EdgeInsets.all(
+                                                            18.0),
+                                                    child: Column(
+                                                        crossAxisAlignment:
+                                                            CrossAxisAlignment
+                                                                .start,
+                                                        children: [
+                                                          Text(
+                                                            "Filter",
+                                                            style: _textTheme
+                                                                .labelLarge!
+                                                                .copyWith(
+                                                                    fontSize:
+                                                                        18,
+                                                                    fontWeight:
+                                                                        FontWeight
+                                                                            .bold),
+                                                          ),
+                                                          PrimaryAccountBox(),
+                                                          CustomTextField(
+                                                            customHintTextStyle:
+                                                                true,
+                                                            readOnly: true,
+                                                            onTap: () async {
+                                                              final DateTime?
+                                                                  picked =
+                                                                  await showDatePicker(
+                                                                      context:
+                                                                          context,
+                                                                      initialDate:
+                                                                          fromDate,
+                                                                      firstDate:
+                                                                          DateTime(
+                                                                              2015,
+                                                                              8),
+                                                                      lastDate:
+                                                                          DateTime
+                                                                              .now());
+                                                              setState(() {
+                                                                fromDateAlert =
+                                                                    picked!;
+                                                              });
+                                                            },
+                                                            showSuffixImage:
+                                                                true,
+                                                            title: "From Date",
+                                                            hintText:
+                                                                "${fromDateAlert.year}-${fromDateAlert.month}-${fromDateAlert.day}",
+                                                          ),
+                                                          CustomTextField(
+                                                            showSuffixImage:
+                                                                true,
+                                                            customHintTextStyle:
+                                                                true,
+                                                            readOnly: true,
+                                                            hintText:
+                                                                "${toDate.year}-${toDate.month}-${toDate.day}",
+                                                            title: "To Date",
+                                                            onTap: () async {
+                                                              final DateTime? picked = await showDatePicker(
+                                                                  context:
+                                                                      context,
+                                                                  initialDate:
+                                                                      DateTime
+                                                                          .now(),
+                                                                  firstDate:
+                                                                      DateTime(
+                                                                          2015,
+                                                                          8),
+                                                                  lastDate:
+                                                                      DateTime
+                                                                          .now());
+                                                              setState(() {
+                                                                toDate =
+                                                                    picked!;
+                                                              });
+                                                            },
+                                                          ),
+                                                          CustomRoundedButtom(
+                                                              title: "View",
+                                                              onPressed: () {
+                                                                print(fromDate);
+                                                                print(toDate);
+                                                                getData();
+                                                                NavigationService
+                                                                    .pop();
+                                                              })
+                                                        ]),
+                                                  ),
                                                 ),
-                                              ),
-                                            ),
-                                          );
+                                              ],
+                                            );
+                                          });
                                         },
                                       );
                                     },
@@ -293,7 +305,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           borderRadius:
                                               BorderRadius.circular(6),
                                           border: Border.all(
-                                              color: CustomTheme.darkerBlack)),
+                                              color: fromDateAlert !=
+                                                      DateTime.now()
+                                                  ? Colors.black54
+                                                  : _theme.primaryColor)),
                                       margin: EdgeInsets.only(left: 5),
                                       padding: const EdgeInsets.all(4),
                                       child: Row(
@@ -302,6 +317,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                             "Filter",
                                             style: _textTheme.labelLarge!
                                                 .copyWith(
+                                                    color: fromDateAlert !=
+                                                            DateTime.now()
+                                                        ? Colors.black54
+                                                        : _theme.primaryColor,
                                                     fontWeight:
                                                         FontWeight.bold),
                                           ),
@@ -317,93 +336,110 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                 ],
                               ),
                               SizedBox(height: _height * 0.01),
-                              Container(
-                                padding: const EdgeInsets.all(18),
-                                width: double.infinity,
-                                height: _height * 0.11,
-                                decoration: BoxDecoration(
-                                  borderRadius: BorderRadius.circular(8),
-                                  color:
-                                      Theme.of(context).scaffoldBackgroundColor,
-                                  border: Border.all(
-                                      color: Theme.of(context).primaryColor),
-                                ),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    Column(
+                              state.data.accountStatementDtos!.isEmpty
+                                  ? NoDataScreen(
+                                      title: "No transactions yet",
+                                      details: "Make Your First Transfer",
+                                    )
+                                  : Column(
                                       crossAxisAlignment:
-                                          CrossAxisAlignment.start,
+                                          CrossAxisAlignment.center,
                                       children: [
-                                        Text(
-                                          "Opening Balance",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
+                                        Container(
+                                          padding: const EdgeInsets.all(18),
+                                          width: double.infinity,
+                                          height: _height * 0.11,
+                                          decoration: BoxDecoration(
+                                            borderRadius:
+                                                BorderRadius.circular(8),
+                                            color: Theme.of(context)
+                                                .scaffoldBackgroundColor,
+                                            border: Border.all(
+                                                color: Theme.of(context)
+                                                    .primaryColor),
+                                          ),
+                                          child: Row(
+                                            mainAxisAlignment:
+                                                MainAxisAlignment.spaceBetween,
+                                            children: [
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Opening Balance",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleLarge,
+                                                  ),
+                                                  Text(
+                                                    "NPR ${state.data.openingBalance}",
+                                                    style: TextStyle(
+                                                        fontFamily: "popinBold",
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
+                                                  ),
+                                                ],
+                                              ),
+                                              Column(
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
+                                                children: [
+                                                  Text(
+                                                    "Closing Balance",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleLarge,
+                                                  ),
+                                                  Text(
+                                                    "NPR ${state.data.closingBalance}",
+                                                    style: TextStyle(
+                                                        fontFamily: "popinBold",
+                                                        fontSize: 16,
+                                                        fontWeight:
+                                                            FontWeight.w500,
+                                                        color: Theme.of(context)
+                                                            .primaryColor),
+                                                  ),
+                                                ],
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        Text(
-                                          "NPR ${state.data.openingBalance}",
-                                          style: TextStyle(
-                                              fontFamily: "popinBold",
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              color: Theme.of(context)
-                                                  .primaryColor),
+                                        SizedBox(height: _height * 0.02),
+                                        Container(
+                                          width: double.infinity,
+                                          height: 500,
+                                          child: ListView.builder(
+                                            itemCount: state.data
+                                                .accountStatementDtos!.length,
+                                            itemBuilder: (context, index) {
+                                              var data = state.data
+                                                  .accountStatementDtos![index];
+                                              return StatementDetailBox(
+                                                  balance:
+                                                      data.balance.toString(),
+                                                  isCredit: data.credit == 0
+                                                      ? true
+                                                      : false,
+                                                  desc: data.remarks.toString(),
+                                                  amount: data.credit == 0
+                                                      ? data.debit.toString()
+                                                      : data.credit.toString(),
+                                                  dateTime: data.transactionDate
+                                                      .toString(),
+                                                  imageUrl: "",
+                                                  status: data.credit == 0
+                                                      ? "Withdrawl"
+                                                      : "Deposit");
+                                            },
+                                          ),
                                         ),
                                       ],
                                     ),
-                                    Column(
-                                      crossAxisAlignment:
-                                          CrossAxisAlignment.start,
-                                      children: [
-                                        Text(
-                                          "Closing Balance",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge,
-                                        ),
-                                        Text(
-                                          "NPR ${state.data.closingBalance}",
-                                          style: TextStyle(
-                                              fontFamily: "popinBold",
-                                              fontSize: 16,
-                                              fontWeight: FontWeight.w500,
-                                              color: Theme.of(context)
-                                                  .primaryColor),
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: _height * 0.02),
-                              Container(
-                                width: double.infinity,
-                                height: 500,
-                                child: ListView.builder(
-                                  itemCount:
-                                      state.data.accountStatementDtos!.length,
-                                  itemBuilder: (context, index) {
-                                    var data =
-                                        state.data.accountStatementDtos![index];
-                                    return StatementDetailBox(
-                                        balance: data.balance.toString(),
-                                        isCredit:
-                                            data.credit == 0 ? true : false,
-                                        desc: data.remarks.toString(),
-                                        amount: data.credit == 0
-                                            ? data.debit.toString()
-                                            : data.credit.toString(),
-                                        dateTime:
-                                            data.transactionDate.toString(),
-                                        imageUrl: "",
-                                        status: data.credit == 0
-                                            ? "Withdrawl"
-                                            : "Deposit");
-                                  },
-                                ),
-                              ),
                             ],
                           );
                         } else {
