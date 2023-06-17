@@ -6,7 +6,7 @@ class Assets {
   static const String translateImage = "assets/icons/languagetranslate.svg";
   static const String groupIcon = "assets/icons/Group 1035.svg";
   static const String verify = "assets/icons/verify your number.svg";
-  static const String loader = "assets/icons/ismart_loader.gif";
+  static const String loader = "assets/icons/ismart_loader_test2.gif";
   //TODO :need to add user image to profile picture
 
   static const String profilePicture =
@@ -59,4 +59,6 @@ class Assets {
   static const String arrowRight = "assets/icons/arrowright.svg";
   static const String arrowUp = "assets/icons/arrowdownfull.svg";
   static const String arrowDown = "assets/icons/arrowupfull.svg";
+  static const String filterIcon = "assets/icons/Filter list.svg";
+  static const String errorImage = "assets/images/error.png";
 }

@@ -9,8 +9,6 @@ import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_
 import 'package:ismart/feature/statement/miniStatement/ui/widget/mini_statement_widget.dart';
 
 class FullStatementPage extends StatefulWidget {
-  const FullStatementPage({Key? key}) : super(key: key);
-
   @override
   State<FullStatementPage> createState() => _FullStatementPageState();
 }

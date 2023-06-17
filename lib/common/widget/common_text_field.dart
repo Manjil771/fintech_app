@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/enum/text_field_type.dart';
@@ -21,8 +22,10 @@ class CustomTextField extends FormField<String> {
     EdgeInsets? margin,
     TextInputType textInputType = TextInputType.text,
     IconData? suffixIcon,
+    bool showSuffixImage = false,
     VoidCallback? onSuffixPressed,
     int? maxLength,
+    bool customHintTextStyle = false,
     double bottomMargin = 10,
     double horizontalMargin = 0,
     // double horizontalMargin = CustomTheme.symmetricHozPadding,
@@ -32,6 +35,7 @@ class CustomTextField extends FormField<String> {
     FormFieldValidator<String>? validator,
     String? restorationId,
     Widget? leading,
+    String suffixImage = "assets/icons/uit_calender.svg",
     Widget? trailing,
     VoidCallback? onTap,
     Widget? prefix,
@@ -56,12 +60,19 @@ class CustomTextField extends FormField<String> {
               counterText: "",
               hintText: hintText,
               prefix: prefix,
-              hintStyle: const TextStyle(
-                fontFamily: Fonts.poppin,
-                fontWeight: FontWeight.w400,
-                fontSize: 14,
-                color: CustomTheme.gray,
-              ),
+              hintStyle: customHintTextStyle
+                  ? TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: CustomTheme.darkerBlack.withOpacity(0.9),
+                    )
+                  : TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: CustomTheme.gray,
+                    ),
               border: InputBorder.none,
               errorBorder: InputBorder.none,
               enabledBorder: InputBorder.none,
@@ -196,6 +207,11 @@ class CustomTextField extends FormField<String> {
                                           iconSize: suffixIconSize,
                                           iconColor: CustomTheme.darkGray,
                                           onPressed: onSuffixPressed,
+                                        ),
+                                      if (showSuffixImage)
+                                        SvgPicture.asset(
+                                          suffixImage,
+                                          height: suffixIconSize,
                                         ),
                                     ],
                                   ),

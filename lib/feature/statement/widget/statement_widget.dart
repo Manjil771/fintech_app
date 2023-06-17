@@ -6,6 +6,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
+import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/choose_account_mini_statement_page.dart';
 
 class StatementWidget extends StatelessWidget {
@@ -44,8 +45,7 @@ class StatementWidget extends StatelessWidget {
                         containerImage: Assets.miniStatement,
                         title: "Full Statement",
                         onContainerPress: () {
-                          NavigationService.push(
-                              target: ChooseAccountFullStatementPage());
+                          NavigationService.push(target: FullStatementPage());
                         }),
                   ),
                 ],

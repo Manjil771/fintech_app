@@ -6,7 +6,7 @@ class FullStatementModel {
   String? accountNumber;
   String? accountType;
   String? address;
-  Null? pdfUrl;
+  String? pdfUrl;
   List<AccountStatementDtos>? accountStatementDtos;
   String? accountName;
 

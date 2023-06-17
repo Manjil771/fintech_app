@@ -12,11 +12,15 @@ class FullStatementCubit extends Cubit<CommonState> {
   final FullStatementRepository fullStatementRepository;
   FullStatementCubit({required this.fullStatementRepository})
       : super(CommonInitial());
-  Future<dynamic> fetchFullStatement({required String accountNumbner}) async {
+  Future<dynamic> fetchFullStatement({
+    required String accountNumber,
+    required DateTime fromDate,
+    required DateTime toDate,
+  }) async {
     emit(CommonLoading());
     try {
-      final response =
-          await fullStatementRepository.getFullStatement(accountNumbner);
+      final response = await fullStatementRepository.getFullStatement(
+          accountNumber: accountNumber, fromDate: fromDate, toDate: toDate);
 
       if (response.status == Status.Success && response.data != null) {
         emit(CommonStateSuccess<FullStatementModel>(data: response.data!));
