@@ -30,6 +30,8 @@ class CustomerDetailRepository {
 
   final ValueNotifier<List<AccountDetail>> accountsList = ValueNotifier([]);
 
+  final ValueNotifier<AccountDetail?> selectedAccount = ValueNotifier(null);
+
   Future<DataResponse<CustomerDetailModel>> getCustomerDetail() async {
     try {
       final _res = await customerAPIProvider.fetchCustomerDetail();
@@ -48,9 +50,10 @@ class CustomerDetailRepository {
         customerDetailModel.value = _user;
 
         accountsList.value = _user.accountDetail;
+        selectedAccount.value = accountsList.value.first;
         return DataResponse.success(_user);
       } else {
-        return DataResponse.error("error message");
+        return DataResponse.error("Error fetching customer detail.");
       }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
