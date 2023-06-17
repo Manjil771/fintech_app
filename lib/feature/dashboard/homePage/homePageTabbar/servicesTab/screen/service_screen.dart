@@ -21,7 +21,7 @@ class _ServicesPageState extends State<ServicesPage> {
       create: (context) => ServicesCubit(
         servicesRepository: RepositoryProvider.of<ServicesRepository>(context),
       ),
-      child: ServicesWidget(),
+      child: const ServicesWidget(),
     );
   }
 }

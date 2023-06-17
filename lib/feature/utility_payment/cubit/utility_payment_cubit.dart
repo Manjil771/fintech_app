@@ -14,7 +14,6 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
 
   getTopUp({
     required String serviceIdentifier,
-    required String accountNumber,
     required String phoneNumber,
     required String amount,
     required String mpin,
@@ -23,7 +22,6 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
 
     final _res = await utilityPaymentRepository.getTopup(
       serviceIdentifier: serviceIdentifier,
-      accountNumber: accountNumber,
       phoneNumber: phoneNumber,
       amount: amount,
       mpin: mpin,

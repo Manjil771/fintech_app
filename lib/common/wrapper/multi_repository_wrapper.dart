@@ -59,6 +59,8 @@ class MultiRepositoryWrapper extends StatelessWidget {
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            customerDetailRepository:
+                RepositoryProvider.of<CustomerDetailRepository>(context),
           ),
           lazy: true,
         ),
