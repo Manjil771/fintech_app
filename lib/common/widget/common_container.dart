@@ -78,7 +78,7 @@ class CommonContainer extends StatelessWidget {
                         children: [
                           Text(
                             accountTitle,
-                            style: TextStyle(
+                            style: const TextStyle(
                               fontFamily: Fonts.poppin,
                               fontWeight: FontWeight.w600,
                               fontSize: 14,

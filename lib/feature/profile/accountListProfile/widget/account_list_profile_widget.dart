@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 
 class AccountListProfileWidget extends StatefulWidget {
@@ -52,16 +48,14 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                           title: CommonDetailBox(
                               showTrailingIcon: false,
                               leadingIcon: Assets.profileIcon,
-                              title: accountType[index],
+                              title: _detail.accountDetail[index].accountType,
                               detail:
                                   "A/C : ${_detail.accountDetail[index].mainCode}",
                               onBoxPressed: () {
-                                //if (_detail.accountDetail[index] == 0) {
                                 setState(() {
                                   showPrimaryAccount = !showPrimaryAccount;
                                 });
                                 print(showPrimaryAccount);
-                                //}
                               }),
                           children: [
                             Container(

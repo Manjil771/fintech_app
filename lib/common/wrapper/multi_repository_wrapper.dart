@@ -53,7 +53,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
           ),
           lazy: true,
         ),
-
+        RepositoryProvider(
+          create: (context) => CustomerDetailRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            coOperative: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
         RepositoryProvider<UtilityPaymentRepository>(
           create: (context) => UtilityPaymentRepository(
             userRepository: RepositoryProvider.of<UserRepository>(context),
@@ -72,14 +79,7 @@ class MultiRepositoryWrapper extends StatelessWidget {
           ),
           lazy: true,
         ),
-        RepositoryProvider(
-          create: (context) => CustomerDetailRepository(
-            apiProvider: RepositoryProvider.of<ApiProvider>(context),
-            userRepository: RepositoryProvider.of<UserRepository>(context),
-            coOperative: RepositoryProvider.of<CoOperative>(context),
-          ),
-          lazy: true,
-        ),
+
         RepositoryProvider(
           create: (context) => MiniStatementRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
