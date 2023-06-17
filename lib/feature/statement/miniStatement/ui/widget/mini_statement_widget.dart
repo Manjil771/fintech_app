@@ -31,12 +31,9 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         .customerDetailModel;
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
-        final cubit = context
-            .read<MiniStatementCubit>()
-            //.fetchMiniStatement(accountNumbner: "001001-001-102-0001002");
-            .fetchMiniStatement(
-                accountNumbner:
-                    customerDetail.value!.accountDetail[0].accountNumber);
+        final cubit = context.read<MiniStatementCubit>().fetchMiniStatement(
+            accountNumbner:
+                customerDetail.value!.accountDetail[0].accountNumber);
       },
     );
   }
@@ -48,6 +45,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
+      showAppBar: false,
       body: BlocConsumer<MiniStatementCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
@@ -159,9 +157,12 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                     DataTable(
                       headingRowHeight: 40,
                       dataTextStyle:
-                          TextStyle(fontSize: 12, color: Colors.black),
-                      headingRowColor: MaterialStatePropertyAll(Colors.black12),
-                      columns: [
+                          const TextStyle(fontSize: 12, color: Colors.black),
+                      headingRowColor:
+                          const MaterialStatePropertyAll(Colors.black12),
+                      columns: const [
+                        DataColumn(label: Text("DR/CR")),
+
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
                         DataColumn(label: Text("Status")),
@@ -201,7 +202,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                   ],
                 ),
                 onButtonPressed: () {
-                  NavigationService.push(target: DashboardPage());
+                  NavigationService.push(target: const DashboardPage());
                 },
                 buttonName: "Close",
                 title: "Mini Statement",

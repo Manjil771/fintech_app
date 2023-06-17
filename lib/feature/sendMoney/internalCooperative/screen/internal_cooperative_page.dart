@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/cubits/internal_transfer_cubit.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/widget/internal_cooperative_widget.dart';
 
 class InternalCooperativePage extends StatelessWidget {
@@ -10,6 +13,12 @@ class InternalCooperativePage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return const InternalCooperativeWidget();
+    return BlocProvider(
+      create: (context) => InternalTransferCubit(
+        internalTransferRepository:
+            RepositoryProvider.of<InternalTransferRepository>(context),
+      ),
+      child: const InternalCooperativeWidget(),
+    );
   }
 }

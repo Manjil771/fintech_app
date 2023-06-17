@@ -3,6 +3,7 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
@@ -10,12 +11,14 @@ class UtilityPaymentRepository {
   ApiProvider apiProvider;
   late UtilityPaymentAPIProvider utilityPaymentAPIProvider;
   UserRepository userRepository;
+  CustomerDetailRepository customerDetailRepository;
   CoOperative env;
 
   UtilityPaymentRepository({
     required this.env,
     required this.userRepository,
     required this.apiProvider,
+    required this.customerDetailRepository,
   }) {
     utilityPaymentAPIProvider = UtilityPaymentAPIProvider(
       baseUrl: env.baseUrl,
@@ -30,7 +33,6 @@ class UtilityPaymentRepository {
 
   Future<DataResponse<String>> getTopup({
     required String serviceIdentifier,
-    required String accountNumber,
     required String phoneNumber,
     required String amount,
     required String mpin,
@@ -38,7 +40,8 @@ class UtilityPaymentRepository {
     try {
       final _res = await utilityPaymentAPIProvider.getTopup(
         serviceIdentifier: serviceIdentifier,
-        accountNumber: accountNumber,
+        accountNumber:
+            customerDetailRepository.selectedAccount.value?.accountNumber ?? "",
         phoneNumber: phoneNumber,
         amount: amount,
         mpin: mpin,

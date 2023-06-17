@@ -1,14 +1,14 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
 
-class SendToBankCubit extends Cubit<CommonState> {
-  SendToBankRepository sendToBankRepository;
+class CoopListCubit extends Cubit<CommonState> {
+  InternalTransferRepository internalTransferRepository;
 
-  SendToBankCubit({
-    required this.sendToBankRepository,
+  CoopListCubit({
+    required this.internalTransferRepository,
   }) : super(CommonInitial());
 
   sendMoneyToBank({
@@ -16,23 +16,18 @@ class SendToBankCubit extends Cubit<CommonState> {
     required String amount,
     required String mpin,
     required String remarks,
-    required String destinationBankInstrumentCode,
-    required String destinationBankAccountName,
-    required String destinationBankAccountNumber,
-    required String destinationBankName,
+    required String receivingAccount,
+    required String receivingBranchId,
     required String sendingAccount,
   }) async {
     emit(CommonLoading());
 
-    final res = await sendToBankRepository.sendMoneyToBank(
+    final res = await internalTransferRepository.fundTranfer(
       amount: amount,
       mpin: mpin,
       remarks: remarks,
-      destinationBankAccountName: destinationBankAccountName,
-      destinationBankAccountNumber: destinationBankAccountNumber,
-      destinationBankInstrumentCode: destinationBankInstrumentCode,
-      serviceCharge: charge,
-      destinationBankName: destinationBankName,
+      receivingAccount: receivingAccount,
+      receivingBranchId: receivingBranchId,
       sendingAccount: sendingAccount,
     );
     if (res.status == Status.Success && res.data != null) {
@@ -47,9 +42,9 @@ class SendToBankCubit extends Cubit<CommonState> {
   fetchBanksList() async {
     emit(CommonLoading());
 
-    final res = await sendToBankRepository.getBanksList();
+    final res = await internalTransferRepository.getBranchList();
     if (res.status == Status.Success && res.data != null) {
-      emit(CommonDataFetchSuccess<Bank>(data: res.data!));
+      emit(CommonDataFetchSuccess<InternalBranch>(data: res.data!));
     } else {
       emit(CommonError(
         message: res.message ?? "Error fetching wallet balance.",

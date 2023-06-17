@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
@@ -13,7 +12,7 @@ class TransactionDetailBox extends StatelessWidget {
   final String imageUrl;
   final String status;
 
-  TransactionDetailBox(
+  const TransactionDetailBox(
       {Key? key,
       this.isCredit = false,
       required this.title,
@@ -43,8 +42,9 @@ class TransactionDetailBox extends StatelessWidget {
               color: Colors.white,
             ),
             child: Image.network(
-                RepositoryProvider.of<CoOperative>(context).baseUrl + imageUrl),
-            // child: Image.network("http://103.198.9.222:1231$imageUrl"),
+              (RepositoryProvider.of<CoOperative>(context).baseUrl + imageUrl)
+                  .replaceAll("//", "/"),
+            ),
           ),
           SizedBox(width: _width * 0.05),
           Expanded(

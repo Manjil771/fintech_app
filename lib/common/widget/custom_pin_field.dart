@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/enum/text_field_type.dart';
+
 
 import 'package:pin_code_fields/pin_code_fields.dart';
-
-enum TextFieldType { Outline, Filled }
 
 class CustomPinCodeField extends StatelessWidget {
   final TextEditingController? controller;
@@ -50,19 +52,23 @@ class CustomPinCodeField extends StatelessWidget {
           fieldHeight: fieldHeight ?? 60,
           fieldWidth: fieldWidth ?? SizeUtils.width * 0.13,
           borderWidth: 1,
+          errorBorderColor: Colors.red,
           fieldOuterPadding: mainAxisAlignment == MainAxisAlignment.start
               ? const EdgeInsets.only(right: 10)
               : EdgeInsets.zero,
           activeColor: theme.primaryColor,
-          activeFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
+          activeFillColor: type == TextFieldType.Filled
+              ? CustomTheme.gray
+              : Colors.transparent,
           selectedColor: theme.primaryColor,
-          selectedFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
-          inactiveFillColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.transparent,
+          selectedFillColor: type == TextFieldType.Filled
+              ? CustomTheme.gray
+              : Colors.transparent,
+          inactiveFillColor: type == TextFieldType.Filled
+              ? CustomTheme.gray
+              : Colors.transparent,
           inactiveColor:
-              type == TextFieldType.Filled ? Colors.grey : Colors.grey,
+              type == TextFieldType.Filled ? CustomTheme.gray : Colors.grey,
         ),
         mainAxisAlignment: mainAxisAlignment,
         animationType: AnimationType.fade,

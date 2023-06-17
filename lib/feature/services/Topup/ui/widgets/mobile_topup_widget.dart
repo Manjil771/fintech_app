@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -12,7 +12,6 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
@@ -99,17 +98,24 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                         hintText: "xxxxxxxxxx",
                         controller: _mobileNumberController,
                         validator: FormValidator.validatePhoneNumber,
+                        suffixIcon: Icons.phone_android_outlined,
+                        showSearchIcon: true,
+                        onSuffixPressed: () async {
+                          String phoneNumber =
+                              await SecureStorageService.appPhoneNumber;
+                          _mobileNumberController.text = phoneNumber;
+                        },
                       ),
                     ),
-                    Container(
-                      padding: const EdgeInsets.all(6),
-                      margin: const EdgeInsets.only(left: 8, top: 28),
-                      height: _height * 0.06,
-                      width: _width * 0.12,
-                      child: SvgPicture.asset(
-                        "assets/icons/Contact from phone.svg",
-                      ),
-                    )
+                    // Container(
+                    //   padding: const EdgeInsets.all(6),
+                    //   margin: const EdgeInsets.only(left: 8, top: 28),
+                    //   height: _height * 0.06,
+                    //   width: _width * 0.12,
+                    //   child: SvgPicture.asset(
+                    //     "assets/icons/Contact from phone.svg",
+                    //   ),
+                    // )
                   ],
                 ),
                 SizedBox(height: _height * 0.01),
@@ -149,12 +155,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                     context.read<UtilityPaymentCubit>().getTopUp(
                           serviceIdentifier: TopUpUtils()
                               .getTopUpServiceType(type: _topUpType.value),
-                          accountNumber: RepositoryProvider.of<
-                                  CustomerDetailRepository>(context)
-                              .accountsList
-                              .value
-                              .first
-                              .accountNumber, // TODO Update dynamic account number
                           phoneNumber: _mobileNumberController.text,
                           amount: _amountController.text,
                           mpin: mpin,

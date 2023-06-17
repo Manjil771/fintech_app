@@ -1,16 +1,3 @@
-// To parse this JSON data, do
-//
-//     final recentTransactionModel = recentTransactionModelFromJson(jsonString);
-
-import 'dart:convert';
-
-List<RecentTransactionModel> recentTransactionModelFromJson(String str) =>
-    List<RecentTransactionModel>.from(
-        json.decode(str).map((x) => RecentTransactionModel.fromJson(x)));
-
-String recentTransactionModelToJson(List<RecentTransactionModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class RecentTransactionModel {
   double amount;
   String service;
@@ -26,8 +13,8 @@ class RecentTransactionModel {
   String destination;
   double charge;
   double totalAmount;
-  RequestDetail requestDetail;
-  ResponseDetail responseDetail;
+  Map<String, dynamic> requestDetail;
+  Map<String, dynamic> responseDetail;
   String iconUrl;
 
   RecentTransactionModel({
@@ -66,8 +53,8 @@ class RecentTransactionModel {
         destination: json["destination"],
         charge: json["charge"],
         totalAmount: json["totalAmount"],
-        requestDetail: RequestDetail.fromJson(json["requestDetail"]),
-        responseDetail: ResponseDetail.fromJson(json["responseDetail"]),
+        requestDetail: json["requestDetail"] ?? {},
+        responseDetail: json["responseDetail"] ?? {},
         iconUrl: json["iconUrl"],
       );
 
@@ -86,96 +73,96 @@ class RecentTransactionModel {
         "destination": destination,
         "charge": charge,
         "totalAmount": totalAmount,
-        "requestDetail": requestDetail.toJson(),
-        "responseDetail": responseDetail.toJson(),
+        "requestDetail": requestDetail,
+        "responseDetail": responseDetail,
         "iconUrl": iconUrl,
       };
 }
 
-class RequestDetail {
-  String? destinationBankId;
-  String? destinationBranchName;
-  String? destinationAccountNumber;
-  String? destinationBankName;
-  String? destinationAccountName;
-  String? customerAddress;
-  String? amount;
-  String? mobileNumber;
-  String? serviceId;
-  String? serviceTo;
+// class RequestDetail {
+//   String? destinationBankId;
+//   String? destinationBranchName;
+//   String? destinationAccountNumber;
+//   String? destinationBankName;
+//   String? destinationAccountName;
+//   String? customerAddress;
+//   String? amount;
+//   String? mobileNumber;
+//   String? serviceId;
+//   String? serviceTo;
 
-  RequestDetail({
-    this.destinationBankId,
-    this.destinationBranchName,
-    this.destinationAccountNumber,
-    this.destinationBankName,
-    this.destinationAccountName,
-    this.customerAddress,
-    this.amount,
-    this.mobileNumber,
-    this.serviceId,
-    this.serviceTo,
-  });
+//   RequestDetail({
+//     this.destinationBankId,
+//     this.destinationBranchName,
+//     this.destinationAccountNumber,
+//     this.destinationBankName,
+//     this.destinationAccountName,
+//     this.customerAddress,
+//     this.amount,
+//     this.mobileNumber,
+//     this.serviceId,
+//     this.serviceTo,
+//   });
 
-  factory RequestDetail.fromJson(Map<String, dynamic> json) => RequestDetail(
-        destinationBankId: json["destinationBankId"],
-        destinationBranchName: json["destinationBranchName"],
-        destinationAccountNumber: json["destinationAccountNumber"],
-        destinationBankName: json["destinationBankName"],
-        destinationAccountName: json["destinationAccountName"],
-        customerAddress: json["customer_address"],
-        amount: json["amount"],
-        mobileNumber: json["mobile_number"],
-        serviceId: json["serviceId"],
-        serviceTo: json["serviceTo"],
-      );
+//   factory RequestDetail.fromJson(Map<String, dynamic> json) => RequestDetail(
+//         destinationBankId: json["destinationBankId"],
+//         destinationBranchName: json["destinationBranchName"],
+//         destinationAccountNumber: json["destinationAccountNumber"],
+//         destinationBankName: json["destinationBankName"],
+//         destinationAccountName: json["destinationAccountName"],
+//         customerAddress: json["customer_address"],
+//         amount: json["amount"],
+//         mobileNumber: json["mobile_number"],
+//         serviceId: json["serviceId"],
+//         serviceTo: json["serviceTo"],
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "destinationBankId": destinationBankId,
-        "destinationBranchName": destinationBranchName,
-        "destinationAccountNumber": destinationAccountNumber,
-        "destinationBankName": destinationBankName,
-        "destinationAccountName": destinationAccountName,
-        "customer_address": customerAddress,
-        "amount": amount,
-        "mobile_number": mobileNumber,
-        "serviceId": serviceId,
-        "serviceTo": serviceTo,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "destinationBankId": destinationBankId,
+//         "destinationBranchName": destinationBranchName,
+//         "destinationAccountNumber": destinationAccountNumber,
+//         "destinationBankName": destinationBankName,
+//         "destinationAccountName": destinationAccountName,
+//         "customer_address": customerAddress,
+//         "amount": amount,
+//         "mobile_number": mobileNumber,
+//         "serviceId": serviceId,
+//         "serviceTo": serviceTo,
+//       };
+// }
 
-class ResponseDetail {
-  String? code;
-  String status;
-  String? resultMessage;
-  String? serviceTo;
-  String? isoCode;
-  String? transactionIdentifier;
+// class ResponseDetail {
+//   String? code;
+//   String status;
+//   String? resultMessage;
+//   String? serviceTo;
+//   String? isoCode;
+//   String? transactionIdentifier;
 
-  ResponseDetail({
-    this.code,
-    required this.status,
-    this.resultMessage,
-    this.serviceTo,
-    this.isoCode,
-    this.transactionIdentifier,
-  });
+//   ResponseDetail({
+//     this.code,
+//     required this.status,
+//     this.resultMessage,
+//     this.serviceTo,
+//     this.isoCode,
+//     this.transactionIdentifier,
+//   });
 
-  factory ResponseDetail.fromJson(Map<String, dynamic> json) => ResponseDetail(
-        code: json["code"],
-        status: json["status"],
-        resultMessage: json["Result Message"],
-        serviceTo: json["serviceTo"],
-        isoCode: json["isoCode"],
-        transactionIdentifier: json["transactionIdentifier"],
-      );
+//   factory ResponseDetail.fromJson(Map<String, dynamic> json) => ResponseDetail(
+//         code: json["code"],
+//         status: json["status"],
+//         resultMessage: json["Result Message"],
+//         serviceTo: json["serviceTo"],
+//         isoCode: json["isoCode"],
+//         transactionIdentifier: json["transactionIdentifier"],
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "code": code,
-        "status": status,
-        "Result Message": resultMessage,
-        "serviceTo": serviceTo,
-        "isoCode": isoCode,
-        "transactionIdentifier": transactionIdentifier,
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "code": code,
+//         "status": status,
+//         "Result Message": resultMessage,
+//         "serviceTo": serviceTo,
+//         "isoCode": isoCode,
+//         "transactionIdentifier": transactionIdentifier,
+//       };
+// }
