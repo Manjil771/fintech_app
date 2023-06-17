@@ -16,11 +16,16 @@ class FullStatementAPIProvider {
     required this.coOperative,
     required this.userRepository,
   });
-  Future<dynamic> fetchFullStatement(accountNumber) async {
+  Future<dynamic> fetchFullStatement({
+    required String accountNumber,
+    required DateTime fromDate,
+    required DateTime toDate,
+  }) async {
     final _body = {
       "accountNumber": accountNumber,
-      "fromDate": "2020-01-01",
-      "toDate": "2023-05-01",
+      "fromDate": "${fromDate.year}-${fromDate.month}-${fromDate.day}",
+      "toDate": "${toDate.year}-${toDate.month}-${toDate.day}",
+      "pdf": true
     };
     print("loading");
     final _uri = UrlUtils.getUri(

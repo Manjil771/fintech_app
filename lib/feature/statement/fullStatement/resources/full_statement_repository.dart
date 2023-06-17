@@ -29,11 +29,14 @@ class FullStatementRepository {
       userRepository: userRepository,
     );
   }
-  Future<DataResponse<FullStatementModel>> getFullStatement(
-      accountNumbner) async {
+  Future<DataResponse<FullStatementModel>> getFullStatement({
+    required String accountNumber,
+    required DateTime fromDate,
+    required DateTime toDate,
+  }) async {
     try {
-      final _res =
-          await fullStatementAPIProvider.fetchFullStatement(accountNumbner);
+      final _res = await fullStatementAPIProvider.fetchFullStatement(
+          accountNumber: accountNumber, fromDate: fromDate, toDate: toDate);
       print(_res.toString());
 
       if (_res['data']['details'] != null) {

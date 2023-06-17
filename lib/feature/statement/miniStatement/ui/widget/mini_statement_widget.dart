@@ -71,7 +71,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         builder: (context, state) {
           if (state is CommonStateSuccess<MiniStatementModel>) {
             return CommonContainer(
-                showDetail: true,
+                showDetail: false,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -80,6 +80,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                         builder: (context, val, _) {
                           if (val != null) {
                             return Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
                                     "Account Details ${val.accountDetail[0].mainCode}",
@@ -135,9 +136,9 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                           Text(
                                             "NPR ${val.accountDetail[0].actualBalance}",
                                             style: TextStyle(
-                                                fontFamily: "popinBold",
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500,
+                                                fontFamily: "popinBold",
                                                 color: Theme.of(context)
                                                     .primaryColor),
                                           ),
@@ -146,6 +147,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                     ],
                                   ),
                                 ),
+                                SizedBox(height: _height * 0.02),
                               ],
                             );
                           } else {
@@ -160,21 +162,30 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           const MaterialStatePropertyAll(Colors.black12),
                       columns: const [
                         DataColumn(label: Text("DR/CR")),
+
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
+                        DataColumn(label: Text("Status")),
                       ],
                       rows: state.data.ministatementList
                           .map((e) => DataRow(
                                 cells: [
                                   DataCell(Text(
-                                    e.credit ? "Dr" : "Cr",
+                                      "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.year}")),
+                                  DataCell(Text(
+                                    e.amount.toString(),
                                     style: TextStyle(
                                         color: e.credit
-                                            ? Colors.red
-                                            : Colors.green),
+                                            ? Colors.green
+                                            : Colors.red),
                                   )),
-                                  DataCell(Text(e.transactionDate.toString())),
-                                  DataCell(Text(e.amount.toString())),
+                                  DataCell(Text(
+                                    e.credit ? "Deposit" : "Withdrawl",
+                                    style: TextStyle(
+                                        color: e.credit
+                                            ? Colors.green
+                                            : Colors.red),
+                                  )),
                                 ],
                               ))
                           .toList(),
@@ -195,7 +206,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                 },
                 buttonName: "Close",
                 title: "Mini Statement",
-                detail: "Select the Account you want to view statement of.",
+                detail: "",
                 topbarName: "Statement");
           } else {
             return Container();

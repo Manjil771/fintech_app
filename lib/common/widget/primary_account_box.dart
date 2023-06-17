@@ -23,7 +23,6 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
     final _width = SizeUtils.width;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-
     return ValueListenableBuilder<AccountDetail?>(
         valueListenable: _customerDetailRepo.selectedAccount,
         builder: (context, selectedAcc, _) {

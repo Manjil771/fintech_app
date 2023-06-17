@@ -14,7 +14,7 @@ class TransactionDetailBox extends StatelessWidget {
 
   const TransactionDetailBox(
       {Key? key,
-      this.isCredit = true,
+      this.isCredit = false,
       required this.title,
       required this.desc,
       required this.amount,
@@ -52,9 +52,8 @@ class TransactionDetailBox extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title, style: Theme.of(context).textTheme.titleLarge),
-                Text(desc, style: Theme.of(context).textTheme.labelLarge),
                 Text(dateTime, style: Theme.of(context).textTheme.labelMedium),
+                Text(desc, style: Theme.of(context).textTheme.labelLarge),
               ],
             ),
           ),
@@ -65,7 +64,7 @@ class TransactionDetailBox extends StatelessWidget {
                 "NPR $amount",
                 style: TextStyle(
                     fontFamily: "popinsemibold",
-                    fontSize: 16,
+                    fontSize: 12,
                     color: isCredit ? const Color(0xFF24BC7C) : Colors.red),
               ),
               Center(
@@ -73,10 +72,7 @@ class TransactionDetailBox extends StatelessWidget {
                   status,
                   style: TextStyle(
                     fontFamily: "popinsemibold",
-                    color:
-                        status.toLowerCase().contains("Success".toLowerCase())
-                            ? Colors.green
-                            : Colors.red,
+                    color: isCredit ? Colors.green : Colors.red,
                   ),
                 ),
               ),
