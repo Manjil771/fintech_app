@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -16,14 +14,11 @@ import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/statement_detail_box.dart';
-import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/statement/fullStatement/cubit/mini_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
-import 'package:ismart/feature/statement/miniStatement/cubit/mini_statement_cubit.dart';
-import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 
 class FullStatementWidget extends StatefulWidget {
   @override
@@ -50,7 +45,11 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
         final cubit = context.read<FullStatementCubit>().fetchFullStatement(
-            accountNumber: customerDetail.value!.accountDetail[0].accountNumber,
+            accountNumber:
+                RepositoryProvider.of<CustomerDetailRepository>(context)
+                    .selectedAccount
+                    .value
+                    ?.accountNumber ?? "",
             fromDate: fromDate,
             toDate: toDate);
       },
@@ -147,8 +146,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               getData();
                                             },
                                             child: Container(
-                                              margin:
-                                                  EdgeInsets.only(right: 10),
+                                              margin: const EdgeInsets.only(
+                                                  right: 10),
                                               width: _width * 0.2,
                                               decoration: BoxDecoration(
                                                   borderRadius:
@@ -309,7 +308,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                       DateTime.now()
                                                   ? Colors.black54
                                                   : _theme.primaryColor)),
-                                      margin: EdgeInsets.only(left: 5),
+                                      margin: const EdgeInsets.only(left: 5),
                                       padding: const EdgeInsets.all(4),
                                       child: Row(
                                         children: [
@@ -337,7 +336,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                               ),
                               SizedBox(height: _height * 0.01),
                               state.data.accountStatementDtos!.isEmpty
-                                  ? NoDataScreen(
+                                  ? const NoDataScreen(
                                       title: "No transactions yet",
                                       details: "Make Your First Transfer",
                                     )
@@ -417,7 +416,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                             itemCount: state.data
                                                 .accountStatementDtos!.length,
                                             itemBuilder: (context, index) {
-                                              var data = state.data
+                                              final data = state.data
                                                   .accountStatementDtos![index];
                                               return StatementDetailBox(
                                                   balance:
@@ -452,7 +451,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                   ],
                 ),
                 onButtonPressed: () {
-                  NavigationService.push(target: DashboardPage());
+                  NavigationService.push(target: const DashboardPage());
                 },
                 showTitleText: false,
                 buttonName: "Close",

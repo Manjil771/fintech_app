@@ -25,7 +25,7 @@ class FullStatementAPIProvider {
       "accountNumber": accountNumber,
       "fromDate": "${fromDate.year}-${fromDate.month}-${fromDate.day}",
       "toDate": "${toDate.year}-${toDate.month}-${toDate.day}",
-      "pdf": true
+      // "pdf": true
     };
     print("loading");
     final _uri = UrlUtils.getUri(
