@@ -41,6 +41,7 @@ class CommonGridViewContainer extends StatelessWidget {
           Expanded(
             child: Text(
               title,
+              textAlign: TextAlign.center,
               style: TextStyle(
                   color: CustomTheme.darkerBlack.withOpacity(0.6),
                   fontSize: 11,

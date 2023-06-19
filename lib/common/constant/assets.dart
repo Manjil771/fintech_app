@@ -15,8 +15,6 @@ class Assets {
 
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String searchIcon = "assets/icons/search.svg";
-  static const String sendMoneyIcon =
-      "assets/icons/mingcute_send-plane-fill.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
   static const String topupPaymentIcon = "assets/icons/Top up payment.svg";
   static const String electricityIcon = "assets/icons/Electricity payment.svg";
@@ -61,4 +59,16 @@ class Assets {
   static const String arrowDown = "assets/icons/arrowupfull.svg";
   static const String filterIcon = "assets/icons/Filter list.svg";
   static const String errorImage = "assets/images/error.png";
+// send money
+  static const String sendMoneyIcon =
+      "assets/icons/mingcute_send-plane-fill.svg";
+
+  // More Screen
+  static const String discountCalculator =
+      "assets/icons/Discount calculator.svg";
+
+  static const String emiCalculator = "assets/icons/EMI Calculator.svg";
+  static const String downloadIcon = "assets/icons/Download.svg";
+  static const String settingIcon = "assets/icons/settings-svgrepo-com 1.svg";
+  static const String contactUsIcon = "assets/icons/Contact us.svg";
 }

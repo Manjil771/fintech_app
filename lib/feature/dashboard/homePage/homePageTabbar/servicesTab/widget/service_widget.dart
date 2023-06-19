@@ -150,13 +150,13 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                           })),
                 ),
                 widget.showAllService
-                    ? TextButton(
+                    ? Container()
+                    : TextButton(
                         onPressed: () {
                           NavigationService.pushNamed(
                               routeName: Routes.allServicesDashboard);
                         },
-                        child: const Text("View More"))
-                    : Container(),
+                        child: const Text("View More")),
               ],
             );
           } else {
