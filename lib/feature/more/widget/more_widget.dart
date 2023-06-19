@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
@@ -15,6 +16,24 @@ class MoreWidget extends StatelessWidget {
     Assets.contactUsIcon,
     Assets.settingIcon,
   ];
+  List tapFunction = [
+    () {
+      NavigationService.pushNamed(routeName: Routes.discountCalculator);
+    },
+    () {
+      NavigationService.pushNamed(routeName: Routes.emiCalculator);
+    },
+    () {
+      // NavigationService.push(target: EmiCalculatorPage());
+    },
+    () {
+      // NavigationService.pushNamed(routeName: Routes.emiCalculator);
+    },
+    () {
+      // NavigationService.pushNamed(routeName: Routes.emiCalculator);
+    },
+  ];
+
   final List names = [
     "Discount Calculator",
     "EMI Calculator",
@@ -39,9 +58,7 @@ class MoreWidget extends StatelessWidget {
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context, index) {
             return CommonGridViewContainer(
-                onContainerPress: () {
-                  NavigationService.push(target: EmiCalculatorPage());
-                },
+                onContainerPress: () => tapFunction[index](),
                 containerImage: itemImage[index],
                 title: names[index]);
           },
