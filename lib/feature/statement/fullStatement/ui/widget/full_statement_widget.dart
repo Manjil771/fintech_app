@@ -1,8 +1,10 @@
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -19,6 +21,8 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/statement/fullStatement/cubit/mini_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
+import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
 
 class FullStatementWidget extends StatefulWidget {
   @override
@@ -26,9 +30,25 @@ class FullStatementWidget extends StatefulWidget {
 }
 
 class _FullStatementWidgetState extends State<FullStatementWidget> {
+  Dio dio = Dio();
+  String url = "https://www.africau.edu/images/default/sample.pdf";
   int startDay = 15;
   List numberOfDaysText = ["15 Days", "1 Month", "3 Month"];
   List numberOfDays = [15, 30, 90];
+  downloadFile() async {
+    String fileName = "file.pdf";
+    String path = await _getFilePath(fileName);
+    await dio.download(
+      url,
+      path,
+      onReceiveProgress: (receivedBytes, totalBytes) {
+        setState(() {
+          progress = receivedBytes / totalBytes;
+        });
+        print(progress);
+      },
+    );
+  }
 
   DateTime fromDate = DateTime.now();
   DateTime fromDateAlert = DateTime.now();
@@ -47,9 +67,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
         final cubit = context.read<FullStatementCubit>().fetchFullStatement(
             accountNumber:
                 RepositoryProvider.of<CustomerDetailRepository>(context)
-                    .selectedAccount
-                    .value
-                    ?.accountNumber ?? "",
+                        .selectedAccount
+                        .value
+                        ?.accountNumber ??
+                    "",
             fromDate: fromDate,
             toDate: toDate);
       },
@@ -60,10 +81,13 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   void initState() {
     super.initState();
     getData();
+    downloadFile();
   }
 
   int selectedDays = 0;
   bool _isLoading = false;
+  double progress = 0.0;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -127,6 +151,13 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
+                              Text((progress * 100).toInt().toString()),
+                              ElevatedButton(
+                                  onPressed: () async {
+                                    downloadFile();
+                                    // downloadPDF;
+                                  },
+                                  child: Text("text")),
                               Row(
                                 children: [
                                   Expanded(
@@ -465,6 +496,31 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
       ),
     );
   }
+
+  Future _getFilePath(String filename) async {
+    final dir = await getApplicationDocumentsDirectory();
+    return "${dir.path}/$filename";
+  }
+  // Future<void> downloadPDF(
+  //     {required String path, required String fileName}) async {
+  //   final url = RepositoryProvider.of<CoOperative>(context)
+  //       .baseUrl; // Replace with your PDF URL
+
+  //   final response = await http.get(Uri.parse(url));
+  //   final bytes = response.bodyBytes;
+
+  //   final directory = await getExternalStorageDirectory();
+  //   final path = '${directory!.path}/$fileName'; // File path on the device
+
+  //   await FlutterDownloader.enqueue(
+  //     url: url,
+  //     savedDir: directory.filePath,
+  //     fileName: 'sample.pdf',
+  //     showNotification: true,
+  //     openFileFromNotification: true,
+  //     headers: {'content-length': response.headers['content-length'] ?? ""},
+  //   );
+  // }
 }
 
 

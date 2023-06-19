@@ -95,8 +95,8 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                   : state.data.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                          ),
+                                  crossAxisCount: 4,
+                                  childAspectRatio: 0.5 / 0.5),
                           itemBuilder: (context, index) {
                             final _imageUrl =
                                 "https://ismart.devanasoft.com.np/${state.data[index].imageUrl}";
@@ -135,16 +135,13 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                             },
                                           ),
                                   ),
-                                  SizedBox(height: _height * 0.02),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: Text(
-                                        "${state.data[index].name}",
-                                        textAlign: TextAlign.center,
-                                        style: _textTheme.titleSmall,
-                                      ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5, vertical: 8),
+                                    child: Text(
+                                      "${state.data[index].name}",
+                                      textAlign: TextAlign.center,
+                                      style: _textTheme.titleSmall,
                                     ),
                                   ),
                                 ],
