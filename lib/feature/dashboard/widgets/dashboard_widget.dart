@@ -10,8 +10,10 @@ import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrCode/scanQr/screen/scan_qr_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
+import 'package:ismart/test_screen.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({Key? key}) : super(key: key);
@@ -28,15 +30,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const Bankingpage(),
     ScanQrPage(),
     RecentTransactionScreen(),
-    Center(
-      child: ElevatedButton(
-          child: Text("asdsad"),
-          onPressed: () {
-            NavigationService.push(
-              target: ServicesPage(showAllServices: true),
-            );
-          }),
-    )
+    MorePage()
   ];
 
   @override

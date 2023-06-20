@@ -11,6 +11,8 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/service_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
+import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup_page.dart';
+import 'package:ismart/feature/services/tvPayment/screen/list_tv_services_page.dart';
 
 class ServicesWidget extends StatefulWidget {
   final bool showAllService;
@@ -27,24 +29,6 @@ class _ServicesWidgetState extends State<ServicesWidget> {
     super.initState();
     context.read<ServicesCubit>().fetchServices();
   }
-
-  final screens = [
-    Routes.mobileTopup,
-    Routes.electricityPayment,
-    Routes.internetList,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-    Routes.mobileTopup,
-  ];
 
   bool _isLoading = false;
 
@@ -81,7 +65,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
           }
         },
         builder: (context, state) {
-          if (state is CommonStateSuccess<List<ServicesModel>>) {
+          if (state is CommonStateSuccess<List<ServicesList>>) {
             return Column(
               children: [
                 Expanded(
@@ -95,15 +79,18 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                   : state.data.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                          ),
+                                  crossAxisCount: 4,
+                                  childAspectRatio: 0.5 / 0.5),
                           itemBuilder: (context, index) {
+                            final data = state.data[index];
                             final _imageUrl =
-                                "https://ismart.devanasoft.com.np/${state.data[index].imageUrl}";
+                                "https://ismart.devanasoft.com.np/${data.imageUrl}";
                             return InkWell(
                               onTap: () {
-                                NavigationService.pushNamed(
-                                  routeName: screens[index],
+                                NavigationService.push(
+                                  target: ListServicesPage(
+                                      services: data.services,
+                                      topBarName: data.name),
                                 );
                               },
                               child: Column(
@@ -135,16 +122,13 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                             },
                                           ),
                                   ),
-                                  SizedBox(height: _height * 0.02),
-                                  Expanded(
-                                    child: Padding(
-                                      padding: const EdgeInsets.symmetric(
-                                          horizontal: 5),
-                                      child: Text(
-                                        "${state.data[index].name}",
-                                        textAlign: TextAlign.center,
-                                        style: _textTheme.titleSmall,
-                                      ),
+                                  Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                        horizontal: 5, vertical: 8),
+                                    child: Text(
+                                      "${data.name}",
+                                      textAlign: TextAlign.center,
+                                      style: _textTheme.titleSmall,
                                     ),
                                   ),
                                 ],
@@ -153,13 +137,13 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                           })),
                 ),
                 widget.showAllService
-                    ? TextButton(
+                    ? Container()
+                    : TextButton(
                         onPressed: () {
                           NavigationService.pushNamed(
                               routeName: Routes.allServicesDashboard);
                         },
-                        child: const Text("View More"))
-                    : Container(),
+                        child: const Text("View More")),
               ],
             );
           } else {

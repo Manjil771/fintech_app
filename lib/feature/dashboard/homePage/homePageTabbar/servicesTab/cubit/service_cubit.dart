@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
+
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/service_repository.dart';
 
 class ServicesCubit extends Cubit<CommonState> {
@@ -13,7 +13,7 @@ class ServicesCubit extends Cubit<CommonState> {
       final response = await servicesRepository.getServiceList();
 
       if (response.status == Status.Success && response.data != null) {
-        emit(CommonStateSuccess<List<ServicesModel>>(data: response.data!));
+        emit(CommonStateSuccess(data: response.data!));
       } else {
         emit(CommonError(
             message: response.message ?? "Error fetching customer detail."));

@@ -3,6 +3,8 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
+import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
+import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
@@ -44,7 +46,7 @@ class RouteGenerator {
         );
       case Routes.mobileTopup:
         return MaterialPageRoute(
-          builder: (_) => const MobileTopupScreen(),
+          builder: (_) => const MobileTopupPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.internetUsername:
@@ -136,6 +138,16 @@ class RouteGenerator {
       case Routes.chequeScreen:
         return MaterialPageRoute(
           builder: (_) => const ChequePage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.emiCalculator:
+        return MaterialPageRoute(
+          builder: (_) => EmiCalculatorPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.discountCalculator:
+        return MaterialPageRoute(
+          builder: (_) => DiscountCalculatorPage(),
           settings: RouteSettings(name: settings.name),
         );
       default:

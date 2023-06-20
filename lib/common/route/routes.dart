@@ -23,4 +23,6 @@ class Routes {
   static const statementPage = "/statement_page";
   static const balanceInquiry = "/balance_inquiry";
   static const chequeScreen = "/cheque_Screen";
+  static const emiCalculator = "/emi_calculator";
+  static const discountCalculator = "/discount_calculator";
 }

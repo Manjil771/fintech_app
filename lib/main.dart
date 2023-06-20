@@ -10,7 +10,6 @@ import 'package:ismart/common/util/log.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-
   runZonedGuarded(() {
     runApp(
       LocalWrapper(child: AppProd(env: CoOperativeValue.development)),
