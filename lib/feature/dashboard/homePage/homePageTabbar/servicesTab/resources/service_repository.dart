@@ -31,8 +31,8 @@ class ServicesRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<List<ServicesModel>>> getServiceList() async {
-    List<ServicesModel> _recentTxnList = [];
+  Future<DataResponse<List<ServicesList>>> getServiceList() async {
+    List<ServicesList> _recentTxnList = [];
     try {
       final _res = await servicesApiProvider.fetchServices();
 
@@ -46,7 +46,7 @@ class ServicesRepository {
         }
 
         _userMap.forEach((element) {
-          ServicesModel _txn = ServicesModel.fromJson(element);
+          ServicesList _txn = ServicesList.fromJson(element);
 
           _recentTxnList.add(_txn);
         });

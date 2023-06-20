@@ -5,8 +5,8 @@ import 'package:ismart/feature/services/Topup/ui/widgets/mobile_topup_widget.dar
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class MobileTopupScreen extends StatelessWidget {
-  const MobileTopupScreen({Key? key}) : super(key: key);
+class MobileTopupPage extends StatelessWidget {
+  const MobileTopupPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {

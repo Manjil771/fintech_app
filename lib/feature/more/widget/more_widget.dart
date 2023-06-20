@@ -6,6 +6,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
+import 'package:ismart/feature/setting/screen/setting_page.dart';
 
 class MoreWidget extends StatelessWidget {
   MoreWidget({Key? key}) : super(key: key);
@@ -30,7 +31,7 @@ class MoreWidget extends StatelessWidget {
       // NavigationService.pushNamed(routeName: Routes.emiCalculator);
     },
     () {
-      // NavigationService.pushNamed(routeName: Routes.emiCalculator);
+      NavigationService.push(target: SettingPage());
     },
   ];
 

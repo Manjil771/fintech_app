@@ -46,7 +46,7 @@ class RouteGenerator {
         );
       case Routes.mobileTopup:
         return MaterialPageRoute(
-          builder: (_) => const MobileTopupScreen(),
+          builder: (_) => const MobileTopupPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.internetUsername:
