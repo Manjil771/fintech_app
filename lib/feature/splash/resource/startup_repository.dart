@@ -22,7 +22,18 @@ class StartUpRepository {
     );
   }
 
-  Future<DataResponse<bool>> fetchConfig() async {
-    return DataResponse.success(true);
+  Future<DataResponse<List<String>>> fetchConfig() async {
+    try {
+      final _res = startupApiProvider.fetchBannerImages();
+      if (_res['data']?['code'] == "M0000") {
+        final List<String> _listOfImages =
+            List<String>.from(_res['data']?['details'] ?? []);
+        return DataResponse.success(_listOfImages);
+      } else {
+        return DataResponse.error("Error fetching banners.");
+      }
+    } catch (e) {
+      return DataResponse.error("Error fetching banners");
+    }
   }
 }

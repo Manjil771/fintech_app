@@ -1,4 +1,5 @@
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 class StartUpApiProvider {
@@ -13,11 +14,12 @@ class StartUpApiProvider {
 
   final String baseUrl;
 
-  // fetchConfig() async {
-  //   final url = "$baseUrl";
-  //   return await apiProvider.get(
-  //     url,
-  //     token: userRepository.token,
-  //   );
-  // }
+  fetchBannerImages() async {
+    final url = "$baseUrl" "get/bannerimage/";
+    return await apiProvider.get(
+      UrlUtils.getUri(url: url),
+      token: userRepository.token,
+      userId: -1,
+    );
+  }
 }

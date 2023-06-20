@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
 class TransactionDetailBox extends StatelessWidget {
   final bool isCredit;
@@ -41,10 +42,16 @@ class TransactionDetailBox extends StatelessWidget {
               borderRadius: BorderRadius.circular(8),
               color: Colors.white,
             ),
-            child: Image.network(
-              (RepositoryProvider.of<CoOperative>(context).baseUrl + imageUrl)
+            child: CustomCachedNetworkImage(
+              url: (RepositoryProvider.of<CoOperative>(context).baseUrl +
+                      imageUrl)
                   .replaceAll("//", "/"),
+              fit: BoxFit.cover,
             ),
+            // child: Image.network(
+            //   (RepositoryProvider.of<CoOperative>(context).baseUrl + imageUrl)
+            //       .replaceAll("//", "/"),
+            // ),
           ),
           SizedBox(width: _width * 0.05),
           Expanded(
@@ -59,6 +66,7 @@ class TransactionDetailBox extends StatelessWidget {
           ),
           SizedBox(width: _width * 0.05),
           Column(
+            crossAxisAlignment: CrossAxisAlignment.end,
             children: [
               Text(
                 "NPR $amount",
