@@ -22,4 +22,20 @@ class RecentTransactionApiProvider {
     return await apiProvider.get(Uri.parse(_uri.toString()),
         userId: 0, token: userRepository.token);
   }
+
+  Future<dynamic> generateDownloadUrl({
+    required String transactionId,
+  }) async {
+    final _uri = UrlUtils.getUri(
+      url: coOperative.baseUrl + "/api/gettransactionreceiptpdf",
+      params: {
+        "transactionId": transactionId,
+      },
+    );
+    return await apiProvider.get(
+      _uri,
+      userId: 0,
+      token: userRepository.token,
+    );
+  }
 }

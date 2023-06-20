@@ -1,15 +1,10 @@
-import 'package:flutter/foundation.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/resources/recent_tranasction_api_provider.dart';
-import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
-import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_api_provider.dart';
 
 class RecentTransactionRepository {
   final ApiProvider apiProvider;
@@ -54,6 +49,41 @@ class RecentTransactionRepository {
         return DataResponse.success(_recentTxnList);
       } else {
         return DataResponse.error("No Transaction");
+      }
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message!, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<String>> generateDownloadUrl({
+    required String transactionId,
+  }) async {
+    try {
+      final _res = await recentTransactionApiProvider.generateDownloadUrl(
+        transactionId: transactionId,
+      );
+
+      if (_res['data']?['detail'] != null) {
+        // Parse Data from API
+
+        final Map _userMap = Map.from(_res["data"]?['detail'] ?? []);
+
+        if (_userMap['URL'] != null) {
+          String path = _userMap['URL'];
+
+          String downloadUrl = coOperative.baseUrl + path.replaceFirst("/", "");
+
+          return DataResponse.success(downloadUrl);
+        }
+
+        return DataResponse.error("Error occurred.");
+      } else {
+        return DataResponse.error("Error while generating download.");
       }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
