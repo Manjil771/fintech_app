@@ -1,27 +1,47 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:flutter/material.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 
-class BankingWidget extends StatefulWidget {
-  BankingWidget({Key? key}) : super(key: key);
-
+class TestScreenPage extends StatelessWidget {
+  const TestScreenPage({Key? key}) : super(key: key);
   @override
-  State<BankingWidget> createState() => _BankingWidgetState();
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    return BlocProvider(
+        create: (context) => AppServiceCubit(
+              appServiceRepository:
+                  RepositoryProvider.of<AppServiceRepository>(context),
+            ),
+        child: TestScreenBAnking());
+  }
 }
 
-class _BankingWidgetState extends State<BankingWidget> {
+class TestScreenBAnking extends StatefulWidget {
+  const TestScreenBAnking({Key? key}) : super(key: key);
+
+  @override
+  State<TestScreenBAnking> createState() => _TestScreenBAnkingState();
+}
+
+class _TestScreenBAnkingState extends State<TestScreenBAnking> {
   @override
   void initState() {
     super.initState();
@@ -58,28 +78,27 @@ class _BankingWidgetState extends State<BankingWidget> {
         },
         builder: (context, state) {
           if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
-            final filteredItems = state.data
-                .where((item) => item.type
-                    .toString()
-                    .toLowerCase()
-                    .contains("banking".toLowerCase()))
-                .toList();
             return CommonContainer(
                 showDetail: false,
                 showBackBotton: false,
                 showRoundBotton: false,
-                body: Column(
-                  children: [
-                    Container(
-                      height: _height * 0.6,
-                      child: ListView.builder(
-                        itemCount: filteredItems.length,
-                        itemBuilder: (context, index) {
-                          return Text(filteredItems[index].name.toString());
-                        },
-                      ),
-                    )
-                  ],
+                body: Container(
+                  height: _height * 0.65,
+                  child: ListView.builder(
+                    itemCount: state.data.length,
+                    itemBuilder: (context, index) {
+                      final _detail = state.data;
+                      return TransactionDetailBox(
+                        title: _detail[index].status.toString(),
+                        leadingImage: Container(),
+                        balance: _detail[index].name,
+                        status: _detail[index].status.toString(),
+                        amount: _detail[index].status.toString(),
+                        dateTime: _detail[index].status.toString(),
+                        desc: _detail[index].status.toString(),
+                      );
+                    },
+                  ),
                 ),
                 showTitleText: false,
                 topbarName: "Recent Transaction");
@@ -93,47 +112,3 @@ class _BankingWidgetState extends State<BankingWidget> {
     );
   }
 }
-
-final itemName = [
-  "Account Info",
-  "Balance Inquiry",
-  "Statement",
-  "Loan",
-  "Fund Transfer",
-  "Cheque Request"
-];
-final images = [
-  Assets.accountInfo,
-  Assets.balanceInquiry,
-  Assets.statement,
-  Assets.loanIcon,
-  Assets.fundTransferIcon,
-  Assets.chequeBookIcon,
-];
-final onPress = [
-  Routes.profileScreen,
-  Routes.balanceInquiry,
-  Routes.statementPage,
-  Routes.profileScreen,
-  Routes.anyBank,
-  Routes.chequeScreen,
-];
-
-
-
-// Container(
-//             height: _height * 0.6,
-//             child: GridView.builder(
-//               itemCount: itemName.length,
-//               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-//                   crossAxisCount: 2),
-//               itemBuilder: (context, index) => CommonGridViewContainer(
-//                 onContainerPress: () {
-//                   NavigationService.pushNamed(routeName: onPress[index]);
-//                 },
-//                 margin: const EdgeInsets.all(8),
-//                 containerImage: images[index],
-//                 title: itemName[index],
-//               ),
-//             ),
-//           )
