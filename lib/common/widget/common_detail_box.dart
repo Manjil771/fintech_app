@@ -10,12 +10,14 @@ class CommonDetailBox extends StatelessWidget {
   final double verticalPadding;
   final double horizontalPadding;
   final bool showTrailingIcon;
+  final bool isNetworkImage;
   final String title;
   final String detail;
   final VoidCallback onBoxPressed;
 
   const CommonDetailBox(
       {super.key,
+      this.isNetworkImage = false,
       this.leadingIcon = Assets.brokerIcon,
       this.verticalPadding = 10.0,
       this.horizontalPadding = 20.0,
@@ -39,10 +41,25 @@ class CommonDetailBox extends StatelessWidget {
         },
         child: Row(
           children: [
-            SvgPicture.asset(
-              leadingIcon,
-              color: CustomTheme.darkerBlack,
-              height: _height * 0.04,
+            Container(
+              width: _width * 0.1,
+              child: isNetworkImage == false
+                  ? SvgPicture.asset(
+                      leadingIcon,
+                      color: CustomTheme.darkerBlack,
+                      height: _height * 0.04,
+                    )
+                  : SvgPicture.network(
+                      leadingIcon,
+                      placeholderBuilder: (BuildContext context) => Center(
+                        child: Image.asset(
+                          Assets.logoImage,
+                          height: _height * 0.04,
+                        ),
+                      ),
+                      color: CustomTheme.darkerBlack,
+                      height: _height * 0.04,
+                    ),
             ),
             SizedBox(width: _width * 0.05),
             Expanded(

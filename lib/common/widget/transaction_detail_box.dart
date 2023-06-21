@@ -52,9 +52,16 @@ class TransactionDetailBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(recentTransactionModel.service.toString(),
-                        style: Theme.of(context).textTheme.labelMedium),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium!
+                            .copyWith(fontWeight: FontWeight.bold)),
                     Text(
                       recentTransactionModel.destination,
+                      style: Theme.of(context).textTheme.labelLarge,
+                    ),
+                    Text(
+                      recentTransactionModel.date.toString(),
                       style: Theme.of(context).textTheme.labelLarge,
                     ),
                   ],

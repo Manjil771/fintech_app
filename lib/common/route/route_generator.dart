@@ -17,6 +17,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
 import 'package:ismart/feature/services/electricity/screen/electricity_payment_detail_page.dart';
 import 'package:ismart/feature/services/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
@@ -148,6 +149,11 @@ class RouteGenerator {
       case Routes.discountCalculator:
         return MaterialPageRoute(
           builder: (_) => DiscountCalculatorPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.listWalletScreen:
+        return MaterialPageRoute(
+          builder: (_) => WalletTransferScreen(),
           settings: RouteSettings(name: settings.name),
         );
       default:
