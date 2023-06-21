@@ -55,7 +55,9 @@ class CommonContainer extends StatelessWidget {
                     bottomRight: Radius.circular(12))),
             width: double.infinity,
             padding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding, vertical: verticalPadding),
+              horizontal: horizontalPadding,
+              vertical: verticalPadding,
+            ),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,

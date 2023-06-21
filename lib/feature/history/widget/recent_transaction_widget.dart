@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -11,6 +10,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
+import 'package:ismart/feature/history/screen/transaction_detail_page.dart';
 
 class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -56,7 +56,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
           }
         },
         builder: (context, state) {
-          if (state is CommonStateSuccess<List<RecentTransactionModel>>) {
+          if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
             return CommonContainer(
                 showDetail: false,
                 showBackBotton: false,
@@ -68,14 +68,14 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     itemBuilder: (context, index) {
                       final _detail = state.data[index];
                       return TransactionDetailBox(
-                        title: _detail.service,
-                        leadingImage: Image.network(
-                            "${RepositoryProvider.of<CoOperative>(context).baseUrl}${_detail.iconUrl}"),
-                        balance: _detail.service,
-                        status: _detail.status,
-                        amount: _detail.amount.toString(),
-                        dateTime: _detail.date.toString(),
-                        desc: _detail.serviceTo,
+                        recentTransactionModel: _detail,
+                        onClickAction: () {
+                          NavigationService.push(
+                            target: TransactionDetailScreen(
+                              recentTransactionModel: _detail,
+                            ),
+                          );
+                        },
                       );
                     },
                   ),

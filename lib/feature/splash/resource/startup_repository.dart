@@ -19,10 +19,33 @@ class StartUpRepository {
       baseUrl: env.baseUrl,
       apiProvider: apiProvider,
       userRepository: userRepository,
+      env: env,
     );
   }
 
-  Future<DataResponse<bool>> fetchConfig() async {
-    return DataResponse.success(true);
+  List<String> banners = [];
+
+  Future<DataResponse<List<String>>> fetchConfig() async {
+    banners.clear();
+    try {
+      final _res = await startupApiProvider.fetchBannerImages();
+      if (_res['data']?['code'] == "M0000") {
+        List<String> _rawBanners =
+            List<String>.from(_res['data']?['details'] ?? []);
+        _rawBanners.forEach((element) {
+          element = env.baseUrl + element;
+          banners.add(
+              element.replaceAll("//", "/").replaceAll("https:/", "https://"));
+        });
+        banners.forEach((element1) {
+          print(element1);
+        });
+        return DataResponse.success(banners);
+      } else {
+        return DataResponse.error("Error fetching banners.");
+      }
+    } catch (e) {
+      return DataResponse.error("Error fetching banners");
+    }
   }
 }

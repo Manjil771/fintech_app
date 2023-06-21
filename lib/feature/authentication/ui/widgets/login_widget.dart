@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -12,6 +11,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -21,6 +21,7 @@ import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/splash/resource/startup_repository.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -30,6 +31,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  List<String> _bannerImages = [];
   final TextEditingController phoneController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
@@ -50,9 +52,9 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
-    print("Existing Number: $_existingPhoneNumber");
-    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
-    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
   }
   // 9803435443
   // 70074
@@ -65,6 +67,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   @override
   void initState() {
     _checkBiometric();
+    _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
     super.initState();
   }
 
@@ -268,68 +271,33 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.022),
-                    Container(
-                      padding: EdgeInsets.symmetric(
-                          horizontal: 15.hp, vertical: 10.hp),
-                      height: height * 0.13,
-                      decoration: BoxDecoration(
-                          gradient: const LinearGradient(
-                            colors: [
-                              Color(0xFF010C80),
-                              Color(0xFF1926B4),
-                              Color(0xFF010C80),
-                            ],
-                            stops: [
-                              0.1622,
-                              0.9933,
-                              1.0,
-                            ],
-                            begin: Alignment.topLeft,
-                            end: Alignment.bottomRight,
-                            transform: GradientRotation(90.79 *
-                                3.14159 /
-                                180), // Convert degrees to radians
-                          ),
-                          borderRadius: BorderRadius.circular(12)),
-                      child: Row(
-                        children: [
-                          Image.asset(
-                              "assets/digital-marketing-5250590-4385769 1.png"),
-                          SizedBox(width: width * 0.1),
-                          const Expanded(
-                            child: Text(
-                              "Place your Advertisement here",
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontFamily: "popinmedium",
-                                color: Colors.white,
-                              ),
-                            ),
-                          ),
-                        ],
+                    if (_bannerImages.isNotEmpty)
+                      CustomCarousel(
+                        height: 140.hp,
+                        topMargin: 10,
+                        items: _bannerImages,
                       ),
-                    ),
                     SizedBox(height: height * 0.02),
-                    TextButton(
-                      onPressed: () {
-                        // TODO Discover Product Navigation
-                        // Get.to(() => const DiscoverProduct());
-                      },
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(
-                            "Discover our Products",
-                            style: TextStyle(
-                                fontSize: 18, color: _theme.primaryColor),
-                          ),
-                          Icon(
-                            CupertinoIcons.forward,
-                            color: _theme.primaryColor,
-                          )
-                        ],
-                      ),
-                    ),
+                    // TextButton(
+                    //   onPressed: () {
+                    //     // TODO Discover Product Navigation
+                    //     // Get.to(() => const DiscoverProduct());
+                    //   },
+                    //   child: Row(
+                    //     mainAxisAlignment: MainAxisAlignment.center,
+                    //     children: [
+                    //       Text(
+                    //         "Discover our Products",
+                    //         style: TextStyle(
+                    //             fontSize: 18, color: _theme.primaryColor),
+                    //       ),
+                    //       Icon(
+                    //         CupertinoIcons.forward,
+                    //         color: _theme.primaryColor,
+                    //       )
+                    //     ],
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

@@ -17,6 +17,7 @@ class StartupCubit extends Cubit<StartupState> {
     emit(StartupLoading());
     final isFirstTime = await SharedPref.getFirstTimeAppOpen();
     await userRepository.initialState();
+    await startUpRepository.fetchConfig();
     await Future.delayed(const Duration(seconds: 2));
 
     if (isFirstTime) {
