@@ -30,8 +30,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       showAppBar: false,
@@ -60,7 +58,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
         builder: (context, state) {
           if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
             return CommonContainer(
-                showDetail: true,
+                showDetail: false,
                 showBackBotton: false,
                 showRoundBotton: false,
                 body: Container(
@@ -83,8 +81,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                   ),
                 ),
                 showTitleText: false,
-                // title: "Mini Statement",
-                // detail: "Select the Account you want to view statement of.",
                 topbarName: "Recent Transaction");
           } else {
             return Container(
