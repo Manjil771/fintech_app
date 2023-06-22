@@ -64,7 +64,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                     item.type
                         .toString()
                         .toLowerCase()
-                        .contains("dashboard".toLowerCase()) &&
+                        .contains("send".toLowerCase()) &&
                     item.status.toLowerCase() == "Active".toLowerCase())
                 .toList();
 

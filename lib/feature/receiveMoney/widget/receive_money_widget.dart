@@ -13,8 +13,6 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
-import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
 
 class ReceiveMoneyWidget extends StatefulWidget {
   const ReceiveMoneyWidget({Key? key}) : super(key: key);
@@ -72,7 +70,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                     item.type
                         .toString()
                         .toLowerCase()
-                        .contains("dashboard".toLowerCase()) &&
+                        .contains("receive".toLowerCase()) &&
                     item.status.toLowerCase() == "Active".toLowerCase())
                 .toList();
 
@@ -82,101 +80,107 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                 showBackBotton: true,
                 showRoundBotton: false,
                 body: SingleChildScrollView(
-                  child: Column(
-                    children: [
-                      Container(
-                        height: _height * 0.45,
-                        child: ListView.builder(
-                          itemCount: filteredItems.length,
-                          itemBuilder: (context, index) {
-                            checkItems(filteredItems[index].uniqueIdentifier);
-                            return Column(
-                              children: [
-                                CommonDetailBox(
-                                  isNetworkImage: true,
-                                  title: filteredItems[index].name,
-                                  leadingIcon:
-                                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
-                                  onBoxPressed: () {
-                                    // checkNivigation(filteredItems[index].name);
-                                    if (filteredItems[index]
-                                        .uniqueIdentifier
-                                        .toString()
-                                        .toLowerCase()
-                                        .contains("load_fund".toLowerCase())) {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.mobileBanking);
-                                    }
-                                    if (filteredItems[index]
-                                        .uniqueIdentifier
-                                        .toString()
-                                        .toLowerCase()
-                                        .contains("load_from_connectIps"
-                                            .toLowerCase())) {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.connectIps);
-                                    } else if (filteredItems[index]
-                                            .uniqueIdentifier
-                                            .toString()
-                                            .toLowerCase() ==
-                                        "request_sapati".toLowerCase()) {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.requestSapati);
-                                    } else if (filteredItems[index]
-                                            .uniqueIdentifier
-                                            .toString()
-                                            .toLowerCase() ==
-                                        "load_wallet".toLowerCase()) {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.listWalletScreen);
-                                    }
-                                    // else {
-                                    //   NavigationService.pushNamed(
-                                    //       routeName: Routes.mobileTopup);
-                                    // }
-                                  },
-                                  detail: checkDesc(
-                                      filteredItems[index].uniqueIdentifier),
-                                ),
-                                Divider(thickness: 1)
-                              ],
-                            );
-                          },
-                        ),
-                      ),
-                      filteredItems[0].status.toString().toLowerCase() ==
-                              "Active".toLowerCase()
-                          ? Container(
-                              // color: Colors.red,
-                              child: Column(
+                  scrollDirection: Axis.vertical,
+                  child: Container(
+                    height: _height * 0.56,
+                    child: Column(
+                      children: [
+                        Expanded(
+                          child: ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: filteredItems.length,
+                            itemBuilder: (context, index) {
+                              checkItems(filteredItems[index].uniqueIdentifier);
+                              return Column(
                                 children: [
                                   CommonDetailBox(
+                                    isNetworkImage: true,
+                                    title: filteredItems[index].name,
+                                    leadingIcon:
+                                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
                                     onBoxPressed: () {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.internetbanking);
+                                      // checkNivigation(filteredItems[index].name);
+                                      if (filteredItems[index]
+                                          .uniqueIdentifier
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains(
+                                              "load_fund".toLowerCase())) {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.mobileBanking);
+                                      }
+                                      if (filteredItems[index]
+                                          .uniqueIdentifier
+                                          .toString()
+                                          .toLowerCase()
+                                          .contains("load_from_connectIps"
+                                              .toLowerCase())) {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.connectIps);
+                                      } else if (filteredItems[index]
+                                              .uniqueIdentifier
+                                              .toString()
+                                              .toLowerCase() ==
+                                          "request_sapati".toLowerCase()) {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.requestSapati);
+                                      } else if (filteredItems[index]
+                                              .uniqueIdentifier
+                                              .toString()
+                                              .toLowerCase() ==
+                                          "load_wallet".toLowerCase()) {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.listWalletScreen);
+                                      }
+                                      // else {
+                                      //   NavigationService.pushNamed(
+                                      //       routeName: Routes.mobileTopup);
+                                      // }
                                     },
-                                    title: "Internet Banking",
-                                    detail:
-                                        "Make financial transactions through internet using your preferred devices.",
-                                    leadingIcon: Assets.bankTransfer,
+                                    detail: checkDesc(
+                                        filteredItems[index].uniqueIdentifier),
                                   ),
-                                  const Divider(thickness: 1),
-                                  CommonDetailBox(
-                                    onBoxPressed: () {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.loadViaCard);
-                                    },
-                                    title: "Load via Card",
-                                    detail:
-                                        "Load fund instantly from the card.",
-                                    leadingIcon: Assets.cardIcon,
-                                  ),
-                                  const Divider(thickness: 1),
+                                  Divider(thickness: 1)
                                 ],
-                              ),
-                            )
-                          : Container(),
-                    ],
+                              );
+                            },
+                          ),
+                        ),
+                        state.data[0].status.toString().toLowerCase() ==
+                                "Active".toLowerCase()
+                            ? Container(
+                                height: _height * 0.22,
+                                // color: Colors.red,
+                                child: Column(
+                                  children: [
+                                    CommonDetailBox(
+                                      onBoxPressed: () {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.internetbanking);
+                                      },
+                                      title: "Internet Banking",
+                                      detail:
+                                          "Make financial transactions through internet using your preferred devices.",
+                                      leadingIcon: Assets.bankTransfer,
+                                    ),
+                                    const Divider(thickness: 1),
+                                    CommonDetailBox(
+                                      onBoxPressed: () {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.loadViaCard);
+                                      },
+                                      title: "Load via Card",
+                                      detail:
+                                          "Load fund instantly from the card.",
+                                      leadingIcon: Assets.cardIcon,
+                                    ),
+                                    const Divider(thickness: 1),
+                                  ],
+                                ),
+                              )
+                            : Container(),
+                      ],
+                    ),
                   ),
                 ),
                 showTitleText: false,
