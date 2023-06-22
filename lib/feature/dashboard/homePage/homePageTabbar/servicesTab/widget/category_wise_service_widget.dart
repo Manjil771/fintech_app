@@ -9,7 +9,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/services/tvPayment/screen/tv_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<Service> services;

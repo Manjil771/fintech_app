@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/services/electricity/widget/nea_search_widget.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/widget/nea_search_widget.dart';
 
 class ElectricityCounterSearchPage extends StatelessWidget {
   const ElectricityCounterSearchPage({Key? key, required this.onChanged})

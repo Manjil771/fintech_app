@@ -12,8 +12,8 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
-import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup_page.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/list_app_services_page.dart';
+import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
 class CategoryWidget extends StatefulWidget {
   final bool showAllService;
@@ -103,7 +103,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                       routeName: Routes.electricityPayment);
                                 } else {
                                   NavigationService.push(
-                                    target: ListAppServicesPage(
+                                    target: CategoriesWiseServicePage(
                                         services: data.services,
                                         topBarName: data.name),
                                   );

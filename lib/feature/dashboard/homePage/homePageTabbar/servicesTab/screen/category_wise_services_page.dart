@@ -3,10 +3,10 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/category_wise_service_widget.dart';
 
-class ListAppServicesPage extends StatelessWidget {
+class CategoriesWiseServicePage extends StatelessWidget {
   final String topBarName;
   final services;
-  const ListAppServicesPage(
+  const CategoriesWiseServicePage(
       {Key? key, required this.services, required this.topBarName})
       : super(key: key);
   @override

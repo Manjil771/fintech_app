@@ -87,7 +87,6 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                       children: [
                         Expanded(
                           child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
                             itemCount: filteredItems.length,
                             itemBuilder: (context, index) {
                               checkItems(filteredItems[index].uniqueIdentifier);

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/services/electricity/widget/electricity_payment_detail_widget.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/widget/electricity_payment_detail_widget.dart';
 
 class ElectricityPaymentDetailPage extends StatelessWidget {
   const ElectricityPaymentDetailPage({Key? key}) : super(key: key);

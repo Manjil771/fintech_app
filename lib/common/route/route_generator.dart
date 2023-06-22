@@ -18,14 +18,14 @@ import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_coo
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
-import 'package:ismart/feature/services/electricity/screen/electricity_payment_detail_page.dart';
-import 'package:ismart/feature/services/electricity/screen/electricity_payment_page.dart';
-import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_detail_page.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/screen/statement_page.dart';
 
-import '../../feature/services/Topup/ui/screens/mobile_topup_page.dart';
+import '../../feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {

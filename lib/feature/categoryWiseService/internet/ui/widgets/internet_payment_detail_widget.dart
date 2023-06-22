@@ -8,7 +8,7 @@ import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
-import 'package:ismart/feature/services/internet/worldlink/widgets/worldlink_search_widget.dart';
+import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';

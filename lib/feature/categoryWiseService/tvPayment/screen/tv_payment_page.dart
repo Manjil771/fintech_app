@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/services/tvPayment/widget/tv_payment_widget.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/widget/tv_payment_widget.dart';
 
 class TvPaymentPage extends StatelessWidget {
   final String companyName;
