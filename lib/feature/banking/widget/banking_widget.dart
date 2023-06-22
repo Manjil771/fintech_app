@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -93,12 +94,29 @@ class _BankingWidgetState extends State<BankingWidget> {
                     }, builder: (context, state) {
                       if (state is CommonDataFetchSuccess<
                           AppServiceManagementModel>) {
-                        return state.data[5].status.toString().toLowerCase() !=
-                                "Active".toLowerCase
-                            ? CommonGridViewContainer(
-                                containerImage: Assets.loanIcon,
-                                title: state.data[5].name)
-                            : Container();
+                        final filteredItems = state.data
+                            .where((item) =>
+                                item.uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase()
+                                    .contains("loan_payment".toLowerCase()) &&
+                                item.status.toString().toLowerCase() ==
+                                    "Active".toLowerCase())
+                            .toList();
+                        return Column(
+                          children: filteredItems.map((e) {
+                            return Container(
+                              width: _width / 2.3,
+                              height: _height * 0.2,
+                              child: CommonGridViewContainer(
+                                title: e.name,
+                                isNetworkImage: true,
+                                containerImage:
+                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}${e.imageUrl}",
+                              ),
+                            );
+                          }).toList(),
+                        );
                       } else {
                         return Container();
                       }

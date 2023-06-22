@@ -5,6 +5,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/common/widget/transaction_success_screen.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
@@ -28,7 +29,7 @@ class MoreWidget extends StatelessWidget {
       // NavigationService.push(target: EmiCalculatorPage());
     },
     () {
-      // NavigationService.pushNamed(routeName: Routes.emiCalculator);
+      NavigationService.push(target: CommonTransactionSuccessfulPage());
     },
     () {
       NavigationService.push(target: SettingPage());

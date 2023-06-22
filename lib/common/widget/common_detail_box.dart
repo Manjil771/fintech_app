@@ -57,7 +57,6 @@ class CommonDetailBox extends StatelessWidget {
                           height: _height * 0.04,
                         ),
                       ),
-                      color: CustomTheme.darkerBlack,
                       height: _height * 0.04,
                     ),
             ),
