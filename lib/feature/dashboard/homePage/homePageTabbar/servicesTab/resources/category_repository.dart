@@ -6,35 +6,35 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/service_api_provider.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_api_provider.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/resources/recent_tranasction_api_provider.dart';
 import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_api_provider.dart';
 
-class ServicesRepository {
+class CategoryRepository {
   final ApiProvider apiProvider;
   final CoOperative coOperative;
   final UserRepository userRepository;
 
-  late ServicesApiProvider servicesApiProvider;
+  late CategoryApiProvider categoryApiProvider;
 
-  ServicesRepository({
+  CategoryRepository({
     required this.apiProvider,
     required this.coOperative,
     required this.userRepository,
   }) {
-    servicesApiProvider = ServicesApiProvider(
+    categoryApiProvider = CategoryApiProvider(
         apiProvider: apiProvider,
         baseUrl: coOperative.baseUrl,
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<List<ServicesList>>> getServiceList() async {
-    List<ServicesList> _recentTxnList = [];
+  Future<DataResponse<List<CategoryList>>> getCategoryList() async {
+    List<CategoryList> _recentTxnList = [];
     try {
-      final _res = await servicesApiProvider.fetchServices();
+      final _res = await categoryApiProvider.fetchServices();
 
       if (_res['data']['details'] != null) {
         // Parse Data from API
@@ -46,7 +46,7 @@ class ServicesRepository {
         }
 
         _userMap.forEach((element) {
-          ServicesList _txn = ServicesList.fromJson(element);
+          CategoryList _txn = CategoryList.fromJson(element);
 
           _recentTxnList.add(_txn);
         });

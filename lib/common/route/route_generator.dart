@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
@@ -57,7 +57,7 @@ class RouteGenerator {
         );
       case Routes.allServicesDashboard:
         return MaterialPageRoute(
-          builder: (_) => const AllServiceScreen(),
+          builder: (_) => const AllCategoryScreen(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.sendMoney:

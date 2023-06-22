@@ -7,13 +7,10 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
-import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
-import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 
 class BankingWidget extends StatefulWidget {
   BankingWidget({Key? key}) : super(key: key);
@@ -119,23 +116,17 @@ class _BankingWidgetState extends State<BankingWidget> {
     "Balance Inquiry",
     "Statement",
     "Fund Transfer",
-    "Cheque Request",
-    "Loan",
   ];
   final images = [
     Assets.accountInfo,
     Assets.balanceInquiry,
     Assets.statement,
     Assets.fundTransferIcon,
-    Assets.chequeBookIcon,
-    Assets.loanIcon,
   ];
   final onPress = [
     Routes.profileScreen,
     Routes.balanceInquiry,
     Routes.statementPage,
-    Routes.anyBank,
-    Routes.chequeScreen,
-    Routes.profileScreen,
+    Routes.internalCooperative,
   ];
 }

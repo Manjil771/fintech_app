@@ -9,26 +9,26 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/service_cubit.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/list_app_services_page.dart';
 
-class ServicesWidget extends StatefulWidget {
+class CategoryWidget extends StatefulWidget {
   final bool showAllService;
-  const ServicesWidget({Key? key, this.showAllService = true})
+  const CategoryWidget({Key? key, this.showAllService = true})
       : super(key: key);
 
   @override
-  State<ServicesWidget> createState() => _ServicesWidgetState();
+  State<CategoryWidget> createState() => _CategoryWidgetState();
 }
 
-class _ServicesWidgetState extends State<ServicesWidget> {
+class _CategoryWidgetState extends State<CategoryWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<ServicesCubit>().fetchServices();
+    context.read<CategoryCubit>().fetchCategory();
   }
 
   bool _isLoading = false;
@@ -43,7 +43,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
       padding: const EdgeInsets.symmetric(vertical: 18),
       decoration: BoxDecoration(
           color: CustomTheme.white, borderRadius: BorderRadius.circular(18)),
-      child: BlocConsumer<ServicesCubit, CommonState>(
+      child: BlocConsumer<CategoryCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
             _isLoading = true;
@@ -66,7 +66,7 @@ class _ServicesWidgetState extends State<ServicesWidget> {
           }
         },
         builder: (context, state) {
-          if (state is CommonStateSuccess<List<ServicesList>>) {
+          if (state is CommonStateSuccess<List<CategoryList>>) {
             return Column(
               children: [
                 Expanded(

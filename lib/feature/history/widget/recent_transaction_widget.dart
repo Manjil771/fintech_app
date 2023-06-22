@@ -32,6 +32,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     return PageWrapper(
+      padding: EdgeInsets.zero,
       showAppBar: false,
       body: BlocConsumer<RecentTransactionCubit, CommonState>(
         listener: (context, state) {

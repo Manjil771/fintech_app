@@ -3,13 +3,13 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
-class ServicesApiProvider {
+class CategoryApiProvider {
   final ApiProvider apiProvider;
   final CoOperative coOperative;
   final String baseUrl;
   final UserRepository userRepository;
 
-  ServicesApiProvider(
+  CategoryApiProvider(
       {required this.apiProvider,
       required this.coOperative,
       required this.baseUrl,

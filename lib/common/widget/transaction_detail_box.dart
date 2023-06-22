@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
@@ -33,8 +30,8 @@ class TransactionDetailBox extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(12),
-                width: _width * 0.12,
-                height: _height * 0.06,
+                width: _width * 0.15,
+                height: _height * 0.08,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.white,
@@ -52,17 +49,15 @@ class TransactionDetailBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(recentTransactionModel.service.toString(),
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
+                        style: _textTheme.labelMedium!
                             .copyWith(fontWeight: FontWeight.bold)),
                     Text(
                       recentTransactionModel.destination,
-                      style: Theme.of(context).textTheme.labelLarge,
+                      style: _textTheme.labelLarge,
                     ),
                     Text(
                       recentTransactionModel.date.toString(),
-                      style: Theme.of(context).textTheme.labelLarge,
+                      style: _textTheme.labelLarge,
                     ),
                   ],
                 ),

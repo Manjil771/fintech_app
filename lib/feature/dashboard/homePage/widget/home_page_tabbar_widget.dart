@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_page.dart';
 
 class HomePageTabbarWidget extends StatelessWidget {
   const HomePageTabbarWidget({Key? key}) : super(key: key);
@@ -29,7 +29,7 @@ class HomePageTabbarWidget extends StatelessWidget {
                 // Center(
                 //   child: Text("Graph"),
                 // ),
-                ServicesPage(
+                CategoryPage(
                   showAllServices: false,
                 ),
                 Center(

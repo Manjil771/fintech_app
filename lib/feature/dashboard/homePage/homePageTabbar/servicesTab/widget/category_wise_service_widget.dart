@@ -8,21 +8,23 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/services/tvPayment/screen/tv_payment_page.dart';
 
-class ListAppServicesWidget extends StatefulWidget {
+class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<Service> services;
   final String topBarName;
-  const ListAppServicesWidget(
+  const CategoriesWiseServicesWidget(
       {Key? key, required this.services, required this.topBarName})
       : super(key: key);
 
   @override
-  State<ListAppServicesWidget> createState() => _ListAppServicesWidgetState();
+  State<CategoriesWiseServicesWidget> createState() =>
+      _CategoriesWiseServicesWidgetState();
 }
 
-class _ListAppServicesWidgetState extends State<ListAppServicesWidget> {
+class _CategoriesWiseServicesWidgetState
+    extends State<CategoriesWiseServicesWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -42,7 +44,11 @@ class _ListAppServicesWidgetState extends State<ListAppServicesWidget> {
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    NavigationService.push(target: TvPaymentPage());
+                    NavigationService.push(
+                        target: TvPaymentPage(
+                      companyLogo: widget.services[index].icon.toString(),
+                      companyName: widget.services[index].service,
+                    ));
                   },
                   child: Column(children: [
                     Container(

@@ -4,13 +4,13 @@
 
 import 'dart:convert';
 
-List<ServicesList> servicesListFromJson(String str) => List<ServicesList>.from(
-    json.decode(str).map((x) => ServicesList.fromJson(x)));
+List<CategoryList> servicesListFromJson(String str) => List<CategoryList>.from(
+    json.decode(str).map((x) => CategoryList.fromJson(x)));
 
-String servicesListToJson(List<ServicesList> data) =>
+String servicesListToJson(List<CategoryList> data) =>
     json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
-class ServicesList {
+class CategoryList {
   int id;
   String name;
   String imageUrl;
@@ -19,7 +19,7 @@ class ServicesList {
   int appOrder;
   List<Service> services;
 
-  ServicesList({
+  CategoryList({
     required this.id,
     required this.name,
     required this.imageUrl,
@@ -29,7 +29,7 @@ class ServicesList {
     required this.services,
   });
 
-  factory ServicesList.fromJson(Map<String, dynamic> json) => ServicesList(
+  factory CategoryList.fromJson(Map<String, dynamic> json) => CategoryList(
         id: json["id"],
         name: json["name"],
         imageUrl: json["imageUrl"],
