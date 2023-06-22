@@ -45,7 +45,6 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      showAppBar: false,
       body: BlocConsumer<MiniStatementCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
@@ -161,8 +160,6 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       headingRowColor:
                           const MaterialStatePropertyAll(Colors.black12),
                       columns: const [
-                        DataColumn(label: Text("DR/CR")),
-
                         DataColumn(label: Text("Date")),
                         DataColumn(label: Text("Amount")),
                         DataColumn(label: Text("Status")),

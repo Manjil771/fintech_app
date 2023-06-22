@@ -16,6 +16,7 @@ class RecentTransactionModel {
   Map<String, dynamic> requestDetail;
   Map<String, dynamic> responseDetail;
   String iconUrl;
+  bool debit;
 
   RecentTransactionModel({
     required this.amount,
@@ -35,6 +36,7 @@ class RecentTransactionModel {
     required this.requestDetail,
     required this.responseDetail,
     required this.iconUrl,
+    required this.debit,
   });
 
   factory RecentTransactionModel.fromJson(Map<String, dynamic> json) =>
@@ -56,6 +58,7 @@ class RecentTransactionModel {
         requestDetail: json["requestDetail"] ?? {},
         responseDetail: json["responseDetail"] ?? {},
         iconUrl: json["iconUrl"],
+        debit: json["debit"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -76,6 +79,7 @@ class RecentTransactionModel {
         "requestDetail": requestDetail,
         "responseDetail": responseDetail,
         "iconUrl": iconUrl,
+        "debit": debit,
       };
 }
 

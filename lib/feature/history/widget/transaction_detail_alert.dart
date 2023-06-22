@@ -14,18 +14,19 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 
-class TransactionDetailWidget extends StatefulWidget {
+class TransactionDetailAlertWidget extends StatefulWidget {
   final RecentTransactionModel recentTransactionModel;
-  const TransactionDetailWidget(
+  const TransactionDetailAlertWidget(
       {Key? key, required this.recentTransactionModel})
       : super(key: key);
 
   @override
-  State<TransactionDetailWidget> createState() =>
-      _TransactionDetailWidgetState();
+  State<TransactionDetailAlertWidget> createState() =>
+      _TransactionDetailAlertWidgetState();
 }
 
-class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
+class _TransactionDetailAlertWidgetState
+    extends State<TransactionDetailAlertWidget> {
   String? downloadUrl;
   @override
   void initState() {

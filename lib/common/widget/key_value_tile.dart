@@ -31,9 +31,9 @@ class KeyValueTile extends StatelessWidget {
               children: [
                 Text(
                   title,
-                  style: _theme.textTheme.titleLarge!.copyWith(
+                  style: _theme.textTheme.titleSmall!.copyWith(
                     fontWeight: titleFontWeight,
-                    color: CustomTheme.darkerBlack,
+                    color: Color(0xFF9D9D9D),
                   ),
                 ),
                 SizedBox(width: 20.wp),
@@ -43,7 +43,7 @@ class KeyValueTile extends StatelessWidget {
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
                     textAlign: TextAlign.end,
-                    style: _theme.textTheme.titleLarge!.copyWith(
+                    style: _theme.textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w700,
                       color: CustomTheme.darkGray,
                     ),

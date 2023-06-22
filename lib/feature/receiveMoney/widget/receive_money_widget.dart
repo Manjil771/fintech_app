@@ -100,7 +100,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                     child: Column(
                       children: [
                         Container(
-                          child: filteredItems.isNotEmpty
+                          child: filteredMobileBanking.isNotEmpty
                               ? Column(
                                   children: [
                                     CommonDetailBox(

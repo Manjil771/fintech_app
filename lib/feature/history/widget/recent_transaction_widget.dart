@@ -71,11 +71,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       return TransactionDetailBox(
                         recentTransactionModel: _detail,
                         onClickAction: () {
-                          NavigationService.push(
-                            target: TransactionDetailScreen(
-                              recentTransactionModel: _detail,
-                            ),
-                          );
+                          // NavigationService.push(
+                          //   target: TransactionDetailScreen(
+                          //     recentTransactionModel: _detail,
+                          //   ),
+                          // );
                         },
                       );
                     },
