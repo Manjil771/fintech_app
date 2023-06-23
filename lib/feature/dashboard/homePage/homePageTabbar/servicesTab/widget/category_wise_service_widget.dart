@@ -6,6 +6,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -54,10 +55,13 @@ class _CategoriesWiseServicesWidgetState
                         companyLogo: widget.services[index].icon.toString(),
                         companyName: widget.services[index].service,
                       ));
-                    }
-                    if (widget.uniqueIdentifier.toLowerCase() ==
+                    } else if (widget.uniqueIdentifier.toLowerCase() ==
                         "internet".toLowerCase()) {
                       NavigationService.push(target: FindInternetUserScreen());
+                    }
+                    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+                        "khanepani_online_topup".toLowerCase()) {
+                      NavigationService.push(target: KhanePaniPage());
                     }
                   },
                   child: Column(children: [

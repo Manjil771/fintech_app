@@ -1,7 +1,10 @@
-import 'package:ismart/common/constant/assets.dart';
+import 'package:flutter/material.dart';
+
+import 'assets.dart';
 
 class CoOperative {
   CoOperative({
+    required this.splashImage,
     required this.clientCode,
     required this.clientSecret,
     required this.coOperativeName,
@@ -16,6 +19,7 @@ class CoOperative {
   final String coOperativeName;
   final String bannerImage;
   final String coOperativeLogo;
+  final String splashImage;
 }
 
 class CoOperativeValue {
@@ -39,16 +43,18 @@ class CoOperativeValue {
   // );
   // LIVE
 
-  // DEV
+  // //******************* Janadhara******************//
   // static final CoOperative development = CoOperative(
-  //   baseUrl: 'https://mbank.com.np', // 9802013689 :97684
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'H6FXNHXS61',
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9802013689 :97684
+  //   bannerImage: "assets/janadhara/janadhara_banner.png",
+  //   clientCode: '6M0D7LSVNV',
   //   coOperativeName: '',
-  //   coOperativeLogo: '',
-  //   clientSecret: "175391",
+  //   coOperativeLogo: 'assets/janadhara/janadhara.png',
+  //   clientSecret: "180509",
+  //   splashImage: "assets/janadhara_splash.png",
   // );
 
+  //******************* LIVE ************************* //
   static final CoOperative development = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
@@ -56,8 +62,9 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "126489",
+    splashImage: "",
   );
-  // // LIVE
+
   // DEV
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878

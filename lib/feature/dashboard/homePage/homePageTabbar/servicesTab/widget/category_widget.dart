@@ -9,6 +9,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
@@ -101,6 +102,12 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     "electricity") {
                                   NavigationService.pushNamed(
                                       routeName: Routes.electricityPayment);
+                                } else if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "landline") {
+                                  NavigationService.push(
+                                      target: LandLinePaymentPage());
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(

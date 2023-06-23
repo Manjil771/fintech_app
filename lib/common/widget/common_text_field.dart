@@ -122,7 +122,7 @@ class CustomTextField extends FormField<String> {
                                     ),
                                     children: [
                                       if (required)
-                                        const TextSpan(
+                                        TextSpan(
                                           text: "*",
                                           style: TextStyle(
                                             fontFamily: Fonts.poppin,
