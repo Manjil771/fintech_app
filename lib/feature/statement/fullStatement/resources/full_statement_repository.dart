@@ -24,6 +24,26 @@ class FullStatementRepository {
       userRepository: userRepository,
     );
   }
+
+  FullStatementModel? fullStatement;
+  final List<AccountStatementDtos> _statementsLists = [];
+
+  List<AccountStatementDtos> getGraphData({required int days}) {
+    _statementsLists.clear();
+    if (fullStatement == null) return _statementsLists;
+    final _startDate = DateTime(2022, 9, 1);
+    final _endDate = _startDate.add(Duration(days: days));
+
+    fullStatement!.accountStatementDtos.forEach((element) {
+      if (element.transactionDate.isBefore(_endDate) &&
+          element.transactionDate.isAfter(_startDate)) {
+        _statementsLists.add(element);
+        print(element.balance);
+      }
+    });
+    return _statementsLists;
+  }
+
   Future<DataResponse<FullStatementModel>> getFullStatement({
     required String accountNumber,
     required DateTime fromDate,
@@ -41,10 +61,9 @@ class FullStatementRepository {
         if (_userMap.isEmpty) {
           return DataResponse.error("Error fetching data.");
         }
-        FullStatementModel _fullStatement =
-            FullStatementModel.fromJson(_userMap);
+        fullStatement = FullStatementModel.fromJson(_userMap);
 
-        return DataResponse.success(_fullStatement);
+        return DataResponse.success(fullStatement);
       } else {
         return DataResponse.error("error message");
       }

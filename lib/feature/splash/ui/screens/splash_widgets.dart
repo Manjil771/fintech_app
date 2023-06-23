@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 
 class SplashWidget extends StatelessWidget {
@@ -18,9 +19,10 @@ class SplashWidget extends StatelessWidget {
           // if (state.isFirstTime) {
           //   NavigationService.push(target: OnboardPage());
           // } else
-          // if (state.isLogged) {
-          //   NavigationService.pushReplacement(target: const DashboardPage());
-          // } else {
+          if (state.isLogged) {
+            NavigationService.pushReplacement(target: const DashboardPage());
+          }
+          // else {
           //   NavigationService.pushReplacement(target: const LoginPage());
           // }
         }
