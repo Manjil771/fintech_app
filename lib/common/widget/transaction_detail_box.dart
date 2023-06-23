@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
@@ -33,8 +31,8 @@ class TransactionDetailBox extends StatelessWidget {
             children: [
               Container(
                 padding: const EdgeInsets.all(12),
-                width: _width * 0.12,
-                height: _height * 0.06,
+                width: _width * 0.15,
+                height: _height * 0.08,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: Colors.white,
@@ -52,10 +50,15 @@ class TransactionDetailBox extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(recentTransactionModel.service.toString(),
-                        style: Theme.of(context).textTheme.labelMedium),
+                        style: _textTheme.labelMedium!
+                            .copyWith(fontWeight: FontWeight.bold)),
                     Text(
                       recentTransactionModel.destination,
-                      style: Theme.of(context).textTheme.labelLarge,
+                      style: _textTheme.labelLarge,
+                    ),
+                    Text(
+                      recentTransactionModel.date.toString(),
+                      style: _textTheme.labelLarge,
                     ),
                   ],
                 ),
@@ -66,18 +69,31 @@ class TransactionDetailBox extends StatelessWidget {
                 children: [
                   Text(
                     "NPR ${recentTransactionModel.totalAmount}",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: "popinsemibold",
                       fontSize: 12,
-                      color: Color(0xFF24BC7C),
+                      color: recentTransactionModel.debit
+                          ? Colors.red
+                          : Colors.green,
                     ),
                   ),
-                  Center(
-                    child: Text(
-                      recentTransactionModel.status,
-                      style: const TextStyle(
-                        fontFamily: "popinsemibold",
-                        color: Colors.green,
+                  Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(4),
+                      color: recentTransactionModel.status
+                                  .toString()
+                                  .toLowerCase() ==
+                              "Complete".toLowerCase()
+                          ? Colors.green
+                          : Colors.red,
+                    ),
+                    padding: EdgeInsets.all(4),
+                    child: Center(
+                      child: Text(
+                        recentTransactionModel.status,
+                        style: TextStyle(
+                            fontFamily: "popinsemibold",
+                            color: CustomTheme.white),
                       ),
                     ),
                   ),

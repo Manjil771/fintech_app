@@ -5,7 +5,7 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/service_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_from_bank_repository.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_money_repository.dart';
@@ -130,7 +130,7 @@ class MultiRepositoryWrapper extends StatelessWidget {
           lazy: true,
         ),
         RepositoryProvider(
-          create: (context) => ServicesRepository(
+          create: (context) => CategoryRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             coOperative: RepositoryProvider.of<CoOperative>(context),

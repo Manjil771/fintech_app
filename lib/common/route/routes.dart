@@ -25,4 +25,5 @@ class Routes {
   static const chequeScreen = "/cheque_Screen";
   static const emiCalculator = "/emi_calculator";
   static const discountCalculator = "/discount_calculator";
+  static const listWalletScreen = "/list_wallet";
 }

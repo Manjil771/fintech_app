@@ -151,13 +151,6 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                           return Column(
                             crossAxisAlignment: CrossAxisAlignment.center,
                             children: [
-                              Text((progress * 100).toInt().toString()),
-                              ElevatedButton(
-                                  onPressed: () async {
-                                    downloadFile();
-                                    // downloadPDF;
-                                  },
-                                  child: Text("text")),
                               Row(
                                 children: [
                                   Expanded(

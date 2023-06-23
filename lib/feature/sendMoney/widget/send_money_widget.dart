@@ -1,11 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
@@ -18,64 +24,232 @@ class SendMoneyWidget extends StatefulWidget {
 }
 
 class _SendMoneyWidgetState extends State<SendMoneyWidget> {
-  ValueNotifier<AppServiceManagementModel?> appService = ValueNotifier(null);
-
   @override
-  void initState() {}
+  void initState() {
+    super.initState();
+    context.read<AppServiceCubit>().fetchAppService();
+  }
 
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
+    final _height = SizeUtils.height;
     return PageWrapper(
-      body: CommonContainer(
-          showDetail: false,
-          showTitleText: false,
-          horizontalPadding: 0,
-          body: Column(
-            children: [
-              CommonDetailBox(
-                onBoxPressed: () {
-                  NavigationService.pushNamed(routeName: Routes.anyBank);
-                },
-                title: "Any Bank",
-                detail: "Send Money to accounts maintained at different banks",
-                leadingIcon: Assets.bankTransfer,
-              ),
-              const Divider(thickness: 1),
-              CommonDetailBox(
-                onBoxPressed: () {
-                  NavigationService.pushNamed(
-                      routeName: Routes.internalCooperative);
-                },
-                title: "Internal Cooperative",
-                detail: "Send Money to accounts maintained at same banks",
-                leadingIcon: Assets.bankTransfer,
-              ),
-              const Divider(thickness: 1),
-              CommonDetailBox(
-                onBoxPressed: () {
-                  NavigationService.pushNamed(
-                      routeName: Routes.otherCooperative);
-                },
-                title: "Other Cooperative",
-                detail:
-                    "Send Money to accounts maintained at different Cooperative",
-                leadingIcon: Assets.bankTransfer,
-              ),
-              const Divider(thickness: 1),
-              CommonDetailBox(
-                onBoxPressed: () {
-                  NavigationService.push(
-                    target: const WalletTransferScreen(),
-                  );
-                },
-                title: "Wallet",
-                detail: "Check balance on your wallets",
-                leadingIcon: Assets.walletIcon,
-              )
-            ],
-          ),
-          showRoundBotton: false,
-          topbarName: "Send Money"),
+      body: BlocConsumer<AppServiceCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && !_isLoading) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
+
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
+            final filteredItems = state.data
+                .where((item) =>
+                    item.type
+                        .toString()
+                        .toLowerCase()
+                        .contains("send".toLowerCase()) &&
+                    item.status.toLowerCase() == "Active".toLowerCase())
+                .toList();
+
+            return CommonContainer(
+                horizontalPadding: 0,
+                showDetail: false,
+                showBackBotton: true,
+                showRoundBotton: false,
+                body: Column(
+                  children: [
+                    Container(
+                      height: _height * 0.6,
+                      child: ListView.builder(
+                        itemCount: filteredItems.length,
+                        itemBuilder: (context, index) {
+                          return Column(
+                            children: [
+                              CommonDetailBox(
+                                isNetworkImage: true,
+                                title: filteredItems[index].name,
+                                leadingIcon:
+                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
+                                onBoxPressed: () {
+                                  // checkNivigation(filteredItems[index].name);
+                                  if (filteredItems[index]
+                                      .uniqueIdentifier
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains(
+                                          "bank_transfer".toLowerCase())) {
+                                    NavigationService.pushNamed(
+                                        routeName: Routes.anyBank);
+                                  }
+                                  if (filteredItems[index]
+                                      .uniqueIdentifier
+                                      .toString()
+                                      .toLowerCase()
+                                      .contains("fund_transfer_dashboard"
+                                          .toLowerCase())) {
+                                    NavigationService.pushNamed(
+                                        routeName: Routes.internalCooperative);
+                                  } else if (filteredItems[index]
+                                          .uniqueIdentifier
+                                          .toString()
+                                          .toLowerCase() ==
+                                      "coop_transfer".toLowerCase()) {
+                                    NavigationService.pushNamed(
+                                        routeName: Routes.otherCooperative);
+                                  } else if (filteredItems[index]
+                                          .uniqueIdentifier
+                                          .toString()
+                                          .toLowerCase() ==
+                                      "load_wallet".toLowerCase()) {
+                                    NavigationService.pushNamed(
+                                        routeName: Routes.listWalletScreen);
+                                  }
+                                  // else {
+                                  //   NavigationService.pushNamed(
+                                  //       routeName: Routes.mobileTopup);
+                                  // }
+                                },
+                                detail: checkDesc(
+                                    filteredItems[index].uniqueIdentifier),
+                              ),
+                              Divider(thickness: 1)
+                            ],
+                          );
+                        },
+                      ),
+                    )
+                  ],
+                ),
+                showTitleText: false,
+                topbarName: "Send Money");
+          } else {
+            return Container();
+          }
+        },
+      ),
     );
   }
+
+  checkDesc(uniqueIdentifier) {
+    if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("bank_transfer".toLowerCase())) {
+      return "Send Money to accounts maintained at different banks";
+    } else if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("fund_transfer_dashboard".toLowerCase())) {
+      return "Send Money to accounts maintained at same cooperative";
+    } else if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("coop_transfer".toLowerCase())) {
+      return "Send Money to accounts maintained at different cooperative";
+    } else if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("load_wallet".toLowerCase())) {
+      return "Load Money to your Account";
+    } else {
+      return "";
+    }
+  }
 }
+
+//   checkNivigation(uniqueIdentifier) {
+//     if (uniqueIdentifier
+//         .toString()
+//         .toLowerCase()
+//         .contains("bank_transfer".toLowerCase())) {
+//       NavigationService.pushNamed(routeName: Routes.anyBank);
+//     } else if (uniqueIdentifier
+//         .toString()
+//         .toLowerCase()
+//         .contains("fund_transfer_dashboard".toLowerCase())) {
+//       NavigationService.pushNamed(routeName: Routes.internalCooperative);
+//     } else if (uniqueIdentifier.toString().toLowerCase() ==
+//         "coop_transfer".toLowerCase()) {
+//       NavigationService.pushNamed(routeName: Routes.otherCooperative);
+//     }
+//   }
+// }
+
+//   ValueNotifier<AppServiceManagementModel?> appService = ValueNotifier(null);
+
+//   @override
+//   void initState() {}
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return PageWrapper(
+//       body: CommonContainer(
+//           showDetail: false,
+//           showTitleText: false,
+//           horizontalPadding: 0,
+//           body: Column(
+//             children: [
+//               CommonDetailBox(
+//                 onBoxPressed: () {
+//                   NavigationService.pushNamed(routeName: Routes.anyBank);
+//                 },
+//                 title: "Any Bank",
+//                 detail: "Send Money to accounts maintained at different banks",
+//                 leadingIcon: Assets.bankTransfer,
+//               ),
+//               const Divider(thickness: 1),
+//               CommonDetailBox(
+//                 onBoxPressed: () {
+//                   NavigationService.pushNamed(
+//                       routeName: Routes.internalCooperative);
+//                 },
+//                 title: "Internal Cooperative",
+//                 detail: "Send Money to accounts maintained at same banks",
+//                 leadingIcon: Assets.bankTransfer,
+//               ),
+//               const Divider(thickness: 1),
+//               CommonDetailBox(
+//                 onBoxPressed: () {
+//                   NavigationService.pushNamed(
+//                       routeName: Routes.otherCooperative);
+//                 },
+//                 title: "Other Cooperative",
+//                 detail:
+//                     "Send Money to accounts maintained at different Cooperative",
+//                 leadingIcon: Assets.bankTransfer,
+//               ),
+//               const Divider(thickness: 1),
+//               CommonDetailBox(
+//                 onBoxPressed: () {
+//                   NavigationService.push(
+//                     target: const WalletTransferScreen(),
+//                   );
+//                 },
+//                 title: "Wallet",
+//                 detail: "Check balance on your wallets",
+//                 leadingIcon: Assets.walletIcon,
+//               )
+//             ],
+//           ),
+//           showRoundBotton: false,
+//           topbarName: "Send Money"),
+//     );
+//   }
+// }

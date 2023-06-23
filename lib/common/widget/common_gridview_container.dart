@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class CommonGridViewContainer extends StatelessWidget {
+  final bool isNetworkImage;
   final String containerImage;
   final String title;
   final Function()? onContainerPress;
@@ -12,6 +13,7 @@ class CommonGridViewContainer extends StatelessWidget {
   const CommonGridViewContainer(
       {super.key,
       required this.containerImage,
+      this.isNetworkImage = false,
       this.margin = const EdgeInsets.all(8),
       required this.title,
       this.onContainerPress});
@@ -32,10 +34,12 @@ class CommonGridViewContainer extends StatelessWidget {
           Container(
             padding: const EdgeInsets.all(12),
             height: _height * 0.08,
-            child: SvgPicture.asset(
-              containerImage,
-              color: CustomTheme.darkerBlack.withOpacity(0.8),
-            ),
+            child: isNetworkImage == true
+                ? SvgPicture.network(containerImage)
+                : SvgPicture.asset(
+                    containerImage,
+                    color: CustomTheme.darkerBlack.withOpacity(0.8),
+                  ),
           ),
           SizedBox(height: _height * 0.01),
           Expanded(

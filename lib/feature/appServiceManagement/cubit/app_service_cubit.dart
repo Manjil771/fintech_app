@@ -8,7 +8,7 @@ class AppServiceCubit extends Cubit<CommonState> {
   final AppServiceRepository appServiceRepository;
   AppServiceCubit({required this.appServiceRepository})
       : super(CommonInitial());
-  Future<dynamic> fetchrecentTransaction() async {
+  Future<dynamic> fetchAppService() async {
     emit(CommonLoading());
     try {
       final response = await appServiceRepository.getRecentTransaction();

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_service_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
@@ -17,14 +17,15 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
-import 'package:ismart/feature/services/electricity/screen/electricity_payment_detail_page.dart';
-import 'package:ismart/feature/services/electricity/screen/electricity_payment_page.dart';
-import 'package:ismart/feature/services/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/services/internet/ui/screens/internet_list_screen.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_detail_page.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/screen/statement_page.dart';
 
-import '../../feature/services/Topup/ui/screens/mobile_topup_page.dart';
+import '../../feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -56,7 +57,7 @@ class RouteGenerator {
         );
       case Routes.allServicesDashboard:
         return MaterialPageRoute(
-          builder: (_) => const AllServiceScreen(),
+          builder: (_) => const AllCategoryScreen(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.sendMoney:
@@ -148,6 +149,11 @@ class RouteGenerator {
       case Routes.discountCalculator:
         return MaterialPageRoute(
           builder: (_) => DiscountCalculatorPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.listWalletScreen:
+        return MaterialPageRoute(
+          builder: (_) => WalletTransferScreen(),
           settings: RouteSettings(name: settings.name),
         );
       default:

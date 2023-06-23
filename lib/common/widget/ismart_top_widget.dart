@@ -10,13 +10,15 @@ class IsmartTopWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
+    final _height = SizeUtils.height;
+    final _width = SizeUtils.width;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset(
           Assets.logoImage,
-          height: size.height * 0.08,
+          height: _height * 0.08,
         ),
         const Spacer(),
         InkWell(
@@ -25,19 +27,15 @@ class IsmartTopWidget extends StatelessWidget {
           },
           child: SvgPicture.asset(
             Assets.translateImage,
-            height: size.height * 0.03,
+            height: _height * 0.03,
           ),
         ),
-        SizedBox(
-          width: 15.hp,
-        ),
+        SizedBox(width: 15.hp),
         SvgPicture.asset(
           Assets.groupIcon,
-          height: size.height * 0.03,
+          height: _height * 0.03,
         ),
-        SizedBox(
-          width: 15.hp,
-        ),
+        SizedBox(width: 15.hp),
       ],
     );
   }
