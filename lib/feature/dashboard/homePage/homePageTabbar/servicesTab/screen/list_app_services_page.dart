@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
-import 'package:ismart/feature/services/tvPayment/widget/list_tv_services_widget.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/list_app_services_widget.dart';
 
-class ListServicesPage extends StatelessWidget {
+class ListAppServicesPage extends StatelessWidget {
   final String topBarName;
   final services;
-  const ListServicesPage(
+  const ListAppServicesPage(
       {Key? key, required this.services, required this.topBarName})
       : super(key: key);
   @override
@@ -15,7 +15,7 @@ class ListServicesPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return ListServicesScreen(
+    return ListAppServicesWidget(
       topBarName: topBarName,
       services: services,
     );

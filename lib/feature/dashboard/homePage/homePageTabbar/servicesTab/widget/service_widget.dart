@@ -11,8 +11,9 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/service_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/services_model.dart';
+import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/services/Topup/ui/screens/mobile_topup_page.dart';
-import 'package:ismart/feature/services/tvPayment/screen/list_tv_services_page.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/list_app_services_page.dart';
 
 class ServicesWidget extends StatefulWidget {
   final bool showAllService;
@@ -70,12 +71,13 @@ class _ServicesWidgetState extends State<ServicesWidget> {
               children: [
                 Expanded(
                   child: Container(
+                      //  color: Colors.greenAccent.withOpacity(0.1),
                       child: GridView.builder(
                           // itemCount: 5,
                           itemCount: widget.showAllService
                               ? state.data.length
-                              : state.data.length >= 8
-                                  ? 8
+                              : state.data.length >= 12
+                                  ? 12
                                   : state.data.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
@@ -87,11 +89,25 @@ class _ServicesWidgetState extends State<ServicesWidget> {
                                 "https://ismart.devanasoft.com.np/${data.imageUrl}";
                             return InkWell(
                               onTap: () {
-                                NavigationService.push(
-                                  target: ListServicesPage(
-                                      services: data.services,
-                                      topBarName: data.name),
-                                );
+                                if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "topup") {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.mobileTopup);
+                                } else if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "electricity") {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.electricityPayment);
+                                } else {
+                                  NavigationService.push(
+                                    target: ListAppServicesPage(
+                                        services: data.services,
+                                        topBarName: data.name),
+                                  );
+                                }
                               },
                               child: Column(
                                 children: [

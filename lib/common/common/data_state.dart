@@ -34,8 +34,8 @@ class CommonDataFetchSuccess<T> extends CommonState {
   List<T> get props => [...data];
 }
 
-class CommonStateSuccess<TransactionHistory> extends CommonState {
-  final TransactionHistory data;
+class CommonStateSuccess<T> extends CommonState {
+  final T data;
   const CommonStateSuccess({required this.data});
-  List<TransactionHistory> get props => [data];
+  List<T> get props => [data];
 }

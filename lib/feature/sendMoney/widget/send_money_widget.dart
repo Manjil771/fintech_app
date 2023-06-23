@@ -1,14 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
 
-class SendMoneyWidget extends StatelessWidget {
+class SendMoneyWidget extends StatefulWidget {
   const SendMoneyWidget({Key? key}) : super(key: key);
+
+  @override
+  State<SendMoneyWidget> createState() => _SendMoneyWidgetState();
+}
+
+class _SendMoneyWidgetState extends State<SendMoneyWidget> {
+  ValueNotifier<AppServiceManagementModel?> appService = ValueNotifier(null);
+
+  @override
+  void initState() {}
+
   @override
   Widget build(BuildContext context) {
     return PageWrapper(

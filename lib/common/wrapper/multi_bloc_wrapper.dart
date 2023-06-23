@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
@@ -28,9 +30,9 @@ class MultiBlocWrapper extends StatelessWidget {
           ),
         ),
         // BlocProvider(
-        //   create: (context) => ServicesCubit(
-        //     servicesRepository:
-        //         RepositoryProvider.of<ServicesRepository>(context),
+        //   create: (context) => AppServiceCubit(
+        //     appServiceRepository:
+        //         RepositoryProvider.of<AppServiceRepository>(context),
         //   ),
         // )
       ],
