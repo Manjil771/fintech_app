@@ -46,7 +46,6 @@ class CommonDetailBox extends StatelessWidget {
               child: isNetworkImage == false
                   ? SvgPicture.asset(
                       leadingIcon,
-                      color: CustomTheme.darkerBlack,
                       height: _height * 0.04,
                     )
                   : SvgPicture.network(

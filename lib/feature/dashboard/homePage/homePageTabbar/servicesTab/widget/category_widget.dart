@@ -104,6 +104,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(
+                                        uniqueIdentifier: data.uniqueIdentifier,
                                         services: data.services,
                                         topBarName: data.name),
                                   );

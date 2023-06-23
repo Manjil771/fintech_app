@@ -19,14 +19,14 @@ class SettingWidget extends StatelessWidget {
           topbarName: "Settings",
           body: Column(
             children: [
-              CommonDetailBox(
-                  onBoxPressed: () {},
-                  leadingIcon: "assets/icons/modesettings.svg",
-                  detail: "Change to internet of sms mode",
-                  title: "Mode Settings"),
-              const Divider(
-                thickness: 1,
-              ),
+              // CommonDetailBox(
+              //     onBoxPressed: () {},
+              //     leadingIcon: "assets/icons/modesettings.svg",
+              //     detail: "Change to internet of sms mode",
+              //     title: "Mode Settings"),
+              // const Divider(
+              //   thickness: 1,
+              // ),
               CommonDetailBox(
                   leadingIcon: "assets/icons/user-cirlce-add-svgrepo-com 2.svg",
                   onBoxPressed: () {},
