@@ -8,9 +8,10 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
+import 'package:ismart/common/widget/transaction_success_screen.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/screen/transaction_detail_page.dart';
+import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
 
 class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -71,6 +72,20 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       return TransactionDetailBox(
                         recentTransactionModel: _detail,
                         onClickAction: () {
+                          showDialog(
+                            context: context,
+                            builder: (context) {
+                              return Dialog(
+                                  insetPadding:
+                                      EdgeInsets.symmetric(horizontal: 18),
+                                  child: Container(
+                                    width: double.infinity,
+                                    height: _height * 0.5,
+                                    child: TransactionDetailAlertWidget(
+                                        recentTransactionModel: _detail),
+                                  ));
+                            },
+                          );
                           // NavigationService.push(
                           //   target: TransactionDetailScreen(
                           //     recentTransactionModel: _detail,

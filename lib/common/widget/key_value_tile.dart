@@ -6,6 +6,8 @@ class KeyValueTile extends StatelessWidget {
   final String title;
   final String value;
   final Axis axis;
+  final bool isRedColor;
+  final bool useCustomColor;
   final double bottomPadding;
   final CrossAxisAlignment horizontalCrossAxis;
   final FontWeight titleFontWeight;
@@ -13,6 +15,8 @@ class KeyValueTile extends StatelessWidget {
     Key? key,
     required this.title,
     required this.value,
+    this.isRedColor = false,
+    this.useCustomColor = false,
     this.axis = Axis.horizontal,
     this.bottomPadding = 10,
     this.horizontalCrossAxis = CrossAxisAlignment.start,
@@ -45,7 +49,11 @@ class KeyValueTile extends StatelessWidget {
                     textAlign: TextAlign.end,
                     style: _theme.textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w700,
-                      color: CustomTheme.darkGray,
+                      color: useCustomColor
+                          ? isRedColor
+                              ? CustomTheme.instagram
+                              : Colors.green
+                          : CustomTheme.darkGray,
                     ),
                   ),
                 ),

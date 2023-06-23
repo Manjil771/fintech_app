@@ -17,6 +17,7 @@ class RecentTransactionModel {
   Map<String, dynamic> responseDetail;
   String iconUrl;
   bool debit;
+  String channelType;
 
   RecentTransactionModel({
     required this.amount,
@@ -27,6 +28,7 @@ class RecentTransactionModel {
     required this.date,
     required this.status,
     this.airlinesPdfUrl,
+    required this.channelType,
     this.sessionId,
     required this.id,
     required this.createdDate,
@@ -59,6 +61,7 @@ class RecentTransactionModel {
         responseDetail: json["responseDetail"] ?? {},
         iconUrl: json["iconUrl"],
         debit: json["debit"],
+        channelType: json["channelType"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -80,6 +83,7 @@ class RecentTransactionModel {
         "responseDetail": responseDetail,
         "iconUrl": iconUrl,
         "debit": debit,
+        "channelType": channelType,
       };
 }
 
