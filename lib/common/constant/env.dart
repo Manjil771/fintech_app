@@ -58,26 +58,26 @@ class CoOperativeValue {
 //     splashImage: "assets/janadhara_splash.png",
 //   );
 
-  //******************* LIVE ************************* //
-  static final CoOperative development = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'EHVNI7CZJ3',
-    coOperativeName: '',
-    coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "126489",
-    splashImage: "",
-  );
-
-  // DEV TEST
+  // //******************* LIVE ************************* //
   // static final CoOperative development = CoOperative(
-  //   splashImage: "",
-
-  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'VBMRDWEVFV',
+  //   clientCode: 'EHVNI7CZJ3',
   //   coOperativeName: '',
   //   coOperativeLogo: Assets.ismartLogo,
-  //   clientSecret: "199204",
+  //   clientSecret: "126489",
+  //   splashImage: "",
   // );
+
+  // DEV TEST70074
+  static final CoOperative development = CoOperative(
+    splashImage: "",
+
+    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+    bannerImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'VBMRDWEVFV',
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "199204",
+  );
 }

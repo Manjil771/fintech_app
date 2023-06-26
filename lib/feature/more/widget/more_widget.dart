@@ -5,7 +5,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
-import 'package:ismart/common/widget/transaction_success_screen.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -17,7 +17,7 @@ class MoreWidget extends StatelessWidget {
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
-    Assets.settingIcon,
+    // Assets.settingIcon,
   ];
   List tapFunction = [
     () {
@@ -29,15 +29,13 @@ class MoreWidget extends StatelessWidget {
     () {
       // NavigationService.push(target: EmiCalculatorPage());
     },
-    () {
-      String url = "tel://214324234";
+    () async {
+      final String url = "tel://9813";
 
-      Future<void> makeUrlRequest(String url) async {
-        if (await canLaunchUrl(Uri.parse(url))) {
-          await launchUrl(Uri.parse(url));
-        } else {
-          throw 'Could not launch $url';
-        }
+      if (await canLaunchUrl(Uri.parse("tel:9801132218"))) {
+        await launchUrl(Uri.parse("tel:9801132218"));
+      } else {
+        throw 'Could not launch tel:9801132218';
       }
     },
     () {
@@ -54,7 +52,7 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Call Support",
     "Settings",
-    "FeedBack",
+    // "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {
