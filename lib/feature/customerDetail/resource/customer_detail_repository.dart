@@ -1,11 +1,14 @@
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
+import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
 
 class CustomerDetailRepository {
   final ApiProvider apiProvider;
@@ -51,6 +54,14 @@ class CustomerDetailRepository {
 
         accountsList.value = _user.accountDetail;
         selectedAccount.value = accountsList.value.first;
+
+        RepositoryProvider.of<FullStatementRepository>(
+                NavigationService.context)
+            .getFullStatement(
+          accountNumber: selectedAccount.value?.accountNumber ?? "",
+          fromDate: DateTime.now().subtract(const Duration(days: 365)),
+          toDate: DateTime.now(),
+        );
         return DataResponse.success(_user);
       } else {
         return DataResponse.error("Error fetching customer detail.");
