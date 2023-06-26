@@ -93,6 +93,32 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                // CustomTextField(
+                //   hintText: "Select Bank",
+                //   title: "Select Bank",
+                //   readOnly: true,
+                //   controller: _bankNameController,
+                //   validator: (val) {
+                //     if (selectedBank == null) {
+                //       return "Please select a bank to proceed.";
+                //     }
+                //     return null;
+                //   },
+                //   onTap: () {
+                //     NavigationService.push(
+                //       target: ReceiveMoneyBankListScreen(
+                //         onBankSelected: (val) {
+                //           NavigationService.pop();
+
+                //           selectedBank = val;
+                //           _bankNameController.text = val.bankName;
+                //           setState(() {});
+                //         },
+                //         type: "ebanks",
+                //       ),
+                //     );
+                //   },
+                // ),
                 CustomTextField(
                   hintText: "Select Bank",
                   title: "Select Bank",

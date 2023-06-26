@@ -5,9 +5,14 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/wid
 
 class CategoriesWiseServicePage extends StatelessWidget {
   final String topBarName;
+  final String uniqueIdentifier;
+
   final services;
   const CategoriesWiseServicePage(
-      {Key? key, required this.services, required this.topBarName})
+      {Key? key,
+      required this.services,
+      required this.topBarName,
+      required this.uniqueIdentifier})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -16,6 +21,7 @@ class CategoriesWiseServicePage extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return CategoriesWiseServicesWidget(
+      uniqueIdentifier: uniqueIdentifier,
       topBarName: topBarName,
       services: services,
     );
