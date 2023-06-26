@@ -110,7 +110,8 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
               "remarks": _remarksController.text,
               "payment_type": "mobilecheckout"
             };
-            const _url = "https://mbank.com.np" "/api/load_from_bank/payment/";
+            const _url = "https://ismart.devanasoft.com.np"
+                "/api/load_from_bank/payment/";
             final url = UrlUtils.getUri(url: _url, params: _body);
 
             print(url.toString());

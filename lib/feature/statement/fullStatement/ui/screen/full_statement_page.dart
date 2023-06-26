@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/statement/fullStatement/cubit/mini_statement_cubit.dart';
+import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/widget/full_statement_widget.dart';
 import 'package:ismart/feature/statement/miniStatement/cubit/mini_statement_cubit.dart';
