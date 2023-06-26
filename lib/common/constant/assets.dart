@@ -71,4 +71,5 @@ class Assets {
   static const String downloadIcon = "assets/icons/Download.svg";
   static const String settingIcon = "assets/icons/settings-svgrepo-com 1.svg";
   static const String contactUsIcon = "assets/icons/Contact us.svg";
+  static const String successIcon = "assets/icons/transaction_success.svg";
 }

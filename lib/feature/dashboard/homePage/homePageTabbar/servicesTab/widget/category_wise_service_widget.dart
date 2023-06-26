@@ -1,21 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<Service> services;
+  final String uniqueIdentifier;
   final String topBarName;
   const CategoriesWiseServicesWidget(
-      {Key? key, required this.services, required this.topBarName})
+      {Key? key,
+      required this.services,
+      required this.topBarName,
+      required this.uniqueIdentifier})
       : super(key: key);
 
   @override
@@ -44,11 +48,21 @@ class _CategoriesWiseServicesWidgetState
               itemBuilder: (context, index) {
                 return InkWell(
                   onTap: () {
-                    NavigationService.push(
-                        target: TvPaymentPage(
-                      companyLogo: widget.services[index].icon.toString(),
-                      companyName: widget.services[index].service,
-                    ));
+                    if (widget.uniqueIdentifier.toLowerCase() ==
+                        "tv".toLowerCase()) {
+                      NavigationService.push(
+                          target: TvPaymentPage(
+                        companyLogo: widget.services[index].icon.toString(),
+                        companyName: widget.services[index].service,
+                      ));
+                    } else if (widget.uniqueIdentifier.toLowerCase() ==
+                        "internet".toLowerCase()) {
+                      NavigationService.push(target: FindInternetUserScreen());
+                    }
+                    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+                        "khanepani_online_topup".toLowerCase()) {
+                      NavigationService.push(target: KhanePaniPage());
+                    }
                   },
                   child: Column(children: [
                     Container(

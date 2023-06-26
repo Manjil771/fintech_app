@@ -5,9 +5,9 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
-import 'package:ismart/common/widget/transaction_success_screen.dart';
-import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MoreWidget extends StatelessWidget {
   MoreWidget({Key? key}) : super(key: key);
@@ -17,6 +17,7 @@ class MoreWidget extends StatelessWidget {
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
+    // Assets.settingIcon,
   ];
   List tapFunction = [
     () {
@@ -28,8 +29,17 @@ class MoreWidget extends StatelessWidget {
     () {
       // NavigationService.push(target: EmiCalculatorPage());
     },
+    () async {
+      final String url = "tel://9813";
+
+      if (await canLaunchUrl(Uri.parse("tel:9801132218"))) {
+        await launchUrl(Uri.parse("tel:9801132218"));
+      } else {
+        throw 'Could not launch tel:9801132218';
+      }
+    },
     () {
-      NavigationService.push(target: CommonTransactionSuccessfulPage());
+      NavigationService.push(target: SettingPage());
     },
     () {
       NavigationService.push(target: SettingPage());
@@ -42,6 +52,7 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Call Support",
     "Settings",
+    // "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {
@@ -55,7 +66,7 @@ class MoreWidget extends StatelessWidget {
         height: _height * 0.6,
         width: double.infinity,
         child: GridView.builder(
-          itemCount: 5,
+          itemCount: names.length,
           gridDelegate:
               SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
           itemBuilder: (context, index) {
