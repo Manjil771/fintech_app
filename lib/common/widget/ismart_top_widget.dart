@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 // import 'package:get/get.dart';
 // import 'package:ismart/view/Auth/loginScreen/select_language.dart';
@@ -12,12 +14,12 @@ class IsmartTopWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
-
+    final repo = RepositoryProvider.of<CoOperative>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset(
-          Assets.logoImage,
+          repo.coOperativeLogo,
           height: _height * 0.08,
         ),
         const Spacer(),

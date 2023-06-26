@@ -19,7 +19,7 @@ import 'package:ismart/common/widget/statement_detail_box.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
-import 'package:ismart/feature/statement/fullStatement/cubit/mini_statement_cubit.dart';
+import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
@@ -359,7 +359,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                 ],
                               ),
                               SizedBox(height: _height * 0.01),
-                              state.data.accountStatementDtos!.isEmpty
+                              state.data.accountStatementDtos.isEmpty
                                   ? const NoDataScreen(
                                       title: "No transactions yet",
                                       details: "Make Your First Transfer",
@@ -368,6 +368,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.center,
                                       children: [
+                                        SizedBox(height: _height * 0.01),
                                         Container(
                                           padding: const EdgeInsets.all(18),
                                           width: double.infinity,
@@ -432,7 +433,22 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                             ],
                                           ),
                                         ),
-                                        SizedBox(height: _height * 0.02),
+                                        SizedBox(height: _height * 0.01),
+                                        Row(children: [
+                                          Text(
+                                            "Statement",
+                                            style: _textTheme.titleLarge!
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.w600),
+                                          ),
+                                          Spacer(),
+                                          SvgPicture.asset(
+                                            Assets.downloadIcon,
+                                            height: _height * 0.03,
+                                          )
+                                        ]),
+                                        SizedBox(height: _height * 0.01),
                                         Container(
                                           width: double.infinity,
                                           height: 500,
