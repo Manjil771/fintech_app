@@ -57,6 +57,7 @@ class CoOperativeValue {
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "126489",
   );
+
   // // LIVE
   // DEV
   // static final CoOperative development = CoOperative(
