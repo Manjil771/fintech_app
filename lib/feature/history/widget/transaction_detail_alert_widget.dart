@@ -122,8 +122,6 @@ class _TransactionDetailAlertWidgetState
                   value: widget.recentTransactionModel.charge.toString(),
                 ),
                 KeyValueTile(
-                  useCustomColor: true,
-                  isRedColor: widget.recentTransactionModel.debit,
                   title: "Total Amount",
                   value: widget.recentTransactionModel.totalAmount.toString(),
                 ),

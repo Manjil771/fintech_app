@@ -9,6 +9,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -108,6 +109,12 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     "landline") {
                                   NavigationService.push(
                                       target: LandLinePaymentPage());
+                                } else if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "airlines") {
+                                  NavigationService.push(
+                                      target: AirlinesIntroPage());
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(
