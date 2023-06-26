@@ -10,6 +10,6 @@ class KhanePaniPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return KhanePaniWidget();
+    return const KhanePaniWidget();
   }
 }

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -48,7 +49,9 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                 showSearchIcon: true,
                 controller: _selectedCounterController,
                 onTap: () {
-                  NavigationService.push(target: ElectricityCounterSearchPage(
+                  NavigationService.push(
+                      target: CounterSearchPage(
+                    counterType: CountersEnums.NEA,
                     onChanged: (val) {
                       selectedCounter = val;
                       _selectedCounterController.text =

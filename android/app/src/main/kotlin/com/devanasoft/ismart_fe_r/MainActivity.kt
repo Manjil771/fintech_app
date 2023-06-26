@@ -1,4 +1,4 @@
-package com.devanasoft.ismart_fe_r
+package com.devanasoft.ismart.dev
 
 import io.flutter.embedding.android.FlutterActivity
 

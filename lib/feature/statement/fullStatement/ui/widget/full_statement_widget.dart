@@ -4,7 +4,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -21,7 +20,6 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
-import 'package:http/http.dart' as http;
 import 'package:path_provider/path_provider.dart';
 
 class FullStatementWidget extends StatefulWidget {
@@ -442,7 +440,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                     fontWeight:
                                                         FontWeight.w600),
                                           ),
-                                          Spacer(),
+                                          const Spacer(),
                                           SvgPicture.asset(
                                             Assets.downloadIcon,
                                             height: _height * 0.03,
@@ -454,10 +452,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           height: 500,
                                           child: ListView.builder(
                                             itemCount: state.data
-                                                .accountStatementDtos!.length,
+                                                .accountStatementDtos.length,
                                             itemBuilder: (context, index) {
                                               final data = state.data
-                                                  .accountStatementDtos![index];
+                                                  .accountStatementDtos[index];
                                               return StatementDetailBox(
                                                   balance:
                                                       data.balance.toString(),

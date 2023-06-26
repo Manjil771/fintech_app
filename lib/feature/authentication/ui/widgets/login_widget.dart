@@ -161,7 +161,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ValueListenableBuilder<bool>(
                         valueListenable: _hasExistingLoginSaved,
                         builder: (context, val, _) {
-                          // if (!val) {
+                          if (!val) {
                           return CustomTextField(
                             title: "Mobile Number",
                             hintText: "Mobile Number",
@@ -170,9 +170,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                             validator: (value) =>
                                 FormValidator.validatePhoneNumber(value),
                           );
-                          // } else {
-                          //   return Container();
-                          // }
+                          } else {
+                            return Container();
+                          }
                         }),
                     SizedBox(height: height * 0.014),
                     CustomPasswordField(
@@ -217,9 +217,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 // username: "9813894737",
                                 // password: "778899",
 
-                                username: "9803435443",
+                                // username: "9803435443",
                                 // password: "70074",
-                                // username: _getPhoneNumber(),
+                                username: _getPhoneNumber(),
                                 password: passwordController.text,
                               );
                           //  }

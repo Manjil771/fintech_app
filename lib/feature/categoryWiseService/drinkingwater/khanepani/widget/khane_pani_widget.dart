@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/common/enum/counters_fetch_enum.dart';
+import 'package:ismart/common/models/key_value.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
 
-class KhanePaniWidget extends StatelessWidget {
+class KhanePaniWidget extends StatefulWidget {
   const KhanePaniWidget({Key? key}) : super(key: key);
+
+  @override
+  State<KhanePaniWidget> createState() => _KhanePaniWidgetState();
+}
+
+class _KhanePaniWidgetState extends State<KhanePaniWidget> {
+  final TextEditingController _selectedCounterController =
+      TextEditingController();
+  KeyValue? selectedCounter;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -25,6 +38,19 @@ class KhanePaniWidget extends StatelessWidget {
               CustomTextField(
                 title: "Select Counter",
                 hintText: "Select From List",
+                readOnly: true,
+                controller: _selectedCounterController,
+                onTap: () {
+                  NavigationService.push(
+                      target: CounterSearchPage(
+                    counterType: CountersEnums.Khanepani,
+                    onChanged: (val) {
+                      selectedCounter = val;
+                      _selectedCounterController.text =
+                          selectedCounter?.title ?? "";
+                    },
+                  ));
+                },
               ),
               CustomTextField(
                 title: "Customer code",
