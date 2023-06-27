@@ -39,24 +39,6 @@ class CoOperativeValue {
   // );
   // LIVE
 
-<<<<<<< HEAD
-//   //******************* Janadhara******************//
-//   static final CoOperative development = CoOperative(
-//     baseUrl: 'https://ismart.devanasoft.com.np/', // 9802013689 :97684
-//     bannerImage: "assets/janadhara/janadhara_banner.png",
-//     clientCode: 'EHVNI7CZJ3', //test
-//     clientSecret: "126489", //test
-
-// //    clientCode: '6M0D7LSVNV',
-//     //  clientSecret: "180509",
-
-//     coOperativeName: '',
-//     coOperativeLogo: 'assets/janadhara/janadhara.png',
-//     splashImage: "assets/janadhara_splash.png",
-//   );
-
-  //******************* LIVE ************************* //
-=======
   // DEV
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'https://mbank.com.np/', // 9802013689 :97684
@@ -67,7 +49,6 @@ class CoOperativeValue {
   //   clientSecret: "175391",
   // );
 
->>>>>>> 3112c01e38283097228defd4b5ca8df2ec90ec42
   static final CoOperative development = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
@@ -75,20 +56,11 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "126489",
-<<<<<<< HEAD
-    splashImage: "",
-  );
-
-  // // DEV TEST70074
-  // static final CoOperative development = CoOperative(
-  //   splashImage: "",
-=======
   );
 
   // // LIVE
   // DEV
   // static final CoOperative development = CoOperative(
->>>>>>> 3112c01e38283097228defd4b5ca8df2ec90ec42
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
   //   clientCode: 'VBMRDWEVFV',

@@ -7,6 +7,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/nepal_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
@@ -67,7 +68,17 @@ class _CategoriesWiseServicesWidgetState
 
                     if (widget.uniqueIdentifier.toLowerCase() ==
                         "insurance".toLowerCase()) {
-                      NavigationService.push(target: CommonInsurancePage());
+                      if (widget.services[index].uniqueIdentifier
+                              .toLowerCase() ==
+                          "nepal_life_insurance".toLowerCase()) {
+                        NavigationService.push(
+                            target: NepalLifeInsurancePage(
+                          companyName: widget.services[index].icon.toString(),
+                          companyLogo: widget.services[index].service,
+                        ));
+                      } else {
+                        NavigationService.push(target: CommonInsurancePage());
+                      }
                     }
                   },
                   child: Column(children: [
