@@ -26,4 +26,6 @@ class Routes {
   static const emiCalculator = "/emi_calculator";
   static const discountCalculator = "/discount_calculator";
   static const listWalletScreen = "/list_wallet";
+  static const selectDataPack = '/select_datapack';
+  static const buyDatapack = '/buy_datapack';
 }

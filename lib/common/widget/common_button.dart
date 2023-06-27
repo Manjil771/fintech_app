@@ -15,6 +15,7 @@ class CustomRoundedButtom extends StatefulWidget {
     this.verticalPadding = 12,
     this.fontSize = 14,
     this.textColor = Colors.white,
+    this.borderColor = Colors.white,
     this.fontWeight = FontWeight.w700,
     this.horizontalMargin = 0,
     this.icon,
@@ -34,6 +35,7 @@ class CustomRoundedButtom extends StatefulWidget {
   final double horizontalMargin;
   final IconData? icon;
   final Color? iconColor;
+  final Color? borderColor;
 
   @override
   CustomRoundedButtomState createState() => CustomRoundedButtomState();
@@ -107,7 +109,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
               border: widget.isDisabled
                   ? null
                   : Border.all(
-                      color: widget.color ?? _theme.primaryColor,
+                      color: widget.borderColor ?? CustomTheme.primaryColor,
                     ),
             ),
           ),
