@@ -21,7 +21,7 @@ class Routes {
   static const internetbanking = "/internet_banking";
   static const requestSapati = "/request_sapati";
   static const statementPage = "/statement_page";
-  static const balanceInquiry = "/balance_inquiry";
+  static const balanceInquiry = "/balance_inquiry_choose_account";
   static const chequeScreen = "/cheque_Screen";
   static const emiCalculator = "/emi_calculator";
   static const discountCalculator = "/discount_calculator";

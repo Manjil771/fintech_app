@@ -3,9 +3,10 @@ import 'package:ismart/common/constant/fonts.dart';
 
 class CustomTheme {
   //live color
-  // static const Color primaryColor = Color(0xFF010C80);
+  static const Color primaryColor = Color(0xFF010C80);
 //janadhara primary color
-  static const Color primaryColor = Color(0xFF0b67bb);
+
+  // static const Color primaryColor = Color(0xFF0b67bb);
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

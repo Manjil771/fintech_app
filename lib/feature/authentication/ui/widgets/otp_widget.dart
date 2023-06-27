@@ -54,9 +54,6 @@ class _OTPWidgetState extends State<OTPWidget> {
                   Text("Please enter your OTP to proceed.",
                       style: Theme.of(context).textTheme.headlineSmall),
                   SizedBox(height: _height * 0.04),
-                  Text("Please enter your MPIN to proceed.",
-                      style: Theme.of(context).textTheme.headlineSmall),
-                  SizedBox(height: _height * 0.03),
                   Form(
                     key: _otpKey,
                     child: CustomPinCodeField(

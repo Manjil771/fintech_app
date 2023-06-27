@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
+import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
+import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -11,7 +12,7 @@ import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
 import 'package:ismart/feature/receiveMoney/internetBanking/screen/internet_banking_page.dart';
 import 'package:ismart/feature/receiveMoney/loadViacard/screen/load_via_card_page.dart';
-import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_banking_page.dart';
+import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_bannking_page.dart';
 import 'package:ismart/feature/receiveMoney/requestSapati/screen/request_sapati_page.dart';
 import 'package:ismart/feature/receiveMoney/screens/receive_money_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
@@ -134,7 +135,7 @@ class RouteGenerator {
         );
       case Routes.balanceInquiry:
         return MaterialPageRoute(
-          builder: (_) => const BalanceInquiryPage(),
+          builder: (_) => const BalanceInquiryWidget(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.chequeScreen:

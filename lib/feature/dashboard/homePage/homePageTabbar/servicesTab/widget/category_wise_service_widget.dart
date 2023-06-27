@@ -7,6 +7,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -62,6 +63,11 @@ class _CategoriesWiseServicesWidgetState
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
                         "khanepani_online_topup".toLowerCase()) {
                       NavigationService.push(target: KhanePaniPage());
+                    }
+
+                    if (widget.uniqueIdentifier.toLowerCase() ==
+                        "insurance".toLowerCase()) {
+                      NavigationService.push(target: CommonInsurancePage());
                     }
                   },
                   child: Column(children: [
