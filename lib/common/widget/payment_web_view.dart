@@ -89,7 +89,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   final int _count = 0;
   _handleRedirection(Uri? uri) async {
     if (uri != null && !_hasBeenResponded) {
-      if (uri.toString().toLowerCase().contains("mbank.com.np")) {
+      if (uri.toString().toLowerCase().contains("ismart.devanasoft.com")) {
         print(uri.toString().toLowerCase());
         final String? merchantTxnId = uri.queryParameters['MerchantTxnId'];
 

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/enum/counters_fetch_enum.dart';
+import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -9,14 +11,10 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transaction_detail_box.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/cubit/khanepani_cubit.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/model/khanepani_model.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_counter_page.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/select_counter_widget.dart';
-import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
-import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khanepani_detail_screen.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class KhanePaniWidget extends StatefulWidget {
   const KhanePaniWidget({Key? key}) : super(key: key);
@@ -26,12 +24,15 @@ class KhanePaniWidget extends StatefulWidget {
 }
 
 class _KhanePaniWidgetState extends State<KhanePaniWidget> {
-  final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _selectedBankController = TextEditingController();
-  KhanePaniModel? selectedBank;
+  final TextEditingController _selectedCounterController =
+      TextEditingController();
 
+  final TextEditingController _customerIdController = TextEditingController();
+
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+
+  KeyValue? selectedCounter;
   bool _isLoading = false;
-
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -39,111 +40,91 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: BlocListener<KhanePaniCubit, CommonState>(
-          listener: (context, state) {
-            if (state is CommonLoading && _isLoading == false) {
-              _isLoading = true;
-              showLoadingDialogBox(context);
-            } else if (state is! CommonLoading && _isLoading) {
-              _isLoading = false;
-              NavigationService.pop();
-            }
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && !_isLoading) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            NavigationService.pop();
+          }
 
-            if (state is CommonStateSuccess) {
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            if (state.data.code == "M0000") {
+              NavigationService.push(
+                  target: KhanepaniDetailsPage(
+                counterName: selectedCounter?.title ?? "",
+                customerCode: _customerIdController.text,
+                useServiceResponse: state.data,
+                counterCode: selectedCounter?.value ?? "",
+              ));
+            } else {
               showPopUpDialog(
-                context: context,
-                message: state.data,
-                title: "Success",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.popUntilFirstPage();
-                },
-              );
-            } else if (state is CommonError) {
-              showPopUpDialog(
-                context: context,
-                message: state.message,
-                title: "Error",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
-            }
-          },
-          child: CommonContainer(
-            showDetail: true,
-            showAccountSelection: true,
-            accountTitle: "From Account",
-            buttonName: "Proceed",
-            topbarName: "Payment",
-            title: "KUKL Payment",
-            detail: "Pay for your water bill from here.",
-            body: Column(
-              children: [
-                CustomTextField(
-                  onTap: () {
-                    NavigationService.push(target: SelectKhanePaniCounterPage(
-                      onBankSelected: (val) {
-                        NavigationService.pop();
-                        _selectedBankController.text = val.name;
-                        selectedBank = val;
-                        setState(() {});
-                      },
-                    ));
+                  context: context,
+                  message: state.data.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
                   },
-                  readOnly: true,
-                  title: "Select Counter ",
-                  hintText: "Select From List",
-                  controller: _selectedBankController,
-                ),
-                SizedBox(height: _height * 0.01),
-                CustomTextField(
-                  title: "Amount",
-                  hintText: "Enter the amount",
-                  controller: _amountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
-                ),
-                // Container(
-                //   padding: const EdgeInsets.only(top: 7),
-                //   height: _height * 0.12,
-                //   width: double.infinity,
-                //   child: GridView.builder(
-                //     itemCount: 6,
-                //     gridDelegate:
-                //         const SliverGridDelegateWithFixedCrossAxisCount(
-                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                //     itemBuilder: (context, index) => amountBox(context, index),
-                //   ),
-                // ),
-              ],
-            ),
+                  showCancelButton: false);
+            }
+          }
+        },
+        child: CommonContainer(
+            buttonName: "Show Bill",
+            showAccountSelection: true,
+            title: "Khane Pani",
+            detail: "Pay for your water bill from here.",
+            showDetail: true,
+            topbarName: "Khane Pani",
             onButtonPressed: () {
-              // context.read<UtilityPaymentCubit>().fetchDetails(
-              //       serviceIdentifier: "worldlink_online_topup",
-              //       accountDetails: {
-              //         "wlink_username": "onine_renew"
-              //       },
-              //       apiEndpoint: "api/wlinkpackages",
-              //     );
-              // NavigationService.push(
-              //   target: TransactionPinScreen(
-              //     onValueCallback: (mpin) {
-              //       NavigationService.pop();
-              //       context.read<UtilityPaymentCubit>().getTopUp(
-              //             serviceIdentifier: TopUpUtils()
-              //                 .getTopUpServiceType(type: _topUpType.value),
-              //             phoneNumber: _mobileNumberController.text,
-              //             amount: _amountController.text,
-              //             mpin: mpin,
-              //           );
-              //     },
-              //   ),
-              // );
-              // // NavigationService.push(target: CommonTransactionSuccessfulPage());
+              if (_formKey.currentState!.validate()) {
+                context.read<UtilityPaymentCubit>().fetchDetails(
+                      serviceIdentifier: "",
+                      accountDetails: {
+                        "customer_code": _customerIdController.text,
+                        "counter": selectedCounter?.value ?? "",
+                        "month_id": 0,
+                      },
+                      apiEndpoint: "api/getkhanepanibill",
+                    );
+              }
             },
-          )),
+            body: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  CustomTextField(
+                    title: "Select Counter",
+                    hintText: "Select From List",
+                    readOnly: true,
+                    validator: (val) =>
+                        FormValidator.validateFieldNotEmpty(val, "Counter"),
+                    controller: _selectedCounterController,
+                    onTap: () {
+                      NavigationService.push(
+                        target: CounterSearchPage(
+                          counterType: CountersEnums.Khanepani,
+                          onChanged: (val) {
+                            selectedCounter = val;
+                            _selectedCounterController.text =
+                                selectedCounter?.title ?? "";
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  CustomTextField(
+                    title: "Customer code",
+                    hintText: "XXXXXXXXX",
+                    controller: _customerIdController,
+                    validator: (val) => FormValidator.validateFieldNotEmpty(
+                        val, "Customer Code"),
+                  ),
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

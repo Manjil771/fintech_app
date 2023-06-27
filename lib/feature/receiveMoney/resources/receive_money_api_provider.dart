@@ -19,7 +19,7 @@ class ReceiveMoneyAPIProvider {
 
   Future<dynamic> fetchBanksList({required String type}) async {
     final _uri =
-        UrlUtils.getUri(url: coOperative.baseUrl + "/api/load_from_bank/$type");
+        UrlUtils.getUri(url: coOperative.baseUrl + "api/load_from_bank/$type");
 
     return await apiProvider.get(
       _uri,

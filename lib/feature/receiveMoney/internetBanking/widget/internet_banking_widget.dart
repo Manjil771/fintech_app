@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -73,7 +74,7 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
                         _bankNameController.text = val.bankName;
                         setState(() {});
                       },
-                      type: "ebanks",
+                      type: "mbanks",
                     ),
                   );
                 },
@@ -123,8 +124,8 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
               "bankCode": selectedBank?.bankId ?? "",
               "remarks": _remarksController.text,
             };
-            const _url = "https://ismart.devanasoft.com.np"
-                "/api/load_from_bank/payment/";
+            final _url = RepositoryProvider.of<CoOperative>(context).baseUrl +
+                "api/load_from_bank/payment/";
             final url = UrlUtils.getUri(url: _url, params: _body);
 
             NavigationService.push(

@@ -4,6 +4,8 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/cubit/khanepani_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/khane_pani_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class KhanePaniPage extends StatelessWidget {
   const KhanePaniPage({Key? key}) : super(key: key);
@@ -14,11 +16,11 @@ class KhanePaniPage extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return BlocProvider(
-      create: (context) => KhanePaniCubit(
-        khanePaniRepository:
-            RepositoryProvider.of<KhanePaniRepository>(context),
+      create: (context) => UtilityPaymentCubit(
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
-      child: KhanePaniWidget(),
+      child: const KhanePaniWidget(),
     );
   }
 }
