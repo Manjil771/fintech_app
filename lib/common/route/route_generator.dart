@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/feature/banking/balanceInquiry/cheque/screen/cheque_screen.dart';
+import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
+import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -134,7 +135,7 @@ class RouteGenerator {
         );
       case Routes.balanceInquiry:
         return MaterialPageRoute(
-          builder: (_) => const BalanceInquiryPage(),
+          builder: (_) => const BalanceInquiryWidget(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.chequeScreen:
