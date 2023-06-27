@@ -47,7 +47,7 @@ class _SelectCounterKhanePaniWidgetState
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Banks",
+                  "Khane Pani",
                   style: _textTheme.displayLarge,
                 ),
               ),
@@ -84,16 +84,18 @@ class _SelectCounterKhanePaniWidgetState
               );
             }
             if (state is CommonDataFetchSuccess<KhanePaniModel>) {
+              List<KhanePaniModel> _list = state.data;
+
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
                   (context, index) {
                     return CustomListTile(
-                      title: state.data[index].details[index].name.toString(),
+                      title: state.data[index].name.toString(),
                       description: "",
                       trailing: Container(),
                       // imageUrl: _list[index].iconUrl,
                       onPressed: () {
-                        // widget.onBankSelected(_list[index]);
+                        widget.onBankSelected(_list[index]);
                       },
                       horizontalPadding: CustomTheme.symmetricHozPadding,
                     );

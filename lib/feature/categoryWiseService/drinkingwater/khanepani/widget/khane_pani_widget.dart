@@ -26,7 +26,6 @@ class KhanePaniWidget extends StatefulWidget {
 }
 
 class _KhanePaniWidgetState extends State<KhanePaniWidget> {
-  final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _selectedBankController = TextEditingController();
   KhanePaniModel? selectedBank;
@@ -87,8 +86,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                     NavigationService.push(target: SelectKhanePaniCounterPage(
                       onBankSelected: (val) {
                         NavigationService.pop();
-
-                        _selectedBankController.text = val.detail;
+                        _selectedBankController.text = val.name;
                         selectedBank = val;
                         setState(() {});
                       },
@@ -97,7 +95,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                   readOnly: true,
                   title: "Select Counter ",
                   hintText: "Select From List",
-                  controller: _mobileNumberController,
+                  controller: _selectedBankController,
                 ),
                 SizedBox(height: _height * 0.01),
                 CustomTextField(
