@@ -162,14 +162,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                         valueListenable: _hasExistingLoginSaved,
                         builder: (context, val, _) {
                           if (!val) {
-                          return CustomTextField(
-                            title: "Mobile Number",
-                            hintText: "Mobile Number",
-                            controller: phoneController,
-                            textInputType: TextInputType.phone,
-                            validator: (value) =>
-                                FormValidator.validatePhoneNumber(value),
-                          );
+                            return CustomTextField(
+                              title: "Mobile Number",
+                              hintText: "Mobile Number",
+                              controller: phoneController,
+                              textInputType: TextInputType.phone,
+                              validator: (value) =>
+                                  FormValidator.validatePhoneNumber(value),
+                            );
                           } else {
                             return Container();
                           }

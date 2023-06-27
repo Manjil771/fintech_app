@@ -31,8 +31,8 @@ class CountersSearchWidget extends StatelessWidget {
           serviceIdentifier: "",
           accountDetails: {},
           apiEndpoint: countersEnums == CountersEnums.NEA
-              ? "/get/neaofficecode"
-              : "/get/khanepanicounters",
+              ? "get/neaofficecode"
+              : "get/khanepanicounters",
         ),
       child: PageWrapper(
         leadingAppIcon: CustomIconButton(

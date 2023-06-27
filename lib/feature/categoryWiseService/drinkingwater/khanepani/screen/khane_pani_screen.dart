@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/khane_pani_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class KhanePaniPage extends StatelessWidget {
   const KhanePaniPage({Key? key}) : super(key: key);
@@ -10,6 +13,12 @@ class KhanePaniPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return const KhanePaniWidget();
+    return BlocProvider(
+      create: (context) => UtilityPaymentCubit(
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
+      ),
+      child: const KhanePaniWidget(),
+    );
   }
 }

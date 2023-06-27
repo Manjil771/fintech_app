@@ -63,7 +63,7 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
                         _bankNameController.text = val.bankName;
                         setState(() {});
                       },
-                      type: "ebanks",
+                      type: "mbanks",
                     ),
                   );
                 },

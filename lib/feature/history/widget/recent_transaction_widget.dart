@@ -77,8 +77,8 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                             context: context,
                             builder: (context) {
                               return Dialog(
-                                  insetPadding:
-                                      EdgeInsets.symmetric(horizontal: 18),
+                                  insetPadding: const EdgeInsets.symmetric(
+                                      horizontal: 18),
                                   child: Container(
                                     width: double.infinity,
                                     height: _height * 0.5,
