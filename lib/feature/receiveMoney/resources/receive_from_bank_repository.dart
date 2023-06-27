@@ -88,21 +88,11 @@ class ReceiveFromBankRepository {
     // required String serviceCharge,
   }) async {
     Map<String, dynamic> receiveFromBankPayload = {
-      // "account_number": "00100101000002886000001",
-      // "account_number": "002001-001-102-0001010",
       "accountNo": accountNumber,
       "amount": amount,
-      // "charge": serviceCharge,
       "bankCode": bankInstrumentCode,
-      // "destination_bank_name": destinationBankName,
-      // "destination_branch_id": "1",
-      // "destination_branch_name": "",
-      // "destination_name": destinationBankAccountName,
-      // "destination_account_number": destinationBankAccountNumber,
-      "scheme_id": "1",
+      // "scheme_id": "1",
       "remarks": remarks,
-      // "mPin": mpin,
-      // "skipValidation": true,
     };
 
     try {

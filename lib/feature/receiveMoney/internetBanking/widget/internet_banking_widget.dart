@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/payment_web_view.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/receiveMoney/mobileBanking/screen/receive_money_bank_list_screen.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
@@ -21,11 +22,21 @@ class InternetBankingWidget extends StatefulWidget {
 }
 
 class _InternetBankingWidgetState extends State<InternetBankingWidget> {
+  String _token = "";
+
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
   final TextEditingController _bankNameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Bank? selectedBank;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _token = RepositoryProvider.of<UserRepository>(context).token;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -116,12 +127,10 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
                 "/api/load_from_bank/payment/";
             final url = UrlUtils.getUri(url: _url, params: _body);
 
-            print(url.toString());
             NavigationService.push(
               target: PaymentWebView(
                 urlRequest: URLRequest(url: url, headers: {
-                  "Authorization":
-                      "Bearer 87b34403-2f70-46ca-8769-ed499c1614b3",
+                  "Authorization": "Bearer ${_token}",
                 }),
                 receiptUrl: "receiptUrl",
               ),

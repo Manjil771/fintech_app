@@ -90,7 +90,7 @@ class ReceiveFromBankAPIProvider {
   receiveMoneyFromBank({
     required Map<String, dynamic> payloadData,
   }) async {
-    final url = "$baseUrl/api/load_from_bank/payment";
+    final url = "$baseUrl" + "api/load_from_bank/payment";
     // final url = "$baseUrl/api/load_from_bank/payment/ebanks";
 
     // Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
