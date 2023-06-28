@@ -81,4 +81,33 @@ class UtilityPaymentRepository {
       return DataResponse.error(e.toString());
     }
   }
+
+  Future<DataResponse<String>> buyDatapack({
+    required String serviceIdentifier,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+    required String code,
+  }) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.buyDatapack(
+        serviceIdentifier: serviceIdentifier,
+        accountNumber:
+            customerDetailRepository.selectedAccount.value?.accountNumber ?? "",
+        phoneNumber: phoneNumber,
+        amount: amount,
+        mpin: mpin,
+        code: code,
+      );
+
+      return DataResponse.success(_res['data']?['message'] ?? "");
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
 }

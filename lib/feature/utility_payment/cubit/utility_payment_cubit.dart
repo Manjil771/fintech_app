@@ -59,4 +59,31 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
       );
     }
   }
+
+  buyDatapack({
+    required String serviceIdentifier,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+    required String code,
+  }) async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.buyDatapack(
+      serviceIdentifier: serviceIdentifier,
+      phoneNumber: phoneNumber,
+      amount: amount,
+      mpin: mpin,
+      code: code,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<String>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
 }

@@ -66,9 +66,13 @@ class _CategoriesWiseServicesWidgetState
                       NavigationService.push(target: const KhanePaniPage());
                     }
                     if (widget.uniqueIdentifier.toLowerCase() ==
-                        "data_pack".toLowerCase()) {
+                        //for live data_pack
+                        //for test Data pack
+                        "Data pack".toLowerCase()) {
                       NavigationService.push(
-                          target: const SelectDatapackScreen());
+                          target: SelectDatapackScreen(
+                        serviceIdentifier: widget.services[index],
+                      ));
                     }
                   },
                   child: Column(children: [

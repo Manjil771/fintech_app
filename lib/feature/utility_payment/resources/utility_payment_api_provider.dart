@@ -54,4 +54,29 @@ class UtilityPaymentAPIProvider {
       userId: 0,
     );
   }
+
+  buyDatapack({
+    required String serviceIdentifier,
+    required String accountNumber,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+    required String code,
+  }) async {
+    final body = {"code": code};
+    final _params = {
+      "service_identifier": "$serviceIdentifier",
+      "account_number": "$accountNumber",
+      "phone_number": "$phoneNumber",
+      "amount": "$amount",
+      "mPin": "$mpin",
+    };
+    final url =
+        UrlUtils.getUri(url: baseUrl + "/api/data_pack/pay", params: _params);
+    return await apiProvider.post(
+      url.toString(),
+      body,
+      token: userRepository.token,
+    );
+  }
 }
