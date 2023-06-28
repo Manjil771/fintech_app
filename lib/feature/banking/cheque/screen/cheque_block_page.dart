@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/banking/balanceInquiry/cheque/widget/cheque_block_widget.dart';
+import 'package:ismart/feature/banking/cheque/widget/cheque_block_widget.dart';
 
 class ChequeBlocScreen extends StatelessWidget {
   const ChequeBlocScreen({Key? key}) : super(key: key);

@@ -154,6 +154,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           }
                         }),
                     DataTable(
+                      columnSpacing: _width * 0.14,
                       headingRowHeight: 40,
                       dataTextStyle:
                           const TextStyle(fontSize: 12, color: Colors.black),
