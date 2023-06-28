@@ -47,7 +47,10 @@ class UtilityPaymentAPIProvider {
       _params["service_identifier"] = "$serviceIdentifier";
     }
 
-    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint");
+    final url = UrlUtils.getUri(
+      url: baseUrl + "$apiEndpoint",
+      params: _params,
+    );
 
     return await apiProvider.get(
       url,
@@ -73,6 +76,31 @@ class UtilityPaymentAPIProvider {
       url,
       token: userRepository.token,
       userId: 0,
+    );
+  }
+
+  payInsuranceBill({
+    required String serviceIdentifier,
+    required String accountNumber,
+    required String amount,
+    required String mpin,
+    required String dob,
+  }) async {
+    final _params = {
+      "service_identifier": serviceIdentifier,
+      "amount": amount,
+      "account_number": accountNumber,
+      "mPin": mpin,
+      "dob": dob,
+    };
+
+    final url =
+        UrlUtils.getUri(url: baseUrl + "api/insurance/pay", params: _params);
+
+    return await apiProvider.post(
+      url.toString(),
+      {},
+      token: userRepository.token,
     );
   }
 }

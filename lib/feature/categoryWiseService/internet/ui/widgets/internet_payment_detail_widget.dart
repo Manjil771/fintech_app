@@ -1,6 +1,8 @@
 import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -8,7 +10,10 @@ import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
@@ -244,7 +249,36 @@ class _InternetPaymentDeatilWidgetState
                 //   ),
                 // ),
                 SizedBox(height: _height * 0.03),
-                CustomRoundedButtom(title: "Proceed", onPressed: () {}),
+                CustomRoundedButtom(
+                  title: "Proceed",
+                  onPressed: () {
+                    NavigationService.push(
+                      target: TransactionPinScreen(
+                        onValueCallback: (mpin) {
+                          NavigationService.pop();
+                          context.read<UtilityPaymentCubit>().fetchDetails(
+                                serviceIdentifier: "worldlink_online_topup",
+                                accountDetails: {
+                                  "wlink_username":
+                                      widget.detailFetchData.findValue(
+                                    primaryKey: "hashResponse",
+                                    secondaryKey: "wlinkUserName",
+                                  ),
+                                  "amount": "",
+                                  "account_number": RepositoryProvider.of<
+                                          CustomerDetailRepository>(context)
+                                      .selectedAccount
+                                      .value
+                                      ?.accountNumber,
+                                  "mPin": mpin,
+                                },
+                                apiEndpoint: "api/wlinkpackages",
+                              );
+                        },
+                      ),
+                    );
+                  },
+                ),
               ],
             ),
           )

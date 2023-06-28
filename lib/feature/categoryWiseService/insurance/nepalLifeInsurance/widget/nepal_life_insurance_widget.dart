@@ -65,6 +65,8 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: InsuranceBillDetailPage(
+                dob: selectedDateController.text,
+                service: widget.service,
                 detailFetchData: _response,
               ),
             );
@@ -84,7 +86,7 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
         title: "Insurance Paymenent",
         detail: "Pay for your Insurance premium from here.",
         showDetail: true,
-        topbarName: "TV Payment",
+        topbarName: "Insurance Payment",
         buttonName: "Show Details",
         body: Column(
           children: [
