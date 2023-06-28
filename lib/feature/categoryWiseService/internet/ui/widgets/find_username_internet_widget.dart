@@ -133,7 +133,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                                   accountDetails: {
                                     "wlink_username": _usernameController.text,
                                   },
-                                  apiEndpoint: "/api/wlinkpackages",
+                                  apiEndpoint: "api/wlinkpackages",
                                 );
                           }
                           // NavigationService.pushNamed(

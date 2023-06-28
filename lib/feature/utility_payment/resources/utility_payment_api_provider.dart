@@ -47,7 +47,10 @@ class UtilityPaymentAPIProvider {
       _params["service_identifier"] = "$serviceIdentifier";
     }
 
-    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint");
+    final url = UrlUtils.getUri(
+      url: baseUrl + "$apiEndpoint",
+      params: _params,
+    );
 
     return await apiProvider.get(
       url,
