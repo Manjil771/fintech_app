@@ -121,7 +121,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                 target: OTPWidget(
                   onValueCallback: (val) {
                     context.read<LoginCubit>().loginUser(
-                          username: phoneController.text,
+                          username: _getPhoneNumber(),
                           password: passwordController.text,
                           otpCode: val,
                         );
