@@ -41,7 +41,7 @@ class AuthApiProvider {
       "grant_type": "password",
       "username": coOperative.clientCode + username,
       // "username": coOperative.clientCode + "9813894737",
-      "deviceUniqueIdentifier": "newaDeavice"
+      "deviceUniqueIdentifier": "newaDeaviceee"
     };
     if (otpCode != null) {
       _body['otp'] = otpCode;
