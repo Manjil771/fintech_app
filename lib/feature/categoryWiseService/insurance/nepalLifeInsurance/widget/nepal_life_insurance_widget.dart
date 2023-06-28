@@ -2,21 +2,34 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/insurance_bill_detail_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_payment_detail_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class NepalLifeInsurcnceWidget extends StatefulWidget {
   final String companyName;
   final String companyLogo;
+  final Service service;
 
   NepalLifeInsurcnceWidget(
-      {super.key, required this.companyName, required this.companyLogo});
+      {super.key,
+      required this.companyName,
+      required this.companyLogo,
+      required this.service});
 
   @override
   State<NepalLifeInsurcnceWidget> createState() =>
@@ -25,6 +38,9 @@ class NepalLifeInsurcnceWidget extends StatefulWidget {
 
 class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
   TextEditingController selectedDateController = TextEditingController();
+  TextEditingController policyNoController = TextEditingController();
+
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +49,38 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: CommonContainer(
+        body: BlocListener<UtilityPaymentCubit, CommonState>(
+      listener: (context, state) {
+        print(state);
+        if (state is CommonLoading && _isLoading == false) {
+          _isLoading = true;
+          showLoadingDialogBox(context);
+        } else if (state is! CommonLoading && _isLoading) {
+          _isLoading = false;
+          NavigationService.pop();
+        }
+
+        if (state is CommonStateSuccess<UtilityResponseData>) {
+          UtilityResponseData _response = state.data;
+          if (_response.code == "M0000") {
+            NavigationService.push(
+              target: InsuranceBillDetailPage(
+                detailFetchData: _response,
+              ),
+            );
+          } else {
+            showPopUpDialog(
+                context: context,
+                message: _response.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
+        }
+      },
+      child: CommonContainer(
         title: "Insurance Paymenent",
         detail: "Pay for your Insurance premium from here.",
         showDetail: true,
@@ -73,7 +120,11 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
                   ),
                 ),
                 PrimaryAccountBox(),
-                CustomTextField(title: "Policy No", hintText: "Policy NO"),
+                CustomTextField(
+                  title: "Policy No",
+                  hintText: "Policy NO",
+                  controller: policyNoController,
+                ),
                 SizedBox(height: _height * 0.01),
                 CustomTextField(
                   onTap: () async {
@@ -102,7 +153,15 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
             )
           ],
         ),
+        onButtonPressed: () {
+          context.read<UtilityPaymentCubit>().fetchInsuranceDetails(
+                serviceIdentifier: widget.service.uniqueIdentifier,
+                username: policyNoController.text,
+                dateOfBirth: selectedDateController.text,
+                apiEndpoint: "api/insurance/policy",
+              );
+        },
       ),
-    );
+    ));
   }
 }

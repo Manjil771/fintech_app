@@ -37,6 +37,31 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     }
   }
 
+  fetchInsuranceDetails({
+    required String serviceIdentifier,
+    required String username,
+    required String dateOfBirth,
+    required String apiEndpoint,
+  }) async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.fetchInsuranceDetail(
+      serviceIdentifier: serviceIdentifier,
+      dateOfBirth: dateOfBirth,
+      username: username,
+      apiEndpoint: apiEndpoint,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
+
   fetchDetails({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,

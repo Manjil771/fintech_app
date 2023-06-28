@@ -73,8 +73,9 @@ class _CategoriesWiseServicesWidgetState
                           "nepal_life_insurance".toLowerCase()) {
                         NavigationService.push(
                             target: NepalLifeInsurancePage(
-                          companyName: widget.services[index].icon.toString(),
-                          companyLogo: widget.services[index].service,
+                          service: widget.services[index],
+                          companyLogo: widget.services[index].icon.toString(),
+                          companyName: widget.services[index].service,
                         ));
                       } else {
                         NavigationService.push(target: CommonInsurancePage());

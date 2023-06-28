@@ -81,4 +81,30 @@ class UtilityPaymentRepository {
       return DataResponse.error(e.toString());
     }
   }
+
+  Future<DataResponse<UtilityResponseData>> fetchInsuranceDetail(
+      {required String serviceIdentifier,
+      required String username,
+      required String dateOfBirth,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchInsuranceBill(
+        username: username,
+        dateOfBirth: dateOfBirth,
+        serviceIdentifier: serviceIdentifier,
+        apiEndpoint: apiEndpoint,
+      );
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
 }

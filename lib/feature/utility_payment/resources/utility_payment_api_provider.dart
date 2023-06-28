@@ -55,4 +55,24 @@ class UtilityPaymentAPIProvider {
       userId: 0,
     );
   }
+
+  fetchInsuranceBill(
+      {required String serviceIdentifier,
+      required String apiEndpoint,
+      required String username,
+      required String dateOfBirth}) async {
+    final _params = {
+      "service_identifier": serviceIdentifier,
+      "username": username,
+      "dob": dateOfBirth,
+    };
+
+    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint", params: _params);
+
+    return await apiProvider.get(
+      url,
+      token: userRepository.token,
+      userId: 0,
+    );
+  }
 }
