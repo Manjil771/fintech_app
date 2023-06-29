@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/nepal_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
@@ -74,6 +75,13 @@ class _CategoriesWiseServicesWidgetState
                       NavigationService.push(
                           target: SelectDatapackScreen(
                         serviceIdentifier: widget.services[index],
+                      ));
+                    }
+                    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+                        "traffic_fine_payments".toLowerCase()) {
+                      NavigationService.push(
+                          target: TrafficFinePaymentPage(
+                        service: widget.services[index],
                       ));
                     }
 
