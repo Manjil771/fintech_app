@@ -51,4 +51,23 @@ class AuthApiProvider {
       {},
     );
   }
+
+  Future<dynamic> validateCoOperative({
+    required String username,
+  }) async {
+    final _body = {
+      "mobileNumber": username,
+    };
+
+    final _uri = UrlUtils.getUri(
+      url: coOperative.baseUrl + "ismart/getBanks",
+    );
+    return await apiProvider.post(
+      _uri.toString(),
+      _body,
+      header: {
+        "token": "VCGFVBJHKUIY&*T^YBH NMKJLIYUHGVBH NMKJIGYUV B",
+      },
+    );
+  }
 }

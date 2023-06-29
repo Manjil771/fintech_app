@@ -10,12 +10,23 @@ class CoOperative {
     required this.baseUrl,
   });
 
-  final String baseUrl;
-  final String clientCode;
-  final String clientSecret;
-  final String coOperativeName;
-  final String bannerImage;
-  final String coOperativeLogo;
+  String baseUrl;
+  String clientCode;
+  String clientSecret;
+  String coOperativeName;
+  String bannerImage;
+  String coOperativeLogo;
+
+  CoOperative copyWith({required String clientCode}) {
+    return CoOperative(
+      clientCode: clientCode,
+      clientSecret: clientSecret,
+      coOperativeName: coOperativeName,
+      bannerImage: bannerImage,
+      coOperativeLogo: coOperativeLogo,
+      baseUrl: baseUrl,
+    );
+  }
 }
 
 class CoOperativeValue {

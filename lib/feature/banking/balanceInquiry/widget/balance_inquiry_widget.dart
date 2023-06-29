@@ -29,6 +29,24 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+
+    Widget _getCoOpLogo() {
+      String _coOpLogo =
+          RepositoryProvider.of<CoOperative>(context).coOperativeLogo;
+
+      if (_coOpLogo.contains("https://")) {
+        return Image.network(
+          _coOpLogo,
+          height: _height * 0.055,
+        );
+      } else {
+        return Image.asset(
+          _coOpLogo,
+          height: _height * 0.055,
+        );
+      }
+    }
+
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,
@@ -47,7 +65,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                           itemCount: _detail.accountDetail.length,
                           itemBuilder: (context, index) {
                             return Container(
-                              margin: EdgeInsets.symmetric(vertical: 10),
+                              margin: const EdgeInsets.symmetric(vertical: 10),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(18),
                                 // color: const Color(0xFFF3F3F3),
@@ -77,12 +95,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .displaySmall),
                                           ],
                                         ),
-                                        Image.asset(
-                                          RepositoryProvider.of<CoOperative>(
-                                                  context)
-                                              .coOperativeLogo,
-                                          height: _height * 0.055,
-                                        )
+                                        _getCoOpLogo(),
                                       ],
                                     ),
                                   ),

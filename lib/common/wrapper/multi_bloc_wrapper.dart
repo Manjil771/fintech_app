@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
-import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
+import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 
 class MultiBlocWrapper extends StatelessWidget {
   final Widget child;
@@ -20,6 +17,11 @@ class MultiBlocWrapper extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => LoginCubit(
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ValidateCoOpCubit(
             userRepository: RepositoryProvider.of<UserRepository>(context),
           ),
         ),
