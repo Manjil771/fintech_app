@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
+import 'package:ismart/feature/categoryWiseService/ird/screen/irdpage.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -68,6 +69,10 @@ class _CategoriesWiseServicesWidgetState
                     if (widget.uniqueIdentifier.toLowerCase() ==
                         "insurance".toLowerCase()) {
                       NavigationService.push(target: CommonInsurancePage());
+                    }
+                    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+                        "government_ird_payment".toLowerCase()) {
+                      NavigationService.push(target: IrdPage());
                     }
                   },
                   child: Column(children: [
