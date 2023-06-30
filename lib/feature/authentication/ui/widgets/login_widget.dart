@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -176,9 +178,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                               onChanged: (val) {
                                 if (FormValidator.validatePhoneNumber(val) ==
                                     null) {
-                                  context
-                                      .read<ValidateCoOpCubit>()
-                                      .validateCoOperative(username: val);
+                                  if (Platform.isIOS) {
+                                    context
+                                        .read<ValidateCoOpCubit>()
+                                        .validateCoOperative(username: val);
+                                    Future.delayed(const Duration(seconds: 3))
+                                        .then((value) {
+                                      setState(() {});
+                                    });
+                                  }
                                 }
                               },
                             );
