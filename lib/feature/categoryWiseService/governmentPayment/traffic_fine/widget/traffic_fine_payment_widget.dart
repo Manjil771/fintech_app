@@ -62,6 +62,23 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                onButtonPress: () {
+                  print("press");
+                  context.read<UtilityPaymentCubit>().payTrafficFine(
+                      serviceIdentifier: "traffic_fine_payments",
+                      apiEndpoint: "/api/governmentpayment/pay",
+                      body: {
+                        "voucherCode": "34600",
+                        "billerCode": "GON-7-TVRS-1",
+                        "serviceCharge": "10",
+                        "fiscalYear": "2077/78"
+                      },
+                      accountDetails: {
+                        "account_number": "002001-001-102-0001010",
+                        "amount": "500",
+                        "mPin": "70074"
+                      });
+                },
                 serviceType: widget.service.service,
                 image:
                     "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
@@ -124,6 +141,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
         }
       },
       child: CommonContainer(
+        showAccountSelection: true,
         buttonName: "Show Bill",
         title: widget.service.service,
         detail: widget.service.instructions,

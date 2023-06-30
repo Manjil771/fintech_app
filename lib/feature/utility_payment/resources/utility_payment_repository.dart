@@ -164,4 +164,29 @@ class UtilityPaymentRepository {
       return DataResponse.error(e.toString());
     }
   }
+
+  Future<DataResponse<String>> payTrafficFine(
+      {required String serviceIdentifier,
+      required String apiEndpoint,
+      required Map<String, dynamic> body,
+      required Map<String, dynamic> accountDetails,
+      required}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.payTrafficFine(
+        apiEndpoint: apiEndpoint,
+        serviceIdentifier: serviceIdentifier,
+        accountDetails: accountDetails,
+        body: body,
+      );
+
+      return DataResponse.success(_res['data']?['message'] ?? "");
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
 }

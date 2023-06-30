@@ -127,4 +127,31 @@ class UtilityPaymentAPIProvider {
       token: userRepository.token,
     );
   }
+
+  payTrafficFine(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> body,
+      required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    final _params = {
+      ...accountDetails,
+    };
+    final _body = {
+      ...body,
+    };
+    if (serviceIdentifier.isNotEmpty) {
+      _params["service_identifier"] = "$serviceIdentifier";
+    }
+
+    final url = UrlUtils.getUri(
+      url: baseUrl + "$apiEndpoint",
+      params: _params,
+    );
+
+    return await apiProvider.post(
+      url.toString(),
+      _body,
+      token: userRepository.token,
+    );
+  }
 }
