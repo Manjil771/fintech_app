@@ -17,6 +17,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
+import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
@@ -52,8 +53,11 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
-    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
-    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+
+    _hasExistingLoginSaved.value = false;
+    _hasExistingLoginSaved.value = false;
   }
   // 9803435443
   // 70074
@@ -169,6 +173,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                               textInputType: TextInputType.phone,
                               validator: (value) =>
                                   FormValidator.validatePhoneNumber(value),
+                              onChanged: (val) {
+                                if (FormValidator.validatePhoneNumber(val) ==
+                                    null) {
+                                  context
+                                      .read<ValidateCoOpCubit>()
+                                      .validateCoOperative(username: val);
+                                }
+                              },
                             );
                           } else {
                             return Container();

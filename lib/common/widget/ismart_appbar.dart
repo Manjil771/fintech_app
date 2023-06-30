@@ -11,6 +11,23 @@ AppBar myAppbar({bool showBackButton = false}) {
   final _height = SizeUtils.height;
   final _width = SizeUtils.width;
 
+  Widget _getImageWidget() {
+    String coOpLogo =
+        RepositoryProvider.of<CoOperative>(NavigationService.context)
+            .coOperativeLogo;
+    if (coOpLogo.contains("https://")) {
+      return Image.network(
+        coOpLogo,
+        height: _width * 0.135,
+      );
+    } else {
+      return Image.asset(
+        coOpLogo,
+        height: _width * 0.135,
+      );
+    }
+  }
+
   return AppBar(
     backgroundColor:
         Theme.of(NavigationService.context).scaffoldBackgroundColor,
@@ -35,11 +52,7 @@ AppBar myAppbar({bool showBackButton = false}) {
               ),
       ),
     ),
-    title: Image.asset(
-      RepositoryProvider.of<CoOperative>(NavigationService.context)
-          .coOperativeLogo,
-      height: _width * 0.135,
-    ),
+    title: _getImageWidget(),
     actions: [
       InkWell(
         onTap: () {
