@@ -13,6 +13,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
@@ -20,7 +21,7 @@ class BuyDatapackWidget extends StatefulWidget {
   BuyDatapackWidget({Key? key, required this.service, required this.package})
       : super(key: key);
   final Service service;
-  final Map<String, dynamic> package;
+  final Package package;
 
   @override
   State<BuyDatapackWidget> createState() => _BuyDatapackWidgetState();
@@ -89,9 +90,9 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                     context.read<UtilityPaymentCubit>().buyDatapack(
                         serviceIdentifier: widget.service.uniqueIdentifier,
                         phoneNumber: _mobileNumberController.text,
-                        amount: widget.package['amount'].toString(),
+                        amount: widget.package.amount.toString(),
                         mpin: mpin,
-                        code: widget.package['code']);
+                        code: widget.package.code);
                   },
                 ));
               }
@@ -121,7 +122,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                                 .textTheme
                                 .titleLarge!
                                 .copyWith(fontWeight: FontWeight.w700)),
-                        Text('( ${widget.package['name']} )',
+                        Text('( ${widget.package.name} )',
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -162,7 +163,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                     style: _textTheme.titleLarge,
                   ),
                   Text(
-                    'NPR ${widget.package['amount']}',
+                    'NPR ${widget.package.amount}',
                     style: _textTheme.titleLarge!.copyWith(
                         color: CustomTheme.primaryColor,
                         fontWeight: FontWeight.bold),
