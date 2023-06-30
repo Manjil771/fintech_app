@@ -1,7 +1,7 @@
 class RecentTransactionModel {
   double amount;
   String service;
-  String serviceTo;
+  var serviceTo;
   String accountNumber;
   String transactionIdentifier;
   DateTime date;
@@ -54,7 +54,7 @@ class RecentTransactionModel {
         sessionId: json["sessionId"],
         id: json["id"],
         createdDate: DateTime.parse(json["createdDate"]),
-        destination: json["destination"],
+        destination: json["destination"] ?? "",
         charge: json["charge"],
         totalAmount: json["totalAmount"],
         requestDetail: json["requestDetail"] ?? {},
