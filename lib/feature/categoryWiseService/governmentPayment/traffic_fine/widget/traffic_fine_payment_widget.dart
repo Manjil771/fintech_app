@@ -42,8 +42,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           body: Column(
             children: [
               CustomTextField(
-                hintText: "Select Bank",
-                title: "Select Bank",
+                hintText: "Select",
+                title: "Select Province",
                 readOnly: true,
                 controller: _selectedProvinceNameController,
                 onTap: () {
@@ -66,8 +66,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 validator: (value) {},
               ),
               CustomTextField(
-                hintText: "Select Bank",
-                title: "Select Bank",
+                hintText: "Select",
+                title: "Select District",
                 readOnly: true,
                 controller: _selectedDistrictController,
                 onTap: () {
@@ -95,6 +95,13 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                   //   return "Please select destination bank.";
                   // }
                 },
+              ),
+              CustomTextField(
+                title: "Date",
+                hintText: "Select Date",
+              ),
+              CustomTextField(
+                title: "",
               ),
             ],
           )),
