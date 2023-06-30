@@ -19,9 +19,9 @@ dependencies:
   shimmer: ^2.0.0
 
   # other utils
-  social_share: ^2.2.1
+  # social_share: ^2.2.1
   equatable: ^2.0.3
-  google_api_availability: ^3.0.1
+  # google_api_availability: ^3.0.1
 
   # state management
   flutter_bloc: ^8.0.1
@@ -35,8 +35,8 @@ dependencies:
   # connectivity_plus: ^4.0.1
 
   #Social Login
-  flutter_facebook_auth: ^4.1.2
-  google_sign_in: ^5.2.4
+  # flutter_facebook_auth: ^4.1.2
+  # google_sign_in: ^5.2.4
 
   # data persistence
   shared_preferences: ^2.0.13
@@ -70,6 +70,7 @@ dev_dependencies:
   build_runner: ^1.0.0
   change_app_package_name: ^1.0.0
   flutter_launcher_icons:
+  icons_launcher: ^2.1.0
 
 flutter:
   assets:
