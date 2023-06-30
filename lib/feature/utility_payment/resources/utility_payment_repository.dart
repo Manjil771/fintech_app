@@ -82,4 +82,86 @@ class UtilityPaymentRepository {
       return DataResponse.error(e.toString());
     }
   }
+
+  Future<DataResponse<UtilityResponseData>> fetchInsuranceDetail(
+      {required String serviceIdentifier,
+      required String username,
+      required String dateOfBirth,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchInsuranceBill(
+        username: username,
+        dateOfBirth: dateOfBirth,
+        serviceIdentifier: serviceIdentifier,
+        apiEndpoint: apiEndpoint,
+      );
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<String>> payInsurance({
+    required String serviceIdentifier,
+    required String amount,
+    required String accountNumber,
+    required String mpin,
+    required String dob,
+  }) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.payInsuranceBill(
+        dob: dob,
+        serviceIdentifier: serviceIdentifier,
+        accountNumber: accountNumber,
+        amount: amount,
+        mpin: mpin,
+      );
+      print(_res);
+      return DataResponse.success(_res['data']?['message'] ?? "");
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<String>> buyDatapack({
+    required String serviceIdentifier,
+    required String phoneNumber,
+    required String amount,
+    required String mpin,
+    required String code,
+  }) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.buyDatapack(
+        serviceIdentifier: serviceIdentifier,
+        accountNumber:
+            customerDetailRepository.selectedAccount.value?.accountNumber ?? "",
+        phoneNumber: phoneNumber,
+        amount: amount,
+        mpin: mpin,
+        code: code,
+      );
+
+      return DataResponse.success(_res['data']?['message'] ?? "");
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
 }
