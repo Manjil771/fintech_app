@@ -11,7 +11,6 @@ class UtilityPaymentAPIProvider {
 
   final ApiProvider apiProvider;
   final UserRepository userRepository;
-
   final String baseUrl;
 
   getTopup({

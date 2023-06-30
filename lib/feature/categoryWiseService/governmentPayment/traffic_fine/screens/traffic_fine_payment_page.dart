@@ -1,7 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/widget/traffic_fine_payment_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class TrafficFinePaymentPage extends StatelessWidget {
   final Service service;
@@ -13,8 +17,14 @@ class TrafficFinePaymentPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return TrafficFinePaymentWidget(
-      service: service,
+    return BlocProvider(
+      create: (context) => UtilityPaymentCubit(
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
+      ),
+      child: TrafficFinePaymentWidget(
+        service: service,
+      ),
     );
   }
 }

@@ -27,8 +27,8 @@ class CommonBillDetailPage extends StatelessWidget {
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
 
-    return SafeArea(
-      child: Column(
+    return PageWrapper(
+      body: Column(
         children: [
           Container(
             decoration: BoxDecoration(
