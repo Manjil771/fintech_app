@@ -64,8 +64,8 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               image: DecorationImage(
                                 image:
                                     // bannerImage.contains("https://")
-                                    NetworkImage(bannerImage),
-                                // : AssetImage(bannerImage),
+                                    // NetworkImage(bannerImage),
+                                    AssetImage(bannerImage),
                                 fit: BoxFit.fitWidth,
                               ),
                               borderRadius: BorderRadius.circular(15),
