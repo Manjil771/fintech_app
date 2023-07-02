@@ -24,6 +24,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   ValueNotifier<dynamic> accountDetail = ValueNotifier([]);
   String formattedDate = DateFormat('a').format(DateTime.now());
 
+  String bannerImage = "";
   @override
   void initState() {
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
@@ -33,6 +34,8 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
     selectedAccountNotifier =
         RepositoryProvider.of<CustomerDetailRepository>(context)
             .selectedAccount;
+
+    bannerImage = RepositoryProvider.of<CoOperative>(context).bannerImage;
   }
 
   @override
@@ -59,9 +62,10 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             height: _height * 0.16,
                             decoration: BoxDecoration(
                               image: DecorationImage(
-                                image: AssetImage(
-                                    RepositoryProvider.of<CoOperative>(context)
-                                        .bannerImage),
+                                image:
+                                    // bannerImage.contains("https://")
+                                    NetworkImage(bannerImage),
+                                // : AssetImage(bannerImage),
                                 fit: BoxFit.fitWidth,
                               ),
                               borderRadius: BorderRadius.circular(15),

@@ -17,15 +17,15 @@ class AuthApiProvider {
   //   return await apiProvider.get('$baseUrl/user/profile', token: token);
   // }
 
-  Future<dynamic> sendNotificationToken(
-      {required String notificationToken, required String token}) async {
-    final param = {"token": notificationToken};
-    return await apiProvider.post(
-      '$baseUrl/auth/firebase',
-      param,
-      token: token,
-    );
-  }
+  // Future<dynamic> sendNotificationToken(
+  //     {required String notificationToken, required String token}) async {
+  //   final param = {"token": notificationToken};
+  //   return await apiProvider.post(
+  //     '$baseUrl/auth/firebase',
+  //     param,
+  //     token: token,
+  //   );
+  // }
 
   Future<dynamic> loginUser({
     required String username,
@@ -68,6 +68,28 @@ class AuthApiProvider {
       header: {
         "token": "VCGFVBJHKUIY&*T^YBH NMKJLIYUHGVBH NMKJIGYUV B",
       },
+    );
+  }
+
+  Future<dynamic> setUserToken({
+    required String token,
+    // required String deviceId,
+    required String appVersion,
+    required String userToken,
+  }) async {
+    final url = "$baseUrl/api/setdevicetoken/";
+
+    final _body = {
+      "fcmserver_identifier": "android",
+      "device_token": token,
+      "type": appVersion,
+    };
+
+    final _url = UrlUtils.getUri(url: url, params: _body);
+    return await apiProvider.post(
+      _url.toString(),
+      {},
+      token: userToken,
     );
   }
 }

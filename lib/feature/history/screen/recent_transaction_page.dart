@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 import 'package:ismart/feature/history/widget/recent_transaction_widget.dart';
@@ -16,12 +16,22 @@ class RecentTransactionScreen extends StatefulWidget {
 class _RecentTransactionScreenState extends State<RecentTransactionScreen> {
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
-      create: (context) => RecentTransactionCubit(
-        recentTransactionRepository:
-            RepositoryProvider.of<RecentTransactionRepository>(context),
-      ),
-      child: RecentTransactionWidget(),
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RecentTransactionCubit(
+            recentTransactionRepository:
+                RepositoryProvider.of<RecentTransactionRepository>(context),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => TransactionDownloadCubit(
+            recentTransactionRepository:
+                RepositoryProvider.of<RecentTransactionRepository>(context),
+          ),
+        )
+      ],
+      child: const RecentTransactionWidget(),
     );
   }
 }

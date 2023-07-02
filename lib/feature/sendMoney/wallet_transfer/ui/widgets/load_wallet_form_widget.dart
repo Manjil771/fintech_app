@@ -80,8 +80,9 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
               }
 
               if (state is CommonStateSuccess<WalletValidationModel>) {
-                if (state.data.validationIdentifier != null &&
-                    state.data.status.toLowerCase() == "success") {
+                if (state.data.status.toLowerCase() == "success" ||
+                    state.data.message.toLowerCase() ==
+                        "validation not available") {
                   _isAccountValidated = true;
                   _validationResult = state.data;
                   showPopUpDialog(
