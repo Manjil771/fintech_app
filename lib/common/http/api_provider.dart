@@ -31,7 +31,7 @@ class ApiProvider {
 
     try {
       final Map<String, String> _requestHeader = {
-        'content-type': 'application/x-www-form-encoded',
+        'Content-Type': 'application/json',
         'accept': 'application/json',
         'App-Authorizer': '647061697361',
         'origin': '*',
