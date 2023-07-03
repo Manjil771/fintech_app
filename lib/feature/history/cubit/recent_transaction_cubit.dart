@@ -26,24 +26,4 @@ class RecentTransactionCubit extends Cubit<CommonState> {
       emit(CommonError(message: e.toString()));
     }
   }
-
-  generateUrl({
-    required String transactionId,
-  }) async {
-    emit(CommonLoading());
-    try {
-      final response = await recentTransactionRepository.generateDownloadUrl(
-        transactionId: transactionId,
-      );
-
-      if (response.status == Status.Success && response.data != null) {
-        emit(CommonStateSuccess<String>(data: response.data!));
-      } else {
-        emit(CommonError(
-            message: response.message ?? "Error fetching customer detail."));
-      }
-    } catch (e) {
-      emit(CommonError(message: e.toString()));
-    }
-  }
 }

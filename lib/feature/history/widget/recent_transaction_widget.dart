@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
+import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
@@ -63,39 +64,56 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
             }
           },
           builder: (context, state) {
+            ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
             if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
-              return Container(
-                  height: _height * 0.65,
-                  child: ListView.builder(
-                    itemCount: state.data.length,
-                    itemBuilder: (context, index) {
-                      final _detail = state.data[index];
-                      return TransactionDetailBox(
-                        recentTransactionModel: _detail,
-                        onClickAction: () {
-                          showDialog(
-                            context: context,
-                            builder: (context) {
-                              return Dialog(
+              return BlocListener<TransactionDownloadCubit, CommonState>(
+                listener: (context, state) {
+                  if (state is CommonStateSuccess) {
+                    _downloadNotifierValue.value = state.data;
+                  }
+                },
+                child: Container(
+                    height: _height * 0.65,
+                    child: ListView.builder(
+                      itemCount: state.data.length,
+                      itemBuilder: (context, index) {
+                        final _detail = state.data[index];
+                        return TransactionDetailBox(
+                          recentTransactionModel: _detail,
+                          onClickAction: () {
+                            context
+                                .read<TransactionDownloadCubit>()
+                                .generateUrl(
+                                  transactionId: _detail.transactionIdentifier,
+                                );
+                            showDialog(
+                              context: context,
+                              builder: (context) {
+                                return Dialog(
                                   insetPadding: const EdgeInsets.symmetric(
                                       horizontal: 18),
                                   child: Container(
                                     width: double.infinity,
                                     height: _height * 0.5,
                                     child: TransactionDetailAlertWidget(
-                                        recentTransactionModel: _detail),
-                                  ));
-                            },
-                          );
-                          // NavigationService.push(
-                          //   target: TransactionDetailScreen(
-                          //     recentTransactionModel: _detail,
-                          //   ),
-                          // );
-                        },
-                      );
-                    },
-                  ));
+                                      recentTransactionModel: _detail,
+                                      downloadUrlNotifier:
+                                          _downloadNotifierValue,
+                                    ),
+                                  ),
+                                );
+                              },
+                            );
+                            // NavigationService.push(
+                            //   target: TransactionDetailScreen(
+                            //     recentTransactionModel: _detail,
+                            //   ),
+                            // );
+                          },
+                        );
+                      },
+                    )),
+              );
             } else {
               return Container();
             }

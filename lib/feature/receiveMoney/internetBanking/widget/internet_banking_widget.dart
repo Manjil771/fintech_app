@@ -74,7 +74,7 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
                         _bankNameController.text = val.bankName;
                         setState(() {});
                       },
-                      type: "mbanks",
+                      type: "ismarts",
                     ),
                   );
                 },
@@ -131,7 +131,7 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
             NavigationService.push(
               target: PaymentWebView(
                 urlRequest: URLRequest(url: url, headers: {
-                  "Authorization": "Bearer ${_token}",
+                  "Authorization": "Bearer $_token",
                 }),
                 receiptUrl: "receiptUrl",
               ),

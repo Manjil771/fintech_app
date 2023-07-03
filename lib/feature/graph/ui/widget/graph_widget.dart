@@ -27,6 +27,8 @@ class _GraphWidgetState extends State<GraphWidget> {
     statementLists.forEach((element) {
       print(element.balance);
     });
+
+    
     super.initState();
   }
 
@@ -66,8 +68,8 @@ class _GraphWidgetState extends State<GraphWidget> {
                           e.balance))
                       .toList()
                 ],
-                xValueMapper: (SalesData sales, _) => sales.year,
-                yValueMapper: (SalesData sales, _) => sales.sales)
+                xValueMapper: (SalesData sales, a) => sales.year,
+                yValueMapper: (SalesData sales, b) => sales.sales)
           ]),
     );
   }

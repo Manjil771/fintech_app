@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:ismart/common/constant/assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/env.dart';
 
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -70,11 +71,21 @@ class _LoadingDialogBoxState extends State<PopUpDialogWidget> {
 
   @override
   void initState() {
-    image = Image.asset(
-      Assets.logoImage,
-      height: 80,
-      width: 80,
-    );
+    String logo = RepositoryProvider.of<CoOperative>(context).coOperativeLogo;
+
+    if (logo.contains("https://")) {
+      image = Image.network(
+        logo,
+        height: 80,
+        width: 80,
+      );
+    } else {
+      image = Image.asset(
+        logo,
+        height: 80,
+        width: 80,
+      );
+    }
     super.initState();
   }
 

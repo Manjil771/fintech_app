@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
@@ -18,13 +19,22 @@ class TransactionDetailScreen extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return BlocProvider(
-      create: (context) => RecentTransactionCubit(
-        recentTransactionRepository:
-            RepositoryProvider.of<RecentTransactionRepository>(context),
-      )..generateUrl(
-          transactionId: recentTransactionModel.transactionIdentifier,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(
+          create: (context) => RecentTransactionCubit(
+            recentTransactionRepository:
+                RepositoryProvider.of<RecentTransactionRepository>(context),
+          ),
         ),
+        BlocProvider(
+          create: (context) => TransactionDownloadCubit(
+            recentTransactionRepository:
+                RepositoryProvider.of<RecentTransactionRepository>(context),
+          )..generateUrl(
+              transactionId: recentTransactionModel.transactionIdentifier),
+        )
+      ],
       child: TransactionDetailWidget(
         recentTransactionModel: recentTransactionModel,
       ),

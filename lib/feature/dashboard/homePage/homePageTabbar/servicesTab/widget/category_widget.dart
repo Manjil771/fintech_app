@@ -106,15 +106,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
-                                    "landline") {
-                                  NavigationService.push(
-                                      target: LandLinePaymentPage());
-                                } else if (data.uniqueIdentifier
-                                        .toString()
-                                        .toLowerCase() ==
                                     "airlines") {
                                   NavigationService.push(
                                       target: AirlinesIntroPage());
+                                } else if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "landline") {
+                                  NavigationService.push(
+                                      target: LandLinePaymentPage(
+                                    service: state.data[index].services[index],
+                                  ));
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(

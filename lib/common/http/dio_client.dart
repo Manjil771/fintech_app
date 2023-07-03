@@ -75,12 +75,12 @@ class DioClient {
     print("===== REQUEST DATA =====");
     print(data);
     print("===== REQUEST DATA =====");
-    final formData = FormData.fromMap(Map.from(data));
+    // final formData = FormData.fromMap(Map.from(data));
 
     try {
       final response = await _dio.postUri(
         uri,
-        data: formData,
+        data: data,
         options: options,
         cancelToken: cancelToken,
         onSendProgress: onSendProgress,

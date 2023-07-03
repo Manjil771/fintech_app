@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/landline/widget/landline_payment_widget.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class LandLinePaymentPage extends StatelessWidget {
-  const LandLinePaymentPage({Key? key}) : super(key: key);
+  final Service service;
+  const LandLinePaymentPage({Key? key, required this.service})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

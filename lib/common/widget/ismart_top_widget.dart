@@ -18,7 +18,13 @@ class IsmartTopWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(
+        if (!repo.coOperativeLogo.contains("https://") &&
+            !repo.coOperativeLogo.contains("http://"))
+          Image.asset(
+            repo.coOperativeLogo,
+            height: _height * 0.08,
+          ),
+        Image.network(
           repo.coOperativeLogo,
           height: _height * 0.08,
         ),

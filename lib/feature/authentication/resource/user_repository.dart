@@ -2,14 +2,17 @@ import 'dart:async';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
+import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
@@ -38,7 +41,28 @@ class UserRepository {
   Future initialState() async {
     _token = await fetchToken();
     _isLoggedIn.value = _token.isNotEmpty;
-    // _user.value = await SharedPref.getUser();
+    LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
+
+    if (_coopValue != null) {
+      _updateCoopValue(_coopValue);
+    }
+  }
+
+  _updateCoopValue(LoginCoOpValue coop) {
+    String _baseUrl =
+        RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
+
+    // RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
+    //     _baseUrl + coop.banner.replaceFirst("/", "");
+    RepositoryProvider.of<CoOperative>(NavigationService.context).clientCode =
+        coop.clientId;
+    RepositoryProvider.of<CoOperative>(NavigationService.context).clientSecret =
+        coop.clientSecret;
+
+    RepositoryProvider.of<CoOperative>(NavigationService.context)
+        .coOperativeName = coop.bank;
+    RepositoryProvider.of<CoOperative>(NavigationService.context)
+        .coOperativeLogo = _baseUrl + coop.logo.replaceFirst("/", "");
   }
 
   Future<bool> logout({bool isSessionExpired = false}) async {
@@ -98,25 +122,25 @@ class UserRepository {
   Future<void> _getAndUpdateNotificationToken() async {
     final String? firebabseToken = await FirebaseMessaging.instance.getToken();
     if (firebabseToken != null) {
-      updateNotificationToken(notificationToken: firebabseToken);
+      updateNotificationToken(refreshedToken: firebabseToken);
     }
   }
 
-  Future<DataResponse<bool>> updateNotificationToken(
-      {required String notificationToken}) async {
-    try {
-      await authApiProvider.sendNotificationToken(
-        notificationToken: notificationToken,
-        token: _token,
-      );
-      return DataResponse.success(true);
-    } on CustomException catch (e) {
-      return DataResponse.error(
-          e.message ?? "Unable to update notification token");
-    } catch (e) {
-      return DataResponse.error(e.toString());
-    }
-  }
+  // Future<DataResponse<bool>> updateNotificationToken(
+  //     {required String notificationToken}) async {
+  //   try {
+  //     await authApiProvider.sendNotificationToken(
+  //       notificationToken: notificationToken,
+  //       token: _token,
+  //     );
+  //     return DataResponse.success(true);
+  //   } on CustomException catch (e) {
+  //     return DataResponse.error(
+  //         e.message ?? "Unable to update notification token");
+  //   } catch (e) {
+  //     return DataResponse.error(e.toString());
+  //   }
+  // }
 
   // Future<DataResponse<User>> fetchProfile() async {
   //   try {
@@ -160,6 +184,66 @@ class UserRepository {
           return DataResponse.success(LoginResponseValue.OTPVerification);
         }
         return DataResponse.error(errorDescription);
+      }
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message!, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<bool>> updateNotificationToken(
+      {String? refreshedToken}) async {
+    final String? _notificationToken =
+        refreshedToken ?? await FirebaseMessaging.instance.getToken();
+
+    try {
+      if (_notificationToken != null) {
+        final _ = await authApiProvider.setUserToken(
+          token: _notificationToken,
+          userToken: _token,
+          appVersion: await DeviceUtils.getAppVersion,
+          // deviceId: '',
+        );
+      }
+
+      return DataResponse.success(true);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(
+        e.message ?? "Unable to update notification token",
+        e.statusCode,
+      );
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<LoginCoOpValue>> validateCoOperative({
+    required String username,
+  }) async {
+    try {
+      final _res = await authApiProvider.validateCoOperative(
+        username: username,
+      );
+
+      List<Map<String, dynamic>> _coopList = List.from(
+        _res['data']?['detail'] ?? [],
+      );
+
+      if (_coopList.isNotEmpty) {
+        LoginCoOpValue _loginCoop = LoginCoOpValue.fromJson(_coopList.last);
+        _updateCoopValue(_loginCoop);
+        SharedPref.setLoginCoop(_loginCoop);
+
+        return DataResponse.success(_loginCoop);
+      } else {
+        return DataResponse.error("Error retrieving data");
       }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {

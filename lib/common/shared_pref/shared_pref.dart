@@ -1,10 +1,12 @@
 import 'dart:convert';
+import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 
 import 'package:shared_preferences/shared_preferences.dart';
 
 class SharedPref {
   static const _userKey = "AppUser";
+  static const _coOpValue = "CoOpValue";
   static const _firstTimeAppOpen = 'firstTimeAppOpen';
   static const _appAccessToken = 'appToken';
   static const _refresh_token = 'refresh_token';
@@ -49,6 +51,32 @@ class SharedPref {
   }
 
   static Future deleteUser() async {
+    final _instance = await SharedPreferences.getInstance();
+    await _instance.remove(_userKey);
+  }
+
+  static Future setLoginCoop(LoginCoOpValue user) async {
+    final _instance = await SharedPreferences.getInstance();
+    await _instance.setString(_coOpValue, json.encode(user.toJson()));
+  }
+
+  static Future<LoginCoOpValue?> getLoginCoop() async {
+    final _instance = await SharedPreferences.getInstance();
+
+    final res = _instance.getString(_coOpValue);
+    if (res == null) {
+      return null;
+    }
+    LoginCoOpValue? _localLoginCoOpValue;
+    try {
+      _localLoginCoOpValue = LoginCoOpValue.fromJson(json.decode(res));
+    } catch (e) {
+      return null;
+    }
+    return _localLoginCoOpValue;
+  }
+
+  static Future deleteLoginCoOp() async {
     final _instance = await SharedPreferences.getInstance();
     await _instance.remove(_userKey);
   }

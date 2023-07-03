@@ -1,3 +1,4 @@
+import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
@@ -25,18 +26,20 @@ class _AppDevState extends State<AppDev> {
       env: widget.env,
       child: MultiBlocWrapper(
         env: widget.env,
-        child: UpdateWrapper(
-          child: MaterialApp(
-            locale: context.locale,
-            navigatorKey: NavigationService.navigationKey,
-            supportedLocales: context.supportedLocales,
-            localizationsDelegates: context.localizationDelegates,
-            debugShowCheckedModeBanner: true,
-            darkTheme: CustomTheme.lightTheme,
-            theme: CustomTheme.lightTheme,
-            title: Strings.APP_TITLE,
-            initialRoute: Routes.root,
-            onGenerateRoute: RouteGenerator.generateRoute,
+        child: NotificationWrapper(
+          child: UpdateWrapper(
+            child: MaterialApp(
+              locale: context.locale,
+              navigatorKey: NavigationService.navigationKey,
+              supportedLocales: context.supportedLocales,
+              localizationsDelegates: context.localizationDelegates,
+              debugShowCheckedModeBanner: true,
+              darkTheme: CustomTheme.lightTheme,
+              theme: CustomTheme.lightTheme,
+              title: Strings.APP_TITLE,
+              initialRoute: Routes.root,
+              onGenerateRoute: RouteGenerator.generateRoute,
+            ),
           ),
         ),
       ),

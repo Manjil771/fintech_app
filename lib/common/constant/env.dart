@@ -10,12 +10,23 @@ class CoOperative {
     required this.baseUrl,
   });
 
-  final String baseUrl;
-  final String clientCode;
-  final String clientSecret;
-  final String coOperativeName;
-  final String bannerImage;
-  final String coOperativeLogo;
+  String baseUrl;
+  String clientCode;
+  String clientSecret;
+  String coOperativeName;
+  String bannerImage;
+  String coOperativeLogo;
+
+  CoOperative copyWith({required String clientCode}) {
+    return CoOperative(
+      clientCode: clientCode,
+      clientSecret: clientSecret,
+      coOperativeName: coOperativeName,
+      bannerImage: bannerImage,
+      coOperativeLogo: coOperativeLogo,
+      baseUrl: baseUrl,
+    );
+  }
 }
 
 class CoOperativeValue {
@@ -39,7 +50,7 @@ class CoOperativeValue {
   // );
   // LIVE
 
-//   //******************* Janadhara******************//
+//   //******* Janadhara********//
 //   static final CoOperative development = CoOperative(
 //     baseUrl: 'https://ismart.devanasoft.com.np/', // 9802013689 :97684
 //     bannerImage: "assets/janadhara/janadhara_banner.png",
@@ -54,7 +65,7 @@ class CoOperativeValue {
 //     splashImage: "assets/janadhara_splash.png",
 //   );
 
-  //******************* LIVE ************************* //
+  // //******* LIVE ********* //
   static final CoOperative development = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
@@ -64,9 +75,11 @@ class CoOperativeValue {
     clientSecret: "126489",
   );
 
-  // // DEV TEST70074
+  // DEV TEST70074
   // static final CoOperative development = CoOperative(
+
   //   //splashImage: "",
+
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
   //   clientCode: 'VBMRDWEVFV',
