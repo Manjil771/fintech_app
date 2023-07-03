@@ -62,10 +62,20 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
+          final myAmount = _response
+              .findValue(
+                  primaryKey: "hashResponse",
+                  secondaryKey: "formattedFinalAmount")
+              .toString();
+          final serviceCharge = _response.findValue(
+              primaryKey: "hashResponse", secondaryKey: "charge");
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
                 onButtonPress: () {
+                  print("charge is " + serviceCharge.toString());
+                  print("amount is " + myAmount.toString());
+
                   NavigationService.push(target: TransactionPinScreen(
                     onValueCallback: (p0) {
                       NavigationService.pop();
@@ -82,8 +92,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                                     primaryKey: "hashResposne",
                                     secondaryKey: "billerCode")
                                 .toString(),
-                            // "billerCode": "GON-7-TVRS-1",
-                            "serviceCharge": "10",
+                            "serviceCharge": serviceCharge,
                             // "serviceCharge": _response
                             //     .findValue(
                             //         primaryKey: "hashResposne",
@@ -101,7 +110,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                                     .toString(),
                             // "account_number": "002001-001-102-0001010",
 
-                            "amount": "500",
+                            "amount": myAmount,
                             // "amount": _response.findValue(
                             //     primaryKey: "hashResposne",
                             //     secondaryKey: "formattedFinalAmount"),

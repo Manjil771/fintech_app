@@ -137,33 +137,6 @@ class UtilityPaymentRepository {
     }
   }
 
-  Future<DataResponse<String>> payInsurance({
-    required String serviceIdentifier,
-    required String amount,
-    required String accountNumber,
-    required String mpin,
-    required String dob,
-  }) async {
-    try {
-      final _res = await utilityPaymentAPIProvider.payInsuranceBill(
-        dob: dob,
-        serviceIdentifier: serviceIdentifier,
-        accountNumber: accountNumber,
-        amount: amount,
-        mpin: mpin,
-      );
-      print(_res);
-      return DataResponse.success(_res['data']?['message'] ?? "");
-    } on CustomException catch (e) {
-      if (e is SessionExpireErrorException) {
-        rethrow;
-      }
-      return DataResponse.error(e.message, e.statusCode);
-    } catch (e) {
-      return DataResponse.error(e.toString());
-    }
-  }
-
   Future<DataResponse<String>> buyDatapack({
     required String serviceIdentifier,
     required String phoneNumber,
