@@ -23,6 +23,7 @@ class MobileTopUpWidget extends StatefulWidget {
 }
 
 class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final ValueNotifier<TopupType> _topUpType = ValueNotifier(TopupType.None);
@@ -89,57 +90,60 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             topbarName: "Payment",
             title: "Mobile Top Up",
             detail: "Topup your mobile number.",
-            body: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        title: "Mobile Number",
-                        hintText: "xxxxxxxxxx",
-                        controller: _mobileNumberController,
-                        validator: FormValidator.validatePhoneNumber,
-                        suffixIcon: Icons.phone_android_outlined,
-                        showSearchIcon: true,
-                        onSuffixPressed: () async {
-                          String phoneNumber =
-                              await SecureStorageService.appPhoneNumber;
-                          _mobileNumberController.text = phoneNumber;
-                        },
+            body: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          title: "Mobile Number",
+                          hintText: "xxxxxxxxxx",
+                          controller: _mobileNumberController,
+                          validator: FormValidator.validatePhoneNumber,
+                          suffixIcon: Icons.phone_android_outlined,
+                          showSearchIcon: true,
+                          onSuffixPressed: () async {
+                            String phoneNumber =
+                                await SecureStorageService.appPhoneNumber;
+                            _mobileNumberController.text = phoneNumber;
+                          },
+                        ),
                       ),
-                    ),
-                    // Container(
-                    //   padding: const EdgeInsets.all(6),
-                    //   margin: const EdgeInsets.only(left: 8, top: 28),
-                    //   height: _height * 0.06,
-                    //   width: _width * 0.12,
-                    //   child: SvgPicture.asset(
-                    //     "assets/icons/Contact from phone.svg",
-                    //   ),
-                    // )
-                  ],
-                ),
-                SizedBox(height: _height * 0.01),
-                CustomTextField(
-                  title: "Amount",
-                  hintText: "Enter the amount",
-                  controller: _amountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
-                ),
-                // Container(
-                //   padding: const EdgeInsets.only(top: 7),
-                //   height: _height * 0.12,
-                //   width: double.infinity,
-                //   child: GridView.builder(
-                //     itemCount: 6,
-                //     gridDelegate:
-                //         const SliverGridDelegateWithFixedCrossAxisCount(
-                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                //     itemBuilder: (context, index) => amountBox(context, index),
-                //   ),
-                // ),
-              ],
+                      // Container(
+                      //   padding: const EdgeInsets.all(6),
+                      //   margin: const EdgeInsets.only(left: 8, top: 28),
+                      //   height: _height * 0.06,
+                      //   width: _width * 0.12,
+                      //   child: SvgPicture.asset(
+                      //     "assets/icons/Contact from phone.svg",
+                      //   ),
+                      // )
+                    ],
+                  ),
+                  SizedBox(height: _height * 0.01),
+                  CustomTextField(
+                    title: "Amount",
+                    hintText: "Enter the amount",
+                    controller: _amountController,
+                    validator: (val) =>
+                        FormValidator.validateFieldNotEmpty(val, "Amount"),
+                  ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(top: 7),
+                  //   height: _height * 0.12,
+                  //   width: double.infinity,
+                  //   child: GridView.builder(
+                  //     itemCount: 6,
+                  //     gridDelegate:
+                  //         const SliverGridDelegateWithFixedCrossAxisCount(
+                  //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
+                  //     itemBuilder: (context, index) => amountBox(context, index),
+                  //   ),
+                  // ),
+                ],
+              ),
             ),
             onButtonPressed: () {
               // context.read<UtilityPaymentCubit>().fetchDetails(
@@ -149,20 +153,23 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               //       },
               //       apiEndpoint: "api/wlinkpackages",
               //     );
-              NavigationService.push(
-                target: TransactionPinScreen(
-                  onValueCallback: (mpin) {
-                    NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().getTopUp(
-                          serviceIdentifier: TopUpUtils()
-                              .getTopUpServiceType(type: _topUpType.value),
-                          phoneNumber: _mobileNumberController.text,
-                          amount: _amountController.text,
-                          mpin: mpin,
-                        );
-                  },
-                ),
-              );
+              _formKey.currentState!.save();
+              if (_formKey.currentState!.validate()) {
+                NavigationService.push(
+                  target: TransactionPinScreen(
+                    onValueCallback: (mpin) {
+                      NavigationService.pop();
+                      context.read<UtilityPaymentCubit>().getTopUp(
+                            serviceIdentifier: TopUpUtils()
+                                .getTopUpServiceType(type: _topUpType.value),
+                            phoneNumber: _mobileNumberController.text,
+                            amount: _amountController.text,
+                            mpin: mpin,
+                          );
+                    },
+                  ),
+                );
+              }
               // NavigationService.push(target: CommonTransactionSuccessfulPage());
             },
           )),

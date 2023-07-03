@@ -12,7 +12,7 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fin
 import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/nepal_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/categoryWiseService/ird/screen/irdpage.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -103,7 +103,10 @@ class _CategoriesWiseServicesWidgetState
                     }
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
                         "government_ird_payment".toLowerCase()) {
-                      NavigationService.push(target: IrdPage());
+                      NavigationService.push(
+                          target: IrdPaymentPage(
+                        services: widget.services[index],
+                      ));
                     }
                   },
                   child: Column(children: [
