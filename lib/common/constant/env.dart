@@ -77,6 +77,9 @@ class CoOperativeValue {
 
   // DEV TEST70074
   // static final CoOperative development = CoOperative(
+
+  //   //splashImage: "",
+
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
   //   clientCode: 'VBMRDWEVFV',
