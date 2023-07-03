@@ -9,6 +9,7 @@ import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
@@ -51,8 +52,8 @@ class UserRepository {
     String _baseUrl =
         RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
 
-    RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
-        _baseUrl + coop.banner.replaceFirst("/", "");
+    // RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
+    //     _baseUrl + coop.banner.replaceFirst("/", "");
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientCode =
         coop.clientId;
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientSecret =
@@ -121,25 +122,25 @@ class UserRepository {
   Future<void> _getAndUpdateNotificationToken() async {
     final String? firebabseToken = await FirebaseMessaging.instance.getToken();
     if (firebabseToken != null) {
-      updateNotificationToken(notificationToken: firebabseToken);
+      updateNotificationToken(refreshedToken: firebabseToken);
     }
   }
 
-  Future<DataResponse<bool>> updateNotificationToken(
-      {required String notificationToken}) async {
-    try {
-      await authApiProvider.sendNotificationToken(
-        notificationToken: notificationToken,
-        token: _token,
-      );
-      return DataResponse.success(true);
-    } on CustomException catch (e) {
-      return DataResponse.error(
-          e.message ?? "Unable to update notification token");
-    } catch (e) {
-      return DataResponse.error(e.toString());
-    }
-  }
+  // Future<DataResponse<bool>> updateNotificationToken(
+  //     {required String notificationToken}) async {
+  //   try {
+  //     await authApiProvider.sendNotificationToken(
+  //       notificationToken: notificationToken,
+  //       token: _token,
+  //     );
+  //     return DataResponse.success(true);
+  //   } on CustomException catch (e) {
+  //     return DataResponse.error(
+  //         e.message ?? "Unable to update notification token");
+  //   } catch (e) {
+  //     return DataResponse.error(e.toString());
+  //   }
+  // }
 
   // Future<DataResponse<User>> fetchProfile() async {
   //   try {
@@ -189,6 +190,35 @@ class UserRepository {
         rethrow;
       }
       return DataResponse.error(e.message!, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<bool>> updateNotificationToken(
+      {String? refreshedToken}) async {
+    final String? _notificationToken =
+        refreshedToken ?? await FirebaseMessaging.instance.getToken();
+
+    try {
+      if (_notificationToken != null) {
+        final _ = await authApiProvider.setUserToken(
+          token: _notificationToken,
+          userToken: _token,
+          appVersion: await DeviceUtils.getAppVersion,
+          // deviceId: '',
+        );
+      }
+
+      return DataResponse.success(true);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(
+        e.message ?? "Unable to update notification token",
+        e.statusCode,
+      );
     } catch (e) {
       return DataResponse.error(e.toString());
     }

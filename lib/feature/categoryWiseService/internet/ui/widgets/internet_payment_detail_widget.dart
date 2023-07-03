@@ -183,53 +183,49 @@ class _InternetPaymentDeatilWidgetState
                         child: child,
                       );
                     },
-                    child: _changePackage
-                        ? OpenContainer(
-                            closedColor: Colors.transparent,
-                            closedElevation: 0.0,
-                            openElevation: 0,
-                            transitionType: ContainerTransitionType.fade,
-                            closedBuilder: (context, open) {
-                              return CustomTextField(
-                                margin: const EdgeInsets.only(
-                                  left: CustomTheme.symmetricHozPadding,
-                                  right: CustomTheme.symmetricHozPadding,
-                                ),
-                                controller: _packageController,
-                                title: "",
-                                hintText: "Renew Options",
-                                showSearchIcon: true,
-                                readOnly: true,
-                                required: true,
-                                suffixIcon: Icons.keyboard_arrow_down_rounded,
-                                onTap: open,
-                                validator: (val) {
-                                  return FormValidator.validateFieldNotEmpty(
-                                    val,
-                                    "Renew Options",
-                                  );
-                                },
-                              );
-                            },
-                            openBuilder: (context, close) {
-                              return WorldlinkSearchWidgets(
-                                useServiceResponse: widget.detailFetchData,
-                                renewOptions: _renewOption,
-                                onChanged: (val) {
-                                  _packageController.text = val["text"] ?? "";
-                                  _selectedPackageId =
-                                      val["id"]?.toString() ?? "";
-                                  _amountController.text = ((double.tryParse(
-                                                  val["amount"]?.toString() ??
-                                                      "0") ??
-                                              0) +
-                                          _dueAmount)
-                                      .toString();
-                                },
-                              );
-                            },
-                          )
-                        : Container(),
+                    child: OpenContainer(
+                      closedColor: Colors.transparent,
+                      closedElevation: 0.0,
+                      openElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      closedBuilder: (context, open) {
+                        return CustomTextField(
+                          margin: const EdgeInsets.only(
+                            left: CustomTheme.symmetricHozPadding,
+                            right: CustomTheme.symmetricHozPadding,
+                          ),
+                          controller: _packageController,
+                          title: "",
+                          hintText: "Renew Options",
+                          showSearchIcon: true,
+                          readOnly: true,
+                          required: true,
+                          suffixIcon: Icons.keyboard_arrow_down_rounded,
+                          onTap: open,
+                          validator: (val) {
+                            return FormValidator.validateFieldNotEmpty(
+                              val,
+                              "Renew Options",
+                            );
+                          },
+                        );
+                      },
+                      openBuilder: (context, close) {
+                        return WorldlinkSearchWidgets(
+                          useServiceResponse: widget.detailFetchData,
+                          renewOptions: _renewOption,
+                          onChanged: (val) {
+                            _packageController.text = val["text"] ?? "";
+                            _selectedPackageId = val["id"]?.toString() ?? "";
+                            _amountController.text = ((double.tryParse(
+                                            val["amount"]?.toString() ?? "0") ??
+                                        0) +
+                                    _dueAmount)
+                                .toString();
+                          },
+                        );
+                      },
+                    ),
                   ),
                 if (_changePackage || (_isPackageAvailable == false))
                   SizedBox(height: 20.hp),
@@ -256,7 +252,9 @@ class _InternetPaymentDeatilWidgetState
                       target: TransactionPinScreen(
                         onValueCallback: (mpin) {
                           NavigationService.pop();
-                          context.read<UtilityPaymentCubit>().fetchDetails(
+                          context.read<UtilityPaymentCubit>().makePayment(
+                                body: widget.detailFetchData
+                                    .findValue(primaryKey: "hashResponse"),
                                 serviceIdentifier: "worldlink_online_topup",
                                 accountDetails: {
                                   "wlink_username":
@@ -272,7 +270,7 @@ class _InternetPaymentDeatilWidgetState
                                       ?.accountNumber,
                                   "mPin": mpin,
                                 },
-                                apiEndpoint: "api/wlinkpackages",
+                                apiEndpoint: "api/wlinkpay",
                               );
                         },
                       ),

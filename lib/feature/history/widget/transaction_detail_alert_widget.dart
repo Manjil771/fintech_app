@@ -9,9 +9,12 @@ import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 
 class TransactionDetailAlertWidget extends StatefulWidget {
   final RecentTransactionModel recentTransactionModel;
-  const TransactionDetailAlertWidget(
-      {Key? key, required this.recentTransactionModel})
-      : super(key: key);
+  final ValueNotifier<String> downloadUrlNotifier;
+  const TransactionDetailAlertWidget({
+    Key? key,
+    required this.recentTransactionModel,
+    required this.downloadUrlNotifier,
+  }) : super(key: key);
 
   @override
   State<TransactionDetailAlertWidget> createState() =>
@@ -28,7 +31,7 @@ class _TransactionDetailAlertWidgetState
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Container(
-      padding: EdgeInsets.all(28),
+      padding: const EdgeInsets.all(28),
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(18), color: CustomTheme.white),
       child: Column(
@@ -51,31 +54,40 @@ class _TransactionDetailAlertWidgetState
                   ),
                 ],
               ),
-              Spacer(),
-              InkWell(
-                onTap: () {
-                  FileDownloadUtils.downloadFile(
-                    downloadLink: downloadUrl ?? "",
-                    fileName: FileDownloadUtils.generateDownloadFileName(
-                      name: widget.recentTransactionModel.service,
-                      filetype: FileType.pdf,
-                    ),
-                    context: context,
-                  );
-                },
-                child: SvgPicture.asset(
-                  Assets.downloadIcon,
-                  height: _height * 0.03,
-                ),
-              ),
+              const Spacer(),
+              ValueListenableBuilder<String>(
+                  valueListenable: widget.downloadUrlNotifier,
+                  builder: (context, val, _) {
+                    if (val.isNotEmpty) {
+                      return InkWell(
+                        onTap: () {
+                          FileDownloadUtils.downloadFile(
+                            downloadLink: widget.downloadUrlNotifier.value,
+                            fileName:
+                                FileDownloadUtils.generateDownloadFileName(
+                              name: widget.recentTransactionModel.service,
+                              filetype: FileType.pdf,
+                            ),
+                            context: context,
+                          );
+                        },
+                        child: SvgPicture.asset(
+                          Assets.downloadIcon,
+                          height: _height * 0.03,
+                        ),
+                      );
+                    } else {
+                      return Container();
+                    }
+                  }),
             ],
           ),
           SizedBox(height: _height * 0.01),
           Container(
-            padding: EdgeInsets.all(18),
+            padding: const EdgeInsets.all(18),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(18),
-                color: Color(0xFFF3F3F3)),
+                color: const Color(0xFFF3F3F3)),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

@@ -4,11 +4,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
@@ -29,8 +26,8 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
   String? downloadUrl;
   @override
   void initState() {
-    context.read<RecentTransactionCubit>().generateUrl(
-        transactionId: widget.recentTransactionModel.transactionIdentifier);
+    // context.read<RecentTransactionCubit>().generateUrl(
+    //     transactionId: widget.recentTransactionModel.transactionIdentifier);
     super.initState();
   }
 
@@ -49,7 +46,7 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
           }
         },
         child: Container(
-          padding: EdgeInsets.all(18),
+          padding: const EdgeInsets.all(18),
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(18),
               color: CustomTheme.white),
@@ -72,7 +69,7 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                       ),
                     ],
                   ),
-                  Spacer(),
+                  const Spacer(),
                   InkWell(
                     onTap: () {
                       FileDownloadUtils.downloadFile(
@@ -93,10 +90,10 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
               ),
               SizedBox(height: _height * 0.01),
               Container(
-                padding: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
-                    color: Color(0xFFF3F3F3)),
+                    color: const Color(0xFFF3F3F3)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

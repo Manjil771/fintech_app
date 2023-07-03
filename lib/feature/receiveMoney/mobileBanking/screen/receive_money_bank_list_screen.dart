@@ -10,7 +10,7 @@ class ReceiveMoneyBankListScreen extends StatelessWidget {
   const ReceiveMoneyBankListScreen({
     Key? key,
     required this.onBankSelected,
-    this.type = "mbanks",
+    this.type = "ismarts",
   }) : super(key: key);
   final Function(Bank) onBankSelected;
 

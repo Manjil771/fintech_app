@@ -4,9 +4,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/feature/authentication/model/user.dart';
-import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
@@ -78,6 +75,31 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
       serviceIdentifier: serviceIdentifier,
       accountDetails: accountDetails,
       apiEndpoint: apiEndpoint,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
+
+  makePayment({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required Map<String, dynamic> body,
+    required String apiEndpoint,
+  }) async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.makePayment(
+      serviceIdentifier: serviceIdentifier,
+      accountDetails: accountDetails,
+      apiEndpoint: apiEndpoint,
+      body: body,
     );
     if (_res.status == Status.Success && _res.data != null) {
       emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
