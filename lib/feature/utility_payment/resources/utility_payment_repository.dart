@@ -83,6 +83,34 @@ class UtilityPaymentRepository {
     }
   }
 
+  Future<DataResponse<UtilityResponseData>> makePayment({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required Map<String, dynamic> body,
+    required String apiEndpoint,
+  }) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.makePayment(
+        serviceIdentifier: serviceIdentifier,
+        accountDetails: accountDetails,
+        apiEndpoint: apiEndpoint,
+        body: body,
+      );
+
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
   Future<DataResponse<UtilityResponseData>> fetchInsuranceDetail(
       {required String serviceIdentifier,
       required String username,

@@ -36,6 +36,31 @@ class UtilityPaymentAPIProvider {
     );
   }
 
+  makePayment({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required Map<String, dynamic> body,
+    required String apiEndpoint,
+  }) async {
+    final _params = {
+      ...accountDetails,
+    };
+    if (serviceIdentifier.isNotEmpty) {
+      _params["service_identifier"] = "$serviceIdentifier";
+    }
+
+    final url = UrlUtils.getUri(
+      url: baseUrl + "$apiEndpoint",
+      params: _params,
+    );
+
+    return await apiProvider.post(
+      url.toString(),
+      body,
+      token: userRepository.token,
+    );
+  }
+
   fetchDetails(
       {required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,
