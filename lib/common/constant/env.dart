@@ -65,7 +65,7 @@ class CoOperativeValue {
 //     splashImage: "assets/janadhara_splash.png",
 //   );
 
-  // //******* LIVE ********* //
+  //******* LIVE ********* //
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",

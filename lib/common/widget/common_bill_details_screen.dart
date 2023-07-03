@@ -22,12 +22,15 @@ class CommonBillDetailPage extends StatelessWidget {
   final String serviceType;
   final Widget body;
   final Function()? onButtonPress;
+  final Function()? onSuccessState;
+
   CommonBillDetailPage(
       {super.key,
       required this.image,
       required this.body,
       required this.serviceType,
-      this.onButtonPress});
+      this.onButtonPress,
+      this.onSuccessState});
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -40,7 +43,8 @@ class CommonBillDetailPage extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: CommonBillDetailWidget(
-          onButtonPress: onButtonPress,
+          onSuccessState: onSuccessState,
+          onButtonPress: onButtonPress!,
           body: body,
           image: image,
           serviceType: serviceType),
@@ -50,15 +54,18 @@ class CommonBillDetailPage extends StatelessWidget {
 
 class CommonBillDetailWidget extends StatelessWidget {
   final String image;
+  final Function()? onSuccessState;
+
   final String serviceType;
   final Widget body;
-  final Function()? onButtonPress;
+  final Function() onButtonPress;
   CommonBillDetailWidget(
       {super.key,
       required this.image,
       required this.body,
       required this.serviceType,
-      this.onButtonPress});
+      required this.onButtonPress,
+      this.onSuccessState});
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -77,20 +84,10 @@ class CommonBillDetailWidget extends StatelessWidget {
           }
 
           if (state is CommonStateSuccess) {
-            print(
-                "state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf  sdfhjgsdg hfgjhsdfghj");
-            showPopUpDialog(
-              context: context,
-              message: state.data,
-              title: "Success",
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.push(target: HomePage());
-              },
-            );
+            onSuccessState!();
           } else if (state is CommonError) {
             print(
-                "                state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf");
+                " state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf");
             showPopUpDialog(
               context: context,
               message: state.message,

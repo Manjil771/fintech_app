@@ -16,6 +16,7 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/g
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/receiveMoney/models/bank.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -51,7 +52,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
     return PageWrapper(
         body: BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
-        print(state);
         if (state is CommonLoading && _isLoading == false) {
           _isLoading = true;
           showLoadingDialogBox(context);
@@ -72,10 +72,12 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                onSuccessState: () {
+                  print(
+                      "state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf  sdfhjgsdg hfgjhsdfghj");
+                  NavigationService.push(target: HomePage());
+                },
                 onButtonPress: () {
-                  print("charge is " + serviceCharge.toString());
-                  print("amount is " + myAmount.toString());
-
                   NavigationService.push(target: TransactionPinScreen(
                     onValueCallback: (p0) {
                       NavigationService.pop();
@@ -110,7 +112,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                                     .toString(),
                             // "account_number": "002001-001-102-0001010",
 
-                            "amount": myAmount,
+                            "amount": myAmount.replaceAll("NPR ", ""),
                             // "amount": _response.findValue(
                             //     primaryKey: "hashResposne",
                             //     secondaryKey: "formattedFinalAmount"),
