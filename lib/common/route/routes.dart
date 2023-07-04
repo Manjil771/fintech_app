@@ -28,4 +28,5 @@ class Routes {
   static const listWalletScreen = "/list_wallet";
   static const selectDataPack = '/select_datapack';
   static const buyDatapack = '/buy_datapack';
+  static const landlineScreen = '/landline_page';
 }

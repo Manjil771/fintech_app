@@ -5,6 +5,7 @@ import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
+import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
@@ -170,7 +171,11 @@ class RouteGenerator {
           builder: (_) => BuyDatapackScreen(),
           settings: RouteSettings(name: settings.name),
         );
-
+      case Routes.landlineScreen:
+        return MaterialPageRoute(
+          builder: (_) => LandlinePaymentPage(),
+          settings: RouteSettings(name: settings.name),
+        );
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreens(),

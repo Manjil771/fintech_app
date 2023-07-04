@@ -82,7 +82,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                     onValueCallback: (p0) {
                       NavigationService.pop();
 
-                      context.read<UtilityPaymentCubit>().payTrafficFine(
+                      context.read<UtilityPaymentCubit>().makePayment(
                           serviceIdentifier: widget.service.uniqueIdentifier,
                           // serviceIdentifier: "traffic_fine_payments",
                           apiEndpoint: "/api/governmentpayment/pay",
