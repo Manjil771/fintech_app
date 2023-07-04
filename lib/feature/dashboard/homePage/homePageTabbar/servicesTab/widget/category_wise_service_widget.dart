@@ -11,8 +11,9 @@ import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/scree
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/categoryWiseService/ird/screen/irdpage.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -59,10 +60,20 @@ class _CategoriesWiseServicesWidgetState
                           target: TvPaymentPage(
                         service: widget.services[index],
                       ));
-                    } else if (widget.uniqueIdentifier.toLowerCase() ==
-                        "internet".toLowerCase()) {
+                    } else if (widget.services[index].uniqueIdentifier
+                            .toLowerCase() ==
+                        "worldlink_online_topup".toLowerCase()) {
                       NavigationService.push(
-                          target: const FindInternetUserScreen());
+                          target: FindInternetUserScreen(
+                        service: widget.services[index],
+                      ));
+                    } else if (widget.services[index].uniqueIdentifier
+                            .toLowerCase() ==
+                        "subisu_online_topup".toLowerCase()) {
+                      NavigationService.push(
+                          target: SubisuPaymentPage(
+                        service: widget.services[index],
+                      ));
                     }
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
                         "khanepani_online_topup".toLowerCase()) {
@@ -105,7 +116,10 @@ class _CategoriesWiseServicesWidgetState
                     }
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
                         "government_ird_payment".toLowerCase()) {
-                      NavigationService.push(target: IrdPage());
+                      NavigationService.push(
+                          target: IrdPaymentPage(
+                        services: widget.services[index],
+                      ));
                     }
                   },
                   child: Column(children: [

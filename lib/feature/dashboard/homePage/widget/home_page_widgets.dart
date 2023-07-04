@@ -38,6 +38,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
             children: [
               Expanded(
                   child: InkWell(
+                borderRadius: BorderRadius.circular(12),
                 onTap: () {
                   NavigationService.pushNamed(routeName: Routes.sendMoney);
                 },
@@ -71,6 +72,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               SizedBox(width: _width * 0.1),
               Expanded(
                   child: InkWell(
+                borderRadius: BorderRadius.circular(12),
                 onTap: () {
                   NavigationService.pushNamed(routeName: Routes.reveiveMoney);
                 },
