@@ -6,10 +6,10 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class LandLinePaymentPage extends StatelessWidget {
-  final Service service;
-  const LandLinePaymentPage({Key? key, required this.service})
-      : super(key: key);
+class LandlinePaymentPage extends StatelessWidget {
+  const LandlinePaymentPage({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -18,8 +18,9 @@ class LandLinePaymentPage extends StatelessWidget {
     final _height = SizeUtils.height;
     return BlocProvider(
         create: (context) => UtilityPaymentCubit(
-            utilityPaymentRepository:
-                RepositoryProvider.of<UtilityPaymentRepository>(context)),
-        child: LandLinePaymentWidget());
+              utilityPaymentRepository:
+                  RepositoryProvider.of<UtilityPaymentRepository>(context),
+            ),
+        child: LandlinePaymentWidget());
   }
 }

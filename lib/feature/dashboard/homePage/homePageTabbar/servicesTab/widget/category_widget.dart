@@ -4,6 +4,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -73,9 +74,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               children: [
                 Expanded(
                   child: Container(
-                      //  color: Colors.greenAccent.withOpacity(0.1),
                       child: GridView.builder(
-                          // itemCount: 5,
                           itemCount: widget.showAllService
                               ? state.data.length
                               : state.data.length >= 12
@@ -88,8 +87,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           itemBuilder: (context, index) {
                             final data = state.data[index];
                             final _imageUrl =
-                                "https://ismart.devanasoft.com.np/${data.imageUrl}";
-                            return InkWell(
+                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
+                            return GestureDetector(
                               onTap: () {
                                 if (data.uniqueIdentifier
                                         .toString()
@@ -110,13 +109,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   NavigationService.push(
                                       target: AirlinesIntroPage());
                                 } else if (data.uniqueIdentifier
-                                        .toString()
-                                        .toLowerCase() ==
-                                    "landline") {
+                                            .toString()
+                                            .toLowerCase() ==
+                                        "landline".toLowerCase() ||
+                                    data.uniqueIdentifier
+                                            .toString()
+                                            .toLowerCase() ==
+                                        "category".toLowerCase()) {
                                   NavigationService.push(
-                                      target: LandLinePaymentPage(
-                                    service: state.data[index].services[index],
-                                  ));
+                                      target: LandlinePaymentPage());
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(
