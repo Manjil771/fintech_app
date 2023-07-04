@@ -33,7 +33,6 @@ class ApiProvider {
       final Map<String, String> _requestHeader = {
         'Content-Type': 'application/json',
         'accept': 'application/json',
-        'App-Authorizer': '647061697361',
         'origin': '*',
         ...header,
         // // ...await DeviceUtils.deviceInfoHeader,
@@ -142,7 +141,6 @@ class ApiProvider {
         'content-type': 'application/json',
         'accept': 'application/json',
         'origin': '*',
-        'App-Authorizer': "647061697361",
         ...extraHeaders ?? {},
         // // ...await DeviceUtils.deviceInfoHeader,
       };
@@ -298,7 +296,6 @@ class ApiProvider {
       final Map<String, String> header = {
         'accept': 'application/json',
         'origin': '*',
-        'App-Authorizer': "647061697361",
         // ...await DeviceUtils.deviceInfoHeader,
       };
 

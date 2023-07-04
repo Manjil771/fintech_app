@@ -159,6 +159,7 @@ class UserRepository {
   Future<DataResponse<LoginResponseValue>> loginUser({
     required String username,
     required String password,
+    required String deviceUUID,
     String? otpCode,
   }) async {
     try {
@@ -166,6 +167,7 @@ class UserRepository {
         username: username,
         password: password,
         otpCode: otpCode,
+        deviceUUID: deviceUUID,
       );
 
       String _accessToken = _res['data']?['access_token'] ?? "";

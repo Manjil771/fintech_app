@@ -40,6 +40,8 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
 
   @pragma('vm:entry-point')
   static void downloadCallback(String id, int status, int progress) {
+    print("Download CallBack");
+    print(progress);
     final SendPort? send =
         IsolateNameServer.lookupPortByName('downloader_send_port');
     if (send != null) {
@@ -57,34 +59,37 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   _performStartupActions() {
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
-    _port.listen((dynamic data) async {
-      final String downloadId = data[0];
-      final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
-      print(status);
-      if (status == DownloadTaskStatus.enqueued) {
-      } else if (status == DownloadTaskStatus.complete) {
-        if (Platform.isIOS) {
-          final _query = 'SELECT * FROM task WHERE task_id="$downloadId"';
-          final List<DownloadTask> _downloadedTask =
-              (await FlutterDownloader.loadTasksWithRawQuery(query: _query)) ??
-                  [];
-          String _filePath = "";
-          if (_downloadedTask.isNotEmpty) {
-            _filePath =
-                "${_downloadedTask.first.savedDir}/${_downloadedTask.first.filename}";
-            OpenFile.open(_filePath);
+    _port.listen(
+      (dynamic data) async {
+        final String downloadId = data[0];
+        final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
+        print(status);
+        if (status == DownloadTaskStatus.enqueued) {
+        } else if (status == DownloadTaskStatus.complete) {
+          if (Platform.isIOS) {
+            final _query = 'SELECT * FROM task WHERE task_id="$downloadId"';
+            final List<DownloadTask> _downloadedTask =
+                (await FlutterDownloader.loadTasksWithRawQuery(
+                        query: _query)) ??
+                    [];
+            String _filePath = "";
+            if (_downloadedTask.isNotEmpty) {
+              _filePath =
+                  "${_downloadedTask.first.savedDir}/${_downloadedTask.first.filename}";
+              OpenFile.open(_filePath);
+            }
           }
+          SnackBarUtils.showSuccessBar(
+              context: context, message: "Download Completed.");
+        } else if (status == DownloadTaskStatus.failed) {
+          SnackBarUtils.showErrorBar(
+              context: context, message: "Download Failed.");
+        } else if (status == DownloadTaskStatus.canceled) {
+          SnackBarUtils.showErrorBar(
+              context: context, message: "Download Cancelled.");
         }
-        SnackBarUtils.showSuccessBar(
-            context: context, message: "Download Completed.");
-      } else if (status == DownloadTaskStatus.failed) {
-        SnackBarUtils.showErrorBar(
-            context: context, message: "Download Failed.");
-      } else if (status == DownloadTaskStatus.canceled) {
-        SnackBarUtils.showErrorBar(
-            context: context, message: "Download Cancelled.");
-      }
-    });
+      },
+    );
   }
 
   @override
@@ -92,7 +97,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     final _theme = Theme.of(context);
     return PageWrapper(
       body: PageView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) => screens[_currentIndex],
       ),
       floatinActionButton: FloatingActionButton(

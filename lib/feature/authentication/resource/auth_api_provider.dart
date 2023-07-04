@@ -30,6 +30,7 @@ class AuthApiProvider {
   Future<dynamic> loginUser({
     required String username,
     required String password,
+    required String deviceUUID,
     String? otpCode,
   }) async {
     final _body = {
@@ -38,7 +39,7 @@ class AuthApiProvider {
       "password": "$password",
       "grant_type": "password",
       "username": coOperative.clientCode + username,
-      "deviceUniqueIdentifier": "newaDeaviceee"
+      "deviceUniqueIdentifier": "$deviceUUID"
     };
     if (otpCode != null) {
       _body['otp'] = otpCode;

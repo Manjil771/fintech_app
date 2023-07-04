@@ -12,12 +12,14 @@ class LoginCubit extends Cubit<CommonState> {
   loginUser({
     required String username,
     required String password,
+    required String deviceUUID,
     String? otpCode,
   }) async {
     emit(CommonLoading());
     final res = await userRepository.loginUser(
       username: username,
       password: password,
+      deviceUUID: deviceUUID,
       otpCode: otpCode,
     );
     if (res.status == Status.Success && res.data != null) {
