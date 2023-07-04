@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
@@ -87,12 +88,25 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                 NavigationService.push(target: TransactionPinScreen(
                   onValueCallback: (mpin) {
                     NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().buyDatapack(
-                        serviceIdentifier: widget.service.uniqueIdentifier,
-                        phoneNumber: _mobileNumberController.text,
-                        amount: widget.package.amount.toString(),
-                        mpin: mpin,
-                        code: widget.package.code);
+                    context.read<UtilityPaymentCubit>().makePayment(
+                      apiEndpoint: "/api/data_pack/pay",
+                      serviceIdentifier: widget.service.uniqueIdentifier,
+                      accountDetails: {
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber
+                                .toString(),
+                        "phone_number": _mobileNumberController.text,
+                        "amount": widget.package.amount.toString(),
+                        "mPin": mpin,
+                      },
+                      body: {
+                        "code": widget.package.code,
+                      },
+                    );
                   },
                 ));
               }
