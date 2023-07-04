@@ -103,31 +103,6 @@ class UtilityPaymentAPIProvider {
     );
   }
 
-  payInsuranceBill({
-    required String serviceIdentifier,
-    required String accountNumber,
-    required String amount,
-    required String mpin,
-    required String dob,
-  }) async {
-    final _params = {
-      "service_identifier": serviceIdentifier,
-      "amount": amount,
-      "account_number": accountNumber,
-      "mPin": mpin,
-      "dob": dob,
-    };
-
-    final url =
-        UrlUtils.getUri(url: baseUrl + "api/insurance/pay", params: _params);
-
-    return await apiProvider.post(
-      url.toString(),
-      {},
-      token: userRepository.token,
-    );
-  }
-
   buyDatapack({
     required String serviceIdentifier,
     required String accountNumber,

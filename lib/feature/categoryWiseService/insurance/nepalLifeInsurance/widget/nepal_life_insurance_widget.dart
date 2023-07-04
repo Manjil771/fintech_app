@@ -8,14 +8,16 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/insurance_bill_detail_page.dart';
-import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_payment_detail_screen.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -64,10 +66,110 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
           UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
             NavigationService.push(
-              target: InsuranceBillDetailPage(
-                dob: selectedDateController.text,
-                service: widget.service,
-                detailFetchData: _response,
+              target: CommonBillDetailPage(
+                onButtonPress: () {
+                  final myAmount = _response.findValue(
+                      primaryKey: "hashResponse", secondaryKey: "amount");
+                  NavigationService.push(target: TransactionPinScreen(
+                    onValueCallback: (p0) {
+                      NavigationService.pop();
+
+                      context.read<UtilityPaymentCubit>().makePayment(
+                          serviceIdentifier: widget.service.uniqueIdentifier,
+                          apiEndpoint: "/api/insurance/pay",
+                          body: {
+                            // "policyNo": "108006674",
+
+                            "policyNo": _response.findValue(
+                                primaryKey: "hashResposne",
+                                secondaryKey: "policyNo"),
+                            // "policyName": "DEEPAK SHRESTHA"
+
+                            "policyName": _response.findValue(
+                                primaryKey: "hashResposne",
+                                secondaryKey: "policyName"),
+                          },
+                          accountDetails: {
+                            "account_number":
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber,
+                            // "account_number": "002001-001-102-0001010",
+
+                            "amount": myAmount,
+
+                            // "amount": _response.findValue(
+                            //     primaryKey: "hashResposne",
+                            //     secondaryKey: "amount"),
+                            "mPin": p0,
+                            "dob": selectedDateController.text
+                          });
+                    },
+                  ));
+                },
+                serviceType: widget.service.service,
+                image:
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
+                body: Column(
+                  children: [
+                    KeyValueTile(
+                      title: "Policy Number",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "policyNo",
+                          )
+                          .toString(),
+                    ),
+                    KeyValueTile(
+                      title: "Username",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "policyName",
+                          )
+                          .toString(),
+                    ),
+                    KeyValueTile(
+                      title: "Amount",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "amount",
+                          )
+                          .toString(),
+                    ),
+                    KeyValueTile(
+                      title: "Premium",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "premium",
+                          )
+                          .toString(),
+                    ),
+                    KeyValueTile(
+                      title: "Due Date",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "dueDate",
+                          )
+                          .toString(),
+                    ),
+                    KeyValueTile(
+                      title: "Penalty",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "interestOccured",
+                          )
+                          .toString(),
+                    ),
+                  ],
+                ),
               ),
             );
           } else {
@@ -156,10 +258,14 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
           ],
         ),
         onButtonPressed: () {
-          context.read<UtilityPaymentCubit>().fetchInsuranceDetails(
+          context.read<UtilityPaymentCubit>().fetchDetails(
                 serviceIdentifier: widget.service.uniqueIdentifier,
-                username: policyNoController.text,
-                dateOfBirth: selectedDateController.text,
+                accountDetails: {
+                  // "username": "108006674",
+                  "username": policyNoController.text,
+                  "dob": selectedDateController.text,
+                  // "dob": "1983-07-24",
+                },
                 apiEndpoint: "api/insurance/policy",
               );
         },

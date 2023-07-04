@@ -92,6 +92,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     final _theme = Theme.of(context);
     return PageWrapper(
       body: PageView.builder(
+        physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) => screens[_currentIndex],
       ),
       floatinActionButton: FloatingActionButton(

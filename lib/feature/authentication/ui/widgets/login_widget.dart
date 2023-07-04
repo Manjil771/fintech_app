@@ -325,25 +325,6 @@ class _LoginWidgetState extends State<LoginWidget> {
           ],
         ),
       ),
-
-      // body: Obx(
-      //   () {
-      //     if (authController.isLoading.value) {
-      //       return Stack(
-      //         children: [
-      //           LoginWidgetDetail(context),
-      //           Container(
-      //               color: _theme.primaryColor.withOpacity(0.1),
-      //               height: double.infinity,
-      //               width: double.infinity,
-      //               child: const Center(child: CircularProgressIndicator())),
-      //         ],
-      //       );
-      //     } else {
-      //       return LoginWidgetDetail(context);
-      //     }
-      //   },
-      // ),
     );
   }
 

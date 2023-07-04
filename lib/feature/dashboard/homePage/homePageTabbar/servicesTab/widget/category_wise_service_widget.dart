@@ -57,8 +57,7 @@ class _CategoriesWiseServicesWidgetState
                         "tv".toLowerCase()) {
                       NavigationService.push(
                           target: TvPaymentPage(
-                        companyLogo: widget.services[index].icon.toString(),
-                        companyName: widget.services[index].service,
+                        service: widget.services[index],
                       ));
                     } else if (widget.uniqueIdentifier.toLowerCase() ==
                         "internet".toLowerCase()) {

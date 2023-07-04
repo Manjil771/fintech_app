@@ -13,8 +13,10 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
+import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/receiveMoney/models/bank.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -50,7 +52,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
     return PageWrapper(
         body: BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
-        print(state);
         if (state is CommonLoading && _isLoading == false) {
           _isLoading = true;
           showLoadingDialogBox(context);
@@ -61,9 +62,21 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
+          final myAmount = _response
+              .findValue(
+                  primaryKey: "hashResponse",
+                  secondaryKey: "formattedFinalAmount")
+              .toString();
+          final serviceCharge = _response.findValue(
+              primaryKey: "hashResponse", secondaryKey: "charge");
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                onSuccessState: () {
+                  print(
+                      "state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf  sdfhjgsdg hfgjhsdfghj");
+                  NavigationService.push(target: HomePage());
+                },
                 onButtonPress: () {
                   NavigationService.push(target: TransactionPinScreen(
                     onValueCallback: (p0) {
@@ -71,29 +84,38 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
 
                       context.read<UtilityPaymentCubit>().payTrafficFine(
                           serviceIdentifier: widget.service.uniqueIdentifier,
+                          // serviceIdentifier: "traffic_fine_payments",
                           apiEndpoint: "/api/governmentpayment/pay",
                           body: {
                             "voucherCode": chitNumberController.text,
-                            // "billerCode": _response.findValue(
-                            //     primaryKey: "hashResposne",
-                            //     secondaryKey: "billerCode"),
-                            "billerCode": "GON-7-TVRS-1",
-                            "serviceCharge": "10",
-                            // "serviceCharge": _response.findValue(
-                            //     primaryKey: "hashResposne",
-                            //     secondaryKey: "charge"),
-                            "fiscalYear": "2077/88"
+                            // "voucherCode": "34600",
+                            "billerCode": _response
+                                .findValue(
+                                    primaryKey: "hashResposne",
+                                    secondaryKey: "billerCode")
+                                .toString(),
+                            "serviceCharge": serviceCharge,
+                            // "serviceCharge": _response
+                            //     .findValue(
+                            //         primaryKey: "hashResposne",
+                            //         secondaryKey: "charge")
+                            //     .toString(),
+                            "fiscalYear": dateController.text
                           },
                           accountDetails: {
                             "account_number":
                                 RepositoryProvider.of<CustomerDetailRepository>(
                                         context)
-                                    .selectedAccount,
-                            "amount": _response
-                                .findValue(
-                                    primaryKey: "hashResposne",
-                                    secondaryKey: "amount")
-                                .toString(),
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber
+                                    .toString(),
+                            // "account_number": "002001-001-102-0001010",
+
+                            "amount": myAmount.replaceAll("NPR ", ""),
+                            // "amount": _response.findValue(
+                            //     primaryKey: "hashResposne",
+                            //     secondaryKey: "formattedFinalAmount"),
                             "mPin": p0
                           });
                     },
@@ -125,7 +147,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                         value: _response
                             .findValue(
                               primaryKey: "hashResponse",
-                              secondaryKey: "amount",
+                              secondaryKey: "formattedFinalAmount",
                             )
                             .toString()),
                     KeyValueTile(
@@ -237,16 +259,16 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           ],
         ),
         onButtonPressed: () {
-          //   context.read<UtilityPaymentCubit>().fetchDetails(
-          //         serviceIdentifier: widget.service.uniqueIdentifier,
-          //         accountDetails: {
-          //           "chitNumber": "34600",
-          //           "fiscalYear": "2077/78",
-          //           "provinceId": "000",
-          //           "districtId": "002",
-          //         },
-          //         apiEndpoint: "api/governmentpayment/trafficFineDetail",
-          //       );
+          // context.read<UtilityPaymentCubit>().fetchDetails(
+          //       serviceIdentifier: widget.service.uniqueIdentifier,
+          //       accountDetails: {
+          //         "chitNumber": "34600",
+          //         "fiscalYear": "2077/78",
+          //         "provinceId": "000",
+          //         "districtId": "002",
+          //       },
+          //       apiEndpoint: "api/governmentpayment/trafficFineDetail",
+          //     );
           context.read<UtilityPaymentCubit>().fetchDetails(
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 accountDetails: {

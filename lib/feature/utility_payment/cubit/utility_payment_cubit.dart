@@ -139,35 +139,6 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     }
   }
 
-  payInsurance({
-    required String serviceIdentifier,
-    required String amount,
-    required String mpin,
-    required String dob,
-  }) async {
-    emit(CommonLoading());
-
-    final _res = await utilityPaymentRepository.payInsurance(
-      serviceIdentifier: serviceIdentifier,
-      accountNumber: RepositoryProvider.of<CustomerDetailRepository>(
-              NavigationService.context)
-          .selectedAccount
-          .toString(),
-      dob: dob,
-      amount: amount,
-      mpin: mpin,
-    );
-    if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<String>(data: _res.data!));
-    } else {
-      emit(
-        CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
-        ),
-      );
-    }
-  }
-
   payTrafficFine({
     required String serviceIdentifier,
     required String apiEndpoint,
