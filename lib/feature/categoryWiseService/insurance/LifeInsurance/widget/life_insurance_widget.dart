@@ -22,23 +22,22 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class NepalLifeInsurcnceWidget extends StatefulWidget {
+class LifeInsurcnceWidget extends StatefulWidget {
   final String companyName;
   final String companyLogo;
   final Service service;
 
-  NepalLifeInsurcnceWidget(
+  LifeInsurcnceWidget(
       {super.key,
       required this.companyName,
       required this.companyLogo,
       required this.service});
 
   @override
-  State<NepalLifeInsurcnceWidget> createState() =>
-      _NepalLifeInsurcnceWidgetState();
+  State<LifeInsurcnceWidget> createState() => _LifeInsurcnceWidgetState();
 }
 
-class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
+class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
   TextEditingController selectedDateController = TextEditingController();
   TextEditingController policyNoController = TextEditingController();
 
@@ -182,6 +181,16 @@ class _NepalLifeInsurcnceWidgetState extends State<NepalLifeInsurcnceWidget> {
                 },
                 showCancelButton: false);
           }
+        } else if (state is CommonError) {
+          showPopUpDialog(
+            context: context,
+            message: state.message,
+            title: "Error",
+            showCancelButton: false,
+            buttonCallback: () {
+              NavigationService.pop();
+            },
+          );
         }
       },
       child: CommonContainer(
