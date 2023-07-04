@@ -65,48 +65,48 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
             NavigationService.push(
               target: CommonBillDetailPage(
                 onButtonPress: () {
-                  NavigationService.push(target: TransactionPinScreen(
-                    onValueCallback: (p0) {
-                      NavigationService.pop();
+                  // NavigationService.push(target: TransactionPinScreen(
+                  //   onValueCallback: (p0) {
+                  //     NavigationService.pop();
 
-                      context.read<UtilityPaymentCubit>().payTrafficFine(
-                          serviceIdentifier: widget.service.uniqueIdentifier,
-                          // serviceIdentifier: "traffic_fine_payments",
-                          apiEndpoint: "/api/governmentpayment/pay",
-                          body: {
-                            "voucherCode": usernameController.text,
-                            // "voucherCode": "34600",
-                            "billerCode": _response
-                                .findValue(
-                                    primaryKey: "hashResposne",
-                                    secondaryKey: "billerCode")
-                                .toString(),
-                            // "serviceCharge": serviceCharge,
-                            // "serviceCharge": _response
-                            //     .findValue(
-                            //         primaryKey: "hashResposne",
-                            //         secondaryKey: "charge")
-                            //     .toString(),
-                            "fiscalYear": dateController.text
-                          },
-                          accountDetails: {
-                            "account_number":
-                                RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber
-                                    .toString(),
-                            // "account_number": "002001-001-102-0001010",
+                  //     context.read<UtilityPaymentCubit>().payTrafficFine(
+                  //         serviceIdentifier: widget.service.uniqueIdentifier,
+                  //         // serviceIdentifier: "traffic_fine_payments",
+                  //         apiEndpoint: "/api/governmentpayment/pay",
+                  //         body: {
+                  //           "voucherCode": usernameController.text,
+                  //           // "voucherCode": "34600",
+                  //           "billerCode": _response
+                  //               .findValue(
+                  //                   primaryKey: "hashResposne",
+                  //                   secondaryKey: "billerCode")
+                  //               .toString(),
+                  //           // "serviceCharge": serviceCharge,
+                  //           // "serviceCharge": _response
+                  //           //     .findValue(
+                  //           //         primaryKey: "hashResposne",
+                  //           //         secondaryKey: "charge")
+                  //           //     .toString(),
+                  //           "fiscalYear": dateController.text
+                  //         },
+                  //         accountDetails: {
+                  //           "account_number":
+                  //               RepositoryProvider.of<CustomerDetailRepository>(
+                  //                       context)
+                  //                   .selectedAccount
+                  //                   .value!
+                  //                   .accountNumber
+                  //                   .toString(),
+                  //           // "account_number": "002001-001-102-0001010",
 
-                            // "amount": myAmount,
-                            // "amount": _response.findValue(
-                            //     primaryKey: "hashResposne",
-                            //     secondaryKey: "formattedFinalAmount"),
-                            "mPin": p0
-                          });
-                    },
-                  ));
+                  //           // "amount": myAmount,
+                  //           // "amount": _response.findValue(
+                  //           //     primaryKey: "hashResposne",
+                  //           //     secondaryKey: "formattedFinalAmount"),
+                  //           "mPin": p0
+                  //         });
+                  //   },
+                  // ));
                 },
                 serviceType: widget.service.service,
                 image:
@@ -115,12 +115,10 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                   children: [
                     KeyValueTile(
                         title: "Customer ID",
-                        value: _response
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "customerId",
-                            )
-                            .toString()),
+                        value: _response.findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "customerId ",
+                        )),
                     KeyValueTile(
                         title: "Customer Name",
                         value: _response
@@ -192,7 +190,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           context.read<UtilityPaymentCubit>().fetchDetails(
               serviceIdentifier: widget.service.uniqueIdentifier,
               accountDetails: {
-                "username": usernameController.text,
+                "username": usernameController.text, //1000088266
               },
               apiEndpoint: "api/tvpackages");
         },
