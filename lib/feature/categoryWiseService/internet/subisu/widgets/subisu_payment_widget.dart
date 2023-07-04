@@ -38,6 +38,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
           showDetail: true,
           title: 'Internet Payment',
           detail: 'Pay your internet bill of you ISP from here',
+          showAccountSelection: true,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -77,20 +78,21 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
                   style: Theme.of(context).textTheme.labelMedium),
               SizedBox(height: _height * 0.03),
               CustomTextField(
+                title: 'Username',
                 controller: _usernameController,
                 hintText: 'Enter Username',
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, 'Username'),
               ),
-              SizedBox(height: _height * 0.03),
               CustomTextField(
+                title: 'Mobile Number',
                 validator: (value) => FormValidator.validatePhoneNumber(value),
                 controller: _mobileNumberController,
                 hintText: 'Enter Mobile Number',
                 textInputType: TextInputType.number,
               ),
-              SizedBox(height: _height * 0.03),
               CustomTextField(
+                title: 'Amount',
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, 'Amount'),
                 controller: _amountController,

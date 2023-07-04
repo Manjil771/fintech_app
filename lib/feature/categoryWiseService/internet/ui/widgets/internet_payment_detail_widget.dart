@@ -5,6 +5,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
@@ -72,94 +73,72 @@ class _InternetPaymentDeatilWidgetState
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: ListView(
-        children: [
-          const ScaffoldTopBar(name: "Payment"),
-          Container(
-            decoration: const BoxDecoration(
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12))),
-            padding: const EdgeInsets.all(24),
-            child: Column(
+      body: CommonContainer(
+        showDetail: true,
+        topbarName: 'Payment',
+        title: 'Internet Payment',
+        buttonName: 'Proceed',
+        detail: 'Pay your internet bill of you ISP from here',
+        showAccountSelection: true,
+        body: Column(
+          children: [
+            Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "Internet Payment",
-                  style: _textTheme.titleLarge,
-                ),
-                Text(
-                  "Pay your internet bill of you ISP from here",
-                  style: _textTheme.displaySmall,
+                  "Details",
+                  style: _textTheme.titleMedium,
                 ),
                 SizedBox(height: _height * 0.01),
-                Text("From Account", style: _textTheme.titleMedium),
-                Container(
-                  padding: const EdgeInsets.all(18),
-                  width: double.infinity,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                  ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Details",
-                        style: _textTheme.titleMedium,
-                      ),
-                      SizedBox(height: _height * 0.01),
-                      KeyValueTile(
-                        title: "Customer Name",
-                        value: widget.detailFetchData
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "customerName",
-                            )
-                            .toString(),
-                      ),
-                      SizedBox(height: _height * 0.008),
-                      KeyValueTile(
-                        title: "Customer ID",
-                        value: widget.detailFetchData
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "wlinkUserName",
-                            )
-                            .toString(),
-                      ),
-                      SizedBox(height: _height * 0.008),
-                      KeyValueTile(
-                        title: "Subscribed Package",
-                        value: widget.detailFetchData
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "subscribedPackageName",
-                            )
-                            .toString(),
-                      ),
-                      SizedBox(height: _height * 0.008),
-                      KeyValueTile(
-                        title: "Subscription Type",
-                        value: widget.detailFetchData
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "subscribedPackageType",
-                            )
-                            .toString(),
-                      ),
-                      SizedBox(height: _height * 0.008),
-                      KeyValueTile(
-                        title: "Days Remaining",
-                        value: widget.detailFetchData
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "paymentMessage",
-                            )
-                            .toString(),
-                      ),
-                    ],
-                  ),
+                KeyValueTile(
+                  title: "Customer Name",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "customerName",
+                      )
+                      .toString(),
+                ),
+                SizedBox(height: _height * 0.008),
+                KeyValueTile(
+                  title: "Customer ID",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "wlinkUserName",
+                      )
+                      .toString(),
+                ),
+                SizedBox(height: _height * 0.008),
+                KeyValueTile(
+                  title: "Subscribed Package",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "subscribedPackageName",
+                      )
+                      .toString(),
+                ),
+                SizedBox(height: _height * 0.008),
+                KeyValueTile(
+                  title: "Subscription Type",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "subscribedPackageType",
+                      )
+                      .toString(),
+                ),
+                SizedBox(height: _height * 0.008),
+                KeyValueTile(
+                  title: "Days Remaining",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "paymentMessage",
+                      )
+                      .toString(),
                 ),
                 if (_isPackageAvailable)
                   CustomCheckbox(
@@ -244,43 +223,39 @@ class _InternetPaymentDeatilWidgetState
                 //     itemBuilder: (context, index) => amountBox(context, index),
                 //   ),
                 // ),
-                SizedBox(height: _height * 0.03),
-                CustomRoundedButtom(
-                  title: "Proceed",
-                  onPressed: () {
-                    NavigationService.push(
-                      target: TransactionPinScreen(
-                        onValueCallback: (mpin) {
-                          NavigationService.pop();
-                          context.read<UtilityPaymentCubit>().makePayment(
-                                body: widget.detailFetchData
-                                    .findValue(primaryKey: "hashResponse"),
-                                serviceIdentifier: "worldlink_online_topup",
-                                accountDetails: {
-                                  "wlink_username":
-                                      widget.detailFetchData.findValue(
-                                    primaryKey: "hashResponse",
-                                    secondaryKey: "wlinkUserName",
-                                  ),
-                                  "amount": "",
-                                  "account_number": RepositoryProvider.of<
-                                          CustomerDetailRepository>(context)
-                                      .selectedAccount
-                                      .value
-                                      ?.accountNumber,
-                                  "mPin": mpin,
-                                },
-                                apiEndpoint: "api/wlinkpay",
-                              );
-                        },
-                      ),
-                    );
-                  },
-                ),
               ],
             ),
-          )
-        ],
+          ],
+        ),
+        onButtonPressed: () {
+          NavigationService.push(
+            target: TransactionPinScreen(
+              onValueCallback: (mpin) {
+                NavigationService.pop();
+                context.read<UtilityPaymentCubit>().makePayment(
+                      body: widget.detailFetchData
+                          .findValue(primaryKey: "hashResponse"),
+                      serviceIdentifier: "worldlink_online_topup",
+                      accountDetails: {
+                        "wlink_username": widget.detailFetchData.findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "wlinkUserName",
+                        ),
+                        "amount": "",
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value
+                                ?.accountNumber,
+                        "mPin": mpin,
+                      },
+                      apiEndpoint: "api/wlinkpay",
+                    );
+              },
+            ),
+          );
+        },
       ),
     );
   }

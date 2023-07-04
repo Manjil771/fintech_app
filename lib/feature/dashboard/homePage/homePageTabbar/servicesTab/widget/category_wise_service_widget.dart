@@ -65,7 +65,9 @@ class _CategoriesWiseServicesWidgetState
                             .toLowerCase() ==
                         "worldlink_online_topup".toLowerCase()) {
                       NavigationService.push(
-                          target: const FindInternetUserScreen());
+                          target: FindInternetUserScreen(
+                        service: widget.services[index],
+                      ));
                     } else if (widget.services[index].uniqueIdentifier
                             .toLowerCase() ==
                         "subisu_online_topup".toLowerCase()) {
