@@ -25,6 +25,7 @@ import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.da
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
+import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -48,6 +49,16 @@ class _LoginWidgetState extends State<LoginWidget> {
   bool _isLoading = false;
 
   bool _isBiometricLogin = false;
+
+  Future<String> _getDeviceUUID() async {
+    String? _deviceUUID = await SharedPref.getDeviceUUID();
+    if (_deviceUUID == null || _deviceUUID.isEmpty) {
+      _deviceUUID = const Uuid().v4();
+      SharedPref.setDeviceUUID(_deviceUUID);
+    }
+    return _deviceUUID;
+  }
+
   _checkBiometric() async {
     bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
@@ -125,11 +136,12 @@ class _LoginWidgetState extends State<LoginWidget> {
             } else if (state.data == LoginResponseValue.OTPVerification) {
               NavigationService.push(
                 target: OTPWidget(
-                  onValueCallback: (val) {
+                  onValueCallback: (val) async {
                     context.read<LoginCubit>().loginUser(
                           username: _getPhoneNumber(),
                           password: passwordController.text,
                           otpCode: val,
+                          deviceUUID: await _getDeviceUUID(),
                         );
                   },
                 ),
@@ -230,19 +242,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.035),
                     CustomRoundedButtom(
-                        title: "Login",
-                        onPressed: () {
-                          // if (_loginFormKey.currentState!.validate()) {
+                      title: "Login",
+                      onPressed: () async {
+                        if (_loginFormKey.currentState!.validate()) {
                           context.read<LoginCubit>().loginUser(
-                                //username: "9813894737",
-                                // password: "778899",
-
-                                // username: "9803435443",
-                                // password: "70074",
                                 username: _getPhoneNumber(),
                                 password: passwordController.text,
+                                deviceUUID: await _getDeviceUUID(),
                               );
-                        }),
+                        }
+                      },
+                    ),
                     SizedBox(height: height * 0.014),
                     ValueListenableBuilder<bool>(
                         valueListenable: _isBiometricEnabled,
@@ -260,11 +270,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   final String password =
                                       await SecureStorageService.appPassword;
                                   _isBiometricLogin = true;
-                                  print(_isBiometricLogin);
+
                                   if (phone.isNotEmpty && password.isNotEmpty) {
                                     context.read<LoginCubit>().loginUser(
                                           username: phone,
                                           password: password,
+                                          deviceUUID: await _getDeviceUUID(),
                                         );
                                   }
                                 }

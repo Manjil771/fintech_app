@@ -60,8 +60,8 @@ class RecentTransactionModel {
         requestDetail: json["requestDetail"] ?? {},
         responseDetail: json["responseDetail"] ?? {},
         iconUrl: json["iconUrl"],
-        debit: json["debit"],
-        channelType: json["channelType"],
+        debit: json["debit"] ?? true,
+        channelType: json["channelType"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

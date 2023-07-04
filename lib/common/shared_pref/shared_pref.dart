@@ -14,6 +14,7 @@ class SharedPref {
   static const _rememberNumber = "rememberNumber";
 
   static const _biometricLogin = "biometricLogin";
+  static const _deviceUUID = "deviceUUID";
 
   static Future setFirstTimeAppOpen(bool status) async {
     final _instance = await SharedPreferences.getInstance();
@@ -139,5 +140,20 @@ class SharedPref {
   static Future removeBiometricLogin() async {
     final _instance = await SharedPreferences.getInstance();
     await _instance.remove(_biometricLogin);
+  }
+
+  static Future setDeviceUUID(String uuid) async {
+    final _instance = await SharedPreferences.getInstance();
+    await _instance.setString(_deviceUUID, uuid);
+  }
+
+  static Future deleteDeviceUUID() async {
+    final _instance = await SharedPreferences.getInstance();
+    await _instance.remove(_deviceUUID);
+  }
+
+  static Future getDeviceUUID() async {
+    final _instance = await SharedPreferences.getInstance();
+    _instance.get(_deviceUUID);
   }
 }
