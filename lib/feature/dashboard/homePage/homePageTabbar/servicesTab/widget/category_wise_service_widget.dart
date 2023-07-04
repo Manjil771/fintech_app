@@ -11,6 +11,7 @@ import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/scree
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/nepalLifeInsurance/screen/nepal_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
@@ -60,10 +61,18 @@ class _CategoriesWiseServicesWidgetState
                         companyLogo: widget.services[index].icon.toString(),
                         companyName: widget.services[index].service,
                       ));
-                    } else if (widget.uniqueIdentifier.toLowerCase() ==
-                        "internet".toLowerCase()) {
+                    } else if (widget.services[index].uniqueIdentifier
+                            .toLowerCase() ==
+                        "worldlink_online_topup".toLowerCase()) {
                       NavigationService.push(
                           target: const FindInternetUserScreen());
+                    } else if (widget.services[index].uniqueIdentifier
+                            .toLowerCase() ==
+                        "subisu_online_topup".toLowerCase()) {
+                      NavigationService.push(
+                          target: SubisuPaymentPage(
+                        service: widget.services[index],
+                      ));
                     }
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
                         "khanepani_online_topup".toLowerCase()) {
