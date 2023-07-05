@@ -169,7 +169,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                           .map((e) => DataRow(
                                 cells: [
                                   DataCell(Text(
-                                      "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.year}")),
+                                      "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
                                   DataCell(Text(
                                     e.amount.toString(),
                                     style: TextStyle(

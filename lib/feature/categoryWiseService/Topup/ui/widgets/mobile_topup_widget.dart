@@ -8,16 +8,21 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
+  final Service? service;
+
+  const MobileTopUpWidget({super.key, this.service});
   @override
   State<MobileTopUpWidget> createState() => _MobileTopUpWidgetState();
 }
@@ -60,16 +65,13 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               NavigationService.pop();
             }
 
-            if (state is CommonStateSuccess) {
-              showPopUpDialog(
-                context: context,
-                message: state.data,
-                title: "Success",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.popUntilFirstPage();
-                },
-              );
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              NavigationService.push(
+                  target: CommonTransactionSuccessfulPage(
+                      transactionID: state.data.code,
+                      body: Container(),
+                      message: state.data.message,
+                      service: widget.service));
             } else if (state is CommonError) {
               showPopUpDialog(
                 context: context,

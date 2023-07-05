@@ -94,8 +94,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                         .toString()
                                         .toLowerCase() ==
                                     "topup") {
-                                  NavigationService.pushNamed(
-                                      routeName: Routes.mobileTopup);
+                                  NavigationService.push(
+                                      target: MobileTopupPage(
+                                          service: data.services[index]));
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
