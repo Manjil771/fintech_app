@@ -233,6 +233,7 @@ class _InternetPaymentDeatilWidgetState
               onValueCallback: (mpin) {
                 NavigationService.pop();
                 context.read<UtilityPaymentCubit>().makePayment(
+                      mPin: mpin,
                       body: widget.detailFetchData
                           .findValue(primaryKey: "hashResponse"),
                       serviceIdentifier: "worldlink_online_topup",
@@ -248,7 +249,6 @@ class _InternetPaymentDeatilWidgetState
                                 .selectedAccount
                                 .value
                                 ?.accountNumber,
-                        "mPin": mpin,
                       },
                       apiEndpoint: "api/wlinkpay",
                     );

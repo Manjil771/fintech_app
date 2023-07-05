@@ -67,10 +67,12 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
     required String apiEndpoint,
+    required mPin,
   }) async {
     emit(CommonLoading());
 
     final _res = await utilityPaymentRepository.makePayment(
+      mPin: mPin,
       serviceIdentifier: serviceIdentifier,
       accountDetails: accountDetails,
       apiEndpoint: apiEndpoint,

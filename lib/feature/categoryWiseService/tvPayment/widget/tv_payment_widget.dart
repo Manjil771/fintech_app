@@ -7,6 +7,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -30,11 +31,7 @@ class TvPaymentWidget extends StatefulWidget {
 }
 
 class _TvPaymentWidgetState extends State<TvPaymentWidget> {
-  final TextEditingController _selectedProvinceNameController =
-      TextEditingController();
-  final TextEditingController _selectedDistrictController =
-      TextEditingController();
-  final TextEditingController dateController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
   String? selectedDistrictValue;
   String? selectedProvinceValue;
@@ -61,95 +58,71 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
 
-          if (_response.code == "M0000") {
-            NavigationService.push(
-              target: CommonBillDetailPage(
-                onButtonPress: () {
-                  // NavigationService.push(target: TransactionPinScreen(
-                  //   onValueCallback: (p0) {
-                  //     NavigationService.pop();
+          NavigationService.push(
+            target: CommonBillDetailPage(
+              apiEndpoint: "/api/tvpay",
+              apiBody: {"customerId ": usernameController.text},
+              accountDetails: {
+                "account_number":
+                    RepositoryProvider.of<CustomerDetailRepository>(context)
+                        .selectedAccount
+                        .value!
+                        .accountNumber
+                        .toString(),
+                "username": usernameController.text,
+                "customer_id": usernameController.text,
+                "amount": amountController.text,
+                // "account_number": "002001-001-102-0001010",
 
-                  //     context.read<UtilityPaymentCubit>().payTrafficFine(
-                  //         serviceIdentifier: widget.service.uniqueIdentifier,
-                  //         // serviceIdentifier: "traffic_fine_payments",
-                  //         apiEndpoint: "/api/governmentpayment/pay",
-                  //         body: {
-                  //           "voucherCode": usernameController.text,
-                  //           // "voucherCode": "34600",
-                  //           "billerCode": _response
-                  //               .findValue(
-                  //                   primaryKey: "hashResposne",
-                  //                   secondaryKey: "billerCode")
-                  //               .toString(),
-                  //           // "serviceCharge": serviceCharge,
-                  //           // "serviceCharge": _response
-                  //           //     .findValue(
-                  //           //         primaryKey: "hashResposne",
-                  //           //         secondaryKey: "charge")
-                  //           //     .toString(),
-                  //           "fiscalYear": dateController.text
-                  //         },
-                  //         accountDetails: {
-                  //           "account_number":
-                  //               RepositoryProvider.of<CustomerDetailRepository>(
-                  //                       context)
-                  //                   .selectedAccount
-                  //                   .value!
-                  //                   .accountNumber
-                  //                   .toString(),
-                  //           // "account_number": "002001-001-102-0001010",
-
-                  //           // "amount": myAmount,
-                  //           // "amount": _response.findValue(
-                  //           //     primaryKey: "hashResposne",
-                  //           //     secondaryKey: "formattedFinalAmount"),
-                  //           "mPin": p0
-                  //         });
-                  //   },
-                  // ));
-                },
-                serviceType: widget.service.service,
-                image:
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
-                body: Column(
-                  children: [
-                    KeyValueTile(
-                        title: "Customer ID",
-                        value: _response.findValue(
-                          primaryKey: "hashResponse",
-                          secondaryKey: "customerId ",
-                        )),
-                    KeyValueTile(
-                        title: "Customer Name",
-                        value: _response
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "customerName",
-                            )
-                            .toString()),
-                    KeyValueTile(
-                        title: "Number of TV",
-                        value: _response
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "noOfTv",
-                            )
-                            .toString())
-                  ],
-                ),
+                // "amount": myAmount,
+                // "amount": _response.findValue(
+                //     primaryKey: "hashResposne",
+                //     secondaryKey: "formattedFinalAmount"),
+              },
+              service: widget.service,
+              body: Column(
+                children: [
+                  KeyValueTile(
+                      title: "Customer ID",
+                      value: _response.findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "customerId ",
+                      )),
+                  KeyValueTile(
+                      title: "Customer Name",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "customerName",
+                          )
+                          .toString()),
+                  KeyValueTile(title: "Amount", value: amountController.text),
+                  KeyValueTile(
+                      title: "Number of TV",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "noOfTv",
+                          )
+                          .toString())
+                ],
               ),
-            );
-          } else {
-            showPopUpDialog(
-                context: context,
-                message: _response.message,
-                title: "Error",
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-                showCancelButton: false);
-          }
+            ),
+          );
+          // } else {
+          //   showPopUpDialog(
+          //       context: context,
+          //       message: state.toString(),
+          //       title: "Error",
+          //       buttonCallback: () {
+          //         NavigationService.pop();
+          //       },
+          //       showCancelButton: false);
         }
+        // } else if (state is CommonError) {
+        //   showAboutDialog(
+        //     context: context,
+        //   );
       },
       child: CommonContainer(
         showAccountSelection: true,
@@ -184,6 +157,11 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               hintText: "XXXXXXXXX",
               controller: usernameController,
             ),
+            CustomTextField(
+              title: "Amount",
+              hintText: "NPR",
+              controller: amountController,
+            ),
           ],
         ),
         onButtonPressed: () {
@@ -198,3 +176,39 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
     ));
   }
 }
+
+
+
+
+  // NavigationService.push(target: TransactionPinScreen(
+                //   onValueCallback: (p0) {
+                //     NavigationService.pop();
+
+                //     context.read<UtilityPaymentCubit>().makePayment(
+                //         serviceIdentifier: widget.service.uniqueIdentifier,
+                //         // serviceIdentifier: "traffic_fine_payments",
+                //         apiEndpoint: "/api/tvpay",
+                //         body: {
+                //           "customerId ": usernameController.text
+                //         },
+                //         accountDetails: {
+                //           "account_number":
+                //               RepositoryProvider.of<CustomerDetailRepository>(
+                //                       context)
+                //                   .selectedAccount
+                //                   .value!
+                //                   .accountNumber
+                //                   .toString(),
+                //           "username": usernameController.text,
+                //           "customer_id": usernameController.text,
+                //           "amount": amountController.text,
+                //           // "account_number": "002001-001-102-0001010",
+
+                //           // "amount": myAmount,
+                //           // "amount": _response.findValue(
+                //           //     primaryKey: "hashResposne",
+                //           //     secondaryKey: "formattedFinalAmount"),
+                //           "mPin": p0
+                //         });
+                //   },
+                // ));

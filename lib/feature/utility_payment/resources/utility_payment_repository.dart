@@ -88,9 +88,11 @@ class UtilityPaymentRepository {
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
     required String apiEndpoint,
+    required mPin,
   }) async {
     try {
       final _res = await utilityPaymentAPIProvider.makePayment(
+        mPin: mPin,
         serviceIdentifier: serviceIdentifier,
         accountDetails: accountDetails,
         apiEndpoint: apiEndpoint,

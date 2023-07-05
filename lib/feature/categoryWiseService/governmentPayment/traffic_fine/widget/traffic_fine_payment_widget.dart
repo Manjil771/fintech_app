@@ -82,58 +82,37 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
-                onSuccessState: () {
-                  print(
-                      "state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf  sdfhjgsdg hfgjhsdfghj");
-                  NavigationService.push(target: HomePage());
+                apiEndpoint: "/api/governmentpayment/pay",
+                apiBody: {
+                  "voucherCode": chitNumberController.text,
+                  // "voucherCode": "34600",
+                  "billerCode": _response
+                      .findValue(
+                          primaryKey: "hashResposne",
+                          secondaryKey: "billerCode")
+                      .toString(),
+                  "serviceCharge": serviceCharge,
+                  // "serviceCharge": _response
+                  //     .findValue(
+                  //         primaryKey: "hashResposne",
+                  //         secondaryKey: "charge")
+                  //     .toString(),
+                  "fiscalYear": dateController.text
                 },
-                onButtonPress: () {
-                  NavigationService.push(target: TransactionPinScreen(
-                    onValueCallback: (p0) {
-                      NavigationService.pop();
+                accountDetails: {
+                  "account_number":
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value!
+                          .accountNumber
+                          .toString(),
+                  // "account_number": "002001-001-102-0001010",
 
-                      context.read<UtilityPaymentCubit>().makePayment(
-                          serviceIdentifier: widget.service.uniqueIdentifier,
-                          // serviceIdentifier: "traffic_fine_payments",
-                          apiEndpoint: "/api/governmentpayment/pay",
-                          body: {
-                            "voucherCode": chitNumberController.text,
-                            // "voucherCode": "34600",
-                            "billerCode": _response
-                                .findValue(
-                                    primaryKey: "hashResposne",
-                                    secondaryKey: "billerCode")
-                                .toString(),
-                            "serviceCharge": serviceCharge,
-                            // "serviceCharge": _response
-                            //     .findValue(
-                            //         primaryKey: "hashResposne",
-                            //         secondaryKey: "charge")
-                            //     .toString(),
-                            "fiscalYear": dateController.text
-                          },
-                          accountDetails: {
-                            "account_number":
-                                RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber
-                                    .toString(),
-                            // "account_number": "002001-001-102-0001010",
-
-                            "amount": myAmount.replaceAll("NPR ", ""),
-                            // "amount": _response.findValue(
-                            //     primaryKey: "hashResposne",
-                            //     secondaryKey: "formattedFinalAmount"),
-                            "mPin": p0
-                          });
-                    },
-                  ));
+                  "amount": myAmount.replaceAll("NPR ", ""),
+                  // "amount": _response.findValue(
+                  //     primaryKey: "hashResposne",
+                  //     secondaryKey: "formattedFinalAmount"),
                 },
-                serviceType: widget.service.service,
-                image:
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
                 body: Column(
                   children: [
                     KeyValueTile(

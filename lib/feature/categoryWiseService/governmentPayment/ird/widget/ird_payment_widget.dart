@@ -51,88 +51,72 @@ class _IrdPaymentWidgetState extends State<IrdPaymentWidget> {
             UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.push(
-                target: CommonBillDetailPage(
-                    onButtonPress: () {
-                      NavigationService.push(
-                        target: TransactionPinScreen(
-                          onValueCallback: (mPin) {
-                            NavigationService.pop();
-                            context.read<UtilityPaymentCubit>().makePayment(
-                                serviceIdentifier:
-                                    widget.service.uniqueIdentifier,
-                                accountDetails: {
-                                  'amount': _amountController.text,
-                                  'mPin': mPin,
-                                  'account_number': RepositoryProvider.of<
-                                          CustomerDetailRepository>(context)
-                                      .selectedAccount
-                                      .value!
-                                      .accountNumber,
-                                },
-                                body: {
-                                  "voucherCode": _ebpNumberController.text,
-                                  "billerCode": _response.findValue(
-                                    primaryKey: "hashResponse",
-                                    secondaryKey: "billerCode",
-                                  ),
-                                  "serviceCharge": _response.findValue(
-                                    primaryKey: "hashResponse",
-                                    secondaryKey: "serviceCharge",
-                                  ),
-                                },
-                                apiEndpoint: '/api/governmentpayment/pay');
-                          },
-                        ),
-                      );
-                    },
-                    image:
-                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
-                    body: Column(
-                      children: [
-                        KeyValueTile(
-                            title: "Biller Code",
-                            value: _response
-                                .findValue(
-                                  primaryKey: "hashResponse",
-                                  secondaryKey: "billerCode",
-                                )
-                                .toString()),
-                        KeyValueTile(
-                            title: "Customer Name",
-                            value: _response
-                                .findValue(
-                                  primaryKey: "hashResponse",
-                                  secondaryKey: "customerName",
-                                )
-                                .toString()),
-                        KeyValueTile(
-                            title: "Amount",
-                            value: _response
-                                .findValue(
-                                  primaryKey: "hashResponse",
-                                  secondaryKey: "amount",
-                                )
-                                .toString()),
-                        KeyValueTile(
-                            title: "Service Charge",
-                            value: _response
-                                .findValue(
-                                  primaryKey: "hashResponse",
-                                  secondaryKey: "serviceCharge",
-                                )
-                                .toString()),
-                        KeyValueTile(
-                            title: "Total Amount",
-                            value: _response
-                                .findValue(
-                                  primaryKey: "hashResponse",
-                                  secondaryKey: "totalAmount",
-                                )
-                                .toString()),
-                      ],
-                    ),
-                    serviceType: widget.service.service),
-              );
+                  target: CommonBillDetailPage(
+                accountDetails: {
+                  'amount': _amountController.text,
+                  'account_number':
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value!
+                          .accountNumber,
+                },
+                apiBody: {
+                  "voucherCode": _ebpNumberController.text,
+                  "billerCode": _response.findValue(
+                    primaryKey: "hashResponse",
+                    secondaryKey: "billerCode",
+                  ),
+                  "serviceCharge": _response.findValue(
+                    primaryKey: "hashResponse",
+                    secondaryKey: "serviceCharge",
+                  ),
+                },
+                apiEndpoint: '/api/governmentpayment/pay',
+                body: Column(
+                  children: [
+                    KeyValueTile(
+                        title: "Biller Code",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "billerCode",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "Customer Name",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "customerName",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "Amount",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "amount",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "Service Charge",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "serviceCharge",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "Total Amount",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "totalAmount",
+                            )
+                            .toString()),
+                  ],
+                ),
+              ));
             } else {
               showPopUpDialog(
                   context: context,

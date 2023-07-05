@@ -60,62 +60,24 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
-                onButtonPress: () {
-                  final myAmount = _response.findValue(
-                      primaryKey: "hashResponse", secondaryKey: "amount");
-                  NavigationService.push(target: TransactionPinScreen(
-                    onValueCallback: (p0) {
-                      NavigationService.pop();
-
-                      context.read<UtilityPaymentCubit>().makePayment(
-                          serviceIdentifier: widget.service.uniqueIdentifier,
-                          apiEndpoint: "/api/insurance/pay",
-                          body: {
-                            // "policyNo": "108006674",
-
-                            "policyNo": _response.findValue(
-                                primaryKey: "hashResposne",
-                                secondaryKey: "policyNo"),
-                            // "policyName": "DEEPAK SHRESTHA"
-
-                            "policyName": _response.findValue(
-                                primaryKey: "hashResposne",
-                                secondaryKey: "policyName"),
-                          },
-                          accountDetails: {
-                            "account_number":
-                                RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber,
-                            // "account_number": "002001-001-102-0001010",
-
-                            "amount": myAmount,
-
-                            // "amount": _response.findValue(
-                            //     primaryKey: "hashResposne",
-                            //     secondaryKey: "amount"),
-                            "mPin": p0,
-                            "dob": selectedDateController.text
-                          });
-                    },
-                  ));
+                apiEndpoint: "/api/insurance/pay",
+                apiBody: {
+                  "proformaNo": _response.findValue(
+                      primaryKey: "hashResposne", secondaryKey: "proformaNo"),
+                  "policyName": _response.findValue(
+                      primaryKey: "hashResposne", secondaryKey: "policyName"),
                 },
-                serviceType: widget.service.service,
-                image:
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
+                accountDetails: {
+                  "account_number":
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value!
+                          .accountNumber,
+                  "amount": _response.findValue(
+                      primaryKey: "hashResponse", secondaryKey: "totalPremium"),
+                },
                 body: Column(
                   children: [
-                    KeyValueTile(
-                      title: "Policy Number",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "policyNo",
-                          )
-                          .toString(),
-                    ),
                     KeyValueTile(
                       title: "Username",
                       value: _response
@@ -126,11 +88,11 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                           .toString(),
                     ),
                     KeyValueTile(
-                      title: "Amount",
+                      title: "Total Insured Amount",
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "amount",
+                            secondaryKey: "sumInsuredAmount",
                           )
                           .toString(),
                     ),
@@ -139,25 +101,16 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "premium",
+                            secondaryKey: "totalPremium",
                           )
                           .toString(),
                     ),
                     KeyValueTile(
-                      title: "Due Date",
+                      title: "Proforma No",
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "dueDate",
-                          )
-                          .toString(),
-                    ),
-                    KeyValueTile(
-                      title: "Penalty",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "interestOccured",
+                            secondaryKey: "proformaNo",
                           )
                           .toString(),
                     ),

@@ -7,6 +7,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -15,14 +16,20 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final Widget body;
   final String message;
   final Service? service;
+  final String transactionID;
 
   const CommonTransactionSuccessPage(
-      {super.key, required this.body, required this.message, this.service});
+      {super.key,
+      required this.body,
+      required this.message,
+      this.service,
+      required this.transactionID});
 
   @override
   Widget build(BuildContext context) {
     return CommonTransactionSuccessfulPage(
       body: body,
+      transactionID: transactionID,
       message: message,
       service: service,
     );
@@ -32,13 +39,15 @@ class CommonTransactionSuccessPage extends StatelessWidget {
 class CommonTransactionSuccessfulPage extends StatelessWidget {
   final Widget body;
   final String message;
+  final String transactionID;
   //need to inplement pdf download
   final Service? service;
   const CommonTransactionSuccessfulPage(
       {super.key,
       required this.body,
       required this.message,
-      required this.service});
+      required this.service,
+      required this.transactionID});
 
   @override
   Widget build(BuildContext context) {
@@ -92,6 +101,8 @@ class CommonTransactionSuccessfulPage extends StatelessWidget {
                         children: [
                           Text("Paymet Details",
                               style: Theme.of(context).textTheme.titleLarge),
+                          KeyValueTile(
+                              title: "Transaction ID", value: transactionID),
                           body,
                         ],
                       ),
