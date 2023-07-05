@@ -143,6 +143,7 @@ class SharedPref {
   }
 
   static Future setDeviceUUID(String uuid) async {
+    print(uuid);
     final _instance = await SharedPreferences.getInstance();
     await _instance.setString(_deviceUUID, uuid);
   }
@@ -154,6 +155,6 @@ class SharedPref {
 
   static Future getDeviceUUID() async {
     final _instance = await SharedPreferences.getInstance();
-    _instance.get(_deviceUUID);
+    return _instance.get(_deviceUUID);
   }
 }
