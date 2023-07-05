@@ -35,6 +35,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  String _currentUUID = "";
   List<String> _bannerImages = [];
   final TextEditingController phoneController = TextEditingController();
 
@@ -56,6 +57,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       _deviceUUID = const Uuid().v4();
       SharedPref.setDeviceUUID(_deviceUUID);
     }
+    _currentUUID = _deviceUUID;
     return _deviceUUID;
   }
 
@@ -66,11 +68,11 @@ class _LoginWidgetState extends State<LoginWidget> {
     }
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
-    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
-    // _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
 
-    _hasExistingLoginSaved.value = false;
-    _hasExistingLoginSaved.value = false;
+    // _hasExistingLoginSaved.value = false;
+    // _hasExistingLoginSaved.value = false;
   }
   // 9803435443
   // 70074
@@ -107,6 +109,7 @@ class _LoginWidgetState extends State<LoginWidget> {
           }
 
           if (state is CommonStateSuccess<LoginResponseValue>) {
+            await SharedPref.setDeviceUUID(_currentUUID);
             if (state.data == LoginResponseValue.Success) {
               if (!_isBiometricLogin) {
                 SecureStorageService.setAppPhoneNumber(_getPhoneNumber());
