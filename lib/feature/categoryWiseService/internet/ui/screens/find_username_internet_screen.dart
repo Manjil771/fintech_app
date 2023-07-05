@@ -5,7 +5,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class FindInternetUserScreen extends StatelessWidget {
-  const FindInternetUserScreen({super.key});
+  const FindInternetUserScreen({super.key, required this.service});
+
+  final service;
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +16,9 @@ class FindInternetUserScreen extends StatelessWidget {
         utilityPaymentRepository:
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
-      child: FindInternetUserWidget(),
+      child: FindInternetUserWidget(
+        service: service,
+      ),
     );
   }
 }
