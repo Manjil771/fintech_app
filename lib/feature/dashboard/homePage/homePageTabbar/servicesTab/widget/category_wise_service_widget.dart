@@ -10,7 +10,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapa
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
-import 'package:ismart/feature/categoryWiseService/insurance/screen/common_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
@@ -111,7 +111,10 @@ class _CategoriesWiseServicesWidgetState
                           companyName: widget.services[index].service,
                         ));
                       } else {
-                        NavigationService.push(target: CommonInsurancePage());
+                        NavigationService.push(
+                            target: CommonInsurancePage(
+                          service: widget.services[index],
+                        ));
                       }
                     }
                     if (widget.services[index].uniqueIdentifier.toLowerCase() ==
