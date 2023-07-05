@@ -39,31 +39,6 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     }
   }
 
-  fetchInsuranceDetails({
-    required String serviceIdentifier,
-    required String username,
-    required String dateOfBirth,
-    required String apiEndpoint,
-  }) async {
-    emit(CommonLoading());
-
-    final _res = await utilityPaymentRepository.fetchInsuranceDetail(
-      serviceIdentifier: serviceIdentifier,
-      dateOfBirth: dateOfBirth,
-      username: username,
-      apiEndpoint: apiEndpoint,
-    );
-    if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
-    } else {
-      emit(
-        CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
-        ),
-      );
-    }
-  }
-
   fetchDetails({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
@@ -103,58 +78,6 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     );
     if (_res.status == Status.Success && _res.data != null) {
       emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
-    } else {
-      emit(
-        CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
-        ),
-      );
-    }
-  }
-
-  buyDatapack({
-    required String serviceIdentifier,
-    required String phoneNumber,
-    required String amount,
-    required String mpin,
-    required String code,
-  }) async {
-    emit(CommonLoading());
-
-    final _res = await utilityPaymentRepository.buyDatapack(
-      serviceIdentifier: serviceIdentifier,
-      phoneNumber: phoneNumber,
-      amount: amount,
-      mpin: mpin,
-      code: code,
-    );
-    if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<String>(data: _res.data!));
-    } else {
-      emit(
-        CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
-        ),
-      );
-    }
-  }
-
-  payTrafficFine({
-    required String serviceIdentifier,
-    required String apiEndpoint,
-    required Map<String, dynamic> body,
-    required Map<String, dynamic> accountDetails,
-  }) async {
-    emit(CommonLoading());
-
-    final _res = await utilityPaymentRepository.payTrafficFine(
-      serviceIdentifier: serviceIdentifier,
-      accountDetails: accountDetails,
-      apiEndpoint: apiEndpoint,
-      body: body,
-    );
-    if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<String>(data: _res.data!));
     } else {
       emit(
         CommonError(

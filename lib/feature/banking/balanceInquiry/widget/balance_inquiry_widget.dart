@@ -110,6 +110,16 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                     ),
                                     child: Column(
                                       children: [
+                                        detailROw(
+                                            context,
+                                            "Available Balance",
+                                            _detail.accountDetail[index]
+                                                .availableBalance),
+                                        detailROw(
+                                            context,
+                                            "Actual Balance",
+                                            _detail.accountDetail[index]
+                                                .actualBalance),
                                         detailROw(context, "Client Code",
                                             "${_detail.accountDetail[index].clientCode}"),
                                         detailROw(context, "Accured Interest",

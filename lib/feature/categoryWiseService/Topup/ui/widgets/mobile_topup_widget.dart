@@ -23,6 +23,7 @@ class MobileTopUpWidget extends StatefulWidget {
 }
 
 class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final ValueNotifier<TopupType> _topUpType = ValueNotifier(TopupType.None);
@@ -89,57 +90,60 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             topbarName: "Payment",
             title: "Mobile Top Up",
             detail: "Topup your mobile number.",
-            body: Column(
-              children: [
-                Row(
-                  children: [
-                    Expanded(
-                      child: CustomTextField(
-                        title: "Mobile Number",
-                        hintText: "xxxxxxxxxx",
-                        controller: _mobileNumberController,
-                        validator: FormValidator.validatePhoneNumber,
-                        suffixIcon: Icons.phone_android_outlined,
-                        showSearchIcon: true,
-                        onSuffixPressed: () async {
-                          String phoneNumber =
-                              await SecureStorageService.appPhoneNumber;
-                          _mobileNumberController.text = phoneNumber;
-                        },
+            body: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          title: "Mobile Number",
+                          hintText: "xxxxxxxxxx",
+                          controller: _mobileNumberController,
+                          validator: FormValidator.validatePhoneNumber,
+                          suffixIcon: Icons.phone_android_outlined,
+                          showSearchIcon: true,
+                          onSuffixPressed: () async {
+                            String phoneNumber =
+                                await SecureStorageService.appPhoneNumber;
+                            _mobileNumberController.text = phoneNumber;
+                          },
+                        ),
                       ),
-                    ),
-                    // Container(
-                    //   padding: const EdgeInsets.all(6),
-                    //   margin: const EdgeInsets.only(left: 8, top: 28),
-                    //   height: _height * 0.06,
-                    //   width: _width * 0.12,
-                    //   child: SvgPicture.asset(
-                    //     "assets/icons/Contact from phone.svg",
-                    //   ),
-                    // )
-                  ],
-                ),
-                SizedBox(height: _height * 0.01),
-                CustomTextField(
-                  title: "Amount",
-                  hintText: "Enter the amount",
-                  controller: _amountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
-                ),
-                // Container(
-                //   padding: const EdgeInsets.only(top: 7),
-                //   height: _height * 0.12,
-                //   width: double.infinity,
-                //   child: GridView.builder(
-                //     itemCount: 6,
-                //     gridDelegate:
-                //         const SliverGridDelegateWithFixedCrossAxisCount(
-                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                //     itemBuilder: (context, index) => amountBox(context, index),
-                //   ),
-                // ),
-              ],
+                      // Container(
+                      //   padding: const EdgeInsets.all(6),
+                      //   margin: const EdgeInsets.only(left: 8, top: 28),
+                      //   height: _height * 0.06,
+                      //   width: _width * 0.12,
+                      //   child: SvgPicture.asset(
+                      //     "assets/icons/Contact from phone.svg",
+                      //   ),
+                      // )
+                    ],
+                  ),
+                  SizedBox(height: _height * 0.01),
+                  CustomTextField(
+                    title: "Amount",
+                    hintText: "Enter the amount",
+                    controller: _amountController,
+                    validator: (val) =>
+                        FormValidator.validateFieldNotEmpty(val, "Amount"),
+                  ),
+                  // Container(
+                  //   padding: const EdgeInsets.only(top: 7),
+                  //   height: _height * 0.12,
+                  //   width: double.infinity,
+                  //   child: GridView.builder(
+                  //     itemCount: 6,
+                  //     gridDelegate:
+                  //         const SliverGridDelegateWithFixedCrossAxisCount(
+                  //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
+                  //     itemBuilder: (context, index) => amountBox(context, index),
+                  //   ),
+                  // ),
+                ],
+              ),
             ),
             onButtonPressed: () {
               // context.read<UtilityPaymentCubit>().fetchDetails(
@@ -149,172 +153,26 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               //       },
               //       apiEndpoint: "api/wlinkpackages",
               //     );
-              NavigationService.push(
-                target: TransactionPinScreen(
-                  onValueCallback: (mpin) {
-                    NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().getTopUp(
-                          serviceIdentifier: TopUpUtils()
-                              .getTopUpServiceType(type: _topUpType.value),
-                          phoneNumber: _mobileNumberController.text,
-                          amount: _amountController.text,
-                          mpin: mpin,
-                        );
-                  },
-                ),
-              );
+              _formKey.currentState!.save();
+              if (_formKey.currentState!.validate()) {
+                NavigationService.push(
+                  target: TransactionPinScreen(
+                    onValueCallback: (mpin) {
+                      NavigationService.pop();
+                      context.read<UtilityPaymentCubit>().getTopUp(
+                            serviceIdentifier: TopUpUtils()
+                                .getTopUpServiceType(type: _topUpType.value),
+                            phoneNumber: _mobileNumberController.text,
+                            amount: _amountController.text,
+                            mpin: mpin,
+                          );
+                    },
+                  ),
+                );
+              }
               // NavigationService.push(target: CommonTransactionSuccessfulPage());
             },
           )),
     );
   }
-
-  // amountBox(context, index) {
-  //   return Container(
-  //     margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 7),
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(8),
-  //       border: Border.all(color: Colors.black),
-  //     ),
-  //     child: Center(child: Text(amount[index].toString())),
-  //   );
-  // }
-
-  // final List amount = [100, 200, 500, 1000, 2000, 5000];
 }
-/// TODO Delete below old code
-// Expanded(
-// child: SvgPicture.asset(
-// "assets/icons/Contact from phone.svg"))
-// Padding(
-//           padding: const EdgeInsets.all(24),
-//           child: ListView(
-//             children: [
-//               Form(
-//                 child: Container(
-//                   padding: const EdgeInsets.all(24),
-//                   color: Colors.white,
-//                   child: Column(
-//                     crossAxisAlignment: CrossAxisAlignment.start,
-//                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-//                     children: [
-//                       Text(
-//                         "Mobile Top Up",
-//                         style: Theme.of(context).textTheme.titleLarge,
-//                       ),
-//                       Text(
-//                         "Load balance to your mobile number.",
-//                         style: Theme.of(context).textTheme.displaySmall,
-//                       ),
-//                       SizedBox(height: _height * 0.01),
-//                       Text(
-//                         "Select Account",
-//                         style: Theme.of(context).textTheme.titleMedium,
-//                       ),
-
-//                       Row(
-//                         children: [
-//                           Expanded(
-//                             child: CustomTextField(
-//                               title: "Mobile Number",
-//                               hintText: "xxxxxxxxxx",
-//                               controller: _mobileNumberController,
-//                               validator: FormValidator.validatePhoneNumber,
-//                             ),
-//                           ),
-//                           Container(
-//                             padding: const EdgeInsets.all(6),
-//                             margin: const EdgeInsets.only(left: 8, top: 28),
-//                             height: _height * 0.06,
-//                             width: size.width * 0.12,
-//                             child: SvgPicture.asset(
-//                               "assets/icons/Contact from phone.svg",
-//                             ),
-//                           )
-//                         ],
-//                       ),
-//                       SizedBox(height: size.height * 0.01),
-//                       CustomTextField(
-//                         title: "Amount",
-//                         hintText: "Enter the amount",
-//                         controller: _amountController,
-//                         validator: (val) =>
-//                             FormValidator.validateFieldNotEmpty(val, "Amount"),
-//                       ),
-//                       Container(
-//                         padding: const EdgeInsets.only(top: 7),
-//                         height: size.height * 0.12,
-//                         width: double.infinity,
-//                         child: GridView.builder(
-//                           itemCount: 6,
-//                           gridDelegate:
-//                               const SliverGridDelegateWithFixedCrossAxisCount(
-//                                   crossAxisCount: 3,
-//                                   childAspectRatio: 1.4 / 0.6),
-//                           itemBuilder: (context, index) =>
-//                               amountBox(context, index),
-//                         ),
-//                       ),
-//                       SizedBox(height: size.height * 0.04),
-//                       CustomRoundedButtom(
-//                         title: "Done",
-//                         onPressed: () {
-//                           // context.read<UtilityPaymentCubit>().fetchDetails(
-//                           //       serviceIdentifier: "worldlink_online_topup",
-//                           //       accountDetails: {
-//                           //         "wlink_username": "onine_renew"
-//                           //       },
-//                           //       apiEndpoint: "api/wlinkpackages",
-//                           //     );
-//                           NavigationService.push(
-//                             target: TransactionPinScreen(
-//                               onValueCallback: (mpin) {
-//                                 NavigationService.pop();
-//                                 context.read<UtilityPaymentCubit>().getTopUp(
-//                                       serviceIdentifier: TopUpUtils()
-//                                           .getTopUpServiceType(
-//                                               type: _topUpType.value),
-//                                       accountNumber: RepositoryProvider.of<
-//                                               CustomerDetailRepository>(context)
-//                                           .accountsList
-//                                           .value
-//                                           .first
-//                                           .accountNumber, // TODO Update dynamic account number
-//                                       phoneNumber: _mobileNumberController.text,
-//                                       amount: _amountController.text,
-//                                       mpin: mpin,
-//                                     );
-//                               },
-//                             ),
-//                           );
-//                         },
-//                       ),
-//                       SizedBox(height: size.height * 0.04),
-//                       Row(
-//                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                         children: [
-//                           Text(
-//                             "Recent Transaction",
-//                             style: Theme.of(context).textTheme.titleMedium,
-//                           ),
-//                           TextButton(
-//                             onPressed: () {},
-//                             child: Text(
-//                               "View All",
-//                               style: TextStyle(
-//                                 color: Theme.of(context).primaryColor,
-//                                 fontFamily: "popinmedium",
-//                                 fontSize: 16,
-//                               ),
-//                             ),
-//                           )
-//                         ],
-//                       )
-//                       // ),
-//                     ],
-//                   ),
-//                 ),
-//               )
-//             ],
-//           ),
-//         ),
