@@ -40,12 +40,16 @@ class UtilityPaymentAPIProvider {
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
     required String apiEndpoint,
+    required mPin,
   }) async {
     final _params = {
       ...accountDetails,
     };
     if (serviceIdentifier.isNotEmpty) {
       _params["service_identifier"] = "$serviceIdentifier";
+    }
+    if (mPin.isNotEmpty) {
+      _params["mPin"] = "$mPin";
     }
 
     final url = UrlUtils.getUri(

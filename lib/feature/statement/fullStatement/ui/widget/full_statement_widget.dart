@@ -441,9 +441,12 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                         FontWeight.w600),
                                           ),
                                           const Spacer(),
-                                          SvgPicture.asset(
-                                            Assets.downloadIcon,
-                                            height: _height * 0.03,
+                                          InkWell(
+                                            onTap: () {},
+                                            child: SvgPicture.asset(
+                                              Assets.downloadIcon,
+                                              height: _height * 0.03,
+                                            ),
                                           )
                                         ]),
                                         SizedBox(height: _height * 0.01),

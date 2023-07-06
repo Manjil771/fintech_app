@@ -22,22 +22,16 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class LifeInsurcnceWidget extends StatefulWidget {
-  final String companyName;
-  final String companyLogo;
+class NonLifeInsurcnceWidget extends StatefulWidget {
   final Service service;
 
-  LifeInsurcnceWidget(
-      {super.key,
-      required this.companyName,
-      required this.companyLogo,
-      required this.service});
+  NonLifeInsurcnceWidget({super.key, required this.service});
 
   @override
-  State<LifeInsurcnceWidget> createState() => _LifeInsurcnceWidgetState();
+  State<NonLifeInsurcnceWidget> createState() => _NonLifeInsurcnceWidgetState();
 }
 
-class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
+class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
   TextEditingController selectedDateController = TextEditingController();
   TextEditingController policyNoController = TextEditingController();
 
@@ -68,8 +62,8 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
               target: CommonBillDetailPage(
                 apiEndpoint: "/api/insurance/pay",
                 apiBody: {
-                  "policyNo": _response.findValue(
-                      primaryKey: "hashResposne", secondaryKey: "policyNo"),
+                  "proformaNo": _response.findValue(
+                      primaryKey: "hashResposne", secondaryKey: "proformaNo"),
                   "policyName": _response.findValue(
                       primaryKey: "hashResposne", secondaryKey: "policyName"),
                 },
@@ -80,20 +74,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           .value!
                           .accountNumber,
                   "amount": _response.findValue(
-                      primaryKey: "hashResponse", secondaryKey: "amount"),
-                  "dob": selectedDateController.text
+                      primaryKey: "hashResponse", secondaryKey: "totalPremium"),
                 },
                 body: Column(
                   children: [
-                    KeyValueTile(
-                      title: "Policy Number",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "policyNo",
-                          )
-                          .toString(),
-                    ),
                     KeyValueTile(
                       title: "Username",
                       value: _response
@@ -104,11 +88,11 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           .toString(),
                     ),
                     KeyValueTile(
-                      title: "Amount",
+                      title: "Total Insured Amount",
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "amount",
+                            secondaryKey: "sumInsuredAmount",
                           )
                           .toString(),
                     ),
@@ -117,25 +101,16 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "premium",
+                            secondaryKey: "totalPremium",
                           )
                           .toString(),
                     ),
                     KeyValueTile(
-                      title: "Due Date",
+                      title: "Proforma No",
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "dueDate",
-                          )
-                          .toString(),
-                    ),
-                    KeyValueTile(
-                      title: "Penalty",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "interestOccured",
+                            secondaryKey: "proformaNo",
                           )
                           .toString(),
                     ),
@@ -184,10 +159,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                       width: _width * 0.23,
                       margin: const EdgeInsets.only(right: 18),
                       child: Image.network(
-                          "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.companyLogo}"),
+                          "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
                     ),
                     Expanded(
-                      child: Text(widget.companyName,
+                      child: Text(widget.service.service,
                           style: Theme.of(context)
                               .textTheme
                               .titleLarge!
@@ -211,29 +186,6 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                   controller: policyNoController,
                 ),
                 SizedBox(height: _height * 0.01),
-                CustomTextField(
-                  onTap: () async {
-                    final date = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1905),
-                        lastDate: DateTime.now());
-                    setState(
-                      () {
-                        selectedDateController.text =
-                            "${date!.year}-${date.month}-${date.day}";
-                      },
-                    );
-                  },
-                  title: "Date of Birth",
-                  hintText: "yyyy-mm-dd",
-                  readOnly: true,
-                  controller: selectedDateController,
-                  trailing: SvgPicture.asset(
-                    Assets.calanderIcon,
-                    height: _height * 0.05,
-                  ),
-                ),
               ],
             )
           ],
@@ -244,7 +196,6 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                 accountDetails: {
                   // "username": "108006674",
                   "username": policyNoController.text,
-                  "dob": selectedDateController.text,
                   // "dob": "1983-07-24",
                 },
                 apiEndpoint: "api/insurance/policy",

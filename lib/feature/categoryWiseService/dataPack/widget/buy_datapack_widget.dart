@@ -89,6 +89,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                   onValueCallback: (mpin) {
                     NavigationService.pop();
                     context.read<UtilityPaymentCubit>().makePayment(
+                      mPin: mpin,
                       apiEndpoint: "/api/data_pack/pay",
                       serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
@@ -101,7 +102,6 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                                 .toString(),
                         "phone_number": _mobileNumberController.text,
                         "amount": widget.package.amount.toString(),
-                        "mPin": mpin,
                       },
                       body: {
                         "code": widget.package.code,
