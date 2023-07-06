@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -36,6 +37,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
   String? selectedDistrictValue;
   String? selectedProvinceValue;
   bool _isLoading = false;
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -57,72 +59,69 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
+          if (_response.code == "M0000") {
+            NavigationService.pushReplacement(
+              target: CommonBillDetailPage(
+                apiEndpoint: "/api/tvpay",
+                apiBody: {"customerId ": usernameController.text},
+                accountDetails: {
+                  "account_number":
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value!
+                          .accountNumber
+                          .toString(),
+                  "username": usernameController.text,
+                  "customer_id": usernameController.text,
+                  "amount": amountController.text,
+                  // "account_number": "002001-001-102-0001010",
 
-          NavigationService.push(
-            target: CommonBillDetailPage(
-              apiEndpoint: "/api/tvpay",
-              apiBody: {"customerId ": usernameController.text},
-              accountDetails: {
-                "account_number":
-                    RepositoryProvider.of<CustomerDetailRepository>(context)
-                        .selectedAccount
-                        .value!
-                        .accountNumber
-                        .toString(),
-                "username": usernameController.text,
-                "customer_id": usernameController.text,
-                "amount": amountController.text,
-                // "account_number": "002001-001-102-0001010",
-
-                // "amount": myAmount,
-                // "amount": _response.findValue(
-                //     primaryKey: "hashResposne",
-                //     secondaryKey: "formattedFinalAmount"),
-              },
-              service: widget.service,
-              body: Column(
-                children: [
-                  KeyValueTile(
-                      title: "Customer ID",
-                      value: _response.findValue(
-                        primaryKey: "hashResponse",
-                        secondaryKey: "customerId ",
-                      )),
-                  KeyValueTile(
-                      title: "Customer Name",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "customerName",
-                          )
-                          .toString()),
-                  KeyValueTile(title: "Amount", value: amountController.text),
-                  KeyValueTile(
-                      title: "Number of TV",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "noOfTv",
-                          )
-                          .toString())
-                ],
+                  // "amount": myAmount,
+                  // "amount": _response.findValue(
+                  //     primaryKey: "hashResposne",
+                  //     secondaryKey: "formattedFinalAmount"),
+                },
+                service: widget.service,
+                body: Column(
+                  children: [
+                    KeyValueTile(
+                        title: "Customer ID",
+                        value: _response.findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "customerId ",
+                        )),
+                    KeyValueTile(
+                        title: "Customer Name",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "customerName",
+                            )
+                            .toString()),
+                    KeyValueTile(title: "Amount", value: amountController.text),
+                    KeyValueTile(
+                        title: "Number of TV",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "noOfTv",
+                            )
+                            .toString())
+                  ],
+                ),
               ),
-            ),
-          );
-          // } else {
-          //   showPopUpDialog(
-          //       context: context,
-          //       message: state.toString(),
-          //       title: "Error",
-          //       buttonCallback: () {
-          //         NavigationService.pop();
-          //       },
-          //       showCancelButton: false);
+            );
+          } else {
+            showPopUpDialog(
+                context: context,
+                message: _response.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
         }
-        // } else if (state is CommonError) {
-        //   showAboutDialog(
-        //     context: context,
-        //   );
       },
       child: CommonContainer(
         showAccountSelection: true,
@@ -130,47 +129,56 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         title: widget.service.service,
         detail: widget.service.instructions,
         showDetail: true,
-        topbarName: "Payment",
-        body: Column(
-          children: [
-            Row(
-              children: [
-                Container(
-                  height: _height * 0.11,
-                  width: _width * 0.23,
-                  margin: const EdgeInsets.only(right: 18),
-                  child: Image.network(
-                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
-                ),
-                Expanded(
-                  child: Text(widget.service.service,
-                      style: Theme.of(context)
-                          .textTheme
-                          .titleLarge!
-                          .copyWith(fontWeight: FontWeight.w700)),
-                ),
-              ],
-            ),
-            SizedBox(height: _height * 0.02),
-            CustomTextField(
-              title: "Username",
-              hintText: "XXXXXXXXX",
-              controller: usernameController,
-            ),
-            CustomTextField(
-              title: "Amount",
-              hintText: "NPR",
-              controller: amountController,
-            ),
-          ],
+        topbarName: widget.service.serviceCategoryName,
+        body: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: _formKey,
+          child: Column(
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: _height * 0.11,
+                    width: _width * 0.23,
+                    margin: const EdgeInsets.only(right: 18),
+                    child: Image.network(
+                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
+                  ),
+                  Expanded(
+                    child: Text(widget.service.service,
+                        style: Theme.of(context)
+                            .textTheme
+                            .titleLarge!
+                            .copyWith(fontWeight: FontWeight.w700)),
+                  ),
+                ],
+              ),
+              SizedBox(height: _height * 0.02),
+              CustomTextField(
+                title: "Username",
+                hintText: "XXXXXXXXX",
+                controller: usernameController,
+                validator: (value) =>
+                    FormValidator.validateFieldNotEmpty(value, "Username"),
+              ),
+              CustomTextField(
+                  title: "Amount",
+                  hintText: "NPR",
+                  controller: amountController,
+                  validator: (value) => FormValidator.validateAmount(
+                      val: value.toString(),
+                      maxAmount: widget.service.maxValue ?? 100000,
+                      minAmount: widget.service.minValue ?? 10)),
+            ],
+          ),
         ),
         onButtonPressed: () {
-          context.read<UtilityPaymentCubit>().fetchDetails(
-              serviceIdentifier: widget.service.uniqueIdentifier,
-              accountDetails: {
-                "username": usernameController.text, //1000088266
-              },
-              apiEndpoint: "api/tvpackages");
+          if (_formKey.currentState!.validate()) {
+            context.read<UtilityPaymentCubit>().fetchDetails(
+                serviceIdentifier: widget.service.uniqueIdentifier,
+                accountDetails: {"username": usernameController.text},
+                apiEndpoint: "api/tvpackages");
+          }
         },
       ),
     ));

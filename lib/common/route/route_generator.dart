@@ -50,11 +50,6 @@ class RouteGenerator {
           builder: (_) => InternetListScreen(),
           settings: RouteSettings(name: settings.name),
         );
-      case Routes.mobileTopup:
-        return MaterialPageRoute(
-          builder: (_) => const MobileTopupPage(),
-          settings: RouteSettings(name: settings.name),
-        );
 
       case Routes.allServicesDashboard:
         return MaterialPageRoute(

@@ -9,6 +9,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -17,6 +18,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class BuyDatapackWidget extends StatefulWidget {
   BuyDatapackWidget({Key? key, required this.service, required this.package})
@@ -51,16 +53,14 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
             NavigationService.pop();
           }
 
-          if (state is CommonStateSuccess) {
-            showPopUpDialog(
-              context: context,
-              message: state.data,
-              title: "Success",
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.popUntilFirstPage();
-              },
-            );
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            NavigationService.push(
+                target: CommonTransactionSuccessfulPage(
+                    transactionID:
+                        state.data.findValueString("transactionIdentifier"),
+                    body: Container(),
+                    message: state.data.message,
+                    service: widget.service));
           } else if (state is CommonError) {
             showPopUpDialog(
               context: context,
@@ -72,10 +72,21 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
               },
             );
           }
+          // } else if (state is CommonError) {
+          //   showPopUpDialog(
+          //     context: context,
+          //     message: state.message,
+          //     title: "Error",
+          //     showCancelButton: false,
+          //     buttonCallback: () {
+          //       NavigationService.pop();
+          //     },
+          //   );
         },
         child: CommonContainer(
-            title: 'Buy Data Packs',
-            detail: 'Buy your data packs from here',
+            title: widget.service.service,
+            detail: "Buy Data Pack from ",
+            //detail: widget.service.instructions,
             showDetail: true,
             showRoundBotton: true,
             showTitleText: true,

@@ -1,13 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
@@ -15,10 +11,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
@@ -92,14 +85,7 @@ class CommonBillDetailWidget extends StatelessWidget {
             _isLoading = false;
           }
 
-          if (state is CommonStateSuccess<UtilityResponseData>) {
-            NavigationService.push(
-                target: CommonTransactionSuccessfulPage(
-                    transactionID: state.data.code,
-                    body: body,
-                    message: state.data.message,
-                    service: service));
-          } else if (state is CommonError) {
+          if (state is CommonError) {
             showPopUpDialog(
               context: context,
               message: state.message,
@@ -109,6 +95,17 @@ class CommonBillDetailWidget extends StatelessWidget {
                 NavigationService.pop();
               },
             );
+          }
+
+          if (state is CommonStateSuccess) {
+            UtilityResponseData _response = state.data;
+
+            NavigationService.pushReplacement(
+                target: CommonTransactionSuccessfulPage(
+                    transactionID: state.data.code,
+                    body: body,
+                    message: state.data.message,
+                    service: service));
           }
         },
         child: Column(
