@@ -26,6 +26,9 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
 
   var _dateController = TextEditingController();
   final _fromController = TextEditingController();
+  var _modeController = TextEditingController();
+  var _arriveDateController = TextEditingController();
+  bool isRoundTrip = false;
 
   @override
   Widget build(BuildContext context) {
@@ -40,6 +43,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
         topbarName: 'Book Flight',
         buttonName: 'Search Flight',
         body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
               padding: EdgeInsets.symmetric(horizontal: 18, vertical: 18),
@@ -143,6 +147,33 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               height: 20,
             ),
             CustomTextField(
+              controller: _modeController,
+              title: 'Flight Mode',
+              readOnly: true,
+              hintText: 'Single Trip',
+              suffixIcon: Icons.abc,
+              trailing: IconButton(
+                  onPressed: () {
+                    setState(() {
+                      if (isRoundTrip == false) {
+                        isRoundTrip = true;
+                        _modeController.text = 'Round Trip';
+                      } else if (isRoundTrip == true) {
+                        isRoundTrip = false;
+
+                        _modeController.clear();
+                      }
+                    });
+                  },
+                  icon: Icon(
+                    Icons.swap_vert_circle_outlined,
+                    size: 40,
+                  )),
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            CustomTextField(
               title: 'Departure Date',
               hintText: "Select Date",
               controller: _dateController,
@@ -164,6 +195,30 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               suffixIcon: Icons.calendar_month_rounded,
               showSearchIcon: true,
             ),
+            isRoundTrip
+                ? CustomTextField(
+                    title: 'Arrival Date',
+                    hintText: "Select Date",
+                    controller: _arriveDateController,
+                    validator: (value) => FormValidator.validateFieldNotEmpty(
+                        value, 'Departure Date'),
+                    readOnly: true,
+                    onTap: () async {
+                      DateTime? date = await showDatePicker(
+                        context: context,
+                        initialDate: DateTime.now(),
+                        firstDate: DateTime(2022),
+                        lastDate: DateTime.now().add(Duration(days: 90)),
+                      );
+                      setState(() {
+                        _arriveDateController.text =
+                            "${date!.day}/${date.month}/${date.year}";
+                      });
+                    },
+                    suffixIcon: Icons.calendar_month_rounded,
+                    showSearchIcon: true,
+                  )
+                : Container(),
             SizedBox(
               height: 20,
             ),

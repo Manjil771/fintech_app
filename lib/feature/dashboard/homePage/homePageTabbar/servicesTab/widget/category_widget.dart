@@ -129,6 +129,25 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               },
                               child: Column(
                                 children: [
+                                  state.data[index].isNew
+                                      ? Container(
+                                          margin: EdgeInsets.only(left: 70),
+                                          decoration: BoxDecoration(
+                                              color: CustomTheme.primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Align(
+                                            alignment: Alignment.topRight,
+                                            child: Text(
+                                              ' New  ',
+                                              style: _textTheme.bodyLarge!
+                                                  .copyWith(
+                                                      color: CustomTheme.white,
+                                                      fontSize: 10),
+                                            ),
+                                          ),
+                                        )
+                                      : Container(),
                                   Container(
                                     height: _height * 0.03,
                                     child: _imageUrl
@@ -163,6 +182,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                       "${data.name}",
                                       textAlign: TextAlign.center,
                                       style: _textTheme.titleSmall,
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        color: CustomTheme.primaryColor,
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Text(
+                                      '  7% Cashback  ',
+                                      style: _textTheme.bodyLarge!.copyWith(
+                                          color: CustomTheme.white,
+                                          fontSize: 10),
                                     ),
                                   ),
                                 ],
