@@ -204,37 +204,73 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
               },
               validator: (value) {},
             ),
-            CustomTextField(
-              hintText: "Select",
-              title: "Select District",
-              readOnly: true,
-              controller: _selectedDistrictController,
-              onTap: () {
-                NavigationService.push(
-                  target: GovPlacePage(
-                    isProvince: false,
-                    accountDetails: {
-                      "provinceId": selectedProvinceValue,
+
+            _selectedProvinceNameController.text.toString().toLowerCase() ==
+                    'Kathmandu Valley'.toLowerCase()
+                ? Container()
+                : CustomTextField(
+                    hintText: "Select",
+                    title: "Select District",
+                    readOnly: true,
+                    controller: _selectedDistrictController,
+                    onTap: () {
+                      NavigationService.push(
+                        target: GovPlacePage(
+                          isProvince: false,
+                          accountDetails: {
+                            "provinceId": selectedProvinceValue,
+                          },
+                          apiEndpoint: "/api/governmentpayment/getDistrict",
+                          serviceIdentifier: widget.service.uniqueIdentifier,
+                          onBankSelected: ({required value, required name}) {
+                            NavigationService.pop();
+                            _selectedDistrictController.text = name;
+                            selectedDistrictValue = value;
+                            setState(() {});
+                          },
+                        ),
+                      );
                     },
-                    apiEndpoint: "/api/governmentpayment/getDistrict",
-                    serviceIdentifier: widget.service.uniqueIdentifier,
-                    onBankSelected: ({required value, required name}) {
-                      NavigationService.pop();
-                      _selectedDistrictController.text = name;
-                      selectedDistrictValue = value;
-                      setState(() {});
+                    validator: (value) {
+                      // if (selectedBank != null) {
+                      //   return null;
+                      // } else {
+                      //   return "Please select destination bank.";
+                      // }
                     },
                   ),
-                );
-              },
-              validator: (value) {
-                // if (selectedBank != null) {
-                //   return null;
-                // } else {
-                //   return "Please select destination bank.";
-                // }
-              },
-            ),
+
+            // CustomTextField(
+            //   hintText: "Select",
+            //   title: "Select District",
+            //   readOnly: true,
+            //   controller: _selectedDistrictController,
+            //   onTap: () {
+            //     NavigationService.push(
+            //       target: GovPlacePage(
+            //         isProvince: false,
+            //         accountDetails: {
+            //           "provinceId": selectedProvinceValue,
+            //         },
+            //         apiEndpoint: "/api/governmentpayment/getDistrict",
+            //         serviceIdentifier: widget.service.uniqueIdentifier,
+            //         onBankSelected: ({required value, required name}) {
+            //           NavigationService.pop();
+            //           _selectedDistrictController.text = name;
+            //           selectedDistrictValue = value;
+            //           setState(() {});
+            //         },
+            //       ),
+            //     );
+            //   },
+            //   validator: (value) {
+            //     // if (selectedBank != null) {
+            //     //   return null;
+            //     // } else {
+            //     //   return "Please select destination bank.";
+            //     // }
+            //   },
+            // ),
             CustomTextField(
               controller: dateController,
               title: "Date",
