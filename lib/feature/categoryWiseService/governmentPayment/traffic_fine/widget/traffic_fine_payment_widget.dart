@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -35,8 +36,7 @@ class TrafficFinePaymentWidget extends StatefulWidget {
 class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
   final TextEditingController _selectedProvinceNameController =
       TextEditingController();
-  final TextEditingController _selectedDistrictController =
-      TextEditingController();
+  var _selectedDistrictController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController chitNumberController = TextEditingController();
   String? selectedDistrictValue;
@@ -73,8 +73,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
             NavigationService.push(
               target: CommonBillDetailPage(
                 onSuccessState: () {
-                  print(
-                      "state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf  sdfhjgsdg hfgjhsdfghj");
                   NavigationService.push(target: HomePage());
                 },
                 onButtonPress: () {
@@ -208,44 +206,58 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                       _selectedProvinceNameController.text = name;
                       selectedProvinceValue = value;
 
-                      setState(() {});
+                      setState(() {
+                        if (_selectedProvinceNameController.text
+                                .toString()
+                                .toLowerCase() ==
+                            'Kathmandu Valley'.toLowerCase()) {
+                          _selectedDistrictController.text =
+                              selectedProvinceValue.toString();
+                        } else {
+                          _selectedDistrictController.clear();
+                        }
+                      });
                     },
                   ),
                 );
               },
-              validator: (value) {},
+              validator: (value) =>
+                  FormValidator.validateFieldNotEmpty(value, 'Province'),
             ),
-            CustomTextField(
-              hintText: "Select",
-              title: "Select District",
-              readOnly: true,
-              controller: _selectedDistrictController,
-              onTap: () {
-                NavigationService.push(
-                  target: GovPlacePage(
-                    isProvince: false,
-                    accountDetails: {
-                      "provinceId": selectedProvinceValue,
+            _selectedProvinceNameController.text.toString().toLowerCase() ==
+                    'Kathmandu Valley'.toLowerCase()
+                ? Container()
+                : CustomTextField(
+                    hintText: "Select",
+                    title: "Select District",
+                    readOnly: true,
+                    controller: _selectedDistrictController,
+                    onTap: () {
+                      NavigationService.push(
+                        target: GovPlacePage(
+                          isProvince: false,
+                          accountDetails: {
+                            "provinceId": selectedProvinceValue,
+                          },
+                          apiEndpoint: "/api/governmentpayment/getDistrict",
+                          serviceIdentifier: widget.service.uniqueIdentifier,
+                          onBankSelected: ({required value, required name}) {
+                            NavigationService.pop();
+                            _selectedDistrictController.text = name;
+                            selectedDistrictValue = value;
+                            setState(() {});
+                          },
+                        ),
+                      );
                     },
-                    apiEndpoint: "/api/governmentpayment/getDistrict",
-                    serviceIdentifier: widget.service.uniqueIdentifier,
-                    onBankSelected: ({required value, required name}) {
-                      NavigationService.pop();
-                      _selectedDistrictController.text = name;
-                      selectedDistrictValue = value;
-                      setState(() {});
+                    validator: (value) {
+                      // if (selectedBank != null) {
+                      //   return null;
+                      // } else {
+                      //   return "Please select destination bank.";
+                      // }
                     },
                   ),
-                );
-              },
-              validator: (value) {
-                // if (selectedBank != null) {
-                //   return null;
-                // } else {
-                //   return "Please select destination bank.";
-                // }
-              },
-            ),
             CustomTextField(
               controller: dateController,
               title: "Date",

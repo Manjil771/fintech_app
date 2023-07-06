@@ -4,6 +4,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class SettingWidget extends StatelessWidget {
   const SettingWidget({Key? key}) : super(key: key);
@@ -27,19 +28,19 @@ class SettingWidget extends StatelessWidget {
               // const Divider(
               //   thickness: 1,
               // ),
-              CommonDetailBox(
-                  leadingIcon: "assets/icons/user-cirlce-add-svgrepo-com 2.svg",
-                  onBoxPressed: () {},
-                  detail: "Add bank account",
-                  title: "Add Beneficiary"),
-              const Divider(
-                thickness: 1,
-              ),
-              CommonDetailBox(
-                  leadingIcon: "assets/icons/user-cirlce-add-svgrepo-com 2.svg",
-                  onBoxPressed: () {},
-                  detail: "Add Favourite Account ",
-                  title: "Favourite Account"),
+              // CommonDetailBox(
+              //     leadingIcon: "assets/icons/user-cirlce-add-svgrepo-com 2.svg",
+              //     onBoxPressed: () {},
+              //     detail: "Add bank account",
+              //     title: "Add Beneficiary"),
+              // const Divider(
+              //   thickness: 1,
+              // ),
+              // CommonDetailBox(
+              //     leadingIcon: "assets/icons/user-cirlce-add-svgrepo-com 2.svg",
+              //     onBoxPressed: () {},
+              //     detail: "Add Favourite Account ",
+              //     title: "Favourite Account"),
               const Divider(thickness: 1),
               CommonDetailBox(
                   leadingIcon: "assets/icons/pin-code-svgrepo-com 1.svg",
@@ -57,19 +58,26 @@ class SettingWidget extends StatelessWidget {
               const Divider(thickness: 1),
               CommonDetailBox(
                   leadingIcon: "assets/icons/privacy policy.svg",
-                  onBoxPressed: () {},
+                  onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
-              const Divider(thickness: 1),
-              CommonDetailBox(
-                  leadingIcon: "assets/icons/biometricsetup.svg",
-                  onBoxPressed: () {},
-                  detail: "Setup fingerprint, face id and pin.",
-                  title: "Biometrics Setup"),
+              // const Divider(thickness: 1),
+              // CommonDetailBox(
+              //     leadingIcon: "assets/icons/biometricsetup.svg",
+              //     onBoxPressed: () {},
+              //     detail: "Setup fingerprint, face id and pin.",
+              //     title: "Biometrics Setup"),
             ],
           ),
         ),
       ),
     );
+  }
+}
+
+final Uri _url = Uri.parse('https://devanasoft.com.np/PrivacyPolicy.html');
+Future<void> _launchUrl() async {
+  if (!await launchUrl(_url)) {
+    throw Exception('Could not launch $_url');
   }
 }

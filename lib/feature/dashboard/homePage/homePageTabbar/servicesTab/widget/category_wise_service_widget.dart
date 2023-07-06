@@ -80,9 +80,9 @@ class _CategoriesWiseServicesWidgetState
                       NavigationService.push(target: const KhanePaniPage());
                     }
                     if (widget.uniqueIdentifier.toLowerCase() ==
-                        //for live data_pack
-                        //for test Data pack
-                        "Data pack".toLowerCase()) {
+                            "data_pack".toLowerCase() ||
+                        widget.uniqueIdentifier.toLowerCase() ==
+                            "Data Pack".toLowerCase()) {
                       NavigationService.push(
                           target: SelectDatapackScreen(
                         serviceIdentifier: widget.services[index],

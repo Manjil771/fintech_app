@@ -88,7 +88,7 @@ class _InternetPaymentDeatilWidgetState
               children: [
                 Text(
                   "Details",
-                  style: _textTheme.titleMedium,
+                  style: _textTheme.headlineSmall,
                 ),
                 SizedBox(height: _height * 0.01),
                 KeyValueTile(
@@ -127,6 +127,15 @@ class _InternetPaymentDeatilWidgetState
                       .findValue(
                         primaryKey: "hashResponse",
                         secondaryKey: "subscribedPackageType",
+                      )
+                      .toString(),
+                ),
+                KeyValueTile(
+                  title: "Amount",
+                  value: widget.detailFetchData
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "Amount",
                       )
                       .toString(),
                 ),
