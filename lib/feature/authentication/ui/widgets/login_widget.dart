@@ -70,7 +70,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
 
-    _hasExistingLoginSaved.value = false;
+    // _hasExistingLoginSaved.value = false;
   }
   // 9803435443
   // 70074
