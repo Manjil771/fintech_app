@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -35,8 +36,7 @@ class TrafficFinePaymentWidget extends StatefulWidget {
 class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
   final TextEditingController _selectedProvinceNameController =
       TextEditingController();
-  final TextEditingController _selectedDistrictController =
-      TextEditingController();
+  var _selectedDistrictController = TextEditingController();
   final TextEditingController dateController = TextEditingController();
   final TextEditingController chitNumberController = TextEditingController();
   String? selectedDistrictValue;
@@ -82,6 +82,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+<<<<<<< HEAD
                 apiEndpoint: "/api/governmentpayment/pay",
                 apiBody: {
                   "voucherCode": chitNumberController.text,
@@ -98,6 +99,10 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                   //         secondaryKey: "charge")
                   //     .toString(),
                   "fiscalYear": dateController.text
+=======
+                onSuccessState: () {
+                  NavigationService.push(target: HomePage());
+>>>>>>> 9df139a10541d8c32f8228856248c3fbc4bb4332
                 },
                 accountDetails: {
                   "account_number":
@@ -197,14 +202,28 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                       _selectedProvinceNameController.text = name;
                       selectedProvinceValue = value;
 
-                      setState(() {});
+                      setState(() {
+                        if (_selectedProvinceNameController.text
+                                .toString()
+                                .toLowerCase() ==
+                            'Kathmandu Valley'.toLowerCase()) {
+                          _selectedDistrictController.text =
+                              selectedProvinceValue.toString();
+                        } else {
+                          _selectedDistrictController.clear();
+                        }
+                      });
                     },
                   ),
                 );
               },
-              validator: (value) {},
+              validator: (value) =>
+                  FormValidator.validateFieldNotEmpty(value, 'Province'),
             ),
+<<<<<<< HEAD
 
+=======
+>>>>>>> 9df139a10541d8c32f8228856248c3fbc4bb4332
             _selectedProvinceNameController.text.toString().toLowerCase() ==
                     'Kathmandu Valley'.toLowerCase()
                 ? Container()
@@ -239,6 +258,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                       // }
                     },
                   ),
+<<<<<<< HEAD
 
             // CustomTextField(
             //   hintText: "Select",
@@ -271,6 +291,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
             //     // }
             //   },
             // ),
+=======
+>>>>>>> 9df139a10541d8c32f8228856248c3fbc4bb4332
             CustomTextField(
               controller: dateController,
               title: "Date",

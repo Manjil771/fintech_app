@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/search_flight_screen.dart';
 
 class AirlinesIntroPage extends StatelessWidget {
   @override
@@ -29,7 +31,11 @@ class AirlinesIntroPage extends StatelessWidget {
                 ),
               ],
             ),
-            CustomRoundedButtom(title: "Get Started", onPressed: () {})
+            CustomRoundedButtom(
+                title: "Get Started",
+                onPressed: () {
+                  NavigationService.push(target: SearchFlightScreen());
+                })
           ],
         ),
       ),

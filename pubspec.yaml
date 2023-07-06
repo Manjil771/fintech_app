@@ -66,6 +66,7 @@ dependencies:
   awesome_notifications: ^0.6.21
   package_info_plus: ^4.0.2
   uuid: ^3.0.7
+  share_plus: ^7.0.2
 
 dev_dependencies:
   flutter_test:
