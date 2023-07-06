@@ -4,33 +4,39 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class CommonBillDetailPage extends StatelessWidget {
-  final String image;
-  final String serviceType;
+  final Map<String, dynamic> accountDetails;
+  final Map<String, dynamic> apiBody;
+  final String apiEndpoint;
   final Widget body;
-  final Function()? onButtonPress;
-  final Function()? onSuccessState;
+  final Service? service;
 
   CommonBillDetailPage(
       {super.key,
-      required this.image,
       required this.body,
-      required this.serviceType,
-      this.onButtonPress,
-      this.onSuccessState});
+      required this.accountDetails,
+      required this.apiEndpoint,
+      required this.apiBody,
+      this.service});
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -43,29 +49,31 @@ class CommonBillDetailPage extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: CommonBillDetailWidget(
-          onSuccessState: onSuccessState,
-          onButtonPress: onButtonPress!,
-          body: body,
-          image: image,
-          serviceType: serviceType),
+        body: body,
+        service: service,
+        apiBody: apiBody,
+        apiEndpoint: apiEndpoint,
+        accountDetails: accountDetails,
+      ),
     );
   }
 }
 
 class CommonBillDetailWidget extends StatelessWidget {
-  final String image;
-  final Function()? onSuccessState;
-
-  final String serviceType;
+  final Map<String, dynamic> accountDetails;
+  final Map<String, dynamic> apiBody;
+  final String apiEndpoint;
+  final Service? service;
   final Widget body;
-  final Function() onButtonPress;
-  CommonBillDetailWidget(
-      {super.key,
-      required this.image,
-      required this.body,
-      required this.serviceType,
-      required this.onButtonPress,
-      this.onSuccessState});
+
+  CommonBillDetailWidget({
+    super.key,
+    required this.accountDetails,
+    required this.apiEndpoint,
+    required this.body,
+    required this.apiBody,
+    this.service,
+  });
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -78,16 +86,20 @@ class CommonBillDetailWidget extends StatelessWidget {
           if (state is CommonLoading && _isLoading == false) {
             _isLoading = true;
             showLoadingDialogBox(context);
-          } else if (state is! CommonLoading && _isLoading) {
-            _isLoading = false;
+          }
+          if (state is! CommonLoading && _isLoading) {
             NavigationService.pop();
+            _isLoading = false;
           }
 
-          if (state is CommonStateSuccess) {
-            onSuccessState!();
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            NavigationService.push(
+                target: CommonTransactionSuccessfulPage(
+                    transactionID: state.data.code,
+                    body: body,
+                    message: state.data.message,
+                    service: service));
           } else if (state is CommonError) {
-            print(
-                " state is successas hjjagfhjfgjsdghjfgdsjhf hdsgfjdshfjsdgfsfdghj fsgdhjfdsf");
             showPopUpDialog(
               context: context,
               message: state.message,
@@ -111,12 +123,12 @@ class CommonBillDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    image,
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service!.icon}",
                     height: _height * 0.08,
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                    serviceType,
+                    service!.service,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -124,7 +136,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                      "Details about the payable amount for the service of $serviceType is shown below.",
+                      "Details about the payable amount for the service of ${service!.service} is shown below.",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall),
                   SizedBox(height: _height * 0.02),
@@ -150,7 +162,24 @@ class CommonBillDetailWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: _height * 0.02),
-                  CustomRoundedButtom(title: "Pay", onPressed: onButtonPress),
+                  CustomRoundedButtom(
+                      title: "Pay",
+                      onPressed: () {
+                        NavigationService.push(target: TransactionPinScreen(
+                          onValueCallback: (p0) {
+                            NavigationService.pop();
+
+                            context.read<UtilityPaymentCubit>().makePayment(
+                                  mPin: p0,
+                                  serviceIdentifier: service!.uniqueIdentifier,
+                                  // serviceIdentifier: "traffic_fine_payments",
+                                  apiEndpoint: apiEndpoint,
+                                  body: apiBody,
+                                  accountDetails: accountDetails,
+                                );
+                          },
+                        ));
+                      }),
                   // Container(
                   //   decoration: BoxDecoration(
                   //       borderRadius: BorderRadius.circular(18),

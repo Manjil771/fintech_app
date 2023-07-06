@@ -66,6 +66,17 @@ class CoOperativeValue {
 //   );
 
   // // //******* LIVE ********* //
+
+  // static final CoOperative development = CoOperative(
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+  //   bannerImage: "assets/images/isamrt_banner.jpg",
+  //   clientCode: 'EHVNI7CZJ3',
+  //   coOperativeName: '',
+  //   coOperativeLogo: Assets.ismartLogo,
+  //   clientSecret: "126489",
+  // );
+
+// //  DEV TEST700746
   static final CoOperative development = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
