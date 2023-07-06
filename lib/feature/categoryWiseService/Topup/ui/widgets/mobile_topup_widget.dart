@@ -96,18 +96,33 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               key: _formKey,
               child: Column(
                 children: [
-                  CustomTextField(
-                    title: "Mobile Number",
-                    hintText: "xxxxxxxxxx",
-                    controller: _mobileNumberController,
-                    validator: FormValidator.validatePhoneNumber,
-                    suffixIcon: Icons.phone_android_outlined,
-                    showSearchIcon: true,
-                    onSuffixPressed: () async {
-                      String phoneNumber =
-                          await SecureStorageService.appPhoneNumber;
-                      _mobileNumberController.text = phoneNumber;
-                    },
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CustomTextField(
+                          title: "Mobile Number",
+                          hintText: "xxxxxxxxxx",
+                          controller: _mobileNumberController,
+                          validator: FormValidator.validatePhoneNumber,
+                          suffixIcon: Icons.phone_android_outlined,
+                          showSearchIcon: true,
+                          onSuffixPressed: () async {
+                            String phoneNumber =
+                                await SecureStorageService.appPhoneNumber;
+                            _mobileNumberController.text = phoneNumber;
+                          },
+                        ),
+                      ),
+                      // Container(
+                      //   padding: const EdgeInsets.all(6),
+                      //   margin: const EdgeInsets.only(left: 8, top: 28),
+                      //   height: _height * 0.06,
+                      //   width: _width * 0.12,
+                      //   child: SvgPicture.asset(
+                      //     "assets/icons/Contact from phone.svg",
+                      //   ),
+                      // )
+                    ],
                   ),
                   SizedBox(height: _height * 0.01),
                   CustomTextField(

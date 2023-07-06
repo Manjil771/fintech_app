@@ -77,6 +77,7 @@ class Service {
   String? priceRange;
   String? labelMaxLength;
   String? labelMinLength;
+  String? cashBackView;
 
   Service({
     required this.id,
@@ -94,6 +95,7 @@ class Service {
     this.notificationUrl,
     this.minValue,
     this.maxValue,
+    this.cashBackView,
     this.icon,
     required this.categoryId,
     required this.serviceCategoryName,
@@ -132,6 +134,7 @@ class Service {
         priceRange: json["priceRange"],
         labelMaxLength: json["labelMaxLength"],
         labelMinLength: json["labelMinLength"],
+        cashBackView: json["cashBackView"] ?? "0",
       );
 
   Map<String, dynamic> toJson() => {
@@ -160,6 +163,7 @@ class Service {
         "priceRange": priceRange,
         "labelMaxLength": labelMaxLength,
         "labelMinLength": labelMinLength,
+        "cashBackView": cashBackView,
       };
 }
 

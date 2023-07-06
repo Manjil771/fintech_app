@@ -7,6 +7,7 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -42,7 +43,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
   TextEditingController policyNoController = TextEditingController();
 
   bool _isLoading = false;
-
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -64,12 +65,12 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
-            NavigationService.push(
+            NavigationService.pushReplacement(
               target: CommonBillDetailPage(
+                service: widget.service,
                 apiEndpoint: "/api/insurance/pay",
                 apiBody: {
-                  "policyNo": _response.findValue(
-                      primaryKey: "hashResposne", secondaryKey: "policyNo"),
+                  "policyNo": policyNoController.text,
                   "policyName": _response.findValue(
                       primaryKey: "hashResposne", secondaryKey: "policyName"),
                 },
@@ -166,89 +167,103 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
         }
       },
       child: CommonContainer(
-        title: "Insurance Paymenent",
+        title: widget.service.service,
+        //  detail: widget.service.instructions,
         detail: "Pay for your Insurance premium from here.",
         showDetail: true,
-        topbarName: "Insurance Payment",
+        topbarName: widget.service.serviceCategoryName,
         buttonName: "Show Details",
-        body: Column(
-          children: [
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Row(
-                  children: [
-                    Container(
-                      height: _height * 0.11,
-                      width: _width * 0.23,
-                      margin: const EdgeInsets.only(right: 18),
-                      child: Image.network(
-                          "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.companyLogo}"),
-                    ),
-                    Expanded(
-                      child: Text(widget.companyName,
-                          style: Theme.of(context)
-                              .textTheme
-                              .titleLarge!
-                              .copyWith(fontWeight: FontWeight.w700)),
-                    ),
-                  ],
-                ),
-                Text(
-                  "From Account",
-                  style: const TextStyle(
-                    fontFamily: Fonts.poppin,
-                    fontWeight: FontWeight.w600,
-                    fontSize: 13,
-                    color: CustomTheme.lightTextColor,
+        body: Form(
+          autovalidateMode: AutovalidateMode.onUserInteraction,
+          key: _formKey,
+          child: Column(
+            children: [
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Row(
+                    children: [
+                      Container(
+                        height: _height * 0.11,
+                        width: _width * 0.23,
+                        margin: const EdgeInsets.only(right: 18),
+                        child: Image.network(
+                            "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.companyLogo}"),
+                      ),
+                      Expanded(
+                        child: Text(widget.companyName,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge!
+                                .copyWith(fontWeight: FontWeight.w700)),
+                      ),
+                    ],
                   ),
-                ),
-                PrimaryAccountBox(),
-                CustomTextField(
-                  title: "Policy No",
-                  hintText: "Policy NO",
-                  controller: policyNoController,
-                ),
-                SizedBox(height: _height * 0.01),
-                CustomTextField(
-                  onTap: () async {
-                    final date = await showDatePicker(
-                        context: context,
-                        initialDate: DateTime.now(),
-                        firstDate: DateTime(1905),
-                        lastDate: DateTime.now());
-                    setState(
-                      () {
-                        selectedDateController.text =
-                            "${date!.year}-${date.month}-${date.day}";
-                      },
-                    );
-                  },
-                  title: "Date of Birth",
-                  hintText: "yyyy-mm-dd",
-                  readOnly: true,
-                  controller: selectedDateController,
-                  trailing: SvgPicture.asset(
-                    Assets.calanderIcon,
-                    height: _height * 0.05,
+                  Text(
+                    "From Account",
+                    style: const TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 13,
+                      color: CustomTheme.lightTextColor,
+                    ),
                   ),
-                ),
-              ],
-            )
-          ],
+                  PrimaryAccountBox(),
+                  CustomTextField(
+                    title: "Policy No",
+                    hintText: "Policy NO",
+                    controller: policyNoController,
+                    validator: (value) => FormValidator.validateFieldNotEmpty(
+                        value, "Policy No."),
+                  ),
+                  SizedBox(height: _height * 0.01),
+                  CustomTextField(
+                    validator: (value) {
+                      if (value!.length == 0) {
+                        return "Please Select Date";
+                      }
+                    },
+                    onTap: () async {
+                      final date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1905),
+                          lastDate: DateTime.now());
+                      setState(
+                        () {
+                          selectedDateController.text =
+                              "${date!.year}-${date.month}-${date.day}";
+                        },
+                      );
+                    },
+                    title: "Date of Birth",
+                    hintText: "yyyy-mm-dd",
+                    readOnly: true,
+                    controller: selectedDateController,
+                    trailing: SvgPicture.asset(
+                      Assets.calanderIcon,
+                      height: _height * 0.05,
+                    ),
+                  ),
+                ],
+              )
+            ],
+          ),
         ),
         onButtonPressed: () {
-          context.read<UtilityPaymentCubit>().fetchDetails(
-                serviceIdentifier: widget.service.uniqueIdentifier,
-                accountDetails: {
-                  // "username": "108006674",
-                  "username": policyNoController.text,
-                  "dob": selectedDateController.text,
-                  // "dob": "1983-07-24",
-                },
-                apiEndpoint: "api/insurance/policy",
-              );
+          if (_formKey.currentState!.validate()) {
+            context.read<UtilityPaymentCubit>().fetchDetails(
+                  serviceIdentifier: widget.service.uniqueIdentifier,
+                  accountDetails: {
+                    // "username": "108006674",
+                    "username": policyNoController.text,
+                    "dob": selectedDateController.text,
+                    // "dob": "1983-07-24",
+                  },
+                  apiEndpoint: "api/insurance/policy",
+                );
+          }
         },
       ),
     ));
