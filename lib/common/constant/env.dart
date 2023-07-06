@@ -76,6 +76,17 @@ class CoOperativeValue {
   //   clientSecret: "126489",
   // );
 
+  static final CoOperative janadharaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/images/janadhara_banner.png",
+    // clientCode: 'EHVNI7CZJ3',
+    clientCode: '6M0D7LSVNV',
+    coOperativeName: '',
+    coOperativeLogo: 'assets\images\janadhara_logo.png',
+    // clientSecret: "126489",
+
+    clientSecret: "180509",
+  );
 // //  DEV TEST700746
   static final CoOperative development = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
