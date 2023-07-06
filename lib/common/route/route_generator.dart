@@ -149,22 +149,22 @@ class RouteGenerator {
         );
       case Routes.listWalletScreen:
         return MaterialPageRoute(
-          builder: (_) => WalletTransferScreen(),
+          builder: (_) => const WalletTransferScreen(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.selectDataPack:
         return MaterialPageRoute(
-          builder: (_) => SelectDatapackScreen(),
+          builder: (_) => const SelectDatapackScreen(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.buyDatapack:
         return MaterialPageRoute(
-          builder: (_) => BuyDatapackScreen(),
+          builder: (_) => const BuyDatapackScreen(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.landlineScreen:
         return MaterialPageRoute(
-          builder: (_) => LandlinePaymentPage(),
+          builder: (_) => const LandlinePaymentPage(),
           settings: RouteSettings(name: settings.name),
         );
       default:
