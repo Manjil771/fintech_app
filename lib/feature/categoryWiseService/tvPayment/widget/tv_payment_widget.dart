@@ -167,8 +167,8 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                   controller: amountController,
                   validator: (value) => FormValidator.validateAmount(
                       val: value.toString(),
-                      maxAmount: widget.service.maxValue ?? 100000,
-                      minAmount: widget.service.minValue ?? 10)),
+                      maxAmount: widget.service.maxValue,
+                      minAmount: widget.service.minValue.toDouble())),
             ],
           ),
         ),

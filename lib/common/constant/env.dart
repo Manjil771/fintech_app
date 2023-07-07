@@ -65,11 +65,7 @@ class CoOperativeValue {
 //     splashImage: "assets/janadhara_splash.png",
 //   );
 
-<<<<<<< HEAD
   //******* LIVE ********* //
-=======
-  // // //******* LIVE ********* //
-
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
@@ -79,51 +75,13 @@ class CoOperativeValue {
   //   clientSecret: "126489",
   // );
 
-  static final CoOperative janadharaCoop = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/images/janadhara_banner.png",
-    // clientCode: 'EHVNI7CZJ3',
-    clientCode: '6M0D7LSVNV',
-    coOperativeName: '',
-    coOperativeLogo: 'assets\images\janadhara_logo.png',
-    // clientSecret: "126489",
-
-    clientSecret: "180509",
-  );
-// //  DEV TEST700746
->>>>>>> dabf7b14fb26df8b3d4708b1913e09688d1b0eb8
+//  DEV TEST700746
   static final CoOperative development = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'EHVNI7CZJ3',
+    clientCode: 'VBMRDWEVFV',
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "126489",
+    clientSecret: "199204",
   );
-
-<<<<<<< HEAD
-
-// //  DEV TEST700746
-//   static final CoOperative development = CoOperative(
-//     baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-//     clientCode: 'VBMRDWEVFV',
-//     coOperativeName: '',
-//     coOperativeLogo: Assets.ismartLogo,
-//     clientSecret: "199204",
-//  );
-
-  // DEV TEST70074
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-=======
-  // DEV TEST70074
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'VBMRDWEVFV',
-  //   coOperativeName: '',
-  //   coOperativeLogo: Assets.ismartLogo,
-  //   clientSecret: "199204",
-  // );
 }
->>>>>>> dabf7b14fb26df8b3d4708b1913e09688d1b0eb8
