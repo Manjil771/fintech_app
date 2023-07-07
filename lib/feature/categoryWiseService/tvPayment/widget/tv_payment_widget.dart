@@ -99,6 +99,23 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                             )
                             .toString()),
                     KeyValueTile(title: "Amount", value: amountController.text),
+                    _response.findValue(
+                                primaryKey: "hashResponse",
+                                secondaryKey: "customerName") ==
+                            null
+                        ? Container()
+                        : Column(
+                            children: [
+                              KeyValueTile(
+                                  title: "Number of TV",
+                                  value: _response
+                                      .findValue(
+                                        primaryKey: "hashResponse",
+                                        secondaryKey: "currentPackages",
+                                      )["text"]
+                                      .toString()),
+                            ],
+                          ),
                     KeyValueTile(
                         title: "Number of TV",
                         value: _response
@@ -106,7 +123,10 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                               primaryKey: "hashResponse",
                               secondaryKey: "noOfTv",
                             )
-                            .toString())
+                            .toString()),
+                    KeyValueTile(
+                        title: "CashBack",
+                        value: widget.service.cashBackView ?? "0 %"),
                   ],
                 ),
               ),

@@ -142,7 +142,8 @@ class _CategoriesWiseServicesWidgetState
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
-                          widget.services[index].service.toString(),
+                          widget.services[index].service.toString() +
+                              widget.services[index].cashBackView.toString(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                               color: CustomTheme.darkerBlack,
