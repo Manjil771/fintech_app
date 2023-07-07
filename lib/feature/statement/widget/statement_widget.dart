@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
@@ -34,8 +35,8 @@ class StatementWidget extends StatelessWidget {
                   Expanded(
                     child: CommonGridViewContainer(
                         onContainerPress: () {
-                          NavigationService.push(
-                              target: ChooseAccountMiniStatementPage());
+                          NavigationService.pushNamed(
+                              routeName: Routes.chooseAccountMiniStatement);
                         },
                         containerImage: Assets.miniStatement,
                         title: "Mini Statement"),
@@ -45,7 +46,8 @@ class StatementWidget extends StatelessWidget {
                         containerImage: Assets.miniStatement,
                         title: "Full Statement",
                         onContainerPress: () {
-                          NavigationService.push(target: FullStatementPage());
+                          NavigationService.pushNamed(
+                              routeName: Routes.chooseAccountFullStatement);
                         }),
                   ),
                 ],

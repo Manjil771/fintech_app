@@ -29,4 +29,10 @@ class Routes {
   static const selectDataPack = '/select_datapack';
   static const buyDatapack = '/buy_datapack';
   static const landlineScreen = '/landline_page';
+  static const chooseAccountFullStatement =
+      '/choose_account_full_statement_page';
+  static const fullStatement = '/full_statement';
+  static const chooseAccountMiniStatement =
+      '/choose_account_mini_statement_page';
+  static const miniStatement = '/mini_statement';
 }

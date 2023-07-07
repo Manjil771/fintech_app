@@ -48,16 +48,16 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
     );
   }
 
-  DateTime fromDate = DateTime.now();
+  DateTime fromDate = DateTime.now().subtract(Duration(days: 15));
   DateTime fromDateAlert = DateTime.now();
 
   DateTime toDate = DateTime.now();
   ValueNotifier<FullStatementModel?> fullStatementDetail = ValueNotifier(null);
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
   void getData() {
-    DateTime fromDate = fromDateAlert == DateTime.now()
-        ? DateTime.now().subtract(Duration(days: startDay))
-        : fromDateAlert;
+    // DateTime fromDate = fromDateAlert == DateTime.now()
+    //     ? DateTime.now().subtract(Duration(days: 15))
+    //     : fromDateAlert;
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
     WidgetsBinding.instance.addPostFrameCallback(
@@ -161,9 +161,13 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           return InkWell(
                                             onTap: () {
                                               setState(() {
-                                                fromDateAlert = DateTime.now();
+                                                fromDate = DateTime.now()
+                                                    .subtract(Duration(
+                                                        days: numberOfDays[
+                                                            index]));
+                                                // fromDateAlert = DateTime.now();
                                                 selectedDays = index;
-                                                startDay = numberOfDays[index];
+                                                // startDay = numberOfDays[index];
                                               });
                                               getData();
                                             },
@@ -462,7 +466,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               return StatementDetailBox(
                                                   balance:
                                                       data.balance.toString(),
-                                                  isCredit: data.credit == 0
+                                                  isCredit: data.credit != 0
                                                       ? true
                                                       : false,
                                                   desc: data.remarks.toString(),
@@ -472,7 +476,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                   dateTime: data.transactionDate
                                                       .toString(),
                                                   imageUrl: "",
-                                                  status: data.credit == 0
+                                                  status: data.credit != 0
                                                       ? "Deposit"
                                                       : "Withdrawl");
                                             },
