@@ -28,6 +28,10 @@ import 'package:ismart/feature/categoryWiseService/electricity/screen/electricit
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
+import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
+import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_page.dart';
+import 'package:ismart/feature/statement/miniStatement/ui/screen/choose_account_mini_statement_page.dart';
+import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 import 'package:ismart/feature/statement/screen/statement_page.dart';
 
 import '../../feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
@@ -48,11 +52,6 @@ class RouteGenerator {
       case Routes.internetList:
         return MaterialPageRoute(
           builder: (_) => InternetListScreen(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.mobileTopup:
-        return MaterialPageRoute(
-          builder: (_) => const MobileTopupPage(),
           settings: RouteSettings(name: settings.name),
         );
 
@@ -172,6 +171,27 @@ class RouteGenerator {
           builder: (_) => const LandlinePaymentPage(),
           settings: RouteSettings(name: settings.name),
         );
+      case Routes.chooseAccountFullStatement:
+        return MaterialPageRoute(
+          builder: (_) => const ChooseAccountFullStatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.fullStatement:
+        return MaterialPageRoute(
+          builder: (_) => FullStatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.chooseAccountMiniStatement:
+        return MaterialPageRoute(
+          builder: (_) => const ChooseAccountMiniStatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.miniStatement:
+        return MaterialPageRoute(
+          builder: (_) => const MiniStatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+
       default:
         return MaterialPageRoute(
           builder: (_) => const SplashScreens(),

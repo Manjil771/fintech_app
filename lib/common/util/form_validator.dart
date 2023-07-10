@@ -70,13 +70,18 @@ class FormValidator {
   static String? validatePhoneNumber(String? val) {
     final RegExp regExp = RegExp(r'([9][678][0-6][0-9]{7})');
     if (val == null) {
-      return LocaleKeys.fieldCannotBeEmpty
-          .tr(args: [LocaleKeys.phoneNumber.tr()]);
+      // return LocaleKeys.fieldCannotBeEmpty
+      //     .tr(args: [LocaleKeys.phoneNumber.tr()]);
+      return "Enter a valid Number";
     } else if (val.isEmpty) {
-      return LocaleKeys.fieldCannotBeEmpty
-          .tr(args: [LocaleKeys.phoneNumber.tr()]);
+      return "Number cannot be empty.";
+
+      // return LocaleKeys.fieldCannotBeEmpty
+      //     .tr(args: [LocaleKeys.phoneNumber.tr()]);
     } else if (val.length != 10 || !regExp.hasMatch(val)) {
-      return LocaleKeys.enterValidPhoneNumber.tr();
+      return "Enter a valid Number";
+
+      //return LocaleKeys.enterValidPhoneNumber.tr();
     } else {
       return null;
     }
@@ -84,9 +89,10 @@ class FormValidator {
 
   static String? validateFieldNotEmpty(String? val, String fieldName) {
     if (val == null) {
-      return LocaleKeys.fieldCannotBeEmpty.tr(args: [fieldName]);
+      return "$fieldName cannot be empty.";
     } else if (val.isEmpty) {
-      return LocaleKeys.fieldCannotBeEmpty.tr(args: [fieldName]);
+      return "$fieldName cannot be empty.";
+      // return LocaleKeys.fieldCannotBeEmpty.tr(args: [fieldName]);
     } else {
       return null;
     }
@@ -105,6 +111,24 @@ class FormValidator {
       }
     } else {
       return null;
+    }
+  }
+
+  static String? validateAmount(
+      {required String val,
+      required double minAmount,
+      required double maxAmount}) {
+    if (val.isEmpty) {
+      return "Amount field cannot be empty";
+    } else {
+      double? amount = double.tryParse(val);
+      if (amount == null) {
+        return "Invalid amount";
+      } else if (amount >= minAmount && amount <= maxAmount) {
+        return null;
+      } else {
+        return "Amount must be between $minAmount and $maxAmount";
+      }
     }
   }
 }

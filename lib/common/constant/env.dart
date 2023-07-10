@@ -90,6 +90,7 @@ class CoOperativeValue {
     coOperativeName: 'Janadhara',
     coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
     clientSecret: "180509",
+    // splashImage: "assets/janadhara/janadhara_splash.png",
     splashImage: "assets/janadhara/janadhara_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );

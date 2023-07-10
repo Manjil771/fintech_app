@@ -80,9 +80,9 @@ class _CategoriesWiseServicesWidgetState
                       NavigationService.push(target: const KhanePaniPage());
                     }
                     if (widget.uniqueIdentifier.toLowerCase() ==
-                        //for live data_pack
-                        //for test Data pack
-                        "Data pack".toLowerCase()) {
+                            "data_pack".toLowerCase() ||
+                        widget.uniqueIdentifier.toLowerCase() ==
+                            "Data Pack".toLowerCase()) {
                       NavigationService.push(
                           target: SelectDatapackScreen(
                         serviceIdentifier: widget.services[index],
@@ -142,7 +142,8 @@ class _CategoriesWiseServicesWidgetState
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Text(
-                          widget.services[index].service.toString(),
+                          widget.services[index].service.toString() +
+                              widget.services[index].cashBackView.toString(),
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                               color: CustomTheme.darkerBlack,

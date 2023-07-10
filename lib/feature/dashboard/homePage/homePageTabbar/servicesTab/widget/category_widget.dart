@@ -14,7 +14,6 @@ import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
@@ -82,10 +81,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   : state.data.length,
                           gridDelegate:
                               const SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 4,
-                                  childAspectRatio: 0.5 / 0.5),
+                            crossAxisCount: 4,
+                          ),
                           itemBuilder: (context, index) {
                             final data = state.data[index];
+
+                            final filteredItems = data.services
+                                .where((item) => item.cashBackView != null)
+                                .toList();
+
                             final _imageUrl =
                                 "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
                             return GestureDetector(
@@ -130,6 +134,34 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               },
                               child: Column(
                                 children: [
+                                  state.data[index].isNew
+                                      ? Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.end,
+                                          children: [
+                                            Container(
+                                              padding: EdgeInsets.symmetric(
+                                                  horizontal: 4),
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      CustomTheme.primaryColor,
+                                                  borderRadius:
+                                                      BorderRadius.circular(5)),
+                                              child: Align(
+                                                alignment: Alignment.topRight,
+                                                child: Text(
+                                                  'New',
+                                                  style: _textTheme.bodyLarge!
+                                                      .copyWith(
+                                                          color:
+                                                              CustomTheme.white,
+                                                          fontSize: 10),
+                                                ),
+                                              ),
+                                            ),
+                                          ],
+                                        )
+                                      : Container(),
                                   Container(
                                     height: _height * 0.03,
                                     child: _imageUrl
@@ -157,15 +189,37 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                             },
                                           ),
                                   ),
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(
-                                        horizontal: 5, vertical: 8),
-                                    child: Text(
-                                      "${data.name}",
-                                      textAlign: TextAlign.center,
-                                      style: _textTheme.titleSmall,
+                                  Expanded(
+                                    child: Center(
+                                      child: Text(
+                                        "${data.name}",
+                                        textAlign: TextAlign.center,
+                                        style: _textTheme.titleSmall,
+                                        overflow: TextOverflow.ellipsis,
+                                      ),
                                     ),
                                   ),
+                                  filteredItems.isNotEmpty
+                                      ? Container(
+                                          margin: EdgeInsets.only(bottom: 4),
+                                          padding: EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          decoration: BoxDecoration(
+                                              color: CustomTheme.primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Text(
+                                            '7% Cashback',
+                                            overflow: TextOverflow.ellipsis,
+                                            style: _textTheme.bodyLarge!
+                                                .copyWith(
+                                                    color: CustomTheme.white,
+                                                    fontSize: 10),
+                                          ),
+                                        )
+                                      : Container(
+                                          margin: EdgeInsets.only(bottom: 8),
+                                        ),
                                 ],
                               ),
                             );

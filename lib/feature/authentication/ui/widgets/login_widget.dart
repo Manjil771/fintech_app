@@ -162,6 +162,7 @@ class _LoginWidgetState extends State<LoginWidget> {
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.hp),
               child: Form(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 key: _loginFormKey,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,

@@ -60,7 +60,7 @@ class _GovnPlaceWidgetState extends State<GovnPlaceWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Banks",
+                  "Places",
                   style: _textTheme.displayLarge,
                 ),
               ),
@@ -72,7 +72,7 @@ class _GovnPlaceWidgetState extends State<GovnPlaceWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Select bank",
+                  "Select From List",
                   style: _textTheme.titleLarge,
                 ),
               ),

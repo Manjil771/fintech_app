@@ -17,10 +17,10 @@ class ChequeWidget extends StatelessWidget {
         body: CommonContainer(
       showDetail: false,
       body: SizedBox(
-        height: _height / 2.3,
+        height: _height,
         child: DefaultTabController(
           initialIndex: 0,
-          length: 3,
+          length: 2,
           child: Column(
             children: const [
               TabBar(
@@ -32,7 +32,7 @@ class ChequeWidget extends StatelessWidget {
                 automaticIndicatorColorAdjustment: true,
                 tabs: [
                   Tab(text: "Cheque Book"),
-                  Tab(text: "Cheque Block"),
+                  Tab(text: "Cheque Stop"),
                 ],
               ),
               Expanded(
