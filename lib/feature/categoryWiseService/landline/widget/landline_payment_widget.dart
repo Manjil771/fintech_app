@@ -6,6 +6,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
@@ -22,13 +23,26 @@ import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
+import '../../../customerDetail/resource/customer_detail_repository.dart';
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
-class LandlinePaymentWidget extends StatelessWidget {
+class LandlinePaymentWidget extends StatefulWidget {
+  final Service service;
+
+  LandlinePaymentWidget({super.key, required this.service});
+
+  @override
+  State<LandlinePaymentWidget> createState() => _LandlinePaymentWidgetState();
+}
+
+class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
   final TextEditingController _phoneNumberController = TextEditingController();
+
   final TextEditingController _amountController = TextEditingController();
 
   bool _isLoading = false;
+
+  final _fromKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -48,17 +62,6 @@ class LandlinePaymentWidget extends StatelessWidget {
             }
 
             if (state is CommonStateSuccess) {
-              NavigationService.push(
-                  target: CommonTransactionSuccessPage(
-                transactionID: "",
-                body: Column(
-                  children: [
-                    KeyValueTile(
-                        title: "Status", value: state.statusCode.toString())
-                  ],
-                ),
-                message: state.data,
-              ));
             } else if (state is CommonError) {
               showPopUpDialog(
                 context: context,
@@ -79,38 +82,59 @@ class LandlinePaymentWidget extends StatelessWidget {
             topbarName: "Payment",
             title: "LandLine Payment",
             detail: "Pay your Landline Bills.",
-            body: Column(
-              children: [
-                CustomTextField(
-                  title: "Landline Number",
-                  hintText: "xxxxxxxxxx",
-                  controller: _phoneNumberController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Number"),
-                ),
-                CustomTextField(
-                  title: "Amount",
-                  hintText: "Enter the amount",
-                  controller: _amountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
-                ),
-              ],
+            body: Form(
+              key: _fromKey,
+              child: Column(
+                children: [
+                  CustomTextField(
+                    title: "Landline Number",
+                    hintText: "xxxxxxxxxx",
+                    controller: _phoneNumberController,
+                    validator: (val) =>
+                        FormValidator.validateFieldNotEmpty(val, "Number"),
+                  ),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    title: "Amount",
+                    hintText: "Enter the amount",
+                    controller: _amountController,
+                    validator: (val) => FormValidator.validateAmount(
+                        val: val.toString(),
+                        maxAmount: widget.service.maxValue,
+                        minAmount: widget.service.minValue),
+                  ),
+                ],
+              ),
             ),
             onButtonPressed: () {
-              NavigationService.push(
-                target: TransactionPinScreen(
-                  onValueCallback: (mpin) {
-                    NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().getTopUp(
-                          serviceIdentifier: "pstn_online_topup",
-                          phoneNumber: _phoneNumberController.text, //14232352
-                          amount: _amountController.text,
-                          mpin: mpin,
-                        );
+              // print("val is " + widget.service.minValue.toString());
+              if (_fromKey.currentState!.validate()) {
+                NavigationService.push(
+                    target: CommonBillDetailPage(
+                  apiBody: {},
+                  apiEndpoint: "/api/topup",
+                  service: widget.service,
+                  accountDetails: {
+                    "service_identifier": "pstn_online_topup",
+                    "phone_number": _phoneNumberController.text, //14232352
+                    "amount": _amountController.text,
+                    "account_number":
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value!
+                            .accountNumber,
                   },
-                ),
-              );
+                  body: Column(
+                    children: [
+                      KeyValueTile(
+                          title: "Phone Number",
+                          value: _phoneNumberController.text),
+                      KeyValueTile(
+                          title: "Amount", value: _amountController.text),
+                    ],
+                  ),
+                ));
+              }
             },
           )),
     );

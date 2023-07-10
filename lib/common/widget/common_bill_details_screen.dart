@@ -99,13 +99,24 @@ class CommonBillDetailWidget extends StatelessWidget {
 
           if (state is CommonStateSuccess) {
             UtilityResponseData _response = state.data;
-
-            NavigationService.pushReplacement(
-                target: CommonTransactionSuccessfulPage(
-                    transactionID: state.data.code,
-                    body: body,
-                    message: state.data.message,
-                    service: service));
+            if (_response.code == "M0000") {
+              NavigationService.pushReplacement(
+                  target: CommonTransactionSuccessfulPage(
+                      transactionID: state.data.code,
+                      body: body,
+                      message: state.data.message,
+                      service: service));
+            } else {
+              showPopUpDialog(
+                context: context,
+                message: _response.message,
+                title: "Error",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
           }
         },
         child: Column(
@@ -169,7 +180,6 @@ class CommonBillDetailWidget extends StatelessWidget {
                             context.read<UtilityPaymentCubit>().makePayment(
                                   mPin: p0,
                                   serviceIdentifier: service!.uniqueIdentifier,
-                                  // serviceIdentifier: "traffic_fine_payments",
                                   apiEndpoint: apiEndpoint,
                                   body: apiBody,
                                   accountDetails: accountDetails,
