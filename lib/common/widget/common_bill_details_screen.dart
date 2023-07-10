@@ -30,14 +30,14 @@ class CommonBillDetailPage extends StatelessWidget {
   final Widget body;
   final Service? service;
 
-  CommonBillDetailPage(
+  const CommonBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
       this.service});
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -94,11 +94,13 @@ class CommonBillDetailWidget extends StatelessWidget {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             NavigationService.push(
-                target: CommonTransactionSuccessfulPage(
-                    transactionID: state.data.code,
-                    body: body,
-                    message: state.data.message,
-                    service: service));
+              target: CommonTransactionSuccessPage(
+                transactionID: state.data.code,
+                body: body,
+                message: state.data.message,
+                service: service,
+              ),
+            );
           } else if (state is CommonError) {
             showPopUpDialog(
               context: context,
@@ -118,7 +120,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -129,7 +131,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   SizedBox(height: _height * 0.02),
                   Text(
                     service!.service,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.w500),

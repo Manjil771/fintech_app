@@ -9,6 +9,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -66,12 +67,37 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             }
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              NavigationService.push(
-                  target: CommonTransactionSuccessfulPage(
-                      transactionID: state.data.code,
-                      body: Container(),
-                      message: state.data.message,
-                      service: widget.service));
+              if (state.data.isSuccessTransaction()) {
+                NavigationService.push(
+                  target: CommonTransactionSuccessPage(
+                    transactionID: state.data.transactionIdentifier,
+                    body: Column(
+                      children: [
+                        KeyValueTile(
+                            title: "Amount", value: _amountController.text),
+                        KeyValueTile(
+                            title: "Mobile",
+                            value: _mobileNumberController.text),
+                        KeyValueTile(
+                            title: "Status",
+                            value: state.data.getStatusString()),
+                      ],
+                    ),
+                    message: state.data.message,
+                    service: widget.service,
+                  ),
+                );
+              } else {
+                showPopUpDialog(
+                  context: context,
+                  message: state.data.message,
+                  title: "Transaction",
+                  showCancelButton: false,
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                );
+              }
             } else if (state is CommonError) {
               showPopUpDialog(
                 context: context,

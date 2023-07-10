@@ -70,7 +70,7 @@ class TransactionLimitCard extends StatelessWidget {
       ),
       decoration: BoxDecoration(
         border: Border.all(
-          color: CustomTheme.primaryColor.withOpacity(0.15),
+          color: CustomTheme.primaryColor!.withOpacity(0.15),
           width: 1.5,
         ),
         borderRadius: BorderRadius.circular(30),

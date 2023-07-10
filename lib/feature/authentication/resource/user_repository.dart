@@ -88,6 +88,7 @@ class UserRepository {
   Future<bool> persistToken(String token) async {
     try {
       await SharedPref.setAccessToken(token);
+
       _isLoggedIn.value = true;
       return true;
     } on Exception catch (_) {

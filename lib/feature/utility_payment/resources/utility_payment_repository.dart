@@ -31,7 +31,7 @@ class UtilityPaymentRepository {
 
   String get myQrCode => _myQrCode;
 
-  Future<DataResponse<String>> getTopup({
+  Future<DataResponse<UtilityResponseData>> getTopup({
     required String serviceIdentifier,
     required String phoneNumber,
     required String amount,
@@ -46,8 +46,15 @@ class UtilityPaymentRepository {
         amount: amount,
         mpin: mpin,
       );
-      print(_res);
-      return DataResponse.success(_res['data']?['message'] ?? "");
+      Map<String, dynamic> _utilityResponseRaw = Map.from(_res['data'] ?? {});
+      if (_utilityResponseRaw.isEmpty) {
+        return DataResponse.error(
+            "Error while performing transaction. Please try again later");
+      }
+
+      UtilityResponseData _utilityResponse =
+          UtilityResponseData.fromJson(_utilityResponseRaw);
+      return DataResponse.success(_utilityResponse);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;
