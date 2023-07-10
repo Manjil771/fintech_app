@@ -9,6 +9,8 @@ class CommonGridViewContainer extends StatelessWidget {
   final String title;
   final Function()? onContainerPress;
   final EdgeInsets? margin;
+  final double? height;
+  final double? width;
 
   const CommonGridViewContainer(
       {super.key,
@@ -16,7 +18,9 @@ class CommonGridViewContainer extends StatelessWidget {
       this.isNetworkImage = false,
       this.margin = const EdgeInsets.all(8),
       required this.title,
-      this.onContainerPress});
+      this.onContainerPress,
+      this.height,
+      this.width});
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -32,8 +36,9 @@ class CommonGridViewContainer extends StatelessWidget {
             color: CustomTheme.darkerBlack.withOpacity(0.07)),
         child: Column(children: [
           Container(
+            width: width,
             padding: const EdgeInsets.all(12),
-            height: _height * 0.08,
+            height: height ?? _height * 0.08,
             child: isNetworkImage == true
                 ? SvgPicture.network(containerImage)
                 : SvgPicture.asset(

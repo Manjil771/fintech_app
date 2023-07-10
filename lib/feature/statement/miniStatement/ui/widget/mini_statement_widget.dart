@@ -33,7 +33,10 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
       (timeStamp) {
         final cubit = context.read<MiniStatementCubit>().fetchMiniStatement(
             accountNumbner:
-                customerDetail.value!.accountDetail[0].accountNumber);
+                RepositoryProvider.of<CustomerDetailRepository>(context)
+                    .selectedAccount
+                    .value!
+                    .accountNumber);
       },
     );
   }
@@ -41,6 +44,10 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
+    final selectedAccount =
+        RepositoryProvider.of<CustomerDetailRepository>(context)
+            .selectedAccount
+            .value;
     final _theme = Theme.of(context);
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
@@ -82,7 +89,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                    "Account Details ${val.accountDetail[0].mainCode}",
+                                    "Account Details ${selectedAccount!.accountNumber}",
                                     style:
                                         Theme.of(context).textTheme.titleLarge),
                                 SizedBox(height: _height * 0.01),
@@ -112,7 +119,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                                 .titleLarge,
                                           ),
                                           Text(
-                                            "NPR ${val.accountDetail[0].availableBalance}",
+                                            "NPR ${selectedAccount.availableBalance}",
                                             style: TextStyle(
                                                 fontFamily: "popinBold",
                                                 fontSize: 18,
@@ -133,7 +140,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                                 .titleLarge,
                                           ),
                                           Text(
-                                            "NPR ${val.accountDetail[0].actualBalance}",
+                                            "NPR ${selectedAccount.actualBalance}",
                                             style: TextStyle(
                                                 fontSize: 18,
                                                 fontWeight: FontWeight.w500,
@@ -200,7 +207,8 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                   ],
                 ),
                 onButtonPressed: () {
-                  NavigationService.push(target: const DashboardPage());
+                  NavigationService.pushReplacement(
+                      target: const DashboardPage());
                 },
                 buttonName: "Close",
                 title: "Mini Statement",

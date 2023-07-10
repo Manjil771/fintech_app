@@ -13,6 +13,7 @@ class AllCategoryWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
         body: CommonContainer(
+      horizontalPadding: 0,
       showDetail: false,
       showTitleText: false,
       showRoundBotton: false,

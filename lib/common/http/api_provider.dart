@@ -413,6 +413,9 @@ class ApiProvider {
             jsonDecode(response.data)['message'] ??
                 "Feature not available. Please check back again.",
             response.statusCode);
+      case 420:
+        throw CustomServerException(
+            getErrorMessage(res, 404), response.statusCode);
       default:
         throw NoInternetException(
             'Error occured while Communication with Server',

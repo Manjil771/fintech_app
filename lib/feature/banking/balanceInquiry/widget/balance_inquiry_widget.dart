@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:share_plus/share_plus.dart';
 
 class BalanceInquiryWidget extends StatefulWidget {
   const BalanceInquiryWidget({Key? key}) : super(key: key);
@@ -60,83 +64,122 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                   if (value != null) {
                     final _detail = customerDetail.value!;
                     return Container(
-                      height: _height * 0.6,
                       child: ListView.builder(
+                          physics: NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
                           itemCount: _detail.accountDetail.length,
                           itemBuilder: (context, index) {
-                            return Container(
-                              margin: const EdgeInsets.symmetric(vertical: 10),
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(18),
-                                // color: const Color(0xFFF3F3F3),
-                                border: Border.all(color: _theme.primaryColor),
-                              ),
-                              child: Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.all(20.0),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
+                            return Column(
+                              children: [
+                                Container(
+                                  margin:
+                                      const EdgeInsets.symmetric(vertical: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(18),
+                                    // color: const Color(0xFFF3F3F3),
+                                    border:
+                                        Border.all(color: _theme.primaryColor),
+                                  ),
+                                  child: Column(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.all(20.0),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
                                           children: [
-                                            Text("Total Balance",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .titleSmall),
-                                            SizedBox(height: _height * 0.005),
-                                            Text(
-                                                "NPR ${_detail.accountDetail[index].actualBalance}",
-                                                style: Theme.of(context)
-                                                    .textTheme
-                                                    .displaySmall),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text("Total Balance",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall),
+                                                SizedBox(
+                                                    height: _height * 0.005),
+                                                Text(
+                                                    "NPR ${_detail.accountDetail[index].actualBalance}",
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .displaySmall),
+                                              ],
+                                            ),
+                                            _getCoOpLogo(),
                                           ],
                                         ),
-                                        _getCoOpLogo(),
-                                      ],
-                                    ),
+                                      ),
+                                      Container(
+                                        padding: const EdgeInsets.all(16.0),
+                                        width: double.infinity,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(18),
+                                          color: _theme.scaffoldBackgroundColor,
+                                          border: Border.all(
+                                              color: _theme.primaryColor),
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            detailROw(
+                                                context,
+                                                "Available Balance",
+                                                _detail.accountDetail[index]
+                                                    .availableBalance),
+                                            detailROw(
+                                                context,
+                                                "Actual Balance",
+                                                _detail.accountDetail[index]
+                                                    .actualBalance),
+                                            detailROw(context, "Client Code",
+                                                "${_detail.accountDetail[index].clientCode}"),
+                                            detailROw(
+                                                context,
+                                                "Accured Interest",
+                                                "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                            detailROw(context, "Acc Number",
+                                                "${_detail.accountDetail[index].mainCode}"),
+                                            detailROw(context, "Interest Rate",
+                                                "${_detail.accountDetail[index].interestRate} %"),
+                                            detailROw(
+                                                context,
+                                                "Acc Holder’s Name",
+                                                "${_detail.accountDetail[index].accountHolderName}"),
+                                            detailROw(context, "Branch",
+                                                "${_detail.accountDetail[index].branchName}"),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
                                   ),
-                                  Container(
-                                    padding: const EdgeInsets.all(16.0),
-                                    width: double.infinity,
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(18),
-                                      color: _theme.scaffoldBackgroundColor,
-                                      border: Border.all(
-                                          color: _theme.primaryColor),
-                                    ),
-                                    child: Column(
-                                      children: [
-                                        detailROw(
-                                            context,
-                                            "Available Balance",
-                                            _detail.accountDetail[index]
-                                                .availableBalance),
-                                        detailROw(
-                                            context,
-                                            "Actual Balance",
-                                            _detail.accountDetail[index]
-                                                .actualBalance),
-                                        detailROw(context, "Client Code",
-                                            "${_detail.accountDetail[index].clientCode}"),
-                                        detailROw(context, "Accured Interest",
-                                            "NPR ${_detail.accountDetail[index].accruedInterest}"),
-                                        detailROw(context, "Acc Number",
-                                            "${_detail.accountDetail[index].mainCode}"),
-                                        detailROw(context, "Interest Rate",
-                                            "${_detail.accountDetail[index].interestRate} %"),
-                                        detailROw(context, "Acc Holder’s Name",
-                                            "${_detail.accountDetail[index].accountHolderName}"),
-                                        detailROw(context, "Branch",
-                                            "${_detail.accountDetail[index].branchName}"),
-                                      ],
-                                    ),
+                                ),
+                                Container(
+                                  height: 150,
+                                  child: Row(
+                                    children: [
+                                      Expanded(
+                                        child: CommonGridViewContainer(
+                                            onContainerPress: () async {
+                                              await Share.share(
+                                                'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: ${_detail.accountDetail[index].branchName} \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                              );
+                                            },
+                                            isNetworkImage: false,
+                                            containerImage:
+                                                'assets/icons/share.svg',
+                                            title: 'Share Account \n Details'),
+                                      ),
+                                      Expanded(child: Container()
+
+                                          // CommonGridViewContainer(
+                                          //     isNetworkImage: false,
+                                          //     containerImage: Assets.statement,
+                                          //     title: 'Download \nStatements'),
+                                          ),
+                                    ],
                                   ),
-                                ],
-                              ),
+                                )
+                              ],
                             );
                           }),
                     );

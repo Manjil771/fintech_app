@@ -42,87 +42,64 @@ class _BankingWidgetState extends State<BankingWidget> {
       body: Column(
         children: [
           Container(
-            height: _height * 0.4,
-            child: GridView.builder(
-              itemCount: itemName.length,
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 2),
-              itemBuilder: (context, index) => CommonGridViewContainer(
-                onContainerPress: () {
-                  NavigationService.pushNamed(routeName: onPress[index]);
-                },
-                margin: const EdgeInsets.all(8),
-                containerImage: images[index],
-                title: itemName[index],
-              ),
-            ),
-          ),
-          Container(
               width: double.infinity,
-              height: _height * 0.2,
-              child: Row(
-                children: [
-                  Container(
-                    width: _width / 2.3,
-                    child: CommonGridViewContainer(
-                        containerImage: Assets.chequeBookIcon,
-                        title: "Cheque Request"),
-                  ),
-                  Container(
-                    width: _width / 2.3,
-                    child: BlocConsumer<AppServiceCubit, CommonState>(
-                        listener: (context, state) {
-                      if (state is CommonLoading && !_isLoading) {
-                        _isLoading = true;
-                        showLoadingDialogBox(context);
-                      } else if (state is! CommonLoading && _isLoading) {
-                        _isLoading = false;
-                        NavigationService.pop();
-                      }
+              height: _height * 0.7,
+              child: Container(
+                child: BlocConsumer<AppServiceCubit, CommonState>(
+                    listener: (context, state) {
+                  if (state is CommonLoading && !_isLoading) {
+                    _isLoading = true;
+                    showLoadingDialogBox(context);
+                  } else if (state is! CommonLoading && _isLoading) {
+                    _isLoading = false;
+                    NavigationService.pop();
+                  }
 
-                      if (state is CommonError) {
-                        showPopUpDialog(
-                          context: context,
-                          message: state.message,
-                          title: "Error",
-                          showCancelButton: false,
-                          buttonCallback: () {
-                            NavigationService.pop();
-                          },
-                        );
-                      }
-                    }, builder: (context, state) {
-                      if (state is CommonDataFetchSuccess<
-                          AppServiceManagementModel>) {
-                        final filteredItems = state.data
-                            .where((item) =>
-                                item.uniqueIdentifier
-                                    .toString()
-                                    .toLowerCase()
-                                    .contains("loan_payment".toLowerCase()) &&
-                                item.status.toString().toLowerCase() ==
-                                    "Active".toLowerCase())
-                            .toList();
-                        return Column(
-                          children: filteredItems.map((e) {
-                            return Container(
-                              width: _width / 2.3,
-                              height: _height * 0.2,
-                              child: CommonGridViewContainer(
-                                title: e.name,
-                                isNetworkImage: true,
-                                containerImage:
-                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}${e.imageUrl}",
-                              ),
-                            );
-                          }).toList(),
-                        );
-                      } else {
-                        return Container();
-                      }
-                    }),
-                  ),
-                ],
+                  if (state is CommonError) {
+                    showPopUpDialog(
+                      context: context,
+                      message: state.message,
+                      title: "Error",
+                      showCancelButton: false,
+                      buttonCallback: () {
+                        NavigationService.pop();
+                      },
+                    );
+                  }
+                }, builder: (context, state) {
+                  if (state
+                      is CommonDataFetchSuccess<AppServiceManagementModel>) {
+                    final filteredItems = state.data
+                        .where((item) =>
+                            item.uniqueIdentifier
+                                .toString()
+                                .toLowerCase()
+                                .contains("loan_payment".toLowerCase()) &&
+                            item.status.toString().toLowerCase() ==
+                                "Active".toLowerCase())
+                        .toList();
+
+                    return GridView.builder(
+                      physics: NeverScrollableScrollPhysics(),
+                      itemCount:
+                          filteredItems.length == 0 ? 5 : itemName.length,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2),
+                      itemBuilder: (context, index) => CommonGridViewContainer(
+                        onContainerPress: () {
+                          NavigationService.pushNamed(
+                              routeName: onPress[index]);
+                        },
+                        margin: const EdgeInsets.all(8),
+                        containerImage: images[index],
+                        title: itemName[index],
+                      ),
+                    );
+                  } else {
+                    return Container();
+                  }
+                }),
               )),
         ],
       ),
@@ -134,17 +111,23 @@ class _BankingWidgetState extends State<BankingWidget> {
     "Balance Inquiry",
     "Statement",
     "Fund Transfer",
+    'Cheque Request',
+    'Loan'
   ];
   final images = [
     Assets.accountInfo,
     Assets.balanceInquiry,
     Assets.statement,
     Assets.fundTransferIcon,
+    Assets.chequeBookIcon,
+    Assets.loanIcon
   ];
   final onPress = [
     Routes.profileScreen,
     Routes.balanceInquiry,
     Routes.statementPage,
+    Routes.internalCooperative,
+    Routes.chequeScreen,
     Routes.internalCooperative,
   ];
 }

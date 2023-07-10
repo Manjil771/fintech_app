@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 
 class ChequeRequestWidget extends StatelessWidget {
   const ChequeRequestWidget({Key? key}) : super(key: key);
@@ -13,6 +14,7 @@ class ChequeRequestWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return Column(
       children: [
+        PrimaryAccountBox(),
         CustomTextField(
           readOnly: true,
           title: "Select Cheque Leaves",

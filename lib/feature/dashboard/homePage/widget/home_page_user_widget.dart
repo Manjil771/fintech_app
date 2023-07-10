@@ -150,53 +150,63 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                           ),
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 12),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Actual Balance",
-                                      style: _textTheme.titleSmall,
-                                    ),
-                                    Text(
-                                      showAmountDetail
-                                          ? "NPR ${selectedAcc?.actualBalance}"
-                                          : "XXXXXXXXX",
-                                      style: _textTheme.titleLarge!.copyWith(
-                                          fontWeight: FontWeight.bold),
-                                    ),
-                                  ],
-                                ),
-                                InkWell(
-                                  onTap: () {
-                                    setState(() {
-                                      showAmountDetail = !showAmountDetail;
-                                    });
-                                  },
-                                  child: SvgPicture.asset(
-                                    "assets/icons/akar-icons_eye-slashed.svg",
-                                    height: _height * 0.03,
+                            child: InkWell(
+                              onTap: () {
+                                setState(() {
+                                  showAmountDetail = !showAmountDetail;
+                                });
+                              },
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        "Actual Balance",
+                                        style: _textTheme.titleSmall,
+                                      ),
+                                      Text(
+                                        showAmountDetail
+                                            ? "NPR ${selectedAcc?.actualBalance}"
+                                            : "XXXXXXXXX",
+                                        style: _textTheme.titleLarge!.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
                                   ),
-                                ),
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.end,
-                                  children: [
-                                    Text(
-                                      "Interest Accrued",
-                                      style: _textTheme.titleSmall,
-                                    ),
-                                    Text(
+                                  InkWell(
+                                    // onTap: () {
+                                    //   setState(() {
+                                    //     showAmountDetail = !showAmountDetail;
+                                    //   });
+                                    // },
+                                    child: Icon(
                                       showAmountDetail
-                                          ? "NPR ${selectedAcc?.accruedInterest}"
-                                          : "XXXXXXXXX",
-                                      style: _textTheme.titleLarge!.copyWith(
-                                          fontWeight: FontWeight.bold),
+                                          ? Icons.visibility
+                                          : Icons.visibility_off,
                                     ),
-                                  ],
-                                ),
-                              ],
+                                  ),
+                                  Column(
+                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        "Interest Accrued",
+                                        style: _textTheme.titleSmall,
+                                      ),
+                                      Text(
+                                        showAmountDetail
+                                            ? "NPR ${selectedAcc?.accruedInterest}"
+                                            : "XXXXXXXXX",
+                                        style: _textTheme.titleLarge!.copyWith(
+                                            fontWeight: FontWeight.bold),
+                                      ),
+                                    ],
+                                  ),
+                                ],
+                              ),
                             ),
                           ),
                         ],

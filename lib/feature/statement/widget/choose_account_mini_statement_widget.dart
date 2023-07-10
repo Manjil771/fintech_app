@@ -25,7 +25,7 @@ class ChooseAccountMiniStatementWidget extends StatelessWidget {
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {
-          NavigationService.push(target: MiniStatementPage());
+          NavigationService.pushReplacement(target: MiniStatementPage());
         },
         body: Container(),
       ),
