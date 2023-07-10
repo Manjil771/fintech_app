@@ -166,11 +166,7 @@ class RouteGenerator {
           builder: (_) => const BuyDatapackScreen(),
           settings: RouteSettings(name: settings.name),
         );
-      case Routes.landlineScreen:
-        return MaterialPageRoute(
-          builder: (_) => const LandlinePaymentPage(),
-          settings: RouteSettings(name: settings.name),
-        );
+
       case Routes.chooseAccountFullStatement:
         return MaterialPageRoute(
           builder: (_) => const ChooseAccountFullStatementPage(),

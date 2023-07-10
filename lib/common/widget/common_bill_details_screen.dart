@@ -23,14 +23,14 @@ class CommonBillDetailPage extends StatelessWidget {
   final Widget body;
   final Service? service;
 
-  const CommonBillDetailPage(
+  CommonBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
       this.service});
-  final bool _isLoading = false;
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -85,16 +85,7 @@ class CommonBillDetailWidget extends StatelessWidget {
             _isLoading = false;
           }
 
-          if (state is CommonStateSuccess<UtilityResponseData>) {
-            NavigationService.push(
-              target: CommonTransactionSuccessPage(
-                transactionID: state.data.code,
-                body: body,
-                message: state.data.message,
-                service: service,
-              ),
-            );
-          } else if (state is CommonError) {
+          if (state is CommonError) {
             showPopUpDialog(
               context: context,
               message: state.message,
@@ -105,6 +96,28 @@ class CommonBillDetailWidget extends StatelessWidget {
               },
             );
           }
+
+          if (state is CommonStateSuccess) {
+            UtilityResponseData _response = state.data;
+            if (_response.code == "M0000") {
+              NavigationService.pushReplacement(
+                  target: CommonTransactionSuccessPage(
+                      transactionID: state.data.code,
+                      body: body,
+                      message: state.data.message,
+                      service: service));
+            } else {
+              showPopUpDialog(
+                context: context,
+                message: _response.message,
+                title: "Error",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
+          }
         },
         child: Column(
           children: [
@@ -113,7 +126,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: const EdgeInsets.all(18),
+              padding: EdgeInsets.all(18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -124,7 +137,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   SizedBox(height: _height * 0.02),
                   Text(
                     service!.service,
-                    style: const TextStyle(
+                    style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.w500),

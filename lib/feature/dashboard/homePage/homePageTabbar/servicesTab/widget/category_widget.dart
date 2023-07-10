@@ -122,7 +122,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                             .toLowerCase() ==
                                         "category".toLowerCase()) {
                                   NavigationService.push(
-                                      target: LandlinePaymentPage());
+                                      target: LandlinePaymentPage(
+                                    service: data.services[0],
+                                  ));
                                 } else {
                                   NavigationService.push(
                                     target: CategoriesWiseServicePage(

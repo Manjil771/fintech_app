@@ -7,8 +7,10 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class LandlinePaymentPage extends StatelessWidget {
+  final Service service;
   const LandlinePaymentPage({
     Key? key,
+    required this.service,
   }) : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -21,6 +23,8 @@ class LandlinePaymentPage extends StatelessWidget {
               utilityPaymentRepository:
                   RepositoryProvider.of<UtilityPaymentRepository>(context),
             ),
-        child: LandlinePaymentWidget());
+        child: LandlinePaymentWidget(
+          service: service,
+        ));
   }
 }

@@ -14,17 +14,14 @@ AppBar myAppbar({bool showBackButton = false}) {
   Widget _getImageWidget() {
     String coOpLogo =
         RepositoryProvider.of<CoOperative>(NavigationService.context)
-            .coOperativeLogo;
+            .bannerImage;
     if (coOpLogo.contains("https://")) {
       return Image.network(
         coOpLogo,
-        height: _width * 0.135,
+        height: _width * 0.2,
       );
     } else {
-      return Image.asset(
-        coOpLogo,
-        height: _width * 0.135,
-      );
+      return Image.asset(coOpLogo, height: _width * 0.2);
     }
   }
 
