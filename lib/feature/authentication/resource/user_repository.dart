@@ -203,6 +203,7 @@ class UserRepository {
         refreshedToken ?? await FirebaseMessaging.instance.getToken();
 
     try {
+      print(_notificationToken);
       if (_notificationToken != null) {
         final _ = await authApiProvider.setUserToken(
           token: _notificationToken,

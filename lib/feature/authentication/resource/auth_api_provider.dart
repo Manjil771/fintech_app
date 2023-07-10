@@ -83,7 +83,7 @@ class AuthApiProvider {
     final _body = {
       "fcmserver_identifier": "android",
       "device_token": token,
-      "type": appVersion,
+      "version": appVersion,
     };
 
     final _url = UrlUtils.getUri(url: url, params: _body);
