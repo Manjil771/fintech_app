@@ -19,7 +19,7 @@ class IsmartTopWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Image.asset(
-          repo.coOperativeLogo,
+          repo.bannerImage,
           height: _height * 0.08,
         ),
         if (repo.coOperativeLogo.contains("https://") ||

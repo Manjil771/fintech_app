@@ -101,7 +101,7 @@ class CommonBillDetailWidget extends StatelessWidget {
             UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.pushReplacement(
-                  target: CommonTransactionSuccessfulPage(
+                  target: CommonTransactionSuccessPage(
                       transactionID: state.data.code,
                       body: body,
                       message: state.data.message,
@@ -180,6 +180,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                             context.read<UtilityPaymentCubit>().makePayment(
                                   mPin: p0,
                                   serviceIdentifier: service!.uniqueIdentifier,
+                                  // serviceIdentifier: "traffic_fine_payments",
                                   apiEndpoint: apiEndpoint,
                                   body: apiBody,
                                   accountDetails: accountDetails,
