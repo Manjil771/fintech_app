@@ -39,14 +39,12 @@ class _SplashWidgetState extends State<SplashWidget> {
         }
       },
       child: Scaffold(
-        body: Container(
-          child: Image.asset(
-            RepositoryProvider.of<CoOperative>(context).splashImage,
-            fit: BoxFit.cover,
-            height: double.infinity,
-            width: double.infinity,
-            alignment: Alignment.center,
-          ),
+        body: Image.asset(
+          RepositoryProvider.of<CoOperative>(context).splashImage,
+          fit: BoxFit.fill,
+          height: double.infinity,
+          width: double.infinity,
+          alignment: Alignment.center,
         ),
       ),
     );

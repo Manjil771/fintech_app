@@ -11,6 +11,7 @@ class CoOperative {
     required this.baseUrl,
     required this.splashImage,
     required this.primaryColor,
+    required this.backgroundImage,
   });
 
   String baseUrl;
@@ -21,6 +22,7 @@ class CoOperative {
   String coOperativeLogo;
   String splashImage;
   Color primaryColor;
+  String backgroundImage;
 
   CoOperative copyWith({required String clientCode}) {
     return CoOperative(
@@ -32,6 +34,7 @@ class CoOperative {
       baseUrl: baseUrl,
       splashImage: splashImage,
       primaryColor: primaryColor,
+      backgroundImage: backgroundImage,
     );
   }
 }
@@ -82,19 +85,20 @@ class CoOperativeValue {
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
   // );
-
+////********************** Sahakarya ***********************//////
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-    bannerImage: "assets/sahakarya/sahakarya_banner.jpg",
-    //clientCode: 'SMTZ26RF75',
-    //clientSecret: "194009",
-    clientCode: 'VBMRDWEVFV',
-    clientSecret: "199204",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sahakarya/sahakarya_banner.png",
+    clientCode: 'SMTZ26RF75',
+    clientSecret: "194009",
+    // clientCode: 'VBMRDWEVFV',
+    // clientSecret: "199204",
+    backgroundImage: "assets/sahakarya/sahakarya_background_image.png",
 
     coOperativeName: 'Sahakarya',
     coOperativeLogo: "assets/sahakarya/sahakarya_logo.png",
     splashImage: "assets/sahakarya/sahakarya_splash_image.png",
-    primaryColor: const Color(0xFF010C80),
+    primaryColor: const Color(0xFF015017),
   );
 
   // static final CoOperative janadharaCoop = CoOperative(
@@ -124,10 +128,11 @@ class CoOperativeValue {
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/isamrt_banner.jpg",
   //   clientCode: 'VBMRDWEVFV',
+  //   backgroundImage: "assets/images/isamrt_background_image.jpg",
   //   coOperativeName: '',
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "199204",
-  //   splashImage: "assets/images/splashscreen.jpg",
+  //   splashImage: "assets/images/ismart_splash_image.jpg",
   //   primaryColor: const Color(0xFF010C80),
   // );
 }

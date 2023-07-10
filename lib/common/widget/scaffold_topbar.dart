@@ -21,7 +21,7 @@ class ScaffoldTopBar extends StatelessWidget {
           color: Theme.of(context).primaryColor,
           image: DecorationImage(
               image: AssetImage(
-                  RepositoryProvider.of<CoOperative>(context).bannerImage),
+                  RepositoryProvider.of<CoOperative>(context).backgroundImage),
               fit: BoxFit.cover),
         ),
         child: Row(

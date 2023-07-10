@@ -20,13 +20,13 @@ class IsmartTopWidget extends StatelessWidget {
       children: [
         Image.asset(
           repo.bannerImage,
-          height: _height * 0.08,
+          height: _height * 0.12,
         ),
         if (repo.coOperativeLogo.contains("https://") ||
             repo.coOperativeLogo.contains("http://"))
           Image.network(
             repo.coOperativeLogo,
-            height: _height * 0.08,
+            height: _height * 0.12,
           ),
         const Spacer(),
         InkWell(
