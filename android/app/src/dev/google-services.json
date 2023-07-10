@@ -1,33 +1,33 @@
 {
   "project_info": {
-    "project_number": "217940002247",
-    "project_id": "boiler-plate-20a61",
-    "storage_bucket": "boiler-plate-20a61.appspot.com"
+    "project_number": "984430251777",
+    "project_id": "ismart---dev",
+    "storage_bucket": "ismart---dev.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:217940002247:android:1244b250a0705b2ece45e2",
+        "mobilesdk_app_id": "1:984430251777:android:dfa3a27c07ea247d671500",
         "android_client_info": {
-          "package_name": "com.devanasoft.ismart"
+          "package_name": "com.devanasoft.ismart.dev"
         }
       },
       "oauth_client": [
         {
-          "client_id": "217940002247-i5u4u4i7iekbmqfo5n480rg4hqslt6hj.apps.googleusercontent.com",
+          "client_id": "984430251777-5qhm104ud6hb8om1r3pfs5fb53td4ktl.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyBYAfVxjSRjTnjsZgelXDDB7TkgIbI2KmY"
+          "current_key": "AIzaSyC6kUz1-Djzat4iXNcUOwgc5LcdIHSMw9Y"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "217940002247-i5u4u4i7iekbmqfo5n480rg4hqslt6hj.apps.googleusercontent.com",
+              "client_id": "984430251777-5qhm104ud6hb8om1r3pfs5fb53td4ktl.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

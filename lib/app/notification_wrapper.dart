@@ -34,6 +34,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   @override
   void initState() {
+    print("initState for Notification wrapper called");
     super.initState();
     initialiseFirebase().then((value) {
       userRepository = RepositoryProvider.of<UserRepository>(context);
@@ -66,7 +67,9 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   registerFirebaseToken() async {
     final _token = await FirebaseMessaging.instance.getToken();
-
+    print("Firebase");
+    print(_token);
+    print("Firebase");
     if (_token != null) {
       await userRepository.updateNotificationToken();
     }
@@ -74,7 +77,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   listenRefreshToken() async {
     FirebaseMessaging.instance.onTokenRefresh.listen((token) async {
-      // await userRepository.updateNotificationToken(refreshedToken: token);
+      await userRepository.updateNotificationToken(refreshedToken: token);
     });
   }
 
@@ -104,6 +107,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   Future<void> onBackgroundMessageListened() async {
     FirebaseMessaging.onMessageOpenedApp.listen((RemoteMessage message) {
+      print("heard notification");
       if (message.data.isNotEmpty) {
         final _tempNotificationData =
             NotificationUtils.convertToLocalPushNofication(message.data);
@@ -161,6 +165,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
   Future<void> onForegroundMessageListen() async {
     FirebaseMessaging.onMessage.listen(
       (RemoteMessage message) {
+        print("heard message");
         print(message);
         print(message.data);
         final RemoteNotification? notification = message.notification;
