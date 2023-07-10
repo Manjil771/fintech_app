@@ -82,7 +82,7 @@ class CoOperativeValue {
     // clientCode: 'EHVNI7CZJ3',
     clientCode: '6M0D7LSVNV',
     coOperativeName: '',
-    coOperativeLogo: 'assets\images\janadhara_logo.png',
+    coOperativeLogo: 'assets/images/janadhara_logo.png',
     // clientSecret: "126489",
 
     clientSecret: "180509",

@@ -28,6 +28,7 @@ if (flutterVersionName == null) {
 
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
+apply plugin: 'com.google.gms.google-services'  // Google Services plugin
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
@@ -108,4 +109,12 @@ dependencies {
     implementation ('androidx.appcompat:appcompat:1.0.0')
     implementation ('androidx.recyclerview:recyclerview:1.0.0')
     implementation ('com.google.android.material:material:1.2.0-alpha01')
+     implementation platform('com.google.firebase:firebase-bom:30.2.0')
+
+  // Add the dependency for the Firebase SDK for Google Analytics
+  // When using the BoM, don't specify versions in Firebase dependencies
+  implementation 'com.google.firebase:firebase-analytics'
+
+  // Add the dependencies for any other desired Firebase products
+  // https://firebase.google.com/docs/android/setup#available-libraries
 }
