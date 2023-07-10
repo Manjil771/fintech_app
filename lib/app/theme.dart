@@ -1,12 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 
 class CustomTheme {
   //live color
-  static const Color primaryColor = Color(0xFF010C80);
+  // static const Color primaryColor = Color(0xFF010C80);
 //janadhara primary color
+  static Color primaryColor = const Color(0xFF0b67bb);
 
-  // static const Color primaryColor = Color(0xFF0b67bb);
+  CustomTheme() {
+    primaryColor = RepositoryProvider.of<CoOperative>(NavigationService.context)
+        .primaryColor;
+  }
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
@@ -32,8 +39,7 @@ class CustomTheme {
     primaryColor: primaryColor,
     primaryColorDark: primaryColor,
     shadowColor: Colors.black,
-    appBarTheme:
-        const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
+    appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: backgroundColor,
     iconTheme: const IconThemeData(color: darkerBlack),
     fontFamily: Fonts.poppin,
@@ -63,8 +69,7 @@ class CustomTheme {
     primaryColor: primaryColor,
     primaryColorDark: primaryColor,
     shadowColor: Colors.white,
-    appBarTheme:
-        const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
+    appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: darkGray,
     iconTheme: const IconThemeData(color: Colors.white),
     fontFamily: Fonts.poppin,
