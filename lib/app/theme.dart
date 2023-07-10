@@ -8,7 +8,7 @@ class CustomTheme {
   //live color
   // static const Color primaryColor = Color(0xFF010C80);
 //janadhara primary color
-  static Color primaryColor = const Color(0xFF0b67bb);
+  static Color? primaryColor;
 
   CustomTheme() {
     primaryColor = RepositoryProvider.of<CoOperative>(NavigationService.context)

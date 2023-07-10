@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
+import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 
 class CommonTransactionSuccessPage extends StatelessWidget {
   final Widget body;
@@ -27,22 +29,28 @@ class CommonTransactionSuccessPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return CommonTransactionSuccessfulPage(
-      body: body,
-      transactionID: transactionID,
-      message: message,
-      service: service,
+    return BlocProvider(
+      create: (context) => TransactionDownloadCubit(
+          recentTransactionRepository:
+              RepositoryProvider.of<RecentTransactionRepository>(context))
+        ..generateUrl(transactionId: transactionID),
+      child: CommonTransactionSuccessfulWidget(
+        body: body,
+        transactionID: transactionID,
+        message: message,
+        service: service,
+      ),
     );
   }
 }
 
-class CommonTransactionSuccessfulPage extends StatelessWidget {
+class CommonTransactionSuccessfulWidget extends StatelessWidget {
   final Widget body;
   final String message;
   final String transactionID;
-  //need to inplement pdf download
+
   final Service? service;
-  const CommonTransactionSuccessfulPage(
+  const CommonTransactionSuccessfulWidget(
       {super.key,
       required this.body,
       required this.message,
@@ -58,7 +66,7 @@ class CommonTransactionSuccessfulPage extends StatelessWidget {
       showAppBar: false,
       body: SafeArea(
         child: Padding(
-          padding: EdgeInsets.symmetric(vertical: 50),
+          padding: const EdgeInsets.symmetric(vertical: 50),
           child: Column(
             children: [
               Container(
@@ -66,7 +74,7 @@ class CommonTransactionSuccessfulPage extends StatelessWidget {
                   color: CustomTheme.white,
                   borderRadius: BorderRadius.circular(18),
                 ),
-                padding: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -109,17 +117,38 @@ class CommonTransactionSuccessfulPage extends StatelessWidget {
                     ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                        title: "Home",
+                        title: "Done",
                         onPressed: () {
-                          NavigationService.push(target: DashboardPage());
+                          NavigationService.popUntilFirstPage();
                         }),
                     SizedBox(height: _height * 0.02),
-                    CustomRoundedButtom(
-                        borderColor: Theme.of(context).primaryColor,
-                        textColor: Theme.of(context).primaryColor,
-                        title: "Download Receipt",
-                        color: Colors.transparent,
-                        onPressed: () {}),
+                    BlocConsumer<TransactionDownloadCubit, CommonState>(
+                      listener: (context, state) {},
+                      builder: (context, state) {
+                        if (state is CommonStateSuccess<String>) {
+                          return CustomRoundedButtom(
+                            borderColor: Theme.of(context).primaryColor,
+                            textColor: Theme.of(context).primaryColor,
+                            title: "Download Receipt",
+                            color: Colors.transparent,
+                            onPressed: () {
+                              FileDownloadUtils.downloadFile(
+                                downloadLink: state.data,
+                                fileName:
+                                    FileDownloadUtils.generateDownloadFileName(
+                                  name: service?.serviceCategoryName ??
+                                      "Utility_Payment",
+                                  filetype: FileType.pdf,
+                                ),
+                                context: context,
+                              );
+                            },
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                    ),
                   ],
                 ),
               ),

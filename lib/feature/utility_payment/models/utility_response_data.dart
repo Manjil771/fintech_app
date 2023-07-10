@@ -5,12 +5,14 @@ class UtilityResponseData {
   final String status;
   final String code;
   final String message;
+  final String transactionIdentifier;
   final List<KeyValue> details;
 
   UtilityResponseData({
     required this.status,
     required this.code,
     required this.message,
+    required this.transactionIdentifier,
     required this.details,
   });
 
@@ -19,6 +21,7 @@ class UtilityResponseData {
         status: json["status"] ?? "",
         code: json["code"] ?? "",
         message: json["message"] ?? "",
+        transactionIdentifier: json["transactionIdentifier"] ?? "",
         details: ParseUtils.parseKeyValue(json['details']),
       );
 
@@ -42,6 +45,20 @@ class UtilityResponseData {
     } else {
       return details[_index].value.toString();
     }
+  }
+
+  String getStatusString() {
+    if (status == "M0000") {
+      return "Completed";
+    }
+    return "Failed";
+  }
+
+  bool isSuccessTransaction() {
+    if (status == "M0000") {
+      return true;
+    }
+    return false;
   }
 
   Map<String, dynamic> toJson() => {

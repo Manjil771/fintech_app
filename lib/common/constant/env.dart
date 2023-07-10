@@ -90,29 +90,30 @@ class CoOperativeValue {
     coOperativeName: 'Janadhara',
     coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
     clientSecret: "180509",
-    // splashImage: "assets/janadhara/janadhara_splash.png",
-    splashImage: "assets/janadhara/janadhara_splash.png",
+    splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 // //  DEV TEST700746
+  // static final CoOperative development = CoOperative(
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+  //   bannerImage: "assets/images/isamrt_banner.jpg",
+  //   clientCode: 'EHVNI7CZJ3',
+  //   coOperativeName: '',
+  //   coOperativeLogo: Assets.ismartLogo,
+  //   clientSecret: "126489",
+  //   splashImage: "assets/images/splashscreen.jpg",
+  //   primaryColor: const Color(0xFF010C80),
+  // );
+
+  // DEV TEST70074
   static final CoOperative development = CoOperative(
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
     bannerImage: "assets/images/isamrt_banner.jpg",
-    clientCode: 'EHVNI7CZJ3',
+    clientCode: 'VBMRDWEVFV',
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "126489",
+    clientSecret: "199204",
     splashImage: "assets/images/splashscreen.jpg",
     primaryColor: const Color(0xFF010C80),
   );
-
-  // DEV TEST70074
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'VBMRDWEVFV',
-  //   coOperativeName: '',
-  //   coOperativeLogo: Assets.ismartLogo,
-  //   clientSecret: "199204",
-  // );
 }

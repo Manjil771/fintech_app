@@ -75,7 +75,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(
                                     color: _isSelectedAccount
-                                        ? CustomTheme.primaryColor
+                                        ? CustomTheme.primaryColor!
                                         : CustomTheme.gray,
                                   ),
                                 ),
