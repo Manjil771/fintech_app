@@ -18,10 +18,9 @@ AppBar myAppbar({bool showBackButton = false}) {
     if (coOpLogo.contains("https://")) {
       return Image.network(
         coOpLogo,
-        height: _width * 0.2,
       );
     } else {
-      return Image.asset(coOpLogo, height: _width * 0.2);
+      return Image.asset(coOpLogo);
     }
   }
 
@@ -31,7 +30,7 @@ AppBar myAppbar({bool showBackButton = false}) {
     elevation: 0,
     iconTheme: const IconThemeData(color: Colors.black),
     automaticallyImplyLeading: false,
-    centerTitle: true,
+    centerTitle: false,
     leading: InkWell(
       onTap: () {
         if (showBackButton) {
@@ -49,7 +48,10 @@ AppBar myAppbar({bool showBackButton = false}) {
               ),
       ),
     ),
-    title: _getImageWidget(),
+    title: Padding(
+      padding: const EdgeInsets.all(18.0),
+      child: _getImageWidget(),
+    ),
     actions: [
       InkWell(
         onTap: () {

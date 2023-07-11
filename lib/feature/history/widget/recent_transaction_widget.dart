@@ -4,6 +4,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -51,17 +52,17 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
               NavigationService.pop();
             }
 
-            if (state is CommonError) {
-              showPopUpDialog(
-                context: context,
-                message: state.message,
-                title: "Error",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
-            }
+            // if (state is CommonError) {
+            //   showPopUpDialog(
+            //     context: context,
+            //     message: state.message,
+            //     title: "Error",
+            //     showCancelButton: false,
+            //     buttonCallback: () {
+            //       NavigationService.pop();
+            //     },
+            //   );
+            // }
           },
           builder: (context, state) {
             ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
@@ -115,7 +116,10 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     )),
               );
             } else {
-              return Container();
+              return NoDataScreen(
+                title: "No transactions yet",
+                details: "Make Your First Transfer",
+              );
             }
           },
         ),

@@ -17,11 +17,12 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class CommonBillDetailPage extends StatelessWidget {
+  final String serviceIdentifier;
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final Widget body;
-  final Service? service;
+  final Service service;
 
   CommonBillDetailPage(
       {super.key,
@@ -29,7 +30,8 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
-      this.service});
+      required this.service,
+      required this.serviceIdentifier});
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class CommonBillDetailPage extends StatelessWidget {
         apiBody: apiBody,
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
+        serviceIdentifier: serviceIdentifier,
       ),
     );
   }
@@ -56,8 +59,9 @@ class CommonBillDetailWidget extends StatelessWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
-  final Service? service;
+  final Service service;
   final Widget body;
+  final String serviceIdentifier;
 
   CommonBillDetailWidget({
     super.key,
@@ -65,7 +69,8 @@ class CommonBillDetailWidget extends StatelessWidget {
     required this.apiEndpoint,
     required this.body,
     required this.apiBody,
-    this.service,
+    required this.service,
+    required this.serviceIdentifier,
   });
   bool _isLoading = false;
   @override
@@ -97,12 +102,12 @@ class CommonBillDetailWidget extends StatelessWidget {
             );
           }
 
-          if (state is CommonStateSuccess) {
+          if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
-            if (_response.code == "M0000") {
+            if (_response.status == "M0000") {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
-                      transactionID: state.data.code,
+                      transactionID: state.data.transactionIdentifier,
                       body: body,
                       message: state.data.message,
                       service: service));
@@ -131,7 +136,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service!.icon}",
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service?.icon}",
                     height: _height * 0.08,
                   ),
                   SizedBox(height: _height * 0.02),
@@ -179,7 +184,7 @@ class CommonBillDetailWidget extends StatelessWidget {
 
                             context.read<UtilityPaymentCubit>().makePayment(
                                   mPin: p0,
-                                  serviceIdentifier: service!.uniqueIdentifier,
+                                  serviceIdentifier: serviceIdentifier,
                                   // serviceIdentifier: "traffic_fine_payments",
                                   apiEndpoint: apiEndpoint,
                                   body: apiBody,

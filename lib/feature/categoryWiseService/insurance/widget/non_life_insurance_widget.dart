@@ -60,6 +60,8 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                service: widget.service,
+                serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/insurance/pay",
                 apiBody: {
                   "proformaNo": _response.findValue(
