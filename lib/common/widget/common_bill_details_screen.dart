@@ -22,7 +22,7 @@ class CommonBillDetailPage extends StatelessWidget {
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final Widget body;
-  final Service? service;
+  final Service service;
 
   CommonBillDetailPage(
       {super.key,
@@ -30,7 +30,7 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
-      this.service,
+      required this.service,
       required this.serviceIdentifier});
   bool _isLoading = false;
   @override
@@ -59,7 +59,7 @@ class CommonBillDetailWidget extends StatelessWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
-  final Service? service;
+  final Service service;
   final Widget body;
   final String serviceIdentifier;
 
@@ -69,7 +69,7 @@ class CommonBillDetailWidget extends StatelessWidget {
     required this.apiEndpoint,
     required this.body,
     required this.apiBody,
-    this.service,
+    required this.service,
     required this.serviceIdentifier,
   });
   bool _isLoading = false;
@@ -102,12 +102,12 @@ class CommonBillDetailWidget extends StatelessWidget {
             );
           }
 
-          if (state is CommonStateSuccess) {
+          if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.status == "M0000") {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
-                      transactionID: state.data,
+                      transactionID: state.data.transactionIdentifier,
                       body: body,
                       message: state.data.message,
                       service: service));
@@ -136,7 +136,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service!.icon}",
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service?.icon}",
                     height: _height * 0.08,
                   ),
                   SizedBox(height: _height * 0.02),

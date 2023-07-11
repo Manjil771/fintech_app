@@ -204,9 +204,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
-  final Service? service;
+  final Service service;
 
-  const MobileTopUpWidget({super.key, this.service});
+  const MobileTopUpWidget({super.key, required this.service});
   @override
   State<MobileTopUpWidget> createState() => _MobileTopUpWidgetState();
 }

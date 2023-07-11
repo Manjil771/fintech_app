@@ -52,6 +52,7 @@ class _IrdPaymentWidgetState extends State<IrdPaymentWidget> {
             if (_response.code == "M0000") {
               NavigationService.push(
                   target: CommonBillDetailPage(
+                service: widget.service,
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 accountDetails: {
                   'amount': _amountController.text,

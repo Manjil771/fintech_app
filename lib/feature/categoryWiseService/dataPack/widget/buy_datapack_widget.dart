@@ -7,9 +7,11 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -96,30 +98,40 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
-                NavigationService.push(target: TransactionPinScreen(
-                  onValueCallback: (mpin) {
-                    NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().makePayment(
-                      mPin: mpin,
-                      apiEndpoint: "/api/data_pack/pay",
-                      serviceIdentifier: widget.service.uniqueIdentifier,
-                      accountDetails: {
-                        "account_number":
-                            RepositoryProvider.of<CustomerDetailRepository>(
-                                    context)
-                                .selectedAccount
-                                .value!
-                                .accountNumber
-                                .toString(),
-                        "phone_number": _mobileNumberController.text,
-                        "amount": widget.package.amount.toString(),
-                      },
-                      body: {
-                        "code": widget.package.code,
-                      },
-                    );
-                  },
-                ));
+                NavigationService.push(
+                    target: CommonBillDetailPage(
+                        service: widget.service,
+                        body: Column(
+                          children: [
+                            KeyValueTile(
+                                title: "Number",
+                                value: _mobileNumberController.text),
+                            KeyValueTile(
+                                title: "Package", value: widget.package.name),
+                            KeyValueTile(
+                                title: "Desc",
+                                value: widget.package.description),
+                            KeyValueTile(
+                                title: "Amount",
+                                value: widget.package.amount.toString())
+                          ],
+                        ),
+                        accountDetails: {
+                          "account_number":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber
+                                  .toString(),
+                          "phone_number": _mobileNumberController.text,
+                          "amount": widget.package.amount.toString(),
+                        },
+                        apiEndpoint: "/api/data_pack/pay",
+                        apiBody: {
+                          "code": widget.package.code,
+                        },
+                        serviceIdentifier: widget.service.uniqueIdentifier));
               }
             },
             body: Column(children: [
