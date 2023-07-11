@@ -248,19 +248,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               _isLoading = false;
               NavigationService.pop();
             }
-
-            if (state is CommonStateSuccess<UtilityResponseData>) {
-            } else if (state is CommonError) {
-              showPopUpDialog(
-                context: context,
-                message: state.message,
-                title: "Error",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
-            }
           },
           child: CommonContainer(
             showDetail: true,

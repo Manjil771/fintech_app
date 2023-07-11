@@ -60,7 +60,8 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
-            NavigationService.pushReplacement(
+            print("data is success " + _response.code);
+            NavigationService.push(
               target: CommonBillDetailPage(
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/tvpay",
@@ -73,7 +74,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                           .accountNumber
                           .toString(),
                   "username": usernameController.text,
-                  "customer_id": usernameController.text,
+                  // "customer_id": usernameController.text,
                   "amount": amountController.text,
                   // "account_number": "002001-001-102-0001010",
 
@@ -113,7 +114,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                                       .findValue(
                                         primaryKey: "hashResponse",
                                         secondaryKey: "currentPackages",
-                                      )["text"]
+                                      )
                                       .toString()),
                             ],
                           ),
@@ -132,15 +133,15 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                 ),
               ),
             );
-          } else {
-            showPopUpDialog(
-                context: context,
-                message: _response.message,
-                title: "Error",
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-                showCancelButton: false);
+            // } else {
+            //   showPopUpDialog(
+            //       context: context,
+            //       message: _response.message,
+            //       title: "Error",
+            //       buttonCallback: () {
+            //         NavigationService.pop();
+            //       },
+            //       showCancelButton: false);
           }
         }
       },
@@ -183,13 +184,14 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                     FormValidator.validateFieldNotEmpty(value, "Username"),
               ),
               CustomTextField(
-                  title: "Amount",
-                  hintText: "NPR",
-                  controller: amountController,
-                  validator: (value) => FormValidator.validateAmount(
-                      val: value.toString(),
-                      maxAmount: widget.service.maxValue,
-                      minAmount: widget.service.minValue.toDouble())),
+                title: "Amount",
+                hintText: "NPR",
+                controller: amountController,
+                // validator: (value) => FormValidator.validateAmount(
+                //     val: value.toString(),
+                //     maxAmount: widget.service.maxValue,
+                //     minAmount: widget.service.minValue.toDouble())),
+              )
             ],
           ),
         ),
