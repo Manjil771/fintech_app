@@ -56,7 +56,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            NavigationService.push(
+            NavigationService.pushReplacement(
                 target: CommonTransactionSuccessPage(
                     transactionID:
                         state.data.findValueString("transactionIdentifier"),
