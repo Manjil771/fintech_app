@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -19,7 +17,6 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
-import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
@@ -190,18 +187,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                               validator: (value) =>
                                   FormValidator.validatePhoneNumber(value),
                               onChanged: (val) {
-                                if (FormValidator.validatePhoneNumber(val) ==
-                                    null) {
-                                  if (Platform.isIOS) {
-                                    context
-                                        .read<ValidateCoOpCubit>()
-                                        .validateCoOperative(username: val);
-                                    Future.delayed(const Duration(seconds: 3))
-                                        .then((value) {
-                                      setState(() {});
-                                    });
-                                  }
-                                }
+                                // if (FormValidator.validatePhoneNumber(val) ==
+                                //     null) {
+                                //   if (Platform.isIOS) {
+                                //     context
+                                //         .read<ValidateCoOpCubit>()
+                                //         .validateCoOperative(username: val);
+                                //     Future.delayed(const Duration(seconds: 3))
+                                //         .then((value) {
+                                //       setState(() {});
+                                //     });
+                                //   }
+                                // }
                               },
                             );
                           } else {
