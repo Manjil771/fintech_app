@@ -17,6 +17,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class CommonBillDetailPage extends StatelessWidget {
+  final String serviceIdentifier;
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
@@ -29,7 +30,8 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
-      this.service});
+      this.service,
+      required this.serviceIdentifier});
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -47,6 +49,7 @@ class CommonBillDetailPage extends StatelessWidget {
         apiBody: apiBody,
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
+        serviceIdentifier: serviceIdentifier,
       ),
     );
   }
@@ -58,6 +61,7 @@ class CommonBillDetailWidget extends StatelessWidget {
   final String apiEndpoint;
   final Service? service;
   final Widget body;
+  final String serviceIdentifier;
 
   CommonBillDetailWidget({
     super.key,
@@ -66,6 +70,7 @@ class CommonBillDetailWidget extends StatelessWidget {
     required this.body,
     required this.apiBody,
     this.service,
+    required this.serviceIdentifier,
   });
   bool _isLoading = false;
   @override
@@ -179,7 +184,7 @@ class CommonBillDetailWidget extends StatelessWidget {
 
                             context.read<UtilityPaymentCubit>().makePayment(
                                   mPin: p0,
-                                  serviceIdentifier: service!.uniqueIdentifier,
+                                  serviceIdentifier: serviceIdentifier,
                                   // serviceIdentifier: "traffic_fine_payments",
                                   apiEndpoint: apiEndpoint,
                                   body: apiBody,

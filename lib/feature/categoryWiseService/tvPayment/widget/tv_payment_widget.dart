@@ -62,6 +62,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.pushReplacement(
               target: CommonBillDetailPage(
+                serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/tvpay",
                 apiBody: {"customerId ": usernameController.text},
                 accountDetails: {

@@ -338,18 +338,18 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                 NavigationService.push(
                     target: CommonBillDetailPage(
                         apiBody: {},
+                        serviceIdentifier: TopUpUtils()
+                            .getTopUpServiceType(type: _topUpType.value),
                         accountDetails: {
-                      "serviceIdentifier": TopUpUtils()
-                          .getTopUpServiceType(type: _topUpType.value),
-                      "account_number":
-                          RepositoryProvider.of<CustomerDetailRepository>(
-                                  context)
-                              .selectedAccount
-                              .value!
-                              .accountNumber,
-                      "phone_number": _mobileNumberController.text,
-                      "amount": _amountController.text
-                    },
+                          "account_number":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
+                          "phone_number": _mobileNumberController.text,
+                          "amount": _amountController.text
+                        },
                         apiEndpoint: "/api/topup",
                         body: Column(
                           children: [
