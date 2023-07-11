@@ -1,13 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/splash/ui/screens/splash_widgets.dart';
 
-class SplashScreens extends StatelessWidget {
+class SplashScreens extends StatefulWidget {
   const SplashScreens({Key? key}) : super(key: key);
 
+  @override
+  State<SplashScreens> createState() => _SplashScreensState();
+}
+
+class _SplashScreensState extends State<SplashScreens> {
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

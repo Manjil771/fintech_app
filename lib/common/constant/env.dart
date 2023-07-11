@@ -86,7 +86,7 @@ class CoOperativeValue {
   //   clientSecret: "126489",
   // );
 ////********************** Sahakarya ***********************//////
-  static final CoOperative development = CoOperative(
+  static final CoOperative shakaryaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/sahakarya/sahakarya_banner.png",
     clientCode: 'SMTZ26RF75',
@@ -101,27 +101,29 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF015017),
   );
 
-  // static final CoOperative janadharaCoop = CoOperative(
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/janadhara/janadhara_banner.png",
-  //   clientCode: '6M0D7LSVNV',
-  //   coOperativeName: 'Janadhara',
-  //   coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
-  //   clientSecret: "180509",
-  //   splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
-  //   primaryColor: const Color(0xFF0b67bb),
-  // );
+  static final CoOperative janadharaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/janadhara/janadhara_banner.png",
+    backgroundImage: "assets/janadhara/janadhara_banner.png",
+    clientCode: '6M0D7LSVNV',
+    coOperativeName: 'Janadhara',
+    coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
+    clientSecret: "180509",
+    splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 // //  DEV TEST700746
-  // static final CoOperative development = CoOperative(
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'EHVNI7CZJ3',
-  //   coOperativeName: '',
-  //   coOperativeLogo: Assets.ismartLogo,
-  //   clientSecret: "126489",
-  //   splashImage: "assets/images/splashscreen.jpg",
-  //   primaryColor: const Color(0xFF010C80),
-  // );
+  static final CoOperative development = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/images/isamrt_banner.jpg",
+    backgroundImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'EHVNI7CZJ3',
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "126489",
+    splashImage: "assets/images/splashscreen.jpg",
+    primaryColor: const Color(0xFF010C80),
+  );
 
   // // DEV TEST70074
   // static final CoOperative development = CoOperative(

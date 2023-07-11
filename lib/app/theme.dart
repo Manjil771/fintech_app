@@ -1,20 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 
 class CustomTheme {
   //live color
   // static const Color primaryColor = Color(0xFF010C80);
 //janadhara primary color
-  static Color? primaryColor;
+  static Color testAppColor = const Color(0xFF010C80);
 
-  CustomTheme() {
-    primaryColor = RepositoryProvider.of<CoOperative>(NavigationService.context)
-        .primaryColor;
-  }
+  static const Color sahakaryaColor = Color(0xFF015017);
+  static const Color janadharaColor = Color(0xFF0b67bb);
 
+  static Color primaryColor = sahakaryaColor;
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);
