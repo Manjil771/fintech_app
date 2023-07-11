@@ -23,13 +23,7 @@ class IsmartTopWidget extends StatelessWidget {
             repo.bannerImage,
           ),
         ),
-        SizedBox(width: _width * 0.3),
-        if (repo.coOperativeLogo.contains("https://") ||
-            repo.coOperativeLogo.contains("http://"))
-          Image.network(
-            repo.coOperativeLogo,
-            height: _height * 0.12,
-          ),
+
         InkWell(
           onTap: () {
             // TODO Manage Navigation
