@@ -74,10 +74,10 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(8),
                                   border: Border.all(
-                                      // color: _isSelectedAccount
-                                      //     ? CustomTheme.primaryColor!
-                                      //     : CustomTheme.gray,
-                                      ),
+                                    color: _isSelectedAccount
+                                        ? CustomTheme.primaryColor
+                                        : CustomTheme.gray,
+                                  ),
                                 ),
                                 child: Column(
                                   mainAxisAlignment:

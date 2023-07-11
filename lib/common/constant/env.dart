@@ -85,8 +85,8 @@ class CoOperativeValue {
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
   // );
-//********************** Sahakarya ***********************//////
-  // static final CoOperative development = CoOperative(
+////********************** Sahakarya ***********************//////
+  // static final CoOperative shakaryaCoop = CoOperative(
   //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/sahakarya/sahakarya_banner.png",
   //   clientCode: 'SMTZ26RF75',
@@ -104,6 +104,7 @@ class CoOperativeValue {
   // static final CoOperative janadharaCoop = CoOperative(
   //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   //   bannerImage: "assets/janadhara/janadhara_banner.png",
+  //   backgroundImage: "assets/janadhara/janadhara_banner.png",
   //   clientCode: '6M0D7LSVNV',
   //   coOperativeName: 'Janadhara',
   //   coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
