@@ -107,8 +107,6 @@ class _CategoriesWiseServicesWidgetState
                         NavigationService.push(
                             target: LifeInsurancePage(
                           service: widget.services[index],
-                          companyLogo: widget.services[index].icon.toString(),
-                          companyName: widget.services[index].service,
                         ));
                       } else {
                         NavigationService.push(

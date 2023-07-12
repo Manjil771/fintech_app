@@ -7,6 +7,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -105,6 +106,7 @@ class CommonBillDetailWidget extends StatelessWidget {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.status == "M0000") {
+              print("stateus is ${_response.status}");
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       transactionID: state.data.transactionIdentifier,
@@ -136,12 +138,12 @@ class CommonBillDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service?.icon}",
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service.icon}",
                     height: _height * 0.08,
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                    service!.service,
+                    service.service,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -149,7 +151,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                      "Details about the payable amount for the service of ${service!.service} is shown below.",
+                      "Details about the payable amount for the service of ${service.service} is shown below.",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall),
                   SizedBox(height: _height * 0.02),
@@ -171,6 +173,9 @@ class CommonBillDetailWidget extends StatelessWidget {
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(height: _height * 0.02),
                         body,
+                        KeyValueTile(
+                            title: "Cashback",
+                            value: "${service.cashBackView ?? 0} %")
                       ],
                     ),
                   ),
