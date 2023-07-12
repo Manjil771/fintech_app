@@ -86,44 +86,58 @@ class CoOperativeValue {
   //   clientSecret: "126489",
   // );
 
-////*****************Abhiyan ***************////
-//   static final CoOperative development = CoOperative(
-//     baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
+// ////*****************Abhiyan ***************////
+//   static final CoOperative abhiyancoop = CoOperative(
+//     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
 //     bannerImage: "assets/uttarganga/uttarganga_banner.png",
-//     clientCode: 'VBMRDWEVFV',
 //     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
-//     coOperativeName: '',
+//     coOperativeName: 'Abhiyan',
 //     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-//     clientSecret: "199204",
 //     splashImage: "assets/uttarganga/uttarganga_splash.png",
 //     primaryColor: const Color(0xFF2e3192),
+//     //TODO need to add client id and client secret
+//     clientSecret: "199204",
+//     clientCode: 'VBMRDWEVFV',
 //   );
+
+  ////*****************Kabil ***************////
+  static final CoOperative kabilCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kamana/kamana_banner.png",
+    backgroundImage: "assets/kamana/kamana_background_image.png",
+    coOperativeName: 'Kabil',
+    coOperativeLogo: "assets/kamana/kamana_logo.png",
+    clientCode: 'LQ7QMJ5NRB',
+    clientSecret: "118107",
+    splashImage: "assets/kamana/kamana_splash_image.png",
+    primaryColor: const Color(0xFF17ae61),
+  );
 
 // ////*****************Kamana ***************////
-//   static final CoOperative development = CoOperative(
-//     baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-//     bannerImage: "assets/uttarganga/uttarganga_banner.png",
-//     clientCode: 'LQ7QMJ5NRB',
-//     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
-//     coOperativeName: '',
-//     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-//     clientSecret: "118107",
-//     splashImage: "assets/uttarganga/uttarganga_splash.png",
-//     primaryColor: const Color(0xFF2e3192),
-//   );
+  // static final CoOperative kamanaCoop = CoOperative(
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+  //   bannerImage: "assets/kamana/kamana_banner.png",
+  //   backgroundImage: "assets/kamana/kamana_background_image.png",
+  //   coOperativeName: '',
+  //   coOperativeLogo: "assets/kamana/kamana_logo.png",
+  //   clientCode: 'LQ7QMJ5NRB',
+  //   clientSecret: "118107",
+  //   splashImage: "assets/kamana/kamana_splash_image.png",
+  //   primaryColor: const Color(0xFF17ae61),
+  // );
 
 ////*****************Uttarganga ***************////
-  static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
-    bannerImage: "assets/uttarganga/uttarganga_banner.png",
-    clientCode: 'VBMRDWEVFV',
-    backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
-    coOperativeName: '',
-    coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-    clientSecret: "199204",
-    splashImage: "assets/uttarganga/uttarganga_splash.png",
-    primaryColor: const Color(0xFF2e3192),
-  );
+  // static final CoOperative uttargangaCoop = CoOperative(
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+  //   bannerImage: "assets/uttarganga/uttarganga_banner.png",
+  //   clientCode: '9DZS5N3TOY',
+  //   backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
+  //   coOperativeName: 'Uttarganga',
+  //   coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
+  //   clientSecret: "112213",
+  //   splashImage: "assets/uttarganga/uttarganga_splash.png",
+  //   primaryColor: const Color(0xFF2e3192),
+  // );
 
 ////********************** Sahakarya ***********************//////
   // static final CoOperative shakaryaCoop = CoOperative(
