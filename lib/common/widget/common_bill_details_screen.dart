@@ -74,6 +74,7 @@ class CommonBillDetailWidget extends StatelessWidget {
     required this.serviceIdentifier,
   });
   bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;

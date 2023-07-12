@@ -23,7 +23,7 @@ class IsmartTopWidget extends StatelessWidget {
             repo.bannerImage,
           ),
         ),
-
+        SizedBox(width: _width * 0.1),
         InkWell(
           onTap: () {
             // TODO Manage Navigation
