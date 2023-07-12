@@ -204,9 +204,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
-  final Service? service;
+  final Service service;
 
-  const MobileTopUpWidget({super.key, this.service});
+  const MobileTopUpWidget({super.key, required this.service});
   @override
   State<MobileTopUpWidget> createState() => _MobileTopUpWidgetState();
 }
@@ -247,19 +247,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             } else if (state is! CommonLoading && _isLoading) {
               _isLoading = false;
               NavigationService.pop();
-            }
-
-            if (state is CommonStateSuccess<UtilityResponseData>) {
-            } else if (state is CommonError) {
-              showPopUpDialog(
-                context: context,
-                message: state.message,
-                title: "Error",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
             }
           },
           child: CommonContainer(
@@ -338,18 +325,18 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                 NavigationService.push(
                     target: CommonBillDetailPage(
                         apiBody: {},
+                        serviceIdentifier: TopUpUtils()
+                            .getTopUpServiceType(type: _topUpType.value),
                         accountDetails: {
-                      "serviceIdentifier": TopUpUtils()
-                          .getTopUpServiceType(type: _topUpType.value),
-                      "account_number":
-                          RepositoryProvider.of<CustomerDetailRepository>(
-                                  context)
-                              .selectedAccount
-                              .value!
-                              .accountNumber,
-                      "phone_number": _mobileNumberController.text,
-                      "amount": _amountController.text
-                    },
+                          "account_number":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
+                          "phone_number": _mobileNumberController.text,
+                          "amount": _amountController.text
+                        },
                         apiEndpoint: "/api/topup",
                         body: Column(
                           children: [

@@ -18,17 +18,12 @@ class IsmartTopWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Image.asset(
-          repo.bannerImage,
-          height: _height * 0.12,
+        Expanded(
+          child: Image.asset(
+            repo.bannerImage,
+          ),
         ),
-        // if (repo.coOperativeLogo.contains("https://") ||
-        //     repo.coOperativeLogo.contains("http://"))
-        //   Image.network(
-        //     repo.coOperativeLogo,
-        //     height: _height * 0.12,
-        //   ),
-        const Spacer(),
+
         InkWell(
           onTap: () {
             // TODO Manage Navigation

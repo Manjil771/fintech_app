@@ -106,11 +106,13 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                         // border: Border.all(color: Colors.black),
                       ),
                       child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text("Paymet Details",
                               style: Theme.of(context).textTheme.titleLarge),
-                          // KeyValueTile(
-                          //     title: "Transaction ID", value: transactionID),
+                          SizedBox(height: _height * 0.01),
+                          KeyValueTile(
+                              title: "Transaction ID", value: transactionID),
                           body,
                         ],
                       ),

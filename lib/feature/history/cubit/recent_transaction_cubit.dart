@@ -15,7 +15,7 @@ class RecentTransactionCubit extends Cubit<CommonState> {
       String mPin = await SecureStorageService.appPassword;
       final response = await recentTransactionRepository.getRecentTransaction();
 
-      if (response.status == Status.Success && response.data != null) {
+      if (response.status == Status.Success) {
         emit(CommonDataFetchSuccess<RecentTransactionModel>(
             data: response.data!));
       } else {

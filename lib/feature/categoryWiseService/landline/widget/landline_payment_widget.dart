@@ -111,11 +111,11 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
               if (_fromKey.currentState!.validate()) {
                 NavigationService.push(
                     target: CommonBillDetailPage(
+                  serviceIdentifier: "pstn_online_topup",
                   apiBody: {},
                   apiEndpoint: "/api/topup",
                   service: widget.service,
                   accountDetails: {
-                    "service_identifier": "pstn_online_topup",
                     "phone_number": _phoneNumberController.text, //14232352
                     "amount": _amountController.text,
                     "account_number":

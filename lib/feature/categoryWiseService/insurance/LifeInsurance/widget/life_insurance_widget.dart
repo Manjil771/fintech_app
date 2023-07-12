@@ -67,6 +67,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
           if (_response.code == "M0000") {
             NavigationService.pushReplacement(
               target: CommonBillDetailPage(
+                serviceIdentifier: widget.service.uniqueIdentifier,
                 service: widget.service,
                 apiEndpoint: "/api/insurance/pay",
                 apiBody: {
