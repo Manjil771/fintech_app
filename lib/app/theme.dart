@@ -10,8 +10,8 @@ class CustomTheme {
   static const Color sahakaryaColor = Color(0xFF015017);
   static const Color janadharaColor = Color(0xFF0b67bb);
   static const Color uttargangaColor = Color(0xFF2e3192);
-  static Color kamanaColor = Color(0xFF17ae61);
-  static Color primaryColor = kamanaColor;
+  static const Color kamanaColor = Color(0xFF17ae61);
+  static Color primaryColor = testAppColor;
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);

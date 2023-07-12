@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/qrCode/shareQr/resources/qr_cubit.dart';
 import 'package:ismart/feature/qrCode/shareQr/widget/share_qr_widget.dart';
 
 class ShareQrPage extends StatelessWidget {
@@ -10,6 +12,10 @@ class ShareQrPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return ShareQrWidget();
+    return BlocProvider(
+      create: (context) =>
+          QrCubit(qrRepository: RepositoryProvider.of(context)),
+      child: ShareQrWidget(),
+    );
   }
 }
