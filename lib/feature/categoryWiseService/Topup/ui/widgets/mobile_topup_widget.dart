@@ -196,6 +196,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/categoryWiseService/Topup/ui/widgets/top_bill_detail_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -204,9 +205,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
-  final Service service;
+  final CategoryList categoryList;
 
-  const MobileTopUpWidget({super.key, required this.service});
+  const MobileTopUpWidget({super.key, required this.categoryList});
   @override
   State<MobileTopUpWidget> createState() => _MobileTopUpWidgetState();
 }
@@ -323,7 +324,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
                 NavigationService.push(
-                    target: CommonBillDetailPage(
+                    target: TopUpBillDetailPage(
                         apiBody: {},
                         serviceIdentifier: TopUpUtils()
                             .getTopUpServiceType(type: _topUpType.value),
@@ -345,12 +346,9 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                                 value: _mobileNumberController.text),
                             KeyValueTile(
                                 title: "Amount", value: _amountController.text),
-                            KeyValueTile(
-                                title: "CashBack",
-                                value: widget.service!.cashBackView.toString())
                           ],
                         ),
-                        service: widget.service));
+                        categoryList: widget.categoryList));
               }
               // NavigationService.push(target: CommonTransactionSuccessfulPage());
             },
