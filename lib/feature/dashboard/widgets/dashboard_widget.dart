@@ -9,6 +9,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
@@ -102,8 +103,17 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       ),
       floatinActionButton: FloatingActionButton(
         backgroundColor: _theme.primaryColor,
-        onPressed: () {
-          NavigationService.push(target: const ScanQrPage());
+        onPressed: () async {
+          final _cameraPermission =
+              await PermissionUtils.isCameraPermissionAvailable;
+          if (_cameraPermission) {
+            NavigationService.push(target: const ScanQrPage());
+          } else {
+            SnackBarUtils.showErrorBar(
+              context: context,
+              message: "Please allow camera permission to use Scan QR",
+            );
+          }
         },
         child: SvgPicture.asset(
           Assets.qrCodeIcon,

@@ -11,14 +11,14 @@ import 'package:ismart/feature/qrCode/scanQr/screen/qr_response_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
-class ScanQRWidget extends StatefulWidget {
-  const ScanQRWidget({super.key});
+class QRScannerWidgets extends StatefulWidget {
+  const QRScannerWidgets({super.key});
 
   @override
-  State<ScanQRWidget> createState() => _ScanQRWidgetState();
+  State<QRScannerWidgets> createState() => _QRScannerWidgetsState();
 }
 
-class _ScanQRWidgetState extends State<ScanQRWidget> {
+class _QRScannerWidgetsState extends State<QRScannerWidgets> {
   // Future<PermissionStatus> _getCameraPermission() async {
   //   var status = await Permission.camera.status;
   //   if (!status.isGranted) {
@@ -104,12 +104,12 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
                             title: "Show my QR Code",
                             onPressed: () {
                               NavigationService.pushReplacement(
-                                  target: ShareQrPage());
+                                  target: const ShareQrPage());
                             }),
                         TextButton(
                           onPressed: () {
                             NavigationService.pushUntil(
-                                target: DashboardPage());
+                                target: const DashboardPage());
                           },
                           child: Text(
                             "Cancel",
@@ -127,7 +127,7 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
   }
 
   Widget _buildQrView(BuildContext context) {
-    var scanArea = (MediaQuery.of(context).size.width < 400 ||
+    final scanArea = (MediaQuery.of(context).size.width < 400 ||
             MediaQuery.of(context).size.height < 400)
         ? 250.0
         : 350.0;

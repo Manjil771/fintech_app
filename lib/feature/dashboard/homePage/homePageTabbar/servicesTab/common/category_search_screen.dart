@@ -3,10 +3,8 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/search_widget.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
@@ -18,7 +16,6 @@ import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_user
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/common/category_search_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ServiceCategorySearchScreen extends StatelessWidget {
   final ValueChanged<KeyValue> onChanged;
@@ -47,17 +44,18 @@ class ServiceCategorySearchScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       body: Container(
         child: CategorySearchWidgets(
+          // imageUrl: services[0].icon.toString(),
           onPressed: () {
-            print("testt");
-            // onTapFunction(searchOptions[0].value, 0);
+            onTapFunction(searchOptions[0].value, 0);
           },
-          items: List.generate(
-            searchOptions.length,
-            (index) => KeyValue(
-              title: searchOptions[index].title,
-              value: searchOptions[index].value,
-            ),
-          ),
+          items: services,
+          // items: List.generate(
+          //   searchOptions.length,
+          //   (index) => KeyValue(
+          //     title: searchOptions[index].title,
+          //     value: searchOptions[index].value,
+          //   ),
+          // ),
         ),
       ),
     );
@@ -107,22 +105,22 @@ class ServiceCategorySearchScreen extends StatelessWidget {
       ));
     }
 
-    if (uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      if (uniqueIdentifier.toLowerCase() ==
-              "nepal_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
-              "reliance_life_insurance".toLowerCase()) {
-        NavigationService.push(
-            target: LifeInsurancePage(
-          service: servicefilteredItems[0],
-        ));
-      } else {
-        NavigationService.push(
-            target: CommonInsurancePage(
-          service: servicefilteredItems[0],
-        ));
-      }
+    if (uniqueIdentifier.toLowerCase() ==
+            "nepal_life_insurance".toLowerCase() ||
+        uniqueIdentifier.toLowerCase() ==
+            "reliance_life_insurance".toLowerCase()) {
+      NavigationService.push(
+          target: LifeInsurancePage(
+        service: servicefilteredItems[0],
+      ));
     }
+    //  else {
+    //   NavigationService.push(
+    //       target: CommonInsurancePage(
+    //     service: servicefilteredItems[0],
+    //   ));
+    // }
+
     if (uniqueIdentifier.toLowerCase() ==
         "government_ird_payment".toLowerCase()) {
       NavigationService.push(

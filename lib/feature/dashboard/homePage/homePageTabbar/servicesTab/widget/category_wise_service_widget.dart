@@ -1,26 +1,25 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/models/key_value.dart';
+import 'package:ismart/common/enum/text_field_type.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/search_widget.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/common/category_search_screen.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<ServiceList> services;
@@ -40,7 +39,34 @@ class CategoriesWiseServicesWidget extends StatefulWidget {
 
 class _CategoriesWiseServicesWidgetState
     extends State<CategoriesWiseServicesWidget> {
+  List<ServiceList> searchItems = [];
+  Timer? _debounce;
+
+  @override
+  void initState() {
+    searchItems = widget.services;
+    super.initState();
+  }
+
+  _updateSearchList(String query) {
+    if (_debounce?.isActive ?? false) {
+      _debounce?.cancel();
+    }
+    _debounce = Timer(const Duration(milliseconds: 200), () {
+      final _res = widget.services
+          .where((e) => e.service.toLowerCase().contains(query.toLowerCase()))
+          .toList();
+      if (mounted) {
+        setState(() {
+          searchItems = _res;
+        });
+      }
+    });
+  }
+
   TextEditingController _selectedServiceCategory = TextEditingController();
+  // final KeyValue? ignoreValue;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -53,58 +79,52 @@ class _CategoriesWiseServicesWidgetState
           title: "Choose Service Povider",
           body: Column(
             children: [
+              const SizedBox(height: 10),
               CustomTextField(
-                readOnly: true,
-                controller: _selectedServiceCategory,
-                hintText: "Select Category",
-                onTap: () {
-                  NavigationService.push(
-                    target: ServiceCategorySearchScreen(
-                      services: widget.services,
-                      searchOptions: widget.services
-                          .map((e) => KeyValue(
-                              title: e.service, value: e.uniqueIdentifier))
-                          .toList(),
-                      onChanged: (val) {
-                        _selectedServiceCategory.text = val.title;
-
-                        widget.services.where(
-                            (element) => element.uniqueIdentifier == val.value);
-                      },
-                    ),
-                  );
+                margin: const EdgeInsets.only(
+                  left: CustomTheme.symmetricHozPadding,
+                  right: CustomTheme.symmetricHozPadding,
+                ),
+                hintText: "Search",
+                showSearchIcon: true,
+                onChanged: (val) {
+                  _updateSearchList(val);
                 },
               ),
+              const SizedBox(height: 10),
               Container(
-                height: _height * 0.6,
+                height: _height / 2,
                 child: GridView.builder(
-                  itemCount: widget.services.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (context, index) {
-                    return InkWell(
-                      onTap: () {
-                        onTapFunction(index);
-                      },
-                      child: Column(children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              // borderRadius: BorderRadius.circular(12),
-                              image: DecorationImage(
-                                  image: NetworkImage(
-                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.services[index].icon}",
-                                  ),
-                                  fit: BoxFit.cover)),
-                          height: _height * 0.11,
-                          width: _width * 0.25,
-                        ),
-                        SizedBox(height: _height * 0.01),
-                        Expanded(
-                          child: Padding(
+                    itemCount: searchItems.length,
+                    gridDelegate:
+                        const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 2),
+                    itemBuilder: (context, index) {
+                      return InkWell(
+                        onTap: () {
+                          onTapFunction(
+                              index: index,
+                              uniqueIdentifier:
+                                  searchItems[index].uniqueIdentifier);
+                        },
+                        child: Column(children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                // borderRadius: BorderRadius.circular(12),
+                                image: DecorationImage(
+                                    image: NetworkImage(
+                                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${searchItems[index].icon}",
+                                    ),
+                                    fit: BoxFit.cover)),
+                            height: _height * 0.11,
+                            width: _width * 0.25,
+                          ),
+                          SizedBox(height: _height * 0.01),
+                          Padding(
                             padding:
                                 const EdgeInsets.symmetric(horizontal: 8.0),
                             child: Text(
-                              widget.services[index].service.toString(),
+                              searchItems[index].service.toString(),
                               textAlign: TextAlign.center,
                               style: const TextStyle(
                                   color: CustomTheme.darkerBlack,
@@ -112,11 +132,9 @@ class _CategoriesWiseServicesWidgetState
                                   fontWeight: FontWeight.bold),
                             ),
                           ),
-                        ),
-                      ]),
-                    );
-                  },
-                ),
+                        ]),
+                      );
+                    }),
               ),
             ],
           ),
@@ -125,65 +143,72 @@ class _CategoriesWiseServicesWidgetState
     );
   }
 
-  onTapFunction(index) {
+  onTapFunction({required String uniqueIdentifier, required int index}) {
+    final selectedService = widget.services
+        .where((e) =>
+            e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
+        .toList();
+    print(selectedService.length);
+    final servicess = searchItems[index];
+
     if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
       NavigationService.push(
           target: TvPaymentPage(
-        service: widget.services[index],
+        service: servicess,
       ));
-    } else if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+    } else if (uniqueIdentifier.toLowerCase() ==
         "worldlink_online_topup".toLowerCase()) {
       NavigationService.push(
           target: FindInternetUserScreen(
-        service: widget.services[index],
+        service: servicess,
       ));
-    } else if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+    } else if (uniqueIdentifier.toLowerCase() ==
         "subisu_online_topup".toLowerCase()) {
       NavigationService.push(
           target: SubisuPaymentPage(
-        service: widget.services[index],
+        service: servicess,
       ));
     }
-    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+    if (uniqueIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(target: const KhanePaniPage());
     }
-    if (widget.uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
-        widget.uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
+    if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
+        uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
       NavigationService.push(
           target: SelectDatapackScreen(
-        serviceIdentifier: widget.services[index],
+        serviceIdentifier: servicess,
       ));
     }
-    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+    if (uniqueIdentifier.toLowerCase() ==
         "traffic_fine_payments".toLowerCase()) {
       NavigationService.push(
           target: TrafficFinePaymentPage(
-        service: widget.services[index],
+        service: servicess,
       ));
     }
 
     if (widget.uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+      if (uniqueIdentifier.toLowerCase() ==
               "nepal_life_insurance".toLowerCase() ||
-          widget.services[index].uniqueIdentifier.toLowerCase() ==
+          uniqueIdentifier.toLowerCase() ==
               "reliance_life_insurance".toLowerCase()) {
         NavigationService.push(
             target: LifeInsurancePage(
-          service: widget.services[index],
+          service: servicess,
         ));
       } else {
         NavigationService.push(
             target: CommonInsurancePage(
-          service: widget.services[index],
+          service: servicess,
         ));
       }
     }
-    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
+    if (uniqueIdentifier.toLowerCase() ==
         "government_ird_payment".toLowerCase()) {
       NavigationService.push(
           target: IrdPaymentPage(
-        services: widget.services[index],
+        services: servicess,
       ));
     }
   }
