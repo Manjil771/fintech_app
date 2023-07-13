@@ -99,8 +99,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                         .toLowerCase() ==
                                     "topup") {
                                   NavigationService.push(
-                                      target: MobileTopupPage(
-                                          service: data.services[index]));
+                                      target:
+                                          MobileTopupPage(categoryList: data));
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
@@ -211,7 +211,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                               borderRadius:
                                                   BorderRadius.circular(5)),
                                           child: Text(
-                                            '7% Cashback',
+                                            "${filteredItems[0].cashBackView} cashback",
                                             overflow: TextOverflow.ellipsis,
                                             style: _textTheme.bodyLarge!
                                                 .copyWith(

@@ -12,26 +12,27 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/categoryWiseService/Topup/ui/widgets/topup_transaction_receipt_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class CommonBillDetailPage extends StatelessWidget {
+class TopUpBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final Widget body;
-  final Service service;
+  final CategoryList categoryList;
 
-  CommonBillDetailPage(
+  TopUpBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
-      required this.service,
+      required this.categoryList,
       required this.serviceIdentifier});
   bool _isLoading = false;
   @override
@@ -44,9 +45,9 @@ class CommonBillDetailPage extends StatelessWidget {
         utilityPaymentRepository:
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
-      child: CommonBillDetailWidget(
+      child: TopupBillDetailWidget(
         body: body,
-        service: service,
+        categoryList: categoryList,
         apiBody: apiBody,
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
@@ -56,27 +57,30 @@ class CommonBillDetailPage extends StatelessWidget {
   }
 }
 
-class CommonBillDetailWidget extends StatelessWidget {
+class TopupBillDetailWidget extends StatelessWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
-  final Service service;
+  final CategoryList categoryList;
   final Widget body;
   final String serviceIdentifier;
 
-  CommonBillDetailWidget({
+  TopupBillDetailWidget({
     super.key,
     required this.accountDetails,
     required this.apiEndpoint,
     required this.body,
     required this.apiBody,
-    required this.service,
+    required this.categoryList,
     required this.serviceIdentifier,
   });
   bool _isLoading = false;
-
   @override
   Widget build(BuildContext context) {
+    final selectedService = categoryList.services
+        .where(
+            (element) => element.uniqueIdentifier.contains(serviceIdentifier))
+        .toList();
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
 
@@ -107,13 +111,12 @@ class CommonBillDetailWidget extends StatelessWidget {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.status == "M0000") {
-              print("stateus is ${_response.status}");
               NavigationService.pushReplacement(
-                  target: CommonTransactionSuccessPage(
+                  target: TopUpTransactionReceiptPage(
                       transactionID: state.data.transactionIdentifier,
                       body: body,
                       message: state.data.message,
-                      service: service));
+                      service: selectedService[0]));
             } else {
               showPopUpDialog(
                 context: context,
@@ -139,12 +142,12 @@ class CommonBillDetailWidget extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   Image.network(
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service.icon}",
+                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${selectedService[0].icon}",
                     height: _height * 0.08,
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                    service.service,
+                    selectedService[0].service,
                     style: TextStyle(
                         fontSize: 20,
                         color: Colors.black,
@@ -152,7 +155,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                      "Details about the payable amount for the service of ${service.service} is shown below.",
+                      "Details about the payable amount for the service of ${selectedService[0].service} is shown below.",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall),
                   SizedBox(height: _height * 0.02),
@@ -176,7 +179,8 @@ class CommonBillDetailWidget extends StatelessWidget {
                         body,
                         KeyValueTile(
                             title: "Cashback",
-                            value: "${service.cashBackView ?? 0} %")
+                            value:
+                                "${selectedService[0].cashBackView ?? "0"} %")
                       ],
                     ),
                   ),

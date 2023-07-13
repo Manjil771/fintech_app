@@ -1,99 +1,119 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/qrCode/shareQr/resources/qr_cubit.dart';
 
-class ShareQrWidget extends StatelessWidget {
+class ShareQrWidget extends StatefulWidget {
   const ShareQrWidget({super.key});
 
   @override
+  State<ShareQrWidget> createState() => _ShareQrWidgetState();
+}
+
+class _ShareQrWidgetState extends State<ShareQrWidget> {
+  final detail =
+      RepositoryProvider.of<CustomerDetailRepository>(NavigationService.context)
+          .selectedAccount
+          .value!;
+  @override
+  void initState() {
+    context.read<QrCubit>().generateQr(
+        customerName: detail.accountHolderName, customerId: detail.id);
+    super.initState();
+  }
+
+  bool _isLoading = false;
+  @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 30),
-        width: double.infinity,
-        margin: const EdgeInsets.fromLTRB(28, 100, 28, 100),
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(18),
-          color: Colors.white,
-        ),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            SvgPicture.asset(
-              "assets/icons/Group 913.svg",
-              color: Color(0XFF4E4E4E),
-              height: size.height * 0.04,
-            ),
-            const Text(
-              "My QR Code",
-              style: TextStyle(
-                  fontSize: 20,
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500),
-            ),
-            Text("Your RQ Code is Displayed below.",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleSmall),
-            Image.asset(
-              "assets/images/QR_Code_Example 1.png",
-              height: size.height * 0.3,
-            ),
-            Text("Pawan Maharjan",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.displaySmall),
-            Text("98XXXXXXXX",
-                textAlign: TextAlign.center,
-                style: Theme.of(context).textTheme.titleSmall),
-            // Row(
-            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            //   children: [
-            //     shareMyQr(context),
-            //     phonePayQr(context),
-            //   ],
-            // ),
-          ],
+    final _height = SizeUtils.height;
+    final _width = SizeUtils.width;
+    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
+        .selectedAccount
+        .value!;
+    return PageWrapper(
+      body: CommonContainer(
+        showDetail: false,
+        showRoundBotton: false,
+        showTitleText: false,
+        topbarName: "Share Qr",
+        body: BlocConsumer<QrCubit, CommonState>(
+          listener: (context, state) {
+            if (state is CommonLoading && !_isLoading) {
+              _isLoading = true;
+              showLoadingDialogBox(context);
+            } else if (state is! CommonLoading && _isLoading) {
+              _isLoading = false;
+              NavigationService.pop();
+            }
+
+            // if (state is CommonError) {
+            //   showPopUpDialog(
+            //     context: context,
+            //     message: state.message,
+            //     title: "Error",
+            //     showCancelButton: false,
+            //     buttonCallback: () {
+            //       NavigationService.pop();
+            //     },
+            //   );
+            // }
+          },
+          builder: (context, state) {
+            if (state is CommonStateSuccess) {
+              return Column(
+                children: [
+                  SvgPicture.asset(
+                    "assets/icons/Group 913.svg",
+                    color: Color(0XFF4E4E4E),
+                    height: _height * 0.04,
+                  ),
+                  const Text(
+                    "My QR Code",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Colors.black,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  // Text("Your QR Code is Displayed below.",
+                  //     textAlign: TextAlign.center,
+                  //     style: Theme.of(context).textTheme.titleSmall),
+                  Image.network(
+                    RepositoryProvider.of<CoOperative>(context).baseUrl +
+                        state.data["data"]["details"]["QRCodePath"].toString(),
+                    height: _height * 0.4,
+                  ),
+                  KeyValueTile(
+                    title: "Name",
+                    value: detail.accountHolderName,
+                  ),
+                  KeyValueTile(
+                    title: "Account Number",
+                    value: detail.accountNumber,
+                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     shareMyQr(context),
+                  //     phonePayQr(context),
+                  //   ],
+                  // ),
+                ],
+              );
+            } else {
+              return Container();
+            }
+          },
         ),
       ),
     );
   }
-
-  // phonePayQr(BuildContext context) {
-  //   Size size = MediaQuery.of(context).size;
-  //   return MaterialButton(
-  //       shape: RoundedRectangleBorder(
-  //         side: BorderSide(color: Theme.of(context).primaryColor),
-  //         borderRadius: BorderRadius.circular(12),
-  //       ),
-  //       onPressed: () {},
-  //       child: SizedBox(
-  //         height: size.height * 0.06,
-  //         child: Center(
-  //           child: Text(
-  //             "Share FonePay QR",
-  //             style: TextStyle(
-  //                 fontSize: 13, color: Theme.of(context).primaryColor),
-  //           ),
-  //         ),
-  //       ));
-  // }
-
-  // shareMyQr(BuildContext context) {
-  //   Size size = MediaQuery.of(context).size;
-  //   return MaterialButton(
-  //       color: Theme.of(context).primaryColor,
-  //       shape: RoundedRectangleBorder(
-  //         borderRadius: BorderRadius.circular(12),
-  //       ),
-  //       onPressed: () {},
-  //       child: SizedBox(
-  //         height: size.height * 0.06,
-  //         width: size.width * 0.26,
-  //         child: const Center(
-  //           child: Text(
-  //             "Share my QR",
-  //             style: TextStyle(fontSize: 12, color: Colors.white),
-  //           ),
-  //         ),
-  //       ));
-  // }
 }
