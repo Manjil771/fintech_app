@@ -40,7 +40,6 @@ class CategoriesWiseServicesWidget extends StatefulWidget {
 
 class _CategoriesWiseServicesWidgetState
     extends State<CategoriesWiseServicesWidget> {
-  String? selectedIdentifier;
   TextEditingController _selectedServiceCategory = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -68,7 +67,7 @@ class _CategoriesWiseServicesWidgetState
                           .toList(),
                       onChanged: (val) {
                         _selectedServiceCategory.text = val.title;
-                        selectedIdentifier == val.value;
+
                         widget.services.where(
                             (element) => element.uniqueIdentifier == val.value);
                       },
@@ -85,7 +84,7 @@ class _CategoriesWiseServicesWidgetState
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        onTapFunction(selectedIdentifier, index);
+                        onTapFunction(index);
                       },
                       child: Column(children: [
                         Container(
@@ -126,26 +125,26 @@ class _CategoriesWiseServicesWidgetState
     );
   }
 
-  onTapFunction(uniqueIdentifier, index) {
+  onTapFunction(index) {
     if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
       NavigationService.push(
           target: TvPaymentPage(
         service: widget.services[index],
       ));
-    } else if (uniqueIdentifier.toLowerCase() ==
+    } else if (widget.services[index].uniqueIdentifier.toLowerCase() ==
         "worldlink_online_topup".toLowerCase()) {
       NavigationService.push(
           target: FindInternetUserScreen(
         service: widget.services[index],
       ));
-    } else if (uniqueIdentifier.toLowerCase() ==
+    } else if (widget.services[index].uniqueIdentifier.toLowerCase() ==
         "subisu_online_topup".toLowerCase()) {
       NavigationService.push(
           target: SubisuPaymentPage(
         service: widget.services[index],
       ));
     }
-    if (uniqueIdentifier.toLowerCase() ==
+    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(target: const KhanePaniPage());
     }
@@ -156,7 +155,7 @@ class _CategoriesWiseServicesWidgetState
         serviceIdentifier: widget.services[index],
       ));
     }
-    if (uniqueIdentifier.toLowerCase() ==
+    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
         "traffic_fine_payments".toLowerCase()) {
       NavigationService.push(
           target: TrafficFinePaymentPage(
@@ -165,9 +164,9 @@ class _CategoriesWiseServicesWidgetState
     }
 
     if (widget.uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      if (uniqueIdentifier.toLowerCase() ==
+      if (widget.services[index].uniqueIdentifier.toLowerCase() ==
               "nepal_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          widget.services[index].uniqueIdentifier.toLowerCase() ==
               "reliance_life_insurance".toLowerCase()) {
         NavigationService.push(
             target: LifeInsurancePage(
@@ -180,7 +179,7 @@ class _CategoriesWiseServicesWidgetState
         ));
       }
     }
-    if (uniqueIdentifier.toLowerCase() ==
+    if (widget.services[index].uniqueIdentifier.toLowerCase() ==
         "government_ird_payment".toLowerCase()) {
       NavigationService.push(
           target: IrdPaymentPage(

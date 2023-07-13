@@ -11,7 +11,7 @@ import 'package:ismart/common/widget/custom_list_tile.dart';
 class CategorySearchWidgets extends StatefulWidget {
   final List<KeyValue> items;
   final KeyValue? ignoreValue;
-  final ValueChanged<KeyValue>? onChanged;
+  final Function onPressed;
   final bool hideValue;
 
   final Widget? searchHistoryWidget;
@@ -20,7 +20,7 @@ class CategorySearchWidgets extends StatefulWidget {
   const CategorySearchWidgets({
     Key? key,
     required this.items,
-    this.onChanged,
+    required this.onPressed,
     this.ignoreValue,
     this.hideValue = false,
     this.showSearchHistory = false,
@@ -92,16 +92,17 @@ class _SearchWidgetsState extends State<CategorySearchWidgets> {
                 itemBuilder: (context, index) {
                   if (widget.ignoreValue == null ||
                       widget.ignoreValue!.value != searchItems[index].value) {
-                    return CustomListTile(
-                      horizontalPadding: CustomTheme.symmetricHozPadding,
-                      title: searchItems[index].title,
-                      titleFontWeight: FontWeight.w400,
-                      description: searchItems[index].value,
-                      trailing: Container(),
-                      hideDescription: widget.hideValue,
-                      onPressed: () {
-                        widget.onChanged;
+                    return InkWell(
+                      onTap: () {
+                        widget.onPressed;
                       },
+                      child: CustomListTile(
+                        horizontalPadding: CustomTheme.symmetricHozPadding,
+                        title: searchItems[index].title,
+                        titleFontWeight: FontWeight.w400,
+                        description: searchItems[index].value,
+                        trailing: Container(),
+                      ),
                     );
                   } else {
                     return Container();

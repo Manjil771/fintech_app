@@ -47,8 +47,9 @@ class ServiceCategorySearchScreen extends StatelessWidget {
       padding: EdgeInsets.zero,
       body: Container(
         child: CategorySearchWidgets(
-          onChanged: (val) {
-            onTapFunction(searchOptions[0].value, 0);
+          onPressed: () {
+            print("testt");
+            // onTapFunction(searchOptions[0].value, 0);
           },
           items: List.generate(
             searchOptions.length,
@@ -63,72 +64,71 @@ class ServiceCategorySearchScreen extends StatelessWidget {
   }
 
   onTapFunction(uniqueIdentifier, index) {
-    final filter = services.length;
-    final ServiceList filteredItems = services.where((item) => item.uniqueIdentifier
-        .toString()
-        .toLowerCase()
-        .contains(uniqueIdentifier.toLowerCase()));
+    final servicefilteredItems = services
+        .where((item) => item.uniqueIdentifier
+            .toString()
+            .toLowerCase()
+            .contains(uniqueIdentifier.toLowerCase()))
+        .toList();
     if (uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
-          NavigationService.push(
-              target: TvPaymentPage(
-            service: filteredItems,
-          ));
-        } else if (uniqueIdentifier.toLowerCase() ==
-            "worldlink_online_topup".toLowerCase()) {
-          NavigationService.push(
-              target: FindInternetUserScreen(
-            service: services[index],
-          ));
-        }
-        //  else if (uniqueIdentifier.toLowerCase() ==
-      //       "subisu_online_topup".toLowerCase()) {
-      //     NavigationService.push(
-      //         target: SubisuPaymentPage(
-      //       service: services[index],
-      //     ));
-      //   }
-      //   if (uniqueIdentifier.toLowerCase() ==
-      //       "khanepani_online_topup".toLowerCase()) {
-      //     NavigationService.push(target: const KhanePaniPage());
-      //   }
-      //   if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
-      //       uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
-      //     NavigationService.push(
-      //         target: SelectDatapackScreen(
-      //       serviceIdentifier: services[index],
-      //     ));
-      //   }
-      //   if (uniqueIdentifier.toLowerCase() ==
-      //       "traffic_fine_payments".toLowerCase()) {
-      //     NavigationService.push(
-      //         target: TrafficFinePaymentPage(
-      //       service: filteredItems,
-      //     ));
-      //   }
+      NavigationService.push(
+          target: TvPaymentPage(
+        service: servicefilteredItems[0],
+      ));
+    } else if (uniqueIdentifier.toLowerCase() ==
+        "worldlink_online_topup".toLowerCase()) {
+      NavigationService.push(
+          target: FindInternetUserScreen(
+        service: services[index],
+      ));
+    } else if (uniqueIdentifier.toLowerCase() ==
+        "subisu_online_topup".toLowerCase()) {
+      NavigationService.push(
+          target: SubisuPaymentPage(
+        service: services[index],
+      ));
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "khanepani_online_topup".toLowerCase()) {
+      NavigationService.push(target: const KhanePaniPage());
+    }
+    if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
+        uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
+      NavigationService.push(
+          target: SelectDatapackScreen(
+        serviceIdentifier: services[index],
+      ));
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "traffic_fine_payments".toLowerCase()) {
+      NavigationService.push(
+          target: TrafficFinePaymentPage(
+        service: servicefilteredItems[0],
+      ));
+    }
 
-      //   if (uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      //     if (uniqueIdentifier.toLowerCase() ==
-      //             "nepal_life_insurance".toLowerCase() ||
-      //         uniqueIdentifier.toLowerCase() ==
-      //             "reliance_life_insurance".toLowerCase()) {
-      //       NavigationService.push(
-      //           target: LifeInsurancePage(
-      //         service: filteredItems,
-      //       ));
-      //     } else {
-      //       NavigationService.push(
-      //           target: CommonInsurancePage(
-      //         service: filteredItems,
-      //       ));
-      //     }
-      //   }
-      //   if (uniqueIdentifier.toLowerCase() ==
-      //       "government_ird_payment".toLowerCase()) {
-      //     NavigationService.push(
-      //         target: IrdPaymentPage(
-      //       services: services[index],
-      //     ));
-      //   }
+    if (uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
+      if (uniqueIdentifier.toLowerCase() ==
+              "nepal_life_insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              "reliance_life_insurance".toLowerCase()) {
+        NavigationService.push(
+            target: LifeInsurancePage(
+          service: servicefilteredItems[0],
+        ));
+      } else {
+        NavigationService.push(
+            target: CommonInsurancePage(
+          service: servicefilteredItems[0],
+        ));
+      }
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "government_ird_payment".toLowerCase()) {
+      NavigationService.push(
+          target: IrdPaymentPage(
+        services: services[index],
+      ));
     }
   }
 }
