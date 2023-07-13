@@ -7,7 +7,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class LifeInsurancePage extends StatelessWidget {
-  final Service service;
+  final ServiceList service;
 
   const LifeInsurancePage({Key? key, required this.service}) : super(key: key);
   @override

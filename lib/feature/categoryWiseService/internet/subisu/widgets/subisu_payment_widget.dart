@@ -13,7 +13,7 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 class SubisuPaymentWidget extends StatefulWidget {
   SubisuPaymentWidget({Key? key, required this.service}) : super(key: key);
 
-  final Service service;
+  final ServiceList service;
 
   @override
   State<SubisuPaymentWidget> createState() => _SubisuPaymentWidgetState();

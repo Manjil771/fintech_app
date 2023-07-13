@@ -27,7 +27,7 @@ import '../../../customerDetail/resource/customer_detail_repository.dart';
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class LandlinePaymentWidget extends StatefulWidget {
-  final Service service;
+  final ServiceList service;
 
   LandlinePaymentWidget({super.key, required this.service});
 

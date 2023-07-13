@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
@@ -17,9 +20,10 @@ import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_user
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/common/category_search_screen.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
-  final List<Service> services;
+  final List<ServiceList> services;
   final String uniqueIdentifier;
   final String topBarName;
   const CategoriesWiseServicesWidget(
@@ -36,6 +40,8 @@ class CategoriesWiseServicesWidget extends StatefulWidget {
 
 class _CategoriesWiseServicesWidgetState
     extends State<CategoriesWiseServicesWidget> {
+  String? selectedIdentifier;
+  TextEditingController _selectedServiceCategory = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -48,6 +54,28 @@ class _CategoriesWiseServicesWidgetState
           title: "Choose Service Povider",
           body: Column(
             children: [
+              CustomTextField(
+                readOnly: true,
+                controller: _selectedServiceCategory,
+                hintText: "Select Category",
+                onTap: () {
+                  NavigationService.push(
+                    target: ServiceCategorySearchScreen(
+                      services: widget.services,
+                      searchOptions: widget.services
+                          .map((e) => KeyValue(
+                              title: e.service, value: e.uniqueIdentifier))
+                          .toList(),
+                      onChanged: (val) {
+                        _selectedServiceCategory.text = val.title;
+                        selectedIdentifier == val.value;
+                        widget.services.where(
+                            (element) => element.uniqueIdentifier == val.value);
+                      },
+                    ),
+                  );
+                },
+              ),
               Container(
                 height: _height * 0.6,
                 child: GridView.builder(
@@ -57,77 +85,7 @@ class _CategoriesWiseServicesWidgetState
                   itemBuilder: (context, index) {
                     return InkWell(
                       onTap: () {
-                        if (widget.uniqueIdentifier.toLowerCase() ==
-                            "tv".toLowerCase()) {
-                          NavigationService.push(
-                              target: TvPaymentPage(
-                            service: widget.services[index],
-                          ));
-                        } else if (widget.services[index].uniqueIdentifier
-                                .toLowerCase() ==
-                            "worldlink_online_topup".toLowerCase()) {
-                          NavigationService.push(
-                              target: FindInternetUserScreen(
-                            service: widget.services[index],
-                          ));
-                        } else if (widget.services[index].uniqueIdentifier
-                                .toLowerCase() ==
-                            "subisu_online_topup".toLowerCase()) {
-                          NavigationService.push(
-                              target: SubisuPaymentPage(
-                            service: widget.services[index],
-                          ));
-                        }
-                        if (widget.services[index].uniqueIdentifier
-                                .toLowerCase() ==
-                            "khanepani_online_topup".toLowerCase()) {
-                          NavigationService.push(target: const KhanePaniPage());
-                        }
-                        if (widget.uniqueIdentifier.toLowerCase() ==
-                                "data_pack".toLowerCase() ||
-                            widget.uniqueIdentifier.toLowerCase() ==
-                                "Data Pack".toLowerCase()) {
-                          NavigationService.push(
-                              target: SelectDatapackScreen(
-                            serviceIdentifier: widget.services[index],
-                          ));
-                        }
-                        if (widget.services[index].uniqueIdentifier
-                                .toLowerCase() ==
-                            "traffic_fine_payments".toLowerCase()) {
-                          NavigationService.push(
-                              target: TrafficFinePaymentPage(
-                            service: widget.services[index],
-                          ));
-                        }
-
-                        if (widget.uniqueIdentifier.toLowerCase() ==
-                            "insurance".toLowerCase()) {
-                          if (widget.services[index].uniqueIdentifier
-                                      .toLowerCase() ==
-                                  "nepal_life_insurance".toLowerCase() ||
-                              widget.services[index].uniqueIdentifier
-                                      .toLowerCase() ==
-                                  "reliance_life_insurance".toLowerCase()) {
-                            NavigationService.push(
-                                target: LifeInsurancePage(
-                              service: widget.services[index],
-                            ));
-                          } else {
-                            NavigationService.push(
-                                target: CommonInsurancePage(
-                              service: widget.services[index],
-                            ));
-                          }
-                        }
-                        if (widget.services[index].uniqueIdentifier
-                                .toLowerCase() ==
-                            "government_ird_payment".toLowerCase()) {
-                          NavigationService.push(
-                              target: IrdPaymentPage(
-                            services: widget.services[index],
-                          ));
-                        }
+                        onTapFunction(selectedIdentifier, index);
                       },
                       child: Column(children: [
                         Container(
@@ -166,5 +124,68 @@ class _CategoriesWiseServicesWidgetState
           showDetail: false,
           topbarName: widget.topBarName),
     );
+  }
+
+  onTapFunction(uniqueIdentifier, index) {
+    if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
+      NavigationService.push(
+          target: TvPaymentPage(
+        service: widget.services[index],
+      ));
+    } else if (uniqueIdentifier.toLowerCase() ==
+        "worldlink_online_topup".toLowerCase()) {
+      NavigationService.push(
+          target: FindInternetUserScreen(
+        service: widget.services[index],
+      ));
+    } else if (uniqueIdentifier.toLowerCase() ==
+        "subisu_online_topup".toLowerCase()) {
+      NavigationService.push(
+          target: SubisuPaymentPage(
+        service: widget.services[index],
+      ));
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "khanepani_online_topup".toLowerCase()) {
+      NavigationService.push(target: const KhanePaniPage());
+    }
+    if (widget.uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
+        widget.uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
+      NavigationService.push(
+          target: SelectDatapackScreen(
+        serviceIdentifier: widget.services[index],
+      ));
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "traffic_fine_payments".toLowerCase()) {
+      NavigationService.push(
+          target: TrafficFinePaymentPage(
+        service: widget.services[index],
+      ));
+    }
+
+    if (widget.uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
+      if (uniqueIdentifier.toLowerCase() ==
+              "nepal_life_insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              "reliance_life_insurance".toLowerCase()) {
+        NavigationService.push(
+            target: LifeInsurancePage(
+          service: widget.services[index],
+        ));
+      } else {
+        NavigationService.push(
+            target: CommonInsurancePage(
+          service: widget.services[index],
+        ));
+      }
+    }
+    if (uniqueIdentifier.toLowerCase() ==
+        "government_ird_payment".toLowerCase()) {
+      NavigationService.push(
+          target: IrdPaymentPage(
+        services: widget.services[index],
+      ));
+    }
   }
 }

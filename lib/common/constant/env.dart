@@ -127,17 +127,17 @@ class CoOperativeValue {
   // );
 
 ////*****************Uttarganga ***************////
-  // static final CoOperative uttargangaCoop = CoOperative(
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/uttarganga/uttarganga_banner.png",
-  //   clientCode: '9DZS5N3TOY',
-  //   backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
-  //   coOperativeName: 'Uttarganga',
-  //   coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-  //   clientSecret: "112213",
-  //   splashImage: "assets/uttarganga/uttarganga_splash.png",
-  //   primaryColor: const Color(0xFF2e3192),
-  // );
+  static final CoOperative uttargangaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/uttarganga/uttarganga_banner.png",
+    clientCode: '9DZS5N3TOY',
+    backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
+    coOperativeName: 'Uttarganga',
+    coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
+    clientSecret: "112213",
+    splashImage: "assets/uttarganga/uttarganga_splash.png",
+    primaryColor: const Color(0xFF2e3192),
+  );
 
 ////********************** Sahakarya ***********************//////
   static final CoOperative shakaryaCoop = CoOperative(

@@ -18,6 +18,7 @@ import 'package:ismart/common/widget/date_picker_dialog.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
+import 'package:ismart/common/widget/search_widget.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
@@ -27,7 +28,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LifeInsurcnceWidget extends StatefulWidget {
-  final Service service;
+  final ServiceList service;
 
   LifeInsurcnceWidget({super.key, required this.service});
 

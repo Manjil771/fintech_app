@@ -7,7 +7,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class TvPaymentPage extends StatelessWidget {
-  final Service service;
+  final ServiceList service;
   const TvPaymentPage({Key? key, required this.service}) : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -17,7 +17,7 @@ import 'package:ismart/feature/history/resources/recent_transaction_repository.d
 class CommonTransactionSuccessPage extends StatelessWidget {
   final Widget body;
   final String message;
-  final Service? service;
+  final ServiceList? service;
   final String transactionID;
 
   const CommonTransactionSuccessPage(
@@ -49,7 +49,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
   final String message;
   final String transactionID;
 
-  final Service? service;
+  final ServiceList? service;
   const CommonTransactionSuccessfulWidget(
       {super.key,
       required this.body,

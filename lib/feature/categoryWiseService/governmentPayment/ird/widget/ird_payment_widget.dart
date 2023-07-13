@@ -23,7 +23,7 @@ import '../../../../dashboard/homePage/homePageTabbar/servicesTab/model/category
 class IrdPaymentWidget extends StatefulWidget {
   const IrdPaymentWidget({super.key, required this.service});
 
-  final Service service;
+  final ServiceList service;
 
   @override
   State<IrdPaymentWidget> createState() => _IrdPaymentWidgetState();
