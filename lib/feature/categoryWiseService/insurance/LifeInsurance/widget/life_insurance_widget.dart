@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -7,11 +8,13 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/date_formater.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/date_picker_dialog.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
@@ -24,15 +27,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LifeInsurcnceWidget extends StatefulWidget {
-  final String companyName;
-  final String companyLogo;
   final Service service;
 
-  LifeInsurcnceWidget(
-      {super.key,
-      required this.companyName,
-      required this.companyLogo,
-      required this.service});
+  LifeInsurcnceWidget({super.key, required this.service});
 
   @override
   State<LifeInsurcnceWidget> createState() => _LifeInsurcnceWidgetState();
@@ -65,7 +62,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
-            NavigationService.pushReplacement(
+            NavigationService.push(
               target: CommonBillDetailPage(
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 service: widget.service,
@@ -169,9 +166,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
       },
       child: CommonContainer(
         title: widget.service.service,
-        //  detail: widget.service.instructions,
-        detail: "Pay for your Insurance premium from here.",
+        detail: widget.service.instructions,
+        // detail: "Pay for your Insurance premium from here.",
         showDetail: true,
+        showAccountSelection: true,
         topbarName: widget.service.serviceCategoryName,
         buttonName: "Show Details",
         body: Form(
@@ -190,10 +188,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                         width: _width * 0.23,
                         margin: const EdgeInsets.only(right: 18),
                         child: Image.network(
-                            "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.companyLogo}"),
+                            "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
                       ),
                       Expanded(
-                        child: Text(widget.companyName,
+                        child: Text(widget.service.service,
                             style: Theme.of(context)
                                 .textTheme
                                 .titleLarge!
@@ -201,18 +199,19 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                       ),
                     ],
                   ),
-                  Text(
-                    "From Account",
-                    style: const TextStyle(
-                      fontFamily: Fonts.poppin,
-                      fontWeight: FontWeight.w600,
-                      fontSize: 13,
-                      color: CustomTheme.lightTextColor,
-                    ),
-                  ),
-                  PrimaryAccountBox(),
+                  SizedBox(height: _height * 0.02),
+                  // Text(
+                  //   "From Account",
+                  //   style: const TextStyle(
+                  //     fontFamily: Fonts.poppin,
+                  //     fontWeight: FontWeight.w600,
+                  //     fontSize: 13,
+                  //     color: CustomTheme.lightTextColor,
+                  //   ),
+                  // ),
+                  // PrimaryAccountBox(),
                   CustomTextField(
-                    title: "Policy No",
+                    title: widget.service.labelName,
                     hintText: "Policy NO",
                     controller: policyNoController,
                     validator: (value) => FormValidator.validateFieldNotEmpty(
@@ -225,27 +224,33 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                         return "Please Select Date";
                       }
                     },
-                    onTap: () async {
-                      final date = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1905),
-                          lastDate: DateTime.now());
-                      setState(
-                        () {
-                          selectedDateController.text =
-                              "${date!.year}-${date.month}-${date.day}";
-                        },
-                      );
-                    },
+
+                    inputFormatters: [
+                      FilteringTextInputFormatter.allow(RegExp("[0-9/]")),
+                      LengthLimitingTextInputFormatter(10),
+                      DateFormatter()
+                    ],
+                    // onTap: () async {
+                    //   final date = await showDatePicker(
+                    //       context: context,
+                    //       initialDate: DateTime.now(),
+                    //       firstDate: DateTime(1905),
+                    //       lastDate: DateTime.now());
+                    //   setState(
+                    //     () {
+                    //       selectedDateController.text =
+                    //           "${date!.year}-${date.month}-${date.day}";
+                    //     },
+                    //   );
+                    // },
                     title: "Date of Birth",
                     hintText: "yyyy-mm-dd",
-                    readOnly: true,
+
                     controller: selectedDateController,
-                    trailing: SvgPicture.asset(
-                      Assets.calanderIcon,
-                      height: _height * 0.05,
-                    ),
+                    // trailing: SvgPicture.asset(
+                    //   Assets.calanderIcon,
+                    //   height: _height * 0.05,
+                    // ),
                   ),
                 ],
               )

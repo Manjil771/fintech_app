@@ -7,6 +7,7 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/qrCode/scanQr/screen/qr_response_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:qr_code_scanner/qr_code_scanner.dart';
 
@@ -34,7 +35,7 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
   //   super.initState();
   // }
 
-  Barcode? result;
+  var result;
   QRViewController? controller;
   final GlobalKey qrKey = GlobalKey(debugLabel: 'QR');
   @override
@@ -51,7 +52,9 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
     Size size = MediaQuery.of(context).size;
 
     return result != null
-        ? const ORresultScreen()
+        ? QrREsponsePage(
+            result: result!,
+          )
         : PageWrapper(
             padding: EdgeInsets.zero,
             body: Container(
@@ -100,7 +103,8 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
                         CustomRoundedButtom(
                             title: "Show my QR Code",
                             onPressed: () {
-                              NavigationService.push(target: ShareQrPage());
+                              NavigationService.pushReplacement(
+                                  target: ShareQrPage());
                             }),
                         TextButton(
                           onPressed: () {
@@ -167,7 +171,8 @@ class _ScanQRWidgetState extends State<ScanQRWidget> {
 }
 
 class ORresultScreen extends StatelessWidget {
-  const ORresultScreen({super.key});
+  final Barcode result;
+  const ORresultScreen({super.key, required this.result});
 
   @override
   Widget build(BuildContext context) {
@@ -179,7 +184,7 @@ class ORresultScreen extends StatelessWidget {
       ),
       body: Center(
         child: Text(
-          "QR Scanned",
+          result.code!.length.toString(),
           style: Theme.of(context).textTheme.displayLarge,
         ),
       ),

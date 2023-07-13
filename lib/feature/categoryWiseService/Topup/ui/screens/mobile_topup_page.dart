@@ -7,8 +7,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class MobileTopupPage extends StatelessWidget {
-  final Service service;
-  const MobileTopupPage({Key? key, required this.service}) : super(key: key);
+  final CategoryList categoryList;
+  const MobileTopupPage({Key? key, required this.categoryList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +23,7 @@ class MobileTopupPage extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: MobileTopUpWidget(
-        service: service,
+        categoryList: categoryList,
       ),
     );
   }

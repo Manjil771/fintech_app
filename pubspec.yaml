@@ -84,6 +84,8 @@ flutter:
     - assets/images/
     - assets/janadhara/
     - assets/sahakarya/
+    - assets/uttarganga/
+    - assets/kamana/
     
 
   fonts:

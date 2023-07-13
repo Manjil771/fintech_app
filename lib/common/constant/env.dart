@@ -85,49 +85,103 @@ class CoOperativeValue {
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
   // );
-////********************** Sahakarya ***********************//////
-  // static final CoOperative shakaryaCoop = CoOperative(
+
+// ////*****************Abhiyan ***************////
+//   static final CoOperative abhiyancoop = CoOperative(
+//     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+//     bannerImage: "assets/uttarganga/uttarganga_banner.png",
+//     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
+//     coOperativeName: 'Abhiyan',
+//     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
+//     splashImage: "assets/uttarganga/uttarganga_splash.png",
+//     primaryColor: const Color(0xFF2e3192),
+//     //TODO need to add client id and client secret
+//     clientSecret: "199204",
+//     clientCode: 'VBMRDWEVFV',
+//   );
+
+  ////*****************Kabil ***************////
+  static final CoOperative kabilCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kamana/kamana_banner.png",
+    backgroundImage: "assets/kamana/kamana_background_image.png",
+    coOperativeName: 'Kabil',
+    coOperativeLogo: "assets/kamana/kamana_logo.png",
+    clientCode: 'LQ7QMJ5NRB',
+    clientSecret: "118107",
+    splashImage: "assets/kamana/kamana_splash_image.png",
+    primaryColor: const Color(0xFF17ae61),
+  );
+
+// ////*****************Kamana ***************////
+  // static final CoOperative kamanaCoop = CoOperative(
   //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/sahakarya/sahakarya_banner.png",
-  //   clientCode: 'SMTZ26RF75',
-  //   clientSecret: "194009",
-  //   // clientCode: 'VBMRDWEVFV',
-  //   // clientSecret: "199204",
-  //   backgroundImage: "assets/sahakarya/sahakarya_background_image.png",
-
-  //   coOperativeName: 'Sahakarya',
-  //   coOperativeLogo: "assets/sahakarya/sahakarya_logo.png",
-  //   splashImage: "assets/sahakarya/sahakarya_splash_image.png",
-  //   primaryColor: const Color(0xFF015017),
-  // );
-
-  // static final CoOperative janadharaCoop = CoOperative(
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/janadhara/janadhara_banner.png",
-  //   backgroundImage: "assets/janadhara/janadhara_banner.png",
-  //   clientCode: '6M0D7LSVNV',
-  //   coOperativeName: 'Janadhara',
-  //   coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
-  //   clientSecret: "180509",
-  //   splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
-  //   primaryColor: const Color(0xFF0b67bb),
-  // );
-// //  DEV TEST700746
-  // static final CoOperative development = CoOperative(
-  //   backgroundImage: "assets/images/ismart_background_image.jpg",
-
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/images/ismart_banner.png",
-
-  //   //  bannerImage: "assets/images/isamrt_banner.jpg",
-  //   clientCode: 'EHVNI7CZJ3',
+  //   bannerImage: "assets/kamana/kamana_banner.png",
+  //   backgroundImage: "assets/kamana/kamana_background_image.png",
   //   coOperativeName: '',
-  //   coOperativeLogo: Assets.ismartLogo,
-  //   clientSecret: "126489",
-  //   splashImage: "assets/images/ismart_splash.jpg",
-
-  //   primaryColor: const Color(0xFF010C80),
+  //   coOperativeLogo: "assets/kamana/kamana_logo.png",
+  //   clientCode: 'LQ7QMJ5NRB',
+  //   clientSecret: "118107",
+  //   splashImage: "assets/kamana/kamana_splash_image.png",
+  //   primaryColor: const Color(0xFF17ae61),
   // );
+
+////*****************Uttarganga ***************////
+  // static final CoOperative uttargangaCoop = CoOperative(
+  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+  //   bannerImage: "assets/uttarganga/uttarganga_banner.png",
+  //   clientCode: '9DZS5N3TOY',
+  //   backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
+  //   coOperativeName: 'Uttarganga',
+  //   coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
+  //   clientSecret: "112213",
+  //   splashImage: "assets/uttarganga/uttarganga_splash.png",
+  //   primaryColor: const Color(0xFF2e3192),
+  // );
+
+////********************** Sahakarya ***********************//////
+  static final CoOperative shakaryaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sahakarya/sahakarya_banner.png",
+    clientCode: 'SMTZ26RF75',
+    clientSecret: "194009",
+    // clientCode: 'VBMRDWEVFV',
+    // clientSecret: "199204",
+    backgroundImage: "assets/sahakarya/sahakarya_background_image.png",
+
+    coOperativeName: 'Sahakarya',
+    coOperativeLogo: "assets/sahakarya/sahakarya_logo.png",
+    splashImage: "assets/sahakarya/sahakarya_splash_image.png",
+    primaryColor: const Color(0xFF015017),
+  );
+
+  static final CoOperative janadharaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/janadhara/janadhara_banner.png",
+    backgroundImage: "assets/janadhara/janadhara_background_image.png",
+    clientCode: '6M0D7LSVNV',
+    coOperativeName: 'Janadhara',
+    coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
+    clientSecret: "180509",
+    splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+// //  DEV TEST700746
+  static final CoOperative devLive = CoOperative(
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/images/ismart_banner.png",
+
+    //  bannerImage: "assets/images/isamrt_banner.jpg",
+    clientCode: 'EHVNI7CZJ3',
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "126489",
+    splashImage: "assets/images/ismart_splash.jpg",
+
+    primaryColor: const Color(0xFF010C80),
+  );
 
   // // // DEV TEST70074
   static final CoOperative development = CoOperative(
