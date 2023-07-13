@@ -17,7 +17,7 @@ import 'package:ismart/feature/history/resources/recent_transaction_repository.d
 class TopUpTransactionReceiptPage extends StatelessWidget {
   final Widget body;
   final String message;
-  final Service service;
+  final ServiceList service;
   final String transactionID;
 
   const TopUpTransactionReceiptPage(
@@ -49,7 +49,7 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
   final String message;
   final String transactionID;
 
-  final Service? service;
+  final ServiceList? service;
   const TopUpTransactionReceiptWidget(
       {super.key,
       required this.body,

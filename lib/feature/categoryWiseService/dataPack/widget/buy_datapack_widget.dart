@@ -25,7 +25,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 class BuyDatapackWidget extends StatefulWidget {
   BuyDatapackWidget({Key? key, required this.service, required this.package})
       : super(key: key);
-  final Service service;
+  final ServiceList service;
   final Package package;
 
   @override

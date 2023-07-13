@@ -136,7 +136,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               },
                               child: Column(
                                 children: [
-                                  state.data[index].isNew == true
+                                  data.isNew == true
                                       ? Row(
                                           mainAxisAlignment:
                                               MainAxisAlignment.end,

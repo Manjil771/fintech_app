@@ -21,7 +21,7 @@ import '../../../../../common/util/size_utils.dart';
 class FindInternetUserWidget extends StatefulWidget {
   FindInternetUserWidget({Key? key, required this.service}) : super(key: key);
 
-  final Service service;
+  final ServiceList service;
 
   @override
   State<FindInternetUserWidget> createState() => _FindInternetUserWidgetState();

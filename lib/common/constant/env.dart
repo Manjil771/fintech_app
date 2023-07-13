@@ -85,7 +85,7 @@ class CoOperativeValue {
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
   // );
-////********************** Sahakarya ***********************//////
+  ///********************** Sahakarya ***********************//////
   static final CoOperative shakaryaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/sahakarya/sahakarya_banner.png",

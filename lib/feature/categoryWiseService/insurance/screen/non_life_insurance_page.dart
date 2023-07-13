@@ -8,7 +8,7 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class CommonInsurancePage extends StatelessWidget {
-  final Service service;
+  final ServiceList service;
 
   const CommonInsurancePage({Key? key, required this.service})
       : super(key: key);

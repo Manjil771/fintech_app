@@ -23,7 +23,7 @@ class CommonBillDetailPage extends StatelessWidget {
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final Widget body;
-  final Service service;
+  final ServiceList service;
 
   CommonBillDetailPage(
       {super.key,
@@ -60,7 +60,7 @@ class CommonBillDetailWidget extends StatelessWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
-  final Service service;
+  final ServiceList service;
   final Widget body;
   final String serviceIdentifier;
 

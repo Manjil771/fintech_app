@@ -18,7 +18,7 @@ import 'package:shimmer/shimmer.dart';
 
 class SelectDatapackWidget extends StatefulWidget {
   SelectDatapackWidget({Key? key, required this.service}) : super(key: key);
-  final Service service;
+  final ServiceList service;
 
   @override
   State<SelectDatapackWidget> createState() => _SelectDatapackWidgetState();

@@ -17,7 +17,7 @@ class CategoryList {
   String uniqueIdentifier;
   bool isNew;
   int appOrder;
-  List<Service> services;
+  List<ServiceList> services;
 
   CategoryList({
     required this.id,
@@ -36,8 +36,8 @@ class CategoryList {
         uniqueIdentifier: json["uniqueIdentifier"],
         isNew: json["isNew"],
         appOrder: json["appOrder"],
-        services: List<Service>.from(
-            json["services"].map((x) => Service.fromJson(x))),
+        services: List<ServiceList>.from(
+            json["services"].map((x) => ServiceList.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
@@ -51,7 +51,7 @@ class CategoryList {
       };
 }
 
-class Service {
+class ServiceList {
   int id;
   Url url;
   String uniqueIdentifier;
@@ -79,7 +79,7 @@ class Service {
   String? priceRange;
   String? cashBackView;
 
-  Service({
+  ServiceList({
     required this.id,
     required this.url,
     required this.uniqueIdentifier,
@@ -108,7 +108,7 @@ class Service {
     this.cashBackView,
   });
 
-  factory Service.fromJson(Map<String, dynamic> json) => Service(
+  factory ServiceList.fromJson(Map<String, dynamic> json) => ServiceList(
         id: json["id"],
         url: urlValues.map[json["url"]]!,
         uniqueIdentifier: json["uniqueIdentifier"],

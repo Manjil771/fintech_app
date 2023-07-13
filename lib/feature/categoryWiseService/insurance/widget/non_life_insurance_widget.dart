@@ -23,7 +23,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class NonLifeInsurcnceWidget extends StatefulWidget {
-  final Service service;
+  final ServiceList service;
 
   NonLifeInsurcnceWidget({super.key, required this.service});
 
