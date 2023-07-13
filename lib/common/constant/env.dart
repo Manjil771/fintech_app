@@ -155,17 +155,17 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF015017),
   );
 
-  // static final CoOperative janadharaCoop = CoOperative(
-  //   baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-  //   bannerImage: "assets/janadhara/janadhara_banner.png",
-  //   backgroundImage: "assets/janadhara/janadhara_banner.png",
-  //   clientCode: '6M0D7LSVNV',
-  //   coOperativeName: 'Janadhara',
-  //   coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
-  //   clientSecret: "180509",
-  //   splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
-  //   primaryColor: const Color(0xFF0b67bb),
-  // );
+  static final CoOperative janadharaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/janadhara/janadhara_banner.png",
+    backgroundImage: "assets/janadhara/janadhara_background_image.png",
+    clientCode: '6M0D7LSVNV',
+    coOperativeName: 'Janadhara',
+    coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
+    clientSecret: "180509",
+    splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
