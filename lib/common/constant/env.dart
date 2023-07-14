@@ -143,7 +143,7 @@ class CoOperativeValue {
   //   splashImage: "assets/images/ismart_splash.jpg",
 
   //   primaryColor: const Color(0xFF010C80),
-  // );
+  // );1111
 
   // // DEV TEST70074
   static final CoOperative development = CoOperative(
