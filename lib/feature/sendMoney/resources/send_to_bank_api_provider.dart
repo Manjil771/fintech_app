@@ -108,8 +108,8 @@ class SendToBankAPIProvider {
     Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
 
     return await apiProvider.post(
-      url,
-      payloadData,
+      _uri.toString(),
+      {},
       token: userRepository.token,
     );
   }

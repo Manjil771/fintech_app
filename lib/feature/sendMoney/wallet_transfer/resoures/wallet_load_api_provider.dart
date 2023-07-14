@@ -67,10 +67,11 @@ class WalletLoadAPIProvider {
       "skipValidation": true,
     };
     final _url = coOperative.baseUrl + "/api/wallet/load";
+    final _uri = UrlUtils.getUri(url: _url, params: _body);
 
     return await apiProvider.post(
-      _url,
-      _body,
+      _uri.toString(),
+      {},
       token: userRepository.token,
     );
   }
