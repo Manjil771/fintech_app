@@ -201,18 +201,18 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   },
                   textInputType: TextInputType.number,
                 ),
-                Container(
-                  padding: const EdgeInsets.only(top: 7),
-                  height: size.height * 0.12,
-                  width: double.infinity,
-                  child: GridView.builder(
-                    itemCount: 6,
-                    gridDelegate:
-                        const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                    itemBuilder: (context, index) => amountBox(context, index),
-                  ),
-                ),
+                // Container(
+                //   padding: const EdgeInsets.only(top: 7),
+                //   height: size.height * 0.12,
+                //   width: double.infinity,
+                //   child: GridView.builder(
+                //     itemCount: 6,
+                //     gridDelegate:
+                //         const SliverGridDelegateWithFixedCrossAxisCount(
+                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
+                //     itemBuilder: (context, index) => amountBox(context, index),
+                //   ),
+                // ),
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",

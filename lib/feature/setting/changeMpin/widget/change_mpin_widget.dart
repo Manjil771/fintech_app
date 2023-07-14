@@ -10,7 +10,9 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ChangeMpinWidget extends StatelessWidget {
   TextEditingController oldPinController = TextEditingController();
@@ -33,7 +35,20 @@ class ChangeMpinWidget extends StatelessWidget {
         topbarName: "Settings",
         buttonName: "Submit",
         onButtonPressed: () {
-          if (_formKey.currentState!.validate()) {}
+          // if (_formKey.currentState!.validate()) {
+          context.read<UtilityPaymentCubit>().makePayment(
+            mPin: oldPinController.text,
+            serviceIdentifier: "",
+            // serviceIdentifier: "traffic_fine_payments",
+            apiEndpoint: "/api/changepin",
+            body: {},
+            accountDetails: {
+              "oldmPin": oldPinController.text,
+              "newmPin": newPinController.text,
+              "remPin": reEnterPinController.text,
+            },
+          );
+          // }
         },
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -45,7 +60,16 @@ class ChangeMpinWidget extends StatelessWidget {
               NavigationService.pop();
             }
 
-            if (state is CommonStateSuccess) {
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              showPopUpDialog(
+                context: context,
+                message: state.data.message,
+                title: "Success",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
             } else if (state is CommonError) {
               showPopUpDialog(
                 context: context,
@@ -78,15 +102,17 @@ class ChangeMpinWidget extends StatelessWidget {
                       if (val!.length != 5) {
                         return "Invalid MPin";
                       }
-                      if (newPinController != oldPinController) {
-                        return "Pin does not Match";
-                      }
                     },
                     controller: newPinController,
                     title: "New MPin",
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    validator: (val) {
+                      if (val!.length != 5) {
+                        return "Invalid MPin";
+                      }
+                    },
                     controller: reEnterPinController,
                     title: "Re-Enter MPin",
                     hintText: "XXXXXXX"),

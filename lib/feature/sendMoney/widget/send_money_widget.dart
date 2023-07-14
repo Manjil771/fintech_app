@@ -129,7 +129,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                                 detail: checkDesc(
                                     filteredItems[index].uniqueIdentifier),
                               ),
-                              Divider(thickness: 1)
+                              const Divider(thickness: 1)
                             ],
                           );
                         },
