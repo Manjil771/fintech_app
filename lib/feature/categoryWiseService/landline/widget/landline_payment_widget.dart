@@ -1,5 +1,8 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:http/http.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -27,9 +30,9 @@ import '../../../customerDetail/resource/customer_detail_repository.dart';
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class LandlinePaymentWidget extends StatefulWidget {
-  final ServiceList service;
+  final CategoryList category;
 
-  LandlinePaymentWidget({super.key, required this.service});
+  LandlinePaymentWidget({super.key, required this.category});
 
   @override
   State<LandlinePaymentWidget> createState() => _LandlinePaymentWidgetState();
@@ -43,6 +46,13 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
   bool _isLoading = false;
 
   final _fromKey = GlobalKey<FormState>();
+  ServiceList getService() {
+    final service = widget.category.services.firstWhere(
+      (element) => element.uniqueIdentifier.contains("pstn_online_topup"),
+    );
+
+    return service;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -77,7 +87,6 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
           child: CommonContainer(
             showDetail: true,
             showAccountSelection: true,
-            accountTitle: "From Account",
             buttonName: "Proceed",
             topbarName: "Payment",
             title: "LandLine Payment",
@@ -87,36 +96,44 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
               child: Column(
                 children: [
                   CustomTextField(
-                    title: "Landline Number",
-                    hintText: "xxxxxxxxxx",
-                    controller: _phoneNumberController,
-                    validator: (val) =>
-                        FormValidator.validateFieldNotEmpty(val, "Number"),
-                  ),
+                      textInputType: TextInputType.number,
+                      title: "Landline Number",
+                      autovalidateMode: AutovalidateMode.onUserInteraction,
+                      hintText: "xxxxxxxxxx",
+                      controller: _phoneNumberController,
+                      validator: (val) {
+                        if (val!.length <= 7) {
+                          return "Enter a valid Number";
+                        }
+                        FormValidator.validateFieldNotEmpty(val, "Number");
+                      }),
                   CustomTextField(
+                    textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     title: "Amount",
                     hintText: "Enter the amount",
                     controller: _amountController,
                     validator: (val) => FormValidator.validateAmount(
                         val: val.toString(),
-                        maxAmount: widget.service.maxValue,
-                        minAmount: widget.service.minValue),
+                        maxAmount: getService().maxValue,
+                        minAmount: getService().minValue),
                   ),
                 ],
               ),
             ),
             onButtonPressed: () {
-              // print("val is " + widget.service.minValue.toString());
               if (_fromKey.currentState!.validate()) {
+                print(_phoneNumberController.text
+                    .substring(_phoneNumberController.text.length - 8));
                 NavigationService.push(
                     target: CommonBillDetailPage(
                   serviceIdentifier: "pstn_online_topup",
                   apiBody: {},
                   apiEndpoint: "/api/topup",
-                  service: widget.service,
+                  service: getService(),
                   accountDetails: {
-                    "phone_number": _phoneNumberController.text, //14232352
+                    "phone_number": _phoneNumberController.text.substring(
+                        _phoneNumberController.text.length - 8), //14232352
                     "amount": _amountController.text,
                     "account_number":
                         RepositoryProvider.of<CustomerDetailRepository>(context)
