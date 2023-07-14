@@ -85,6 +85,37 @@ class CoOperativeValue {
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
   // );
+
+  static final CoOperative kabilCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kabil/kabil_banner.png",
+    clientCode: 'AA9ZZ33R9Z',
+    clientSecret: "135639",
+    // clientCode: 'VBMRDWEVFV',
+    // clientSecret: "199204",
+    backgroundImage: "assets/kabil/kabil_background_image.png",
+
+    coOperativeName: 'Abhiyan',
+    coOperativeLogo: "assets/kabil/kabil_logo.png",
+    splashImage: "assets/kabil/kabil_splash.png",
+    primaryColor: const Color(0xFF015017),
+  );
+
+  static final CoOperative abhiyanCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/abhiyan/abhiyan_banner.png",
+    clientCode: 'L7CLJMN51D',
+    clientSecret: "192939",
+    // clientCode: 'VBMRDWEVFV',
+    // clientSecret: "199204",
+    backgroundImage: "assets/abhiyan/abhiyan_background_image.png",
+
+    coOperativeName: 'Abhiyan',
+    coOperativeLogo: "assets/abhiyan/abhiyan_logo.png",
+    splashImage: "assets/abhiyan/abhiyan_splash.png",
+    primaryColor: const Color(0xFF015017),
+  );
+
 ////********************** Sahakarya ***********************//////
   static final CoOperative shakaryaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
@@ -128,7 +159,7 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
   );
 
-  // // // DEV TEST70074
+  // // // // DEV TEST70074
   static final CoOperative development = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
 
@@ -145,7 +176,7 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF010C80),
   );
 
-  // // // DEV TEST70074
+  // // DEV TEST70074
   // static final CoOperative development = CoOperative(
   //   baseUrl: 'http://103.198.9.222:1231/', // 9866556708 : 24878
   //   bannerImage: "assets/images/ismart_banner.png",
