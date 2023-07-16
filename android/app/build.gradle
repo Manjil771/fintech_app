@@ -73,6 +73,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        aviyan {
+            dimension "app"
+            applicationId "com.devanasoft.aviyan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kamana {
+            dimension "app"
+            applicationId "com.devanasoft.kamana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kabil {
+            dimension "app"
+            applicationId "com.devanasoft.kabil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         stage {
             dimension "app"
             applicationId "com.devanasoft.ismart.dev"
