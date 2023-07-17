@@ -106,13 +106,23 @@ class CoOperativeValue {
     bannerImage: "assets/abhiyan/abhiyan_banner.png",
     clientCode: 'L7CLJMN51D',
     clientSecret: "192939",
-    // clientCode: 'VBMRDWEVFV',
-    // clientSecret: "199204",
     backgroundImage: "assets/abhiyan/abhiyan_background_image.png",
-
     coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/abhiyan/abhiyan_logo.png",
     splashImage: "assets/abhiyan/abhiyan_splash.png",
+    primaryColor: const Color(0xFF015017),
+  );
+
+  static final CoOperative kamanaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kamana/kamana_banner.png",
+    clientCode: 'LQ7QMJ5NRB',
+    clientSecret: "118107",
+    backgroundImage: "assets/kamana/kamana_background_image.png",
+
+    coOperativeName: 'Kamana',
+    coOperativeLogo: "assets/kamana/kamana_logo.png",
+    splashImage: "assets/kamana/kamana_splash_image.png",
     primaryColor: const Color(0xFF015017),
   );
 
@@ -122,10 +132,7 @@ class CoOperativeValue {
     bannerImage: "assets/sahakarya/sahakarya_banner.png",
     clientCode: 'SMTZ26RF75',
     clientSecret: "194009",
-    // clientCode: 'VBMRDWEVFV',
-    // clientSecret: "199204",
     backgroundImage: "assets/sahakarya/sahakarya_background_image.png",
-
     coOperativeName: 'Sahakarya',
     coOperativeLogo: "assets/sahakarya/sahakarya_logo.png",
     splashImage: "assets/sahakarya/sahakarya_splash_image.png",
@@ -147,8 +154,6 @@ class CoOperativeValue {
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
     bannerImage: "assets/images/ismart_banner.png",
-
-    //  bannerImage: "assets/images/isamrt_banner.jpg",
     clientCode: 'EHVNI7CZJ3',
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
