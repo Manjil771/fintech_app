@@ -12,8 +12,11 @@ class CustomTheme {
   static const Color kabilColor = Color(0xFF0b67bb);
   static const Color abhiyanColor = Color(0xFF015017);
   static const Color kamanaColor = Color(0xFF008133);
+  static const Color arthabagColor = Color(0xFF0729a4);
+  static const Color alankarColor = Color(0xFF0088cf);
+  static const Color gomaganeshColor = Color(0xFF1f972b);
 
-  static Color primaryColor = kamanaColor;
+  static Color primaryColor = arthabagColor;
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);
