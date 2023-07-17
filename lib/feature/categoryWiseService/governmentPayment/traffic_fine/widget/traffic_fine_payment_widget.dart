@@ -207,40 +207,46 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
               validator: (value) {},
             ),
 
-            _selectedProvinceNameController.text.toString().toLowerCase() ==
-                    'Kathmandu Valley'.toLowerCase()
+            _selectedProvinceNameController.text.isEmpty
                 ? Container()
-                : CustomTextField(
-                    hintText: "Select",
-                    title: "Select District",
-                    readOnly: true,
-                    controller: _selectedDistrictController,
-                    onTap: () {
-                      NavigationService.push(
-                        target: GovPlacePage(
-                          isProvince: false,
-                          accountDetails: {
-                            "provinceId": selectedProvinceValue,
-                          },
-                          apiEndpoint: "/api/governmentpayment/getDistrict",
-                          serviceIdentifier: widget.service.uniqueIdentifier,
-                          onBankSelected: ({required value, required name}) {
-                            NavigationService.pop();
-                            _selectedDistrictController.text = name;
-                            selectedDistrictValue = value;
-                            setState(() {});
-                          },
-                        ),
-                      );
-                    },
-                    validator: (value) {
-                      // if (selectedBank != null) {
-                      //   return null;
-                      // } else {
-                      //   return "Please select destination bank.";
-                      // }
-                    },
-                  ),
+                : _selectedProvinceNameController.text
+                            .toString()
+                            .toLowerCase() ==
+                        'Kathmandu Valley'.toLowerCase()
+                    ? Container()
+                    : CustomTextField(
+                        hintText: "Select",
+                        title: "Select District",
+                        readOnly: true,
+                        controller: _selectedDistrictController,
+                        onTap: () {
+                          NavigationService.push(
+                            target: GovPlacePage(
+                              isProvince: false,
+                              accountDetails: {
+                                "provinceId": selectedProvinceValue,
+                              },
+                              apiEndpoint: "/api/governmentpayment/getDistrict",
+                              serviceIdentifier:
+                                  widget.service.uniqueIdentifier,
+                              onBankSelected: (
+                                  {required value, required name}) {
+                                NavigationService.pop();
+                                _selectedDistrictController.text = name;
+                                selectedDistrictValue = value;
+                                setState(() {});
+                              },
+                            ),
+                          );
+                        },
+                        validator: (value) {
+                          // if (selectedBank != null) {
+                          //   return null;
+                          // } else {
+                          //   return "Please select destination bank.";
+                          // }
+                        },
+                      ),
 
             // CustomTextField(
             //   hintText: "Select",
@@ -301,8 +307,14 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 accountDetails: {
                   "chitNumber": chitNumberController.text,
                   "fiscalYear": dateController.text,
-                  "provinceId": selectedProvinceValue,
-                  "districtId": selectedDistrictValue ?? 000,
+                  "provinceId": "000",
+                  "districtId": _selectedProvinceNameController.text
+                              .toString()
+                              .toLowerCase() ==
+                          'Kathmandu Valley'.toLowerCase()
+                      ? "000"
+                      : selectedDistrictValue,
+                  // "isDistrict": false,
                 },
                 apiEndpoint: "api/governmentpayment/trafficFineDetail",
               );
