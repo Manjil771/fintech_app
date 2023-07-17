@@ -90,6 +90,9 @@ flutter:
     - assets/uttarganga/
     - assets/abhiyan/
     - assets/kamana/
+    - assets/arthaBag/
+    - assets/gomaGanesh/
+    - assets/alankar/
 
   fonts:
     - family: popinbold

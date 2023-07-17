@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class SubisuPaymentWidget extends StatefulWidget {
@@ -35,10 +39,10 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
       body: Form(
         key: _formKey,
         child: CommonContainer(
+          showAccountSelection: true,
           showDetail: true,
           title: 'Internet Payment',
           detail: 'Pay your internet bill of you ISP from here',
-          showAccountSelection: true,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -104,9 +108,36 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
           topbarName: 'Payment',
           buttonName: 'Proceed',
           onButtonPressed: () {
-            _formKey.currentState!.save();
             if (_formKey.currentState!.validate()) {
-              print('valuated');
+              NavigationService.push(
+                  target: CommonBillDetailPage(
+                      body: Column(
+                        children: [
+                          KeyValueTile(
+                              title: "Customer ID",
+                              value: _usernameController.text),
+                          KeyValueTile(
+                              title: "Mobile Number",
+                              value: _mobileNumberController.text),
+                          KeyValueTile(
+                              title: "Amount", value: _amountController.text),
+                        ],
+                      ),
+                      accountDetails: {
+                        "amount": _amountController.text,
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
+                        "customerId": _usernameController.text,
+                        "phone_number": _mobileNumberController.text,
+                      },
+                      apiEndpoint: "/api/subisupay",
+                      apiBody: {},
+                      service: widget.service,
+                      serviceIdentifier: widget.service.uniqueIdentifier));
             }
           },
         ),
