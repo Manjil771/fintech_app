@@ -398,6 +398,21 @@ class ApiProvider {
             "You've made too many requests. Please try again after a while.",
             response.statusCode);
       case 401:
+
+        // TODO Check status from Response and Logout only when session is expire
+        String _responseCode = (responseJson['data']?['code'] ?? "").toString();
+        if (_responseCode == "M0025") {
+          throw BadRequestException(
+            responseJson['data']?['message'] ?? "",
+            response.statusCode,
+          );
+        } else {
+          RepositoryProvider.of<UserRepository>(NavigationService.context)
+              .logout(isSessionExpired: true);
+          throw UnauthorisedException(
+              getErrorMessage(res, 401), response.statusCode);
+        }
+
       case 403:
         RepositoryProvider.of<UserRepository>(NavigationService.context)
             .logout(isSessionExpired: true);
