@@ -16,6 +16,7 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
@@ -81,10 +82,6 @@ class _CategoriesWiseServicesWidgetState
             children: [
               const SizedBox(height: 10),
               CustomTextField(
-                margin: const EdgeInsets.only(
-                  left: CustomTheme.symmetricHozPadding,
-                  right: CustomTheme.symmetricHozPadding,
-                ),
                 hintText: "Search",
                 showSearchIcon: true,
                 onChanged: (val) {
@@ -156,18 +153,26 @@ class _CategoriesWiseServicesWidgetState
           target: TvPaymentPage(
         service: servicess,
       ));
-    } else if (uniqueIdentifier.toLowerCase() ==
-        "worldlink_online_topup".toLowerCase()) {
-      NavigationService.push(
-          target: FindInternetUserScreen(
-        service: servicess,
-      ));
-    } else if (uniqueIdentifier.toLowerCase() ==
-        "subisu_online_topup".toLowerCase()) {
-      NavigationService.push(
-          target: SubisuPaymentPage(
-        service: servicess,
-      ));
+    }
+    if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
+      if (uniqueIdentifier.toLowerCase() ==
+          "worldlink_online_topup".toLowerCase()) {
+        NavigationService.push(
+            target: FindInternetUserScreen(
+          service: servicess,
+        ));
+      } else if (uniqueIdentifier.toLowerCase() ==
+          "subisu_online_topup".toLowerCase()) {
+        NavigationService.push(
+            target: SubisuPaymentPage(
+          service: servicess,
+        ));
+      } else {
+        NavigationService.push(
+            target: CommonInternetPage(
+          service: servicess,
+        ));
+      }
     }
     if (uniqueIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {

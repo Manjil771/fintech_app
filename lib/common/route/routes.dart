@@ -1,5 +1,7 @@
 class Routes {
   static const root = "/";
+  static const loginPage = "/login_screen";
+
   static const onboarding = "/onboarding";
   static const dashboard = "/dashboard";
   static const mobileTopup = "/mobile_topup";

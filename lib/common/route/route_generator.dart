@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
@@ -149,6 +150,11 @@ class RouteGenerator {
       case Routes.discountCalculator:
         return MaterialPageRoute(
           builder: (_) => DiscountCalculatorPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.loginPage:
+        return MaterialPageRoute(
+          builder: (_) => LoginPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.listWalletScreen:
