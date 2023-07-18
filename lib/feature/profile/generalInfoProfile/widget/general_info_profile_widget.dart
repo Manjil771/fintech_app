@@ -4,6 +4,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -128,7 +129,8 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
               CommonDetailBox(
                 onBoxPressed: () {
                   RepositoryProvider.of<UserRepository>(context).logout();
-                  NavigationService.pushReplacement(target: const LoginPage());
+                  NavigationService.pushNamedAndRemoveUntil(
+                      routeName: Routes.loginPage);
                 },
                 leadingIcon: Assets.logoutIcon,
                 title: "Logout",

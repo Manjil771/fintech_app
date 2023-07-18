@@ -4,30 +4,35 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/categoryWiseService/internet/common/widget/common_username_search_widget.dart';
 import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
 
-class InternetPaymentDeatilWidget extends StatefulWidget {
+class CommonInternetPaymentDeatilWidget extends StatefulWidget {
   final UtilityResponseData detailFetchData;
-
-  const InternetPaymentDeatilWidget({super.key, required this.detailFetchData});
+  final ServiceList service;
+  const CommonInternetPaymentDeatilWidget(
+      {super.key, required this.detailFetchData, required this.service});
   @override
-  State<InternetPaymentDeatilWidget> createState() =>
-      _InternetPaymentDeatilWidgetState();
+  State<CommonInternetPaymentDeatilWidget> createState() =>
+      _CommonInternetPaymentDeatilWidgetState();
 }
 
-class _InternetPaymentDeatilWidgetState
-    extends State<InternetPaymentDeatilWidget> {
+class _CommonInternetPaymentDeatilWidgetState
+    extends State<CommonInternetPaymentDeatilWidget> {
   final TextEditingController _packageController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   bool _changePackage = false;
@@ -104,60 +109,32 @@ class _InternetPaymentDeatilWidgetState
                   value: widget.detailFetchData
                       .findValue(
                         primaryKey: "hashResponse",
-                        secondaryKey: "wlinkUserName",
+                        secondaryKey: "userName",
                       )
                       .toString(),
                 ),
                 SizedBox(height: _height * 0.008),
-                KeyValueTile(
-                  title: "Subscribed Package",
-                  value: widget.detailFetchData
-                      .findValue(
-                        primaryKey: "hashResponse",
-                        secondaryKey: "subscribedPackageName",
-                      )
-                      .toString(),
-                ),
-                SizedBox(height: _height * 0.008),
-                KeyValueTile(
-                  title: "Subscription Type",
-                  value: widget.detailFetchData
-                      .findValue(
-                        primaryKey: "hashResponse",
-                        secondaryKey: "subscribedPackageType",
-                      )
-                      .toString(),
-                ),
                 KeyValueTile(
                   title: "Amount",
                   value: widget.detailFetchData
                       .findValue(
                         primaryKey: "hashResponse",
-                        secondaryKey: "Amount",
+                        secondaryKey: "amount",
                       )
                       .toString(),
                 ),
                 SizedBox(height: _height * 0.008),
-                KeyValueTile(
-                  title: "Days Remaining",
-                  value: widget.detailFetchData
-                      .findValue(
-                        primaryKey: "hashResponse",
-                        secondaryKey: "paymentMessage",
-                      )
-                      .toString(),
-                ),
-                if (_isPackageAvailable)
-                  CustomCheckbox(
-                    leftMargin: CustomTheme.symmetricHozPadding,
-                    selected: _changePackage,
-                    onChanged: (val) {
-                      setState(() {
-                        _changePackage = val;
-                      });
-                    },
-                    title: "Change Package",
-                  ),
+                // if (_isPackageAvailable)
+                //   CustomCheckbox(
+                //     leftMargin: CustomTheme.symmetricHozPadding,
+                //     selected: _changePackage,
+                //     onChanged: (val) {
+                //       setState(() {
+                //         _changePackage = val;
+                //       });
+                //     },
+                //     title: "Change Package",
+                //   ),
                 SizedBox(height: _height * 0.02),
                 if (_isPackageAvailable)
                   AnimatedSwitcher(
@@ -197,7 +174,7 @@ class _InternetPaymentDeatilWidgetState
                         );
                       },
                       openBuilder: (context, close) {
-                        return WorldlinkSearchWidgets(
+                        return CommonInternetPackageSearchWidgets(
                           useServiceResponse: widget.detailFetchData,
                           renewOptions: _renewOption,
                           onChanged: (val) {
@@ -243,13 +220,14 @@ class _InternetPaymentDeatilWidgetState
                       mPin: mpin,
                       body: widget.detailFetchData
                           .findValue(primaryKey: "hashResponse"),
-                      serviceIdentifier: "worldlink_online_topup",
+                      serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
-                        "wlink_username": widget.detailFetchData.findValue(
+                        "username": widget.detailFetchData.findValue(
                           primaryKey: "hashResponse",
-                          secondaryKey: "wlinkUserName",
+                          secondaryKey: "userName",
                         ),
-                        "amount": "",
+                        "amount": widget.detailFetchData.findValue(
+                            primaryKey: "hashResponse", secondaryKey: "amount"),
                         "account_number":
                             RepositoryProvider.of<CustomerDetailRepository>(
                                     context)
@@ -257,7 +235,7 @@ class _InternetPaymentDeatilWidgetState
                                 .value
                                 ?.accountNumber,
                       },
-                      apiEndpoint: "api/wlinkpay",
+                      apiEndpoint: "/api/internetpay",
                     );
               },
             ),
@@ -266,17 +244,4 @@ class _InternetPaymentDeatilWidgetState
       ),
     );
   }
-
-  // amountBox(context, index) {
-  //   return Container(
-  //     margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 7),
-  //     decoration: BoxDecoration(
-  //       borderRadius: BorderRadius.circular(8),
-  //       border: Border.all(color: Colors.black),
-  //     ),
-  //     child: Center(child: Text(amount[index].toString())),
-  //   );
-  // }
-
-  // final List amount = [100, 200, 500, 1000, 2000, 5000];
 }
