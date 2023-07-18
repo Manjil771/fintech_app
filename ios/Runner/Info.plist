@@ -37,7 +37,6 @@
 	<string>iSmart would like to use Camera to scan QR Code</string>
 	<key>NSContactsUsageDescription</key>
 	<string>iSmart would like to use Contacts to let you topup easily.</string>
-	
 	<key>NSFaceIDUsageDescription</key>
 	<string>Enable Biometric Login</string>
 	<key>NSPhotoLibraryUsageDescription</key>
