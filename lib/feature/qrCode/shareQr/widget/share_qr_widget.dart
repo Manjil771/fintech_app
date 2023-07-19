@@ -11,6 +11,8 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/qrCode/shareQr/resources/qr_cubit.dart';
+import 'package:ismart/feature/qrCode/shareQr/widget/external_qr_widget.dart';
+import 'package:ismart/feature/qrCode/shareQr/widget/internal_qr_widget.dart';
 
 class ShareQrWidget extends StatefulWidget {
   const ShareQrWidget({super.key});
@@ -31,9 +33,13 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
     super.initState();
   }
 
+  bool isInternalQr = false;
+
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
     final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
@@ -41,6 +47,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
         .value!;
     return PageWrapper(
       body: CommonContainer(
+        verticalPadding: 0,
         showDetail: false,
         showRoundBotton: false,
         showTitleText: false,
@@ -69,44 +76,109 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
           },
           builder: (context, state) {
             if (state is CommonStateSuccess) {
-              return Column(
-                children: [
-                  SvgPicture.asset(
-                    "assets/icons/Group 913.svg",
-                    color: Color(0XFF4E4E4E),
-                    height: _height * 0.04,
+              return Container(
+                height: _height / 1.5,
+                child: DefaultTabController(
+                  initialIndex: 0,
+                  length: 2,
+                  child: Column(
+                    children: [
+                      TabBar(
+                        labelColor: Colors.black,
+                        unselectedLabelColor: Color(0xFF989898),
+                        labelStyle: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w500),
+                        indicatorColor: _theme.primaryColor,
+                        automaticIndicatorColorAdjustment: true,
+                        tabs: [
+                          Tab(text: "External Qr"),
+                          Tab(text: "Internal Qr"),
+                        ],
+                      ),
+                      SizedBox(height: _height * 0.02),
+                      Expanded(
+                        child: TabBarView(
+                          children: [
+                            ExternalQrWidget(
+                                qrPath: state.data["data"]["details"]
+                                        ["ExternalQRURL"]
+                                    .toString()),
+                            InternalQrWidget(
+                                qrPath: state.data["data"]["details"]
+                                        ["QRCodePath"]
+                                    .toString()),
+                          ],
+                        ),
+                      )
+                    ],
                   ),
-                  const Text(
-                    "My QR Code",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
-                  // Text("Your QR Code is Displayed below.",
-                  //     textAlign: TextAlign.center,
-                  //     style: Theme.of(context).textTheme.titleSmall),
-                  Image.network(
-                    RepositoryProvider.of<CoOperative>(context).baseUrl +
-                        state.data["data"]["details"]["QRCodePath"].toString(),
-                    height: _height * 0.4,
-                  ),
-                  KeyValueTile(
-                    title: "Name",
-                    value: detail.accountHolderName,
-                  ),
-                  KeyValueTile(
-                    title: "Account Number",
-                    value: detail.accountNumber,
-                  ),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     shareMyQr(context),
-                  //     phonePayQr(context),
-                  //   ],
-                  // ),
-                ],
+                ),
+
+                // Row(
+                //   children: [
+                //     Expanded(
+                //       child: InkWell(
+                //         onTap: () {
+                //           setState(() {
+                //             isInternalQr = false;
+                //           });
+                //         },
+                //         child: Container(
+                //           decoration: BoxDecoration(
+                //             borderRadius: BorderRadius.circular(12),
+                //             color:
+                //                 isInternalQr ? Colors.black12 : Colors.white,
+                //           ),
+                //           height: _height * 0.04,
+                //           child: Center(
+                //             child: Text(
+                //               "External Qr",
+                //               style: _textTheme.titleSmall,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //     SizedBox(width: _width * 0.05),
+                //     Expanded(
+                //       child: InkWell(
+                //         onTap: () {
+                //           setState(() {
+                //             isInternalQr = true;
+                //           });
+                //         },
+                //         child: Container(
+                //           decoration: BoxDecoration(
+                //             borderRadius: BorderRadius.circular(8),
+                //             color:
+                //                 isInternalQr ? Colors.white : Colors.black12,
+                //           ),
+                //           height: _height * 0.04,
+                //           child: Center(
+                //             child: Text(
+                //               "Internal Qr",
+                //               style: _textTheme.titleSmall,
+                //             ),
+                //           ),
+                //         ),
+                //       ),
+                //     ),
+                //   ],
+                // ),
+                // isInternalQr
+                //     ? Container()
+                //     : InternalQrWidget(
+                //         qrPath: state.data["data"]["details"]["QRCodePath"]
+                //             .toString())
+                //     style: Theme.of(context).textTheme.titleSmall),
+
+                // Row(
+                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                //   children: [
+                //     shareMyQr(context),
+                //     phonePayQr(context),
+                //   ],
+                // ),
               );
             } else {
               return Container();

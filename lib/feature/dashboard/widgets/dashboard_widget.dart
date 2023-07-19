@@ -96,93 +96,96 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    return PageWrapper(
-      body: PageView.builder(
-        physics: const NeverScrollableScrollPhysics(),
-        itemBuilder: (context, index) => screens[_currentIndex],
-      ),
-      floatinActionButton: FloatingActionButton(
-        backgroundColor: _theme.primaryColor,
-        onPressed: () async {
-          final _cameraPermission =
-              await PermissionUtils.isCameraPermissionAvailable;
-          if (_cameraPermission) {
-            NavigationService.push(target: const ScanQrPage());
-          } else {
-            SnackBarUtils.showErrorBar(
-              context: context,
-              message: "Please allow camera permission to use Scan QR",
-            );
-          }
-        },
-        child: SvgPicture.asset(
-          Assets.qrCodeIcon,
-          height: 30,
-        ),
-      ),
-      bottomNavBar: BottomNavigationBar(
-        type: BottomNavigationBarType.fixed,
-        backgroundColor: CustomTheme.white,
-        selectedLabelStyle:
-            const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-        unselectedLabelStyle:
-            TextStyle(color: CustomTheme.darkGray.withOpacity(0.5)),
-        selectedItemColor: Theme.of(context).primaryColor,
-        showUnselectedLabels: true,
-        currentIndex: _currentIndex,
-        onTap: (index) => setState(() {
-          _currentIndex = index;
-        }),
-        items: [
-          BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                Assets.homeIcon,
-                height: 20,
-                color: _currentIndex == 0
-                    ? _theme.primaryColor
-                    : CustomTheme.darkGray.withOpacity(0.5),
+    return _currentIndex == 2
+        ? ScanQrPage()
+        : PageWrapper(
+            body: PageView.builder(
+                physics: const NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return screens[_currentIndex];
+                }),
+            floatinActionButton: FloatingActionButton(
+              backgroundColor: _theme.primaryColor,
+              onPressed: () async {
+                final _cameraPermission =
+                    await PermissionUtils.isCameraPermissionAvailable;
+                if (_cameraPermission) {
+                  NavigationService.push(target: const ScanQrPage());
+                } else {
+                  SnackBarUtils.showErrorBar(
+                    context: context,
+                    message: "Please allow camera permission to use Scan QR",
+                  );
+                }
+              },
+              child: SvgPicture.asset(
+                Assets.qrCodeIcon,
+                height: 30,
               ),
-              label: 'Home'),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Assets.bankingIcon,
-              height: 20,
-              color: _currentIndex == 1
-                  ? _theme.primaryColor
-                  : CustomTheme.darkGray.withOpacity(0.5),
             ),
-            label: 'Banking',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Assets.bankingIcon,
-              height: 25,
-              color: CustomTheme.white,
+            bottomNavBar: BottomNavigationBar(
+              type: BottomNavigationBarType.fixed,
+              backgroundColor: CustomTheme.white,
+              selectedLabelStyle:
+                  const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+              unselectedLabelStyle:
+                  TextStyle(color: CustomTheme.darkGray.withOpacity(0.5)),
+              selectedItemColor: Theme.of(context).primaryColor,
+              showUnselectedLabels: true,
+              currentIndex: _currentIndex,
+              onTap: (index) => setState(() {
+                _currentIndex = index;
+              }),
+              items: [
+                BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.homeIcon,
+                      height: 20,
+                      color: _currentIndex == 0
+                          ? _theme.primaryColor
+                          : CustomTheme.darkGray.withOpacity(0.5),
+                    ),
+                    label: 'Home'),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    Assets.bankingIcon,
+                    height: 20,
+                    color: _currentIndex == 1
+                        ? _theme.primaryColor
+                        : CustomTheme.darkGray.withOpacity(0.5),
+                  ),
+                  label: 'Banking',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    Assets.bankingIcon,
+                    height: 25,
+                    color: CustomTheme.white,
+                  ),
+                  label: 'Scan QR',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    Assets.historyIcon,
+                    height: 20,
+                    color: _currentIndex == 3
+                        ? _theme.primaryColor
+                        : CustomTheme.darkGray.withOpacity(0.5),
+                  ),
+                  label: 'History',
+                ),
+                BottomNavigationBarItem(
+                  icon: SvgPicture.asset(
+                    Assets.moreIcon,
+                    height: 20,
+                    color: _currentIndex == 4
+                        ? _theme.primaryColor
+                        : CustomTheme.darkGray.withOpacity(0.5),
+                  ),
+                  label: 'More',
+                ),
+              ],
             ),
-            label: 'Scan QR',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Assets.historyIcon,
-              height: 20,
-              color: _currentIndex == 3
-                  ? _theme.primaryColor
-                  : CustomTheme.darkGray.withOpacity(0.5),
-            ),
-            label: 'History',
-          ),
-          BottomNavigationBarItem(
-            icon: SvgPicture.asset(
-              Assets.moreIcon,
-              height: 20,
-              color: _currentIndex == 4
-                  ? _theme.primaryColor
-                  : CustomTheme.darkGray.withOpacity(0.5),
-            ),
-            label: 'More',
-          ),
-        ],
-      ),
-    );
+          );
   }
 }
