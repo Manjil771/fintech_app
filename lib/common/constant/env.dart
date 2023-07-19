@@ -160,6 +160,19 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF015017),
   );
 
+  static final CoOperative uttargangaCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/uttarganga/uttarganga_banner_2.png",
+    clientCode: '9DZS5N3TOY',
+    clientSecret: "112213",
+    backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
+
+    coOperativeName: 'Uttarganga',
+    coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
+    splashImage: "assets/uttarganga/uttarganga_splash.png",
+    primaryColor: const Color(0xFF015017),
+  );
+
 ////********************** Sahakarya ***********************//////
   static final CoOperative shakaryaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
