@@ -47,7 +47,6 @@ class _CommonFindInternetUserWidgetState
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
-          print(state);
           if (state is CommonLoading && _isLoading == false) {
             _isLoading = true;
             showLoadingDialogBox(context);
@@ -56,8 +55,19 @@ class _CommonFindInternetUserWidgetState
             NavigationService.pop();
           }
 
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
+
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.push(
                 target: CommonInternetPaymentDeatilScreen(

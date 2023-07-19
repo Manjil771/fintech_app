@@ -59,6 +59,7 @@ class Assets {
   static const String arrowDown = "assets/icons/arrowupfull.svg";
   static const String filterIcon = "assets/icons/Filter list.svg";
   static const String errorImage = "assets/images/error.png";
+  static const String ismartSlogan = "assets/images/ismart_slogan.png";
 // send money
   static const String sendMoneyIcon =
       "assets/icons/mingcute_send-plane-fill.svg";

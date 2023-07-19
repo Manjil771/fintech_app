@@ -106,12 +106,15 @@ class _CommonInternetPaymentDeatilWidgetState
                 SizedBox(height: _height * 0.008),
                 KeyValueTile(
                   title: "Customer ID",
-                  value: widget.detailFetchData
-                      .findValue(
+                  value: widget.detailFetchData.findValue(
                         primaryKey: "hashResponse",
                         secondaryKey: "userName",
-                      )
-                      .toString(),
+                      ) ??
+                      widget.detailFetchData
+                          .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "username")
+                          .toString(),
                 ),
                 SizedBox(height: _height * 0.008),
                 KeyValueTile(

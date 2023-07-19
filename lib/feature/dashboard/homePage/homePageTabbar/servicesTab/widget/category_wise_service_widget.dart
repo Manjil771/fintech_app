@@ -197,7 +197,13 @@ class _CategoriesWiseServicesWidgetState
       if (uniqueIdentifier.toLowerCase() ==
               "nepal_life_insurance".toLowerCase() ||
           uniqueIdentifier.toLowerCase() ==
-              "reliance_life_insurance".toLowerCase()) {
+              "reliance_life_insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              "Union_Life_Insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              "prabhu_life_insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              "sura_life_insurance".toLowerCase()) {
         NavigationService.push(
             target: LifeInsurancePage(
           service: servicess,

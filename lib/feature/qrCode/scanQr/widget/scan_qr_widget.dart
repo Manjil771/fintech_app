@@ -2,7 +2,9 @@ import 'dart:developer';
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
@@ -49,6 +51,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets> {
 
   @override
   Widget build(BuildContext context) {
+    final _height = SizeUtils.height;
     Size size = MediaQuery.of(context).size;
 
     return result != null
@@ -72,7 +75,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets> {
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
                         SvgPicture.asset(
-                          "assets/icons/Group 913.svg",
+                          Assets.qrCodeIcon,
                           color: Colors.white,
                           height: size.height * 0.04,
                         ),
@@ -83,10 +86,12 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets> {
                               color: Colors.white,
                               fontWeight: FontWeight.w500),
                         ),
-                        Text("Put your phone still while scanning the OR code",
-                            textAlign: TextAlign.center,
-                            style: Theme.of(context).textTheme.titleSmall),
-                        SizedBox(height: size.height * 0.2),
+                        Image.asset(
+                          "assets/images/ismart_logo_only.png",
+                          height: _height * 0.2,
+                        ),
+
+                        SizedBox(height: size.height * 0.4),
                         const Text(
                           "Our Partners :",
                           textAlign: TextAlign.center,
@@ -96,6 +101,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets> {
                               fontWeight: FontWeight.w500,
                               color: Colors.white),
                         ),
+                        //TDOD need to service provider logo from api
                         Image.asset(
                           "assets/images/fonepay_payments_fatafat 1.png",
                           height: size.height * 0.03,
@@ -106,6 +112,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets> {
                               NavigationService.pushReplacement(
                                   target: const ShareQrPage());
                             }),
+                        Image.asset(Assets.ismartSlogan,
+                            height: SizeUtils.height * 0.1),
                         TextButton(
                           onPressed: () {
                             NavigationService.pushUntil(
