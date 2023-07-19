@@ -1,5 +1,4 @@
 import 'package:animations/animations.dart';
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -9,9 +8,12 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/location_list_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
-import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
+
+import '../../../sendMoney/anyBank/screen/bank_list_page.dart';
 
 class SearchFlightWidget extends StatefulWidget {
   SearchFlightWidget({Key? key}) : super(key: key);
@@ -23,8 +25,8 @@ class SearchFlightWidget extends StatefulWidget {
 class _SearchFlightWidgetState extends State<SearchFlightWidget> {
   int _adultCount = 0;
   int _childrenCount = 0;
-
-  var _dateController = TextEditingController();
+  String? _fromPlaceValue;
+  final _dateController = TextEditingController();
   final _fromController = TextEditingController();
   var _modeController = TextEditingController();
   var _arriveDateController = TextEditingController();
@@ -59,36 +61,28 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                         'From',
                         style: _textTheme.headlineSmall,
                       ),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 200),
-                        transitionBuilder: (child, animation) {
-                          return SizeTransition(
-                            sizeFactor: animation,
-                            axis: Axis.vertical,
-                            child: child,
-                          );
-                        },
-                        child: OpenContainer(
-                          closedColor: Colors.transparent,
-                          closedElevation: 0.0,
-                          openElevation: 0,
-                          transitionType: ContainerTransitionType.fade,
-                          closedBuilder: (context, open) {
-                            return Text(
-                              'Select',
-                              style: _textTheme.headlineMedium!.copyWith(
-                                  fontSize: 18,
-                                  color: CustomTheme.primaryColor,
-                                  fontWeight: FontWeight.bold),
-                            );
+                      InkWell(
+                          onTap: () {
+                            NavigationService.push(
+                                target: LoationListFlightPage(
+                              onBankSelected: (val) {
+                                NavigationService.pop();
+
+                                _fromController.text = val.toString();
+                                _fromPlaceValue = val.toString();
+                                setState(() {});
+                              },
+                            ));
                           },
-                          openBuilder: (context, close) {
-                            return LocationList();
-                          },
-                        ),
-                      ),
+                          child: Text(
+                            'Select',
+                            style: _textTheme.headlineMedium!.copyWith(
+                                fontSize: 18,
+                                color: CustomTheme.primaryColor,
+                                fontWeight: FontWeight.bold),
+                          )),
                       Text(
-                        'Kathmandu',
+                        _fromPlaceValue.toString(),
                         style: _textTheme.titleSmall,
                       ),
                     ],
@@ -105,34 +99,6 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                       Text(
                         'To',
                         style: _textTheme.headlineSmall,
-                      ),
-                      AnimatedSwitcher(
-                        duration: const Duration(milliseconds: 200),
-                        transitionBuilder: (child, animation) {
-                          return SizeTransition(
-                            sizeFactor: animation,
-                            axis: Axis.vertical,
-                            child: child,
-                          );
-                        },
-                        child: OpenContainer(
-                          closedColor: Colors.transparent,
-                          closedElevation: 0.0,
-                          openElevation: 0,
-                          transitionType: ContainerTransitionType.fade,
-                          closedBuilder: (context, open) {
-                            return Text(
-                              'Select',
-                              style: _textTheme.headlineMedium!.copyWith(
-                                  fontSize: 18,
-                                  color: CustomTheme.primaryColor,
-                                  fontWeight: FontWeight.bold),
-                            );
-                          },
-                          openBuilder: (context, close) {
-                            return LocationList();
-                          },
-                        ),
                       ),
                       Text(
                         'Kathmandu',

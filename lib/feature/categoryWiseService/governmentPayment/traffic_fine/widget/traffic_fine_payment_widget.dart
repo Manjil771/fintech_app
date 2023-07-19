@@ -78,8 +78,9 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           //   "final amsdasjdoasnsda fd kasdsdis  ...${myAmount.replaceAll("NPR ", "")}",
           // );
 
-          final serviceCharge = _response.findValue(
-              primaryKey: "hashResponse", secondaryKey: "charge");
+          final serviceCharge = _response
+              .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
+              .toString();
 
           if (_response.code == "M0000") {
             NavigationService.push(
@@ -89,11 +90,13 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 apiEndpoint: "/api/governmentpayment/pay",
                 apiBody: {
                   "voucherCode": chitNumberController.text,
-
-                  "billerCode": _response.findValue(
-                      primaryKey: "hashResposne", secondaryKey: "billerCode"),
-                  // "serviceCharge": serviceCharge,
-                  // "fiscalYear": dateController.text,
+                  "billerCode": _response
+                      .findValue(
+                          primaryKey: "hashResposne",
+                          secondaryKey: "billerCode")
+                      .toString(),
+                  "serviceCharge": serviceCharge,
+                  "fiscalYear": dateController.text,
                 },
                 accountDetails: {
                   "amount": _response
