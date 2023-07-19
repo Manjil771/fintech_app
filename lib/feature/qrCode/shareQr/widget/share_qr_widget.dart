@@ -51,7 +51,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
         showDetail: false,
         showRoundBotton: false,
         showTitleText: false,
-        topbarName: "Share Qr",
+        topbarName: "My Qr",
         body: BlocConsumer<QrCubit, CommonState>(
           listener: (context, state) {
             if (state is CommonLoading && !_isLoading) {
