@@ -95,6 +95,7 @@ flutter:
     - assets/arthaBag/
     - assets/gomaGanesh/
     - assets/alankar/
+    - assets/manank/
 
   fonts:
     - family: popinbold
