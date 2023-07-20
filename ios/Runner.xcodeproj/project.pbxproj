@@ -15,7 +15,7 @@
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
-		CBDC0E9D2AB786C255ADB9B5 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DBEB0A1A052264232BB0D94B /* Pods_Runner.framework */; };
+		F59507AC8CED052CD4EE4A08 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F3C1E29EFF90853744B4CAE6 /* Pods_Runner.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -32,15 +32,21 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0FF1ECF0C1D6AF63F491FF37 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		3106E46FA265C9A2A7A1D0CD /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		201A349CBE108D4BB09ECAA5 /* Pods-Runner.release-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sahakarya.xcconfig"; sourceTree = "<group>"; };
+		21C062758E6009805591E997 /* Pods-Runner.release-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kabil.xcconfig"; sourceTree = "<group>"; };
+		2DCC0426F1DB675A817ED52A /* Pods-Runner.profile-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-sahakarya.xcconfig"; sourceTree = "<group>"; };
+		2F9C1E736E2F75F010A1DB45 /* Pods-Runner.debug-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janadhara.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		4372B7B3D5B920623E7D6C42 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		424132A2F56592E657C3DB91 /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		793886134C960F622A1682CE /* Pods-Runner.debug-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sahakarya.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		8337A71A3B0B862B8AB8E38D /* Pods-Runner.debug-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil.xcconfig"; sourceTree = "<group>"; };
+		7CFFE57B235D06A6F597427D /* Pods-Runner.debug-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil.xcconfig"; sourceTree = "<group>"; };
+		8910BDC4EAF791C638D9F8A8 /* Pods-Runner.release-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janadhara.xcconfig"; sourceTree = "<group>"; };
 		8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8F583D772A4EB8F3006C2DA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F93B5A52A4D6CE10022D0CC /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
@@ -51,10 +57,10 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A61093EADEF0C339BCCA361C /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
-		CB0354F5EDDBF22B3EB1308E /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
-		D034843CCF1E6A9EA9623DFB /* Pods-Runner.release-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kabil.xcconfig"; sourceTree = "<group>"; };
-		DBEB0A1A052264232BB0D94B /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		BE340800097B19E445984721 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		DB513ED737BF0D790DF2E2E1 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		DC110D817960D8BFAB15029D /* Pods-Runner.profile-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-janadhara.xcconfig"; sourceTree = "<group>"; };
+		F3C1E29EFF90853744B4CAE6 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,7 +69,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F4CFE5A2A5BF126009234C2 /* libsqlite3.tbd in Frameworks */,
-				CBDC0E9D2AB786C255ADB9B5 /* Pods_Runner.framework in Frameworks */,
+				F59507AC8CED052CD4EE4A08 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -74,7 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */,
-				DBEB0A1A052264232BB0D94B /* Pods_Runner.framework */,
+				F3C1E29EFF90853744B4CAE6 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -129,12 +135,18 @@
 		BF0A424C9A5FF836E3DA92FD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				CB0354F5EDDBF22B3EB1308E /* Pods-Runner.debug.xcconfig */,
-				3106E46FA265C9A2A7A1D0CD /* Pods-Runner.release.xcconfig */,
-				4372B7B3D5B920623E7D6C42 /* Pods-Runner.profile.xcconfig */,
-				8337A71A3B0B862B8AB8E38D /* Pods-Runner.debug-kabil.xcconfig */,
-				D034843CCF1E6A9EA9623DFB /* Pods-Runner.release-kabil.xcconfig */,
-				A61093EADEF0C339BCCA361C /* Pods-Runner.profile-kabil.xcconfig */,
+				DB513ED737BF0D790DF2E2E1 /* Pods-Runner.debug.xcconfig */,
+				BE340800097B19E445984721 /* Pods-Runner.release.xcconfig */,
+				7CFFE57B235D06A6F597427D /* Pods-Runner.debug-kabil.xcconfig */,
+				793886134C960F622A1682CE /* Pods-Runner.debug-sahakarya.xcconfig */,
+				2F9C1E736E2F75F010A1DB45 /* Pods-Runner.debug-janadhara.xcconfig */,
+				21C062758E6009805591E997 /* Pods-Runner.release-kabil.xcconfig */,
+				201A349CBE108D4BB09ECAA5 /* Pods-Runner.release-sahakarya.xcconfig */,
+				8910BDC4EAF791C638D9F8A8 /* Pods-Runner.release-janadhara.xcconfig */,
+				424132A2F56592E657C3DB91 /* Pods-Runner.profile-kabil.xcconfig */,
+				2DCC0426F1DB675A817ED52A /* Pods-Runner.profile-sahakarya.xcconfig */,
+				DC110D817960D8BFAB15029D /* Pods-Runner.profile-janadhara.xcconfig */,
+				0FF1ECF0C1D6AF63F491FF37 /* Pods-Runner.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -146,14 +158,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
-				B26A3C57E49D2D7F665C4267 /* [CP] Check Pods Manifest.lock */,
+				01B855B03B8CE49916C7D432 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				91200C5C4C4FE9F88A9B000F /* [CP] Embed Pods Frameworks */,
+				428F082878CAA8AA6768B56B /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -213,6 +225,28 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		01B855B03B8CE49916C7D432 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 		3B06AD1E1E4923F5004D2608 /* Thin Binary */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -228,7 +262,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
-		91200C5C4C4FE9F88A9B000F /* [CP] Embed Pods Frameworks */ = {
+		428F082878CAA8AA6768B56B /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -259,28 +293,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build";
-		};
-		B26A3C57E49D2D7F665C4267 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Runner-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -895,7 +907,7 @@
 			};
 			name = "Profile-janadhara";
 		};
-		8FC00C762A65A74200B2CFB7 /* Debug-sahakarya */ = {
+		8FC00C7E2A671CC300B2CFB7 /* Debug-sahakarya */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -947,7 +959,7 @@
 			};
 			name = "Debug-sahakarya";
 		};
-		8FC00C772A65A74200B2CFB7 /* Debug-sahakarya */ = {
+		8FC00C7F2A671CC300B2CFB7 /* Debug-sahakarya */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -969,7 +981,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.6;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.sahakarya;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.shakarya;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -978,8 +990,9 @@
 			};
 			name = "Debug-sahakarya";
 		};
-		8FC00C782A65A75000B2CFB7 /* Release-sahakarya */ = {
+		8FC00C802A671CCE00B2CFB7 /* Release-sahakarya */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -1030,7 +1043,7 @@
 			};
 			name = "Release-sahakarya";
 		};
-		8FC00C792A65A75000B2CFB7 /* Release-sahakarya */ = {
+		8FC00C812A671CCE00B2CFB7 /* Release-sahakarya */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -1061,7 +1074,7 @@
 			};
 			name = "Release-sahakarya";
 		};
-		8FC00C7A2A65A75800B2CFB7 /* Profile-sahakarya */ = {
+		8FC00C822A671CD600B2CFB7 /* Profile-sahakarya */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -1113,7 +1126,7 @@
 			};
 			name = "Profile-sahakarya";
 		};
-		8FC00C7B2A65A75800B2CFB7 /* Profile-sahakarya */ = {
+		8FC00C832A671CD600B2CFB7 /* Profile-sahakarya */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
@@ -1324,13 +1337,13 @@
 				97C147031CF9000F007C117D /* Debug */,
 				97C147041CF9000F007C117D /* Release */,
 				8FC00C6A2A64D49000B2CFB7 /* Debug-kabil */,
-				8FC00C762A65A74200B2CFB7 /* Debug-sahakarya */,
+				8FC00C7E2A671CC300B2CFB7 /* Debug-sahakarya */,
 				8FC00C702A65A50B00B2CFB7 /* Debug-janadhara */,
 				8FC00C6E2A64D66800B2CFB7 /* Release-kabil */,
-				8FC00C782A65A75000B2CFB7 /* Release-sahakarya */,
+				8FC00C802A671CCE00B2CFB7 /* Release-sahakarya */,
 				8FC00C722A65A51700B2CFB7 /* Release-janadhara */,
 				8FC00C6C2A64D65B00B2CFB7 /* Profile-kabil */,
-				8FC00C7A2A65A75800B2CFB7 /* Profile-sahakarya */,
+				8FC00C822A671CD600B2CFB7 /* Profile-sahakarya */,
 				8FC00C742A65A52100B2CFB7 /* Profile-janadhara */,
 				249021D3217E4FDB00AE95B9 /* Profile */,
 			);
@@ -1343,13 +1356,13 @@
 				97C147061CF9000F007C117D /* Debug */,
 				97C147071CF9000F007C117D /* Release */,
 				8FC00C6B2A64D49000B2CFB7 /* Debug-kabil */,
-				8FC00C772A65A74200B2CFB7 /* Debug-sahakarya */,
+				8FC00C7F2A671CC300B2CFB7 /* Debug-sahakarya */,
 				8FC00C712A65A50B00B2CFB7 /* Debug-janadhara */,
 				8FC00C6F2A64D66800B2CFB7 /* Release-kabil */,
-				8FC00C792A65A75000B2CFB7 /* Release-sahakarya */,
+				8FC00C812A671CCE00B2CFB7 /* Release-sahakarya */,
 				8FC00C732A65A51700B2CFB7 /* Release-janadhara */,
 				8FC00C6D2A64D65B00B2CFB7 /* Profile-kabil */,
-				8FC00C7B2A65A75800B2CFB7 /* Profile-sahakarya */,
+				8FC00C832A671CD600B2CFB7 /* Profile-sahakarya */,
 				8FC00C752A65A52100B2CFB7 /* Profile-janadhara */,
 				249021D4217E4FDB00AE95B9 /* Profile */,
 			);

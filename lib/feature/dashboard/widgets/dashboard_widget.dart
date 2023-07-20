@@ -17,7 +17,7 @@ import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/more/screen/more_page.dart';
-import 'package:ismart/feature/qrCode/scanQr/screen/scan_qr_page.dart';
+import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 import 'package:open_file/open_file.dart';
 
 class DashBoardWidget extends StatefulWidget {
@@ -34,7 +34,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   final screens = [
     const HomePage(),
     const Bankingpage(),
-    const ScanQrPage(),
+    const QRScannerScreens(),
     const RecentTransactionScreen(),
     const MorePage()
   ];
@@ -97,7 +97,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     return _currentIndex == 2
-        ? ScanQrPage()
+        ? const QRScannerScreens()
         : PageWrapper(
             body: PageView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -110,7 +110,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                 final _cameraPermission =
                     await PermissionUtils.isCameraPermissionAvailable;
                 if (_cameraPermission) {
-                  NavigationService.push(target: const ScanQrPage());
+                  NavigationService.push(target: const QRScannerScreens());
                 } else {
                   SnackBarUtils.showErrorBar(
                     context: context,
