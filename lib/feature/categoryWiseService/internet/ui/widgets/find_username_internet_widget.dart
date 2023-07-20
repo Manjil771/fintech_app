@@ -57,6 +57,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             if (_response.code == "M0000") {
               NavigationService.push(
                 target: InternetPaymentDeatilScreen(
+                  service: widget.service,
                   detailFetchData: _response,
                 ),
               );
