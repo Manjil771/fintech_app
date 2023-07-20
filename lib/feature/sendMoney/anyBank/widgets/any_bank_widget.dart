@@ -18,7 +18,13 @@ import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 
 class AnyBankWidget extends StatefulWidget {
-  const AnyBankWidget({Key? key}) : super(key: key);
+  final String? accountNumber;
+  final String? accountName;
+  final String? bankCode;
+
+  const AnyBankWidget(
+      {Key? key, this.accountNumber, this.accountName, this.bankCode})
+      : super(key: key);
 
   @override
   State<AnyBankWidget> createState() => _AnyBankWidgetState();
@@ -34,6 +40,20 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   final TextEditingController _remarksController = TextEditingController();
   Bank? selectedBank;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  @override
+  void initState() {
+    checkAccount();
+    super.initState();
+  }
+
+  checkAccount() {
+    if (widget.accountName != null) {
+      _accountNameController.text = widget.accountName.toString();
+      _accountNumberController.text = widget.accountNumber.toString();
+      _selectedBankController.text = widget.bankCode.toString();
+    }
+  }
+
   bool _isLoading = false;
   String? charges;
   @override
@@ -167,32 +187,38 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   ),
                 ),
                 SizedBox(height: _height * 0.02),
-                CustomTextField(
-                  hintText: "Select Bank",
-                  title: "Select Bank",
-                  readOnly: true,
-                  controller: _selectedBankController,
-                  onTap: () {
-                    NavigationService.push(
-                      target: BankListPage(
-                        onBankSelected: (val) {
-                          NavigationService.pop();
+                widget.bankCode == null
+                    ? CustomTextField(
+                        hintText: "Select Bank",
+                        title: "Select Bank",
+                        readOnly: true,
+                        controller: _selectedBankController,
+                        onTap: () {
+                          NavigationService.push(
+                            target: BankListPage(
+                              onBankSelected: (val) {
+                                NavigationService.pop();
 
-                          _selectedBankController.text = val.bankName;
-                          selectedBank = val;
-                          setState(() {});
+                                _selectedBankController.text = val.bankName;
+                                selectedBank = val;
+                                setState(() {});
+                              },
+                            ),
+                          );
                         },
+                        validator: (value) {
+                          if (selectedBank != null) {
+                            return null;
+                          } else {
+                            return "Please select destination bank.";
+                          }
+                        },
+                      )
+                    : CustomTextField(
+                        title: "Select Bank",
+                        controller: _selectedBankController,
+                        readOnly: true,
                       ),
-                    );
-                  },
-                  validator: (value) {
-                    if (selectedBank != null) {
-                      return null;
-                    } else {
-                      return "Please select destination bank.";
-                    }
-                  },
-                ),
                 CustomTextField(
                   title: "Account Number",
                   hintText: "Destination Account Number",
@@ -266,7 +292,9 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       bankId: selectedBank?.bankId ?? "",
                       destinationAccountName: _accountNameController.text,
                       destinationAccountNumber: _accountNumberController.text,
-                      destinationBankId: selectedBank?.bankId ?? "",
+                      destinationBankId: widget.bankCode == null
+                          ? selectedBank?.bankId ?? ""
+                          : widget.bankCode.toString(),
                     );
               } else {
                 NavigationService.push(
@@ -279,12 +307,16 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             mpin: pin,
                             remarks: _remarksController.text,
                             destinationBankInstrumentCode:
-                                selectedBank?.bankId ?? "",
+                                widget.bankCode == null
+                                    ? selectedBank?.bankId ?? ""
+                                    : widget.bankCode.toString(),
                             destinationBankAccountName:
                                 _accountNameController.text,
                             destinationBankAccountNumber:
                                 _accountNumberController.text,
-                            destinationBankName: selectedBank?.bankName ?? "",
+                            destinationBankName: widget.bankCode == null
+                                ? selectedBank?.bankName ?? ""
+                                : "ismart",
                             sendingAccount:
                                 RepositoryProvider.of<CustomerDetailRepository>(
                                         context)

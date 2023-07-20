@@ -9,6 +9,12 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
 
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -256,34 +262,39 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                       // NavigationService.pushNamed(
                       //     routeName: Routes.myQrCode);
                     },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 14,
-                        horizontal: 16,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.qr_code,
-                            size: 22,
-                            color: _theme.primaryColor,
-                          ),
-                          SizedBox(width: 8.wp),
-                          Text(
-                            "Show my QR Code",
-                            style: _textTheme.bodyLarge!.copyWith(
+                    child: InkWell(
+                      onTap: () {
+                        NavigationService.push(target: ShareQrPage());
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.qr_code,
+                              size: 22,
                               color: _theme.primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 8.wp),
+                            Text(
+                              "Show my QR Code",
+                              style: _textTheme.bodyLarge!.copyWith(
+                                color: _theme.primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -322,8 +333,49 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     try {
       Map<String, dynamic> _decode = jsonDecode(qrCode);
       if (_decode.containsKey("eSewa_id")) {
-        // TODO Esewa Qr
+        final phoneNumber = _decode["eSewa_id"];
+        NavigationService.push(
+            target: LoadWalletFormScreen(
+                phoneNumber: phoneNumber,
+                selectedWallet: WalletModel(
+                    id: 11,
+                    name: "eSewa",
+                    descOneFieldName: "Wallet ID",
+                    descOneFieldType: "String",
+                    descOneFixedLength: true,
+                    descOneLength: 10,
+                    descOneMinLength: null,
+                    descOneMaxLength: null,
+                    descTwoFieldName: "Remarks",
+                    descTwoFieldType: "String",
+                    descTwoFixedLength: true,
+                    descTwoLength: null ?? 0,
+                    descTwoMinLength: null,
+                    descTwoMaxLength: null,
+                    icon:
+                        "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
+                    accountHead: "ESEWA",
+                    accountNumber: "ESEWAWALLET",
+                    minAmount: 10.00,
+                    maxAmount: 25000.00,
+                    status: "Active")));
+
+        print("esewaaa");
       } else if (_decode.containsKey("bankCode")) {
+        String _accountNumber = _decode['accountNumber'];
+        String _accountName = _decode['accountName'];
+
+        String _bankCode = _decode['bankCode'];
+        NavigationService.push(
+            target: AnyBankpage(
+          accountNumber: _accountNumber,
+          accountName: _accountName,
+          bankCode: _bankCode,
+        ));
+        // TODO fonepay interbank qr
+      } else if (_decode.containsKey("fonepay.com")) {
+        String _accountNumber = _decode['account_number'];
+        print("bank code selected");
         // TODO fonepay interbank qr
       }
     } catch (e) {
