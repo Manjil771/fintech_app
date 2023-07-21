@@ -3,6 +3,7 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -103,7 +104,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         Expanded(
                           flex: 2,
                           child: Image.asset(
-                            "assets/images/ismart_inverted.jpeg",
+                            "assets/images/ismart_logo_only.png",
                             height: 60.hp,
                           ),
                         ),
@@ -169,27 +170,24 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               ),
             ),
           ),
-
-          // Positioned(
-          //   right: 0,
-          //   left: 0,
-          //   bottom: 90,
-          //   child: Container(
-          //     height: _verticalMaxSize,
-          //     decoration: COlor,
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         Image.asset(
-          //           "assets/images/fonepay_payments_fatafat 1.png",
-          //           height: 30.hp,
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-
+          Positioned(
+            right: 0,
+            left: 0,
+            bottom: 90,
+            child: Container(
+              height: _verticalMaxSize,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    Assets.ismartSlogan,
+                    height: 120.hp,
+                  ),
+                ],
+              ),
+            ),
+          ),
           Positioned(
             right: CustomTheme.symmetricHozPadding,
             top: _verticalMaxSize,
@@ -247,7 +245,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               ],
             ),
           ),
-
           Positioned(
             right: 0,
             left: 0,
@@ -265,7 +262,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     },
                     child: InkWell(
                       onTap: () {
-                        NavigationService.push(target: ShareQrPage());
+                        NavigationService.pushReplacement(
+                            target: ShareQrPage());
                       },
                       child: Container(
                         padding: const EdgeInsets.symmetric(
@@ -335,7 +333,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       Map<String, dynamic> _decode = jsonDecode(qrCode);
       if (_decode.containsKey("eSewa_id")) {
         final phoneNumber = _decode["eSewa_id"];
-        NavigationService.push(
+        NavigationService.pushReplacement(
             target: LoadWalletFormScreen(
                 phoneNumber: phoneNumber,
                 selectedWallet: WalletModel(
@@ -360,14 +358,12 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     minAmount: 10.00,
                     maxAmount: 25000.00,
                     status: "Active")));
-
-        print("esewaaa");
       } else if (_decode.containsKey("bankCode")) {
         String _accountNumber = _decode['accountNumber'];
         String _accountName = _decode['accountName'];
 
         String _bankCode = _decode['bankCode'];
-        NavigationService.push(
+        NavigationService.pushReplacement(
             target: AnyBankpage(
           accountNumber: _accountNumber,
           accountName: _accountName,
@@ -375,7 +371,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         ));
       }
     } catch (e) {
-      NavigationService.push(target: PayloadPage(payload: qrCode));
+      NavigationService.pushReplacement(target: PayloadPage(payload: qrCode));
     }
   }
 
