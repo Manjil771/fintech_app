@@ -10,6 +10,7 @@ import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
@@ -372,15 +373,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
           accountName: _accountName,
           bankCode: _bankCode,
         ));
-        // TODO fonepay interbank qr
-      } else if (_decode.containsKey("fonepay.com")) {
-        String _accountNumber = _decode['account_number'];
-        print("bank code selected");
-        // TODO fonepay interbank qr
       }
     } catch (e) {
-      // TODO Call backend for QR Code decoding
-      // Esma feri error aayo backend bata vaney show error popup
+      NavigationService.push(target: PayloadPage(payload: qrCode));
     }
   }
 

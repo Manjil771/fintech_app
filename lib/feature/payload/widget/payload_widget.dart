@@ -1,223 +1,185 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transaction_detail_box.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
+import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
+import 'package:ismart/feature/history/models/recent_transaction_model.dart';
+import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-import '../../utility_payment/cubit/utility_payment_cubit.dart';
+class PayloadWidget extends StatefulWidget {
+  final String? payload;
+  const PayloadWidget({Key? key, this.payload}) : super(key: key);
 
-class PayloadWidget extends StatelessWidget {
-  PayloadWidget({Key? key}) : super(key: key);
-  final TextEditingController _selectedProvinceNameController =
-      TextEditingController();
-  final TextEditingController _selectedDistrictController =
-      TextEditingController();
-  final TextEditingController dateController = TextEditingController();
-  final TextEditingController chitNumberController = TextEditingController();
-  String? selectedDistrictValue;
-  String? selectedProvinceValue;
+  @override
+  State<PayloadWidget> createState() => _PayloadWidgetState();
+}
+
+class _PayloadWidgetState extends State<PayloadWidget> {
+  final TextEditingController merchantNameController = TextEditingController();
+  final TextEditingController amountController = TextEditingController();
+  final TextEditingController remarksController = TextEditingController();
+
+  final TextEditingController merchantIdController = TextEditingController();
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<UtilityPaymentCubit>().fetchDetails(
+        serviceIdentifier: "",
+        apiEndpoint: "/api/qpay/merchant_detail",
+        accountDetails: {
+          "pay_load": widget.payload,
+        });
+  }
+
   bool _isLoading = false;
-  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-        body: BlocListener<UtilityPaymentCubit, CommonState>(
-      listener: (context, state) {
-        if (state is CommonLoading && _isLoading == false) {
-          _isLoading = true;
-          showLoadingDialogBox(context);
-        } else if (state is! CommonLoading && _isLoading) {
-          _isLoading = false;
-          NavigationService.pop();
-        } else if (state is CommonError) {
-          showPopUpDialog(
-            context: context,
-            message: state.message,
-            title: "Error",
-            showCancelButton: false,
-            buttonCallback: () {
-              NavigationService.pop();
-            },
-          );
-        }
-
-        if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
-          final myAmount = _response
-              .findValue(
-                  primaryKey: "hashResponse",
-                  secondaryKey: "formattedFinalAmount")
-              .toString();
-
-          // print(
-          //   "final amsdasjdoasnsda fd kasdsdis  ...${myAmount.replaceAll("NPR ", "")}",
-          // );
-
-          final serviceCharge = _response
-              .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
-              .toString();
-
-          if (_response.code == "M0000") {
-            // NavigationService.push(
-            //   target: CommonBillDetailPage(
-            //     service: service,
-            //     serviceIdentifier: "",
-            //     apiEndpoint: "/api/governmentpayment/pay",
-            //     apiBody: {
-            //       "voucherCode": chitNumberController.text,
-            //       "billerCode": _response
-            //           .findValue(
-            //               primaryKey: "hashResposne",
-            //               secondaryKey: "billerCode")
-            //           .toString(),
-            //       "serviceCharge": serviceCharge,
-            //       "fiscalYear": dateController.text,
-            //     },
-            //     accountDetails: {
-            //       "amount": _response
-            //           .findValue(
-            //               primaryKey: "hashResponse", secondaryKey: "amount")
-            //           .toString(),
-            //       "account_number":
-            //           RepositoryProvider.of<CustomerDetailRepository>(context)
-            //               .selectedAccount
-            //               .value!
-            //               .accountNumber
-            //               .toString(),
-
-            //       //"amount": myAmount.replaceAll("NPR ", ""),
-            //     },
-            //     body: Column(
-            //       children: [
-            //         KeyValueTile(
-            //             title: "Biller Code",
-            //             value: _response
-            //                 .findValue(
-            //                   primaryKey: "hashResponse",
-            //                   secondaryKey: "billerCode",
-            //                 )
-            //                 .toString()),
-            //         // KeyValueTile(
-            //         //     title: "title",
-            //         //     value: _response
-            //         //         .findValue(
-            //         //           primaryKey: "hashResponse",
-            //         //           secondaryKey: "amount",
-            //         //         )
-            //         //         .toString()),
-            //         KeyValueTile(
-            //             title: "Amount",
-            //             value: _response
-            //                 .findValue(
-            //                   primaryKey: "hashResponse",
-            //                   secondaryKey: "formattedFinalAmount",
-            //                 )
-            //                 .toString()),
-            //         KeyValueTile(
-            //             title: "Charge",
-            //             value: _response
-            //                 .findValue(
-            //                   primaryKey: "hashResponse",
-            //                   secondaryKey: "charge",
-            //                 )
-            //                 .toString()),
-            //         KeyValueTile(
-            //             title: "Remarks",
-            //             value: _response
-            //                 .findValue(
-            //                   primaryKey: "hashResponse",
-            //                   secondaryKey: "remarks",
-            //                 )
-            //                 .toString())
-            //       ],
-            //     ),
-            //   ),
-            // );
-          } else {
-            showPopUpDialog(
-                context: context,
-                message: _response.message,
-                title: "Error",
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-                showCancelButton: false);
+      body: BlocConsumer<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && !_isLoading) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
           }
-        }
-      },
-      child: CommonContainer(
-        showAccountSelection: true,
-        buttonName: "Pay",
-        showTitleText: false,
-        showDetail: false,
-        topbarName: "Payment",
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              CustomTextField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: dateController,
-                title: "Date",
-                hintText: "2079/80",
-                textInputType: TextInputType.number,
-                validator: (value) =>
-                    FormValidator.validateFieldNotEmpty(value, "Date"),
-              ),
-              CustomTextField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
-                title: "Chit No.",
-                textInputType: TextInputType.number,
-                hintText: "XXXXXXXXX",
-                controller: chitNumberController,
-                validator: (value) =>
-                    FormValidator.validateFieldNotEmpty(value, "Chit Number"),
-              ),
-            ],
-          ),
-        ),
-        onButtonPressed: () {
-          // context.read<UtilityPaymentCubit>().fetchDetails(
-          //       serviceIdentifier: widget.service.uniqueIdentifier,
-          //       accountDetails: {
-          //         "chitNumber": "34600",//742397
-          //         "fiscalYear": "2077/78",
-          //         "provinceId": "000",
-          //         "districtId": "002",
-          //       },
-          //       apiEndpoint: "api/governmentpayment/trafficFineDetail",
-          //     );
-          if (_formKey.currentState!.validate()) {
-            context.read<UtilityPaymentCubit>().fetchDetails(
-                  serviceIdentifier: "",
-                  accountDetails: {
-                    "chitNumber": chitNumberController.text,
-                    "fiscalYear": dateController.text,
-                    "provinceId": selectedProvinceValue,
-                    "districtId": _selectedProvinceNameController.text
-                                .toString()
-                                .toLowerCase() ==
-                            'Kathmandu Valley'.toLowerCase()
-                        ? "000"
-                        : selectedDistrictValue,
-                    // "isDistrict": false,
-                  },
-                  apiEndpoint: "api/governmentpayment/trafficFineDetail",
-                );
+
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+        },
+        builder: (context, state) {
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            merchantNameController.text =
+                state.data.findValue(primaryKey: "merchant_name");
+            merchantIdController.text =
+                state.data.findValue(primaryKey: "merchant_id");
+
+            return CommonContainer(
+                showDetail: false,
+                buttonName: "Procced",
+                title: "Make Payment",
+                topbarName: "Payment",
+                body: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Image.network(
+                      RepositoryProvider.of<CoOperative>(context).baseUrl +
+                          state.data.findValue(primaryKey: "imageUrl"),
+                      height: _height * 0.05,
+                    ),
+                    CustomTextField(
+                      readOnly: true,
+                      controller: merchantNameController,
+                      title: "Merchant Name",
+                    ),
+                    CustomTextField(
+                      title: "Merchant Id",
+                      controller: merchantIdController,
+                    ),
+                    CustomTextField(
+                      title: "Amount",
+                      controller: amountController,
+                    ),
+                    CustomTextField(
+                      title: "Remarks",
+                      controller: remarksController,
+                    ),
+                  ],
+                ),
+                onButtonPressed: () {
+                  final _icon = state.data
+                      .findValue(primaryKey: "imageUrl")
+                      .toString()
+                      .replaceAll("/ismart/serviceIcon/", "");
+                  NavigationService.push(
+                    target: CommonBillDetailPage(
+                      service: ServiceList(
+                          url: Url.URL,
+                          id: 0,
+                          uniqueIdentifier: "fonepay",
+                          service: "",
+                          status: Status.ACTIVE,
+                          labelName: "",
+                          labelMaxLength: "",
+                          labelMinLength: "",
+                          labelSample: "",
+                          labelPrefix: "",
+                          instructions: "",
+                          fixedlabelSize: true,
+                          priceInput: true,
+                          notificationUrl: "fonepay",
+                          minValue: 0.0,
+                          maxValue: 5000.0,
+                          icon: _icon,
+                          categoryId: 21,
+                          serviceCategoryName: "",
+                          webView: true,
+                          isNew: true,
+                          appOrder: 0,
+                          isSmsMode: true),
+                      apiBody: {},
+                      serviceIdentifier: "",
+                      accountDetails: {
+                        "pay_load": widget.payload,
+                        "remarks": remarksController.text,
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
+                        "amount": amountController.text,
+                      },
+                      body: Column(children: [
+                        KeyValueTile(
+                            title: "Merchant Name",
+                            value: merchantNameController.text),
+                        KeyValueTile(
+                            title: "Merchant Id",
+                            value: merchantIdController.text),
+                        KeyValueTile(
+                            title: "Amount", value: amountController.text),
+                        KeyValueTile(
+                            title: "Remarks", value: remarksController.text),
+                      ]),
+                      apiEndpoint: "/api/qpay/payment",
+                    ),
+                  );
+                });
+          } else {
+            return Container();
           }
         },
       ),
-    ));
+    );
   }
 }
