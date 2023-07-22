@@ -107,7 +107,6 @@ class CommonBillDetailWidget extends StatelessWidget {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.status == "M0000") {
-              print("stateus is ${_response.status}");
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       transactionID: state.data.transactionIdentifier,
@@ -136,20 +135,30 @@ class CommonBillDetailWidget extends StatelessWidget {
               ),
               padding: EdgeInsets.all(18),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  Image.network(
-                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service.icon}",
-                    height: _height * 0.08,
+                  IconButton(
+                      onPressed: () {
+                        NavigationService.pop();
+                      },
+                      icon: Icon(Icons.arrow_back)),
+                  Center(
+                    child: Image.network(
+                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service.icon}",
+                      height: _height * 0.08,
+                    ),
                   ),
                   SizedBox(height: _height * 0.02),
-                  Text(
-                    service.service,
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Colors.black,
-                        fontWeight: FontWeight.w500),
-                  ),
+                  service.service.isEmpty
+                      ? Container()
+                      : Text(
+                          service.service,
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: Colors.black,
+                              fontWeight: FontWeight.w500),
+                        ),
                   SizedBox(height: _height * 0.02),
                   Text(
                       "Details about the payable amount for the service of ${service.service} is shown below.",

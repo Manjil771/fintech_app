@@ -17,6 +17,7 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fin
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/pokhara_internet/screens/pokhara_internet_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
@@ -165,6 +166,12 @@ class _CategoriesWiseServicesWidgetState
           "subisu_online_topup".toLowerCase()) {
         NavigationService.push(
             target: SubisuPaymentPage(
+          service: servicess,
+        ));
+      } else if (uniqueIdentifier.toLowerCase() ==
+          "pokharainternet_topup".toLowerCase()) {
+        NavigationService.push(
+            target: PokharaInternetPaymentPage(
           service: servicess,
         ));
       } else {

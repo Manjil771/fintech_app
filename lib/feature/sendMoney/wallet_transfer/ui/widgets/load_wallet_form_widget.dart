@@ -17,8 +17,10 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_transfer_m
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_validation_model.dart';
 
 class LoadWalletFormWidget extends StatefulWidget {
+  final String? phoneNumber;
   final WalletModel selectedWallet;
-  const LoadWalletFormWidget({Key? key, required this.selectedWallet})
+  const LoadWalletFormWidget(
+      {Key? key, required this.selectedWallet, this.phoneNumber})
       : super(key: key);
 
   @override
@@ -30,11 +32,23 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
   final TextEditingController _walletAccountController =
       TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
+  checkAccount() {
+    if (widget.phoneNumber != null) {
+      _walletAccountController.text = widget.phoneNumber.toString();
+    }
+  }
+
+  @override
+  void initState() {
+    checkAccount();
+    super.initState();
+  }
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   bool _isAccountValidated = false;
   WalletValidationModel? _validationResult;
+
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -146,43 +160,32 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
-                  widget.selectedWallet.descOneFieldName,
-                  style: Theme.of(context).textTheme.titleMedium,
-                ),
-                // Row(
-                //   children: [
-                //     Expanded(
-                //       child:
-                //     ),
-                //     Container(
-                //       padding: const EdgeInsets.all(6),
-                //       margin: const EdgeInsets.only(left: 8, top: 28),
-                //       height: size.height * 0.06,
-                //       width: size.width * 0.12,
-                //       child:
-                //           SvgPicture.asset("assets/icons/Contact from phone.svg"),
-                //     )
-                //   ],
-                // ),
-                CustomTextField(
-                  title: "Wallet Id",
-                  hintText: "9856654121",
-                  controller: _walletAccountController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Wallet Id"),
-                  showSearchIcon: true,
-                  suffixIcon: Icons.mobile_friendly,
-                  onSuffixPressed: () {
-                    final _userPhone =
-                        RepositoryProvider.of<CustomerDetailRepository>(context)
-                                .customerDetailModel
-                                .value
-                                ?.mobileNumber ??
-                            "";
-                    _walletAccountController.text = _userPhone;
-                  },
-                ),
+                widget.phoneNumber == null
+                    ? CustomTextField(
+                        title: "Wallet Id",
+                        hintText: "9856654121",
+                        controller: _walletAccountController,
+                        validator: (val) => FormValidator.validateFieldNotEmpty(
+                            val, "Wallet Id"),
+                        showSearchIcon: true,
+                        suffixIcon: Icons.mobile_friendly,
+                        onSuffixPressed: () {
+                          final _userPhone =
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                          context)
+                                      .customerDetailModel
+                                      .value
+                                      ?.mobileNumber ??
+                                  "";
+                          _walletAccountController.text = _userPhone;
+                        },
+                      )
+                    : CustomTextField(
+                        title: "Wallet Id ${widget.phoneNumber}",
+                        controller: _walletAccountController,
+                        validator: (val) => FormValidator.validateFieldNotEmpty(
+                            val, "Wallet Id"),
+                      ),
                 SizedBox(height: size.height * 0.02),
                 CustomTextField(
                   title: "Amount",

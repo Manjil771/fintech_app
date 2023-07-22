@@ -3,12 +3,20 @@ import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/payload/payload_page.dart';
+import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
 
 import 'package:mobile_scanner/mobile_scanner.dart';
 
@@ -96,7 +104,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         Expanded(
                           flex: 2,
                           child: Image.asset(
-                            "assets/images/ismart_inverted.jpeg",
+                            "assets/images/ismart_logo_only.png",
                             height: 60.hp,
                           ),
                         ),
@@ -162,27 +170,24 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               ),
             ),
           ),
-
-          // Positioned(
-          //   right: 0,
-          //   left: 0,
-          //   bottom: 90,
-          //   child: Container(
-          //     height: _verticalMaxSize,
-          //     decoration: COlor,
-          //     child: Column(
-          //       mainAxisAlignment: MainAxisAlignment.center,
-          //       crossAxisAlignment: CrossAxisAlignment.center,
-          //       children: [
-          //         Image.asset(
-          //           "assets/images/fonepay_payments_fatafat 1.png",
-          //           height: 30.hp,
-          //         ),
-          //       ],
-          //     ),
-          //   ),
-          // ),
-
+          Positioned(
+            right: 0,
+            left: 0,
+            bottom: 90,
+            child: Container(
+              height: _verticalMaxSize,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+                children: [
+                  Image.asset(
+                    Assets.ismartSlogan,
+                    height: 120.hp,
+                  ),
+                ],
+              ),
+            ),
+          ),
           Positioned(
             right: CustomTheme.symmetricHozPadding,
             top: _verticalMaxSize,
@@ -240,7 +245,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               ],
             ),
           ),
-
           Positioned(
             right: 0,
             left: 0,
@@ -256,34 +260,40 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                       // NavigationService.pushNamed(
                       //     routeName: Routes.myQrCode);
                     },
-                    child: Container(
-                      padding: const EdgeInsets.symmetric(
-                        vertical: 14,
-                        horizontal: 16,
-                      ),
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.qr_code,
-                            size: 22,
-                            color: _theme.primaryColor,
-                          ),
-                          SizedBox(width: 8.wp),
-                          Text(
-                            "Show my QR Code",
-                            style: _textTheme.bodyLarge!.copyWith(
+                    child: InkWell(
+                      onTap: () {
+                        NavigationService.pushReplacement(
+                            target: ShareQrPage());
+                      },
+                      child: Container(
+                        padding: const EdgeInsets.symmetric(
+                          vertical: 14,
+                          horizontal: 16,
+                        ),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(15),
+                        ),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Icon(
+                              Icons.qr_code,
+                              size: 22,
                               color: _theme.primaryColor,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 13,
                             ),
-                          ),
-                        ],
+                            SizedBox(width: 8.wp),
+                            Text(
+                              "Show my QR Code",
+                              style: _textTheme.bodyLarge!.copyWith(
+                                color: _theme.primaryColor,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 13,
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -322,13 +332,46 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     try {
       Map<String, dynamic> _decode = jsonDecode(qrCode);
       if (_decode.containsKey("eSewa_id")) {
-        // TODO Esewa Qr
+        final phoneNumber = _decode["eSewa_id"];
+        NavigationService.pushReplacement(
+            target: LoadWalletFormScreen(
+                phoneNumber: phoneNumber,
+                selectedWallet: WalletModel(
+                    id: 11,
+                    name: "eSewa",
+                    descOneFieldName: "Wallet ID",
+                    descOneFieldType: "String",
+                    descOneFixedLength: true,
+                    descOneLength: 10,
+                    descOneMinLength: null,
+                    descOneMaxLength: null,
+                    descTwoFieldName: "Remarks",
+                    descTwoFieldType: "String",
+                    descTwoFixedLength: true,
+                    descTwoLength: null ?? 0,
+                    descTwoMinLength: null,
+                    descTwoMaxLength: null,
+                    icon:
+                        "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
+                    accountHead: "ESEWA",
+                    accountNumber: "ESEWAWALLET",
+                    minAmount: 10.00,
+                    maxAmount: 25000.00,
+                    status: "Active")));
       } else if (_decode.containsKey("bankCode")) {
-        // TODO fonepay interbank qr
+        String _accountNumber = _decode['accountNumber'];
+        String _accountName = _decode['accountName'];
+
+        String _bankCode = _decode['bankCode'];
+        NavigationService.pushReplacement(
+            target: AnyBankpage(
+          accountNumber: _accountNumber,
+          accountName: _accountName,
+          bankCode: _bankCode,
+        ));
       }
     } catch (e) {
-      // TODO Call backend for QR Code decoding
-      // Esma feri error aayo backend bata vaney show error popup
+      NavigationService.pushReplacement(target: PayloadPage(payload: qrCode));
     }
   }
 

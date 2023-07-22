@@ -389,6 +389,8 @@ class ApiProvider {
       case 404:
         throw ResourceNotFoundException(
             getErrorMessage(res, 404), response.statusCode);
+      case 409:
+        return responseJson;
       case 422:
         responseJson['error'] = getErrorMessage(res, response.statusCode);
         throw BadRequestException(
@@ -419,6 +421,8 @@ class ApiProvider {
             .logout(isSessionExpired: true);
         throw UnauthorisedException(
             getErrorMessage(res, 401), response.statusCode);
+      case 417:
+        return responseJson;
       case 500:
         throw InternalServerErrorException(
             getErrorMessage(res, 404), response.statusCode);
