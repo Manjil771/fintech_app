@@ -10,7 +10,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/screen/location_list_page.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/location_list_airlines_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
 
 import '../../../sendMoney/anyBank/screen/bank_list_page.dart';
@@ -25,11 +25,12 @@ class SearchFlightWidget extends StatefulWidget {
 class _SearchFlightWidgetState extends State<SearchFlightWidget> {
   int _adultCount = 0;
   int _childrenCount = 0;
-  String? _fromPlaceValue;
+  AirlinesSectorList fromPlace = AirlinesSectorList();
+  AirlinesSectorList toPlace = AirlinesSectorList();
+  final TextEditingController tripTypeController = TextEditingController();
+
   final _dateController = TextEditingController();
-  final _fromController = TextEditingController();
-  var _modeController = TextEditingController();
-  var _arriveDateController = TextEditingController();
+  final _arriveDateController = TextEditingController();
   bool isRoundTrip = false;
 
   @override
@@ -65,26 +66,25 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                           onTap: () {
                             NavigationService.push(
                                 target: LoationListFlightPage(
-                              onBankSelected: (val) {
+                              selectedLocation: (val) {
                                 NavigationService.pop();
 
-                                _fromController.text = val.toString();
-                                _fromPlaceValue = val.toString();
+                                fromPlace = val;
                                 setState(() {});
                               },
                             ));
                           },
                           child: Text(
-                            'Select',
+                            fromPlace.sectorName ?? 'Select',
                             style: _textTheme.headlineMedium!.copyWith(
-                                fontSize: 18,
+                                fontSize: 14,
                                 color: CustomTheme.primaryColor,
                                 fontWeight: FontWeight.bold),
                           )),
-                      Text(
-                        _fromPlaceValue.toString(),
-                        style: _textTheme.titleSmall,
-                      ),
+                      // Text(
+                      //   fromPlace.sectorCode.toString(),
+                      //   style: _textTheme.titleSmall,
+                      // ),
                     ],
                   ),
                   Expanded(
@@ -100,10 +100,25 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                         'To',
                         style: _textTheme.headlineSmall,
                       ),
-                      Text(
-                        'Kathmandu',
-                        style: _textTheme.titleSmall,
-                      ),
+                      InkWell(
+                          onTap: () {
+                            NavigationService.push(
+                                target: LoationListFlightPage(
+                              selectedLocation: (val) {
+                                NavigationService.pop();
+
+                                toPlace = val;
+                                setState(() {});
+                              },
+                            ));
+                          },
+                          child: Text(
+                            toPlace.sectorName ?? 'Select',
+                            style: _textTheme.headlineMedium!.copyWith(
+                                fontSize: 14,
+                                color: CustomTheme.primaryColor,
+                                fontWeight: FontWeight.bold),
+                          )),
                     ],
                   ),
                 ],
@@ -113,22 +128,17 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               height: 20,
             ),
             CustomTextField(
-              controller: _modeController,
+              controller: tripTypeController
+                ..text = isRoundTrip ? "Round Trip" : "Single Trip",
               title: 'Flight Mode',
+
               readOnly: true,
-              hintText: 'Single Trip',
+              // hintText: 'Single Trip',
               suffixIcon: Icons.abc,
               trailing: IconButton(
                   onPressed: () {
                     setState(() {
-                      if (isRoundTrip == false) {
-                        isRoundTrip = true;
-                        _modeController.text = 'Round Trip';
-                      } else if (isRoundTrip == true) {
-                        isRoundTrip = false;
-
-                        _modeController.clear();
-                      }
+                      isRoundTrip = !isRoundTrip;
                     });
                   },
                   icon: Icon(
@@ -178,7 +188,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                       );
                       setState(() {
                         _arriveDateController.text =
-                            "${date!.day}/${date.month}/${date.year}";
+                            "${date!.year}-${date.month}-${date.day}";
                       });
                     },
                     suffixIcon: Icons.calendar_month_rounded,
@@ -219,16 +229,12 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                               icon: Icon(Icons.remove),
                             ),
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
+                          SizedBox(width: 20),
                           Text(
                             _adultCount.toString(),
                             style: _textTheme.headlineSmall!.copyWith(),
                           ),
-                          SizedBox(
-                            width: 20,
-                          ),
+                          SizedBox(width: 20),
                           Container(
                             decoration: BoxDecoration(
                                 color: CustomTheme.primaryColor,

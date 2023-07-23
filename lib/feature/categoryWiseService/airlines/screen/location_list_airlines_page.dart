@@ -9,8 +9,8 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class LoationListFlightPage extends StatelessWidget {
-  final Function(AirlinesSectorList) onBankSelected;
-  const LoationListFlightPage({Key? key, required this.onBankSelected})
+  final Function(AirlinesSectorList) selectedLocation;
+  const LoationListFlightPage({Key? key, required this.selectedLocation})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class LoationListFlightPage extends StatelessWidget {
       create: (context) => AirlinesCubit(
           airlinesRepository:
               RepositoryProvider.of<AirlinesRepository>(context)),
-      child: LocationListAirlinesWidget(),
+      child: LocationListAirlinesWidget(selectedLocation: selectedLocation),
     );
   }
 }

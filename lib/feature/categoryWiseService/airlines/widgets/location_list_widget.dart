@@ -4,6 +4,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -15,9 +16,14 @@ import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LocationListAirlinesWidget extends StatefulWidget {
-  const LocationListAirlinesWidget({Key? key}) : super(key: key);
+  final Function(AirlinesSectorList) selectedLocation;
+
+  const LocationListAirlinesWidget({Key? key, required this.selectedLocation})
+      : super(key: key);
 
   @override
   State<LocationListAirlinesWidget> createState() =>
@@ -61,15 +67,24 @@ class _LocationListAirlinesWidgetState
           }
         },
         builder: (context, state) {
-          print("asbdjhas djsashadas djsais " + state.toString());
           if (state is CommonDataFetchSuccess<AirlinesSectorList>) {
-            return Container(
-              height: 150,
-              width: 150,
-              color: Colors.red,
+            print("data ist" + state.data[0].sectorCode.toString());
+            return ListView.builder(
+              itemCount: state.data.length,
+              itemBuilder: (context, index) {
+                return CustomListTile(
+                    onPressed: () {
+                      widget.selectedLocation(state.data[index]);
+                      setState(() {});
+                    },
+                    title: state.data[index].sectorName.toString(),
+                    description: state.data[index].sectorCode.toString());
+              },
             );
           } else {
-            return Container();
+            return Container(
+              child: Text(state.toString()),
+            );
           }
         },
       ),

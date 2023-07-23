@@ -1,5 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -11,6 +12,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_error_dialog.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/passenger_detail_page.dart';
 
 class AvailableFlightWidget extends StatefulWidget {
@@ -25,6 +27,12 @@ class AvailableFlightWidget extends StatefulWidget {
 }
 
 class _AvailableFlightWidgetState extends State<AvailableFlightWidget> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<AirlinesCubit>().fetchFlight(accountDetails: {}, body: {});
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

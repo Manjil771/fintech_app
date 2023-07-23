@@ -27,4 +27,19 @@ class AirlinesAPIProvider {
       token: userRepository.token,
     );
   }
+
+  Future<dynamic> fetchFlightList({
+    required Map<String, dynamic> accountDetails,
+    required Map<String, dynamic> body,
+  }) async {
+    final _uri = UrlUtils.getUri(
+      url: coOperative.baseUrl + "/api/arsflightavailability",
+    );
+
+    return await apiProvider.post(
+      _uri.toString(),
+      {},
+      token: userRepository.token,
+    );
+  }
 }

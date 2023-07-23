@@ -182,7 +182,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 children: [
                   Image.asset(
                     Assets.ismartSlogan,
-                    height: 120.hp,
+                    height: 80.hp,
                   ),
                 ],
               ),
