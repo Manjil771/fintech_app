@@ -72,7 +72,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
                               Text(
-                                "Gaurighatmarg-07, KTM",
+                                val.addressOne,
                                 style: Theme.of(context).textTheme.titleSmall,
                               ),
                             ],
