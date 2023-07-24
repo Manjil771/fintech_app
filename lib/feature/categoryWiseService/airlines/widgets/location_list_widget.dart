@@ -35,7 +35,7 @@ class _LocationListAirlinesWidgetState
   @override
   void initState() {
     super.initState();
-    context.read<AirlinesCubit>().fetchAirlinesList();
+    context.read<AirlinesCubit>().fetchAirlinesLocation();
   }
 
   bool _isLoading = false;

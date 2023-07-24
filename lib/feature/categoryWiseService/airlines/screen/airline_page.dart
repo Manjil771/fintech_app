@@ -3,8 +3,13 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/search_flight_screen.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class AirlinesIntroPage extends StatelessWidget {
+  final ServiceList service;
+
+  const AirlinesIntroPage({super.key, required this.service});
+
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
@@ -34,7 +39,10 @@ class AirlinesIntroPage extends StatelessWidget {
             CustomRoundedButtom(
                 title: "Get Started",
                 onPressed: () {
-                  NavigationService.push(target: SearchFlightScreen());
+                  NavigationService.push(
+                      target: SearchFlightScreen(
+                    service: service,
+                  ));
                 })
           ],
         ),

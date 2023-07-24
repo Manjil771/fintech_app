@@ -15,7 +15,7 @@ class CustomTheme {
   static const Color alankarColor = Color(0xFF0088cf);
   static const Color gomaganeshColor = Color(0xFF1f972b);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = sahakaryaColor;
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);

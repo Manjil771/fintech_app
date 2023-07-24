@@ -3,8 +3,10 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_api_provider.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/available_flight_widget.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:ismart/feature/statement/fullStatement/resources/full_statement_api_provider.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -62,7 +64,7 @@ class AirlinesRepository {
     }
   }
 
-  Future<DataResponse<UtilityResponseData>> fetchFlights({
+  Future<DataResponse<AvailableFlightModel>> fetchFlights({
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
   }) async {
@@ -72,8 +74,8 @@ class AirlinesRepository {
         body: body,
       );
 
-      UtilityResponseData _responseData =
-          UtilityResponseData.fromJson(_res['data'] ?? {});
+      AvailableFlightModel _responseData =
+          AvailableFlightModel.fromJson(_res['data'] ?? {});
       print(_responseData);
       return DataResponse.success(_responseData);
     } on CustomException catch (e) {

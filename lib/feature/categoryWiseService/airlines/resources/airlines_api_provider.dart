@@ -33,12 +33,14 @@ class AirlinesAPIProvider {
     required Map<String, dynamic> body,
   }) async {
     final _uri = UrlUtils.getUri(
-      url: coOperative.baseUrl + "/api/arsflightavailability",
-    );
+        url: coOperative.baseUrl + "/api/arsflightavailability",
+        params: {
+          "service_identifier": "ARS",
+        });
 
     return await apiProvider.post(
       _uri.toString(),
-      {},
+      body,
       token: userRepository.token,
     );
   }

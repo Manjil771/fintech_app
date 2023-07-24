@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_repository.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
@@ -12,13 +13,12 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 class AirlinesCubit extends Cubit<CommonState> {
   final AirlinesRepository airlinesRepository;
   AirlinesCubit({required this.airlinesRepository}) : super(CommonInitial());
-  Future<dynamic> fetchAirlinesList() async {
+  Future<dynamic> fetchAirlinesLocation() async {
     emit(CommonLoading());
     try {
       final response = await airlinesRepository.getAirlinesLocation();
 
       if (response.status == Status.Success && response.data != null) {
-        print("sufasdaghsdas dashdghasjd");
         emit(CommonDataFetchSuccess<AirlinesSectorList>(
             data: response.data ?? []));
       } else {
@@ -40,11 +40,11 @@ class AirlinesCubit extends Cubit<CommonState> {
       body: body,
     );
     if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+      emit(CommonStateSuccess<AvailableFlightModel>(data: _res.data!));
     } else {
       emit(
         CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
+          message: _res.message.toString(),
         ),
       );
     }
