@@ -67,7 +67,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 50),
-          child: Column(
+          child: ListView(
             children: [
               Container(
                 decoration: BoxDecoration(

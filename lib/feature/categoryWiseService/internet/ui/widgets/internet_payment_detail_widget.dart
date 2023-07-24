@@ -71,7 +71,29 @@ class _InternetPaymentDeatilWidgetState
             : widget.detailFetchData
                 .findValue(primaryKey: "package_options")) ??
         []);
-
+    final idd =
+        List.from(widget.detailFetchData.findValue(primaryKey: "packages"));
+    final _defaultID = idd.where(
+      (element) =>
+          element["label"] ==
+          widget.detailFetchData
+              .findValue(
+                primaryKey: "hashResponse",
+                secondaryKey: "subscribedPackageName",
+              )
+              .toString(),
+    );
+    final amount = _selectedPackageId.isEmpty
+        ? widget.detailFetchData
+                    .findValue(
+                        primaryKey: "hashResponse", secondaryKey: "Amount")
+                    .toString() ==
+                "0"
+            ? _defaultID.first["amount"]
+            : widget.detailFetchData
+                .findValue(primaryKey: "hashResponse", secondaryKey: "Amount")
+                .toString()
+        : _amountController.text;
     final bool _isPackageAvailable = _packageOptions.isNotEmpty;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
@@ -108,19 +130,6 @@ class _InternetPaymentDeatilWidgetState
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
               UtilityResponseData _response = state.data;
-              final myAmount = _response
-                  .findValue(
-                      primaryKey: "hashResponse",
-                      secondaryKey: "formattedFinalAmount")
-                  .toString();
-
-              // print(
-              //   "final amsdasjdoasnsda fd kasdsdis  ...${myAmount.replaceAll("NPR ", "")}",
-              // );
-
-              final serviceCharge = _response
-                  .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
-                  .toString();
 
               if (_response.code == "M0000") {
               } else {
@@ -134,7 +143,6 @@ class _InternetPaymentDeatilWidgetState
                     showCancelButton: false);
               }
             }
-            print("state is asdkajhsdjhgasjhd + $state");
           },
           child: Column(
             children: [
@@ -188,118 +196,106 @@ class _InternetPaymentDeatilWidgetState
                   ),
                   KeyValueTile(
                     title: "Amount",
-                    value: widget.detailFetchData
-                        .findValue(
-                          primaryKey: "hashResponse",
-                          secondaryKey: "Amount",
-                        )
-                        .toString(),
+                    value: amount,
                   ),
                   SizedBox(height: _height * 0.008),
 
-                  KeyValueTile(
-                    title: "Days Remaining",
-                    value: widget.detailFetchData
-                        .findValue(
-                          primaryKey: "hashResponse",
-                          secondaryKey: "paymentMessage",
-                        )
-                        .toString(),
-                  ),
+                  // KeyValueTile(
+                  //   title: "Days Remaining",
+                  //   value: widget.detailFetchData
+                  //       .findValue(
+                  //         primaryKey: "hashResponse",
+                  //         secondaryKey: "paymentMessage",
+                  //       )
+                  //       .toString(),
+                  // ),
                   if (_isPackageAvailable)
                     CustomCheckbox(
                       leftMargin: CustomTheme.symmetricHozPadding,
                       selected: _changePackage,
                       onChanged: (val) {
                         setState(() {
-                          _changePackage = val;
+                          _changePackage = true;
                         });
                       },
                       title: "Change Package",
                     ),
                   SizedBox(height: _height * 0.02),
-                  if (_isPackageAvailable)
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      transitionBuilder: (child, animation) {
-                        return SizeTransition(
-                          sizeFactor: animation,
-                          axis: Axis.vertical,
-                          child: child,
-                        );
-                      },
-                      child: OpenContainer(
-                        closedColor: Colors.transparent,
-                        closedElevation: 0.0,
-                        openElevation: 0,
-                        transitionType: ContainerTransitionType.fade,
-                        closedBuilder: (context, open) {
-                          return CustomTextField(
-                            margin: const EdgeInsets.only(
-                              left: CustomTheme.symmetricHozPadding,
-                              right: CustomTheme.symmetricHozPadding,
-                            ),
-                            controller: _packageController,
-                            title: "",
-                            hintText: "Renew Options",
-                            showSearchIcon: true,
-                            readOnly: true,
-                            required: true,
-                            suffixIcon: Icons.keyboard_arrow_down_rounded,
-                            onTap: open,
-                            validator: (val) {
-                              return FormValidator.validateFieldNotEmpty(
-                                val,
-                                "Renew Options",
+
+                  //  if (_isPackageAvailable)
+                  _changePackage || (_isPackageAvailable == false)
+                      ? AnimatedSwitcher(
+                          duration: const Duration(milliseconds: 200),
+                          transitionBuilder: (child, animation) {
+                            return SizeTransition(
+                              sizeFactor: animation,
+                              axis: Axis.vertical,
+                              child: child,
+                            );
+                          },
+                          child: OpenContainer(
+                            closedColor: Colors.transparent,
+                            closedElevation: 0.0,
+                            openElevation: 0,
+                            transitionType: ContainerTransitionType.fade,
+                            closedBuilder: (context, open) {
+                              return CustomTextField(
+                                margin: const EdgeInsets.only(
+                                  left: CustomTheme.symmetricHozPadding,
+                                  right: CustomTheme.symmetricHozPadding,
+                                ),
+                                controller: _packageController,
+                                title: "",
+                                hintText: "Renew Options",
+                                showSearchIcon: true,
+                                readOnly: true,
+                                required: true,
+                                suffixIcon: Icons.keyboard_arrow_down_rounded,
+                                onTap: open,
+                                validator: (val) {
+                                  return FormValidator.validateFieldNotEmpty(
+                                    val,
+                                    "Renew Options",
+                                  );
+                                },
                               );
                             },
-                          );
-                        },
-                        openBuilder: (context, close) {
-                          return WorldlinkSearchWidgets(
-                            useServiceResponse: widget.detailFetchData,
-                            renewOptions: _renewOption,
-                            onChanged: (val) {
-                              _packageController.text = val["text"] ?? "";
-                              _selectedPackageId = val["id"]?.toString() ?? "";
-                              _amountController.text = ((double.tryParse(
-                                              val["amount"]?.toString() ??
-                                                  "0") ??
-                                          0) +
-                                      _dueAmount)
-                                  .toString();
-                            },
-                          );
-                        },
-                      ),
-                    ),
-                  if (_changePackage || (_isPackageAvailable == false))
-                    SizedBox(height: 20.hp),
+                            openBuilder: (context, close) {
+                              return WorldlinkSearchWidgets(
+                                useServiceResponse: widget.detailFetchData,
+                                renewOptions: _renewOption,
+                                onChanged: (val) {
+                                  _packageController.text = val["text"] ?? "";
+                                  _selectedPackageId =
+                                      val["id"]?.toString() ?? "";
+                                  _amountController.text = ((double.tryParse(
+                                                  val["amount"]?.toString() ??
+                                                      "0") ??
+                                              0) +
+                                          _dueAmount)
+                                      .toString();
 
-                  // CustomTextField(title: "Amount", hintText: "Enter the amount"),
+                                  setState(() {});
+                                },
+                              );
+                            },
+                          ),
+                        )
+                      : Container(),
+
                   SizedBox(height: _height * 0.01),
-                  // Container(
-                  //   padding: const EdgeInsets.only(top: 7),
-                  //   height: _height * 0.12,
-                  //   width: double.infinity,
-                  //   child: GridView.builder(
-                  //     itemCount: 6,
-                  //     gridDelegate:
-                  //         const SliverGridDelegateWithFixedCrossAxisCount(
-                  //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                  //     itemBuilder: (context, index) => amountBox(context, index),
-                  //   ),
-                  // ),
                 ],
               ),
             ],
           ),
         ),
         onButtonPressed: () {
-          final packageID =
-              widget.detailFetchData.findValue(primaryKey: "packages");
+          final packageID = _selectedPackageId.isEmpty
+              ? _defaultID.first["id"]
+              : _selectedPackageId.toString();
 
           final boody = {
+            "packageId": packageID,
             "Reserve Info": widget.detailFetchData
                 .findValue(
                     primaryKey: "hashResponse", secondaryKey: "Reserve Info")
@@ -308,11 +304,13 @@ class _InternetPaymentDeatilWidgetState
                 .findValue(
                     primaryKey: "hashResponse", secondaryKey: "Result Message")
                 .toString(),
-            "subscribedPackageName": widget.detailFetchData
-                .findValue(
-                    primaryKey: "hashResponse",
-                    secondaryKey: "subscribedPackageName")
-                .toString(),
+            "subscribedPackageName": _packageController.text.isEmpty
+                ? widget.detailFetchData
+                    .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "subscribedPackageName")
+                    .toString()
+                : _packageController.text,
             "paymentMessage": widget.detailFetchData
                 .findValue(
                     primaryKey: "hashResponse", secondaryKey: "paymentMessage")
@@ -321,9 +319,12 @@ class _InternetPaymentDeatilWidgetState
                 .findValue(
                     primaryKey: "hashResponse", secondaryKey: "dueAmount")
                 .toString(),
-            "Amount": widget.detailFetchData
-                .findValue(primaryKey: "hashResponse", secondaryKey: "Amount")
-                .toString(),
+            // "Amount": _amountController.text.isEmpty
+            //     ? widget.detailFetchData
+            //         .findValue(
+            //             primaryKey: "hashResponse", secondaryKey: "Amount")
+            //         .toString()
+            //     : _amountController.text,
             "isNew": widget.detailFetchData
                 .findValue(primaryKey: "hashResponse", secondaryKey: "isNew")
                 .toString(),
@@ -370,12 +371,14 @@ class _InternetPaymentDeatilWidgetState
                     SizedBox(height: _height * 0.008),
                     KeyValueTile(
                       title: "Subscribed Package",
-                      value: widget.detailFetchData
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "subscribedPackageName",
-                          )
-                          .toString(),
+                      value: _packageController.text.isEmpty
+                          ? widget.detailFetchData
+                              .findValue(
+                                primaryKey: "hashResponse",
+                                secondaryKey: "subscribedPackageName",
+                              )
+                              .toString()
+                          : _packageController.text,
                     ),
                     SizedBox(height: _height * 0.008),
                     KeyValueTile(
@@ -389,12 +392,7 @@ class _InternetPaymentDeatilWidgetState
                     ),
                     KeyValueTile(
                       title: "Amount",
-                      value: widget.detailFetchData
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "Amount",
-                          )
-                          .toString(),
+                      value: amount,
                     ),
                     SizedBox(height: _height * 0.008),
                     KeyValueTile(
@@ -414,10 +412,7 @@ class _InternetPaymentDeatilWidgetState
                           secondaryKey: "wlinkUserName",
                         )
                         .toString(),
-                    "amount": widget.detailFetchData
-                        .findValue(
-                            primaryKey: "hashResponse", secondaryKey: "Amount")
-                        .toString(),
+                    "amount": amount,
                     "account_number":
                         RepositoryProvider.of<CustomerDetailRepository>(context)
                             .selectedAccount

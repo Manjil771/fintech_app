@@ -1,18 +1,18 @@
 class AirlinesSectorList {
-  String? sectorCode;
   String? sectorName;
+  String? sectorCode;
 
-  AirlinesSectorList({this.sectorCode, this.sectorName});
+  AirlinesSectorList({this.sectorName, this.sectorCode});
 
   AirlinesSectorList.fromJson(Map<String, dynamic> json) {
-    sectorCode = json['sectorCode'];
     sectorName = json['sectorName'];
+    sectorCode = json['sectorCode'];
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['sectorCode'] = this.sectorCode;
     data['sectorName'] = this.sectorName;
+    data['sectorCode'] = this.sectorCode;
     return data;
   }
 }

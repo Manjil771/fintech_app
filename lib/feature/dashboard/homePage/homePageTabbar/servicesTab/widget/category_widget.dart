@@ -112,7 +112,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                         .toLowerCase() ==
                                     "airlines") {
                                   NavigationService.push(
-                                      target: AirlinesIntroPage());
+                                      target: AirlinesIntroPage(
+                                    service: data.services[0],
+                                  ));
                                 } else if (data.uniqueIdentifier
                                             .toString()
                                             .toLowerCase() ==
