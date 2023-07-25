@@ -34,7 +34,12 @@ class PassengerDetailWidget extends StatelessWidget {
   final childrenCount;
   final _formKey = GlobalKey<FormState>();
 
-  final _nameController = TextEditingController();
+  final _firstNameController = TextEditingController();
+  final lastNameController = TextEditingController();
+
+  final contactName = TextEditingController();
+  final contactEmail = TextEditingController();
+  final contactNumber = TextEditingController();
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -194,14 +199,17 @@ class PassengerDetailWidget extends StatelessWidget {
               CustomTextField(
                 title: 'Full Name',
                 hintText: 'Full Name',
+                controller: contactName,
               ),
               CustomTextField(
                 title: 'Email',
                 hintText: 'Email',
+                controller: contactEmail,
               ),
               CustomTextField(
                 title: 'Mobile Number',
                 hintText: 'Mobile Number',
+                controller: contactNumber,
               ),
               Text(
                 'Passenger Detail',
@@ -231,11 +239,18 @@ class PassengerDetailWidget extends StatelessWidget {
                           height: 10,
                         ),
                         CustomTextField(
-                          controller: _nameController,
+                          controller: _firstNameController,
                           validator: (value) =>
                               FormValidator.validateFieldNotEmpty(
                                   value, 'Name'),
-                          title: 'Full Name',
+                          title: 'First Name',
+                        ),
+                        CustomTextField(
+                          controller: lastNameController,
+                          validator: (value) =>
+                              FormValidator.validateFieldNotEmpty(
+                                  value, 'Name'),
+                          title: 'Last Name',
                         ),
                         CustomTextField(
                           title: 'Nationality',
@@ -282,8 +297,39 @@ class PassengerDetailWidget extends StatelessWidget {
               target: CommonBillDetailPage(
                   body: Container(),
                   accountDetails: {},
-                  apiEndpoint: "",
-                  apiBody: {},
+                  apiEndpoint: "/api/arsissueticket",
+                  apiBody: {
+                    "accountNumber":
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value!
+                            .accountNumber,
+                    // "mPin": "11111",
+                    "serviceIdentifier": "ARS",
+                    "airlineId": "",
+                    "flightId": selectedFlight!.flightId,
+                    "returnFlightId": "",
+                    "amount": selectedFlight!.totalFare,
+                    "channel": "MOBILE",
+                    "reservationStatus": "OK",
+                    "feeTax": selectedFlight!.tax,
+                    "totalPassenger": adultCount,
+                    "agencyCommission": selectedFlight!.agencyCommission,
+                    "contactName": contactName.text,
+                    "contactEmail": contactEmail.text,
+                    "contactNumber": contactNumber.text,
+                    "issueTicketRequest": [
+                      {
+                        "firstName": _firstNameController.text,
+                        "lastName": lastNameController.text,
+                        "nationality": "NP",
+                        "paxRemarks": "Test",
+                        "paxType": "Adult",
+                        "title": "Mr.",
+                        "gender": "M"
+                      }
+                    ],
+                  },
                   service: service,
                   serviceIdentifier: "ARS"));
 
