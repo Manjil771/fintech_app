@@ -109,6 +109,8 @@ class CommonBillDetailWidget extends StatelessWidget {
             if (_response.status == "M0000" || _response.status == "Success") {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                      pdfUrl:
+                          state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
                       body: body,
                       message: state.data.message,

@@ -19,13 +19,15 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final String message;
   final ServiceList? service;
   final String transactionID;
+  final String? pdfUrl;
 
   const CommonTransactionSuccessPage(
       {super.key,
       required this.body,
       required this.message,
       this.service,
-      required this.transactionID});
+      required this.transactionID,
+      this.pdfUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
   final Widget body;
   final String message;
   final String transactionID;
+  final String? pdfUrl;
 
   final ServiceList? service;
   const CommonTransactionSuccessfulWidget(
@@ -55,7 +58,8 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
       required this.body,
       required this.message,
       required this.service,
-      required this.transactionID});
+      required this.transactionID,
+      this.pdfUrl});
 
   @override
   Widget build(BuildContext context) {
@@ -124,18 +128,42 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                           NavigationService.popUntilFirstPage();
                         }),
                     SizedBox(height: _height * 0.02),
-                    BlocConsumer<TransactionDownloadCubit, CommonState>(
-                      listener: (context, state) {},
-                      builder: (context, state) {
-                        if (state is CommonStateSuccess<String>) {
-                          return CustomRoundedButtom(
+                    pdfUrl != null
+                        ? BlocConsumer<TransactionDownloadCubit, CommonState>(
+                            listener: (context, state) {},
+                            builder: (context, state) {
+                              if (state is CommonStateSuccess<String>) {
+                                return CustomRoundedButtom(
+                                  borderColor: Theme.of(context).primaryColor,
+                                  textColor: Theme.of(context).primaryColor,
+                                  title: "Download Receipt",
+                                  color: Colors.transparent,
+                                  onPressed: () {
+                                    FileDownloadUtils.downloadFile(
+                                      downloadLink: pdfUrl ?? state.data,
+                                      fileName: FileDownloadUtils
+                                          .generateDownloadFileName(
+                                        name: service?.serviceCategoryName ??
+                                            "Utility_Payment",
+                                        filetype: FileType.pdf,
+                                      ),
+                                      context: context,
+                                    );
+                                  },
+                                );
+                              } else {
+                                return Container();
+                              }
+                            },
+                          )
+                        : CustomRoundedButtom(
                             borderColor: Theme.of(context).primaryColor,
                             textColor: Theme.of(context).primaryColor,
                             title: "Download Receipt",
                             color: Colors.transparent,
                             onPressed: () {
                               FileDownloadUtils.downloadFile(
-                                downloadLink: state.data,
+                                downloadLink: pdfUrl.toString(),
                                 fileName:
                                     FileDownloadUtils.generateDownloadFileName(
                                   name: service?.serviceCategoryName ??
@@ -145,12 +173,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                                 context: context,
                               );
                             },
-                          );
-                        } else {
-                          return Container();
-                        }
-                      },
-                    ),
+                          ),
                   ],
                 ),
               ),
