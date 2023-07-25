@@ -57,6 +57,10 @@ class UtilityPaymentAPIProvider {
       params: _params,
     );
 
+    if (serviceIdentifier == "ARS") {
+      body['mobilePin'] = mPin;
+    }
+
     return await apiProvider.post(
       url.toString(),
       body,
