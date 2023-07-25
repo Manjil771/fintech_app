@@ -24,7 +24,6 @@ import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_coo
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
-import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_detail_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
@@ -77,16 +76,7 @@ class RouteGenerator {
           builder: (_) => const ProfilePage(),
           settings: RouteSettings(name: settings.name),
         );
-      case Routes.electricityPayment:
-        return MaterialPageRoute(
-          builder: (_) => const ElectricityPaymentPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.electricityPaymentDetail:
-        return MaterialPageRoute(
-          builder: (_) => const ElectricityPaymentDetailPage(),
-          settings: RouteSettings(name: settings.name),
-        );
+
       case Routes.internalCooperative:
         return MaterialPageRoute(
           builder: (_) => const InternalCooperativePage(),
