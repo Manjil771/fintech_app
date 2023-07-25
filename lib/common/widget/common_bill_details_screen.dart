@@ -106,7 +106,7 @@ class CommonBillDetailWidget extends StatelessWidget {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
-            if (_response.status == "M0000") {
+            if (_response.status == "M0000" || _response.status == "Success") {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       transactionID: state.data.transactionIdentifier,

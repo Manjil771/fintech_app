@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -11,6 +12,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -67,7 +69,9 @@ class ChangeMpinWidget extends StatelessWidget {
                 title: "Success",
                 showCancelButton: false,
                 buttonCallback: () {
-                  NavigationService.pop();
+                  RepositoryProvider.of<UserRepository>(context).logout();
+                  NavigationService.pushNamedAndRemoveUntil(
+                      routeName: Routes.loginPage);
                 },
               );
             } else if (state is CommonError) {

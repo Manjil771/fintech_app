@@ -1,14 +1,33 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class PassengerDetailWidget extends StatelessWidget {
+  Availability? selectedFlight;
+  final ServiceList service;
+
   PassengerDetailWidget(
-      {Key? key, required this.adultCount, required this.childrenCount})
+      {Key? key,
+      required this.adultCount,
+      required this.childrenCount,
+      required this.selectedFlight,
+      required this.service})
       : super(key: key);
 
   final adultCount;
@@ -16,7 +35,7 @@ class PassengerDetailWidget extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
 
   final _nameController = TextEditingController();
-
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -29,194 +48,245 @@ class PassengerDetailWidget extends StatelessWidget {
       topbarName: 'Payment',
       title: 'Passenger Details',
       detail: 'Provide the details of the person traveling on the plane',
-      body: Form(
-        key: _formKey,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              margin: const EdgeInsets.only(bottom: 20),
-              decoration: BoxDecoration(
-                  color: CustomTheme.backgroundColor,
-                  borderRadius: BorderRadius.circular(18)),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        height: 60,
-                        width: 60,
-                        decoration: BoxDecoration(
-                            color: CustomTheme.gray,
-                            borderRadius: BorderRadius.circular(16)),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Expanded(
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          } else if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            UtilityResponseData _response = state.data;
+            final myAmount = _response
+                .findValue(
+                    primaryKey: "hashResponse",
+                    secondaryKey: "formattedFinalAmount")
+                .toString();
+
+            // print(
+            //   "final amsdasjdoasnsda fd kasdsdis  ...${myAmount.replaceAll("NPR ", "")}",
+            // );
+
+            final serviceCharge = _response
+                .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
+                .toString();
+
+            if (_response.code == "M0000") {
+            } else {
+              showPopUpDialog(
+                  context: context,
+                  message: _response.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false);
+            }
+          }
+        },
+        child: Form(
+          key: _formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
+                margin: const EdgeInsets.only(bottom: 20),
+                decoration: BoxDecoration(
+                    color: CustomTheme.backgroundColor,
+                    borderRadius: BorderRadius.circular(18)),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      children: [
+                        Container(
+                          height: 60,
+                          width: 60,
+                          decoration: BoxDecoration(
+                              color: CustomTheme.gray,
+                              borderRadius: BorderRadius.circular(16)),
+                        ),
+                        const SizedBox(
+                          width: 15,
+                        ),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                selectedFlight!.airline,
+                                style: _textTheme.displaySmall!
+                                    .copyWith(fontSize: 14),
+                              ),
+                              Text(
+                                selectedFlight!.departureTime +
+                                    "-" +
+                                    selectedFlight!.arrivalTime,
+                                style: _textTheme.titleLarge,
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 5),
+                        Column(
                           children: [
                             Text(
-                              'Yeti Air',
-                              style: _textTheme.displaySmall!
-                                  .copyWith(fontSize: 16),
+                              'Ticket Price',
+                              style: _textTheme.titleLarge,
                             ),
                             Text(
-                              '8:00 AM - 9:00 PM',
+                              selectedFlight!.totalFare.toString(),
                               style: _textTheme.displaySmall!
-                                  .copyWith(fontSize: 16),
+                                  .copyWith(fontSize: 14),
                             ),
                           ],
+                        )
+                      ],
+                    ),
+                    const SizedBox(height: 20),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        KeyValueTile(
+                          title: 'Departure',
+                          value:
+                              "${selectedFlight!.flightDate.year}-${selectedFlight!.flightDate.month}-${selectedFlight!.flightDate.day}",
                         ),
-                      ),
-                      const SizedBox(
-                        width: 5,
-                      ),
-                      Column(
-                        children: [
-                          Text(
-                            'Ticket Price',
-                            style: _textTheme.headlineSmall,
-                          ),
-                          Text(
-                            '5000',
-                            style:
-                                _textTheme.displaySmall!.copyWith(fontSize: 16),
-                          ),
-                        ],
-                      )
-                    ],
-                  ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Departure : 30  mar2023',
-                        style: _textTheme.titleSmall!.copyWith(
-                          fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
+                        KeyValueTile(
+                            title: "Routes",
+                            value: selectedFlight!.departure +
+                                " - " +
+                                selectedFlight!.arrival)
+                      ],
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
+                  ],
+                ),
+              ),
+              Text(
+                'Contact Person Details',
+                style: _textTheme.displaySmall,
+              ),
+              Text(
+                'Ticket will be sent to below input number',
+                style: _textTheme.bodyLarge,
+              ),
+              SizedBox(
+                height: 15,
+              ),
+              CustomTextField(
+                title: 'Full Name',
+                hintText: 'Full Name',
+              ),
+              CustomTextField(
+                title: 'Email',
+                hintText: 'Email',
+              ),
+              CustomTextField(
+                title: 'Mobile Number',
+                hintText: 'Mobile Number',
+              ),
+              Text(
+                'Passenger Detail',
+                style: _textTheme.displaySmall,
+              ),
+              Text(
+                'Please enter following details',
+                style: _textTheme.bodyLarge,
+              ),
+              SizedBox(
+                height: 20,
+              ),
+              if (adultCount > 0)
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: adultCount,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Please enter adult ${index + 1} details',
+                          style: _textTheme.headlineSmall,
                         ),
-                      ),
-                      SizedBox(
-                        height: 15,
-                      ),
-                      Text(
-                        'Route : KTM to PKR',
-                        style: _textTheme.titleSmall!.copyWith(
-                          fontSize: 14,
-                          overflow: TextOverflow.ellipsis,
+                        SizedBox(
+                          height: 10,
                         ),
-                      ),
-                    ],
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                ],
-              ),
-            ),
-            Text(
-              'Contact Person Details',
-              style: _textTheme.displaySmall,
-            ),
-            Text(
-              'Ticket will be sent to below input number',
-              style: _textTheme.bodyLarge,
-            ),
-            SizedBox(
-              height: 15,
-            ),
-            CustomTextField(
-              title: 'Full Name',
-              hintText: 'Full Name',
-            ),
-            CustomTextField(
-              title: 'Email',
-              hintText: 'Email',
-            ),
-            CustomTextField(
-              title: 'Mobile Number',
-              hintText: 'Mobile Number',
-            ),
-            Text(
-              'Passenger Detail',
-              style: _textTheme.displaySmall,
-            ),
-            Text(
-              'Please enter following details',
-              style: _textTheme.bodyLarge,
-            ),
-            SizedBox(
-              height: 20,
-            ),
-            if (adultCount > 0)
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: adultCount,
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Please enter adult ${index + 1} details',
-                        style: _textTheme.headlineSmall,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextField(
-                        controller: _nameController,
-                        validator: (value) =>
-                            FormValidator.validateFieldNotEmpty(value, 'Name'),
-                        title: 'Full Name',
-                      ),
-                      CustomTextField(
-                        title: 'Nationality',
-                      ),
-                    ],
-                  );
-                },
-              ),
-            if (childrenCount > 0)
-              ListView.builder(
-                physics: NeverScrollableScrollPhysics(),
-                shrinkWrap: true,
-                itemCount: childrenCount,
-                itemBuilder: (context, index) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Please enter children ${index + 1} details',
-                        style: _textTheme.headlineSmall,
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      CustomTextField(
-                        title: 'Full Name',
-                      ),
-                      CustomTextField(
-                        title: 'Nationality',
-                      ),
-                    ],
-                  );
-                },
-              ),
-          ],
+                        CustomTextField(
+                          controller: _nameController,
+                          validator: (value) =>
+                              FormValidator.validateFieldNotEmpty(
+                                  value, 'Name'),
+                          title: 'Full Name',
+                        ),
+                        CustomTextField(
+                          title: 'Nationality',
+                        ),
+                      ],
+                    );
+                  },
+                ),
+              if (childrenCount > 0)
+                ListView.builder(
+                  physics: NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  itemCount: childrenCount,
+                  itemBuilder: (context, index) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          'Please enter children ${index + 1} details',
+                          style: _textTheme.headlineSmall,
+                        ),
+                        SizedBox(
+                          height: 10,
+                        ),
+                        CustomTextField(
+                          title: 'Full Name',
+                        ),
+                        CustomTextField(
+                          title: 'Nationality',
+                        ),
+                      ],
+                    );
+                  },
+                ),
+            ],
+          ),
         ),
       ),
-      buttonName: 'Confirm',
+      buttonName: 'Pay',
       onButtonPressed: () {
         _formKey.currentState!.save();
         if (_formKey.currentState!.validate()) {
+          NavigationService.push(
+              target: CommonBillDetailPage(
+                  body: Container(),
+                  accountDetails: {},
+                  apiEndpoint: "",
+                  apiBody: {},
+                  service: service,
+                  serviceIdentifier: "ARS"));
+
           print('validated');
         }
       },
