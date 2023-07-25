@@ -20,12 +20,12 @@ class AirlinesIntroPage extends StatelessWidget {
           children: [
             Image.asset("assets/images/book your flight-min.png"),
             Column(
-              children: [
-                const Text(
+              children: const [
+                Text(
                   "Book Your Flight",
                   style: TextStyle(fontFamily: "popinbold", fontSize: 26),
                 ),
-                const Text(
+                Text(
                   "Book airplane tickets in a convenient manner.",
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -39,6 +39,7 @@ class AirlinesIntroPage extends StatelessWidget {
             CustomRoundedButtom(
                 title: "Get Started",
                 onPressed: () {
+                  NavigationService.pop();
                   NavigationService.push(
                       target: SearchFlightScreen(
                     service: service,
