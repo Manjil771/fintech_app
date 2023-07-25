@@ -10,11 +10,13 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
+import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
+
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
 class CategoryWidget extends StatefulWidget {
@@ -105,8 +107,10 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                         .toString()
                                         .toLowerCase() ==
                                     "electricity") {
-                                  NavigationService.pushNamed(
-                                      routeName: Routes.electricityPayment);
+                                  NavigationService.push(
+                                      target: ElectricityPaymentPage(
+                                    service: data.services[0],
+                                  ));
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
