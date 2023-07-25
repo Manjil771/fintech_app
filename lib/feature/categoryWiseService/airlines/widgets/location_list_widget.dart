@@ -54,6 +54,7 @@ class _FlightsSearchPageState extends State<FlightsSearchPage> {
         airlinesRepository: RepositoryProvider.of<AirlinesRepository>(context),
       )..fetchAirlinesLocation(),
       child: PageWrapper(
+        showBackButton: true,
         leadingAppIcon: CustomIconButton(
           icon: Icons.close_rounded,
           shadow: false,
@@ -72,7 +73,7 @@ class _FlightsSearchPageState extends State<FlightsSearchPage> {
               final _sectors = state.data;
               return SearchWidgets(
                 onChanged: widget.onChanged,
-                ignoreValue: widget.selectedValue,
+                ignoreValue: null,
                 hideValue: false,
                 showSearchHistory: false,
                 items: List.generate(
