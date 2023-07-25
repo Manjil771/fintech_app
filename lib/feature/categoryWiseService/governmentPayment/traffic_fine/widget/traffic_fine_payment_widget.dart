@@ -90,8 +90,11 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 apiEndpoint: "/api/governmentpayment/pay",
                 apiBody: {
                   "voucherCode": chitNumberController.text,
-                  "billerCode": _response.findValue(
-                      primaryKey: "hashResposne", secondaryKey: "billerCode"),
+                  "billerCode": _response
+                      .findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "billerCode")
+                      .toString(),
                   "serviceCharge": serviceCharge,
                   "fiscalYear": dateController.text,
                 },
@@ -119,14 +122,14 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                               secondaryKey: "billerCode",
                             )
                             .toString()),
-                    // KeyValueTile(
-                    //     title: "title",
-                    //     value: _response
-                    //         .findValue(
-                    //           primaryKey: "hashResponse",
-                    //           secondaryKey: "amount",
-                    //         )
-                    //         .toString()),
+                    KeyValueTile(
+                        title: "Name",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "customerName",
+                            )
+                            .toString()),
                     KeyValueTile(
                         title: "Amount",
                         value: _response

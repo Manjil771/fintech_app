@@ -140,7 +140,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                                   color: Colors.transparent,
                                   onPressed: () {
                                     FileDownloadUtils.downloadFile(
-                                      downloadLink: pdfUrl ?? state.data,
+                                      downloadLink: state.data,
                                       fileName: FileDownloadUtils
                                           .generateDownloadFileName(
                                         name: service?.serviceCategoryName ??
@@ -162,6 +162,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                             title: "Download Receipt",
                             color: Colors.transparent,
                             onPressed: () {
+                              print(pdfUrl.toString());
                               FileDownloadUtils.downloadFile(
                                 downloadLink: pdfUrl.toString(),
                                 fileName:

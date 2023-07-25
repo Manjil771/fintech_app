@@ -152,15 +152,17 @@ class CommonBillDetailWidget extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: _height * 0.02),
-                  service.service.isEmpty
-                      ? Container()
-                      : Text(
-                          service.service,
-                          style: TextStyle(
-                              fontSize: 20,
-                              color: Colors.black,
-                              fontWeight: FontWeight.w500),
-                        ),
+                  Center(
+                    child: service.service.isEmpty
+                        ? Container()
+                        : Text(
+                            service.service,
+                            style: TextStyle(
+                                fontSize: 20,
+                                color: Colors.black,
+                                fontWeight: FontWeight.w500),
+                          ),
+                  ),
                   SizedBox(height: _height * 0.02),
                   Text(
                       "Details about the payable amount for the service of ${service.service} is shown below.",
