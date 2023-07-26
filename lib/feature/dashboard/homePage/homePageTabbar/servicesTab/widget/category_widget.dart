@@ -12,6 +12,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
+import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
@@ -117,6 +118,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     "airlines") {
                                   NavigationService.push(
                                       target: AirlinesIntroPage(
+                                    service: data.services[0],
+                                  ));
+                                } else if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "credit_card") {
+                                  NavigationService.push(
+                                      target: CreditCardPaymentPage(
                                     service: data.services[0],
                                   ));
                                 } else if (data.uniqueIdentifier

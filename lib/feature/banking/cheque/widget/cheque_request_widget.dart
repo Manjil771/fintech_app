@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -43,10 +44,21 @@ class ChequeRequestWidget extends StatelessWidget {
         }
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
+          if (_response.code == "M0000") {
+            showPopUpDialog(
+              context: context,
+              message: _response.message,
+              title: _response.status,
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
           showPopUpDialog(
             context: context,
             message: _response.message,
-            title: _response.status,
+            title: "Error",
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
@@ -71,10 +83,23 @@ class ChequeRequestWidget extends StatelessWidget {
                     NavigationService.pop();
                     context.read<UtilityPaymentCubit>().makePayment(
                         serviceIdentifier: "",
-                        accountDetails: {},
+                        accountDetails: {
+                          "accountNumber":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
+                          "account_number":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
+                        },
                         body: {
                           "mPin": p0,
-                          "chequeLeave": chequeLeavesController.text,
+                          "chequeNumber": chequeLeavesController.text,
                         },
                         apiEndpoint: "api/chequerequest",
                         mPin: p0);
