@@ -4,19 +4,17 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/custom_checkbox.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/widget/common_username_search_widget.dart';
-import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -54,8 +52,10 @@ class _CommonInternetPaymentDeatilWidgetState
                 ?.toString() ??
             "0") ??
         0;
-    _amountController.text = ((double.tryParse(widget.detailFetchData
-                    .findValueString("amount", emptyString: "")) ??
+    _amountController.text = ((double.tryParse(widget.detailFetchData.findValue(
+                  primaryKey: "hashResponse",
+                  secondaryKey: "amount",
+                )) ??
                 0) +
             _dueAmount)
         .toString();
@@ -79,6 +79,29 @@ class _CommonInternetPaymentDeatilWidgetState
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    final idd =
+        List.from(widget.detailFetchData.findValue(primaryKey: "packages"));
+    final _defaultID = idd.where(
+      (element) =>
+          element["label"] ==
+          widget.detailFetchData
+              .findValue(
+                primaryKey: "hashResponse",
+                secondaryKey: "subscribedPackageName",
+              )
+              .toString(),
+    );
+    final amount = _selectedPackageId.isEmpty
+        ? widget.detailFetchData
+                    .findValue(
+                        primaryKey: "hashResponse", secondaryKey: "amount")
+                    .toString() ==
+                "0"
+            ? _defaultID.first["amount"]
+            : widget.detailFetchData
+                .findValue(primaryKey: "hashResponse", secondaryKey: "amount")
+                .toString()
+        : _amountController.text;
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
@@ -88,7 +111,8 @@ class _CommonInternetPaymentDeatilWidgetState
           } else if (state is! CommonLoading && _isLoading) {
             _isLoading = false;
             NavigationService.pop();
-          } else if (state is CommonError) {
+          }
+          if (state is CommonError) {
             showPopUpDialog(
               context: context,
               message: state.message,
@@ -103,7 +127,42 @@ class _CommonInternetPaymentDeatilWidgetState
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.status.toLowerCase() == "success" ||
-                _response.code == "M0000") {
+                _response.code == "M0000" ||
+                _response.status == "M0000") {
+              NavigationService.push(
+                  target: CommonTransactionSuccessPage(
+                      body: Column(children: [
+                        KeyValueTile(
+                          title: "Customer Name",
+                          value: widget.detailFetchData
+                              .findValue(
+                                primaryKey: "hashResponse",
+                                secondaryKey: "customerName",
+                              )
+                              .toString(),
+                        ),
+                        SizedBox(height: _height * 0.008),
+                        KeyValueTile(
+                          title: "Customer ID",
+                          value: widget.detailFetchData.findValue(
+                                primaryKey: "hashResponse",
+                                secondaryKey: "userName",
+                              ) ??
+                              widget.detailFetchData
+                                  .findValue(
+                                      primaryKey: "hashResponse",
+                                      secondaryKey: "username")
+                                  .toString(),
+                        ),
+                        SizedBox(height: _height * 0.008),
+                        KeyValueTile(
+                          title: "Amount",
+                          value:
+                              "${AmountUtils.getAmountInRupees(amount: _amountController.text)}",
+                        ),
+                      ]),
+                      message: _response.message,
+                      transactionID: _response.transactionIdentifier));
             } else {
               showPopUpDialog(
                 context: context,
@@ -161,10 +220,8 @@ class _CommonInternetPaymentDeatilWidgetState
                   SizedBox(height: _height * 0.008),
                   KeyValueTile(
                     title: "Amount",
-                    value: widget.detailFetchData.findValue(
-                      primaryKey: "hashResponse",
-                      secondaryKey: "amount",
-                    ),
+                    value:
+                        "${AmountUtils.getAmountInRupees(amount: _amountController.text)}",
                   ),
                   SizedBox(height: _height * 0.008),
                   // if (_isPackageAvailable)
@@ -256,14 +313,18 @@ class _CommonInternetPaymentDeatilWidgetState
             ],
           ),
           onButtonPressed: () {
+            final packageID = idd.first["id"];
+            final body = {
+              "id": packageID,
+              "packageId": packageID,
+            };
             NavigationService.push(
               target: TransactionPinScreen(
                 onValueCallback: (mpin) {
                   NavigationService.pop();
                   context.read<UtilityPaymentCubit>().makePayment(
                         mPin: mpin,
-                        body: widget.detailFetchData
-                            .findValue(primaryKey: "hashResponse"),
+                        body: body,
                         serviceIdentifier: widget.service.uniqueIdentifier,
                         accountDetails: {
                           "username": widget.detailFetchData.findValue(
