@@ -6,18 +6,24 @@ import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khanepani_detail_screen.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
+import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class KhanePaniWidget extends StatefulWidget {
-  const KhanePaniWidget({Key? key}) : super(key: key);
+  final ServiceList service;
+  const KhanePaniWidget({Key? key, required this.service}) : super(key: key);
 
   @override
   State<KhanePaniWidget> createState() => _KhanePaniWidgetState();
@@ -50,14 +56,72 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            if (state.data.code == "M0000") {
+            final _response = state.data;
+            if (state.data.code == "M0000" ||
+                state.data.status.toLowerCase() == "success") {
               NavigationService.push(
-                  target: KhanepaniDetailsPage(
-                counterName: selectedCounter?.title ?? "",
-                customerCode: _customerIdController.text,
-                useServiceResponse: state.data,
-                counterCode: selectedCounter?.value ?? "",
-              ));
+                  target: CommonBillDetailPage(
+                      body: Column(
+                        children: [
+                          KeyValueTile(
+                            title: "Customer Code",
+                            value: _response.findValueString("customer_code"),
+                          ),
+                          KeyValueTile(
+                            title: "Customer Name",
+                            value: _response.findValueString("customer_name"),
+                          ),
+                          KeyValueTile(
+                            title: "Address",
+                            value: _response.findValueString("address"),
+                          ),
+                          KeyValueTile(
+                            title: "Current Month Dues",
+                            value:
+                                _response.findValueString("current_month_dues"),
+                          ),
+                          KeyValueTile(
+                            title: "Current Fine",
+                            value:
+                                _response.findValueString("current_month_fine"),
+                          ),
+                          KeyValueTile(
+                            title: "Discount",
+                            value: _response
+                                .findValueString("current_month_discount"),
+                          ),
+                          KeyValueTile(
+                            title: "Total Credit Sales Amount",
+                            value: _response
+                                .findValueString("total_credit_sales_amount"),
+                          ),
+                          KeyValueTile(
+                            title: "Total Advance Amount",
+                            value: _response
+                                .findValueString("total_advance_amount"),
+                          ),
+                          KeyValueTile(
+                            title: "Previous Dues",
+                            value: _response.findValueString("previous_dues"),
+                          ),
+                        ],
+                      ),
+                      accountDetails: {
+                        "amount": _response.findValueString("previous_dues"),
+                        "customer_code": _customerIdController.text,
+                        "counter": selectedCounter?.value,
+                      },
+                      apiEndpoint: "/api/khanepanipay",
+                      apiBody: {},
+                      service: widget.service,
+                      serviceIdentifier: widget.service.uniqueIdentifier));
+              // NavigationService.push(
+              //     target: KhanepaniDetailsPage(
+              //   counterName: selectedCounter?.title ?? "",
+              //   customerCode: _customerIdController.text,
+              //   useServiceResponse: state.data,
+              //   counterCode: selectedCounter?.value ?? "",
+              // ));
             } else {
               showPopUpDialog(
                   context: context,
@@ -82,6 +146,12 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                 context.read<UtilityPaymentCubit>().fetchDetails(
                       serviceIdentifier: "",
                       accountDetails: {
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
                         "customer_code": _customerIdController.text,
                         "counter": selectedCounter?.value ?? "",
                         "month_id": 0,

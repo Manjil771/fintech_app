@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/qrCode/shareQr/resources/qr_cubit.dart';
 import 'package:ismart/feature/qrCode/shareQr/widget/external_qr_widget.dart';
@@ -52,138 +53,80 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
         showRoundBotton: false,
         showTitleText: false,
         topbarName: "My Qr",
-        body: BlocConsumer<QrCubit, CommonState>(
-          listener: (context, state) {
-            if (state is CommonLoading && !_isLoading) {
-              _isLoading = true;
-              showLoadingDialogBox(context);
-            } else if (state is! CommonLoading && _isLoading) {
-              _isLoading = false;
-              NavigationService.pop();
-            }
+        body: Container(
+          height: _height / 1.5,
+          child: BlocConsumer<QrCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoading && !_isLoading) {
+                _isLoading = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading) {
+                _isLoading = false;
+                NavigationService.pop();
+              }
 
-            // if (state is CommonError) {
-            //   showPopUpDialog(
-            //     context: context,
-            //     message: state.message,
-            //     title: "Error",
-            //     showCancelButton: false,
-            //     buttonCallback: () {
-            //       NavigationService.pop();
-            //     },
-            //   );
-            // }
-          },
-          builder: (context, state) {
-            if (state is CommonStateSuccess) {
-              return Container(
-                height: _height / 1.5,
-                child: DefaultTabController(
-                  initialIndex: 0,
-                  length: 2,
-                  child: Column(
-                    children: [
-                      TabBar(
-                        labelColor: Colors.black,
-                        unselectedLabelColor: Color(0xFF989898),
-                        labelStyle: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w500),
-                        indicatorColor: _theme.primaryColor,
-                        automaticIndicatorColorAdjustment: true,
-                        tabs: [
-                          Tab(text: "External Qr"),
-                          Tab(text: "Internal Qr"),
-                        ],
-                      ),
-                      SizedBox(height: _height * 0.02),
-                      Expanded(
-                        child: TabBarView(
-                          children: [
-                            ExternalQrWidget(
-                                qrPath: state.data["data"]["details"]
-                                        ["ExternalQRURL"]
-                                    .toString()),
-                            InternalQrWidget(
-                                qrPath: state.data["data"]["details"]
-                                        ["QRCodePath"]
-                                    .toString()),
-                          ],
-                        ),
-                      )
-                    ],
-                  ),
-                ),
-
-                // Row(
-                //   children: [
-                //     Expanded(
-                //       child: InkWell(
-                //         onTap: () {
-                //           setState(() {
-                //             isInternalQr = false;
-                //           });
-                //         },
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(12),
-                //             color:
-                //                 isInternalQr ? Colors.black12 : Colors.white,
-                //           ),
-                //           height: _height * 0.04,
-                //           child: Center(
-                //             child: Text(
-                //               "External Qr",
-                //               style: _textTheme.titleSmall,
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //     SizedBox(width: _width * 0.05),
-                //     Expanded(
-                //       child: InkWell(
-                //         onTap: () {
-                //           setState(() {
-                //             isInternalQr = true;
-                //           });
-                //         },
-                //         child: Container(
-                //           decoration: BoxDecoration(
-                //             borderRadius: BorderRadius.circular(8),
-                //             color:
-                //                 isInternalQr ? Colors.white : Colors.black12,
-                //           ),
-                //           height: _height * 0.04,
-                //           child: Center(
-                //             child: Text(
-                //               "Internal Qr",
-                //               style: _textTheme.titleSmall,
-                //             ),
-                //           ),
-                //         ),
-                //       ),
-                //     ),
-                //   ],
-                // ),
-                // isInternalQr
-                //     ? Container()
-                //     : InternalQrWidget(
-                //         qrPath: state.data["data"]["details"]["QRCodePath"]
-                //             .toString())
-                //     style: Theme.of(context).textTheme.titleSmall),
-
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                //   children: [
-                //     shareMyQr(context),
-                //     phonePayQr(context),
-                //   ],
-                // ),
-              );
-            } else {
-              return Container();
-            }
-          },
+              if (state is CommonError) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.message,
+                  title: "Error",
+                  showCancelButton: false,
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                );
+              }
+            },
+            builder: (context, state) {
+              if (state is CommonStateSuccess) {
+                return Container(
+                  child: state.data["data"]["details"]["ExternalQRURL"]
+                              .toString() ==
+                          null
+                      ? DefaultTabController(
+                          initialIndex: 0,
+                          length: 2,
+                          child: Column(
+                            children: [
+                              TabBar(
+                                labelColor: Colors.black,
+                                unselectedLabelColor: Color(0xFF989898),
+                                labelStyle: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                                indicatorColor: _theme.primaryColor,
+                                automaticIndicatorColorAdjustment: true,
+                                tabs: [
+                                  Tab(text: "External Qr"),
+                                  Tab(text: "Internal Qr"),
+                                ],
+                              ),
+                              SizedBox(height: _height * 0.02),
+                              Expanded(
+                                child: TabBarView(
+                                  children: [
+                                    ExternalQrWidget(
+                                        qrPath: state.data["data"]["details"]
+                                                ["ExternalQRURL"]
+                                            .toString()),
+                                    InternalQrWidget(
+                                        qrPath: state.data["data"]["details"]
+                                                ["QRCodePath"]
+                                            .toString()),
+                                  ],
+                                ),
+                              )
+                            ],
+                          ),
+                        )
+                      : InternalQrWidget(
+                          qrPath: state.data["data"]["details"]["QRCodePath"]
+                              .toString()),
+                );
+              } else {
+                return Container();
+              }
+            },
+          ),
         ),
       ),
     );

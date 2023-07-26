@@ -183,7 +183,10 @@ class _CategoriesWiseServicesWidgetState
     }
     if (uniqueIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
-      NavigationService.push(target: const KhanePaniPage());
+      NavigationService.push(
+          target: KhanePaniPage(
+        service: servicess,
+      ));
     }
     if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
         uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
