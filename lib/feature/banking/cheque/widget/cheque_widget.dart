@@ -17,7 +17,7 @@ class ChequeWidget extends StatelessWidget {
         body: CommonContainer(
       showDetail: false,
       body: SizedBox(
-        height: _height,
+        height: _height * 0.6,
         child: DefaultTabController(
           initialIndex: 0,
           length: 2,

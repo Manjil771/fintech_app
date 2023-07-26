@@ -91,7 +91,6 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
         }
       },
       child: PageWrapper(
-        padding: EdgeInsets.zero,
         body: SingleChildScrollView(
           child: Form(
             key: _formKey,
