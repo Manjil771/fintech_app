@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -37,20 +38,19 @@ class ChangeMpinWidget extends StatelessWidget {
         topbarName: "Settings",
         buttonName: "Submit",
         onButtonPressed: () {
-          // if (_formKey.currentState!.validate()) {
-          context.read<UtilityPaymentCubit>().makePayment(
-            mPin: oldPinController.text,
-            serviceIdentifier: "",
-            // serviceIdentifier: "traffic_fine_payments",
-            apiEndpoint: "/api/changepin",
-            body: {},
-            accountDetails: {
-              "oldmPin": oldPinController.text,
-              "newmPin": newPinController.text,
-              "remPin": reEnterPinController.text,
-            },
-          );
-          // }
+          if (_formKey.currentState!.validate()) {
+            context.read<UtilityPaymentCubit>().makePayment(
+              mPin: oldPinController.text,
+              serviceIdentifier: "",
+              apiEndpoint: "/api/changepin",
+              body: {},
+              accountDetails: {
+                "oldmPin": oldPinController.text,
+                "newmPin": newPinController.text,
+                "remPin": reEnterPinController.text,
+              },
+            );
+          }
         },
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -69,16 +69,22 @@ class ChangeMpinWidget extends StatelessWidget {
                 title: "Success",
                 showCancelButton: false,
                 buttonCallback: () {
+                  SharedPref.removeBiometricLogin();
                   RepositoryProvider.of<UserRepository>(context).logout();
                   NavigationService.pushNamedAndRemoveUntil(
                       routeName: Routes.loginPage);
                 },
               );
             } else if (state is CommonError) {
+              String _message = state.message;
+              if (_message.toLowerCase().contains("validation")) {
+                _message =
+                    "The old PIN you entered is wrong. Please check and re-submit.";
+              }
               showPopUpDialog(
                 context: context,
-                message: state.message,
-                title: "Error",
+                message: _message,
+                title: state.message,
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -91,6 +97,7 @@ class ChangeMpinWidget extends StatelessWidget {
             child: Column(
               children: [
                 CustomTextField(
+                  obscureText: true,
                   controller: oldPinController,
                   title: "Old MPin",
                   hintText: "XXXXXXX",
@@ -102,6 +109,8 @@ class ChangeMpinWidget extends StatelessWidget {
                 ),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
@@ -112,9 +121,14 @@ class ChangeMpinWidget extends StatelessWidget {
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
+                      }
+                      if (newPinController.text != val) {
+                        return "Confirm Pin doesnot match.";
                       }
                     },
                     controller: reEnterPinController,

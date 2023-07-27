@@ -152,11 +152,7 @@ class RouteGenerator {
           builder: (_) => const WalletTransferScreen(),
           settings: RouteSettings(name: settings.name),
         );
-      case Routes.selectDataPack:
-        return MaterialPageRoute(
-          builder: (_) => const SelectDatapackScreen(),
-          settings: RouteSettings(name: settings.name),
-        );
+
       case Routes.buyDatapack:
         return MaterialPageRoute(
           builder: (_) => const BuyDatapackScreen(),
