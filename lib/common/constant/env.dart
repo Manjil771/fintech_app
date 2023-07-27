@@ -160,7 +160,7 @@ class CoOperativeValue {
 
   static final CoOperative kamanaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/kamana/kamana_banner.png",
+    bannerImage: "assets/kamana/kamana_banner_v2.png",
     clientCode: 'LQ7QMJ5NRB',
     clientSecret: "118107",
     backgroundImage: "assets/kamana/kamana_background_image.png",
