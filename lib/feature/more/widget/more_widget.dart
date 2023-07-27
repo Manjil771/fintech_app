@@ -27,11 +27,9 @@ class MoreWidget extends StatelessWidget {
       NavigationService.pushNamed(routeName: Routes.emiCalculator);
     },
     () {
-      // NavigationService.push(target: EmiCalculatorPage());
+      NavigationService.pushNamed(routeName: Routes.downloadScreen);
     },
     () async {
-      final String url = "tel://9813";
-
       if (await canLaunchUrl(Uri.parse("tel:9801132218"))) {
         await launchUrl(Uri.parse("tel:9801132218"));
       } else {

@@ -137,8 +137,8 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
         child: CommonContainer(
             buttonName: "Show Bill",
             showAccountSelection: true,
-            title: "Khane Pani",
-            detail: "Pay for your water bill from here.",
+            title: widget.service.service,
+            detail: widget.service.instructions,
             showDetail: true,
             topbarName: "Khane Pani",
             onButtonPressed: () {
