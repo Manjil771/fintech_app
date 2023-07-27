@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
+import 'package:ismart/feature/qrCode/shareQr/resources/qr_repository.dart';
 import 'package:ismart/feature/qrscanner/widgets/qrscanner_widget.dart';
 
 class QRScannerScreens extends StatelessWidget {
@@ -12,9 +16,15 @@ class QRScannerScreens extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const QRScannerWidgets(
-        // onScanned: onScanned,
-        // type: type,
-        );
+    return BlocProvider(
+      create: (context) => AppServiceCubit(
+          appServiceRepository:
+              RepositoryProvider.of<AppServiceRepository>(context))
+        ..fetchAppService(),
+      child: const QRScannerWidgets(
+          // onScanned: onScanned,
+          // type: type,
+          ),
+    );
   }
 }

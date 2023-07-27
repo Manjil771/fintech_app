@@ -10,6 +10,7 @@ import 'package:ismart/feature/categoryWiseService/landline/screen/landline_paym
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
+import 'package:ismart/feature/more/download/screens/downloads_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
@@ -177,6 +178,11 @@ class RouteGenerator {
       case Routes.miniStatement:
         return MaterialPageRoute(
           builder: (_) => const MiniStatementPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.downloadScreen:
+        return MaterialPageRoute(
+          builder: (_) => const DownloadPage(),
           settings: RouteSettings(name: settings.name),
         );
 

@@ -6,6 +6,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -31,7 +32,7 @@ class ElectricityPaymentWidget extends StatefulWidget {
 
 class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   KeyValue? selectedCounter;
-
+  final _formKey = GlobalKey<FormState>();
   final TextEditingController _selectedCounterController =
       TextEditingController();
   bool _isLoading = false;
@@ -41,9 +42,10 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        showAccountSelection: true,
         showDetail: true,
-        title: "NEA Payment",
-        detail: "Pay for your electricity bill from here.",
+        title: widget.service.service,
+        detail: widget.service.instructions,
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
             if (state is CommonLoading && _isLoading == false) {
@@ -86,91 +88,73 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                   },
                 );
               }
-              // NavigationService.push(
-              //   target: CommonBillDetailPage(
-              //     body: Column(
-              //       children: [
-              //         KeyValueTile(
-              //             title: "Customer Name",
-              //             value: _response.findValue(
-              //                 primaryKey: "hashResponse",
-              //                 secondaryKey: "Customer Name")),
-              //         KeyValueTile(
-              //             title: "Session ID",
-              //             value: _response.findValue(
-              //                 primaryKey: "hashResponse",
-              //                 secondaryKey: "sessionId")),
-              //         // KeyValueTile(
-              //         //     title: "Date",
-              //         //     value: _response.findValue(
-              //         //         primaryKey: "payment"[0],
-              //         //         secondaryKey: "_description")),
-              //         KeyValueTile(
-              //             title: "Billable Amount",
-              //             value: _response.findValue(
-              //                 primaryKey: "hashResponse",
-              //                 secondaryKey: "Billable Amount")),
-              //         KeyValueTile(
-              //             title: "Amount",
-              //             value: _response.findValue(
-              //                 primaryKey: "payment"[0],
-              //                 secondaryKey: "_amount")),
-              //       ],
-              //     ),
-              //     accountDetails: {},
-              //     apiEndpoint: "",
-              //     apiBody: {},
-              //     service: widget.service,
-              //     serviceIdentifier: "",
-              //   ),
-              // );
             }
           },
-          child: Column(
-            children: [
-              CustomTextField(
-                title: "Select Counter ",
-                hintText: "Select From List",
-                readOnly: true,
-                suffixIcon: Icons.arrow_downward,
-                showSearchIcon: true,
-                controller: _selectedCounterController,
-                onTap: () {
-                  NavigationService.push(
-                      target: CounterSearchPage(
-                    counterType: CountersEnums.NEA,
-                    onChanged: (val) {
-                      selectedCounter = val;
-                      _selectedCounterController.text =
-                          selectedCounter?.title ?? "";
-                    },
-                  ));
-                },
-              ),
-              CustomTextField(
-                title: "SC No.",
-                hintText: "Enter SC Number", //Need to add dropdown button
-                controller: _scNumberController,
-              ),
-              CustomTextField(
-                title: "Customer Id",
-                hintText: "ID", //Need to add dropdown button
-                controller: _customerIDController,
-              ),
-            ],
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  title: "Select Counter ",
+                  hintText: "Select From List",
+                  readOnly: true,
+                  suffixIcon: Icons.arrow_downward,
+                  showSearchIcon: true,
+                  controller: _selectedCounterController,
+                  onTap: () {
+                    NavigationService.push(
+                        target: CounterSearchPage(
+                      counterType: CountersEnums.NEA,
+                      onChanged: (val) {
+                        selectedCounter = val;
+                        _selectedCounterController.text =
+                            selectedCounter?.title ?? "";
+                      },
+                    ));
+                  },
+                  validator: (value) {
+                    if (_selectedCounterController.text.isEmpty) {
+                      return "Please Select Counter";
+                    }
+                  },
+                ),
+                CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                  title: widget.service.labelName,
+                  hintText:
+                      widget.service.labelSample, //Need to add dropdown button
+                  controller: _scNumberController,
+                  validator: (value) =>
+                      FormValidator.validateFieldNotEmpty(value, "SC No."),
+                ),
+                CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+
+                  title: "Customer Id",
+                  hintText: "ID", //Need to add dropdown button
+                  controller: _customerIDController,
+                  validator: (value) =>
+                      FormValidator.validateFieldNotEmpty(value, "Customer ID"),
+                ),
+              ],
+            ),
           ),
         ),
         buttonName: "Procced",
         onButtonPressed: () {
-          context.read<UtilityPaymentCubit>().fetchDetails(
-                serviceIdentifier: "nea_online_topup",
-                accountDetails: {
-                  "scno": _scNumberController.text,
-                  "office_code": selectedCounter?.value ?? "",
-                  "customerId": _customerIDController.text,
-                },
-                apiEndpoint: "/api/getneabill",
-              );
+          if (_formKey.currentState!.validate()) {
+            context.read<UtilityPaymentCubit>().fetchDetails(
+                  serviceIdentifier: "nea_online_topup",
+                  accountDetails: {
+                    "scno": _scNumberController.text,
+                    "office_code": selectedCounter?.value ?? "",
+                    "customerId": _customerIDController.text,
+                  },
+                  apiEndpoint: "/api/getneabill",
+                );
+          }
         },
         topbarName: "Payment",
       ),

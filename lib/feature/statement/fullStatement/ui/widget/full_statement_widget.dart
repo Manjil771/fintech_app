@@ -4,7 +4,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -33,20 +35,6 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   int startDay = 15;
   List numberOfDaysText = ["15 Days", "1 Month", "3 Month"];
   List numberOfDays = [15, 30, 90];
-  downloadFile() async {
-    String fileName = "file.pdf";
-    String path = await _getFilePath(fileName);
-    await dio.download(
-      url,
-      path,
-      onReceiveProgress: (receivedBytes, totalBytes) {
-        setState(() {
-          progress = receivedBytes / totalBytes;
-        });
-        print(progress);
-      },
-    );
-  }
 
   DateTime fromDate = DateTime.now().subtract(Duration(days: 15));
   DateTime fromDateAlert = DateTime.now();
@@ -79,7 +67,6 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   void initState() {
     super.initState();
     getData();
-    downloadFile();
   }
 
   int selectedDays = 0;
@@ -359,6 +346,37 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                 ),
                               ],
                             ),
+                            SizedBox(height: _height * 0.01),
+                            InkWell(
+                                onTap: () {
+                                  FileDownloadUtils.downloadFile(
+                                    downloadLink:
+                                        RepositoryProvider.of<CoOperative>(
+                                                    context)
+                                                .baseUrl +
+                                            state.data.pdfUrl.toString(),
+                                    fileName: FileDownloadUtils
+                                        .generateDownloadFileName(
+                                      name: "Statement",
+                                      filetype: FileType.pdf,
+                                    ),
+                                    context: context,
+                                  );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      "Download  ",
+                                      style: _textTheme.labelLarge!.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SvgPicture.asset(
+                                      Assets.downloadIcon,
+                                      height: 20.hp,
+                                    ),
+                                  ],
+                                )),
                             SizedBox(height: _height * 0.01),
                             state.data.accountStatementDtos.isEmpty
                                 ? const NoDataScreen(
