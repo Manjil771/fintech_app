@@ -15,12 +15,7 @@ import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_ca
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_bank_list_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/receiveMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-
 import '../../../../common/widget/common_text_field.dart';
-import '../../../utility_payment/cubit/utility_payment_cubit.dart';
 
 class CreditCardPaymentWidget extends StatefulWidget {
   final ServiceList service;

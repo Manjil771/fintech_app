@@ -127,7 +127,7 @@ class ServiceCategorySearchScreen extends StatelessWidget {
     if (uniqueIdentifier.toLowerCase() ==
         "government_ird_payment".toLowerCase()) {
       NavigationService.push(
-          target: IrdPaymentPage(
+          target: RevenuePaymentPage(
         services: services[index],
       ));
     }
