@@ -95,7 +95,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
                             final _imageUrl =
                                 "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
-                            return GestureDetector(
+                            return InkWell(
                               onTap: () {
                                 if (data.uniqueIdentifier
                                         .toString()
@@ -157,8 +157,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                               MainAxisAlignment.end,
                                           children: [
                                             Container(
-                                              padding: EdgeInsets.symmetric(
-                                                  horizontal: 4),
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      horizontal: 4),
                                               decoration: BoxDecoration(
                                                   color:
                                                       CustomTheme.primaryColor,
@@ -218,8 +219,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   ),
                                   filteredItems.isNotEmpty
                                       ? Container(
-                                          margin: EdgeInsets.only(bottom: 4),
-                                          padding: EdgeInsets.symmetric(
+                                          margin:
+                                              const EdgeInsets.only(bottom: 4),
+                                          padding: const EdgeInsets.symmetric(
                                               horizontal: 4),
                                           decoration: BoxDecoration(
                                               color: CustomTheme.primaryColor,
@@ -235,7 +237,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                           ),
                                         )
                                       : Container(
-                                          margin: EdgeInsets.only(bottom: 8),
+                                          margin:
+                                              const EdgeInsets.only(bottom: 8),
                                         ),
                                 ],
                               ),
