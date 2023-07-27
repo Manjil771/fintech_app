@@ -5,8 +5,8 @@ import 'package:ismart/feature/banking/cheque/widget/cheque_block_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class ChequeBlocScreen extends StatelessWidget {
-  const ChequeBlocScreen({Key? key}) : super(key: key);
+class ChequeBlocKScreen extends StatelessWidget {
+  const ChequeBlocKScreen({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

@@ -95,7 +95,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
                             final _imageUrl =
                                 "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
-                            return GestureDetector(
+                            return InkWell(
                               onTap: () {
                                 if (data.uniqueIdentifier
                                         .toString()

@@ -12,6 +12,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/cubit/cerdit_card_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_bank_model.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_bank_list_page.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/receiveMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
@@ -33,6 +34,8 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
   final TextEditingController _selectedBankController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _cardNumberController = TextEditingController();
+  final TextEditingController _customerNameController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController();
 
   CreditCardBankList? selectedBank;
   bool _isLoading = false;
@@ -84,9 +87,18 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
                       accountDetails: {},
                       apiEndpoint: "/api/credit_card/payment",
                       apiBody: {
-                        "card_number": _cardNumberController.text,
-                        "cardNumber": _cardNumberController.text,
-                        "amount": _amountController.text
+                        "accountNumber":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
+                        "creditCardNumber": _cardNumberController.text,
+                        "bankCode": selectedBank!.bankCode,
+                        "cardHolderName": _customerNameController.text,
+                        "remarks": _remarksController.text,
+                        "amount": _amountController.text,
+                        "charge": _response.toString(),
                       },
                       service: widget.service,
                       serviceIdentifier: ""));
@@ -143,9 +155,19 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
                   hintText: "XXXXXXXX",
                 ),
                 CustomTextField(
+                  controller: _customerNameController,
+                  title: "Card Holder Name",
+                  hintText: "XXXXXXXX",
+                ),
+                CustomTextField(
                   controller: _amountController,
                   title: "Amount",
                   hintText: "NPR",
+                ),
+                CustomTextField(
+                  controller: _remarksController,
+                  title: "Remarks",
+                  hintText: "Remarks",
                 ),
               ],
             ),

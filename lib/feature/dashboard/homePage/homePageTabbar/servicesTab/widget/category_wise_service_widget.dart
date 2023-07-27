@@ -148,7 +148,7 @@ class _CategoriesWiseServicesWidgetState
         .toList();
     print(selectedService.length);
     final servicess = searchItems[index];
-
+    print("wisgagdgfgasd  $uniqueIdentifier");
     if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
       NavigationService.push(
           target: TvPaymentPage(
@@ -188,11 +188,10 @@ class _CategoriesWiseServicesWidgetState
         service: servicess,
       ));
     }
-    if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
-        uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
+    if (widget.uniqueIdentifier == "data_pack") {
       NavigationService.push(
           target: SelectDatapackScreen(
-        serviceIdentifier: servicess,
+        service: servicess,
       ));
     }
     if (uniqueIdentifier.toLowerCase() ==
