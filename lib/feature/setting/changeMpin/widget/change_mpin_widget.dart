@@ -76,10 +76,15 @@ class ChangeMpinWidget extends StatelessWidget {
                 },
               );
             } else if (state is CommonError) {
+              String _message = state.message;
+              if (_message.toLowerCase().contains("validation")) {
+                _message =
+                    "The old PIN you entered is wrong. Please check and re-submit.";
+              }
               showPopUpDialog(
                 context: context,
-                message: state.message,
-                title: "Error",
+                message: _message,
+                title: state.message,
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -92,6 +97,7 @@ class ChangeMpinWidget extends StatelessWidget {
             child: Column(
               children: [
                 CustomTextField(
+                  obscureText: true,
                   controller: oldPinController,
                   title: "Old MPin",
                   hintText: "XXXXXXX",
@@ -103,6 +109,8 @@ class ChangeMpinWidget extends StatelessWidget {
                 ),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
@@ -113,9 +121,14 @@ class ChangeMpinWidget extends StatelessWidget {
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
+                      }
+                      if (newPinController.text != val) {
+                        return "Confirm Pin doesnot match.";
                       }
                     },
                     controller: reEnterPinController,
