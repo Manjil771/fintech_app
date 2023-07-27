@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -36,7 +37,7 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
   final TextEditingController _cardNumberController = TextEditingController();
   final TextEditingController _customerNameController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
-
+  final _formKey = GlobalKey<FormState>();
   CreditCardBankList? selectedBank;
   bool _isLoading = false;
   @override
@@ -114,70 +115,91 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
               //   );
               // }
             }
-            print("staeasdasd is + $state");
           },
           child: CommonContainer(
             buttonName: "Procced",
             title: widget.service.service,
             detail: widget.service.instructions,
             showAccountSelection: true,
-            body: Column(
-              children: [
-                CustomTextField(
-                  hintText: "Select Bank",
-                  title: "Select Bank",
-                  readOnly: true,
-                  controller: _selectedBankController,
-                  onTap: () {
-                    NavigationService.push(
-                      target: CreditCardBankListPage(
-                        onBankSelected: (val) {
-                          NavigationService.pop();
+            body: Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    hintText: "Select Bank",
+                    title: "Select Bank",
+                    readOnly: true,
+                    controller: _selectedBankController,
+                    onTap: () {
+                      NavigationService.push(
+                        target: CreditCardBankListPage(
+                          onBankSelected: (val) {
+                            NavigationService.pop();
 
-                          _selectedBankController.text = val.bankName;
-                          selectedBank = val;
-                          setState(() {});
-                        },
-                      ),
-                    );
-                  },
-                  validator: (value) {
-                    if (selectedBank != null) {
-                      return null;
-                    } else {
-                      return "Please select destination bank.";
-                    }
-                  },
-                ),
-                CustomTextField(
-                  controller: _cardNumberController,
-                  title: "Card Number",
-                  hintText: "XXXXXXXX",
-                ),
-                CustomTextField(
-                  controller: _customerNameController,
-                  title: "Card Holder Name",
-                  hintText: "XXXXXXXX",
-                ),
-                CustomTextField(
-                  controller: _amountController,
-                  title: "Amount",
-                  hintText: "NPR",
-                ),
-                CustomTextField(
-                  controller: _remarksController,
-                  title: "Remarks",
-                  hintText: "Remarks",
-                ),
-              ],
+                            _selectedBankController.text = val.bankName;
+                            selectedBank = val;
+                            setState(() {});
+                          },
+                        ),
+                      );
+                    },
+                    validator: (value) {
+                      if (selectedBank != null) {
+                        return null;
+                      } else {
+                        return "Please select destination bank.";
+                      }
+                    },
+                  ),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: _cardNumberController,
+                    title: "Card Number",
+                    hintText: "XXXXXXXX",
+                    validator: (value) => FormValidator.validateFieldNotEmpty(
+                        value, "Card Number"),
+                  ),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: _customerNameController,
+                    title: "Card Holder Name",
+                    hintText: "XXXXXXXX",
+                    validator: (value) =>
+                        FormValidator.validateFieldNotEmpty(value, "Name"),
+                  ),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    textInputType: TextInputType.number,
+                    controller: _amountController,
+                    title: "Amount",
+                    hintText: "NPR",
+                    validator: (value) => FormValidator.validateAmount(
+                      val: value.toString(),
+                      maxAmount: widget.service.maxValue,
+                      minAmount: widget.service.minValue,
+                    ),
+                  ),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    controller: _remarksController,
+                    title: "Remarks",
+                    hintText: "Remarks",
+                    validator: (value) =>
+                        FormValidator.validateFieldNotEmpty(value, "Remarks"),
+                  ),
+                ],
+              ),
             ),
             showDetail: true,
             topbarName: widget.service.serviceCategoryName,
             onButtonPressed: () {
-              context.read<CreditCardCubit>().fetchCharge(
-                    amount: _amountController.text,
-                    bankId: selectedBank?.bankCode ?? "",
-                  );
+              if (_formKey.currentState!.validate()) {
+                context.read<CreditCardCubit>().fetchCharge(
+                      amount: _amountController.text,
+                      bankId: selectedBank?.bankCode ?? "",
+                    );
+              }
             },
           )),
     );

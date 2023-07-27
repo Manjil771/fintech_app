@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -37,20 +38,19 @@ class ChangeMpinWidget extends StatelessWidget {
         topbarName: "Settings",
         buttonName: "Submit",
         onButtonPressed: () {
-          // if (_formKey.currentState!.validate()) {
-          context.read<UtilityPaymentCubit>().makePayment(
-            mPin: oldPinController.text,
-            serviceIdentifier: "",
-            // serviceIdentifier: "traffic_fine_payments",
-            apiEndpoint: "/api/changepin",
-            body: {},
-            accountDetails: {
-              "oldmPin": oldPinController.text,
-              "newmPin": newPinController.text,
-              "remPin": reEnterPinController.text,
-            },
-          );
-          // }
+          if (_formKey.currentState!.validate()) {
+            context.read<UtilityPaymentCubit>().makePayment(
+              mPin: oldPinController.text,
+              serviceIdentifier: "",
+              apiEndpoint: "/api/changepin",
+              body: {},
+              accountDetails: {
+                "oldmPin": oldPinController.text,
+                "newmPin": newPinController.text,
+                "remPin": reEnterPinController.text,
+              },
+            );
+          }
         },
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -69,6 +69,7 @@ class ChangeMpinWidget extends StatelessWidget {
                 title: "Success",
                 showCancelButton: false,
                 buttonCallback: () {
+                  SharedPref.removeBiometricLogin();
                   RepositoryProvider.of<UserRepository>(context).logout();
                   NavigationService.pushNamedAndRemoveUntil(
                       routeName: Routes.loginPage);

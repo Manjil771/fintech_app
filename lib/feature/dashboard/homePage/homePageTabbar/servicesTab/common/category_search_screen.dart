@@ -97,7 +97,7 @@ class ServiceCategorySearchScreen extends StatelessWidget {
         uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
       NavigationService.push(
           target: SelectDatapackScreen(
-        serviceIdentifier: services[index],
+        service: services[index],
       ));
     }
     if (uniqueIdentifier.toLowerCase() ==
