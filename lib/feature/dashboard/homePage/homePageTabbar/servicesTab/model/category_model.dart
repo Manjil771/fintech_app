@@ -40,6 +40,16 @@ class CategoryList {
             json["services"].map((x) => ServiceList.fromJson(x))),
       );
 
+  CategoryList copyWith(List<ServiceList> updatedValues) => CategoryList(
+        id: id,
+        name: name,
+        imageUrl: imageUrl,
+        uniqueIdentifier: uniqueIdentifier,
+        isNew: isNew,
+        appOrder: appOrder,
+        services: updatedValues,
+      );
+
   Map<String, dynamic> toJson() => {
         "id": id,
         "name": name,

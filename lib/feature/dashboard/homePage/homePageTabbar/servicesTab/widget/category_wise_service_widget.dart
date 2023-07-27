@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/enum/text_field_type.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -148,7 +149,7 @@ class _CategoriesWiseServicesWidgetState
         .toList();
     print(selectedService.length);
     final servicess = searchItems[index];
-
+    print("wisgagdgfgasd  $uniqueIdentifier");
     if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
       NavigationService.push(
           target: TvPaymentPage(
@@ -157,7 +158,7 @@ class _CategoriesWiseServicesWidgetState
     }
     if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==
-          "worldlink_online_topup".toLowerCase()) {
+          Slugs.worldlinkPayment.toLowerCase()) {
         NavigationService.push(
             target: FindInternetUserScreen(
           service: servicess,
@@ -188,11 +189,10 @@ class _CategoriesWiseServicesWidgetState
         service: servicess,
       ));
     }
-    if (uniqueIdentifier.toLowerCase() == "data_pack".toLowerCase() ||
-        uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
+    if (widget.uniqueIdentifier == "data_pack") {
       NavigationService.push(
           target: SelectDatapackScreen(
-        serviceIdentifier: servicess,
+        service: servicess,
       ));
     }
     if (uniqueIdentifier.toLowerCase() ==
@@ -226,9 +226,9 @@ class _CategoriesWiseServicesWidgetState
       }
     }
     if (uniqueIdentifier.toLowerCase() ==
-        "government_ird_payment".toLowerCase()) {
+        "government_revenue_payment".toLowerCase()) {
       NavigationService.push(
-          target: IrdPaymentPage(
+          target: RevenuePaymentPage(
         services: servicess,
       ));
     }

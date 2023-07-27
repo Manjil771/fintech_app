@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:flutter/foundation.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
@@ -47,7 +49,21 @@ class CategoryRepository {
 
         _userMap.forEach((element) {
           CategoryList _txn = CategoryList.fromJson(element);
+          List<ServiceList> _dummyList = [];
+          Set<String> _uniqueID = {};
+          _txn.services.forEach((element) {
+            _uniqueID.add(element.uniqueIdentifier);
+          });
 
+          _uniqueID.forEach((uniqEelement) {
+            print("Unique Values are :");
+            print(uniqEelement);
+            ServiceList _singleValue = _txn.services.firstWhere(
+                (elementService) =>
+                    uniqEelement == elementService.uniqueIdentifier);
+            _dummyList.add(_singleValue);
+          });
+          _txn = _txn.copyWith(_dummyList);
           _recentTxnList.add(_txn);
         });
 

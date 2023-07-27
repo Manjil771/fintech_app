@@ -54,6 +54,7 @@ class ChequeBlockWidget extends StatelessWidget {
                 NavigationService.pop();
               },
             );
+            chequeNumberController.clear();
           }
           showPopUpDialog(
             context: context,
@@ -98,9 +99,16 @@ class ChequeBlockWidget extends StatelessWidget {
                                   .accountNumber,
                         },
                         body: {
+                          "account_number":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
                           "mPin": p0,
                           "chequeBlockRequest": chequeNumberController.text,
                           "chequeNumber": chequeNumberController.text,
+                          "cheque_number": chequeNumberController.text,
                         },
                         apiEndpoint: "api/chequeblockrequest",
                         mPin: p0);

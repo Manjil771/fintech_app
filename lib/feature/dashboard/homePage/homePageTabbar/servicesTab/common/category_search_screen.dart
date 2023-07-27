@@ -97,7 +97,7 @@ class ServiceCategorySearchScreen extends StatelessWidget {
         uniqueIdentifier.toLowerCase() == "Data Pack".toLowerCase()) {
       NavigationService.push(
           target: SelectDatapackScreen(
-        serviceIdentifier: services[index],
+        service: services[index],
       ));
     }
     if (uniqueIdentifier.toLowerCase() ==
@@ -127,7 +127,7 @@ class ServiceCategorySearchScreen extends StatelessWidget {
     if (uniqueIdentifier.toLowerCase() ==
         "government_ird_payment".toLowerCase()) {
       NavigationService.push(
-          target: IrdPaymentPage(
+          target: RevenuePaymentPage(
         services: services[index],
       ));
     }

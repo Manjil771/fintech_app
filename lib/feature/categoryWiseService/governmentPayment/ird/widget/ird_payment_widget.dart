@@ -20,16 +20,16 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 
 import '../../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
-class IrdPaymentWidget extends StatefulWidget {
-  const IrdPaymentWidget({super.key, required this.service});
+class RevenuePaymentWidget extends StatefulWidget {
+  const RevenuePaymentWidget({super.key, required this.service});
 
   final ServiceList service;
 
   @override
-  State<IrdPaymentWidget> createState() => _IrdPaymentWidgetState();
+  State<RevenuePaymentWidget> createState() => _RevenuePaymentWidgetState();
 }
 
-class _IrdPaymentWidgetState extends State<IrdPaymentWidget> {
+class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   final _ebpNumberController = TextEditingController();

@@ -4,8 +4,8 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/widget/
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class IrdPaymentPage extends StatelessWidget {
-  const IrdPaymentPage({super.key, required this.services});
+class RevenuePaymentPage extends StatelessWidget {
+  const RevenuePaymentPage({super.key, required this.services});
   final services;
 
   @override
@@ -14,7 +14,7 @@ class IrdPaymentPage extends StatelessWidget {
         create: (context) => UtilityPaymentCubit(
             utilityPaymentRepository:
                 RepositoryProvider.of<UtilityPaymentRepository>(context)),
-        child: IrdPaymentWidget(
+        child: RevenuePaymentWidget(
           service: services,
         ));
   }
