@@ -134,6 +134,17 @@ class CoOperativeValue {
     splashImage: "assets/alankar/alankar_splash.png",
     primaryColor: const Color(0xFF015017),
   );
+  static final CoOperative manankCoop = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/manank/manank_banner.png",
+    clientCode: 'CGJQ1YHKZ3',
+    clientSecret: "149077",
+    backgroundImage: "assets/manank/manank_background_image.png",
+    coOperativeName: 'Abhiyan',
+    coOperativeLogo: "assets/manank/manank_logo.png",
+    splashImage: "assets/manank/manank_splash.png",
+    primaryColor: const Color(0xFF015017),
+  );
 
   static final CoOperative arthaBagCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
