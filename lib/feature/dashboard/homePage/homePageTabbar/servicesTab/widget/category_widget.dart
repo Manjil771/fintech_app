@@ -207,7 +207,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                             },
                                           ),
                                   ),
-                                  Expanded(
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 8),
                                     child: Center(
                                       child: Text(
                                         "${data.name}",

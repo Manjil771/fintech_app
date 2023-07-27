@@ -2,14 +2,20 @@ import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
@@ -66,142 +72,167 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     final _qrSize = 200.wp;
     final _verticalMaxSize = (SizeUtils.height - _qrSize) / 2;
     final _horizontalMaxSize = (SizeUtils.width - _qrSize) / 2;
-    return Scaffold(
-      body: Stack(
-        children: [
-          MobileScanner(
-            fit: BoxFit.cover,
-            controller: cameraController,
-            onDetect: _onQRCodeDetect,
-          ),
-          Container(
-            height: MediaQuery.of(context).size.height,
-            width: MediaQuery.of(context).size.width,
-            decoration: ShapeDecoration(
-              shape: CustomShapeBorder(
-                cutOutWidth: _qrSize,
-                cutOutHeight: _qrSize,
-                borderColor: _theme.primaryColor,
-                overlayColor: _theme.primaryColor.withOpacity(0.56),
-                borderWidth: 6,
-                borderRadius: 15,
+    return BlocBuilder<AppServiceCubit, CommonState>(builder: (context, state) {
+      if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
+        final filteredItems = state.data
+            .where((item) =>
+                item.type
+                    .toString()
+                    .toLowerCase()
+                    .contains("qrIcon".toLowerCase()) &&
+                item.status.toLowerCase() == "Active".toLowerCase())
+            .toList();
+
+        return Scaffold(
+          body: Stack(
+            children: [
+              MobileScanner(
+                fit: BoxFit.cover,
+                controller: cameraController,
+                onDetect: _onQRCodeDetect,
               ),
-            ),
-          ),
-          Positioned(
-            top: 0,
-            left: 0,
-            right: 0,
-            child: Container(
-              height: _verticalMaxSize,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.end,
-                children: [
-                  Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 15.hp),
-                    child: Row(
-                      children: [
-                        Expanded(
-                          flex: 2,
-                          child: Image.asset(
-                            "assets/images/ismart_logo_only.png",
-                            height: 60.hp,
+              Container(
+                height: MediaQuery.of(context).size.height,
+                width: MediaQuery.of(context).size.width,
+                decoration: ShapeDecoration(
+                  shape: CustomShapeBorder(
+                    cutOutWidth: _qrSize,
+                    cutOutHeight: _qrSize,
+                    borderColor: _theme.primaryColor,
+                    overlayColor: _theme.primaryColor.withOpacity(0.56),
+                    borderWidth: 6,
+                    borderRadius: 15,
+                  ),
+                ),
+              ),
+              Positioned(
+                top: 0,
+                left: 0,
+                right: 0,
+                child: Container(
+                  height: _verticalMaxSize,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 15.hp),
+                        child: Row(
+                          children: [
+                            Expanded(
+                              flex: 2,
+                              child: Image.asset(
+                                "assets/images/ismart_logo_only.png",
+                                height: 60.hp,
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      SizedBox(height: 30.hp),
+                      Text(
+                        "Scan and Pay",
+                        style: _textTheme.displayMedium!.copyWith(
+                          color: Colors.white,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      SizedBox(height: 25.hp),
+                      Text(
+                        "Please allign the QR within frame.",
+                        style: _textTheme.titleLarge!.copyWith(
+                          color: Colors.white,
+                        ),
+                      ),
+                      SizedBox(height: 30.hp),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                right: _horizontalMaxSize - 20.wp,
+                top: _verticalMaxSize - 5.wp,
+                bottom: _verticalMaxSize - 5.wp,
+                left: _horizontalMaxSize - 20.wp,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(20),
+                  child: Container(
+                    child: AnimatedBuilder(
+                      animation: _animation,
+                      builder: (context, child) {
+                        return Column(
+                          children: [
+                            Container(
+                              padding: EdgeInsets.only(top: _animation.value),
+                              child: child,
+                            )
+                          ],
+                        );
+                      },
+                      child: Container(
+                        // height: 30,
+                        width: _qrSize,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(5),
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              _theme.primaryColor.withOpacity(0.5),
+                              Colors.white.withOpacity(0.04),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                  SizedBox(height: 30.hp),
-                  Text(
-                    "Scan and Pay",
-                    style: _textTheme.displayMedium!.copyWith(
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  SizedBox(height: 25.hp),
-                  Text(
-                    "Please allign the QR within frame.",
-                    style: _textTheme.titleLarge!.copyWith(
-                      color: Colors.white,
-                    ),
-                  ),
-                  SizedBox(height: 30.hp),
-                ],
-              ),
-            ),
-          ),
-          Positioned(
-            right: _horizontalMaxSize - 20.wp,
-            top: _verticalMaxSize - 5.wp,
-            bottom: _verticalMaxSize - 5.wp,
-            left: _horizontalMaxSize - 20.wp,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: Container(
-                child: AnimatedBuilder(
-                  animation: _animation,
-                  builder: (context, child) {
-                    return Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.only(top: _animation.value),
-                          child: child,
-                        )
-                      ],
-                    );
-                  },
-                  child: Container(
-                    // height: 30,
-                    width: _qrSize,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(5),
-                      gradient: LinearGradient(
-                        begin: Alignment.topCenter,
-                        end: Alignment.bottomCenter,
-                        colors: [
-                          _theme.primaryColor.withOpacity(0.5),
-                          Colors.white.withOpacity(0.04),
-                        ],
                       ),
                     ),
                   ),
                 ),
               ),
-            ),
-          ),
-          Positioned(
-            right: 0,
-            left: 0,
-            bottom: 90,
-            child: Container(
-              height: _verticalMaxSize,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Image.asset(
-                    Assets.ismartSlogan,
-                    height: 80.hp,
+              Positioned(
+                right: 0,
+                left: 0,
+                bottom: 60,
+                child: Container(
+                  height: _verticalMaxSize,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Image.asset(
+                        Assets.ismartSlogan,
+                        height: 60.hp,
+                      ),
+                    ],
                   ),
-                ],
+                ),
               ),
-            ),
-          ),
-          Positioned(
-            right: CustomTheme.symmetricHozPadding,
-            top: _verticalMaxSize,
-            bottom: _verticalMaxSize,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                ValueListenableBuilder(
-                  valueListenable: cameraController.torchState,
-                  builder: (context, flashStatus, _) {
-                    return CustomIconButton(
-                      icon: flashStatus == TorchState.on
-                          ? Icons.flash_on_rounded
-                          : Icons.flash_off_rounded,
+              Positioned(
+                right: CustomTheme.symmetricHozPadding,
+                top: _verticalMaxSize,
+                bottom: _verticalMaxSize,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    ValueListenableBuilder(
+                      valueListenable: cameraController.torchState,
+                      builder: (context, flashStatus, _) {
+                        return CustomIconButton(
+                          icon: flashStatus == TorchState.on
+                              ? Icons.flash_on_rounded
+                              : Icons.flash_off_rounded,
+                          shadow: false,
+                          iconSize: 22,
+                          verticalPadding: 6,
+                          horizontalPadding: 6,
+                          backgroundColor: Colors.transparent,
+                          iconColor: Colors.white,
+                          onPressed: () async {
+                            await cameraController.toggleTorch();
+                          },
+                        );
+                      },
+                    ),
+                    CustomIconButton(
+                      icon: Icons.image,
                       shadow: false,
                       iconSize: 22,
                       verticalPadding: 6,
@@ -209,113 +240,125 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                       backgroundColor: Colors.transparent,
                       iconColor: Colors.white,
                       onPressed: () async {
-                        await cameraController.toggleTorch();
-                      },
-                    );
-                  },
-                ),
-                CustomIconButton(
-                  icon: Icons.image,
-                  shadow: false,
-                  iconSize: 22,
-                  verticalPadding: 6,
-                  horizontalPadding: 6,
-                  backgroundColor: Colors.transparent,
-                  iconColor: Colors.white,
-                  onPressed: () async {
-                    final _res = await QRUtils.checkQRCodeFromGallery();
-                    if (_res.status == Status.Success &&
-                        (_res.data?.isNotEmpty ?? false)) {
-                      _processScannedQR(qrCode: _res.data ?? "");
-                    } else if (_res.message?.isNotEmpty ?? false) {
-                      NavigationService.pop();
-                      showPopUpDialog(
-                        context: context,
-                        message: _res.message ?? "Invalid QR Code.",
-                        showCancelButton: false,
-                        buttonCallback: () {
+                        final _res = await QRUtils.checkQRCodeFromGallery();
+                        if (_res.status == Status.Success &&
+                            (_res.data?.isNotEmpty ?? false)) {
+                          _processScannedQR(qrCode: _res.data ?? "");
+                        } else if (_res.message?.isNotEmpty ?? false) {
                           NavigationService.pop();
-                          NavigationService.pop();
-                        },
-                        title: 'Scan QR ',
-                      );
-                    }
-                  },
-                ),
-              ],
-            ),
-          ),
-          Positioned(
-            right: 0,
-            left: 0,
-            bottom: 0,
-            child: Container(
-              height: _verticalMaxSize,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  InkWell(
-                    onTap: () {
-                      // NavigationService.pushNamed(
-                      //     routeName: Routes.myQrCode);
-                    },
-                    child: InkWell(
-                      onTap: () {
-                        NavigationService.pushReplacement(
-                            target: ShareQrPage());
+                          showPopUpDialog(
+                            context: context,
+                            message: _res.message ?? "Invalid QR Code.",
+                            showCancelButton: false,
+                            buttonCallback: () {
+                              NavigationService.pop();
+                              NavigationService.pop();
+                            },
+                            title: 'Scan QR ',
+                          );
+                        }
                       },
-                      child: Container(
-                        padding: const EdgeInsets.symmetric(
-                          vertical: 14,
-                          horizontal: 16,
-                        ),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(15),
-                        ),
-                        child: Row(
-                          mainAxisSize: MainAxisSize.min,
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Icon(
-                              Icons.qr_code,
-                              size: 22,
-                              color: _theme.primaryColor,
-                            ),
-                            SizedBox(width: 8.wp),
-                            Text(
-                              "Show my QR Code",
-                              style: _textTheme.bodyLarge!.copyWith(
-                                color: _theme.primaryColor,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 13,
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    ),
+                  ],
+                ),
+              ),
+              Positioned(
+                right: 0,
+                left: 0,
+                bottom: 260,
+                child: Container(
+                  height: 40.hp,
+                  child: Center(
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemBuilder: (context, index) {
+                        return CustomCachedNetworkImage(
+                            url: RepositoryProvider.of<CoOperative>(context)
+                                    .baseUrl +
+                                filteredItems[index].imageUrl.toString(),
+                            fit: BoxFit.fitHeight);
+                      },
+                      itemCount: filteredItems.length,
                     ),
                   ),
-                ],
+                ),
               ),
-            ),
+              Positioned(
+                top: 600,
+                right: 0,
+                left: 0,
+                bottom: 0,
+                child: Container(
+                  height: 50.hp,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          // NavigationService.pushNamed(
+                          //     routeName: Routes.myQrCode);
+                        },
+                        child: InkWell(
+                          onTap: () {
+                            NavigationService.pushReplacement(
+                                target: ShareQrPage());
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.symmetric(
+                              vertical: 14,
+                              horizontal: 16,
+                            ),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(15),
+                            ),
+                            child: Row(
+                              mainAxisSize: MainAxisSize.min,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Icon(
+                                  Icons.qr_code,
+                                  size: 22,
+                                  color: _theme.primaryColor,
+                                ),
+                                SizedBox(width: 8.wp),
+                                Text(
+                                  "Show my QR Code",
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    color: _theme.primaryColor,
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 13,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Positioned(
+                top: MediaQuery.of(context).viewPadding.top + 10,
+                left: CustomTheme.symmetricHozPadding,
+                child: CustomIconButton(
+                  icon: Icons.close,
+                  borderRadius: 15,
+                  shadow: false,
+                  onPressed: () {
+                    NavigationService.pop();
+                  },
+                ),
+              )
+            ],
           ),
-          Positioned(
-            top: MediaQuery.of(context).viewPadding.top + 10,
-            left: CustomTheme.symmetricHozPadding,
-            child: CustomIconButton(
-              icon: Icons.close,
-              borderRadius: 15,
-              shadow: false,
-              onPressed: () {
-                NavigationService.pop();
-              },
-            ),
-          )
-        ],
-      ),
-    );
+        );
+      } else {
+        return Container();
+      }
+    });
   }
 
   void _onQRCodeDetect(Barcode barcode, MobileScannerArguments? args) {
