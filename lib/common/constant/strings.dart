@@ -8,8 +8,8 @@ class Strings {
   static const alankarAppTitle = "Alankar Coop iSmart";
   static const uttargangaAppTitle = "Uttarganga Coop iSmart";
   static const arthaBagAppTitle = "ArthaBag Coop iSmart";
-  // static const gomaGaneshAppTitle = "GomaGanesh Coop iSmart";
+  static const manankAppTitle = "Manank Coop iSmart";
 
   static const defaultAppTitle = "iSmart";
-  static const APP_TITLE = alankarAppTitle;
+  static const APP_TITLE = sahakaryaAppTitle;
 }

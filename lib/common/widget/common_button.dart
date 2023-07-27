@@ -110,7 +110,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
               border: widget.isDisabled
                   ? null
                   : Border.all(
-                      color: widget.borderColor ?? CustomTheme.primaryColor!,
+                      color: widget.borderColor ?? CustomTheme.primaryColor,
                     ),
             ),
           ),
