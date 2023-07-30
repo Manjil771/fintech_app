@@ -55,11 +55,21 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         } else if (state is! CommonLoading && _isLoading) {
           _isLoading = false;
           NavigationService.pop();
+        } else if (state is CommonError) {
+          showPopUpDialog(
+            context: context,
+            message: state.message,
+            title: "Error",
+            showCancelButton: false,
+            buttonCallback: () {
+              NavigationService.pop();
+            },
+          );
         }
-
         if (state is CommonStateSuccess<UtilityResponseData>) {
           UtilityResponseData _response = state.data;
-          if (_response.code == "M0000") {
+          if (_response.code == "M0000" ||
+              _response.status.toLowerCase() == "success") {
             print("data is success " + _response.code);
             NavigationService.push(
               target: CommonBillDetailPage(
@@ -142,6 +152,16 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
             //         NavigationService.pop();
             //       },
             //       showCancelButton: false);
+          } else {
+            showPopUpDialog(
+              context: context,
+              message: _response.message,
+              title: _response.status,
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
           }
         }
       },
@@ -177,21 +197,23 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               ),
               SizedBox(height: _height * 0.02),
               CustomTextField(
-                title: "Username",
+                title: widget.service.labelName,
                 hintText: "XXXXXXXXX",
                 controller: usernameController,
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Username"),
               ),
-              CustomTextField(
-                title: "Amount",
-                hintText: "NPR",
-                controller: amountController,
-                // validator: (value) => FormValidator.validateAmount(
-                //     val: value.toString(),
-                //     maxAmount: widget.service.maxValue,
-                //     minAmount: widget.service.minValue.toDouble())),
-              )
+              widget.service.priceInput
+                  ? CustomTextField(
+                      title: "Amount",
+                      hintText: "NPR",
+                      controller: amountController,
+                      // validator: (value) => FormValidator.validateAmount(
+                      //     val: value.toString(),
+                      //     maxAmount: widget.service.maxValue,
+                      //     minAmount: widget.service.minValue.toDouble())),
+                    )
+                  : Container()
             ],
           ),
         ),
