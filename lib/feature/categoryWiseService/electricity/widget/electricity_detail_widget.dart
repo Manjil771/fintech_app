@@ -154,7 +154,8 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                         KeyValueTile(
                           title: "Name",
                           value: widget.useServiceResponse.findValue<String>(
-                                  primaryKey: "Customer Name") ??
+                                  primaryKey: "hashResponse",
+                                  secondaryKey: "Customer Name") ??
                               "",
                         ),
                         KeyValueTile(
@@ -242,8 +243,9 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                 children: [
                   KeyValueTile(
                     title: "Name",
-                    value: widget.useServiceResponse
-                            .findValue<String>(primaryKey: "Customer Name") ??
+                    value: widget.useServiceResponse.findValue<String>(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "Customer Name") ??
                         "",
                   ),
                   KeyValueTile(

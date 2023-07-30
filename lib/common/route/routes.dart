@@ -38,4 +38,5 @@ class Routes {
       '/choose_account_mini_statement_page';
   static const miniStatement = '/mini_statement';
   static const downloadScreen = '/download_page';
+  static const forgotPin = '/forgot_pin';
 }

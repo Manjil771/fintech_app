@@ -132,7 +132,7 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget> {
                                   borderRadius: BorderRadius.circular(16)),
                               child: CustomCachedNetworkImage(
                                   url:
-                                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${flight.airlineImage}",
+                                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}ismart/airlinesPdfUrl/${flight.airlineImage}",
                                   fit: BoxFit.cover),
                             ),
                             const SizedBox(

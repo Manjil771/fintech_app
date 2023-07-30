@@ -5,6 +5,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -12,6 +13,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
+import 'package:ismart/feature/categoryWiseService/broker/screen/broker_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
@@ -104,6 +106,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   NavigationService.push(
                                       target:
                                           MobileTopupPage(categoryList: data));
+                                }
+                                if (data.uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    Slugs.brokerPage) {
+                                  NavigationService.push(
+                                      target: BrokerPaymentPage(
+                                          service: data.services[0]));
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
