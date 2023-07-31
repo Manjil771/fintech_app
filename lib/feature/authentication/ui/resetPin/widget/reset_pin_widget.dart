@@ -11,6 +11,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -66,7 +67,7 @@ class ResetPinWidget extends StatelessWidget {
             CommonContainer(
                 onButtonPressed: () {
                   if (_fromKey.currentState!.validate()) {
-                    context.read<UtilityPaymentCubit>().makePayment(
+                    context.read<ResetPinCubit>().makePayment(
                         serviceIdentifier: "",
                         accountDetails: {
                           "mobileNumber": _mobileNumberController.text,

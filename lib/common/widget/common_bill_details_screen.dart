@@ -106,7 +106,9 @@ class CommonBillDetailWidget extends StatelessWidget {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
-            if (_response.status == "M0000" || _response.status == "Success") {
+            if (_response.status == "M0000" ||
+                _response.status == "Success" ||
+                _response.transactionIdentifier.isNotEmpty) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       pdfUrl:
@@ -128,7 +130,7 @@ class CommonBillDetailWidget extends StatelessWidget {
             }
           }
         },
-        child: Column(
+        child: ListView(
           children: [
             Container(
               decoration: BoxDecoration(

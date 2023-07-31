@@ -184,6 +184,18 @@ class _InternetPaymentDeatilWidgetState
                         )
                         .toString(),
                   ),
+
+                  SizedBox(height: _height * 0.008),
+                  KeyValueTile(
+                    title: "Reserve Info",
+                    value: widget.detailFetchData
+                        .findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "Reserve Info",
+                        )
+                        .toString(),
+                  ),
+
                   SizedBox(height: _height * 0.008),
                   KeyValueTile(
                     title: "Subscription Type",

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/feature/authentication/ui/reset/screen/reset_pin_screen.dart';
+import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_pin_screen.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';

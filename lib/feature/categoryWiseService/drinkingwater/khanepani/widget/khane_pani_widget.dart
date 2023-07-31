@@ -107,6 +107,12 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                         ],
                       ),
                       accountDetails: {
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
                         "amount": _response.findValueString("previous_dues"),
                         "customer_code": _customerIdController.text,
                         "counter": selectedCounter?.value,
