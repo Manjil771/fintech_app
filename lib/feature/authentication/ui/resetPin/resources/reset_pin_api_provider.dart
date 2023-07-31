@@ -5,15 +5,16 @@ import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 class ResetPinApiProvider {
   ResetPinApiProvider({
+    required this.apiProvider,
     required this.baseUrl,
     required this.userRepository,
   });
 
   final UserRepository userRepository;
   final String baseUrl;
+  final ApiProvider apiProvider;
 
   makePayment({
-    required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
     required String apiEndpoint,
@@ -22,21 +23,13 @@ class ResetPinApiProvider {
     final _params = {
       ...accountDetails,
     };
-    if (serviceIdentifier.isNotEmpty) {
-      _params["service_identifier"] = "$serviceIdentifier";
-    }
-    if (mPin.isNotEmpty) {
-      _params["mPin"] = "$mPin";
-    }
 
     final url = UrlUtils.getUri(
       url: baseUrl + "$apiEndpoint",
       params: _params,
     );
 
-    return await Dio().post(
-      url.toString(),
-    );
+    return await apiProvider.post(url.toString(), body);
   }
 
   // fetchDetails(

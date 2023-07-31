@@ -383,7 +383,17 @@ class ApiProvider {
       case 201:
         return responseJson;
       case 400:
-        return responseJson;
+        String _responseStatus =
+            (responseJson['data']?['status'] ?? "").toString();
+
+        if (_responseStatus.toLowerCase() == "FAILURE".toLowerCase()) {
+          throw BadRequestException(
+            responseJson['data']?['message'] ?? "",
+            response.statusCode,
+          );
+        } else {
+          return responseJson;
+        }
       case 405:
         return responseJson;
       case 404:

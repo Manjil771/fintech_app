@@ -12,48 +12,24 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
 class ResetPinRepository {
+  ApiProvider apiProvider;
   late ResetPinApiProvider resetPinApiProvider;
   UserRepository userRepository;
-  CustomerDetailRepository customerDetailRepository;
   CoOperative env;
 
   ResetPinRepository({
     required this.env,
     required this.userRepository,
-    required this.customerDetailRepository,
+    required this.apiProvider,
   }) {
     resetPinApiProvider = ResetPinApiProvider(
       baseUrl: env.baseUrl,
+      apiProvider: apiProvider,
       userRepository: userRepository,
     );
   }
 
-  // Future<DataResponse<UtilityResponseData>> fetchDetails(
-  //     {required String serviceIdentifier,
-  //     required Map<String, dynamic> accountDetails,
-  //     required String apiEndpoint}) async {
-  //   try {
-  //     final _res = await utilityPaymentAPIProvider.fetchDetails(
-  //       serviceIdentifier: serviceIdentifier,
-  //       accountDetails: accountDetails,
-  //       apiEndpoint: apiEndpoint,
-  //     );
-
-  //     UtilityResponseData _responseData =
-  //         UtilityResponseData.fromJson(_res['data'] ?? {});
-  //     print(_responseData);
-  //     return DataResponse.success(_responseData);
-  //   } on CustomException catch (e) {
-  //     if (e is SessionExpireErrorException) {
-  //       rethrow;
-  //     }
-  //     return DataResponse.error(e.message, e.statusCode);
-  //   } catch (e) {
-  //     return DataResponse.error(e.toString());
-  //   }
-  // }
-
-  Future<DataResponse<UtilityResponseData>> makePayment({
+  Future<DataResponse> makePayment({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
@@ -63,19 +39,17 @@ class ResetPinRepository {
     try {
       final _res = await resetPinApiProvider.makePayment(
         mPin: mPin,
-        serviceIdentifier: serviceIdentifier,
         accountDetails: accountDetails,
         apiEndpoint: apiEndpoint,
         body: body,
       );
 
-      UtilityResponseData _responseData =
-          UtilityResponseData.fromJson(_res['data'] ?? {});
-      print(_responseData);
-      NavigationService.context
-          .read<CustomerDetailCubit>()
-          .fetchCustomerDetail();
-      return DataResponse.success(_responseData);
+      final _responseData = _res['data'] ?? {};
+      UtilityResponseData _response =
+          UtilityResponseData.fromJson(_responseData);
+      print("data is" + _response.message);
+
+      return DataResponse.success(_response);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;

@@ -28,12 +28,13 @@ class ResetPinCubit extends Cubit<CommonState> {
       apiEndpoint: apiEndpoint,
       body: body,
     );
-    if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    if (_res.status == Status.Success ||
+        _res.message!.toLowerCase().contains("otp")) {
+      emit(CommonStateSuccess(data: _res.data));
     } else {
       emit(
         CommonError(
-          message: _res.message ?? LocaleKeys.error.tr(),
+          message: _res.message ?? "Error",
         ),
       );
     }
