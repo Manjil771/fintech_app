@@ -11,5 +11,5 @@ class Strings {
   static const manankAppTitle = "Manank Coop iSmart";
 
   static const defaultAppTitle = "iSmart";
-  static const APP_TITLE = arthaBagAppTitle;
+  static const APP_TITLE = kamanaAppTitle;
 }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -23,20 +22,19 @@ import 'package:ismart/feature/receiveMoney/models/bank.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class TvPaymentWidget extends StatefulWidget {
+class CommonTvPaymentWidget extends StatefulWidget {
   final ServiceList service;
 
-  const TvPaymentWidget({Key? key, required this.service}) : super(key: key);
+  const CommonTvPaymentWidget({Key? key, required this.service})
+      : super(key: key);
 
   @override
-  State<TvPaymentWidget> createState() => _TvPaymentWidgetState();
+  State<CommonTvPaymentWidget> createState() => _CommonTvPaymentWidgetState();
 }
 
-class _TvPaymentWidgetState extends State<TvPaymentWidget> {
+class _CommonTvPaymentWidgetState extends State<CommonTvPaymentWidget> {
   final TextEditingController amountController = TextEditingController();
   final TextEditingController usernameController = TextEditingController();
-  final TextEditingController customerIDController = TextEditingController();
-  final TextEditingController setupBoxController = TextEditingController();
   String? selectedDistrictValue;
   String? selectedProvinceValue;
   bool _isLoading = false;
@@ -79,11 +77,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               target: CommonBillDetailPage(
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/tvpay",
-                apiBody: {
-                  // _response.findValue(primaryKey: "hasnResponse"),
-                  "customer_id ": customerIDController.text,
-                  "username": customerIDController.text,
-                },
+                apiBody: {"customerId ": usernameController.text},
                 accountDetails: {
                   "account_number":
                       RepositoryProvider.of<CustomerDetailRepository>(context)
@@ -91,9 +85,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                           .value!
                           .accountNumber
                           .toString(),
-                  "username": customerIDController.text,
-                  "customer_id ": customerIDController.text,
-
+                  "username": usernameController.text,
                   // "customer_id": usernameController.text,
                   "amount": amountController.text,
                   // "account_number": "002001-001-102-0001010",
@@ -112,26 +104,19 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                           primaryKey: "hashResponse",
                           secondaryKey: "customerId ",
                         )),
-                    _response
+                    KeyValueTile(
+                        title: "Customer Name",
+                        value: _response
                             .findValue(
                               primaryKey: "hashResponse",
-                              secondaryKey: "expiryDate",
+                              secondaryKey: "customerName",
                             )
-                            .toString()
-                            .isEmpty
-                        ? Container()
-                        : KeyValueTile(
-                            title: "Expiry Date",
-                            value: _response.findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "expiryDate",
-                            )),
-
+                            .toString()),
                     KeyValueTile(title: "Amount", value: amountController.text),
                     _response.findValue(
-                              primaryKey: "packages",
-                            ) ==
-                            []
+                                primaryKey: "hashResponse",
+                                secondaryKey: "customerName") ==
+                            null
                         ? Container()
                         : Column(
                             children: [
@@ -145,27 +130,21 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                                       .toString()),
                             ],
                           ),
-                    // KeyValueTile(
-                    //     title: "Number of TV",
-                    //     value: _response
-                    //         .findValue(
-                    //           primaryKey: "hashResponse",
-                    //           secondaryKey: "noOfTv",
-                    //         )
-                    //         .toString()),
+                    KeyValueTile(
+                        title: "Number of TV",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "noOfTv",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "CashBack",
+                        value: widget.service.cashBackView ?? "0 %"),
                   ],
                 ),
               ),
             );
-            // } else {
-            //   showPopUpDialog(
-            //       context: context,
-            //       message: _response.message,
-            //       title: "Error",
-            //       buttonCallback: () {
-            //         NavigationService.pop();
-            //       },
-            //       showCancelButton: false);
           } else {
             showPopUpDialog(
               context: context,
@@ -212,29 +191,20 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               SizedBox(height: _height * 0.02),
               CustomTextField(
                 title: widget.service.labelName,
-                hintText: widget.service.labelSample,
-                controller: customerIDController,
+                hintText: "XXXXXXXXX",
+                controller: usernameController,
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Username"),
               ),
-              widget.service.uniqueIdentifier.toLowerCase() == Slugs.skyTopup
-                  ? CustomTextField(
-                      title: "SetTop Box no.",
-                      hintText: "Setup Box No.",
-                      controller: setupBoxController,
-                      validator: (value) => FormValidator.validateFieldNotEmpty(
-                          value, "Customer ID"),
-                    )
-                  : Container(),
               widget.service.priceInput
                   ? CustomTextField(
                       title: "Amount",
                       hintText: "NPR",
                       controller: amountController,
-                      validator: (value) => FormValidator.validateAmount(
-                          val: value.toString(),
-                          maxAmount: widget.service.maxValue,
-                          minAmount: widget.service.minValue),
+                      // validator: (value) => FormValidator.validateAmount(
+                      //     val: value.toString(),
+                      //     maxAmount: widget.service.maxValue,
+                      //     minAmount: widget.service.minValue.toDouble())),
                     )
                   : Container()
             ],
@@ -244,10 +214,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           if (_formKey.currentState!.validate()) {
             context.read<UtilityPaymentCubit>().fetchDetails(
                 serviceIdentifier: widget.service.uniqueIdentifier,
-                accountDetails: {
-                  "username": customerIDController.text,
-                  "customer_id": customerIDController.text
-                },
+                accountDetails: {"username": usernameController.text},
                 apiEndpoint: "api/tvpackages");
           }
         },

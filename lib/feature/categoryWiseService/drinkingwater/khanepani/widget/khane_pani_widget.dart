@@ -54,6 +54,16 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
           } else if (state is! CommonLoading && _isLoading) {
             NavigationService.pop();
           }
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final _response = state.data;
@@ -107,6 +117,12 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                         ],
                       ),
                       accountDetails: {
+                        "account_number":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
                         "amount": _response.findValueString("previous_dues"),
                         "customer_code": _customerIdController.text,
                         "counter": selectedCounter?.value,

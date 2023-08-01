@@ -106,7 +106,11 @@ class CommonBillDetailWidget extends StatelessWidget {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
-            if (_response.status == "M0000" || _response.status == "Success") {
+            if (_response.code == "M0000" ||
+                _response.status.toLowerCase() == "Success" ||
+                _response.message
+                    .toLowerCase()
+                    .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       pdfUrl:
@@ -119,7 +123,7 @@ class CommonBillDetailWidget extends StatelessWidget {
               showPopUpDialog(
                 context: context,
                 message: _response.message,
-                title: "Error",
+                title: _response.status,
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -128,7 +132,7 @@ class CommonBillDetailWidget extends StatelessWidget {
             }
           }
         },
-        child: Column(
+        child: ListView(
           children: [
             Container(
               decoration: BoxDecoration(

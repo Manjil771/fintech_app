@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -219,8 +220,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                       children: [
                         TextButton(
                             onPressed: () {
-                              // TODO navigate to forget password widget
-                              // Get.to(() => const ForgetPassword());
+                              NavigationService.pushNamed(
+                                  routeName: Routes.forgotPin);
                             },
                             child: Text(
                               "Forgot PIN ?",

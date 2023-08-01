@@ -38,7 +38,7 @@ class MultiBlocWrapper extends StatelessWidget {
           lazy: false,
         ),
         // BlocProvider(
-        //   create: (context) => AppServiceCubit(
+        //   create: (context) => AppServiceCubit(p
         //     appServiceRepository:
         //         RepositoryProvider.of<AppServiceRepository>(context),
         //   ),

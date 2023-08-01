@@ -33,6 +33,7 @@ class CommonFindInternetUserWidget extends StatefulWidget {
 class _CommonFindInternetUserWidgetState
     extends State<CommonFindInternetUserWidget> {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -135,12 +136,19 @@ class _CommonFindInternetUserWidgetState
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
-                  title: 'Username',
+                  title: widget.service.labelName,
                   controller: _usernameController,
                   hintText: 'Enter Username',
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, 'Username'),
                 ),
+                widget.service.priceInput
+                    ? CustomTextField(
+                        controller: _amountController,
+                        title: "Amount",
+                        hintText: "NPR",
+                      )
+                    : Container()
               ],
             ),
             topbarName: 'Payment',

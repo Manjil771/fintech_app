@@ -89,6 +89,11 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/governmentpayment/pay",
                 apiBody: {
+                  "hashCharge": _response
+                      .findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "hashCharge")
+                      .toString(),
                   "voucherCode": chitNumberController.text,
                   "billerCode": _response
                       .findValue(
@@ -97,6 +102,15 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                       .toString(),
                   "serviceCharge": serviceCharge,
                   "fiscalYear": dateController.text,
+                  "chitNumber": chitNumberController.text,
+                  "province": selectedProvinceValue,
+                  "district": _selectedProvinceNameController.text
+                              .toString()
+                              .toLowerCase() ==
+                          'Kathmandu Valley'.toLowerCase()
+                      ? "000"
+                      : selectedDistrictValue,
+                  // "isDistrict": false,
                 },
                 accountDetails: {
                   "amount": _response
@@ -257,7 +271,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                 controller: dateController,
                 title: "Date",
                 hintText: "2079/80",
-                textInputType: TextInputType.number,
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Date"),
               ),

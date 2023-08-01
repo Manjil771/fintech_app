@@ -61,7 +61,7 @@ class MoreWidget extends StatelessWidget {
     return CommonContainer(
       showTitleText: false,
       body: Container(
-        height: _height * 0.6,
+        height: _height.hp,
         width: double.infinity,
         child: GridView.builder(
           itemCount: names.length,

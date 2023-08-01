@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -13,7 +14,6 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -184,6 +184,18 @@ class _InternetPaymentDeatilWidgetState
                         )
                         .toString(),
                   ),
+
+                  SizedBox(height: _height * 0.008),
+                  KeyValueTile(
+                    title: "Reserve Info",
+                    value: widget.detailFetchData
+                        .findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "Reserve Info",
+                        )
+                        .toString(),
+                  ),
+
                   SizedBox(height: _height * 0.008),
                   KeyValueTile(
                     title: "Subscription Type",
@@ -196,7 +208,8 @@ class _InternetPaymentDeatilWidgetState
                   ),
                   KeyValueTile(
                     title: "Amount",
-                    value: amount,
+                    value: AmountUtils.getAmountInRupees(amount: amount)
+                        .toString(),
                   ),
                   SizedBox(height: _height * 0.008),
 
