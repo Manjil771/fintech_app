@@ -74,7 +74,6 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           UtilityResponseData _response = state.data;
           if (_response.code == "M0000" ||
               _response.status.toLowerCase() == "success") {
-            print("data is success " + _response.code);
             NavigationService.push(
               target: CommonBillDetailPage(
                 serviceIdentifier: widget.service.uniqueIdentifier,
