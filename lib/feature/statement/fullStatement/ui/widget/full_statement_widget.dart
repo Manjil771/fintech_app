@@ -38,35 +38,33 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
 
   DateTime fromDate = DateTime.now().subtract(Duration(days: 15));
   DateTime fromDateAlert = DateTime.now();
+  DateTime toDateAlert = DateTime.now();
 
   DateTime toDate = DateTime.now();
   ValueNotifier<FullStatementModel?> fullStatementDetail = ValueNotifier(null);
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
-  void getData() {
+  void getData({required DateTime fromdate, required todate}) {
     // DateTime fromDate = fromDateAlert == DateTime.now()
     //     ? DateTime.now().subtract(Duration(days: 15))
     //     : fromDateAlert;
-    customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
-        .customerDetailModel;
-    WidgetsBinding.instance.addPostFrameCallback(
-      (timeStamp) {
-        final cubit = context.read<FullStatementCubit>().fetchFullStatement(
-            accountNumber:
-                RepositoryProvider.of<CustomerDetailRepository>(context)
-                        .selectedAccount
-                        .value
-                        ?.accountNumber ??
-                    "",
-            fromDate: fromDate,
-            toDate: toDate);
-      },
-    );
+
+    context.read<FullStatementCubit>().fetchFullStatement(
+        accountNumber: RepositoryProvider.of<CustomerDetailRepository>(context)
+                .selectedAccount
+                .value
+                ?.accountNumber ??
+            "",
+        fromDate: fromdate,
+        toDate: todate);
   }
 
   @override
   void initState() {
     super.initState();
-    getData();
+    getData(
+      fromdate: fromDate,
+      todate: toDate,
+    );
   }
 
   int selectedDays = 0;
@@ -162,7 +160,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               selectedDays = index;
                                               // startDay = numberOfDays[index];
                                             });
-                                            getData();
+                                            getData(
+                                                fromdate: fromDate,
+                                                todate: toDate);
                                           },
                                           child: Container(
                                             margin: const EdgeInsets.only(
@@ -290,16 +290,19 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                                         DateTime
                                                                             .now());
                                                             setState(() {
-                                                              toDate = picked!;
+                                                              toDateAlert =
+                                                                  picked!;
                                                             });
                                                           },
                                                         ),
                                                         CustomRoundedButtom(
                                                             title: "View",
                                                             onPressed: () {
-                                                              print(fromDate);
-                                                              print(toDate);
-                                                              getData();
+                                                              getData(
+                                                                  fromdate:
+                                                                      fromDateAlert,
+                                                                  todate:
+                                                                      toDateAlert);
                                                               NavigationService
                                                                   .pop();
                                                             })
@@ -453,22 +456,22 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                         ),
                                       ),
                                       SizedBox(height: _height * 0.01),
-                                      Row(children: [
-                                        Text(
-                                          "Statement",
-                                          style: _textTheme.titleLarge!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.w600),
-                                        ),
-                                        const Spacer(),
-                                        InkWell(
-                                          onTap: () {},
-                                          child: SvgPicture.asset(
-                                            Assets.downloadIcon,
-                                            height: _height * 0.03,
-                                          ),
-                                        )
-                                      ]),
+                                      // Row(children: [
+                                      //   Text(
+                                      //     "Statement",
+                                      //     style: _textTheme.titleLarge!
+                                      //         .copyWith(
+                                      //             fontWeight: FontWeight.w600),
+                                      //   ),
+                                      //   const Spacer(),
+                                      //   InkWell(
+                                      //     onTap: () {},
+                                      //     child: SvgPicture.asset(
+                                      //       Assets.downloadIcon,
+                                      //       height: _height * 0.03,
+                                      //     ),
+                                      //   )
+                                      // ]),
                                       SizedBox(height: _height * 0.01),
                                       Container(
                                         width: double.infinity,
