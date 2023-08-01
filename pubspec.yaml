@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.9+12
+version: 0.0.9+13
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -66,14 +66,20 @@ dependencies:
   android_path_provider: ^0.3.0
   jiffy: ^5.0.0
   awesome_notifications: ^0.6.21
-  package_info_plus: ^4.0.2
+  package_info_plus: ^1.4.3+1
   uuid: ^3.0.7
-  share_plus: ^7.0.2
+  share_plus: ^4.1.0
   permission_handler: ^10.0.0
   mobile_scanner: ^2.0.0
   flutter_native_image: ^0.0.6+1
   image_picker: ^1.0.1
   qr_code_utils: ^0.0.1
+  flutter_fgbg: ^0.3.0
+  android_id: ^0.3.3
+  fk_user_agent: ^2.1.0
+  device_marketing_names: ^0.6.7
+  in_app_update: ^4.1.4
+  new_version: ^0.3.1
 
 dev_dependencies:
   flutter_test:

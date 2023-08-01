@@ -1,20 +1,26 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/constants.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/device_utils.dart';
+import 'package:ismart/common/util/in_app_update_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 
 class GeneralInfoProfileWidget extends StatefulWidget {
   final ValueNotifier<CustomerDetailModel?> customerDetail;
-  GeneralInfoProfileWidget({Key? key, required this.customerDetail})
+  const GeneralInfoProfileWidget({Key? key, required this.customerDetail})
       : super(key: key);
 
   @override
@@ -24,6 +30,24 @@ class GeneralInfoProfileWidget extends StatefulWidget {
 
 class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
   bool showPersonalDetail = false;
+
+  String _appName = "";
+  String _appVersion = "";
+
+  _populateValue() async {
+    _appName = await DeviceUtils.getAppName;
+    _appVersion = await DeviceUtils.getAppVersion;
+
+    print(_appName);
+    print(_appVersion);
+    setState(() {});
+  }
+
+  @override
+  void initState() {
+    _populateValue();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -42,101 +66,147 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
             decoration: BoxDecoration(
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(12)),
-            child: Column(children: [
-              CommonDetailBox(
-                onBoxPressed: () {
-                  setState(() {
-                    showPersonalDetail = !showPersonalDetail;
-                  });
-                  print(showPersonalDetail.toString());
-                },
-                leadingIcon: Assets.profileIcon,
-                title: "Personal Details",
-                detail: "Phone Number, Name , Address etc.",
-              ),
-              Visibility(
-                visible: showPersonalDetail,
-                child: Container(
-                  color: _theme.scaffoldBackgroundColor,
-                  height: _height * 0.19,
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      Row(
-                        children: [
-                          Expanded(
-                            child: buildDetails(
-                                context,
-                                "Banking.svg",
-                                "Account Type",
-                                "${_detail.accountDetail[0].accountType} A/C"),
-                          ),
-                          SizedBox(
-                            width: _width * 0.4,
-                            child: buildDetails(
-                                context,
-                                "clientcode.svg",
-                                "Client Code",
-                                "${_detail.accountDetail[0].id}"),
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: buildDetails(
-                                context,
-                                "accrued interest.svg",
-                                "Accrued Interest",
-                                "NPR ${_detail.accountDetail[0].accruedInterest}"),
-                          ),
-                          SizedBox(
-                            width: _width * 0.4,
-                            child: buildDetails(
-                                context,
-                                "interest rate profile.svg",
-                                "Interest Rate",
-                                "${_detail.accountDetail[0].interestRate} %"),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Expanded(
-                            child: buildDetails(
-                                context,
-                                "actual balance profile page.svg",
-                                "Actual Balance",
-                                "NPR ${_detail.accountDetail[0].actualBalance}"),
-                          ),
-                          SizedBox(
-                            width: _width * 0.4,
-                            child: buildDetails(
-                                context,
-                                "money-send-svgrepo-com 1.svg",
-                                "Available Bal.",
-                                "NPR ${_detail.accountDetail[0].availableBalance}"),
-                          ),
-                        ],
-                      )
-                    ],
+            child: Column(
+              children: [
+                CommonDetailBox(
+                  onBoxPressed: () {
+                    setState(() {
+                      showPersonalDetail = !showPersonalDetail;
+                    });
+                    print(showPersonalDetail.toString());
+                  },
+                  leadingIcon: Assets.profileIcon,
+                  title: "Personal Details",
+                  detail: "Phone Number, Name , Address etc.",
+                ),
+                Visibility(
+                  visible: showPersonalDetail,
+                  child: Container(
+                    color: _theme.scaffoldBackgroundColor,
+                    height: _height * 0.19,
+                    padding: const EdgeInsets.symmetric(horizontal: 12),
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Row(
+                          children: [
+                            Expanded(
+                              child: buildDetails(
+                                  context,
+                                  "Banking.svg",
+                                  "Account Type",
+                                  "${_detail.accountDetail[0].accountType} A/C"),
+                            ),
+                            SizedBox(
+                              width: _width * 0.4,
+                              child: buildDetails(
+                                  context,
+                                  "clientcode.svg",
+                                  "Client Code",
+                                  "${_detail.accountDetail[0].id}"),
+                            )
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: buildDetails(
+                                  context,
+                                  "accrued interest.svg",
+                                  "Accrued Interest",
+                                  "NPR ${_detail.accountDetail[0].accruedInterest}"),
+                            ),
+                            SizedBox(
+                              width: _width * 0.4,
+                              child: buildDetails(
+                                  context,
+                                  "interest rate profile.svg",
+                                  "Interest Rate",
+                                  "${_detail.accountDetail[0].interestRate} %"),
+                            ),
+                          ],
+                        ),
+                        Row(
+                          children: [
+                            Expanded(
+                              child: buildDetails(
+                                  context,
+                                  "actual balance profile page.svg",
+                                  "Actual Balance",
+                                  "NPR ${_detail.accountDetail[0].actualBalance}"),
+                            ),
+                            SizedBox(
+                              width: _width * 0.4,
+                              child: buildDetails(
+                                  context,
+                                  "money-send-svgrepo-com 1.svg",
+                                  "Available Bal.",
+                                  "NPR ${_detail.accountDetail[0].availableBalance}"),
+                            ),
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                )
+                // : Container(),
+                ,
+                CommonDetailBox(
+                  onBoxPressed: () {
+                    RepositoryProvider.of<UserRepository>(context).logout();
+                    NavigationService.pushNamedAndRemoveUntil(
+                      routeName: Routes.loginPage,
+                    );
+                  },
+                  leadingIcon: Assets.logoutIcon,
+                  title: "Logout",
+                  detail: "Logout from this application.",
+                ),
+                CommonDetailBox(
+                  onBoxPressed: () async {
+                    final _isUpdateAvailable =
+                        await InAppUpdateUtils.isUpdateAvailable;
+                    if (_isUpdateAvailable) {
+                      if (Platform.isAndroid) {
+                        InAppUpdateUtils.startFlexibleUpdate();
+                      } else {
+                        UrlLauncher.launchWebsite(
+                          context: context,
+                          url: Constants.appleAppStore,
+                        );
+                      }
+                    } else {
+                      SnackBarUtils.showErrorBar(
+                        context: context,
+                        message: "No updates available.",
+                      );
+                    }
+                  },
+                  leadingIcon: Assets.downloadIcon,
+                  title: "Check for Updates",
+                  detail: "Never miss out any update.",
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+                Text(
+                  _appName,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: CustomTheme.primaryColor,
+                    fontSize: 15,
                   ),
                 ),
-              )
-              // : Container(),
-              ,
-              CommonDetailBox(
-                onBoxPressed: () {
-                  RepositoryProvider.of<UserRepository>(context).logout();
-                  NavigationService.pushNamedAndRemoveUntil(
-                      routeName: Routes.loginPage);
-                },
-                leadingIcon: Assets.logoutIcon,
-                title: "Logout",
-                detail: "Logout from this application.",
-              ),
-            ]),
+                Text(
+                  "v" + _appVersion,
+                  style: TextStyle(
+                    fontWeight: FontWeight.bold,
+                    color: CustomTheme.primaryColor,
+                    fontSize: 13,
+                  ),
+                ),
+              ],
+            ),
           ),
         ],
       ),
