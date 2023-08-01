@@ -16,11 +16,9 @@ import 'package:ismart/common/widget/custom_shape_border.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
-import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
@@ -76,12 +74,14 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     return BlocBuilder<AppServiceCubit, CommonState>(builder: (context, state) {
       if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
         final filteredItems = state.data
-            .where((item) =>
-                item.type
-                    .toString()
-                    .toLowerCase()
-                    .contains("qrIcon".toLowerCase()) &&
-                item.status.toLowerCase() == "Active".toLowerCase())
+            .where(
+              (item) =>
+                  item.type
+                      .toString()
+                      .toLowerCase()
+                      .contains("qrIcon".toLowerCase()) &&
+                  item.status.toLowerCase() == "Active".toLowerCase(),
+            )
             .toList();
 
         return Scaffold(
@@ -270,17 +270,35 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 child: Container(
                   height: 40.hp,
                   child: Center(
-                    child: ListView.builder(
+                    child: SingleChildScrollView(
                       scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return CustomCachedNetworkImage(
-                            url: RepositoryProvider.of<CoOperative>(context)
-                                    .baseUrl +
-                                filteredItems[index].imageUrl.toString(),
-                            fit: BoxFit.fitHeight);
-                      },
-                      itemCount: filteredItems.length,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          ...List.generate(
+                            filteredItems.length,
+                            (index) => CustomCachedNetworkImage(
+                              url: RepositoryProvider.of<CoOperative>(context)
+                                      .baseUrl +
+                                  filteredItems[index].imageUrl.toString(),
+                              fit: BoxFit.fitHeight,
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
+                    // child: ListView.builder(
+                    //   scrollDirection: Axis.horizontal,
+                    //   itemBuilder: (context, index) {
+                    //     return CustomCachedNetworkImage(
+                    //         url: RepositoryProvider.of<CoOperative>(context)
+                    //                 .baseUrl +
+                    //             filteredItems[index].imageUrl.toString(),
+                    //         fit: BoxFit.fitHeight);
+                    //   },
+                    //   itemCount: filteredItems.length,
+                    // ),
                   ),
                 ),
               ),
@@ -303,7 +321,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         child: InkWell(
                           onTap: () {
                             NavigationService.pushReplacement(
-                                target: ShareQrPage());
+                                target: const ShareQrPage());
                           },
                           child: Container(
                             padding: const EdgeInsets.symmetric(
@@ -392,7 +410,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     descTwoFieldName: "Remarks",
                     descTwoFieldType: "String",
                     descTwoFixedLength: true,
-                    descTwoLength: null ?? 0,
+                    descTwoLength: 0,
                     descTwoMinLength: null,
                     descTwoMaxLength: null,
                     icon:
