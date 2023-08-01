@@ -6,6 +6,7 @@ import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/update/cubit/update_cubit.dart';
 
 class MultiBlocWrapper extends StatelessWidget {
   final Widget child;
@@ -30,6 +31,11 @@ class MultiBlocWrapper extends StatelessWidget {
             customerDetailRepository:
                 RepositoryProvider.of<CustomerDetailRepository>(context),
           ),
+        ),
+
+        BlocProvider(
+          create: (context) => UpdateCubit(),
+          lazy: false,
         ),
         // BlocProvider(
         //   create: (context) => AppServiceCubit(

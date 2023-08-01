@@ -28,4 +28,13 @@ class StartUpApiProvider {
       userId: -1,
     );
   }
+
+  fetchAppConfig() async {
+    final url = "$baseUrl" "app-config/${env.clientCode}";
+    return await apiProvider.get(
+      UrlUtils.getUri(url: url),
+      token: userRepository.token,
+      userId: -1,
+    );
+  }
 }

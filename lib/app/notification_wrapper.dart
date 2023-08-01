@@ -70,7 +70,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
     print("Firebase");
     print(_token);
     print("Firebase");
-    if (_token != null) {
+    if (_token != null && userRepository.token.isNotEmpty) {
       await userRepository.updateNotificationToken();
     }
   }
