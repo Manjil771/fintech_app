@@ -106,30 +106,32 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "success") {
               NavigationService.push(
-                  target: CommonTransactionSuccessPage(
-                      body: Column(
-                        children: [
-                          KeyValueTile(
-                            title: "From Account",
-                            value:
-                                RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber,
-                          ),
-                          KeyValueTile(
-                              title: "To Account",
-                              value: _accountController.text),
-                          KeyValueTile(
-                              title: "Account Holder Name",
-                              value: _accountName.text),
-                          KeyValueTile(
-                              title: "Amount", value: _accountController.text)
-                        ],
+                target: CommonTransactionSuccessPage(
+                  body: Column(
+                    children: [
+                      KeyValueTile(
+                        title: "From Account",
+                        value: RepositoryProvider.of<CustomerDetailRepository>(
+                                context)
+                            .selectedAccount
+                            .value!
+                            .accountNumber,
                       ),
-                      message: _response.message,
-                      transactionID: _response.transactionIdentifier));
+                      KeyValueTile(
+                          title: "To Account", value: _accountController.text),
+                      KeyValueTile(
+                          title: "Account Holder Name",
+                          value: _accountName.text),
+                      KeyValueTile(
+                          title: "Amount", value: _accountController.text)
+                    ],
+                  ),
+                  message: _response.message,
+                  transactionID: _response.findValue(
+                    primaryKey: "transactionIdentifier",
+                  ),
+                ),
+              );
             } else {
               showPopUpDialog(
                 context: context,
@@ -227,14 +229,20 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
               NavigationService.push(
                 target: TransactionPinScreen(
                   onValueCallback: (pin) {
+                    String _receivingAccount = "";
+                    if (widget.accountNumber == null) {
+                      _receivingAccount = (internalBranch?.branchCode ?? "") +
+                          _accountController.text;
+                    } else {
+                      _receivingAccount = (widget.branchCode ?? "") +
+                          (widget.accountNumber ?? "");
+                    }
                     NavigationService.pop();
                     context.read<InternalTransferCubit>().fundTranfer(
                           amount: _amountController.text,
                           mpin: pin,
                           remarks: _remarksController.text,
-                          receivingAccount: (internalBranch?.branchCode ?? "") +
-                              "-" +
-                              _accountController.text,
+                          receivingAccount: _receivingAccount,
                           receivingBranchId: internalBranch?.branchCode ?? "",
                           sendingAccount:
                               RepositoryProvider.of<CustomerDetailRepository>(

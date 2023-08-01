@@ -5,6 +5,7 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_api_provider.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class InternalTransferRepository {
   final UserRepository userRepository;
@@ -77,7 +78,7 @@ class InternalTransferRepository {
   //   }
   // }
 
-  Future<DataResponse<String>> fundTranfer({
+  Future<DataResponse<UtilityResponseData>> fundTranfer({
     required String mpin,
     required String amount,
     required String remarks,
@@ -91,22 +92,25 @@ class InternalTransferRepository {
       "to_account_number": receivingAccount,
       "bank_branch_id": receivingBranchId,
       "mPin": mpin,
-      // "accountNumber": sendingAccount,
+      "remarks": remarks,
+      // "account_number": sendingAccount,
     };
 
     try {
       final _res = await internalTransferAPIProvider.internalFundTransfer(
         payloadData: sendToBankPayload,
       );
-      final _result = Map<String, dynamic>.from(_res);
-      if (_result['data']?['message'] != null &&
-          _result['data']?['code'] == "M0000") {
-        return DataResponse.success(
-            _result['data']?['message'] ?? "Fund transfer success.");
-      } else {
-        return DataResponse.error(_result['data']?['message'] ??
-            "Error while sending money. Please try again.");
-      }
+      final _result = Map<String, dynamic>.from(_res['data'] ?? {});
+      UtilityResponseData _response = UtilityResponseData.fromJson(_result);
+      // if (_result['data']?['message'] != null &&
+      //     _result['data']?['code'] == "M0000") {
+      //   return DataResponse.success(
+      //       _result['data']?['message'] ?? "Fund transfer success.");
+      // } else {
+      //   return DataResponse.error(_result['data']?['message'] ??
+      //       "Error while sending money. Please try again.");
+      // }
+      return DataResponse.success(_response);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;

@@ -31,7 +31,7 @@ class InternalTransferAPIProvider {
     Uri _uri = UrlUtils.getUri(url: url, params: payloadData);
 
     return await apiProvider.post(
-      url,
+      _uri.toString(),
       payloadData,
       token: userRepository.token,
     );

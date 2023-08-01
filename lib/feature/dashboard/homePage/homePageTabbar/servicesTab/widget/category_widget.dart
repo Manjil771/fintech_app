@@ -106,6 +106,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                   NavigationService.push(
                                       target:
                                           MobileTopupPage(categoryList: data));
+                                  return;
                                 }
                                 if (data.uniqueIdentifier
                                         .toString()

@@ -67,7 +67,7 @@ class CustomTextField extends FormField<String> {
                       fontSize: 14,
                       color: CustomTheme.darkerBlack.withOpacity(0.9),
                     )
-                  : TextStyle(
+                  : const TextStyle(
                       fontFamily: Fonts.poppin,
                       fontWeight: FontWeight.w400,
                       fontSize: 14,
@@ -114,7 +114,7 @@ class CustomTextField extends FormField<String> {
                                 RichText(
                                   text: TextSpan(
                                     text: title,
-                                    style: TextStyle(
+                                    style: const TextStyle(
                                       fontFamily: Fonts.poppin,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14,

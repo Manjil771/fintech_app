@@ -114,7 +114,7 @@ class _ReceiveMoneyBanksListWidgetState
                   state.statusCode != 404) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: CommonLoadingWidget(), // TODO Replace with maintenance
+                  child: CommonLoadingWidget(), 
                 );
               }
               return SliverFillRemaining(

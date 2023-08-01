@@ -128,7 +128,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                           NavigationService.popUntilFirstPage();
                         }),
                     SizedBox(height: _height * 0.02),
-                    pdfUrl != null
+                    pdfUrl == null
                         ? BlocConsumer<TransactionDownloadCubit, CommonState>(
                             listener: (context, state) {},
                             builder: (context, state) {

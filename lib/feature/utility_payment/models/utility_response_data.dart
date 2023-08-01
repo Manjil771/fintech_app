@@ -22,7 +22,7 @@ class UtilityResponseData {
         code: json["code"] ?? "",
         message: json["message"] ?? "",
         transactionIdentifier: json["transactionIdentifier"] ?? "",
-        details: ParseUtils.parseKeyValue(json['details']),
+        details: ParseUtils.parseKeyValue(json['details'] ?? json['detail']),
       );
 
   T? findValue<T>({required String primaryKey, String? secondaryKey}) {

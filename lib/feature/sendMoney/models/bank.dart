@@ -23,7 +23,7 @@ class Bank {
         enabled: json["enabled"] ?? "",
         lastModifiedOn: json["lastModifiedOn"] ?? "",
         swiftCode: json["swiftCode"] ?? "",
-        iconUrl: json["iconUrl"] ?? "",
+        iconUrl: json["iconUrl"] ?? json["bankLogo"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

@@ -13,14 +13,15 @@ class DashboardPage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return FGBGNotifier(
-      onEvent: (FGBGType value) {
-        print(value);
-        if (value == FGBGType.background) {
-          RepositoryProvider.of<UserRepository>(context).logout();
-        }
-      },
-      child: const DashBoardWidget(),
-    );
+    return const DashBoardWidget();
+    // return FGBGNotifier(
+    //   onEvent: (FGBGType value) {
+    //     print(value);
+    //     if (value == FGBGType.background) {
+    //       RepositoryProvider.of<UserRepository>(context).logout();
+    //     }
+    //   },
+    //   child: const DashBoardWidget(),
+    // );
   }
 }
