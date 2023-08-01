@@ -6,6 +6,8 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -14,9 +16,21 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/internal_transfer_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class InternalCooperativeWidget extends StatefulWidget {
-  const InternalCooperativeWidget({Key? key}) : super(key: key);
+  final String? accountNumber;
+  final String? accountName;
+  final String? bankCode;
+  final String? branchCode;
+
+  const InternalCooperativeWidget(
+      {Key? key,
+      this.accountNumber,
+      this.accountName,
+      this.bankCode,
+      this.branchCode})
+      : super(key: key);
 
   @override
   State<InternalCooperativeWidget> createState() =>
@@ -30,8 +44,45 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   final TextEditingController _branchController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
   InternalBranch? internalBranch;
+
+  getDetails() {
+    if (widget.accountName != null) {
+      _accountController.text = widget.accountNumber.toString();
+      _accountName.text = widget.accountName.toString();
+      _branchController.text = widget.bankCode.toString();
+      internalBranch = InternalBranch(
+        id: 1,
+        name: widget.bankCode.toString(),
+        address: "",
+        branchCode: widget.branchCode.toString(),
+        bank: "",
+        city: "",
+        checker: false,
+        maker: false,
+        state: "",
+        bankId: 1,
+        bankCode: "",
+        cbsBranchCode: "",
+        email: "",
+        branchId: "",
+        latitude: "",
+        longitude: "",
+        nchl: "",
+        fax: "",
+        telephoneNumber: "",
+        branchManager: "",
+        createdDate: DateTime.now(),
+      );
+    }
+  }
+
+  @override
+  void initState() {
+    getDetails();
+    super.initState();
+  }
+
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -50,16 +101,46 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             NavigationService.pop();
           }
 
-          if (state is CommonStateSuccess) {
-            showPopUpDialog(
-              context: context,
-              message: state.data,
-              showCancelButton: false,
-              title: "Success",
-              buttonCallback: () {
-                NavigationService.popUntilFirstPage();
-              },
-            );
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            UtilityResponseData _response = state.data;
+            if (_response.code == "M0000" ||
+                _response.status.toLowerCase() == "success") {
+              NavigationService.push(
+                  target: CommonTransactionSuccessPage(
+                      body: Column(
+                        children: [
+                          KeyValueTile(
+                            title: "From Account",
+                            value:
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber,
+                          ),
+                          KeyValueTile(
+                              title: "To Account",
+                              value: _accountController.text),
+                          KeyValueTile(
+                              title: "Account Holder Name",
+                              value: _accountName.text),
+                          KeyValueTile(
+                              title: "Amount", value: _accountController.text)
+                        ],
+                      ),
+                      message: _response.message,
+                      transactionID: _response.transactionIdentifier));
+            } else {
+              showPopUpDialog(
+                context: context,
+                message: _response.message,
+                showCancelButton: false,
+                title: _response.status,
+                buttonCallback: () {
+                  NavigationService.popUntilFirstPage();
+                },
+              );
+            }
           } else if (state is CommonError) {
             showPopUpDialog(
               context: context,
@@ -118,13 +199,13 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Amount"),
                 ),
-                Text(
-                  "Charge : Rs. 0",
-                  style: _textTheme.displayMedium!.copyWith(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 12,
-                  ),
-                ),
+                // Text(
+                //   "Charge : Rs. 0",
+                //   style: _textTheme.displayMedium!.copyWith(
+                //     fontWeight: FontWeight.bold,
+                //     fontSize: 12,
+                //   ),
+                // ),
                 const SizedBox(
                   height: 10,
                 ),
@@ -158,9 +239,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                           sendingAccount:
                               RepositoryProvider.of<CustomerDetailRepository>(
                                       context)
-                                  .accountsList
-                                  .value
-                                  .first
+                                  .selectedAccount
+                                  .value!
                                   .accountNumber,
                         );
                   },
@@ -168,6 +248,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
               );
             }
           },
+          showAccountSelection: true,
           buttonName: "Proceed",
           title: "Internal Cooperative",
           detail: "Send Money to account maintained at same Coop.",

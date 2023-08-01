@@ -21,6 +21,7 @@ import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
 
@@ -401,7 +402,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     minAmount: 10.00,
                     maxAmount: 25000.00,
                     status: "Active")));
-      } else if (_decode.containsKey("bankCode")) {
+      }
+      if (_decode.containsKey("bankCode")) {
         String _accountNumber = _decode['accountNumber'];
         String _accountName = _decode['accountName'];
 
@@ -411,6 +413,20 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
           accountNumber: _accountNumber,
           accountName: _accountName,
           bankCode: _bankCode,
+        ));
+      }
+      if (_decode.containsKey("branchCode")) {
+        String _accountNumber = _decode['accountNumber'];
+        String _accountName = _decode['accountName'];
+        String _branchCode = _decode['branchCode'];
+
+        String _bankCode = _decode['bankCode'];
+        NavigationService.pushReplacement(
+            target: InternalCooperativePage(
+          accountNumber: _accountNumber,
+          accountName: _accountName,
+          bankCode: _bankCode,
+          branchCode: _branchCode,
         ));
       }
     } catch (e) {

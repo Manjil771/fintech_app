@@ -54,6 +54,16 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
           } else if (state is! CommonLoading && _isLoading) {
             NavigationService.pop();
           }
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final _response = state.data;

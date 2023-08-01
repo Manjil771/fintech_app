@@ -21,6 +21,7 @@ import 'package:ismart/feature/categoryWiseService/internet/common/screen/common
 import 'package:ismart/feature/categoryWiseService/internet/pokhara_internet/screens/pokhara_internet_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/common_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -147,14 +148,22 @@ class _CategoriesWiseServicesWidgetState
         .where((e) =>
             e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
         .toList();
-    print(selectedService.length);
     final servicess = searchItems[index];
-    print("wisgagdgfgasd  $uniqueIdentifier");
-    if (widget.uniqueIdentifier.toLowerCase() == "tv".toLowerCase()) {
-      NavigationService.push(
-          target: TvPaymentPage(
-        service: servicess,
-      ));
+    if (widget.uniqueIdentifier == Slugs.tv) {
+      if (uniqueIdentifier.toLowerCase() ==
+              Slugs.dishhomeOnlineTopup.toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              Slugs.simtvOnlineTopup.toLowerCase()) {
+        NavigationService.push(
+            target: TvPaymentPage(
+          service: servicess,
+        ));
+      } else {
+        NavigationService.push(
+            target: CommonTvPaymentPage(
+          service: servicess,
+        ));
+      }
     }
     if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==
