@@ -9,6 +9,7 @@ import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_r
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_repository.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/resources/datapack_repository.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
@@ -200,6 +201,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => ResetPinRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => TvPaymentRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),

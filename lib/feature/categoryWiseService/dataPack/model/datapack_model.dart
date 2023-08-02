@@ -2,7 +2,7 @@
 //
 //     final datapackModel = datapackModelFromJson(jsonString);
 
-class Package {
+class DataPackPackage {
   String code;
   String name;
   String description;
@@ -12,7 +12,7 @@ class Package {
   dynamic subscriberType;
   String imagePath;
 
-  Package({
+  DataPackPackage({
     required this.code,
     required this.name,
     required this.description,
@@ -23,7 +23,8 @@ class Package {
     required this.imagePath,
   });
 
-  factory Package.fromJson(Map<String, dynamic> json) => Package(
+  factory DataPackPackage.fromJson(Map<String, dynamic> json) =>
+      DataPackPackage(
         code: json["code"],
         name: json["name"],
         description: json["description"],

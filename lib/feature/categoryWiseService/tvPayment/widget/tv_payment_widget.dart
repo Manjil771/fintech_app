@@ -15,7 +15,10 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_cubit.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -49,7 +52,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-        body: BlocListener<UtilityPaymentCubit, CommonState>(
+        body: BlocListener<TvPaymentCubit, CommonState>(
       listener: (context, state) {
         print(state);
         if (state is CommonLoading && _isLoading == false) {
@@ -70,8 +73,13 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
             },
           );
         }
-        if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+
+        if (state is CommonStateSuccess<TvDetailModel>) {
+          TvDetailModel _response = state.data;
+          final HashResponse hashResponse = _response.details.hashResponse;
+          final List<CurrentPackage> currentPackage =
+              _response.details.currentPackages;
+
           if (_response.code == "M0000" ||
               _response.status.toLowerCase() == "success") {
             NavigationService.push(
@@ -105,43 +113,33 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                 service: widget.service,
                 body: Column(
                   children: [
-                    KeyValueTile(
-                        title: "Customer ID",
-                        value: _response.findValue(
-                          primaryKey: "hashResponse",
-                          secondaryKey: "customerId ",
-                        )),
-                    _response
-                            .findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "expiryDate",
-                            )
-                            .toString()
-                            .isEmpty
+                    hashResponse.casId == null
+                        ? Container()
+                        : KeyValueTile(
+                            title: "Customer ID",
+                            value: hashResponse.casId ?? "",
+                          ),
+                    hashResponse.expiryDate == null
                         ? Container()
                         : KeyValueTile(
                             title: "Expiry Date",
-                            value: _response.findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "expiryDate",
-                            )),
+                            value: _response.details.hashResponse.expiryDate
+                                .toString()),
 
+                    hashResponse.balance == null
+                        ? Container()
+                        : KeyValueTile(
+                            title: "Balance",
+                            value: hashResponse.balance ?? "",
+                          ),
                     KeyValueTile(title: "Amount", value: amountController.text),
-                    _response.findValue(
-                              primaryKey: "packages",
-                            ) ==
-                            []
+                    currentPackage.isEmpty
                         ? Container()
                         : Column(
                             children: [
                               KeyValueTile(
                                   title: "Number of TV",
-                                  value: _response
-                                      .findValue(
-                                        primaryKey: "hashResponse",
-                                        secondaryKey: "currentPackages",
-                                      )
-                                      .toString()),
+                                  value: currentPackage.first.text ?? ""),
                             ],
                           ),
                     // KeyValueTile(
@@ -241,7 +239,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         ),
         onButtonPressed: () {
           if (_formKey.currentState!.validate()) {
-            context.read<UtilityPaymentCubit>().fetchDetails(
+            context.read<TvPaymentCubit>().fetchDetails(
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 accountDetails: {
                   "username": customerIDController.text,

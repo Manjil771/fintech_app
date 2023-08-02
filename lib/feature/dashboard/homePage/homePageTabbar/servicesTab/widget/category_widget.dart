@@ -102,7 +102,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
-                                    "topup") {
+                                    Slugs.topup) {
                                   NavigationService.push(
                                       target:
                                           MobileTopupPage(categoryList: data));

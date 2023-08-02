@@ -26,7 +26,7 @@ class BuyDatapackWidget extends StatefulWidget {
   BuyDatapackWidget({Key? key, required this.service, required this.package})
       : super(key: key);
   final ServiceList service;
-  final Package package;
+  final DataPackPackage package;
 
   @override
   State<BuyDatapackWidget> createState() => _BuyDatapackWidgetState();
