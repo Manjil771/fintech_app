@@ -208,6 +208,21 @@ class CoOperativeValue {
     splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative shreeaaju = CoOperative(
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeaaju/shreeaaju_banner.png",
+    backgroundImage: "assets/shreeaaju/shreeaju_background.png",
+
+    clientCode: 'D6CIBSGVA0',
+    coOperativeName: 'Shree Aaju',
+    coOperativeLogo: 'assets/shreeaaju/shreeaaju_logo.png',
+
+    clientSecret: "155993",
+    splashImage: "assets/shreeaaju/shreeaaju_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
