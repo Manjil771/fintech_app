@@ -241,14 +241,12 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/suryadev/suryadev_banner.png",
     backgroundImage: "assets/suryadev/suryadev_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
 
-    // clientCode: 'RVERAQI2XY',
+    clientCode: 'RVERAQI2XY',
     coOperativeName: 'Suryadev',
     coOperativeLogo: 'assets/suryadev/suryadev_logo.png',
 
-    // clientSecret: "181746",
+    clientSecret: "181746",
     splashImage: "assets/suryadev/suryadev_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
