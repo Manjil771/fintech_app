@@ -33,7 +33,8 @@ class DatapackRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<List<Package>>> getDatapackList(serviceIdentifier) async {
+  Future<DataResponse<List<DataPackPackage>>> getDatapackList(
+      serviceIdentifier) async {
     try {
       final _res = await datapackApiProvider.fetchDatapack(serviceIdentifier);
 
@@ -44,7 +45,7 @@ class DatapackRepository {
         //     List.from(_res["data"]['details']['packages'] ?? []);
 
         final _userMap = List.from(_res['data']['details']['packages'] ?? [])
-            .map((e) => Package.fromJson(e))
+            .map((e) => DataPackPackage.fromJson(e))
             .toList();
 
         if (_userMap.isEmpty) {

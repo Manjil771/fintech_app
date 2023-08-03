@@ -142,7 +142,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
               showPopUpDialog(
                   context: context,
                   message: state.data.message,
-                  title: "Error",
+                  title: state.data.status,
                   buttonCallback: () {
                     NavigationService.pop();
                   },

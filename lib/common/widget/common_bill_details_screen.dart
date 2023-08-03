@@ -56,7 +56,7 @@ class CommonBillDetailPage extends StatelessWidget {
   }
 }
 
-class CommonBillDetailWidget extends StatelessWidget {
+class CommonBillDetailWidget extends StatefulWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
@@ -73,6 +73,12 @@ class CommonBillDetailWidget extends StatelessWidget {
     required this.service,
     required this.serviceIdentifier,
   });
+
+  @override
+  State<CommonBillDetailWidget> createState() => _CommonBillDetailWidgetState();
+}
+
+class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
   bool _isLoading = false;
 
   @override
@@ -116,9 +122,9 @@ class CommonBillDetailWidget extends StatelessWidget {
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
-                      body: body,
+                      body: widget.body,
                       message: state.data.message,
-                      service: service));
+                      service: widget.service));
             } else {
               showPopUpDialog(
                 context: context,
@@ -151,16 +157,16 @@ class CommonBillDetailWidget extends StatelessWidget {
                       icon: Icon(Icons.arrow_back)),
                   Center(
                     child: Image.network(
-                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${service.icon}",
+                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
                       height: _height * 0.08,
                     ),
                   ),
                   SizedBox(height: _height * 0.02),
                   Center(
-                    child: service.service.isEmpty
+                    child: widget.service.service.isEmpty
                         ? Container()
                         : Text(
-                            service.service,
+                            widget.service.service,
                             style: TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
@@ -169,7 +175,7 @@ class CommonBillDetailWidget extends StatelessWidget {
                   ),
                   SizedBox(height: _height * 0.02),
                   Text(
-                      "Details about the payable amount for the service of ${service.service} is shown below.",
+                      "Details about the payable amount for the service of ${widget.service.service} is shown below.",
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleSmall),
                   SizedBox(height: _height * 0.02),
@@ -190,10 +196,10 @@ class CommonBillDetailWidget extends StatelessWidget {
                         Text("Paymet Details",
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(height: _height * 0.02),
-                        body,
+                        widget.body,
                         KeyValueTile(
                             title: "Cashback",
-                            value: "${service.cashBackView ?? 0} %")
+                            value: "${widget.service.cashBackView ?? 0} %")
                       ],
                     ),
                   ),
@@ -207,11 +213,11 @@ class CommonBillDetailWidget extends StatelessWidget {
 
                             context.read<UtilityPaymentCubit>().makePayment(
                                   mPin: p0,
-                                  serviceIdentifier: serviceIdentifier,
+                                  serviceIdentifier: widget.serviceIdentifier,
                                   // serviceIdentifier: "traffic_fine_payments",
-                                  apiEndpoint: apiEndpoint,
-                                  body: apiBody,
-                                  accountDetails: accountDetails,
+                                  apiEndpoint: widget.apiEndpoint,
+                                  body: widget.apiBody,
+                                  accountDetails: widget.accountDetails,
                                 );
                           },
                         ));

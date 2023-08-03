@@ -49,7 +49,7 @@ AppBar myAppbar({bool showBackButton = false}) {
       ),
     ),
     title: Padding(
-      padding: const EdgeInsets.all(20.0),
+      padding: const EdgeInsets.all(0),
       child: _getImageWidget(),
     ),
     actions: [

@@ -53,7 +53,7 @@ class _SelectDatapackWidgetState extends State<SelectDatapackWidget> {
             height: _height * 0.7,
             child: BlocBuilder<DatapackCubit, CommonState>(
               builder: (context, state) {
-                if (state is CommonDataFetchSuccess<Package>) {
+                if (state is CommonDataFetchSuccess<DataPackPackage>) {
                   return ListView.builder(
                     scrollDirection: Axis.vertical,
                     physics: const AlwaysScrollableScrollPhysics(),
