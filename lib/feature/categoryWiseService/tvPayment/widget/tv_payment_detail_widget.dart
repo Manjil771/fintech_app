@@ -23,6 +23,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../../common/util/size_utils.dart';
+import 'tv_package_search_widegt.dart';
 
 class TvPaymentDeatilWidget extends StatefulWidget {
   final String amount;
@@ -43,7 +44,7 @@ class TvPaymentDeatilWidget extends StatefulWidget {
 class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
   bool _changePackage = false;
   bool _isLoading = false;
-  String? testing;
+  TextEditingController selectedPackageController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     final HashResponse hashResponse =
@@ -151,51 +152,66 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                   KeyValueTile(title: "Amount", value: getAmount()),
                   tvPackages.isEmpty
                       ? Container()
-                      : CustomCheckbox(
-                          leftMargin: CustomTheme.symmetricHozPadding,
-                          selected: _changePackage,
-                          onChanged: (val) {
-                            setState(() {
-                              _changePackage = !_changePackage;
-                            });
-                          },
-                          title: "Change Package",
-                        ),
-                  Text(testing.toString()),
-                  _changePackage == true
-                      ? Container(
-                          padding: EdgeInsets.symmetric(horizontal: 20),
-                          height: 50.hp,
-                          width: double.infinity,
-                          child: CustomTextField(
-                            readOnly: true,
-                            trailing: DropdownButton<TvPackages>(
-                              underline: const SizedBox(),
-                              onChanged: (TvPackages? value) {
-                                if (value != null) {
-                                  selectedPackage = value;
-                                  getAmount();
-                                  testing = value.text;
-                                  setState(() {});
-
-                                  print(selectedPackage.text);
-                                }
-                              },
-                              items:
-                                  tvPackages.map<DropdownMenuItem<TvPackages>>(
-                                (TvPackages option) {
-                                  return DropdownMenuItem<TvPackages>(
-                                    value: option,
-                                    child: Text(
-                                      option.text ?? "",
-                                      style: _textTheme.titleSmall,
-                                    ),
-                                  );
-                                },
-                              ).toList(),
-                            ),
+                      : Align(
+                          alignment: Alignment.centerLeft,
+                          child: CustomCheckbox(
+                            selected: _changePackage,
+                            onChanged: (val) {
+                              setState(() {
+                                _changePackage = !_changePackage;
+                              });
+                            },
+                            title: "Change Package",
                           ),
+                        ),
+                  _changePackage == true
+                      ? CustomTextField(
+                          controller: selectedPackageController,
+                          title: "Select",
+                          readOnly: true,
+                          onTap: () {
+                            NavigationService.push(
+                                target: TvPackageSearchWidgets(
+                              onChanged: (value) {
+                                selectedPackageController.text =
+                                    value.text.toString();
+                              },
+                              tvpackage: tvPackages,
+                            ));
+                          },
                         )
+                      //  Container(
+                      //     width: double.infinity,
+                      //     child: CustomTextField(
+                      //       readOnly: true,
+                      //       trailing: Container(
+                      //         width: 40.wp,
+                      //         child: DropdownButton<TvPackages>(
+                      //           underline: const SizedBox(),
+                      //           onChanged: (TvPackages? value) {
+                      //             if (value != null) {
+                      //               selectedPackage = value;
+                      //               getAmount();
+                      //               testing = value.text;
+                      //               setState(() {});
+
+                      //               print(selectedPackage.text);
+                      //             }
+                      //           },
+                      //           items: tvPackages
+                      //               .map<DropdownMenuItem<TvPackages>>(
+                      //             (TvPackages option) {
+                      //               return DropdownMenuItem<TvPackages>(
+                      //                 value: option,
+                      //                 child: Text(
+                      //                   option.text ?? "",
+                      //                   style: _textTheme.titleSmall,
+                      //                 ),
+                      //               );
+                      //             },
+                      //           ).toList(),
+                      //         ),
+
                       : Container()
                 ],
               ),
