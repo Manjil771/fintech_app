@@ -138,8 +138,18 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                         : Column(
                             children: [
                               KeyValueTile(
-                                  title: "Number of TV",
+                                  title: "Amount",
+                                  value: currentPackage.first.amount ?? ""),
+                              KeyValueTile(
+                                  title: "Description",
                                   value: currentPackage.first.text ?? ""),
+                              currentPackage.first.planExpiryDate == null
+                                  ? Container()
+                                  : KeyValueTile(
+                                      title: "Expiry Date",
+                                      value:
+                                          currentPackage.first.planExpiryDate ??
+                                              ""),
                             ],
                           ),
                     // KeyValueTile(

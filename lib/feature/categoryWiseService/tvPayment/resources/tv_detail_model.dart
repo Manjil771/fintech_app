@@ -73,7 +73,7 @@ class CurrentPackage {
   String? currency;
   String? text;
   String? description;
-  DateTime planExpiryDate;
+  String? planExpiryDate;
 
   CurrentPackage({
     this.id,
@@ -90,7 +90,7 @@ class CurrentPackage {
         currency: json["currency"],
         text: json["text"],
         description: json["description"],
-        planExpiryDate: DateTime.parse(json["planExpiryDate"]),
+        planExpiryDate: json["planExpiryDate"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -99,8 +99,7 @@ class CurrentPackage {
         "currency": currency,
         "text": text,
         "description": description,
-        "planExpiryDate":
-            "${planExpiryDate.year.toString().padLeft(4, '0')}-${planExpiryDate.month.toString().padLeft(2, '0')}-${planExpiryDate.day.toString().padLeft(2, '0')}",
+        "planExpiryDate": planExpiryDate,
       };
 }
 
