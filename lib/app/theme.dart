@@ -16,8 +16,11 @@ class CustomTheme {
   static const Color alankarColor = Color(0xFF0088cf);
   static const Color gomaganeshColor = Color(0xFF1f972b);
   static const Color shreeAajuColor = Color(0xFF00A900);
+  static const Color shreeMitraColor = Color(0xFF00A551);
+  static const Color kipooColor = Color(0xFF00A551);
+  static const Color suryadevColor = Color(0xFF8E191C);
 
-  static Color primaryColor = kamanaColor;
+  static Color primaryColor = suryadevColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

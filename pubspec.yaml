@@ -106,6 +106,9 @@ flutter:
     - assets/alankar/
     - assets/manank/
     - assets/shreeaaju/
+    - assets/shreemitra/
+    - assets/kipoo/
+    - assets/suryadev/
 
   fonts:
     - family: popinbold

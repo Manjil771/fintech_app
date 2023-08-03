@@ -190,6 +190,8 @@ class CoOperativeValue {
   );
 
   static final CoOperative shreeaaju = CoOperative(
+    appStoreID: "",
+    packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/shreeaaju/shreeaaju_banner.png",
     backgroundImage: "assets/shreeaaju/shreeaju_background.png",
@@ -200,6 +202,54 @@ class CoOperativeValue {
 
     clientSecret: "155993",
     splashImage: "assets/shreeaaju/shreeaaju_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeamitra = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreemitra/shreemitra_banner.png",
+    backgroundImage: "assets/shreemitra/shreemitra_background.png",
+
+    clientCode: 'JYVHE7GL7S',
+    coOperativeName: 'Shree Mitra',
+    coOperativeLogo: 'assets/shreemitra/shreemitra_logo.png',
+
+    clientSecret: "128632",
+    splashImage: "assets/shreemitra/shreemitra_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative kipoo = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kipoo/kipoo_banner.png",
+    backgroundImage: "assets/kipoo/kipoo_background.png",
+
+    clientCode: 'JRC56V3YN4',
+    coOperativeName: 'Kipoo',
+    coOperativeLogo: 'assets/kipoo/kipoo_logo.png',
+
+    clientSecret: "135559",
+    splashImage: "assets/kipoo/kipoo_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative suryadev = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/suryadev/suryadev_banner.png",
+    backgroundImage: "assets/suryadev/suryadev_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+
+    // clientCode: 'RVERAQI2XY',
+    coOperativeName: 'Suryadev',
+    coOperativeLogo: 'assets/suryadev/suryadev_logo.png',
+
+    // clientSecret: "181746",
+    splashImage: "assets/suryadev/suryadev_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

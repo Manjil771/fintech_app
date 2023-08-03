@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/slugs.dart';
@@ -10,6 +11,7 @@ import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -19,6 +21,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_cubit.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_detail_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -40,10 +43,19 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
   final TextEditingController usernameController = TextEditingController();
   final TextEditingController customerIDController = TextEditingController();
   final TextEditingController setupBoxController = TextEditingController();
+  bool _changePackage = false;
+
   String? selectedDistrictValue;
   String? selectedProvinceValue;
   bool _isLoading = false;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  // getAmount() {
+  //   if (amountController.text.isEmpty) {
+  //     return "";
+  //   } else {
+  //     return amountController.text;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -79,100 +91,17 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           final HashResponse hashResponse = _response.details.hashResponse;
           final List<CurrentPackage> currentPackage =
               _response.details.currentPackages;
+          final List<TvPackages> tvPackages = _response.details.tvPackages;
 
           if (_response.code == "M0000" ||
               _response.status.toLowerCase() == "success") {
             NavigationService.push(
-              target: CommonBillDetailPage(
-                serviceIdentifier: widget.service.uniqueIdentifier,
-                apiEndpoint: "/api/tvpay",
-                apiBody: {
-                  // _response.findValue(primaryKey: "hasnResponse"),
-                  "customer_id ": customerIDController.text,
-                  "username": customerIDController.text,
-                },
-                accountDetails: {
-                  "account_number":
-                      RepositoryProvider.of<CustomerDetailRepository>(context)
-                          .selectedAccount
-                          .value!
-                          .accountNumber
-                          .toString(),
-                  "username": customerIDController.text,
-                  "customer_id ": customerIDController.text,
-
-                  // "customer_id": usernameController.text,
-                  "amount": amountController.text,
-                  // "account_number": "002001-001-102-0001010",
-
-                  // "amount": myAmount,
-                  // "amount": _response.findValue(
-                  //     primaryKey: "hashResposne",
-                  //     secondaryKey: "formattedFinalAmount"),
-                },
-                service: widget.service,
-                body: Column(
-                  children: [
-                    hashResponse.casId == null
-                        ? Container()
-                        : KeyValueTile(
-                            title: "Customer ID",
-                            value: hashResponse.casId ?? "",
-                          ),
-                    hashResponse.expiryDate == null
-                        ? Container()
-                        : KeyValueTile(
-                            title: "Expiry Date",
-                            value: _response.details.hashResponse.expiryDate
-                                .toString()),
-
-                    hashResponse.balance == null
-                        ? Container()
-                        : KeyValueTile(
-                            title: "Balance",
-                            value: hashResponse.balance ?? "",
-                          ),
-                    KeyValueTile(title: "Amount", value: amountController.text),
-                    currentPackage.isEmpty
-                        ? Container()
-                        : Column(
-                            children: [
-                              KeyValueTile(
-                                  title: "Amount",
-                                  value: currentPackage.first.amount ?? ""),
-                              KeyValueTile(
-                                  title: "Description",
-                                  value: currentPackage.first.text ?? ""),
-                              currentPackage.first.planExpiryDate == null
-                                  ? Container()
-                                  : KeyValueTile(
-                                      title: "Expiry Date",
-                                      value:
-                                          currentPackage.first.planExpiryDate ??
-                                              ""),
-                            ],
-                          ),
-                    // KeyValueTile(
-                    //     title: "Number of TV",
-                    //     value: _response
-                    //         .findValue(
-                    //           primaryKey: "hashResponse",
-                    //           secondaryKey: "noOfTv",
-                    //         )
-                    //         .toString()),
-                  ],
-                ),
-              ),
-            );
-            // } else {
-            //   showPopUpDialog(
-            //       context: context,
-            //       message: _response.message,
-            //       title: "Error",
-            //       buttonCallback: () {
-            //         NavigationService.pop();
-            //       },
-            //       showCancelButton: false);
+                target: TvPaymentDeatilPage(
+              amount: amountController.text,
+              detailFetchData: _response,
+              service: widget.service,
+              userName: usernameController.text,
+            ));
           } else {
             showPopUpDialog(
               context: context,

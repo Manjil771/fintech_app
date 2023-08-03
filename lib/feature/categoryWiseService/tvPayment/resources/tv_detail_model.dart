@@ -43,25 +43,26 @@ class TvDetailModel {
 
 class Details {
   HashResponse hashResponse;
-  List<dynamic> packages;
+  List<TvPackages> tvPackages;
   List<CurrentPackage> currentPackages;
 
   Details({
     required this.hashResponse,
-    required this.packages,
+    required this.tvPackages,
     required this.currentPackages,
   });
 
   factory Details.fromJson(Map<String, dynamic> json) => Details(
         hashResponse: HashResponse.fromJson(json["hashResponse"]),
-        packages: List<dynamic>.from(json["packages"].map((x) => x)),
+        tvPackages: List<TvPackages>.from(
+            json["packages"].map((x) => TvPackages.fromJson(x))),
         currentPackages: List<CurrentPackage>.from(
             json["currentPackages"].map((x) => CurrentPackage.fromJson(x))),
       );
 
   Map<String, dynamic> toJson() => {
         "hashResponse": hashResponse.toJson(),
-        "packages": List<dynamic>.from(packages.map((x) => x)),
+        "packages": List<dynamic>.from(tvPackages.map((x) => x.toJson())),
         "currentPackages":
             List<dynamic>.from(currentPackages.map((x) => x.toJson())),
       };
@@ -103,15 +104,51 @@ class CurrentPackage {
       };
 }
 
+class TvPackages {
+  String? id;
+  String? amount;
+  String? currency;
+  String? text;
+  String? description;
+  String? planExpiryDate;
+
+  TvPackages({
+    this.id,
+    this.amount,
+    required this.currency,
+    required this.text,
+    this.description,
+    required this.planExpiryDate,
+  });
+
+  factory TvPackages.fromJson(Map<String, dynamic> json) => TvPackages(
+        id: json["id"],
+        amount: json["amount"],
+        currency: json["currency"],
+        text: json["text"],
+        description: json["description"],
+        planExpiryDate: json["planExpiryDate"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "amount": amount,
+        "currency": currency,
+        "text": text,
+        "description": description,
+        "planExpiryDate": planExpiryDate,
+      };
+}
+
 class HashResponse {
-  String? casId;
-  String? expiryDate;
-  String? resultMessage;
-  String? balance;
-  String? currentPlan;
-  String? customerId;
-  String? customerName;
-  String? status;
+  String casId;
+  String expiryDate;
+  String resultMessage;
+  String balance;
+  String currentPlan;
+  String customerId;
+  String customerName;
+  String status;
 
   HashResponse({
     required this.casId,
@@ -126,13 +163,13 @@ class HashResponse {
 
   factory HashResponse.fromJson(Map<String, dynamic> json) => HashResponse(
         casId: json["casId"] ?? json["customerId "],
-        expiryDate: json["expiryDate"],
-        resultMessage: json["Result Message"],
-        balance: json["balance"],
-        currentPlan: json["currentPlan"],
-        customerId: json["customerId "],
-        customerName: json["customerName"],
-        status: json["status"],
+        expiryDate: json["expiryDate"] ?? "",
+        resultMessage: json["Result Message"] ?? "",
+        balance: json["balance"] ?? "",
+        currentPlan: json["currentPlan"] ?? "",
+        customerId: json["customerId "] ?? "",
+        customerName: json["customerName"] ?? "",
+        status: json["status"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

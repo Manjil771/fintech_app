@@ -149,21 +149,12 @@ class _CategoriesWiseServicesWidgetState
             e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
         .toList();
     final servicess = searchItems[index];
-    if (widget.uniqueIdentifier == Slugs.tv) {
-      if (uniqueIdentifier.toLowerCase() ==
-              Slugs.dishhomeOnlineTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
-              Slugs.simtvOnlineTopup.toLowerCase()) {
-        NavigationService.push(
-            target: TvPaymentPage(
-          service: servicess,
-        ));
-      } else {
-        NavigationService.push(
-            target: CommonTvPaymentPage(
-          service: servicess,
-        ));
-      }
+
+    if (widget.uniqueIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {
+      NavigationService.push(
+          target: TvPaymentPage(
+        service: servicess,
+      ));
     }
     if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==
