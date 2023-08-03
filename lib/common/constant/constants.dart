@@ -9,7 +9,7 @@ class Constants {
   static const kamanaGooglePackageName = "com.devanasoft.kamana";
 
   static const googlePlayStore =
-      "https://play.google.com/store/apps/details?id=$kamanaGooglePackageName";
+      "https://play.google.com/store/apps/details?id={}";
   static const appleAppStore =
-      "https://apps.apple.com/app/devanasoft-ismart/id$kamanaAppleStoreId";
+      "https://apps.apple.com/app/devanasoft-ismart/id{}";
 }

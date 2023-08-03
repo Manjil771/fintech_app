@@ -1,10 +1,13 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 
 import 'package:ismart/common/constant/constants.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
@@ -78,15 +81,17 @@ class AppUpdateWidgets extends StatelessWidget {
               CustomRoundedButtom(
                 title: "Update Now",
                 onPressed: () {
+                  String _appStoreID = RepositoryProvider.of<CoOperative>(context).appStoreID;
+                  String _packageName = RepositoryProvider.of<CoOperative>(context).packageName;
                   if (Platform.isAndroid) {
                     UrlLauncher.launchWebsite(
                       context: context,
-                      url: Constants.googlePlayStore,
+                      url: Constants.googlePlayStore.tr(args: [_packageName]),
                     );
                   } else {
                     UrlLauncher.launchWebsite(
                       context: context,
-                      url: Constants.appleAppStore,
+                      url: Constants.appleAppStore.tr(args: [_appStoreID]),
                     );
                   }
                 },
