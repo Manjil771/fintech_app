@@ -43,8 +43,7 @@ class TvPackageSearchWidgets extends StatelessWidget {
           _items.length,
           (index) => KeyValue(
             title: _items[index].text ?? "",
-            value:
-                "Rs. ${AmountUtils.getAmountInRupees(amount: _items[index].amount?.toString() ?? "")}",
+            value: "Rs. ${_items[index].amount}",
           ),
         ),
       ),

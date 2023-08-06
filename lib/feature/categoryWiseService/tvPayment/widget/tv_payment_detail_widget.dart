@@ -1,12 +1,8 @@
-import 'package:animations/animations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/amount_utils.dart';
-import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
@@ -15,7 +11,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/internet/worldlink/widgets/worldlink_search_widget.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -51,12 +47,24 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
         widget.detailFetchData.details.hashResponse;
     final List<TvPackages> tvPackages =
         widget.detailFetchData.details.tvPackages;
+    final currentPackage =
+        tvPackages.where((element) => element.text == hashResponse.currentPlan);
+    TvPackages? selectedPackage;
 
-    TvPackages selectedPackage = tvPackages[0];
+    TvPackages? packageDetail() {
+      if (selectedPackage != null) {
+        return selectedPackage;
+      } else {
+        if (currentPackage.isEmpty) {
+        } else {
+          return currentPackage.first;
+        }
+      }
+    }
 
     String getAmount() {
       if (widget.amount.isEmpty) {
-        return selectedPackage.amount ?? "";
+        return packageDetail()?.amount ?? "";
       } else {
         return widget.amount;
       }
@@ -100,14 +108,113 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
               if (_response.code == "M0000") {
                 NavigationService.push(
                     target: CommonTransactionSuccessPage(
-                        body: Container(),
+                        body: Column(
+                          children: [
+                            hashResponse.customerName.isEmpty
+                                ? Container()
+                                : KeyValueTile(
+                                    title: "Customer Name",
+                                    value: hashResponse.customerName,
+                                  ),
+                            hashResponse.casId.isEmpty
+                                ? Container()
+                                : KeyValueTile(
+                                    title: "Customer ID",
+                                    value: hashResponse.casId,
+                                  ),
+                            hashResponse.expiryDate.isEmpty
+                                ? Container()
+                                : KeyValueTile(
+                                    title: "Expiry Date",
+                                    value: hashResponse.expiryDate.toString()),
+                            hashResponse.balance.isEmpty
+                                ? Container()
+                                : KeyValueTile(
+                                    title: "Balance",
+                                    value: hashResponse.balance,
+                                  ),
+                            KeyValueTile(title: "Amount", value: getAmount()),
+                            KeyValueTile(
+                                title: "Package",
+                                value: packageDetail()?.text ?? ""),
+                            tvPackages.isEmpty
+                                ? Container()
+                                : Align(
+                                    alignment: Alignment.centerLeft,
+                                    child: CustomCheckbox(
+                                      selected: _changePackage,
+                                      onChanged: (val) {
+                                        setState(() {
+                                          _changePackage = !_changePackage;
+                                        });
+                                      },
+                                      title: "Change Package",
+                                    ),
+                                  ),
+                            _changePackage == true
+                                ? CustomTextField(
+                                    controller: selectedPackageController,
+                                    title: "Select",
+                                    readOnly: true,
+                                    onTap: () {
+                                      NavigationService.push(
+                                          target: TvPackageSearchWidgets(
+                                        onChanged: (value) {
+                                          selectedPackageController.text =
+                                              value.text.toString();
+                                          selectedPackage?.amount =
+                                              value.amount;
+                                          selectedPackage?.text = value.text;
+                                          getAmount();
+                                          packageDetail();
+                                          setState(() {});
+                                        },
+                                        tvpackage: tvPackages,
+                                      ));
+                                    },
+                                  )
+                                //  Container(
+                                //     width: double.infinity,
+                                //     child: CustomTextField(
+                                //       readOnly: true,
+                                //       trailing: Container(
+                                //         width: 40.wp,
+                                //         child: DropdownButton<TvPackages>(
+                                //           underline: const SizedBox(),
+                                //           onChanged: (TvPackages? value) {
+                                //             if (value != null) {
+                                //               selectedPackage = value;
+                                //               getAmount();
+                                //               testing = value.text;
+                                //               setState(() {});
+
+                                //               print(selectedPackage.text);
+                                //             }
+                                //           },
+                                //           items: tvPackages
+                                //               .map<DropdownMenuItem<TvPackages>>(
+                                //             (TvPackages option) {
+                                //               return DropdownMenuItem<TvPackages>(
+                                //                 value: option,
+                                //                 child: Text(
+                                //                   option.text ?? "",
+                                //                   style: _textTheme.titleSmall,
+                                //                 ),
+                                //               );
+                                //             },
+                                //           ).toList(),
+                                //         ),
+
+                                : Container()
+                          ],
+                        ),
                         message: _response.message,
                         transactionID: _response.transactionIdentifier));
               } else {
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Error",
+                    title: _response.status,
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -126,6 +233,7 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
               SizedBox(height: _height * 0.01),
               Column(
                 children: [
+                  KeyValueTile(title: "Customer ID", value: widget.userName),
                   hashResponse.customerName.isEmpty
                       ? Container()
                       : KeyValueTile(
@@ -150,6 +258,8 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                           value: hashResponse.balance,
                         ),
                   KeyValueTile(title: "Amount", value: getAmount()),
+                  KeyValueTile(
+                      title: "Package", value: packageDetail()?.text ?? ""),
                   tvPackages.isEmpty
                       ? Container()
                       : Align(
@@ -175,43 +285,16 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                               onChanged: (value) {
                                 selectedPackageController.text =
                                     value.text.toString();
+                                selectedPackage?.amount = value.amount;
+                                selectedPackage?.text = value.text;
+                                getAmount();
+                                packageDetail();
+                                setState(() {});
                               },
                               tvpackage: tvPackages,
                             ));
                           },
                         )
-                      //  Container(
-                      //     width: double.infinity,
-                      //     child: CustomTextField(
-                      //       readOnly: true,
-                      //       trailing: Container(
-                      //         width: 40.wp,
-                      //         child: DropdownButton<TvPackages>(
-                      //           underline: const SizedBox(),
-                      //           onChanged: (TvPackages? value) {
-                      //             if (value != null) {
-                      //               selectedPackage = value;
-                      //               getAmount();
-                      //               testing = value.text;
-                      //               setState(() {});
-
-                      //               print(selectedPackage.text);
-                      //             }
-                      //           },
-                      //           items: tvPackages
-                      //               .map<DropdownMenuItem<TvPackages>>(
-                      //             (TvPackages option) {
-                      //               return DropdownMenuItem<TvPackages>(
-                      //                 value: option,
-                      //                 child: Text(
-                      //                   option.text ?? "",
-                      //                   style: _textTheme.titleSmall,
-                      //                 ),
-                      //               );
-                      //             },
-                      //           ).toList(),
-                      //         ),
-
                       : Container()
                 ],
               ),
@@ -219,78 +302,31 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
           ),
         ),
         onButtonPressed: () {
-          // serviceIdentifier: widget.service.uniqueIdentifier,
-          //       apiEndpoint: "/api/tvpay",
-          //       apiBody: {
-          //         "customer_id ": customerIDController.text,
-          //         "username": customerIDController.text,
-          //       },
-          //       accountDetails: {
-          //         "account_number":
-          //             RepositoryProvider.of<CustomerDetailRepository>(context)
-          //                 .selectedAccount
-          //                 .value!
-          //                 .accountNumber
-          //                 .toString(),
-          //         "username": customerIDController.text,
-          //         "customer_id ": customerIDController.text,
-          //         "amount": amountController.text,
-          //       },
-          // final packageID = _selectedPackageId.isEmpty
-          //     ? _defaultID.first["id"]
-          //     : _selectedPackageId.toString();
-
-          // final boody = {
-          //   "packageId": packageID,
-          //   "Reserve Info": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "Reserve Info")
-          //       .toString(),
-          //   "Result Message": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "Result Message")
-          //       .toString(),
-          //   "subscribedPackageName": _packageController.text.isEmpty
-          //       ? widget.detailFetchData
-          //           .findValue(
-          //               primaryKey: "hashResponse",
-          //               secondaryKey: "subscribedPackageName")
-          //           .toString()
-          //       : _packageController.text,
-          //   "paymentMessage": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "paymentMessage")
-          //       .toString(),
-          //   "dueAmount": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "dueAmount")
-          //       .toString(),
-          //   // "Amount": _amountController.text.isEmpty
-          //   //     ? widget.detailFetchData
-          //   //         .findValue(
-          //   //             primaryKey: "hashResponse", secondaryKey: "Amount")
-          //   //         .toString()
-          //   //     : _amountController.text,
-          //   "isNew": widget.detailFetchData
-          //       .findValue(primaryKey: "hashResponse", secondaryKey: "isNew")
-          //       .toString(),
-          //   "sessionId": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "sessionId")
-          //       .toString(),
-          //   "customerName": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse", secondaryKey: "customerName")
-          //       .toString(),
-          //   "subscribedPackageType": widget.detailFetchData
-          //       .findValue(
-          //           primaryKey: "hashResponse",
-          //           secondaryKey: "subscribedPackageType")
-          //       .toString(),
-          //   "status": widget.detailFetchData
-          //       .findValue(primaryKey: "hashResponse", secondaryKey: "status")
-          //       .toString(),
-          // };
+          NavigationService.push(target: TransactionPinScreen(
+            onValueCallback: (p0) {
+              NavigationService.pop();
+              context.read<UtilityPaymentCubit>().makePayment(
+                  mPin: p0,
+                  apiEndpoint: "api/tvpay",
+                  serviceIdentifier: widget.service.uniqueIdentifier,
+                  body: {
+                    "packageId": packageDetail()?.id,
+                    // "customer_id": widget.userName,
+                    // "username": widget.userName,
+                  },
+                  accountDetails: {
+                    "account_number":
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value!
+                            .accountNumber
+                            .toString(),
+                    "customer_id": widget.userName,
+                    "username": widget.userName,
+                    "amount": AmountUtils.getAmountInPaisa(amount: getAmount()),
+                  });
+            },
+          ));
         },
       ),
     );
