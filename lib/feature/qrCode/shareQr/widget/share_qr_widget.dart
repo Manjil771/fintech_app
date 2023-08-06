@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -80,9 +77,10 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
             builder: (context, state) {
               if (state is CommonStateSuccess) {
                 return Container(
-                  child: state.data["data"]["details"]["ExternalQRURL"]
-                              .toString() ==
-                          null
+                  child: (state.data["data"]?["details"]?["ExternalQRURL"] ??
+                              "")
+                          .toString()
+                          .isNotEmpty
                       ? DefaultTabController(
                           initialIndex: 0,
                           length: 2,
@@ -90,12 +88,12 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
                             children: [
                               TabBar(
                                 labelColor: Colors.black,
-                                unselectedLabelColor: Color(0xFF989898),
-                                labelStyle: TextStyle(
+                                unselectedLabelColor: const Color(0xFF989898),
+                                labelStyle: const TextStyle(
                                     fontSize: 16, fontWeight: FontWeight.w500),
                                 indicatorColor: _theme.primaryColor,
                                 automaticIndicatorColorAdjustment: true,
-                                tabs: [
+                                tabs: const [
                                   Tab(text: "External Qr"),
                                   Tab(text: "Internal Qr"),
                                 ],
