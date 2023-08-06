@@ -133,7 +133,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(18),
                       color: Colors.black12),
@@ -192,38 +192,39 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   ),
                 ),
                 SizedBox(height: _height * 0.02),
-                widget.bankCode == null
-                    ? CustomTextField(
-                        hintText: "Select Bank",
-                        title: "Select Bank",
-                        readOnly: true,
-                        controller: _selectedBankController,
-                        onTap: () {
-                          NavigationService.push(
-                            target: BankListPage(
-                              onBankSelected: (val) {
-                                NavigationService.pop();
+                // widget.bankCode == null
+                //     ?
+                CustomTextField(
+                  hintText: "Select Bank",
+                  title: "Select Bank",
+                  readOnly: true,
+                  controller: _selectedBankController,
+                  onTap: () {
+                    NavigationService.push(
+                      target: BankListPage(
+                        onBankSelected: (val) {
+                          NavigationService.pop();
 
-                                _selectedBankController.text = val.bankName;
-                                selectedBank = val;
-                                setState(() {});
-                              },
-                            ),
-                          );
+                          _selectedBankController.text = val.bankName;
+                          selectedBank = val;
+                          setState(() {});
                         },
-                        validator: (value) {
-                          if (selectedBank != null) {
-                            return null;
-                          } else {
-                            return "Please select destination bank.";
-                          }
-                        },
-                      )
-                    : CustomTextField(
-                        title: "Select Bank",
-                        controller: _selectedBankController,
-                        readOnly: true,
                       ),
+                    );
+                  },
+                  validator: (value) {
+                    if (selectedBank != null) {
+                      return null;
+                    } else {
+                      return "Please select destination bank.";
+                    }
+                  },
+                ),
+                // : CustomTextField(
+                //     title: "Select Bank",
+                //     controller: _selectedBankController,
+                //     readOnly: true,
+                //   ),
                 CustomTextField(
                   title: "Account Number",
                   hintText: "Destination Account Number",
@@ -297,9 +298,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       bankId: selectedBank?.bankId ?? "",
                       destinationAccountName: _accountNameController.text,
                       destinationAccountNumber: _accountNumberController.text,
-                      destinationBankId: widget.bankCode == null
-                          ? selectedBank?.bankId ?? ""
-                          : widget.bankCode.toString(),
+                      destinationBankId: selectedBank?.bankId ?? "",
+                      // : widget.bankCode.toString(),
                     );
               } else {
                 NavigationService.push(
@@ -312,9 +312,9 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             mpin: pin,
                             remarks: _remarksController.text,
                             destinationBankInstrumentCode:
-                                widget.bankCode == null
-                                    ? selectedBank?.bankId ?? ""
-                                    : widget.bankCode.toString(),
+                                // widget.bankCode == null
+                                selectedBank?.bankId ?? "",
+                            // : widget.bankCode.toString(),
                             destinationBankAccountName:
                                 _accountNameController.text,
                             destinationBankAccountNumber:
