@@ -124,13 +124,15 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 ),
               ));
             }
-            if (_response.findValue(primaryKey: "bankTransfer") == true &&
-                _response
-                    .findValue(
-                        primaryKey: "accountDetails",
-                        secondaryKey: "branchCode")
-                    .toString()
-                    .isNotEmpty) {
+            if ((_response.findValue(primaryKey: "internalFundTransfer") ==
+                    true) ||
+                _response.findValue(primaryKey: "bankTransfer") == true &&
+                    _response
+                        .findValue(
+                            primaryKey: "accountDetails",
+                            secondaryKey: "branchCode")
+                        .toString()
+                        .isNotEmpty) {
               NavigationService.pushReplacement(
                   target: InternalCooperativePage(
                 accountName: _response.findValue(
