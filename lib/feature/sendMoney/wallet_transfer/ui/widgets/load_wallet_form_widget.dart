@@ -181,7 +181,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                         },
                       )
                     : CustomTextField(
-                        title: "Wallet Id ${widget.phoneNumber}",
+                        title: "Wallet Id",
                         controller: _walletAccountController,
                         validator: (val) => FormValidator.validateFieldNotEmpty(
                             val, "Wallet Id"),

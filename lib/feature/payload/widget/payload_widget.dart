@@ -38,17 +38,6 @@ class _PayloadWidgetState extends State<PayloadWidget> {
 
   final TextEditingController merchantIdController = TextEditingController();
 
-  @override
-  void initState() {
-    super.initState();
-    context.read<UtilityPaymentCubit>().fetchDetails(
-        serviceIdentifier: "",
-        apiEndpoint: "/api/qpay/merchant_detail",
-        accountDetails: {
-          "pay_load": widget.payload,
-        });
-  }
-
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {

@@ -21,9 +21,14 @@ class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
   final String? accountName;
   final String? bankCode;
+  final String? bankName;
 
   const AnyBankWidget(
-      {Key? key, this.accountNumber, this.accountName, this.bankCode})
+      {Key? key,
+      this.accountNumber,
+      this.accountName,
+      this.bankCode,
+      this.bankName})
       : super(key: key);
 
   @override
@@ -50,7 +55,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     if (widget.accountName != null) {
       _accountNameController.text = widget.accountName.toString();
       _accountNumberController.text = widget.accountNumber.toString();
-      _selectedBankController.text = widget.bankCode.toString();
+      _selectedBankController.text = widget.bankName.toString();
     }
   }
 

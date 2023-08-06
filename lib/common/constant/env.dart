@@ -87,7 +87,7 @@ class CoOperativeValue {
     splashImage: "assets/gomaGanesh/gomaGanesh_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.gomaGanesh",
-    appStoreID: "",
+    appStoreID: "6455685898",
   );
   static final CoOperative alankarCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
@@ -100,7 +100,7 @@ class CoOperativeValue {
     splashImage: "assets/alankar/alankar_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.alankar",
-    appStoreID: "",
+    appStoreID: "6457205347",
   );
   static final CoOperative manankCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
@@ -113,7 +113,7 @@ class CoOperativeValue {
     splashImage: "assets/manank/manank_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.manank",
-    appStoreID: "",
+    appStoreID: "6457205219",
   );
 
   static final CoOperative arthaBagCoop = CoOperative(
@@ -172,7 +172,7 @@ class CoOperativeValue {
     splashImage: "assets/sahakarya/sahakarya_splash_image.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.sahakarya",
-    appStoreID: "",
+    appStoreID: "6451393046",
   );
 
   static final CoOperative janadharaCoop = CoOperative(
@@ -186,7 +186,7 @@ class CoOperativeValue {
     splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
     primaryColor: const Color(0xFF0b67bb),
     packageName: "com.devanasoft.janadhara",
-    appStoreID: "",
+    appStoreID: "6455494708",
   );
 
   static final CoOperative shreeaaju = CoOperative(
