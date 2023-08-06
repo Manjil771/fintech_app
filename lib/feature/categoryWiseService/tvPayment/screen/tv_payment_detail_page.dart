@@ -10,7 +10,7 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class TvPaymentDeatilPage extends StatelessWidget {
   final String amount;
-  final String userName;
+  final String customerID;
   final ServiceList service;
 
   final TvDetailModel detailFetchData;
@@ -20,7 +20,7 @@ class TvPaymentDeatilPage extends StatelessWidget {
       required this.detailFetchData,
       required this.service,
       required this.amount,
-      required this.userName});
+      required this.customerID});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -30,7 +30,7 @@ class TvPaymentDeatilPage extends StatelessWidget {
       ),
       child: TvPaymentDeatilWidget(
         amount: amount,
-        userName: userName,
+        userName: customerID,
         detailFetchData: detailFetchData,
         service: service,
       ),

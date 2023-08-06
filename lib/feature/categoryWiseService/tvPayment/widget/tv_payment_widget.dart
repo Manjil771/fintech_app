@@ -40,7 +40,6 @@ class TvPaymentWidget extends StatefulWidget {
 
 class _TvPaymentWidgetState extends State<TvPaymentWidget> {
   final TextEditingController amountController = TextEditingController();
-  final TextEditingController usernameController = TextEditingController();
   final TextEditingController customerIDController = TextEditingController();
   final TextEditingController setupBoxController = TextEditingController();
   bool _changePackage = false;
@@ -87,11 +86,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         }
 
         if (state is CommonStateSuccess<TvDetailModel>) {
-          TvDetailModel _response = state.data;
-          final HashResponse hashResponse = _response.details.hashResponse;
-          final List<CurrentPackage> currentPackage =
-              _response.details.currentPackages;
-          final List<TvPackages> tvPackages = _response.details.tvPackages;
+          final TvDetailModel _response = state.data;
 
           if (_response.code == "M0000" ||
               _response.status.toLowerCase() == "success") {
@@ -100,7 +95,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               amount: amountController.text,
               detailFetchData: _response,
               service: widget.service,
-              userName: usernameController.text,
+              customerID: customerIDController.text,
             ));
           } else {
             showPopUpDialog(

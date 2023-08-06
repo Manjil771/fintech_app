@@ -10,9 +10,14 @@ class AnyBankpage extends StatelessWidget {
   final String? accountNumber;
   final String? accountName;
   final String? bankCode;
+  final String? bankName;
 
   const AnyBankpage(
-      {Key? key, this.accountNumber, this.accountName, this.bankCode})
+      {Key? key,
+      this.accountNumber,
+      this.accountName,
+      this.bankCode,
+      this.bankName})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -39,6 +44,7 @@ class AnyBankpage extends StatelessWidget {
         accountName: accountName,
         accountNumber: accountNumber,
         bankCode: bankCode,
+        bankName: bankName,
       ),
     );
   }
