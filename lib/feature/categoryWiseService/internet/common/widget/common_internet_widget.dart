@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -34,6 +35,7 @@ class _CommonFindInternetUserWidgetState
     extends State<CommonFindInternetUserWidget> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _setupBoxController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -72,6 +74,8 @@ class _CommonFindInternetUserWidgetState
             if (_response.code == "M0000") {
               NavigationService.push(
                 target: CommonInternetPaymentDeatilScreen(
+                  username: _usernameController.text,
+                  amount: _amountController.text,
                   service: widget.service,
                   detailFetchData: _response,
                 ),
@@ -142,11 +146,23 @@ class _CommonFindInternetUserWidgetState
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, 'Username'),
                 ),
+                widget.service.uniqueIdentifier == Slugs.pokharainternetTopup
+                    ? CustomTextField(
+                        controller: _setupBoxController,
+                        title: "Mobile Number",
+                        hintText: "Number",
+                      )
+                    : Container(),
                 widget.service.priceInput
                     ? CustomTextField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: _amountController,
                         title: "Amount",
                         hintText: "NPR",
+                        validator: (value) => FormValidator.validateAmount(
+                            val: value.toString(),
+                            minAmount: widget.service.minValue,
+                            maxAmount: widget.service.maxValue),
                       )
                     : Container()
               ],
@@ -160,6 +176,7 @@ class _CommonFindInternetUserWidgetState
                       serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
                         "username": _usernameController.text,
+                        "customer_id": _usernameController.text,
                       },
                       apiEndpoint: "api/internetpackages",
                     );

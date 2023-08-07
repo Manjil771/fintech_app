@@ -169,12 +169,6 @@ class _CategoriesWiseServicesWidgetState
             target: SubisuPaymentPage(
           service: servicess,
         ));
-      } else if (uniqueIdentifier.toLowerCase() ==
-          "pokharainternet_topup".toLowerCase()) {
-        NavigationService.push(
-            target: PokharaInternetPaymentPage(
-          service: servicess,
-        ));
       } else {
         NavigationService.push(
             target: CommonInternetPage(

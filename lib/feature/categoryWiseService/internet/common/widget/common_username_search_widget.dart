@@ -5,10 +5,11 @@ import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class CommonInternetPackageSearchWidgets extends StatelessWidget {
-  final ValueChanged<Map<String, dynamic>> onChanged;
+  final ValueChanged<Map> onChanged;
   final UtilityResponseData useServiceResponse;
   final bool renewOptions;
   const CommonInternetPackageSearchWidgets({
@@ -47,8 +48,7 @@ class CommonInternetPackageSearchWidgets extends StatelessWidget {
           _items.length,
           (index) => KeyValue(
             title: _items[index]["text"],
-            value:
-                "Rs. ${AmountUtils.getAmountInRupees(amount: _items[index]["amount"]?.toString() ?? "")}",
+            value: "Rs. ${_items[index]["amount"]?.toString() ?? ""}",
           ),
         ),
       ),

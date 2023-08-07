@@ -81,8 +81,8 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
               if (state is CommonStateSuccess) {
                 return Container(
                   child: state.data["data"]["details"]["ExternalQRURL"]
-                              .toString() ==
-                          null
+                          .toString()
+                          .isEmpty
                       ? DefaultTabController(
                           initialIndex: 0,
                           length: 2,

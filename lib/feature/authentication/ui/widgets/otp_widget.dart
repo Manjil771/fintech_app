@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
@@ -87,11 +88,10 @@ class _OTPWidgetState extends State<OTPWidget> {
                   SizedBox(height: _height * 0.03),
                   TextButton(
                       onPressed: () {
-                        // Get.offAll(() => const MainScreen());
-                        // TODO Resend OTP Logic
+                        NavigationService.pop();
                       },
                       child: Text(
-                        "Resend",
+                        "Cancel",
                         style: TextStyle(color: Theme.of(context).primaryColor),
                       )),
                 ],
