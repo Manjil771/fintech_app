@@ -32,23 +32,32 @@ class CommonGridViewContainer extends StatelessWidget {
         padding: const EdgeInsets.all(12),
         margin: margin,
         decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(22),
-            color: CustomTheme.darkerBlack.withOpacity(0.07)),
-        child: Column(children: [
-          Container(
-            width: width,
-            padding: const EdgeInsets.all(12),
-            height: height ?? _height * 0.08,
-            child: isNetworkImage == true
-                ? SvgPicture.network(containerImage)
-                : SvgPicture.asset(
-                    containerImage,
-                    color: CustomTheme.darkerBlack.withOpacity(0.8),
-                  ),
-          ),
-          SizedBox(height: _height * 0.01),
-          Expanded(
-            child: Text(
+          borderRadius: BorderRadius.circular(22),
+          color: CustomTheme.darkerBlack.withOpacity(0.07),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Container(
+              width: width,
+              padding: const EdgeInsets.all(12),
+              height: height,
+              child: isNetworkImage == true
+                  ? SvgPicture.network(
+                      containerImage,
+                      height: 50,
+                      width: 50,
+                    )
+                  : SvgPicture.asset(
+                      containerImage,
+                      color: CustomTheme.darkerBlack.withOpacity(0.8),
+                      height: 50,
+                      width: 50,
+                    ),
+            ),
+            SizedBox(height: _height * 0.01),
+            Text(
               title,
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -56,8 +65,8 @@ class CommonGridViewContainer extends StatelessWidget {
                   fontSize: 11,
                   fontWeight: FontWeight.bold),
             ),
-          ),
-        ]),
+          ],
+        ),
       ),
     );
   }

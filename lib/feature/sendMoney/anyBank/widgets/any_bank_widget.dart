@@ -197,28 +197,25 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 CustomTextField(
                   hintText: "Select Bank",
                   title: "Select Bank",
-                  readOnly: true,
+                  readOnly: widget.bankCode != null,
                   controller: _selectedBankController,
-                  onTap: () {
-                    NavigationService.push(
-                      target: BankListPage(
-                        onBankSelected: (val) {
-                          NavigationService.pop();
+                  onTap: widget.bankCode == null
+                      ? () {
+                          NavigationService.push(
+                            target: BankListPage(
+                              onBankSelected: (val) {
+                                NavigationService.pop();
 
-                          _selectedBankController.text = val.bankName;
-                          selectedBank = val;
-                          setState(() {});
-                        },
-                      ),
-                    );
-                  },
-                  validator: (value) {
-                    if (selectedBank != null) {
-                      return null;
-                    } else {
-                      return "Please select destination bank.";
-                    }
-                  },
+                                _selectedBankController.text = val.bankName;
+                                selectedBank = val;
+                                setState(() {});
+                              },
+                            ),
+                          );
+                        }
+                      : null,
+                  validator: (value) => FormValidator.validateFieldNotEmpty(
+                      value, "Destination bank."),
                 ),
                 // : CustomTextField(
                 //     title: "Select Bank",
@@ -295,11 +292,11 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               if (charges == null) {
                 context.read<BankChargeCubit>().getBankCharges(
                       amount: _amountController.text,
-                      bankId: selectedBank?.bankId ?? "",
+                      bankId: widget.bankCode ?? selectedBank?.bankId ?? "",
                       destinationAccountName: _accountNameController.text,
                       destinationAccountNumber: _accountNumberController.text,
-                      destinationBankId: selectedBank?.bankId ?? "",
-                      // : widget.bankCode.toString(),
+                      destinationBankId:
+                          widget.bankCode ?? selectedBank?.bankId ?? "",
                     );
               } else {
                 NavigationService.push(
@@ -312,9 +309,9 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             mpin: pin,
                             remarks: _remarksController.text,
                             destinationBankInstrumentCode:
-                                // widget.bankCode == null
-                                selectedBank?.bankId ?? "",
-                            // : widget.bankCode.toString(),
+                                widget.bankCode == null
+                                    ? selectedBank?.bankId ?? ""
+                                    : widget.bankCode.toString(),
                             destinationBankAccountName:
                                 _accountNameController.text,
                             destinationBankAccountNumber:

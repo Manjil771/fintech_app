@@ -67,6 +67,12 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   }
 
   @override
+  dispose() {
+    animationController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
