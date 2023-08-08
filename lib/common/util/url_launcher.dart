@@ -14,14 +14,14 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
       return false;
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
       return false;
     }
@@ -36,13 +36,13 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
     }
   }
@@ -56,13 +56,13 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
     }
   }
@@ -77,13 +77,13 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
     }
   }
@@ -97,13 +97,13 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
     }
   }
@@ -117,13 +117,13 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "LocaleKeys.unableToLaunchUrl.tr()",
+          message: "Unable to launch URL.",
         );
       }
     } catch (e) {
       SnackBarUtils.showErrorBar(
         context: context,
-        message: "LocaleKeys.unableToLaunchUrl.tr()",
+        message: "Unable to launch URL.",
       );
     }
   }
