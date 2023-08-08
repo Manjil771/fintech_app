@@ -20,7 +20,7 @@ class CustomTheme {
   static const Color kipooColor = Color(0xFF00A551);
   static const Color suryadevColor = Color(0xFF8E191C);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = shreeMitraColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
