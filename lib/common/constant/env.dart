@@ -258,11 +258,11 @@ class CoOperativeValue {
     bannerImage: "assets/uddhamshil/uddhamshil_banner.png",
     backgroundImage: "assets/uddhamshil/uddhamshil_background.png",
 
-    clientCode: '9PI6BYBK1J',
+    clientCode: 'VBJ07QPYUP',
     coOperativeName: 'Uddhamshil',
     coOperativeLogo: 'assets/uddhamshil/uddhamshil_logo.png',
 
-    clientSecret: "163873",
+    clientSecret: "133034",
     splashImage: "assets/uddhamshil/uddhamshil_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
