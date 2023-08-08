@@ -84,7 +84,7 @@ class _CommonFindInternetUserWidgetState
               showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: _response.status,
                   buttonCallback: () {
                     NavigationService.pop();
                   },
