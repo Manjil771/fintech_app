@@ -321,7 +321,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                 _accountNumberController.text,
                             destinationBankName: widget.bankCode == null
                                 ? selectedBank?.bankName ?? ""
-                                : "ismart",
+                                : widget.bankName ?? "ismart",
                             sendingAccount:
                                 RepositoryProvider.of<CustomerDetailRepository>(
                                         context)
