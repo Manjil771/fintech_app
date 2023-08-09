@@ -251,13 +251,44 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative uddhamshil = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.suryadev",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/uddhamshil/uddhamshil_banner.png",
+    backgroundImage: "assets/uddhamshil/uddhamshil_background.png",
+
+    clientCode: 'VBJ07QPYUP',
+    coOperativeName: 'Uddhamshil',
+    coOperativeLogo: 'assets/uddhamshil/uddhamshil_logo.png',
+
+    clientSecret: "133034",
+    splashImage: "assets/uddhamshil/uddhamshil_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeNavaprabhat = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.suryadev",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/navaprabhat/navaprabhat_banner.png",
+    backgroundImage: "assets/navaprabhat/nawaprabhat_background_2.png",
+
+    clientCode: '9PI6BYBK1J',
+    coOperativeName: 'Shree Navaprabhat',
+    coOperativeLogo: 'assets/navaprabhat/navaprabhat_logo.png',
+
+    clientSecret: "163873",
+    splashImage: "assets/navaprabhat/navaprabhat_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'EHVNI7CZJ3',
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
+    clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
     splashImage: "assets/images/ismart_splash.jpg",
 

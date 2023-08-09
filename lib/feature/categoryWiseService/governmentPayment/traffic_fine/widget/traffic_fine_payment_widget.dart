@@ -54,7 +54,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
         } else if (state is! CommonLoading && _isLoading) {
           _isLoading = false;
           NavigationService.pop();
-        } else if (state is CommonError) {
+        }
+        if (state is CommonError) {
           showPopUpDialog(
             context: context,
             message: state.message,

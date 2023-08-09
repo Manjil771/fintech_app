@@ -9,10 +9,17 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class CommonInternetPaymentDeatilScreen extends StatelessWidget {
   final UtilityResponseData detailFetchData;
+  final String amount;
+  final String username;
+
   final ServiceList service;
 
   const CommonInternetPaymentDeatilScreen(
-      {super.key, required this.detailFetchData, required this.service});
+      {super.key,
+      required this.detailFetchData,
+      required this.service,
+      required this.amount,
+      required this.username});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -21,7 +28,9 @@ class CommonInternetPaymentDeatilScreen extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: CommonInternetPaymentDeatilWidget(
+        username: username,
         service: service,
+        amount: amount,
         detailFetchData: detailFetchData,
       ),
     );

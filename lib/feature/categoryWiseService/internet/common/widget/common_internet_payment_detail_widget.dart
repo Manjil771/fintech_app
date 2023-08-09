@@ -9,12 +9,14 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/widget/common_username_search_widget.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -24,9 +26,15 @@ import '../../../../../common/util/size_utils.dart';
 
 class CommonInternetPaymentDeatilWidget extends StatefulWidget {
   final UtilityResponseData detailFetchData;
+  final String username;
+  final String amount;
   final ServiceList service;
   const CommonInternetPaymentDeatilWidget(
-      {super.key, required this.detailFetchData, required this.service});
+      {super.key,
+      required this.detailFetchData,
+      required this.service,
+      required this.amount,
+      required this.username});
   @override
   State<CommonInternetPaymentDeatilWidget> createState() =>
       _CommonInternetPaymentDeatilWidgetState();
@@ -37,8 +45,8 @@ class _CommonInternetPaymentDeatilWidgetState
   final TextEditingController _packageController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   bool _changePackage = false;
-  final bool _isLoading = false;
-  String _selectedPackageId = "";
+  String? _selectedPackageId;
+  String? _selectedPackageName;
 
   double _dueAmount = 0;
 
@@ -79,29 +87,41 @@ class _CommonInternetPaymentDeatilWidgetState
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final idd =
-        List.from(widget.detailFetchData.findValue(primaryKey: "packages"));
-    final _defaultID = idd.where(
-      (element) =>
-          element["label"] ==
-          widget.detailFetchData
-              .findValue(
-                primaryKey: "hashResponse",
-                secondaryKey: "subscribedPackageName",
-              )
-              .toString(),
-    );
-    final amount = _selectedPackageId.isEmpty
-        ? widget.detailFetchData
-                    .findValue(
-                        primaryKey: "hashResponse", secondaryKey: "amount")
-                    .toString() ==
-                "0"
-            ? _defaultID.first["amount"]
-            : widget.detailFetchData
-                .findValue(primaryKey: "hashResponse", secondaryKey: "amount")
+
+    String getPackageName() {
+      if (_selectedPackageName == null) {
+        return "";
+      } else {
+        return _selectedPackageName ?? "";
+      }
+    }
+
+    String getPackageId() {
+      if (_selectedPackageId == null) {
+        return "";
+      } else {
+        return _selectedPackageId ?? "";
+      }
+    }
+
+    String getAmount() {
+      if (widget.amount.isNotEmpty && _changePackage == false) {
+        return widget.amount;
+      } else {
+        if (widget.detailFetchData
+                .findValue(
+                    primaryKey: "hashResponse", secondaryKey: "monthlyCharge")
                 .toString()
-        : _amountController.text;
+                .isNotEmpty &&
+            _changePackage == false) {
+          return widget.detailFetchData.findValue(
+              primaryKey: "hashResponse", secondaryKey: "monthlyCharge");
+        } else {
+          return _amountController.text.toString();
+        }
+      }
+    }
+
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
@@ -143,22 +163,30 @@ class _CommonInternetPaymentDeatilWidgetState
                         ),
                         SizedBox(height: _height * 0.008),
                         KeyValueTile(
-                          title: "Customer ID",
-                          value: widget.detailFetchData.findValue(
-                                primaryKey: "hashResponse",
-                                secondaryKey: "userName",
-                              ) ??
-                              widget.detailFetchData
-                                  .findValue(
+                            title: "Customer ID",
+                            value: widget.detailFetchData
+                                    .findValue(
                                       primaryKey: "hashResponse",
-                                      secondaryKey: "username")
-                                  .toString(),
+                                      secondaryKey: "userName",
+                                    )
+                                    .toString()
+                                    .isEmpty
+                                ? widget.detailFetchData
+                                    .findValue(
+                                        primaryKey: "hashResponse",
+                                        secondaryKey: "username")
+                                    .toString()
+                                : widget.detailFetchData.findValue(
+                                    primaryKey: "hashResponse",
+                                    secondaryKey: "userName",
+                                  )),
+                        KeyValueTile(
+                          title: "Package",
+                          value: getPackageName(),
                         ),
-                        SizedBox(height: _height * 0.008),
                         KeyValueTile(
                           title: "Amount",
-                          value:
-                              "${AmountUtils.getAmountInRupees(amount: _amountController.text)}",
+                          value: getAmount(),
                         ),
                       ]),
                       message: _response.message,
@@ -179,10 +207,11 @@ class _CommonInternetPaymentDeatilWidgetState
         },
         child: CommonContainer(
           showDetail: true,
-          topbarName: 'Payment',
-          title: 'Internet Payment',
+          showRoundBotton: _changePackage,
+          topbarName: widget.service.serviceCategoryName,
+          title: widget.service.service,
           buttonName: 'Proceed',
-          detail: 'Pay your internet bill of you ISP from here',
+          detail: widget.service.instructions,
           showAccountSelection: true,
           body: Column(
             children: [
@@ -206,117 +235,124 @@ class _CommonInternetPaymentDeatilWidgetState
                   ),
                   SizedBox(height: _height * 0.008),
                   KeyValueTile(
-                    title: "Customer ID",
-                    value: widget.detailFetchData.findValue(
-                          primaryKey: "hashResponse",
-                          secondaryKey: "userName",
-                        ) ??
-                        widget.detailFetchData
-                            .findValue(
+                      title: "Customer ID",
+                      value: widget.detailFetchData
+                              .findValue(
                                 primaryKey: "hashResponse",
-                                secondaryKey: "username")
-                            .toString(),
-                  ),
+                                secondaryKey: "userName",
+                              )
+                              .toString()
+                              .isEmpty
+                          ? widget.detailFetchData
+                              .findValue(
+                                  primaryKey: "hashResponse",
+                                  secondaryKey: "username")
+                              .toString()
+                          : widget.detailFetchData.findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "userName",
+                            )),
                   SizedBox(height: _height * 0.008),
-                  KeyValueTile(
-                    title: "Amount",
-                    value:
-                        "${AmountUtils.getAmountInRupees(amount: _amountController.text)}",
-                  ),
+
+                  _changePackage == true
+                      ? Column(
+                          children: [
+                            KeyValueTile(
+                              title: "Package",
+                              value: getPackageName(),
+                            ),
+                            KeyValueTile(
+                              title: "Amount",
+                              value: getAmount(),
+                            ),
+                          ],
+                        )
+                      : Text(
+                          "Select Package",
+                          style: _textTheme.headlineSmall!
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
                   SizedBox(height: _height * 0.008),
-                  // if (_isPackageAvailable)
-                  //   CustomCheckbox(
-                  //     leftMargin: CustomTheme.symmetricHozPadding,
-                  //     selected: _changePackage,
-                  //     onChanged: (val) {
-                  //       setState(() {
-                  //         _changePackage = val;
-                  //       });
-                  //     },
-                  //     title: "Change Package",
-                  //   ),
+                  // CustomCheckbox(
+                  //   leftMargin: CustomTheme.symmetricHozPadding,
+                  //   selected: _changePackage,
+                  //   onChanged: (val) {
+                  //     setState(() {
+                  //       _changePackage = val;
+                  //     });
+                  //   },
+                  //   title: "Change Package",
+                  // ),
                   SizedBox(height: _height * 0.02),
-                  if (_isPackageAvailable)
-                    AnimatedSwitcher(
-                      duration: const Duration(milliseconds: 200),
-                      transitionBuilder: (child, animation) {
-                        return SizeTransition(
-                          sizeFactor: animation,
-                          axis: Axis.vertical,
-                          child: child,
+                  AnimatedSwitcher(
+                    duration: const Duration(milliseconds: 200),
+                    transitionBuilder: (child, animation) {
+                      return SizeTransition(
+                        sizeFactor: animation,
+                        axis: Axis.vertical,
+                        child: child,
+                      );
+                    },
+                    child: OpenContainer(
+                      closedColor: Colors.transparent,
+                      closedElevation: 0.0,
+                      openElevation: 0,
+                      transitionType: ContainerTransitionType.fade,
+                      closedBuilder: (context, open) {
+                        return CustomTextField(
+                          margin: const EdgeInsets.only(
+                            left: CustomTheme.symmetricHozPadding,
+                            right: CustomTheme.symmetricHozPadding,
+                          ),
+                          controller: _packageController,
+                          title: "",
+                          hintText: "Renew Options",
+                          showSearchIcon: true,
+                          readOnly: true,
+                          required: true,
+                          suffixIcon: Icons.keyboard_arrow_down_rounded,
+                          onTap: open,
+                          validator: (val) {
+                            return FormValidator.validateFieldNotEmpty(
+                              val,
+                              "Renew Options",
+                            );
+                          },
                         );
                       },
-                      child: OpenContainer(
-                        closedColor: Colors.transparent,
-                        closedElevation: 0.0,
-                        openElevation: 0,
-                        transitionType: ContainerTransitionType.fade,
-                        closedBuilder: (context, open) {
-                          return CustomTextField(
-                            margin: const EdgeInsets.only(
-                              left: CustomTheme.symmetricHozPadding,
-                              right: CustomTheme.symmetricHozPadding,
-                            ),
-                            controller: _packageController,
-                            title: "",
-                            hintText: "Renew Options",
-                            showSearchIcon: true,
-                            readOnly: true,
-                            required: true,
-                            suffixIcon: Icons.keyboard_arrow_down_rounded,
-                            onTap: open,
-                            validator: (val) {
-                              return FormValidator.validateFieldNotEmpty(
-                                val,
-                                "Renew Options",
-                              );
-                            },
-                          );
-                        },
-                        openBuilder: (context, close) {
-                          return CommonInternetPackageSearchWidgets(
-                            useServiceResponse: widget.detailFetchData,
-                            renewOptions: _renewOption,
-                            onChanged: (val) {
-                              _packageController.text = val["text"] ?? "";
-                              _selectedPackageId = val["id"]?.toString() ?? "";
-                              _amountController.text = ((double.tryParse(
-                                              val["amount"]?.toString() ??
-                                                  "0") ??
-                                          0) +
-                                      _dueAmount)
-                                  .toString();
-                            },
-                          );
-                        },
-                      ),
+                      openBuilder: (context, close) {
+                        _changePackage = true;
+                        return CommonInternetPackageSearchWidgets(
+                          useServiceResponse: widget.detailFetchData,
+                          renewOptions: _renewOption,
+                          onChanged: (val) {
+                            _packageController.text = val["text"].toString();
+                            _selectedPackageId = val["id"].toString();
+                            _amountController.text = ((double.tryParse(
+                                            val["amount"]?.toString() ?? "0") ??
+                                        0) +
+                                    _dueAmount)
+                                .toString();
+                            _selectedPackageId = val["id"];
+                            _selectedPackageName = val["text"];
+                            getPackageId();
+                            getPackageName();
+                            getAmount();
+                            setState(() {});
+                          },
+                        );
+                      },
                     ),
-                  if (_changePackage || (_isPackageAvailable == false))
-                    SizedBox(height: 20.hp),
-
-                  // CustomTextField(title: "Amount", hintText: "Enter the amount"),
-                  SizedBox(height: _height * 0.01),
-                  // Container(
-                  //   padding: const EdgeInsets.only(top: 7),
-                  //   height: _height * 0.12,
-                  //   width: double.infinity,
-                  //   child: GridView.builder(
-                  //     itemCount: 6,
-                  //     gridDelegate:
-                  //         const SliverGridDelegateWithFixedCrossAxisCount(
-                  //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                  //     itemBuilder: (context, index) => amountBox(context, index),
-                  //   ),
-                  // ),
+                  ),
+                  SizedBox(height: 20.hp),
                 ],
               ),
             ],
           ),
           onButtonPressed: () {
-            final packageID = idd.first["id"];
             final body = {
-              "id": packageID,
-              "packageId": packageID,
+              "packageId": getPackageId(),
+              "subscribedPackageName": getPackageName(),
             };
             NavigationService.push(
               target: TransactionPinScreen(
@@ -327,13 +363,8 @@ class _CommonInternetPaymentDeatilWidgetState
                         body: body,
                         serviceIdentifier: widget.service.uniqueIdentifier,
                         accountDetails: {
-                          "username": widget.detailFetchData.findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "userName",
-                          ),
-                          "amount": widget.detailFetchData.findValue(
-                              primaryKey: "hashResponse",
-                              secondaryKey: "amount"),
+                          "username": widget.username,
+                          "amount": getAmount(),
                           "account_number":
                               RepositoryProvider.of<CustomerDetailRepository>(
                                       context)
