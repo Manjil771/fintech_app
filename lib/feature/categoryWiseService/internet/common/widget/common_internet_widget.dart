@@ -146,6 +146,14 @@ class _CommonFindInternetUserWidgetState
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, 'Username'),
                 ),
+                widget.service.uniqueIdentifier == Slugs.skyinternetTopup ||
+                        widget.service.uniqueIdentifier == Slugs.websurferTopup
+                    ? CustomTextField(
+                        controller: _setupBoxController,
+                        title: "Customer Id",
+                        hintText: "Number",
+                      )
+                    : Container(),
                 widget.service.uniqueIdentifier == Slugs.pokharainternetTopup
                     ? CustomTextField(
                         controller: _setupBoxController,
@@ -176,7 +184,12 @@ class _CommonFindInternetUserWidgetState
                       serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
                         "username": _usernameController.text,
-                        "customer_id": _usernameController.text,
+                        "customer_id": widget.service.uniqueIdentifier ==
+                                    Slugs.skyinternetTopup ||
+                                widget.service.uniqueIdentifier ==
+                                    Slugs.websurferTopup
+                            ? _setupBoxController.text
+                            : _usernameController.text,
                       },
                       apiEndpoint: "api/internetpackages",
                     );

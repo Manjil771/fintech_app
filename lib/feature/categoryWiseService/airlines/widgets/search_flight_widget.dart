@@ -13,7 +13,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -38,6 +38,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
   final _arrivalDateController = TextEditingController();
   bool isRoundTrip = false;
   bool _isLoading = false;
+  DateTime departureDate = DateTime.now();
 
   final ValueNotifier<KeyValue?> _selectedSectorFrom = ValueNotifier(null);
   final ValueNotifier<KeyValue?> _selectedSectorTo = ValueNotifier(null);
@@ -224,6 +225,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                       lastDate: DateTime.now().add(const Duration(days: 90)),
                     );
                     setState(() {
+                      departureDate = date ?? DateTime.now();
                       _departureDateController.text =
                           "${date!.day}-${date.month}-${date.year}";
                     });
@@ -243,14 +245,14 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                         onTap: () async {
                           DateTime? date = await showDatePicker(
                             context: context,
-                            initialDate: DateTime.now(),
-                            firstDate: DateTime(2022),
+                            initialDate: departureDate,
+                            firstDate: departureDate,
                             lastDate:
                                 DateTime.now().add(const Duration(days: 90)),
                           );
                           setState(() {
                             _arrivalDateController.text =
-                                "${date!.year}-${date.month}-${date.day}";
+                                "${date!.day}-${date.month}-${date.year}";
                           });
                         },
                         suffixIcon: Icons.calendar_month_rounded,
