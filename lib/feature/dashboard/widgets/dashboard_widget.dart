@@ -1,4 +1,3 @@
-import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -8,7 +7,10 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/models/downloaded_file.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -18,7 +20,9 @@ import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
-import 'package:open_file/open_file.dart';
+
+import 'package:open_filex/open_filex.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({Key? key}) : super(key: key);
@@ -57,7 +61,16 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     FlutterDownloader.registerCallback(downloadCallback);
   }
 
-  _performStartupActions() {
+  _performStartupActions() async {
+    final permissionStatus = await Permission.storage.status;
+
+    switch (permissionStatus) {
+      case PermissionStatus.denied:
+      case PermissionStatus.permanentlyDenied:
+        await Permission.storage.request();
+        break;
+      default:
+    }
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
     _port.listen(
@@ -66,28 +79,34 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
         final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
         print(status);
         if (status == DownloadTaskStatus.enqueued) {
+          NotificationUtils.generateDownloadingNotification();
         } else if (status == DownloadTaskStatus.complete) {
-          if (Platform.isIOS) {
-            final _query = 'SELECT * FROM task WHERE task_id="$downloadId"';
-            final List<DownloadTask> _downloadedTask =
-                (await FlutterDownloader.loadTasksWithRawQuery(
-                        query: _query)) ??
-                    [];
-            String _filePath = "";
-            if (_downloadedTask.isNotEmpty) {
-              _filePath =
-                  "${_downloadedTask.first.savedDir}/${_downloadedTask.first.filename}";
-              OpenFile.open(_filePath);
-            }
+          String _filePath = "";
+          // if (Platform.isIOS) {
+          final _query = 'SELECT * FROM task WHERE task_id="$downloadId"';
+          final List<DownloadTask> _downloadedTask =
+              (await FlutterDownloader.loadTasksWithRawQuery(query: _query)) ??
+                  [];
+
+          if (_downloadedTask.isNotEmpty) {
+            _filePath =
+                "${_downloadedTask.first.savedDir}/${_downloadedTask.first.filename}";
+            DownloadedFile _downloadedFile = DownloadedFile(
+              fileName: _downloadedTask.first.filename ?? "",
+              filePath: _filePath,
+              downloadedDate: DateTime.now(),
+            );
+            await SharedPref.addDownloadedFiles(_downloadedFile);
+            await OpenFilex.open(_filePath);
           }
-          SnackBarUtils.showSuccessBar(
-              context: context, message: "Download Completed.");
+          NotificationUtils.generateDownloadCompletedNotification(_filePath);
+          // } else {
+          // OpenFile.open(_filePath);
+          // }
         } else if (status == DownloadTaskStatus.failed) {
-          SnackBarUtils.showErrorBar(
-              context: context, message: "Download Failed.");
+          NotificationUtils.generateDownloadFailedNotification();
         } else if (status == DownloadTaskStatus.canceled) {
-          SnackBarUtils.showErrorBar(
-              context: context, message: "Download Cancelled.");
+          NotificationUtils.generateDownloadCancelledNotification();
         }
       },
     );
