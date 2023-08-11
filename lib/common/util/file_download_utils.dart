@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/custom_toast.dart';
 import 'package:ismart/common/util/file_utils.dart';
-import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 enum FileType {
@@ -34,8 +33,9 @@ class FileDownloadUtils {
         headers: {"Authorization": "Bearer $_token"},
       );
       if (_taskID != null) {
-        SnackBarUtils.showSuccessBar(
-            context: NavigationService.context, message: "Downloading...");
+        CustomToast.success(message: "Downloading...");
+        // SnackBarUtils.showSuccessBar(
+        //     context: NavigationService.context, message: "Downloading...");
       }
       return _taskID;
     } else {
