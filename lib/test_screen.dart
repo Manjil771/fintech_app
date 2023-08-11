@@ -4,7 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:open_file/open_file.dart';
+import 'package:open_filex/open_filex.dart';
 import 'package:path_provider/path_provider.dart';
 
 class TestScreens extends StatefulWidget {
@@ -25,7 +25,7 @@ class _TestScreensState extends State<TestScreens> {
       body: PageWrapper(
         body: Center(
             child: ElevatedButton(
-          child: Text("Text"),
+          child: const Text("Text"),
           onPressed: () {
             openFile(
                 url: "https://www.devanasoft.com.np/images/11.jpg",
@@ -39,7 +39,7 @@ class _TestScreensState extends State<TestScreens> {
   Future openFile({required String url, required String fileName}) async {
     final file = await downloadFile(url, fileName);
 
-    OpenFile.open(file.path);
+    OpenFilex.open(file.path);
     print("file path is ${file.path}");
   }
 
