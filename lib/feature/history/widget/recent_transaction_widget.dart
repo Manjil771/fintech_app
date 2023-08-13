@@ -7,7 +7,6 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
@@ -94,8 +93,10 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                   insetPadding: const EdgeInsets.symmetric(
                                       horizontal: 18),
                                   child: Container(
+                                    padding: const EdgeInsets.symmetric(
+                                        vertical: 10),
                                     width: double.infinity,
-                                    height: _height * 0.5,
+                                    // height: _height * 0.5,
                                     child: TransactionDetailAlertWidget(
                                       recentTransactionModel: _detail,
                                       downloadUrlNotifier:
@@ -116,7 +117,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     )),
               );
             } else {
-              return NoDataScreen(
+              return const NoDataScreen(
                 title: "No transactions yet",
                 details: "Make Your First Transfer",
               );

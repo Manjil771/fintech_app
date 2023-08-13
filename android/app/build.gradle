@@ -115,9 +115,21 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        kipoo {
+            dimension "app"
+            applicationId "com.devanasoft.kipoo"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         shreeAaju {
             dimension "app"
             applicationId "com.devanasoft.shreeAaju"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeMitra {
+            dimension "app"
+            applicationId "com.devanasoft.shreeMitra"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 
@@ -36,6 +36,7 @@ class _TransactionDetailAlertWidgetState
           borderRadius: BorderRadius.circular(18), color: CustomTheme.white),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
+        mainAxisSize: MainAxisSize.min,
         children: [
           Row(
             children: [
@@ -55,31 +56,6 @@ class _TransactionDetailAlertWidgetState
                 ],
               ),
               const Spacer(),
-              ValueListenableBuilder<String>(
-                  valueListenable: widget.downloadUrlNotifier,
-                  builder: (context, val, _) {
-                    if (val.isNotEmpty) {
-                      return InkWell(
-                        onTap: () {
-                          FileDownloadUtils.downloadFile(
-                            downloadLink: widget.downloadUrlNotifier.value,
-                            fileName:
-                                FileDownloadUtils.generateDownloadFileName(
-                              name: widget.recentTransactionModel.service,
-                              filetype: FileType.pdf,
-                            ),
-                            context: context,
-                          );
-                        },
-                        child: SvgPicture.asset(
-                          Assets.downloadIcon,
-                          height: _height * 0.03,
-                        ),
-                      );
-                    } else {
-                      return Container();
-                    }
-                  }),
             ],
           ),
           SizedBox(height: _height * 0.01),
@@ -140,6 +116,33 @@ class _TransactionDetailAlertWidgetState
               ],
             ),
           ),
+          const SizedBox(
+            height: 10,
+          ),
+          ValueListenableBuilder<String>(
+              valueListenable: widget.downloadUrlNotifier,
+              builder: (context, val, _) {
+                if (val.isNotEmpty) {
+                  return CustomRoundedButtom(
+                      title: "Download Receipt",
+                      verticalPadding: 10,
+                      icon: Icons.file_download_outlined,
+                      onPressed: () {
+                        FileDownloadUtils.downloadFile(
+                          downloadLink: widget.downloadUrlNotifier.value,
+                          fileName: FileDownloadUtils.generateDownloadFileName(
+                            name: widget.recentTransactionModel.service,
+                            filetype: FileType.pdf,
+                          ),
+                          context: context,
+                        );
+                        widget.downloadUrlNotifier.value = "";
+                        NavigationService.pop();
+                      });
+                } else {
+                  return Container();
+                }
+              }),
         ],
       ),
     );

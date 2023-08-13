@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'package:ismart/common/models/downloaded_file.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 
@@ -15,6 +16,29 @@ class SharedPref {
 
   static const _biometricLogin = "biometricLogin";
   static const _deviceUUID = "deviceUUID";
+  static const _downloadedFilesList = "downloadedFilesList";
+
+  static Future addDownloadedFiles(DownloadedFile fileDetails) async {
+    final _instance = await SharedPreferences.getInstance();
+    final String downloadedFileString =
+        _instance.getString(_downloadedFilesList) ?? "";
+    final List<DownloadedFile> _downloadedFiles =
+        DownloadedFile.decode(downloadedFileString);
+    _downloadedFiles.add(fileDetails);
+    String _savedString = DownloadedFile.encode(_downloadedFiles);
+    print(_savedString);
+    await _instance.setString(_downloadedFilesList, _savedString);
+  }
+
+  static Future getDownloads() async {
+    final _instance = await SharedPreferences.getInstance();
+    final String downloadedFileString =
+        _instance.getString(_downloadedFilesList) ?? "";
+    final List<DownloadedFile> _downloadedFiles =
+        DownloadedFile.decode(downloadedFileString);
+
+    return _downloadedFiles;
+  }
 
   static Future setFirstTimeAppOpen(bool status) async {
     final _instance = await SharedPreferences.getInstance();
