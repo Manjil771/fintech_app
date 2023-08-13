@@ -1,4 +1,6 @@
 // import 'package:flutter/material.dart';
+// import 'package:ismart/common/util/size_utils.dart';
+// import 'package:ismart/common/widget/common_button.dart';
 // import 'package:paywell_wallet/common/localization/paywell_localizations.dart';
 // import 'package:paywell_wallet/common/navigation/navigation_service.dart';
 // import 'package:paywell_wallet/common/utils/size_utils.dart';
@@ -87,7 +89,7 @@
 //               }),
 //           SizedBox(height: 15.hp),
 //           CustomRoundedButtom(
-//             title: context.loc.apply,
+//             title: "context.loc.apply",
 //             onPressed: () {
 //               NavigationService.pop();
 //             },

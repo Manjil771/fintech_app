@@ -8,39 +8,83 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class PassengerDetailWidget extends StatelessWidget {
-  Availability? selectedFlight;
+class PassengerDetailWidget extends StatefulWidget {
+  Availability? departureFlight;
+  Availability? arrivalFlight;
+
+  final double totalFare;
   final ServiceList service;
 
   PassengerDetailWidget(
       {Key? key,
+      required this.arrivalFlight,
       required this.adultCount,
       required this.childrenCount,
-      required this.selectedFlight,
-      required this.service})
+      required this.departureFlight,
+      required this.service,
+      required this.totalFare})
       : super(key: key);
 
-  final adultCount;
-  final childrenCount;
+  final int adultCount;
+  final int childrenCount;
+
+  @override
+  State<PassengerDetailWidget> createState() => _PassengerDetailWidgetState();
+}
+
+class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
   final _formKey = GlobalKey<FormState>();
 
   final _firstNameController = TextEditingController();
+
   final lastNameController = TextEditingController();
 
   final contactName = TextEditingController();
+
   final contactEmail = TextEditingController();
+
   final contactNumber = TextEditingController();
+
+  List<PassengerDetailModel> passengers = [];
+
   bool _isLoading = false;
+  @override
+  void initState() {
+    super.initState();
+    for (int i = 0; i < widget.adultCount; i++) {
+      passengers.add(PassengerDetailModel(
+          firstname: "",
+          lastname: "",
+          gender: "",
+          title: "",
+          type: PassengerType.adult));
+    }
+    for (int i = 0; i < widget.childrenCount; i++) {
+      passengers.add(PassengerDetailModel(
+          gender: "",
+          title: "",
+          firstname: "",
+          lastname: "",
+          type: PassengerType.child));
+    }
+    // for (int i = 0; i < widget.numberOfInfants; i++) {
+    //   passengers
+    //       .add(Passenger(name: '', phone: '', type: PassengerType.infant));
+    // }
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -90,6 +134,11 @@ class PassengerDetailWidget extends StatelessWidget {
                 .toString();
 
             if (_response.code == "M0000") {
+              NavigationService.push(
+                  target: CommonTransactionSuccessPage(
+                      body: Container(),
+                      message: _response.message,
+                      transactionID: _response.transactionIdentifier));
             } else {
               showPopUpDialog(
                   context: context,
@@ -134,14 +183,14 @@ class PassengerDetailWidget extends StatelessWidget {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                selectedFlight!.airline,
+                                widget.departureFlight?.airline ?? "",
                                 style: _textTheme.displaySmall!
                                     .copyWith(fontSize: 14),
                               ),
                               Text(
-                                selectedFlight!.departureTime +
+                                (widget.departureFlight?.departureTime ?? "") +
                                     "-" +
-                                    selectedFlight!.arrivalTime,
+                                    (widget.departureFlight?.arrivalTime ?? ""),
                                 style: _textTheme.titleLarge,
                               ),
                             ],
@@ -155,7 +204,7 @@ class PassengerDetailWidget extends StatelessWidget {
                               style: _textTheme.titleLarge,
                             ),
                             Text(
-                              selectedFlight!.totalFare.toString(),
+                              widget.totalFare.toString(),
                               style: _textTheme.displaySmall!
                                   .copyWith(fontSize: 14),
                             ),
@@ -170,13 +219,13 @@ class PassengerDetailWidget extends StatelessWidget {
                         KeyValueTile(
                           title: 'Departure',
                           value:
-                              "${selectedFlight!.flightDate.year}-${selectedFlight!.flightDate.month}-${selectedFlight!.flightDate.day}",
+                              "${widget.departureFlight?.flightDate.year}-${widget.departureFlight?.flightDate.month}-${widget.departureFlight?.flightDate.day}",
                         ),
                         KeyValueTile(
                             title: "Routes",
-                            value: selectedFlight!.departure +
+                            value: (widget.departureFlight?.departure ?? "") +
                                 " - " +
-                                selectedFlight!.arrival)
+                                (widget.departureFlight?.arrival ?? ""))
                       ],
                     ),
                     const SizedBox(
@@ -222,69 +271,87 @@ class PassengerDetailWidget extends StatelessWidget {
               SizedBox(
                 height: 20,
               ),
-              if (adultCount > 0)
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: adultCount,
+              Container(
+                height: 120,
+                child: ListView.builder(
+                  itemCount: widget.adultCount + widget.childrenCount,
                   itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Please enter adult ${index + 1} details',
-                          style: _textTheme.headlineSmall,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        CustomTextField(
-                          controller: _firstNameController,
-                          validator: (value) =>
-                              FormValidator.validateFieldNotEmpty(
-                                  value, 'Name'),
-                          title: 'First Name',
-                        ),
-                        CustomTextField(
-                          controller: lastNameController,
-                          validator: (value) =>
-                              FormValidator.validateFieldNotEmpty(
-                                  value, 'Name'),
-                          title: 'Last Name',
-                        ),
-                        CustomTextField(
-                          title: 'Nationality',
-                        ),
-                      ],
+                    final passenger = passengers[index];
+                    return CustomTextField(
+                      title: "First Name",
+                      onChanged: (value) {
+                        setState(() {
+                          passenger.firstname = value;
+                        });
+                      },
                     );
                   },
                 ),
-              if (childrenCount > 0)
-                ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
-                  shrinkWrap: true,
-                  itemCount: childrenCount,
-                  itemBuilder: (context, index) {
-                    return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          'Please enter children ${index + 1} details',
-                          style: _textTheme.headlineSmall,
-                        ),
-                        SizedBox(
-                          height: 10,
-                        ),
-                        CustomTextField(
-                          title: 'Full Name',
-                        ),
-                        CustomTextField(
-                          title: 'Nationality',
-                        ),
-                      ],
-                    );
-                  },
-                ),
+              ),
+
+              // if (widget.adultCount > 0)
+              //   ListView.builder(
+              //     physics: NeverScrollableScrollPhysics(),
+              //     shrinkWrap: true,
+              //     itemCount: widget.adultCount,
+              //     itemBuilder: (context, index) {
+              //       return Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Text(
+              //             'Please enter adult ${index + 1} details',
+              //             style: _textTheme.headlineSmall,
+              //           ),
+              //           SizedBox(
+              //             height: 10,
+              //           ),
+              //           CustomTextField(
+              //             controller: _firstNameController,
+              //             validator: (value) =>
+              //                 FormValidator.validateFieldNotEmpty(
+              //                     value, 'Name'),
+              //             title: 'First Name',
+              //           ),
+              //           CustomTextField(
+              //             controller: lastNameController,
+              //             validator: (value) =>
+              //                 FormValidator.validateFieldNotEmpty(
+              //                     value, 'Name'),
+              //             title: 'Last Name',
+              //           ),
+              //           CustomTextField(
+              //             title: 'Nationality',
+              //           ),
+              //         ],
+              //       );
+              //     },
+              //   ),
+              // if (widget.childrenCount > 0)
+              //   ListView.builder(
+              //     physics: NeverScrollableScrollPhysics(),
+              //     shrinkWrap: true,
+              //     itemCount: widget.childrenCount,
+              //     itemBuilder: (context, index) {
+              //       return Column(
+              //         crossAxisAlignment: CrossAxisAlignment.start,
+              //         children: [
+              //           Text(
+              //             'Please enter children ${index + 1} details',
+              //             style: _textTheme.headlineSmall,
+              //           ),
+              //           SizedBox(
+              //             height: 10,
+              //           ),
+              //           CustomTextField(
+              //             title: 'Full Name',
+              //           ),
+              //           CustomTextField(
+              //             title: 'Nationality',
+              //           ),
+              //         ],
+              //       );
+              //     },
+              //   ),
             ],
           ),
         ),
@@ -304,17 +371,17 @@ class PassengerDetailWidget extends StatelessWidget {
                             .selectedAccount
                             .value!
                             .accountNumber,
-                    // "mPin": "11111",
                     "serviceIdentifier": "ARS",
                     "airlineId": "",
-                    "flightId": selectedFlight!.flightId,
+                    "flightId": widget.departureFlight!.flightId,
                     "returnFlightId": "",
-                    "amount": selectedFlight!.totalFare,
+                    "amount": widget.departureFlight!.totalFare,
                     "channel": "MOBILE",
                     "reservationStatus": "OK",
-                    "feeTax": selectedFlight!.tax,
-                    "totalPassenger": adultCount,
-                    "agencyCommission": selectedFlight!.agencyCommission,
+                    "feeTax": widget.departureFlight!.tax,
+                    "totalPassenger": widget.adultCount,
+                    "agencyCommission":
+                        widget.departureFlight!.agencyCommission,
                     "contactName": contactName.text,
                     "contactEmail": contactEmail.text,
                     "contactNumber": contactNumber.text,
@@ -330,7 +397,7 @@ class PassengerDetailWidget extends StatelessWidget {
                       }
                     ],
                   },
-                  service: service,
+                  service: widget.service,
                   serviceIdentifier: "ARS"));
 
           print('validated');

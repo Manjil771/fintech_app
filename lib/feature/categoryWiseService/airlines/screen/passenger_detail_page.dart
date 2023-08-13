@@ -7,15 +7,20 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class PassengerDetailScreen extends StatelessWidget {
-  Availability? selectedFlight;
+  Availability? departureFlight;
+  Availability? arrivalFlight;
+
+  final double totalFare;
   final ServiceList service;
 
   PassengerDetailScreen(
       {super.key,
       required this.adultCount,
       required this.childrenCount,
-      required this.selectedFlight,
-      required this.service});
+      required this.departureFlight,
+      this.arrivalFlight,
+      required this.service,
+      required this.totalFare});
   final adultCount;
   final childrenCount;
 
@@ -30,9 +35,11 @@ class PassengerDetailScreen extends StatelessWidget {
         )
       ],
       child: PassengerDetailWidget(
+        totalFare: totalFare,
         service: service,
         adultCount: adultCount,
-        selectedFlight: selectedFlight,
+        departureFlight: departureFlight,
+        arrivalFlight: arrivalFlight,
         childrenCount: childrenCount,
       ),
     );

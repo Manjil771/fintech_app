@@ -1,26 +1,18 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_error_dialog.dart';
-import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/passenger_detail_page.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/widgets/avaliable_flight_design_widget.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/inbound_flight_design_widget.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/outbound_flight_design_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -45,22 +37,30 @@ class AvailableFlightWidget extends StatefulWidget {
 
 class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
     with TickerProviderStateMixin {
-  Availability? selectedFlight;
   bool _isLoading = false;
-  late TabController tabController;
-  @override
-  void initState() {
-    tabController = TabController(length: 2, vsync: this, initialIndex: 1);
-  }
 
+  bool departure = true;
+  bool arrival = true;
+  Availability? departureFlight;
+  Availability? arrivalFlight;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    double getTotalFare() {
+      if (departureFlight != null && arrivalFlight != null) {
+        double sum =
+            (departureFlight?.totalFare ?? 0) + (arrivalFlight?.totalFare ?? 0);
+        return sum;
+      } else {
+        return departureFlight?.totalFare ?? 0;
+      }
+    }
 
     return PageWrapper(
+      showBackButton: true,
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && _isLoading == false) {
@@ -69,7 +69,8 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
           } else if (state is! CommonLoading && _isLoading) {
             _isLoading = false;
             NavigationService.pop();
-          } else if (state is CommonError) {
+          }
+          if (state is CommonError) {
             showPopUpDialog(
               context: context,
               message: state.message,
@@ -87,10 +88,12 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
               NavigationService.push(
                   target: PassengerDetailScreen(
+                      arrivalFlight: arrivalFlight,
+                      totalFare: getTotalFare(),
                       service: widget.service,
                       adultCount: widget.adultCount,
                       childrenCount: widget.childrenCount,
-                      selectedFlight: selectedFlight));
+                      departureFlight: departureFlight));
             } else {
               showPopUpDialog(
                   context: context,
@@ -103,58 +106,180 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
             }
           }
         },
-        child: CommonContainer(
-          showDetail: false,
-          verticalPadding: 0,
-          showTitleText: false,
-          title: "Available Flights",
-          showRoundBotton: false,
-          topbarName: 'Book Flight',
-          body: Container(
-            height: _height / 1.6,
-            child: DefaultTabController(
-              initialIndex: 0,
-              length: 2,
-              child: Column(
-                children: [
-                  TabBar(
-                    onTap: (value) {
-                      setState(() {});
-                    },
-                    labelColor: _theme.primaryColor,
-                    unselectedLabelColor: CustomTheme.darkGray,
-                    labelStyle:
-                        TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
-                    indicatorColor: _theme.primaryColor,
-                    automaticIndicatorColorAdjustment: true,
-                    tabs: [
-                      Tab(text: 'Departure'),
-                      Tab(text: 'Return'),
-                    ],
-                  ),
-                  SizedBox(height: _height * 0.02),
-                  Expanded(
-                    child: TabBarView(
+        child: Column(
+          children: [
+            Row(
+              children: [
+                Expanded(
+                    child: CustomRoundedButtom(
+                        color: departure == true
+                            ? CustomTheme.googleColor
+                            : CustomTheme.darkGray,
+                        title: "Departure",
+                        onPressed: () {
+                          setState(() {
+                            departure = true;
+                            arrival = false;
+                          });
+                        })),
+                widget.flightDetail.detail.flightAvailability.inbound
+                        .availability.isNotEmpty
+                    ? Expanded(
+                        child: CustomRoundedButtom(
+                            color: departure == false
+                                ? CustomTheme.googleColor
+                                : CustomTheme.darkGray,
+                            title: "Arrival",
+                            onPressed: () {
+                              arrival = true;
+                              departure = false;
+                              setState(() {});
+                            }))
+                    : Container(),
+              ],
+            ),
+            Expanded(
+              child: departure == true
+                  ? OutBoundFlightsDesign(
+                      selectedFlight: departureFlight,
+                      onpress: (p0) {
+                        departureFlight = p0;
+                        arrival = true;
+                        widget.flightDetail.detail.flightAvailability.inbound
+                                .availability.isNotEmpty
+                            ? departure = false
+                            : departure = true;
+                        setState(() {});
+                      },
+                      bound: widget
+                          .flightDetail.detail.flightAvailability.outbound,
+                    )
+                  : InboundFlightDesign(
+                      selectedFlight: arrivalFlight,
+                      onpress: (p0) {
+                        arrivalFlight = p0;
+                        setState(() {});
+                      },
+                      bound:
+                          widget.flightDetail.detail.flightAvailability.inbound,
+                    ),
+            ),
+            departureFlight != null
+                ? Container(
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        color: CustomTheme.white),
+                    padding: EdgeInsets.all(18),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
                       children: [
-                        AvaliableFlightsDesign(
-                          onpress: () {
-                            DefaultTabController.of(context).animateTo(1);
-                          },
-                          bound: widget
-                              .flightDetail.detail.flightAvailability.outbound,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: KeyValueTile(
+                            axis: Axis.vertical,
+                            title: "Departure",
+                            value: departureFlight?.totalFare.toString() ?? "",
+                          ),
                         ),
-                        AvaliableFlightsDesign(
-                          onpress: () {},
-                          bound: widget
-                              .flightDetail.detail.flightAvailability.inbound,
+                        arrivalFlight != null
+                            ? KeyValueTile(
+                                axis: Axis.vertical,
+                                title: "Return",
+                                value:
+                                    arrivalFlight?.totalFare.toString() ?? "",
+                              )
+                            : Container(),
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: KeyValueTile(
+                            axis: Axis.vertical,
+                            title: "Total",
+                            value: getTotalFare().toString(),
+                          ),
                         ),
+                        Expanded(
+                            child: CustomRoundedButtom(
+                                title: "Book",
+                                onPressed: () {
+                                  if (widget
+                                      .flightDetail
+                                      .detail
+                                      .flightAvailability
+                                      .inbound
+                                      .availability
+                                      .isNotEmpty) {
+                                    if (arrivalFlight != null &&
+                                        departureFlight != null &&
+                                        widget
+                                            .flightDetail
+                                            .detail
+                                            .flightAvailability
+                                            .inbound
+                                            .availability
+                                            .isNotEmpty) {
+                                      context
+                                          .read<UtilityPaymentCubit>()
+                                          .makePayment(
+                                              serviceIdentifier: "ARS",
+                                              accountDetails: {},
+                                              body: {
+                                                "flightId":
+                                                    departureFlight?.flightId ??
+                                                        "",
+                                                "returnFlightId":
+                                                    arrivalFlight?.flightId ??
+                                                        "",
+                                                "amount": getTotalFare(),
+                                              },
+                                              apiEndpoint:
+                                                  "/api/arsflightreservation",
+                                              mPin: "");
+                                    } else {
+                                      showPopUpDialog(
+                                        context: context,
+                                        showCancelButton: false,
+                                        message: departureFlight == null
+                                            ? "Please Departure Select Flight"
+                                            : "Please Select Return Flight",
+                                        title: "Select",
+                                        buttonCallback: () {
+                                          NavigationService.pop();
+                                        },
+                                      );
+                                    }
+                                  } else {
+                                    if (departureFlight != null &&
+                                        widget
+                                            .flightDetail
+                                            .detail
+                                            .flightAvailability
+                                            .inbound
+                                            .availability
+                                            .isEmpty) {
+                                      context
+                                          .read<UtilityPaymentCubit>()
+                                          .makePayment(
+                                              serviceIdentifier: "ARS",
+                                              accountDetails: {},
+                                              body: {
+                                                "flightId":
+                                                    departureFlight?.flightId ??
+                                                        "",
+                                                "returnFlightId": "",
+                                                "amount": getTotalFare(),
+                                              },
+                                              apiEndpoint:
+                                                  "/api/arsflightreservation",
+                                              mPin: "");
+                                    }
+                                  }
+                                }))
                       ],
                     ),
                   )
-                ],
-              ),
-            ),
-          ),
+                : Container(),
+          ],
         ),
       ),
     );

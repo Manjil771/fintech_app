@@ -8,11 +8,11 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class AvailableFlightScreen extends StatelessWidget {
+class AvailableFlightPage extends StatelessWidget {
   final ServiceList service;
 
   final AvailableFlightModel flightDetail;
-  const AvailableFlightScreen(
+  const AvailableFlightPage(
       {super.key,
       required this.adultCount,
       required this.childrenCount,

@@ -21,6 +21,7 @@ class CustomTheme {
   static const Color suryadevColor = Color(0xFF8E191C);
   static const Color shreeNavaprabhatColor = Color(0xFF39B54A);
   static const Color uddhamshilColor = Color(0xFF24B34B);
+  static const Color vyasColor = Color(0xFF2B2A6A);
 
   static Color primaryColor = testAppColor;
 
@@ -41,6 +42,7 @@ class CustomTheme {
   static const Color shadowColor = Color(0x1A000000);
   static const Color darkerBlack = Color(0xff060606);
   static const Color darkTextColor = Color(0xfff8f8f8);
+
   static const Color white = Colors.white;
 
   static ThemeData lightTheme = ThemeData(

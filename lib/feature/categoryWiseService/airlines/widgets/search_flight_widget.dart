@@ -83,7 +83,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               if (_response.responseStatus.toLowerCase() ==
                   "Success".toLowerCase()) {
                 NavigationService.push(
-                    target: AvailableFlightScreen(
+                    target: AvailableFlightPage(
                         service: widget.service,
                         adultCount: _adultCount,
                         childrenCount: _childrenCount,
@@ -388,7 +388,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
         onButtonPressed: () {
           if (_selectedSectorFrom.value != null &&
               _selectedSectorTo.value != null &&
-              _formKey.currentState!.validate())
+              _formKey.currentState!.validate()) {
             context
                 .read<AirlinesCubit>()
                 .fetchFlight(accountDetails: {}, body: {
@@ -401,6 +401,27 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               "tripType": isRoundTrip ? "R" : "O",
               "nationality": "NP"
             });
+          } else {
+            showPopUpDialog(
+                context: context,
+                message: "Select Select Sector",
+                title: "Select Location",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                });
+          }
+          // context.read<AirlinesCubit>().fetchFlight(accountDetails: {}, body: {
+          //   "sectorFrom": "KTM",
+          //   "sectorTo": "PKR",
+          //   "adultNumber": _adultCount,
+          //   "childNumber": _childrenCount,
+          //   "flightDate": "20-09-2023",
+          //   "returnDate": "20-10-2023",
+          //   "tripType": "R",
+          //   "nationality": "NP"
+          // });
+          // }
         },
       ),
     );
