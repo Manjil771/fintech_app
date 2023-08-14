@@ -5,6 +5,7 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 
 import 'package:url_launcher/url_launcher.dart';
 
@@ -101,7 +102,8 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               message: "Your load fund transaction is successfull.",
               title: "Success",
               buttonCallback: () {
-                NavigationService.popUntilFirstPage();
+                NavigationService.pushReplacement(
+                      target: const DashboardPage());
               },
               showCancelButton: false,
             );
@@ -111,7 +113,8 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               message: "Your load fund transaction is failed.",
               title: "Failed",
               buttonCallback: () {
-                NavigationService.popUntilFirstPage();
+                NavigationService.pushReplacement(
+                      target: const DashboardPage());
               },
               showCancelButton: false,
             );

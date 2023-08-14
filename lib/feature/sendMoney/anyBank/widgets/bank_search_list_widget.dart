@@ -8,7 +8,6 @@ import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
-import 'package:ismart/feature/qrCode/shareQr/resources/qr_repository.dart';
 
 class BankSearchWidgets extends StatefulWidget {
   final List<KeyValue> items;

@@ -22,7 +22,6 @@ import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 
 import 'package:open_filex/open_filex.dart';
-import 'package:permission_handler/permission_handler.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({Key? key}) : super(key: key);
@@ -62,19 +61,21 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   }
 
   _performStartupActions() async {
-    final permissionStatus = await Permission.storage.status;
+    // final permissionStatus = await Permission.storage.status;
 
-    switch (permissionStatus) {
-      case PermissionStatus.denied:
-      case PermissionStatus.permanentlyDenied:
-        await Permission.storage.request();
-        break;
-      default:
-    }
+    // switch (permissionStatus) {
+    //   case PermissionStatus.denied:
+    //   case PermissionStatus.permanentlyDenied:
+    //     await Permission.storage.request();
+    //     break;
+    //   default:
+    // }
     IsolateNameServer.registerPortWithName(
         _port.sendPort, 'downloader_send_port');
     _port.listen(
       (dynamic data) async {
+        print("Download callback received");
+        print(data);
         final String downloadId = data[0];
         final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
         print(status);

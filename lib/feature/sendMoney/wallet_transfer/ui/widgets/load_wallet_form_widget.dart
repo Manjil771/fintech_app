@@ -10,6 +10,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
@@ -70,8 +71,9 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   message: state.data.message,
                   title: state.data.status,
                   buttonCallback: () {
-                    // NavigationService.pop();
-                    NavigationService.popUntilFirstPage();
+                    NavigationService.pushReplacement(
+                      target: const DashboardPage(),
+                    );
                   },
                   showCancelButton: false,
                 );

@@ -13,6 +13,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/internal_transfer_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
@@ -139,7 +140,9 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 showCancelButton: false,
                 title: _response.status,
                 buttonCallback: () {
-                  NavigationService.popUntilFirstPage();
+                  NavigationService.pushReplacement(
+                    target: const DashboardPage(),
+                  );
                 },
               );
             }

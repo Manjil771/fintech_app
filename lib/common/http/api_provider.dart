@@ -414,7 +414,9 @@ class ApiProvider {
       case 403:
         // TODO Check status from Response and Logout only when session is expire
         String _responseCode = (responseJson['data']?['code'] ?? "").toString();
-        if (_responseCode == "M0025" || _responseCode == "M0005") {
+        if (_responseCode == "M0025" ||
+            _responseCode == "M0005" ||
+            _responseCode == "M0007") {
           throw BadRequestException(
             responseJson['data']?['message'] ?? "",
             response.statusCode,

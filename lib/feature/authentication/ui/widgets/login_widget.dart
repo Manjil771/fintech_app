@@ -179,32 +179,32 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ValueListenableBuilder<bool>(
                         valueListenable: _hasExistingLoginSaved,
                         builder: (context, val, _) {
-                          if (!val) {
-                            return CustomTextField(
-                              title: "Mobile Number",
-                              hintText: "Mobile Number",
-                              controller: phoneController,
-                              textInputType: TextInputType.phone,
-                              validator: (value) =>
-                                  FormValidator.validatePhoneNumber(value),
-                              onChanged: (val) {
-                                // if (FormValidator.validatePhoneNumber(val) ==
-                                //     null) {
-                                //   if (Platform.isIOS) {
-                                //     context
-                                //         .read<ValidateCoOpCubit>()
-                                //         .validateCoOperative(username: val);
-                                //     Future.delayed(const Duration(seconds: 3))
-                                //         .then((value) {
-                                //       setState(() {});
-                                //     });
-                                //   }
-                                // }
-                              },
-                            );
-                          } else {
-                            return Container();
-                          }
+                          // if (!val) {
+                          return CustomTextField(
+                            title: "Mobile Number",
+                            hintText: "Mobile Number",
+                            controller: phoneController,
+                            textInputType: TextInputType.phone,
+                            validator: (value) =>
+                                FormValidator.validatePhoneNumber(value),
+                            onChanged: (val) {
+                              // if (FormValidator.validatePhoneNumber(val) ==
+                              //     null) {
+                              //   if (Platform.isIOS) {
+                              //     context
+                              //         .read<ValidateCoOpCubit>()
+                              //         .validateCoOperative(username: val);
+                              //     Future.delayed(const Duration(seconds: 3))
+                              //         .then((value) {
+                              //       setState(() {});
+                              //     });
+                              //   }
+                              // }
+                            },
+                          );
+                          // } else {
+                          //   return Container();
+                          // }
                         }),
                     SizedBox(height: height * 0.014),
                     CustomPasswordField(

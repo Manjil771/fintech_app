@@ -20,8 +20,7 @@ class DownloadedFile {
   static Map<String, dynamic> toJson(DownloadedFile file) => {
         "fileName": file.fileName,
         "filePath": file.filePath,
-        "downloadedDate":
-            "${file.downloadedDate.year.toString().padLeft(4, '0')}-${file.downloadedDate.month.toString().padLeft(2, '0')}-${file.downloadedDate.day.toString().padLeft(2, '0')}",
+        "downloadedDate": file.downloadedDate.toString(),
       };
 
   static String encode(List<DownloadedFile> files) => json.encode(

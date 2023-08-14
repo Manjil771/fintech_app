@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -65,7 +63,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                     final _detail = customerDetail.value!;
                     return Container(
                       child: ListView.builder(
-                          physics: NeverScrollableScrollPhysics(),
+                          physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
                           itemCount: _detail.accountDetail.length,
                           itemBuilder: (context, index) {
@@ -159,15 +157,16 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                     children: [
                                       Expanded(
                                         child: CommonGridViewContainer(
-                                            onContainerPress: () async {
-                                              await Share.share(
-                                                'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: ${_detail.accountDetail[index].branchName} \nBranch Name: ${_detail.accountDetail[index].branchName} ',
-                                              );
-                                            },
-                                            isNetworkImage: false,
-                                            containerImage:
-                                                'assets/icons/share.svg',
-                                            title: 'Share Account \n Details'),
+                                          onContainerPress: () async {
+                                            await Share.share(
+                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: ${_detail.accountDetail[index].branchName} \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                            );
+                                          },
+                                          isNetworkImage: false,
+                                          containerImage:
+                                              'assets/icons/share.svg',
+                                          title: 'Share Account Details',
+                                        ),
                                       ),
                                       Expanded(child: Container()
 

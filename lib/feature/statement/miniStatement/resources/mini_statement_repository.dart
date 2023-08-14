@@ -1,11 +1,8 @@
-import 'package:flutter/foundation.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
 import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_api_provider.dart';
 
@@ -48,7 +45,11 @@ class MiniStatementRepository {
 
         return DataResponse.success(_miniStatement);
       } else {
-        return DataResponse.error("error message");
+        return DataResponse.success(MiniStatementModel(
+          availableBalance: 0.00,
+          balanceDate: DateTime.now(),
+          ministatementList: [],
+        ));
       }
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {

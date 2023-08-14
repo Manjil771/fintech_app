@@ -147,7 +147,7 @@ class CoOperativeValue {
 
   static final CoOperative uttargangaCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/uttarganga/uttarganga_banner_2.png",
+    bannerImage: "assets/uttarganga/uttarganga_banner.png",
     clientCode: '9DZS5N3TOY',
     clientSecret: "112213",
     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
@@ -198,7 +198,7 @@ class CoOperativeValue {
 
     clientCode: 'D6CIBSGVA0',
     coOperativeName: 'Shree Aaju',
-    coOperativeLogo: 'assets/shreeaaju/shreeaaju_logo.png',
+    coOperativeLogo: 'assets/shreeaaju/shreeaju_logo.png',
 
     clientSecret: "155993",
     splashImage: "assets/shreeaaju/shreeaaju_splash.png",

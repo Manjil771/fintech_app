@@ -160,50 +160,63 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                             return Container();
                           }
                         }),
-                    DataTable(
-                      columnSpacing: _width * 0.14,
-                      headingRowHeight: 40,
-                      dataTextStyle:
-                          const TextStyle(fontSize: 12, color: Colors.black),
-                      headingRowColor:
-                          const MaterialStatePropertyAll(Colors.black12),
-                      columns: const [
-                        DataColumn(label: Text("Date")),
-                        DataColumn(label: Text("Amount")),
-                        DataColumn(label: Text("Status")),
-                      ],
-                      rows: state.data.ministatementList
-                          .map((e) => DataRow(
-                                cells: [
-                                  DataCell(Text(
-                                      "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
-                                  DataCell(Text(
-                                    e.amount.toString(),
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                  DataCell(Text(
-                                    e.credit ? "Deposit" : "Withdrawl",
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                ],
-                              ))
-                          .toList(),
+                    if (state.data.ministatementList.isNotEmpty)
+                      DataTable(
+                        columnSpacing: _width * 0.14,
+                        headingRowHeight: 40,
+                        dataTextStyle:
+                            const TextStyle(fontSize: 12, color: Colors.black),
+                        headingRowColor:
+                            const MaterialStatePropertyAll(Colors.black12),
+                        columns: const [
+                          DataColumn(label: Text("Date")),
+                          DataColumn(label: Text("Amount")),
+                          DataColumn(label: Text("Status")),
+                        ],
+                        rows: state.data.ministatementList
+                            .map((e) => DataRow(
+                                  cells: [
+                                    DataCell(Text(
+                                        "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
+                                    DataCell(Text(
+                                      e.amount.toString(),
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
+                                    DataCell(Text(
+                                      e.credit ? "Deposit" : "Withdrawl",
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
+                                  ],
+                                ))
+                            .toList(),
 
-                      // DataRow(cells: [
-                      //   DataCell(Text(state.data.ministatementList[0].remarks)),
-                      //   DataCell(Text(state
-                      //       .data.ministatementList[0].transactionDate
-                      //       .toString())),
-                      //   DataCell(Text(
-                      //       state.data.ministatementList[0].amount.toString())),
-                      // ])
-                    ),
+                        // DataRow(cells: [
+                        //   DataCell(Text(state.data.ministatementList[0].remarks)),
+                        //   DataCell(Text(state
+                        //       .data.ministatementList[0].transactionDate
+                        //       .toString())),
+                        //   DataCell(Text(
+                        //       state.data.ministatementList[0].amount.toString())),
+                        // ])
+                      ),
+                    if (state.data.ministatementList.isEmpty)
+                      Container(
+                        child: const Center(
+                          child: Text(
+                            "No data found.",
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 15,
+                            ),
+                          ),
+                        ),
+                      ),
                   ],
                 ),
                 onButtonPressed: () {

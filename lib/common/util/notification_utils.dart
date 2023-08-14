@@ -46,8 +46,8 @@ class NotificationUtils {
     FlutterAppBadger.removeBadge();
   }
 
-  static generateDownloadCompletedNotification(String filePath) {
-    AwesomeNotifications().createNotification(
+  static generateDownloadCompletedNotification(String filePath) async {
+    bool _isCreated = await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: 1001,
         channelKey: notificationChannelKey,
@@ -60,6 +60,7 @@ class NotificationUtils {
         displayOnBackground: true,
       ),
     );
+    print("Notification has been created : $_isCreated");
     FlutterAppBadger.removeBadge();
   }
 

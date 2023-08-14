@@ -36,7 +36,8 @@ class SharedPref {
         _instance.getString(_downloadedFilesList) ?? "";
     final List<DownloadedFile> _downloadedFiles =
         DownloadedFile.decode(downloadedFileString);
-
+    _downloadedFiles
+        .sort((a, b) => b.downloadedDate.compareTo(a.downloadedDate));
     return _downloadedFiles;
   }
 
