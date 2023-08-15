@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_repository.dart';
 

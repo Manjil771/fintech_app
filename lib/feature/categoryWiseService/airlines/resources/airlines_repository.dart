@@ -3,7 +3,7 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_api_provider.dart';
 

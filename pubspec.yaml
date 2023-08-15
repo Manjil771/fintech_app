@@ -113,6 +113,7 @@ flutter:
     - assets/suryadev/
     - assets/uddhamshil/
     - assets/navaprabhat/
+    - assets/vyas/
 
   fonts:
     - family: popinbold

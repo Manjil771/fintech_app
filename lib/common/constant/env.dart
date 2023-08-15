@@ -282,6 +282,22 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative vyasCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/vyas/vyas_banner.png",
+    backgroundImage: "assets/vyas/vyas_background.png",
+
+    clientCode: '5YODBM9KER',
+    coOperativeName: 'Vyas',
+    coOperativeLogo: 'assets/vyas/vyas_logo.png',
+
+    clientSecret: "220475",
+    splashImage: "assets/vyas/vyas_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
