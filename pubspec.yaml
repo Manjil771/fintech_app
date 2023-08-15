@@ -114,6 +114,8 @@ flutter:
     - assets/uddhamshil/
     - assets/navaprabhat/
     - assets/vyas/
+    - assets/newdhaulagiri/
+
 
   fonts:
     - family: popinbold
