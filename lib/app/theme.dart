@@ -23,8 +23,9 @@ class CustomTheme {
   static const Color uddhamshilColor = Color(0xFF24B34B);
   static const Color vyasColor = Color(0xFF2B2A6A);
   static const Color newdhaulagiriColor = Color(0xFF662D91);
+  static const Color shreejanamukhiColor = Color(0xFF017828);
 
-  static Color primaryColor = newdhaulagiriColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

@@ -88,6 +88,7 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
               NavigationService.push(
                   target: PassengerDetailScreen(
+                      utilityResponseData: _response,
                       arrivalFlight: arrivalFlight,
                       totalFare: getTotalFare(),
                       service: widget.service,
@@ -266,7 +267,9 @@ class _AvailableFlightWidgetState extends State<AvailableFlightWidget>
                                                 "flightId":
                                                     departureFlight?.flightId ??
                                                         "",
-                                                "returnFlightId": "",
+                                                "returnFlightId":
+                                                    arrivalFlight?.flightId ??
+                                                        "",
                                                 "amount": getTotalFare(),
                                               },
                                               apiEndpoint:

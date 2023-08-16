@@ -22,6 +22,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class PassengerDetailWidget extends StatefulWidget {
+  final UtilityResponseData responseData;
   Availability? departureFlight;
   Availability? arrivalFlight;
 
@@ -35,7 +36,8 @@ class PassengerDetailWidget extends StatefulWidget {
       required this.childrenCount,
       required this.departureFlight,
       required this.service,
-      required this.totalFare})
+      required this.totalFare,
+      required this.responseData})
       : super(key: key);
 
   final int adultCount;
@@ -68,7 +70,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           gender: "",
           title: "",
           nationality: "",
-          type: PassengerType.adult));
+          type: "ADULT"));
     }
     for (int i = 0; i < widget.childrenCount; i++) {
       passengers.add(PassengerDetailModel(
@@ -78,7 +80,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           title: "",
           firstname: "",
           lastname: "",
-          type: PassengerType.child));
+          type: "CHILDREN"));
     }
     // for (int i = 0; i < widget.numberOfInfants; i++) {
     //   passengers
@@ -94,6 +96,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        showAccountSelection: true,
         buttonName: "Procced",
         showDetail: true,
         title: widget.service.service,
@@ -277,17 +280,15 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                                 child: CustomTextField(
                                   readOnly: true,
                                   customHintTextStyle: true,
-                                  hintText:
-                                      passenger.type == PassengerType.adult
-                                          ? "Adult"
-                                          : "Children",
+                                  hintText: passenger.type == "ADULT"
+                                      ? "Adult"
+                                      : "Children",
                                   title: "Type",
                                   onChanged: (value) {
                                     setState(() {
-                                      passenger.type =
-                                          passenger.type == PassengerType.adult
-                                              ? PassengerType.adult
-                                              : PassengerType.child;
+                                      passenger.type = passenger.type == "ADULT"
+                                          ? "ADULT".toLowerCase()
+                                          : "CHILDREN".toLowerCase();
                                     });
                                   },
                                 ),
@@ -300,7 +301,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                                   title: "Nationality",
                                   onChanged: (value) {
                                     setState(() {
-                                      passenger.nationality = value;
+                                      // passenger.nationality = value;
                                     });
                                   },
                                 ),
@@ -384,9 +385,19 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           ),
         ),
         onButtonPressed: () {
-          List passengerList =
+          final List passengerList =
               passengers.map((passenger) => passenger.toJson()).toList();
+          final numberOfPassenger = widget.adultCount + widget.childrenCount;
+          final departureComission =
+              double.parse(widget.departureFlight?.agencyCommission ?? "0");
+          final arrivalComission =
+              double.parse(widget.arrivalFlight?.agencyCommission ?? "0");
+          final double totalAgencyComission =
+              (departureComission + arrivalComission) * numberOfPassenger;
+          final departureFee = double.parse(widget.departureFlight?.tax ?? "0");
+          final arrivalFee = double.parse(widget.arrivalFlight?.tax ?? "0");
 
+          final double feeTax = departureFee + arrivalFee;
           _formKey.currentState!.save();
           if (_formKey.currentState!.validate()) {
             NavigationService.push(
@@ -395,40 +406,29 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                     accountDetails: {},
                     apiEndpoint: "/api/arsissueticket",
                     apiBody: {
-                      // "accountNumber":
-                      //     RepositoryProvider.of<CustomerDetailRepository>(
-                      //             context)
-                      //         .selectedAccount
-                      //         .value!
-                      //         .accountNumber,
-                      // "serviceIdentifier": "ARS",
+                      "accountNumber":
+                          RepositoryProvider.of<CustomerDetailRepository>(
+                                  context)
+                              .selectedAccount
+                              .value!
+                              .accountNumber,
+                      "agencyCommission": totalAgencyComission,
                       "airlineId": "",
+                      "amount": widget.totalFare,
+                      "channel": "MOBILE",
+                      "serviceIdentifier": "ARS",
+                      "contactEmail": contactEmail.text,
+                      "contactName": contactName.text,
+                      "contactNumber": contactNumber.text,
+                      "feeTax": feeTax * numberOfPassenger,
                       "flightId": widget.departureFlight?.flightId ?? "",
                       "returnFlightId": widget.arrivalFlight?.flightId ?? "",
-                      "amount": widget.totalFare,
-                      // "channel": "MOBILE",
-                      // "reservationStatus": "OK",
-                      // "feeTax": widget.departureFlight!.tax,
-                      "totalPassenger":
-                          (widget.adultCount + widget.childrenCount).toString(),
-                      // "agencyCommission":
-                      //     widget.departureFlight!.agencyCommission,
-                      "contactName": contactName.text,
-                      "contactEmail": contactEmail.text,
-                      "contactNumber": contactNumber.text,
+                      "reservationStatus": "OK",
+                      "totalPassenger": numberOfPassenger,
                       "issueTicketRequest": passengerList,
-                      //  {
-                      //   "firstName": _firstNameController.text,
-                      //   "lastName": lastNameController.text,
-                      //   "nationality": "NP",
-                      //   "paxRemarks": "Test",
-                      //   "paxType": "Adult",
-                      //   "title": "Mr.",
-                      //   "gender": "M"
-                      // }
                     },
                     service: widget.service,
-                    serviceIdentifier: "ARS"));
+                    serviceIdentifier: widget.service.uniqueIdentifier));
           }
         },
       ),

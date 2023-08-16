@@ -312,6 +312,21 @@ class CoOperativeValue {
     splashImage: "assets/newdhaulagiri/newdhaulagiri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+//TODO(s) :need to add client id and secret for janamukhi
+  static final CoOperative shreeJanamukhiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreejanamukhi/shreejanamukhi_banner.png",
+    backgroundImage: "assets/shreejanamukhi/shreejanamukhi_background.png",
+    clientCode: 'KMG1RP8OC6',
+    clientSecret: "214269",
+    coOperativeName: 'New Dhaulagiri',
+    coOperativeLogo: 'assets/shreejanamukhi/shreejanamukhi_logo.png',
+
+    splashImage: "assets/shreejanamukhi/shreejanamukhi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
