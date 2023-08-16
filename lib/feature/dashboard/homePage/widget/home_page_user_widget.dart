@@ -165,7 +165,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Actual Balance",
+                                        "Total Balance",
                                         style: _textTheme.titleSmall,
                                       ),
                                       Text(
@@ -193,12 +193,12 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                     crossAxisAlignment: CrossAxisAlignment.end,
                                     children: [
                                       Text(
-                                        "Interest Accrued",
+                                        "Available Balance",
                                         style: _textTheme.titleSmall,
                                       ),
                                       Text(
                                         showAmountDetail
-                                            ? "NPR ${selectedAcc?.accruedInterest}"
+                                            ? "NPR ${selectedAcc?.availableBalance}"
                                             : "XXXXXXXXX",
                                         style: _textTheme.titleLarge!.copyWith(
                                             fontWeight: FontWeight.bold),

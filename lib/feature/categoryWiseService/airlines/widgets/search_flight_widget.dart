@@ -221,7 +221,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                     final DateTime? date = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
-                      firstDate: DateTime(2022),
+                      firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 90)),
                     );
                     setState(() {

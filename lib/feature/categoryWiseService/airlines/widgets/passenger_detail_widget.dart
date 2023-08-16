@@ -16,29 +16,28 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_bill_detail_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class PassengerDetailWidget extends StatefulWidget {
-  final UtilityResponseData responseData;
   Availability? departureFlight;
   Availability? arrivalFlight;
 
   final double totalFare;
   final ServiceList service;
 
-  PassengerDetailWidget(
-      {Key? key,
-      required this.arrivalFlight,
-      required this.adultCount,
-      required this.childrenCount,
-      required this.departureFlight,
-      required this.service,
-      required this.totalFare,
-      required this.responseData})
-      : super(key: key);
+  PassengerDetailWidget({
+    Key? key,
+    required this.arrivalFlight,
+    required this.adultCount,
+    required this.childrenCount,
+    required this.departureFlight,
+    required this.service,
+    required this.totalFare,
+  }) : super(key: key);
 
   final int adultCount;
   final int childrenCount;
@@ -401,8 +400,13 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           _formKey.currentState!.save();
           if (_formKey.currentState!.validate()) {
             NavigationService.push(
-                target: CommonBillDetailPage(
-                    body: Container(),
+                target: AirlinesBillDetailPage(
+                    contactEmail: contactEmail.text,
+                    contactName: contactName.text,
+                    contactPhoneNumber: contactNumber.text,
+                    arrivalFlight: widget.arrivalFlight,
+                    departureFlight: widget.departureFlight,
+                    totalFare: widget.totalFare,
                     accountDetails: {},
                     apiEndpoint: "/api/arsissueticket",
                     apiBody: {

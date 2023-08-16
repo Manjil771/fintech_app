@@ -37,6 +37,40 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   child: InkWell(
                 borderRadius: BorderRadius.circular(12),
                 onTap: () {
+                  NavigationService.pushNamed(routeName: Routes.reveiveMoney);
+                },
+                child: Container(
+                  decoration: BoxDecoration(
+                      color: CustomTheme.white,
+                      borderRadius: BorderRadius.circular(12)),
+                  height: _height * 0.08,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      CircleAvatar(
+                        backgroundColor: _theme.primaryColor.withOpacity(0.16),
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: SvgPicture.asset(
+                            Assets.reveiceMoneyIcon,
+                            color: _theme.primaryColor,
+                          ),
+                        ),
+                      ),
+                      SizedBox(width: _width * 0.02),
+                      Text(
+                        "Receive",
+                        style: _textTheme.titleLarge,
+                      ),
+                    ],
+                  ),
+                ),
+              )),
+              SizedBox(width: _width * 0.1),
+              Expanded(
+                  child: InkWell(
+                borderRadius: BorderRadius.circular(12),
+                onTap: () {
                   NavigationService.pushNamed(routeName: Routes.sendMoney);
                 },
                 child: Container(
@@ -66,40 +100,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   ),
                 ),
               )),
-              SizedBox(width: _width * 0.1),
-              Expanded(
-                  child: InkWell(
-                borderRadius: BorderRadius.circular(12),
-                onTap: () {
-                  NavigationService.pushNamed(routeName: Routes.reveiveMoney);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                      color: CustomTheme.white,
-                      borderRadius: BorderRadius.circular(12)),
-                  height: _height * 0.08,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      CircleAvatar(
-                        backgroundColor: _theme.primaryColor.withOpacity(0.16),
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: SvgPicture.asset(
-                            Assets.reveiceMoneyIcon,
-                            color: _theme.primaryColor,
-                          ),
-                        ),
-                      ),
-                      SizedBox(width: _width * 0.02),
-                      Text(
-                        "Receive",
-                        style: _textTheme.titleLarge,
-                      ),
-                    ],
-                  ),
-                ),
-              ))
             ],
           ),
           const Expanded(child: HomePageTabbarWidget())

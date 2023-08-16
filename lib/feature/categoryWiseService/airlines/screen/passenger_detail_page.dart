@@ -38,7 +38,6 @@ class PassengerDetailScreen extends StatelessWidget {
         )
       ],
       child: PassengerDetailWidget(
-        responseData: utilityResponseData,
         totalFare: totalFare,
         service: service,
         adultCount: adultCount,
