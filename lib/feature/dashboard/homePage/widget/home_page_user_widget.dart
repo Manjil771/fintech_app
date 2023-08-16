@@ -165,7 +165,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        "Total Balance",
+                                        "Actual Balance",
                                         style: _textTheme.titleSmall,
                                       ),
                                       Text(
@@ -190,7 +190,8 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                     ),
                                   ),
                                   Column(
-                                    crossAxisAlignment: CrossAxisAlignment.end,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Text(
                                         "Available Balance",
