@@ -26,7 +26,7 @@ class CustomTheme {
   static const Color shreejanamukhiColor = Color(0xFF017828);
   static const Color uttargangaColor = Color(0xFF015017);
 
-  static Color primaryColor = uttargangaColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
