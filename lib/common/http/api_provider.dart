@@ -213,7 +213,7 @@ class ApiProvider {
       final String type = lookupMimeType(file.path)!.split('/').first;
 
       final FormData formData = FormData.fromMap(<String, dynamic>{
-        'file': await MultipartFile.fromFile(
+        'image': await MultipartFile.fromFile(
           file.path,
           filename: fileName,
           contentType: parse.MediaType('image', file.path.split('.').last),

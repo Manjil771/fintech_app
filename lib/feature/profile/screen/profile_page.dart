@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
+import 'package:ismart/feature/profile/resources/image_upload_repository.dart';
 import 'package:ismart/feature/profile/widget/profile_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -16,6 +19,12 @@ class _ProfilePageState extends State<ProfilePage> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return const ProfileWidget();
+    return BlocProvider(
+      create: (context) => ImageUploadCubit(
+        imageUploadRepository:
+            RepositoryProvider.of<ImageUploadRepository>(context),
+      ),
+      child: const ProfileWidget(),
+    );
   }
 }

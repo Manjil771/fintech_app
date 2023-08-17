@@ -28,6 +28,7 @@ class CustomerDetailModel {
   bool bankTransferOtp;
   int unseenNotificationCount;
   bool registered;
+  String imageUrl;
 
   CustomerDetailModel({
     required this.fullName,
@@ -59,6 +60,7 @@ class CustomerDetailModel {
     required this.bankTransferOtp,
     required this.unseenNotificationCount,
     required this.registered,
+    required this.imageUrl,
   });
 
   factory CustomerDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -95,7 +97,19 @@ class CustomerDetailModel {
         bankTransferOtp: json["bankTransferOtp"],
         unseenNotificationCount: json["unseenNotificationCount"],
         registered: json["registered"],
+        imageUrl: _getUserImageUrl(json),
       );
+
+  static String _getUserImageUrl(Map<String, dynamic> json) {
+    String _url = "";
+
+    String _clippedUrl = json['imageUrl'] ?? "";
+
+    if (_clippedUrl.isNotEmpty) {
+      _url = "https://ismart.devanasoft.com.np" + _clippedUrl;
+    }
+    return _url;
+  }
 
   Map<String, dynamic> toJson() => {
         "fullName": fullName,
