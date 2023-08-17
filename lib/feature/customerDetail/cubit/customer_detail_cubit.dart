@@ -7,10 +7,12 @@ class CustomerDetailCubit extends Cubit<CommonState> {
   final CustomerDetailRepository customerDetailRepository;
   CustomerDetailCubit({required this.customerDetailRepository})
       : super(CommonInitial());
-  Future<dynamic> fetchCustomerDetail() async {
+  Future<dynamic> fetchCustomerDetail({bool isCalledAtStatup = false}) async {
     emit(CommonLoading());
     try {
-      final response = await customerDetailRepository.getCustomerDetail();
+      final response = await customerDetailRepository.getCustomerDetail(
+        isCalledAtStartup: isCalledAtStatup,
+      );
 
       if (response.status == Status.Success && response.data != null) {
         emit(CommonStateSuccess<dynamic>(data: response.data!));

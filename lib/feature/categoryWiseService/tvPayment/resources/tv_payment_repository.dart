@@ -7,9 +7,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
 import 'tv_payment_api_provider.dart';
 
