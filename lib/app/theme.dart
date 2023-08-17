@@ -25,6 +25,8 @@ class CustomTheme {
   static const Color newdhaulagiriColor = Color(0xFF662D91);
   static const Color shreejanamukhiColor = Color(0xFF017828);
   static const Color uttargangaColor = Color(0xFF015017);
+  static const Color ekataColor = Color(0xFFEAF805);
+  static const Color bishalColor = Color(0xFF31318E);
 
   static Color primaryColor = uttargangaColor;
 

@@ -124,7 +124,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                           title: "Account Holder Name",
                           value: _accountName.text),
                       KeyValueTile(
-                          title: "Amount", value: _accountController.text)
+                          title: "Amount", value: _amountController.text)
                     ],
                   ),
                   message: _response.message,
