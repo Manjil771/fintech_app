@@ -8,9 +8,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class PassengerDetailScreen extends StatelessWidget {
-  Availability? departureFlight;
+  Flight? departureFlight;
   final UtilityResponseData utilityResponseData;
-  Availability? arrivalFlight;
+  Flight? arrivalFlight;
 
   final double totalFare;
   final ServiceList service;

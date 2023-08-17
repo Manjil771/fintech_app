@@ -20,8 +20,8 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class AirlinesBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
-  Availability? departureFlight;
-  Availability? arrivalFlight;
+  Flight? departureFlight;
+  Flight? arrivalFlight;
   final String contactName;
   final String contactPhoneNumber;
   final String contactEmail;
@@ -46,7 +46,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
       required this.contactName,
       required this.contactPhoneNumber,
       required this.contactEmail});
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -81,8 +81,8 @@ class AirlinesBillDetailWidget extends StatefulWidget {
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final String serviceIdentifier;
-  Availability? departureFlight;
-  Availability? arrivalFlight;
+  Flight? departureFlight;
+  Flight? arrivalFlight;
   final double totalFare;
   final String contactName;
   final String contactPhoneNumber;
@@ -187,12 +187,12 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
               child: ListView(
                 children: [
                   Container(
-                    padding: EdgeInsets.all(18),
+                    padding: const EdgeInsets.all(18),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text("Contact Detail"),
+                        const Text("Contact Detail"),
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(18),
@@ -259,7 +259,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(18),
                   color: _theme.scaffoldBackgroundColor),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,

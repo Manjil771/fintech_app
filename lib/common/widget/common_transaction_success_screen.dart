@@ -23,8 +23,8 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final ServiceList? service;
   final String transactionID;
   final String? pdfUrl;
-  final Availability? departure;
-  final Availability? arrival;
+  final Flight? departure;
+  final Flight? arrival;
 
   const CommonTransactionSuccessPage(
       {super.key,
@@ -60,8 +60,8 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
   final String message;
   final String transactionID;
   final String? pdfUrl;
-  final Availability? departure;
-  final Availability? arrival;
+  final Flight? departure;
+  final Flight? arrival;
 
   final ServiceList? service;
   const CommonTransactionSuccessfulWidget(

@@ -1,108 +1,128 @@
-// To parse this JSON data, do
-//
-//     final availableFlightModel = availableFlightModelFromJson(jsonString);
-
-import 'dart:convert';
-
-AvailableFlightModel availableFlightModelFromJson(String str) =>
-    AvailableFlightModel.fromJson(json.decode(str));
-
-String availableFlightModelToJson(AvailableFlightModel data) =>
-    json.encode(data.toJson());
-
-class AvailableFlightModel {
+class SearchFlightResponse {
   String responseStatus;
   String message;
   dynamic refresh;
-  Detail detail;
+  // Detail detail;
   dynamic details;
   String status;
+  List<Flight> outboundFligts;
+  List<Flight> inboundFlights;
 
-  AvailableFlightModel({
+  SearchFlightResponse({
     required this.responseStatus,
     required this.message,
     this.refresh,
-    required this.detail,
+    // required this.detail,
     this.details,
     required this.status,
+    required this.inboundFlights,
+    required this.outboundFligts,
   });
 
-  factory AvailableFlightModel.fromJson(Map<String, dynamic> json) =>
-      AvailableFlightModel(
+  factory SearchFlightResponse.fromJson(Map<String, dynamic> json) =>
+      SearchFlightResponse(
         responseStatus: json["responseStatus"],
         message: json["message"],
         refresh: json["refresh"],
-        detail: Detail.fromJson(json["detail"]),
+        // detail: Detail.fromJson(json["detail"]),
         details: json["details"],
         status: json["status"],
+        inboundFlights: _getFlightsFromResponse(
+          key: "inbound",
+          jsonResponse: json,
+        ),
+        outboundFligts: _getFlightsFromResponse(
+          key: "outbound",
+          jsonResponse: json,
+        ),
       );
 
   Map<String, dynamic> toJson() => {
         "responseStatus": responseStatus,
         "message": message,
         "refresh": refresh,
-        "detail": detail.toJson(),
+        // "detail": detail.toJson(),
         "details": details,
         "status": status,
       };
+
+  static List<Flight> _getFlightsFromResponse(
+      {required String key, required Map<String, dynamic> jsonResponse}) {
+    List<Flight> _availableFlightsByKey = [];
+    Map<String, dynamic> _flightsAvailabilityResponse =
+        Map.from(jsonResponse['detail']?['flightAvailability'] ?? {});
+
+    if (_flightsAvailabilityResponse.isNotEmpty) {
+      List<Map<String, dynamic>> _availableFightsForKey =
+          List.from(_flightsAvailabilityResponse[key]['availability'] ?? []);
+
+      _availableFightsForKey.forEach((element) {
+        Flight _flight = Flight.fromJson(element);
+        _availableFlightsByKey.add(_flight);
+      });
+    }
+
+    return _availableFlightsByKey;
+  }
 }
 
-class Detail {
-  FlightAvailability flightAvailability;
+// class Detail {
+//   FlightAvailability flightAvailability;
 
-  Detail({
-    required this.flightAvailability,
-  });
+//   Detail({
+//     required this.flightAvailability,
+//   });
 
-  factory Detail.fromJson(Map<String, dynamic> json) => Detail(
-        flightAvailability:
-            FlightAvailability.fromJson(json["flightAvailability"]),
-      );
+//   factory Detail.fromJson(Map<String, dynamic> json) => Detail(
+//         flightAvailability:
+//             FlightAvailability.fromJson(json["flightAvailability"]),
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "flightAvailability": flightAvailability.toJson(),
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "flightAvailability": flightAvailability.toJson(),
+//       };
+// }
 
-class FlightAvailability {
-  Bound outbound;
-  Bound inbound;
+// class FlightAvailability {
+//   Flight outbound;
+//   Flight inbound;
 
-  FlightAvailability({
-    required this.outbound,
-    required this.inbound,
-  });
+//   FlightAvailability({
+//     required this.outbound,
+//     required this.inbound,
+//   });
 
-  factory FlightAvailability.fromJson(Map<String, dynamic> json) =>
-      FlightAvailability(
-        outbound: Bound.fromJson(json["outbound"]),
-        inbound: Bound.fromJson(json["inbound"]),
-      );
+//   factory FlightAvailability.fromJson(Map<String, dynamic> json) =>
+//       FlightAvailability(
+//         outbound: Flight.fromJson(json["outbound"]),
+//         inbound: Flight.fromJson(json["inbound"]),
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "outbound": outbound.toJson(),
-        "inbound": inbound.toJson(),
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "outbound": outbound.toJson(),
+//         "inbound": inbound.toJson(),
+//       };
+// }
 
-class Bound {
-  List<Availability> availability;
+// class Flight {
+//   List<Flight> availability;
 
-  Bound({
-    required this.availability,
-  });
+//   Flight({
+//     required this.availability,
+//   });
 
-  factory Bound.fromJson(Map<String, dynamic> json) => Bound(
-        availability: List<Availability>.from(
-            json["availability"].map((x) => Availability.fromJson(x))),
-      );
+//   factory Flight.fromJson(Map<String, dynamic> json) =>
+//       Flight(
+//         availability: List<Flight>.from(
+//             json["availability"].map((x) => Flight.fromJson(x))),
+//       );
 
-  Map<String, dynamic> toJson() => {
-        "availability": List<dynamic>.from(availability.map((x) => x.toJson())),
-      };
-}
+//   Map<String, dynamic> toJson() => {
+//         "availability": List<dynamic>.from(availability.map((x) => x.toJson())),
+//       };
+// }
 
-class Availability {
+class Flight {
   String airline;
   String airlineLogo;
   DateTime flightDate;
@@ -124,7 +144,7 @@ class Availability {
   String resFare;
   String fuelSurcharge;
   String tax;
-  String refundable;
+  bool refundable;
   String freeBaggage;
   String agencyCommission;
   String childCommission;
@@ -134,7 +154,7 @@ class Availability {
   double totalFare;
   dynamic cashBack;
 
-  Availability({
+  Flight({
     required this.airline,
     required this.airlineLogo,
     required this.flightDate,
@@ -167,38 +187,41 @@ class Availability {
     this.cashBack,
   });
 
-  factory Availability.fromJson(Map<String, dynamic> json) => Availability(
-        airline: json["airline"]!,
-        airlineLogo: json["airlineLogo"],
-        flightDate: DateTime.parse(json["flightDate"]),
-        flightNo: json["flightNo"],
-        departure: json["departure"],
-        departureTime: json["departureTime"],
-        arrival: json["arrival"],
-        arrivalTime: json["arrivalTime"],
-        aircraftType: json["aircraftType"],
-        adult: json["adult"],
-        child: json["child"],
-        infant: json["infant"],
-        flightId: json["flightId"],
-        flightClassCode: json["flightClassCode"],
-        currency: json["currency"],
-        adultFare: json["adultFare"],
-        childFare: json["childFare"],
-        infantFare: json["infantFare"],
-        resFare: json["resFare"],
-        fuelSurcharge: json["fuelSurcharge"],
-        tax: json["tax"],
-        refundable: json["refundable"],
-        freeBaggage: json["freeBaggage"],
-        agencyCommission: json["agencyCommission"],
-        childCommission: json["childCommission"],
-        callingStationId: json["callingStationId"],
-        callingStation: json["callingStation"],
-        airlineImage: json["airlineImage"],
-        totalFare: json["totalFare"],
-        cashBack: json["cashBack"],
-      );
+  factory Flight.fromJson(Map<String, dynamic> json) {
+    return Flight(
+      airline: json["airline"]!,
+      airlineLogo: json["airlineLogo"],
+      flightDate: DateTime.parse(json["flightDate"]),
+      flightNo: json["flightNo"],
+      departure: json["departure"],
+      departureTime: json["departureTime"],
+      arrival: json["arrival"],
+      arrivalTime: json["arrivalTime"],
+      aircraftType: json["aircraftType"],
+      adult: json["adult"],
+      child: json["child"],
+      infant: json["infant"],
+      flightId: json["flightId"],
+      flightClassCode: json["flightClassCode"],
+      currency: json["currency"],
+      adultFare: json["adultFare"],
+      childFare: json["childFare"],
+      infantFare: json["infantFare"],
+      resFare: json["resFare"],
+      fuelSurcharge: json["fuelSurcharge"],
+      tax: json["tax"],
+      refundable: (json["refundable"].toString()) == "T",
+      freeBaggage: json["freeBaggage"],
+      agencyCommission: json["agencyCommission"],
+      childCommission: json["childCommission"],
+      callingStationId: json["callingStationId"],
+      callingStation: json["callingStation"],
+      airlineImage: "https://ismart.devanasoft.com.np/ismart/airlinesPdfUrl/" +
+          json["airlineImage"],
+      totalFare: json["totalFare"],
+      cashBack: json["cashBack"],
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "airline": airline,

@@ -35,7 +35,7 @@ class AirlinesCubit extends Cubit<CommonState> {
       body: body,
     );
     if (_res.status == Status.Success && _res.data != null) {
-      emit(CommonStateSuccess<AvailableFlightModel>(data: _res.data!));
+      emit(CommonStateSuccess<SearchFlightResponse>(data: _res.data!));
     } else {
       emit(
         CommonError(

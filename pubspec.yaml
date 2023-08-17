@@ -82,6 +82,7 @@ dependencies:
   new_version: ^0.3.1
   flutter_app_badger: ^1.5.0
   fluttertoast: ^8.2.2
+  sliver_tools: ^0.2.12
 
 dev_dependencies:
   flutter_test:

@@ -9,14 +9,14 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
 class OutBoundFlightsDesign extends StatefulWidget {
-  final Bound bound;
-  Availability? selectedFlight;
+  List<Flight> availableFlights;
+  Flight? selectedFlight;
 
-  final Function(Availability) onpress;
+  final Function(Flight) onpress;
 
   OutBoundFlightsDesign({
     Key? key,
-    required this.bound,
+    required this.availableFlights,
     required this.onpress,
     this.selectedFlight,
   }) : super(key: key);
@@ -27,7 +27,7 @@ class OutBoundFlightsDesign extends StatefulWidget {
 
 class _OutBoundFlightsDesignState extends State<OutBoundFlightsDesign> {
   @override
-  Availability? departureFlight;
+  Flight? departureFlight;
 
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -35,25 +35,28 @@ class _OutBoundFlightsDesignState extends State<OutBoundFlightsDesign> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Container(
-      height: 100,
+      // height: 100,
+      // padding: const EdgeInsets.symmetric(vertical: 20),
+      // margin: const EdgeInsets.only(bottom: 20),
+      color: Colors.transparent,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: widget.bound.availability.length,
+        itemCount: widget.availableFlights.length,
         itemBuilder: (context, index) {
-          final flight = widget.bound.availability[index];
+          final flight = widget.availableFlights[index];
           return InkWell(
             onTap: () {
               widget.onpress(flight);
               widget.selectedFlight = flight;
             },
             child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              margin: const EdgeInsets.only(bottom: 20),
+              padding: EdgeInsets.symmetric(horizontal: 15.hp, vertical: 15.hp),
               decoration: BoxDecoration(
-                  color: widget.selectedFlight == flight
-                      ? CustomTheme.googleColor
-                      : CustomTheme.backgroundColor,
-                  borderRadius: BorderRadius.circular(18)),
+                color: widget.selectedFlight == flight
+                    ? CustomTheme.primaryColor.withOpacity(0.25)
+                    : CustomTheme.backgroundColor,
+                borderRadius: BorderRadius.circular(8),
+              ),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -121,7 +124,7 @@ class _OutBoundFlightsDesignState extends State<OutBoundFlightsDesign> {
                                 title: 'Fare Summary',
                                 onPressed: () {
                                   showModalBottomSheet(
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(18),
                                             topRight: Radius.circular(18))),

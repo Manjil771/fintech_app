@@ -11,12 +11,12 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
 class InboundFlightDesign extends StatelessWidget {
-  final Bound bound;
-  final Function(Availability) onpress;
-  Availability? selectedFlight;
+  final List<Flight> availableFlights;
+  final Function(Flight) onpress;
+  Flight? selectedFlight;
   InboundFlightDesign({
     Key? key,
-    required this.bound,
+    required this.availableFlights,
     required this.onpress,
     this.selectedFlight,
   }) : super(key: key);
@@ -31,10 +31,10 @@ class InboundFlightDesign extends StatelessWidget {
       height: 100,
       child: ListView.builder(
         shrinkWrap: true,
-        itemCount: bound.availability.length,
+        itemCount: availableFlights.length,
         itemBuilder: (context, index) {
-          final flight = bound.availability[index];
-          // final selectedFlight = bound.availability.firstWhere(
+          final flight = availableFlights[index];
+          // final selectedFlight = availableFlights.availability.firstWhere(
           //   (element) => element.flightId == flight.flightId,
           // );
           return InkWell(
@@ -117,7 +117,7 @@ class InboundFlightDesign extends StatelessWidget {
                                 title: 'Fare Summary',
                                 onPressed: () {
                                   showModalBottomSheet(
-                                    shape: RoundedRectangleBorder(
+                                    shape: const RoundedRectangleBorder(
                                         borderRadius: BorderRadius.only(
                                             topLeft: Radius.circular(18),
                                             topRight: Radius.circular(18))),

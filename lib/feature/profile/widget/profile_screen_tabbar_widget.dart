@@ -26,7 +26,7 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
         length: 3,
         child: Column(
           children: [
-            TabBar(
+            const TabBar(
               isScrollable: true,
               labelColor: Colors.black,
               unselectedLabelColor: Color(0xFF989898),
@@ -46,7 +46,7 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
                     customerDetail: widget.customerDetail,
                   ),
                   AccountListProfilePage(customerDetail: widget.customerDetail),
-                  ContactUsProfilePage(),
+                  const ContactUsProfilePage(),
                 ],
               ),
             )
