@@ -113,9 +113,13 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         },
                                         child: Align(
                                           alignment: Alignment.centerRight,
-                                          child: SvgPicture.asset(
-                                            Assets.qrCodeIcon,
-                                            height: 30.hp,
+                                          child: Padding(
+                                            padding:
+                                                EdgeInsets.only(right: 4.hp),
+                                            child: SvgPicture.asset(
+                                              Assets.qrCodeIcon,
+                                              height: 30.hp,
+                                            ),
                                           ),
                                         ),
                                       ),
