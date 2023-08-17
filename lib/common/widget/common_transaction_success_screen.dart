@@ -10,6 +10,8 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_detail_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
@@ -21,6 +23,8 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final ServiceList? service;
   final String transactionID;
   final String? pdfUrl;
+  final Availability? departure;
+  final Availability? arrival;
 
   const CommonTransactionSuccessPage(
       {super.key,
@@ -28,7 +32,9 @@ class CommonTransactionSuccessPage extends StatelessWidget {
       required this.message,
       this.service,
       required this.transactionID,
-      this.pdfUrl});
+      this.pdfUrl,
+      this.departure,
+      this.arrival});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +45,8 @@ class CommonTransactionSuccessPage extends StatelessWidget {
         ..generateUrl(transactionId: transactionID),
       child: CommonTransactionSuccessfulWidget(
         body: body,
+        arrival: arrival,
+        departure: departure,
         transactionID: transactionID,
         message: message,
         service: service,
@@ -52,6 +60,8 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
   final String message;
   final String transactionID;
   final String? pdfUrl;
+  final Availability? departure;
+  final Availability? arrival;
 
   final ServiceList? service;
   const CommonTransactionSuccessfulWidget(
@@ -60,11 +70,15 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
       required this.message,
       required this.service,
       required this.transactionID,
-      this.pdfUrl});
+      this.pdfUrl,
+      this.departure,
+      this.arrival});
 
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
 
     return PageWrapper(
@@ -102,32 +116,64 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                     SizedBox(height: _height * 0.02),
                     const Divider(thickness: 1),
                     SizedBox(height: _height * 0.02),
-                    Container(
-                      padding: const EdgeInsets.all(12),
-                      width: double.infinity,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(8),
-                        color: const Color(0xFFF3F3F3),
-                        // border: Border.all(color: Colors.black),
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text("Paymet Details",
-                              style: Theme.of(context).textTheme.titleLarge),
-                          SizedBox(height: _height * 0.01),
-                          KeyValueTile(
-                              title: "Transaction ID", value: transactionID),
-                          body,
-                        ],
-                      ),
-                    ),
+                    (service?.uniqueIdentifier ?? "") == "ARS"
+                        ? Column(
+                            children: [
+                              Text(
+                                "Departure Flight Details",
+                                style: _textTheme.titleSmall!
+                                    .copyWith(fontWeight: FontWeight.w700),
+                              ),
+                              SizedBox(height: 5.hp),
+                              FlightDetailBox(
+                                flight: departure,
+                              ),
+                              SizedBox(height: 10.hp),
+                              if (arrival != null)
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      "Return Flight Details",
+                                      style: _textTheme.titleSmall!.copyWith(
+                                          fontWeight: FontWeight.w700),
+                                    ),
+                                    SizedBox(height: 5.hp),
+                                    FlightDetailBox(
+                                      flight: arrival,
+                                    )
+                                  ],
+                                ),
+                            ],
+                          )
+                        : Container(
+                            padding: const EdgeInsets.all(12),
+                            width: double.infinity,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(8),
+                              color: const Color(0xFFF3F3F3),
+                              // border: Border.all(color: Colors.black),
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text("Paymet Details",
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge),
+                                SizedBox(height: _height * 0.01),
+                                KeyValueTile(
+                                    title: "Transaction ID",
+                                    value: transactionID),
+                                body,
+                              ],
+                            ),
+                          ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
                         title: "Done",
                         onPressed: () {
                           NavigationService.pushReplacement(
-                      target: const DashboardPage());
+                              target: const DashboardPage());
                         }),
                     SizedBox(height: _height * 0.02),
                     pdfUrl == null

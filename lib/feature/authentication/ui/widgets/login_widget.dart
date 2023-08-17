@@ -19,6 +19,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
+import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -230,11 +231,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                         const Spacer(),
                         TextButton(
                           onPressed: () {
-                            // TODO Navigate to Can't Login Page
-                            // Get.to(() => const CantLogin());
+                            NavigationService.push(
+                                target: ActivateAccountPage());
                           },
                           child: Text(
-                            "Can't Login ?",
+                            "Activate Account",
                             style: TextStyle(color: _theme.primaryColor),
                           ),
                         ),

@@ -218,10 +218,10 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                   ),
                   readOnly: true,
                   onTap: () async {
-                    DateTime? date = await showDatePicker(
+                    final DateTime? date = await showDatePicker(
                       context: context,
                       initialDate: DateTime.now(),
-                      firstDate: DateTime(2022),
+                      firstDate: DateTime.now(),
                       lastDate: DateTime.now().add(const Duration(days: 90)),
                     );
                     setState(() {
@@ -243,7 +243,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                                 value, 'Departure Date'),
                         readOnly: true,
                         onTap: () async {
-                          DateTime? date = await showDatePicker(
+                          final DateTime? date = await showDatePicker(
                             context: context,
                             initialDate: departureDate,
                             firstDate: departureDate,
@@ -392,14 +392,15 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
             context
                 .read<AirlinesCubit>()
                 .fetchFlight(accountDetails: {}, body: {
-              "sectorFrom": _selectedSectorFrom.value!.value,
-              "sectorTo": _selectedSectorTo.value!.value,
               "adultNumber": _adultCount,
               "childNumber": _childrenCount,
               "flightDate": _departureDateController.text,
+              "nationality": "NP",
               "returnDate": _arrivalDateController.text,
+              "sectorFrom": _selectedSectorFrom.value?.value ?? "",
+              "sectorTo": _selectedSectorTo.value?.value ?? "",
+              "serviceIdentifier": widget.service.uniqueIdentifier,
               "tripType": isRoundTrip ? "R" : "O",
-              "nationality": "NP"
             });
           } else {
             showPopUpDialog(

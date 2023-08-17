@@ -58,7 +58,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       Text(
                         showAmount
                             ? "XXXXXXXXX"
-                            : "NPR ${selectedAcc?.actualBalance}",
+                            : "NPR ${selectedAcc?.availableBalance}",
                         style: TextStyle(
                             fontSize: 16,
                             fontFamily: "popinsemibold",

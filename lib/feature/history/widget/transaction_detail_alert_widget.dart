@@ -1,11 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
+import 'package:ismart/feature/history/widget/transaction_detail_widget.dart';
 
 class TransactionDetailAlertWidget extends StatefulWidget {
   final RecentTransactionModel recentTransactionModel;
@@ -26,6 +30,7 @@ class _TransactionDetailAlertWidgetState
   String? downloadUrl;
   @override
   Widget build(BuildContext context) {
+    final e = widget.recentTransactionModel;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
@@ -56,6 +61,14 @@ class _TransactionDetailAlertWidgetState
                 ],
               ),
               const Spacer(),
+              Container(
+                child: CustomCachedNetworkImage(
+                  url: RepositoryProvider.of<CoOperative>(context).baseUrl +
+                      e.iconUrl,
+                  fit: BoxFit.contain,
+                  height: 60.hp,
+                ),
+              )
             ],
           ),
           SizedBox(height: _height * 0.01),
@@ -78,10 +91,32 @@ class _TransactionDetailAlertWidgetState
                   value: widget.recentTransactionModel.transactionIdentifier
                       .toString(),
                 ),
-                KeyValueTile(
-                  title: "Username",
-                  value: widget.recentTransactionModel.serviceTo.toString(),
-                ),
+                e.requestDetail.destinationAccountName != null
+                    ? Column(
+                        children: [
+                          KeyValueTile(
+                            title: "Receiver Name",
+                            value: e.requestDetail.destinationAccountName
+                                .toString(),
+                          ),
+                          KeyValueTile(
+                            title: "Receiver Bank Name",
+                            value:
+                                e.requestDetail.destinationBankName.toString(),
+                          ),
+                          KeyValueTile(
+                            title: "Receiver Account Number",
+                            value: e.requestDetail.destinationAccountNumber
+                                .toString(),
+                          ),
+                        ],
+                      )
+                    : KeyValueTile(
+                        // title: "Username",
+                        title: "Service To",
+                        value:
+                            widget.recentTransactionModel.serviceTo.toString(),
+                      ),
                 KeyValueTile(
                   title: "Channel",
                   value: widget.recentTransactionModel.channelType
@@ -116,9 +151,16 @@ class _TransactionDetailAlertWidgetState
               ],
             ),
           ),
-          const SizedBox(
-            height: 10,
-          ),
+          SizedBox(height: 10.hp),
+          CustomRoundedButtom(
+              title: "View More",
+              onPressed: () {
+                NavigationService.push(
+                    target: TransactionDetailWidget(
+                        recentTransactionModel: widget.recentTransactionModel,
+                        downloadUrlNotifier: widget.downloadUrlNotifier));
+              }),
+          SizedBox(height: 10.hp),
           ValueListenableBuilder<String>(
               valueListenable: widget.downloadUrlNotifier,
               builder: (context, val, _) {

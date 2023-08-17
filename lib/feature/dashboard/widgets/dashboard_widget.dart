@@ -126,23 +126,26 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                 itemBuilder: (context, index) {
                   return screens[_currentIndex];
                 }),
-            floatinActionButton: FloatingActionButton(
-              backgroundColor: _theme.primaryColor,
-              onPressed: () async {
-                final _cameraPermission =
-                    await PermissionUtils.isCameraPermissionAvailable;
-                if (_cameraPermission) {
-                  NavigationService.push(target: const QRScannerScreens());
-                } else {
-                  SnackBarUtils.showErrorBar(
-                    context: context,
-                    message: "Please allow camera permission to use Scan QR",
-                  );
-                }
-              },
-              child: SvgPicture.asset(
-                Assets.qrCodeIcon,
-                height: 30,
+            floatinActionButton: Padding(
+              padding: EdgeInsets.only(bottom: 8),
+              child: FloatingActionButton(
+                backgroundColor: _theme.primaryColor,
+                onPressed: () async {
+                  final _cameraPermission =
+                      await PermissionUtils.isCameraPermissionAvailable;
+                  if (_cameraPermission) {
+                    NavigationService.push(target: const QRScannerScreens());
+                  } else {
+                    SnackBarUtils.showErrorBar(
+                      context: context,
+                      message: "Please allow camera permission to use Scan QR",
+                    );
+                  }
+                },
+                child: SvgPicture.asset(
+                  Assets.qrCodeIcon,
+                  height: 30,
+                ),
               ),
             ),
             bottomNavBar: BottomNavigationBar(

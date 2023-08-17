@@ -17,11 +17,11 @@ class HomePageTabbarWidget extends StatelessWidget {
             isScrollable: true,
             labelColor: Colors.black,
             unselectedLabelColor: Color(0xFF989898),
-            labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            labelStyle: TextStyle(fontSize: 14, fontWeight: FontWeight.w500),
             indicatorColor: Colors.transparent,
             automaticIndicatorColorAdjustment: true,
             tabs: [
-              Tab(text: "Payment"),
+              Tab(text: "Instant Payments"),
               Tab(text: "Graph & Activities"),
               Tab(text: "Favorite"),
             ],

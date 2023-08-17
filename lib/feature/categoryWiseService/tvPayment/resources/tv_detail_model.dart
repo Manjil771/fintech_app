@@ -162,7 +162,7 @@ class HashResponse {
   });
 
   factory HashResponse.fromJson(Map<String, dynamic> json) => HashResponse(
-        casId: json["casId"] ?? json["customerId "],
+        casId: json["casId"] ?? "",
         expiryDate: json["expiryDate"] ?? "",
         resultMessage: json["Result Message"] ?? "",
         balance: json["balance"] ?? "",

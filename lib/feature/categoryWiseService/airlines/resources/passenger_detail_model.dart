@@ -14,7 +14,7 @@ String passengerDetailModelToJson(List<PassengerDetailModel> data) =>
 class PassengerDetailModel {
   String firstname;
   String lastname;
-  PassengerType type;
+  String type;
   String title;
   String gender;
   String remarks;
@@ -49,10 +49,4 @@ class PassengerDetailModel {
         "nationality": nationality,
         "paxRemarks": remarks,
       };
-}
-
-enum PassengerType {
-  adult,
-  child,
-  infant,
 }

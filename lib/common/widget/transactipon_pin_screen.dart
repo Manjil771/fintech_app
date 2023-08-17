@@ -38,7 +38,6 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
 
   @override
   Widget build(BuildContext context) {
-
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
 
@@ -78,7 +77,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         style: Theme.of(context).textTheme.headlineSmall),
                     SizedBox(height: _height * 0.04),
                     CustomPinCodeField(
-                      length: 5,
+                      length: 6,
                       onChanged: (p0) {
                         pinValue = p0;
                       },
@@ -90,9 +89,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         widget.onValueCallback(pinValue);
                       },
                     ),
-
                     SizedBox(height: _height * 0.01),
-
                     SizedBox(height: size.height * 0.01),
                     SizedBox(height: height * 0.014),
                     ValueListenableBuilder<bool>(
@@ -135,7 +132,6 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                             return Container();
                           }
                         }),
-
                     TextButton(
                         onPressed: () {
                           NavigationService.pop();
