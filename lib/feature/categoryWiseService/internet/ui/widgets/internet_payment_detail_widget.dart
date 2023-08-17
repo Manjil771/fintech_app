@@ -405,7 +405,8 @@ class _InternetPaymentDeatilWidgetState
                     ),
                     KeyValueTile(
                       title: "Amount",
-                      value: amount,
+                      value: AmountUtils.getAmountInRupees(amount: amount)
+                          .toString(),
                     ),
                     SizedBox(height: _height * 0.008),
                     KeyValueTile(

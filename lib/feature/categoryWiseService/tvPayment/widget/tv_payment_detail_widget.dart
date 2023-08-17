@@ -49,24 +49,27 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
         widget.detailFetchData.details.tvPackages;
     final currentPackage =
         tvPackages.where((element) => element.text == hashResponse.currentPlan);
-    TvPackages? selectedPackage;
+    final TextEditingController selectedAmount = TextEditingController();
+    final TextEditingController selectedPackageId = TextEditingController();
+    String packageName = "1";
+    // TvPackages? selectedPackage;
 
-    TvPackages? packageDetail() {
-      if (selectedPackage != null) {
-        return selectedPackage;
-      } else {
-        if (currentPackage.isEmpty) {
-        } else {
-          return currentPackage.first;
-        }
-      }
-    }
+    // TvPackages? packageDetail() {
+    //   if (selectedPackage != null) {
+    //     return selectedPackage;
+    //   } else {
+    //     if (currentPackage.isEmpty) {
+    //     } else {
+    //       return currentPackage.first;
+    //     }
+    //   }
+    // }
 
     String getAmount() {
-      if (widget.amount.isEmpty) {
-        return packageDetail()?.amount ?? "";
-      } else {
+      if (widget.amount.toString().isNotEmpty) {
         return widget.amount;
+      } else {
+        return selectedAmount.text;
       }
     }
 
@@ -105,17 +108,18 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
             if (state is CommonStateSuccess<UtilityResponseData>) {
               final UtilityResponseData _response = state.data;
 
-              if (_response.code == "M0000") {
+              if (_response.code == "M0000" ||
+                  _response.status.toLowerCase() == "success" ||
+                  _response.status == "M0000") {
                 NavigationService.push(
                     target: CommonTransactionSuccessPage(
                         body: Column(
                           children: [
-                            hashResponse.customerName.isEmpty
-                                ? Container()
-                                : KeyValueTile(
-                                    title: "Customer Name",
-                                    value: hashResponse.customerName,
-                                  ),
+                            if (hashResponse.customerName.isEmpty)
+                              KeyValueTile(
+                                title: "Customer Name",
+                                value: hashResponse.customerName,
+                              ),
                             hashResponse.casId.isEmpty
                                 ? Container()
                                 : KeyValueTile(
@@ -134,78 +138,39 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                                     value: hashResponse.balance,
                                   ),
                             KeyValueTile(title: "Amount", value: getAmount()),
-                            KeyValueTile(
-                                title: "Package",
-                                value: packageDetail()?.text ?? ""),
-                            tvPackages.isEmpty
-                                ? Container()
-                                : Align(
-                                    alignment: Alignment.centerLeft,
-                                    child: CustomCheckbox(
-                                      selected: _changePackage,
-                                      onChanged: (val) {
-                                        setState(() {
-                                          _changePackage = !_changePackage;
-                                        });
-                                      },
-                                      title: "Change Package",
-                                    ),
-                                  ),
-                            _changePackage == true
-                                ? CustomTextField(
-                                    controller: selectedPackageController,
-                                    title: "Select",
-                                    readOnly: true,
-                                    onTap: () {
-                                      NavigationService.push(
-                                          target: TvPackageSearchWidgets(
-                                        onChanged: (value) {
-                                          selectedPackageController.text =
-                                              value.text.toString();
-                                          selectedPackage?.amount =
-                                              value.amount;
-                                          selectedPackage?.text = value.text;
-                                          getAmount();
-                                          packageDetail();
-                                          setState(() {});
-                                        },
-                                        tvpackage: tvPackages,
-                                      ));
-                                    },
-                                  )
-                                //  Container(
-                                //     width: double.infinity,
-                                //     child: CustomTextField(
-                                //       readOnly: true,
-                                //       trailing: Container(
-                                //         width: 40.wp,
-                                //         child: DropdownButton<TvPackages>(
-                                //           underline: const SizedBox(),
-                                //           onChanged: (TvPackages? value) {
-                                //             if (value != null) {
-                                //               selectedPackage = value;
-                                //               getAmount();
-                                //               testing = value.text;
-                                //               setState(() {});
+                            KeyValueTile(title: "Package", value: packageName),
 
-                                //               print(selectedPackage.text);
-                                //             }
-                                //           },
-                                //           items: tvPackages
-                                //               .map<DropdownMenuItem<TvPackages>>(
-                                //             (TvPackages option) {
-                                //               return DropdownMenuItem<TvPackages>(
-                                //                 value: option,
-                                //                 child: Text(
-                                //                   option.text ?? "",
-                                //                   style: _textTheme.titleSmall,
-                                //                 ),
-                                //               );
-                                //             },
-                                //           ).toList(),
-                                //         ),
+                            //  Container(
+                            //     width: double.infinity,
+                            //     child: CustomTextField(
+                            //       readOnly: true,
+                            //       trailing: Container(
+                            //         width: 40.wp,
+                            //         child: DropdownButton<TvPackages>(
+                            //           underline: const SizedBox(),
+                            //           onChanged: (TvPackages? value) {
+                            //             if (value != null) {
+                            //               selectedPackage = value;
+                            //               getAmount();
+                            //               testing = value.text;
+                            //               setState(() {});
 
-                                : Container()
+                            //               print(selectedPackage.text);
+                            //             }
+                            //           },
+                            //           items: tvPackages
+                            //               .map<DropdownMenuItem<TvPackages>>(
+                            //             (TvPackages option) {
+                            //               return DropdownMenuItem<TvPackages>(
+                            //                 value: option,
+                            //                 child: Text(
+                            //                   option.text ?? "",
+                            //                   style: _textTheme.titleSmall,
+                            //                 ),
+                            //               );
+                            //             },
+                            //           ).toList(),
+                            //         ),
                           ],
                         ),
                         message: _response.message,
@@ -257,45 +222,48 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                           title: "Balance",
                           value: hashResponse.balance,
                         ),
-                  KeyValueTile(title: "Amount", value: getAmount()),
-                  KeyValueTile(
-                      title: "Package", value: packageDetail()?.text ?? ""),
-                  tvPackages.isEmpty
-                      ? Container()
-                      : Align(
-                          alignment: Alignment.centerLeft,
-                          child: CustomCheckbox(
-                            selected: _changePackage,
-                            onChanged: (val) {
-                              setState(() {
-                                _changePackage = !_changePackage;
-                              });
-                            },
-                            title: "Change Package",
-                          ),
-                        ),
-                  _changePackage == true
-                      ? CustomTextField(
-                          controller: selectedPackageController,
-                          title: "Select",
-                          readOnly: true,
-                          onTap: () {
-                            NavigationService.push(
-                                target: TvPackageSearchWidgets(
-                              onChanged: (value) {
-                                selectedPackageController.text =
-                                    value.text.toString();
-                                selectedPackage?.amount = value.amount;
-                                selectedPackage?.text = value.text;
-                                getAmount();
-                                packageDetail();
-                                setState(() {});
-                              },
-                              tvpackage: tvPackages,
-                            ));
-                          },
-                        )
-                      : Container()
+                  if (_changePackage == true)
+                    Column(
+                      children: [
+                        KeyValueTile(title: "Amount", value: getAmount()),
+                        KeyValueTile(
+                            title: "Package",
+                            value: selectedPackageController.text),
+                        tvPackages.isEmpty
+                            ? Container()
+                            : Align(
+                                alignment: Alignment.centerLeft,
+                                child: CustomCheckbox(
+                                  selected: _changePackage,
+                                  onChanged: (val) {
+                                    setState(() {
+                                      _changePackage = !_changePackage;
+                                    });
+                                  },
+                                  title: "Change Package",
+                                ),
+                              ),
+                      ],
+                    ),
+                  CustomTextField(
+                    controller: selectedPackageController,
+                    title: "Select Package",
+                    readOnly: true,
+                    onTap: () {
+                      NavigationService.push(
+                          target: TvPackageSearchWidgets(
+                        onChanged: (value) {
+                          selectedPackageController.text =
+                              value.text.toString();
+                          selectedAmount.text = value.amount ?? "0";
+                          selectedPackageId.text = value.id ?? "";
+                          setState(() {});
+                          _changePackage = true;
+                        },
+                        tvpackage: tvPackages,
+                      ));
+                    },
+                  )
                 ],
               ),
             ],
@@ -310,7 +278,7 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                   apiEndpoint: "api/tvpay",
                   serviceIdentifier: widget.service.uniqueIdentifier,
                   body: {
-                    "packageId": packageDetail()?.id,
+                    "packageId": selectedPackageId.text,
                     // "customer_id": widget.userName,
                     // "username": widget.userName,
                   },
@@ -321,9 +289,10 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                             .value!
                             .accountNumber
                             .toString(),
+                    "phone_number": widget.userName,
                     "customer_id": widget.userName,
                     "username": widget.userName,
-                    "amount": AmountUtils.getAmountInPaisa(amount: getAmount()),
+                    "amount": getAmount(),
                   });
             },
           ));

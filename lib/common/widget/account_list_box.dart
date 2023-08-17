@@ -92,7 +92,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                         ),
                                         SizedBox(width: _width * 0.03),
                                         Text(
-                                          "NPR ${account.actualBalance}",
+                                          "NPR ${account.availableBalance}",
                                           style: TextStyle(
                                               fontSize: 18,
                                               fontFamily: "popinsemibold",
