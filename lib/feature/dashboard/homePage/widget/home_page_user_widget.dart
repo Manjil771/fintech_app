@@ -5,10 +5,12 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 
 class HomePageUserWidget extends StatefulWidget {
   const HomePageUserWidget({Key? key}) : super(key: key);
@@ -75,23 +77,50 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               mainAxisSize: MainAxisSize.min,
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Text(
-                                  formattedDate == 'AM'
-                                      ? 'Good Morning,'
-                                      : 'Good Afternoon,',
-                                  style: _textTheme.headlineMedium?.copyWith(
-                                    color: CustomTheme.white,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
-                                Text(
-                                  val.fullName,
-                                  overflow: TextOverflow.ellipsis,
-                                  style: _textTheme.headlineMedium?.copyWith(
-                                    color: CustomTheme.white,
-                                    fontWeight: FontWeight.bold,
-                                  ),
+                                Row(
+                                  children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          formattedDate == 'AM'
+                                              ? 'Good Morning,'
+                                              : 'Good Afternoon,',
+                                          style: _textTheme.headlineMedium
+                                              ?.copyWith(
+                                            color: CustomTheme.white,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                        Text(
+                                          val.fullName,
+                                          overflow: TextOverflow.ellipsis,
+                                          style: _textTheme.headlineMedium
+                                              ?.copyWith(
+                                            color: CustomTheme.white,
+                                            fontWeight: FontWeight.bold,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                    Expanded(
+                                      child: InkWell(
+                                        onTap: () {
+                                          NavigationService.push(
+                                              target: QRScannerScreens());
+                                        },
+                                        child: Align(
+                                          alignment: Alignment.centerRight,
+                                          child: SvgPicture.asset(
+                                            Assets.qrCodeIcon,
+                                            height: 30.hp,
+                                          ),
+                                        ),
+                                      ),
+                                    )
+                                  ],
                                 ),
                                 // const Spacer(),
                                 Row(

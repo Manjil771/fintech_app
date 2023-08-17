@@ -77,7 +77,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         style: Theme.of(context).textTheme.headlineSmall),
                     SizedBox(height: _height * 0.04),
                     CustomPinCodeField(
-                      length: 5,
+                      length: 6,
                       onChanged: (p0) {
                         pinValue = p0;
                       },
