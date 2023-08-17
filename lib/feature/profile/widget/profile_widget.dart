@@ -111,9 +111,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         AssetImage(Assets.profilePicture),
                                   )
                                 : CustomRoundedImage(
-                                    height: 50,
+                                    height: 100,
                                     image: val.imageUrl,
-                                    width: 50,
+                                    width: 100,
                                   ),
                           ),
                           Expanded(
