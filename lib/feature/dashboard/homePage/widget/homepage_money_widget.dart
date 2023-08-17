@@ -5,6 +5,8 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_image_box.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
@@ -58,27 +60,67 @@ class HomePageMoneyWidget extends StatelessWidget {
                     scrollDirection: Axis.horizontal,
                     // shrinkWrap: true,
                     itemBuilder: (context, index) {
-                      return Container(
-                        width: 80.wp,
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            SvgPicture.network(
-                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                    filteredItems[index].imageUrl.toString(),
-                                height: 20.hp,
-                                fit: BoxFit.fitHeight),
-                            SizedBox(height: 5.hp),
-                            Center(
-                              child: Text(
-                                filteredItems[index].name,
-                                style: Theme.of(context).textTheme.labelMedium,
-                                textAlign: TextAlign.center,
-                                overflow: TextOverflow.ellipsis,
-                                maxLines: 1,
-                              ),
-                            )
-                          ],
+                      return InkWell(
+                        onTap: () {
+                          if (filteredItems[index]
+                              .uniqueIdentifier
+                              .toString()
+                              .toLowerCase()
+                              .contains("bank_transfer".toLowerCase())) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.anyBank);
+                          }
+                          if (filteredItems[index]
+                              .uniqueIdentifier
+                              .toString()
+                              .toLowerCase()
+                              .contains(
+                                  "fund_transfer_dashboard".toLowerCase())) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.internalCooperative);
+                          } else if (filteredItems[index]
+                                  .uniqueIdentifier
+                                  .toString()
+                                  .toLowerCase() ==
+                              "coop_transfer".toLowerCase()) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.otherCooperative);
+                          } else if (filteredItems[index]
+                                  .uniqueIdentifier
+                                  .toString()
+                                  .toLowerCase() ==
+                              "load_wallet".toLowerCase()) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.listWalletScreen);
+                          }
+                          // else {
+                          //   NavigationService.pushNamed(
+                          //       routeName: Routes.mobileTopup);
+                          // }
+                        },
+                        child: Container(
+                          width: 80.wp,
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              SvgPicture.network(
+                                  "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
+                                      filteredItems[index].imageUrl.toString(),
+                                  height: 20.hp,
+                                  fit: BoxFit.fitHeight),
+                              SizedBox(height: 5.hp),
+                              Center(
+                                child: Text(
+                                  filteredItems[index].name,
+                                  style:
+                                      Theme.of(context).textTheme.labelMedium,
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              )
+                            ],
+                          ),
                         ),
                       );
 

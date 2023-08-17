@@ -312,19 +312,51 @@ class CoOperativeValue {
     splashImage: "assets/newdhaulagiri/newdhaulagiri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-//TODO(s) :need to add client id and secret for janamukhi
+
   static final CoOperative shreeJanamukhiCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/shreejanamukhi/shreejanamukhi_banner.png",
     backgroundImage: "assets/shreejanamukhi/shreejanamukhi_background.png",
-    clientCode: 'KMG1RP8OC6',
-    clientSecret: "214269",
-    coOperativeName: 'New Dhaulagiri',
+    clientCode: 'S9ZHZK8INB',
+    clientSecret: "164605",
+    coOperativeName: 'Shree Janamukhi',
     coOperativeLogo: 'assets/shreejanamukhi/shreejanamukhi_logo.png',
 
     splashImage: "assets/shreejanamukhi/shreejanamukhi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative ekataCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/ekata/ekata_banner.png",
+    backgroundImage: "assets/ekata/ekata_background.png",
+
+    clientCode: '0R0CQVOX1I',
+    clientSecret: "217556",
+    coOperativeName: 'Ekata',
+    coOperativeLogo: 'assets/ekata/ekata_logo.png',
+
+    splashImage: "assets/ekata/ekata_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative bishalCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/bishal/bishal_banner.png",
+
+    backgroundImage: "assets/bishal/bishal_background.png",
+
+    clientCode: 'VDHZQSJBBN',
+    clientSecret: "212617",
+    coOperativeName: 'Bishal',
+    coOperativeLogo: 'assets/bishal/bishal_logo.png',
+
+    splashImage: "assets/bishal/bishal_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
