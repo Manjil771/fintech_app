@@ -29,7 +29,6 @@ class MiniStatementRepository {
     try {
       final _res = await miniStatementAPIProvider.fetchMiniStatement(
           accountNumbner, mPin);
-      print(_res.toString());
 
       if (_res['data']['details'] != null) {
         // Parse Data from API
@@ -40,7 +39,7 @@ class MiniStatementRepository {
         if (_userMap.isEmpty) {
           return DataResponse.error("Error fetching data.");
         }
-        MiniStatementModel _miniStatement =
+        final MiniStatementModel _miniStatement =
             MiniStatementModel.fromJson(_userMap);
 
         return DataResponse.success(_miniStatement);
