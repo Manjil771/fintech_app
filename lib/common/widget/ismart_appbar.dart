@@ -6,6 +6,9 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/cusom_rounded_image.dart';
+import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 AppBar myAppbar({bool showBackButton = false}) {
   final _height = SizeUtils.height;
@@ -31,23 +34,37 @@ AppBar myAppbar({bool showBackButton = false}) {
     iconTheme: const IconThemeData(color: Colors.black),
     automaticallyImplyLeading: false,
     centerTitle: false,
-    leading: InkWell(
-      onTap: () {
-        if (showBackButton) {
-          NavigationService.pop();
-        } else {
-          NavigationService.pushNamed(routeName: Routes.profileScreen);
-        }
-      },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: showBackButton
-            ? const Icon(Icons.arrow_back_ios)
-            : const CircleAvatar(
-                backgroundImage: AssetImage(Assets.profilePicture),
-              ),
-      ),
-    ),
+    leading: ValueListenableBuilder<CustomerDetailModel?>(
+        valueListenable: RepositoryProvider.of<CustomerDetailRepository>(
+                NavigationService.context)
+            .customerDetailModel,
+        builder: (context, val, _) {
+          return InkWell(
+            onTap: () {
+              if (showBackButton) {
+                NavigationService.pop();
+              } else {
+                NavigationService.pushNamed(routeName: Routes.profileScreen);
+              }
+            },
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: showBackButton
+                  ? const Icon(Icons.arrow_back_ios)
+                  : val != null && val.imageUrl.isNotEmpty
+                      ? CustomRoundedImage(
+                          height: 30,
+                          image: val.imageUrl,
+                          width: 30,
+                        )
+                      : const CircleAvatar(
+                          backgroundImage: AssetImage(
+                            Assets.profilePicture,
+                          ),
+                        ),
+            ),
+          );
+        }),
     title: Padding(
       padding: const EdgeInsets.all(0),
       child: _getImageWidget(),

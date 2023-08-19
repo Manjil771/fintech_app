@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.17+17
+version: 0.0.20+20
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -119,8 +119,6 @@ flutter:
     - assets/shreejanamukhi/
     - assets/bishal/
     - assets/ekata/
-
-
 
   fonts:
     - family: popinbold
