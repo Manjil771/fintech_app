@@ -77,7 +77,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         style: Theme.of(context).textTheme.headlineSmall),
                     SizedBox(height: _height * 0.04),
                     CustomPinCodeField(
-                      length: 6,
+                      length: 5,
                       onChanged: (p0) {
                         pinValue = p0;
                       },
@@ -136,7 +136,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         onPressed: () {
                           NavigationService.pop();
                         },
-                        child: Text(
+                        child: const Text(
                           "Cancel",
                           style: TextStyle(
                             fontSize: 14,

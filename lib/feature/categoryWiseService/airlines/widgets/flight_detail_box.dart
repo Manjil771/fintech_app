@@ -7,7 +7,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
 class FlightDetailBox extends StatelessWidget {
-  final Availability? flight;
+  final Flight? flight;
   const FlightDetailBox({Key? key, this.flight}) : super(key: key);
   @override
   Widget build(BuildContext context) {

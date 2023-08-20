@@ -62,7 +62,7 @@ class AirlinesRepository {
     }
   }
 
-  Future<DataResponse<AvailableFlightModel>> fetchFlights({
+  Future<DataResponse<SearchFlightResponse>> fetchFlights({
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
   }) async {
@@ -72,8 +72,8 @@ class AirlinesRepository {
         body: body,
       );
 
-      AvailableFlightModel _responseData =
-          AvailableFlightModel.fromJson(_res['data'] ?? {});
+      SearchFlightResponse _responseData =
+          SearchFlightResponse.fromJson(_res['data'] ?? {});
       print(_responseData);
       return DataResponse.success(_responseData);
     } on CustomException catch (e) {

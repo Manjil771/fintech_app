@@ -35,7 +35,8 @@ class CustomerDetailRepository {
 
   final ValueNotifier<AccountDetail?> selectedAccount = ValueNotifier(null);
 
-  Future<DataResponse<CustomerDetailModel>> getCustomerDetail() async {
+  Future<DataResponse<CustomerDetailModel>> getCustomerDetail(
+      {required bool isCalledAtStartup}) async {
     try {
       final _res = await customerAPIProvider.fetchCustomerDetail();
 
@@ -53,7 +54,9 @@ class CustomerDetailRepository {
         customerDetailModel.value = _user;
 
         accountsList.value = _user.accountDetail;
-        selectedAccount.value = accountsList.value.first;
+        if (isCalledAtStartup) {
+          selectedAccount.value = accountsList.value.first;
+        }
 
         RepositoryProvider.of<FullStatementRepository>(
                 NavigationService.context)

@@ -56,7 +56,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   @override
   void initState() {
     _performStartupActions();
-    context.read<CustomerDetailCubit>().fetchCustomerDetail();
+    context
+        .read<CustomerDetailCubit>()
+        .fetchCustomerDetail(isCalledAtStatup: true);
     FlutterDownloader.registerCallback(downloadCallback);
   }
 

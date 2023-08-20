@@ -21,7 +21,15 @@ class HomePageMoneyWidget extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Container(
-      color: CustomTheme.white,
+      decoration: BoxDecoration(
+        color: CustomTheme.white,
+        borderRadius: BorderRadius.circular(8),
+        border: Border.all(color: CustomTheme.primaryColor),
+      ),
+      // padding: const EdgeInsets.symmetric(
+      //   horizontal: 15,
+      //   vertical: 15,
+      // ),
       child: BlocConsumer<AppServiceCubit, CommonState>(
           listener: (context, state) {},
           builder: (context, state) {
@@ -34,109 +42,117 @@ class HomePageMoneyWidget extends StatelessWidget {
                           .contains("send".toLowerCase()) &&
                       item.status.toLowerCase() == "Active".toLowerCase())
                   .toList();
-              return ListView(
+              return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(10.0),
-                    child: Column(
-                      children: [
-                        SvgPicture.asset(Assets.reveiceMoneyIcon,
-                            height: 20.hp, fit: BoxFit.fitHeight),
-                        SizedBox(height: 5.hp),
-                        Text(
-                          "Load Money",
-                          style: Theme.of(context).textTheme.labelMedium,
-                          textAlign: TextAlign.center,
-                          overflow: TextOverflow.ellipsis,
-                          maxLines: 1,
-                        )
-                      ],
-                    ),
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: filteredItems.length,
-                    scrollDirection: Axis.horizontal,
-                    // shrinkWrap: true,
-                    itemBuilder: (context, index) {
-                      return InkWell(
-                        onTap: () {
-                          if (filteredItems[index]
-                              .uniqueIdentifier
-                              .toString()
-                              .toLowerCase()
-                              .contains("bank_transfer".toLowerCase())) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.anyBank);
-                          }
-                          if (filteredItems[index]
-                              .uniqueIdentifier
-                              .toString()
-                              .toLowerCase()
-                              .contains(
-                                  "fund_transfer_dashboard".toLowerCase())) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.internalCooperative);
-                          } else if (filteredItems[index]
-                                  .uniqueIdentifier
-                                  .toString()
-                                  .toLowerCase() ==
-                              "coop_transfer".toLowerCase()) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.otherCooperative);
-                          } else if (filteredItems[index]
-                                  .uniqueIdentifier
-                                  .toString()
-                                  .toLowerCase() ==
-                              "load_wallet".toLowerCase()) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.listWalletScreen);
-                          }
-                          // else {
-                          //   NavigationService.pushNamed(
-                          //       routeName: Routes.mobileTopup);
-                          // }
-                        },
-                        child: Container(
-                          width: 80.wp,
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              SvgPicture.network(
-                                  "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                      filteredItems[index].imageUrl.toString(),
-                                  height: 20.hp,
-                                  fit: BoxFit.fitHeight),
-                              SizedBox(height: 5.hp),
-                              Center(
-                                child: Text(
-                                  filteredItems[index].name,
-                                  style:
-                                      Theme.of(context).textTheme.labelMedium,
-                                  textAlign: TextAlign.center,
-                                  overflow: TextOverflow.ellipsis,
-                                  maxLines: 1,
-                                ),
-                              )
-                            ],
+                child: Row(
+                  // scrollDirection: Axis.horizontal,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.all(10.0),
+                      child: Column(
+                        children: [
+                          SvgPicture.asset(
+                            Assets.reveiceMoneyIcon,
+                            height: 20.hp,
+                            fit: BoxFit.fitHeight,
                           ),
-                        ),
-                      );
+                          SizedBox(height: 5.hp),
+                          Text(
+                            "Load Money",
+                            style: Theme.of(context).textTheme.labelMedium,
+                            textAlign: TextAlign.center,
+                            overflow: TextOverflow.ellipsis,
+                            maxLines: 1,
+                          )
+                        ],
+                      ),
+                    ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: filteredItems.length,
+                      scrollDirection: Axis.horizontal,
+                      // shrinkWrap: true,
+                      itemBuilder: (context, index) {
+                        return InkWell(
+                          onTap: () {
+                            if (filteredItems[index]
+                                .uniqueIdentifier
+                                .toString()
+                                .toLowerCase()
+                                .contains("bank_transfer".toLowerCase())) {
+                              NavigationService.pushNamed(
+                                  routeName: Routes.anyBank);
+                            }
+                            if (filteredItems[index]
+                                .uniqueIdentifier
+                                .toString()
+                                .toLowerCase()
+                                .contains(
+                                    "fund_transfer_dashboard".toLowerCase())) {
+                              NavigationService.pushNamed(
+                                  routeName: Routes.internalCooperative);
+                            } else if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase() ==
+                                "coop_transfer".toLowerCase()) {
+                              NavigationService.pushNamed(
+                                  routeName: Routes.otherCooperative);
+                            } else if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase() ==
+                                "load_wallet".toLowerCase()) {
+                              NavigationService.pushNamed(
+                                  routeName: Routes.listWalletScreen);
+                            }
+                            // else {
+                            //   NavigationService.pushNamed(
+                            //       routeName: Routes.mobileTopup);
+                            // }
+                          },
+                          child: Container(
+                            width: 80.wp,
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                SvgPicture.network(
+                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
+                                        filteredItems[index]
+                                            .imageUrl
+                                            .toString(),
+                                    height: 20.hp,
+                                    fit: BoxFit.fitHeight),
+                                SizedBox(height: 5.hp),
+                                Center(
+                                  child: Text(
+                                    filteredItems[index].name,
+                                    style:
+                                        Theme.of(context).textTheme.labelMedium,
+                                    textAlign: TextAlign.center,
+                                    overflow: TextOverflow.ellipsis,
+                                    maxLines: 1,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
+                        );
 
-                      CustomImageBox(
-                          shadow: false,
-                          imageHeight: 10,
-                          backgroundColor: Colors.white,
-                          isNetworkImage: false,
-                          isSvgPicture: true,
-                          title: filteredItems[index].name,
-                          image:
-                              "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                  filteredItems[index].imageUrl.toString());
-                    },
-                  ),
-                ],
+                        CustomImageBox(
+                            shadow: false,
+                            imageHeight: 10,
+                            backgroundColor: Colors.white,
+                            isNetworkImage: false,
+                            isSvgPicture: true,
+                            title: filteredItems[index].name,
+                            image:
+                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
+                                    filteredItems[index].imageUrl.toString());
+                      },
+                    ),
+                  ],
+                ),
               );
               // return Row(
               //   children: [

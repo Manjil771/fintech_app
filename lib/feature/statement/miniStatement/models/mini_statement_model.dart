@@ -1,15 +1,3 @@
-// To parse this JSON data, do
-//
-//     final miniStatementModel = miniStatementModelFromJson(jsonString);
-
-import 'dart:convert';
-
-MiniStatementModel miniStatementModelFromJson(String str) =>
-    MiniStatementModel.fromJson(json.decode(str));
-
-String miniStatementModelToJson(MiniStatementModel data) =>
-    json.encode(data.toJson());
-
 class MiniStatementModel {
   List<MinistatementList> ministatementList;
   double availableBalance;

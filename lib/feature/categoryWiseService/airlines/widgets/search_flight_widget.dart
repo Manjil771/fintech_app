@@ -77,17 +77,20 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               );
             }
 
-            if (state is CommonStateSuccess<AvailableFlightModel>) {
-              AvailableFlightModel _response = state.data;
+            if (state is CommonStateSuccess<SearchFlightResponse>) {
+              SearchFlightResponse _response = state.data;
 
               if (_response.responseStatus.toLowerCase() ==
                   "Success".toLowerCase()) {
                 NavigationService.push(
-                    target: AvailableFlightPage(
-                        service: widget.service,
-                        adultCount: _adultCount,
-                        childrenCount: _childrenCount,
-                        flightDetail: _response));
+                  target: AvailableFlightPage(
+                    service: widget.service,
+                    adultCount: _adultCount,
+                    childrenCount: _childrenCount,
+                    flightDetail: _response,
+                    isTwoWay: isRoundTrip,
+                  ),
+                );
               } else {
                 showPopUpDialog(
                     context: context,

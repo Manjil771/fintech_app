@@ -3,10 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
@@ -23,8 +20,8 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class PassengerDetailWidget extends StatefulWidget {
-  Availability? departureFlight;
-  Availability? arrivalFlight;
+  Flight? departureFlight;
+  Flight? arrivalFlight;
 
   final double totalFare;
   final ServiceList service;
@@ -235,7 +232,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                   'Ticket will be sent to below input number',
                   style: _textTheme.bodyLarge,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 15,
                 ),
                 CustomTextField(
@@ -261,11 +258,11 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                   'Please enter following details',
                   style: _textTheme.bodyLarge,
                 ),
-                SizedBox(
+                const SizedBox(
                   height: 20,
                 ),
                 ListView.builder(
-                  physics: NeverScrollableScrollPhysics(),
+                  physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
                   itemCount: widget.adultCount + widget.childrenCount,
                   itemBuilder: (context, index) {
@@ -374,7 +371,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                             });
                           },
                         ),
-                        Divider(thickness: 2),
+                        const Divider(thickness: 2),
                       ],
                     );
                   },
@@ -407,7 +404,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                     arrivalFlight: widget.arrivalFlight,
                     departureFlight: widget.departureFlight,
                     totalFare: widget.totalFare,
-                    accountDetails: {},
+                    accountDetails: const {},
                     apiEndpoint: "/api/arsissueticket",
                     apiBody: {
                       "accountNumber":

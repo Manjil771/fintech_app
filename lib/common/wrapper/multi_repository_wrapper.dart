@@ -13,6 +13,7 @@ import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_paymen
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
+import 'package:ismart/feature/profile/resources/image_upload_repository.dart';
 import 'package:ismart/feature/qrCode/shareQr/resources/qr_repository.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_from_bank_repository.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_money_repository.dart';
@@ -63,6 +64,15 @@ class MultiRepositoryWrapper extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => CustomerDetailRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            coOperative: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+
+        RepositoryProvider(
+          create: (context) => ImageUploadRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             coOperative: RepositoryProvider.of<CoOperative>(context),
