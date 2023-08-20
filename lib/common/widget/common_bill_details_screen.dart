@@ -12,6 +12,8 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -196,6 +198,15 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                         Text("Paymet Details",
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(height: _height * 0.02),
+                        KeyValueTile(
+                            title: "From Account",
+                            value:
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber),
+                        SizedBox(height: 10.hp),
                         widget.body,
                         KeyValueTile(
                             title: "Cashback",

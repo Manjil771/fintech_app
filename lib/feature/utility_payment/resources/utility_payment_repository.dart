@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
@@ -122,6 +123,39 @@ class UtilityPaymentRepository {
       }
       return DataResponse.error(e.message, e.statusCode);
     } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<String>> getCharges(
+      {required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.getCharges(
+          accountDetails: accountDetails, apiEndpoint: apiEndpoint);
+
+      if (_res['data']?['code'] == "M0000") {
+        final _result = Map<String, dynamic>.from(_res);
+        if (_result['data']['details'] != null) {
+          return DataResponse.success(
+              (_result['data']['details'] ?? "").toString());
+        } else {
+          return DataResponse.error("Error fetching balance data.");
+        }
+      } else {
+        return DataResponse.error("message");
+      }
+    } on CustomException catch (e) {
+      print(e);
+      // if (e is SessionExpireErrorException) {
+      //   rethrow;
+      // }
+      return DataResponse.error(e.message!, e.statusCode);
+    } on DioError catch (dio) {
+      print(dio);
+      return DataResponse.error("message");
+    } catch (e) {
+      print(e);
       return DataResponse.error(e.toString());
     }
   }

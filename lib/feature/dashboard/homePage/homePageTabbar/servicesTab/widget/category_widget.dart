@@ -114,7 +114,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     Slugs.brokerPage) {
                                   NavigationService.push(
                                       target: BrokerPaymentPage(
-                                          service: data.services[0]));
+                                          service: data.services.first));
                                 } else if (data.uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
