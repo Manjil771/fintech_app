@@ -13,6 +13,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/bluebook/screen/bluebook_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
@@ -193,6 +194,12 @@ class _CategoriesWiseServicesWidgetState
         "traffic_fine_payments".toLowerCase()) {
       NavigationService.push(
           target: TrafficFinePaymentPage(
+        service: servicess,
+      ));
+    }
+    if (uniqueIdentifier.toLowerCase() == Slugs.bluebookRenewal.toLowerCase()) {
+      NavigationService.push(
+          target: BlueBookRenewalPage(
         service: servicess,
       ));
     }
