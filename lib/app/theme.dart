@@ -27,6 +27,8 @@ class CustomTheme {
   static const Color uttargangaColor = Color(0xFF015017);
   static const Color ekataColor = Color(0xFFEAF805);
   static const Color bishalColor = Color(0xFF31318E);
+  static const Color sardikholaColor = Color(0xFF004B1C);
+  static const Color kripaluColor = Color(0xFF009444);
 
   static Color primaryColor = testAppColor;
 

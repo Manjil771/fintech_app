@@ -359,6 +359,38 @@ class CoOperativeValue {
     splashImage: "assets/bishal/bishal_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative sardikholaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sardikhola/sardikhola_banner.png",
+
+    backgroundImage: "assets/sardikhola/sardikhola_background.png",
+
+    clientCode: 'ZV9721VXYZ',
+    clientSecret: "147230",
+    coOperativeName: 'sardikhola',
+    coOperativeLogo: 'assets/sardikhola/sardikhola_logo.png',
+
+    splashImage: "assets/sardikhola/sardikhola_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative kripaluCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kripalu/kripalu_banner.png",
+
+    backgroundImage: "assets/kripalu/kripalu_background.png",
+//TODO need to add kripalu client id and secret
+    clientCode: 'VDHZQSJBBN',
+    clientSecret: "212617",
+    coOperativeName: 'kripalu',
+    coOperativeLogo: 'assets/kripalu/kripalu_logo.png',
+
+    splashImage: "assets/kripalu/kripalu_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
