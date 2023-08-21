@@ -121,6 +121,7 @@ flutter:
     - assets/ekata/
     - assets/sardikhola/
     - assets/kripalu/
+    - assets/sarbahit/
 
   fonts:
     - family: popinbold
