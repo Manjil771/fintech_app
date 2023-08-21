@@ -406,6 +406,21 @@ class CoOperativeValue {
     splashImage: "assets/sarbahit/sarbahit_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative bhanjyangCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/bhanjyang/bhanjyang_banner.png",
+
+    backgroundImage: "assets/bhanjyang/bhanjyang_background.png",
+    clientCode: '9337H8GK5V',
+    clientSecret: "196685",
+    coOperativeName: 'bhanjyang',
+    coOperativeLogo: 'assets/bhanjyang/bhanjyang_logo.png',
+
+    splashImage: "assets/bhanjyang/bhanjyang_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(

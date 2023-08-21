@@ -30,6 +30,7 @@ class CustomTheme {
   static const Color sardikholaColor = Color(0xFF004B1C);
   static const Color kripaluColor = Color(0xFF009444);
   static const Color sarbahitColor = Color(0xFF26449F);
+  static const Color bhanjyangColor = Color(0xFF059445);
 
   static Color primaryColor = testAppColor;
 
