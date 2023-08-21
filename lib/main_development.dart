@@ -15,7 +15,6 @@ Future<void> main() async {
   await FlutterDownloader.initialize();
 
   /// use run zoned to catch all uncaught exceptions
-  /// //TODO need to add kripalu client id and secret
   runZonedGuarded(() {
     runApp(
       LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),

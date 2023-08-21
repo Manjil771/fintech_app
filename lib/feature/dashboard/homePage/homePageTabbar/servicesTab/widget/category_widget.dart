@@ -198,6 +198,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                             .contains("svg")
                                         ? SvgPicture.network(
                                             _imageUrl,
+                                            color: _theme.primaryColor,
                                             placeholderBuilder:
                                                 (BuildContext context) =>
                                                     Center(

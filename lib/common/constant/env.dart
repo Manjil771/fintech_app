@@ -382,9 +382,8 @@ class CoOperativeValue {
     bannerImage: "assets/kripalu/kripalu_banner.png",
 
     backgroundImage: "assets/kripalu/kripalu_background.png",
-//TODO need to add kripalu client id and secret
-    clientCode: 'VDHZQSJBBN',
-    clientSecret: "212617",
+    clientCode: 'HFKNI8KCA7',
+    clientSecret: "198431",
     coOperativeName: 'kripalu',
     coOperativeLogo: 'assets/kripalu/kripalu_logo.png',
 
