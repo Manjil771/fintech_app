@@ -36,10 +36,10 @@ class HomePageMoneyWidget extends StatelessWidget {
             if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
               final filteredItems = state.data
                   .where((item) =>
-                      item.type
+                      (item.type
                           .toString()
                           .toLowerCase()
-                          .contains("send".toLowerCase()) &&
+                          .contains("send".toLowerCase())) &&
                       item.status.toLowerCase() == "Active".toLowerCase())
                   .toList();
               return SingleChildScrollView(
@@ -75,6 +75,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return InkWell(
                           onTap: () {
+                            print("Onclick action");
                             if (filteredItems[index]
                                 .uniqueIdentifier
                                 .toString()
