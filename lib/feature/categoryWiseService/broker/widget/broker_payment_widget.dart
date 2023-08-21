@@ -1,20 +1,45 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/broker/widget/broker_list_page.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class BrokerPaymentWidget extends StatelessWidget {
+class BrokerPaymentWidget extends StatefulWidget {
   final ServiceList service;
   const BrokerPaymentWidget({Key? key, required this.service})
       : super(key: key);
+
+  @override
+  State<BrokerPaymentWidget> createState() => _BrokerPaymentWidgetState();
+}
+
+class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
+  final TextEditingController _selectedBrokerController =
+      TextEditingController();
+  final TextEditingController _clientNameController = TextEditingController();
+  final TextEditingController _clientIdController = TextEditingController();
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _mobileNumberController = TextEditingController();
+
+  final TextEditingController _remarksController = TextEditingController();
+  bool _isLoading = false;
+  String? _selectedBrokerCode;
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -22,64 +47,156 @@ class BrokerPaymentWidget extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-        body: CommonContainer(
-      title: service.service,
-      buttonName: "Proceed",
-      showAccountSelection: true,
-      showDetail: true,
-      topbarName: service.serviceCategoryName,
-      detail: service.instructions,
-      body: Column(children: [
-        CustomTextField(
-          hintText: "Select Broker",
-          title: "Select Broker",
-          readOnly: true,
-          // controller: _selectedBankController,
-          onTap: () {
-            NavigationService.push(
-              target: BankListPage(
-                onBankSelected: (val) {
-                  NavigationService.pop();
-
-                  // _selectedBankController.text = val.bankName;
-                  // selectedBank = val;
-                  // setState(() {});
-                },
-              ),
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
             );
+          }
+
+          if (state is CommonStateSuccess) {
+            String _response = state.data;
+
+            NavigationService.push(
+                target: CommonBillDetailPage(
+                    body: Column(
+                      children: [
+                        KeyValueTile(
+                            title: "Broker Name",
+                            value: _selectedBrokerController.text),
+                        KeyValueTile(
+                            title: "Client ID",
+                            value: _clientIdController.text),
+                        KeyValueTile(
+                            title: "Client Name",
+                            value: _clientNameController.text),
+                        KeyValueTile(
+                            title: "Mobile Number",
+                            value: _mobileNumberController.text),
+                        KeyValueTile(
+                            title: "Charge", value: _response.toString()),
+                        KeyValueTile(
+                            title: "Amount", value: _amountController.text),
+                      ],
+                    ),
+                    accountDetails: {},
+                    apiEndpoint: "/api/broker/payment",
+                    apiBody: {
+                      "accountNumber":
+                          RepositoryProvider.of<CustomerDetailRepository>(
+                                  context)
+                              .selectedAccount
+                              .value!
+                              .accountNumber,
+                      "charge": 5.0,
+                      "amount": _amountController.text,
+                      "clientId": _clientIdController.text,
+                      "brokerCode": _selectedBrokerCode,
+                      "clientName": _clientNameController.text,
+                      "mobileNumber": _mobileNumberController.text
+                    },
+                    service: widget.service,
+                    serviceIdentifier: widget.service.uniqueIdentifier));
+          }
+        },
+        child: CommonContainer(
+          title: widget.service.service,
+          buttonName: "Proceed",
+          showAccountSelection: true,
+          showDetail: true,
+          topbarName: widget.service.serviceCategoryName,
+          detail: widget.service.instructions,
+          onButtonPressed: () {
+            if (_formKey.currentState!.validate()) {
+              context.read<UtilityPaymentCubit>().getCharges(
+                accountDetails: {
+                  "amount": _amountController.text,
+                  "code": _selectedBrokerCode,
+                },
+                apiEndpoint: "/api/broker/charge",
+              );
+            }
           },
-          validator: (value) {
-            // if (selectedBank != null) {
-            //   return null;
-            // } else {
-            //   return "Please select destination bank.";
-            // }
-          },
-        ),
-        CustomTextField(
-          title: service.labelName,
-          hintText: service.labelSample,
-        ),
-        CustomTextField(
-          title: "Client Name",
-          hintText: "Saurav Chaulagain",
-        ),
-        CustomTextField(
-          title: "Mobile Number",
-          hintText: "+977",
-          validator: (value) => FormValidator.validatePhoneNumber(value),
-        ),
-        service.priceInput
-            ? CustomTextField(
+          body: Form(
+            key: _formKey,
+            child: Column(children: [
+              CustomTextField(
+                hintText: "Select Broker",
+                title: "Select Broker",
+                readOnly: true,
+                controller: _selectedBrokerController,
+                onTap: () {
+                  NavigationService.push(
+                    target: BrokerSearchPage(
+                      onChanged: (val) {
+                        _selectedBrokerController.text = val.title;
+                        _selectedBrokerCode = val.value;
+                        setState(() {});
+                      },
+                    ),
+                  );
+                },
+                validator: (value) =>
+                    FormValidator.validateFieldNotEmpty(value, "Broker"),
+              ),
+              CustomTextField(
+                controller: _clientIdController,
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                title: widget.service.labelName,
+                hintText: widget.service.labelSample,
+                validator: (value) => FormValidator.validateFieldNotEmpty(
+                    value, widget.service.labelName),
+              ),
+              CustomTextField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                title: "Client Name",
+                hintText: "Name",
+                controller: _clientNameController,
+                validator: (value) => FormValidator.validateName(value),
+              ),
+              CustomTextField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                title: "Mobile Number",
+                hintText: "+977",
+                controller: _mobileNumberController,
+                validator: (value) => FormValidator.validatePhoneNumber(value),
+              ),
+              CustomTextField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
                 title: "Amount",
                 hintText: "NPR",
-              )
-            : Container(),
-        CustomTextField(
-          title: "Remarks",
-          hintText: "Remarks",
+                controller: _amountController,
+                validator: (value) => FormValidator.validateAmount(
+                    val: value.toString(),
+                    minAmount: widget.service.minValue,
+                    maxAmount: widget.service.maxValue),
+              ),
+              CustomTextField(
+                autovalidateMode: AutovalidateMode.onUserInteraction,
+                title: "Remarks",
+                controller: _remarksController,
+                hintText: "Remarks",
+                validator: (value) =>
+                    FormValidator.validateFieldNotEmpty(value, "Remarks"),
+              ),
+            ]),
+          ),
         ),
-      ]),
-    ));
+      ),
+    );
   }
 }

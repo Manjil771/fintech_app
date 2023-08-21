@@ -359,6 +359,68 @@ class CoOperativeValue {
     splashImage: "assets/bishal/bishal_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative sardikholaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sardikhola/sardikhola_banner.png",
+
+    backgroundImage: "assets/sardikhola/sardikhola_background.png",
+
+    clientCode: 'ZV9721VXYZ',
+    clientSecret: "147230",
+    coOperativeName: 'sardikhola',
+    coOperativeLogo: 'assets/sardikhola/sardikhola_logo.png',
+
+    splashImage: "assets/sardikhola/sardikhola_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative kripaluCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/kripalu/kripalu_banner.png",
+
+    backgroundImage: "assets/kripalu/kripalu_background.png",
+    clientCode: 'HFKNI8KCA7',
+    clientSecret: "198431",
+    coOperativeName: 'kripalu',
+    coOperativeLogo: 'assets/kripalu/kripalu_logo.png',
+
+    splashImage: "assets/kripalu/kripalu_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+//sarbahit
+  static final CoOperative sarbahitCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sarbahit/sarbahit_banner.png",
+
+    backgroundImage: "assets/sarbahit/sarbahit_background.png",
+    clientCode: '137NBD0VEA',
+    clientSecret: "176079",
+    coOperativeName: 'sarbahit',
+    coOperativeLogo: 'assets/sarbahit/sarbahit_logo.png',
+
+    splashImage: "assets/sarbahit/sarbahit_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative bhanjyangCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/bhanjyang/bhanjyang_banner.png",
+
+    backgroundImage: "assets/bhanjyang/bhanjyang_background.png",
+    clientCode: '9337H8GK5V',
+    clientSecret: "196685",
+    coOperativeName: 'bhanjyang',
+    coOperativeLogo: 'assets/bhanjyang/bhanjyang_logo.png',
+
+    splashImage: "assets/bhanjyang/bhanjyang_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(

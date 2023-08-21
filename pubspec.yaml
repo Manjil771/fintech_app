@@ -119,6 +119,10 @@ flutter:
     - assets/shreejanamukhi/
     - assets/bishal/
     - assets/ekata/
+    - assets/sardikhola/
+    - assets/kripalu/
+    - assets/sarbahit/
+    - assets/bhanjyang/
 
   fonts:
     - family: popinbold

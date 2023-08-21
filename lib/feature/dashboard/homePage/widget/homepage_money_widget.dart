@@ -47,24 +47,30 @@ class HomePageMoneyWidget extends StatelessWidget {
                 child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.all(10.0),
-                      child: Column(
-                        children: [
-                          SvgPicture.asset(
-                            Assets.reveiceMoneyIcon,
-                            height: 20.hp,
-                            fit: BoxFit.fitHeight,
-                          ),
-                          SizedBox(height: 5.hp),
-                          Text(
-                            "Load Money",
-                            style: Theme.of(context).textTheme.labelMedium,
-                            textAlign: TextAlign.center,
-                            overflow: TextOverflow.ellipsis,
-                            maxLines: 1,
-                          )
-                        ],
+                    InkWell(
+                      onTap: () {
+                        NavigationService.pushNamed(
+                            routeName: Routes.reveiveMoney);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              Assets.reveiceMoneyIcon,
+                              height: 20.hp,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            SizedBox(height: 5.hp),
+                            Text(
+                              "Load Money",
+                              style: Theme.of(context).textTheme.labelMedium,
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            )
+                          ],
+                        ),
                       ),
                     ),
                     ListView.builder(

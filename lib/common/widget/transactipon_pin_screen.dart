@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -10,6 +11,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class TransactionPinScreen extends StatefulWidget {
   final Function(String) onValueCallback;
@@ -76,8 +78,17 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                     Text("Please enter your MPIN to proceed.",
                         style: Theme.of(context).textTheme.headlineSmall),
                     SizedBox(height: _height * 0.04),
+                    //TODO need to remove condition ,using just for test
                     CustomPinCodeField(
-                      length: 5,
+                      // length: 5,
+                      length: RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountHolderName ==
+                              "Umesh Giri"
+                          ? 6
+                          : 5,
                       onChanged: (p0) {
                         pinValue = p0;
                       },

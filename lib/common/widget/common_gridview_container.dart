@@ -33,7 +33,7 @@ class CommonGridViewContainer extends StatelessWidget {
         margin: margin,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(22),
-          color: CustomTheme.darkerBlack.withOpacity(0.07),
+          color: _theme.primaryColor.withOpacity(0.05),
         ),
         child: Column(
           mainAxisSize: MainAxisSize.min,
@@ -48,10 +48,11 @@ class CommonGridViewContainer extends StatelessWidget {
                       containerImage,
                       height: 50,
                       width: 50,
+                      color: _theme.primaryColor,
                     )
                   : SvgPicture.asset(
                       containerImage,
-                      color: CustomTheme.darkerBlack.withOpacity(0.8),
+                      color: _theme.primaryColor,
                       height: 50,
                       width: 50,
                     ),

@@ -76,7 +76,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       children: [
                         CircleAvatar(
                           backgroundColor:
-                              _theme.primaryColor.withOpacity(0.16),
+                              _theme.primaryColor.withOpacity(0.05),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SvgPicture.asset(
@@ -111,7 +111,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       children: [
                         CircleAvatar(
                           backgroundColor:
-                              _theme.primaryColor.withOpacity(0.16),
+                              _theme.primaryColor.withOpacity(0.05),
                           child: Padding(
                             padding: const EdgeInsets.all(8.0),
                             child: SvgPicture.asset(
