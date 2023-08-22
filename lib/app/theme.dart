@@ -32,7 +32,7 @@ class CustomTheme {
   static const Color sarbahitColor = Color(0xFF26449F);
   static const Color bhanjyangColor = Color(0xFF059445);
 
-  static Color primaryColor = kripaluColor;
+  static Color primaryColor = abhiyanColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
