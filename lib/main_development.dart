@@ -17,7 +17,7 @@ Future<void> main() async {
   /// use run zoned to catch all uncaught exceptions
   runZonedGuarded(() {
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.ekataCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.kripaluCoop)),
     );
   }, (e, s) {
     Log.e(e);
