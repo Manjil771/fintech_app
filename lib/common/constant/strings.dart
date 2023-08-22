@@ -18,6 +18,7 @@ class Strings {
   static const shreeNavaPrabhatTitle = "Shree Nava Prabhat Coop iSmart";
   static const shreeJanamukhiTitle = "Shree Janamukhi Coop iSmart";
   static const newDhalaugiri = "New Dhaulagiri Coop iSmart";
+  static const ekataAppTitle = "Ekata Coop iSmart";
   static const defaultAppTitle = "iSmart Devanasoft";
-  static const APP_TITLE = shreeJanamukhiTitle;
+  static const APP_TITLE = arthaBagAppTitle;
 }
