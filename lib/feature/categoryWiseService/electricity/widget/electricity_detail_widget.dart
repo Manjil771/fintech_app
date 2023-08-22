@@ -66,7 +66,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
     return AmountUtils.getAmountInRupees(
         amount: widget.useServiceResponse.findValue(
       primaryKey: "hashResponse",
-      secondaryKey: "Billable Amount",
+      secondaryKey: "Amount",
     ));
   }
 

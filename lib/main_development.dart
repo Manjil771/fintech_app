@@ -15,12 +15,15 @@ Future<void> main() async {
   await FlutterDownloader.initialize();
 
   /// use run zoned to catch all uncaught exceptions
-  runZonedGuarded(() {
-    runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.uttargangaCoop)),
-    );
-  }, (e, s) {
-    Log.e(e);
-    Log.d(s);
-  });
+  runZonedGuarded(
+    () {
+      runApp(
+        LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),
+      );
+    },
+    (e, s) {
+      Log.e(e);
+      Log.d(s);
+    },
+  );
 }
