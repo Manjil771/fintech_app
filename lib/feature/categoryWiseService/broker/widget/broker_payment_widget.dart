@@ -107,7 +107,8 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
                       "clientId": _clientIdController.text,
                       "brokerCode": _selectedBrokerCode,
                       "clientName": _clientNameController.text,
-                      "mobileNumber": _mobileNumberController.text
+                      "mobileNumber": _mobileNumberController.text,
+                      "remarks": _remarksController.text
                     },
                     service: widget.service,
                     serviceIdentifier: widget.service.uniqueIdentifier));

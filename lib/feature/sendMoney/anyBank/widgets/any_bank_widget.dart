@@ -90,6 +90,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   showCancelButton: false,
                 );
               }
+              if (state is CommonError) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.message,
+                  title: "Message",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false,
+                );
+              }
             },
             child: Container(),
           ),

@@ -64,6 +64,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
             // }
           },
           builder: (context, state) {
+            print("state iss ${state}");
             ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
             if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
               return BlocListener<TransactionDownloadCubit, CommonState>(
