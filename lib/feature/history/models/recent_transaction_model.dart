@@ -66,14 +66,14 @@ class RecentTransactionModel {
         sessionId: json["sessionId"],
         id: json["id"],
         createdDate: DateTime.parse(json["createdDate"]),
-        destination: json["destination"],
+        destination: json["destination"] ?? "",
         charge: json["charge"],
         totalAmount: json["totalAmount"]?.toDouble(),
         requestDetail: RequestDetail.fromJson(json["requestDetail"]),
         responseDetail: ResponseDetail.fromJson(json["responseDetail"]),
         iconUrl: json["iconUrl"],
         debit: json["debit"],
-        channelType: json["channelType"],
+        channelType: json["channelType"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -165,7 +165,7 @@ class RequestDetail {
 class ResponseDetail {
   String resultMessage;
   String? refStan;
-  ResponseDetailStatus status;
+  String? status;
   String? transactionIdentifier;
   String? serviceTo;
   String? isoCode;
@@ -180,30 +180,23 @@ class ResponseDetail {
   });
 
   factory ResponseDetail.fromJson(Map<String, dynamic> json) => ResponseDetail(
-        resultMessage: json["Result Message"],
-        refStan: json["RefStan"],
-        status: responseDetailStatusValues.map[json["status"]]!,
-        transactionIdentifier: json["transactionIdentifier"],
-        serviceTo: json["serviceTo"],
-        isoCode: json["isoCode"],
+        resultMessage: json["Result Message"] ?? "",
+        refStan: json["RefStan"] ?? "",
+        status: json["status"] ?? "",
+        transactionIdentifier: json["transactionIdentifier"] ?? "",
+        serviceTo: json["serviceTo"] ?? "",
+        isoCode: json["isoCode"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
         "Result Message": resultMessage,
         "RefStan": refStan,
-        "status": responseDetailStatusValues.reverse[status],
+        "status": status,
         "transactionIdentifier": transactionIdentifier,
         "serviceTo": serviceTo,
         "isoCode": isoCode,
       };
 }
-
-enum ResponseDetailStatus { FAILURE, SUCCESS }
-
-final responseDetailStatusValues = EnumValues({
-  "failure": ResponseDetailStatus.FAILURE,
-  "success": ResponseDetailStatus.SUCCESS
-});
 
 enum RecentTransactionModelStatus { CANCELLED_WITH_REFUND, COMPLETE }
 
