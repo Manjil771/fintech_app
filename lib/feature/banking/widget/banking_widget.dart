@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -14,7 +13,7 @@ import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 
 class BankingWidget extends StatefulWidget {
-  BankingWidget({Key? key}) : super(key: key);
+  const BankingWidget({Key? key}) : super(key: key);
 
   @override
   State<BankingWidget> createState() => _BankingWidgetState();
@@ -80,9 +79,8 @@ class _BankingWidgetState extends State<BankingWidget> {
                         .toList();
 
                     return GridView.builder(
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount:
-                          filteredItems.length == 0 ? 5 : itemName.length,
+                      // physics: const NeverScrollableScrollPhysics(),
+                      itemCount: filteredItems.isEmpty ? 5 : itemName.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2),

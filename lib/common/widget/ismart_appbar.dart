@@ -21,9 +21,13 @@ AppBar myAppbar({bool showBackButton = false}) {
     if (coOpLogo.contains("https://")) {
       return Image.network(
         coOpLogo,
+        height: 200,
       );
     } else {
-      return Image.asset(coOpLogo);
+      return Image.asset(
+        coOpLogo,
+        height: 50,
+      );
     }
   }
 

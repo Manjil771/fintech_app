@@ -127,7 +127,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                   return screens[_currentIndex];
                 }),
             floatinActionButton: Padding(
-              padding: EdgeInsets.only(bottom: 8),
+              padding: const EdgeInsets.only(bottom: 8),
               child: FloatingActionButton(
                 backgroundColor: _theme.primaryColor,
                 onPressed: () async {
