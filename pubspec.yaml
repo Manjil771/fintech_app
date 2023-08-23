@@ -123,6 +123,7 @@ flutter:
     - assets/kripalu/
     - assets/sarbahit/
     - assets/bhanjyang/
+    - assets/macchaPuchhre/
 
   fonts:
     - family: popinbold
