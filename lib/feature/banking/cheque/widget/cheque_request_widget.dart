@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -17,6 +18,8 @@ class ChequeRequestWidget extends StatelessWidget {
   ChequeRequestWidget({Key? key}) : super(key: key);
   final TextEditingController chequeLeavesController = TextEditingController();
   bool _isLoading = false;
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -31,7 +34,8 @@ class ChequeRequestWidget extends StatelessWidget {
         } else if (state is! CommonLoading && _isLoading) {
           _isLoading = false;
           NavigationService.pop();
-        } else if (state is CommonError) {
+        }
+        if (state is CommonError) {
           showPopUpDialog(
             context: context,
             message: state.message,
@@ -54,59 +58,59 @@ class ChequeRequestWidget extends StatelessWidget {
                 NavigationService.pop();
               },
             );
+          } else {
+            showPopUpDialog(
+              context: context,
+              message: _response.message,
+              title: "Exception",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
           }
-          showPopUpDialog(
-            context: context,
-            message: _response.message,
-            title: "Error",
-            showCancelButton: false,
-            buttonCallback: () {
-              NavigationService.pop();
-            },
-          );
         }
       },
-      child: Column(
-        children: [
-          PrimaryAccountBox(),
-          CustomTextField(
-            controller: chequeLeavesController,
-            title: "Select Cheque Leaves",
-            hintText: "10",
-          ),
-          SizedBox(height: _height * 0.02),
-          CustomRoundedButtom(
-              title: "Confirm",
-              onPressed: () {
-                NavigationService.push(target: TransactionPinScreen(
-                  onValueCallback: (p0) {
-                    NavigationService.pop();
-                    context.read<UtilityPaymentCubit>().makePayment(
-                        serviceIdentifier: "",
-                        accountDetails: {
-                          "accountNumber":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
+      child: Form(
+        key: _formKey,
+        child: Column(
+          children: [
+            PrimaryAccountBox(),
+            CustomTextField(
+              controller: chequeLeavesController,
+              title: "Select Cheque Leaves",
+              hintText: "10",
+              validator: (value) =>
+                  FormValidator.validateFieldNotEmpty(value, "Cheque Number"),
+            ),
+            SizedBox(height: _height * 0.02),
+            CustomRoundedButtom(
+                title: "Confirm",
+                onPressed: () {
+                  if (_formKey.currentState!.validate()) {
+                    NavigationService.push(target: TransactionPinScreen(
+                      onValueCallback: (p0) {
+                        NavigationService.pop();
+                        context.read<UtilityPaymentCubit>().makePayment(
+                            serviceIdentifier: "",
+                            accountDetails: {},
+                            body: {
+                              "accountNumber": RepositoryProvider.of<
+                                      CustomerDetailRepository>(context)
                                   .selectedAccount
                                   .value!
                                   .accountNumber,
-                          "account_number":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber,
-                        },
-                        body: {
-                          "mPin": p0,
-                          "chequeNumber": chequeLeavesController.text,
-                        },
-                        apiEndpoint: "api/chequerequest",
-                        mPin: p0);
-                  },
-                ));
-              }),
-        ],
+                              "chequeLeaves": chequeLeavesController.text,
+                              "mPin": p0,
+                            },
+                            apiEndpoint: "api/chequerequest",
+                            mPin: p0);
+                      },
+                    ));
+                  }
+                }),
+          ],
+        ),
       ),
     );
   }

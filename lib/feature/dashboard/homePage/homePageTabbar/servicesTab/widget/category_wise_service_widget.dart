@@ -23,6 +23,7 @@ import 'package:ismart/feature/categoryWiseService/internet/common/screen/common
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/common_tv_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/net_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -152,10 +153,18 @@ class _CategoriesWiseServicesWidgetState
     final servicess = searchItems[index];
 
     if (widget.uniqueIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {
-      NavigationService.push(
-          target: TvPaymentPage(
-        service: servicess,
-      ));
+      if (uniqueIdentifier.toLowerCase() ==
+          Slugs.netTvOnlineTopup.toLowerCase()) {
+        NavigationService.push(
+            target: NetTvPaymentPage(
+          service: servicess,
+        ));
+      } else {
+        NavigationService.push(
+            target: TvPaymentPage(
+          service: servicess,
+        ));
+      }
     }
     if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==
