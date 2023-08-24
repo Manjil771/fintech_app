@@ -187,7 +187,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                             controller: phoneController,
                             textInputType: TextInputType.phone,
                             validator: (value) =>
-                                FormValidator.validatePhoneNumber(value),
+                                FormValidator.validateFieldNotEmpty(
+                                    value, "Phone Number"),
                             onChanged: (val) {
                               // if (FormValidator.validatePhoneNumber(val) ==
                               //     null) {
