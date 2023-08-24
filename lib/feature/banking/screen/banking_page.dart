@@ -18,6 +18,6 @@ class Bankingpage extends StatelessWidget {
               appServiceRepository:
                   RepositoryProvider.of<AppServiceRepository>(context),
             ),
-        child: BankingWidget());
+        child: const BankingWidget());
   }
 }

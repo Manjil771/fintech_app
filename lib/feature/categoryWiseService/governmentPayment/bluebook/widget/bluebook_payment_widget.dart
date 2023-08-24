@@ -9,7 +9,8 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 
 class BlueBookRenewalWidget extends StatefulWidget {
   final ServiceList service;
-  BlueBookRenewalWidget({Key? key, required this.service}) : super(key: key);
+  const BlueBookRenewalWidget({Key? key, required this.service})
+      : super(key: key);
 
   @override
   State<BlueBookRenewalWidget> createState() => _BlueBookRenewalWidgetState();
