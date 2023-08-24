@@ -146,7 +146,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 },
               );
             }
-          } else if (state is CommonError) {
+          }
+          if (state is CommonError) {
             showPopUpDialog(
               context: context,
               message: state.message,

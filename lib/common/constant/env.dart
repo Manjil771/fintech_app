@@ -421,6 +421,21 @@ class CoOperativeValue {
     splashImage: "assets/bhanjyang/bhanjyang_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative macchaPuchhreCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/macchaPuchhre/macchaPuchhre_banner.png",
+
+    backgroundImage: "assets/macchaPuchhre/macchaPuchhre_background.png",
+    clientCode: 'UO3QWA3P9M',
+    clientSecret: "197951",
+    coOperativeName: 'macchaPuchhre',
+    coOperativeLogo: 'assets/macchaPuchhre/macchaPuchhre_logo.png',
+
+    splashImage: "assets/macchaPuchhre/macchaPuchhre_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
