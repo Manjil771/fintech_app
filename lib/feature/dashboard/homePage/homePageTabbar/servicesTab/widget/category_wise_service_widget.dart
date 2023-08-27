@@ -14,7 +14,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/bluebook/screen/bluebook_payment_page.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/ird/screen/ird_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/commonGovPayment/screen/gov_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
@@ -128,6 +128,8 @@ class _CategoriesWiseServicesWidgetState
                             child: Text(
                               searchItems[index].service.toString(),
                               textAlign: TextAlign.center,
+                              overflow: TextOverflow.clip,
+                              maxLines: 2,
                               style: const TextStyle(
                                   color: CustomTheme.darkerBlack,
                                   fontSize: 12,
@@ -221,19 +223,6 @@ class _CategoriesWiseServicesWidgetState
         service: servicess,
       ));
     }
-    if (uniqueIdentifier.toLowerCase() ==
-        "traffic_fine_payments".toLowerCase()) {
-      NavigationService.push(
-          target: TrafficFinePaymentPage(
-        service: servicess,
-      ));
-    }
-    if (uniqueIdentifier.toLowerCase() == Slugs.bluebookRenewal.toLowerCase()) {
-      NavigationService.push(
-          target: BlueBookRenewalPage(
-        service: servicess,
-      ));
-    }
 
     if (widget.uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==
@@ -257,12 +246,25 @@ class _CategoriesWiseServicesWidgetState
         ));
       }
     }
-    if (uniqueIdentifier.toLowerCase() ==
-        "government_revenue_payment".toLowerCase()) {
-      NavigationService.push(
-          target: RevenuePaymentPage(
-        services: servicess,
-      ));
+    if (widget.uniqueIdentifier == Slugs.governmentPayment) {
+      if (uniqueIdentifier.toLowerCase() ==
+          "traffic_fine_payments".toLowerCase()) {
+        NavigationService.push(
+            target: TrafficFinePaymentPage(
+          service: servicess,
+        ));
+      } else if (uniqueIdentifier.toLowerCase() ==
+          Slugs.bluebookRenewal.toLowerCase()) {
+        NavigationService.push(
+            target: BlueBookRenewalPage(
+          service: servicess,
+        ));
+      } else {
+        NavigationService.push(
+            target: GovernmentPaymentPage(
+          services: servicess,
+        ));
+      }
     }
   }
 }

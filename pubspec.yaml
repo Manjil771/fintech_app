@@ -124,6 +124,8 @@ flutter:
     - assets/sarbahit/
     - assets/bhanjyang/
     - assets/macchaPuchhre/
+    - assets/navajosh/
+
 
   fonts:
     - family: popinbold
