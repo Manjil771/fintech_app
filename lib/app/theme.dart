@@ -13,7 +13,7 @@ class CustomTheme {
   static const Color abhiyanColor = Color(0xFF015017);
   static const Color kamanaColor = Color(0xFF008133);
   static const Color arthabagColor = Color(0xFF0729a4);
-  static const Color alankarColor = Color(0xFF0088cf);
+  static const Color alangkarColor = Color(0xFF0088cf);
   static const Color gomaganeshColor = Color(0xFF1f972b);
   static const Color shreeAajuColor = Color(0xFF00A900);
   static const Color shreeMitraColor = Color(0xFF00A551);
@@ -33,9 +33,8 @@ class CustomTheme {
   static const Color bhanjyangColor = Color(0xFF059445);
   static const Color macchaPuchreColor = Color(0xFF188453);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = alangkarColor;
 
-  
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);
