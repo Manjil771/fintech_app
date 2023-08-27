@@ -33,8 +33,9 @@ class CustomTheme {
   static const Color bhanjyangColor = Color(0xFF059445);
   static const Color macchaPuchreColor = Color(0xFF188453);
   static const Color navajoshColor = Color(0xFF017828);
+  static const Color fewaColor = Color(0xFF00984A);
 
-  static Color primaryColor = ekataColor;
+  static Color primaryColor = fewaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

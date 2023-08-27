@@ -451,6 +451,21 @@ class CoOperativeValue {
     splashImage: "assets/nawajosh/nawajosh_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative fewaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/fewa/fewa_banner.png",
+
+    backgroundImage: "assets/fewa/fewa_background.png",
+    clientCode: 'HEWD6NROMC',
+    clientSecret: "156610",
+    coOperativeName: 'fewa',
+    coOperativeLogo: 'assets/fewa/fewa_logo.png',
+
+    splashImage: "assets/fewa/fewa_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
