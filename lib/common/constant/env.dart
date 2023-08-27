@@ -436,6 +436,21 @@ class CoOperativeValue {
     splashImage: "assets/macchaPuchhre/macchaPuchhre_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative nawajoshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/nawajosh/nawajosh_banner.png",
+
+    backgroundImage: "assets/nawajosh/nawajosh_background.png",
+    clientCode: 'UO3QWA3P9M',
+    clientSecret: "197951",
+    coOperativeName: 'nawajosh',
+    coOperativeLogo: 'assets/nawajosh/nawajosh_logo.png',
+
+    splashImage: "assets/nawajosh/nawajosh_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 // //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
