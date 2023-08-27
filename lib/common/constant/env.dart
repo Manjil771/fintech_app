@@ -443,8 +443,8 @@ class CoOperativeValue {
     bannerImage: "assets/nawajosh/nawajosh_banner.png",
 
     backgroundImage: "assets/nawajosh/nawajosh_background.png",
-    clientCode: 'UO3QWA3P9M',
-    clientSecret: "197951",
+    clientCode: 'PWXSUF8B6F',
+    clientSecret: "203542",
     coOperativeName: 'nawajosh',
     coOperativeLogo: 'assets/nawajosh/nawajosh_logo.png',
 

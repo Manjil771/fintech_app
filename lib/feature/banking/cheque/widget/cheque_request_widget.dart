@@ -10,15 +10,26 @@ import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class ChequeRequestWidget extends StatelessWidget {
+class ChequeRequestWidget extends StatefulWidget {
   ChequeRequestWidget({Key? key}) : super(key: key);
+
+  @override
+  State<ChequeRequestWidget> createState() => _ChequeRequestWidgetState();
+}
+
+class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
   final TextEditingController chequeLeavesController = TextEditingController();
+
   bool _isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
+
+  final List<int> numberOfCheque = [10, 20, 30, 40, 50];
 
   @override
   Widget build(BuildContext context) {
@@ -77,6 +88,39 @@ class ChequeRequestWidget extends StatelessWidget {
           children: [
             PrimaryAccountBox(),
             CustomTextField(
+              readOnly: true,
+              onTap: () {
+                showBottomSheet(
+                  context: context,
+                  builder: (context) => BottomSheetWrapper(
+                    title: "Select Number",
+                    child: GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: 5),
+                      shrinkWrap: true,
+                      itemCount: numberOfCheque.length,
+                      itemBuilder: (context, index) => Card(
+                        shape: CircleBorder(),
+                        child: InkWell(
+                          onTap: () {
+                            setState(() {});
+                            chequeLeavesController.text =
+                                numberOfCheque[index].toString();
+                            NavigationService.pop();
+                          },
+                          child: Center(
+                            child: Text(
+                              numberOfCheque[index].toString(),
+                              textAlign: TextAlign.center,
+                              style: _textTheme.headlineSmall,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                );
+              },
               controller: chequeLeavesController,
               title: "Select Cheque Leaves",
               hintText: "10",
