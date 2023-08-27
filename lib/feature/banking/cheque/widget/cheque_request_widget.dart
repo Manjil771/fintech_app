@@ -94,30 +94,78 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
                   context: context,
                   builder: (context) => BottomSheetWrapper(
                     title: "Select Number",
-                    child: GridView.builder(
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: 5),
-                      shrinkWrap: true,
-                      itemCount: numberOfCheque.length,
-                      itemBuilder: (context, index) => Card(
-                        shape: CircleBorder(),
-                        child: InkWell(
-                          onTap: () {
-                            setState(() {});
-                            chequeLeavesController.text =
-                                numberOfCheque[index].toString();
-                            NavigationService.pop();
-                          },
-                          child: Center(
-                            child: Text(
-                              numberOfCheque[index].toString(),
-                              textAlign: TextAlign.center,
-                              style: _textTheme.headlineSmall,
-                            ),
-                          ),
+                    child: Container(
+                      width: double.infinity,
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisSize: MainAxisSize.max,
+                          children: [
+                            ...List.generate(
+                                numberOfCheque.length,
+                                (index) => Container(
+                                      padding: EdgeInsets.all(20),
+                                      margin: EdgeInsets.only(right: 15),
+                                      decoration: BoxDecoration(
+                                        shape: BoxShape.circle,
+                                        color: Colors.white,
+                                        // borderRadius: BorderRadius.circular(100),
+                                      ),
+                                      // shape: CircleBorder(),
+                                      child: InkWell(
+                                        borderRadius:
+                                            BorderRadius.circular(100),
+                                        onTap: () {
+                                          setState(() {});
+                                          chequeLeavesController.text =
+                                              numberOfCheque[index].toString();
+                                          NavigationService.pop();
+                                        },
+                                        child: Center(
+                                          child: Text(
+                                            numberOfCheque[index].toString(),
+                                            textAlign: TextAlign.center,
+                                            style: _textTheme.headlineSmall,
+                                          ),
+                                        ),
+                                      ),
+                                    ))
+                          ],
                         ),
                       ),
                     ),
+                    // child: GridView.builder(
+                    //   // gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    //   //   crossAxisCount: 5,
+                    //   // ),
+                    //   shrinkWrap: true,
+                    //   itemCount: numberOfCheque.length,
+                    //   itemBuilder: (context, index) =>
+                    // Container(
+                    //     decoration: BoxDecoration(
+                    //       shape: BoxShape.circle,
+                    //       color: Colors.white,
+                    //       // borderRadius: BorderRadius.circular(100),
+                    //     ),
+                    //     // shape: CircleBorder(),
+                    //     child: InkWell(
+                    //       borderRadius: BorderRadius.circular(100),
+                    //       onTap: () {
+                    //         setState(() {});
+                    //         chequeLeavesController.text =
+                    //             numberOfCheque[index].toString();
+                    //         NavigationService.pop();
+                    //       },
+                    //       child: Center(
+                    //         child: Text(
+                    //           numberOfCheque[index].toString(),
+                    //           textAlign: TextAlign.center,
+                    //           style: _textTheme.headlineSmall,
+                    //         ),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // ),
                   ),
                 );
               },

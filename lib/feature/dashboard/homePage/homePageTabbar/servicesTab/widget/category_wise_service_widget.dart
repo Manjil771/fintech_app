@@ -95,8 +95,10 @@ class _CategoriesWiseServicesWidgetState
               ),
               const SizedBox(height: 10),
               Container(
-                height: _height / 2,
                 child: GridView.builder(
+                    shrinkWrap: true,
+                    scrollDirection: Axis.vertical,
+                    physics: NeverScrollableScrollPhysics(),
                     itemCount: searchItems.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

@@ -19,12 +19,9 @@ class TrafficFinePaymentPage extends StatelessWidget {
     final _height = SizeUtils.height;
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
-          utilityPaymentRepository:
-              RepositoryProvider.of<UtilityPaymentRepository>(context)
-                ..fetchDetails(
-                    serviceIdentifier: service.uniqueIdentifier,
-                    accountDetails: {},
-                    apiEndpoint: "/api/governmentpayment/possibleFiscalYears")),
+        utilityPaymentRepository:
+            RepositoryProvider.of<UtilityPaymentRepository>(context),
+      ),
       child: TrafficFinePaymentWidget(
         service: service,
       ),
