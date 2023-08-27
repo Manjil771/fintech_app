@@ -64,7 +64,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
             // }
           },
           builder: (context, state) {
-            print("state iss ${state}");
+            print("state iss $state");
             ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
             if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
               return BlocListener<TransactionDownloadCubit, CommonState>(
@@ -74,8 +74,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                   }
                 },
                 child: Container(
-                    height: _height * 0.65,
+                    // height: _height * 0.65,
+                    color: Colors.white,
+                    height: double.maxFinite,
                     child: ListView.builder(
+                      // shrinkWrap: true,
                       itemCount: state.data.length,
                       itemBuilder: (context, index) {
                         final _detail = state.data[index];

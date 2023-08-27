@@ -43,65 +43,78 @@ class CommonContainer extends StatelessWidget {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
-          Container(
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.only(
-                    bottomLeft: Radius.circular(12),
-                    bottomRight: Radius.circular(12))),
-            width: double.infinity,
-            padding: EdgeInsets.symmetric(
-              horizontal: horizontalPadding,
-              vertical: verticalPadding,
-            ),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                showTitleText
-                    ? Text(title,
-                        style: _textTheme.displaySmall!
-                            .copyWith(fontWeight: FontWeight.bold))
-                    : Container(),
-                showDetail
-                    ? Text(
-                        detail,
-                        style: _textTheme.titleLarge,
-                      )
-                    : Container(),
-                SizedBox(height: _height * 0.01),
-                showAccountSelection
-                    ? Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            accountTitle,
-                            style: const TextStyle(
-                              fontFamily: Fonts.poppin,
-                              fontWeight: FontWeight.w600,
-                              fontSize: 14,
-                              color: CustomTheme.lightTextColor,
-                            ),
-                          ),
-                          PrimaryAccountBox(),
-                        ],
-                      )
-                    : Container(),
-                SizedBox(height: _height * 0.01),
-                body,
-                SizedBox(height: _height * 0.03),
-                showRoundBotton
-                    ? CustomRoundedButtom(
-                        title: buttonName, onPressed: onButtonPressed)
-                    : Container(),
-              ],
-            ),
-          )
-        ],
+    return Container(
+      height: double.infinity,
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15.hp),
+      ),
+      child: Center(
+        child: Column(
+          children: [
+            ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.only(
+                          bottomLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12))),
+                  width: double.infinity,
+                  padding: EdgeInsets.symmetric(
+                    horizontal: horizontalPadding,
+                    vertical: verticalPadding,
+                  ),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      showTitleText
+                          ? Text(title,
+                              style: _textTheme.displaySmall!
+                                  .copyWith(fontWeight: FontWeight.bold))
+                          : Container(),
+                      showDetail
+                          ? Text(
+                              detail,
+                              style: _textTheme.titleLarge,
+                            )
+                          : Container(),
+                      SizedBox(height: _height * 0.01),
+                      showAccountSelection
+                          ? Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  accountTitle,
+                                  style: const TextStyle(
+                                    fontFamily: Fonts.poppin,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: 14,
+                                    color: CustomTheme.lightTextColor,
+                                  ),
+                                ),
+                                PrimaryAccountBox(),
+                              ],
+                            )
+                          : Container(),
+                      SizedBox(height: _height * 0.01),
+                      body,
+                      SizedBox(height: _height * 0.03),
+                      showRoundBotton
+                          ? CustomRoundedButtom(
+                              title: buttonName, onPressed: onButtonPressed)
+                          : Container(),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

@@ -233,7 +233,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         TextButton(
                           onPressed: () {
                             NavigationService.push(
-                                target: ActivateAccountPage());
+                                target: const ActivateAccountPage());
                           },
                           child: Text(
                             "Activate Account",

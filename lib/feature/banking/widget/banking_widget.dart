@@ -42,7 +42,7 @@ class _BankingWidgetState extends State<BankingWidget> {
         children: [
           Container(
               width: double.infinity,
-              height: _height * 0.7,
+              // height: _height * 0.7,
               child: Container(
                 child: BlocConsumer<AppServiceCubit, CommonState>(
                     listener: (context, state) {
@@ -80,6 +80,7 @@ class _BankingWidgetState extends State<BankingWidget> {
 
                     return GridView.builder(
                       // physics: const NeverScrollableScrollPhysics(),
+                      shrinkWrap: true,
                       itemCount: filteredItems.isEmpty ? 5 : itemName.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(

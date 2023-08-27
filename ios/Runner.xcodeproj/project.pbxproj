@@ -571,7 +571,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = 9WT4M3Z887;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.18;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -655,7 +655,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = 9WT4M3Z887;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.20;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -739,7 +739,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = 9WT4M3Z887;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.18;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2083,7 +2083,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.17;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2167,7 +2167,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.17;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2251,7 +2251,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.17;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2587,7 +2587,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.16;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2839,7 +2839,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.16;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3007,7 +3007,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.16;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3091,7 +3091,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3175,7 +3175,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -3259,7 +3259,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -4855,11 +4855,11 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Alankar Coop iSmart";
+				COOP_NAME = "Alangkar Coop iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -4940,11 +4940,11 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Alankar Coop iSmart";
+				COOP_NAME = "Alangkar Coop iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -5024,11 +5024,11 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Alankar Coop iSmart";
+				COOP_NAME = "Alangkar Coop iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.15;
+				FLUTTER_BUILD_NAME = 0.0.21;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = iSmart;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
