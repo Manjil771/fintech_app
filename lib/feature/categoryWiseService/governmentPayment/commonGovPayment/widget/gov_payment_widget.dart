@@ -1,35 +1,31 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
-class RevenuePaymentWidget extends StatefulWidget {
-  const RevenuePaymentWidget({super.key, required this.service});
+class GovPaymentWidget extends StatefulWidget {
+  const GovPaymentWidget({super.key, required this.service});
 
   final ServiceList service;
 
   @override
-  State<RevenuePaymentWidget> createState() => _RevenuePaymentWidgetState();
+  State<GovPaymentWidget> createState() => _GovPaymentWidgetState();
 }
 
-class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
+class _GovPaymentWidgetState extends State<GovPaymentWidget> {
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   final _ebpNumberController = TextEditingController();
@@ -46,7 +42,16 @@ class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
             _isLoading = false;
             NavigationService.pop();
           }
-
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Sorry",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
           if (state is CommonStateSuccess<UtilityResponseData>) {
             UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
@@ -93,6 +98,22 @@ class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
                             )
                             .toString()),
                     KeyValueTile(
+                        title: "Bank Name",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "bankName",
+                            )
+                            .toString()),
+                    KeyValueTile(
+                        title: "Office Name",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "officeName",
+                            )
+                            .toString()),
+                    KeyValueTile(
                         title: "Amount",
                         value: _response
                             .findValue(
@@ -116,6 +137,14 @@ class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
                               secondaryKey: "totalAmount",
                             )
                             .toString()),
+                    KeyValueTile(
+                        title: "Remarks",
+                        value: _response
+                            .findValue(
+                              primaryKey: "hashResponse",
+                              secondaryKey: "remarks",
+                            )
+                            .toString()),
                   ],
                 ),
               ));
@@ -123,7 +152,7 @@ class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
               showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: _response.status,
                   buttonCallback: () {
                     NavigationService.pop();
                   },
@@ -132,24 +161,29 @@ class _RevenuePaymentWidgetState extends State<RevenuePaymentWidget> {
           }
         },
         child: CommonContainer(
-          topbarName: 'Payment',
-          title: 'Revenue payment',
-          detail: 'Enter the required details to proceed further',
+          showAccountSelection: true,
+          topbarName: widget.service.serviceCategoryName,
+          title: widget.service.service,
+          detail: widget.service.instructions,
           showDetail: true,
           body: Form(
             key: _formKey,
             child: Column(
               children: [
                 CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   controller: _ebpNumberController,
-                  title: 'EBP Number/Request Code',
-                  hintText: 'XXXX-XXXXX',
-                  validator: (value) =>
-                      FormValidator.validateFieldNotEmpty(value, 'EBP Number'),
+                  title: widget.service.labelName,
+                  hintText: widget.service.labelSample,
+                  validator: (value) => FormValidator.validateFieldNotEmpty(
+                      value, widget.service.labelName),
                 ),
                 CustomTextField(
-                  validator: (value) =>
-                      FormValidator.validateFieldNotEmpty(value, 'Amount'),
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
+                  validator: (value) => FormValidator.validateAmount(
+                      val: value.toString(),
+                      maxAmount: widget.service.maxValue,
+                      minAmount: widget.service.maxValue),
                   controller: _amountController,
                   textInputType: TextInputType.number,
                   title: 'Amount',

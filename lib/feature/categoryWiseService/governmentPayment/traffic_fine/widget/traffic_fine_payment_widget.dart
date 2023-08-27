@@ -11,11 +11,15 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/possible_date_traffic_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+
+import 'possible_date_traffic_widget.dart';
 
 class TrafficFinePaymentWidget extends StatefulWidget {
   final ServiceList service;
@@ -34,6 +38,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
   final TextEditingController _selectedDistrictController =
       TextEditingController();
   final TextEditingController dateController = TextEditingController();
+  String? selectedDateValue;
+
   final TextEditingController chitNumberController = TextEditingController();
   String? selectedDistrictValue;
   String? selectedProvinceValue;
@@ -74,10 +80,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                   primaryKey: "hashResponse",
                   secondaryKey: "formattedFinalAmount")
               .toString();
-
-          // print(
-          //   "final amsdasjdoasnsda fd kasdsdis  ...${myAmount.replaceAll("NPR ", "")}",
-          // );
 
           final serviceCharge = _response
               .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
@@ -267,8 +269,29 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                             }
                           },
                         ),
+              // CustomTextField(
+              //   controller: dateController,
+              //   readOnly: true,
+              //   onTap: () {
+              //     NavigationService.push(
+              //       target: PossibleDatetrafficPage(
+              //         service: widget.service,
+              //         onChanged: (val) {
+
+              //           dateController.text = val.title;
+              //           selectedDateValue = val.id;
+              //           // selectedBank = val;
+              //           setState(() {});
+              //         },
+              //       ),
+              //     );
+              //   },
+              //   title: "Date",
+              //   hintText: "2079/80",
+              //   validator: (value) =>
+              //       FormValidator.validateFieldNotEmpty(value, "Date"),
+              // ),
               CustomTextField(
-                autovalidateMode: AutovalidateMode.onUserInteraction,
                 controller: dateController,
                 title: "Date",
                 hintText: "2079/80",

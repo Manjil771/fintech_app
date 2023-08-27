@@ -154,7 +154,7 @@ class CoOperativeValue {
 
     coOperativeName: 'Uttarganga',
     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-    splashImage: "assets/uttarganga/uttarganga_splash.png",
+    splashImage: "assets/uttarganga/uttarganga_splash_2.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.uttarganga",
     appStoreID: "",
@@ -434,6 +434,36 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/macchaPuchhre/macchaPuchhre_logo.png',
 
     splashImage: "assets/macchaPuchhre/macchaPuchhre_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative nawajoshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/nawajosh/nawajosh_banner.png",
+
+    backgroundImage: "assets/nawajosh/nawajosh_background.png",
+    clientCode: 'PWXSUF8B6F',
+    clientSecret: "203542",
+    coOperativeName: 'nawajosh',
+    coOperativeLogo: 'assets/nawajosh/nawajosh_logo.png',
+
+    splashImage: "assets/nawajosh/nawajosh_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative fewaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/fewa/fewa_banner.png",
+
+    backgroundImage: "assets/fewa/fewa_background.png",
+    clientCode: 'HEWD6NROMC',
+    clientSecret: "156610",
+    coOperativeName: 'fewa',
+    coOperativeLogo: 'assets/fewa/fewa_logo.png',
+
+    splashImage: "assets/fewa/fewa_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

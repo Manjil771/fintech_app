@@ -22,7 +22,9 @@ class Slugs {
   static String worldlinkPayment = "worldlink_online_topup";
 
 //Tv
-  static String netTvOnlineTopup = "net_tv_online_topup";
+  // static String netTvOnlineTopup = "net_tv_online_topup";
+  static String netTvOnlineTopup = "nettv_online_payment";
+
   static String simtvOnlineTopup = "simtv_online_topup";
   static String prabhutvTopup = "prabhutv_topup";
   static String prabhutvOttTopup = "prabhutv_ott_topup";

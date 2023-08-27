@@ -25,13 +25,15 @@ class CustomTheme {
   static const Color newdhaulagiriColor = Color(0xFF662D91);
   static const Color shreejanamukhiColor = Color(0xFF017828);
   static const Color uttargangaColor = Color(0xFF015017);
-  static const Color ekataColor = Color(0xFFEAF805);
+  static const Color ekataColor = Color(0xFF2C2087);
   static const Color bishalColor = Color(0xFF31318E);
   static const Color sardikholaColor = Color(0xFF004B1C);
   static const Color kripaluColor = Color(0xFF009444);
   static const Color sarbahitColor = Color(0xFF26449F);
   static const Color bhanjyangColor = Color(0xFF059445);
   static const Color macchaPuchreColor = Color(0xFF188453);
+  static const Color navajoshColor = Color(0xFF017828);
+  static const Color fewaColor = Color(0xFF00984A);
 
   static Color primaryColor = sarbahitColor;
 

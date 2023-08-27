@@ -122,13 +122,15 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                             detailROw(
                                                 context,
                                                 "Available Balance",
-                                                _detail.accountDetail[index]
-                                                    .availableBalance),
+                                                "NPR " +
+                                                    _detail.accountDetail[index]
+                                                        .availableBalance),
                                             detailROw(
                                                 context,
                                                 "Actual Balance",
-                                                _detail.accountDetail[index]
-                                                    .actualBalance),
+                                                "NPR " +
+                                                    _detail.accountDetail[index]
+                                                        .actualBalance),
                                             detailROw(context, "Client Code",
                                                 "${_detail.accountDetail[index].clientCode}"),
                                             detailROw(
