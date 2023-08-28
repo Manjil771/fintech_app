@@ -466,8 +466,25 @@ class CoOperativeValue {
     splashImage: "assets/fewa/fewa_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative matribhumiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/matribhumi/matribhumi_banner.png",
 
-// //  DEV TEST700746
+    backgroundImage: "assets/matribhumi/matribhumi_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "201110",
+    // clientCode: 'NINX3DYNIB',
+    // clientSecret: "156610",
+    coOperativeName: 'matribhumi',
+    coOperativeLogo: 'assets/matribhumi/matribhumi_logo.png',
+
+    splashImage: "assets/matribhumi/matribhumi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+//  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
     bannerImage: "assets/images/ismart_banner.png",
@@ -482,7 +499,22 @@ class CoOperativeValue {
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
   );
+// static final CoOperative devLive = CoOperative(
+//     appStoreID: "",
+//     packageName: "",
+//     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+//     bannerImage: "assets/sanakishan/sanakishan_banner.png",
 
+//     backgroundImage: "assets/sanakishan/sanakishan_background.png",
+//     //TODO need to update client id and password
+//     clientCode: 'EHVNI7CZJ3',
+//     clientSecret: "126489",
+//     coOperativeName: 'sanakishan',
+//     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
+
+//     splashImage: "assets/sanakishan/sanakishan_splash.png",
+//     primaryColor: const Color(0xFF0b67bb),
+//   );
   // // // // DEV TEST70074
   // static final CoOperative development = CoOperative(
   //   backgroundImage: "assets/images/ismart_background_image.jpg",
