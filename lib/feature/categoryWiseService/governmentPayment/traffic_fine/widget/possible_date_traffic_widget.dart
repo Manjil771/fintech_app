@@ -71,7 +71,7 @@ class _PossibleDatetrafficPageState extends State<PossibleDatetrafficPage> {
               return const CommonLoadingWidget();
             }
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              final _sectors = state.data.details;
+              final _sectors = state.data.findValue(primaryKey: "data");
               return SearchWidgets(
                 onChanged: widget.onChanged,
                 ignoreValue: null,
@@ -81,18 +81,14 @@ class _PossibleDatetrafficPageState extends State<PossibleDatetrafficPage> {
                   _sectors.length,
                   (index) {
                     return KeyValue(
-                      title: _sectors[index].title.toString(),
-                      value: _sectors[index].value.toString(),
+                      title: _sectors[index]["display"].toString(),
+                      value: _sectors[index]["value"].toString(),
                     );
                   },
                 ),
               );
             } else if (state is CommonError) {
               return Container();
-              // return WalletCommonErrorWidget(
-              //   message: state.message,
-              //   isNoConnection: state.isNoConnection,
-              // );
             } else {
               return Container(
                 child: Text(state.toString()),

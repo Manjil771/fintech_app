@@ -269,35 +269,34 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                             }
                           },
                         ),
-              // CustomTextField(
-              //   controller: dateController,
-              //   readOnly: true,
-              //   onTap: () {
-              //     NavigationService.push(
-              //       target: PossibleDatetrafficPage(
-              //         service: widget.service,
-              //         onChanged: (val) {
-
-              //           dateController.text = val.title;
-              //           selectedDateValue = val.id;
-              //           // selectedBank = val;
-              //           setState(() {});
-              //         },
-              //       ),
-              //     );
-              //   },
-              //   title: "Date",
-              //   hintText: "2079/80",
-              //   validator: (value) =>
-              //       FormValidator.validateFieldNotEmpty(value, "Date"),
-              // ),
               CustomTextField(
                 controller: dateController,
+                readOnly: true,
+                onTap: () {
+                  NavigationService.push(
+                    target: PossibleDatetrafficPage(
+                      service: widget.service,
+                      onChanged: (val) {
+                        dateController.text = val.title;
+                        selectedDateValue = val.id;
+                        // selectedBank = val;
+                        setState(() {});
+                      },
+                    ),
+                  );
+                },
                 title: "Date",
                 hintText: "2079/80",
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Date"),
               ),
+              // CustomTextField(
+              //   controller: dateController,
+              //   title: "Date",
+              //   hintText: "2079/80",
+              //   validator: (value) =>
+              //       FormValidator.validateFieldNotEmpty(value, "Date"),
+              // ),
               CustomTextField(
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 title: "Chit No.",
