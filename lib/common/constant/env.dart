@@ -491,7 +491,7 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
-    clientSecret: "201110",
+    clientSecret: "126489",
     splashImage: "assets/images/ismart_splash.jpg",
 
     primaryColor: const Color(0xFF010C80),
