@@ -13,6 +13,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khane_pani_screen.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/screen/kukl_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/bluebook/screen/bluebook_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/commonGovPayment/screen/gov_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
@@ -216,6 +217,11 @@ class _CategoriesWiseServicesWidgetState
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(
           target: KhanePaniPage(
+        service: servicess,
+      ));
+    } else if (uniqueIdentifier.toLowerCase() == Slugs.kukl.toLowerCase()) {
+      NavigationService.push(
+          target: KuklPaymentPage(
         service: servicess,
       ));
     }
