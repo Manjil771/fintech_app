@@ -39,7 +39,7 @@ class _SplashWidgetState extends State<SplashWidget> {
           //   NavigationService.pushReplacement(target: const LoginPage());
           // }
 
-          Future.delayed(const Duration(milliseconds: 500), () {
+          Future.delayed(const Duration(seconds: 1), () {
             final _updateValue = RepositoryProvider.of<StartUpRepository>(
                     NavigationService.context)
                 .appUpdate;

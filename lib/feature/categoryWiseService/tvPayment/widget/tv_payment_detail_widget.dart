@@ -111,7 +111,7 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
               if (_response.code == "M0000" ||
                   _response.status.toLowerCase() == "success" ||
                   _response.status == "M0000") {
-                NavigationService.push(
+                NavigationService.pushReplacement(
                     target: CommonTransactionSuccessPage(
                         body: Column(
                           children: [
@@ -222,10 +222,12 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                           title: "Balance",
                           value: hashResponse.balance,
                         ),
+                  if (_changePackage == false &&
+                      widget.detailFetchData.details.tvPackages.isEmpty)
+                    KeyValueTile(title: "Amount", value: getAmount()),
                   if (_changePackage == true)
                     Column(
                       children: [
-                        KeyValueTile(title: "Amount", value: getAmount()),
                         KeyValueTile(
                             title: "Package",
                             value: selectedPackageController.text),
@@ -245,25 +247,26 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                               ),
                       ],
                     ),
-                  CustomTextField(
-                    controller: selectedPackageController,
-                    title: "Select Package",
-                    readOnly: true,
-                    onTap: () {
-                      NavigationService.push(
-                          target: TvPackageSearchWidgets(
-                        onChanged: (value) {
-                          selectedPackageController.text =
-                              value.text.toString();
-                          selectedAmount.text = value.amount ?? "0";
-                          selectedPackageId.text = value.id ?? "";
-                          setState(() {});
-                          _changePackage = true;
-                        },
-                        tvpackage: tvPackages,
-                      ));
-                    },
-                  )
+                  if (widget.detailFetchData.details.tvPackages.isNotEmpty)
+                    CustomTextField(
+                      controller: selectedPackageController,
+                      title: "Select Package",
+                      readOnly: true,
+                      onTap: () {
+                        NavigationService.push(
+                            target: TvPackageSearchWidgets(
+                          onChanged: (value) {
+                            selectedPackageController.text =
+                                value.text.toString();
+                            selectedAmount.text = value.amount ?? "0";
+                            selectedPackageId.text = value.id ?? "";
+                            setState(() {});
+                            _changePackage = true;
+                          },
+                          tvpackage: tvPackages,
+                        ));
+                      },
+                    )
                 ],
               ),
             ],
