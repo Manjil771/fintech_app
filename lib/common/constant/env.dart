@@ -501,6 +501,23 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative batikaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/batika/batika_banner.png",
+
+    backgroundImage: "assets/batika/batika_background.png",
+    clientCode: '276POZRR0I',
+    clientSecret: "144312",
+
+    coOperativeName: 'Batika',
+    coOperativeLogo: 'assets/batika/batika_logo.png',
+
+    splashImage: "assets/batika/batika_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
