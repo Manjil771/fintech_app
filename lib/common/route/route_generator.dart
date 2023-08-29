@@ -29,6 +29,7 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_trans
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
+import 'package:ismart/feature/setting/screen/setting_page.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_page.dart';
@@ -189,6 +190,11 @@ class RouteGenerator {
       case Routes.forgotPin:
         return MaterialPageRoute(
           builder: (_) => const ResetPinPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.settingPage:
+        return MaterialPageRoute(
+          builder: (_) => const SettingPage(),
           settings: RouteSettings(name: settings.name),
         );
 

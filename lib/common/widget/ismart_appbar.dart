@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -75,19 +76,24 @@ AppBar myAppbar({bool showBackButton = false}) {
     ),
     actions: [
       InkWell(
-        onTap: () {
-          // Get.to(() => const NotificationScreen());
-        },
+        onTap: () {},
         child: SvgPicture.asset(
           Assets.notificationIcon,
+          color: CustomTheme.primaryColor,
           height: _height * 0.025,
         ),
       ),
-      Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 18.0),
-        child: SvgPicture.asset(
-          Assets.searchIcon,
-          height: _height * 0.025,
+      InkWell(
+        onTap: () {
+          NavigationService.pushNamed(routeName: Routes.settingPage);
+        },
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          child: SvgPicture.asset(
+            Assets.settingIcon,
+            color: CustomTheme.primaryColor,
+            height: _height * 0.025,
+          ),
         ),
       ),
     ],
