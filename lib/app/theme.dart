@@ -41,7 +41,9 @@ class CustomTheme {
   static const Color bhugolColor = Color(0xFF009444);
   static const Color nepalbachatColor = Color(0xFF282D7C);
 
-  static Color primaryColor = nepalbachatColor;
+
+  static Color primaryColor = macchaPuchreColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
