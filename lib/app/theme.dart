@@ -36,8 +36,11 @@ class CustomTheme {
   static const Color fewaColor = Color(0xFF00984A);
   static const Color sanakishanColor = Color(0xFF009A4E);
   static const Color matribhumiColor = Color(0xFF00652E);
+  static const Color gandakibesiColor = Color(0xFF006838);
+  static const Color batikaColor = Color(0xFF00A651);
 
-  static Color primaryColor = ekataColor;
+  static Color primaryColor = batikaColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

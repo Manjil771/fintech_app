@@ -152,17 +152,6 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                 // : Container(),
                 ,
                 CommonDetailBox(
-                  onBoxPressed: () {
-                    RepositoryProvider.of<UserRepository>(context).logout();
-                    NavigationService.pushNamedAndRemoveUntil(
-                      routeName: Routes.loginPage,
-                    );
-                  },
-                  leadingIcon: Assets.logoutIcon,
-                  title: "Logout",
-                  detail: "Logout from this application.",
-                ),
-                CommonDetailBox(
                   onBoxPressed: () async {
                     final _isUpdateAvailable =
                         await InAppUpdateUtils.isUpdateAvailable;
@@ -185,6 +174,17 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                   leadingIcon: Assets.downloadIcon,
                   title: "Check for Updates",
                   detail: "Never miss out any update.",
+                ),
+                CommonDetailBox(
+                  onBoxPressed: () {
+                    RepositoryProvider.of<UserRepository>(context).logout();
+                    NavigationService.pushNamedAndRemoveUntil(
+                      routeName: Routes.loginPage,
+                    );
+                  },
+                  leadingIcon: Assets.logoutIcon,
+                  title: "Logout",
+                  detail: "Logout from this application.",
                 ),
                 const SizedBox(
                   height: 20,

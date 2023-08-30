@@ -17,6 +17,7 @@ class SettingWidget extends StatelessWidget {
           showDetail: false,
           showTitleText: false,
           showRoundBotton: false,
+          verticalPadding: 0,
           topbarName: "Settings",
           body: Column(
             children: [
@@ -41,7 +42,7 @@ class SettingWidget extends StatelessWidget {
               //     onBoxPressed: () {},
               //     detail: "Add Favourite Account ",
               //     title: "Favourite Account"),
-              const Divider(thickness: 1),
+              // const Divider(thickness: 1),
               CommonDetailBox(
                   leadingIcon: "assets/icons/pin-code-svgrepo-com 1.svg",
                   onBoxPressed: () {
@@ -61,7 +62,7 @@ class SettingWidget extends StatelessWidget {
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
-              // const Divider(thickness: 1),
+              const Divider(thickness: 1),
               // CommonDetailBox(
               //     leadingIcon: "assets/icons/biometricsetup.svg",
               //     onBoxPressed: () {},

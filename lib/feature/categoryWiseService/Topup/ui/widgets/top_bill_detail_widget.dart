@@ -99,8 +99,10 @@ class TopupBillDetailWidget extends StatelessWidget {
           if (state is CommonError) {
             showPopUpDialog(
               context: context,
-              message: state.message,
-              title: "Error",
+              message: state.message.contains("Internal Server Error")
+                  ? "Service is Currently unavailable"
+                  : state.message,
+              title: "Failure",
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();

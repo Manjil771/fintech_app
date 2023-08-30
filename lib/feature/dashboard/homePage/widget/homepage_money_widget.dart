@@ -47,32 +47,6 @@ class HomePageMoneyWidget extends StatelessWidget {
                 child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [
-                    InkWell(
-                      onTap: () {
-                        NavigationService.pushNamed(
-                            routeName: Routes.reveiveMoney);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              Assets.reveiceMoneyIcon,
-                              height: 20.hp,
-                              fit: BoxFit.fitHeight,
-                            ),
-                            SizedBox(height: 5.hp),
-                            Text(
-                              "Load Money",
-                              style: Theme.of(context).textTheme.labelMedium,
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            )
-                          ],
-                        ),
-                      ),
-                    ),
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: filteredItems.length,
@@ -89,8 +63,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                                 .contains("bank_transfer".toLowerCase())) {
                               NavigationService.pushNamed(
                                   routeName: Routes.anyBank);
-                            }
-                            if (filteredItems[index]
+                            } else if (filteredItems[index]
                                 .uniqueIdentifier
                                 .toString()
                                 .toLowerCase()
@@ -113,13 +86,8 @@ class HomePageMoneyWidget extends StatelessWidget {
                               NavigationService.pushNamed(
                                   routeName: Routes.listWalletScreen);
                             }
-                            // else {
-                            //   NavigationService.pushNamed(
-                            //       routeName: Routes.mobileTopup);
-                            // }
                           },
                           child: Container(
-                            width: 80.wp,
                             padding: const EdgeInsets.all(10.0),
                             child: Column(
                               children: [
@@ -134,8 +102,10 @@ class HomePageMoneyWidget extends StatelessWidget {
                                 Center(
                                   child: Text(
                                     filteredItems[index].name,
-                                    style:
-                                        Theme.of(context).textTheme.labelMedium,
+                                    style: Theme.of(context)
+                                        .textTheme
+                                        .labelMedium!
+                                        .copyWith(fontSize: 12),
                                     textAlign: TextAlign.center,
                                     overflow: TextOverflow.ellipsis,
                                     maxLines: 1,
@@ -145,18 +115,36 @@ class HomePageMoneyWidget extends StatelessWidget {
                             ),
                           ),
                         );
-
-                        CustomImageBox(
-                            shadow: false,
-                            imageHeight: 10,
-                            backgroundColor: Colors.white,
-                            isNetworkImage: false,
-                            isSvgPicture: true,
-                            title: filteredItems[index].name,
-                            image:
-                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                    filteredItems[index].imageUrl.toString());
                       },
+                    ),
+                    InkWell(
+                      onTap: () {
+                        NavigationService.pushNamed(
+                            routeName: Routes.reveiveMoney);
+                      },
+                      child: Padding(
+                        padding: const EdgeInsets.all(10.0),
+                        child: Column(
+                          children: [
+                            SvgPicture.asset(
+                              Assets.reveiceMoneyIcon,
+                              height: 20.hp,
+                              fit: BoxFit.fitHeight,
+                            ),
+                            SizedBox(height: 5.hp),
+                            Text(
+                              "Load Money",
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .labelMedium!
+                                  .copyWith(fontSize: 12),
+                              textAlign: TextAlign.center,
+                              overflow: TextOverflow.ellipsis,
+                              maxLines: 1,
+                            )
+                          ],
+                        ),
+                      ),
                     ),
                   ],
                 ),
