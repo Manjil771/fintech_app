@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.21+21 ##24th Aug - Uttarganga, Ekata
+version: 0.0.22+22 ##24th Aug - Uttarganga, Ekata
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -98,26 +98,26 @@ flutter:
     - assets/
     - assets/icons/
     - assets/images/
-    - assets/janadhara/
-    - assets/sahakarya/
-    - assets/kabil/
-    - assets/uttarganga/
-    - assets/abhiyan/
-    - assets/kamana/
-    - assets/arthaBag/
-    - assets/gomaGanesh/
-    - assets/alankar/
-    - assets/manank/
-    - assets/shreeaaju/
-    - assets/shreemitra/
-    - assets/kipoo/
-    - assets/suryadev/
-    - assets/uddhamshil/
-    - assets/navaprabhat/
-    - assets/vyas/
-    - assets/newdhaulagiri/
-    - assets/shreejanamukhi/
-    - assets/bishal/
+    # - assets/janadhara/
+    # - assets/sahakarya/
+    # - assets/kabil/
+    # - assets/uttarganga/
+    # - assets/abhiyan/
+    # - assets/kamana/
+    # - assets/arthaBag/
+    # - assets/gomaGanesh/
+    # - assets/alankar/
+    # - assets/manank/
+    # - assets/shreeaaju/
+    # - assets/shreemitra/
+    # - assets/kipoo/
+    # - assets/suryadev/
+    # - assets/uddhamshil/
+    # - assets/navaprabhat/
+    # - assets/vyas/
+    # - assets/newdhaulagiri/
+    # - assets/shreejanamukhi/
+    # - assets/bishal/
     - assets/ekata/
     - assets/sardikhola/
     - assets/kripalu/
@@ -129,6 +129,15 @@ flutter:
     - assets/matribhumi/
     - assets/gandakibesi/
     - assets/batika/
+
+    # - assets/sardikhola/
+    # - assets/kripalu/
+    # - assets/sarbahit/
+    # - assets/bhanjyang/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
 
 
   fonts:
