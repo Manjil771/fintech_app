@@ -37,7 +37,7 @@ class CustomTheme {
   static const Color sanakishanColor = Color(0xFF009A4E);
   static const Color matribhumiColor = Color(0xFF00652E);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = ekataColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
