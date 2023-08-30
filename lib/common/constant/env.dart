@@ -517,6 +517,22 @@ class CoOperativeValue {
     splashImage: "assets/batika/batika_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative bhugolCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/bhugol/bhugol_banner.png",
+
+    backgroundImage: "assets/bhugol/bhugol_background.png",
+    clientCode: 'DSZQVBJPBH',
+    clientSecret: "211286",
+
+    coOperativeName: 'Bhugol',
+    coOperativeLogo: 'assets/bhugol/bhugol_logo.png',
+
+    splashImage: "assets/bhugol/bhugol_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
