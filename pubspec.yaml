@@ -118,23 +118,23 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    - assets/ekata/
-    - assets/sardikhola/
-    - assets/kripalu/
-    - assets/sarbahit/
-    - assets/bhanjyang/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/fewa/
-    - assets/matribhumi/
-    - assets/gandakibesi/
-    - assets/batika/
-
+    # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
+    # - assets/gandakibesi/
+    # - assets/batika/
+
+    # - assets/sardikhola/
+    # - assets/kripalu/
+    # - assets/sarbahit/
+    # - assets/bhanjyang/
+    - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
     # - assets/matribhumi/

@@ -39,8 +39,7 @@ class CustomTheme {
   static const Color gandakibesiColor = Color(0xFF006838);
   static const Color batikaColor = Color(0xFF00A651);
 
-  static Color primaryColor = batikaColor;
-
+  static Color primaryColor = macchaPuchreColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
