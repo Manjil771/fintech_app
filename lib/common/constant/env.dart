@@ -533,7 +533,22 @@ class CoOperativeValue {
     splashImage: "assets/bhugol/bhugol_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative nepalBachatCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/nepalbachat/nepalbachat_banner.png",
 
+    backgroundImage: "assets/nepalbachat/nepalbachat_background.png",
+    clientCode: 'VRSZGPX91G',
+    clientSecret: "182223",
+
+    coOperativeName: 'Nepal Saving and Credit Co-Operative Ltd.',
+    coOperativeLogo: 'assets/nepalbachat/nepalbachat_logo.png',
+
+    splashImage: "assets/nepalbachat/nepalbachat_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
