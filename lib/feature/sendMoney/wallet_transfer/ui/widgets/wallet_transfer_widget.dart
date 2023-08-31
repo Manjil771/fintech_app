@@ -4,6 +4,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
@@ -22,9 +23,9 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
-        showDetail: false,
+        showDetail: true,
         title: "Wallet Transfer",
-        detail: "Load Money to your preffered wallet account",
+        detail: "Load Money to your preferred wallet account",
         showRoundBotton: false,
         topbarName: "Send Money",
         showTitleText: true,
@@ -60,7 +61,7 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
                       ),
                     );
                   } else if (state is CommonError) {
-                    return Text(state.message);
+                    return NoDataScreen(title: "No Wallet Found", details: "");
                   }
                   return Container();
                 },
