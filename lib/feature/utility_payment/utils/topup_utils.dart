@@ -1,3 +1,4 @@
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
 
 class TopUpUtils {
@@ -11,5 +12,12 @@ class TopUpUtils {
     } else {
       return "";
     }
+  }
+
+  ServiceList getTopUpServiceImage(
+      {required String type, required CategoryList categories}) {
+    final serviceType = categories.services
+        .where((element) => element.uniqueIdentifier == type);
+    return serviceType.first;
   }
 }

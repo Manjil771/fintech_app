@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
@@ -10,6 +11,7 @@ import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -58,6 +60,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -86,15 +89,31 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                       Expanded(
                         child: CustomTextField(
                           title: "Mobile Number",
+                          autovalidateMode: AutovalidateMode.onUserInteraction,
                           hintText: "xxxxxxxxxx",
                           controller: _mobileNumberController,
                           validator: FormValidator.validatePhoneNumber,
                           suffixIcon: Icons.phone_android_outlined,
+                          onChanged: (value) {
+                            if (value.length == 10) {
+                              final String topupType = TopUpUtils()
+                                  .getTopUpServiceType(type: _topUpType.value);
+                              TopUpUtils().getTopUpServiceImage(
+                                  type: topupType,
+                                  categories: widget.categoryList);
+                            }
+                            setState(() {});
+                          },
                           showSearchIcon: true,
                           onSuffixPressed: () async {
                             String phoneNumber =
                                 await SecureStorageService.appPhoneNumber;
                             _mobileNumberController.text = phoneNumber;
+                            TopUpUtils().getTopUpServiceImage(
+                                type: TopUpUtils().getTopUpServiceType(
+                                    type: _topUpType.value),
+                                categories: widget.categoryList);
+                            setState(() {});
                           },
                         ),
                       ),
@@ -109,6 +128,36 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                       // )
                     ],
                   ),
+                  if (_mobileNumberController.text.length == 10)
+                    Row(
+                      children: [
+                        CustomCachedNetworkImage(
+                            url: RepositoryProvider.of<CoOperative>(context)
+                                    .baseUrl +
+                                "/ismart/serviceIcon/" +
+                                TopUpUtils()
+                                    .getTopUpServiceImage(
+                                        type: TopUpUtils().getTopUpServiceType(
+                                            type: _topUpType.value),
+                                        categories: widget.categoryList)
+                                    .icon
+                                    .toString(),
+                            height: 50.hp,
+                            fit: BoxFit.contain),
+                        SizedBox(width: 20.wp),
+                        Text(
+                            TopUpUtils()
+                                .getTopUpServiceImage(
+                                    type: TopUpUtils().getTopUpServiceType(
+                                        type: _topUpType.value),
+                                    categories: widget.categoryList)
+                                .service
+                                .toString(),
+                            style: _textTheme.labelLarge!
+                                .copyWith(fontWeight: FontWeight.w700))
+                      ],
+                    ),
+
                   SizedBox(height: _height * 0.01),
                   CustomTextField(
                     title: "Amount",
