@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -68,6 +69,9 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
+    if (kDebugMode) {
+      _hasExistingLoginSaved.value = false;
+    }
   }
   // 9803435443
   // 70074
@@ -176,9 +180,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.02),
                     ValueListenableBuilder<bool>(
-                        valueListenable: _hasExistingLoginSaved,
-                        builder: (context, val, _) {
-                          // if (!val) {
+                      valueListenable: _hasExistingLoginSaved,
+                      builder: (context, val, _) {
+                        if (!val) {
                           return CustomTextField(
                             title: "Mobile Number",
                             hintText: "Mobile Number",
@@ -202,10 +206,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                               // }
                             },
                           );
-                          // } else {
-                          //   return Container();
-                          // }
-                        }),
+                        } else {
+                          return Container();
+                        }
+                      },
+                    ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
                       title: "Security pin",
