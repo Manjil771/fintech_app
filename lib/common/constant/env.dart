@@ -549,6 +549,55 @@ class CoOperativeValue {
     splashImage: "assets/nepalbachat/nepalbachat_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative nilgiriCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/nilgiri/nilgiri_banner.png",
+
+    backgroundImage: "assets/nilgiri/nilgiri_background.png",
+    clientCode: 'HTAENKZ3DS',
+    clientSecret: "126430",
+
+    coOperativeName: 'Nilgiri',
+    coOperativeLogo: 'assets/nilgiri/nilgiri_logo.png',
+
+    splashImage: "assets/nilgiri/nilgiri_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative davisfallCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/davisfall/davisfall_banner.png",
+
+    backgroundImage: "assets/davisfall/davisfall_background.png",
+    clientCode: 'R0CN59B1JQ',
+    clientSecret: "193088",
+
+    coOperativeName: 'davisfall',
+    coOperativeLogo: 'assets/davisfall/davisfall_logo.png',
+
+    splashImage: "assets/davisfall/davisfall_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative sancharCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sanchar/sanchar_banner.png",
+
+    backgroundImage: "assets/sanchar/sanchar_background.png",
+    clientCode: 'JGDS3TK6VO',
+    clientSecret: "113528",
+
+    coOperativeName: 'sanchar',
+    coOperativeLogo: 'assets/sanchar/sanchar_logo.png',
+
+    splashImage: "assets/sanchar/sanchar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -564,6 +613,7 @@ class CoOperativeValue {
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
   );
+
 // static final CoOperative devLive = CoOperative(
 //     appStoreID: "",
 //     packageName: "",

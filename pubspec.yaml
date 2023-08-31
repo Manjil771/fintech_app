@@ -101,7 +101,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -142,6 +142,9 @@ flutter:
     - assets/batika/
     - assets/bhugol/
     - assets/nepalbachat/
+    - assets/nilgiri/
+    - assets/davisfall/
+    - assets/sanchar/
 
 
 
