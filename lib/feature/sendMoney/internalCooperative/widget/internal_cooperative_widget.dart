@@ -226,7 +226,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             ),
           ),
           topbarName: "Send Money",
-          showDetail: false,
+          showDetail: true,
           onButtonPressed: () {
             if (_formKey.currentState!.validate() && internalBranch != null) {
               print(internalBranch);

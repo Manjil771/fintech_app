@@ -1,4 +1,4 @@
-//Ui test for uttarganga
+// //Ui test for uttarganga
 
 // import 'package:easy_localization/easy_localization.dart';
 // import 'package:flutter/material.dart';
@@ -91,7 +91,7 @@
 //                                           style: _textTheme.headlineMedium
 //                                               ?.copyWith(
 //                                             color: CustomTheme.white,
-//                                             fontSize: 14,
+//                                             fontSize: 12,
 //                                             fontWeight: FontWeight.bold,
 //                                           ),
 //                                         ),
@@ -100,33 +100,35 @@
 //                                           overflow: TextOverflow.ellipsis,
 //                                           style: _textTheme.headlineMedium
 //                                               ?.copyWith(
+//                                             fontSize: 13,
 //                                             color: CustomTheme.white,
 //                                             fontWeight: FontWeight.bold,
 //                                           ),
 //                                         ),
 //                                       ],
 //                                     ),
-//                                     Expanded(
-//                                       child: InkWell(
-//                                         onTap: () {
-//                                           NavigationService.push(
-//                                               target: QRScannerScreens());
-//                                         },
-//                                         child: Align(
-//                                           alignment: Alignment.centerRight,
-//                                           child: Padding(
-//                                             padding:
-//                                                 EdgeInsets.only(right: 4.hp),
-//                                             child: SvgPicture.asset(
-//                                               Assets.qrCodeIcon,
-//                                               height: 30.hp,
-//                                             ),
-//                                           ),
-//                                         ),
-//                                       ),
-//                                     )
+//                                     // Expanded(
+//                                     //   child: InkWell(
+//                                     //     onTap: () {
+//                                     //       NavigationService.push(
+//                                     //           target: QRScannerScreens());
+//                                     //     },
+//                                     //     child: Align(
+//                                     //       alignment: Alignment.centerRight,
+//                                     //       child: Padding(
+//                                     //         padding:
+//                                     //             EdgeInsets.only(right: 4.hp),
+//                                     //         child: SvgPicture.asset(
+//                                     //           Assets.qrCodeIcon,
+//                                     //           height: 30.hp,
+//                                     //         ),
+//                                     //       ),
+//                                     //     ),
+//                                     //   ),
+//                                     // )
 //                                   ],
 //                                 ),
+//                                 SizedBox(height: 10.hp),
 //                                 // const Spacer(),
 //                                 Row(
 //                                   children: [
@@ -147,7 +149,7 @@
 //                                               style: _textTheme.titleSmall
 //                                                   ?.copyWith(
 //                                                 color: CustomTheme.white,
-//                                                 fontSize: 11,
+//                                                 fontSize: 10,
 //                                                 fontWeight: FontWeight.bold,
 //                                               ),
 //                                             ),
@@ -198,6 +200,7 @@
 //                                             "Actual Balance",
 //                                             style: _textTheme.titleSmall!
 //                                                 .copyWith(
+//                                                     fontSize: 11,
 //                                                     color: CustomTheme.white),
 //                                           ),
 //                                           Text(
@@ -206,6 +209,7 @@
 //                                                 : "XXXXXXXXX",
 //                                             style: _textTheme.titleLarge!
 //                                                 .copyWith(
+//                                                     fontSize: 12,
 //                                                     fontWeight: FontWeight.bold,
 //                                                     color: CustomTheme.white),
 //                                           ),
@@ -232,6 +236,7 @@
 //                                             "Available Balance",
 //                                             style: _textTheme.titleSmall!
 //                                                 .copyWith(
+//                                                     fontSize: 11,
 //                                                     color: CustomTheme.white),
 //                                           ),
 //                                           Text(
@@ -240,6 +245,7 @@
 //                                                 : "XXXXXXXXX",
 //                                             style: _textTheme.titleLarge!
 //                                                 .copyWith(
+//                                                     fontSize: 12,
 //                                                     fontWeight: FontWeight.bold,
 //                                                     color: CustomTheme.white),
 //                                           ),
@@ -423,7 +429,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                           style: _textTheme.headlineMedium
                                               ?.copyWith(
                                             color: CustomTheme.white,
-                                            fontSize: 14,
+                                            fontSize: 12,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
@@ -432,31 +438,32 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                           overflow: TextOverflow.ellipsis,
                                           style: _textTheme.headlineMedium
                                               ?.copyWith(
+                                            fontSize: 14,
                                             color: CustomTheme.white,
                                             fontWeight: FontWeight.bold,
                                           ),
                                         ),
                                       ],
                                     ),
-                                    Expanded(
-                                      child: InkWell(
-                                        onTap: () {
-                                          NavigationService.push(
-                                              target: QRScannerScreens());
-                                        },
-                                        child: Align(
-                                          alignment: Alignment.centerRight,
-                                          child: Padding(
-                                            padding:
-                                                EdgeInsets.only(right: 4.hp),
-                                            child: SvgPicture.asset(
-                                              Assets.qrCodeIcon,
-                                              height: 30.hp,
-                                            ),
-                                          ),
-                                        ),
-                                      ),
-                                    )
+                                    // Expanded(
+                                    //   child: InkWell(
+                                    //     onTap: () {
+                                    //       NavigationService.push(
+                                    //           target: QRScannerScreens());
+                                    //     },
+                                    //     child: Align(
+                                    //       alignment: Alignment.centerRight,
+                                    //       child: Padding(
+                                    //         padding:
+                                    //             EdgeInsets.only(right: 4.hp),
+                                    //         child: SvgPicture.asset(
+                                    //           Assets.qrCodeIcon,
+                                    //           height: 30.hp,
+                                    //         ),
+                                    //       ),
+                                    //     ),
+                                    //   ),
+                                    // )
                                   ],
                                 ),
                                 // const Spacer(),
@@ -479,7 +486,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                               style: _textTheme.titleSmall
                                                   ?.copyWith(
                                                 color: CustomTheme.white,
-                                                fontSize: 11,
+                                                fontSize: 10,
                                                 fontWeight: FontWeight.bold,
                                               ),
                                             ),
@@ -503,6 +510,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                           "Interest Rate: ${selectedAcc?.interestRate} %",
                                           style:
                                               _textTheme.titleSmall?.copyWith(
+                                            fontSize: 10,
                                             color: CustomTheme.white,
                                             fontWeight: FontWeight.bold,
                                           ),

@@ -166,17 +166,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: height * 0.03),
+                    SizedBox(height: height * 0.01),
                     const Text(
                       "Login",
                       style: TextStyle(
                         fontFamily: "popinbold",
-                        fontSize: 36,
+                        fontSize: 26,
                         // color: Color(cblack),
                         color: Colors.black,
                       ),
                     ),
-                    SizedBox(height: height * 0.03),
+                    SizedBox(height: height * 0.02),
                     ValueListenableBuilder<bool>(
                         valueListenable: _hasExistingLoginSaved,
                         builder: (context, val, _) {
@@ -208,7 +208,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           //   return Container();
                           // }
                         }),
-                    SizedBox(height: height * 0.014),
+                    SizedBox(height: height * 0.01),
                     CustomPasswordField(
                       title: "Security pin",
                       hintText: "Security pin",
@@ -218,6 +218,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
                     SizedBox(height: height * 0.014),
+                    CustomRoundedButtom(
+                      title: "Login",
+                      onPressed: () async {
+                        if (_loginFormKey.currentState!.validate()) {
+                          context.read<LoginCubit>().loginUser(
+                                username: _getPhoneNumber(),
+                                password: passwordController.text,
+                                deviceUUID: await _getDeviceUUID(),
+                              );
+                        }
+                      },
+                    ),
+                    SizedBox(height: height * 0.01),
+
                     Row(
                       children: [
                         TextButton(
@@ -242,19 +256,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         ),
                       ],
                     ),
-                    SizedBox(height: height * 0.035),
-                    CustomRoundedButtom(
-                      title: "Login",
-                      onPressed: () async {
-                        if (_loginFormKey.currentState!.validate()) {
-                          context.read<LoginCubit>().loginUser(
-                                username: _getPhoneNumber(),
-                                password: passwordController.text,
-                                deviceUUID: await _getDeviceUUID(),
-                              );
-                        }
-                      },
-                    ),
+
                     SizedBox(height: height * 0.014),
                     ValueListenableBuilder<bool>(
                         valueListenable: _isBiometricEnabled,
@@ -340,35 +342,4 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
     );
   }
-
-  // LoginWidgetDetail(context) {
-  //   Size size = MediaQuery.of(context).size;
-  //   return
-  // }
-
-  // buildBox(BuildContext context, name, controller, obsecure) {
-  //   Size size = MediaQuery.of(context).size;
-  //   return Column(
-  //     crossAxisAlignment: CrossAxisAlignment.start,
-  //     children: [
-  //       Text(name, style: _theme.textTheme.titleLarge),
-  //       SizedBox(height: height * 0.014),
-  //       TextFormField(
-  //         controller: controller,
-  //         textAlign: TextAlign.left,
-  //         obscureText: obsecure,
-  //         keyboardType: const TextInputType.numberWithOptions(),
-  //         style: const TextStyle(color: Colors.black),
-  //         decoration: InputDecoration(
-  //           filled: true,
-  //           fillColor: const Color(0xf3f3f3),
-  //           enabledBorder: OutlineInputBorder(
-  //               borderRadius: BorderRadius.circular(20),
-  //               borderSide: const BorderSide(color: Colors.black12)),
-  //           hintText: "XXXXXXXXXX",
-  //         ),
-  //       ),
-  //     ],
-  //   );
-  // }
 }
