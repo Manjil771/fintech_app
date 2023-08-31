@@ -129,11 +129,15 @@ flutter:
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
-
+    - assets/sarbahit/
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
     - assets/macchaPuchhre/
     - assets/nawajosh/
     - assets/fewa/
