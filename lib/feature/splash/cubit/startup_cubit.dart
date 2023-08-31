@@ -23,10 +23,11 @@ class StartupCubit extends Cubit<StartupState> {
     if (isFirstTime) {
       await SharedPref.setFirstTimeAppOpen(false);
     }
+    Future.delayed(const Duration(milliseconds: 800));
     emit(StartupSuccess(
       isFirstTime: isFirstTime,
-      // isLogged: userRepository.isLoggedIn.value,
-      isLogged: true,
+      isLogged: userRepository.isLoggedIn.value,
+      // isLogged: true,
     ));
   }
 }

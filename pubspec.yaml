@@ -150,8 +150,6 @@ flutter:
     - assets/davisfall/
     - assets/sanchar/
 
-
-
   fonts:
     - family: popinbold
       fonts:

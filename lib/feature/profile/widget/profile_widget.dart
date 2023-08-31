@@ -10,10 +10,10 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/image_preview.dart';
 import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
 
@@ -37,15 +37,20 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   _handleImageUpload(File file) {
     NavigationService.pop();
-    showPopUpDialog(
-      context: context,
-      message: "Are you sure you want to upload image?",
-      title: "Upload Profile Picture",
-      buttonCallback: () {
-        context.read<ImageUploadCubit>().uploadImage(imageFile: file);
-        NavigationService.pop();
-      },
+    NavigationService.push(
+      target: ImagePreviewWidget(
+        selectedImage: file,
+      ),
     );
+    // showPopUpDialog(
+    //   context: context,
+    //   message: "Are you sure you want to upload image?",
+    //   title: "Upload Profile Picture",
+    //   buttonCallback: () {
+    //     context.read<ImageUploadCubit>().uploadImage(imageFile: file);
+    //     NavigationService.pop();
+    //   },
+    // );
   }
 
   @override
@@ -55,107 +60,99 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: BlocListener<ImageUploadCubit, CommonState>(
-        listener: (context, state) {
-          print(state);
-          if (state is CommonStateSuccess) {
-            context.read<CustomerDetailCubit>().fetchCustomerDetail();
-          }
-        },
-        child: ValueListenableBuilder<CustomerDetailModel?>(
-            valueListenable: customerDetail,
-            builder: (context, val, _) {
-              if (val != null) {
-                return Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    IconButton(
-                      onPressed: () {
-                        NavigationService.pop();
-                      },
-                      icon: const Icon(Icons.arrow_back),
-                    ),
-                    Container(
-                      decoration: BoxDecoration(
-                          color: CustomTheme.white,
-                          borderRadius: BorderRadius.circular(18)),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 30),
-                      child: Row(
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              showImagePickerBottomSheet(
-                                onGalleryPressed: () async {
-                                  final res =
-                                      await ImagePickerUtils.getGallery();
-                                  if (res != null) {
-                                    _handleImageUpload(res);
-                                  }
-                                  // NavigationService.pop();
-                                },
-                                onCameraPressed: () async {
-                                  final res =
-                                      await ImagePickerUtils.getCamera();
-                                  if (res != null) {
-                                    _handleImageUpload(res);
-                                  }
-                                  // NavigationService.pop();
-                                },
-                              );
-                            },
-                            child: val.imageUrl.isEmpty
-                                ? const CircleAvatar(
-                                    radius: 50,
-                                    backgroundImage:
-                                        AssetImage(Assets.profilePicture),
-                                  )
-                                : CustomRoundedImage(
-                                    height: 100,
-                                    image: val.imageUrl,
-                                    width: 100,
-                                  ),
-                          ),
-                          Expanded(
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    val.fullName,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall,
-                                  ),
-                                  Text(
-                                    val.email,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                  Text(
-                                    val.addressOne,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                ],
-                              ),
+      body: ValueListenableBuilder<CustomerDetailModel?>(
+          valueListenable: customerDetail,
+          builder: (context, val, _) {
+            if (val != null) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      NavigationService.pop();
+                    },
+                    icon: const Icon(Icons.arrow_back),
+                  ),
+                  Container(
+                    decoration: BoxDecoration(
+                        color: CustomTheme.white,
+                        borderRadius: BorderRadius.circular(18)),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 15, vertical: 30),
+                    child: Row(
+                      children: [
+                        InkWell(
+                          onTap: () {
+                            showImagePickerBottomSheet(
+                              onGalleryPressed: () async {
+                                final res =
+                                    await ImagePickerUtils.getGallery();
+                                if (res != null) {
+                                  _handleImageUpload(res);
+                                }
+                                // NavigationService.pop();
+                              },
+                              onCameraPressed: () async {
+                                final res =
+                                    await ImagePickerUtils.getCamera();
+                                if (res != null) {
+                                  _handleImageUpload(res);
+                                }
+                                // NavigationService.pop();
+                              },
+                            );
+                          },
+                          child: val.imageUrl.isEmpty
+                              ? const CircleAvatar(
+                                  radius: 50,
+                                  backgroundImage:
+                                      AssetImage(Assets.profilePicture),
+                                )
+                              : CustomRoundedImage(
+                                  height: 100,
+                                  image: val.imageUrl,
+                                  width: 100,
+                                ),
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  val.fullName,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .displaySmall,
+                                ),
+                                Text(
+                                  val.email,
+                                  style:
+                                      Theme.of(context).textTheme.titleSmall,
+                                ),
+                                Text(
+                                  val.addressOne,
+                                  style:
+                                      Theme.of(context).textTheme.titleSmall,
+                                ),
+                              ],
                             ),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: _height * 0.01),
-                    Expanded(
-                        child: ProfileTabbarPage(
-                      customerDetail: customerDetail,
-                    ))
-                  ],
-                );
-              } else {
-                return Container();
-              }
-            }),
-      ),
+                  ),
+                  SizedBox(height: _height * 0.01),
+                  Expanded(
+                      child: ProfileTabbarPage(
+                    customerDetail: customerDetail,
+                  ))
+                ],
+              );
+            } else {
+              return Container();
+            }
+          }),
     );
   }
 }
