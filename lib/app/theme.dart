@@ -40,6 +40,10 @@ class CustomTheme {
   static const Color batikaColor = Color(0xFF00A651);
   static const Color bhugolColor = Color(0xFF009444);
   static const Color nepalbachatColor = Color(0xFF282D7C);
+  static const Color nilgiriColor = Color(0xFF3B4BA0);
+  static const Color davisfallColor = Color(0xFF016D3B);
+  static const Color sancharColor = Color(0xFF016D3B);
+
 
   static Color primaryColor = testAppColor;
 

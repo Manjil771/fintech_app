@@ -146,6 +146,9 @@ flutter:
     - assets/batika/
     - assets/bhugol/
     - assets/nepalbachat/
+    - assets/nilgiri/
+    - assets/davisfall/
+    - assets/sanchar/
 
   fonts:
     - family: popinbold

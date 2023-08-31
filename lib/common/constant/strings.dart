@@ -31,5 +31,6 @@ class Strings {
   static const machhapuchhreAppTitle = "Machhapuchhre Saving iSmart";
 
   static const defaultAppTitle = "iSmart Devanasoft";
-  static const APP_TITLE = defaultAppTitle;
+  static const APP_TITLE = sarbahitAppTitle;
+
 }
