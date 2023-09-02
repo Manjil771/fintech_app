@@ -101,7 +101,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -122,7 +122,7 @@ flutter:
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
-    # - assets/bhanjyang/
+    - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
@@ -146,17 +146,17 @@ flutter:
     # - assets/batika/
     # - assets/bhugol/
     # - assets/nepalbachat/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/fewa/
-    - assets/matribhumi/
-    - assets/gandakibesi/
-    - assets/batika/
-    - assets/bhugol/
-    - assets/nepalbachat/
-    - assets/nilgiri/
-    - assets/davisfall/
-    - assets/sanchar/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
+    # - assets/gandakibesi/
+    # - assets/batika/
+    # - assets/bhugol/
+    # - assets/nepalbachat/
+    # - assets/nilgiri/
+    # - assets/davisfall/
+    # - assets/sanchar/
 
   fonts:
     - family: popinbold
