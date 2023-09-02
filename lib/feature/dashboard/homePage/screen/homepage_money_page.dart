@@ -18,7 +18,7 @@ class HomePageMoneyPage extends StatelessWidget {
           appServiceRepository:
               RepositoryProvider.of<AppServiceRepository>(context))
         ..fetchAppService(),
-      child: HomePageMoneyWidget(),
+      child: const HomePageMoneyWidget(),
     );
   }
 }

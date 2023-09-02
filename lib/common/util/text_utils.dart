@@ -21,6 +21,17 @@ class TextUtils {
     };
   }
 
+  static String get generateGreet {
+    final int hour = DateTime.now().hour;
+    if (hour < 12) {
+      return "Good morning,";
+    }
+    if (hour < 18) {
+      return "Good afternoon,";
+    }
+    return "Good evening,";
+  }
+
   static String replaceSpecialCharecterWithSpace(String text,
       {String replace = ' '}) {
     return text
