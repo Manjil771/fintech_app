@@ -44,10 +44,6 @@ class CustomTheme {
   static const Color davisfallColor = Color(0xFF016D3B);
   static const Color sancharColor = Color(0xFF016D3B);
 
-<<<<<<< HEAD
-=======
-
->>>>>>> 5b46825b33261d2a99fafc06fea9f5f2e9f820c1
   static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
