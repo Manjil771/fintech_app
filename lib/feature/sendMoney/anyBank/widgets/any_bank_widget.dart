@@ -83,40 +83,40 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 _isLoading = false;
                 NavigationService.pop();
               }
-              if (state is CommonStateSuccess<UtilityResponseData>) {
-                UtilityResponseData _response = state.data;
-
-                if (_response.code == "M0000") {
-                  NavigationService.push(
-                      target: CommonTransactionSuccessPage(
-                          body: Column(children: [
-                            KeyValueTile(
-                                title: "From Account",
-                                value: RepositoryProvider.of<
-                                        CustomerDetailRepository>(context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber),
-                            KeyValueTile(
-                                title: "To Account",
-                                value: _accountNumberController.text),
-                            KeyValueTile(
-                                title: "Account Holder Name",
-                                value: _accountNameController.text)
-                          ]),
-                          message: _response.message,
-                          transactionID: _response.transactionIdentifier));
-                } else {
-                  showPopUpDialog(
-                    context: context,
-                    message: _response.message,
-                    title: "Message",
-                    buttonCallback: () {
-                      NavigationService.pop();
-                    },
-                    showCancelButton: false,
-                  );
-                }
+              if (state is CommonStateSuccess) {
+                NavigationService.pushReplacement(
+                    target: CommonTransactionSuccessPage(
+                        body: Column(children: [
+                          KeyValueTile(
+                              title: "From Account",
+                              value: RepositoryProvider.of<
+                                      CustomerDetailRepository>(context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber),
+                          KeyValueTile(
+                              title: "To Account",
+                              value: _accountNumberController.text),
+                          KeyValueTile(
+                              title: "Account Holder Name",
+                              value: _accountNameController.text),
+                          KeyValueTile(
+                            title: "To Bank",
+                            value: widget.bankCode == null
+                                ? selectedBank?.bankName ?? ""
+                                : widget.bankName ?? "ismart",
+                          ),
+                          KeyValueTile(
+                            title: "Charge",
+                            value: charges ?? "0",
+                          ),
+                          KeyValueTile(
+                            title: "Amount",
+                            value: _amountController.text,
+                          ),
+                        ]),
+                        message: "Transaction Completed",
+                        transactionID: state.data));
               }
               if (state is CommonError) {
                 showPopUpDialog(
