@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -53,7 +54,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
   }
 
   bool _isLoading = false;
-
+  bool showErrorMessage = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -73,6 +74,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             }
           },
           child: CommonContainer(
+            showBottomSheet: true,
             showDetail: true,
             showAccountSelection: true,
             accountTitle: "From Account",
@@ -80,9 +82,11 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             topbarName: "Payment",
             title: "Mobile Top Up",
             detail: "Topup your mobile number.",
+            serviceCategoryId: widget.categoryList.id.toString(),
             body: Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Row(
                     children: [
@@ -157,7 +161,13 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                                 .copyWith(fontWeight: FontWeight.w700))
                       ],
                     ),
-
+                  if (showErrorMessage == true)
+                    Text(
+                      "Service is currently unavailable",
+                      style: _textTheme.labelMedium!.copyWith(
+                        color: CustomTheme.googleColor,
+                      ),
+                    ),
                   SizedBox(height: _height * 0.01),
                   CustomTextField(
                     title: "Amount",
@@ -166,6 +176,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                     validator: (val) =>
                         FormValidator.validateFieldNotEmpty(val, "Amount"),
                   ),
+
                   // Container(
                   //   padding: const EdgeInsets.only(top: 7),
                   //   height: _height * 0.12,
@@ -190,35 +201,48 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               //       apiEndpoint: "api/wlinkpackages",
               //     );
               _formKey.currentState!.save();
-              if (_formKey.currentState!.validate()) {
-                NavigationService.push(
-                    target: TopUpBillDetailPage(
-                        apiBody: {},
-                        serviceIdentifier: TopUpUtils()
-                            .getTopUpServiceType(type: _topUpType.value),
-                        accountDetails: {
-                          "account_number":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber,
-                          "phone_number": _mobileNumberController.text,
-                          "amount": _amountController.text
-                        },
-                        apiEndpoint: "/api/topup",
-                        body: Column(
-                          children: [
-                            KeyValueTile(
-                                title: "Mobile Number",
-                                value: _mobileNumberController.text),
-                            KeyValueTile(
-                                title: "Amount", value: _amountController.text),
-                          ],
-                        ),
-                        categoryList: widget.categoryList));
+              if (TopUpUtils()
+                  .getTopUpServiceImage(
+                      type: TopUpUtils()
+                          .getTopUpServiceType(type: _topUpType.value),
+                      categories: widget.categoryList)
+                  .service
+                  .isEmpty) {
+                showErrorMessage = true;
+
+                setState(() {});
+              } else {
+                if (_formKey.currentState!.validate()) {
+                  NavigationService.push(
+                      target: TopUpBillDetailPage(
+                          apiBody: {},
+                          serviceIdentifier: TopUpUtils()
+                              .getTopUpServiceType(type: _topUpType.value),
+                          accountDetails: {
+                            "account_number":
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber,
+                            "phone_number": _mobileNumberController.text,
+                            "amount": _amountController.text
+                          },
+                          apiEndpoint: "/api/topup",
+                          body: Column(
+                            children: [
+                              KeyValueTile(
+                                  title: "Mobile Number",
+                                  value: _mobileNumberController.text),
+                              KeyValueTile(
+                                  title: "Amount",
+                                  value: _amountController.text),
+                            ],
+                          ),
+                          categoryList: widget.categoryList));
+                }
+                // NavigationService.push(target: CommonTransactionSuccessfulPage());
               }
-              // NavigationService.push(target: CommonTransactionSuccessfulPage());
             },
           )),
     );

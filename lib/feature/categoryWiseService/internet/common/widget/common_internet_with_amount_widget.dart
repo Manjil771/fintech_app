@@ -98,6 +98,8 @@ class _CommonInternetWithAmountWidgetState
         child: Form(
           key: _formKey,
           child: CommonContainer(
+            showBottomSheet: true,
+            associatedId: widget.service.id.toString(),
             showDetail: true,
             title: widget.service.service,
             detail: widget.service.instructions,

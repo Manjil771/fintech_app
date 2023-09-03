@@ -151,6 +151,8 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
           }
         },
         child: CommonContainer(
+            showBottomSheet: true,
+            associatedId: widget.service.id.toString(),
             buttonName: "Show Bill",
             showAccountSelection: true,
             title: widget.service.service,

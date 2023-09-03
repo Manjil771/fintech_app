@@ -25,7 +25,9 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   @override
   void initState() {
     super.initState();
-    context.read<RecentTransactionCubit>().fetchrecentTransaction();
+    context
+        .read<RecentTransactionCubit>()
+        .fetchrecentTransaction(serviceCategoryId: "", associatedId: "");
   }
 
   bool _isLoading = false;

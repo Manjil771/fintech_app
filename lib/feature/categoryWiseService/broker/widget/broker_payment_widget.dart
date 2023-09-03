@@ -115,6 +115,8 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
           }
         },
         child: CommonContainer(
+          showBottomSheet: true,
+          associatedId: widget.service.id.toString(),
           title: widget.service.service,
           buttonName: "Proceed",
           showAccountSelection: true,
