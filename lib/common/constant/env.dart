@@ -473,10 +473,9 @@ class CoOperativeValue {
     bannerImage: "assets/matribhumi/matribhumi_banner.png",
 
     backgroundImage: "assets/matribhumi/matribhumi_background.png",
-    clientCode: 'EHVNI7CZJ3',
+
+    clientCode: 'NINX3DYNIB',
     clientSecret: "201110",
-    // clientCode: 'NINX3DYNIB',
-    // clientSecret: "156610",
     coOperativeName: 'matribhumi',
     coOperativeLogo: 'assets/matribhumi/matribhumi_logo.png',
 
@@ -588,13 +587,30 @@ class CoOperativeValue {
     bannerImage: "assets/sanchar/sanchar_banner.png",
 
     backgroundImage: "assets/sanchar/sanchar_background.png",
-    clientCode: 'JGDS3TK6VO',
-    clientSecret: "113528",
+    clientCode: 'LRIUMQ5JTT',
+    clientSecret: "165705",
 
     coOperativeName: 'sanchar',
     coOperativeLogo: 'assets/sanchar/sanchar_logo.png',
 
     splashImage: "assets/sanchar/sanchar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative hamiSabaikoKrishiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_banner.png",
+
+    backgroundImage:
+        "assets/hamiSabaikokrishi/hamiSabaikokrishi_background.png",
+    clientCode: 'JGDS3TK6VO',
+    clientSecret: "113528",
+
+    coOperativeName: 'Hami Sabaiko Krishi',
+    coOperativeLogo: 'assets/hamiSabaikokrishi/hamiSabaikokrishi_logo.png',
+
+    splashImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
