@@ -74,6 +74,13 @@ android {
             versionName flutterVersionName
         }
 
+         {
+            dimension "app"
+            applicationId "com.devanasoft.nilgiri"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+
         nepalbachat {
             dimension "app"
             applicationId "com.devanasoft.nepalbachat"
