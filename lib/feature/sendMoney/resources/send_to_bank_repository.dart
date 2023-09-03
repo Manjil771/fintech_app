@@ -6,6 +6,8 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_api_provider.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class SendToBankRepository {
   final UserRepository userRepository;
@@ -95,7 +97,7 @@ class SendToBankRepository {
     }
   }
 
-  Future<DataResponse<String>> sendMoneyToBank({
+  Future<DataResponse<UtilityResponseData>> sendMoneyToBank({
     required String mpin,
     required String amount,
     required String remarks,
@@ -130,13 +132,10 @@ class SendToBankRepository {
         final _res = await sendToBankAPIProvider.sendMoneyToBank(
           payloadData: sendToBankPayload,
         );
-        final _result = Map<String, dynamic>.from(_res);
-        if (_result['data']?['details'] != null) {
-          return DataResponse.success(_result['data']?['details']);
-        } else {
-          return DataResponse.error(
-              "Error while sending money. Please try again.");
-        }
+        UtilityResponseData _responseData =
+            UtilityResponseData.fromJson(_res['data'] ?? {});
+        print(_responseData);
+        return DataResponse.success(_responseData);
       } on CustomException catch (e) {
         if (e is SessionExpireErrorException) {
           rethrow;
