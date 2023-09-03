@@ -10,6 +10,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
@@ -104,9 +105,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         CrossAxisAlignment.start,
                                     children: [
                                       Text(
-                                        formattedDate == 'AM'
-                                            ? 'Good Morning,'
-                                            : 'Good Afternoon,',
+                                        TextUtils.generateGreet,
                                         style:
                                             _textTheme.headlineMedium?.copyWith(
                                           color: CustomTheme.white,
