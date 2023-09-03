@@ -1,8 +1,10 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/update/cubit/update_cubit.dart';
@@ -32,9 +34,9 @@ class _SplashWidgetState extends State<SplashWidget> {
           // if (state.isFirstTime) {
           //   NavigationService.push(target: OnboardPage());
           // } else
-          // if (state.isLogged) {
-          //   NavigationService.pushReplacement(target: const DashboardPage());
-          // }
+          if (state.isLogged && kDebugMode) {
+            NavigationService.pushReplacement(target: const DashboardPage());
+          }
           // else {
           //   NavigationService.pushReplacement(target: const LoginPage());
           // }

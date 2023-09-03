@@ -37,7 +37,8 @@ class KeyValueTile extends StatelessWidget {
                   title,
                   style: _theme.textTheme.titleSmall!.copyWith(
                     fontWeight: titleFontWeight,
-                    color: Color(0xFF9D9D9D),
+                    color:
+                        useCustomColor ? Colors.white : const Color(0xFF9D9D9D),
                   ),
                 ),
                 SizedBox(width: 20.wp),
@@ -74,7 +75,7 @@ class KeyValueTile extends StatelessWidget {
                   value,
                   style: _theme.textTheme.titleLarge!.copyWith(
                     fontWeight: FontWeight.w700,
-                    color: CustomTheme.darkGray,
+                    color: Colors.white,
                   ),
                 ),
               ],

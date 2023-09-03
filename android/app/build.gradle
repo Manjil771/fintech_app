@@ -79,6 +79,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        sarbahit {
+            dimension "app"
+            applicationId "com.devanasoft.sarbahit"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         fewa {
             dimension "app"
             applicationId "com.devanasoft.fewa"
