@@ -8,7 +8,6 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/custom_image_box.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 
@@ -47,76 +46,83 @@ class HomePageMoneyWidget extends StatelessWidget {
                 child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [
-                    ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: filteredItems.length,
-                      scrollDirection: Axis.horizontal,
-                      // shrinkWrap: true,
-                      itemBuilder: (context, index) {
-                        return InkWell(
-                          onTap: () {
-                            print("Onclick action");
-                            if (filteredItems[index]
-                                .uniqueIdentifier
-                                .toString()
-                                .toLowerCase()
-                                .contains("bank_transfer".toLowerCase())) {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.anyBank);
-                            } else if (filteredItems[index]
-                                .uniqueIdentifier
-                                .toString()
-                                .toLowerCase()
-                                .contains(
-                                    "fund_transfer_dashboard".toLowerCase())) {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.internalCooperative);
-                            } else if (filteredItems[index]
-                                    .uniqueIdentifier
-                                    .toString()
-                                    .toLowerCase() ==
-                                "coop_transfer".toLowerCase()) {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.otherCooperative);
-                            } else if (filteredItems[index]
-                                    .uniqueIdentifier
-                                    .toString()
-                                    .toLowerCase() ==
-                                "load_wallet".toLowerCase()) {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.listWalletScreen);
-                            }
-                          },
-                          child: Container(
-                            padding: const EdgeInsets.all(10.0),
-                            child: Column(
-                              children: [
-                                SvgPicture.network(
-                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                        filteredItems[index]
-                                            .imageUrl
-                                            .toString(),
-                                    height: 20.hp,
-                                    fit: BoxFit.fitHeight),
-                                SizedBox(height: 5.hp),
-                                Center(
-                                  child: Text(
-                                    filteredItems[index].name,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .labelMedium!
-                                        .copyWith(fontSize: 12),
-                                    textAlign: TextAlign.center,
-                                    overflow: TextOverflow.ellipsis,
-                                    maxLines: 1,
-                                  ),
-                                )
-                              ],
-                            ),
+                    ...List.generate(
+                      filteredItems.length,
+                      (index) => InkWell(
+                        onTap: () {
+                          print("Onclick action");
+                          if (filteredItems[index]
+                              .uniqueIdentifier
+                              .toString()
+                              .toLowerCase()
+                              .contains("bank_transfer".toLowerCase())) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.anyBank);
+                          } else if (filteredItems[index]
+                              .uniqueIdentifier
+                              .toString()
+                              .toLowerCase()
+                              .contains(
+                                  "fund_transfer_dashboard".toLowerCase())) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.internalCooperative);
+                          } else if (filteredItems[index]
+                                  .uniqueIdentifier
+                                  .toString()
+                                  .toLowerCase() ==
+                              "coop_transfer".toLowerCase()) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.otherCooperative);
+                          } else if (filteredItems[index]
+                                  .uniqueIdentifier
+                                  .toString()
+                                  .toLowerCase() ==
+                              "load_wallet".toLowerCase()) {
+                            NavigationService.pushNamed(
+                                routeName: Routes.listWalletScreen);
+                          }
+                        },
+                        child: Container(
+                          padding: const EdgeInsets.all(10.0),
+                          child: Column(
+                            children: [
+                              SvgPicture.network(
+                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
+                                    filteredItems[index].imageUrl.toString(),
+                                height: 20.hp,
+                                fit: BoxFit.fitHeight,
+                                color: CustomTheme.primaryColor,
+                              ),
+                              SizedBox(height: 5.hp),
+                              Center(
+                                child: Text(
+                                  filteredItems[index].name,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .labelMedium!
+                                      .copyWith(
+                                        fontSize: 12,
+                                        color: CustomTheme.primaryColor,
+                                      ),
+                                  textAlign: TextAlign.center,
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                ),
+                              )
+                            ],
                           ),
-                        );
-                      },
+                        ),
+                      ),
                     ),
+                    // ListView.builder(
+                    //   shrinkWrap: true,
+                    //   itemCount: filteredItems.length,
+                    //   scrollDirection: Axis.horizontal,
+                    //   // shrinkWrap: true,
+                    //   itemBuilder: (context, index) {
+                    //     return  },
+                    // ),
+
                     InkWell(
                       onTap: () {
                         NavigationService.pushNamed(
@@ -129,6 +135,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                             SvgPicture.asset(
                               Assets.reveiceMoneyIcon,
                               height: 20.hp,
+                              color: CustomTheme.primaryColor,
                               fit: BoxFit.fitHeight,
                             ),
                             SizedBox(height: 5.hp),
@@ -137,7 +144,10 @@ class HomePageMoneyWidget extends StatelessWidget {
                               style: Theme.of(context)
                                   .textTheme
                                   .labelMedium!
-                                  .copyWith(fontSize: 12),
+                                  .copyWith(
+                                    fontSize: 12,
+                                    color: CustomTheme.primaryColor,
+                                  ),
                               textAlign: TextAlign.center,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 1,
