@@ -32,8 +32,8 @@ class Strings {
   static const nepalBachatAppTitle = "Nepal Saving iSmart";
   static const nilgiriAppTitle = "Nilgiri Saving iSmart";
   static const davisfallAppTitle = "Davisfall Saving iSmart";
+  static const hamiSabaikoAppTitle = "HamiSabaiko Krishi iSmart";
   static const defaultAppTitle = "iSmart Devanasoft";
 
-  static const APP_TITLE = nilgiriAppTitle;
-
+  static const APP_TITLE = nepalBachatAppTitle;
 }

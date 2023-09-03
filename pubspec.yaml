@@ -141,8 +141,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -160,7 +159,7 @@ flutter:
     # - assets/bhugol/
     # - assets/nepalbachat/
     # - assets/nilgiri/
-    - assets/davisfall/
+    # - assets/davisfall/
     # - assets/sanchar/
 
   fonts:
