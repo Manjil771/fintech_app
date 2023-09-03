@@ -35,11 +35,11 @@ class BottomSheetWrapper extends StatelessWidget {
             top: topPadding ?? 24.hp,
             bottom: 5.hp,
           ),
-      decoration: BoxDecoration(
-        borderRadius: const BorderRadius.vertical(
+      decoration: const BoxDecoration(
+        borderRadius: BorderRadius.vertical(
           top: Radius.circular(30),
         ),
-        color: backgroundColor,
+        color: Colors.white,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

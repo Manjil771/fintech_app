@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_service_page.dart';
-import 'package:ismart/feature/history/widget/recent_transaction_service_widget.dart';
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
@@ -89,17 +89,52 @@ class CommonContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      showTitleText
-                          ? Text(title,
-                              style: _textTheme.displaySmall!
-                                  .copyWith(fontWeight: FontWeight.bold))
-                          : Container(),
-                      showDetail
-                          ? Text(
-                              detail,
-                              style: _textTheme.titleLarge,
-                            )
-                          : Container(),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              showTitleText
+                                  ? Text(title,
+                                      style: _textTheme.displaySmall!.copyWith(
+                                          fontWeight: FontWeight.bold))
+                                  : Container(),
+                              showDetail
+                                  ? Text(
+                                      detail,
+                                      style: _textTheme.titleLarge,
+                                    )
+                                  : Container(),
+                            ],
+                          ),
+                          if (showBottomSheet)
+                            InkWell(
+                              // icon: Icons.keyboard_arrow_down_outlined,
+                              onTap: () {
+                                showModalBottomSheet(
+                                  context: context,
+                                  builder: (context) => BottomSheetWrapper(
+                                    backgroundColor: CustomTheme.white,
+                                    showTopDivider: true,
+                                    title: "Recent Transaction",
+                                    child: Expanded(
+                                      child: RecentTransactionServiceScreen(
+                                        serviceCategoryId: serviceCategoryId,
+                                        associatedId: associatedId,
+                                      ),
+                                    ),
+                                  ),
+                                );
+                              },
+                              child: SvgPicture.asset(
+                                Assets.historyIcon,
+                                height: 20,
+                                color: _theme.primaryColor,
+                              ),
+                            ),
+                        ],
+                      ),
                       SizedBox(height: _height * 0.01),
                       showAccountSelection
                           ? Column(
@@ -130,43 +165,30 @@ class CommonContainer extends StatelessWidget {
                 ),
               ),
             ),
-            if (showBottomSheet)
-              InkWell(
-                onTap: () {
-                  showModalBottomSheet(
-                    context: context,
-                    builder: (context) => BottomSheetWrapper(
-                        backgroundColor: CustomTheme.white,
-                        showTopDivider: true,
-                        title: "Recent Transaction",
-                        child: Expanded(
-                          child: RecentTransactionServiceScreen(
-                            serviceCategoryId: serviceCategoryId,
-                            associatedId: associatedId,
-                          ),
-                        )),
-                  );
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _theme.primaryColor,
-                    borderRadius: BorderRadius.only(
-                        topLeft: Radius.circular(15),
-                        topRight: Radius.circular(15)),
-                  ),
-                  width: _width,
-                  padding:
-                      EdgeInsets.symmetric(horizontal: 10.hp, vertical: 10.hp),
-                  child: Container(
-                      child: Center(
-                    child: Text(
-                      "Recent Transaction",
-                      style: _textTheme.labelLarge!
-                          .copyWith(color: CustomTheme.white),
-                    ),
-                  )),
-                ),
-              )
+            // InkWell(
+            //   onTap: () {
+
+            //   },
+            //   child: Container(
+            //     decoration: BoxDecoration(
+            //       color: _theme.primaryColor,
+            //       borderRadius: BorderRadius.only(
+            //           topLeft: Radius.circular(15),
+            //           topRight: Radius.circular(15)),
+            //     ),
+            //     width: _width,
+            //     padding:
+            //         EdgeInsets.symmetric(horizontal: 10.hp, vertical: 10.hp),
+            //     child: Container(
+            //         child: Center(
+            //       child: Text(
+            //         "Recent Transaction",
+            //         style: _textTheme.labelLarge!
+            //             .copyWith(color: CustomTheme.white),
+            //       ),
+            //     )),
+            //   ),
+            // )
           ],
         ),
       ),

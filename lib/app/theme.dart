@@ -44,8 +44,7 @@ class CustomTheme {
   static const Color davisfallColor = Color(0xFF016D3B);
   static const Color sancharColor = Color(0xFF016D3B);
 
-  static Color primaryColor = testAppColor;
-
+  static Color primaryColor = nepalbachatColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
