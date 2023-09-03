@@ -111,6 +111,8 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         }
       },
       child: CommonContainer(
+        showBottomSheet: true,
+        associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         buttonName: "Show Bill",
         title: widget.service.service,
@@ -122,25 +124,25 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
           key: _formKey,
           child: Column(
             children: [
-              Row(
-                children: [
-                  Container(
-                    height: _height * 0.11,
-                    width: _width * 0.23,
-                    margin: const EdgeInsets.only(right: 18),
-                    child: Image.network(
-                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
-                  ),
-                  Expanded(
-                    child: Text(widget.service.service,
-                        style: Theme.of(context)
-                            .textTheme
-                            .titleLarge!
-                            .copyWith(fontWeight: FontWeight.w700)),
-                  ),
-                ],
-              ),
-              SizedBox(height: _height * 0.02),
+              // Row(
+              //   children: [
+              //     Container(
+              //       height: _height * 0.11,
+              //       width: _width * 0.23,
+              //       margin: const EdgeInsets.only(right: 18),
+              //       child: Image.network(
+              //           "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
+              //     ),
+              //     Expanded(
+              //       child: Text(widget.service.service,
+              //           style: Theme.of(context)
+              //               .textTheme
+              //               .titleLarge!
+              //               .copyWith(fontWeight: FontWeight.w700)),
+              //     ),
+              //   ],
+              // ),
+              // SizedBox(height: _height * 0.02),
               CustomTextField(
                 title: widget.service.labelName,
                 hintText: widget.service.labelSample,

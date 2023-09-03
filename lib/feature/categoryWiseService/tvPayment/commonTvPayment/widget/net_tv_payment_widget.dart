@@ -48,6 +48,7 @@ class _NetTvPaymentWidgetState extends State<NetTvPaymentWidget> {
     return PageWrapper(
       body: CommonContainer(
         showBottomSheet: true,
+        associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         buttonName: "Show Bill",
         title: widget.service.service,

@@ -161,6 +161,8 @@ class _GovPaymentWidgetState extends State<GovPaymentWidget> {
           }
         },
         child: CommonContainer(
+          showBottomSheet: true,
+          associatedId: widget.service.id.toString(),
           showAccountSelection: true,
           topbarName: widget.service.serviceCategoryName,
           title: widget.service.service,

@@ -188,6 +188,8 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
         }
       },
       child: CommonContainer(
+        showBottomSheet: true,
+        associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         buttonName: "Show Bill",
         title: widget.service.service,
