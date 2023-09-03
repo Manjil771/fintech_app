@@ -24,11 +24,14 @@ class RecentTransactionRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<List<RecentTransactionModel>>>
-      getRecentTransaction() async {
+  Future<DataResponse<List<RecentTransactionModel>>> getRecentTransaction(
+      {required String serviceCategoryId, required String associatedId}) async {
     List<RecentTransactionModel> _recentTxnList = [];
     try {
-      final _res = await recentTransactionApiProvider.fetchRecentTransaction();
+      final _res = await recentTransactionApiProvider.fetchRecentTransaction(
+        associatedId: associatedId,
+        serviceCategoryId: serviceCategoryId,
+      );
 
       if (_res['data']['details'] != null) {
         // Parse Data from API

@@ -6,12 +6,14 @@ class BottomSheetWrapper extends StatelessWidget {
   final EdgeInsets? padding;
   final double? topPadding;
   final Widget child;
+  final Color backgroundColor;
   final bool showTopDivider;
   final int titleTopPadding;
   final int titleBottomPadding;
   final String title;
   const BottomSheetWrapper({
     this.padding,
+    this.backgroundColor = CustomTheme.backgroundColor,
     this.topPadding,
     this.showTopDivider = true,
     this.titleTopPadding = 16,
@@ -37,7 +39,7 @@ class BottomSheetWrapper extends StatelessWidget {
         borderRadius: const BorderRadius.vertical(
           top: Radius.circular(30),
         ),
-        color: _theme.scaffoldBackgroundColor,
+        color: backgroundColor,
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

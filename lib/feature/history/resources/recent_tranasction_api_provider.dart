@@ -15,8 +15,13 @@ class RecentTransactionApiProvider {
       required this.userRepository,
       required this.baseUrl});
 
-  Future<dynamic> fetchRecentTransaction() async {
-    final _params = {"serviceOf": "SERVICE"};
+  Future<dynamic> fetchRecentTransaction(
+      {required String serviceCategoryId, required String associatedId}) async {
+    final _params = {
+      "serviceOf": "SERVICE",
+      if (serviceCategoryId.isNotEmpty) "serviceCategoryId": serviceCategoryId,
+      if (associatedId.isNotEmpty) "associatedId": associatedId
+    };
     final _uri = UrlUtils.getUri(
         url: coOperative.baseUrl + "/api/recentTransaction", params: _params);
     return await apiProvider.get(Uri.parse(_uri.toString()),

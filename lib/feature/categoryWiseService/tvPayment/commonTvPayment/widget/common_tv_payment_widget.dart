@@ -159,6 +159,8 @@ class _CommonTvPaymentWidgetState extends State<CommonTvPaymentWidget> {
         }
       },
       child: CommonContainer(
+        showBottomSheet: true,
+        associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         buttonName: "Show Bill",
         title: widget.service.service,

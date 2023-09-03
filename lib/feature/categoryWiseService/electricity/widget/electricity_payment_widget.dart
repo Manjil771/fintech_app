@@ -42,6 +42,8 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        showBottomSheet: true,
+        associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         showDetail: true,
         title: widget.service.service,
