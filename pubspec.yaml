@@ -159,8 +159,8 @@ flutter:
     # - assets/batika/
     # - assets/bhugol/
     # - assets/nepalbachat/
-    - assets/nilgiri/
-    # - assets/davisfall/
+    # - assets/nilgiri/
+    - assets/davisfall/
     # - assets/sanchar/
 
   fonts:
