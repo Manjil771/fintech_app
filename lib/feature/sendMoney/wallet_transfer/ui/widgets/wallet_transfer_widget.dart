@@ -103,18 +103,4 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
   //   );
 
   // }
-
-  final List images = [
-    "unnamed 1.png",
-    "khalti 1.png",
-    "unnamed (1) 1.png",
-    "Group 975.png",
-  ];
-
-  final List names = [
-    "eSewa",
-    "Khalti",
-    "Sajilo Pay",
-    "PrabhuPay",
-  ];
 }
