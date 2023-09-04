@@ -55,7 +55,6 @@ class _PageWrapperState extends State<PageWrapper> {
       return widget.body;
     } else {
       return Scaffold(
-        resizeToAvoidBottomInset: false,
         floatingActionButton:
             widget.floatingActionButtonType == FloatingActionButtonType.Button
                 ? (widget.floatinActionButton != null

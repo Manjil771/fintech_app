@@ -69,7 +69,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             }
           },
           child: CommonContainer(
-            showBottomSheet: true,
+            showRecentTransaction: true,
             showDetail: true,
             showAccountSelection: true,
             accountTitle: "From Account",

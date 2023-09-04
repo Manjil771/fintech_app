@@ -95,7 +95,7 @@ class _CommonFindInternetUserWidgetState
         child: Form(
           key: _formKey,
           child: CommonContainer(
-            showBottomSheet: true,
+            showRecentTransaction: true,
             associatedId: widget.service.id.toString(),
             showDetail: true,
             title: widget.service.service,
