@@ -37,7 +37,7 @@ class SendToBankCubit extends Cubit<CommonState> {
       sendingAccount: sendingAccount,
     );
     if (res.status == Status.Success && res.data != null) {
-      emit(CommonStateSuccess<UtilityResponseData>(data: res.data!));
+      emit(CommonStateSuccess(data: res.data!));
     } else {
       emit(CommonError(
         message: res.message ?? "Error fetching wallet balance.",

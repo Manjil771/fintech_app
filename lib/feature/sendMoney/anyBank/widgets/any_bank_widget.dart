@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -19,7 +18,6 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -83,40 +81,40 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 _isLoading = false;
                 NavigationService.pop();
               }
-              if (state is CommonStateSuccess<UtilityResponseData>) {
-                UtilityResponseData _response = state.data;
-
-                if (_response.code == "M0000") {
-                  NavigationService.push(
-                      target: CommonTransactionSuccessPage(
-                          body: Column(children: [
-                            KeyValueTile(
-                                title: "From Account",
-                                value: RepositoryProvider.of<
-                                        CustomerDetailRepository>(context)
-                                    .selectedAccount
-                                    .value!
-                                    .accountNumber),
-                            KeyValueTile(
-                                title: "To Account",
-                                value: _accountNumberController.text),
-                            KeyValueTile(
-                                title: "Account Holder Name",
-                                value: _accountNameController.text)
-                          ]),
-                          message: _response.message,
-                          transactionID: _response.transactionIdentifier));
-                } else {
-                  showPopUpDialog(
-                    context: context,
-                    message: _response.message,
-                    title: "Message",
-                    buttonCallback: () {
-                      NavigationService.pop();
-                    },
-                    showCancelButton: false,
-                  );
-                }
+              if (state is CommonStateSuccess) {
+                NavigationService.pushReplacement(
+                    target: CommonTransactionSuccessPage(
+                        body: Column(children: [
+                          KeyValueTile(
+                              title: "From Account",
+                              value: RepositoryProvider.of<
+                                      CustomerDetailRepository>(context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber),
+                          KeyValueTile(
+                              title: "To Account",
+                              value: _accountNumberController.text),
+                          KeyValueTile(
+                              title: "Account Holder Name",
+                              value: _accountNameController.text),
+                          KeyValueTile(
+                            title: "To Bank",
+                            value: widget.bankCode == null
+                                ? selectedBank?.bankName ?? ""
+                                : widget.bankName ?? "ismart",
+                          ),
+                          KeyValueTile(
+                            title: "Charge",
+                            value: charges ?? "0",
+                          ),
+                          KeyValueTile(
+                            title: "Amount",
+                            value: _amountController.text,
+                          ),
+                        ]),
+                        message: "Transaction Completed",
+                        transactionID: state.data));
               }
               if (state is CommonError) {
                 showPopUpDialog(

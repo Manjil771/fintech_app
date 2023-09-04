@@ -16,7 +16,7 @@ class CommonContainer extends StatelessWidget {
 
   final String serviceCategoryId;
   final String associatedId;
-  final bool showBottomSheet;
+  final bool showRecentTransaction;
   final String accountTitle;
   final bool showAccountSelection;
   final String topbarName;
@@ -34,7 +34,7 @@ class CommonContainer extends StatelessWidget {
   const CommonContainer({
     this.serviceCategoryId = "",
     this.showDetail = false,
-    this.showBottomSheet = false,
+    this.showRecentTransaction = false,
     this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,
@@ -92,23 +92,26 @@ class CommonContainer extends StatelessWidget {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              showTitleText
-                                  ? Text(title,
-                                      style: _textTheme.displaySmall!.copyWith(
-                                          fontWeight: FontWeight.bold))
-                                  : Container(),
-                              showDetail
-                                  ? Text(
-                                      detail,
-                                      style: _textTheme.titleLarge,
-                                    )
-                                  : Container(),
-                            ],
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                showTitleText
+                                    ? Text(title,
+                                        style: _textTheme.displaySmall!
+                                            .copyWith(
+                                                fontWeight: FontWeight.bold))
+                                    : Container(),
+                                showDetail
+                                    ? Text(
+                                        detail,
+                                        style: _textTheme.titleLarge,
+                                      )
+                                    : Container(),
+                              ],
+                            ),
                           ),
-                          if (showBottomSheet)
+                          if (showRecentTransaction)
                             InkWell(
                               // icon: Icons.keyboard_arrow_down_outlined,
                               onTap: () {
