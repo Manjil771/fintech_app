@@ -47,7 +47,7 @@ class _NetTvPaymentWidgetState extends State<NetTvPaymentWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
-        showBottomSheet: true,
+        showRecentTransaction: true,
         associatedId: widget.service.id.toString(),
         showAccountSelection: true,
         buttonName: "Show Bill",

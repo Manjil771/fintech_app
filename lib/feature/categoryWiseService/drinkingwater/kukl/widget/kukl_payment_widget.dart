@@ -38,7 +38,7 @@ class KuklPaymentWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
-          showBottomSheet: true,
+          showRecentTransaction: true,
           associatedId: service.id.toString(),
           buttonName: "Show Bill",
           showAccountSelection: true,

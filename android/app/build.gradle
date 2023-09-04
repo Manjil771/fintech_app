@@ -67,9 +67,36 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        hamisabaikokrishi {
+            dimension "app"
+            applicationId "com.devanasoft.hamisabaikokrishi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         matribhumi {
             dimension "app"
             applicationId "com.devanasoft.matribhumi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+
+        davisfall {
+            dimension "app"
+            applicationId "com.devanasoft.davisfall"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+
+        nilgiri {
+            dimension "app"
+            applicationId "com.devanasoft.nilgiri"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+
+        nepalbachat {
+            dimension "app"
+            applicationId "com.devanasoft.nepalbachat"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

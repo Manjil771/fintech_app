@@ -115,7 +115,7 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
           }
         },
         child: CommonContainer(
-          showBottomSheet: true,
+          showRecentTransaction: true,
           associatedId: widget.service.id.toString(),
           title: widget.service.service,
           buttonName: "Proceed",

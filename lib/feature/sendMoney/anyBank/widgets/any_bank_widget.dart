@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -19,7 +18,6 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;

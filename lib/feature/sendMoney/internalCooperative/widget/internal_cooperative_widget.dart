@@ -106,7 +106,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "success") {
-              NavigationService.push(
+              NavigationService.pushReplacement(
                 target: CommonTransactionSuccessPage(
                   body: Column(
                     children: [

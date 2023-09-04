@@ -8,22 +8,17 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/widgets/top_bill_detail_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
 
 class MobileTopUpWidget extends StatefulWidget {
@@ -74,7 +69,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
             }
           },
           child: CommonContainer(
-            showBottomSheet: true,
+            showRecentTransaction: true,
             showDetail: true,
             showAccountSelection: true,
             accountTitle: "From Account",
@@ -215,7 +210,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                 if (_formKey.currentState!.validate()) {
                   NavigationService.push(
                       target: TopUpBillDetailPage(
-                          apiBody: {},
+                          apiBody: const {},
                           serviceIdentifier: TopUpUtils()
                               .getTopUpServiceType(type: _topUpType.value),
                           accountDetails: {

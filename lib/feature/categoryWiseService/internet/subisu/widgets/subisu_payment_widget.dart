@@ -39,7 +39,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
       body: Form(
         key: _formKey,
         child: CommonContainer(
-          showBottomSheet: true,
+          showRecentTransaction: true,
           associatedId: widget.service.id.toString(),
           showAccountSelection: true,
           showDetail: true,
