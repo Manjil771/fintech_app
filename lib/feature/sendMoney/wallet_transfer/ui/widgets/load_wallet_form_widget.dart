@@ -6,6 +6,8 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -66,17 +68,44 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 NavigationService.pop();
               }
               if (state is CommonStateSuccess<WalletTransferModel>) {
-                showPopUpDialog(
-                  context: context,
-                  message: state.data.message,
-                  title: state.data.status,
-                  buttonCallback: () {
-                    NavigationService.pushReplacement(
-                      target: const DashboardPage(),
-                    );
-                  },
-                  showCancelButton: false,
-                );
+                WalletTransferModel _response = state.data;
+                if (state.data.code == "M0000") {
+                  NavigationService.pushReplacement(
+                      target: CommonTransactionSuccessPage(
+                          body: Column(children: [
+                            KeyValueTile(
+                                title: "Wallet",
+                                value: _response.findValue(
+                                  primaryKey: "walletName",
+                                )),
+                            KeyValueTile(
+                                title: "To Account",
+                                value: _response.findValue(
+                                  primaryKey: "descOneFieldValue",
+                                )),
+                            KeyValueTile(
+                                title: "Amount",
+                                value: _response.findValue(
+                                  primaryKey: "amount",
+                                )),
+                          ]),
+                          message: _response.message,
+                          transactionID: _response.findValue(
+                            primaryKey: "transactionIdentifier",
+                          )));
+                } else {
+                  showPopUpDialog(
+                    context: context,
+                    message: state.data.message,
+                    title: state.data.status,
+                    buttonCallback: () {
+                      NavigationService.pushReplacement(
+                        target: const DashboardPage(),
+                      );
+                    },
+                    showCancelButton: false,
+                  );
+                }
               } else if (state is CommonError) {
                 SnackBarUtils.showErrorBar(
                   context: context,
@@ -251,17 +280,4 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
       ),
     );
   }
-
-  amountBox(context, index) {
-    return Container(
-      margin: const EdgeInsets.symmetric(vertical: 7, horizontal: 7),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.black),
-      ),
-      child: Center(child: Text(amount[index].toString())),
-    );
-  }
-
-  final List amount = [100, 200, 500, 1000, 2000, 5000];
 }
