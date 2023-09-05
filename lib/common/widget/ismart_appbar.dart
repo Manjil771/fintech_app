@@ -10,6 +10,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/notification/screen/notification_page.dart';
 
 AppBar myAppbar({bool showBackButton = false}) {
   final _height = SizeUtils.height;
@@ -76,7 +77,9 @@ AppBar myAppbar({bool showBackButton = false}) {
     ),
     actions: [
       InkWell(
-        onTap: () {},
+        onTap: () {
+          NavigationService.push(target: NotificationPage());
+        },
         child: SvgPicture.asset(
           Assets.notificationIcon,
           color: CustomTheme.primaryColor,

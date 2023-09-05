@@ -8,6 +8,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/notification/resources/notification_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
@@ -82,6 +83,28 @@ class UtilityPaymentRepository {
 
       UtilityResponseData _responseData =
           UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<NotificationModel>> fetchNotification() async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchDetails(
+        serviceIdentifier: "",
+        accountDetails: {},
+        apiEndpoint: "/api/notifications",
+      );
+
+      NotificationModel _responseData =
+          NotificationModel.fromJson(_res['data'] ?? {});
       print(_responseData);
       return DataResponse.success(_responseData);
     } on CustomException catch (e) {
