@@ -116,9 +116,8 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
             final _body = {
               "accountNo":
                   RepositoryProvider.of<CustomerDetailRepository>(context)
-                      .accountsList
-                      .value
-                      .first
+                      .selectedAccount
+                      .value!
                       .accountNumber,
               "amount": _amountController.text,
               "bankCode": selectedBank?.bankId ?? "",

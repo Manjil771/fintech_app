@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.23+23 ##24th Aug - Uttarganga, Ekata
+version: 0.0.24+24 ##24th Aug - Uttarganga, Ekata
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -101,7 +101,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -126,7 +126,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/sarbahit/
@@ -143,7 +143,7 @@ flutter:
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
-    # - assets/nepalbachat/
+    - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/

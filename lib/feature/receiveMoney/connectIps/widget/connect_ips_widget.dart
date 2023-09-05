@@ -78,9 +78,8 @@ class _ConnectIpsWidgetState extends State<ConnectIpsWidget> {
             final _body = {
               "accountNo":
                   RepositoryProvider.of<CustomerDetailRepository>(context)
-                      .accountsList
-                      .value
-                      .first
+                      .selectedAccount
+                      .value!
                       .accountNumber,
               "amount": _amountController.text,
               "remarks": _remarksController.text,
