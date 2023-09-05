@@ -359,9 +359,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             sendingAccount:
                                 RepositoryProvider.of<CustomerDetailRepository>(
                                         context)
-                                    .accountsList
-                                    .value
-                                    .first
+                                    .selectedAccount
+                                    .value!
                                     .accountNumber,
                           );
                     },

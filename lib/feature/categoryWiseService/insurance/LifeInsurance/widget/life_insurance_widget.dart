@@ -71,7 +71,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                 apiBody: {
                   "policyNo": policyNoController.text,
                   "policyName": _response.findValue(
-                      primaryKey: "hashResposne", secondaryKey: "policyName"),
+                    primaryKey: "hashResponse",
+                    secondaryKey: "policyName",
+                  ),
+                  // "username": policyNoController.text
                 },
                 accountDetails: {
                   "account_number":

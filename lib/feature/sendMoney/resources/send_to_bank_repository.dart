@@ -6,8 +6,6 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_api_provider.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class SendToBankRepository {
   final UserRepository userRepository;
@@ -137,8 +135,7 @@ class SendToBankRepository {
           return DataResponse.success(
               _result['data']?['detail']["transactionIdentifier"]);
         } else {
-          return DataResponse.error(
-              "Error while sending money. Please try again.");
+          return DataResponse.error(_result['data']?['message']);
         }
       } on CustomException catch (e) {
         if (e is SessionExpireErrorException) {

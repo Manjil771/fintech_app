@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
 import 'package:ismart/feature/categoryWiseService/broker/screen/broker_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_booking_page.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
@@ -154,6 +155,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     NavigationService.push(
                                         target: LandlinePaymentPage(
                                       category: data,
+                                    ));
+                                  } else if (data.uniqueIdentifier
+                                          .toString()
+                                          .toLowerCase() ==
+                                      Slugs.busTicket) {
+                                    NavigationService.push(
+                                        target: BusBookingPage(
+                                      service: data.services.first,
                                     ));
                                   } else {
                                     NavigationService.push(

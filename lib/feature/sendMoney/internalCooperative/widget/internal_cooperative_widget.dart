@@ -185,7 +185,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   },
                 ),
                 CustomTextField(
-                  title: "Destation Account",
+                  title: "Destination Account",
                   hintText: "Account Number",
                   controller: _accountController,
                   validator: (val) => FormValidator.validateFieldNotEmpty(
