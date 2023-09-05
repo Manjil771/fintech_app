@@ -74,6 +74,11 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                     primaryKey: "hashResponse",
                     secondaryKey: "policyName",
                   ),
+
+                  // "IsNepDob": false,
+                  // "isNepDob": false,
+                  // "is_nep_dob": false,
+
                   // "username": policyNoController.text
                 },
                 accountDetails: {
@@ -84,7 +89,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           .accountNumber,
                   "amount": _response.findValue(
                       primaryKey: "hashResponse", secondaryKey: "amount"),
-                  "dob": selectedDateController.text
+                  "dob": selectedDateController.text,
+                  // "IsNepDob": false,
+                  // "isNepDob": false,
+                  // "is_nep_dob": false,
                 },
                 body: Column(
                   children: [
