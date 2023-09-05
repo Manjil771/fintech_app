@@ -135,7 +135,11 @@ class SendToBankRepository {
           return DataResponse.success(
               _result['data']?['detail']["transactionIdentifier"]);
         } else {
-          return DataResponse.error(_result['data']?['message']);
+          if (_result['data']?['code'] == "M0004") {
+            return DataResponse.error(_result['data']?['message'] ?? "");
+          }
+          return DataResponse.error(
+              "Error while sending money. Please try again.");
         }
       } on CustomException catch (e) {
         if (e is SessionExpireErrorException) {
