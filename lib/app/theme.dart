@@ -42,11 +42,13 @@ class CustomTheme {
   static const Color nepalbachatColor = Color(0xFF282D7C);
   static const Color nilgiriColor = Color(0xFF3B4BA0);
   static const Color davisfallColor = Color(0xFF016D3B);
-
   static const Color sancharColor = Color(0xFF016D3B);
   static const Color hamiSabaiKoKrishiColor = Color(0xFF01812E);
+  static const Color rumjatarColor = Color(0xFF118B44);
+  static const Color supremeColor = Color(0xFF262262);
 
   static Color primaryColor = uddhamshilColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

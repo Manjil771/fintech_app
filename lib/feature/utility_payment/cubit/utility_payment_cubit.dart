@@ -1,8 +1,10 @@
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/feature/notification/resources/notification_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
@@ -51,6 +53,21 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     );
     if (_res.status == Status.Success && _res.data != null) {
       emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
+
+  fetchNotification() async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.fetchNotification();
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<NotificationModel>(data: _res.data!));
     } else {
       emit(
         CommonError(

@@ -1,6 +1,7 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
@@ -53,12 +54,15 @@ class _SplashWidgetState extends State<SplashWidget> {
         }
       },
       child: Scaffold(
-        body: Image.asset(
-          RepositoryProvider.of<CoOperative>(context).splashImage,
-          fit: BoxFit.fill,
-          height: double.infinity,
-          width: double.infinity,
-          alignment: Alignment.center,
+        // backgroundColor: CustomTheme.testAppColor,
+        body: SafeArea(
+          child: Image.asset(
+            RepositoryProvider.of<CoOperative>(context).splashImage,
+            fit: BoxFit.cover,
+            height: double.infinity,
+            width: double.infinity,
+            alignment: Alignment.center,
+          ),
         ),
       ),
     );

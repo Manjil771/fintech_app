@@ -1,0 +1,106 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
+import 'package:ismart/feature/notification/resources/notification_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+
+class NotificationWidget extends StatefulWidget {
+  NotificationWidget({Key? key}) : super(key: key);
+
+  @override
+  State<NotificationWidget> createState() => _NotificationWidgetState();
+}
+
+class _NotificationWidgetState extends State<NotificationWidget> {
+  @override
+  void initState() {
+    context.read<UtilityPaymentCubit>().makePayment(
+        body: {},
+        mPin: "",
+        serviceIdentifier: "",
+        accountDetails: {
+          "timestamp": "2023-09-06 11:54:48",
+        },
+        apiEndpoint: "/api/notifications/seen");
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    return PageWrapper(
+      showBackButton: true,
+      // backgroundColor: CustomTheme.white,
+      body: BlocBuilder<UtilityPaymentCubit, CommonState>(
+        builder: (context, state) {
+          if (state is CommonStateSuccess<NotificationModel>) {
+            final _data = state.data;
+            return ListView.builder(
+              itemCount: state.data.detail.length,
+              itemBuilder: (context, index) {
+                final data = state.data.detail[index];
+                return Container(
+                  margin: EdgeInsets.only(bottom: 10),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: CustomTheme.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Row(children: [
+                        SvgPicture.asset(Assets.notificationIcon,
+                            height: 20.hp),
+                        SizedBox(width: 15.wp),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                data.title,
+                                style: _textTheme.displaySmall!
+                                    .copyWith(fontSize: 14),
+                              ),
+                              Text(
+                                data.date,
+                                style: _textTheme.labelSmall,
+                              ),
+                            ],
+                          ),
+                        ),
+                      ]),
+                      SizedBox(height: 10.hp),
+                      Text(
+                        data.body,
+                        style: _textTheme.labelLarge,
+                      ),
+                    ],
+                  ),
+                );
+              },
+            );
+          } else {
+            return NoDataScreen(
+              title: "No Notification Found",
+              details: "Notification List is empty.",
+            );
+            ;
+          }
+        },
+      ),
+    );
+  }
+}
