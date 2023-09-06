@@ -159,6 +159,8 @@ flutter:
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
+    - assets/rumjatar/
+    - assets/supreme/
 
   fonts:
     - family: popinbold

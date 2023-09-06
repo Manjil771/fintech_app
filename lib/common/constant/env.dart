@@ -548,6 +548,32 @@ class CoOperativeValue {
     splashImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative rumjatarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/rumjatar/rumjatar_banner.png",
+    backgroundImage: "assets/rumjatar/rumjatar_background.png",
+    clientCode: 'ZVA5CQJ8JH',
+    clientSecret: "152287",
+    coOperativeName: 'Rumjatar',
+    coOperativeLogo: 'assets/rumjatar/rumjatar_logo.png',
+    splashImage: "assets/rumjatar/rumjatar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative supremeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/supreme/supreme_banner.png",
+    backgroundImage: "assets/supreme/supreme_background.png",
+    clientCode: 'CHM8BUFXX6',
+    clientSecret: "156621",
+    coOperativeName: 'Rumjatar',
+    coOperativeLogo: 'assets/supreme/supreme_logo.png',
+    splashImage: "assets/supreme/supreme_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
