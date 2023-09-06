@@ -17,7 +17,16 @@ class NotificationPage extends StatelessWidget {
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
               RepositoryProvider.of<UtilityPaymentRepository>(context))
-        ..fetchNotification(),
+        ..fetchNotification()
+        ..makePayment(
+            body: {},
+            mPin: "",
+            serviceIdentifier: "",
+            accountDetails: {
+              // "timestamp": "2023-09-06 11:54:48",
+              "timestamp": DateTime.now(),
+            },
+            apiEndpoint: "/api/notifications/seen"),
       child: NotificationWidget(),
     );
   }

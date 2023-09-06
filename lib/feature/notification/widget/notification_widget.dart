@@ -14,8 +14,27 @@ import 'package:ismart/feature/notification/resources/notification_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class NotificationWidget extends StatelessWidget {
+class NotificationWidget extends StatefulWidget {
   NotificationWidget({Key? key}) : super(key: key);
+
+  @override
+  State<NotificationWidget> createState() => _NotificationWidgetState();
+}
+
+class _NotificationWidgetState extends State<NotificationWidget> {
+  @override
+  void initState() {
+    context.read<UtilityPaymentCubit>().makePayment(
+        body: {},
+        mPin: "",
+        serviceIdentifier: "",
+        accountDetails: {
+          "timestamp": "2023-09-06 11:54:48",
+        },
+        apiEndpoint: "/api/notifications/seen");
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
