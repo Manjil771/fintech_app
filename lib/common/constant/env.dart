@@ -570,8 +570,21 @@ class CoOperativeValue {
     clientCode: 'CHM8BUFXX6',
     clientSecret: "156621",
     coOperativeName: 'Rumjatar',
-    coOperativeLogo: 'assets/supreme/supreme_logo.png',
+    coOperativeLogo: 'Supreme/supreme/supreme_logo.png',
     splashImage: "assets/supreme/supreme_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeSagarmathaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sagarmatha/sagarmatha_banner.png",
+    backgroundImage: "assets/sagarmatha/sagarmatha_background.png",
+    clientCode: 'V9G6YBJ29X',
+    clientSecret: "150239",
+    coOperativeName: 'Shree Sagarmatha',
+    coOperativeLogo: 'assets/sagarmatha/sagarmatha_logo.png',
+    splashImage: "assets/sagarmatha/sagarmatha_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //For test

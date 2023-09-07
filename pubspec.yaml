@@ -162,6 +162,7 @@ flutter:
     # - assets/rumjatar/
     # - assets/supreme/
     - assets/iconsoftCoop/
+    - assets/sagarmatha/
 
   fonts:
     - family: popinbold

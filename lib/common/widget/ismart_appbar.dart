@@ -39,7 +39,7 @@ AppBar myAppbar({bool showBackButton = false}) {
     elevation: 0,
     iconTheme: const IconThemeData(color: Colors.black),
     automaticallyImplyLeading: false,
-    centerTitle: false,
+    centerTitle: true,
     leading: ValueListenableBuilder<CustomerDetailModel?>(
         valueListenable: RepositoryProvider.of<CustomerDetailRepository>(
                 NavigationService.context)
