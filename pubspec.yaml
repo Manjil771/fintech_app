@@ -117,7 +117,7 @@ flutter:
     # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    # - assets/bishal/
+    - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -144,21 +144,21 @@ flutter:
     # - assets/batika/
     # - assets/bhugol/
     - assets/nepalbachat/
-    # - assets/nilgiri/
-    # - assets/davisfall/
-    # - assets/sanchar/
-    # - assets/hamiSabaikokrishi/
-    # - assets/macchaPuchhre/
-    # - assets/nawajosh/
-    # - assets/fewa/
-    # - assets/matribhumi/
-    # - assets/gandakibesi/
-    # - assets/batika/
-    # - assets/bhugol/
-    # - assets/nepalbachat/
-    # - assets/nilgiri/
-    # - assets/davisfall/
-    # - assets/sanchar/
+    - assets/nilgiri/
+    - assets/davisfall/
+    - assets/sanchar/
+    - assets/hamiSabaikokrishi/
+    - assets/macchaPuchhre/
+    - assets/nawajosh/
+    - assets/fewa/
+    - assets/matribhumi/
+    - assets/gandakibesi/
+    - assets/batika/
+    - assets/bhugol/
+    - assets/nepalbachat/
+    - assets/nilgiri/
+    - assets/davisfall/
+    - assets/sanchar/
     - assets/rumjatar/
     - assets/supreme/
 
