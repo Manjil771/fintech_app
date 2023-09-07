@@ -4,7 +4,6 @@ import 'package:ismart/common/constant/fonts.dart';
 class CustomTheme {
   //live color
   // static const Color primaryColor = Color(0xFF010C80);
-//janadhara primary color
   static Color testAppColor = const Color(0xFF010C80);
   static const Color sahakaryaColor = Color(0xFF015017);
   static const Color manankColor = Color(0xFF015017);
@@ -46,8 +45,9 @@ class CustomTheme {
   static const Color hamiSabaiKoKrishiColor = Color(0xFF01812E);
   static const Color rumjatarColor = Color(0xFF118B44);
   static const Color supremeColor = Color(0xFF262262);
+  static const Color iconSoftColor = Color(0xFF7EA961);
 
-  static Color primaryColor = supremeColor;
+  static Color primaryColor = iconSoftColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

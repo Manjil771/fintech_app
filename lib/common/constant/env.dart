@@ -574,6 +574,20 @@ class CoOperativeValue {
     splashImage: "assets/supreme/supreme_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  //For test
+  static final CoOperative iconSoftCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/iconsoftCoop/iconsoft_banner.png",
+    backgroundImage: "assets/iconsoftCoop/iconsoft_background.png",
+    clientCode: 'OI6XM76XZT',
+    clientSecret: "190021",
+    coOperativeName: 'IconSoft',
+    coOperativeLogo: 'assets/iconsoftCoop/iconsoft_logo.png',
+    splashImage: "assets/iconsoftCoop/iconsoft_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
