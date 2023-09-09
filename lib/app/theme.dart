@@ -47,7 +47,7 @@ class CustomTheme {
   static const Color rumjatarColor = Color(0xFF118B44);
   static const Color supremeColor = Color(0xFF262262);
 
-  static Color primaryColor = bishalColor;
+  static Color primaryColor = sardikholaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

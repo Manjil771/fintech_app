@@ -108,13 +108,13 @@ flutter:
     # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
-    # - assets/shreeaaju/
+    - assets/shreeaaju/
     # - assets/shreemitra/
     # - assets/kipoo/
     # - assets/suryadev/
-    # - assets/uddhamshil/
+    - assets/uddhamshil/
     # - assets/navaprabhat/
-    # - assets/vyas/
+    # - assets/vyas/ 
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     - assets/bishal/
@@ -125,21 +125,18 @@ flutter:
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/sarbahit/
-    # - assets/sardikhola/
+    - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/fewa/
-    # - assets/macchaPuchhre/
+    - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/fewa/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
