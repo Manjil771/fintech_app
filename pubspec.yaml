@@ -101,7 +101,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -140,6 +140,26 @@ flutter:
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
+    # - assets/nepalbachat/
+    # - assets/nilgiri/
+    # - assets/davisfall/
+    # - assets/sanchar/
+    # - assets/hamiSabaikokrishi/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
+    # - assets/gandakibesi/
+    # - assets/batika/
+    # - assets/bhugol/
+    # - assets/nepalbachat/
+    # - assets/nilgiri/
+    # - assets/davisfall/
+    # - assets/sanchar/
+    # - assets/rumjatar/
+    # - assets/supreme/
+    - assets/iconsoftCoop/
+    - assets/sagarmatha/
     - assets/nepalbachat/
     - assets/nilgiri/
     - assets/davisfall/
@@ -174,3 +194,4 @@ flutter:
         - asset: assets/fonts/Poppins-Medium.ttf
 
   uses-material-design: true
+

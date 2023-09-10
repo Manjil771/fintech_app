@@ -527,8 +527,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sanchar/sanchar_banner.png",
     backgroundImage: "assets/sanchar/sanchar_background.png",
-    clientCode: 'LRIUMQ5JTT',
-    clientSecret: "165705",
+    clientCode: 'JGDS3TK6VO',
+    clientSecret: "113528",
     coOperativeName: 'sanchar',
     coOperativeLogo: 'assets/sanchar/sanchar_logo.png',
     splashImage: "assets/sanchar/sanchar_splash.png",
@@ -541,8 +541,8 @@ class CoOperativeValue {
     bannerImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_banner.png",
     backgroundImage:
         "assets/hamiSabaikokrishi/hamiSabaikokrishi_background.png",
-    clientCode: 'JGDS3TK6VO',
-    clientSecret: "113528",
+    clientCode: 'LRIUMQ5JTT',
+    clientSecret: "165705",
     coOperativeName: 'Hami Sabaiko Krishi',
     coOperativeLogo: 'assets/hamiSabaikokrishi/hamiSabaikokrishi_logo.png',
     splashImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_splash.png",
@@ -570,8 +570,35 @@ class CoOperativeValue {
     clientCode: 'CHM8BUFXX6',
     clientSecret: "156621",
     coOperativeName: 'Rumjatar',
-    coOperativeLogo: 'assets/supreme/supreme_logo.png',
+    coOperativeLogo: 'Supreme/supreme/supreme_logo.png',
     splashImage: "assets/supreme/supreme_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeSagarmathaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sagarmatha/sagarmatha_banner.png",
+    backgroundImage: "assets/sagarmatha/sagarmatha_background.png",
+    clientCode: 'V9G6YBJ29X',
+    clientSecret: "150239",
+    coOperativeName: 'Shree Sagarmatha',
+    coOperativeLogo: 'assets/sagarmatha/sagarmatha_logo.png',
+    splashImage: "assets/sagarmatha/sagarmatha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  //For test
+  static final CoOperative iconSoftCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/iconsoftCoop/iconsoft_banner.png",
+    backgroundImage: "assets/iconsoftCoop/iconsoft_background.png",
+    clientCode: 'OI6XM76XZT',
+    clientSecret: "190021",
+    coOperativeName: 'IconSoft',
+    coOperativeLogo: 'assets/iconsoftCoop/iconsoft_logo.png',
+    splashImage: "assets/iconsoftCoop/iconsoft_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
