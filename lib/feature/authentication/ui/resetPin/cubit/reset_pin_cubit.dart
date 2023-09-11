@@ -28,15 +28,41 @@ class ResetPinCubit extends Cubit<CommonState> {
       apiEndpoint: apiEndpoint,
       body: body,
     );
-    if (_res.status == Status.Success ||
-        _res.message!.toLowerCase().contains("otp")) {
-      emit(CommonStateSuccess(data: _res.data));
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
     } else {
       emit(
         CommonError(
-          message: _res.message ?? "Error",
+          message: _res.message ?? LocaleKeys.error.tr(),
         ),
       );
     }
   }
+  // makePayment({
+  //   required String serviceIdentifier,
+  //   required Map<String, dynamic> accountDetails,
+  //   required Map<String, dynamic> body,
+  //   required String apiEndpoint,
+  //   required mPin,
+  // }) async {
+  //   emit(CommonLoading());
+
+  //   final _res = await resetPinRepository.makePayment(
+  //     mPin: mPin,
+  //     serviceIdentifier: serviceIdentifier,
+  //     accountDetails: accountDetails,
+  //     apiEndpoint: apiEndpoint,
+  //     body: body,
+  //   );
+  //   if (_res.status == Status.Success ||
+  //       _res.message!.toLowerCase().contains("otp")) {
+  //     emit(CommonStateSuccess(data: _res.data));
+  //   } else {
+  //     emit(
+  //       CommonError(
+  //         message: _res.message ?? "Error",
+  //       ),
+  //     );
+  //   }
+  // }
 }
