@@ -147,7 +147,7 @@ flutter:
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
-    # - assets/hamiSabaikokrishi/
+    - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
