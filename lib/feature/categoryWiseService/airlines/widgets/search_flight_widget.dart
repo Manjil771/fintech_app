@@ -84,6 +84,12 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                   "Success".toLowerCase()) {
                 NavigationService.push(
                   target: AvailableFlightPage(
+                    fromSector: KeyValue(
+                        title: _selectedSectorFrom.value?.title ?? "",
+                        value: _selectedSectorFrom.value?.value ?? ""),
+                    toSector: KeyValue(
+                        title: _selectedSectorTo.value?.title ?? "",
+                        value: _selectedSectorTo.value?.value ?? ""),
                     service: widget.service,
                     adultCount: _adultCount,
                     childrenCount: _childrenCount,
@@ -243,7 +249,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                         controller: _arrivalDateController,
                         validator: (value) =>
                             FormValidator.validateFieldNotEmpty(
-                                value, 'Departure Date'),
+                                value, 'Arrival Date'),
                         readOnly: true,
                         onTap: () async {
                           final DateTime? date = await showDatePicker(
@@ -405,7 +411,8 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               "serviceIdentifier": widget.service.uniqueIdentifier,
               "tripType": isRoundTrip ? "R" : "O",
             });
-          } else {
+          } else if (_selectedSectorFrom.value == null &&
+              _selectedSectorTo.value == null) {
             showPopUpDialog(
                 context: context,
                 message: "Select Select Sector",

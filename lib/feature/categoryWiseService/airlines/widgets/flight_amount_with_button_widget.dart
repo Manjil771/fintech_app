@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/passenger_detail_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_amount_column_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class FlightAmountWidgetWithButton extends StatelessWidget {
-  const FlightAmountWidgetWithButton({
+  FlightAmountWidgetWithButton({
     Key? key,
     required this.outBoundValues,
     required this.inBoundValues,
@@ -19,23 +27,79 @@ class FlightAmountWidgetWithButton extends StatelessWidget {
     required this.currentIndexNotifier,
     required this.bookingId,
     required this.totalPrice,
+    required this.adultCount,
+    required this.childrenCount,
+    required this.onButtonPress,
   }) : super(key: key);
   final List<Flight> outBoundValues;
+  final Function onButtonPress;
   final List<Flight> inBoundValues;
   final int selectedInboundIndex;
   final int selectedOutboundIndex;
   final bool isTwoWay;
+  final int adultCount;
+  final int childrenCount;
   final ValueNotifier<int> currentIndexNotifier;
   final String bookingId;
   final double totalPrice;
   final ServiceList services;
+  bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _width = SizeUtils.width;
+    return
 
-    return Container(
+        // return BlocListener<UtilityPaymentCubit, CommonState>(
+        //   listener: (context, state) {
+        //     if (state is CommonLoading && _isLoading == false) {
+        //       _isLoading = true;
+        //       showLoadingDialogBox(context);
+        //     } else if (state is! CommonLoading && _isLoading) {
+        //       _isLoading = false;
+        //       NavigationService.pop();
+        //     }
+        //     if (state is CommonError) {
+        //       showPopUpDialog(
+        //         context: context,
+        //         message: state.message,
+        //         title: "Error",
+        //         showCancelButton: false,
+        //         buttonCallback: () {
+        //           NavigationService.pop();
+        //         },
+        //       );
+        //     }
+
+        //     if (state is CommonStateSuccess<UtilityResponseData>) {
+        //       UtilityResponseData _response = state.data;
+        //       if (_response.code == "M0000" ||
+        //           _response.status.toLowerCase() == "Success".toLowerCase()) {
+        //         NavigationService.push(
+        //           target: PassengerDetailScreen(
+        //             utilityResponseData: _response,
+        //             arrivalFlight: inBoundValues[selectedInboundIndex],
+        //             totalFare: totalPrice,
+        //             service: services,
+        //             adultCount: 1,
+        //             childrenCount: 0,
+        //             departureFlight: outBoundValues[selectedOutboundIndex],
+        //           ),
+        //         );
+        //       } else {
+        //         showPopUpDialog(
+        //             context: context,
+        //             message: _response.message,
+        //             title: "Error",
+        //             buttonCallback: () {
+        //               NavigationService.pop();
+        //             },
+        //             showCancelButton: false);
+        //       }
+        //     }
+        //   },
+        Container(
       width: _width,
       decoration: BoxDecoration(
         borderRadius: const BorderRadius.only(
@@ -106,19 +170,23 @@ class FlightAmountWidgetWithButton extends StatelessWidget {
                         currentIndexNotifier.value = 1;
                         // setState(() {});
                       } else {
-                        // TODO Handle Navigation to next page
-                        // NavigationService.push(
-                        //   target: FlightDetailsPage(
-                        //     isTwoWay: isTwoWay,
-                        //     outboundFlightDetails:
-                        //         outBoundValues[selectedOutboundIndex],
-                        //     inboundFlightDetails: isTwoWay
-                        //         ? inBoundValues[selectedInboundIndex]
-                        //         : null,
-                        //     bookingId: bookingId,
-                        //     services: services,
-                        //   ),
-                        // );
+                        onButtonPress();
+                        //   context.read<UtilityPaymentCubit>().makePayment(
+                        //       serviceIdentifier: "ARS",
+                        //       accountDetails: {},
+                        //       body: {
+                        //         "flightId":
+                        //             outBoundValues[selectedOutboundIndex]
+                        //                 .flightId,
+                        //         "returnFlightId":
+                        //             selectedInboundIndex.isNegative
+                        //                 ? ""
+                        //                 : inBoundValues[selectedInboundIndex]
+                        //                     .flightId,
+                        //         "amount": totalPrice,
+                        //       },
+                        //       apiEndpoint: "/api/arsflightreservation",
+                        //       mPin: "");
                       }
                     },
                     textColor: _theme.primaryColor,
@@ -133,6 +201,7 @@ class FlightAmountWidgetWithButton extends StatelessWidget {
           ),
         ],
       ),
+      // ),
     );
   }
 }
