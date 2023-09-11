@@ -9,7 +9,7 @@ class Strings {
   static const uttargangaAppTitle = "Uttarganga Coop iSmart";
   static const arthaBagAppTitle = "ArthaBag Coop iSmart";
   static const manankAppTitle = "Manank Coop iSmart";
-  static const shreeAajuAppTitle = "Manank Coop iSmart";
+  static const shreeAajuAppTitle = "Shree Aaju Coop iSmart";
   static const kipooAppTitle = "Kipoo Coop iSmart";
   static const shreeMitraAppTitle = "Shree Mitra Coop iSmart";
   static const uddhamsilAppTitle = "Uddhamsil Coop iSmart";
@@ -30,12 +30,14 @@ class Strings {
   static const fewaAppTitle = "Fewa Saving iSmart";
   static const machhapuchhreAppTitle = "Machhapuchhre Saving iSmart";
   static const nepalBachatAppTitle = "Nepal Saving iSmart";
+  static const sardikholaAppTitle = "Sardikhola Coop iSmart";
   static const nilgiriAppTitle = "Nilgiri Saving iSmart";
   static const davisfallAppTitle = "Davisfall Saving iSmart";
   static const hamiSabaikoAppTitle = "HamiSabaiko Krishi iSmart";
   static const iconSoftAppTitle = "IconSoft Pvt iSmart";
-
   static const defaultAppTitle = "iSmart Devanasoft";
+  static const rumjatarAppTitle = "HamiSabaiko Krishi iSmart";
 
-  static const APP_TITLE = hamiSabaikoAppTitle;
+  static const APP_TITLE = rumjatarAppTitle;
+
 }

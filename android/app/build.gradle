@@ -106,6 +106,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        rumjatar {
+            dimension "app"
+            applicationId "com.devanasoft.rumjatar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        batika {
+            dimension "app"
+            applicationId "com.devanasoft.batika"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sanchar {
+            dimension "app"
+            applicationId "com.devanasoft.sanchar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        bhugol {
+            dimension "app"
+            applicationId "com.devanasoft.bhugol"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         sarbahit {
             dimension "app"
             applicationId "com.devanasoft.sarbahit"
