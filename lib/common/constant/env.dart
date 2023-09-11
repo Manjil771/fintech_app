@@ -614,7 +614,36 @@ class CoOperativeValue {
     splashImage: "assets/royalGorkha/royalGorkha_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative buddhaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/buddhaCoop/buddha_banner.png",
+    backgroundImage: "assets/buddhaCoop/buddha_background.png",
+    clientCode: 'I42M8ZXXB6',
+    clientSecret: "207412",
+    coOperativeName: 'Buddha Saving & Credit',
+    coOperativeLogo: 'assets/buddhaCoop/buddha_logo.png',
+    splashImage: "assets/buddhaCoop/buddha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
+  static final CoOperative sanaKishanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sanakishan/sanakishan_banner.png",
+
+    backgroundImage: "assets/sanakishan/sanakishan_background.png",
+    clientCode: 'RPJTJAKDBR',
+    clientSecret: "203763",
+    coOperativeName:
+        'Sana kishan nighlihawa / SK nighlihawa iSmart /SKINIGLIHAWA',
+    coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
+
+    splashImage: "assets/sanakishan/sanakishan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -630,22 +659,6 @@ class CoOperativeValue {
     appStoreID: "",
   );
 
-// static final CoOperative devLive = CoOperative(
-//     appStoreID: "",
-//     packageName: "",
-//     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-//     bannerImage: "assets/sanakishan/sanakishan_banner.png",
-
-//     backgroundImage: "assets/sanakishan/sanakishan_background.png",
-//     //TODO need to update client id and password
-//     clientCode: 'EHVNI7CZJ3',
-//     clientSecret: "126489",
-//     coOperativeName: 'Sana kishan nighlihawa / SK nighlihawa iSmart',
-//     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
-
-//     splashImage: "assets/sanakishan/sanakishan_splash.png",
-//     primaryColor: const Color(0xFF0b67bb),
-//   );
   // // // // DEV TEST70074
   // static final CoOperative development = CoOperative(
   //   backgroundImage: "assets/images/ismart_background_image.jpg",
