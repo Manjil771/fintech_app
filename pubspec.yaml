@@ -163,6 +163,7 @@ flutter:
     # - assets/supreme/
     - assets/iconsoftCoop/
     - assets/sagarmatha/
+    - assets/royalGorkha/
 
   fonts:
     - family: popinbold

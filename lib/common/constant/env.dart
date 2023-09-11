@@ -601,6 +601,19 @@ class CoOperativeValue {
     splashImage: "assets/iconsoftCoop/iconsoft_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative royalGorkhaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/royalGorkha/royalGorkha_banner.png",
+    backgroundImage: "assets/royalGorkha/royalGorkha_background.png",
+    clientCode: 'VY5ZJ7PFHJ',
+    clientSecret: "217188",
+    coOperativeName: 'Royal Gorkha Multipurpose',
+    coOperativeLogo: 'assets/royalGorkha/royalGorkha_logo.png',
+    splashImage: "assets/royalGorkha/royalGorkha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
@@ -627,7 +640,7 @@ class CoOperativeValue {
 //     //TODO need to update client id and password
 //     clientCode: 'EHVNI7CZJ3',
 //     clientSecret: "126489",
-//     coOperativeName: 'sanakishan',
+//     coOperativeName: 'Sana kishan nighlihawa / SK nighlihawa iSmart',
 //     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
 
 //     splashImage: "assets/sanakishan/sanakishan_splash.png",
