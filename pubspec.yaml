@@ -143,7 +143,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    - assets/sanchar/
+    # - assets/sanchar/
     # - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
@@ -156,7 +156,7 @@ flutter:
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
-    # - assets/rumjatar/
+    - assets/rumjatar/
     # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
