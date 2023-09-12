@@ -52,7 +52,7 @@ class CustomTheme {
   static const Color buddhaCoopColor = Color(0xFF3D4097);
   static const Color punjaColor = Color(0xFF009444);
 
-  static Color primaryColor = rumjatarColor;
+  static Color primaryColor = hamiSabaiKoKrishiColor;
   // CustomTheme() {
   //   if (kBuildFlavor.isSame(Flavor("prod"))) {
   //     primaryColor = Colors.red;
