@@ -197,7 +197,7 @@ class Flight {
       departureTime: json["departureTime"],
       arrival: json["arrival"],
       arrivalTime: json["arrivalTime"],
-      aircraftType: json["aircraftType"],
+      aircraftType: json["aircraftType"] ?? "",
       adult: json["adult"],
       child: json["child"],
       infant: json["infant"],

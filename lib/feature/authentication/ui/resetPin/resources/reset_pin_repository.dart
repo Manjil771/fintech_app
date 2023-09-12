@@ -29,7 +29,7 @@ class ResetPinRepository {
     );
   }
 
-  Future<DataResponse> makePayment({
+  Future<DataResponse<UtilityResponseData>> makePayment({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
@@ -44,12 +44,11 @@ class ResetPinRepository {
         body: body,
       );
 
-      final _responseData = _res['data'] ?? {};
-      UtilityResponseData _response =
-          UtilityResponseData.fromJson(_responseData);
-      print("data is" + _response.message);
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
 
-      return DataResponse.success(_response);
+      return DataResponse.success(_responseData);
     } on CustomException catch (e) {
       if (e is SessionExpireErrorException) {
         rethrow;
@@ -59,4 +58,34 @@ class ResetPinRepository {
       return DataResponse.error(e.toString());
     }
   }
+
+  // Future<DataResponse> makePayment({
+  //   required String serviceIdentifier,
+  //   required Map<String, dynamic> accountDetails,
+  //   required Map<String, dynamic> body,
+  //   required String apiEndpoint,
+  //   required mPin,
+  // }) async {
+  //   try {
+  //     final _res = await resetPinApiProvider.makePayment(
+  //       mPin: mPin,
+  //       accountDetails: accountDetails,
+  //       apiEndpoint: apiEndpoint,
+  //       body: body,
+  //     );
+
+  //     final _responseData = _res['data'] ?? {};
+  //     UtilityResponseData _response =
+  //         UtilityResponseData.fromJson(_responseData);
+
+  //     return DataResponse.success(_response);
+  //   } on CustomException catch (e) {
+  //     if (e is SessionExpireErrorException) {
+  //       rethrow;
+  //     }
+  //     return DataResponse.error(e.message, e.statusCode);
+  //   } catch (e) {
+  //     return DataResponse.error(e.toString());
+  //   }
+  // }
 }

@@ -40,4 +40,8 @@ class Routes {
   static const downloadScreen = '/download_page';
   static const forgotPin = '/forgot_pin';
   static const settingPage = '/setting_page';
+  static const loanPage = "/loan_page";
+  static const loanSchedulePage = "/loan_schedule_page";
+  static const loanInformationPage = "/loan_information_page";
+  static const loanStatementPage = "/loan_statement_page";
 }

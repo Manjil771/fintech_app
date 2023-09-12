@@ -76,64 +76,72 @@ class InputNewPinWidget extends StatelessWidget {
                   NavigationService.pop();
                 },
               );
+
+              NavigationService.pop();
             }
           }
           print("state is $state");
         },
-        child: ListView(
+        child: Column(
           children: [
             Container(height: 70.hp, child: IsmartTopWidget()),
-            CommonContainer(
-                onButtonPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    context.read<ResetPinCubit>().makePayment(
-                        serviceIdentifier: "",
-                        accountDetails: {
-                          "mobileNumber": mobileNumber,
-                          "otp": otp,
-                          "mPin": _pinController.text,
+            Expanded(
+              child: CommonContainer(
+                  onButtonPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      context.read<ResetPinCubit>().makePayment(
+                          serviceIdentifier: "",
+                          accountDetails: {
+                            "mobileNumber": mobileNumber,
+                            "otp": otp,
+                            "mPin": _pinController.text,
 
-                          //001001-001-101-0001091
-                          "clientId":
-                              RepositoryProvider.of<CoOperative>(context)
-                                  .clientCode,
+                            //001001-001-101-0001091
+                            "clientId":
+                                RepositoryProvider.of<CoOperative>(context)
+                                    .clientCode,
 
-                          // "smsReadToken"
-                        },
-                        body: {},
-                        apiEndpoint: "/customer/reset/setPin",
-                        mPin: "");
-                  }
-                },
-                buttonName: "Proceed",
-                title: "Reset Pin",
-                showDetail: false,
-                body: Form(
-                  key: _formKey,
-                  child: Column(
-                    children: [
-                      CustomTextField(
-                          controller: _pinController,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          title: "New Pin",
-                          validator: (value) {
-                            if (value!.length != 5) {
-                              return "Enter 5 digits pin.";
-                            }
-                          }),
-                      CustomTextField(
-                          controller: _pinConfirmController,
-                          autovalidateMode: AutovalidateMode.onUserInteraction,
-                          title: "Confirm Pin",
-                          validator: (value) {
-                            if (value != _pinController.text) {
-                              return "Confirm Pin doesnot match.";
-                            }
-                          }),
-                    ],
+                            // "smsReadToken"
+                          },
+                          body: {},
+                          apiEndpoint: "/customer/reset/setPin",
+                          mPin: "");
+                    }
+                  },
+                  buttonName: "Proceed",
+                  title: "Reset Pin",
+                  showDetail: false,
+                  body: Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        CustomTextField(
+                            textInputType: TextInputType.number,
+                            controller: _pinController,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            title: "New Pin",
+                            validator: (value) {
+                              if (value!.length != 5) {
+                                return "Enter 5 digits pin.";
+                              }
+                            }),
+                        CustomTextField(
+                            textInputType: TextInputType.number,
+                            controller: _pinConfirmController,
+                            autovalidateMode:
+                                AutovalidateMode.onUserInteraction,
+                            title: "Confirm Pin",
+                            validator: (value) {
+                              if (value != _pinController.text) {
+                                return "Confirm Pin doesnot match.";
+                              }
+                            }),
+                      ],
+                    ),
                   ),
-                ),
-                topbarName: "Reset Pin")
+                  topbarName: "Reset Pin"),
+            )
           ],
         ),
       ),

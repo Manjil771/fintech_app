@@ -10,6 +10,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AvailableFlightPage extends StatelessWidget {
+  final KeyValue fromSector;
+  final KeyValue toSector;
+
   final ServiceList service;
 
   final SearchFlightResponse flightDetail;
@@ -21,9 +24,11 @@ class AvailableFlightPage extends StatelessWidget {
     required this.flightDetail,
     required this.service,
     required this.isTwoWay,
+    required this.fromSector,
+    required this.toSector,
   });
-  final adultCount;
-  final childrenCount;
+  final int adultCount;
+  final int childrenCount;
 
   @override
   Widget build(BuildContext context) {
@@ -41,13 +46,15 @@ class AvailableFlightPage extends StatelessWidget {
         ),
       ],
       child: AvailableFlightsListWidget(
-        fromSector: KeyValue(title: "Kathmandu", value: "KTM"),
+        fromSector: fromSector,
         inboundFlights: flightDetail.inboundFlights,
-        isTwoWay: true,
+        isTwoWay: isTwoWay,
         outboundFlights: flightDetail.outboundFligts,
         serviceInfo: service,
-        toSector: KeyValue(title: "Bhadrapur", value: "BDR"),
+        toSector: toSector,
         useServiceResponse: flightDetail,
+        adultCount: adultCount,
+        childrenCount: childrenCount,
       ),
     );
   }

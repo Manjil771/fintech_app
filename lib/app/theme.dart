@@ -47,8 +47,12 @@ class CustomTheme {
   static const Color supremeColor = Color(0xFF262262);
   static const Color iconSoftColor = Color(0xFF7EA961);
   static const Color shreeSagarmathaColor = Color(0xFF009B4D);
+  static const Color royalGorkhaColor = Color(0xFF006838);
+  static const Color buddhaCoopColor = Color(0xFF3D4097);
+  static const Color punjaColor = Color(0xFF009444);
 
-  static Color primaryColor = matribhumiColor;
+  static Color primaryColor = testAppColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
@@ -67,6 +71,7 @@ class CustomTheme {
   static const Color shadowColor = Color(0x1A000000);
   static const Color darkerBlack = Color(0xff060606);
   static const Color darkTextColor = Color(0xfff8f8f8);
+  static const Color spanishGray = Color(0xFF9D9D9D);
 
   static const Color white = Colors.white;
 

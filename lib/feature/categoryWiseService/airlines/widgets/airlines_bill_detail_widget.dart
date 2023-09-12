@@ -1,22 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/date_formater.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_detail_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 
 class AirlinesBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
@@ -32,6 +38,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
   final Map<String, dynamic> apiBody;
   final String apiEndpoint;
   final ServiceList service;
+  final List<dynamic> passengerList;
 
   AirlinesBillDetailPage(
       {super.key,
@@ -45,7 +52,8 @@ class AirlinesBillDetailPage extends StatelessWidget {
       required this.totalFare,
       required this.contactName,
       required this.contactPhoneNumber,
-      required this.contactEmail});
+      required this.contactEmail,
+      required this.passengerList});
   final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -69,6 +77,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
         serviceIdentifier: serviceIdentifier,
+        passengerList: passengerList,
       ),
     );
   }
@@ -76,6 +85,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
 
 class AirlinesBillDetailWidget extends StatefulWidget {
   final ServiceList service;
+  final List passengerList;
 
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
@@ -101,6 +111,7 @@ class AirlinesBillDetailWidget extends StatefulWidget {
     required this.contactName,
     required this.contactPhoneNumber,
     required this.contactEmail,
+    required this.passengerList,
   });
 
   @override
@@ -192,13 +203,39 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text("Contact Detail"),
+                        Text(
+                          "From Account",
+                          style: const TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 14,
+                            color: CustomTheme.lightTextColor,
+                          ),
+                        ),
+                        PrimaryAccountBox(),
+                        Text(
+                          "Flight Details",
+                          style: _textTheme.headlineMedium,
+                        ),
+                        FlightDetailBox(
+                          flight: widget.departureFlight,
+                        ),
+                        if (widget.departureFlight != widget.arrivalFlight)
+                          Padding(
+                            padding: EdgeInsets.symmetric(vertical: 10),
+                            child: FlightDetailBox(
+                              flight: widget.arrivalFlight,
+                            ),
+                          ),
+                        Text(
+                          "Contact Detail",
+                          style: _textTheme.headlineSmall,
+                        ),
                         Container(
                           width: double.infinity,
                           padding: const EdgeInsets.all(18),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(18),
-                            color: const Color(0xFFF3F3F3),
+                            color: const Color(0xFFF4F4F9),
                           ),
                           child: Column(children: [
                             KeyValueTile(
@@ -213,42 +250,57 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                           ]),
                         ),
                         Text(
-                          "Departure Flight Details",
-                          style: _textTheme.titleSmall!
-                              .copyWith(fontWeight: FontWeight.w700),
+                          "Passenger Detail",
+                          style: _textTheme.headlineSmall,
                         ),
-                        SizedBox(height: 5.hp),
-                        FlightDetailBox(
-                          flight: widget.departureFlight,
-                        ),
-                        SizedBox(height: 10.hp),
-                        if (widget.arrivalFlight != null)
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                "Return Flight Details",
-                                style: _textTheme.titleSmall!
-                                    .copyWith(fontWeight: FontWeight.w700),
-                              ),
-                              SizedBox(height: 5.hp),
-                              FlightDetailBox(
-                                flight: widget.arrivalFlight,
-                              )
-                            ],
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(18),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(18),
+                            color: const Color(0xFFF4F4F9),
                           ),
-
-                        // Container(
-                        //   decoration: BoxDecoration(
-                        //       borderRadius: BorderRadius.circular(18),
-                        //       border:
-                        //           Border.all(color: Theme.of(context).primaryColor)),
-                        //   child: CustomRoundedButtom(
-                        //       textColor: Theme.of(context).primaryColor,
-                        //       title: "Download Receipt",
-                        //       color: Colors.transparent,
-                        //       onPressed: () {}),
-                        // ),
+                          child: ListView.builder(
+                              shrinkWrap: true,
+                              itemCount: widget.passengerList.length,
+                              itemBuilder: (context, index) {
+                                return Wrap(spacing: 10.wp, children: [
+                                  Text(
+                                    (index + 1).toString() + " -",
+                                    style:
+                                        _theme.textTheme.titleSmall!.copyWith(
+                                      fontWeight: FontWeight.w700,
+                                    ),
+                                  ),
+                                  Text(widget.passengerList[index]["title"],
+                                      style:
+                                          _theme.textTheme.titleSmall!.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                  Text(
+                                      widget.passengerList[index]["firstName"] +
+                                          " " +
+                                          widget.passengerList[index]
+                                              ["lastName"],
+                                      style:
+                                          _theme.textTheme.titleSmall!.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                  Text(
+                                      widget.passengerList[index]
+                                          ["nationality"],
+                                      style:
+                                          _theme.textTheme.titleSmall!.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                  Text(widget.passengerList[index]["paxType"],
+                                      style:
+                                          _theme.textTheme.titleSmall!.copyWith(
+                                        fontWeight: FontWeight.w700,
+                                      )),
+                                ]);
+                              }),
+                        ),
                       ],
                     ),
                   ),

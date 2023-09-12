@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/screen/input_new_pin_page.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ResetOTPWidget extends StatefulWidget {
@@ -44,17 +45,6 @@ class _ResetOTPWidgetState extends State<ResetOTPWidget> {
                 _isLoading = false;
                 NavigationService.pop();
               }
-              if (state is CommonError) {
-                showPopUpDialog(
-                  context: context,
-                  message: state.message,
-                  title: "Error",
-                  showCancelButton: false,
-                  buttonCallback: () {
-                    NavigationService.pop();
-                  },
-                );
-              }
 
               if (state is CommonStateSuccess) {
                 UtilityResponseData _response = state.data;
@@ -75,7 +65,18 @@ class _ResetOTPWidgetState extends State<ResetOTPWidget> {
                     },
                   );
                 }
+              } else if (state is CommonError) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.message,
+                  title: "Error",
+                  showCancelButton: false,
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                );
               }
+              print("state is $state ");
             },
             child: ListView(
               children: [

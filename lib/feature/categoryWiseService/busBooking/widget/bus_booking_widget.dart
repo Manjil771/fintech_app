@@ -82,15 +82,15 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
 
               if (_response.responseStatus.toLowerCase() ==
                   "Success".toLowerCase()) {
-                NavigationService.push(
-                  target: AvailableFlightPage(
-                    service: widget.service,
-                    adultCount: _adultCount,
-                    childrenCount: _childrenCount,
-                    flightDetail: _response,
-                    isTwoWay: isRoundTrip,
-                  ),
-                );
+                // NavigationService.push(
+                //   target: AvailableFlightPage(
+                //     service: widget.service,
+                //     adultCount: _adultCount,
+                //     childrenCount: _childrenCount,
+                //     flightDetail: _response,
+                //     isTwoWay: isRoundTrip,
+                //   ),
+                // );
               } else {
                 showPopUpDialog(
                     context: context,

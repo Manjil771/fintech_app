@@ -7,13 +7,18 @@ class FormValidator {
     if (supportEmpty && (val == null || val.isEmpty)) {
       return null;
     } else if (val == null) {
-      return LocaleKeys.fieldCannotBeEmpty.tr(args: [LocaleKeys.email.tr()]);
+      // return LocaleKeys.fieldCannotBeEmpty.tr(args: [LocaleKeys.email.tr()]);
+      return "Email Cannot be empty";
     } else if (val.isEmpty) {
-      return LocaleKeys.fieldCannotBeEmpty.tr(args: [LocaleKeys.email.tr()]);
+      return "Email Cannot be empty";
+
+      // return LocaleKeys.fieldCannotBeEmpty.tr(args: [LocaleKeys.email.tr()]);
     } else if (TextUtils.validateEmail(val)) {
       return null;
     } else {
-      return LocaleKeys.pleaseEnterValidField.tr(args: [LocaleKeys.email.tr()]);
+      return "Please Enter a valid Email";
+
+      // return LocaleKeys.pleaseEnterValidField.tr(args: [LocaleKeys.email.tr()]);
     }
   }
 

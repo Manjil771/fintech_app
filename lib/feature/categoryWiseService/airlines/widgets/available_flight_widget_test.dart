@@ -1,19 +1,28 @@
 // import 'package:dotted_border/dotted_border.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/wrapper/nested_tab_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/airlines_resource/common_navigation_bar.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/airlines_resource/flight_location_widget.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/screen/passenger_detail_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_amount_with_button_widget.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_list_tab_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:sliver_tools/sliver_tools.dart';
+
+import '../../../utility_payment/cubit/utility_payment_cubit.dart';
 
 class AvailableFlightsListWidget extends StatefulWidget {
   const AvailableFlightsListWidget({
@@ -26,12 +35,17 @@ class AvailableFlightsListWidget extends StatefulWidget {
     required this.outboundFlights,
     required this.inboundFlights,
     required this.serviceInfo,
+    required this.adultCount,
+    required this.childrenCount,
   }) : super(key: key);
 
   final SearchFlightResponse useServiceResponse;
   final bool isTwoWay;
   final KeyValue fromSector;
   final KeyValue toSector;
+
+  final int adultCount;
+  final int childrenCount;
   // final ServiceList services;
 
   final List<Flight> outboundFlights;
@@ -297,7 +311,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
   //   selectedOutboundIndex = -1;
   //   setState(() {});
   // }
-
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -327,239 +341,264 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
       // ],
       padding: EdgeInsets.zero,
       showBackButton: true,
-      body: Stack(
-        children: [
-          NestedScrollView(
-            physics: const NeverScrollableScrollPhysics(),
-            headerSliverBuilder: (context, innerBoxIsScrolled) {
-              return [
-                SliverOverlapAbsorber(
-                    handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
-                        context),
-                    sliver: MultiSliver(
-                      children: [
-                        SliverToBoxAdapter(
-                          child: Container(
-                            width: _width,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30.hp),
-                              color: CustomTheme.lightGray,
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            UtilityResponseData _response = state.data;
+            if (_response.code == "M0000" ||
+                _response.status.toLowerCase() == "Success".toLowerCase()) {
+              NavigationService.pushReplacement(
+                target: PassengerDetailScreen(
+                  utilityResponseData: _response,
+                  arrivalFlight: selectedInboundIndex.isNegative
+                      ? _outboundValues[selectedOutboundIndex]
+                      : _inboundValue[selectedInboundIndex],
+                  totalFare: totalPrice,
+                  service: widget.serviceInfo,
+                  adultCount: widget.adultCount,
+                  childrenCount: widget.childrenCount,
+                  departureFlight: _outboundValues[selectedOutboundIndex],
+                ),
+              );
+            } else {
+              showPopUpDialog(
+                  context: context,
+                  message: _response.message,
+                  title: "Message",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false);
+            }
+          } else {
+            print("state is " + state.toString());
+          }
+        },
+        child: Stack(
+          children: [
+            NestedScrollView(
+              physics: const NeverScrollableScrollPhysics(),
+              headerSliverBuilder: (context, innerBoxIsScrolled) {
+                return [
+                  SliverOverlapAbsorber(
+                      handle: NestedScrollView.sliverOverlapAbsorberHandleFor(
+                          context),
+                      sliver: MultiSliver(
+                        children: [
+                          SliverToBoxAdapter(
+                            child: Container(
+                              width: _width,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(30.hp),
+                                color: CustomTheme.lightGray,
+                              ),
+                              padding: EdgeInsets.all(15.hp),
+                              margin: const EdgeInsets.symmetric(
+                                horizontal: CustomTheme.symmetricHozPadding,
+                              ),
+                              child: Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  FlightLocationWidget(
+                                    iconData: Icons.flight_takeoff,
+                                    locationSlug: fromSectorBackup!.value,
+                                    locationName: fromSectorBackup!.title,
+                                  ),
+                                  FlightLocationWidget(
+                                    iconData: Icons.flight_land,
+                                    locationSlug: toSectorBackup!.value,
+                                    locationName: toSectorBackup!.title,
+                                  ),
+                                ],
+                              ),
                             ),
-                            padding: EdgeInsets.all(15.hp),
-                            margin: const EdgeInsets.symmetric(
-                              horizontal: CustomTheme.symmetricHozPadding,
+                          ),
+                          SliverToBoxAdapter(
+                            child: SizedBox(
+                              height: 15.hp,
                             ),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          ),
+                          // SliverToBoxAdapter(
+                          //   child: Container(
+                          //     padding: const EdgeInsets.symmetric(
+                          //       horizontal: CustomTheme.symmetricHozPadding,
+                          //     ),
+                          //     child: Row(
+                          //       children: [
+                          //         Icon(
+                          //           PaywellIcons.calendar,
+                          //           color: _theme.primaryColor,
+                          //         ),
+                          //         if (_flightUtils!
+                          //             .backupOutboundFlights.isNotEmpty)
+                          //           Text(
+                          //             "${_flightUtils!.backupOutboundFlights.first.flightDate}",
+                          //           ),
+                          //         if (_flightUtils!
+                          //             .backupInboundFlights.isNotEmpty)
+                          //           Text(
+                          //             " - ${_flightUtils!.backupInboundFlights.first.flightDate}",
+                          //           ),
+                          //         SizedBox(
+                          //           width: 10.hp,
+                          //         ),
+                          //         Icon(
+                          //           PaywellIcons.user,
+                          //           color: _theme.primaryColor,
+                          //         ),
+                          //         if (_flightUtils!
+                          //             .backupOutboundFlights.isNotEmpty)
+                          //           Text(
+                          //             "${_flightUtils!.backupOutboundFlights.first.adult} Adults ${_flightUtils!.backupOutboundFlights.first.child} Childrens",
+                          //           ),
+                          //       ],
+                          //     ),
+                          //   ),
+                          // ),
+
+                          if (widget.isTwoWay)
+                            Column(
                               children: [
-                                FlightLocationWidget(
-                                  iconData: Icons.flight_takeoff,
-                                  locationSlug: fromSectorBackup!.value,
-                                  locationName: fromSectorBackup!.title,
+                                SliverToBoxAdapter(
+                                  child: CommonNavigationBar(
+                                    selectedIndex: _currentIndex,
+                                    borderRadius: 100,
+                                    onChanged: (index) {
+                                      _tabController.animateTo(index);
+                                    },
+                                    margin: EdgeInsets.only(
+                                      left: CustomTheme.symmetricHozPadding,
+                                      right: CustomTheme.symmetricHozPadding,
+                                      bottom: 20.hp,
+                                    ),
+                                    items: _items,
+                                  ),
                                 ),
-                                FlightLocationWidget(
-                                  iconData: Icons.flight_land,
-                                  locationSlug: toSectorBackup!.value,
-                                  locationName: toSectorBackup!.title,
+                                SliverToBoxAdapter(
+                                  child: SizedBox(
+                                    height: 20.hp,
+                                  ),
                                 ),
                               ],
                             ),
-                          ),
-                        ),
-                        SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 15.hp,
-                          ),
-                        ),
-                        // SliverToBoxAdapter(
-                        //   child: Container(
-                        //     padding: const EdgeInsets.symmetric(
-                        //       horizontal: CustomTheme.symmetricHozPadding,
-                        //     ),
-                        //     child: Row(
-                        //       children: [
-                        //         Icon(
-                        //           PaywellIcons.calendar,
-                        //           color: _theme.primaryColor,
-                        //         ),
-                        //         if (_flightUtils!
-                        //             .backupOutboundFlights.isNotEmpty)
-                        //           Text(
-                        //             "${_flightUtils!.backupOutboundFlights.first.flightDate}",
-                        //           ),
-                        //         if (_flightUtils!
-                        //             .backupInboundFlights.isNotEmpty)
-                        //           Text(
-                        //             " - ${_flightUtils!.backupInboundFlights.first.flightDate}",
-                        //           ),
-                        //         SizedBox(
-                        //           width: 10.hp,
-                        //         ),
-                        //         Icon(
-                        //           PaywellIcons.user,
-                        //           color: _theme.primaryColor,
-                        //         ),
-                        //         if (_flightUtils!
-                        //             .backupOutboundFlights.isNotEmpty)
-                        //           Text(
-                        //             "${_flightUtils!.backupOutboundFlights.first.adult} Adults ${_flightUtils!.backupOutboundFlights.first.child} Childrens",
-                        //           ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
-                        SliverToBoxAdapter(
-                          child: SizedBox(height: 20.hp),
-                        ),
-                        if (widget.isTwoWay)
-                          SliverToBoxAdapter(
-                            child: CommonNavigationBar(
-                              selectedIndex: _currentIndex,
-                              borderRadius: 100,
-                              onChanged: (index) {
-                                _tabController.animateTo(index);
-                              },
-                              margin: EdgeInsets.only(
-                                left: CustomTheme.symmetricHozPadding,
-                                right: CustomTheme.symmetricHozPadding,
-                                bottom: 20.hp,
-                              ),
-                              items: _items,
-                            ),
-                          ),
-                        SliverToBoxAdapter(
-                          child: SizedBox(
-                            height: 20.hp,
-                          ),
-                        ),
-                        // SliverToBoxAdapter(
-                        //   child: Padding(
-                        //     padding: const EdgeInsets.symmetric(
-                        //       horizontal: CustomTheme.symmetricHozPadding,
-                        //     ),
-                        //     child: DottedBorder(
-                        //       child: Container(
-                        //         width: _width,
-                        //         padding: EdgeInsets.symmetric(
-                        //           horizontal: 10.hp,
-                        //         ),
-                        //         child: Row(
-                        //           mainAxisAlignment:
-                        //               MainAxisAlignment.spaceBetween,
-                        //           children: [
-                        //             Row(
-                        //               children: [
-                        //                 FlightsFilterWidget(
-                        //                   isFilterApplied:
-                        //                       isTimeFilterApplied ||
-                        //                           isTimeSortApplied,
-                        //                   filterTitle: context.loc.flight.time,
-                        //                   filterIcon: PaywellIcons.filter,
-                        //                   onClickFilterCallback: applyTimeSort,
-                        //                 ),
-                        //                 SizedBox(
-                        //                   width: 5.hp,
-                        //                 ),
-                        //                 FlightsFilterWidget(
-                        //                   isFilterApplied:
-                        //                       isPriceFilterApplied ||
-                        //                           isPriceSortApplied,
-                        //                   filterTitle: context.loc.flight.price,
-                        //                   filterIcon: PaywellIcons.filter,
-                        //                   onClickFilterCallback: applyPriceSort,
-                        //                 ),
-                        //               ],
-                        //             ),
-                        //             Row(
-                        //               children: [
-                        //                 Text(
-                        //                   context.loc.flight.refundableOnly,
-                        //                   style:
-                        //                       _textTheme.titleSmall!.copyWith(
-                        //                     color: CustomTheme.midGrayColor,
-                        //                     fontWeight: FontWeight.normal,
-                        //                   ),
-                        //                 ),
-                        //                 Switch(
-                        //                   value: isRefundableFilterApplied,
-                        //                   activeColor: _theme.primaryColor,
-                        //                   onChanged: (val) {
-                        //                     // isRefundableFilterApplied = val;
-                        //                     applyRefundableFilter(val);
-                        //                     setState(() {});
-                        //                   },
-                        //                 ),
-                        //               ],
-                        //             )
-                        //           ],
-                        //         ),
-                        //       ),
-                        //       radius: Radius.circular(20.hp),
-                        //       borderType: BorderType.RRect,
-                        //     ),
-                        //   ),
-                        // ),
 
-                        SliverToBoxAdapter(
-                          child: SizedBox(height: 20.hp),
-                        ),
-                      ],
-                    ))
-              ];
-            },
-            body: TabBarView(
-              controller: _tabController,
-              children: [
-                NestedTabWrapper(
-                  slivers: [
-                    SliverPadding(
-                      padding: EdgeInsets.zero,
-                      sliver: _outboundValues.isNotEmpty
-                          ? FlightListTabWidget(
-                              selectedIndex: selectedOutboundIndex,
-                              calculateTotalPrice: calculateTotalPrice,
-                              onSelectionChanged: (val) {
-                                selectedOutboundIndex = val;
-                                setState(() {});
-                              },
-                              extraCallback: () {
-                                if (selectedInboundIndex == -1 &&
-                                    widget.isTwoWay) {
-                                  _tabController.animateTo(1);
-                                }
-                              },
-                              flightList: _outboundValues,
-                              serviceInfo: widget.serviceInfo,
-                            )
-                          : SliverToBoxAdapter(
-                              child: Padding(
-                                padding: const EdgeInsets.symmetric(
-                                  horizontal: CustomTheme.symmetricHozPadding,
-                                ),
-                                child: Text(
-                                  "No flight found.",
-                                  style: _textTheme.titleLarge,
-                                ),
-                              ),
-                            ),
-                    ),
-                  ],
-                ),
-                if (widget.isTwoWay)
+                          // SliverToBoxAdapter(
+                          //   child: Padding(
+                          //     padding: const EdgeInsets.symmetric(
+                          //       horizontal: CustomTheme.symmetricHozPadding,
+                          //     ),
+                          //     child: DottedBorder(
+                          //       child: Container(
+                          //         width: _width,
+                          //         padding: EdgeInsets.symmetric(
+                          //           horizontal: 10.hp,
+                          //         ),
+                          //         child: Row(
+                          //           mainAxisAlignment:
+                          //               MainAxisAlignment.spaceBetween,
+                          //           children: [
+                          //             Row(
+                          //               children: [
+                          //                 FlightsFilterWidget(
+                          //                   isFilterApplied:
+                          //                       isTimeFilterApplied ||
+                          //                           isTimeSortApplied,
+                          //                   filterTitle: context.loc.flight.time,
+                          //                   filterIcon: PaywellIcons.filter,
+                          //                   onClickFilterCallback: applyTimeSort,
+                          //                 ),
+                          //                 SizedBox(
+                          //                   width: 5.hp,
+                          //                 ),
+                          //                 FlightsFilterWidget(
+                          //                   isFilterApplied:
+                          //                       isPriceFilterApplied ||
+                          //                           isPriceSortApplied,
+                          //                   filterTitle: context.loc.flight.price,
+                          //                   filterIcon: PaywellIcons.filter,
+                          //                   onClickFilterCallback: applyPriceSort,
+                          //                 ),
+                          //               ],
+                          //             ),
+                          //             Row(
+                          //               children: [
+                          //                 Text(
+                          //                   context.loc.flight.refundableOnly,
+                          //                   style:
+                          //                       _textTheme.titleSmall!.copyWith(
+                          //                     color: CustomTheme.midGrayColor,
+                          //                     fontWeight: FontWeight.normal,
+                          //                   ),
+                          //                 ),
+                          //                 Switch(
+                          //                   value: isRefundableFilterApplied,
+                          //                   activeColor: _theme.primaryColor,
+                          //                   onChanged: (val) {
+                          //                     // isRefundableFilterApplied = val;
+                          //                     applyRefundableFilter(val);
+                          //                     setState(() {});
+                          //                   },
+                          //                 ),
+                          //               ],
+                          //             )
+                          //           ],
+                          //         ),
+                          //       ),
+                          //       radius: Radius.circular(20.hp),
+                          //       borderType: BorderType.RRect,
+                          //     ),
+                          //   ),
+                          // ),
+
+                          SliverToBoxAdapter(
+                            child: SizedBox(height: 20.hp),
+                          ),
+                        ],
+                      ))
+                ];
+              },
+              body: TabBarView(
+                controller: _tabController,
+                children: [
                   NestedTabWrapper(
                     slivers: [
                       SliverPadding(
                         padding: EdgeInsets.zero,
-                        sliver: _inboundValue.isNotEmpty
+                        sliver: _outboundValues.isNotEmpty
                             ? FlightListTabWidget(
-                                selectedIndex: selectedInboundIndex,
+                                selectedIndex: selectedOutboundIndex,
                                 calculateTotalPrice: calculateTotalPrice,
                                 onSelectionChanged: (val) {
-                                  selectedInboundIndex = val;
+                                  selectedOutboundIndex = val;
                                   setState(() {});
                                 },
-                                flightList: _inboundValue,
-                                extraCallback: () {},
+                                extraCallback: () {
+                                  if (selectedInboundIndex == -1 &&
+                                      widget.isTwoWay) {
+                                    _tabController.animateTo(1);
+                                  }
+                                },
+                                flightList: _outboundValues,
                                 serviceInfo: widget.serviceInfo,
                               )
                             : SliverToBoxAdapter(
@@ -568,7 +607,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                                     horizontal: CustomTheme.symmetricHozPadding,
                                   ),
                                   child: Text(
-                                    "No flights found.",
+                                    "No flight found.",
                                     style: _textTheme.titleLarge,
                                   ),
                                 ),
@@ -576,31 +615,84 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                       ),
                     ],
                   ),
-              ],
+                  if (widget.isTwoWay)
+                    NestedTabWrapper(
+                      slivers: [
+                        SliverPadding(
+                          padding: EdgeInsets.zero,
+                          sliver: _inboundValue.isNotEmpty
+                              ? FlightListTabWidget(
+                                  selectedIndex: selectedInboundIndex,
+                                  calculateTotalPrice: calculateTotalPrice,
+                                  onSelectionChanged: (val) {
+                                    selectedInboundIndex = val;
+                                    setState(() {});
+                                  },
+                                  flightList: _inboundValue,
+                                  extraCallback: () {},
+                                  serviceInfo: widget.serviceInfo,
+                                )
+                              : SliverToBoxAdapter(
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(
+                                      horizontal:
+                                          CustomTheme.symmetricHozPadding,
+                                    ),
+                                    child: Text(
+                                      "No flights found.",
+                                      style: _textTheme.titleLarge,
+                                    ),
+                                  ),
+                                ),
+                        ),
+                      ],
+                    ),
+                ],
+              ),
             ),
-          ),
-          Positioned(
-            bottom: 0,
-            right: 0,
-            left: 0,
-            child: AnimatedSwitcher(
-              duration: const Duration(milliseconds: 800),
-              child: selectedOutboundIndex != -1
-                  ? FlightAmountWidgetWithButton(
-                      outBoundValues: _outboundValues,
-                      inBoundValues: _inboundValue,
-                      selectedInboundIndex: selectedInboundIndex,
-                      selectedOutboundIndex: selectedOutboundIndex,
-                      isTwoWay: widget.isTwoWay,
-                      services: widget.serviceInfo,
-                      currentIndexNotifier: _currentIndex,
-                      bookingId: bookindId,
-                      totalPrice: totalPrice,
-                    )
-                  : Container(),
-            ),
-          )
-        ],
+            Positioned(
+              bottom: 0,
+              right: 0,
+              left: 0,
+              child: AnimatedSwitcher(
+                duration: const Duration(milliseconds: 800),
+                child: selectedOutboundIndex != -1
+                    ? FlightAmountWidgetWithButton(
+                        onButtonPress: () {
+                          context.read<UtilityPaymentCubit>().makePayment(
+                              serviceIdentifier: "ARS",
+                              accountDetails: {},
+                              body: {
+                                "flightId":
+                                    _outboundValues[selectedOutboundIndex]
+                                        .flightId,
+                                "returnFlightId":
+                                    selectedInboundIndex.isNegative
+                                        ? ""
+                                        : _inboundValue[selectedInboundIndex]
+                                            .flightId,
+                                "amount": totalPrice,
+                              },
+                              apiEndpoint: "/api/arsflightreservation",
+                              mPin: "");
+                        },
+                        adultCount: widget.adultCount,
+                        childrenCount: widget.childrenCount,
+                        outBoundValues: _outboundValues,
+                        inBoundValues: _inboundValue,
+                        selectedInboundIndex: selectedInboundIndex,
+                        selectedOutboundIndex: selectedOutboundIndex,
+                        isTwoWay: widget.isTwoWay,
+                        services: widget.serviceInfo,
+                        currentIndexNotifier: _currentIndex,
+                        bookingId: bookindId,
+                        totalPrice: totalPrice,
+                      )
+                    : Container(),
+              ),
+            )
+          ],
+        ),
       ),
     );
   }

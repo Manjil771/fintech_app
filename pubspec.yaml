@@ -115,7 +115,7 @@ flutter:
     - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/ 
-    # - assets/newdhaulagiri/
+    - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     - assets/bishal/
     # - assets/ekata/
@@ -144,7 +144,7 @@ flutter:
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
-    # - assets/hamiSabaikokrishi/
+    - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
@@ -160,24 +160,10 @@ flutter:
     # - assets/supreme/
     - assets/iconsoftCoop/
     - assets/sagarmatha/
-    - assets/nepalbachat/
-    - assets/nilgiri/
-    - assets/davisfall/
-    - assets/sanchar/
-    - assets/hamiSabaikokrishi/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/fewa/
-    - assets/matribhumi/
-    - assets/gandakibesi/
-    - assets/batika/
-    - assets/bhugol/
-    - assets/nepalbachat/
-    - assets/nilgiri/
-    - assets/davisfall/
-    - assets/sanchar/
-    - assets/rumjatar/
-    - assets/supreme/
+    - assets/royalGorkha/
+    - assets/buddhaCoop/
+    - assets/sanakishan/
+    - assets/punja/
 
   fonts:
     - family: popinbold
