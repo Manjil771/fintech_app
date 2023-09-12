@@ -163,6 +163,7 @@ flutter:
     - assets/royalGorkha/
     - assets/buddhaCoop/
     - assets/sanakishan/
+    - assets/punja/
 
   fonts:
     - family: popinbold
