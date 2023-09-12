@@ -119,7 +119,7 @@ flutter:
     # - assets/shreejanamukhi/
     # - assets/bishal/
     # - assets/ekata/
-    - assets/sardikhola/
+    # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
@@ -143,7 +143,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    # - assets/sanchar/
+    - assets/sanchar/
     # - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
