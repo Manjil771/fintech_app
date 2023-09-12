@@ -51,7 +51,7 @@ class CustomTheme {
   static const Color buddhaCoopColor = Color(0xFF3D4097);
   static const Color punjaColor = Color(0xFF009444);
 
-  static Color primaryColor = punjaColor;
+  static Color primaryColor = sardikholaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
