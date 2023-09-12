@@ -86,6 +86,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        punja {
+            dimension "app"
+            applicationId "com.devanasoft.punja"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
 
         nilgiri {
             dimension "app"
