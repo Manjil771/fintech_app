@@ -61,6 +61,7 @@
 		41FC484F10DA50F321ABB8D3 /* Pods-Runner.debug-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-uttarganga.xcconfig"; sourceTree = "<group>"; };
 		424132A2F56592E657C3DB91 /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
 		4541F5296B40916DC5FB17E8 /* Pods-Runner.release-shreejanamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreejanamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreejanamukhi.xcconfig"; sourceTree = "<group>"; };
+		4ACD3BF900CCDA98B9640860 /* Pods-Runner.release-punja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-punja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-punja.xcconfig"; sourceTree = "<group>"; };
 		4D2200B7979104428272C933 /* Pods-Runner.debug-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
 		52C6E31E62743A777EE726B6 /* Pods-Runner.release-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aviyan.xcconfig"; sourceTree = "<group>"; };
 		578E4AC894AB92E1E5D4BC20 /* Pods-Runner.release-sagarmatha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sagarmatha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sagarmatha.xcconfig"; sourceTree = "<group>"; };
@@ -291,6 +292,7 @@
 				AAFC52C7A257847397251C56 /* Pods-Runner.release-rumjatar.xcconfig */,
 				7920A968A0061AED462BD3F7 /* Pods-Runner.release-hamisabaikokrishi.xcconfig */,
 				578E4AC894AB92E1E5D4BC20 /* Pods-Runner.release-sagarmatha.xcconfig */,
+				4ACD3BF900CCDA98B9640860 /* Pods-Runner.release-punja.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -609,12 +611,12 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = PunjaAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Kabil Coop iSmart";
+				COOP_NAME = "Punja Saving iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
@@ -628,7 +630,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kabil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.punja;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
