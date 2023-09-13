@@ -164,6 +164,7 @@ flutter:
     - assets/buddhaCoop/
     - assets/sanakishan/
     - assets/punja/
+    - assets/immanuel/
 
   fonts:
     - family: popinbold

@@ -595,9 +595,22 @@ class CoOperativeValue {
     backgroundImage: "assets/punja/punja_background.png",
     clientCode: 'YF0E9QARF2',
     clientSecret: "177806",
-    coOperativeName: 'Shree punja',
+    coOperativeName: 'punja',
     coOperativeLogo: 'assets/punja/punja_logo.png',
     splashImage: "assets/punja/punja_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative immanuelCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/immanuel/immanuel_banner.png",
+    backgroundImage: "assets/immanuel/immanuel_background.png",
+    clientCode: 'HQ0RYHE5UW',
+    clientSecret: "174569",
+    coOperativeName: 'Immanuel',
+    coOperativeLogo: 'assets/immanuel/immanuel_logo.png',
+    splashImage: "assets/immanuel/immanuel_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //For test
