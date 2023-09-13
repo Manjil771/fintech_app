@@ -36,18 +36,7 @@ class _LoanSchedulePageState extends State<LoanSchedulePage> {
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
-              RepositoryProvider.of<UtilityPaymentRepository>(context))
-        ..fetchDetails(
-            serviceIdentifier: "",
-            accountDetails: {
-              "accountNumber":
-                  RepositoryProvider.of<CustomerDetailRepository>(context)
-                      .selectedAccount
-                      .value!
-                      .accountNumber,
-              // "mPin": getMpin()
-            },
-            apiEndpoint: ""),
+              RepositoryProvider.of<UtilityPaymentRepository>(context)),
       child: LoanScheduleWidget(),
     );
   }
