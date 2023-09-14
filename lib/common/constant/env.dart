@@ -600,6 +600,7 @@ class CoOperativeValue {
     splashImage: "assets/punja/punja_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
   static final CoOperative immanuelCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -613,6 +614,22 @@ class CoOperativeValue {
     splashImage: "assets/immanuel/immanuel_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative thankotMahilaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/thankotMahilaJagaran/thankot_mahila_banner.png",
+    backgroundImage:
+        "assets/thankotMahilaJagaran/thankot_mahila_background.png",
+    clientCode: '0PY5GD8HOF',
+    clientSecret: "176436",
+    coOperativeName: 'Thankot MahilaJagaran',
+    coOperativeLogo: 'assets/thankotMahilaJagaran/thankot_mahila_logo.png',
+    splashImage: "assets/thankotMahilaJagaran/thankot_mahila_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
   //For test
   static final CoOperative iconSoftCoop = CoOperative(
     appStoreID: "",
