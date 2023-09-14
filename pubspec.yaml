@@ -166,6 +166,8 @@ flutter:
     - assets/punja/
     - assets/immanuel/
     - assets/thankotMahilaJagaran/
+    - assets/bishnudol/
+    - assets/annapurna/
 
   fonts:
     - family: popinbold

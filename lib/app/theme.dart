@@ -52,8 +52,10 @@ class CustomTheme {
   static const Color punjaColor = Color(0xFF009444);
   static const Color immanuelColor = Color(0xFF02662C);
   static const Color thankotMahilaColor = Color(0xFF366940);
+  static const Color bishnudolColor = Color(0xFF009444);
+  static const Color annapurnaColor = Color(0xFF36AD1F);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = annapurnaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

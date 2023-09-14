@@ -630,6 +630,33 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative bishnudolCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bishnudol/bishnudol_banner.png",
+    backgroundImage: "assets/bishnudol/bishnudol_background.png",
+    clientCode: 'YF0E9QARF2',
+    clientSecret: "177806",
+    coOperativeName: 'Bishnudol',
+    coOperativeLogo: 'assets/bishnudol/bishnudol_logo.png',
+    splashImage: "assets/bishnudol/bishnudol_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative annapurnaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/annapurna/annapurna_banner.png",
+    backgroundImage: "assets/annapurna/annapurna_background.png",
+    clientCode: '9LMVZK6Y3Z',
+    clientSecret: "138827",
+    coOperativeName: 'annapurna Health ',
+    coOperativeLogo: 'assets/annapurna/annapurna_logo.png',
+    splashImage: "assets/annapurna/annapurna_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //For test
   static final CoOperative iconSoftCoop = CoOperative(
     appStoreID: "",
