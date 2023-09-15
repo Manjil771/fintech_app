@@ -18,7 +18,8 @@ Future<void> main() async {
   runZonedGuarded(() {
     //need to add client id and secret for bishnu dol Coop
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.annapurnaCoop)),
+
+      LocalWrapper(child: AppDev(env: CoOperativeValue.ekataCoop)),
     );
   }, (e, s) {
     Log.e(e);

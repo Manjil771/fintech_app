@@ -39,6 +39,10 @@ class Strings {
   static const iconSoftAppTitle = "IconSoft Pvt iSmart";
   static const defaultAppTitle = "iSmart Devanasoft";
   static const rumjatarAppTitle = "Rumjatar Saving iSmart";
+  static const punjaAppTitle = "Punja Saving iSmart";
+  static const sagarmathaAppTitle = "Sagarmatha Saving iSmart";
+  static const sancharAppTitle = "Sanchar Saving iSmart";
+  static const buddhaAppTitle = "Buddha Saving iSmart";
 
-  static const APP_TITLE = matribhumiAppTitle;
+  static const APP_TITLE = ekataAppTitle;
 }
