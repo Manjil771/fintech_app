@@ -114,11 +114,11 @@ flutter:
     # - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
-    # - assets/vyas/ 
+    # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    - assets/ekata/
+    # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -158,17 +158,16 @@ flutter:
     # - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
-    - assets/iconsoftCoop/
-    - assets/sagarmatha/
-    - assets/royalGorkha/
+    # - assets/iconsoftCoop/
+    # - assets/sagarmatha/
+    # - assets/royalGorkha/
     - assets/buddhaCoop/
-    - assets/sanakishan/
-    - assets/punja/
-    - assets/immanuel/
-    - assets/thankotMahilaJagaran/
-    - assets/bishnudol/
-    - assets/annapurna/
-
+    # - assets/sanakishan/
+    # - assets/punja/
+    # - assets/immanuel/
+    # - assets/thankotMahilaJagaran/
+    # - assets/bishnudol/
+    # - assets/annapurna/
 
   fonts:
     - family: popinbold
@@ -185,4 +184,3 @@ flutter:
         - asset: assets/fonts/Poppins-Medium.ttf
 
   uses-material-design: true
-
