@@ -51,13 +51,12 @@ class CustomTheme {
   static const Color royalGorkhaColor = Color(0xFF006838);
   static const Color buddhaCoopColor = Color(0xFF3D4097);
   static const Color punjaColor = Color(0xFF009444);
+  static const Color immanuelColor = Color(0xFF02662C);
+  static const Color thankotMahilaColor = Color(0xFF366940);
+  static const Color bishnudolColor = Color(0xFF009444);
+  static const Color annapurnaColor = Color(0xFF36AD1F);
 
   static Color primaryColor = ekataColor;
-  // CustomTheme() {
-  //   if (kBuildFlavor.isSame(Flavor("prod"))) {
-  //     primaryColor = Colors.red;
-  //   }
-  // }
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

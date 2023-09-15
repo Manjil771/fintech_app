@@ -595,9 +595,66 @@ class CoOperativeValue {
     backgroundImage: "assets/punja/punja_background.png",
     clientCode: 'YF0E9QARF2',
     clientSecret: "177806",
-    coOperativeName: 'Shree punja',
+    coOperativeName: 'punja',
     coOperativeLogo: 'assets/punja/punja_logo.png',
     splashImage: "assets/punja/punja_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative immanuelCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/immanuel/immanuel_banner.png",
+    backgroundImage: "assets/immanuel/immanuel_background.png",
+    clientCode: 'HQ0RYHE5UW',
+    clientSecret: "174569",
+    coOperativeName: 'Immanuel',
+    coOperativeLogo: 'assets/immanuel/immanuel_logo.png',
+    splashImage: "assets/immanuel/immanuel_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative thankotMahilaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/thankotMahilaJagaran/thankot_mahila_banner.png",
+    backgroundImage:
+        "assets/thankotMahilaJagaran/thankot_mahila_background.png",
+    clientCode: '0PY5GD8HOF',
+    clientSecret: "176436",
+    coOperativeName: 'Thankot MahilaJagaran',
+    coOperativeLogo: 'assets/thankotMahilaJagaran/thankot_mahila_logo.png',
+    splashImage: "assets/thankotMahilaJagaran/thankot_mahila_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative bishnudolCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bishnudol/bishnudol_banner.png",
+    backgroundImage: "assets/bishnudol/bishnudol_background.png",
+    clientCode: 'YF0E9QARF2',
+    clientSecret: "177806",
+    coOperativeName: 'Bishnudol',
+    coOperativeLogo: 'assets/bishnudol/bishnudol_logo.png',
+    splashImage: "assets/bishnudol/bishnudol_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative annapurnaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/annapurna/annapurna_banner.png",
+    backgroundImage: "assets/annapurna/annapurna_background.png",
+    clientCode: '9LMVZK6Y3Z',
+    clientSecret: "138827",
+    coOperativeName: 'annapurna Health ',
+    coOperativeLogo: 'assets/annapurna/annapurna_logo.png',
+    splashImage: "assets/annapurna/annapurna_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //For test

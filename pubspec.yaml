@@ -158,12 +158,17 @@ flutter:
     # - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
-    # - assets/iconsoftCoop/
-    # - assets/sagarmatha/
-    # - assets/royalGorkha/
-    # - assets/buddhaCoop/
-    # - assets/sanakishan/
-    # - assets/punja/
+    - assets/iconsoftCoop/
+    - assets/sagarmatha/
+    - assets/royalGorkha/
+    - assets/buddhaCoop/
+    - assets/sanakishan/
+    - assets/punja/
+    - assets/immanuel/
+    - assets/thankotMahilaJagaran/
+    - assets/bishnudol/
+    - assets/annapurna/
+
 
   fonts:
     - family: popinbold
