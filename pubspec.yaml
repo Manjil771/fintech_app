@@ -161,11 +161,11 @@ flutter:
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
-    - assets/buddhaCoop/
+    # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/thankotMahilaJagaran/
+    - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
 
