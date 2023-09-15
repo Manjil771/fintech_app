@@ -118,7 +118,7 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    # - assets/ekata/
+    - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -163,7 +163,7 @@ flutter:
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/sanakishan/
-    - assets/punja/
+    # - assets/punja/
 
   fonts:
     - family: popinbold
