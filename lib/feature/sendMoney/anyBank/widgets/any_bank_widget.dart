@@ -18,6 +18,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
+import 'package:string_similarity/string_similarity.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -47,8 +48,13 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   final TextEditingController _remarksController = TextEditingController();
   Bank? selectedBank;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? bestMatchBankId;
+
   @override
   void initState() {
+    if (widget.bankCode != null) {
+      context.read<SendToBankCubit>().fetchBanksList();
+    }
     checkAccount();
     super.initState();
   }
@@ -115,6 +121,36 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         ]),
                         message: "Transaction Completed",
                         transactionID: state.data));
+              } else if (state is CommonDataFetchSuccess<Bank>) {
+                List<Bank> _banks = state.data;
+                List<String> _bankNames = [];
+                state.data.forEach((element) {
+                  _bankNames.add(element.bankName);
+                });
+                BestMatch _match = widget.bankName.bestMatch(_bankNames);
+                Bank _bestMatchBank = _banks.firstWhere(
+                  (element) {
+                    return element.bankName.contains(
+                      _bankNames[_match.bestMatchIndex],
+                    );
+                  },
+                  orElse: () {
+                    return Bank(
+                      bankId: "-1",
+                      refBankId: "refBankId",
+                      bankName: widget.bankName ?? "",
+                      enabled: "",
+                      lastModifiedOn: "",
+                      swiftCode: "",
+                      iconUrl: "",
+                    );
+                  },
+                );
+                if (_bestMatchBank.bankId != "-1") {
+                  bestMatchBankId = _bestMatchBank.bankId;
+                }
+                print(bestMatchBankId);
+                setState(() {});
               }
               if (state is CommonError) {
                 showPopUpDialog(
@@ -236,7 +272,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   title: "Select Bank",
                   readOnly: widget.bankCode != null,
                   controller: _selectedBankController,
-                  onTap: widget.bankCode == null
+                  onTap: bestMatchBankId != null
                       ? () {
                           NavigationService.push(
                             target: BankListPage(
@@ -329,11 +365,12 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               if (charges == null) {
                 context.read<BankChargeCubit>().getBankCharges(
                       amount: _amountController.text,
-                      bankId: widget.bankCode ?? selectedBank?.bankId ?? "",
+                      bankId: bestMatchBankId ??
+                          (widget.bankCode ?? selectedBank?.bankId ?? ""),
                       destinationAccountName: _accountNameController.text,
                       destinationAccountNumber: _accountNumberController.text,
-                      destinationBankId:
-                          widget.bankCode ?? selectedBank?.bankId ?? "",
+                      destinationBankId: bestMatchBankId ??
+                          (widget.bankCode ?? selectedBank?.bankId ?? ""),
                     );
               } else {
                 NavigationService.push(
@@ -345,10 +382,10 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             amount: _amountController.text,
                             mpin: pin,
                             remarks: _remarksController.text,
-                            destinationBankInstrumentCode:
-                                widget.bankCode == null
+                            destinationBankInstrumentCode: bestMatchBankId ??
+                                (widget.bankCode == null
                                     ? selectedBank?.bankId ?? ""
-                                    : widget.bankCode.toString(),
+                                    : widget.bankCode.toString()),
                             destinationBankAccountName:
                                 _accountNameController.text,
                             destinationBankAccountNumber:
