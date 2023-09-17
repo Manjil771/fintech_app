@@ -409,7 +409,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                               width: _width,
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(30.hp),
-                                color: CustomTheme.lightGray,
+                                color: Colors.white,
                               ),
                               padding: EdgeInsets.all(15.hp),
                               margin: const EdgeInsets.symmetric(
@@ -477,29 +477,20 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                           // ),
 
                           if (widget.isTwoWay)
-                            Column(
-                              children: [
-                                SliverToBoxAdapter(
-                                  child: CommonNavigationBar(
-                                    selectedIndex: _currentIndex,
-                                    borderRadius: 100,
-                                    onChanged: (index) {
-                                      _tabController.animateTo(index);
-                                    },
-                                    margin: EdgeInsets.only(
-                                      left: CustomTheme.symmetricHozPadding,
-                                      right: CustomTheme.symmetricHozPadding,
-                                      bottom: 20.hp,
-                                    ),
-                                    items: _items,
-                                  ),
+                            SliverToBoxAdapter(
+                              child: CommonNavigationBar(
+                                selectedIndex: _currentIndex,
+                                borderRadius: 100,
+                                onChanged: (index) {
+                                  _tabController.animateTo(index);
+                                },
+                                margin: EdgeInsets.only(
+                                  left: CustomTheme.symmetricHozPadding,
+                                  right: CustomTheme.symmetricHozPadding,
+                                  bottom: 20.hp,
                                 ),
-                                SliverToBoxAdapter(
-                                  child: SizedBox(
-                                    height: 20.hp,
-                                  ),
-                                ),
-                              ],
+                                items: _items,
+                              ),
                             ),
 
                           // SliverToBoxAdapter(
@@ -652,8 +643,6 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
             ),
             Positioned(
               bottom: 0,
-              right: 0,
-              left: 0,
               child: AnimatedSwitcher(
                 duration: const Duration(milliseconds: 800),
                 child: selectedOutboundIndex != -1

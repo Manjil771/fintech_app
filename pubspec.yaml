@@ -117,7 +117,7 @@ flutter:
     # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    # - assets/bishal/
+    - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -165,7 +165,7 @@ flutter:
     # - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
-    - assets/thankotMahilaJagaran/
+    # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
 
