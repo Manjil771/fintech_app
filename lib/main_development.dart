@@ -16,9 +16,8 @@ Future<void> main() async {
 
   /// use run zoned to catch all uncaught exceptions
   runZonedGuarded(() {
-    //need to add client id and secret for bishnu dol Coop
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.annapurnaCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.uttargangaCoop)),
     );
   }, (e, s) {
     Log.e(e);
