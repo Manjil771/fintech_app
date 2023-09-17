@@ -58,7 +58,7 @@ class LoanWidget extends StatelessWidget {
         image: Assets.statement,
         title: "Loan Statement",
         onPress: () {
-          NavigationService.pushNamed(routeName: Routes.statementPage);
+          NavigationService.pushNamed(routeName: Routes.loanStatementPage);
         })
   ];
 }
