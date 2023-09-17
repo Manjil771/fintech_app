@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.24+24 ##24th Aug - Uttarganga, Ekata
+version: 0.0.25+25 ##24th Aug - Uttarganga, Ekata
 
 environment:
   sdk: ">=2.17.6 <3.0.0"
@@ -108,16 +108,16 @@ flutter:
     # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
-    - assets/shreeaaju/
+    # - assets/shreeaaju/
     # - assets/shreemitra/
     # - assets/kipoo/
     # - assets/suryadev/
-    - assets/uddhamshil/
+    # - assets/uddhamshil/
     # - assets/navaprabhat/
-    # - assets/vyas/ 
-    - assets/newdhaulagiri/
+    # - assets/vyas/
+    # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    - assets/bishal/
+    # - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -129,13 +129,13 @@ flutter:
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/sarbahit/
-    - assets/sardikhola/
+    # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    - assets/macchaPuchhre/
+    # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -144,7 +144,7 @@ flutter:
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
-    - assets/hamiSabaikokrishi/
+    # - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
@@ -158,16 +158,16 @@ flutter:
     # - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
-    - assets/iconsoftCoop/
-    - assets/sagarmatha/
-    - assets/royalGorkha/
+    # - assets/iconsoftCoop/
+    # - assets/sagarmatha/
+    # - assets/royalGorkha/
     - assets/buddhaCoop/
-    - assets/sanakishan/
-    - assets/punja/
-    - assets/immanuel/
-    - assets/thankotMahilaJagaran/
-    - assets/bishnudol/
-    - assets/annapurna/
+    # - assets/sanakishan/
+    # - assets/punja/
+    # - assets/immanuel/
+    # - assets/thankotMahilaJagaran/
+    # - assets/bishnudol/
+    # - assets/annapurna/
 
   fonts:
     - family: popinbold
@@ -184,4 +184,3 @@ flutter:
         - asset: assets/fonts/Poppins-Medium.ttf
 
   uses-material-design: true
-
