@@ -29,6 +29,7 @@ class UtilityPaymentRepository {
       baseUrl: env.baseUrl,
       apiProvider: apiProvider,
       userRepository: userRepository,
+      coOperative: env,
     );
   }
 

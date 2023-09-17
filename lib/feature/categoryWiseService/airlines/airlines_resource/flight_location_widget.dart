@@ -24,7 +24,7 @@ class FlightLocationWidget extends StatelessWidget {
             iconData,
             color: _theme.primaryColor,
           ),
-        if (svgPicture != null)
+        if (svgPicture != null || iconData != null)
           SizedBox(
             width: 10.hp,
           ),

@@ -101,7 +101,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -117,7 +117,7 @@ flutter:
     # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    # - assets/bishal/
+    - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -161,7 +161,7 @@ flutter:
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
-    - assets/buddhaCoop/
+    # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
