@@ -657,6 +657,19 @@ class CoOperativeValue {
     splashImage: "assets/annapurna/annapurna_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative kanchanjunghaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kanchanjungha/kanchanjungha_banner.png",
+    backgroundImage: "assets/kanchanjungha/kanchanjungha_background.png",
+    clientCode: 'WBSSRVSEB9',
+    clientSecret: "187636",
+    coOperativeName: 'Kanchanjangha',
+    coOperativeLogo: 'assets/kanchanjungha/kanchanjungha_logo.png',
+    splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //For test
   static final CoOperative iconSoftCoop = CoOperative(
     appStoreID: "",

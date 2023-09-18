@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_widget.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class LoanPage extends StatelessWidget {
   const LoanPage({Key? key}) : super(key: key);

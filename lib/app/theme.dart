@@ -55,8 +55,9 @@ class CustomTheme {
   static const Color thankotMahilaColor = Color(0xFF366940);
   static const Color bishnudolColor = Color(0xFF009444);
   static const Color annapurnaColor = Color(0xFF36AD1F);
+  static const Color kanchanjunghaColor = Color(0xFF39B54A);
 
-  static Color primaryColor = bishalColor;
+  static Color primaryColor = kanchanjunghaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
