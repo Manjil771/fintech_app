@@ -636,8 +636,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/bishnudol/bishnudol_banner.png",
     backgroundImage: "assets/bishnudol/bishnudol_background.png",
-    clientCode: 'YF0E9QARF2',
-    clientSecret: "177806",
+    clientCode: 'DGT7IPWJ57',
+    clientSecret: "146811",
     coOperativeName: 'Bishnudol',
     coOperativeLogo: 'assets/bishnudol/bishnudol_logo.png',
     splashImage: "assets/bishnudol/bishnudol_splash.png",
@@ -655,6 +655,47 @@ class CoOperativeValue {
     coOperativeName: 'annapurna Health ',
     coOperativeLogo: 'assets/annapurna/annapurna_logo.png',
     splashImage: "assets/annapurna/annapurna_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative kanchanjunghaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kanchanjungha/kanchanjungha_banner.png",
+    backgroundImage: "assets/kanchanjungha/kanchanjungha_background.png",
+    clientCode: 'WBSSRVSEB9',
+    clientSecret: "187636",
+    coOperativeName: 'Kanchanjangha',
+    coOperativeLogo: 'assets/kanchanjungha/kanchanjungha_logo.png',
+    splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative janasewaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janasewa/janasewa_banner.png",
+    backgroundImage: "assets/janasewa/janasewa_background.png",
+    clientCode: 'WBSSRVSEB9',
+    clientSecret: "187636",
+    coOperativeName: 'Janasewa',
+    coOperativeLogo: 'assets/janasewa/janasewa_logo.png',
+    splashImage: "assets/janasewa/janasewa_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative goldenCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/golden/golden_banner.png",
+    backgroundImage: "assets/golden/golden_background.png",
+    clientCode: '7OMBGHP0O6',
+    clientSecret: "157652",
+    coOperativeName: 'Golden',
+    coOperativeLogo: 'assets/golden/golden_logo.png',
+    splashImage: "assets/golden/golden_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //For test

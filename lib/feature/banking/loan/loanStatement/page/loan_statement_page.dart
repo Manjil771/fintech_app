@@ -1,19 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/banking/loan/widget/loan_widget.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/banking/loan/loanStatement/widget/loan_statement_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class LoanPage extends StatelessWidget {
-  const LoanPage({Key? key}) : super(key: key);
+class LoanStatementPage extends StatelessWidget {
+  const LoanStatementPage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return LoanWidget();
+    return BlocProvider(
+      create: (context) => UtilityPaymentCubit(
+          utilityPaymentRepository:
+              RepositoryProvider.of<UtilityPaymentRepository>(context)),
+      child: LoanStatementWidget(),
+    );
   }
 }

@@ -95,7 +95,7 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
                     Expanded(
                         child: Center(
                       child: Text(
-                        "Principle",
+                        "Principal",
                         style: _textTheme.labelMedium,
                       ),
                     )),
@@ -113,62 +113,65 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
                 builder: (context, state) {
                   if (state is CommonStateSuccess<UtilityResponseData>) {
                     final _response = state.data.findValue(primaryKey: "data");
-                    return Column(
-                      children: [
-                        ...List.generate(
-                          state.data.details.length,
-                          (index) => Container(
-                            padding: EdgeInsets.symmetric(vertical: 2),
-                            decoration: BoxDecoration(
-                                border:
-                                    Border.all(color: CustomTheme.darkerBlack)),
-                            child: Row(
-                              children: [
-                                Container(
-                                    width: 20.wp,
-                                    child: Center(
-                                      child: Text(
-                                        (index + 1).toString(),
-                                        style: _textTheme.labelMedium,
-                                      ),
-                                    )),
-                                Expanded(
-                                    child: Center(
-                                  child: Text(
-                                    "${_response[index]["scheduleDateNepali"].toString()}",
-                                    style: _textTheme.labelMedium,
+                    if (state.data.details.isNotEmpty) {
+                      return Column(
+                        children: [
+                          ...List.generate(state.data.details.length, (index) {
+                            return Container(
+                              padding: EdgeInsets.symmetric(vertical: 2),
+                              decoration: BoxDecoration(
+                                  border: Border.all(
+                                      color: CustomTheme.darkerBlack)),
+                              child: Row(
+                                children: [
+                                  Container(
+                                      width: 20.wp,
+                                      child: Center(
+                                        child: Text(
+                                          (index + 1).toString(),
+                                          style: _textTheme.labelMedium,
+                                        ),
+                                      )),
+                                  Expanded(
+                                      child: Center(
+                                    child: Text(
+                                      "${_response[index]["scheduleDateNepali"].toString()}",
+                                      style: _textTheme.labelMedium,
 
-                                    // \n${_response[index]["scheduleDateNepali"]
-                                  ),
-                                )),
-                                Expanded(
-                                    child: Center(
-                                  child: Text(
-                                    _response[index]["scheduleAmount"]
-                                        .toString(),
-                                    style: _textTheme.labelMedium,
-                                  ),
-                                )),
-                                Expanded(
-                                    child: Center(
-                                  child: Text(
-                                    _response[index]["principal"].toString(),
-                                    style: _textTheme.labelMedium,
-                                  ),
-                                )),
-                                Expanded(
-                                    child: Center(
-                                  child: Text(
-                                    _response[index]["interest"].toString(),
-                                    style: _textTheme.labelMedium,
-                                  ),
-                                )),
-                              ],
-                            ),
-                          ),
-                        )
-                      ],
-                    );
+                                      // \n${_response[index]["scheduleDateNepali"]
+                                    ),
+                                  )),
+                                  Expanded(
+                                      child: Center(
+                                    child: Text(
+                                      _response[index]["scheduleAmount"]
+                                          .toString(),
+                                      style: _textTheme.labelMedium,
+                                    ),
+                                  )),
+                                  Expanded(
+                                      child: Center(
+                                    child: Text(
+                                      _response[index]["principal"].toString(),
+                                      style: _textTheme.labelMedium,
+                                    ),
+                                  )),
+                                  Expanded(
+                                      child: Center(
+                                    child: Text(
+                                      _response[index]["interest"].toString(),
+                                      style: _textTheme.labelMedium,
+                                    ),
+                                  )),
+                                ],
+                              ),
+                            );
+                          })
+                        ],
+                      );
+                    } else {
+                      return Container();
+                    }
                   } else {
                     return Container();
                   }
