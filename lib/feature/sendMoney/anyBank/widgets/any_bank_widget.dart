@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -47,8 +49,13 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   final TextEditingController _remarksController = TextEditingController();
   Bank? selectedBank;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  String? bestMatchBankId;
+
   @override
   void initState() {
+    if (widget.bankCode != null) {
+      context.read<SendToBankCubit>().fetchBanksList();
+    }
     checkAccount();
     super.initState();
   }
@@ -115,6 +122,33 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         ]),
                         message: "Transaction Completed",
                         transactionID: state.data));
+              } else if (state is CommonDataFetchSuccess<Bank>) {
+                List<Bank> _banks = state.data;
+                List<String> _bankNames = [];
+                double highestMatch = 0;
+                int selectedIndex = -1;
+                print("ISMARTCHECK : Checking for Bank : ${widget.bankName}");
+                state.data.forEach((element) {
+                  final matchValue = jaro(
+                      widget.bankName
+                              ?.toLowerCase()
+                              .replaceAll("ltd", "limited") ??
+                          "",
+                      element.bankName
+                          .toLowerCase()
+                          .replaceAll("ltd", "limited"));
+                  print(
+                      "ISMARTCHECK : Bank Name : ${element.bankName} MatchRation : $matchValue");
+                  if (matchValue > highestMatch) {
+                    highestMatch = matchValue;
+                    selectedIndex = state.data.indexOf(element);
+                  }
+                });
+                print("\n\n\nBEST MATCH\n\n");
+                print(highestMatch);
+                print(state.data[selectedIndex].bankName);
+
+                setState(() {});
               }
               if (state is CommonError) {
                 showPopUpDialog(
@@ -236,11 +270,12 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   title: "Select Bank",
                   readOnly: widget.bankCode != null,
                   controller: _selectedBankController,
-                  onTap: widget.bankCode == null
+                  onTap: bestMatchBankId != null
                       ? () {
                           NavigationService.push(
                             target: BankListPage(
                               onBankSelected: (val) {
+                                bestMatchBankId = null;
                                 NavigationService.pop();
 
                                 _selectedBankController.text = val.bankName;
@@ -329,11 +364,12 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               if (charges == null) {
                 context.read<BankChargeCubit>().getBankCharges(
                       amount: _amountController.text,
-                      bankId: widget.bankCode ?? selectedBank?.bankId ?? "",
+                      bankId: bestMatchBankId ??
+                          (widget.bankCode ?? selectedBank?.bankId ?? ""),
                       destinationAccountName: _accountNameController.text,
                       destinationAccountNumber: _accountNumberController.text,
-                      destinationBankId:
-                          widget.bankCode ?? selectedBank?.bankId ?? "",
+                      destinationBankId: bestMatchBankId ??
+                          (widget.bankCode ?? selectedBank?.bankId ?? ""),
                     );
               } else {
                 NavigationService.push(
@@ -345,10 +381,10 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             amount: _amountController.text,
                             mpin: pin,
                             remarks: _remarksController.text,
-                            destinationBankInstrumentCode:
-                                widget.bankCode == null
+                            destinationBankInstrumentCode: bestMatchBankId ??
+                                (widget.bankCode == null
                                     ? selectedBank?.bankId ?? ""
-                                    : widget.bankCode.toString(),
+                                    : widget.bankCode.toString()),
                             destinationBankAccountName:
                                 _accountNameController.text,
                             destinationBankAccountNumber:
@@ -375,4 +411,68 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
       ),
     );
   }
+}
+
+double jaro(String s1, String s2) {
+  if (s1.isEmpty || s2.isEmpty) return 0.0;
+
+  int matchDistance = (s1.length / 2).floor() - 1;
+  List<bool> s1Matches = List.filled(s1.length, false);
+  List<bool> s2Matches = List.filled(s2.length, false);
+
+  int matches = 0;
+  int transpositions = 0;
+
+  for (int i = 0; i < s1.length; i++) {
+    int start = max(0, i - matchDistance);
+    int end = min(s2.length - 1, i + matchDistance);
+
+    for (int j = start; j <= end; j++) {
+      if (s2Matches[j]) continue;
+      if (s1[i] != s2[j]) continue;
+      s1Matches[i] = true;
+      s2Matches[j] = true;
+      matches++;
+      break;
+    }
+  }
+
+  if (matches == 0) return 0.0;
+
+  int k = 0;
+  for (int i = 0; i < s1.length; i++) {
+    if (!s1Matches[i]) continue;
+    while (!s2Matches[k]) k++;
+    if (s1[i] != s2[k]) transpositions++;
+    k++;
+  }
+
+  double jaroScore = (matches / s1.length +
+          matches / s2.length +
+          (matches - transpositions / 2.0) / matches) /
+      3.0;
+  return jaroScore;
+}
+
+double jaroWinkler(String s1, String s2) {
+  const double prefixWeight = 0.1;
+
+  double jaroDistance = jaro(s1, s2);
+  int prefixLength = 0;
+
+  for (int i = 0; i < min(s1.length, s2.length); i++) {
+    if (s1[i] == s2[i])
+      prefixLength++;
+    else
+      break;
+  }
+
+  double score =
+      jaroDistance + prefixWeight * prefixLength * (1 - jaroDistance);
+  return score * 100; // Convert score to a range between 0 and 100
+}
+
+//this is how you should call the method:
+void main() {
+  print(jaroWinkler("dwayne", "duane")); // Should be close to 0.84
 }

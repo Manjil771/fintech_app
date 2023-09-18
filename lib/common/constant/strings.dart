@@ -47,5 +47,7 @@ class Strings {
   static const thankotMahilaAppTitle = "Thankot Mahila Jagaran iSmart";
   static const kanchanjunghaAppTitle = "Thankot Mahila Jagaran iSmart";
 
+
   static const APP_TITLE = defaultAppTitle;
+
 }
