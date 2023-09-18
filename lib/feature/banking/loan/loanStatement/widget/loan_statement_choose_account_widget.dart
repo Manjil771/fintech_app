@@ -1,14 +1,95 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanStatementChooseAccountWidget extends StatelessWidget {
-  const LoanStatementChooseAccountWidget({Key? key}) : super(key: key);
+  LoanStatementChooseAccountWidget({Key? key}) : super(key: key);
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return Container();
+    Future getMpin() async {
+      String mPin = await SecureStorageService.appPassword;
+      if (mPin.isNotEmpty) {
+        context.read<UtilityPaymentCubit>().fetchDetails(
+            serviceIdentifier: "",
+            accountDetails: {
+              "accountNumber":
+                  RepositoryProvider.of<CustomerDetailRepository>(context)
+                      .selectedAccount
+                      .value!
+                      .accountNumber,
+              "fromDate": "2020-01-01",
+              "toDate": "2023-01-01",
+              "mPin": mPin
+            },
+            apiEndpoint: "/api/loan/statement");
+      }
+    }
+
+    return PageWrapper(
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            final _response = state.data;
+            if (_response.code == "M0000") {
+              NavigationService.push(target: LoanStatementPage());
+            } else {
+              showPopUpDialog(
+                  context: context,
+                  message: _response.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false);
+            }
+          }
+        },
+        child: CommonContainer(
+          buttonName: "Proceed",
+          showAccountSelection: true,
+          title: "Select Account",
+          body: Container(),
+          onButtonPressed: () {
+            getMpin();
+          },
+          topbarName: "Loan Statement",
+        ),
+      ),
+    );
   }
 }

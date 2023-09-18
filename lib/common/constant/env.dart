@@ -670,6 +670,34 @@ class CoOperativeValue {
     splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative janasewaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janasewa/janasewa_banner.png",
+    backgroundImage: "assets/janasewa/janasewa_background.png",
+    clientCode: 'WBSSRVSEB9',
+    clientSecret: "187636",
+    coOperativeName: 'Janasewa',
+    coOperativeLogo: 'assets/janasewa/janasewa_logo.png',
+    splashImage: "assets/janasewa/janasewa_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative goldenCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/golden/golden_banner.png",
+    backgroundImage: "assets/golden/golden_background.png",
+    clientCode: '7OMBGHP0O6',
+    clientSecret: "157652",
+    coOperativeName: 'Golden',
+    coOperativeLogo: 'assets/golden/golden_logo.png',
+    splashImage: "assets/golden/golden_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //For test
   static final CoOperative iconSoftCoop = CoOperative(
     appStoreID: "",
