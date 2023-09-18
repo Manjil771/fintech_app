@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -18,7 +20,6 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:string_similarity/string_similarity.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -124,32 +125,29 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               } else if (state is CommonDataFetchSuccess<Bank>) {
                 List<Bank> _banks = state.data;
                 List<String> _bankNames = [];
+                double highestMatch = 0;
+                int selectedIndex = -1;
+                print("ISMARTCHECK : Checking for Bank : ${widget.bankName}");
                 state.data.forEach((element) {
-                  _bankNames.add(element.bankName);
+                  final matchValue = jaro(
+                      widget.bankName
+                              ?.toLowerCase()
+                              .replaceAll("ltd", "limited") ??
+                          "",
+                      element.bankName
+                          .toLowerCase()
+                          .replaceAll("ltd", "limited"));
+                  print(
+                      "ISMARTCHECK : Bank Name : ${element.bankName} MatchRation : $matchValue");
+                  if (matchValue > highestMatch) {
+                    highestMatch = matchValue;
+                    selectedIndex = state.data.indexOf(element);
+                  }
                 });
-                BestMatch _match = widget.bankName.bestMatch(_bankNames);
-                Bank _bestMatchBank = _banks.firstWhere(
-                  (element) {
-                    return element.bankName.contains(
-                      _bankNames[_match.bestMatchIndex],
-                    );
-                  },
-                  orElse: () {
-                    return Bank(
-                      bankId: "-1",
-                      refBankId: "refBankId",
-                      bankName: widget.bankName ?? "",
-                      enabled: "",
-                      lastModifiedOn: "",
-                      swiftCode: "",
-                      iconUrl: "",
-                    );
-                  },
-                );
-                if (_bestMatchBank.bankId != "-1") {
-                  bestMatchBankId = _bestMatchBank.bankId;
-                }
-                print(bestMatchBankId);
+                print("\n\n\nBEST MATCH\n\n");
+                print(highestMatch);
+                print(state.data[selectedIndex].bankName);
+
                 setState(() {});
               }
               if (state is CommonError) {
@@ -277,6 +275,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           NavigationService.push(
                             target: BankListPage(
                               onBankSelected: (val) {
+                                bestMatchBankId = null;
                                 NavigationService.pop();
 
                                 _selectedBankController.text = val.bankName;
@@ -412,4 +411,68 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
       ),
     );
   }
+}
+
+double jaro(String s1, String s2) {
+  if (s1.isEmpty || s2.isEmpty) return 0.0;
+
+  int matchDistance = (s1.length / 2).floor() - 1;
+  List<bool> s1Matches = List.filled(s1.length, false);
+  List<bool> s2Matches = List.filled(s2.length, false);
+
+  int matches = 0;
+  int transpositions = 0;
+
+  for (int i = 0; i < s1.length; i++) {
+    int start = max(0, i - matchDistance);
+    int end = min(s2.length - 1, i + matchDistance);
+
+    for (int j = start; j <= end; j++) {
+      if (s2Matches[j]) continue;
+      if (s1[i] != s2[j]) continue;
+      s1Matches[i] = true;
+      s2Matches[j] = true;
+      matches++;
+      break;
+    }
+  }
+
+  if (matches == 0) return 0.0;
+
+  int k = 0;
+  for (int i = 0; i < s1.length; i++) {
+    if (!s1Matches[i]) continue;
+    while (!s2Matches[k]) k++;
+    if (s1[i] != s2[k]) transpositions++;
+    k++;
+  }
+
+  double jaroScore = (matches / s1.length +
+          matches / s2.length +
+          (matches - transpositions / 2.0) / matches) /
+      3.0;
+  return jaroScore;
+}
+
+double jaroWinkler(String s1, String s2) {
+  const double prefixWeight = 0.1;
+
+  double jaroDistance = jaro(s1, s2);
+  int prefixLength = 0;
+
+  for (int i = 0; i < min(s1.length, s2.length); i++) {
+    if (s1[i] == s2[i])
+      prefixLength++;
+    else
+      break;
+  }
+
+  double score =
+      jaroDistance + prefixWeight * prefixLength * (1 - jaroDistance);
+  return score * 100; // Convert score to a range between 0 and 100
+}
+
+//this is how you should call the method:
+void main() {
+  print(jaroWinkler("dwayne", "duane")); // Should be close to 0.84
 }
