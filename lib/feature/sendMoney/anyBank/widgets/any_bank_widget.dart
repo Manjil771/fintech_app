@@ -147,7 +147,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 print("\n\n\nBEST MATCH\n\n");
                 print(highestMatch);
                 print(state.data[selectedIndex].bankName);
-
+                bestMatchBankId = state.data[selectedIndex].bankId;
                 setState(() {});
               }
               if (state is CommonError) {

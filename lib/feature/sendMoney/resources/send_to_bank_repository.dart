@@ -131,6 +131,10 @@ class SendToBankRepository {
           payloadData: sendToBankPayload,
         );
         final _result = Map<String, dynamic>.from(_res);
+        if (_result['data']?['code'] != "M0000") {
+          return DataResponse.error(
+              _result['data']?['details'] ?? "Error sending money to bank.");
+        }
         if (_result['data']?['detail'] != null) {
           return DataResponse.success(
               _result['data']?['detail']["transactionIdentifier"]);

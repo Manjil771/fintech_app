@@ -67,6 +67,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        nayan {
+            dimension "app"
+            applicationId "com.devanasoft.nayan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        supreme {
+            dimension "app"
+            applicationId "com.devanasoft.supreme"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        golden {
+            dimension "app"
+            applicationId "com.devanasoft.golden"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         thankotmahila {
             dimension "app"
             applicationId "com.devanasoft.thankotmahila"

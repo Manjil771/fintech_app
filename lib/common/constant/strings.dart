@@ -45,9 +45,8 @@ class Strings {
   static const sancharAppTitle = "Sanchar Saving iSmart";
   static const buddhaAppTitle = "Buddha Saving iSmart";
   static const thankotMahilaAppTitle = "Thankot Mahila Jagaran iSmart";
-  static const kanchanjunghaAppTitle = "Thankot Mahila Jagaran iSmart";
+  static const kanchanjunghaAppTitle = "Kanchanjunga Saving iSmart";
+  static const goldenAppTitle = "Golden Saving iSmart";
 
-
-  static const APP_TITLE = defaultAppTitle;
-
+  static const APP_TITLE = goldenAppTitle;
 }
