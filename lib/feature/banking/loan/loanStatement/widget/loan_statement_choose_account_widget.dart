@@ -1,10 +1,14 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -13,9 +17,21 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class LoanStatementChooseAccountWidget extends StatelessWidget {
+class LoanStatementChooseAccountWidget extends StatefulWidget {
   LoanStatementChooseAccountWidget({Key? key}) : super(key: key);
+
+  @override
+  State<LoanStatementChooseAccountWidget> createState() =>
+      _LoanStatementChooseAccountWidgetState();
+}
+
+class _LoanStatementChooseAccountWidgetState
+    extends State<LoanStatementChooseAccountWidget> {
   bool _isLoading = false;
+
+  DateTime fromDate = DateTime.now();
+  DateTime toDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -23,7 +39,7 @@ class LoanStatementChooseAccountWidget extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     Future getMpin() async {
-      String mPin = await SecureStorageService.appPassword;
+      final String mPin = await SecureStorageService.appPassword;
       if (mPin.isNotEmpty) {
         context.read<UtilityPaymentCubit>().fetchDetails(
             serviceIdentifier: "",
@@ -33,8 +49,8 @@ class LoanStatementChooseAccountWidget extends StatelessWidget {
                       .selectedAccount
                       .value!
                       .accountNumber,
-              "fromDate": "2020-01-01",
-              "toDate": "2023-01-01",
+              "fromDate": DateFormat("yyyy-MM-dd").format(fromDate).toString(),
+              "toDate": DateFormat("yyyy-MM-dd").format(toDate).toString(),
               "mPin": mPin
             },
             apiEndpoint: "/api/loan/statement");
@@ -66,7 +82,10 @@ class LoanStatementChooseAccountWidget extends StatelessWidget {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final _response = state.data;
             if (_response.code == "M0000") {
-              NavigationService.push(target: LoanStatementPage());
+              NavigationService.push(
+                  target: LoanStatementPage(
+                response: _response,
+              ));
             } else {
               showPopUpDialog(
                   context: context,
@@ -83,7 +102,46 @@ class LoanStatementChooseAccountWidget extends StatelessWidget {
           buttonName: "Proceed",
           showAccountSelection: true,
           title: "Select Account",
-          body: Container(),
+          body: Column(
+            children: [
+              CustomTextField(
+                hintText: DateFormat('yyyy-MM-dd').format(fromDate).toString(),
+                readOnly: true,
+                customHintTextStyle: true,
+                showSearchIcon: true,
+                suffixIcon: Icons.calendar_month,
+                title: "From Date",
+                onTap: () async {
+                  final DateTime? date = await showDatePicker(
+                      context: context,
+                      initialDate: fromDate,
+                      firstDate: DateTime(2015),
+                      lastDate: DateTime.now());
+                  setState(() {
+                    fromDate = date!;
+                  });
+                },
+              ),
+              CustomTextField(
+                hintText: DateFormat('yyyy-MM-dd').format(toDate).toString(),
+                readOnly: true,
+                customHintTextStyle: true,
+                showSearchIcon: true,
+                suffixIcon: Icons.calendar_month,
+                title: "To Date",
+                onTap: () async {
+                  final DateTime? date = await showDatePicker(
+                      context: context,
+                      initialDate: toDate,
+                      firstDate: DateTime(2015),
+                      lastDate: DateTime.now());
+                  setState(() {
+                    toDate = date!;
+                  });
+                },
+              ),
+            ],
+          ),
           onButtonPressed: () {
             getMpin();
           },
