@@ -657,6 +657,7 @@ class CoOperativeValue {
     splashImage: "assets/annapurna/annapurna_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  //TODO using client id of ismart for testing  
   static final CoOperative kanchanjunghaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
