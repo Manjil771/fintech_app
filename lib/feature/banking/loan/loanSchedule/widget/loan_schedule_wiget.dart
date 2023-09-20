@@ -6,16 +6,22 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/banking/loan/loanSchedule/widget/loan_schedule_choose_account_widget.dart';
+import 'package:ismart/feature/banking/loan/loanSchedule/widget/loan_schedule_row_widget.dart';
+import 'package:ismart/feature/banking/loan/loanStatement/widget/loan_statement_row_widget.dart';
+import 'package:ismart/feature/banking/loan/widget/loan_detail_box_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanScheduleWidget extends StatefulWidget {
-  LoanScheduleWidget({Key? key}) : super(key: key);
+  final UtilityResponseData response;
+  LoanScheduleWidget({Key? key, required this.response}) : super(key: key);
 
   @override
   State<LoanScheduleWidget> createState() => _LoanScheduleWidgetState();
@@ -23,29 +29,6 @@ class LoanScheduleWidget extends StatefulWidget {
 
 class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
   bool _isLoading = false;
-  Future getMpin() async {
-    String mPin = await SecureStorageService.appPassword;
-    if (mPin.isNotEmpty) {
-      context.read<UtilityPaymentCubit>().fetchDetails(
-          serviceIdentifier: "",
-          accountDetails: {
-            "accountNumber":
-                RepositoryProvider.of<CustomerDetailRepository>(context)
-                    .selectedAccount
-                    .value!
-                    .accountNumber,
-            "mPin": mPin
-          },
-          apiEndpoint: "/api/loan/schedule");
-    }
-    print("mmpin is $mPin");
-  }
-
-  @override
-  void initState() {
-    getMpin();
-    super.initState();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -53,130 +36,110 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    final _response = widget.response.findValue(primaryKey: "data");
     return PageWrapper(
         body: CommonContainer(
+            showTitleText: false,
+            verticalPadding: 0,
+            horizontalPadding: 0,
             topbarName: "Loan Schedule",
             showRoundBotton: false,
-            body: Column(children: [
-              Container(
-                padding: EdgeInsets.symmetric(
-                  vertical: 6,
-                ),
-                decoration: BoxDecoration(
-                  color: _theme.primaryColor.withOpacity(0.2),
-                  borderRadius: BorderRadius.only(
-                      topLeft: Radius.circular(8),
-                      topRight: Radius.circular(8)),
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                        width: 20.wp,
-                        child: Center(
-                          child: Text(
-                            "SN",
-                            style: _textTheme.labelMedium,
-                          ),
-                        )),
-                    Expanded(
-                        child: Center(
-                      child: Text(
-                        "Date",
-                        style: _textTheme.labelMedium,
-                      ),
-                    )),
-                    Expanded(
-                        child: Center(
-                      child: Text(
-                        "Installement",
-                        style: _textTheme.labelMedium,
-                      ),
-                    )),
-                    Expanded(
-                        child: Center(
-                      child: Text(
-                        "Principal",
-                        style: _textTheme.labelMedium,
-                      ),
-                    )),
-                    Expanded(
-                        child: Center(
-                      child: Text(
-                        "Interest",
-                        style: _textTheme.labelMedium,
-                      ),
-                    )),
-                  ],
-                ),
-              ),
-              BlocBuilder<UtilityPaymentCubit, CommonState>(
-                builder: (context, state) {
-                  if (state is CommonStateSuccess<UtilityResponseData>) {
-                    final _response = state.data.findValue(primaryKey: "data");
-                    if (state.data.details.isNotEmpty) {
-                      return Column(
-                        children: [
-                          ...List.generate(state.data.details.length, (index) {
-                            return Container(
-                              padding: EdgeInsets.symmetric(vertical: 2),
-                              decoration: BoxDecoration(
-                                  border: Border.all(
-                                      color: CustomTheme.darkerBlack)),
-                              child: Row(
-                                children: [
-                                  Container(
-                                      width: 20.wp,
-                                      child: Center(
-                                        child: Text(
-                                          (index + 1).toString(),
-                                          style: _textTheme.labelMedium,
-                                        ),
-                                      )),
-                                  Expanded(
-                                      child: Center(
-                                    child: Text(
-                                      "${_response[index]["scheduleDateNepali"].toString()}",
-                                      style: _textTheme.labelMedium,
-
-                                      // \n${_response[index]["scheduleDateNepali"]
-                                    ),
-                                  )),
-                                  Expanded(
-                                      child: Center(
-                                    child: Text(
-                                      _response[index]["scheduleAmount"]
-                                          .toString(),
-                                      style: _textTheme.labelMedium,
-                                    ),
-                                  )),
-                                  Expanded(
-                                      child: Center(
-                                    child: Text(
-                                      _response[index]["principal"].toString(),
-                                      style: _textTheme.labelMedium,
-                                    ),
-                                  )),
-                                  Expanded(
-                                      child: Center(
-                                    child: Text(
-                                      _response[index]["interest"].toString(),
-                                      style: _textTheme.labelMedium,
-                                    ),
-                                  )),
-                                ],
-                              ),
-                            );
-                          })
-                        ],
+            body: Column(
+              children: [
+                BlocBuilder<UtilityPaymentCubit, CommonState>(
+                  builder: (context, state) {
+                    if (state is CommonStateSuccess) {
+                      final UtilityResponseData loanResponse = state.data;
+                      return LoanDetailBoxWidget(
+                        loanResponse: loanResponse,
                       );
                     } else {
                       return Container();
                     }
-                  } else {
-                    return Container();
-                  }
-                },
-              )
-            ])));
+                  },
+                ),
+                widget.response.details.isNotEmpty
+                    ? Column(
+                        children: [
+                          Container(
+                            height: 60.hp,
+                            color: _theme.primaryColor.withOpacity(0.05),
+                            child: Row(children: [
+                              Flexible(
+                                flex: 1,
+                                child: Container(
+                                  child: Center(
+                                      child: Text(
+                                    "SN",
+                                    style: _textTheme.headlineSmall!
+                                        .copyWith(fontSize: 12),
+                                  )),
+                                ),
+                              ),
+                              Flexible(
+                                flex: 10,
+                                child: Row(
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Text(
+                                          "Date",
+                                          style: _textTheme.headlineSmall!
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        child: Center(
+                                          child: Text("Installment",
+                                              textAlign: TextAlign.center,
+                                              style: _textTheme.headlineSmall!
+                                                  .copyWith(fontSize: 12)),
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Text(
+                                          "Principal",
+                                          style: _textTheme.headlineSmall!
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                      ),
+                                    ),
+                                    Flexible(
+                                      flex: 1,
+                                      child: Center(
+                                        child: Text(
+                                          "Interest",
+                                          style: _textTheme.headlineSmall!
+                                              .copyWith(fontSize: 12),
+                                        ),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              )
+                            ]),
+                          ),
+                          ListView.builder(
+                              shrinkWrap: true,
+                              physics: NeverScrollableScrollPhysics(),
+                              itemCount: _response.length,
+                              itemBuilder: (context, index) {
+                                return LoanScheduleRowWidget(
+                                  index: index,
+                                  responseData: widget.response,
+                                );
+                              })
+                        ],
+                      )
+                    : Container(),
+              ],
+            )));
   }
 }

@@ -45,7 +45,7 @@ class _WalletBoxWidgetState extends State<WalletBoxWidget> {
         );
       },
       child: Container(
-        padding: const EdgeInsets.all(30),
+        padding: EdgeInsets.all(25.wp),
         margin: const EdgeInsets.fromLTRB(20, 0, 20, 20),
         width: _width * 0.2,
         height: _width * 0.4,

@@ -12,21 +12,22 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_page.dart';
 import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class LoanStatementChooseAccountWidget extends StatefulWidget {
-  LoanStatementChooseAccountWidget({Key? key}) : super(key: key);
+class LoanScheduleChooseAccountWidget extends StatefulWidget {
+  LoanScheduleChooseAccountWidget({Key? key}) : super(key: key);
 
   @override
-  State<LoanStatementChooseAccountWidget> createState() =>
-      _LoanStatementChooseAccountWidgetState();
+  State<LoanScheduleChooseAccountWidget> createState() =>
+      _LoanScheduleChooseAccountWidgetState();
 }
 
-class _LoanStatementChooseAccountWidgetState
-    extends State<LoanStatementChooseAccountWidget> {
+class _LoanScheduleChooseAccountWidgetState
+    extends State<LoanScheduleChooseAccountWidget> {
   bool _isLoading = false;
 
   DateTime fromDate = DateTime.now();
@@ -50,11 +51,9 @@ class _LoanStatementChooseAccountWidgetState
                       .selectedAccount
                       .value!
                       .accountNumber,
-              "fromDate": DateFormat("yyyy-MM-dd").format(fromDate).toString(),
-              "toDate": DateFormat("yyyy-MM-dd").format(toDate).toString(),
               "mPin": mPin
             },
-            apiEndpoint: "/api/loan/statement");
+            apiEndpoint: "/api/loan/schedule");
       }
     }
 
@@ -84,8 +83,8 @@ class _LoanStatementChooseAccountWidgetState
             final _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.pushReplacement(
-                  target: LoanStatementPage(
-                mPin: userPin.toString(),
+                  target: LoanSchedulePage(
+                mpin: userPin.toString(),
                 response: _response,
               ));
             } else {
@@ -104,50 +103,11 @@ class _LoanStatementChooseAccountWidgetState
           buttonName: "Proceed",
           showAccountSelection: true,
           title: "Select Account",
-          body: Column(
-            children: [
-              CustomTextField(
-                hintText: DateFormat('yyyy-MM-dd').format(fromDate).toString(),
-                readOnly: true,
-                customHintTextStyle: true,
-                showSearchIcon: true,
-                suffixIcon: Icons.calendar_month,
-                title: "From Date",
-                onTap: () async {
-                  final DateTime? date = await showDatePicker(
-                      context: context,
-                      initialDate: fromDate,
-                      firstDate: DateTime(2015),
-                      lastDate: DateTime.now());
-                  setState(() {
-                    fromDate = date!;
-                  });
-                },
-              ),
-              CustomTextField(
-                hintText: DateFormat('yyyy-MM-dd').format(toDate).toString(),
-                readOnly: true,
-                customHintTextStyle: true,
-                showSearchIcon: true,
-                suffixIcon: Icons.calendar_month,
-                title: "To Date",
-                onTap: () async {
-                  final DateTime? date = await showDatePicker(
-                      context: context,
-                      initialDate: toDate,
-                      firstDate: DateTime(2015),
-                      lastDate: DateTime.now());
-                  setState(() {
-                    toDate = date!;
-                  });
-                },
-              ),
-            ],
-          ),
+          body: Container(),
           onButtonPressed: () {
             getMpin();
           },
-          topbarName: "Loan Statement",
+          topbarName: "Loan Schedule",
         ),
       ),
     );
