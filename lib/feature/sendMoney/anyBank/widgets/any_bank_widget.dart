@@ -270,22 +270,24 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   title: "Select Bank",
                   readOnly: widget.bankCode != null,
                   controller: _selectedBankController,
-                  onTap: bestMatchBankId != null
-                      ? () {
-                          NavigationService.push(
-                            target: BankListPage(
-                              onBankSelected: (val) {
-                                bestMatchBankId = null;
-                                NavigationService.pop();
+                  onTap:
+                      // bestMatchBankId != null
+                      // ?
+                      () {
+                    NavigationService.push(
+                      target: BankListPage(
+                        onBankSelected: (val) {
+                          bestMatchBankId = null;
+                          NavigationService.pop();
 
-                                _selectedBankController.text = val.bankName;
-                                selectedBank = val;
-                                setState(() {});
-                              },
-                            ),
-                          );
-                        }
-                      : null,
+                          _selectedBankController.text = val.bankName;
+                          selectedBank = val;
+                          setState(() {});
+                        },
+                      ),
+                    );
+                  },
+                  // : null,
                   validator: (value) => FormValidator.validateFieldNotEmpty(
                       value, "Destination bank."),
                 ),

@@ -166,6 +166,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                   SizedBox(height: _height * 0.01),
                   CustomTextField(
                     title: "Amount",
+                    textInputType: TextInputType.number,
                     hintText: "Enter the amount",
                     controller: _amountController,
                     validator: (val) =>
