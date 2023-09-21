@@ -18,7 +18,9 @@ Future<void> main() async {
   runZonedGuarded(() {
     runApp(
       //need to add client id for jana sewwa coop
-      LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),
+
+      LocalWrapper(child: AppDev(env: CoOperativeValue.uttargangaCoop)),
+
     );
   }, (e, s) {
     Log.e(e);
