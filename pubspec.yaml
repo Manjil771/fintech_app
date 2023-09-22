@@ -165,12 +165,12 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
-    # - assets/immanuel/
+    - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
     # - assets/kanchanjungha/
-    - assets/janasewa/
+    # - assets/janasewa/
     # - assets/golden/
 
   fonts:
