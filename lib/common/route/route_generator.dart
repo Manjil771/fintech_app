@@ -5,6 +5,7 @@ import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
+import 'package:ismart/feature/banking/loan/loanInformation/page/loan_info_choose_account_page.dart';
 import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_choose_account_page.dart';
 import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_page.dart';
 import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_choose_account_page.dart';
@@ -205,6 +206,11 @@ class RouteGenerator {
       case Routes.loanPage:
         return MaterialPageRoute(
           builder: (_) => const LoanPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.loanInformationPage:
+        return MaterialPageRoute(
+          builder: (_) => const LoanInfoChooseAccountPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.loanSchedulePage:
