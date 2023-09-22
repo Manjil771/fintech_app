@@ -78,9 +78,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                 child: Container(
                     // height: _height * 0.65,
                     color: Colors.white,
-                    height: double.maxFinite,
+                    // height: double.maxFinite,
                     child: ListView.builder(
-                      // shrinkWrap: true,
+                      physics: ScrollPhysics(),
+                      shrinkWrap: true,
+                      // scrollDirection: Axis.vertical,
                       itemCount: state.data.length,
                       itemBuilder: (context, index) {
                         final _detail = state.data[index];

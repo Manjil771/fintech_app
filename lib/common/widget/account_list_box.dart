@@ -99,7 +99,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                               color: _theme.primaryColor),
                                         ),
                                         const Spacer(),
-                                        myIndex == index
+                                        account.primary == "true"
                                             ? Container(
                                                 width: _width * 0.2,
                                                 height: _width * 0.06,
