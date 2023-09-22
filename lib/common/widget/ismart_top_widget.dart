@@ -19,8 +19,11 @@ class IsmartTopWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Expanded(
-          child: Image.asset(
-            repo.bannerImage,
+          child: Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Image.asset(
+              repo.bannerImage,
+            ),
           ),
         ),
         SizedBox(width: _width * 0.1),

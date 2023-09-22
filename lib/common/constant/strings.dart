@@ -51,5 +51,5 @@ class Strings {
   static const janasewaAppTitle = "Janasewa Saving iSmart";
   static const immanuelAppTitle = "Immanuel Saving iSmart";
 
-  static const APP_TITLE = immanuelAppTitle;
+  static const APP_TITLE = supremeAppTitle;
 }

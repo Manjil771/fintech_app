@@ -158,14 +158,14 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/rumjatar/
-    # - assets/supreme/
+    - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
-    - assets/immanuel/
+    # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
