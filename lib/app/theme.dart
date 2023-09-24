@@ -58,8 +58,10 @@ class CustomTheme {
   static const Color kanchanjunghaColor = Color(0xFF39B54A);
   static const Color janasewaColor = Color(0xFF01A64E);
   static const Color goldenCoopColor = Color(0xFF157A3E);
+  static const Color nayanCoopColor = Color(0xFF0A6846);
+  static const Color rithepaniCoopColor = Color(0xFF01785C);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = rithepaniCoopColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
