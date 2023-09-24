@@ -61,7 +61,7 @@ class CustomTheme {
   static const Color nayanCoopColor = Color(0xFF0A6846);
   static const Color rithepaniCoopColor = Color(0xFF01785C);
 
-  static Color primaryColor = rithepaniCoopColor;
+  static Color primaryColor = nayanCoopColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
