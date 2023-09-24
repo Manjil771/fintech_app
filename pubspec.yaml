@@ -172,7 +172,7 @@ flutter:
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
-    - assets/nayan/
+    # - assets/nayan/
     - assets/rithepani/
 
   fonts:
