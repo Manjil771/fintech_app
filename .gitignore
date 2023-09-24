@@ -56,3 +56,5 @@ ios/fastlane/README.md
 ios/fastlane/report.xml
 ios/fastlane/test_output/report.html
 ios/fastlane/test_output/report.junit
+.gitignore
+fastlane.yml

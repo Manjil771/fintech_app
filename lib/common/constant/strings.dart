@@ -53,5 +53,5 @@ class Strings {
   static const annapurnaHealthAppTitle = "Annapurna Health Saving iSmart";
   static const royalGorkhaAppTitle = "Royal Gorkha Saving iSmart";
 
-  static const APP_TITLE = annapurnaHealthAppTitle;
+  static const APP_TITLE = kamanaAppTitle;
 }
