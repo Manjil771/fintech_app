@@ -657,7 +657,7 @@ class CoOperativeValue {
     splashImage: "assets/annapurna/annapurna_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  //TODO using client id of ismart for testing  
+  //TODO using client id of ismart for testing
   static final CoOperative kanchanjunghaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -737,6 +737,32 @@ class CoOperativeValue {
     coOperativeName: 'Buddha Saving & Credit',
     coOperativeLogo: 'assets/buddhaCoop/buddha_logo.png',
     splashImage: "assets/buddhaCoop/buddha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative nayanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nayan/nayan_banner.png",
+    backgroundImage: "assets/nayan/nayan_background.png",
+    clientCode: 'DQKWL4X17Y',
+    clientSecret: "118273",
+    coOperativeName: 'Nayan Saving & Credit',
+    coOperativeLogo: 'assets/nayan/nayan_logo.png',
+    splashImage: "assets/nayan/nayan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative rithepaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/rithepani/rithepani_banner.png",
+    backgroundImage: "assets/rithepani/rithepani_background.png",
+    clientCode: 'SGGSLNACQN',
+    clientSecret: "207387",
+    coOperativeName: 'Rithepani Saving & Credit',
+    coOperativeLogo: 'assets/rithepani/rithepani_logo.png',
+    splashImage: "assets/rithepani/rithepani_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

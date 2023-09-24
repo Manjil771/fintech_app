@@ -4,16 +4,20 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_table_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khanepani_detail_screen.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/khanepani_detail_widget.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -39,6 +43,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
 
   KeyValue? selectedCounter;
   bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -67,77 +72,91 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final _response = state.data;
+
             if (state.data.code == "M0000" ||
                 state.data.status.toLowerCase() == "success") {
               NavigationService.push(
-                  target: CommonBillDetailPage(
-                      body: Column(
-                        children: [
-                          KeyValueTile(
-                            title: "Customer Code",
-                            value: _response.findValueString("customer_code"),
-                          ),
-                          KeyValueTile(
-                            title: "Customer Name",
-                            value: _response.findValueString("customer_name"),
-                          ),
-                          KeyValueTile(
-                            title: "Address",
-                            value: _response.findValueString("address"),
-                          ),
-                          KeyValueTile(
-                            title: "Current Month Dues",
-                            value:
-                                _response.findValueString("current_month_dues"),
-                          ),
-                          KeyValueTile(
-                            title: "Current Fine",
-                            value:
-                                _response.findValueString("current_month_fine"),
-                          ),
-                          KeyValueTile(
-                            title: "Discount",
-                            value: _response
-                                .findValueString("current_month_discount"),
-                          ),
-                          KeyValueTile(
-                            title: "Total Credit Sales Amount",
-                            value: _response
-                                .findValueString("total_credit_sales_amount"),
-                          ),
-                          KeyValueTile(
-                            title: "Total Advance Amount",
-                            value: _response
-                                .findValueString("total_advance_amount"),
-                          ),
-                          KeyValueTile(
-                            title: "Previous Dues",
-                            value: _response.findValueString("previous_dues"),
-                          ),
-                        ],
-                      ),
-                      accountDetails: {
-                        "account_number":
-                            RepositoryProvider.of<CustomerDetailRepository>(
-                                    context)
-                                .selectedAccount
-                                .value!
-                                .accountNumber,
-                        "amount": _response.findValueString("previous_dues"),
-                        "customer_code": _customerIdController.text,
-                        "counter": selectedCounter?.value,
-                      },
-                      apiEndpoint: "/api/khanepanipay",
-                      apiBody: {},
-                      service: widget.service,
-                      serviceIdentifier: widget.service.uniqueIdentifier));
+                  target: KhanepaniDetailsPage(
+                serivceList: widget.service,
+                customerCode: _customerIdController.text,
+                selectedCounter: selectedCounter?.value,
+                useServiceResponse: _response,
+              ));
               // NavigationService.push(
-              //     target: KhanepaniDetailsPage(
-              //   counterName: selectedCounter?.title ?? "",
-              //   customerCode: _customerIdController.text,
-              //   useServiceResponse: state.data,
-              //   counterCode: selectedCounter?.value ?? "",
-              // ));
+              //     target: CommonBillDetailPage(
+              //         body: Column(
+              //           crossAxisAlignment: CrossAxisAlignment.start,
+              //           children: [
+              //             KeyValueTile(
+              //               title: "Customer Code",
+              //               value: _response.findValueString("customer_code"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Customer Name",
+              //               value: _response.findValueString("customer_name"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Address",
+              //               value: _response.findValueString("address"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Current Month Dues",
+              //               value:
+              //                   _response.findValueString("current_month_dues"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Current Fine",
+              //               value:
+              //                   _response.findValueString("current_month_fine"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Discount",
+              //               value: _response
+              //                   .findValueString("current_month_discount"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Total Credit Sales Amount",
+              //               value: _response
+              //                   .findValueString("total_credit_sales_amount"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Total Advance Amount",
+              //               value: _response
+              //                   .findValueString("total_advance_amount"),
+              //             ),
+              //             KeyValueTile(
+              //               title: "Previous Dues",
+              //               value: _response.findValueString("previous_dues"),
+              //             ),
+              //             Text("Bill Details",
+              //                 style: Theme.of(context).textTheme.titleSmall),
+              //             CommonTableWidget(
+              //               values: billsDetails(_response),
+              //             ),
+              //           ],
+              //         ),
+              //         accountDetails: {
+              //           "account_number":
+              //               RepositoryProvider.of<CustomerDetailRepository>(
+              //                       context)
+              //                   .selectedAccount
+              //                   .value!
+              //                   .accountNumber,
+              //           "amount": _response.findValueString("previous_dues"),
+              //           "customer_code": _customerIdController.text,
+              //           "counter": selectedCounter?.value,
+              //         },
+              //         apiEndpoint: "/api/khanepanipay",
+              //         apiBody: {},
+              //         service: widget.service,
+              //         serviceIdentifier: widget.service.uniqueIdentifier));
+              // // NavigationService.push(
+              // //     target: KhanepaniDetailsPage(
+              // //   counterName: selectedCounter?.title ?? "",
+              // //   customerCode: _customerIdController.text,
+              // //   useServiceResponse: state.data,
+              // //   counterCode: selectedCounter?.value ?? "",
+              // // ));
             } else {
               showPopUpDialog(
                   context: context,
@@ -162,7 +181,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<UtilityPaymentCubit>().fetchDetails(
-                      serviceIdentifier: "",
+                      serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
                         "account_number":
                             RepositoryProvider.of<CustomerDetailRepository>(

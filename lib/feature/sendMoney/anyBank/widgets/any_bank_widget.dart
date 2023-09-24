@@ -320,6 +320,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 CustomTextField(
                   title: "Amount",
                   hintText: "NPR ",
+                  textInputType: TextInputType.number,
                   controller: _amountController,
                   onChanged: (val) {
                     if (val != _amountController.text) {

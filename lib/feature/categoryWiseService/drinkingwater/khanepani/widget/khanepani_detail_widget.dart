@@ -1,31 +1,37 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/text_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_error_dialog.dart';
+import 'package:ismart/common/widget/common_table_widget.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class KhanepaniDetailsWidgets extends StatefulWidget {
   final UtilityResponseData useServiceResponse;
-  final String counterName;
   final String customerCode;
-  final String counterCode;
+  final String selectedCounter;
+  final ServiceList service;
 
   const KhanepaniDetailsWidgets({
-    Key? key,
+    super.key,
     required this.useServiceResponse,
-    required this.counterName,
     required this.customerCode,
-    required this.counterCode,
-  }) : super(key: key);
+    required this.selectedCounter,
+    required this.service,
+  });
 
   @override
   State<KhanepaniDetailsWidgets> createState() =>
@@ -33,135 +39,177 @@ class KhanepaniDetailsWidgets extends StatefulWidget {
 }
 
 class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
-  final TextEditingController _amountController = TextEditingController();
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
-  final ValueNotifier<String> _promoCode = ValueNotifier("");
-
-  bool _isLoading = false;
-
-  @override
-  void initState() {
-    super.initState();
-
-    _amountController.text = widget.useServiceResponse
-        .findValueString("total_dues", emptyString: "");
+  List<List<String>> _billsDetails(UtilityResponseData response) {
+    final List<Map<String, dynamic>> _temp = response
+            .findValue<List>(primaryKey: "statements")
+            ?.cast<Map<String, dynamic>>() ??
+        [];
+    return [
+      [
+        "Date",
+        "DECS",
+        "AMT",
+      ],
+      ..._temp.map<List<String>>(
+        (e) => [
+          TextUtils.replaceEmptyWithDash(e["date"]),
+          TextUtils.replaceEmptyWithDash(e["desc"]),
+          TextUtils.replaceEmptyWithDash(e["amt"]),
+        ],
+      ),
+    ];
   }
 
   @override
   Widget build(BuildContext context) {
-    return BlocListener<UtilityPaymentCubit, CommonState>(
-      listener: (context, state) {
-        if (state is CommonLoading && _isLoading == false) {
-          _isLoading = true;
-          showLoadingDialogBox(context);
-        } else if (state is! CommonLoading && _isLoading) {
-          _isLoading = false;
-          Navigator.pop(context);
-        }
+    final _response = widget.useServiceResponse;
 
-        if (state is CommonStateSuccess<UtilityResponseData>) {
-          // TODO Navigate to receipt
-          // NavigationService.pushReplacement(
-          //   target: ReceiptPage(
-          //     receiableAmount: "${_amountController.text}",
-          //     date: Jiffy(DateTime.tryParse(
-          //                     state.data.findValueString("transaction_date"))
-          //                 ?.toLocal() ??
-          //             DateTime.now().toLocal())
-          //         .format("yyyy-MM-dd"),
-          //     transactionId: state.data.findValueString("transaction_id"),
-          //     service: context.loc.khanepani.khanepani,
-          //     userName: widget.customerCode,
-          //     extras: {
-          //       ...state.extras,
-          //       "counterName": widget.counterName,
-          //     },
-          //     serviceId: widget.services.id,
-          //     serviceTypeId: widget.services.serviceType.id,
-          //   ),
-          // );
-        } else if (state is CommonError) {
-          showWalletErrorDialogBox(
-            context: context,
-            message: state.message,
-            errorCode: state.statusCode?.toString() ?? "",
-          );
-        }
-      },
-      child: PageWrapper(
-        body: SingleChildScrollView(
-          child: Form(
-            key: _formKey,
-            child: Container(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  CommonContainer(
-                    body: Column(
+    return PageWrapper(
+      body: CommonContainer(
+        detail: widget.service.instructions,
+        title: widget.service.service,
+        showAccountSelection: true,
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            KeyValueTile(
+              title: "Customer Code",
+              value: _response.findValueString("customer_code"),
+            ),
+            KeyValueTile(
+              title: "Customer Name",
+              value: _response.findValueString("customer_name"),
+            ),
+            KeyValueTile(
+              title: "Address",
+              value: _response.findValueString("address"),
+            ),
+            KeyValueTile(
+              title: "Mobile Number",
+              value: _response.findValueString("mobile_number"),
+            ),
+            KeyValueTile(
+              title: "Current Month Dues",
+              value: _response.findValueString("current_month_dues"),
+            ),
+            KeyValueTile(
+              title: "Current Fine",
+              value: _response.findValueString("current_month_fine"),
+            ),
+            KeyValueTile(
+              title: "Discount",
+              value: _response.findValueString("current_month_discount"),
+            ),
+            KeyValueTile(
+              title: "Total Credit Sales Amount",
+              value: _response.findValueString("total_credit_sales_amount"),
+            ),
+            KeyValueTile(
+              title: "Total Advance Amount",
+              value: _response.findValueString("total_advance_amount"),
+            ),
+            KeyValueTile(
+              title: "Previous Dues",
+              value: _response.findValueString("previous_dues"),
+            ),
+            KeyValueTile(
+              title: "Service Charge",
+              value: _response.findValueString("service_charge"),
+            ),
+            Text("Bill Details", style: Theme.of(context).textTheme.titleLarge),
+            _response.findValue(primaryKey: "statements").toString() == "null"
+                ? Container()
+                : CommonTableWidget(
+                    values: _billsDetails(widget.useServiceResponse),
+                  ),
+            KeyValueTile(
+              title: "Total Dues",
+              titleFontWeight: FontWeight.bold,
+              isRedColor: true,
+              value: _response.findValueString("total_dues"),
+            ),
+          ],
+        ),
+        showDetail: true,
+        topbarName: widget.service.serviceCategoryName,
+        buttonName: "Proceed",
+        onButtonPressed: () {
+          NavigationService.pushReplacement(
+              target: CommonBillDetailPage(
+                  accountDetails: {
+                    "account_number":
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value!
+                            .accountNumber,
+                    "amount": _response.findValueString("total_dues"),
+                    "customer_code": _response.findValueString("customer_code"),
+                    "counter": widget.selectedCounter,
+                  },
+                  apiEndpoint: "/api/khanepanipay",
+                  apiBody: {},
+                  service: widget.service,
+                  serviceIdentifier: widget.service.uniqueIdentifier,
+                  body: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         KeyValueTile(
                           title: "Customer Code",
-                          value: widget.useServiceResponse
-                              .findValueString("customer_code"),
+                          value: _response.findValueString("customer_code"),
                         ),
                         KeyValueTile(
                           title: "Customer Name",
-                          value: widget.useServiceResponse
-                              .findValueString("customer_name"),
+                          value: _response.findValueString("customer_name"),
                         ),
                         KeyValueTile(
                           title: "Address",
-                          value: widget.useServiceResponse
-                              .findValueString("address"),
+                          value: _response.findValueString("address"),
+                        ),
+                        KeyValueTile(
+                          title: "Mobile Number",
+                          value: _response.findValueString("mobile_number"),
                         ),
                         KeyValueTile(
                           title: "Current Month Dues",
-                          value: widget.useServiceResponse
-                              .findValueString("current_month_dues"),
+                          value:
+                              _response.findValueString("current_month_dues"),
                         ),
                         KeyValueTile(
                           title: "Current Fine",
-                          value: widget.useServiceResponse
-                              .findValueString("current_month_fine"),
+                          value:
+                              _response.findValueString("current_month_fine"),
                         ),
                         KeyValueTile(
                           title: "Discount",
-                          value: widget.useServiceResponse
+                          value: _response
                               .findValueString("current_month_discount"),
                         ),
                         KeyValueTile(
                           title: "Total Credit Sales Amount",
-                          value: widget.useServiceResponse
+                          value: _response
                               .findValueString("total_credit_sales_amount"),
                         ),
                         KeyValueTile(
                           title: "Total Advance Amount",
-                          value: widget.useServiceResponse
-                              .findValueString("total_advance_amount"),
+                          value:
+                              _response.findValueString("total_advance_amount"),
                         ),
                         KeyValueTile(
                           title: "Previous Dues",
-                          value: widget.useServiceResponse
-                              .findValueString("previous_dues"),
-                          bottomPadding: 0,
+                          value: _response.findValueString("previous_dues"),
                         ),
-                      ],
-                    ),
-                    showDetail: true,
-                    topbarName: 'Khanepani Payment',
-                    buttonName: "Pay",
-                    onButtonPressed: () {
-                      // TODO call payment
-                    },
-                  ),
-                  SizedBox(height: 20.wp),
-                ],
-              ),
-            ),
-          ),
-        ),
+                        KeyValueTile(
+                          title: "Service Charge",
+                          value: _response.findValueString("service_charge"),
+                        ),
+                        KeyValueTile(
+                          title: "Total Dues",
+                          titleFontWeight: FontWeight.bold,
+                          isRedColor: true,
+                          value: _response.findValueString("total_dues"),
+                        ),
+                      ])));
+        },
       ),
     );
   }
