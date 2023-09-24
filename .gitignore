@@ -46,3 +46,13 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
+fastlane.yml
+ios/Gemfile
+ios/Gemfile.lock
+ios/fastlane/Appfile
+ios/fastlane/Fastfile
+ios/fastlane/ios.sh
+ios/fastlane/README.md
+ios/fastlane/report.xml
+ios/fastlane/test_output/report.html
+ios/fastlane/test_output/report.junit
