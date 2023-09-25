@@ -53,6 +53,7 @@ class Strings {
   static const annapurnaHealthAppTitle = "Annapurna Health Saving iSmart";
   static const royalGorkhaAppTitle = "Royal Gorkha Saving iSmart";
   static const rithePaniAppTitle = "Rithepani Saving iSmart";
+  static const bishalMultiAppTitle = "Bishal Multipurpose Saving iSmart";
 
   static const APP_TITLE = uttargangaAppTitle;
 }

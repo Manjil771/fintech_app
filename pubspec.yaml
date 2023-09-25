@@ -103,11 +103,11 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    - assets/gomaGanesh/
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -175,7 +175,7 @@ flutter:
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
-    - assets/shreeSubhakamana/
+    # - assets/shreeSubhakamana/
     - assets/bishalMulti/
 
   fonts:
