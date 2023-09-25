@@ -766,6 +766,33 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative shreeSubhakamanaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeSubhakamana/shree_subhakamana_banner.png",
+    backgroundImage: "assets/shreeSubhakamana/shree_subhakamana_background.png",
+    clientCode: 'SGGSLNACQN',
+    clientSecret: "207387",
+    coOperativeName: 'shreeSubhakamana Saving & Credit',
+    coOperativeLogo: 'assets/shreeSubhakamana/shree_subhakamana_logo.png',
+    splashImage: "assets/shreeSubhakamana/shree_subhakamana_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative bishalMultiPurposeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bishalMulti/bishalMulti_banner.png",
+    backgroundImage: "assets/bishalMulti/bishalMulti_background.png",
+    clientCode: 'BHHZB5DT3H',
+    clientSecret: "172650",
+    coOperativeName: 'Bishal Multipurpose Co-Operative Ltd.',
+    coOperativeLogo: 'assets/bishalMulti/bishalMulti_logo.png',
+    splashImage: "assets/bishalMulti/bishalMulti_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
   static final CoOperative sanaKishanCoop = CoOperative(
     appStoreID: "",
     packageName: "",

@@ -60,9 +60,11 @@ class CustomTheme {
   static const Color goldenCoopColor = Color(0xFF157A3E);
   static const Color nayanCoopColor = Color(0xFF0A6846);
   static const Color rithepaniCoopColor = Color(0xFF01785C);
+  static const Color shreeSubhakamanaColor = Color(0xFF016934);
+  static const Color bishalMultiPurposeColor = Color(0xFF08440E);
 
-  static Color primaryColor = rithepaniCoopColor;
-
+  static Color primaryColor = bishalMultiPurposeColor;
+  
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
   static const Color gray = Color(0xFFDEDEDE);
