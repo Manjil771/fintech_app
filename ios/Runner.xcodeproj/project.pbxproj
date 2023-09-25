@@ -140,6 +140,7 @@
 		F7E5C33953233EB314ED52BF /* Pods-Runner.release-supreme.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-supreme.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-supreme.xcconfig"; sourceTree = "<group>"; };
 		F95542F0094125077952A550 /* Pods-Runner.release-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sahakarya.xcconfig"; sourceTree = "<group>"; };
 		FB1F825F25C37C870D537E6D /* Pods-Runner.release-annapurnahealth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-annapurnahealth.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-annapurnahealth.xcconfig"; sourceTree = "<group>"; };
+		FED9B67B9BD7624CF6E74563 /* Pods-Runner.release-rithepani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rithepani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rithepani.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -305,6 +306,7 @@
 				18544FA870CB7140E593FAEB /* Pods-Runner.profile-arthabag.xcconfig */,
 				E1679A3AB0EBBF6A593FEDC6 /* Pods-Runner.profile-uttarganga.xcconfig */,
 				1CEE5E08E8A75D88FF8F2D32 /* Pods-Runner.profile.xcconfig */,
+				FED9B67B9BD7624CF6E74563 /* Pods-Runner.release-rithepani.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -1379,7 +1381,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = RithepaniAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1390,7 +1392,7 @@
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_NAME = 0.0.25;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Kabil Coop iSmart";
+				INFOPLIST_KEY_CFBundleDisplayName = "Rithepani Coop iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1398,7 +1400,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kabil;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.rithepani;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
