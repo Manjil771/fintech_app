@@ -171,12 +171,12 @@ flutter:
     # - assets/bishnudol/''
     # - assets/annapurna/
     # - assets/kanchanjungha/
-    # - assets/janasewa/
+    - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
-    - assets/bishalMulti/
+    # - assets/bishalMulti/
 
   fonts:
     - family: popinbold
