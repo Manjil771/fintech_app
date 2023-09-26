@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:ismart/app/app_prod.dart';
@@ -10,11 +11,13 @@ import 'package:ismart/common/util/log.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  await FlutterDownloader.initialize();
+  if (!kIsWeb) {
+    await FlutterDownloader.initialize();
+  }
   await EasyLocalization.ensureInitialized();
   runZonedGuarded(() {
     runApp(
-      LocalWrapper(child: AppProd(env: CoOperativeValue.kamanaCoop)),
+      LocalWrapper(child: AppProd(env: CoOperativeValue.janasewaCoop)),
     );
   }, (e, s) {
     Log.e(e);
