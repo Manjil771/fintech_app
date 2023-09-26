@@ -105,6 +105,7 @@
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99AE409C2ED10D8581F787D1 /* Pods-Runner.debug-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nepalbachat.xcconfig"; sourceTree = "<group>"; };
+		9CEB1CB0A1C0A8A849A1CF32 /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
 		A347B3706085CD2740B47273 /* Pods-Runner.release-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemitra.xcconfig"; sourceTree = "<group>"; };
 		A42BC345F246B969EBDFE4D7 /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
 		AC372FE0E341B7E5786EFBD2 /* Pods-Runner.release-bishal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishal.xcconfig"; sourceTree = "<group>"; };
@@ -309,6 +310,7 @@
 				1CEE5E08E8A75D88FF8F2D32 /* Pods-Runner.profile.xcconfig */,
 				FED9B67B9BD7624CF6E74563 /* Pods-Runner.release-rithepani.xcconfig */,
 				BCB9AAA46AB067E6961808F1 /* Pods-Runner.release-bishalmulti.xcconfig */,
+				9CEB1CB0A1C0A8A849A1CF32 /* Pods-Runner.release-janasewa.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
