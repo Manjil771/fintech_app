@@ -78,21 +78,22 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                         ),
                       ),
                       const Spacer(),
-                      Container(
-                        width: _width * 0.2,
-                        height: _width * 0.06,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          color: _theme.primaryColor,
-                          // border: Border.all(color: Colors.black),
-                        ),
-                        child: const Center(
-                          child: Text(
-                            "Primary",
-                            style: TextStyle(color: Colors.white),
+                      if (selectedAcc?.primary.toString() == "true")
+                        Container(
+                          width: _width * 0.2,
+                          height: _width * 0.06,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(8),
+                            color: _theme.primaryColor,
+                            // border: Border.all(color: Colors.black),
                           ),
-                        ),
-                      )
+                          child: const Center(
+                            child: Text(
+                              "Primary",
+                              style: TextStyle(color: Colors.white),
+                            ),
+                          ),
+                        )
                     ],
                   ),
                   Row(

@@ -59,17 +59,23 @@ class _NotificationCountIconState extends State<NotificationCountIcon> {
                         apiEndpoint: "/api/notifications/seen");
                   },
                   child: Container(
-                    width: _width * 0.08,
+                    width: _width * 0.09,
                     child: Stack(
                       children: [
                         Positioned(
                           right: 0,
-                          top: _height * 0.005,
+                          top: _height * 0.006,
                           child: val.unseenNotificationCount != 0
-                              ? Text(
-                                  val.unseenNotificationCount.toString(),
-                                  style: _textTheme.titleSmall!
-                                      .copyWith(color: CustomTheme.googleColor),
+                              ? CircleAvatar(
+                                  backgroundColor: CustomTheme.googleColor,
+                                  radius: _height * 0.01,
+                                  child: Center(
+                                    child: Text(
+                                      val.unseenNotificationCount.toString(),
+                                      style: _textTheme.titleSmall!
+                                          .copyWith(color: CustomTheme.white),
+                                    ),
+                                  ),
                                 )
                               : Container(),
                         ),

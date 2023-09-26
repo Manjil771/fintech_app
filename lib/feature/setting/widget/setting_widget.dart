@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -63,6 +67,17 @@ class SettingWidget extends StatelessWidget {
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
               const Divider(thickness: 1),
+              CommonDetailBox(
+                onBoxPressed: () {
+                  RepositoryProvider.of<UserRepository>(context).logout();
+                  NavigationService.pushNamedAndRemoveUntil(
+                    routeName: Routes.loginPage,
+                  );
+                },
+                leadingIcon: Assets.logoutIcon,
+                title: "Logout",
+                detail: "Logout from this application.",
+              ),
               // CommonDetailBox(
               //     leadingIcon: "assets/icons/biometricsetup.svg",
               //     onBoxPressed: () {},
