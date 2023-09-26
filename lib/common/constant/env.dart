@@ -774,7 +774,7 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeSubhakamana/shree_subhakamana_background.png",
     clientCode: 'LC8A4TC6AX',
     clientSecret: "116572",
-    coOperativeName: 'shreeSubhakamana Saving & Credit',
+    coOperativeName: 'Shree ShubhaKamana MultiPurpose',
     coOperativeLogo: 'assets/shreeSubhakamana/shree_subhakamana_logo.png',
     splashImage: "assets/shreeSubhakamana/shree_subhakamana_splash.png",
     primaryColor: const Color(0xFF0b67bb),
