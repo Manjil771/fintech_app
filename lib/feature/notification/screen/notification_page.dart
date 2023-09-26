@@ -16,17 +16,7 @@ class NotificationPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
-              RepositoryProvider.of<UtilityPaymentRepository>(context))
-        ..fetchNotification()
-        ..makePayment(
-            body: {},
-            mPin: "",
-            serviceIdentifier: "",
-            accountDetails: {
-              // "timestamp": "2023-09-06 11:54:48",
-              "timestamp": DateTime.now(),
-            },
-            apiEndpoint: "/api/notifications/seen"),
+              RepositoryProvider.of<UtilityPaymentRepository>(context)),
       child: NotificationWidget(),
     );
   }
