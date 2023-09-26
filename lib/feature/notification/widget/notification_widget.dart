@@ -24,14 +24,7 @@ class NotificationWidget extends StatefulWidget {
 class _NotificationWidgetState extends State<NotificationWidget> {
   @override
   void initState() {
-    context.read<UtilityPaymentCubit>().makePayment(
-        body: {},
-        mPin: "",
-        serviceIdentifier: "",
-        accountDetails: {
-          "timestamp": "2023-09-06 11:54:48",
-        },
-        apiEndpoint: "/api/notifications/seen");
+    context.read<UtilityPaymentCubit>().fetchNotification();
     super.initState();
   }
 
@@ -44,61 +37,67 @@ class _NotificationWidgetState extends State<NotificationWidget> {
     return PageWrapper(
       showBackButton: true,
       // backgroundColor: CustomTheme.white,
-      body: BlocBuilder<UtilityPaymentCubit, CommonState>(
+      body: BlocConsumer<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {},
         builder: (context, state) {
-          if (state is CommonStateSuccess<NotificationModel>) {
-            final _data = state.data;
-            return ListView.builder(
-              itemCount: state.data.detail.length,
-              itemBuilder: (context, index) {
-                final data = state.data.detail[index];
-                return Container(
-                  margin: EdgeInsets.only(bottom: 10),
-                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    color: CustomTheme.white,
-                  ),
-                  child: Column(
-                    children: [
-                      Row(children: [
-                        SvgPicture.asset(Assets.notificationIcon,
-                            height: 20.hp),
-                        SizedBox(width: 15.wp),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data.title,
-                                style: _textTheme.displaySmall!
-                                    .copyWith(fontSize: 14),
-                              ),
-                              Text(
-                                data.date,
-                                style: _textTheme.labelSmall,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ]),
-                      SizedBox(height: 10.hp),
-                      Text(
-                        data.body,
-                        style: _textTheme.labelLarge,
+          return BlocBuilder<UtilityPaymentCubit, CommonState>(
+            builder: (context, state) {
+              if (state is CommonStateSuccess<NotificationModel>) {
+                final _data = state.data;
+                return ListView.builder(
+                  itemCount: state.data.detail.length,
+                  itemBuilder: (context, index) {
+                    final data = state.data.detail[index];
+                    return Container(
+                      margin: EdgeInsets.only(bottom: 10),
+                      padding:
+                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        color: CustomTheme.white,
                       ),
-                    ],
-                  ),
+                      child: Column(
+                        children: [
+                          Row(children: [
+                            SvgPicture.asset(Assets.notificationIcon,
+                                height: 20.hp),
+                            SizedBox(width: 15.wp),
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    data.title,
+                                    style: _textTheme.displaySmall!
+                                        .copyWith(fontSize: 14),
+                                  ),
+                                  Text(
+                                    data.date,
+                                    style: _textTheme.labelSmall,
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ]),
+                          SizedBox(height: 10.hp),
+                          Text(
+                            data.body,
+                            style: _textTheme.labelLarge,
+                          ),
+                        ],
+                      ),
+                    );
+                  },
                 );
-              },
-            );
-          } else {
-            return NoDataScreen(
-              title: "No Notification Found",
-              details: "Notification List is empty.",
-            );
-            ;
-          }
+              } else {
+                return NoDataScreen(
+                  title: "No Notification Found",
+                  details: "Notification List is empty.",
+                );
+                ;
+              }
+            },
+          );
         },
       ),
     );

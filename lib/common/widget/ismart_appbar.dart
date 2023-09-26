@@ -8,6 +8,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
+import 'package:ismart/common/widget/notification_count_widget.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/notification/screen/notification_page.dart';
@@ -76,16 +77,7 @@ AppBar myAppbar({bool showBackButton = false}) {
       child: _getImageWidget(),
     ),
     actions: [
-      InkWell(
-        onTap: () {
-          NavigationService.push(target: NotificationPage());
-        },
-        child: SvgPicture.asset(
-          Assets.notificationIcon,
-          color: CustomTheme.primaryColor,
-          height: _height * 0.025,
-        ),
-      ),
+      NotificationCountIcon(),
       InkWell(
         onTap: () {
           NavigationService.pushNamed(routeName: Routes.settingPage);
