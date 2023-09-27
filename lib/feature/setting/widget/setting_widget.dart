@@ -6,6 +6,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -69,9 +70,17 @@ class SettingWidget extends StatelessWidget {
               const Divider(thickness: 1),
               CommonDetailBox(
                 onBoxPressed: () {
-                  RepositoryProvider.of<UserRepository>(context).logout();
-                  NavigationService.pushNamedAndRemoveUntil(
-                    routeName: Routes.loginPage,
+                  showPopUpDialog(
+                    context: context,
+                    message: "Are you sure you want to logout.",
+                    title: "Alert",
+                    buttonText: "Logout",
+                    buttonCallback: () {
+                      RepositoryProvider.of<UserRepository>(context).logout();
+                      NavigationService.pushNamedAndRemoveUntil(
+                        routeName: Routes.loginPage,
+                      );
+                    },
                   );
                 },
                 leadingIcon: Assets.logoutIcon,
