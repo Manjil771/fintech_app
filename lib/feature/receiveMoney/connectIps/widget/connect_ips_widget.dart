@@ -88,10 +88,9 @@ class _ConnectIpsWidgetState extends State<ConnectIpsWidget> {
                 "api/load_from_connectips/payment/";
             final url = UrlUtils.getUri(url: _url, params: _body);
 
-            print(url.toString());
             NavigationService.push(
               target: PaymentWebView(
-                urlRequest: URLRequest(url: url, headers: {
+                urlRequest: URLRequest(url: WebUri.uri(url), headers: {
                   "Authorization": "Bearer $token",
                 }),
                 receiptUrl: "receiptUrl",
