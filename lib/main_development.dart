@@ -17,9 +17,7 @@ Future<void> main() async {
   /// use run zoned to catch all uncaught exceptions
   runZonedGuarded(() {
     runApp(
-      //need to add client id for jana sewwa coop
-
-      LocalWrapper(child: AppDev(env: CoOperativeValue.nayanCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),
     );
   }, (e, s) {
     Log.e(e);
