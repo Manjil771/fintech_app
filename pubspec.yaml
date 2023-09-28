@@ -56,10 +56,10 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   pin_code_fields: ^7.4.0
   url_launcher: ^6.1.11
-  flutter_inappwebview: 
-    git: 
+  flutter_inappwebview:
+    git:
       url: https://github.com/nesquikm/flutter_inappwebview.git
-      ref: b00b3781ef48459cef127ff9071fb95615a1b88e
+      ref: 60da7352f45f2a053c2a1368f253ccd7b1fdebcb
   animations: ^2.0.7
   qr_code_scanner: ^1.0.1
   screenshot: ^1.3.0
@@ -105,7 +105,7 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    # - assets/kabil/
+    - assets/kabil/
     # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -132,7 +132,7 @@ flutter:
     # - assets/nawajosh/
     # - assets/matribhumi/
     # - assets/gandakibesi/
-    - assets/batika/
+    # - assets/batika/
     # - assets/sarbahit/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -171,7 +171,7 @@ flutter:
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
-    # - assets/bishnudol/''
+    # - assets/bishnudol/
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/

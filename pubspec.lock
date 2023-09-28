@@ -530,8 +530,8 @@ packages:
     dependency: "direct main"
     description:
       path: "."
-      ref: b00b3781ef48459cef127ff9071fb95615a1b88e
-      resolved-ref: b00b3781ef48459cef127ff9071fb95615a1b88e
+      ref: "60da7352f45f2a053c2a1368f253ccd7b1fdebcb"
+      resolved-ref: "60da7352f45f2a053c2a1368f253ccd7b1fdebcb"
       url: "https://github.com/nesquikm/flutter_inappwebview.git"
     source: git
     version: "6.0.0-beta.25"
