@@ -9,7 +9,7 @@ class CustomTheme {
   static const Color sahakaryaColor = Color(0xFF015017);
   static const Color manankColor = Color(0xFF015017);
   static const Color janadharaColor = Color(0xFF0b67bb);
-  static const Color kabilColor = Color(0xFF0b67bb);
+  static const Color kabilColor = Color(0xFF1f972b);
   static const Color abhiyanColor = Color(0xFF015017);
   static const Color kamanaColor = Color(0xFF008133);
   static const Color arthabagColor = Color(0xFF0729a4);
@@ -63,7 +63,7 @@ class CustomTheme {
   static const Color shreeSubhakamanaColor = Color(0xFF016934);
   static const Color bishalMultiPurposeColor = Color(0xFF08440E);
 
-  static Color primaryColor = shreeSubhakamanaColor;
+  static Color primaryColor = janasewaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
