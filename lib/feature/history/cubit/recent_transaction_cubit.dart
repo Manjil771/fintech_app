@@ -10,12 +10,16 @@ class RecentTransactionCubit extends Cubit<CommonState> {
   RecentTransactionCubit({required this.recentTransactionRepository})
       : super(CommonInitial());
   Future<dynamic> fetchrecentTransaction(
-      {required String serviceCategoryId, required String associatedId}) async {
+      {String? service,
+      required String serviceCategoryId,
+      required String associatedId}) async {
     emit(CommonLoading());
     try {
       String mPin = await SecureStorageService.appPassword;
       final response = await recentTransactionRepository.getRecentTransaction(
-          serviceCategoryId: serviceCategoryId, associatedId: associatedId);
+          service: service ?? "SERVICE",
+          serviceCategoryId: serviceCategoryId,
+          associatedId: associatedId);
 
       if (response.status == Status.Success) {
         emit(CommonDataFetchSuccess<RecentTransactionModel>(

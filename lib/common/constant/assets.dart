@@ -79,4 +79,8 @@ class Assets {
   static const String forcedUpdateGraphics = "assets/images/infographic 20.png";
   static const String normalUpdateGraphics =
       "assets/images/infographics_10.png";
+
+//*********//
+  static const String moneyTransferIcon = "assets/icons/money_transfer.png";
+  static const String arrowUpRounded = "assets/icons/arrow_up_rounded.svg";
 }

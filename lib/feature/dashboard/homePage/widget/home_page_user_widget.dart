@@ -103,16 +103,17 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               Row(
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.profileScreen);
-                                    },
-                                    child: CircleAvatar(
-                                      backgroundImage:
-                                          NetworkImage(imageUrl ?? ""),
-                                      child: Container(),
-                                    ),
-                                  ),
+                                      onTap: () {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.profileScreen);
+                                      },
+                                      child: CircleAvatar(
+                                        radius: 20,
+                                        backgroundImage: AssetImage(
+                                          Assets.profilePicture,
+                                        ),
+                                        backgroundColor: Colors.transparent,
+                                      )),
                                   SizedBox(width: _width * 0.02),
                                   Column(
                                     crossAxisAlignment:

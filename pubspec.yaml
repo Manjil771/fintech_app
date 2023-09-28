@@ -168,15 +168,15 @@ flutter:
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
-    # - assets/bishnudol/''
+    # - assets/bishnudol/
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
-    - assets/shreeSubhakamana/
-    - assets/bishalMulti/
+    # - assets/shreeSubhakamana/
+    # - assets/bishalMulti/
 
   fonts:
     - family: popinbold

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class BottomSheetWrapper extends StatelessWidget {
+  final bool showCancelButton;
   final EdgeInsets? padding;
   final double? topPadding;
   final Widget child;
@@ -13,6 +15,7 @@ class BottomSheetWrapper extends StatelessWidget {
   final String title;
   const BottomSheetWrapper({
     this.padding,
+    this.showCancelButton = false,
     this.backgroundColor = CustomTheme.backgroundColor,
     this.topPadding,
     this.showTopDivider = true,
@@ -59,11 +62,37 @@ class BottomSheetWrapper extends StatelessWidget {
               top: titleTopPadding.hp,
               bottom: titleBottomPadding.hp,
             ),
-            child: Text(
-              title,
-              style: _textTheme.headlineSmall!.copyWith(
-                fontWeight: FontWeight.bold,
-              ),
+            child: Row(
+              children: [
+                Spacer(),
+                Text(
+                  title,
+                  style: _textTheme.headlineSmall!.copyWith(
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+                Spacer(),
+                if (showCancelButton)
+                  InkWell(
+                    onTap: () {
+                      NavigationService.pop();
+                    },
+                    child: Row(
+                      children: [
+                        Text(
+                          "Close",
+                          style: _textTheme.titleSmall!
+                              .copyWith(color: CustomTheme.googleColor),
+                        ),
+                        Icon(
+                          Icons.cancel_outlined,
+                          size: 20,
+                          color: CustomTheme.googleColor,
+                        ),
+                      ],
+                    ),
+                  )
+              ],
             ),
           ),
           child,
