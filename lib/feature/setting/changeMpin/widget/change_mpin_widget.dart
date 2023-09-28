@@ -97,6 +97,7 @@ class ChangeMpinWidget extends StatelessWidget {
             child: Column(
               children: [
                 CustomTextField(
+                  textInputType: TextInputType.number,
                   obscureText: true,
                   controller: oldPinController,
                   title: "Old MPin",
@@ -109,6 +110,7 @@ class ChangeMpinWidget extends StatelessWidget {
                 ),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     obscureText: true,
                     validator: (val) {
@@ -121,6 +123,7 @@ class ChangeMpinWidget extends StatelessWidget {
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
                 CustomTextField(
+                    textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     obscureText: true,
                     validator: (val) {

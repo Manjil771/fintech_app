@@ -38,6 +38,7 @@ class CustomTextField extends FormField<String> {
     String suffixImage = "assets/icons/uit_calender.svg",
     Widget? trailing,
     VoidCallback? onTap,
+    VoidCallback? onSurffixImagePress,
     Widget? prefix,
     int maxLine = 1,
     double borderRadius = 15,
@@ -209,9 +210,13 @@ class CustomTextField extends FormField<String> {
                                           onPressed: onSuffixPressed,
                                         ),
                                       if (showSuffixImage)
-                                        SvgPicture.asset(
-                                          suffixImage,
-                                          height: suffixIconSize,
+                                        InkWell(
+                                          onTap: onSurffixImagePress,
+                                          child: SvgPicture.asset(
+                                            suffixImage,
+                                            color: CustomTheme.primaryColor,
+                                            height: suffixIconSize,
+                                          ),
                                         ),
                                     ],
                                   ),

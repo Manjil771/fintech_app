@@ -9,6 +9,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
@@ -100,6 +102,18 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             children: [
                               Row(
                                 children: [
+                                  InkWell(
+                                    onTap: () {
+                                      NavigationService.pushNamed(
+                                          routeName: Routes.profileScreen);
+                                    },
+                                    child: CircleAvatar(
+                                      backgroundImage:
+                                          NetworkImage(imageUrl ?? ""),
+                                      child: Container(),
+                                    ),
+                                  ),
+                                  SizedBox(width: _width * 0.02),
                                   Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -183,7 +197,35 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                                   color: CustomTheme.white,
                                                   height: _height * 0.015,
                                                 ),
-                                              )
+                                              ),
+                                              SizedBox(width: _width * 0.04),
+                                              if (selectedAcc?.primary
+                                                      .toString() ==
+                                                  "true")
+                                                Expanded(
+                                                  child: Container(
+                                                    decoration: BoxDecoration(
+                                                        color:
+                                                            CustomTheme.white,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(8)),
+                                                    child: Center(
+                                                      child: Text(
+                                                        "Primary",
+                                                        style: _textTheme
+                                                            .titleSmall
+                                                            ?.copyWith(
+                                                          color: CustomTheme
+                                                              .primaryColor,
+                                                          fontSize: 9,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ),
                                             ],
                                           ),
                                           Text(

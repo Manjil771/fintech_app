@@ -37,125 +37,132 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
             valueListenable: _customerDetailRepo.customerDetailModel,
             builder: (context, val, _) {
               if (val != null) {
-                return Container(
-                  margin:
-                      const EdgeInsets.symmetric(vertical: 100, horizontal: 20),
-                  padding: const EdgeInsets.all(18),
-                  width: double.infinity,
-                  height: _width * 0.35,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(18),
-                    color: CustomTheme.white,
-                    border: Border.all(color: Colors.black45),
-                  ),
-                  child: ListView.builder(
-                      shrinkWrap: true,
-                      itemCount: val.accountDetail.length,
-                      itemBuilder: (context, index) {
-                        final account = val.accountDetail[index];
-                        final _isSelectedAccount = account.accountNumber
-                            .toLowerCase()
-                            .contains(selectedAccount?.accountNumber ?? "");
-                        return Padding(
-                          padding: const EdgeInsets.symmetric(vertical: 10),
-                          child: Material(
-                            color: Colors.transparent,
-                            child: InkWell(
-                              onTap: () {
-                                _customerDetailRepo.selectedAccount.value =
-                                    account;
-                                NavigationService.pop();
-                              },
-                              borderRadius: BorderRadius.circular(8),
-                              child: Container(
-                                padding: const EdgeInsets.all(18),
-                                width: double.infinity,
-                                height: _width * 0.35,
-                                decoration: BoxDecoration(
+                return Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    Container(
+                      margin: const EdgeInsets.symmetric(horizontal: 20),
+                      padding: const EdgeInsets.all(18),
+                      width: double.infinity,
+                      // height: _width * 0.35,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        color: CustomTheme.white,
+                        border: Border.all(color: Colors.black45),
+                      ),
+                      child: ListView.builder(
+                          shrinkWrap: true,
+                          itemCount: val.accountDetail.length,
+                          itemBuilder: (context, index) {
+                            final account = val.accountDetail[index];
+                            final _isSelectedAccount = account.accountNumber
+                                .toLowerCase()
+                                .contains(selectedAccount?.accountNumber ?? "");
+                            return Padding(
+                              padding: const EdgeInsets.symmetric(vertical: 10),
+                              child: Material(
+                                color: Colors.transparent,
+                                child: InkWell(
+                                  onTap: () {
+                                    _customerDetailRepo.selectedAccount.value =
+                                        account;
+                                    NavigationService.pop();
+                                  },
                                   borderRadius: BorderRadius.circular(8),
-                                  border: Border.all(
-                                    color: _isSelectedAccount
-                                        ? CustomTheme.primaryColor
-                                        : CustomTheme.gray,
+                                  child: Container(
+                                    padding: const EdgeInsets.all(18),
+                                    width: double.infinity,
+                                    height: _width * 0.35,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      border: Border.all(
+                                        color: _isSelectedAccount
+                                            ? CustomTheme.primaryColor
+                                            : CustomTheme.gray,
+                                      ),
+                                    ),
+                                    child: Column(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceEvenly,
+                                      children: [
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              Assets.walletIcon,
+                                              height: _height * 0.023,
+                                              color: _theme.primaryColor,
+                                            ),
+                                            SizedBox(width: _width * 0.03),
+                                            Text(
+                                              "NPR ${account.availableBalance}",
+                                              style: TextStyle(
+                                                  fontSize: 18,
+                                                  fontFamily: "popinsemibold",
+                                                  color: _theme.primaryColor),
+                                            ),
+                                            const Spacer(),
+                                            account.primary == "true"
+                                                ? Container(
+                                                    width: _width * 0.2,
+                                                    height: _width * 0.06,
+                                                    decoration: BoxDecoration(
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8),
+                                                      color:
+                                                          _theme.primaryColor,
+                                                      // border: Border.all(color: Colors.black),
+                                                    ),
+                                                    child: const Center(
+                                                      child: Text(
+                                                        "Primary",
+                                                        style: TextStyle(
+                                                            color:
+                                                                Colors.white),
+                                                      ),
+                                                    ),
+                                                  )
+                                                : Container()
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              Assets.bankingIcon,
+                                              height: _height * 0.023,
+                                              color: _theme.primaryColor,
+                                            ),
+                                            SizedBox(width: _width * 0.03),
+                                            Expanded(
+                                              child: Text(account.accountType,
+                                                  style: _theme
+                                                      .textTheme.labelLarge),
+                                            ),
+                                          ],
+                                        ),
+                                        Row(
+                                          children: [
+                                            SvgPicture.asset(
+                                              Assets.personIcon,
+                                              height: _height * 0.023,
+                                              color: _theme.primaryColor,
+                                            ),
+                                            SizedBox(width: _width * 0.03),
+                                            Text(
+                                              account.mainCode,
+                                              style: _textTheme.labelMedium,
+                                            ),
+                                          ],
+                                        )
+                                      ],
+                                    ),
                                   ),
                                 ),
-                                child: Column(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceEvenly,
-                                  children: [
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          Assets.walletIcon,
-                                          height: _height * 0.023,
-                                          color: _theme.primaryColor,
-                                        ),
-                                        SizedBox(width: _width * 0.03),
-                                        Text(
-                                          "NPR ${account.availableBalance}",
-                                          style: TextStyle(
-                                              fontSize: 18,
-                                              fontFamily: "popinsemibold",
-                                              color: _theme.primaryColor),
-                                        ),
-                                        const Spacer(),
-                                        account.primary == "true"
-                                            ? Container(
-                                                width: _width * 0.2,
-                                                height: _width * 0.06,
-                                                decoration: BoxDecoration(
-                                                  borderRadius:
-                                                      BorderRadius.circular(8),
-                                                  color: _theme.primaryColor,
-                                                  // border: Border.all(color: Colors.black),
-                                                ),
-                                                child: const Center(
-                                                  child: Text(
-                                                    "Primary",
-                                                    style: TextStyle(
-                                                        color: Colors.white),
-                                                  ),
-                                                ),
-                                              )
-                                            : Container()
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          Assets.bankingIcon,
-                                          height: _height * 0.023,
-                                          color: _theme.primaryColor,
-                                        ),
-                                        SizedBox(width: _width * 0.03),
-                                        Expanded(
-                                          child: Text(account.accountType,
-                                              style:
-                                                  _theme.textTheme.labelLarge),
-                                        ),
-                                      ],
-                                    ),
-                                    Row(
-                                      children: [
-                                        SvgPicture.asset(
-                                          Assets.personIcon,
-                                          height: _height * 0.023,
-                                          color: _theme.primaryColor,
-                                        ),
-                                        SizedBox(width: _width * 0.03),
-                                        Text(
-                                          account.mainCode,
-                                          style: _textTheme.labelMedium,
-                                        ),
-                                      ],
-                                    )
-                                  ],
-                                ),
                               ),
-                            ),
-                          ),
-                        );
-                      }),
+                            );
+                          }),
+                    ),
+                  ],
                 );
               }
               {
