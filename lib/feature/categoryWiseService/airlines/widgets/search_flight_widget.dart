@@ -52,6 +52,8 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        serviceCategoryId: widget.service.categoryId.toString(),
+        showRecentTransaction: true,
         showTitleText: false,
         showDetail: false,
         topbarName: 'Book Flight',
