@@ -102,7 +102,7 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    # - assets/kabil/
+    - assets/kabil/
     # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -171,7 +171,7 @@ flutter:
     # - assets/bishnudol/''
     # - assets/annapurna/
     # - assets/kanchanjungha/
-    - assets/janasewa/
+    # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
