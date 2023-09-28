@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/enum/text_field_type.dart';
-
-
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class CustomPinCodeField extends StatelessWidget {

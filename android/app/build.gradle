@@ -67,9 +67,27 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        bishalMulti {
+            dimension "app"
+            applicationId "com.devanasoft.bishalMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         annapurna {
             dimension "app"
             applicationId "com.devanasoft.annapurna"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        rithepani {
+            dimension "app"
+            applicationId "com.devanasoft.rithepani"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        royal {
+            dimension "app"
+            applicationId "com.devanasoft.royal"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

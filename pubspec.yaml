@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.29+29 ##gomaganesh      
+version: 0.0.29+29 ##gomaganesh
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -102,12 +102,12 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    # - assets/kabil/
+    - assets/kabil/
     # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    - assets/gomaGanesh/
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
