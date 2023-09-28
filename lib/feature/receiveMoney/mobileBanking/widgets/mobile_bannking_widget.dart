@@ -127,9 +127,12 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
             print(url.toString());
             NavigationService.push(
               target: PaymentWebView(
-                urlRequest: URLRequest(url: url, headers: {
-                  "Authorization": "Bearer $_token",
-                }),
+                urlRequest: URLRequest(
+                  url: WebUri.uri(url),
+                  headers: {
+                    "Authorization": "Bearer $_token",
+                  },
+                ),
                 receiptUrl: "receiptUrl",
               ),
             );
