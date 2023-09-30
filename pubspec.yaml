@@ -105,7 +105,7 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    - assets/kabil/
+    # - assets/kabil/
     # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -178,7 +178,7 @@ flutter:
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
-    # - assets/shreeSubhakamana/
+    - assets/shreeSubhakamana/
     # - assets/bishalMulti/
 
   fonts:
