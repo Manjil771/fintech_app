@@ -19,7 +19,7 @@ Future<void> main() async {
     runApp(
       //need to add client id for jana sewwa coop
 
-      LocalWrapper(child: AppDev(env: CoOperativeValue.shreeMyagdeCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.vaidhikCoop)),
     );
   }, (e, s) {
     Log.e(e);

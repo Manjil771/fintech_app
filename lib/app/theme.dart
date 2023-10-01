@@ -63,8 +63,9 @@ class CustomTheme {
   static const Color shreeSubhakamanaColor = Color(0xFF016934);
   static const Color bishalMultiPurposeColor = Color(0xFF08440E);
   static const Color shreeMyagdeColor = Color(0xFF009245);
+  static const Color vaidhikColor = Color(0xFF00963F);
 
-  static Color primaryColor = shreeMyagdeColor;
+  static Color primaryColor = vaidhikColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
