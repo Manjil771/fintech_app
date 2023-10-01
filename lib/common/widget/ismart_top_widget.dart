@@ -38,7 +38,7 @@ class IsmartTopWidget extends StatelessWidget {
         ),
         SizedBox(width: 15.hp),
         SvgPicture.asset(
-          Assets.groupIcon,
+          Assets.feedBackIcon,
           height: _height * 0.03,
         ),
         SizedBox(width: 15.hp),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
 String _supportContact = "9801132218";
@@ -51,6 +54,7 @@ class MoreWidget extends StatelessWidget {
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
+    Assets.feedBackIcon
     // Assets.settingIcon,
   ];
   List tapFunction = [
@@ -170,7 +174,7 @@ class MoreWidget extends StatelessWidget {
       NavigationService.push(target: const SettingPage());
     },
     () {
-      NavigationService.push(target: const SettingPage());
+      NavigationService.push(target: FeedBackPage());
     },
   ];
 
@@ -180,7 +184,10 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Support",
     "Settings",
-    // "FeedBack",
+    if (RepositoryProvider.of<CoOperative>(NavigationService.context)
+            .clientCode ==
+        "EHVNI7CZJ3")
+      "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {

@@ -9,9 +9,13 @@ import 'package:ismart/feature/history/widget/recent_transaction_widget.dart';
 class RecentTransactionServiceScreen extends StatefulWidget {
   final String serviceCategoryId;
   final String associatedId;
+  final String? service;
 
   const RecentTransactionServiceScreen(
-      {Key? key, required this.serviceCategoryId, required this.associatedId})
+      {Key? key,
+      required this.serviceCategoryId,
+      required this.associatedId,
+      this.service})
       : super(key: key);
 
   @override
@@ -39,6 +43,7 @@ class _RecentTransactionServiceScreenState
         )
       ],
       child: RecentTransactionServiceWidget(
+        service: widget.service ?? "SERVICE",
         associatedId: widget.associatedId,
         serviceCategoryId: widget.serviceCategoryId,
       ),

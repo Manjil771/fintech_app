@@ -180,6 +180,9 @@ flutter:
     # - assets/rithepani/
     - assets/shreeSubhakamana/
     # - assets/bishalMulti/
+    - assets/shreeMyagde/
+    - assets/vaidhik/
+    
 
   fonts:
     - family: popinbold

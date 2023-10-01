@@ -16,9 +16,11 @@ class RecentTransactionApiProvider {
       required this.baseUrl});
 
   Future<dynamic> fetchRecentTransaction(
-      {required String serviceCategoryId, required String associatedId}) async {
+      {required String serviceCategoryId,
+      required String associatedId,
+      required String service}) async {
     final _params = {
-      "serviceOf": "SERVICE",
+      "serviceOf": service,
       if (serviceCategoryId.isNotEmpty) "serviceCategoryId": serviceCategoryId,
       if (associatedId.isNotEmpty) "associatedId": associatedId
     };

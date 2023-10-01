@@ -8,12 +8,13 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
+import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_service_page.dart';
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
   final Widget body;
-
+  final String? serviceName;
   final String serviceCategoryId;
   final String associatedId;
   final bool showRecentTransaction;
@@ -49,6 +50,7 @@ class CommonContainer extends StatelessWidget {
     this.title = "",
     this.detail = "",
     this.associatedId = "",
+    this.serviceName,
   });
   @override
   Widget build(BuildContext context) {
@@ -111,31 +113,31 @@ class CommonContainer extends StatelessWidget {
                               ],
                             ),
                           ),
-                          if (showRecentTransaction)
-                            InkWell(
-                              // icon: Icons.keyboard_arrow_down_outlined,
-                              onTap: () {
-                                showModalBottomSheet(
-                                  context: context,
-                                  builder: (context) => BottomSheetWrapper(
-                                    backgroundColor: CustomTheme.white,
-                                    showTopDivider: true,
-                                    title: "Recent Transaction",
-                                    child: Expanded(
-                                      child: RecentTransactionServiceScreen(
-                                        serviceCategoryId: serviceCategoryId,
-                                        associatedId: associatedId,
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                              child: SvgPicture.asset(
-                                Assets.historyIcon,
-                                height: 20,
-                                color: _theme.primaryColor,
-                              ),
-                            ),
+                          // if (showRecentTransaction)
+                          //   InkWell(
+                          //     // icon: Icons.keyboard_arrow_down_outlined,
+                          //     onTap: () {
+                          //       showModalBottomSheet(
+                          //         context: context,
+                          //         builder: (context) => BottomSheetWrapper(
+                          //           backgroundColor: CustomTheme.white,
+                          //           showTopDivider: true,
+                          //           title: "Recent Transaction",
+                          //           child: Expanded(
+                          //             child: RecentTransactionServiceScreen(
+                          //               serviceCategoryId: serviceCategoryId,
+                          //               associatedId: associatedId,
+                          //             ),
+                          //           ),
+                          //         ),
+                          //       );
+                          //     },
+                          //     child: SvgPicture.asset(
+                          //       Assets.historyIcon,
+                          //       height: 20,
+                          //       color: _theme.primaryColor,
+                          //     ),
+                          //   ),
                         ],
                       ),
                       SizedBox(height: _height * 0.01),
@@ -168,30 +170,11 @@ class CommonContainer extends StatelessWidget {
                 ),
               ),
             ),
-            // InkWell(
-            //   onTap: () {
-
-            //   },
-            //   child: Container(
-            //     decoration: BoxDecoration(
-            //       color: _theme.primaryColor,
-            //       borderRadius: BorderRadius.only(
-            //           topLeft: Radius.circular(15),
-            //           topRight: Radius.circular(15)),
-            //     ),
-            //     width: _width,
-            //     padding:
-            //         EdgeInsets.symmetric(horizontal: 10.hp, vertical: 10.hp),
-            //     child: Container(
-            //         child: Center(
-            //       child: Text(
-            //         "Recent Transaction",
-            //         style: _textTheme.labelLarge!
-            //             .copyWith(color: CustomTheme.white),
-            //       ),
-            //     )),
-            //   ),
-            // )
+            if (showRecentTransaction)
+              RecentTransactionServiceScreen(
+                  service: serviceName,
+                  serviceCategoryId: serviceCategoryId,
+                  associatedId: associatedId),
           ],
         ),
       ),
