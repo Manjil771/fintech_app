@@ -33,6 +33,7 @@
 
 /* Begin PBXFileReference section */
 		021588600FFFB17669EE3564 /* Pods-Runner.debug-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janamukhi.xcconfig"; sourceTree = "<group>"; };
+		0942D9D40C85C408972C3938 /* Pods-Runner.release-bishnudol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishnudol.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishnudol.xcconfig"; sourceTree = "<group>"; };
 		0EF054A71ECBE34047D6C65E /* Pods-Runner.debug-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
 		103263FB042A633656C4BD36 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
@@ -106,6 +107,7 @@
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		99AE409C2ED10D8581F787D1 /* Pods-Runner.debug-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nepalbachat.xcconfig"; sourceTree = "<group>"; };
 		9CEB1CB0A1C0A8A849A1CF32 /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
+		A13A7B88BFF4D0C82A855C80 /* Pods-Runner.release-batika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-batika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-batika.xcconfig"; sourceTree = "<group>"; };
 		A347B3706085CD2740B47273 /* Pods-Runner.release-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemitra.xcconfig"; sourceTree = "<group>"; };
 		A42BC345F246B969EBDFE4D7 /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
 		AC372FE0E341B7E5786EFBD2 /* Pods-Runner.release-bishal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishal.xcconfig"; sourceTree = "<group>"; };
@@ -313,6 +315,8 @@
 				BCB9AAA46AB067E6961808F1 /* Pods-Runner.release-bishalmulti.xcconfig */,
 				9CEB1CB0A1C0A8A849A1CF32 /* Pods-Runner.release-janasewa.xcconfig */,
 				F22B4798F293D183427134F3 /* Pods-Runner.release-nayan.xcconfig */,
+				0942D9D40C85C408972C3938 /* Pods-Runner.release-bishnudol.xcconfig */,
+				A13A7B88BFF4D0C82A855C80 /* Pods-Runner.release-batika.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -8117,13 +8121,13 @@
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Bishnudol Saving iSmart";
+				COOP_NAME = "Bishnudol iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_NAME = 0.0.25;
 				INFOPLIST_FILE = Runner/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Bishnudol Saving iSmart";
+				INFOPLIST_KEY_CFBundleDisplayName = "Bishnudol iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
