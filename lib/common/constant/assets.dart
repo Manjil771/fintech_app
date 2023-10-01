@@ -82,5 +82,8 @@ class Assets {
 
 //*********//
   static const String moneyTransferIcon = "assets/icons/money_transfer.png";
+  //icons
+
   static const String arrowUpRounded = "assets/icons/arrow_up_rounded.svg";
+  static const String feedBackIcon = "assets/icons/feedback_icon.svg";
 }

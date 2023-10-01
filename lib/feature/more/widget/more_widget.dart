@@ -7,6 +7,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
 String _supportContact = "9801132218";
@@ -51,6 +52,7 @@ class MoreWidget extends StatelessWidget {
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
+    Assets.feedBackIcon
     // Assets.settingIcon,
   ];
   List tapFunction = [
@@ -170,7 +172,7 @@ class MoreWidget extends StatelessWidget {
       NavigationService.push(target: const SettingPage());
     },
     () {
-      NavigationService.push(target: const SettingPage());
+      NavigationService.push(target: FeedBackPage());
     },
   ];
 
@@ -180,7 +182,7 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Support",
     "Settings",
-    // "FeedBack",
+    "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {
