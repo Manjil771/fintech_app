@@ -846,8 +846,8 @@ class CoOperativeValue {
     bannerImage: "assets/shreeKalika/shreeKalika_banner.png",
 
     backgroundImage: "assets/shreeKalika/shreeKalika_background.png",
-    clientCode: '8QASJZYBA6',
-    clientSecret: "131917",
+    clientCode: 'J0JDLK7OFX',
+    clientSecret: "132342",
     coOperativeName: 'shreeKalika Multipurpose Cooperative Ltd',
     coOperativeLogo: 'assets/shreeKalika/shreeKalika_logo.png',
 
