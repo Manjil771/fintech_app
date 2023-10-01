@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -15,7 +18,8 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class FeedBackWidget extends StatelessWidget {
-  FeedBackWidget({Key? key}) : super(key: key);
+  final String? transactionIdentifier;
+  FeedBackWidget({Key? key, this.transactionIdentifier}) : super(key: key);
   final TextEditingController emailController = TextEditingController();
   final TextEditingController messageController = TextEditingController();
   final dateNow = DateTime.now();
@@ -81,33 +85,60 @@ class FeedBackWidget extends StatelessWidget {
             body: Form(
               key: _formKey,
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // CustomTextField(
-                  //   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  //   controller: emailController,
-                  //   hintText: "hello@gmail.com",
-                  //   title: "Email",
-                  //   validator: (value) => FormValidator.validateEmail(value),
-                  // ),
                   CustomTextField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: messageController,
                     title: "Date",
                     customHintTextStyle: true,
                     hintText: dateNow.toString(),
                   ),
+                  if (transactionIdentifier != null)
+                    CustomTextField(
+                      title: "Transaction Identifier",
+                      hintText: transactionIdentifier.toString(),
+                      customHintTextStyle: true,
+                    ),
                   CustomTextField(
+                    maxLine: 3,
+
                     hintText: "Message",
                     title: "Message",
-                    // textInputType: TextInputType.multiline,
+                    textInputType: TextInputType.multiline,
                     // maxLine: 5,
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Message"),
                   ),
-                  Container(
-                    decoration:
-                        BoxDecoration(borderRadius: BorderRadius.circular(18)),
-                    height: _height * 0.05,
+                  Text(
+                    "Picture",
+                    style: const TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 14,
+                      color: CustomTheme.lightTextColor,
+                    ),
+                  ),
+                  InkWell(
+                    child: Container(
+                      width: _width,
+                      decoration: BoxDecoration(
+                          color: _theme.primaryColor.withOpacity(0.05),
+                          borderRadius: BorderRadius.circular(18)),
+                      height: _height * 0.2,
+                      child: Column(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Image.asset(
+                              Assets.uploadImageIcon,
+                              height: 50.hp,
+                            ),
+                            SizedBox(height: 10.hp),
+                            Text(
+                              "Upload Picture",
+                              style: _textTheme.titleSmall,
+                            )
+                          ]),
+                    ),
                   ),
                 ],
               ),
