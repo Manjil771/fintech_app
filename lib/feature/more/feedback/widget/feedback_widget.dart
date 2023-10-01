@@ -18,6 +18,7 @@ class FeedBackWidget extends StatelessWidget {
   FeedBackWidget({Key? key}) : super(key: key);
   final TextEditingController emailController = TextEditingController();
   final TextEditingController messageController = TextEditingController();
+  final dateNow = DateTime.now();
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
   @override
@@ -62,7 +63,7 @@ class FeedBackWidget extends StatelessWidget {
           }
         },
         child: CommonContainer(
-            showTitleText: false,
+            title: "Report a Problem",
             buttonName: "Submit",
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
@@ -81,17 +82,21 @@ class FeedBackWidget extends StatelessWidget {
               key: _formKey,
               child: Column(
                 children: [
+                  // CustomTextField(
+                  //   autovalidateMode: AutovalidateMode.onUserInteraction,
+                  //   controller: emailController,
+                  //   hintText: "hello@gmail.com",
+                  //   title: "Email",
+                  //   validator: (value) => FormValidator.validateEmail(value),
+                  // ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: emailController,
-                    hintText: "hello@gmail.com",
-                    title: "Email",
-                    validator: (value) => FormValidator.validateEmail(value),
+                    controller: messageController,
+                    title: "Date",
+                    customHintTextStyle: true,
+                    hintText: dateNow.toString(),
                   ),
                   CustomTextField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-
-                    controller: messageController,
                     hintText: "Message",
                     title: "Message",
                     // textInputType: TextInputType.multiline,
@@ -99,10 +104,15 @@ class FeedBackWidget extends StatelessWidget {
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Message"),
                   ),
+                  Container(
+                    decoration:
+                        BoxDecoration(borderRadius: BorderRadius.circular(18)),
+                    height: _height * 0.05,
+                  ),
                 ],
               ),
             ),
-            topbarName: "Feedback"),
+            topbarName: "Report"),
       ),
     );
   }

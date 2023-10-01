@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -182,7 +184,10 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Support",
     "Settings",
-    "FeedBack",
+    if (RepositoryProvider.of<CoOperative>(NavigationService.context)
+            .clientCode ==
+        "EHVNI7CZJ3")
+      "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {
