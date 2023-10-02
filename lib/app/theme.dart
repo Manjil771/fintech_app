@@ -66,7 +66,7 @@ class CustomTheme {
   static const Color vaidhikColor = Color(0xFF00963F);
   static const Color shreeKalikaColor = Color(0xFF009444);
 
-  static Color primaryColor = shreeKalikaColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

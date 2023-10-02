@@ -12,6 +12,9 @@ import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
+import 'package:ismart/feature/history/widget/transaction_detail_widget.dart';
+
+import '../../../common/constant/env.dart';
 
 class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -94,26 +97,36 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                 .generateUrl(
                                   transactionId: _detail.transactionIdentifier,
                                 );
-                            showDialog(
-                              context: context,
-                              builder: (context) {
-                                return Dialog(
-                                  insetPadding: const EdgeInsets.symmetric(
-                                      horizontal: 18),
-                                  child: Container(
-                                    padding: const EdgeInsets.symmetric(
-                                        vertical: 10),
-                                    width: double.infinity,
-                                    // height: _height * 0.5,
-                                    child: TransactionDetailAlertWidget(
-                                      recentTransactionModel: _detail,
-                                      downloadUrlNotifier:
-                                          _downloadNotifierValue,
-                                    ),
-                                  ),
-                                );
-                              },
-                            );
+                            RepositoryProvider.of<CoOperative>(
+                                            NavigationService.context)
+                                        .clientCode ==
+                                    "EHVNI7CZJ3"
+                                ? NavigationService.push(
+                                    target: TransactionDetailWidget(
+                                    downloadUrlNotifier: _downloadNotifierValue,
+                                    recentTransactionModel: _detail,
+                                  ))
+                                : showDialog(
+                                    context: context,
+                                    builder: (context) {
+                                      return Dialog(
+                                        insetPadding:
+                                            const EdgeInsets.symmetric(
+                                                horizontal: 18),
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 10),
+                                          width: double.infinity,
+                                          // height: _height * 0.5,
+                                          child: TransactionDetailAlertWidget(
+                                            recentTransactionModel: _detail,
+                                            downloadUrlNotifier:
+                                                _downloadNotifierValue,
+                                          ),
+                                        ),
+                                      );
+                                    },
+                                  );
                             // NavigationService.push(
                             //   target: TransactionDetailScreen(
                             //     recentTransactionModel: _detail,

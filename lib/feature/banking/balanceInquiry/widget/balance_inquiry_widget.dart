@@ -139,8 +139,13 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 "NPR ${_detail.accountDetail[index].accruedInterest}"),
                                             detailROw(context, "Acc Number",
                                                 "${_detail.accountDetail[index].mainCode}"),
-                                            detailROw(context, "Interest Rate",
-                                                "${_detail.accountDetail[index].interestRate} %"),
+                                            if (_detail.accountDetail[index]
+                                                    .interestRate !=
+                                                "0")
+                                              detailROw(
+                                                  context,
+                                                  "Interest Rate",
+                                                  "${_detail.accountDetail[index].interestRate} %"),
                                             detailROw(
                                                 context,
                                                 "Acc Holder’s Name",

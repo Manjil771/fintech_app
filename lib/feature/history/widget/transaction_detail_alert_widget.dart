@@ -73,7 +73,18 @@ class _TransactionDetailAlertWidgetState
                         fit: BoxFit.contain,
                         height: 60.hp,
                       ),
-                    )
+                    ),
+                    PopupMenuButton(
+                        itemBuilder: (context) => [
+                              PopupMenuItem(
+                                  child: Container(
+                                child: Text("hello1"),
+                              )),
+                              PopupMenuItem(
+                                  child: Container(
+                                child: Text("hello1"),
+                              ))
+                            ]),
                   ],
                 ),
                 SizedBox(height: _height * 0.01),
@@ -134,7 +145,6 @@ class _TransactionDetailAlertWidgetState
                             : "SMS",
                       ),
                       KeyValueTile(
-                        useCustomColor: true,
                         isRedColor: widget.recentTransactionModel.status
                                     .toLowerCase() ==
                                 "Complete".toLowerCase()
