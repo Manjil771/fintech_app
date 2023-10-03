@@ -75,7 +75,8 @@ class FeedBackWidget extends StatelessWidget {
                     serviceIdentifier: "",
                     accountDetails: {
                       "email": emailController.text,
-                      "message": messageController.text
+                      "message":
+                          "${transactionIdentifier} ${messageController.text}",
                     },
                     body: {},
                     apiEndpoint: "/api/addSuggestionBox",

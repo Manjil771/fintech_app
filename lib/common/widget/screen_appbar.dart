@@ -25,7 +25,7 @@ class ScreenAppBar extends StatelessWidget {
               child: Text(
                 title,
                 style: _textTheme.titleLarge!
-                    .copyWith(fontWeight: FontWeight.w500),
+                    .copyWith(fontWeight: FontWeight.w600),
               ),
             ),
           ),

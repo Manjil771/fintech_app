@@ -49,7 +49,7 @@ class SettingWidget extends StatelessWidget {
               //     title: "Favourite Account"),
               // const Divider(thickness: 1),
               CommonDetailBox(
-                  leadingIcon: "assets/icons/pin-code-svgrepo-com 1.svg",
+                  leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
                   onBoxPressed: () {
                     NavigationService.push(target: ChangeMpinPage());
                   },
@@ -57,13 +57,13 @@ class SettingWidget extends StatelessWidget {
                   title: "Change mPin"),
               const Divider(thickness: 1),
               CommonDetailBox(
-                  leadingIcon: "assets/icons/Vector-3.svg",
+                  leadingImage: "assets/icons/Vector-3.svg",
                   onBoxPressed: () {},
                   detail: "OTP Validations",
                   title: "Validations"),
               const Divider(thickness: 1),
               CommonDetailBox(
-                  leadingIcon: "assets/icons/privacy policy.svg",
+                  leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
@@ -83,7 +83,7 @@ class SettingWidget extends StatelessWidget {
                     },
                   );
                 },
-                leadingIcon: Assets.logoutIcon,
+                leadingImage: Assets.logoutIcon,
                 title: "Logout",
                 detail: "Logout from this application.",
               ),
