@@ -12,6 +12,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_otp_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -46,6 +47,8 @@ class ActivateAccountWidget extends StatelessWidget {
               _isLoading = false;
               NavigationService.pop();
             }
+            print("state is ${state}");
+
             if (state is CommonError) {
               showPopUpDialog(
                 context: context,
@@ -57,8 +60,34 @@ class ActivateAccountWidget extends StatelessWidget {
                 },
               );
             }
-//TODO need to add success state
-            if (state is CommonStateSuccess<UtilityResponseData>) {}
+            print("state is ${state}");
+
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              showPopUpDialog(
+                context: context,
+                message: state.data.message,
+                title: "Message",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+              print("state is ${state}");
+            } else if (state is CommonStateSuccess) {
+              showPopUpDialog(
+                context: context,
+                message: state.data.message,
+                title: "Message",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
+            print("state is ${state}");
+            print("state is ${state}");
+            print("state is ${state}");
+            print("state is ${state}");
           },
           child: ListView(
             children: [
@@ -101,7 +130,7 @@ class ActivateAccountWidget extends StatelessWidget {
                       ),
                       CustomTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        title: "Branch  ${branchCode} ",
+                        title: "Branch",
                         hintText: "Select Branch",
                         readOnly: true,
                         controller: _branchController,
