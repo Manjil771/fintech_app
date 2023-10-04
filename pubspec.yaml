@@ -176,7 +176,11 @@ flutter:
     - assets/nayan/
     # - assets/rithepani/
     - assets/shreeSubhakamana/
-    - assets/bishalMulti/
+    # - assets/bishalMulti/
+    - assets/shreeMyagde/
+    - assets/vaidhik/
+    - assets/shreeKalika/
+    
 
   fonts:
     - family: popinbold

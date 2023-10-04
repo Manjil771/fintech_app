@@ -839,6 +839,22 @@ class CoOperativeValue {
     splashImage: "assets/vaidhik/vaidhik_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shreeKalikaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeKalika/shreeKalika_banner.png",
+
+    backgroundImage: "assets/shreeKalika/shreeKalika_background.png",
+    clientCode: 'J0JDLK7OFX',
+    clientSecret: "132342",
+    coOperativeName: 'shreeKalika Multipurpose Cooperative Ltd',
+    coOperativeLogo: 'assets/shreeKalika/shreeKalika_logo.png',
+
+    splashImage: "assets/shreeKalika/shreeKalika_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",

@@ -11,7 +11,7 @@ class AppServiceCubit extends Cubit<CommonState> {
   Future<dynamic> fetchAppService() async {
     emit(CommonLoading());
     try {
-      final response = await appServiceRepository.getRecentTransaction();
+      final response = await appServiceRepository.getAppService();
 
       if (response.status == Status.Success && response.data != null) {
         emit(CommonDataFetchSuccess<AppServiceManagementModel>(
