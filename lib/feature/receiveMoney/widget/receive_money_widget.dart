@@ -14,6 +14,8 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/receiveMoney/remit/screen/remittance_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/widget/remittance_widget.dart';
 
 class ReceiveMoneyWidget extends StatefulWidget {
   const ReceiveMoneyWidget({Key? key}) : super(key: key);
@@ -89,138 +91,140 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                 .toList();
 
             return CommonContainer(
+                verticalPadding: 0,
                 horizontalPadding: 0,
                 showDetail: false,
                 showBackBotton: true,
                 showRoundBotton: false,
-                body: SingleChildScrollView(
-                  scrollDirection: Axis.vertical,
-                  child: Container(
-                    height: _height * 0.56,
-                    child: Column(
-                      children: [
-                        Container(
-                          child: filteredMobileBanking.isNotEmpty
-                              ? Column(
-                                  children: [
-                                    CommonDetailBox(
-                                      onBoxPressed: () {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.internetbanking);
-                                      },
-                                      title: "Internet Banking",
-                                      detail:
-                                          "Make financial transactions through internet using your preferred devices.",
-                                      leadingIcon: Assets.bankTransfer,
-                                    ),
-                                    const Divider(thickness: 1),
-                                    // CommonDetailBox(
-                                    //   onBoxPressed: () {
-                                    //     NavigationService.pushNamed(
-                                    //         routeName: Routes.loadViaCard);
-                                    //   },
-                                    //   title: "Load via Card",
-                                    //   detail:
-                                    //       "Load fund instantly from the card.",
-                                    //   leadingIcon: Assets.cardIcon,
-                                    // ),
-                                    // const Divider(thickness: 1),
-                                  ],
-                                )
-                              : Container(),
-                        ),
-                        // Column(
-                        //   children: filteredItems.map((e) {
-                        //     return Column(
-                        //       children: [
-                        //         CommonDetailBox(
-                        //           onBoxPressed: () {
-                        //             NavigationService.pushNamed(
-                        //                 routeName: Routes.internetbanking);
-                        //           },
-                        //           title: "Internet Banking",
-                        //           detail:
-                        //               "Make financial transactions through internet using your preferred devices.",
-                        //           leadingIcon: Assets.bankTransfer,
-                        //         ),
-                        //         const Divider(thickness: 1),
-                        //         CommonDetailBox(
-                        //           onBoxPressed: () {
-                        //             NavigationService.pushNamed(
-                        //                 routeName: Routes.loadViaCard);
-                        //           },
-                        //           title: "Load via Card",
-                        //           detail: "Load fund instantly from the card.",
-                        //           leadingIcon: Assets.cardIcon,
-                        //         ),
-                        //         const Divider(thickness: 1),
-                        //       ],
-                        //     );
-                        //   }).toList(),
-                        // ),
-                        Expanded(
-                          child: ListView.builder(
-                            itemCount: filteredItems.length,
-                            itemBuilder: (context, index) {
-                              checkItems(filteredItems[index].uniqueIdentifier);
-                              return Column(
-                                children: [
-                                  CommonDetailBox(
-                                    isNetworkImage: true,
-                                    title: filteredItems[index].name,
-                                    leadingIcon:
-                                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
-                                    onBoxPressed: () {
-                                      // checkNivigation(filteredItems[index].name);
-                                      if (filteredItems[index]
-                                          .uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase()
-                                          .contains(
-                                              "load_fund".toLowerCase())) {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.mobileBanking);
-                                      }
-                                      if (filteredItems[index]
-                                          .uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase()
-                                          .contains("load_from_connectIps"
-                                              .toLowerCase())) {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.connectIps);
-                                      } else if (filteredItems[index]
-                                              .uniqueIdentifier
-                                              .toString()
-                                              .toLowerCase() ==
-                                          "request_sapati".toLowerCase()) {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.requestSapati);
-                                      } else if (filteredItems[index]
-                                              .uniqueIdentifier
-                                              .toString()
-                                              .toLowerCase() ==
-                                          "load_wallet".toLowerCase()) {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.listWalletScreen);
-                                      }
-                                      // else {
-                                      //   NavigationService.pushNamed(
-                                      //       routeName: Routes.mobileTopup);
-                                      // }
-                                    },
-                                    detail: checkDesc(
-                                        filteredItems[index].uniqueIdentifier),
-                                  ),
-                                  Divider(thickness: 1)
-                                ],
-                              );
-                            },
-                          ),
-                        ),
-                      ],
+                body: Column(
+                  children: [
+                    Container(
+                      child: filteredMobileBanking.isNotEmpty
+                          ? Column(
+                              children: [
+                                CommonDetailBox(
+                                  onBoxPressed: () {
+                                    NavigationService.pushNamed(
+                                        routeName: Routes.internetbanking);
+                                  },
+                                  title: "Internet Banking",
+                                  detail:
+                                      "Make financial transactions through internet using your preferred devices.",
+                                  leadingImage: Assets.bankTransfer,
+                                ),
+                                const Divider(thickness: 1),
+                                // CommonDetailBox(
+                                //   onBoxPressed: () {
+                                //     NavigationService.pushNamed(
+                                //         routeName: Routes.loadViaCard);
+                                //   },
+                                //   title: "Load via Card",
+                                //   detail:
+                                //       "Load fund instantly from the card.",
+                                //   leadingIcon: Assets.cardIcon,
+                                // ),
+                                // const Divider(thickness: 1),
+                              ],
+                            )
+                          : Container(),
                     ),
-                  ),
+                    // Column(
+                    //   children: filteredItems.map((e) {
+                    //     return Column(
+                    //       children: [
+                    //         CommonDetailBox(
+                    //           onBoxPressed: () {
+                    //             NavigationService.pushNamed(
+                    //                 routeName: Routes.internetbanking);
+                    //           },
+                    //           title: "Internet Banking",
+                    //           detail:
+                    //               "Make financial transactions through internet using your preferred devices.",
+                    //           leadingIcon: Assets.bankTransfer,
+                    //         ),
+                    //         const Divider(thickness: 1),
+                    //         CommonDetailBox(
+                    //           onBoxPressed: () {
+                    //             NavigationService.pushNamed(
+                    //                 routeName: Routes.loadViaCard);
+                    //           },
+                    //           title: "Load via Card",
+                    //           detail: "Load fund instantly from the card.",
+                    //           leadingIcon: Assets.cardIcon,
+                    //         ),
+                    //         const Divider(thickness: 1),
+                    //       ],
+                    //     );
+                    //   }).toList(),
+                    // ),
+                    ListView.builder(
+                      shrinkWrap: true,
+                      itemCount: filteredItems.length,
+                      itemBuilder: (context, index) {
+                        checkItems(filteredItems[index].uniqueIdentifier);
+                        return Column(
+                          children: [
+                            CommonDetailBox(
+                              isNetworkImage: true,
+                              title: filteredItems[index].name,
+                              leadingImage:
+                                  "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
+                              onBoxPressed: () {
+                                // checkNivigation(filteredItems[index].name);
+                                if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase()
+                                    .contains("load_fund".toLowerCase())) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.mobileBanking);
+                                }
+                                if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase()
+                                    .contains(
+                                        "load_from_connectIps".toLowerCase())) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.connectIps);
+                                }
+                                // else if (filteredItems[index]
+                                //         .uniqueIdentifier
+                                //         .toString()
+                                //         .toLowerCase() ==
+                                //     "remittance".toLowerCase()) {
+                                //   NavigationService.push(
+                                //       target: RemittancePage());
+                                // }
+                                else if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "request_sapati".toLowerCase()) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.requestSapati);
+                                } else if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "load_wallet".toLowerCase()) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.listWalletScreen);
+                                }
+                                // else {
+                                //   NavigationService.pushNamed(
+                                //       routeName: Routes.mobileTopup);
+                                // }
+                              },
+                              detail: checkDesc(
+                                  filteredItems[index].uniqueIdentifier),
+                            ),
+                            Divider(thickness: 1)
+                          ],
+                        );
+                      },
+                    ),
+                  ],
                 ),
                 showTitleText: false,
                 topbarName: "Receive Money");

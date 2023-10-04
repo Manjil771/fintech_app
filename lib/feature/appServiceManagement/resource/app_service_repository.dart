@@ -31,8 +31,7 @@ class AppServiceRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
-  Future<DataResponse<List<AppServiceManagementModel>>>
-      getRecentTransaction() async {
+  Future<DataResponse<List<AppServiceManagementModel>>> getAppService() async {
     List<AppServiceManagementModel> _recentTxnList = [];
     try {
       final _res = await appServiceApiProvider.fetchAppService();

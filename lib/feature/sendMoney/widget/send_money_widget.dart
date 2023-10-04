@@ -85,7 +85,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                               CommonDetailBox(
                                 isNetworkImage: true,
                                 title: filteredItems[index].name,
-                                leadingIcon:
+                                leadingImage:
                                     "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
                                 onBoxPressed: () {
                                   // checkNivigation(filteredItems[index].name);

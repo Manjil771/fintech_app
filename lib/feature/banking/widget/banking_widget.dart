@@ -117,7 +117,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Assets.accountInfo,
     Assets.balanceInquiry,
     Assets.statement,
-    Assets.fundTransferIcon,
+    Assets.sendMoneyRemit,
     Assets.chequeBookIcon,
     Assets.loanIcon
   ];

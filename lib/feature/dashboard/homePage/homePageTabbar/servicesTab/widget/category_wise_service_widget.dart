@@ -23,10 +23,12 @@ import 'package:ismart/feature/categoryWiseService/internet/common/screen/common
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_with_amount_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
+import 'package:ismart/feature/categoryWiseService/ridePayment/screen/ride_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/common_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/net_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<ServiceList> services;
@@ -212,6 +214,12 @@ class _CategoriesWiseServicesWidgetState
           service: servicess,
         ));
       }
+    }
+    if (uniqueIdentifier == Slugs.pathaoTopup) {
+      NavigationService.push(
+          target: RidePaymentPage(
+        service: servicess,
+      ));
     }
     if (uniqueIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {

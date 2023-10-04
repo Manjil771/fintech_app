@@ -47,7 +47,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                         ExpansionTile(
                           title: CommonDetailBox(
                               showTrailingIcon: false,
-                              leadingIcon: Assets.profileIcon,
+                              leadingImage: Assets.profileIcon,
                               title: _detail.accountDetail[index].accountType,
                               detail:
                                   "A/C : ${_detail.accountDetail[index].mainCode}",

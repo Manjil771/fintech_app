@@ -49,7 +49,7 @@ class _DownloadWidgetState extends State<DownloadWidget> {
                     itemCount: _dowloadedFiles.length,
                     itemBuilder: (context, index) {
                       return CommonDetailBox(
-                        leadingIcon: Assets.statement,
+                        leadingImage: Assets.statement,
                         title: _dowloadedFiles[index].fileName,
                         detail: "Downloaded on :" +
                             _dowloadedFiles[index].downloadedDate.toString(),

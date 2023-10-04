@@ -5,7 +5,7 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class CommonDetailBox extends StatelessWidget {
-  final String leadingIcon;
+  final String leadingImage;
   final String trailingIcon;
   final double verticalPadding;
   final double horizontalPadding;
@@ -18,7 +18,7 @@ class CommonDetailBox extends StatelessWidget {
   const CommonDetailBox(
       {super.key,
       this.isNetworkImage = false,
-      this.leadingIcon = Assets.brokerIcon,
+      this.leadingImage = Assets.brokerIcon,
       this.verticalPadding = 10.0,
       this.horizontalPadding = 20.0,
       required this.title,
@@ -45,11 +45,11 @@ class CommonDetailBox extends StatelessWidget {
               width: _width * 0.1,
               child: isNetworkImage == false
                   ? SvgPicture.asset(
-                      leadingIcon,
+                      leadingImage,
                       height: _height * 0.04,
                     )
                   : SvgPicture.network(
-                      leadingIcon,
+                      leadingImage,
                       placeholderBuilder: (BuildContext context) => Center(
                         child: Image.asset(
                           Assets.logoImage,

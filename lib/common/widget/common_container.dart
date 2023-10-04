@@ -102,6 +102,7 @@ class CommonContainer extends StatelessWidget {
                                     ? Text(title,
                                         style: _textTheme.displaySmall!
                                             .copyWith(
+                                                fontSize: 16,
                                                 fontWeight: FontWeight.bold))
                                     : Container(),
                                 showDetail

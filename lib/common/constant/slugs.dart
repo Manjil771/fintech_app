@@ -122,4 +122,7 @@ class Slugs {
   static String citPensionYojana = "cit_pension_yojana";
   static String socialSecurityFund = "social_security_fund";
   static String socialWelfareCouncil = "social_welfare_council";
+
+  //rideSharing
+  static String pathaoTopup = "pathao_topup";
 }

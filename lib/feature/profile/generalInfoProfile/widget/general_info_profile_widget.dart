@@ -76,7 +76,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                     });
                     print(showPersonalDetail.toString());
                   },
-                  leadingIcon: Assets.profileIcon,
+                  leadingImage: Assets.profileIcon,
                   title: "Personal Details",
                   detail: "Phone Number, Name , Address etc.",
                 ),
@@ -172,7 +172,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                       );
                     }
                   },
-                  leadingIcon: Assets.downloadIcon,
+                  leadingImage: Assets.downloadIcon,
                   title: "Check for Updates",
                   detail: "Never miss out any update.",
                 ),
@@ -191,7 +191,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                       },
                     );
                   },
-                  leadingIcon: Assets.logoutIcon,
+                  leadingImage: Assets.logoutIcon,
                   title: "Logout",
                   detail: "Logout from this application.",
                 ),
