@@ -250,14 +250,16 @@ class _CategoriesWiseServicesWidgetState
           uniqueIdentifier.toLowerCase() ==
               "prabhu_life_insurance".toLowerCase() ||
           uniqueIdentifier.toLowerCase() ==
-              "sura_life_insurance".toLowerCase()) {
+              "sura_life_insurance".toLowerCase() ||
+          uniqueIdentifier.toLowerCase() ==
+              Slugs.jyotiLifeInsurance.toLowerCase()) {
         NavigationService.push(
             target: LifeInsurancePage(
           service: servicess,
         ));
       } else {
         NavigationService.push(
-            target: CommonInsurancePage(
+            target: NonLifeInsurancePage(
           service: servicess,
         ));
       }
