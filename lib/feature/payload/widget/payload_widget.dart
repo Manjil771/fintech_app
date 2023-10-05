@@ -37,7 +37,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
   final TextEditingController remarksController = TextEditingController();
 
   final TextEditingController merchantIdController = TextEditingController();
-
+  bool isFixedAmount = false;
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -71,7 +71,10 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                 state.data.findValue(primaryKey: "merchant_name");
             merchantIdController.text =
                 state.data.findValue(primaryKey: "merchant_id");
-
+            if (state.data.findValueString("amount").toString() != "null") {
+              isFixedAmount = true;
+              amountController.text = state.data.findValueString("amount");
+            }
             return CommonContainer(
                 showDetail: false,
                 buttonName: "Procced",
@@ -97,6 +100,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                     CustomTextField(
                       title: "Amount",
                       controller: amountController,
+                      readOnly: isFixedAmount,
                     ),
                     CustomTextField(
                       title: "Remarks",
@@ -109,7 +113,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                       .findValue(primaryKey: "imageUrl")
                       .toString()
                       .replaceAll("/ismart/serviceIcon/", "");
-                  NavigationService.push(
+                  NavigationService.pushReplacement(
                     target: CommonBillDetailPage(
                       service: ServiceList(
                           url: Url.URL,
