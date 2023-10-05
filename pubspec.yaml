@@ -164,7 +164,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    # - assets/sanakishan/
+    - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
@@ -178,15 +178,9 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
-
+    # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
-    - assets/aarati/
-
-    - assets/vaidhik/
-    # - assets/shreeKalika/
-
-    
 
   fonts:
     - family: popinbold
