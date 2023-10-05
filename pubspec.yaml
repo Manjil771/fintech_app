@@ -178,11 +178,12 @@ flutter:
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
-    - assets/shreeSubhakamana/
+    # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    - assets/shreeMyagde/
-    - assets/vaidhik/
-    - assets/shreeKalika/
+    # - assets/shreeMyagde/
+    # - assets/vaidhik/
+    # - assets/shreeKalika/
+    - assets/aarati/
     
 
   fonts:
