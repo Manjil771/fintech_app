@@ -58,3 +58,4 @@ ios/fastlane/test_output/report.html
 ios/fastlane/test_output/report.junit
 .gitignore
 fastlane.yml
+Makefile
