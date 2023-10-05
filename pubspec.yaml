@@ -43,7 +43,7 @@ dependencies:
   shared_preferences: ^2.0.13
 
   # localization
-  easy_localization: ^3.0.0
+  easy_localization: any
 
   # dowloader
   path_provider: ^2.0.2
@@ -56,10 +56,7 @@ dependencies:
   flutter_secure_storage: ^8.0.0
   pin_code_fields: ^7.4.0
   url_launcher: ^6.1.11
-  flutter_inappwebview:
-    git:
-      url: https://github.com/nesquikm/flutter_inappwebview.git
-      ref: 60da7352f45f2a053c2a1368f253ccd7b1fdebcb
+  flutter_inappwebview: ^5.7.2+3
   animations: ^2.0.7
   qr_code_scanner: ^1.0.1
   screenshot: ^1.3.0
@@ -73,7 +70,7 @@ dependencies:
   package_info_plus: ^1.4.3+1
   uuid: ^3.0.7
   share_plus: ^4.1.0
-  permission_handler: ^10.0.0
+  permission_handler: ^11.0.1
   mobile_scanner: ^2.0.0
   flutter_native_image: ^0.0.6+1
   image_picker: ^1.0.1
@@ -110,7 +107,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    # - assets/gomaGanesh/
+    - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -181,9 +178,14 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
+
     # - assets/vaidhik/
     # - assets/shreeKalika/
     - assets/aarati/
+
+    - assets/vaidhik/
+    # - assets/shreeKalika/
+
     
 
   fonts:

@@ -32,7 +32,7 @@ apply plugin: 'com.google.gms.google-services'  // Google Services plugin
 apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 
 android {
-    compileSdkVersion 33
+    compileSdkVersion 34
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -73,9 +73,21 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        vaidhik {
+            dimension "app"
+            applicationId "com.devanasoft.vaidhik"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         shreeShubhakamana {
             dimension "app"
             applicationId "com.devanasoft.shreeShubhakamana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        bishnudol {
+            dimension "app"
+            applicationId "com.devanasoft.bishnudol"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

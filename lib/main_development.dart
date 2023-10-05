@@ -10,12 +10,11 @@ import 'package:ismart/common/util/log.dart';
 
 /// entrypoint to app in dev mode
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await EasyLocalization.ensureInitialized();
-  await FlutterDownloader.initialize();
-
   /// use run zoned to catch all uncaught exceptions
-  runZonedGuarded(() {
+  runZonedGuarded(() async {
+    WidgetsFlutterBinding.ensureInitialized();
+    await EasyLocalization.ensureInitialized();
+    await FlutterDownloader.initialize();
     runApp(
       LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),
     );
