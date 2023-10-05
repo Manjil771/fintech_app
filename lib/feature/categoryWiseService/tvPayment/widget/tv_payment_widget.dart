@@ -7,6 +7,7 @@ import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_amount_box.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -159,17 +160,25 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
                           value, "Customer ID"),
                     )
                   : Container(),
-              widget.service.priceInput
-                  ? CustomTextField(
-                      title: "Amount",
-                      hintText: "NPR",
-                      controller: amountController,
-                      validator: (value) => FormValidator.validateAmount(
-                          val: value.toString(),
-                          maxAmount: widget.service.maxValue,
-                          minAmount: widget.service.minValue),
-                    )
-                  : Container()
+              CommonAmountBox(
+                onChanged: (value) {
+                  amountController.text = value;
+                  setState(() {});
+                },
+                textController: amountController,
+                service: widget.service,
+              )
+              // widget.service.priceInput
+              //     ? CustomTextField(
+              //         title: "Amount",
+              //         hintText: "NPR",
+              //         controller: amountController,
+              //         validator: (value) => FormValidator.validateAmount(
+              //             val: value.toString(),
+              //             maxAmount: widget.service.maxValue,
+              //             minAmount: widget.service.minValue),
+              //       )
+              //     : Container()
             ],
           ),
         ),

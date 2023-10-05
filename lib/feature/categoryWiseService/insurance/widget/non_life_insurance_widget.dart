@@ -6,6 +6,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
@@ -34,6 +35,7 @@ class NonLifeInsurcnceWidget extends StatefulWidget {
 class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
   TextEditingController selectedDateController = TextEditingController();
   TextEditingController policyNoController = TextEditingController();
+  TextEditingController documentNoController = TextEditingController();
 
   bool _isLoading = false;
 
@@ -183,11 +185,17 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                 ),
                 PrimaryAccountBox(),
                 CustomTextField(
-                  title: "Policy No",
-                  hintText: "Policy NO",
+                  title: widget.service.labelName,
+                  hintText: widget.service.labelSample,
                   controller: policyNoController,
                 ),
-                SizedBox(height: _height * 0.01),
+                if (widget.service.uniqueIdentifier ==
+                    Slugs.prabhuInsuranceNonLife)
+                  CustomTextField(
+                    title: "Document No.",
+                    hintText: "document no.",
+                    controller: documentNoController,
+                  ),
               ],
             )
           ],
@@ -198,6 +206,7 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                 accountDetails: {
                   // "username": "108006674",
                   "username": policyNoController.text,
+                  "documentNo": documentNoController.text
                   // "dob": "1983-07-24",
                 },
                 apiEndpoint: "api/insurance/policy",

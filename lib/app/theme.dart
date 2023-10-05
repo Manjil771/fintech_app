@@ -65,6 +65,7 @@ class CustomTheme {
   static const Color shreeMyagdeColor = Color(0xFF009245);
   static const Color vaidhikColor = Color(0xFF00963F);
   static const Color shreeKalikaColor = Color(0xFF009444);
+  static const Color aaratiColor = Color(0xFF1A81CA);
 
   static Color primaryColor = testAppColor;
 

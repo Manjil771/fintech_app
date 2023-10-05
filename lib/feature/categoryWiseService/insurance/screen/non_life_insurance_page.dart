@@ -7,10 +7,10 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
-class CommonInsurancePage extends StatelessWidget {
+class NonLifeInsurancePage extends StatelessWidget {
   final ServiceList service;
 
-  const CommonInsurancePage({Key? key, required this.service})
+  const NonLifeInsurancePage({Key? key, required this.service})
       : super(key: key);
   @override
   Widget build(BuildContext context) {

@@ -664,8 +664,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kanchanjungha/kanchanjungha_banner.png",
     backgroundImage: "assets/kanchanjungha/kanchanjungha_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
+    clientCode: 'WBSSRVSEB9',
+    clientSecret: "187636",
     coOperativeName: 'Kanchanjangha',
     coOperativeLogo: 'assets/kanchanjungha/kanchanjungha_logo.png',
     splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
@@ -854,7 +854,20 @@ class CoOperativeValue {
     splashImage: "assets/shreeKalika/shreeKalika_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-
+  //TODO need to add client id and secret
+  static final CoOperative aaratiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/aarati/aarati_banner.png",
+    backgroundImage: "assets/aarati/aarati_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    coOperativeName: 'Aarati MultiPurpose',
+    coOperativeLogo: 'assets/aarati/aarati_logo.png',
+    splashImage: "assets/aarati/aarati_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",

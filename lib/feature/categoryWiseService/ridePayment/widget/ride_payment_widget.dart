@@ -5,6 +5,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_amount_box.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -17,18 +18,27 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class RidePaymentWidget extends StatelessWidget {
+class RidePaymentWidget extends StatefulWidget {
   final ServiceList service;
   RidePaymentWidget({Key? key, required this.service}) : super(key: key);
+
+  @override
+  State<RidePaymentWidget> createState() => _RidePaymentWidgetState();
+}
+
+class _RidePaymentWidgetState extends State<RidePaymentWidget> {
   final TextEditingController amountController = TextEditingController();
+
   final TextEditingController riderIDController = TextEditingController();
 
   bool _isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController remarksController =
-        TextEditingController(text: "${service.service} ride payment");
+        TextEditingController(text: "${widget.service.service} ride payment");
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
@@ -88,8 +98,8 @@ class RidePaymentWidget extends StatelessWidget {
                           "mobileNo": riderIDController.text,
                           "remarks": remarksController.text,
                         },
-                        service: service,
-                        serviceIdentifier: service.uniqueIdentifier));
+                        service: widget.service,
+                        serviceIdentifier: widget.service.uniqueIdentifier));
               } else {
                 showPopUpDialog(
                     context: context,
@@ -116,15 +126,15 @@ class RidePaymentWidget extends StatelessWidget {
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<UtilityPaymentCubit>().fetchDetails(
-                    serviceIdentifier: service.uniqueIdentifier,
+                    serviceIdentifier: widget.service.uniqueIdentifier,
                     accountDetails: {
                       "mobileNo": riderIDController.text,
                     },
                     apiEndpoint: "/api/pathao/validate");
               }
             },
-            detail: service.instructions,
-            title: service.service,
+            detail: widget.service.instructions,
+            title: widget.service.service,
             showAccountSelection: true,
             buttonName: "Proceed",
             body: Form(
@@ -134,20 +144,18 @@ class RidePaymentWidget extends StatelessWidget {
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     title: "Rider Id",
-                    hintText: service.labelSample,
+                    hintText: widget.service.labelSample,
                     controller: riderIDController,
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "rider ID"),
                   ),
-                  CustomTextField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Amount",
-                    controller: amountController,
-                    hintText: "XXXXX",
-                    validator: (value) => FormValidator.validateAmount(
-                        val: value.toString(),
-                        minAmount: service.minValue,
-                        maxAmount: service.maxValue),
+                  CommonAmountBox(
+                    onChanged: (value) {
+                      amountController.text = value;
+                      setState(() {});
+                    },
+                    service: widget.service,
+                    textController: amountController,
                   ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,

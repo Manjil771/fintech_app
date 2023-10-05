@@ -16,8 +16,6 @@ Future<void> main() async {
     await EasyLocalization.ensureInitialized();
     await FlutterDownloader.initialize();
     runApp(
-      //need to add client id for jana sewwa coop
-
       LocalWrapper(child: AppDev(env: CoOperativeValue.devLive)),
     );
   }, (e, s) {
