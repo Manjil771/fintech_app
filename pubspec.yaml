@@ -168,18 +168,18 @@ flutter:
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
-    - assets/bishnudol/
+    # - assets/bishnudol/
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
-    - assets/nayan/
+    # - assets/nayan/
     # - assets/rithepani/
-    - assets/shreeSubhakamana/
+    # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    - assets/shreeMyagde/
+    # - assets/shreeMyagde/
     - assets/vaidhik/
-    - assets/shreeKalika/
+    # - assets/shreeKalika/
     
 
   fonts:
