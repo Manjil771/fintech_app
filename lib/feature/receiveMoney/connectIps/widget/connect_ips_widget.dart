@@ -90,7 +90,7 @@ class _ConnectIpsWidgetState extends State<ConnectIpsWidget> {
 
             NavigationService.push(
               target: PaymentWebView(
-                urlRequest: URLRequest(url: WebUri.uri(url), headers: {
+                urlRequest: URLRequest(url: url, headers: {
                   "Authorization": "Bearer $token",
                 }),
                 receiptUrl: "receiptUrl",

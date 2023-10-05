@@ -129,7 +129,7 @@ class _MobileBankingWidgetState extends State<MobileBankingWidget> {
             NavigationService.push(
               target: PaymentWebView(
                 urlRequest: URLRequest(
-                  url: WebUri.uri(url),
+                  url: url,
                   headers: {
                     "Authorization": "Bearer $_token",
                   },
