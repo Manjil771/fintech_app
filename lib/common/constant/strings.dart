@@ -37,7 +37,7 @@ class Strings {
   static const davisfallAppTitle = "Davisfall Saving iSmart";
   static const hamiSabaikoAppTitle = "HamiSabaiko Krishi iSmart";
   static const bhugolAppTitle = "Bhugol Saving iSmart";
-  static const batikaAppTitle = "Bhugol Saving iSmart";
+  static const batikaAppTitle = "Batika Saving iSmart";
   static const iconSoftAppTitle = "IconSoft Pvt iSmart";
   static const rumjatarAppTitle = "Rumjatar Saving iSmart";
   static const punjaAppTitle = "Punja Saving iSmart";
@@ -60,5 +60,5 @@ class Strings {
   static const vaidhikAppTitle = "Vaidhik iSmart";
   static const sanakishanAppTitle = "SanaKisan Nighlihawa iSmart";
 
-  static const APP_TITLE = sanakishanAppTitle;
+  static const APP_TITLE = vaidhikAppTitle;
 }
