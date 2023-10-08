@@ -854,6 +854,33 @@ class CoOperativeValue {
     splashImage: "assets/shreeKalika/shreeKalika_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shreeHemjaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeHemja/shreeHemja_banner.png",
+    backgroundImage: "assets/shreeHemja/shreeHemja_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    coOperativeName: 'shreeHemja MultiPurpose',
+    coOperativeLogo: 'assets/shreeHemja/shreeHemja_logo.png',
+    splashImage: "assets/shreeHemja/shreeHemja_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative subhodayaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/subhodaya/subhodaya_banner.png",
+    backgroundImage: "assets/subhodaya/subhodaya_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    coOperativeName: 'subhodaya MultiPurpose',
+    coOperativeLogo: 'assets/subhodaya/subhodaya_logo.png',
+    splashImage: "assets/subhodaya/subhodaya_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
   //TODO need to add client id and secret
   static final CoOperative aaratiCoop = CoOperative(
     appStoreID: "",

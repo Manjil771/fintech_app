@@ -107,7 +107,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    - assets/gomaGanesh/
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -179,8 +179,10 @@ flutter:
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
-    - assets/vaidhik/
+    # - assets/vaidhik/
     # - assets/shreeKalika/
+    - assets/shreeHemja/
+    - assets/subhodaya/
 
   fonts:
     - family: popinbold
