@@ -894,6 +894,19 @@ class CoOperativeValue {
     splashImage: "assets/garimaAgri/garimaAgri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative aasthaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/aastha/aastha_banner.png",
+    backgroundImage: "assets/aastha/aastha_background.png",
+    clientCode: 'H86KG3CCDO',
+    clientSecret: "184352",
+    coOperativeName: 'Aastha Saving and Credit Co-operative Society Ltd',
+    coOperativeLogo: 'assets/aastha/aastha_logo.png',
+    splashImage: "assets/aastha/aastha_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
   //TODO need to add client id and secret
   static final CoOperative aaratiCoop = CoOperative(
