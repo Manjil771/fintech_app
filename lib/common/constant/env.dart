@@ -657,7 +657,6 @@ class CoOperativeValue {
     splashImage: "assets/annapurna/annapurna_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  //TODO using client id of ismart for testing
   static final CoOperative kanchanjunghaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -860,14 +859,14 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/shreeHemja/shreeHemja_banner.png",
     backgroundImage: "assets/shreeHemja/shreeHemja_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    coOperativeName: 'shreeHemja ',
+    clientCode: 'YZGRJX3M6Z',
+    clientSecret: "117248",
+    coOperativeName: 'Shree Hemja Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeHemja/shreeHemja_logo.png',
     splashImage: "assets/shreeHemja/shreeHemja_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative subhodayaCoop = CoOperative(
+  static final CoOperative shubhodayaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
@@ -875,9 +874,24 @@ class CoOperativeValue {
     backgroundImage: "assets/subhodaya/subhodaya_background.png",
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
-    coOperativeName: 'subhodaya ',
+    // clientCode: 'SJ24IDUMP1',
+    // clientSecret: "146404",
+    coOperativeName: 'Shubhodaya Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/subhodaya/subhodaya_logo.png',
     splashImage: "assets/subhodaya/subhodaya_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative garimaAgriCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/garimaAgri/garimaAgri_banner.png",
+    backgroundImage: "assets/garimaAgri/garimaAgri_background.png",
+    clientCode: 'OPSM0RJ5LH',
+    clientSecret: "156691",
+    coOperativeName: 'Garima Agriculture Co-operative Ltd.',
+    coOperativeLogo: 'assets/garimaAgri/garimaAgri_logo.png',
+    splashImage: "assets/garimaAgri/garimaAgri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
