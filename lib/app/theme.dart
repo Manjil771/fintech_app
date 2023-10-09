@@ -67,7 +67,7 @@ class CustomTheme {
   static const Color shreeKalikaColor = Color(0xFF009444);
   static const Color aaratiColor = Color(0xFF1A81CA);
 
-  static Color primaryColor = bhugolColor;
+  static Color primaryColor = shreeMyagdeColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
