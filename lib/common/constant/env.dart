@@ -872,10 +872,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/subhodaya/subhodaya_banner.png",
     backgroundImage: "assets/subhodaya/subhodaya_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    // clientCode: 'SJ24IDUMP1',
-    // clientSecret: "146404",
+    clientCode: 'SJ24IDUMP1',
+    clientSecret: "146404",
     coOperativeName: 'Shubhodaya Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/subhodaya/subhodaya_logo.png',
     splashImage: "assets/subhodaya/subhodaya_splash.png",
