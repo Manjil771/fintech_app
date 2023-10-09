@@ -141,7 +141,7 @@ flutter:
     # - assets/nawajosh/
     # - assets/gandakibesi/
     # - assets/batika/
-    # - assets/bhugol/
+    - assets/bhugol/
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
@@ -179,7 +179,7 @@ flutter:
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
-    - assets/vaidhik/
+    # - assets/vaidhik/
     # - assets/shreeKalika/
 
   fonts:
