@@ -366,7 +366,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
             UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
-              NavigationService.pushReplacement(
+              NavigationService.push(
                 target: PassengerDetailScreen(
                   utilityResponseData: _response,
                   arrivalFlight: selectedInboundIndex.isNegative

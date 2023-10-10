@@ -71,7 +71,7 @@ class CustomTheme {
   static const Color garimaAgriColor = Color(0xFF009245);
   static const Color aasthaColor = Color(0xFF2E3487);
 
-  static Color primaryColor = aasthaColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
