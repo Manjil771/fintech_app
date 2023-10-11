@@ -16,6 +16,7 @@ import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
@@ -29,13 +30,7 @@ class BusBookingWidget extends StatefulWidget {
 }
 
 class _BusBookingWidgetState extends State<BusBookingWidget> {
-  int _adultCount = 1;
-  int _childrenCount = 0;
-  // AirlinesSectorList fromPlace = AirlinesSectorList();
-  // AirlinesSectorList toPlace = AirlinesSectorList();
-
   final _departureDateController = TextEditingController();
-  bool isRoundTrip = false;
   bool _isLoading = false;
   DateTime departureDate = DateTime.now();
 
@@ -224,32 +219,22 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
           ),
         ),
         onButtonPressed: () {
-          if (_selectedSectorFrom.value != null &&
-              _selectedSectorTo.value != null &&
-              _formKey.currentState!.validate()) {
-            context
-                .read<AirlinesCubit>()
-                .fetchFlight(accountDetails: {}, body: {
-              "adultNumber": _adultCount,
-              "childNumber": _childrenCount,
-              "flightDate": _departureDateController.text,
-              "nationality": "NP",
-              // "returnDate": _arrivalDateController.text,
-              "sectorFrom": _selectedSectorFrom.value?.value ?? "",
-              "sectorTo": _selectedSectorTo.value?.value ?? "",
-              "serviceIdentifier": widget.service.uniqueIdentifier,
-              "tripType": isRoundTrip ? "R" : "O",
-            });
-          } else {
-            showPopUpDialog(
-                context: context,
-                message: "Select Select Sector",
-                title: "Select Location",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                });
-          }
+          // if (_selectedSectorFrom.value != null &&
+          //     _selectedSectorTo.value != null &&
+          //     _formKey.currentState!.validate()) {
+          NavigationService.push(
+              target: AvailableBusPage(
+                  selectedDate: DateTime.now(), service: widget.service));
+          // } else {
+          //   showPopUpDialog(
+          //       context: context,
+          //       message: "Select Select Sector",
+          //       title: "Select Location",
+          //       showCancelButton: false,
+          //       buttonCallback: () {
+          //         NavigationService.pop();
+          //       });
+          // }
         },
       ),
     );
