@@ -105,7 +105,7 @@ class ResetPinWidget extends StatelessWidget {
                   child: CommonContainer(
                       onButtonPressed: () {
                         if (_fromKey.currentState!.validate()) {
-                          context.read<ResetPinCubit>().makePayment(
+                          context.read<ResetPinCubit>().resetPin(
                               serviceIdentifier: "",
                               accountDetails: {
                                 "mobileNumber": _mobileNumberController.text,

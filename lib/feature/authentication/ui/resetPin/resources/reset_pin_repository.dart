@@ -29,7 +29,7 @@ class ResetPinRepository {
     );
   }
 
-  Future<DataResponse<UtilityResponseData>> makePayment({
+  Future<DataResponse<UtilityResponseData>> resetPin({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
@@ -37,7 +37,7 @@ class ResetPinRepository {
     required mPin,
   }) async {
     try {
-      final _res = await resetPinApiProvider.makePayment(
+      final _res = await resetPinApiProvider.resetPin(
         mPin: mPin,
         accountDetails: accountDetails,
         apiEndpoint: apiEndpoint,

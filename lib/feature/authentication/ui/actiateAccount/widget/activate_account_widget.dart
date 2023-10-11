@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -12,6 +13,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_otp_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
@@ -37,7 +39,7 @@ class ActivateAccountWidget extends StatelessWidget {
     return PageWrapper(
       showAppBar: false,
       body: SafeArea(
-        child: BlocListener<UtilityPaymentCubit, CommonState>(
+        child: BlocListener<ResetPinCubit, CommonState>(
           listener: (context, state) {
             if (state is CommonLoading && _isLoading == false) {
               _isLoading = true;
@@ -69,25 +71,12 @@ class ActivateAccountWidget extends StatelessWidget {
                 title: "Message",
                 showCancelButton: false,
                 buttonCallback: () {
-                  NavigationService.pop();
+                  NavigationService.pushReplacementNamed(
+                      routeName: Routes.loanPage);
                 },
               );
               print("state is ${state}");
-            } else if (state is CommonStateSuccess) {
-              showPopUpDialog(
-                context: context,
-                message: state.data.message,
-                title: "Message",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
             }
-            print("state is ${state}");
-            print("state is ${state}");
-            print("state is ${state}");
-            print("state is ${state}");
           },
           child: ListView(
             children: [
@@ -159,7 +148,7 @@ class ActivateAccountWidget extends StatelessWidget {
                   onPressed: () {
                     _fromKey.currentState!.save();
                     if (_fromKey.currentState!.validate()) {
-                      context.read<UtilityPaymentCubit>().makePayment(
+                      context.read<ResetPinCubit>().resetPin(
                           mPin: "",
                           body: {
                             "accountNumber": (branchCode ?? "") +

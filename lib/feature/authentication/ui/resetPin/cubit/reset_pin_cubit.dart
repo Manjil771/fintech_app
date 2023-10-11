@@ -12,7 +12,7 @@ class ResetPinCubit extends Cubit<CommonState> {
 
   ResetPinRepository resetPinRepository;
 
-  makePayment({
+  resetPin({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
@@ -21,7 +21,7 @@ class ResetPinCubit extends Cubit<CommonState> {
   }) async {
     emit(CommonLoading());
 
-    final _res = await resetPinRepository.makePayment(
+    final _res = await resetPinRepository.resetPin(
       mPin: mPin,
       serviceIdentifier: serviceIdentifier,
       accountDetails: accountDetails,

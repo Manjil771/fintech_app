@@ -132,7 +132,7 @@ class _ResetOTPWidgetState extends State<ResetOTPWidget> {
                           title: "Proceed",
                           onPressed: () {
                             if (_otpKey.currentState!.validate()) {
-                              context.read<ResetPinCubit>().makePayment(
+                              context.read<ResetPinCubit>().resetPin(
                                   serviceIdentifier: "",
                                   accountDetails: {
                                     "mobileNumber": widget.mobileNumber,

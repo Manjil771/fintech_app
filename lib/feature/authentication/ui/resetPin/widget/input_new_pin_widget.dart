@@ -89,7 +89,7 @@ class InputNewPinWidget extends StatelessWidget {
               child: CommonContainer(
                   onButtonPressed: () {
                     if (_formKey.currentState!.validate()) {
-                      context.read<ResetPinCubit>().makePayment(
+                      context.read<ResetPinCubit>().resetPin(
                           serviceIdentifier: "",
                           accountDetails: {
                             "mobileNumber": mobileNumber,

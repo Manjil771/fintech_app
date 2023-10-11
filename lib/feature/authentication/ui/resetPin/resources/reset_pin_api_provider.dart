@@ -14,7 +14,7 @@ class ResetPinApiProvider {
   final String baseUrl;
   final ApiProvider apiProvider;
 
-  makePayment({
+  resetPin({
     required Map<String, dynamic> accountDetails,
     required Map<String, dynamic> body,
     required String apiEndpoint,
