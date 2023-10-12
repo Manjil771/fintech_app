@@ -4,20 +4,37 @@ import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_booking_widget.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_seat_widget.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class BusDetailBox extends StatelessWidget {
-  const BusDetailBox({Key? key}) : super(key: key);
+  final columnNumber;
+  final List<dynamic> r;
+  final int index;
+
+  const BusDetailBox(
+      {Key? key,
+      required this.r,
+      required this.index,
+      required this.columnNumber})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    final data = r[index];
+    final list = data["seatLayout"];
     return InkWell(
       onTap: () {
-        NavigationService.push(target: BusSeatsListWidget());
+        NavigationService.push(
+            target: BusSeatsListWidget(
+          columnNumber: columnNumber,
+          seats: list,
+        ));
       },
       child: Container(
         decoration: BoxDecoration(
@@ -39,13 +56,13 @@ class BusDetailBox extends StatelessWidget {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         Text(
-                          "Open Vist Nepal",
+                          data["operator"],
                           style: _textTheme.titleSmall!.copyWith(
                               color: _theme.primaryColor,
                               fontSize: 13,
                               fontWeight: FontWeight.w600),
                         ),
-                        Text("VIP sofa Seater" " - " "7:00 AM",
+                        Text("${data["busType"]} - ${data["departureTime"]}",
                             style: _textTheme.titleSmall!.copyWith(
                                 color: CustomTheme.darkGray,
                                 fontSize: 11,
@@ -55,7 +72,7 @@ class BusDetailBox extends StatelessWidget {
                   ),
                   Expanded(
                       child: Text(
-                    "Seat \n45",
+                    "Seat \n${list.length}",
                     style: _textTheme.titleSmall!.copyWith(
                         color: _theme.primaryColor,
                         fontSize: 12,
@@ -74,7 +91,9 @@ class BusDetailBox extends StatelessWidget {
                   child: Padding(
                     padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
                     child: Text(
-                      "Transaparent Roof, Air Suspension , Charging Port, Rel ec  asd tromic push seat , Luxurious sofa seat hi hello test writing a brown fox jump over a crazy dag ",
+                      data["amenities"].toString() != "null"
+                          ? data["amenities"].toString()
+                          : "",
                       style: _textTheme.titleSmall!.copyWith(
                           // color: CustomTheme.darkGray,
                           fontSize: 11,
@@ -90,7 +109,7 @@ class BusDetailBox extends StatelessWidget {
                           bottomRight: Radius.circular(12)),
                       color: _theme.primaryColor),
                   child: Text(
-                    "Rs. 1200",
+                    "Rs. ${data["ticketPrice"]}",
                     style: _textTheme.titleSmall!
                         .copyWith(color: CustomTheme.white),
                   ),
