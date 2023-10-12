@@ -185,6 +185,7 @@ flutter:
     - assets/subhodaya/
     - assets/garimaAgri/
     - assets/aastha/
+    - assets/sunshine/
 
   fonts:
     - family: popinbold
