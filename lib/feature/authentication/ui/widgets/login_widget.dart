@@ -1,4 +1,5 @@
-import 'package:flutter/foundation.dart';
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -69,7 +70,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
-    if (kDebugMode) {
+    if (Platform.isIOS) {
       _hasExistingLoginSaved.value = false;
     }
   }
@@ -85,6 +86,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   void initState() {
     _checkBiometric();
     _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
+    if (Platform.isIOS) {
+      _hasExistingLoginSaved.value = false;
+    }
     super.initState();
   }
 

@@ -107,7 +107,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    - assets/gomaGanesh/
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -159,7 +159,7 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/rumjatar/
-    # - assets/supreme/
+    - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
@@ -177,7 +177,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    - assets/shreeMyagde/
+    # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/

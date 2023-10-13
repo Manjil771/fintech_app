@@ -48,9 +48,16 @@ class SharedPref {
 
   static Future<bool> getFirstTimeAppOpen() async {
     final _instance = await SharedPreferences.getInstance();
-    final bool _isFirstRuniOS = _instance.getBool('first_run') ?? false;
+    _instance.getKeys().forEach((e) {
+      print("Keys");
+      print(e);
+      print("Keys");
+    });
+    print("The bool for first_run is : ${_instance.getBool('first_run')}");
+    final bool _isFirstRuniOS = _instance.getBool('first_run') ?? true;
     if (_isFirstRuniOS) {
       _instance.clear();
+      _instance.setBool('first_run', false);
       return true;
     }
     final res = _instance.getBool(_firstTimeAppOpen);
