@@ -96,13 +96,14 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
+
     return PageWrapper(
       body: CommonContainer(
         showAccountSelection: false,
         buttonName: "Procced",
         showDetail: true,
-        title:
-            "Contact Person Details ${widget.adultCount} ${widget.childrenCount}",
+        title: "Contact Person Details",
         detail: "Ticket will be sent to below input number",
         topbarName: widget.service.serviceCategoryName,
         body: Form(
@@ -110,102 +111,13 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Container(
-              //   padding:
-              //       const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-              //   margin: const EdgeInsets.only(bottom: 20),
-              //   decoration: BoxDecoration(
-              //       color: CustomTheme.backgroundColor,
-              //       borderRadius: BorderRadius.circular(18)),
-              //   child: Column(
-              //     crossAxisAlignment: CrossAxisAlignment.start,
-              //     children: [
-              //       Row(
-              //         children: [
-              //           Container(
-              //             height: 60,
-              //             width: 60,
-              //             decoration: BoxDecoration(
-              //                 color: CustomTheme.gray,
-              //                 borderRadius: BorderRadius.circular(16)),
-              //           ),
-              //           const SizedBox(
-              //             width: 15,
-              //           ),
-              //           Expanded(
-              //             child: Column(
-              //               crossAxisAlignment: CrossAxisAlignment.start,
-              //               children: [
-              //                 Text(
-              //                   widget.departureFlight?.airline ?? "",
-              //                   style: _textTheme.displaySmall!
-              //                       .copyWith(fontSize: 14),
-              //                 ),
-              //                 Text(
-              //                   (widget.departureFlight?.departureTime ??
-              //                           "") +
-              //                       "-" +
-              //                       (widget.departureFlight?.arrivalTime ??
-              //                           ""),
-              //                   style: _textTheme.titleLarge,
-              //                 ),
-              //               ],
-              //             ),
-              //           ),
-              //           const SizedBox(width: 5),
-              //           Column(
-              //             children: [
-              //               Text(
-              //                 'Ticket Price',
-              //                 style: _textTheme.titleLarge,
-              //               ),
-              //               Text(
-              //                 widget.totalFare.toString(),
-              //                 style: _textTheme.displaySmall!
-              //                     .copyWith(fontSize: 14),
-              //               ),
-              //             ],
-              //           )
-              //         ],
-              //       ),
-              //       const SizedBox(height: 20),
-              //       Column(
-              //         crossAxisAlignment: CrossAxisAlignment.start,
-              //         children: [
-              //           KeyValueTile(
-              //             title: 'Departure',
-              //             value:
-              //                 "${widget.departureFlight?.flightDate.year}-${widget.departureFlight?.flightDate.month}-${widget.departureFlight?.flightDate.day}",
-              //           ),
-              //           KeyValueTile(
-              //               title: "Routes",
-              //               value: (widget.departureFlight?.departure ?? "") +
-              //                   " - " +
-              //                   (widget.departureFlight?.arrival ?? ""))
-              //         ],
-              //       ),
-              //       const SizedBox(
-              //         width: 10,
-              //       ),
-              //     ],
-              //   ),
-              // ),
-              // Text(
-              //   'Contact Person Details',
-              //   style: _textTheme.displaySmall,
-              // ),
-              // Text(
-              //   'Ticket will be sent to below input number',
-              //   style: _textTheme.bodyLarge,
-              // ),
-              // const SizedBox(
-              //   height: 15,
-              // ),
               CustomTextField(
                 title: 'Full Name',
                 hintText: 'Full Name',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: contactName,
+                controller: contactName
+                  ..text =
+                      userDetail.selectedAccount.value?.accountHolderName ?? "",
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Name"),
               ),

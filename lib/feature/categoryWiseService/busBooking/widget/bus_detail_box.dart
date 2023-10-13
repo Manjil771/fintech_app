@@ -1,0 +1,124 @@
+import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_booking_widget.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_seat_widget.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+
+class BusDetailBox extends StatelessWidget {
+  final columnNumber;
+  final List<dynamic> r;
+  final int index;
+
+  const BusDetailBox(
+      {Key? key,
+      required this.r,
+      required this.index,
+      required this.columnNumber})
+      : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    final data = r[index];
+    final list = data["seatLayout"];
+    return InkWell(
+      onTap: () {
+        NavigationService.push(
+            target: BusSeatsListWidget(
+          columnNumber: columnNumber,
+          seats: list,
+        ));
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(12),
+          // color: _theme.primaryColor.withOpacity(0.4)),
+          color: CustomTheme.white,
+        ),
+        // padding: EdgeInsets.all(18),
+        margin: EdgeInsets.symmetric(vertical: 5),
+        child: Column(
+          children: [
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Row(
+                children: [
+                  Expanded(
+                    flex: 10,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          data["operator"],
+                          style: _textTheme.titleSmall!.copyWith(
+                              color: _theme.primaryColor,
+                              fontSize: 13,
+                              fontWeight: FontWeight.w600),
+                        ),
+                        Text("${data["busType"]} - ${data["departureTime"]}",
+                            style: _textTheme.titleSmall!.copyWith(
+                                color: CustomTheme.darkGray,
+                                fontSize: 11,
+                                fontWeight: FontWeight.w600)),
+                      ],
+                    ),
+                  ),
+                  Expanded(
+                      child: Text(
+                    "Seat \n${list.length}",
+                    style: _textTheme.titleSmall!.copyWith(
+                        color: _theme.primaryColor,
+                        fontSize: 12,
+                        fontWeight: FontWeight.w600),
+                    textAlign: TextAlign.center,
+                  )),
+                ],
+              ),
+            ),
+            Divider(),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.fromLTRB(10, 0, 10, 10),
+                    child: Text(
+                      data["amenities"].toString() != "null"
+                          ? data["amenities"].toString()
+                          : "",
+                      style: _textTheme.titleSmall!.copyWith(
+                          // color: CustomTheme.darkGray,
+                          fontSize: 11,
+                          fontWeight: FontWeight.normal),
+                    ),
+                  ),
+                ),
+                Container(
+                  padding: EdgeInsets.all(8),
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                          topLeft: Radius.circular(12),
+                          bottomRight: Radius.circular(12)),
+                      color: _theme.primaryColor),
+                  child: Text(
+                    "Rs. ${data["ticketPrice"]}",
+                    style: _textTheme.titleSmall!
+                        .copyWith(color: CustomTheme.white),
+                  ),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
+    );
+  }
+}

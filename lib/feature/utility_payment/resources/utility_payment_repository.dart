@@ -6,6 +6,7 @@ import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/notification/resources/notification_model.dart';
@@ -84,6 +85,31 @@ class UtilityPaymentRepository {
 
       UtilityResponseData _responseData =
           UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
+  Future<DataResponse<BusDetailModel>> fetchBusDetails(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchDetails(
+        serviceIdentifier: serviceIdentifier,
+        accountDetails: accountDetails,
+        apiEndpoint: apiEndpoint,
+      );
+
+      BusDetailModel _responseData =
+          BusDetailModel.fromJson(_res['details'] ?? {});
       print(_responseData);
       return DataResponse.success(_responseData);
     } on CustomException catch (e) {

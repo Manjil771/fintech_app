@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_detail_bottomsheet.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class FlightDetailsListItemWidget extends StatefulWidget {
@@ -57,7 +60,8 @@ class _FlightDetailsListItemWidgetState
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               CustomCachedNetworkImage(
-                url: widget.flight.airlineLogo,
+                url: RepositoryProvider.of<CoOperative>(context).baseUrl +
+                    widget.flight.airlineLogo,
                 height: 40,
                 width: 40,
                 fit: BoxFit.fill,
@@ -197,6 +201,17 @@ class _FlightDetailsListItemWidgetState
                             ),
                           ],
                         ),
+                        Text(
+                          widget.flight.refundable
+                              ? "Refundable"
+                              : "Non-refundable",
+                          style: _textTheme.titleMedium!.copyWith(
+                            color: widget.flight.refundable
+                                ? CustomTheme.green
+                                : Colors.red,
+                            fontWeight: FontWeight.normal,
+                          ),
+                        ),
                       ],
                     ),
                     SizedBox(
@@ -224,15 +239,26 @@ class _FlightDetailsListItemWidgetState
                             ),
                           ],
                         ),
-                        Text(
-                          widget.flight.refundable
-                              ? "Refundable"
-                              : "Non-refundable",
-                          style: _textTheme.titleMedium!.copyWith(
-                            color: widget.flight.refundable
-                                ? CustomTheme.green
-                                : Colors.red,
-                            fontWeight: FontWeight.normal,
+                        InkWell(
+                          onTap: () {
+                            showModalBottomSheet(
+                                shape: const RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.only(
+                                        topLeft: Radius.circular(18),
+                                        topRight: Radius.circular(18))),
+                                context: context,
+                                builder: (context) {
+                                  return AirlinesDetailBottomSheet(
+                                    flight: widget.flight,
+                                  );
+                                });
+                          },
+                          child: Text(
+                            "Fare Summary",
+                            style: _textTheme.titleSmall!.copyWith(
+                                decoration: TextDecoration.underline,
+                                color: _theme.primaryColor,
+                                fontWeight: FontWeight.w600),
                           ),
                         ),
                       ],

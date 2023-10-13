@@ -96,4 +96,8 @@ class Assets {
 
   static const String arrowUpRounded = "assets/icons/arrow_up_rounded.svg";
   static const String feedBackIcon = "assets/icons/feedback_icon.svg";
+
+  //bus
+  static const String busSeatIcon = "assets/icons/bus_seat_icon.svg";
+  static const String busSideIcon = "assets/icons/bus_side.svg";
 }

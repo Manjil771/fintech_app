@@ -177,10 +177,15 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    # - assets/shreeMyagde/
+    - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
+    - assets/shreeHemja/
+    - assets/subhodaya/
+    - assets/garimaAgri/
+    - assets/aastha/
+    - assets/sunshine/
 
   fonts:
     - family: popinbold

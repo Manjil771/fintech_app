@@ -3,10 +3,12 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -16,8 +18,12 @@ import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_location_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class BusBookingWidget extends StatefulWidget {
   final ServiceList service;
@@ -29,13 +35,7 @@ class BusBookingWidget extends StatefulWidget {
 }
 
 class _BusBookingWidgetState extends State<BusBookingWidget> {
-  int _adultCount = 1;
-  int _childrenCount = 0;
-  // AirlinesSectorList fromPlace = AirlinesSectorList();
-  // AirlinesSectorList toPlace = AirlinesSectorList();
-
   final _departureDateController = TextEditingController();
-  bool isRoundTrip = false;
   bool _isLoading = false;
   DateTime departureDate = DateTime.now();
 
@@ -43,12 +43,21 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
   final ValueNotifier<KeyValue?> _selectedSectorTo = ValueNotifier(null);
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  List tripType = [
+    "Day",
+    "Night",
+    "Both",
+  ];
+  int selectedIndex = 0;
+  String? selectedShift;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,
@@ -77,25 +86,19 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
               );
             }
 
-            if (state is CommonStateSuccess<SearchFlightResponse>) {
-              SearchFlightResponse _response = state.data;
-
-              if (_response.responseStatus.toLowerCase() ==
-                  "Success".toLowerCase()) {
-                // NavigationService.push(
-                //   target: AvailableFlightPage(
-                //     service: widget.service,
-                //     adultCount: _adultCount,
-                //     childrenCount: _childrenCount,
-                //     flightDetail: _response,
-                //     isTwoWay: isRoundTrip,
-                //   ),
-                // );
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              final _response = state.data;
+              if (_response.status.toLowerCase() == "Success".toLowerCase()) {
+                NavigationService.push(
+                    target: AvailableBusPage(
+                        response: _response,
+                        service: widget.service,
+                        selectedDate: DateTime.now()));
               } else {
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Error",
+                    title: "Message",
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -116,73 +119,76 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                       color: CustomTheme.lightGray),
                   child: Row(
                     children: [
-                      InkWell(
-                        onTap: () {
-                          NavigationService.push(
-                              target: FlightsSearchPage(
-                            onChanged: (value) {
-                              _selectedSectorFrom.value = value;
-                            },
-                            selectedValue: _selectedSectorFrom.value,
-                          ));
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'From',
-                              style: _textTheme.headlineSmall,
-                            ),
-                            ValueListenableBuilder<KeyValue?>(
-                                valueListenable: _selectedSectorFrom,
-                                builder: (context, val, child) {
-                                  return Text(
-                                    val != null ? val.title : 'Select',
-                                    style: _textTheme.headlineMedium!.copyWith(
-                                        fontSize: 14,
-                                        color: CustomTheme.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  );
-                                }),
-                          ],
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            NavigationService.push(target: BusLocationWidget(
+                              onChanged: (value) {
+                                _selectedSectorFrom.value = value;
+                              },
+                            ));
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'From',
+                                style: _textTheme.headlineSmall,
+                              ),
+                              ValueListenableBuilder<KeyValue?>(
+                                  valueListenable: _selectedSectorFrom,
+                                  builder: (context, val, child) {
+                                    return Text(
+                                      val != null ? val.title : 'Select',
+                                      style: _textTheme.headlineMedium!
+                                          .copyWith(
+                                              fontSize: 14,
+                                              color: CustomTheme.primaryColor,
+                                              fontWeight: FontWeight.bold),
+                                    );
+                                  }),
+                            ],
+                          ),
                         ),
                       ),
                       Expanded(
                         child: SvgPicture.asset(
-                          'assets/icons/airplane.svg',
-                          height: 30,
+                          Assets.busSideIcon,
+                          height: 20,
                         ),
                       ),
-                      InkWell(
-                        onTap: () {
-                          NavigationService.push(
-                            target: FlightsSearchPage(
-                              onChanged: (value) {
-                                _selectedSectorTo.value = value;
-                              },
-                              selectedValue: _selectedSectorTo.value,
-                            ),
-                          );
-                        },
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              'To',
-                              style: _textTheme.headlineSmall,
-                            ),
-                            ValueListenableBuilder<KeyValue?>(
-                                valueListenable: _selectedSectorTo,
-                                builder: (context, val, child) {
-                                  return Text(
-                                    val != null ? val.title : 'Select',
-                                    style: _textTheme.headlineMedium!.copyWith(
-                                        fontSize: 14,
-                                        color: CustomTheme.primaryColor,
-                                        fontWeight: FontWeight.bold),
-                                  );
-                                }),
-                          ],
+                      Expanded(
+                        child: InkWell(
+                          onTap: () {
+                            NavigationService.push(
+                              target: BusLocationWidget(
+                                onChanged: (value) {
+                                  _selectedSectorTo.value = value;
+                                },
+                              ),
+                            );
+                          },
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'To',
+                                style: _textTheme.headlineSmall,
+                              ),
+                              ValueListenableBuilder<KeyValue?>(
+                                  valueListenable: _selectedSectorTo,
+                                  builder: (context, val, child) {
+                                    return Text(
+                                      val != null ? val.title : 'Select',
+                                      style: _textTheme.headlineMedium!
+                                          .copyWith(
+                                              fontSize: 14,
+                                              color: CustomTheme.primaryColor,
+                                              fontWeight: FontWeight.bold),
+                                    );
+                                  }),
+                            ],
+                          ),
                         ),
                       ),
                     ],
@@ -192,12 +198,12 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                   height: 20,
                 ),
                 CustomTextField(
-                  title: 'Departure Date',
+                  title: 'Date',
                   hintText: "Select Date",
                   controller: _departureDateController,
                   validator: (value) => FormValidator.validateFieldNotEmpty(
                     value,
-                    'Departure Date',
+                    'Date',
                   ),
                   readOnly: true,
                   onTap: () async {
@@ -216,8 +222,32 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                   suffixIcon: Icons.calendar_month_rounded,
                   showSearchIcon: true,
                 ),
-                const SizedBox(
-                  height: 20,
+                Container(
+                  height: 45,
+                  width: 300,
+                  child: ListView.builder(
+                    itemCount: tripType.length,
+                    shrinkWrap: true,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        child: CustomRoundedButtom(
+                            color: selectedIndex == index
+                                ? _theme.primaryColor
+                                : _theme.primaryColor.withOpacity(0.5),
+                            fontSize: 11,
+                            title: tripType[index].toString(),
+                            onPressed: () {
+                              setState(() {
+                                selectedShift = tripType[index];
+                                selectedIndex = index;
+                                print(selectedShift);
+                              });
+                            }),
+                      );
+                    },
+                  ),
                 ),
               ],
             ),
@@ -227,19 +257,16 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
           if (_selectedSectorFrom.value != null &&
               _selectedSectorTo.value != null &&
               _formKey.currentState!.validate()) {
-            context
-                .read<AirlinesCubit>()
-                .fetchFlight(accountDetails: {}, body: {
-              "adultNumber": _adultCount,
-              "childNumber": _childrenCount,
-              "flightDate": _departureDateController.text,
-              "nationality": "NP",
-              // "returnDate": _arrivalDateController.text,
-              "sectorFrom": _selectedSectorFrom.value?.value ?? "",
-              "sectorTo": _selectedSectorTo.value?.value ?? "",
-              "serviceIdentifier": widget.service.uniqueIdentifier,
-              "tripType": isRoundTrip ? "R" : "O",
-            });
+            context.read<UtilityPaymentCubit>().fetchDetails(
+                serviceIdentifier: "",
+                accountDetails: {
+                  "fromSector": _selectedSectorFrom.value?.value ?? "",
+                  "toSector": _selectedSectorTo.value?.value ?? "",
+                  "departureDate":
+                      "${departureDate.year}-${departureDate.month}-${departureDate.day}",
+                  "shift": tripType[selectedIndex],
+                },
+                apiEndpoint: "/api/busSewa/getTrips");
           } else {
             showPopUpDialog(
                 context: context,
