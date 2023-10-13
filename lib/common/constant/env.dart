@@ -801,8 +801,7 @@ class CoOperativeValue {
     backgroundImage: "assets/sanakishan/sanakishan_background.png",
     clientCode: 'RPJTJAKDBR',
     clientSecret: "203763",
-    coOperativeName:
-        'Sana kishan nighlihawa / SK nighlihawa iSmart /SKINIGLIHAWA',
+    coOperativeName: 'SFACL Niglihawa',
     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
 
     splashImage: "assets/sanakishan/sanakishan_splash.png",

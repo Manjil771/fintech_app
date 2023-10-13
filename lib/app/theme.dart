@@ -72,7 +72,7 @@ class CustomTheme {
   static const Color aasthaColor = Color(0xFF2E3487);
   static const Color sunshineColor = Color(0xFF0000FB);
 
-  static Color primaryColor = sunshineColor;
+  static Color primaryColor = shreeMyagdeColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
