@@ -164,7 +164,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    # - assets/sanakishan/
+    - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
@@ -177,7 +177,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    - assets/shreeMyagde/
+    # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/

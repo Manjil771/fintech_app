@@ -10,6 +10,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/models/local_notification.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/notification_utils.dart';
+import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
@@ -92,9 +93,23 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
         provisional: false,
         sound: true,
       );
+      final _permissionValue =
+          await PermissionUtils.notificationPermissionAvailable;
+      // if (!_permissionValue) {
+      //   showPopUpDialog(
+      //     context: context,
+      //     message:
+      //         "We need notification permission to send timely update about the app. You will be redirected to App Settings, Please allow notification permission from there.",
+      //     title: "Permission Denied",
+      //     buttonCallback: () {
+      //       openAppSettings();
+      //     },
+      //     showCancelButton: true,
+      //   );
+      // }
 
-      AwesomeNotifications().requestPermissionToSendNotifications(
-          channelKey: NotificationUtils.notificationChannelKey);
+      // AwesomeNotifications().requestPermissionToSendNotifications(
+      //     channelKey: NotificationUtils.notificationChannelKey);
     }
 
     await FirebaseMessaging.instance
