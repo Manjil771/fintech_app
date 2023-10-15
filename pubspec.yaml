@@ -164,13 +164,13 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    - assets/sanakishan/
+    # - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
-    # - assets/kanchanjungha/
+    - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
