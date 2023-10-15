@@ -48,45 +48,52 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   itemCount: state.data.detail.length,
                   itemBuilder: (context, index) {
                     final data = state.data.detail[index];
-                    return Container(
-                      margin: EdgeInsets.only(bottom: 10),
-                      padding:
-                          EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(12),
-                        color: CustomTheme.white,
-                      ),
-                      child: Column(
-                        children: [
-                          Row(children: [
-                            SvgPicture.asset(Assets.notificationIcon,
-                                height: 20.hp),
-                            SizedBox(width: 15.wp),
-                            Expanded(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    data.title,
-                                    style: _textTheme.displaySmall!
-                                        .copyWith(fontSize: 14),
-                                  ),
-                                  Text(
-                                    data.date,
-                                    style: _textTheme.labelSmall,
-                                  ),
-                                ],
+                    if (state.data.detail.length == 0) {
+                      NoDataScreen(
+                        title: "No Notification Found",
+                        details: "Notification List is empty.",
+                      );
+                    } else {
+                      return Container(
+                        margin: EdgeInsets.only(bottom: 10),
+                        padding:
+                            EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(12),
+                          color: CustomTheme.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(children: [
+                              SvgPicture.asset(Assets.notificationIcon,
+                                  height: 20.hp),
+                              SizedBox(width: 15.wp),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      data.title,
+                                      style: _textTheme.displaySmall!
+                                          .copyWith(fontSize: 14),
+                                    ),
+                                    Text(
+                                      data.date,
+                                      style: _textTheme.labelSmall,
+                                    ),
+                                  ],
+                                ),
                               ),
+                            ]),
+                            SizedBox(height: 10.hp),
+                            Text(
+                              data.body,
+                              style: _textTheme.labelLarge,
                             ),
-                          ]),
-                          SizedBox(height: 10.hp),
-                          Text(
-                            data.body,
-                            style: _textTheme.labelLarge,
-                          ),
-                        ],
-                      ),
-                    );
+                          ],
+                        ),
+                      );
+                    }
                   },
                 );
               } else {
@@ -94,7 +101,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                   title: "No Notification Found",
                   details: "Notification List is empty.",
                 );
-                ;
               }
             },
           );
