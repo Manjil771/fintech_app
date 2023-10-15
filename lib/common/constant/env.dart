@@ -924,10 +924,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/paschimanchal/paschimanchal_banner.png",
     backgroundImage: "assets/paschimanchal/paschimanchal_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    // clientCode: 'XTRYL40R9O',
-    // clientSecret: "219645",
+    clientCode: 'XTRYL40R9O',
+    clientSecret: "219645",
     splashImage: "assets/paschimanchal/paschimanchal_splash.png",
     coOperativeName: 'paschimanchal Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/paschimanchal/paschimanchal_logo.png',
