@@ -900,21 +900,49 @@ class CoOperativeValue {
     backgroundImage: "assets/aastha/aastha_background.png",
     clientCode: 'H86KG3CCDO',
     clientSecret: "184352",
+    splashImage: "assets/aastha/aastha_splash.png",
     coOperativeName: 'Aastha Saving and Credit Co-operative Society Ltd',
     coOperativeLogo: 'assets/aastha/aastha_logo.png',
-    splashImage: "assets/aastha/aastha_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  //TODO need to add client id and secret
+  static final CoOperative chirayuCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/chirayu/chirayu_banner.png",
+    backgroundImage: "assets/chirayu/chirayu_background.png",
+    clientCode: 'XTRYL40R9O',
+    clientSecret: "219645",
+    splashImage: "assets/chirayu/chirayu_splash.png",
+    coOperativeName: 'Chirayu Multipurpose Co-operative Ltd',
+    coOperativeLogo: 'assets/chirayu/chirayu_logo.png',
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative paschimanchalCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/paschimanchal/paschimanchal_banner.png",
+    backgroundImage: "assets/paschimanchal/paschimanchal_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    // clientCode: 'XTRYL40R9O',
+    // clientSecret: "219645",
+    splashImage: "assets/paschimanchal/paschimanchal_splash.png",
+    coOperativeName: 'paschimanchal Multipurpose Co-operative Ltd',
+    coOperativeLogo: 'assets/paschimanchal/paschimanchal_logo.png',
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative sunshineCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/sunshine/sunshine_banner.png",
     backgroundImage: "assets/sunshine/sunshine_background.png",
-    clientCode: 'H86KG3CCDO',
-    clientSecret: "184352",
-    coOperativeName: 'sunshine Saving and Credit Co-operative Society Ltd',
+
+    clientCode: '0FKODTJ7G9',
+    clientSecret: "194796",
+    coOperativeName: 'Sunshine Saving and Credit Co-operative Society Ltd',
     coOperativeLogo: 'assets/sunshine/sunshine_logo.png',
     splashImage: "assets/sunshine/sunshine_splash.png",
     primaryColor: const Color(0xFF0b67bb),
