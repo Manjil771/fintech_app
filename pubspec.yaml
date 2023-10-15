@@ -99,6 +99,7 @@ flutter:
     - assets/translations/
     - assets/
     - assets/icons/
+    - assets/events/
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
@@ -170,7 +171,7 @@ flutter:
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
-    # - assets/kanchanjungha/
+    - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
