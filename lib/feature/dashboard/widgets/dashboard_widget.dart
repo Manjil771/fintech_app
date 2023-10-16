@@ -12,8 +12,8 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
-import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
@@ -22,6 +22,7 @@ import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 
 import 'package:open_filex/open_filex.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class DashBoardWidget extends StatefulWidget {
   const DashBoardWidget({Key? key}) : super(key: key);
@@ -136,10 +137,20 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                   if (_cameraPermission) {
                     NavigationService.push(target: const QRScannerScreens());
                   } else {
-                    SnackBarUtils.showErrorBar(
+                    showPopUpDialog(
                       context: context,
-                      message: "Please allow camera permission to use Scan QR",
+                      message:
+                          "We need camera permission to use QR Payment. You will be redirected to App Settings where you can enable the permission.",
+                      title: "Permission Denied",
+                      buttonCallback: () {
+                        openAppSettings();
+                      },
+                      showCancelButton: true,
                     );
+                    // SnackBarUtils.showErrorBar(
+                    //   context: context,
+                    //   message: "Please allow camera permission to use Scan QR",
+                    // );
                   }
                 },
                 child: SvgPicture.asset(

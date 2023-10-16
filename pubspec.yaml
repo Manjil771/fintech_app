@@ -160,7 +160,7 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/rumjatar/
-    - assets/supreme/
+    # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
@@ -178,7 +178,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    - assets/shreeMyagde/
+    # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
@@ -191,6 +191,11 @@ flutter:
     - assets/chirayu/
     - assets/digitalCoop/
     - assets/upakar/
+    # - assets/shreeHemja/
+    # - assets/subhodaya/
+    # - assets/garimaAgri/
+    # - assets/aastha/
+    # - assets/sunshine/
 
   fonts:
     - family: popinbold

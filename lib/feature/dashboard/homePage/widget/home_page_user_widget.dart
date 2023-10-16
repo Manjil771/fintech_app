@@ -14,6 +14,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
+import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -103,17 +104,25 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               Row(
                                 children: [
                                   InkWell(
-                                      onTap: () {
-                                        NavigationService.pushNamed(
-                                            routeName: Routes.profileScreen);
-                                      },
-                                      child: CircleAvatar(
-                                        radius: 20,
-                                        backgroundImage: AssetImage(
-                                          Assets.profilePicture,
-                                        ),
-                                        backgroundColor: Colors.transparent,
-                                      )),
+                                    onTap: () {
+                                      NavigationService.pushNamed(
+                                          routeName: Routes.profileScreen);
+                                    },
+                                    child: (imageUrl != null &&
+                                            imageUrl!.isNotEmpty)
+                                        ? CustomRoundedImage(
+                                            height: 40,
+                                            image: imageUrl ?? "",
+                                            width: 40,
+                                          )
+                                        : const CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                              Assets.profilePicture,
+                                            ),
+                                            backgroundColor: Colors.transparent,
+                                          ),
+                                  ),
                                   SizedBox(width: _width * 0.02),
                                   Column(
                                     crossAxisAlignment:
