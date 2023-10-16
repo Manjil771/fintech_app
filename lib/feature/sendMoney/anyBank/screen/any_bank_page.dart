@@ -7,6 +7,7 @@ import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 
 class AnyBankpage extends StatelessWidget {
+  final String? remarks;
   final String? accountNumber;
   final String? accountName;
   final String? bankCode;
@@ -17,7 +18,8 @@ class AnyBankpage extends StatelessWidget {
       this.accountNumber,
       this.accountName,
       this.bankCode,
-      this.bankName})
+      this.bankName,
+      this.remarks})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -41,6 +43,7 @@ class AnyBankpage extends StatelessWidget {
         ),
       ],
       child: AnyBankWidget(
+        remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,
         bankCode: bankCode,

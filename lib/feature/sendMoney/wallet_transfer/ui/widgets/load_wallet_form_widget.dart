@@ -22,8 +22,10 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_validation
 class LoadWalletFormWidget extends StatefulWidget {
   final String? phoneNumber;
   final WalletModel selectedWallet;
+  final String? remarks;
+
   const LoadWalletFormWidget(
-      {Key? key, required this.selectedWallet, this.phoneNumber})
+      {Key? key, required this.selectedWallet, this.phoneNumber, this.remarks})
       : super(key: key);
 
   @override
@@ -250,7 +252,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
-                  controller: _remarksController,
+                  controller: _remarksController..text = widget.remarks ?? "",
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Remarks"),
                 ),

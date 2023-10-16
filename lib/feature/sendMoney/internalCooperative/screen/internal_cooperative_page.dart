@@ -10,13 +10,15 @@ class InternalCooperativePage extends StatelessWidget {
   final String? accountName;
   final String? bankCode;
   final String? branchCode;
+  final String? remarks;
 
   const InternalCooperativePage(
       {Key? key,
       this.accountNumber,
       this.accountName,
       this.bankCode,
-      this.branchCode})
+      this.branchCode,
+      this.remarks})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -30,6 +32,7 @@ class InternalCooperativePage extends StatelessWidget {
             RepositoryProvider.of<InternalTransferRepository>(context),
       ),
       child: InternalCooperativeWidget(
+        remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,
         bankCode: bankCode,
