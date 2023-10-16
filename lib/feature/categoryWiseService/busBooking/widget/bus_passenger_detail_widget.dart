@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/models/common_contact_model.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -57,6 +58,7 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
   final contactEmail = TextEditingController();
 
   final contactNumber = TextEditingController();
+  final remarksController = TextEditingController();
 
   bool _isLoading = false;
   String? boardingPoint;
@@ -108,6 +110,15 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
               validator: (value) => FormValidator.validatePhoneNumber(value),
             ),
             CustomTextField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              title: 'Remarks',
+              hintText: 'remarks',
+              controller: remarksController..text = "Bus Booking",
+              validator: (value) =>
+                  FormValidator.validateFieldNotEmpty(value, "Remarks"),
+            ),
+            CustomTextField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               validator: (value) {
                 if (boardingPoint == null) {
                   return "Please select boarding point";
@@ -157,6 +168,14 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
           if (_formKey.currentState!.validate()) {
             NavigationService.push(
                 target: BusBillDetailPage(
+              remarks: remarksController.text,
+              totalFare: widget.totalFare,
+              response: widget.response,
+              contactDetail: UserContactModel(
+                  email: contactEmail.text,
+                  fullName: contactName.text,
+                  phoneNumber: contactNumber.text),
+              boardingPoint: boardingPoint ?? "",
               selectedSeats: widget.selectedSeats,
               busModel: widget.busModel,
               service: widget.service,
