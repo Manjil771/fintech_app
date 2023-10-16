@@ -4,14 +4,8 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class BusTopBarLocationBox extends StatelessWidget {
-  final String sectorFrom;
-  final String sectorTo;
-  final DateTime selectedDate;
-  const BusTopBarLocationBox(
-      {Key? key,
-      required this.sectorFrom,
-      required this.sectorTo,
-      required this.selectedDate})
+  final BusTopBarModel busModel;
+  const BusTopBarLocationBox({Key? key, required this.busModel})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -27,7 +21,7 @@ class BusTopBarLocationBox extends StatelessWidget {
             children: [
               Expanded(
                 child: Text(
-                  sectorFrom,
+                  busModel.sectorFrom,
                   style: _textTheme.titleSmall!.copyWith(
                       fontWeight: FontWeight.w600, color: _theme.primaryColor),
                 ),
@@ -42,7 +36,7 @@ class BusTopBarLocationBox extends StatelessWidget {
                 child: Align(
                   alignment: Alignment.centerRight,
                   child: Text(
-                    sectorTo,
+                    busModel.sectorTo,
                     style: _textTheme.titleSmall!.copyWith(
                         fontWeight: FontWeight.w600,
                         color: _theme.primaryColor),
@@ -54,11 +48,22 @@ class BusTopBarLocationBox extends StatelessWidget {
         ),
         SizedBox(height: 10.hp),
         Text(
-          "${selectedDate.year}-${selectedDate.month}-${selectedDate.day}",
+          busModel.selectedDate,
           style: _textTheme.titleSmall!.copyWith(
               fontWeight: FontWeight.w600, color: _theme.primaryColor),
         ),
       ],
     );
   }
+}
+
+class BusTopBarModel {
+  final String sectorFrom;
+  final String sectorTo;
+  final String selectedDate;
+
+  BusTopBarModel(
+      {required this.sectorFrom,
+      required this.sectorTo,
+      required this.selectedDate});
 }

@@ -21,6 +21,7 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_lis
 import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_location_widget.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -90,10 +91,16 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
               final _response = state.data;
               if (_response.status.toLowerCase() == "Success".toLowerCase()) {
                 NavigationService.push(
-                    target: AvailableBusPage(
-                        response: _response,
-                        service: widget.service,
-                        selectedDate: DateTime.now()));
+                  target: AvailableBusPage(
+                    response: _response,
+                    service: widget.service,
+                    busModel: BusTopBarModel(
+                        sectorFrom: _selectedSectorFrom.value?.value ?? "",
+                        sectorTo: _selectedSectorTo.value?.value ?? "",
+                        selectedDate:
+                            "${departureDate.year}-${departureDate.month}-${departureDate.day}"),
+                  ),
+                );
               } else {
                 showPopUpDialog(
                     context: context,
@@ -168,26 +175,29 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                               ),
                             );
                           },
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                'To',
-                                style: _textTheme.headlineSmall,
-                              ),
-                              ValueListenableBuilder<KeyValue?>(
-                                  valueListenable: _selectedSectorTo,
-                                  builder: (context, val, child) {
-                                    return Text(
-                                      val != null ? val.title : 'Select',
-                                      style: _textTheme.headlineMedium!
-                                          .copyWith(
-                                              fontSize: 14,
-                                              color: CustomTheme.primaryColor,
-                                              fontWeight: FontWeight.bold),
-                                    );
-                                  }),
-                            ],
+                          child: Align(
+                            alignment: Alignment.centerRight,
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'To',
+                                  style: _textTheme.headlineSmall,
+                                ),
+                                ValueListenableBuilder<KeyValue?>(
+                                    valueListenable: _selectedSectorTo,
+                                    builder: (context, val, child) {
+                                      return Text(
+                                        val != null ? val.title : 'Select',
+                                        style: _textTheme.headlineMedium!
+                                            .copyWith(
+                                                fontSize: 14,
+                                                color: CustomTheme.primaryColor,
+                                                fontWeight: FontWeight.bold),
+                                      );
+                                    }),
+                              ],
+                            ),
                           ),
                         ),
                       ),

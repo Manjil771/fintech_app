@@ -31,8 +31,11 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../common/http/response.dart';
 
 class QRScannerWidgets extends StatefulWidget {
+  final String? remarks;
+
   const QRScannerWidgets({
     Key? key,
+    this.remarks,
   }) : super(key: key);
 
   @override
@@ -112,6 +115,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     .isEmpty) {
               NavigationService.pushReplacement(
                   target: AnyBankpage(
+                remarks: widget.remarks,
                 accountName: _response.findValue(
                   primaryKey: "accountDetails",
                   secondaryKey: "accountName",
@@ -141,6 +145,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         .isNotEmpty) {
               NavigationService.pushReplacement(
                   target: InternalCooperativePage(
+                remarks: widget.remarks,
                 accountName: _response.findValue(
                   primaryKey: "accountDetails",
                   secondaryKey: "accountName",
@@ -498,6 +503,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         final phoneNumber = _decode["eSewa_id"];
         NavigationService.pushReplacement(
             target: LoadWalletFormScreen(
+                remarks: widget.remarks,
                 phoneNumber: phoneNumber,
                 selectedWallet: WalletModel(
                     id: 11,
@@ -554,6 +560,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     } catch (e) {
       NavigationService.pushReplacement(
           target: PayloadPage(
+        remarks: widget.remarks,
         payload: qrCode,
       ));
     }

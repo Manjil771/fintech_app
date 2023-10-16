@@ -71,8 +71,13 @@ class CustomTheme {
   static const Color garimaAgriColor = Color(0xFF009245);
   static const Color aasthaColor = Color(0xFF2E3487);
   static const Color sunshineColor = Color(0xFF0000FB);
+  static const Color chirayuColor = Color(0xFF009245);
+  static const Color paschimanchalColor = Color(0xFF2A3585);
+  static const Color digitalCoopColor = Color(0xFF0076BC);
+  static const Color upakarCoopColor = Color(0xFF009245);
 
-  static Color primaryColor = kanchanjunghaColor;
+  static Color primaryColor = testAppColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

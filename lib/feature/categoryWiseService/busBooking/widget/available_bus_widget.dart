@@ -15,15 +15,16 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class AvailableBusWiget extends StatelessWidget {
+  final BusTopBarModel busModel;
+
   final ServiceList service;
   final UtilityResponseData response;
 
-  final DateTime selectedDate;
   const AvailableBusWiget(
       {Key? key,
       required this.service,
-      required this.selectedDate,
-      required this.response})
+      required this.response,
+      required this.busModel})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -31,26 +32,26 @@ class AvailableBusWiget extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final name = response.findValue(primaryKey: "data");
+    final busList = response.findValue(primaryKey: "data");
+
     return PageWrapper(
       showBackButton: true,
       body: Column(
         children: [
           BusTopBarLocationBox(
-            selectedDate: selectedDate,
-            sectorFrom: "KATHMANDU",
-            sectorTo: "POKHARA",
+            busModel: busModel,
           ),
           Expanded(
             child: Container(
                 child: ListView.builder(
-              itemCount: name.length,
+              itemCount: busList.length,
               shrinkWrap: true,
               itemBuilder: (context, index) {
                 return BusDetailBox(
-                  columnNumber: name[index]["noOfColumn"],
-                  r: name,
+                  services: service,
+                  response: response,
                   index: index,
+                  busModel: busModel,
                 );
               },
             )),

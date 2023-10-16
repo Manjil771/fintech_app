@@ -25,7 +25,8 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 
 class PayloadWidget extends StatefulWidget {
   final String? payload;
-  const PayloadWidget({Key? key, this.payload}) : super(key: key);
+  final String? remarks;
+  const PayloadWidget({Key? key, this.payload, this.remarks}) : super(key: key);
 
   @override
   State<PayloadWidget> createState() => _PayloadWidgetState();
@@ -104,7 +105,8 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                     ),
                     CustomTextField(
                       title: "Remarks",
-                      controller: remarksController,
+                      controller: remarksController
+                        ..text = widget.remarks ?? "",
                     ),
                   ],
                 ),

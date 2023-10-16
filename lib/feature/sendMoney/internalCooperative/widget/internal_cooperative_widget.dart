@@ -24,13 +24,15 @@ class InternalCooperativeWidget extends StatefulWidget {
   final String? accountName;
   final String? bankCode;
   final String? branchCode;
+  final String? remarks;
 
   const InternalCooperativeWidget(
       {Key? key,
       this.accountNumber,
       this.accountName,
       this.bankCode,
-      this.branchCode})
+      this.branchCode,
+      this.remarks})
       : super(key: key);
 
   @override
@@ -218,7 +220,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
-                  controller: _remarksController,
+                  controller: _remarksController..text = widget.remarks ?? "",
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Remarks"),
                 )

@@ -29,6 +29,8 @@ import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/scr
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
+import 'package:ismart/feature/qrscanner/widgets/qrscanner_widget.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<ServiceList> services;
@@ -172,6 +174,12 @@ class _CategoriesWiseServicesWidgetState
           service: servicess,
         ));
       }
+    }
+    if (uniqueIdentifier.toLowerCase() == "digital_dakshina_service") {
+      NavigationService.push(
+          target: QRScannerScreens(
+        remarks: servicess.instructions,
+      ));
     }
     if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
       if (uniqueIdentifier.toLowerCase() ==

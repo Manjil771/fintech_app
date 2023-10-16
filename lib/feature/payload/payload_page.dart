@@ -8,7 +8,9 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class PayloadPage extends StatelessWidget {
   final String? payload;
-  const PayloadPage({Key? key, this.payload}) : super(key: key);
+  final String? remarks;
+
+  const PayloadPage({Key? key, this.payload, this.remarks}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

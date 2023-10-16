@@ -133,7 +133,13 @@ class TopupBillDetailWidget extends StatelessWidget {
           }
         },
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            IconButton(
+                onPressed: () {
+                  NavigationService.pop();
+                },
+                icon: Icon(Icons.arrow_back)),
             Container(
               decoration: BoxDecoration(
                 color: CustomTheme.white,

@@ -8,10 +8,12 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class QRScannerScreens extends StatelessWidget {
+  final String? remarks;
   // final ValueChanged<MpqrcDetail> onScanned;
   // final QRType type;
   const QRScannerScreens({
     Key? key,
+    this.remarks,
     // required this.onScanned,
     // required this.type,
   }) : super(key: key);
@@ -32,10 +34,11 @@ class QRScannerScreens extends StatelessWidget {
                   RepositoryProvider.of<UtilityPaymentRepository>(context)),
         ),
       ],
-      child: const QRScannerWidgets(
-          // onScanned: onScanned,
-          // type: type,
-          ),
+      child: QRScannerWidgets(
+        remarks: remarks,
+        // onScanned: onScanned,
+        // type: type,
+      ),
     );
   }
 }

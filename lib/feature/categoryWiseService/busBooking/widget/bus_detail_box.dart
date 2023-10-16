@@ -5,20 +5,27 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_seat_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_booking_widget.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_seat_widget.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+import 'bus_topbar_location_box.dart';
+
 class BusDetailBox extends StatelessWidget {
-  final columnNumber;
-  final List<dynamic> r;
   final int index;
+  final BusTopBarModel busModel;
+
+  final ServiceList services;
+  final UtilityResponseData response;
 
   const BusDetailBox(
       {Key? key,
-      required this.r,
       required this.index,
-      required this.columnNumber})
+      required this.response,
+      required this.services,
+      required this.busModel})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -26,14 +33,20 @@ class BusDetailBox extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final data = r[index];
+    final busList = response.findValue(primaryKey: "data");
+
+    final data = busList[index];
     final list = data["seatLayout"];
     return InkWell(
       onTap: () {
         NavigationService.push(
-            target: BusSeatsListWidget(
-          columnNumber: columnNumber,
-          seats: list,
+            target: BusSeatPage(
+          index: index,
+          columnNumber: busList[index]["noOfColumn"],
+          seatLayout: list,
+          busList: busList,
+          services: services,
+          busModel: busModel,
         ));
       },
       child: Container(

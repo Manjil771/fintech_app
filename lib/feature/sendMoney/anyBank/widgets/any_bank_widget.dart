@@ -605,13 +605,15 @@ class AnyBankWidget extends StatefulWidget {
   final String? accountName;
   final String? bankCode;
   final String? bankName;
+  final String? remarks;
 
   const AnyBankWidget(
       {Key? key,
       this.accountNumber,
       this.accountName,
       this.bankCode,
-      this.bankName})
+      this.bankName,
+      this.remarks})
       : super(key: key);
 
   @override
@@ -933,7 +935,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
-                  controller: _remarksController,
+                  controller: _remarksController..text = widget.remarks ?? "",
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, "Remarks"),
                 ),
