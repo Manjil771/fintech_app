@@ -931,6 +931,32 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/paschimanchal/paschimanchal_logo.png',
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative digitalCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/digitalCoop/digitalCoop_banner.png",
+    backgroundImage: "assets/digitalCoop/digitalCoop_background.png",
+    clientCode: 'XTRYL40R9O',
+    clientSecret: "219645",
+    splashImage: "assets/digitalCoop/digitalCoop_splash.png",
+    coOperativeName: 'digitalCoop Multipurpose Co-operative Ltd',
+    coOperativeLogo: 'assets/digitalCoop/digitalCoop_logo.png',
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative upakarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/upakar/upakar_banner.png",
+    backgroundImage: "assets/upakar/upakar_background.png",
+    clientCode: 'XTRYL40R9O',
+    clientSecret: "219645",
+    splashImage: "assets/upakar/upakar_splash.png",
+    coOperativeName: 'upakar Multipurpose Co-operative Ltd',
+    coOperativeLogo: 'assets/upakar/upakar_logo.png',
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative sunshineCoop = CoOperative(
     appStoreID: "",
     packageName: "",

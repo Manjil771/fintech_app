@@ -189,6 +189,8 @@ flutter:
     - assets/sunshine/
     - assets/paschimanchal/
     - assets/chirayu/
+    - assets/digitalCoop/
+    - assets/upakar/
 
   fonts:
     - family: popinbold
