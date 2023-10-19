@@ -106,7 +106,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/abhiyan/
-    # - assets/kamana/
+    - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
@@ -189,7 +189,7 @@ flutter:
     # - assets/sunshine/
     # - assets/paschimanchal/
     # - assets/chirayu/
-    - assets/digitalCoop/
+    # - assets/digitalCoop/
     # - assets/upakar/
     # - assets/shreeHemja/
     # - assets/subhodaya/
