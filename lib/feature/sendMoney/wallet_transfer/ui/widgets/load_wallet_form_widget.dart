@@ -140,6 +140,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                     buttonCallback: () {
                       NavigationService.pop();
                       context.read<WalletSendCubit>().sendToWallet(
+                            remarks: _remarksController.text,
                             walletId: widget.selectedWallet.id.toString(),
                             amount: _amountController.text,
                             customerName: _walletAccountController.text,

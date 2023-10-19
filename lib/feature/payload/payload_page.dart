@@ -28,6 +28,7 @@ class PayloadPage extends StatelessWidget {
               "pay_load": payload,
             }),
       child: PayloadWidget(
+        remarks: remarks,
         payload: payload,
       ),
     );

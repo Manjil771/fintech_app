@@ -174,105 +174,16 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                     );
                                   }
                                 },
-                                child: Stack(
+                                child: Column(
                                   children: [
-                                    if (data.uniqueIdentifier.toLowerCase() ==
-                                        "events")
-                                      Positioned(
-                                        left: 10,
-                                        child: Image.asset(
-                                            "assets/icons/tika.png",
-                                            color: Colors.red,
-                                            height: 20),
-                                      ),
                                     Column(
                                       children: [
-                                        Column(
-                                          children: [
-                                            data.isNew == true
-                                                ? Row(
-                                                    mainAxisAlignment:
-                                                        MainAxisAlignment.end,
-                                                    children: [
-                                                      Container(
-                                                        padding:
-                                                            const EdgeInsets
-                                                                    .symmetric(
-                                                                horizontal: 4),
-                                                        decoration: BoxDecoration(
-                                                            color: CustomTheme
-                                                                .primaryColor,
-                                                            borderRadius:
-                                                                BorderRadius
-                                                                    .circular(
-                                                                        5)),
-                                                        child: Align(
-                                                          alignment: Alignment
-                                                              .topRight,
-                                                          child: Text(
-                                                            'New',
-                                                            style: _textTheme
-                                                                .bodyLarge!
-                                                                .copyWith(
-                                                                    color: CustomTheme
-                                                                        .white,
-                                                                    fontSize:
-                                                                        8),
-                                                          ),
-                                                        ),
-                                                      ),
-                                                    ],
-                                                  )
-                                                : Container(),
-                                            Container(
-                                              height: _height * 0.03,
-                                              child: _imageUrl
-                                                      .toLowerCase()
-                                                      .contains("svg")
-                                                  ? SvgPicture.network(
-                                                      _imageUrl,
-                                                      color:
-                                                          _theme.primaryColor,
-                                                      placeholderBuilder:
-                                                          (BuildContext
-                                                                  context) =>
-                                                              Center(
-                                                        child: Image.asset(
-                                                          Assets.logoImage,
-                                                        ),
-                                                      ),
-                                                    )
-                                                  : Image.network(
-                                                      _imageUrl,
-                                                      errorBuilder: (context,
-                                                          error, stackTrace) {
-                                                        return Center(
-                                                          child: Image.asset(
-                                                            Assets.logoImage,
-                                                          ),
-                                                        );
-                                                      },
-                                                    ),
-                                            ),
-                                            Padding(
-                                              padding:
-                                                  const EdgeInsets.only(top: 8),
-                                              child: Center(
-                                                child: Text(
-                                                  "${data.name}",
-                                                  textAlign: TextAlign.center,
-                                                  style: _textTheme.titleSmall!
-                                                      .copyWith(fontSize: 11.5),
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                ),
-                                              ),
-                                            ),
-                                            filteredItems.isNotEmpty
-                                                ? Container(
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            bottom: 4),
+                                        data.isNew == true
+                                            ? Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.end,
+                                                children: [
+                                                  Container(
                                                     padding: const EdgeInsets
                                                             .symmetric(
                                                         horizontal: 4),
@@ -282,25 +193,93 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                                         borderRadius:
                                                             BorderRadius
                                                                 .circular(5)),
-                                                    child: Text(
-                                                      "${filteredItems[0].cashBackView} cashback",
-                                                      overflow:
-                                                          TextOverflow.ellipsis,
-                                                      style: _textTheme
-                                                          .bodyLarge!
-                                                          .copyWith(
-                                                              color: CustomTheme
-                                                                  .white,
-                                                              fontSize: 9),
+                                                    child: Align(
+                                                      alignment:
+                                                          Alignment.topRight,
+                                                      child: Text(
+                                                        'New',
+                                                        style: _textTheme
+                                                            .bodyLarge!
+                                                            .copyWith(
+                                                                color:
+                                                                    CustomTheme
+                                                                        .white,
+                                                                fontSize: 8),
+                                                      ),
                                                     ),
-                                                  )
-                                                : Container(
-                                                    margin:
-                                                        const EdgeInsets.only(
-                                                            bottom: 8),
                                                   ),
-                                          ],
+                                                ],
+                                              )
+                                            : Container(),
+                                        Container(
+                                          height: _height * 0.03,
+                                          child: _imageUrl
+                                                  .toLowerCase()
+                                                  .contains("svg")
+                                              ? SvgPicture.network(
+                                                  _imageUrl,
+                                                  color: _theme.primaryColor,
+                                                  placeholderBuilder:
+                                                      (BuildContext context) =>
+                                                          Center(
+                                                    child: Image.asset(
+                                                      Assets.logoImage,
+                                                    ),
+                                                  ),
+                                                )
+                                              : Image.network(
+                                                  _imageUrl,
+                                                  errorBuilder: (context, error,
+                                                      stackTrace) {
+                                                    return Center(
+                                                      child: Image.asset(
+                                                        Assets.logoImage,
+                                                      ),
+                                                    );
+                                                  },
+                                                ),
                                         ),
+                                        Padding(
+                                          padding:
+                                              const EdgeInsets.only(top: 8),
+                                          child: Center(
+                                            child: Text(
+                                              "${data.name}",
+                                              textAlign: TextAlign.center,
+                                              style: _textTheme.titleSmall!
+                                                  .copyWith(fontSize: 11.5),
+                                              // overflow: TextOverflow.ellipsis,
+                                            ),
+                                          ),
+                                        ),
+                                        filteredItems.isNotEmpty
+                                            ? Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 4),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 4),
+                                                decoration: BoxDecoration(
+                                                    color: CustomTheme
+                                                        .primaryColor,
+                                                    borderRadius:
+                                                        BorderRadius.circular(
+                                                            5)),
+                                                child: Text(
+                                                  "${filteredItems[0].cashBackView} cashback",
+                                                  overflow:
+                                                      TextOverflow.ellipsis,
+                                                  style: _textTheme.bodyLarge!
+                                                      .copyWith(
+                                                          color:
+                                                              CustomTheme.white,
+                                                          fontSize: 9),
+                                                ),
+                                              )
+                                            : Container(
+                                                margin: const EdgeInsets.only(
+                                                    bottom: 8),
+                                              ),
                                       ],
                                     ),
                                   ],
