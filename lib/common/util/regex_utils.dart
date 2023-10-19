@@ -3,7 +3,7 @@ import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
 class RegexUtils {
   static TopupType checkPhoneNumberType(String number) {
     final ntcPostpaid = RegExp("^[9][8][5][0-9]{7}\$");
-    final ntc = RegExp("([9][7-8][4-6][0-9]{7})");
+    final ntc = RegExp("([9][7-9][4-6][0-9]{7})");
     final ncell = RegExp("([9][8][0-2][0-9]{7})");
     final smartCell = RegExp("([9][6][0-9]{8}|[9][8][8][0-9]{7})");
     if (ntcPostpaid.hasMatch(number)) {
