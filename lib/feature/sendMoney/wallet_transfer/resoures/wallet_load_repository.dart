@@ -96,6 +96,7 @@ class WalletLoadRepository {
     required String customerName,
     required String walletAccountNumber,
     required String validationIdentifier,
+    required String remarks,
   }) async {
     try {
       final _res = await walletLoadAPIProvider.sendToWallet(
@@ -110,6 +111,7 @@ class WalletLoadRepository {
         validationIdentifier: validationIdentifier,
         customerName: customerName,
         walletAccountNumber: walletAccountNumber,
+        remarks: remarks,
       );
 
       if (_res['data'] != null) {
