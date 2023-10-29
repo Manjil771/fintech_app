@@ -971,6 +971,20 @@ class CoOperativeValue {
     splashImage: "assets/sunshine/sunshine_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative uttarbahiniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/uttarbahini/uttarbahini_banner.png",
+    backgroundImage: "assets/uttarbahini/uttarbahini_background.png",
+
+    clientCode: 'YQK7VL2FJ7',
+    clientSecret: "142120",
+    coOperativeName: 'Uttarbahini Multipurpose Co-operative LTD.',
+    coOperativeLogo: 'assets/uttarbahini/uttarbahini_logo.png',
+    splashImage: "assets/uttarbahini/uttarbahini_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
   //TODO need to add client id and secret
   static final CoOperative aaratiCoop = CoOperative(

@@ -75,8 +75,9 @@ class CustomTheme {
   static const Color paschimanchalColor = Color(0xFF2A3585);
   static const Color digitalCoopColor = Color(0xFF0076BC);
   static const Color upakarCoopColor = Color(0xFF009245);
+  static const Color uttarbahiniColor = Color(0xFF009245);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = uttarbahiniColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
