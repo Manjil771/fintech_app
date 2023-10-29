@@ -86,25 +86,31 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                       )
                                     ],
                                   ),
-                                  Row(
-                                    children: [
-                                      Expanded(
-                                        child: buildDetails(
-                                            context,
-                                            "accrued interest.svg",
-                                            "Accrued Interest",
-                                            "NPR ${_detail.accountDetail[index].accruedInterest}"),
-                                      ),
-                                      SizedBox(
-                                        width: _width * 0.4,
-                                        child: buildDetails(
-                                            context,
-                                            "interest rate profile.svg",
-                                            "Interest Rate",
-                                            "${_detail.accountDetail[index].interestRate} %"),
-                                      ),
-                                    ],
-                                  ),
+                                  if (_detail.accountDetail[index].interestRate
+                                              .toString() !=
+                                          "0.0" &&
+                                      _detail.accountDetail[index].interestRate
+                                              .toString() !=
+                                          "N/A")
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: buildDetails(
+                                              context,
+                                              "accrued interest.svg",
+                                              "Accrued Interest",
+                                              "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                        ),
+                                        SizedBox(
+                                          width: _width * 0.4,
+                                          child: buildDetails(
+                                              context,
+                                              "interest rate profile.svg",
+                                              "Interest Rate",
+                                              "${_detail.accountDetail[index].interestRate} %"),
+                                        ),
+                                      ],
+                                    ),
                                   Row(
                                     children: [
                                       Expanded(
