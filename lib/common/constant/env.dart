@@ -953,7 +953,7 @@ class CoOperativeValue {
     clientCode: '84VHCKC8U3',
     clientSecret: "159493",
     splashImage: "assets/upakar/upakar_splash.png",
-    coOperativeName: 'upakar Multipurpose Co-operative Ltd',
+    coOperativeName: 'Upakar Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/upakar/upakar_logo.png',
     primaryColor: const Color(0xFF0b67bb),
   );
