@@ -38,7 +38,7 @@ class AuthApiProvider {
       "client_secret": coOperative.clientSecret,
       "password": "$password",
       "grant_type": "password",
-      "username": coOperative.clientCode + "9803435443",
+      "username": coOperative.clientCode + username,
       "deviceUniqueIdentifier": "$deviceUUID"
     };
     if (otpCode != null) {
