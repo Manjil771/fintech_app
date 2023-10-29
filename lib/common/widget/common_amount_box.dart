@@ -55,9 +55,11 @@ class _CommonAmountBoxState extends State<CommonAmountBox> {
               itemCount: priceRangeList.length,
               itemBuilder: (context, index) => InkWell(
                 onTap: () {
-                  print("print");
+                  print("print" + priceRangeList[index].toString());
+                  print("print" + priceRange.toString());
+
                   setState(() {
-                    widget.onChanged(priceRange[index]);
+                    widget.onChanged(priceRangeList[index]);
                   });
                 },
                 child: Column(

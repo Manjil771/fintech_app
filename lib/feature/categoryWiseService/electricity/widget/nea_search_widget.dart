@@ -35,6 +35,7 @@ class CountersSearchWidget extends StatelessWidget {
               : "get/khanepanicounters",
         ),
       child: PageWrapper(
+        showBackButton: true,
         leadingAppIcon: CustomIconButton(
           icon: Icons.close_rounded,
           shadow: false,

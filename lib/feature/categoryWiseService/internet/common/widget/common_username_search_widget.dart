@@ -27,6 +27,7 @@ class CommonInternetPackageSearchWidgets extends StatelessWidget {
         []);
 
     return PageWrapper(
+      showBackButton: true,
       leadingAppIcon: CustomIconButton(
         icon: Icons.close_rounded,
         shadow: false,

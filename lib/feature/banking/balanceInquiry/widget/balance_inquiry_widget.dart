@@ -133,19 +133,27 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                         .actualBalance),
                                             detailROw(context, "Client Code",
                                                 "${_detail.accountDetail[index].clientCode}"),
-                                            detailROw(
-                                                context,
-                                                "Accured Interest",
-                                                "NPR ${_detail.accountDetail[index].accruedInterest}"),
                                             detailROw(context, "Acc Number",
                                                 "${_detail.accountDetail[index].mainCode}"),
                                             if (_detail.accountDetail[index]
-                                                    .interestRate !=
-                                                "0")
-                                              detailROw(
-                                                  context,
-                                                  "Interest Rate",
-                                                  "${_detail.accountDetail[index].interestRate} %"),
+                                                        .interestRate !=
+                                                    "0" ||
+                                                _detail.accountDetail[index]
+                                                        .interestRate
+                                                        .toString() !=
+                                                    "N/A")
+                                              Column(
+                                                children: [
+                                                  detailROw(
+                                                      context,
+                                                      "Interest Rate",
+                                                      "${_detail.accountDetail[index].interestRate} %"),
+                                                  detailROw(
+                                                      context,
+                                                      "Accured Interest",
+                                                      "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                                ],
+                                              ),
                                             detailROw(
                                                 context,
                                                 "Acc Holder’s Name",
