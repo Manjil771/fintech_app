@@ -213,6 +213,10 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         title: "Amount",
                         value: _amountController.text,
                       ),
+                      KeyValueTile(
+                        title: "Remarks",
+                        value: _remarksController.text,
+                      ),
                     ]),
                     serviceName: "Bank Transfer",
                     message:

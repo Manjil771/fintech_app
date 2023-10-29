@@ -166,10 +166,14 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                           style: _textTheme.titleSmall,
                         ),
                       ),
+                      SizedBox(width: 20.wp),
+                      // Text(widget.iamgeUrl.toString() + "hello"),
                       CustomCachedNetworkImage(
-                          url: widget.iamgeUrl.toString(),
-                          fit: BoxFit.contain,
-                          height: 30.hp),
+                        url: widget.iamgeUrl.toString(),
+                        fit: BoxFit.contain,
+                        height: 30.hp,
+                        width: 30.wp,
+                      ),
                     ],
                   ),
 
