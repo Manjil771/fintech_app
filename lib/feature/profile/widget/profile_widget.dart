@@ -60,6 +60,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
+      showBackButton: true,
       body: ValueListenableBuilder<CustomerDetailModel?>(
           valueListenable: customerDetail,
           builder: (context, val, _) {
@@ -67,12 +68,12 @@ class _ProfileWidgetState extends State<ProfileWidget> {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  IconButton(
-                    onPressed: () {
-                      NavigationService.pop();
-                    },
-                    icon: const Icon(Icons.arrow_back),
-                  ),
+                  // IconButton(
+                  //   onPressed: () {
+                  //     NavigationService.pop();
+                  //   },
+                  //   icon: const Icon(Icons.arrow_back),
+                  // ),
                   Container(
                     decoration: BoxDecoration(
                         color: CustomTheme.white,
@@ -85,16 +86,14 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                           onTap: () {
                             showImagePickerBottomSheet(
                               onGalleryPressed: () async {
-                                final res =
-                                    await ImagePickerUtils.getGallery();
+                                final res = await ImagePickerUtils.getGallery();
                                 if (res != null) {
                                   _handleImageUpload(res);
                                 }
                                 // NavigationService.pop();
                               },
                               onCameraPressed: () async {
-                                final res =
-                                    await ImagePickerUtils.getCamera();
+                                final res = await ImagePickerUtils.getCamera();
                                 if (res != null) {
                                   _handleImageUpload(res);
                                 }
@@ -102,17 +101,29 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               },
                             );
                           },
-                          child: val.imageUrl.isEmpty
-                              ? const CircleAvatar(
-                                  radius: 50,
-                                  backgroundImage:
-                                      AssetImage(Assets.profilePicture),
-                                )
-                              : CustomRoundedImage(
-                                  height: 100,
-                                  image: val.imageUrl,
-                                  width: 100,
-                                ),
+                          child: Column(
+                            children: [
+                              val.imageUrl.isEmpty
+                                  ? const CircleAvatar(
+                                      radius: 50,
+                                      backgroundImage:
+                                          AssetImage(Assets.profilePicture),
+                                    )
+                                  : CustomRoundedImage(
+                                      height: 100,
+                                      image: val.imageUrl,
+                                      width: 100,
+                                    ),
+                              // SizedBox(height: 5.hp),
+                              Text(
+                                "Upload Image",
+                                style: _textTheme.titleSmall!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 11,
+                                    color: _theme.primaryColor),
+                              ),
+                            ],
+                          ),
                         ),
                         Expanded(
                           child: Center(
@@ -121,19 +132,18 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                               children: [
                                 Text(
                                   val.fullName,
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .displaySmall,
-                                ),
-                                Text(
-                                  val.email,
                                   style:
-                                      Theme.of(context).textTheme.titleSmall,
+                                      Theme.of(context).textTheme.displaySmall,
                                 ),
+                                if (val.email.toString().isNotEmpty)
+                                  Text(
+                                    val.email,
+                                    style:
+                                        Theme.of(context).textTheme.titleSmall,
+                                  ),
                                 Text(
                                   val.addressOne,
-                                  style:
-                                      Theme.of(context).textTheme.titleSmall,
+                                  style: Theme.of(context).textTheme.titleSmall,
                                 ),
                               ],
                             ),
