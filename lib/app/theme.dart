@@ -32,7 +32,7 @@ class CustomTheme {
   static const Color sarbahitColor = Color(0xFF26449F);
   static const Color bhanjyangColor = Color(0xFF059445);
   static const Color macchaPuchreColor = Color(0xFF188453);
-  static const Color navajoshColor = Color(0xFF017828);
+  static const Color nawajoshColor = Color(0xFF017828);
   static const Color fewaColor = Color(0xFF00984A);
   static const Color sanakishanColor = Color(0xFF009A4E);
   static const Color matribhumiColor = Color(0xFF00652E);
@@ -76,7 +76,7 @@ class CustomTheme {
   static const Color digitalCoopColor = Color(0xFF0076BC);
   static const Color upakarCoopColor = Color(0xFF009245);
 
-  static Color primaryColor = newdhaulagiriColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

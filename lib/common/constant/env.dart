@@ -947,11 +947,11 @@ class CoOperativeValue {
   static final CoOperative upakarCoop = CoOperative(
     appStoreID: "",
     packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878s
     bannerImage: "assets/upakar/upakar_banner.png",
     backgroundImage: "assets/upakar/upakar_background.png",
-    clientCode: 'XTRYL40R9O',
-    clientSecret: "219645",
+    clientCode: '84VHCKC8U3',
+    clientSecret: "159493",
     splashImage: "assets/upakar/upakar_splash.png",
     coOperativeName: 'upakar Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/upakar/upakar_logo.png',
