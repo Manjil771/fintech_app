@@ -196,7 +196,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/uttarbahini/
-    - assets/subhaSandesh/
+    # - assets/subhaSandesh/
     - assets/noor/
 
   fonts:
