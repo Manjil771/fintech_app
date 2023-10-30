@@ -25,7 +25,7 @@ dependencies:
   # google_api_availability: ^3.0.1
 
   # state management
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.0.1 
   rxdart: ^0.26.0
   logger:
 
@@ -172,7 +172,7 @@ flutter:
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
-    # - assets/golden/
+    - assets/golden/
     # - assets/nayan/hik
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
@@ -197,7 +197,7 @@ flutter:
     # - assets/sunshine/
     # - assets/uttarbahini/
     # - assets/subhaSandesh/
-    - assets/noor/
+    # - assets/noor/
 
   fonts:
     - family: popinbold
