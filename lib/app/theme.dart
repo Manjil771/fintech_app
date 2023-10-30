@@ -17,9 +17,9 @@ class CustomTheme {
   static const Color gomaganeshColor = Color(0xFF1f972b);
   static const Color shreeAajuColor = Color(0xFF00A900);
   static const Color shreeMitraColor = Color(0xFF00A551);
+  static const Color shreeNavaprabhatColor = Color(0xFF39B54A);
   static const Color kipooColor = Color(0xFF00A551);
   static const Color suryadevColor = Color(0xFF8E191C);
-  static const Color shreeNavaprabhatColor = Color(0xFF39B54A);
   static const Color uddhamshilColor = Color(0xFF24B34B);
   static const Color vyasColor = Color(0xFF2B2A6A);
   static const Color newdhaulagiriColor = Color(0xFF662D91);
@@ -79,7 +79,7 @@ class CustomTheme {
   static const Color subhaSandeshColor = Color(0xFF006837);
   static const Color noorColor = Color(0xFF003F1A);
 
-  static Color primaryColor = subhaSandeshColor;
+  static Color primaryColor = noorColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
