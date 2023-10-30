@@ -17,9 +17,9 @@ class CustomTheme {
   static const Color gomaganeshColor = Color(0xFF1f972b);
   static const Color shreeAajuColor = Color(0xFF00A900);
   static const Color shreeMitraColor = Color(0xFF00A551);
+  static const Color shreeNavaprabhatColor = Color(0xFF39B54A);
   static const Color kipooColor = Color(0xFF00A551);
   static const Color suryadevColor = Color(0xFF8E191C);
-  static const Color shreeNavaprabhatColor = Color(0xFF39B54A);
   static const Color uddhamshilColor = Color(0xFF24B34B);
   static const Color vyasColor = Color(0xFF2B2A6A);
   static const Color newdhaulagiriColor = Color(0xFF662D91);
@@ -32,7 +32,7 @@ class CustomTheme {
   static const Color sarbahitColor = Color(0xFF26449F);
   static const Color bhanjyangColor = Color(0xFF059445);
   static const Color macchaPuchreColor = Color(0xFF188453);
-  static const Color navajoshColor = Color(0xFF017828);
+  static const Color nawajoshColor = Color(0xFF017828);
   static const Color fewaColor = Color(0xFF00984A);
   static const Color sanakishanColor = Color(0xFF009A4E);
   static const Color matribhumiColor = Color(0xFF00652E);
@@ -75,8 +75,11 @@ class CustomTheme {
   static const Color paschimanchalColor = Color(0xFF2A3585);
   static const Color digitalCoopColor = Color(0xFF0076BC);
   static const Color upakarCoopColor = Color(0xFF009245);
+  static const Color uttarbahiniColor = Color(0xFF009245);
+  static const Color subhaSandeshColor = Color(0xFF006837);
+  static const Color noorColor = Color(0xFF003F1A);
 
-  static Color primaryColor = goldenCoopColor;
+  static Color primaryColor = noorColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

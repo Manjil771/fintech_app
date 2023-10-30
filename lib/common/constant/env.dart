@@ -947,13 +947,13 @@ class CoOperativeValue {
   static final CoOperative upakarCoop = CoOperative(
     appStoreID: "",
     packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878s
     bannerImage: "assets/upakar/upakar_banner.png",
     backgroundImage: "assets/upakar/upakar_background.png",
-    clientCode: 'XTRYL40R9O',
-    clientSecret: "219645",
+    clientCode: '84VHCKC8U3',
+    clientSecret: "159493",
     splashImage: "assets/upakar/upakar_splash.png",
-    coOperativeName: 'upakar Multipurpose Co-operative Ltd',
+    coOperativeName: 'Upakar Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/upakar/upakar_logo.png',
     primaryColor: const Color(0xFF0b67bb),
   );
@@ -969,6 +969,50 @@ class CoOperativeValue {
     coOperativeName: 'Sunshine Saving and Credit Co-operative Society Ltd',
     coOperativeLogo: 'assets/sunshine/sunshine_logo.png',
     splashImage: "assets/sunshine/sunshine_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative uttarbahiniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/uttarbahini/uttarbahini_banner.png",
+    backgroundImage: "assets/uttarbahini/uttarbahini_background.png",
+
+    clientCode: 'YQK7VL2FJ7',
+    clientSecret: "142120",
+    coOperativeName: 'Uttarbahini Multipurpose Co-operative LTD.',
+    coOperativeLogo: 'assets/uttarbahini/uttarbahini_logo.png',
+    splashImage: "assets/uttarbahini/uttarbahini_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative noorCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/noor/noor_banner.png",
+    backgroundImage: "assets/noor/noor_background.png",
+    clientCode: '8S1I28RT16',
+    clientSecret: "208165",
+    coOperativeName: 'NOOR Multipurpose Co-operative LTD.',
+    coOperativeLogo: 'assets/noor/noor_logo.png',
+    splashImage: "assets/noor/noor_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  //TODO need to add client id and secret
+
+  static final CoOperative subhaSandeshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/subhaSandesh/subha_sandesh_banner.png",
+    backgroundImage: "assets/subhaSandesh/subha_sandesh_background.png",
+
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    coOperativeName: 'Subha Sandesh',
+    coOperativeLogo: 'assets/subhaSandesh/subha_sandesh_logo.png',
+    splashImage: "assets/subhaSandesh/subha_sandesh_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

@@ -57,11 +57,10 @@ class WalletLoadAPIProvider {
     required String walletAccountNumber,
     required String validationIdentifier,
     required String remarks,
-
   }) async {
     final _body = {
       "desc_one": customerName,
-      "desc_two": walletAccountNumber + remarks ,
+      "desc_two": walletAccountNumber + remarks,
       "wallet_id": walletId,
       "account_number": accountNumber,
       "amount": amount,

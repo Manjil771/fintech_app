@@ -93,18 +93,12 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                           children: [
                             Expanded(
                               child: buildDetails(
-                                  context,
-                                  "Banking.svg",
-                                  "Account Type",
-                                  "${_detail.accountDetail[0].accountType} A/C"),
+                                  context, "", "Name", "${_detail.fullName}"),
                             ),
                             SizedBox(
                               width: _width * 0.4,
                               child: buildDetails(
-                                  context,
-                                  "clientcode.svg",
-                                  "Client Code",
-                                  "${_detail.accountDetail[0].id}"),
+                                  context, "", "City", "${_detail.city}"),
                             )
                           ],
                         ),
@@ -112,18 +106,12 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                           children: [
                             Expanded(
                               child: buildDetails(
-                                  context,
-                                  "accrued interest.svg",
-                                  "Accrued Interest",
-                                  "NPR ${_detail.accountDetail[0].accruedInterest}"),
+                                  context, "", "DOB", "${_detail.dateOfBirth}"),
                             ),
                             SizedBox(
                               width: _width * 0.4,
                               child: buildDetails(
-                                  context,
-                                  "interest rate profile.svg",
-                                  "Interest Rate",
-                                  "${_detail.accountDetail[0].interestRate} %"),
+                                  context, "", "Gender", "${_detail.gender} "),
                             ),
                           ],
                         ),
@@ -131,19 +119,14 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                           children: [
                             Expanded(
                               child: buildDetails(
-                                  context,
-                                  "actual balance profile page.svg",
-                                  "Actual Balance",
-                                  "NPR ${_detail.accountDetail[0].actualBalance}"),
+                                  context, "", "State", "${_detail.state}"),
                             ),
-                            SizedBox(
-                              width: _width * 0.4,
-                              child: buildDetails(
-                                  context,
-                                  "money-send-svgrepo-com 1.svg",
-                                  "Available Bal.",
-                                  "NPR ${_detail.accountDetail[0].availableBalance}"),
-                            ),
+                            if (_detail.email.isNotEmpty)
+                              SizedBox(
+                                width: _width * 0.4,
+                                child: buildDetails(
+                                    context, "", "Email", "${_detail.email}"),
+                              ),
                           ],
                         )
                       ],

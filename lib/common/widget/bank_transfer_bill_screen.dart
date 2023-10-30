@@ -2,28 +2,24 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/bank_transfer_receipt.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
+import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+
+import 'custom_cached_network_image.dart';
 
 class BankTransferBillPage extends StatelessWidget {
   final String? charge;
+  final String? imageUrl;
   final String? amount;
   final String serviceName;
   final String? remarks;
@@ -33,19 +29,20 @@ class BankTransferBillPage extends StatelessWidget {
   final String? bankName;
   final Widget body;
   final String message;
-
-  BankTransferBillPage(
-      {super.key,
-      required this.body,
-      this.charge,
-      this.amount,
-      this.remarks,
-      this.bankCode,
-      this.accountName,
-      this.accountNumber,
-      this.bankName,
-      required this.serviceName,
-      required this.message});
+  BankTransferBillPage({
+    super.key,
+    required this.body,
+    this.charge,
+    this.amount,
+    this.remarks,
+    this.bankCode,
+    this.accountName,
+    this.accountNumber,
+    this.bankName,
+    required this.serviceName,
+    required this.message,
+    this.imageUrl,
+  });
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -58,6 +55,7 @@ class BankTransferBillPage extends StatelessWidget {
             RepositoryProvider.of<SendToBankRepository>(context),
       ),
       child: BankTransferBillWidget(
+        iamgeUrl: imageUrl,
         accountName: accountName,
         message: message,
         accountNumber: accountNumber,
@@ -75,10 +73,11 @@ class BankTransferBillPage extends StatelessWidget {
 
 class BankTransferBillWidget extends StatefulWidget {
   final Widget body;
+
   final String? charge;
   final String? amount;
   final String serviceName;
-
+  final String? iamgeUrl;
   final String message;
   final String? remarks;
   final String? bankCode;
@@ -98,6 +97,7 @@ class BankTransferBillWidget extends StatefulWidget {
     this.bankName,
     required this.serviceName,
     required this.message,
+    required this.iamgeUrl,
   });
 
   @override
@@ -111,8 +111,10 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     final _width = SizeUtils.width;
-
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
     return PageWrapper(
+      showBackButton: true,
       body: BlocListener<SendToBankCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && _isLoading == false) {
@@ -156,33 +158,26 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  IconButton(
-                      onPressed: () {
-                        NavigationService.pop();
-                      },
-                      icon: Icon(Icons.arrow_back)),
-                  Center(
-                    child: Image.asset(
-                      Assets.moneyTransferIcon,
-                      height: _height * 0.08,
-                    ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: Text(
+                          widget.message,
+                          style: _textTheme.titleSmall,
+                        ),
+                      ),
+                      SizedBox(width: 20.wp),
+                      // Text(widget.iamgeUrl.toString() + "hello"),
+                      CustomCachedNetworkImage(
+                        url: widget.iamgeUrl.toString(),
+                        fit: BoxFit.contain,
+                        height: 30.hp,
+                        width: 30.wp,
+                      ),
+                    ],
                   ),
-                  SizedBox(height: _height * 0.02),
-                  Center(
-                    child: Text(
-                      widget.serviceName,
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
-                    ),
-                  ),
-                  SizedBox(height: _height * 0.02),
-                  Text(
-                      "Details about the payable amount for the service of ${widget.serviceName} is shown below.",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleSmall),
-                  SizedBox(height: _height * 0.02),
+
+                  SizedBox(height: _height * 0.01),
                   const Divider(thickness: 1),
                   SizedBox(height: _height * 0.02),
                   Container(
@@ -220,19 +215,14 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                                   remarks: widget.remarks ?? "",
                                   destinationBankInstrumentCode:
                                       widget.bankCode ?? "",
-                                  // bestMatchBankId ??
-                                  //     (widget.bankCode == null
-                                  //         ? selectedBank?.bankId ?? ""
-                                  //         : widget.bankCode.toString()),
+
                                   destinationBankAccountName:
                                       widget.accountName ?? "",
 
                                   destinationBankAccountNumber:
                                       widget.accountNumber ?? "",
                                   destinationBankName: widget.bankName ?? "",
-                                  // destinationBankName: widget.bankCode == null
-                                  //     ? selectedBank?.bankName ?? ""
-                                  //     : widget.bankName ?? "ismart",
+
                                   sendingAccount: RepositoryProvider.of<
                                           CustomerDetailRepository>(context)
                                       .selectedAccount

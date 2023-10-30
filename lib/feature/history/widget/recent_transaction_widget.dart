@@ -97,36 +97,37 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                 .generateUrl(
                                   transactionId: _detail.transactionIdentifier,
                                 );
-                            RepositoryProvider.of<CoOperative>(
-                                            NavigationService.context)
-                                        .clientCode ==
-                                    "EHVNI7CZJ3"
-                                ? NavigationService.push(
-                                    target: TransactionDetailWidget(
-                                    downloadUrlNotifier: _downloadNotifierValue,
-                                    recentTransactionModel: _detail,
-                                  ))
-                                : showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return Dialog(
-                                        insetPadding:
-                                            const EdgeInsets.symmetric(
-                                                horizontal: 18),
-                                        child: Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              vertical: 10),
-                                          width: double.infinity,
-                                          // height: _height * 0.5,
-                                          child: TransactionDetailAlertWidget(
-                                            recentTransactionModel: _detail,
-                                            downloadUrlNotifier:
-                                                _downloadNotifierValue,
-                                          ),
-                                        ),
-                                      );
-                                    },
-                                  );
+                            // RepositoryProvider.of<CoOperative>(
+                            //                 NavigationService.context)
+                            //             .clientCode ==
+                            //         "EHVNI7CZJ3"
+                            //     ?
+                            NavigationService.push(
+                                target: TransactionDetailWidget(
+                              downloadUrlNotifier: _downloadNotifierValue,
+                              recentTransactionModel: _detail,
+                            ));
+                            // : showDialog(
+                            //     context: context,
+                            //     builder: (context) {
+                            //       return Dialog(
+                            //         insetPadding:
+                            //             const EdgeInsets.symmetric(
+                            //                 horizontal: 18),
+                            //         child: Container(
+                            //           padding: const EdgeInsets.symmetric(
+                            //               vertical: 10),
+                            //           width: double.infinity,
+                            //           // height: _height * 0.5,
+                            //           child: TransactionDetailAlertWidget(
+                            //             recentTransactionModel: _detail,
+                            //             downloadUrlNotifier:
+                            //                 _downloadNotifierValue,
+                            //           ),
+                            //         ),
+                            //       );
+                            //     },
+                            //   );
                             // NavigationService.push(
                             //   target: TransactionDetailScreen(
                             //     recentTransactionModel: _detail,

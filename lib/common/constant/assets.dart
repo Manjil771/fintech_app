@@ -1,5 +1,13 @@
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+
 class Assets {
-  static const String logoImage = "assets/ismartlogo.png";
+  static String logoImage =
+      RepositoryProvider.of<CoOperative>(NavigationService.context)
+          .coOperativeLogo;
+
+  // static const String logoImage = "assets/ismartlogo.png";
   static const String splashImage = "assets/images/splashscreen.jpg";
 
   static const String fingerPrintImage = "assets/icons/fingerprint_setup.svg";

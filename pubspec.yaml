@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.30+30 ##gomaganesh
+version: 0.0.33+33 ##gomaganesh
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -25,7 +25,7 @@ dependencies:
   # google_api_availability: ^3.0.1
 
   # state management
-  flutter_bloc: ^8.0.1
+  flutter_bloc: ^8.0.1 
   rxdart: ^0.26.0
   logger:
 
@@ -101,101 +101,103 @@ flutter:
     - assets/icons/
     - assets/events/
     - assets/images/
-    - assets/janadhara/
-    - assets/sahakarya/
-    - assets/kabil/
-    - assets/uttarganga/
-    - assets/abhiyan/
-    - assets/kamana/
-    - assets/arthaBag/
-    - assets/gomaGanesh/
-    - assets/alankar/
-    - assets/manank/
-    - assets/shreeaaju/
-    - assets/shreemitra/
-    - assets/kipoo/
-    - assets/suryadev/
-    - assets/uddhamshil/
-    - assets/navaprabhat/
-    - assets/vyas/
-    - assets/newdhaulagiri/
-    - assets/shreejanamukhi/
-    - assets/bishal/
-    - assets/ekata/
-    - assets/sardikhola/
-    - assets/kripalu/
-    - assets/sarbahit/
-    - assets/bhanjyang/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/matribhumi/
-    - assets/gandakibesi/
-    - assets/batika/
-    - assets/sarbahit/
-    - assets/sardikhola/
-    - assets/kripalu/
-    - assets/sarbahit/
-    - assets/bhanjyang/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/gandakibesi/
-    - assets/batika/
-    - assets/bhugol/
-    - assets/nepalbachat/
-    - assets/nilgiri/
-    - assets/davisfall/
-    - assets/sanchar/
-    - assets/hamiSabaikokrishi/
-    - assets/macchaPuchhre/
-    - assets/nawajosh/
-    - assets/fewa/
-    - assets/matribhumi/
-    - assets/gandakibesi/
-    - assets/batika/
-    - assets/bhugol/
-    - assets/nepalbachat/
-    - assets/nilgiri/
-    - assets/davisfall/
-    - assets/sanchar/
-    - assets/rumjatar/
-    - assets/supreme/
-    - assets/iconsoftCoop/
-    - assets/sagarmatha/
-    - assets/royalGorkha/
-    - assets/buddhaCoop/
-    - assets/sanakishan/
-    - assets/punja/
-    - assets/immanuel/
-    - assets/thankotMahilaJagaran/
-    - assets/bishnudol/
-    - assets/annapurna/
-    - assets/kanchanjungha/
-    - assets/janasewa/
+    # - assets/janadhara/
+    # - assets/sahakarya/
+    # - assets/kabil/
+    # - assets/uttarganga/
+    # - assets/abhiyan/
+    # - assets/kamana/
+    # - assets/arthaBag/
+    # - assets/gomaGanesh/
+    # - assets/alankar/
+    # - assets/manank/
+    # - assets/shreeaaju/
+    # - assets/shreemitra/
+    # - assets/kipoo/
+    # - assets/suryadev/
+    # - assets/uddhamshil/
+    # - assets/navaprabhat/
+    # - assets/vyas/
+    # - assets/newdhaulagiri/
+    # - assets/shreejanamukhi/
+    # - assets/bishal/
+    # - assets/ekata/
+    # - assets/sardikhola/
+    # - assets/kripalu/
+    # - assets/sarbahit/
+    # - assets/bhanjyang/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/matribhumi/
+    # - assets/gandakibesi/
+    # - assets/sarbahit/
+    # - assets/sardikhola/
+    # - assets/kripalu/
+    # - assets/sarbahit/
+    # - assets/bhanjyang/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/gandakibesi/
+    # - assets/batika/
+    # - assets/bhugol/
+    # - assets/nepalbachat/
+    # - assets/nilgiri/
+    # - assets/davisfall/
+    # - assets/sanchar/
+    # - assets/hamiSabaikokrishi/
+    # - assets/macchaPuchhre/
+    # - assets/nawajosh/
+    # - assets/fewa/
+    # - assets/matribhumi/
+    # - assets/gandakibesi/
+    # - assets/batika/
+    # - assets/bhugol/
+    # - assets/nepalbachat/
+    # - assets/nilgiri/
+    # - assets/davisfall/
+    # - assets/sanchar/
+    # - assets/rumjatar/
+    # - assets/supreme/
+    # - assets/iconsoftCoop/
+    # - assets/sagarmatha/
+    # - assets/royalGorkha/
+    # - assets/buddhaCoop/
+    # - assets/sanakishan/
+    # - assets/punja/
+    # - assets/immanuel/
+    # - assets/thankotMahilaJagaran/
+    # - assets/bishnudol/
+    # - assets/annapurna/
+    # - assets/kanchanjungha/
+    # - assets/janasewa/
     - assets/golden/
-    - assets/nayan/
-    - assets/rithepani/
-    - assets/shreeSubhakamana/
-    - assets/bishalMulti/
-    - assets/shreeMyagde/
-    - assets/aarati/
-    - assets/vaidhik/
-    - assets/shreeKalika/
-    - assets/shreeHemja/
-    - assets/subhodaya/
-    - assets/garimaAgri/
-    - assets/aastha/
-    - assets/sunshine/
-    - assets/paschimanchal/
-    - assets/chirayu/
-    - assets/digitalCoop/
-    - assets/upakar/
-    - assets/shreeHemja/
-    - assets/subhodaya/
-    - assets/garimaAgri/
-    - assets/aastha/
-    - assets/sunshine/
+    # - assets/nayan/hik
+    # - assets/rithepani/
+    # - assets/shreeSubhakamana/
+    # - assets/bishalMulti/
+    # - assets/shreeMyagde/
+    # - assets/aarati/
+    # - assets/vaidhik/
+    # - assets/shreeKalika/
+    # - assets/shreeHemja/
+    # - assets/subhodaya/
+    # - assets/garimaAgri/
+    # - assets/aastha/
+    # - assets/sunshine/
+    # - assets/paschimanchal/
+    # - assets/chirayu/
+    # - assets/digitalCoop/
+    # - assets/upakar/
+    # - assets/shreeHemja/
+    # - assets/subhodaya/
+    # - assets/garimaAgri/
+    # - assets/aastha/
+    # - assets/sunshine/
+    # - assets/uttarbahini/
+    # - assets/subhaSandesh/
+    # - assets/noor/
 
   fonts:
     - family: popinbold

@@ -1,13 +1,10 @@
-import 'dart:async';
-import 'dart:typed_data';
+import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_cache_manager/file.dart';
-// import 'package:flutter_pdfview/flutter_pdfview.dart';
-import 'package:http/http.dart' as http;
+import 'package:image_picker/image_picker.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
@@ -18,49 +15,62 @@ class ExternalQrWidget extends StatefulWidget {
   final String qrPath;
 
   const ExternalQrWidget({super.key, required this.qrPath});
+
   @override
-  _ExternalQrWidget createState() => _ExternalQrWidget();
+  _ExternalQrWidgetState createState() => _ExternalQrWidgetState();
 }
 
-class _ExternalQrWidget extends State<ExternalQrWidget> {
-  final GlobalKey<SfPdfViewerState> _pdfViewerKey = GlobalKey();
-
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  final ScreenshotController screenShotController = ScreenshotController();
+class _ExternalQrWidgetState extends State<ExternalQrWidget> {
+  final screenShotController = ScreenshotController();
+  XFile? imageFile;
 
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-
     return Column(
       children: [
         Expanded(
           child: Screenshot(
             controller: screenShotController,
-            child: SfPdfViewer.network(
-              "${RepositoryProvider.of<CoOperative>(context).baseUrl}${widget.qrPath}",
-            ),
+            child: buildWidget(),
           ),
         ),
         CustomRoundedButtom(
           title: "Share",
           onPressed: () async {
-            screenShotController
-                .capture(delay: Duration(milliseconds: 10))
-                .then((capturedImage) async {
-              final file = Image.memory(capturedImage!);
-              if (file != null) {
-                Share.share(file.toString());
-              }
-            });
-            // await Share.share();
+            takeScreenshot();
           },
-        )
+        ),
       ],
     );
+  }
+
+  Widget buildWidget() {
+    return SfPdfViewer.network(
+      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${widget.qrPath}",
+    );
+  }
+
+  takeScreenshot() async {
+    final image = await screenShotController.capture();
+    final tempFile = await _createTempImageFile(image!);
+
+    if (tempFile != null) {
+      Share.shareFiles([tempFile.path]);
+    }
+  }
+
+  Future<XFile?> _createTempImageFile(Uint8List image) async {
+    try {
+      final directory = await getTemporaryDirectory();
+      const tempFileName = 'screenshot.png';
+      final tempFilePath = '${directory.path}/$tempFileName';
+
+      await File(tempFilePath).writeAsBytes(image);
+
+      return XFile(tempFilePath);
+    } catch (e) {
+      print('Error creating temp image file: $e');
+      return null;
+    }
   }
 }
