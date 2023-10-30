@@ -195,7 +195,9 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    - assets/uttarbahini/
+    # - assets/uttarbahini/
+    - assets/subhaSandesh/
+    - assets/noor/
 
   fonts:
     - family: popinbold
