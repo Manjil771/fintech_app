@@ -998,6 +998,19 @@ class CoOperativeValue {
     splashImage: "assets/noor/noor_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative sudarshanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sudarshan/sudarshan_banner.png",
+    backgroundImage: "assets/sudarshan/sudarshan_background.png",
+    clientCode: 'AWXKVB17TV',
+    clientSecret: "189674",
+    coOperativeName: 'Sudarshan Saving and Credit Co-operative Limited',
+    coOperativeLogo: 'assets/sudarshan/sudarshan_logo.png',
+    splashImage: "assets/sudarshan/sudarshan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
   //TODO need to add client id and secret
 
