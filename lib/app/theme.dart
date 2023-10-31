@@ -80,7 +80,6 @@ class CustomTheme {
   static const Color noorColor = Color(0xFF003F1A);
   static const Color sudarshanColor = Color(0xFF006837);
 
-
   static Color primaryColor = sudarshanColor;
 
   static const double symmetricHozPadding = 13.0;
