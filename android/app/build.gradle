@@ -67,6 +67,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        upakar {
+            dimension "app"
+            applicationId "com.devanasoft.upakar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         digitalCoop {
             dimension "app"
             applicationId "com.devanasoft.digitalCoop"

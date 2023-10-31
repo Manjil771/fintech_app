@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.33+33 ##gomaganesh
+version: 0.0.34+34 ##gomaganesh
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -25,7 +25,7 @@ dependencies:
   # google_api_availability: ^3.0.1
 
   # state management
-  flutter_bloc: ^8.0.1 
+  flutter_bloc: ^8.0.1
   rxdart: ^0.26.0
   logger:
 
@@ -189,7 +189,7 @@ flutter:
     # - assets/paschimanchal/
     # - assets/chirayu/
     # - assets/digitalCoop/
-    # - assets/upakar/
+    - assets/upakar/
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
