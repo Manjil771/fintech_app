@@ -172,7 +172,7 @@ flutter:
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
-    - assets/golden/
+    # - assets/golden/
     # - assets/nayan/hik
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
@@ -181,21 +181,21 @@ flutter:
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
-    - assets/shreeHemja/
-    # - assets/subhodaya/
-    # - assets/garimaAgri/
-    - assets/aastha/
-    # - assets/sunshine/
-    # - assets/paschimanchal/
-    # - assets/chirayu/
-    # - assets/digitalCoop/
-    - assets/upakar/
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    - assets/uttarbahini/
+    # - assets/paschimanchal/
+    # - assets/chirayu/
+    # - assets/digitalCoop/
+    # - assets/upakar/
+    # - assets/shreeHemja/
+    # - assets/subhodaya/
+    # - assets/garimaAgri/
+    # - assets/aastha/
+    - assets/sunshine/
+    # - assets/uttarbahini/
     # - assets/subhaSandesh/
     # - assets/noor/
 

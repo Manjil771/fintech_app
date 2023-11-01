@@ -8,14 +8,12 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
-import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
-import 'package:ismart/feature/receiveMoney/remit/screen/remittance_page.dart';
-import 'package:ismart/feature/receiveMoney/remit/widget/remittance_widget.dart';
 
 class ReceiveMoneyWidget extends StatefulWidget {
   const ReceiveMoneyWidget({Key? key}) : super(key: key);
@@ -113,50 +111,14 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                   leadingImage: Assets.bankTransfer,
                                 ),
                                 const Divider(thickness: 1),
-                                // CommonDetailBox(
-                                //   onBoxPressed: () {
-                                //     NavigationService.pushNamed(
-                                //         routeName: Routes.loadViaCard);
-                                //   },
-                                //   title: "Load via Card",
-                                //   detail:
-                                //       "Load fund instantly from the card.",
-                                //   leadingIcon: Assets.cardIcon,
-                                // ),
-                                // const Divider(thickness: 1),
                               ],
                             )
-                          : Container(),
+                          : const NoDataScreen(
+                              title: "Services unavailable now.",
+                              details:
+                                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+                            ),
                     ),
-                    // Column(
-                    //   children: filteredItems.map((e) {
-                    //     return Column(
-                    //       children: [
-                    //         CommonDetailBox(
-                    //           onBoxPressed: () {
-                    //             NavigationService.pushNamed(
-                    //                 routeName: Routes.internetbanking);
-                    //           },
-                    //           title: "Internet Banking",
-                    //           detail:
-                    //               "Make financial transactions through internet using your preferred devices.",
-                    //           leadingIcon: Assets.bankTransfer,
-                    //         ),
-                    //         const Divider(thickness: 1),
-                    //         CommonDetailBox(
-                    //           onBoxPressed: () {
-                    //             NavigationService.pushNamed(
-                    //                 routeName: Routes.loadViaCard);
-                    //           },
-                    //           title: "Load via Card",
-                    //           detail: "Load fund instantly from the card.",
-                    //           leadingIcon: Assets.cardIcon,
-                    //         ),
-                    //         const Divider(thickness: 1),
-                    //       ],
-                    //     );
-                    //   }).toList(),
-                    // ),
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: filteredItems.length,
@@ -219,7 +181,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                               detail: checkDesc(
                                   filteredItems[index].uniqueIdentifier),
                             ),
-                            Divider(thickness: 1)
+                            const Divider(thickness: 1)
                           ],
                         );
                       },
@@ -229,7 +191,11 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                 showTitleText: false,
                 topbarName: "Receive Money");
           } else {
-            return Container();
+            return const NoDataScreen(
+              title: "Services unavailable now.",
+              details:
+                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+            );
           }
         },
       ),
