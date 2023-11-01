@@ -56,12 +56,12 @@ class SettingWidget extends StatelessWidget {
                   detail: "Change mPin frequently to be secure",
                   title: "Change mPin"),
               const Divider(thickness: 1),
-              CommonDetailBox(
-                  leadingImage: "assets/icons/Vector-3.svg",
-                  onBoxPressed: () {},
-                  detail: "OTP Validations",
-                  title: "Validations"),
-              const Divider(thickness: 1),
+              // CommonDetailBox(
+              //     leadingImage: "assets/icons/Vector-3.svg",
+              //     onBoxPressed: () {},
+              //     detail: "OTP Validations",
+              //     title: "Validations"),
+              // const Divider(thickness: 1),
               CommonDetailBox(
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
@@ -87,6 +87,8 @@ class SettingWidget extends StatelessWidget {
                 title: "Logout",
                 detail: "Logout from this application.",
               ),
+              const Divider(thickness: 1),
+
               // CommonDetailBox(
               //     leadingIcon: "assets/icons/biometricsetup.svg",
               //     onBoxPressed: () {},

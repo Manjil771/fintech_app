@@ -665,7 +665,7 @@ class CoOperativeValue {
     backgroundImage: "assets/kanchanjungha/kanchanjungha_background.png",
     clientCode: 'WBSSRVSEB9',
     clientSecret: "187636",
-    coOperativeName: 'Kanchanjangha',
+    coOperativeName: 'Kanchanjangha Multipurpose Co-operative Ltd	',
     coOperativeLogo: 'assets/kanchanjungha/kanchanjungha_logo.png',
     splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
     primaryColor: const Color(0xFF0b67bb),
@@ -846,7 +846,7 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeKalika/shreeKalika_background.png",
     clientCode: 'J0JDLK7OFX',
     clientSecret: "132342",
-    coOperativeName: 'shreeKalika Multipurpose Cooperative Ltd',
+    coOperativeName: 'ShreeKalika Saving and Credit Cooperative Ltd	',
     coOperativeLogo: 'assets/shreeKalika/shreeKalika_logo.png',
 
     splashImage: "assets/shreeKalika/shreeKalika_splash.png",
@@ -923,10 +923,10 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/paschimanchal/paschimanchal_banner.png",
     backgroundImage: "assets/paschimanchal/paschimanchal_background.png",
-    clientCode: 'XTRYL40R9O',
-    clientSecret: "219645",
+    clientCode: '7FF8IH0E1S',
+    clientSecret: "157999",
     splashImage: "assets/paschimanchal/paschimanchal_splash.png",
-    coOperativeName: 'paschimanchal Multipurpose Co-operative Ltd',
+    coOperativeName: 'Paschimanchal Health Cooperative	',
     coOperativeLogo: 'assets/paschimanchal/paschimanchal_logo.png',
     primaryColor: const Color(0xFF0b67bb),
   );
@@ -1012,20 +1012,18 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
-  //TODO need to add client id and secret
-
-  static final CoOperative subhaSandeshCoop = CoOperative(
+  static final CoOperative shubhaSandeshCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/subhaSandesh/subha_sandesh_banner.png",
-    backgroundImage: "assets/subhaSandesh/subha_sandesh_background.png",
+    bannerImage: "assets/shubhaSandesh/shubha_sandesh_banner.png",
+    backgroundImage: "assets/shubhaSandesh/shubha_sandesh_background.png",
 
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    coOperativeName: 'Subha Sandesh',
-    coOperativeLogo: 'assets/subhaSandesh/subha_sandesh_logo.png',
-    splashImage: "assets/subhaSandesh/subha_sandesh_splash.png",
+    clientCode: 'JCJY7XP42T',
+    clientSecret: "149163",
+    coOperativeName: 'Shubha Sandesh Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/shubhaSandesh/shubha_sandesh_logo.png',
+    splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
