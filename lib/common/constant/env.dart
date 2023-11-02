@@ -1026,7 +1026,19 @@ class CoOperativeValue {
     splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-
+  static final CoOperative metrangCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/metrang/metrang_banner.png",
+    backgroundImage: "assets/metrang/metrang_background.png",
+    clientCode: 'I6ZCYOGUFO',
+    clientSecret: "173517",
+    coOperativeName: 'Metrang Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/metrang/metrang_logo.png',
+    splashImage: "assets/metrang/metrang_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //TODO need to add client id and secret
   static final CoOperative aaratiCoop = CoOperative(
     appStoreID: "",

@@ -128,7 +128,7 @@ flutter:
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/sarbahit/
     # - assets/sardikhola/
@@ -193,9 +193,10 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/uttarbahini/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/sudarshan/
+    # - assets/metrang/
 
   fonts:
     - family: popinbold
