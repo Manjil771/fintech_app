@@ -72,10 +72,9 @@ class ActivateAccountWidget extends StatelessWidget {
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pushReplacementNamed(
-                      routeName: Routes.loanPage);
+                      routeName: Routes.loginPage);
                 },
               );
-              print("state is ${state}");
             }
           },
           child: ListView(
