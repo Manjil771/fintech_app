@@ -1039,6 +1039,33 @@ class CoOperativeValue {
     splashImage: "assets/metrang/metrang_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative indreniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/indreni/indreni_banner.png",
+    backgroundImage: "assets/indreni/indreni_background.png",
+    clientCode: 'PLKPBMSN7M',
+    clientSecret: "194012",
+    coOperativeName: 'Indreni Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/indreni/indreni_logo.png',
+    splashImage: "assets/indreni/indreni_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative sanakishanHathasuwaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_banner.png",
+    backgroundImage:
+        "assets/sanakishanHathasuwa/sanakisan_hathasuwa_background.png",
+    clientCode: 'S2KWS4JMTT',
+    clientSecret: "141752",
+    coOperativeName: 'Sana Kisan Agriculture Cooperative Ltd Hathausa',
+    coOperativeLogo: 'assets/sanakishanHathasuwa/sanakisan_hathasuwa_logo.png',
+    splashImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //TODO need to add client id and secret
   static final CoOperative aaratiCoop = CoOperative(
     appStoreID: "",
