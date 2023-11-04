@@ -79,7 +79,7 @@ class CustomTheme {
   static const Color subhaSandeshColor = Color(0xFF006837);
   static const Color noorColor = Color(0xFF003F1A);
 
-  static Color primaryColor = noorColor;
+  static Color primaryColor = subhaSandeshColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

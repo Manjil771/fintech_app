@@ -195,8 +195,8 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    # - assets/uttarbahini/
-    # - assets/subhaSandesh/
+    - assets/uttarbahini/
+    - assets/subhaSandesh/
     - assets/noor/
 
   fonts:
