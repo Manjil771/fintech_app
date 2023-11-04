@@ -204,9 +204,8 @@ flutter:
     - assets/sanakishanHathasuwa/
 
     - assets/uttarbahini/
-    - assets/subhaSandesh/
+    - assets/shubhaSandesh/
     - assets/noor/
-
 
   fonts:
     - family: popinbold
