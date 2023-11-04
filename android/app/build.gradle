@@ -61,9 +61,57 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        noor {
+            dimension "app"
+            applicationId "com.devanasoft.noor"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        paschimanchal {
+            dimension "app"
+            applicationId "com.devanasoft.paschimanchal"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        subhaSandesh {
+            dimension "app"
+            applicationId "com.devanasoft.subhaSandesh"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sunshine {
+            dimension "app"
+            applicationId "com.devanasoft.sunshine"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aastha {
+            dimension "app"
+            applicationId "com.devanasoft.aastha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         arthabag {
             dimension "app"
             applicationId "com.devanasoft.arthabag"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeHemja {
+            dimension "app"
+            applicationId "com.devanasoft.shreeHemja"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        uttarbahini {
+            dimension "app"
+            applicationId "com.devanasoft.uttarbahini"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        upakar {
+            dimension "app"
+            applicationId "com.devanasoft.upakar"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

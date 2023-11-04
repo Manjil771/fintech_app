@@ -1,20 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
-import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
 
 class SendMoneyWidget extends StatefulWidget {
   const SendMoneyWidget({Key? key}) : super(key: key);
@@ -140,7 +138,11 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                 showTitleText: false,
                 topbarName: "Send Money");
           } else {
-            return Container();
+            return const NoDataScreen(
+              title: "Services unavailable now.",
+              details:
+                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+            );
           }
         },
       ),

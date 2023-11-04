@@ -13,7 +13,7 @@ Future<void> main() async {
 
   runZonedGuarded(() {
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.arthaBagCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.upakarCoop)),
     );
   }, (e, s) {
     Log.e(e);

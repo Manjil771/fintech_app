@@ -51,18 +51,20 @@ class SettingWidget extends StatelessWidget {
               CommonDetailBox(
                   leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
                   onBoxPressed: () {
-                    NavigationService.push(target: ChangeMpinPage());
+                    NavigationService.push(target: const ChangeMpinPage());
                   },
                   detail: "Change mPin frequently to be secure",
                   title: "Change mPin"),
-              const Divider(thickness: 1),
+              // const Divider(thickness: 1),
               // CommonDetailBox(
               //     leadingImage: "assets/icons/Vector-3.svg",
               //     onBoxPressed: () {},
               //     detail: "OTP Validations",
               //     title: "Validations"),
-              // const Divider(thickness: 1),
-              CommonDetailBox(
+              const Divider(thickness: 1),
+
+              const CommonDetailBox(
+
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
