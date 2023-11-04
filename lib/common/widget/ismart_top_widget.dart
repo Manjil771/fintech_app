@@ -27,14 +27,9 @@ class IsmartTopWidget extends StatelessWidget {
           ),
         ),
         SizedBox(width: _width * 0.1),
-        InkWell(
-          onTap: () {
-            // TODO Manage Navigation
-          },
-          child: SvgPicture.asset(
-            Assets.translateImage,
-            height: _height * 0.03,
-          ),
+        SvgPicture.asset(
+          Assets.translateImage,
+          height: _height * 0.03,
         ),
         SizedBox(width: 15.hp),
         SvgPicture.asset(

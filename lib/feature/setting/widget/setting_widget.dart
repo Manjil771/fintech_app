@@ -62,7 +62,9 @@ class SettingWidget extends StatelessWidget {
               //     detail: "OTP Validations",
               //     title: "Validations"),
               const Divider(thickness: 1),
+
               const CommonDetailBox(
+
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
@@ -87,6 +89,8 @@ class SettingWidget extends StatelessWidget {
                 title: "Logout",
                 detail: "Logout from this application.",
               ),
+              const Divider(thickness: 1),
+
               // CommonDetailBox(
               //     leadingIcon: "assets/icons/biometricsetup.svg",
               //     onBoxPressed: () {},

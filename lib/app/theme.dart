@@ -76,8 +76,14 @@ class CustomTheme {
   static const Color digitalCoopColor = Color(0xFF0076BC);
   static const Color upakarCoopColor = Color(0xFF009245);
   static const Color uttarbahiniColor = Color(0xFF009245);
-  static const Color subhaSandeshColor = Color(0xFF006837);
+  static const Color shubhaSandeshColor = Color(0xFF006837);
   static const Color noorColor = Color(0xFF003F1A);
+  static const Color sudarshanColor = Color(0xFF006837);
+  static const Color metrangColor = Color(0xFF006837);
+  static const Color sanakishanHathasuwaColor = Color(0xFF009A4E);
+
+  static const Color indreniColor = Color(0xFF2C732E);
+
 
   static Color primaryColor = subhaSandeshColor;
 
