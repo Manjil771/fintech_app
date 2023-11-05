@@ -81,10 +81,10 @@ class CustomTheme {
   static const Color sudarshanColor = Color(0xFF006837);
   static const Color metrangColor = Color(0xFF006837);
   static const Color sanakishanHathasuwaColor = Color(0xFF009A4E);
-
   static const Color indreniColor = Color(0xFF2C732E);
+  static const Color jharanaColor = Color(0xFF2C732E);
 
-  static Color primaryColor = shubhodayaColor;
+  static Color primaryColor = jharanaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

@@ -1066,7 +1066,23 @@ class CoOperativeValue {
     splashImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
   //TODO need to add client id and secret
+  static final CoOperative jharanaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/jharana/jharana_banner.png",
+    backgroundImage: "assets/jharana/jharana_background.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    coOperativeName: 'jharana Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/jharana/jharana_logo.png',
+    splashImage: "assets/jharana/jharana_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  //TODO need to add client id and secret
+
   static final CoOperative aaratiCoop = CoOperative(
     appStoreID: "",
     packageName: "",

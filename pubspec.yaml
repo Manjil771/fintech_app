@@ -190,7 +190,7 @@ flutter:
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    - assets/subhodaya/
+    # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
@@ -200,11 +200,12 @@ flutter:
     # - assets/noor/
     # - assets/sudarshan/
     # - assets/metrang/
-    - assets/indreni/
-    - assets/sanakishanHathasuwa/
-    - assets/uttarbahini/
-    - assets/shubhaSandesh/
-    - assets/noor/
+    # - assets/indreni/
+    # - assets/sanakishanHathasuwa/
+    # - assets/uttarbahini/
+    # - assets/shubhaSandesh/
+    # - assets/noor/
+    - assets/jharana/
 
   fonts:
     - family: popinbold
