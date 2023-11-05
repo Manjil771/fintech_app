@@ -206,6 +206,8 @@ flutter:
     # - assets/shubhaSandesh/
     # - assets/noor/
     - assets/jharana/
+    - assets/chaughada/
+    - assets/avatar/
 
   fonts:
     - family: popinbold

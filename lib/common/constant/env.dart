@@ -1066,17 +1066,41 @@ class CoOperativeValue {
     splashImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-
-  //TODO need to add client id and secret
+  static final CoOperative avatarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/avatar/avatar_banner.png",
+    backgroundImage: "assets/avatar/avatar_background.png",
+    clientCode: '5X3VCMWQN0',
+    clientSecret: "111255",
+    coOperativeName: 'avatar Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/avatar/avatar_logo.png',
+    splashImage: "assets/avatar/avatar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative chaughadaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/chaughada/chaughada_banner.png",
+    backgroundImage: "assets/chaughada/chaughada_background.png",
+    clientCode: '315US6F1SX',
+    clientSecret: "114273",
+    coOperativeName: 'Chaughada Saving & Credit Co-Operative Society Ltd.',
+    coOperativeLogo: 'assets/chaughada/chaughada_logo.png',
+    splashImage: "assets/chaughada/chaughada_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative jharanaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/jharana/jharana_banner.png",
     backgroundImage: "assets/jharana/jharana_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    coOperativeName: 'jharana Saving & Credit Co-operative Ltd.',
+    clientCode: 'CTYB8TKXX0',
+    clientSecret: "208577",
+    coOperativeName: 'Jharana Saving and Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/jharana/jharana_logo.png',
     splashImage: "assets/jharana/jharana_splash.png",
     primaryColor: const Color(0xFF0b67bb),
