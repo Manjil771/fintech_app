@@ -87,7 +87,9 @@ class CustomTheme {
   static const Color chaughadaColor = Color(0xFF04A34F);
   static const Color hetaudaColor = Color(0xFF009245);
 
+
   static Color primaryColor = metrangColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

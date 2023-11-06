@@ -184,7 +184,7 @@ flutter:
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
-    # - assets/paschimanchal/
+    - assets/paschimanchal/
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
@@ -202,10 +202,12 @@ flutter:
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
+
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
+
 
   fonts:
     - family: popinbold

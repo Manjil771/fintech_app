@@ -99,7 +99,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
+              NavigationService.pop();
             },
+            buttonText: "Okay",
           );
         }
 
@@ -166,12 +168,15 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
             }
           } else {
             showPopUpDialog(
-                context: context,
-                message: _response.message,
-                title: _response.status,
-                buttonCallback: () {
-                  NavigationService.pop();
-                });
+              context: context,
+              message: _response.message,
+              title: _response.status,
+              buttonCallback: () {
+                NavigationService.pop();
+                NavigationService.pop();
+              },
+              buttonText: "Okay",
+            );
           }
         }
       },
