@@ -26,7 +26,7 @@ class CustomTheme {
   static const Color shreejanamukhiColor = Color(0xFF017828);
   static const Color uttargangaColor = Color(0xFF2E3192);
   static const Color ekataColor = Color(0xFF2C2087);
-  static const Color bishalColor = Color(0xFF31318E);
+  static const Color bishalSavingColor = Color(0xFF31318E);
   static const Color sardikholaColor = Color(0xFF004B1C);
   static const Color kripaluColor = Color(0xFF009444);
   static const Color sarbahitColor = Color(0xFF26449F);
@@ -85,8 +85,9 @@ class CustomTheme {
   static const Color jharanaColor = Color(0xFF2C732E);
   static const Color avatarColor = Color(0xFF2C732E);
   static const Color chaughadaColor = Color(0xFF04A34F);
+  static const Color hetaudaColor = Color(0xFF009245);
 
-  static Color primaryColor = avatarColor;
+  static Color primaryColor = metrangColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
