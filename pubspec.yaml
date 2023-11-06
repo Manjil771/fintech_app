@@ -173,9 +173,7 @@ flutter:
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
-
     # - assets/nayan/hik
-
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
@@ -193,8 +191,7 @@ flutter:
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
-    # - assets/sunshine/
-
+    - assets/sunshine/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
@@ -205,6 +202,12 @@ flutter:
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
+
+    # - assets/jharana/
+    # - assets/chaughada/
+    # - assets/avatar/
+    # - assets/hetauda/
+
 
   fonts:
     - family: popinbold
