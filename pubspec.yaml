@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.34+34 ##gomaganesh
+version: 0.0.35+35 ##gomaganesh
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -186,11 +186,11 @@ flutter:
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
-    # - assets/paschimanchal/
+    - assets/paschimanchal/
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    - assets/subhodaya/
+    # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
@@ -200,11 +200,11 @@ flutter:
     # - assets/noor/
     # - assets/sudarshan/
     # - assets/metrang/
-    - assets/indreni/
-    - assets/sanakishanHathasuwa/
-    - assets/uttarbahini/
-    - assets/shubhaSandesh/
-    - assets/noor/
+    # - assets/indreni/
+    # - assets/sanakishanHathasuwa/
+    # - assets/uttarbahini/
+    # - assets/shubhaSandesh/
+    # - assets/noor/
 
   fonts:
     - family: popinbold

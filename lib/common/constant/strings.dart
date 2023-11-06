@@ -69,6 +69,7 @@ class Strings {
 
   static const String shubhaSandeshAppTitle = "SubhaSandesh iSmart";
   static const String shubhodayaAppTitle = "Shubhodaya iSmart";
+  static const String sanakishanHathausa = "SFACL Hathausa iSmart";
 
-  static const APP_TITLE = shubhodayaAppTitle;
+  static const APP_TITLE = paschimanchalAppTitle;
 }
