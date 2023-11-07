@@ -180,7 +180,7 @@ flutter:
     # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
-    # - assets/shreeKalika/
+    - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
@@ -206,10 +206,10 @@ flutter:
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
-    - assets/pragatishil/
-    - assets/youthvoice/
-    - assets/shreeshital/
-    - assets/darshan/
+    # - assets/pragatishil/
+    # - assets/youthvoice/
+    # - assets/shreeshital/
+    # - assets/darshan/
 
   fonts:
     - family: popinbold

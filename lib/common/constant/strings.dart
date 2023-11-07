@@ -76,5 +76,6 @@ class Strings {
   static const String chaughadaAppTitle = "Chaughada Saving iSmart";
   static const String indreniAppTile = "Indreni Saving iSmart";
   static const String metrangAppTitle = "Metrang Saving iSmart";
-  static const APP_TITLE = metrangAppTitle;
+  static const String shreeKalikaAppTitle = "Shree Kalika Saving iSmart";
+  static const APP_TITLE = shreeKalikaAppTitle;
 }
