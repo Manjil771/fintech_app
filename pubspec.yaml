@@ -162,7 +162,7 @@ flutter:
     # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
-    - assets/royalGorkha/
+    # - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
@@ -183,7 +183,7 @@ flutter:
     # - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/subhodaya/
-    - assets/garimaAgri/
+    # - assets/garimaAgri/
     # - assets/paschimanchal/
     # - assets/chirayu/
     # - assets/digitalCoop/
@@ -195,7 +195,7 @@ flutter:
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
-    # - assets/sudarshan/
+    - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/sanakishanHathasuwa/
