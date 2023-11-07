@@ -67,6 +67,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        metrang {
+            dimension "app"
+            applicationId "com.devanasoft.metrang"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        indreni {
+            dimension "app"
+            applicationId "com.devanasoft.indreni"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        chaughada {
+            dimension "app"
+            applicationId "com.devanasoft.chaughada"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        hathausa {
+            dimension "app"
+            applicationId "com.devanasoft.hathausa"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         paschimanchal {
             dimension "app"
             applicationId "com.devanasoft.paschimanchal"

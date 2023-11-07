@@ -191,17 +191,18 @@ flutter:
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
-    - assets/sunshine/
+    # - assets/sunshine/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/sudarshan/
-    # - assets/metrang/
+    - assets/metrang/
     # - assets/indreni/
     # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
+
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
