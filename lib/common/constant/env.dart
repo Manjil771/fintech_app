@@ -977,7 +977,6 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
     bannerImage: "assets/uttarbahini/uttarbahini_banner.png",
     backgroundImage: "assets/uttarbahini/uttarbahini_background.png",
-
     clientCode: 'YQK7VL2FJ7',
     clientSecret: "142120",
     coOperativeName: 'Uttarbahini Multipurpose Co-operative LTD.',
@@ -1104,6 +1103,58 @@ class CoOperativeValue {
     coOperativeName: 'Hetauda Saving & Credit Co-Operative Ltd',
     coOperativeLogo: 'assets/hetauda/hetauda_logo.png',
     splashImage: "assets/hetauda/hetauda_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative youthVoiceCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/youthvoice/youthvoice_banner.png",
+    backgroundImage: "assets/youthvoice/youthvoice_background.png",
+    clientCode: 'WCZ8TW1S1P',
+    clientSecret: "137947",
+    coOperativeName: 'Youth Voice Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/youthvoice/youthvoice_logo.png',
+    splashImage: "assets/youthvoice/youthvoice_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative pragatishilCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pragatishil/pragatishil_banner.png",
+    backgroundImage: "assets/pragatishil/pragatishil_background.png",
+    clientCode: 'KFK94JBG3T',
+    clientSecret: "152137",
+    coOperativeName: 'Pragatishil Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/pragatishil/pragatishil_logo.png',
+    splashImage: "assets/pragatishil/pragatishil_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeShitalCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeshital/shreeshital_banner.png",
+    backgroundImage: "assets/shreeshital/shreeshital_background.png",
+    clientCode: 'JVE6CTMBM0',
+    clientSecret: "166409",
+    splashImage: "assets/shreeshital/shreeshital_splash.png",
+    coOperativeName: 'Shree Shital Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeshital/shreeshital_logo.png',
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative darshanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/darshan/darshan_banner.png",
+    backgroundImage: "assets/darshan/darshan_background.png",
+    clientCode: '73NJJ0P2V8',
+    clientSecret: "170801",
+    coOperativeName: 'Pragatishil Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/darshan/darshan_logo.png',
+    splashImage: "assets/darshan/darshan_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret

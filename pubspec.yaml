@@ -162,7 +162,7 @@ flutter:
     # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
-    # - assets/royalGorkha/
+    - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/sanakishan/
     # - assets/punja/
@@ -196,17 +196,20 @@ flutter:
     # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/sudarshan/
-    - assets/metrang/
+    # - assets/metrang/
     # - assets/indreni/
     # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
-
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
+    - assets/pragatishil/
+    - assets/youthvoice/
+    - assets/shreeshital/
+    - assets/darshan/
 
   fonts:
     - family: popinbold
