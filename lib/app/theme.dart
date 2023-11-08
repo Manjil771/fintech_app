@@ -90,8 +90,9 @@ class CustomTheme {
   static const Color pragatshilColor = Color(0xFF0C9044);
   static const Color shreeShitalColor = Color(0xFF009245);
   static const Color darshanColor = Color(0xFF008F01);
+  static const Color devshreeColor = Color(0xFF28A914);
 
-  static Color primaryColor = royalGorkhaColor;
+  static Color primaryColor = aasthaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
