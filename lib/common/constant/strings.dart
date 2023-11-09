@@ -61,7 +61,7 @@ class Strings {
   static const String vaidhikAppTitle = "Vaidhik iSmart";
   static const String sanakishanAppTitle = "SFACL Niglihawa iSmart";
   static const String shreeMyagdeAppTitle = "Shree Myagde Dugdha iSmart";
-  static const String aasthashreeMyagdeAppTitle = "Aastha Saving iSmart";
+  static const String aasthaAppTitle = "Aastha Saving iSmart";
   static const String kanchanJunghaAppTitle = "Aastha Coop iSmart";
   static const String digitalCoopAppTitle = "Digital Coop iSmart";
   static const String paschimanchalAppTitle = "Paschimanchal Saving iSmart";
@@ -76,6 +76,7 @@ class Strings {
   static const String chaughadaAppTitle = "Chaughada Saving iSmart";
   static const String indreniAppTile = "Indreni Saving iSmart";
   static const String metrangAppTitle = "Metrang Saving iSmart";
+
   static const String shreeKalikaAppTitle = "Shree Kalika Saving iSmart";
   static const String garimaAppTitle = "Garima Coop iSmart";
   static const String sudharshanAppTitle = 'Sudarshan iSmart';
