@@ -17,7 +17,8 @@ Future<void> main() async {
     await FlutterDownloader.initialize();
     runApp(
 
-      LocalWrapper(child: AppDev(env: CoOperativeValue.sudarshanCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.paschimanchalCoop)),
+
     );
   }, (e, s) {
     Log.e(e);

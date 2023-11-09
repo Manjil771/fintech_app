@@ -18,7 +18,8 @@ Future<void> main() async {
   runZonedGuarded(() {
     runApp(
 
-      LocalWrapper(child: AppProd(env: CoOperativeValue.sudarshanCoop)),
+      LocalWrapper(child: AppProd(env: CoOperativeValue.paschimanchalCoop)),
+
     );
   }, (e, s) {
     Log.e(e);
