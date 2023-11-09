@@ -91,10 +91,11 @@ class CustomTheme {
   static const Color shreeShitalColor = Color(0xFF009245);
   static const Color darshanColor = Color(0xFF008F01);
   static const Color devshreeColor = Color(0xFF28A914);
+  static const Color uddhamshilKrishiYantrikColor = Color(0xFF8FC040);
+  static const Color smartUddhamshilColor = Color(0xFF09BF3D);
+  static const Color shreeDigopanColor = Color(0xFF009225);
 
-
-  static Color primaryColor = paschimanchalColor;
-
+  static Color primaryColor = smartUddhamshilColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

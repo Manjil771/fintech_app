@@ -213,6 +213,9 @@ flutter:
     # - assets/shreeshital/
     # - assets/darshan/
     # - assets/devshree/
+    - assets/uddhamshilKrishi/
+    - assets/smartUddhamsil/
+    - assets/shreeDigopan/
 
 
   fonts:
