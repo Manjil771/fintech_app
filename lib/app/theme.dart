@@ -97,7 +97,7 @@ class CustomTheme {
   static const Color queenCoopColor = Color(0xFF0072BC);
   static const Color nayakiranColor = Color(0xFF001A5A);
 
-  static Color primaryColor = testAppColor;
+  static Color primaryColor = chirayuColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

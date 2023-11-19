@@ -187,7 +187,7 @@ flutter:
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/paschimanchal/
-    # - assets/chirayu/
+    - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
     # - assets/subhodaya/
