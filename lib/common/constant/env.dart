@@ -1183,7 +1183,7 @@ class CoOperativeValue {
     splashImage: "assets/uddhamshilKrishi/uddhamshil_krishi_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative shreeDigopan = CoOperative(
+  static final CoOperative shreeDigopanCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -1194,6 +1194,19 @@ class CoOperativeValue {
     coOperativeName: 'Shree Digopan Samajik Udhami Mahila Sahakari Sanstha Ltd',
     coOperativeLogo: 'assets/shreeDigopan/shreeDigopan_logo.png',
     splashImage: "assets/shreeDigopan/shreeDigopan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative queenCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/queenCoop/queen_banner.png",
+    backgroundImage: "assets/queenCoop/queen_background.png",
+    clientCode: 'NES36H9DCV',
+    clientSecret: "196955",
+    coOperativeName: 'Queen Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/queenCoop/queen_logo.png',
+    splashImage: "assets/queenCoop/queen_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret
