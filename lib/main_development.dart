@@ -16,7 +16,7 @@ Future<void> main() async {
     await EasyLocalization.ensureInitialized();
     await FlutterDownloader.initialize();
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.queenCoop)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.nayaKiranCoop)),
     );
   }, (e, s) {
     Log.e(e);
