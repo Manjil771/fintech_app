@@ -18,14 +18,24 @@ class IsmartTopWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Image.asset(
-              repo.bannerImage,
+        if (!repo.bannerImage.contains("https"))
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Image.asset(
+                repo.bannerImage,
+              ),
             ),
           ),
-        ),
+        if (repo.bannerImage.contains("https"))
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Image.network(
+                repo.bannerImage,
+              ),
+            ),
+          ),
         SizedBox(width: _width * 0.1),
         SvgPicture.asset(
           Assets.translateImage,

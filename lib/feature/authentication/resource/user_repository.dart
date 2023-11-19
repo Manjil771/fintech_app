@@ -52,8 +52,8 @@ class UserRepository {
     String _baseUrl =
         RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
 
-    // RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
-    //     _baseUrl + coop.banner.replaceFirst("/", "");
+    RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
+        _baseUrl + coop.banner.replaceFirst("/", "");
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientCode =
         coop.clientId;
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientSecret =
