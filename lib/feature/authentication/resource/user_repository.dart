@@ -242,6 +242,7 @@ class UserRepository {
 
       if (_coopList.isNotEmpty) {
         LoginCoOpValue _loginCoop = LoginCoOpValue.fromJson(_coopList.last);
+        print(_loginCoop.bank);
         _updateCoopValue(_loginCoop);
         SharedPref.setLoginCoop(_loginCoop);
 

@@ -10,6 +10,8 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 
+import '../../../../common/widget/custom_carousel.dart';
+import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
 import 'home_page_user_widget.dart';
 
@@ -22,6 +24,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   bool _shouldShowDifferentMenu = false;
+  List<String> _bannerImages = [];
 
   _checkMenu() {
     List<String> _clientCodesListForDifferentMenu = [
@@ -38,6 +41,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   @override
   void initState() {
+    _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
     _checkMenu();
     super.initState();
   }
@@ -131,7 +135,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 )),
               ],
             ),
-          const Expanded(child: HomePageTabbarWidget())
+          const Expanded(child: HomePageTabbarWidget()),
+          if (_bannerImages.isNotEmpty)
+            CustomCarousel(
+              height: 140.hp,
+              topMargin: 10,
+              items: _bannerImages,
+            ),
         ],
       ),
     );

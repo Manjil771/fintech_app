@@ -14,6 +14,7 @@ class CoOperative {
     required this.backgroundImage,
     required this.appStoreID,
     required this.packageName,
+    this.shouldValidateCooperative = false,
   });
 
   String baseUrl;
@@ -27,6 +28,7 @@ class CoOperative {
   String backgroundImage;
   String appStoreID;
   String packageName;
+  bool shouldValidateCooperative;
 
   CoOperative copyWith({required String clientCode}) {
     return CoOperative(
@@ -805,6 +807,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
 
     splashImage: "assets/sanakishan/sanakishan_splash.png",
+    shouldValidateCooperative: true,
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative shreeMyagdeCoop = CoOperative(
@@ -1249,7 +1252,7 @@ class CoOperativeValue {
     coOperativeName: 'Jharana Saving and Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/jharana/jharana_logo.png',
     splashImage: "assets/jharana/jharana_splash.png",
-    primaryColor: Color.fromARGB(255, 57, 59, 61),
+    primaryColor: const Color.fromARGB(255, 57, 59, 61),
   );
   static final CoOperative aaratiCoop = CoOperative(
     appStoreID: "",
