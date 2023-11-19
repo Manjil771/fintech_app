@@ -6,6 +6,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
@@ -15,12 +16,16 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/internal_transfer_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/widget/internal_coop_bill_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+
+import '../../../../app/theme.dart';
+import '../../../../common/widget/custom_list_tile.dart';
 
 class InternalCooperativeWidget extends StatefulWidget {
   final String? accountNumber;
@@ -52,7 +57,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   final TextEditingController _branchController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  InternalBranch? branchFromQr;
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -140,26 +145,57 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                if (widget.branchCodeQr == null)
-                  CustomTextField(
-                    title: "Branch",
-                    hintText: "Select Branch",
-                    readOnly: true,
-                    controller: _branchController,
-                    validator: (val) =>
-                        FormValidator.validateFieldNotEmpty(val, "Branch"),
-                    onTap: () {
-                      NavigationService.push(
-                        target: CoOperativeBranchPage(
-                          onBankSelected: (val) {
-                            NavigationService.pop();
-                            branchCode = val.branchCode;
-                            _branchController.text = val.name;
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                widget.branchCodeQr == null
+                    ? CustomTextField(
+                        title: "Branch",
+                        hintText: "Select Branch",
+                        readOnly: true,
+                        controller: _branchController,
+                        validator: (val) =>
+                            FormValidator.validateFieldNotEmpty(val, "Branch"),
+                        onTap: () {
+                          NavigationService.push(
+                            target: CoOperativeBranchPage(
+                              onBankSelected: (val) {
+                                NavigationService.pop();
+                                branchCode = val.id.toString();
+                                _branchController.text = val.name;
+                              },
+                            ),
+                          );
+                        },
+                      )
+                    : BlocBuilder<CoopListCubit, CommonState>(
+                        builder: (context, state) {
+                          if (state is CommonLoading && _isLoading == false) {
+                            return const SliverFillRemaining(
+                              hasScrollBody: false,
+                              child: CommonLoadingWidget(),
+                            );
+                          }
+                          if (state is CommonDataFetchSuccess<InternalBranch>) {
+                            List<InternalBranch> _list = state.data;
+                            return CustomTextField(
+                              title: "text",
+                            );
+                          } else if (state is CommonLoadingWidget) {
+                            return CommonLoadingWidget();
+                          } else if (state is CommonError) {
+                            if ((state.statusCode ?? 400) >= 400 &&
+                                (state.statusCode ?? 400) <= 600 &&
+                                state.statusCode != 404) {
+                              return CommonLoadingWidget();
+                            }
+                            return Container(
+                              child: Center(child: Text(state.message)),
+                            );
+                          } else {
+                            return Container(
+                              child: Text(state.toString()),
+                            );
+                          }
+                        },
+                      ),
                 CustomTextField(
                   title: "Destination Account",
                   hintText: "Account Number",
@@ -213,6 +249,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                     "destinationAccountNumber": _accountNumberController.text,
                     "destinationAccountName": _accountNameController.text,
                     "destinationBranchId": branchCode ?? widget.branchCodeQr,
+                    // "destinationBranchId": "26",
                   },
                   apiEndpoint: "/api/account/validation");
             }
