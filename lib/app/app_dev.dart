@@ -10,6 +10,8 @@ import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:local_session_timeout/local_session_timeout.dart';
 
 class AppDev extends StatefulWidget {
   final CoOperative env;
@@ -20,6 +22,23 @@ class AppDev extends StatefulWidget {
 }
 
 class _AppDevState extends State<AppDev> {
+  SessionConfig? sessionConfig;
+  @override
+  void initState() {
+    sessionConfig = SessionConfig(
+      invalidateSessionForAppLostFocus: const Duration(minutes: 2),
+    );
+    sessionConfig!.stream.listen((SessionTimeoutState timeoutEvent) {
+      print("Listening for session time out");
+      if (timeoutEvent == SessionTimeoutState.appFocusTimeout) {
+        NavigationService.pushReplacement(
+          target: const LoginPage(),
+        );
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryWrapper(
@@ -28,17 +47,20 @@ class _AppDevState extends State<AppDev> {
         env: widget.env,
         child: NotificationWrapper(
           child: UpdateWrapper(
-            child: MaterialApp(
-              locale: context.locale,
-              navigatorKey: NavigationService.navigationKey,
-              supportedLocales: context.supportedLocales,
-              localizationsDelegates: context.localizationDelegates,
-              debugShowCheckedModeBanner: true,
-              darkTheme: CustomTheme.lightTheme,
-              theme: CustomTheme.lightTheme,
-              title: Strings.APP_TITLE,
-              initialRoute: Routes.root,
-              onGenerateRoute: RouteGenerator.generateRoute,
+            child: SessionTimeoutManager(
+              sessionConfig: sessionConfig,
+              child: MaterialApp(
+                locale: context.locale,
+                navigatorKey: NavigationService.navigationKey,
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                debugShowCheckedModeBanner: true,
+                darkTheme: CustomTheme.lightTheme,
+                theme: CustomTheme.lightTheme,
+                title: Strings.APP_TITLE,
+                initialRoute: Routes.root,
+                onGenerateRoute: RouteGenerator.generateRoute,
+              ),
             ),
           ),
         ),

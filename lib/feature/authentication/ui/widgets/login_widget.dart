@@ -179,7 +179,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       style: TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
-                        // color: Color(cblack),
+                        
                         color: Colors.black,
                       ),
                     ),
