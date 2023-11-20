@@ -4,28 +4,21 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cubit.dart';
-import 'package:ismart/feature/sendMoney/internalCooperative/cubits/internal_transfer_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/widget/internal_coop_bill_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-
-import '../../../../app/theme.dart';
-import '../../../../common/widget/custom_list_tile.dart';
 
 class InternalCooperativeWidget extends StatefulWidget {
   final String? accountNumber;
@@ -49,7 +42,9 @@ class InternalCooperativeWidget extends StatefulWidget {
 }
 
 class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
+  String? branchId;
   String? branchCode;
+
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _accountNumberController =
       TextEditingController();
@@ -59,6 +54,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   InternalBranch? branchFromQr;
   bool _isLoading = false;
+  InternalBranch? selectedIDFromQr;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -100,7 +96,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                         value: _accountNameController.text),
                     KeyValueTile(
                         title: "Branch Code",
-                        value: branchCode ?? widget.branchCodeQr.toString()),
+                        value: branchId ?? widget.branchCodeQr.toString()),
                     KeyValueTile(
                         title: "Remarks", value: _remarksController.text),
                     KeyValueTile(
@@ -108,9 +104,12 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   ],
                 ),
                 accountName: _accountNameController.text,
-                accountNumber: _accountNumberController.text,
+                accountNumber:
+                    (selectedIDFromQr?.branchCode ?? branchCode.toString()) +
+                        _accountNumberController.text,
                 amount: _amountController.text,
-                branchCode: branchCode ?? widget.branchCodeQr.toString(),
+                branchCode:
+                    branchId ?? selectedIDFromQr?.bankId.toString() ?? "",
                 remarks: _remarksController.text,
               ));
             } else {
@@ -158,44 +157,41 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                             target: CoOperativeBranchPage(
                               onBankSelected: (val) {
                                 NavigationService.pop();
-                                branchCode = val.id.toString();
+                                branchCode = val.branchCode;
+                                branchId = val.id.toString();
                                 _branchController.text = val.name;
                               },
                             ),
                           );
                         },
                       )
-                    : BlocBuilder<CoopListCubit, CommonState>(
-                        builder: (context, state) {
-                          if (state is CommonLoading && _isLoading == false) {
-                            return const SliverFillRemaining(
-                              hasScrollBody: false,
-                              child: CommonLoadingWidget(),
-                            );
-                          }
-                          if (state is CommonDataFetchSuccess<InternalBranch>) {
-                            List<InternalBranch> _list = state.data;
-                            return CustomTextField(
-                              title: "text",
-                            );
-                          } else if (state is CommonLoadingWidget) {
-                            return CommonLoadingWidget();
-                          } else if (state is CommonError) {
-                            if ((state.statusCode ?? 400) >= 400 &&
-                                (state.statusCode ?? 400) <= 600 &&
-                                state.statusCode != 404) {
-                              return CommonLoadingWidget();
+                    : BlocProvider(
+                        lazy: false,
+                        create: (context) => CoopListCubit(
+                            internalTransferRepository: RepositoryProvider.of<
+                                InternalTransferRepository>(context))
+                          ..fetchBanksList(),
+                        child: BlocConsumer<CoopListCubit, CommonState>(
+                          builder: (context, state) {
+                            print("state of state is $state");
+                            if (state
+                                is CommonDataFetchSuccess<InternalBranch>) {
+                              selectedIDFromQr = state.data.firstWhere(
+                                  (element) =>
+                                      element.branchCode ==
+                                      widget.branchCodeQr);
+                              return CustomTextField(
+                                readOnly: true,
+                                title: "Branch",
+                                customHintTextStyle: true,
+                                hintText: selectedIDFromQr?.bank ?? "",
+                              );
+                            } else {
+                              return Container();
                             }
-                            return Container(
-                              child: Center(child: Text(state.message)),
-                            );
-                          } else {
-                            return Container(
-                              child: Text(state.toString()),
-                            );
-                          }
-                        },
-                      ),
+                          },
+                          listener: (context, state) {},
+                        )),
                 CustomTextField(
                   title: "Destination Account",
                   hintText: "Account Number",
@@ -248,7 +244,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   accountDetails: {
                     "destinationAccountNumber": _accountNumberController.text,
                     "destinationAccountName": _accountNameController.text,
-                    "destinationBranchId": branchCode ?? widget.branchCodeQr,
+                    "destinationBranchId":
+                        branchId ?? selectedIDFromQr?.bankId ?? "",
                     // "destinationBranchId": "26",
                   },
                   apiEndpoint: "/api/account/validation");
