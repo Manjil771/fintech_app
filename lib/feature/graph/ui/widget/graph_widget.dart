@@ -1,10 +1,8 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
 
 class GraphWidget extends StatefulWidget {
   const GraphWidget({Key? key}) : super(key: key);
@@ -28,7 +26,6 @@ class _GraphWidgetState extends State<GraphWidget> {
       print(element.balance);
     });
 
-    
     super.initState();
   }
 
@@ -55,22 +52,23 @@ class _GraphWidgetState extends State<GraphWidget> {
       //     )
       //   ],
       // ),
-      child: SfCartesianChart(
-          // Initialize category axis
-          primaryXAxis: CategoryAxis(),
-          series: <LineSeries<SalesData, String>>[
-            LineSeries<SalesData, String>(
-                // Bind data source
-                dataSource: <SalesData>[
-                  ...statementLists
-                      .map((e) => SalesData(
-                          DateFormat.d().format(e.transactionDate).toString(),
-                          e.balance))
-                      .toList()
-                ],
-                xValueMapper: (SalesData sales, a) => sales.year,
-                yValueMapper: (SalesData sales, b) => sales.sales)
-          ]),
+      child: Container(),
+      // child: SfCartesianChart(
+      //     // Initialize category axis
+      //     primaryXAxis: CategoryAxis(),
+      //     series: <LineSeries<SalesData, String>>[
+      //       LineSeries<SalesData, String>(
+      //           // Bind data source
+      //           dataSource: <SalesData>[
+      //             ...statementLists
+      //                 .map((e) => SalesData(
+      //                     DateFormat.d().format(e.transactionDate).toString(),
+      //                     e.balance))
+      //                 .toList()
+      //           ],
+      //           xValueMapper: (SalesData sales, a) => sales.year,
+      //           yValueMapper: (SalesData sales, b) => sales.sales)
+      //     ]),
     );
   }
 }

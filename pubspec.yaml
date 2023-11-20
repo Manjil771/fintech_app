@@ -182,7 +182,7 @@ flutter:
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
-    # - assets/vaidhik/
+    - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/subhodaya/
