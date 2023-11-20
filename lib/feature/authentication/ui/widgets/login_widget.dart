@@ -20,7 +20,6 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
-import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
@@ -179,7 +178,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                       style: TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
-                        
                         color: Colors.black,
                       ),
                     ),
@@ -197,18 +195,18 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 FormValidator.validateFieldNotEmpty(
                                     value, "Phone Number"),
                             onChanged: (val) {
-                              if (FormValidator.validatePhoneNumber(val) ==
-                                  null) {
-                                if (Platform.isIOS) {
-                                  context
-                                      .read<ValidateCoOpCubit>()
-                                      .validateCoOperative(username: val);
-                                  Future.delayed(const Duration(seconds: 3))
-                                      .then((value) {
-                                    setState(() {});
-                                  });
-                                }
-                              }
+                              // if (FormValidator.validatePhoneNumber(val) ==
+                              //     null) {
+                              //   if (Platform.isIOS) {
+                              //     context
+                              //         .read<ValidateCoOpCubit>()
+                              //         .validateCoOperative(username: val);
+                              //     Future.delayed(const Duration(seconds: 3))
+                              //         .then((value) {
+                              //       setState(() {});
+                              //     });
+                              //   }
+                              // }
                             },
                           );
                         } else {

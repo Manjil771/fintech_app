@@ -10,9 +10,9 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 
 import 'custom_cached_network_image.dart';
@@ -29,7 +29,7 @@ class BankTransferBillPage extends StatelessWidget {
   final String? bankName;
   final Widget body;
   final String message;
-  BankTransferBillPage({
+  const BankTransferBillPage({
     super.key,
     required this.body,
     this.charge,
@@ -43,7 +43,7 @@ class BankTransferBillPage extends StatelessWidget {
     required this.message,
     this.imageUrl,
   });
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -85,7 +85,7 @@ class BankTransferBillWidget extends StatefulWidget {
   final String? accountNumber;
   final String? bankName;
 
-  BankTransferBillWidget({
+  const BankTransferBillWidget({
     super.key,
     required this.body,
     this.charge,
@@ -128,11 +128,13 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
 
           if (state is CommonStateSuccess) {
             NavigationService.pushReplacement(
-                target: BankTransferReciptPage(
-              transactionID: state.data.toString(),
-              body: widget.body,
-              message: "Transaction Success for the Service",
-            ));
+              target: BankTransferReciptPage(
+                transactionID: state.data.toString(),
+                body: widget.body,
+                message: "Transaction Success for the Service",
+              ),
+            );
+            context.read<CustomerDetailCubit>().fetchCustomerDetail();
           }
           if (state is CommonError) {
             showPopUpDialog(
@@ -153,7 +155,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,

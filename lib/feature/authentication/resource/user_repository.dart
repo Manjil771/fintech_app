@@ -41,11 +41,11 @@ class UserRepository {
   Future initialState() async {
     _token = await fetchToken();
     _isLoggedIn.value = _token.isNotEmpty;
-    LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
+    // LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
 
-    if (_coopValue != null) {
-      _updateCoopValue(_coopValue);
-    }
+    // if (_coopValue != null) {
+    //   _updateCoopValue(_coopValue);
+    // }
   }
 
   _updateCoopValue(LoginCoOpValue coop) {
