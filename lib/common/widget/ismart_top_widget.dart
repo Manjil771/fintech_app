@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 // import 'package:get/get.dart';
 // import 'package:ismart/view/Auth/loginScreen/select_language.dart';
 
@@ -18,23 +20,41 @@ class IsmartTopWidget extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
-        Expanded(
-          child: Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Image.asset(
-              repo.bannerImage,
+        if (!repo.bannerImage.contains("https"))
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Image.asset(
+                repo.bannerImage,
+              ),
             ),
           ),
-        ),
+        if (repo.bannerImage.contains("https"))
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: Image.network(
+                repo.bannerImage,
+              ),
+            ),
+          ),
         SizedBox(width: _width * 0.1),
         SvgPicture.asset(
           Assets.translateImage,
           height: _height * 0.03,
         ),
         SizedBox(width: 15.hp),
-        SvgPicture.asset(
-          Assets.feedBackIcon,
-          height: _height * 0.03,
+        InkWell(
+          onTap: () {
+            UrlLauncher.launchWebsite(
+              context: NavigationService.context,
+              url: "viber://chat?number=%2B9779801132218",
+            );
+          },
+          child: SvgPicture.asset(
+            Assets.contactUsIcon,
+            height: _height * 0.03,
+          ),
         ),
         SizedBox(width: 15.hp),
       ],

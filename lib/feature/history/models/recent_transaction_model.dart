@@ -60,7 +60,7 @@ class RecentTransactionModel {
         serviceTo: json["serviceTo"],
         accountNumber: json["accountNumber"],
         transactionIdentifier: json["transactionIdentifier"],
-        date: DateTime.parse(json["date"]),
+        date: json["date"],
         status: json["status"],
         airlinesPdfUrl: json["airlinesPdfUrl"],
         sessionId: json["sessionId"],
