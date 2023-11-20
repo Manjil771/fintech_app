@@ -17,7 +17,7 @@ class ValidateCoOpCubit extends Cubit<CommonState> {
       username: username,
     );
     if (res.status == Status.Success && res.data != null) {
-      emit(CommonStateSuccess<LoginCoOpValue>(data: res.data!));
+      emit(CommonDataFetchSuccess<LoginCoOpValue>(data: res.data!));
     } else {
       emit(
         CommonError(
