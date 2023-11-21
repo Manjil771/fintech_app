@@ -152,7 +152,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -218,6 +218,7 @@ flutter:
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
+    - assets/kendrabindu/
 
 
   fonts:
