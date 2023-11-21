@@ -39,9 +39,9 @@ class StatementDetailBox extends StatelessWidget {
         child: Row(
           children: [
             Container(
-                padding: const EdgeInsets.all(16),
+                padding: const EdgeInsets.all(12),
                 width: _width * 0.12,
-                height: _height * 0.06,
+                height: _height * 0.052,
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: isCredit
@@ -66,14 +66,9 @@ class StatementDetailBox extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(dateTime,
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelMedium!
-                          .copyWith(color: Colors.black87)),
-                  Text(desc,
-                      overflow: TextOverflow.ellipsis,
-                      maxLines: 2,
-                      style: Theme.of(context).textTheme.labelLarge),
+                      style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                          fontWeight: FontWeight.w700, color: Colors.black87)),
+                  Text(desc, style: Theme.of(context).textTheme.labelLarge),
                 ],
               ),
             ),

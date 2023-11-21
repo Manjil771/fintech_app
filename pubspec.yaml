@@ -107,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -182,13 +182,13 @@ flutter:
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
-    - assets/vaidhik/
+    # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/paschimanchal/
-    - assets/chirayu/
+    # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
     # - assets/subhodaya/
