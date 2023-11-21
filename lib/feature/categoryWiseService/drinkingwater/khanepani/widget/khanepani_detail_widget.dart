@@ -23,6 +23,8 @@ class KhanepaniDetailsWidgets extends StatefulWidget {
   final UtilityResponseData useServiceResponse;
   final String customerCode;
   final String selectedCounter;
+  final String selectedCounterName;
+
   final ServiceList service;
 
   const KhanepaniDetailsWidgets({
@@ -31,6 +33,7 @@ class KhanepaniDetailsWidgets extends StatefulWidget {
     required this.customerCode,
     required this.selectedCounter,
     required this.service,
+    required this.selectedCounterName,
   });
 
   @override
@@ -79,6 +82,10 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
             KeyValueTile(
               title: "Customer Name",
               value: _response.findValueString("customer_name"),
+            ),
+            KeyValueTile(
+              title: "Counter Name",
+              value: widget.selectedCounterName,
             ),
             KeyValueTile(
               title: "Address",
@@ -160,6 +167,10 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
                         KeyValueTile(
                           title: "Customer Name",
                           value: _response.findValueString("customer_name"),
+                        ),
+                        KeyValueTile(
+                          title: "Counter Name",
+                          value: widget.selectedCounterName,
                         ),
                         KeyValueTile(
                           title: "Address",

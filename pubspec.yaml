@@ -131,7 +131,6 @@ flutter:
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/sarbahit/
     # - assets/sardikhola/
@@ -153,7 +152,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/

@@ -9,9 +9,12 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/notification_count_widget.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/notification/screen/notification_page.dart';
+
+import '../../feature/authentication/resource/user_repository.dart';
 
 AppBar myAppbar({bool showBackButton = false}) {
   final _height = SizeUtils.height;
@@ -69,12 +72,24 @@ AppBar myAppbar({bool showBackButton = false}) {
       NotificationCountIcon(),
       InkWell(
         onTap: () {
-          NavigationService.pushNamed(routeName: Routes.settingPage);
+          showPopUpDialog(
+            context: NavigationService.context,
+            message: "Are you sure you want to logout.",
+            title: "Alert",
+            buttonText: "Logout",
+            buttonCallback: () {
+              RepositoryProvider.of<UserRepository>(NavigationService.context)
+                  .logout();
+              NavigationService.pushNamedAndRemoveUntil(
+                routeName: Routes.loginPage,
+              );
+            },
+          );
         },
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0),
           child: SvgPicture.asset(
-            Assets.settingIcon,
+            Assets.logoutIcon,
             color: CustomTheme.primaryColor,
             height: _height * 0.025,
           ),

@@ -77,6 +77,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
                 state.data.status.toLowerCase() == "success") {
               NavigationService.push(
                   target: KhanepaniDetailsPage(
+                selectedCounterName: selectedCounter?.title ?? "",
                 serivceList: widget.service,
                 customerCode: _customerIdController.text,
                 selectedCounter: selectedCounter?.value,
