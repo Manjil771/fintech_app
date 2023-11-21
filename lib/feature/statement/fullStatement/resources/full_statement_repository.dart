@@ -34,13 +34,13 @@ class FullStatementRepository {
     final _startDate = DateTime(2022, 9, 1);
     final _endDate = _startDate.add(Duration(days: days));
 
-    fullStatement!.accountStatementDtos.forEach((element) {
-      if (element.transactionDate.isBefore(_endDate) &&
-          element.transactionDate.isAfter(_startDate)) {
-        _statementsLists.add(element);
-        print(element.balance);
-      }
-    });
+    // fullStatement!.accountStatementDtos.forEach((element) {
+    //   if (element.transactionDate.isBefore(_endDate) &&
+    //       element.transactionDate.isAfter(_startDate)) {
+    //     _statementsLists.add(element);
+    //     print(element.balance);
+    //   }
+    // });
     return _statementsLists;
   }
 
