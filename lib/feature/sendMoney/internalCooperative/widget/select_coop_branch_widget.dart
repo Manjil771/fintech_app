@@ -32,6 +32,7 @@ class _CoOpBranchListWidgetState extends State<CoOpBranchListWidget> {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     return PageWrapper(
+      showBackButton: true,
       padding: EdgeInsets.zero,
       body: CustomScrollView(
         slivers: [

@@ -401,8 +401,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                     itemCount:
                                         state.data.accountStatementDtos.length,
                                     itemBuilder: (context, index) {
-                                      final data = state
-                                          .data.accountStatementDtos[index];
+                                      final data = List.from(state
+                                          .data
+                                          .accountStatementDtos
+                                          .reversed)[index];
                                       return StatementDetailBox(
                                           balance: data.balance.toString(),
                                           isCredit:

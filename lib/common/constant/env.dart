@@ -152,7 +152,7 @@ class CoOperativeValue {
     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
     coOperativeName: 'Uttarganga',
     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-    splashImage: "assets/uttarganga/uttarganga_splash_2.png",
+    splashImage: "assets/uttarganga/uttarganga_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.uttarganga",
     appStoreID: "",
@@ -1220,6 +1220,20 @@ class CoOperativeValue {
     coOperativeName: 'Naya Kiran Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/nayakiran/nayakiran_logo.png',
     splashImage: "assets/nayakiran/nayakiran_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative kendrabindu = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kendrabindu/kendrabindu_banner.png",
+    backgroundImage: "assets/kendrabindu/kendrabindu_background.png",
+    clientCode: 'S2S87QYX5O',
+    clientSecret: "179940",
+    coOperativeName: 'Kendrabindu multipurpose sahakari sanstha Ltd.',
+    coOperativeLogo: 'assets/kendrabindu/kendrabindu_logo.png',
+    splashImage: "assets/kendrabindu/kendrabindu_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret

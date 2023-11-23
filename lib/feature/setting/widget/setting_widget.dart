@@ -64,7 +64,6 @@ class SettingWidget extends StatelessWidget {
               const Divider(thickness: 1),
 
               const CommonDetailBox(
-
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
