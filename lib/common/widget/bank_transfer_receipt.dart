@@ -120,7 +120,7 @@ class BankTransferReciptWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Paymet Details",
+                          Text("Payment Details",
                               style: Theme.of(context).textTheme.titleLarge),
                           SizedBox(height: _height * 0.01),
                           KeyValueTile(

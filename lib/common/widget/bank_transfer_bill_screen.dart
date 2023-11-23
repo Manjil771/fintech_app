@@ -194,7 +194,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Paymet Details",
+                        Text("Payment Details",
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(height: _height * 0.02),
                         widget.body,
@@ -203,7 +203,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                   ),
                   SizedBox(height: _height * 0.02),
                   CustomRoundedButtom(
-                      title: "Confirm",
+                      title: "Proceed",
                       onPressed: () {
                         NavigationService.push(target: TransactionPinScreen(
                           onValueCallback: (p0) {
