@@ -152,7 +152,7 @@ class CoOperativeValue {
     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
     coOperativeName: 'Uttarganga',
     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
-    splashImage: "assets/uttarganga/uttarganga_splash_2.png",
+    splashImage: "assets/uttarganga/uttarganga_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.uttarganga",
     appStoreID: "",
