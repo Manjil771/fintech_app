@@ -1236,6 +1236,19 @@ class CoOperativeValue {
     splashImage: "assets/kendrabindu/kendrabindu_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative eastwest = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/eastwest/eastwest_banner.png",
+    backgroundImage: "assets/eastwest/eastwest_background.png",
+    clientCode: 'OKYT63VF2S',
+    clientSecret: "210721",
+    coOperativeName: 'East West Saving and Credit Cooperative Ltd.',
+    coOperativeLogo: 'assets/eastwest/eastwest_logo.png',
+    splashImage: "assets/eastwest/eastwest_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   //TODO need to add client id and secret
 
   static final CoOperative devshreeCoop = CoOperative(
