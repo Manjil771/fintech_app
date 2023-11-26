@@ -69,7 +69,7 @@ class Strings {
   static const String uttarbahiniAppTitle = "Uttarbahini Saving iSmart";
   static const String shubhaSandeshAppTitle = "ShubhaSandesh iSmart";
   static const String shubhodayaAppTitle = "Shubhodaya iSmart";
-  static const String sunshineAppTitle = "Sunshine Saving iSmart";
+  static const String sunshineAppTitle = "Sunshine iSmart";
   static const String sanakishanHathausa = "SFACL Hathausa iSmart";
   static const String chaughadaAppTitle = "Chaughada Saving iSmart";
   static const String indreniAppTile = "Indreni Saving iSmart";
@@ -79,6 +79,7 @@ class Strings {
   static const String sudharshanAppTitle = 'Sudarshan iSmart';
   static const String jharanaAppTitle = 'Jharana iSmart';
   static const String chirayuAppTitle = 'Chirayu iSmart';
+  static const String avatarAppTitle = 'Avatar iSmart';
 
-  static const APP_TITLE = matribhumiAppTitle;
+  static const APP_TITLE = avatarAppTitle;
 }

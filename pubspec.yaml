@@ -151,7 +151,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -188,10 +188,10 @@ flutter:
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    - assets/subhodaya/
+    # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
-    # - assets/sunshine/
+    - assets/sunshine/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/

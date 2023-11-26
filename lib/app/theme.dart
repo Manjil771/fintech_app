@@ -98,7 +98,7 @@ class CustomTheme {
   static const Color nayakiranColor = Color(0xFF001A5A);
   static const Color kendrabinduColor = Color(0xFF308188);
 
-  static Color primaryColor = matribhumiColor;
+  static Color primaryColor = avatarColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
