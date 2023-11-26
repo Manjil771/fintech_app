@@ -204,10 +204,10 @@ flutter:
     # - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/
-    - assets/avatar/
+    # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
-    # - assets/youthvoice/
+    - assets/youthvoice/
     # - assets/shreeshital/
     # - assets/darshan/
     # - assets/devshree/

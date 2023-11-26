@@ -17,7 +17,7 @@ Future<void> main() async {
   await EasyLocalization.ensureInitialized();
   runZonedGuarded(() {
     runApp(
-      LocalWrapper(child: AppProd(env: CoOperativeValue.avatarCoop)),
+      LocalWrapper(child: AppProd(env: CoOperativeValue.youthVoiceCoop)),
     );
   }, (e, s) {
     Log.e(e);
