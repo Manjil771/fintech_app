@@ -217,7 +217,9 @@ flutter:
     # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
-    - assets/eastwest/
+    # - assets/eastwest/
+    - assets/babira/
+    - assets/ekataMultipurpose/
 
 
   fonts:

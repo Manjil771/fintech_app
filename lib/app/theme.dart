@@ -98,8 +98,10 @@ class CustomTheme {
   static const Color nayakiranColor = Color(0xFF001A5A);
   static const Color kendrabinduColor = Color(0xFF308188);
   static const Color eastwestColor = Color(0xFF006311);
+  static const Color babiraColor = Color(0xFF25428E);
+  static const Color ekataMultipurposeColor = Color(0xFF0C8387);
 
-  static Color primaryColor = eastwestColor;
+  static Color primaryColor = ekataMultipurposeColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

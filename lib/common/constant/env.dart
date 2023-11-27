@@ -1223,7 +1223,7 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
-  static final CoOperative kendrabindu = CoOperative(
+  static final CoOperative kendrabinduCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -1236,7 +1236,7 @@ class CoOperativeValue {
     splashImage: "assets/kendrabindu/kendrabindu_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative eastwest = CoOperative(
+  static final CoOperative eastwestCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -1247,6 +1247,32 @@ class CoOperativeValue {
     coOperativeName: 'East West Saving and Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/eastwest/eastwest_logo.png',
     splashImage: "assets/eastwest/eastwest_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative babiraCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/babira/babira_banner.png",
+    backgroundImage: "assets/babira/babira_background.png",
+    clientCode: '2VNQVLC1Z9',
+    clientSecret: "131433",
+    coOperativeName: 'Babira Multipurpose Cooperative Limited.',
+    coOperativeLogo: 'assets/babira/babira_logo.png',
+    splashImage: "assets/babira/babira_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative ekataMultipurposeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ekataMultipurpose/ekataMulti_banner.png",
+    backgroundImage: "assets/ekataMultipurpose/ekataMulti_background.png",
+    clientCode: '2VNQVLC1Z9',
+    clientSecret: "131433",
+    coOperativeName: 'Ekata Multipurpose Cooperative Limited.',
+    coOperativeLogo: 'assets/ekataMultipurpose/ekataMulti_logo.png',
+    splashImage: "assets/ekataMultipurpose/ekataMulti_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret
