@@ -83,5 +83,5 @@ class Strings {
   static const String shreeShitalAppTitle = 'Shree Shital iSmart';
   static const String youthAppTitle = 'Youth iSmart';
 
-  static const APP_TITLE = youthAppTitle;
+  static const APP_TITLE = sunshineAppTitle;
 }
