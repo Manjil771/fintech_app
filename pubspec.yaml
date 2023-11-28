@@ -107,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -120,7 +120,7 @@ flutter:
     # - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
-    # - assets/vyas/
+    - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
@@ -218,8 +218,8 @@ flutter:
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
-    - assets/babira/
-    - assets/ekataMultipurpose/
+    # - assets/babira/
+    # - assets/ekataMultipurpose/
 
 
   fonts:
