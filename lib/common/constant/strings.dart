@@ -80,7 +80,7 @@ class Strings {
   static const String jharanaAppTitle = 'Jharana iSmart';
   static const String chirayuAppTitle = 'Chirayu iSmart';
   static const String avatarAppTitle = 'Avatar iSmart';
-  static const String shreeShitalAppTitle = 'Shree Shital iSmart';
+  static const String shitalAppTitle = 'Shital iSmart';
   static const String youthAppTitle = 'Youth iSmart';
 
   static const APP_TITLE = sunshineAppTitle;

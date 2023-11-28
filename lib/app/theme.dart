@@ -88,7 +88,7 @@ class CustomTheme {
   static const Color hetaudaColor = Color(0xFF009245);
   static const Color youthVoiceColor = Color(0xFF009245);
   static const Color pragatshilColor = Color(0xFF0C9044);
-  static const Color shreeShitalColor = Color(0xFF009245);
+  static const Color shitalColor = Color(0xFF009245);
   static const Color darshanColor = Color(0xFF008F01);
   static const Color devshreeColor = Color(0xFF28A914);
   static const Color uddhamshilKrishiYantrikColor = Color(0xFF8FC040);
@@ -101,7 +101,7 @@ class CustomTheme {
   static const Color babiraColor = Color(0xFF25428E);
   static const Color ekataMultipurposeColor = Color(0xFF0C8387);
 
-  static Color primaryColor = sunshineColor;
+  static Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

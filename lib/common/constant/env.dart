@@ -1131,17 +1131,18 @@ class CoOperativeValue {
     splashImage: "assets/pragatishil/pragatishil_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative shreeShitalCoop = CoOperative(
+  static final CoOperative shitalCoop = CoOperative(
+    //shree removed form name
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/shreeshital/shreeshital_banner.png",
-    backgroundImage: "assets/shreeshital/shreeshital_background.png",
+    bannerImage: "assets/shital/shital_banner.png",
+    backgroundImage: "assets/shital/shital_background.png",
     clientCode: 'JVE6CTMBM0',
     clientSecret: "166409",
-    splashImage: "assets/shreeshital/shreeshital_splash.png",
-    coOperativeName: 'Shree Shital Saving and Credit Co-operative Ltd.',
-    coOperativeLogo: 'assets/shreeshital/shreeshital_logo.png',
+    splashImage: "assets/shital/shital_splash.png",
+    coOperativeName: 'Shital Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/shital/shital_logo.png',
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative darshanCoop = CoOperative(
