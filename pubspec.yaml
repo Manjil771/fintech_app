@@ -207,7 +207,7 @@ flutter:
     # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
-    # - assets/youthvoice/
+    - assets/youthvoice/
     # - assets/shreeshital/
     # - assets/darshan/
     # - assets/devshree/
@@ -220,7 +220,6 @@ flutter:
     # - assets/eastwest/
     # - assets/babira/
     # - assets/ekataMultipurpose/
-
 
   fonts:
     - family: popinbold

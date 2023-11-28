@@ -61,6 +61,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        youthVoice {
+            dimension "app"
+            applicationId "com.devanasoft.youthVoice"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeShital {
+            dimension "app"
+            applicationId "com.devanasoft.shreeShital"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         chirayu {
             dimension "app"
             applicationId "com.devanasoft.chirayu"
@@ -136,6 +148,12 @@ android {
         shubhodaya {
             dimension "app"
             applicationId "com.devanasoft.shubhodaya"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        avatar {
+            dimension "app"
+            applicationId "com.devanasoft.avatar"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
