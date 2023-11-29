@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
@@ -7,29 +8,48 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/select_counter_widget.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/widget/kukl_select_counter_widget.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class KuklPaymentWidget extends StatelessWidget {
+class KuklPaymentWidget extends StatefulWidget {
   final ServiceList service;
 
   KuklPaymentWidget({Key? key, required this.service}) : super(key: key);
-  final TextEditingController _mobileNumberController = TextEditingController();
 
-  final TextEditingController _amountController = TextEditingController();
+  @override
+  State<KuklPaymentWidget> createState() => _KuklPaymentWidgetState();
+}
+
+class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
+  final TextEditingController _customerNoCOntroller = TextEditingController();
+
+  final TextEditingController _connectionNumberController =
+      TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
+  final TextEditingController _selectedCounterController =
+      TextEditingController();
+
+  String? selectedCounterValue;
+
+  bool isCustomerNo = true;
+
   bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -37,105 +57,152 @@ class KuklPaymentWidget extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: CommonContainer(
-          showRecentTransaction: true,
-          associatedId: service.id.toString(),
-          buttonName: "Show Bill",
-          showAccountSelection: true,
-          title: service.service,
-          detail: service.instructions,
-          showDetail: true,
-          topbarName: "Khane Pani",
-          onButtonPressed: () {
-            if (_formKey.currentState!.validate()) {
-              final _response;
+      body: BlocListener<UtilityPaymentCubit, CommonState>(
+        listener: (context, state) {
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
+          if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            final res = state.data;
+            if (res.code == "M0000" && res.status.toLowerCase() == "success") {
               NavigationService.push(
                   target: CommonBillDetailPage(
-                      body: Column(
-                        children: [
-                          KeyValueTile(
-                            title: "Phone Number",
-                            value: _mobileNumberController.text,
-                          ),
-                          KeyValueTile(
-                            title: "Amount",
-                            value: _amountController.text,
-                          ),
-                          // KeyValueTile(
-                          //   title: "Address",
-                          //   value: _response.findValueString("address"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Current Month Dues",
-                          //   value: _response
-                          //       .findValueString("current_month_dues"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Current Fine",
-                          //   value: _response
-                          //       .findValueString("current_month_fine"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Discount",
-                          //   value: _response
-                          //       .findValueString("current_month_discount"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Total Credit Sales Amount",
-                          //   value: _response
-                          //       .findValueString("total_credit_sales_amount"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Total Advance Amount",
-                          //   value: _response
-                          //       .findValueString("total_advance_amount"),
-                          // ),
-                          // KeyValueTile(
-                          //   title: "Previous Dues",
-                          //   value: _response.findValueString("previous_dues"),
-                          // ),
-                        ],
-                      ),
-                      accountDetails: {
-                        "account_number":
-                            RepositoryProvider.of<CustomerDetailRepository>(
-                                    context)
-                                .selectedAccount
-                                .value!
-                                .accountNumber,
-                        "amount": _amountController.text,
-                        "phone_number": _mobileNumberController.text,
-                      },
-                      apiEndpoint: "/api/topup",
-                      apiBody: {},
-                      service: service,
-                      serviceIdentifier: service.uniqueIdentifier));
+                accountDetails: {},
+                apiBody: {
+                  "customercode": _connectionNumberController,
+                  "customerno": _customerNoCOntroller,
+                  "amount": "",
+                  "sessionInfo": "",
+                  "type": "kukl Payment",
+                  "counter": selectedCounterValue
+                },
+                apiEndpoint: "",
+                body: Column(children: [
+                  KeyValueTile(title: "Name", value: ""),
+                  KeyValueTile(title: "Address", value: ""),
+                  KeyValueTile(title: "Branch", value: ""),
+                  KeyValueTile(title: "Area No", value: ""),
+                  KeyValueTile(title: "Bill Month", value: ""),
+                  KeyValueTile(title: "Customer No", value: ""),
+                  KeyValueTile(title: "Customer Code", value: ""),
+                  KeyValueTile(title: "Penalty", value: ""),
+                  KeyValueTile(title: "Total Amount", value: ""),
+                ]),
+                service: widget.service,
+                serviceIdentifier: widget.service.uniqueIdentifier,
+              ));
+            } else {
+              showPopUpDialog(
+                context: context,
+                message: res.message,
+                title: res.status,
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
             }
-          },
-          body: Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                CustomTextField(
-                  title: service.labelName,
-                  hintText: service.labelPrefix,
-                  validator: (val) => FormValidator.validateFieldNotEmpty(
-                      val, service.labelName),
-                  controller: _mobileNumberController,
-                  onTap: () {},
-                ),
-                CustomTextField(
-                  title: "Amount",
-                  hintText: "XXXXXXXXX",
-                  controller: _amountController,
-                  validator: (val) => FormValidator.validateAmount(
-                      val: val.toString(),
-                      maxAmount: service.maxValue,
-                      minAmount: service.minValue),
-                ),
-              ],
-            ),
-          )),
+          }
+        },
+        child: CommonContainer(
+            showRecentTransaction: true,
+            associatedId: widget.service.id.toString(),
+            buttonName: "Show Bill",
+            showAccountSelection: true,
+            title: widget.service.service,
+            detail: widget.service.instructions,
+            showDetail: true,
+            topbarName: "Khane Pani",
+            onButtonPressed: () {
+              if (_formKey.currentState!.validate()) {
+                context.read<UtilityPaymentCubit>().makePayment(
+                    mPin: "",
+                    accountDetails: {},
+                    serviceIdentifier: widget.service.uniqueIdentifier,
+                    body: {
+                      "customerno": _customerNoCOntroller.text,
+                      "customercode": _connectionNumberController.text,
+                      "counter": selectedCounterValue,
+                      "type": "kukl Payment"
+                    },
+                    apiEndpoint: "api/kukl/inquiry");
+              }
+            },
+            body: Form(
+              key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  CustomTextField(
+                    title: "Select Counter",
+                    hintText: "Select From List",
+                    readOnly: true,
+                    validator: (val) =>
+                        FormValidator.validateFieldNotEmpty(val, "Counter"),
+                    controller: _selectedCounterController,
+                    onTap: () {
+                      NavigationService.push(
+                        target: KuklCounterSearchWidget(
+                          onChanged: (KeyValue<dynamic> value) {
+                            _selectedCounterController.text = value.title;
+                            selectedCounterValue = value.value;
+                          },
+                        ),
+                      );
+                    },
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      CustomRoundedButtom(
+                          color: isCustomerNo == true
+                              ? _theme.primaryColor
+                              : _theme.primaryColor.withOpacity(0.5),
+                          title: "Customer No",
+                          onPressed: () {
+                            isCustomerNo = !isCustomerNo;
+                            setState(() {});
+                          }),
+                      CustomRoundedButtom(
+                          color: isCustomerNo == false
+                              ? _theme.primaryColor
+                              : _theme.primaryColor.withOpacity(0.5),
+                          title: "Connection No",
+                          onPressed: () {
+                            isCustomerNo = !isCustomerNo;
+                            setState(() {});
+                          }),
+                    ],
+                  ),
+                  SizedBox(height: 10.hp),
+                  CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    title: isCustomerNo ? "Customer No" : "Connection No",
+                    controller: isCustomerNo
+                        ? _customerNoCOntroller
+                        : _connectionNumberController,
+                    validator: (value) => FormValidator.validateFieldNotEmpty(
+                        value, isCustomerNo ? "Customer No" : "Connection No"),
+                  )
+                ],
+              ),
+            )),
+      ),
     );
   }
 }

@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
-
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
@@ -12,30 +11,15 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class BrokerSearchPage extends StatefulWidget {
+class KuklCounterSearchWidget extends StatelessWidget {
   final ValueChanged<KeyValue> onChanged;
-
-  // final Function(RecentSearch) onRecentSearchClick;
-  const BrokerSearchPage({
+  const KuklCounterSearchWidget({
     Key? key,
     required this.onChanged,
-    // required this.onRecentSearchClick,
   }) : super(key: key);
 
   @override
-  State<BrokerSearchPage> createState() => _BrokerSearchPageState();
-}
-
-class _BrokerSearchPageState extends State<BrokerSearchPage> {
-  @override
-  void initState() {
-    super.initState();
-  }
-
-  @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     return BlocProvider(
       lazy: false,
       create: (context) => UtilityPaymentCubit(
@@ -44,47 +28,35 @@ class _BrokerSearchPageState extends State<BrokerSearchPage> {
       )..fetchDetails(
           serviceIdentifier: "",
           accountDetails: {},
-          apiEndpoint: "/api/broker/list"),
+          apiEndpoint: "/api/kukl/counters",
+        ),
       child: PageWrapper(
         showBackButton: true,
         leadingAppIcon: CustomIconButton(
           icon: Icons.close_rounded,
           shadow: false,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.red,
           onPressed: () {
             NavigationService.pop();
           },
         ),
-        title: "Select",
+        title: "Counters",
         padding: EdgeInsets.zero,
         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
           builder: (context, state) {
-            if (state is CommonLoading) {
-              return const CommonLoadingWidget();
-            } else if (state is CommonStateSuccess<UtilityResponseData>) {
-              final _data = state.data.findValue(primaryKey: "data");
-
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              final _counters = state.data.findValue(primaryKey: "data");
               return SearchWidgets(
-                onChanged: widget.onChanged,
-                ignoreValue: null,
-                hideValue: false,
-                showSearchHistory: false,
+                onChanged: onChanged,
+                hideValue: true,
                 items: List.generate(
-                  _data.length,
-                  (index) {
-                    return KeyValue(
-                      title: _data[index]["name"],
-                      value: _data[index]["code"],
-                    );
-                  },
+                  _counters?.length ?? 0,
+                  (index) => KeyValue(
+                    title: _counters?[index]["name"],
+                    value: _counters?[index]["value"],
+                  ),
                 ),
               );
-            } else if (state is CommonError) {
-              return Container();
-              // return WalletCommonErrorWidget(
-              //   message: state.message,
-              //   isNoConnection: state.isNoConnection,
-              // );
             } else {
               return Container();
             }
