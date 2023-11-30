@@ -210,7 +210,7 @@ flutter:
     # - assets/youthvoice/
     # - assets/shital/
     # - assets/darshan/
-    # - assets/devshree/
+    - assets/devshree/
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
