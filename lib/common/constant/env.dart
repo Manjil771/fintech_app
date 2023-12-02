@@ -1280,6 +1280,7 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
+    shouldValidateCooperative: true,
   );
 
   // // // // DEV TEST70074
