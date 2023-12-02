@@ -14,13 +14,13 @@ class SplashScreens extends StatefulWidget {
 }
 
 class _SplashScreensState extends State<SplashScreens> {
-
   @override
   void initState() {
     // TODO: implement initState
-    
+
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return BlocProvider(

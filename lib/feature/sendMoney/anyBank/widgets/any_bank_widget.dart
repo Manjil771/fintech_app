@@ -502,7 +502,6 @@ void main() {
   print(jaroWinkler("dwayne", "duane")); // Should be close to 0.84
 }
 
-
 // import 'dart:math';
 
 // import 'package:flutter/material.dart';

@@ -472,8 +472,6 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   // }
 }
 
-
-
 //  SingleChildScrollView(
 //                                 scrollDirection: Axis.horizontal,
 //                                 child: DataTable(
@@ -519,4 +517,3 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
 //                                       .toList(),
 //                                 ),
 //                               ),
-                           

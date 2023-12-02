@@ -200,10 +200,10 @@ flutter:
     # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
-    # - assets/noor/
+    - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/
-    - assets/avatar/
+    # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/

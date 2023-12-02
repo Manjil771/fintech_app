@@ -12,7 +12,7 @@ class LimitScreen extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return  PageWrapper(
+    return PageWrapper(
       body: TransactionLimitCard(
         maxLimit: 10000,
         remaining: 100,

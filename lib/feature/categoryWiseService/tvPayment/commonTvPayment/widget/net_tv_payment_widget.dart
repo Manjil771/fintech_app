@@ -129,38 +129,35 @@ class _NetTvPaymentWidgetState extends State<NetTvPaymentWidget> {
   }
 }
 
+// NavigationService.push(target: TransactionPinScreen(
+//   onValueCallback: (p0) {
+//     NavigationService.pop();
 
+//     context.read<UtilityPaymentCubit>().makePayment(
+//         serviceIdentifier: widget.service.uniqueIdentifier,
+//         // serviceIdentifier: "traffic_fine_payments",
+//         apiEndpoint: "/api/tvpay",
+//         body: {
+//           "customerId ": usernameController.text
+//         },
+//         accountDetails: {
+//           "account_number":
+//               RepositoryProvider.of<CustomerDetailRepository>(
+//                       context)
+//                   .selectedAccount
+//                   .value!
+//                   .accountNumber
+//                   .toString(),
+//           "username": usernameController.text,
+//           "customer_id": usernameController.text,
+//           "amount": amountController.text,
+//           // "account_number": "002001-001-102-0001010",
 
-
-  // NavigationService.push(target: TransactionPinScreen(
-                //   onValueCallback: (p0) {
-                //     NavigationService.pop();
-
-                //     context.read<UtilityPaymentCubit>().makePayment(
-                //         serviceIdentifier: widget.service.uniqueIdentifier,
-                //         // serviceIdentifier: "traffic_fine_payments",
-                //         apiEndpoint: "/api/tvpay",
-                //         body: {
-                //           "customerId ": usernameController.text
-                //         },
-                //         accountDetails: {
-                //           "account_number":
-                //               RepositoryProvider.of<CustomerDetailRepository>(
-                //                       context)
-                //                   .selectedAccount
-                //                   .value!
-                //                   .accountNumber
-                //                   .toString(),
-                //           "username": usernameController.text,
-                //           "customer_id": usernameController.text,
-                //           "amount": amountController.text,
-                //           // "account_number": "002001-001-102-0001010",
-
-                //           // "amount": myAmount,
-                //           // "amount": _response.findValue(
-                //           //     primaryKey: "hashResposne",
-                //           //     secondaryKey: "formattedFinalAmount"),
-                //           "mPin": p0
-                //         });
-                //   },
-                // ));
+//           // "amount": myAmount,
+//           // "amount": _response.findValue(
+//           //     primaryKey: "hashResposne",
+//           //     secondaryKey: "formattedFinalAmount"),
+//           "mPin": p0
+//         });
+//   },
+// ));
