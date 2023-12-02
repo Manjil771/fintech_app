@@ -16,6 +16,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/select_counter_widget.dart';
+import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/widget/kukl_bill_detail.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/widget/kukl_select_counter_widget.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -34,6 +35,8 @@ class KuklPaymentWidget extends StatefulWidget {
 }
 
 class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
+  final TextEditingController _amountController = TextEditingController();
+
   final TextEditingController _customerNoCOntroller = TextEditingController();
 
   final TextEditingController _connectionNumberController =
@@ -81,27 +84,47 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
             final res = state.data;
             if (res.code == "M0000" && res.status.toLowerCase() == "success") {
               NavigationService.push(
-                  target: CommonBillDetailPage(
-                accountDetails: {},
-                apiBody: {
-                  "customercode": _connectionNumberController,
-                  "customerno": _customerNoCOntroller,
-                  "amount": "",
-                  "sessionInfo": "",
-                  "type": "kukl Payment",
-                  "counter": selectedCounterValue
+                  target: KuklBillDetailPage(
+                connectionNumber: _connectionNumberController.text,
+                counterValue: selectedCounterValue ?? "",
+                customerNumber: _customerNoCOntroller.text,
+                sessionRequestID: res.findValue(
+                    primaryKey: "sessionInfo",
+                    secondaryKey: "sessionRequestId"),
+                sessionAuthenticationSignature: res.findValue(
+                    primaryKey: "sessionInfo",
+                    secondaryKey: "sessionAuthenticationSignature"),
+                accountDetails: {
+                  "accountNo":
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value!
+                          .accountNumber
                 },
-                apiEndpoint: "",
+                apiEndpoint: "api/kukl/pay",
                 body: Column(children: [
-                  KeyValueTile(title: "Name", value: ""),
-                  KeyValueTile(title: "Address", value: ""),
-                  KeyValueTile(title: "Branch", value: ""),
-                  KeyValueTile(title: "Area No", value: ""),
-                  KeyValueTile(title: "Bill Month", value: ""),
-                  KeyValueTile(title: "Customer No", value: ""),
-                  KeyValueTile(title: "Customer Code", value: ""),
-                  KeyValueTile(title: "Penalty", value: ""),
-                  KeyValueTile(title: "Total Amount", value: ""),
+                  KeyValueTile(
+                      title: "Name",
+                      value: res.findValueString("customerName")),
+                  KeyValueTile(
+                      title: "Address", value: res.findValueString("address")),
+                  KeyValueTile(
+                      title: "Area No",
+                      value: res.findValueString("areaNumber")),
+                  KeyValueTile(
+                      title: "Bill Month",
+                      value: res.findValueString("billMonth")),
+                  KeyValueTile(
+                      title: "Customer No",
+                      value: res.findValueString("customerNo")),
+                  KeyValueTile(
+                      title: "Customer Code",
+                      value: res.findValueString("customerCode")),
+                  KeyValueTile(
+                      title: "Penalty", value: res.findValueString("penalty")),
+                  KeyValueTile(
+                      title: "Bill Amount",
+                      value: res.findValueString("amount")),
                 ]),
                 service: widget.service,
                 serviceIdentifier: widget.service.uniqueIdentifier,
@@ -148,6 +171,92 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  Container(
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(18),
+                        color: _theme.primaryColor.withOpacity(0.05)),
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              _connectionNumberController.clear();
+                              isCustomerNo = true;
+                              setState(() {});
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(12),
+                                color: isCustomerNo == true
+                                    ? CustomTheme.darkerBlack.withOpacity(0.5)
+                                    : CustomTheme.white,
+                              ),
+                              height: _height * 0.04,
+                              child: Center(
+                                child: Text(
+                                  "Customer No",
+                                  style: _textTheme.titleSmall,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                        SizedBox(width: _width * 0.05),
+                        Expanded(
+                          child: InkWell(
+                            onTap: () {
+                              _customerNoCOntroller.clear();
+                              isCustomerNo = false;
+                              setState(() {});
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(8),
+                                color: isCustomerNo == false
+                                    ? CustomTheme.darkerBlack.withOpacity(0.5)
+                                    : CustomTheme.white,
+                              ),
+                              height: _height * 0.04,
+                              child: Center(
+                                child: Text(
+                                  "Connection No",
+                                  style: _textTheme.titleSmall,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  SizedBox(height: _height * 0.02),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  //   children: [
+                  //     CustomRoundedButtom(
+                  //         color: isCustomerNo == true
+                  //             ? _theme.primaryColor
+                  //             : _theme.primaryColor.withOpacity(0.5),
+                  //         title: "Customer No",
+                  //         onPressed: () {
+                  //           _connectionNumberController.clear();
+                  //           isCustomerNo = !isCustomerNo;
+                  //           setState(() {});
+                  //         }),
+                  //     CustomRoundedButtom(
+                  //         color: isCustomerNo == false
+                  //             ? _theme.primaryColor
+                  //             : _theme.primaryColor.withOpacity(0.5),
+                  //         title: "Connection No",
+                  //         onPressed: () {
+                  //           _customerNoCOntroller.clear();
+                  //           isCustomerNo = !isCustomerNo;
+                  //           setState(() {});
+                  //         }),
+                  //   ],
+                  // ),
+                  // SizedBox(height: 10.hp),
                   CustomTextField(
                     title: "Select Counter",
                     hintText: "Select From List",
@@ -166,31 +275,8 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
                       );
                     },
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      CustomRoundedButtom(
-                          color: isCustomerNo == true
-                              ? _theme.primaryColor
-                              : _theme.primaryColor.withOpacity(0.5),
-                          title: "Customer No",
-                          onPressed: () {
-                            isCustomerNo = !isCustomerNo;
-                            setState(() {});
-                          }),
-                      CustomRoundedButtom(
-                          color: isCustomerNo == false
-                              ? _theme.primaryColor
-                              : _theme.primaryColor.withOpacity(0.5),
-                          title: "Connection No",
-                          onPressed: () {
-                            isCustomerNo = !isCustomerNo;
-                            setState(() {});
-                          }),
-                    ],
-                  ),
-                  SizedBox(height: 10.hp),
                   CustomTextField(
+                    required: true,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     title: isCustomerNo ? "Customer No" : "Connection No",
                     controller: isCustomerNo

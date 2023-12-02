@@ -203,7 +203,7 @@ flutter:
     # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/jharana/
-    # - assets/chaughada/
+    - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
