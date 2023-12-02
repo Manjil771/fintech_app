@@ -49,6 +49,7 @@
 		250893381C4F757FEB706311 /* Pods-Runner.release-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nilgiri.xcconfig"; sourceTree = "<group>"; };
 		27CCBFA06FC539128ADB9F2B /* Pods-Runner.release-vaidhik.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-vaidhik.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-vaidhik.xcconfig"; sourceTree = "<group>"; };
 		281F20EA1B124F32AB9A1F7E /* Pods-Runner.release-paschimanchal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-paschimanchal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-paschimanchal.xcconfig"; sourceTree = "<group>"; };
+		287C8B981A72C249DCC93F82 /* Pods-Runner.release-avatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-avatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-avatar.xcconfig"; sourceTree = "<group>"; };
 		2C1D105366F6382BE743E6C5 /* Pods-Runner.release-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kipoo.xcconfig"; sourceTree = "<group>"; };
 		2C27D82D6462205D0D8E53C8 /* Pods-Runner.release-sagarmatha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sagarmatha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sagarmatha.xcconfig"; sourceTree = "<group>"; };
 		2D44E4253CFE97BC324699C2 /* Pods-Runner.profile-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-ekata.xcconfig"; sourceTree = "<group>"; };
@@ -343,6 +344,7 @@
 				55948CD4BFBADE273D109894 /* Pods-Runner.release-sudarshan.xcconfig */,
 				281F20EA1B124F32AB9A1F7E /* Pods-Runner.release-paschimanchal.xcconfig */,
 				0A2404DF84E8BF1E53370A97 /* Pods-Runner.release-sunshine.xcconfig */,
+				287C8B981A72C249DCC93F82 /* Pods-Runner.release-avatar.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
