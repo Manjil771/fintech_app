@@ -81,8 +81,10 @@ class AppUpdateWidgets extends StatelessWidget {
               CustomRoundedButtom(
                 title: "Update Now",
                 onPressed: () {
-                  String _appStoreID = RepositoryProvider.of<CoOperative>(context).appStoreID;
-                  String _packageName = RepositoryProvider.of<CoOperative>(context).packageName;
+                  String _appStoreID =
+                      RepositoryProvider.of<CoOperative>(context).appStoreID;
+                  String _packageName =
+                      RepositoryProvider.of<CoOperative>(context).packageName;
                   if (Platform.isAndroid) {
                     UrlLauncher.launchWebsite(
                       context: context,

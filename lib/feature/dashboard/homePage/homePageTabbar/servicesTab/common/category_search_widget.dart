@@ -134,14 +134,6 @@ class _SearchWidgetsState extends State<CategorySearchWidgets> {
   }
 }
 
-
-
-
-
-
-
-
-
 // import 'dart:async';
 
 // import 'package:flutter/material.dart';

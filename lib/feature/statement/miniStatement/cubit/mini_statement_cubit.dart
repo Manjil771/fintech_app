@@ -14,7 +14,7 @@ class MiniStatementCubit extends Cubit<CommonState> {
     emit(CommonLoading());
     try {
       String mPin = await SecureStorageService.appPassword;
-      
+
       final response =
           await miniStatementRepository.getMiniStatement(accountNumbner, mPin);
 
