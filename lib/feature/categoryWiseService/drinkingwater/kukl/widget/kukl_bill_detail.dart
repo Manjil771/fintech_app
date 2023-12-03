@@ -11,6 +11,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
@@ -113,6 +114,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
     final _width = SizeUtils.width;
 
     return PageWrapper(
+      showBackButton: true,
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && _isLoading == false) {
@@ -178,37 +180,43 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    IconButton(
-                        onPressed: () {
-                          NavigationService.pop();
-                        },
-                        icon: Icon(Icons.arrow_back)),
-                    Center(
-                      child: Image.network(
-                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
-                        height: _height * 0.08,
-                      ),
-                    ),
-                    SizedBox(height: _height * 0.02),
-                    Center(
-                      child: widget.service.service.isEmpty
-                          ? Container()
-                          : Text(
-                              widget.service.service,
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500),
+                    Row(
+                      children: [
+                        Column(
+                          children: [
+                            Center(
+                              child: Image.network(
+                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
+                                height: _height * 0.08,
+                              ),
                             ),
+                            SizedBox(height: _height * 0.01),
+                            Center(
+                              child: widget.service.service.isEmpty
+                                  ? Container()
+                                  : Text(
+                                      widget.service.service,
+                                      style: TextStyle(
+                                          fontSize: 20,
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                            ),
+                          ],
+                        ),
+                        SizedBox(width: _width * 0.02),
+                        Expanded(
+                          child: Text(
+                              "Details about the payable amount for the service of ${widget.service.service} is shown below.",
+                              textAlign: TextAlign.center,
+                              style: Theme.of(context).textTheme.titleSmall),
+                        ),
+                      ],
                     ),
-                    SizedBox(height: _height * 0.02),
-                    Text(
-                        "Details about the payable amount for the service of ${widget.service.service} is shown below.",
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleSmall),
-                    SizedBox(height: _height * 0.02),
+                    SizedBox(height: _height * 0.01),
                     const Divider(thickness: 1),
                     SizedBox(height: _height * 0.02),
+                    PrimaryAccountBox(),
                     Container(
                       padding: const EdgeInsets.all(12),
                       width: double.infinity,
@@ -223,15 +231,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                         children: [
                           Text("Paymet Details",
                               style: Theme.of(context).textTheme.titleLarge),
-                          SizedBox(height: _height * 0.02),
-                          KeyValueTile(
-                              title: "From Account",
-                              value: RepositoryProvider.of<
-                                      CustomerDetailRepository>(context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber),
-                          SizedBox(height: 10.hp),
+                          SizedBox(height: _height * 0.01),
                           widget.body,
                           CustomTextField(
                             required: true,
@@ -264,8 +264,10 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                                     apiEndpoint: widget.apiEndpoint,
                                     accountDetails: widget.accountDetails,
                                     body: {
-                                      "customercode": widget.connectionNumber,
-                                      "customerno": widget.customerNumber,
+                                      if (widget.connectionNumber.isNotEmpty)
+                                        "customercode": widget.connectionNumber,
+                                      if (widget.customerNumber.isNotEmpty)
+                                        "customerno": widget.customerNumber,
                                       "type": "kukl Payment",
                                       "counter": widget.counterValue,
                                       "amount": _amountController.text,
