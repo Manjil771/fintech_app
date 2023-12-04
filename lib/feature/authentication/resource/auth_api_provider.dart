@@ -61,7 +61,7 @@ class AuthApiProvider {
     // };
 
     final _uri = coOperative.baseUrl +
-        "ismart/getBanks?mobileNumber=$username&channelPartner=MAGNUS";
+        "ismart/getBanks?mobileNumber=$username&channelPartner=";
     return await apiProvider.post(
       _uri.toString(),
       {},
