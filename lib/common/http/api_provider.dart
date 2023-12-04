@@ -332,7 +332,7 @@ class ApiProvider {
       }
     } on DioError catch (e) {
       Log.e(e);
-      // responseJson = await _handleErrorResponse(e);
+
       return null;
     } catch (e) {
       Log.e("Error in downlodng");

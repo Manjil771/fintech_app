@@ -101,7 +101,7 @@ class CustomTheme {
   static const Color babiraColor = Color(0xFF25428E);
   static const Color ekataMultipurposeColor = Color(0xFF0C8387);
 
-  static Color primaryColor = noorColor;
+  static Color primaryColor = uttargangaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

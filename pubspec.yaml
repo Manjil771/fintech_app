@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.42+42 ##chirayu
+version: 0.0.44+44 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -87,6 +87,7 @@ dependencies:
   sliver_tools: ^0.2.12
   string_similarity: ^2.0.0
   local_session_timeout: ^2.3.2
+  crop_your_image: ^0.7.4
 
 dev_dependencies:
   flutter_test:
@@ -106,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -200,10 +201,10 @@ flutter:
     # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
-    - assets/noor/
+    # - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/
-    # - assets/avatar/
+    - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
