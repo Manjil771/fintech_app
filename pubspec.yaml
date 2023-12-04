@@ -194,20 +194,20 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
-    # - assets/sudarshan/
+    - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
-    - assets/noor/
+    # - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
-    - assets/youthvoice/
+    # - assets/youthvoice/
     # - assets/shital/
     # - assets/darshan/
     # - assets/devshree/
