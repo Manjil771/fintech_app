@@ -147,7 +147,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    # - assets/sanchar/
+    - assets/sanchar/
     # - assets/hamiSabaikokrishi/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
@@ -204,7 +204,7 @@ flutter:
     # - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/
-    - assets/avatar/
+    # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
