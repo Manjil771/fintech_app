@@ -1263,6 +1263,19 @@ class CoOperativeValue {
     splashImage: "assets/babira/babira_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative devshreeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/devshree/devshree_banner.png",
+    backgroundImage: "assets/devshree/devshree_background.png",
+    clientCode: '9B3YEMMDY2',
+    clientSecret: "197212",
+    coOperativeName: 'Devashree Saving and Credit Co-operative Ltd',
+    coOperativeLogo: 'assets/devshree/devshree_logo.png',
+    splashImage: "assets/devshree/devshree_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative ekataMultipurposeCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1277,20 +1290,6 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret
-
-  static final CoOperative devshreeCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/devshree/devshree_banner.png",
-    backgroundImage: "assets/devshree/devshree_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    coOperativeName: 'Devshree',
-    coOperativeLogo: 'assets/devshree/devshree_logo.png',
-    splashImage: "assets/devshree/devshree_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
 
   static final CoOperative jharanaCoop = CoOperative(
     appStoreID: "",

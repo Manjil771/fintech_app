@@ -201,21 +201,21 @@ flutter:
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
-    # - assets/hetauda/
+    - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
     # - assets/shital/
     # - assets/darshan/
-    # - assets/devshree/
-    - assets/uddhamshilKrishi/
+    - assets/devshree/
+    # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
-    # - assets/eastwest/
-    # - assets/babira/
-    # - assets/ekataMultipurpose/
+    - assets/eastwest/
+    - assets/babira/
+    - assets/ekataMultipurpose/
 
   fonts:
     - family: popinbold
