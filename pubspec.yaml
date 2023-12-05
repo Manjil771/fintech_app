@@ -132,10 +132,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/gandakibesi/
-    # - assets/sarbahit/
-    # - assets/sardikhola/
     # - assets/kripalu/
-    # - assets/sarbahit/
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
@@ -205,12 +202,12 @@ flutter:
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
-    - assets/pragatishil/
+    # - assets/pragatishil/
     # - assets/youthvoice/
     # - assets/shital/
     # - assets/darshan/
     # - assets/devshree/
-    # - assets/uddhamshilKrishi/
+    - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/

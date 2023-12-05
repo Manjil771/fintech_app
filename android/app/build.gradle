@@ -565,6 +565,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        uddhamshilKrishi{
+            dimension "app"
+            applicationId "com.devanasoft.uddhamshilKrishi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         stage {
             dimension "app"
             applicationId "com.devanasoft.ismart.dev"
