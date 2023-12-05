@@ -188,13 +188,13 @@ flutter:
     # - assets/paschimanchal/
     # - assets/chirayu/
     # - assets/digitalCoop/
-    # - assets/upakar/
+    - assets/upakar/
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
-    - assets/sudarshan/
+    # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/sanakishanHathasuwa/
@@ -214,7 +214,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    # - assets/queenCoop/
+    - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/

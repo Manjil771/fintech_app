@@ -50,6 +50,7 @@ class Strings {
   static const String supremeAppTitle = "Supreme Saving iSmart";
   static const String janasewaAppTitle = "Janasewa Saving iSmart";
   static const String immanuelAppTitle = "Immanuel Saving iSmart";
+  static const String upakarAppTitle = "Immanuel Saving iSmart";
   static const String annapurnaHealthAppTitle =
       "Annapurna Health Saving iSmart";
   static const String royalGorkhaAppTitle = "Royal Gorkha Saving iSmart";
@@ -84,6 +85,7 @@ class Strings {
   static const String youthAppTitle = 'Youth iSmart';
   static const String devShreeAppTitle = 'Dev Shree iSmart';
   static const String kendrabinduAppTitle = 'Kendrabindu iSmart';
+  static const String queenAppTitle = 'Queen iSmart';
 
-  static const APP_TITLE = sudharshanAppTitle;
+  static const APP_TITLE = upakarAppTitle;
 }

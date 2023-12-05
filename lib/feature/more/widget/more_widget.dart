@@ -197,20 +197,18 @@ class MoreWidget extends StatelessWidget {
     final _height = SizeUtils.height;
     return CommonContainer(
       showTitleText: false,
-      body: Container(
-        height: _height.hp,
-        width: double.infinity,
-        child: GridView.builder(
-          itemCount: names.length,
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2),
-          itemBuilder: (context, index) {
-            return CommonGridViewContainer(
-                onContainerPress: () => tapFunction[index](),
-                containerImage: itemImage[index],
-                title: names[index]);
-          },
-        ),
+      body: GridView.builder(
+        physics: NeverScrollableScrollPhysics(),
+        shrinkWrap: true,
+        itemCount: names.length,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        itemBuilder: (context, index) {
+          return CommonGridViewContainer(
+              onContainerPress: () => tapFunction[index](),
+              containerImage: itemImage[index],
+              title: names[index]);
+        },
       ),
       topbarName: "More",
       showBackBotton: false,
