@@ -589,12 +589,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shreeDigopan{
+            dimension "app"
+            applicationId "com.devanasoft.shreeDigopan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         ekataMulti{
             dimension "app"
             applicationId "com.devanasoft.ekataMulti"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        sarbahitDang{
+            dimension "app"
+            applicationId "com.devanasoft.sarbahitDang"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        smartUdhamshil{
+            dimension "app"
+            applicationId "com.devanasoft.smartUdhamshil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
         stage {
             dimension "app"
             applicationId "com.devanasoft.ismart.dev"

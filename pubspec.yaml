@@ -107,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -164,7 +164,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    - assets/sanakishan/
+    # - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
@@ -209,17 +209,17 @@ flutter:
     # - assets/darshan/
     # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    # - assets/smartUddhamshil/ub
+    - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
-    - assets/eastwest/
+    # - assets/eastwest/
     # - assets/babira/
     # - assets/ekataMultipurpose/
     # - assets/sarbahitDang/
-    # - assers/shwetbhairab/
-    - assets/skKhudunabari/
+    # - assets/shwetbhairab/
+    # - assets/skKhudunabari/
 
   fonts:
     - family: popinbold

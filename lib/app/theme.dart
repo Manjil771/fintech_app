@@ -92,7 +92,7 @@ class CustomTheme {
   static const Color darshanColor = Color(0xFF008F01);
   static const Color devshreeColor = Color(0xFF28A914);
   static const Color uddhamshilKrishiYantrikColor = Color(0xFF8FC040);
-  static const Color smartUddhamshilColor = Color(0xFF09BF3D);
+  static const Color smartUdhamshilColor = Color(0xFF09BF3D);
   static const Color shreeDigopanColor = Color(0xFF009225);
   static const Color queenCoopColor = Color(0xFF0072BC);
   static const Color nayakiranColor = Color(0xFF001A5A);
@@ -100,8 +100,9 @@ class CustomTheme {
   static const Color eastwestColor = Color(0xFF006311);
   static const Color babiraColor = Color(0xFF25428E);
   static const Color ekataMultipurposeColor = Color(0xFF0C8387);
+  static const Color sarbahitDangColor = Color(0xFF009245);
 
-  static const Color primaryColor = eastwestColor;
+  static const Color primaryColor = smartUdhamshilColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
