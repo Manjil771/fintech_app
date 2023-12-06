@@ -59,7 +59,7 @@ class FeedBackWidget extends StatelessWidget {
               title: state.data.status.toString(),
               showCancelButton: false,
               buttonCallback: () {
-                NavigationService.pushReplacement(target: DashboardPage());
+                NavigationService.popUntilFirstPage();
               },
             );
 

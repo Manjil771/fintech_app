@@ -4,6 +4,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/authentication/ui/actiateAccount/resources/reset_otp_register_repository.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/resources/reset_pin_repository.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_repository.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_repository.dart';
@@ -211,6 +212,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => ResetPinRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => ResetOtpRegisterRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),

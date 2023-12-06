@@ -102,7 +102,6 @@ class _FlightsSearchPageState extends State<FlightsSearchPage> {
   }
 }
 
-
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:ismart/common/common/data_state.dart';
@@ -240,7 +239,7 @@ class _FlightsSearchPageState extends State<FlightsSearchPage> {
 //                   },
 //                 ),
 //               );
-            
+
 //             // print("data ist" + state.data[0].sectorCode.toString());
 //             // return ListView.builder(
 //             //   itemCount: state.data.length,

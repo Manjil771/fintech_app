@@ -76,7 +76,10 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         },
         builder: (context, state) {
           if (state is CommonStateSuccess<MiniStatementModel>) {
+            final res = state.data.ministatementList;
+
             return CommonContainer(
+                horizontalPadding: 0,
                 showDetail: false,
                 body: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -88,72 +91,85 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                             return Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text(
-                                    "Account Details ${selectedAccount!.accountNumber}",
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge),
-                                SizedBox(height: _height * 0.01),
-                                Container(
-                                  padding: const EdgeInsets.all(18),
-                                  width: double.infinity,
-                                  height: _height * 0.11,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    border: Border.all(
-                                        color: Theme.of(context).primaryColor),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
+                                Padding(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 18),
+                                  child: Column(
                                     children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Available Balance",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                          ),
-                                          Text(
-                                            "NPR ${selectedAccount.availableBalance}",
-                                            style: TextStyle(
-                                                fontFamily: "popinBold",
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                                color: Theme.of(context)
-                                                    .primaryColor),
-                                          ),
-                                        ],
+                                      Text(
+                                          "Account Details ${selectedAccount!.accountNumber}",
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleLarge),
+                                      SizedBox(height: _height * 0.01),
+                                      Container(
+                                        padding: const EdgeInsets.all(18),
+                                        width: double.infinity,
+                                        height: _height * 0.11,
+                                        decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          color: Theme.of(context)
+                                              .scaffoldBackgroundColor,
+                                          border: Border.all(
+                                              color: Theme.of(context)
+                                                  .primaryColor),
+                                        ),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Available Balance",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleLarge,
+                                                ),
+                                                Text(
+                                                  "NPR ${selectedAccount.availableBalance}",
+                                                  style: TextStyle(
+                                                      fontFamily: "popinBold",
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ],
+                                            ),
+                                            Column(
+                                              crossAxisAlignment:
+                                                  CrossAxisAlignment.start,
+                                              children: [
+                                                Text(
+                                                  "Actual Balance",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .titleLarge,
+                                                ),
+                                                Text(
+                                                  "NPR ${selectedAccount.actualBalance}",
+                                                  style: TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                      fontFamily: "popinBold",
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                ),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
                                       ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Actual Balance",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                          ),
-                                          Text(
-                                            "NPR ${selectedAccount.actualBalance}",
-                                            style: TextStyle(
-                                                fontSize: 18,
-                                                fontWeight: FontWeight.w500,
-                                                fontFamily: "popinBold",
-                                                color: Theme.of(context)
-                                                    .primaryColor),
-                                          ),
-                                        ],
-                                      ),
+                                      SizedBox(height: _height * 0.02),
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: _height * 0.02),
                               ],
                             );
                           } else {
@@ -162,18 +178,30 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                         }),
                     if (state.data.ministatementList.isNotEmpty)
                       DataTable(
-                        columnSpacing: _width * 0.14,
+                        sortAscending: false,
+
+                        columnSpacing: _width / 5,
                         headingRowHeight: 40,
                         dataTextStyle:
                             const TextStyle(fontSize: 12, color: Colors.black),
                         headingRowColor:
                             const MaterialStatePropertyAll(Colors.black12),
                         columns: const [
-                          DataColumn(label: Text("Date")),
-                          DataColumn(label: Text("Amount")),
-                          DataColumn(label: Text("Status")),
+                          DataColumn(
+                              label: Text(
+                            "Date",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          )),
+                          DataColumn(
+                              label: Text("Amount",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                          DataColumn(
+                              label: Text("Status",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
                         ],
-                        rows: state.data.ministatementList
+                        rows: List.from(res.reversed)
                             .map((e) => DataRow(
                                   cells: [
                                     DataCell(Text(
@@ -224,7 +252,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       target: const DashboardPage());
                 },
                 buttonName: "Close",
-                title: "Mini Statement",
+                title: "  Mini Statement",
                 detail: "",
                 topbarName: "Statement");
           } else {

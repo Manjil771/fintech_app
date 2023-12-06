@@ -13,6 +13,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/authentication/ui/actiateAccount/screen/registration_otp_page.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_otp_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
@@ -49,7 +50,6 @@ class ActivateAccountWidget extends StatelessWidget {
               _isLoading = false;
               NavigationService.pop();
             }
-            print("state is ${state}");
 
             if (state is CommonError) {
               showPopUpDialog(
@@ -62,17 +62,20 @@ class ActivateAccountWidget extends StatelessWidget {
                 },
               );
             }
-            print("state is ${state}");
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
               showPopUpDialog(
                 context: context,
                 message: state.data.message,
                 title: "Message",
+                buttonText: "Proceed",
                 showCancelButton: false,
                 buttonCallback: () {
-                  NavigationService.pushReplacementNamed(
-                      routeName: Routes.loginPage);
+                  NavigationService.pushReplacement(
+                      target: RegisterOtpPage(
+                    accountNumber: _accountNumberController.text,
+                    mobileNumber: _mobileNumberController.text,
+                  ));
                 },
               );
             }

@@ -56,7 +56,6 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
 
   @override
   Widget build(BuildContext context) {
-    Size size = MediaQuery.of(context).size;
     return PageWrapper(
       body: MultiBlocListener(
         listeners: [
@@ -70,7 +69,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 NavigationService.pop();
               }
               if (state is CommonStateSuccess<WalletTransferModel>) {
-                WalletTransferModel _response = state.data;
+                final WalletTransferModel _response = state.data;
                 if (state.data.code == "M0000") {
                   NavigationService.pushReplacement(
                       target: CommonTransactionSuccessPage(
@@ -220,7 +219,6 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                         validator: (val) => FormValidator.validateFieldNotEmpty(
                             val, "Wallet Id"),
                       ),
-                SizedBox(height: size.height * 0.02),
                 CustomTextField(
                   title: "Amount",
                   hintText: "Enter the amount",

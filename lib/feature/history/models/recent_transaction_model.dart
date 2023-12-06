@@ -60,7 +60,7 @@ class RecentTransactionModel {
         serviceTo: json["serviceTo"],
         accountNumber: json["accountNumber"],
         transactionIdentifier: json["transactionIdentifier"],
-        date: DateTime.parse(json["date"]),
+        date: DateTime.tryParse(json["date"]) ?? DateTime.now(),
         status: json["status"],
         airlinesPdfUrl: json["airlinesPdfUrl"],
         sessionId: json["sessionId"],
@@ -216,8 +216,6 @@ class EnumValues<T> {
     return reverseMap;
   }
 }
-
-
 
 // class RecentTransactionModel {
 //   double amount;

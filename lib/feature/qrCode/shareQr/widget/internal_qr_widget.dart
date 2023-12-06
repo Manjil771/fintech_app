@@ -38,7 +38,7 @@ class InternalQrWidget extends StatelessWidget {
         ),
         KeyValueTile(
           title: "Account Number",
-          value: detail.accountNumber,
+          value: detail.mainCode,
         ),
         SizedBox(height: _height * 0.02),
         CustomRoundedButtom(

@@ -11,6 +11,7 @@ class KhanepaniDetailsPage extends StatelessWidget {
   final String customerCode;
   final String selectedCounter;
   final ServiceList serivceList;
+  final String selectedCounterName;
 
   const KhanepaniDetailsPage({
     Key? key,
@@ -18,11 +19,13 @@ class KhanepaniDetailsPage extends StatelessWidget {
     required this.customerCode,
     required this.selectedCounter,
     required this.serivceList,
+    required this.selectedCounterName,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return KhanepaniDetailsWidgets(
+      selectedCounterName: selectedCounterName,
       customerCode: customerCode,
       service: serivceList,
       selectedCounter: selectedCounter,

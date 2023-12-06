@@ -67,7 +67,7 @@ class FullStatementModel {
 }
 
 class AccountStatementDtos {
-  DateTime transactionDate;
+  String transactionDate;
   String remarks;
   double debit;
   double credit;
@@ -83,8 +83,7 @@ class AccountStatementDtos {
 
   factory AccountStatementDtos.fromJson(Map<String, dynamic> json) {
     return AccountStatementDtos(
-      transactionDate:
-          DateTime.tryParse(json['transactionDate']) ?? DateTime.now(),
+      transactionDate: json['transactionDate'],
       remarks: json['remarks'] ?? "",
       debit: json['debit'] ?? 0.0,
       credit: json['credit'] ?? 0.0,

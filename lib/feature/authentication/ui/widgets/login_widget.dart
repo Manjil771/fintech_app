@@ -21,7 +21,6 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
-import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
@@ -261,6 +260,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             validator: (value) =>
                                 FormValidator.validateFieldNotEmpty(
                                     value, "Phone Number"),
+
                             onChanged: (val) async {
                               if (FormValidator.validatePhoneNumber(val) ==
                                   null) {

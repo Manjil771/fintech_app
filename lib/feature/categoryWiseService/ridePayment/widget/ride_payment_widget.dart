@@ -149,13 +149,10 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "rider ID"),
                   ),
-                  CommonAmountBox(
-                    onChanged: (value) {
-                      amountController.text = value;
-                      setState(() {});
-                    },
-                    service: widget.service,
-                    textController: amountController,
+                  CustomTextField(
+                    controller: amountController,
+                    title: "Amount",
+                    hintText: "XXXXX",
                   ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,

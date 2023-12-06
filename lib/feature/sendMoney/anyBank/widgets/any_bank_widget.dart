@@ -21,6 +21,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
+import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -53,6 +54,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   Bank? selectedBank;
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? bestMatchBankId;
+  String? bestMatchBankName;
 
   @override
   void initState() {
@@ -82,92 +84,6 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     return PageWrapper(
       body: MultiBlocListener(
         listeners: [
-          // BlocListener<SendToBankCubit, CommonState>(
-          //   listener: (context, state) {
-          //     if (state is CommonLoading && _isLoading == false) {
-          //       _isLoading = true;
-          //       showLoadingDialogBox(context);
-          //     } else if (state is! CommonLoading && _isLoading) {
-          //       _isLoading = false;
-          //       NavigationService.pop();
-          //     }
-          //     if (state is CommonStateSuccess) {
-          //       NavigationService.pushReplacement(
-          //           target: CommonTransactionSuccessPage(
-          //               body: Column(children: [
-          //                 KeyValueTile(
-          //                     title: "From Account",
-          //                     value: RepositoryProvider.of<
-          //                             CustomerDetailRepository>(context)
-          //                         .selectedAccount
-          //                         .value!
-          //                         .accountNumber),
-          //                 KeyValueTile(
-          //                     title: "To Account",
-          //                     value: _accountNumberController.text),
-          //                 KeyValueTile(
-          //                     title: "Account Holder Name",
-          //                     value: _accountNameController.text),
-          //                 KeyValueTile(
-          //                   title: "To Bank",
-          //                   value: widget.bankCode == null
-          //                       ? selectedBank?.bankName ?? ""
-          //                       : widget.bankName ?? "ismart",
-          //                 ),
-          //                 KeyValueTile(
-          //                   title: "Charge",
-          //                   value: charges ?? "0",
-          //                 ),
-          //                 KeyValueTile(
-          //                   title: "Amount",
-          //                   value: _amountController.text,
-          //                 ),
-          //               ]),
-          //               message: "Transaction Completed",
-          //               transactionID: state.data));
-          //     } else if (state is CommonDataFetchSuccess<Bank>) {
-          //       List<Bank> _banks = state.data;
-          //       List<String> _bankNames = [];
-          //       double highestMatch = 0;
-          //       int selectedIndex = -1;
-          //       print("ISMARTCHECK : Checking for Bank : ${widget.bankName}");
-          //       state.data.forEach((element) {
-          //         final matchValue = jaro(
-          //             widget.bankName
-          //                     ?.toLowerCase()
-          //                     .replaceAll("ltd", "limited") ??
-          //                 "",
-          //             element.bankName
-          //                 .toLowerCase()
-          //                 .replaceAll("ltd", "limited"));
-          //         print(
-          //             "ISMARTCHECK : Bank Name : ${element.bankName} MatchRation : $matchValue");
-          //         if (matchValue > highestMatch) {
-          //           highestMatch = matchValue;
-          //           selectedIndex = state.data.indexOf(element);
-          //         }
-          //       });
-          //       print("\n\n\nBEST MATCH\n\n");
-          //       print(highestMatch);
-          //       print(state.data[selectedIndex].bankName);
-          //       bestMatchBankId = state.data[selectedIndex].bankId;
-          //       setState(() {});
-          //     }
-          //     if (state is CommonError) {
-          //       showPopUpDialog(
-          //         context: context,
-          //         message: state.message,
-          //         title: "Message",
-          //         buttonCallback: () {
-          //           NavigationService.pop();
-          //         },
-          //         showCancelButton: false,
-          //       );
-          //     }
-          //   },
-          //   child: Container(),
-          // ),
-
           BlocListener<BankChargeCubit, CommonState>(
             listener: (context, state) {
               if (state is CommonLoading && _isLoading == false) {
@@ -203,7 +119,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           title: "Destination Account Number",
                           value: _accountNumberController.text),
                       KeyValueTile(
-                          title: "Destinnation Account Name",
+                          title: "Destination Account Name",
                           value: _accountNameController.text),
                       KeyValueTile(
                         title: "Charge",
@@ -330,39 +246,86 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   ),
                 ),
                 SizedBox(height: _height * 0.02),
-                // widget.bankCode == null
-                //     ?
-                CustomTextField(
-                  hintText: "Select Bank",
-                  title: "Select Bank",
-                  readOnly: widget.bankCode != null,
-                  controller: _selectedBankController,
-                  onTap:
-                      // bestMatchBankId != null
-                      // ?
-                      () {
-                    NavigationService.push(
-                      target: BankListPage(
-                        onBankSelected: (val) {
-                          bestMatchBankId = null;
-                          NavigationService.pop();
+                widget.bankName == null
+                    ? CustomTextField(
+                        hintText: "Select Bank",
+                        title: "Select Bank",
+                        readOnly: widget.bankCode != null,
+                        controller: _selectedBankController,
+                        onTap:
+                            // bestMatchBankId != null
+                            // ?
+                            () {
+                          NavigationService.push(
+                            target: BankListPage(
+                              onBankSelected: (val) {
+                                bestMatchBankId = null;
+                                NavigationService.pop();
 
-                          _selectedBankController.text = val.bankName;
-                          selectedBank = val;
-                          setState(() {});
+                                _selectedBankController.text = val.bankName;
+                                selectedBank = val;
+                                setState(() {});
+                              },
+                            ),
+                          );
                         },
-                      ),
-                    );
-                  },
-                  // : null,
-                  validator: (value) => FormValidator.validateFieldNotEmpty(
-                      value, "Destination bank."),
-                ),
-                // : CustomTextField(
-                //     title: "Select Bank",
-                //     controller: _selectedBankController,
-                //     readOnly: true,
-                //   ),
+                        // : null,
+                        validator: (value) =>
+                            FormValidator.validateFieldNotEmpty(
+                                value, "Destination bank."),
+                      )
+                    : BlocProvider(
+                        lazy: false,
+                        create: (context) => SendToBankCubit(
+                            sendToBankRepository:
+                                RepositoryProvider.of<SendToBankRepository>(
+                                    context))
+                          ..fetchBanksList(),
+                        child: BlocConsumer<SendToBankCubit, CommonState>(
+                          builder: (context, state) {
+                            print("state of state is $state");
+                            if (state is CommonDataFetchSuccess<Bank>) {
+                              List<Bank> _banks = state.data;
+                              List<String> _bankNames = [];
+                              double highestMatch = 0;
+                              int selectedIndex = -1;
+                              print(
+                                  "ISMARTCHECK : Checking for Bank : ${widget.bankName}");
+                              state.data.forEach((element) {
+                                final matchValue = jaro(
+                                    widget.bankName
+                                            ?.toLowerCase()
+                                            .replaceAll("ltd", "limited") ??
+                                        "",
+                                    element.bankName
+                                        .toLowerCase()
+                                        .replaceAll("ltd", "limited"));
+                                print(
+                                    "ISMARTCHECK : Bank Name : ${element.bankName} MatchRation : $matchValue");
+                                if (matchValue > highestMatch) {
+                                  highestMatch = matchValue;
+                                  selectedIndex = state.data.indexOf(element);
+                                }
+                              });
+                              print("\n\n\nBEST MATCH\n\n");
+                              print(highestMatch);
+                              print(state.data[selectedIndex].bankName);
+                              bestMatchBankId =
+                                  state.data[selectedIndex].bankId;
+                              bestMatchBankName =
+                                  state.data[selectedIndex].bankName;
+                              return CustomTextField(
+                                readOnly: true,
+                                title: "Branch ",
+                                customHintTextStyle: true,
+                                hintText: bestMatchBankName ?? "",
+                              );
+                            } else {
+                              return Container();
+                            }
+                          },
+                          listener: (context, state) {},
+                        )),
                 CustomTextField(
                   title: "Account Number",
                   hintText: "Destination Account Number",
@@ -385,6 +348,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             val, "Account Name"),
                       ),
                 CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "NPR ",
                   textInputType: TextInputType.number,
@@ -395,17 +359,18 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       setState(() {});
                     }
                   },
-                  validator: (val) {
-                    if ((int.tryParse(val ?? "") ?? 0) < 100) {
-                      return "Minimum bank tranfer amount is Rs. 100";
-                    } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
-                      return "Maximum bank transfer amount is Rs. 2,00,000";
-                    } else {
-                      return null;
-                    }
-                  },
+                  validator: (value) => FormValidator.validateAmount(
+                      val: value.toString(), minAmount: 100, maxAmount: 99990),
+                  // validator: (val) {
+                  //   if ((int.tryParse(val ?? "") ?? 0) < 100) {
+                  //     return "Minimum bank tranfer amount is Rs. 100";
+                  //   } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
+                  //     return "Maximum bank transfer amount is Rs. 2,00,000";
+                  //   } else {
+                  //     return null;
+                  //   }
+                  // },
                 ),
-
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
@@ -536,7 +501,6 @@ double jaroWinkler(String s1, String s2) {
 void main() {
   print(jaroWinkler("dwayne", "duane")); // Should be close to 0.84
 }
-
 
 // import 'dart:math';
 

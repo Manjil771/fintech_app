@@ -113,6 +113,7 @@ class Slugs {
 // datapack
   static String ntcDataPack = "ntc_data_pack";
   static String ncellDataPack = "ncell_data_pack";
+
   static String busTicket = "bus_ticket";
   static String busSewa = "bus_sewa";
   static String broker = "broker";

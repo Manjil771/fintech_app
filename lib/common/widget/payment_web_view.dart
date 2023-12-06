@@ -103,7 +103,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               title: "Success",
               buttonCallback: () {
                 NavigationService.pushReplacement(
-                      target: const DashboardPage());
+                    target: const DashboardPage());
               },
               showCancelButton: false,
             );
@@ -114,7 +114,7 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               title: "Failed",
               buttonCallback: () {
                 NavigationService.pushReplacement(
-                      target: const DashboardPage());
+                    target: const DashboardPage());
               },
               showCancelButton: false,
             );

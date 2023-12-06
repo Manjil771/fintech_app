@@ -1,8 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-
-version: 0.0.38+38 ##gomaganesh
+version: 0.0.44+44 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -88,6 +87,7 @@ dependencies:
   sliver_tools: ^0.2.12
   string_similarity: ^2.0.0
   local_session_timeout: ^2.3.2
+  crop_your_image: ^0.7.4
 
 dev_dependencies:
   flutter_test:
@@ -107,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -121,6 +121,7 @@ flutter:
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
+    # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
@@ -131,12 +132,8 @@ flutter:
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/matribhumi/
     # - assets/gandakibesi/
-    # - assets/sarbahit/
-    # - assets/sardikhola/
     # - assets/kripalu/
-    # - assets/sarbahit/
     # - assets/bhanjyang/
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
@@ -185,7 +182,6 @@ flutter:
     # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
-    # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/paschimanchal/
     # - assets/chirayu/
@@ -195,9 +191,7 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    # - assets/uttarbahini/
     # - assets/shubhaSandesh/
-    # - assets/noor/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -211,15 +205,23 @@ flutter:
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
-    # - assets/shreeshital/
+    # - assets/shital/
     # - assets/darshan/
     # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    # - assets/smartUddhamshil/
+    # - assets/smartUddhamshil/ub
     # - assets/shreeDigopan/
     # - assets/queenCoop/
-    - assets/nayakiran/
-
+    # - assets/nayakiran/
+    - assets/kendrabindu/
+    # - assets/eastwest/
+    # - assets/kendrabindu/
+    - assets/eastwest/
+    # - assets/babira/
+    # - assets/ekataMultipurpose/
+    # - assets/sarbahitDang/
+    # - assers/shwetbhairab/
+    - assets/skKhudunabari/
 
   fonts:
     - family: popinbold
