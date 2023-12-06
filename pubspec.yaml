@@ -209,7 +209,7 @@ flutter:
     # - assets/darshan/
     # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    - assets/smartUddhamshil/
+    # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
@@ -218,8 +218,11 @@ flutter:
     # - assets/babira/
     # - assets/ekataMultipurpose/
     # - assets/sarbahitDang/
-    # - assets/shwetbhairab/
+    - assets/shwetbhairab/
     # - assets/skKhudunabari/
+    - assets/karmath/
+    - assets/shreeEkata/
+
 
   fonts:
     - family: popinbold

@@ -96,9 +96,10 @@ class Strings {
   static const String shreeDigopanTitle = 'Hetauda Coop iSmart';
   static const String sarbahitDangAppTitle = 'Sarbahit Coop iSmart';
   static const String smartUdhamshilAppTitle = 'Smart Udhamshil iSmart';
+  static const String shwetbhairabAppTitle = 'Shwet Bhairab iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = smartUdhamshilAppTitle;
+  static const APP_TITLE = shwetbhairabAppTitle;
 }

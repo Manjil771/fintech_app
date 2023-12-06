@@ -612,6 +612,12 @@ android {
             applicationId "com.devanasoft.smartUdhamshil"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
+        }
+        shwetBhairab{
+            dimension "app"
+            applicationId "com.devanasoft.shwetBhairab"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
         } 
         stage {
             dimension "app"
