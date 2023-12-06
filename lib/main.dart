@@ -22,6 +22,7 @@ Future<void> main() async {
     HttpOverrides.global = MyHttpOverrides();
     runApp(
 
+
       LocalWrapper(child: AppProd(env: CoOperativeValue.eastwestCoop)),
 
     );

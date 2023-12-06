@@ -43,12 +43,18 @@ class UserRepository {
     _isLoggedIn.value = _token.isNotEmpty;
     // LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
 
-    // if (_coopValue != null) {
-    //   _updateCoopValue(_coopValue);
-    // }
+
+    if (_coopValue != null) {
+      updateCoopValue(_coopValue);
+    }
+
   }
 
-  _updateCoopValue(LoginCoOpValue coop) {
+  updateCoopValue(LoginCoOpValue coop) {
+    if (!RepositoryProvider.of<CoOperative>(NavigationService.context)
+        .shouldValidateCooperative) {
+      return;
+    }
     String _baseUrl =
         RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
 
@@ -228,9 +234,10 @@ class UserRepository {
     }
   }
 
-  Future<DataResponse<LoginCoOpValue>> validateCoOperative({
+  Future<DataResponse<List<LoginCoOpValue>>> validateCoOperative({
     required String username,
   }) async {
+    List<LoginCoOpValue> _allCoops = [];
     try {
       final _res = await authApiProvider.validateCoOperative(
         username: username,
@@ -241,11 +248,14 @@ class UserRepository {
       );
 
       if (_coopList.isNotEmpty) {
-        LoginCoOpValue _loginCoop = LoginCoOpValue.fromJson(_coopList.last);
-        _updateCoopValue(_loginCoop);
-        SharedPref.setLoginCoop(_loginCoop);
+        _coopList.forEach((e) {
+          _allCoops.add(LoginCoOpValue.fromJson(e));
+        });
+        // print(_loginCoop.bank);
+        // _updateCoopValue(_loginCoop);
+        // SharedPref.setLoginCoop(_loginCoop);
 
-        return DataResponse.success(_loginCoop);
+        return DataResponse.success(_allCoops);
       } else {
         return DataResponse.error("Error retrieving data");
       }
