@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -21,8 +22,11 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
+import 'package:ismart/feature/authentication/model/coop_value.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
+import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
@@ -36,6 +40,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
   List<String> _bannerImages = [];
   final TextEditingController phoneController = TextEditingController();
@@ -89,8 +94,11 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (Platform.isIOS) {
       _hasExistingLoginSaved.value = false;
     }
+
     super.initState();
   }
+
+  final TextEditingController _selectedCoopController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -182,6 +190,64 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ),
                     ),
                     SizedBox(height: height * 0.02),
+                    BlocConsumer<ValidateCoOpCubit, CommonState>(
+                      listener: (context, state) async {
+                        if (state is CommonDataFetchSuccess<LoginCoOpValue> &&
+                            state.data.length == 1) {
+                          _selectedCoopController.text = state.data.first.bank;
+                          RepositoryProvider.of<UserRepository>(context)
+                              .updateCoopValue(state.data.first);
+                          await SharedPref.setLoginCoop(state.data.first);
+                          await Future.delayed(
+                                  const Duration(milliseconds: 100))
+                              .then(
+                            (value) => setState(() {}),
+                          );
+                        }
+                      },
+                      builder: (context, state) {
+                        if (state is CommonDataFetchSuccess<LoginCoOpValue> &&
+                            state.data.length > 1) {
+                          return CustomTextField(
+                            title: "CoOperative",
+                            hintText: "Select CoOperative",
+                            readOnly: true,
+                            controller: _selectedCoopController,
+                            validator: (val) =>
+                                FormValidator.validateFieldNotEmpty(
+                                    val, "CoOperative"),
+                            onTap: () {
+                              NavigationService.push(
+                                target: CoopSelectWidget(
+                                  allCoops: state.data,
+                                  selectedCoop: selectedCoop,
+                                  onValueSelected: (val) async {
+                                    _selectedCoopController.text = val.bank;
+                                    RepositoryProvider.of<UserRepository>(
+                                            context)
+                                        .updateCoopValue(val);
+                                    await SharedPref.setLoginCoop(val);
+                                    await Future.delayed(
+                                            const Duration(milliseconds: 100))
+                                        .then(
+                                      (value) => setState(() {}),
+                                    );
+                                  },
+                                  // onBankSelected: (val) {
+                                  //   NavigationService.pop();
+                                  //   // internalBranch = val;
+                                  //   // branchCode = val.branchCode;
+                                  //   // _branchController.text = val.name;
+                                  // },
+                                ),
+                              );
+                            },
+                          );
+                        } else {
+                          return Container();
+                        }
+                      },
+                    ),
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
@@ -194,19 +260,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                             validator: (value) =>
                                 FormValidator.validateFieldNotEmpty(
                                     value, "Phone Number"),
-                            onChanged: (val) {
-                              // if (FormValidator.validatePhoneNumber(val) ==
-                              //     null) {
-                              //   if (Platform.isIOS) {
-                              //     context
-                              //         .read<ValidateCoOpCubit>()
-                              //         .validateCoOperative(username: val);
-                              //     Future.delayed(const Duration(seconds: 3))
-                              //         .then((value) {
-                              //       setState(() {});
-                              //     });
-                              //   }
-                              // }
+
+                            onChanged: (val) async {
+                              if (FormValidator.validatePhoneNumber(val) ==
+                                  null) {
+                                CoOperative currentCoop =
+                                    RepositoryProvider.of<CoOperative>(context);
+                                if (currentCoop.shouldValidateCooperative) {
+                                  await context
+                                      .read<ValidateCoOpCubit>()
+                                      .validateCoOperative(username: val);
+                                  Future.delayed(const Duration(seconds: 3))
+                                      .then((value) {
+                                    setState(() {});
+                                  });
+                                }
+                              }
                             },
                           );
                         } else {

@@ -94,5 +94,10 @@ class Strings {
   static const String ekataMultiAppTitle = 'Ekata Multipurpose iSmart';
   static const String hetaudaAppTitle = 'Hetauda Coop iSmart';
 
-  static const APP_TITLE = kendrabinduAppTitle;
+  // static const String upakarAppTitle = 'Upakar iSmart';
+  // static const String eastWestAppTitle = 'East West iSmart';
+
+  static const APP_TITLE = eastWestAppTitle;
+
+
 }

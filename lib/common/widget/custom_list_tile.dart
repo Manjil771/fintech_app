@@ -17,6 +17,7 @@ class CustomListTile extends StatelessWidget {
   final double horizontalPadding;
   final FontWeight titleFontWeight;
   final bool hideDescription;
+  final int maxLines;
 
   const CustomListTile({
     Key? key,
@@ -31,6 +32,7 @@ class CustomListTile extends StatelessWidget {
     this.trailing,
     this.subtitleTextColor,
     this.horizontalPadding = 0,
+    this.maxLines = 1,
     this.titleFontWeight = FontWeight.bold,
     this.hideDescription = false,
   }) : super(key: key);
@@ -93,7 +95,7 @@ class CustomListTile extends StatelessWidget {
                     children: [
                       Text(
                         title,
-                        maxLines: 1,
+                        maxLines: maxLines,
                         overflow: TextOverflow.ellipsis,
                         style: _textTheme.titleLarge!.copyWith(
                           fontWeight: titleFontWeight,
