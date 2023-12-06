@@ -2,7 +2,6 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/image_picker_utils.dart';
@@ -10,11 +9,9 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
+import 'package:ismart/feature/crop_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/image_preview.dart';
-import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
 
 import '../../../app/theme.dart';
@@ -38,7 +35,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   _handleImageUpload(File file) {
     NavigationService.pop();
     NavigationService.push(
-      target: ImagePreviewWidget(
+      target: CropImageView(
         selectedImage: file,
       ),
     );
