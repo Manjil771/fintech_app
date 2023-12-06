@@ -201,21 +201,24 @@ flutter:
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
-    - assets/hetauda/
+    # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
     # - assets/shital/
     # - assets/darshan/
-    - assets/devshree/
+    # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    # - assets/smartUddhamshil/
+    # - assets/smartUddhamshil/ub
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
-    # - assets/kendrabindu/
-    - assets/eastwest/
-    - assets/babira/
-    - assets/ekataMultipurpose/
+    - assets/kendrabindu/
+    # - assets/eastwest/
+    # - assets/babira/
+    # - assets/ekataMultipurpose/
+    # - assets/sarbahitDang/
+    # - assers/shwetbhairab/
+    - assets/skKhudunabari/
 
   fonts:
     - family: popinbold

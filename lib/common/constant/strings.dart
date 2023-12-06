@@ -87,12 +87,12 @@ class Strings {
   static const String kendrabinduAppTitle = 'Kendrabindu iSmart';
   static const String queenAppTitle = 'Queen iSmart';
   static const String pragatishilAppTitle = 'Pragatishil iSmart';
-  static const String uddhamshilKrishiAppTitle = 'Udhamshil Krishi iSmart';
+  static const String udhamshilKrishiAppTitle = 'Udhamshil Krishi iSmart';
   static const String babiraAppTitle = 'Udhamshil Krishi iSmart';
   static const String devshreeAppTitle = 'Devshree iSmart';
   static const String eastWestAppTitle = 'East West Saving iSmart';
   static const String ekataMultiAppTitle = 'Ekata Multipurpose iSmart';
   static const String hetaudaAppTitle = 'Hetauda Coop iSmart';
 
-  static const APP_TITLE = uddhamshilKrishiAppTitle;
+  static const APP_TITLE = kendrabinduAppTitle;
 }
