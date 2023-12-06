@@ -87,6 +87,7 @@ dependencies:
   sliver_tools: ^0.2.12
   string_similarity: ^2.0.0
   local_session_timeout: ^2.3.2
+  crop_your_image: ^0.7.4
 
 dev_dependencies:
   flutter_test:
@@ -106,7 +107,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -212,8 +213,8 @@ flutter:
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
-    - assets/kendrabindu/
-    # - assets/eastwest/
+    # - assets/kendrabindu/
+    - assets/eastwest/
     # - assets/babira/
     # - assets/ekataMultipurpose/
     # - assets/sarbahitDang/

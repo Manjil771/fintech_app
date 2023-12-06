@@ -18,7 +18,7 @@ Future<void> main() async {
     await FlutterDownloader.initialize();
     HttpOverrides.global = MyHttpOverrides();
     runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.skKhudunabari)),
+      LocalWrapper(child: AppDev(env: CoOperativeValue.eastwestCoop)),
     );
   }, (e, s) {
     Log.e(e);
