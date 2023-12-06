@@ -49,6 +49,10 @@ class UserRepository {
   }
 
   updateCoopValue(LoginCoOpValue coop) {
+    if (!RepositoryProvider.of<CoOperative>(NavigationService.context)
+        .shouldValidateCooperative) {
+      return;
+    }
     String _baseUrl =
         RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
 
