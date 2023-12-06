@@ -547,6 +547,54 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        kendrabindu {
+            dimension "app"
+            applicationId "com.devanasoft.kendrabindu"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        queen {
+            dimension "app"
+            applicationId "com.devanasoft.queen"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        babira {
+            dimension "app"
+            applicationId "com.devanasoft.babira"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        hetauda {
+            dimension "app"
+            applicationId "com.devanasoft.hetauda"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }    
+        eastWest {
+            dimension "app"
+            applicationId "com.devanasoft.eastWest"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
+        pragatishil {
+            dimension "app"
+            applicationId "com.devanasoft.pragatishil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        udhamshilKrishi{
+            dimension "app"
+            applicationId "com.devanasoft.udhamshilKrishi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ekataMulti{
+            dimension "app"
+            applicationId "com.devanasoft.ekataMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         stage {
             dimension "app"
             applicationId "com.devanasoft.ismart.dev"

@@ -117,7 +117,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       ),
                       SizedBox(width: _width * 0.03),
                       Text(
-                        "${selectedAcc?.accountNumber}",
+                        "${selectedAcc?.mainCode}",
                         style: _textTheme.labelMedium,
                       ),
                       const Spacer(),

@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -15,11 +16,23 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
     await EasyLocalization.ensureInitialized();
     await FlutterDownloader.initialize();
+    HttpOverrides.global = MyHttpOverrides();
     runApp(
+
       LocalWrapper(child: AppDev(env: CoOperativeValue.eastwestCoop)),
+
     );
   }, (e, s) {
     Log.e(e);
     Log.d(s);
   });
+}
+
+class MyHttpOverrides extends HttpOverrides {
+  @override
+  HttpClient createHttpClient(SecurityContext? context) {
+    return super.createHttpClient(context)
+      ..badCertificateCallback =
+          (X509Certificate cert, String host, int port) => true;
+  }
 }

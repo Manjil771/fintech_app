@@ -133,8 +133,10 @@ class BankTransferReciptWidget extends StatelessWidget {
                     CustomRoundedButtom(
                         title: "Done",
                         onPressed: () {
-                          NavigationService.pushReplacement(
-                              target: const DashboardPage());
+                          NavigationService.popUntilFirstPage();
+
+                          // NavigationService.pushReplacement(
+                          //     target: const DashboardPage());
                         }),
                     SizedBox(height: _height * 0.02),
                     BlocConsumer<TransactionDownloadCubit, CommonState>(

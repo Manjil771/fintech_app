@@ -3,6 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/fingerprint_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -11,8 +14,32 @@ import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-class SettingWidget extends StatelessWidget {
-  const SettingWidget({Key? key}) : super(key: key);
+class SettingWidget extends StatefulWidget {
+  SettingWidget({Key? key}) : super(key: key);
+
+  @override
+  State<SettingWidget> createState() => _SettingWidgetState();
+}
+
+class _SettingWidgetState extends State<SettingWidget> {
+  final ValueNotifier<bool> _isBiometricEnabled = ValueNotifier(false);
+
+  bool switchValue = false;
+  // _checkBiometric() async {
+  //   bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+  //   if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
+  //     _isBiometricEnabled.value = true;
+  //     switchValue = _isBiometricEnabled.value;
+  //   }
+  // }
+
+  @override
+  void initState() {
+    // getBioMetricStatus();
+    // sp = getBioMetricStatus();
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +75,43 @@ class SettingWidget extends StatelessWidget {
               //     detail: "Add Favourite Account ",
               //     title: "Favourite Account"),
               // const Divider(thickness: 1),
+              // checkBioMetric() == false
+              // ?
+              Row(
+                children: [
+                  Expanded(
+                    child: CommonDetailBox(
+                        showTrailingIcon: false,
+                        leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
+                        onBoxPressed: () {
+                          NavigationService.push(
+                              target: const ChangeMpinPage());
+                        },
+                        title: "Biometric Setup",
+                        detail: "Enable/Disable biometric"),
+                  ),
+                  Switch(
+                    value: switchValue,
+                    onChanged: (value) async {
+                      setState(() {
+                        switchValue = !switchValue;
+                        if (switchValue == true) {
+                          SharedPref.setBiometricLogin(true);
+                          SnackBarUtils.showSuccessBar(
+                              context: context, message: "Biometric Enable");
+                        } else {
+                          SharedPref.setBiometricLogin(false);
+                          SnackBarUtils.showErrorBar(
+                              context: context, message: "Biometric Disable");
+                        }
+                      });
+                      // sp = getBioMetricStatus();
+                    },
+                  )
+                ],
+              ),
+              // : Container(),
+              const Divider(thickness: 1),
               CommonDetailBox(
                   leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
                   onBoxPressed: () {
@@ -62,12 +126,15 @@ class SettingWidget extends StatelessWidget {
               //     detail: "OTP Validations",
               //     title: "Validations"),
               const Divider(thickness: 1),
+              // Text(switchValue.toString()),
+              // Text(sp.toString()),
 
               const CommonDetailBox(
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
+
               const Divider(thickness: 1),
               CommonDetailBox(
                 onBoxPressed: () {
@@ -89,12 +156,6 @@ class SettingWidget extends StatelessWidget {
                 detail: "Logout from this application.",
               ),
               const Divider(thickness: 1),
-
-              // CommonDetailBox(
-              //     leadingIcon: "assets/icons/biometricsetup.svg",
-              //     onBoxPressed: () {},
-              //     detail: "Setup fingerprint, face id and pin.",
-              //     title: "Biometrics Setup"),
             ],
           ),
         ),

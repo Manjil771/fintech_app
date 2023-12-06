@@ -79,7 +79,7 @@ class _BankingWidgetState extends State<BankingWidget> {
                         .toList();
 
                     return GridView.builder(
-                      // physics: const NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
                       itemCount: filteredItems.isEmpty ? 5 : itemName.length,
                       gridDelegate:

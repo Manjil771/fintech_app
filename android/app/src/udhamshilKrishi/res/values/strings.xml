@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Udhamshil Krishi iSmart</string>
+  <!-- <string name="facebook_app_id">3870191599685081</string>
+  <string name="fb_login_protocol_scheme">fb3870191599685081</string>
+  <string name="ads_app_id">ca-app-pub-2752734387105422~3935745002</string> -->
+  <string name="flutter_downloader_notification_started">Download started</string>
+  <string name="flutter_downloader_notification_in_progress">Downloading file</string>
+  <string name="flutter_downloader_notification_canceled">Download canceled</string>
+  <string name="flutter_downloader_notification_failed">Download failed</string>
+  <string name="flutter_downloader_notification_complete">Download complete</string>
+  <string name="flutter_downloader_notification_paused">Download paused</string>
+</resources>
