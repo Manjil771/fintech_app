@@ -1295,7 +1295,7 @@ class CoOperativeValue {
     splashImage: "assets/devshree/devshree_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
- 
+
   static final CoOperative ekataMultipurposeCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1320,6 +1320,32 @@ class CoOperativeValue {
     coOperativeName: 'ShwetBhairab Saving and Credit Co-operative Ltd',
     coOperativeLogo: 'assets/shwetbhairab/shwetbhairab_logo.png',
     splashImage: "assets/shwetbhairab/shwetbhairab_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative karmathCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/karmath/karmath_banner.png",
+    backgroundImage: "assets/karmath/karmath_background.png",
+    clientCode: 'XCNY87XJGV',
+    clientSecret: "220744",
+    coOperativeName: 'Karmath Samajik Uddhami Mahila Sahakari Sastha Limited',
+    coOperativeLogo: 'assets/karmath/karmath_logo.png',
+    splashImage: "assets/karmath/karmath_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeEkata = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeEkata/shreeEkata_banner.png",
+    backgroundImage: "assets/shreeEkata/shreeEkata_background.png",
+    clientCode: 'NHQZWVPYQJ',
+    clientSecret: "151694",
+    coOperativeName: 'ShreeEkata Saving and Credit Co-Operative Ltd',
+    coOperativeLogo: 'assets/shreeEkata/shreeEkata_logo.png',
+    splashImage: "assets/shreeEkata/shreeEkata_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   //TODO need to add client id and secret

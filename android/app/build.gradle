@@ -585,7 +585,7 @@ android {
         }
         udhamshilKrishi{
             dimension "app"
-            applicationId "com.devanasoft.udhamshilKrishi"
+            applicationId "com.devanasoft.uddhamshilKrishi"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -616,6 +616,18 @@ android {
         shwetBhairab{
             dimension "app"
             applicationId "com.devanasoft.shwetBhairab"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
+        shreeEkata{
+            dimension "app"
+            applicationId "com.devanasoft.shreeEkata"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
+        karmath{
+            dimension "app"
+            applicationId "com.devanasoft.karmath"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         } 
