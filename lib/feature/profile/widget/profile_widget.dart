@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/image_picker_utils.dart';
@@ -9,10 +10,13 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/crop_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import '../../../app/theme.dart';
 
@@ -50,6 +54,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     // );
   }
 
+  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -57,109 +62,138 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      showBackButton: true,
-      body: ValueListenableBuilder<CustomerDetailModel?>(
-          valueListenable: customerDetail,
-          builder: (context, val, _) {
-            if (val != null) {
-              return Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  // IconButton(
-                  //   onPressed: () {
-                  //     NavigationService.pop();
-                  //   },
-                  //   icon: const Icon(Icons.arrow_back),
-                  // ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: CustomTheme.white,
-                        borderRadius: BorderRadius.circular(18)),
-                    padding: const EdgeInsets.symmetric(
-                        horizontal: 15, vertical: 30),
-                    child: Row(
+        showBackButton: true,
+        body: BlocBuilder<UtilityPaymentCubit, CommonState>(
+            builder: (context, state) {
+          // if (state is CommonLoading && !_isLoading) {
+          //   _isLoading = true;
+          //   showLoadingDialogBox(context);
+          // } else if (state is! CommonLoading && _isLoading) {
+          //   _isLoading = false;
+          //   NavigationService.pop();
+          // }
+
+          if (state is CommonStateSuccess<UtilityResponseData>) {
+            final res = state.data;
+            final List details = [
+              res.findValueString("contactNumber"),
+              res.findValueString("registerUrl"),
+              res.findValueString("address"),
+              res.findValueString("email"),
+            ];
+            return ValueListenableBuilder<CustomerDetailModel?>(
+                valueListenable: customerDetail,
+                builder: (context, val, _) {
+                  if (val != null) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        InkWell(
-                          onTap: () {
-                            showImagePickerBottomSheet(
-                              onGalleryPressed: () async {
-                                final res = await ImagePickerUtils.getGallery();
-                                if (res != null) {
-                                  _handleImageUpload(res);
-                                }
-                                // NavigationService.pop();
-                              },
-                              onCameraPressed: () async {
-                                final res = await ImagePickerUtils.getCamera();
-                                if (res != null) {
-                                  _handleImageUpload(res);
-                                }
-                                // NavigationService.pop();
-                              },
-                            );
-                          },
-                          child: Column(
+                        // IconButton(
+                        //   onPressed: () {
+                        //     NavigationService.pop();
+                        //   },
+                        //   icon: const Icon(Icons.arrow_back),
+                        // ),
+                        Container(
+                          decoration: BoxDecoration(
+                              color: CustomTheme.white,
+                              borderRadius: BorderRadius.circular(18)),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 15, vertical: 30),
+                          child: Row(
                             children: [
-                              val.imageUrl.isEmpty
-                                  ? const CircleAvatar(
-                                      radius: 50,
-                                      backgroundImage:
-                                          AssetImage(Assets.profilePicture),
-                                    )
-                                  : CustomRoundedImage(
-                                      height: 100,
-                                      image: val.imageUrl,
-                                      width: 100,
+                              InkWell(
+                                onTap: () {
+                                  showImagePickerBottomSheet(
+                                    onGalleryPressed: () async {
+                                      final res =
+                                          await ImagePickerUtils.getGallery();
+                                      if (res != null) {
+                                        _handleImageUpload(res);
+                                      }
+                                      // NavigationService.pop();
+                                    },
+                                    onCameraPressed: () async {
+                                      final res =
+                                          await ImagePickerUtils.getCamera();
+                                      if (res != null) {
+                                        _handleImageUpload(res);
+                                      }
+                                      // NavigationService.pop();
+                                    },
+                                  );
+                                },
+                                child: Column(
+                                  children: [
+                                    val.imageUrl.isEmpty
+                                        ? const CircleAvatar(
+                                            radius: 50,
+                                            backgroundImage: AssetImage(
+                                                Assets.profilePicture),
+                                          )
+                                        : CustomRoundedImage(
+                                            height: 100,
+                                            image: val.imageUrl,
+                                            width: 100,
+                                          ),
+                                    // SizedBox(height: 5.hp),
+                                    Text(
+                                      "Upload Image",
+                                      style: _textTheme.titleSmall!.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                          fontSize: 11,
+                                          color: _theme.primaryColor),
                                     ),
-                              // SizedBox(height: 5.hp),
-                              Text(
-                                "Upload Image",
-                                style: _textTheme.titleSmall!.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: 11,
-                                    color: _theme.primaryColor),
+                                  ],
+                                ),
+                              ),
+                              Expanded(
+                                child: Center(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        val.fullName,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .displaySmall,
+                                      ),
+                                      if (val.email.toString().isNotEmpty)
+                                        Text(
+                                          val.email,
+                                          style: Theme.of(context)
+                                              .textTheme
+                                              .titleSmall,
+                                        ),
+                                      Text(
+                                        val.addressOne,
+                                        style: Theme.of(context)
+                                            .textTheme
+                                            .titleSmall,
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
                         ),
+                        SizedBox(height: _height * 0.01),
                         Expanded(
-                          child: Center(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  val.fullName,
-                                  style:
-                                      Theme.of(context).textTheme.displaySmall,
-                                ),
-                                if (val.email.toString().isNotEmpty)
-                                  Text(
-                                    val.email,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                Text(
-                                  val.addressOne,
-                                  style: Theme.of(context).textTheme.titleSmall,
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
+                            child: ProfileTabbarPage(
+                          details: details,
+                          customerDetail: customerDetail,
+                        ))
                       ],
-                    ),
-                  ),
-                  SizedBox(height: _height * 0.01),
-                  Expanded(
-                      child: ProfileTabbarPage(
-                    customerDetail: customerDetail,
-                  ))
-                ],
-              );
-            } else {
-              return Container();
-            }
-          }),
-    );
+                    );
+                  } else {
+                    return Container();
+                  }
+                });
+          } else {
+            return Container();
+          }
+        }));
   }
 }

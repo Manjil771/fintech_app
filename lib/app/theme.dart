@@ -5,7 +5,7 @@ class CustomTheme {
   //live color
   // static const Color primaryColor = Color(0xFF010C80);
 
-  static Color testAppColor = const Color(0xFF010C80);
+  static const Color testAppColor = Color(0xFF010C80);
   static const Color sahakaryaColor = Color(0xFF015017);
   static const Color manankColor = Color(0xFF015017);
   static const Color janadharaColor = Color(0xFF0b67bb);
@@ -107,7 +107,7 @@ class CustomTheme {
   static const Color shreeSiddhiGaneshColor = Color(0xFF188649);
   static const Color shreeJanaekikritColor = Color(0xFF3D6028);
 
-  static const Color primaryColor = queenCoopColor;
+  static const Color primaryColor = kanchanjunghaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

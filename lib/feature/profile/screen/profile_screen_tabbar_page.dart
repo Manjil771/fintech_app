@@ -4,9 +4,12 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/profile/widget/profile_screen_tabbar_widget.dart';
 
 class ProfileTabbarPage extends StatefulWidget {
+  final List details;
+
   final ValueNotifier<CustomerDetailModel?> customerDetail;
 
-  const ProfileTabbarPage({Key? key, required this.customerDetail})
+  const ProfileTabbarPage(
+      {Key? key, required this.customerDetail, required this.details})
       : super(key: key);
 
   @override
@@ -21,6 +24,7 @@ class _ProfileTabbarPageState extends State<ProfileTabbarPage> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return ProfileTabBarWidget(
+      details: widget.details,
       customerDetail: widget.customerDetail,
     );
   }

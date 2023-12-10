@@ -6,9 +6,12 @@ import 'package:ismart/feature/profile/contactUsProfile/screen/contact_us_profil
 import 'package:ismart/feature/profile/generalInfoProfile/screen/general_info_profile_page.dart';
 
 class ProfileTabBarWidget extends StatefulWidget {
+  final List details;
+
   final ValueNotifier<CustomerDetailModel?> customerDetail;
 
-  const ProfileTabBarWidget({Key? key, required this.customerDetail})
+  const ProfileTabBarWidget(
+      {Key? key, required this.customerDetail, required this.details})
       : super(key: key);
 
   @override
@@ -46,7 +49,9 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
                     customerDetail: widget.customerDetail,
                   ),
                   AccountListProfilePage(customerDetail: widget.customerDetail),
-                  const ContactUsProfilePage(),
+                  ContactUsProfilePage(
+                    details: widget.details,
+                  ),
                 ],
               ),
             )
