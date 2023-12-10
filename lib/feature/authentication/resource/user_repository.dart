@@ -81,7 +81,7 @@ class UserRepository {
           context: NavigationService.context,
           message: "Session expired. Please re-login",
         );
-      NavigationService.pushReplacement(target: const LoginPage());
+      NavigationService.pushUntil(target: const LoginPage());
       return true;
     } on Exception catch (_) {
       print('custom exception is been obtained');

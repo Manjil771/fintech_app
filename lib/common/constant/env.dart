@@ -1348,6 +1348,34 @@ class CoOperativeValue {
     splashImage: "assets/shreeEkata/shreeEkata_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shreeJanaekikritCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeJanaekikrit/shreeJanaekikrit_banner.png",
+    backgroundImage: "assets/shreeJanaekikrit/shreeJanaekikrit_background.png",
+    clientCode: '6139Y4LZ2F',
+    clientSecret: "170370",
+    coOperativeName: 'Shree Jana Ekikrit Multipurpose Co-operative Society Ltd',
+    coOperativeLogo: 'assets/shreeJanaekikrit/shreeJanaekikrit_logo.png',
+    splashImage: "assets/shreeJanaekikrit/shreeJanaekikrit_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeSiddhiGaneshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeSiddhiGanesh/shreeSiddhiGanesh_banner.png",
+    backgroundImage:
+        "assets/shreeSiddhiGanesh/shreeSiddhiGanesh_background.png",
+    clientCode: 'KTAVSCY9WQ',
+    clientSecret: "212150",
+    coOperativeName: 'Shree Siddi Ganesh Saving & Credit Co-operative Ltd',
+    coOperativeLogo: 'assets/shreeSiddhiGanesh/shreeSiddhiGanesh_logo.png',
+    splashImage: "assets/shreeSiddhiGanesh/shreeSiddhiGanesh_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
   //TODO need to add client id and secret
 
   static final CoOperative skKhudunabari = CoOperative(
@@ -1378,6 +1406,7 @@ class CoOperativeValue {
     primaryColor: const Color.fromARGB(255, 57, 59, 61),
   );
   static final CoOperative aaratiCoop = CoOperative(
+    //need to add dynamic client credientials
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
@@ -1390,6 +1419,7 @@ class CoOperativeValue {
     splashImage: "assets/aarati/aarati_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
