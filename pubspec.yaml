@@ -172,7 +172,7 @@ flutter:
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
-    - assets/kanchanjungha/
+    # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
@@ -213,19 +213,19 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    - assets/queenCoop/
+    # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
-    # - assets/ekataMultipurpose/
+    - assets/ekataMultipurpose/
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/skKhudunabari/
     # - assets/karmath/
     # - assets/shreeEkata/
-    - assets/shreeSiddhiGanesh/
-    - assets/shreeJanaekikrit/
+    # - assets/shreeSiddhiGanesh/
+    # - assets/shreeJanaekikrit/
 
 
   fonts:

@@ -58,7 +58,7 @@ class EtellerPage extends StatelessWidget {
             showBackButton: true,
             showAppBar: true,
             body: NoDataScreen(
-                title: "Invalid",
+                title: "Invalid Qr",
                 details: "Invalid Qr. Please Try after sometime."));
   }
 }

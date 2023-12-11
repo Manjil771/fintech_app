@@ -73,6 +73,8 @@ class EtellerWidget extends StatelessWidget {
                         KeyValueTile(
                             title: "Mobile Number",
                             value: jsonData["mobileNumber"]),
+                        KeyValueTile(
+                            title: "Amount", value: _amountController.text),
                       ]),
                       message: state.data.message,
                       transactionID: state.data.transactionIdentifier));

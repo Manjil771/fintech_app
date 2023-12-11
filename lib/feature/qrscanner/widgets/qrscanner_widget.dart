@@ -535,13 +535,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     status: "Active")));
       }
 
-      if (_decode.containsKey("fonepay.com")) {
-        NavigationService.pushReplacement(
-            target: PayloadPage(
-          remarks: widget.remarks,
-          payload: qrCode,
-        ));
-      }
       if (_decode.containsKey("bankCode")) {
         context.read<UtilityPaymentCubit>().fetchDetails(
             serviceIdentifier: "",
@@ -572,10 +565,18 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       //   ));
       // }
     } catch (e) {
-      NavigationService.pushReplacement(
-          target: EtellerPage(
-        payload: qrCode,
-      ));
+      if (qrCode.toString().contains("fonepay.com")) {
+        NavigationService.pushReplacement(
+            target: PayloadPage(
+          remarks: widget.remarks,
+          payload: qrCode,
+        ));
+      } else {
+        NavigationService.pushReplacement(
+            target: EtellerPage(
+          payload: qrCode,
+        ));
+      }
     }
 
     @override
