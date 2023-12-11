@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_page.dart';
+import 'package:ismart/feature/graph/ui/screen/graph_page.dart';
 
 import 'package:ismart/feature/graph/ui/widget/graph_widget.dart';
 
@@ -32,7 +33,7 @@ class HomePageTabbarWidget extends StatelessWidget {
                 CategoryPage(
                   showAllServices: false,
                 ),
-                GraphWidget(),
+                GraphPage(),
                 Center(
                   child: Text("Favorite"),
                 ),
