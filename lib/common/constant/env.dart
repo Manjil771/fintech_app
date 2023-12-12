@@ -1376,22 +1376,79 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
-  //TODO need to add client id and secret
+//*****************// All sanakishan coop env //*****************//
 
+  static final CoOperative skKohabara = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skKohabara/skKohabara_banner.png",
+    backgroundImage: "assets/skKohabara/skKohabara_background.png",
+    clientCode: '8HBJ3GXUN6',
+    clientSecret: "132064",
+    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Kohabara',
+    coOperativeLogo: 'assets/skKohabara/skKohabara_logo.png',
+    splashImage: "assets/skKohabara/skKohabara_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative skKhajurgachhi = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skKhajurgachhi/skKhajurgachhi_banner.png",
+    backgroundImage: "assets/skKhajurgachhi/skKhajurgachhi_background.png",
+    clientCode: 'NM2Q49HBNO',
+    clientSecret: "140703",
+    coOperativeName:
+        'Sana Kisan Agriculture Cooperative Society Ltd. Khajurgachhi',
+    coOperativeLogo: 'assets/skKhajurgachhi/skKhajurgachhi_logo.png',
+    splashImage: "assets/skKhajurgachhi/skKhajurgachhi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative skPatigaun = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skPatigaun/skPatigaun_banner.png",
+    backgroundImage: "assets/skPatigaun/skPatigaun_background.png",
+    clientCode: 'VX8Z9P1S9M',
+    clientSecret: "151526",
+    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Patigaun',
+    coOperativeLogo: 'assets/skPatigaun/skPatigaun_logo.png',
+    splashImage: "assets/skPatigaun/skPatigaun_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative skKhudunabari = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/skKhudunabari/sk_banner.png",
-    backgroundImage: "assets/skKhudunabari/sk_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
+    bannerImage: "assets/skKhudunabari/skKhudunabari_banner.png",
+    backgroundImage: "assets/skKhudunabari/skKhudunabari_background.png",
+    clientCode: '1ULEC7X5XE',
+    clientSecret: "201567",
     coOperativeName:
         'Sana Kisan Agriculture Cooperative Society Ltd. khudunabari',
-    coOperativeLogo: 'assets/skKhudunabari/sk_logo.png',
-    splashImage: "assets/skKhudunabari/sk_splash.png",
+    coOperativeLogo: 'assets/skKhudunabari/skKhudunabari_logo.png',
+    splashImage: "assets/skkhudunabari/skkhudunabari_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative skJhurkiya = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skJhurkiya/skJhurkiya_banner.png",
+    backgroundImage: "assets/skJhurkiya/skJhurkiya_background.png",
+    clientCode: 'AJ55922FRN',
+    clientSecret: "117059",
+    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Jhurkiya',
+    coOperativeLogo: 'assets/skJhurkiya/skJhurkiya_logo.png',
+    splashImage: "assets/skJhurkiya/skJhurkiya_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  //TODO need to add client id and secret
+
   static final CoOperative jharanaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
