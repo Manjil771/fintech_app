@@ -101,8 +101,16 @@ class Strings {
   static const String shreeEkataAppTitle = 'Shree Ekata Saving iSmart';
   static const String nayaKiranAppTitle = 'Naya Kiran iSmart';
 
+  static const String skKhajurachhiAppTitle = 'Khajurachhi SFACl iSmart';
+  static const String skKohabaraAppTitle = 'Kohabara SFACl iSmart';
+
+  static const String skPatigaunAppTitle = 'Patigaun SFACl iSmart';
+  static const String skKhudunabariAppTitle = 'Khudunabari SFACl iSmart';
+  static const String skJhurkiyaAppTitle = 'Jhurkiya SFACl iSmart';
+  static const String mithilaAppTitle = 'Jhurkiya SFACl iSmart';
+
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = annapurnaHealthAppTitle;
+  static const APP_TITLE = bishalAppTitle;
 }

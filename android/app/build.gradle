@@ -211,9 +211,45 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        skKohabara {
+            dimension "app"
+            applicationId "com.devanasoft.skKohabara"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skPatigaun {
+            dimension "app"
+            applicationId "com.devanasoft.skPatigaun"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skKhajurachhi {
+            dimension "app"
+            applicationId "com.devanasoft.skKhajurachhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skKhudunabari {
+            dimension "app"
+            applicationId "com.devanasoft.skKhudunabari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skJhurkiya {
+            dimension "app"
+            applicationId "com.devanasoft.skJhurkiya"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         myagde {
             dimension "app"
             applicationId "com.devanasoft.myagde"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        mithila {
+            dimension "app"
+            applicationId "com.devanasoft.mithila"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
