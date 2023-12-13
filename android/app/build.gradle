@@ -585,7 +585,13 @@ android {
         }
         udhamshilKrishi{
             dimension "app"
-            applicationId "com.devanasoft.udhamshilKrishi"
+            applicationId "com.devanasoft.uddhamshilKrishi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeDigopan{
+            dimension "app"
+            applicationId "com.devanasoft.shreeDigopan"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -595,6 +601,42 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        nayaKiran{
+            dimension "app"
+            applicationId "com.devanasoft.nayaKiran"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sarbahitDang{
+            dimension "app"
+            applicationId "com.devanasoft.sarbahitDang"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        smartUdhamshil{
+            dimension "app"
+            applicationId "com.devanasoft.smartUdhamshil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shwetBhairab{
+            dimension "app"
+            applicationId "com.devanasoft.shwetBhairab"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
+        shreeEkata{
+            dimension "app"
+            applicationId "com.devanasoft.shreeEkata"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
+        karmath{
+            dimension "app"
+            applicationId "com.devanasoft.karmath"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
         stage {
             dimension "app"
             applicationId "com.devanasoft.ismart.dev"

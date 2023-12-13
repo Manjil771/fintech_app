@@ -17,6 +17,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/eteller/screen/eteller_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
@@ -533,6 +534,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     maxAmount: 25000.00,
                     status: "Active")));
       }
+
       if (_decode.containsKey("bankCode")) {
         context.read<UtilityPaymentCubit>().fetchDetails(
             serviceIdentifier: "",
@@ -563,11 +565,18 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       //   ));
       // }
     } catch (e) {
-      NavigationService.pushReplacement(
-          target: PayloadPage(
-        remarks: widget.remarks,
-        payload: qrCode,
-      ));
+      if (qrCode.toString().contains("fonepay.com")) {
+        NavigationService.pushReplacement(
+            target: PayloadPage(
+          remarks: widget.remarks,
+          payload: qrCode,
+        ));
+      } else {
+        NavigationService.pushReplacement(
+            target: EtellerPage(
+          payload: qrCode,
+        ));
+      }
     }
 
     @override

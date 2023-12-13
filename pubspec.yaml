@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.44+44 ##chirayu
+version: 0.0.44+46 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -49,6 +49,8 @@ dependencies:
   # dowloader
   path_provider: ^2.0.2
   open_filex: ^4.2.2
+
+  encrypt: ^5.0.0
 
   #Firebase
   firebase_core: ^2.13.0
@@ -107,7 +109,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -164,12 +166,11 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    - assets/sanakishan/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
-    # - assets/annapurna/
+    - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
@@ -195,7 +196,6 @@ flutter:
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
-    # - assets/sanakishanHathasuwa/
     # - assets/uttarbahini/
     # - assets/shubhaSandesh/
     # - assets/noor/
@@ -209,19 +209,34 @@ flutter:
     # - assets/darshan/
     # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    # - assets/smartUddhamshil/ub
+    # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/nayakiran/
-    - assets/kendrabindu/
-    # - assets/eastwest/
     # - assets/kendrabindu/
-    - assets/eastwest/
+    # - assets/eastwest/
     # - assets/babira/
     # - assets/ekataMultipurpose/
     # - assets/sarbahitDang/
-    # - assers/shwetbhairab/
+    # - assets/shwetbhairab/
+    # - assets/karmath/
+    # - assets/shreeEkata/
+    # - assets/shreeSiddhiGanesh/
+    # - assets/shreeJanaekikrit/
+    - assets/mithila/
+   
+   
+   
+    #sana ksihan assets
+    # - assets/sanakishanHathasuwa/
+    # - assets/sanakishan/
+
     - assets/skKhudunabari/
+    - assets/skKhajurgachhi/
+    - assets/skKohabara/
+    - assets/skPatigaun/
+    - assets/skJhurkiya/
+
 
   fonts:
     - family: popinbold

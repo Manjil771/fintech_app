@@ -3,7 +3,9 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/profile/contactUsProfile/widget/contact_us_profile_widget.dart';
 
 class ContactUsProfilePage extends StatelessWidget {
-  const ContactUsProfilePage({Key? key}) : super(key: key);
+  final List details;
+  const ContactUsProfilePage({Key? key, required this.details})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -11,6 +13,8 @@ class ContactUsProfilePage extends StatelessWidget {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    return ContactUsProfileWidget();
+    return ContactUsProfileWidget(
+      details: details,
+    );
   }
 }

@@ -136,12 +136,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ],
             ),
           const Expanded(child: HomePageTabbarWidget()),
-          if (_bannerImages.isNotEmpty)
-            CustomCarousel(
-              height: 140.hp,
-              topMargin: 10,
-              items: _bannerImages,
-            ),
+          // if (_bannerImages.isNotEmpty)
+          //   CustomCarousel(
+          //     height: 140.hp,
+          //     topMargin: 10,
+          //     items: _bannerImages,
+          //   ),
         ],
       ),
     );

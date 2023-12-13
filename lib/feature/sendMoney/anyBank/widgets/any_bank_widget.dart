@@ -6,16 +6,13 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/bank_transfer_bill_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
@@ -350,7 +347,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 CustomTextField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
-                  hintText: "NPR ",
+                  hintText: "NPR",
                   textInputType: TextInputType.number,
                   controller: _amountController,
                   onChanged: (val) {
@@ -359,8 +356,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       setState(() {});
                     }
                   },
-                  validator: (value) => FormValidator.validateAmount(
-                      val: value.toString(), minAmount: 100, maxAmount: 99990),
+                  validator: (value) =>
+                      FormValidator.validateFieldNotEmpty(value, "Amount"),
                   // validator: (val) {
                   //   if ((int.tryParse(val ?? "") ?? 0) < 100) {
                   //     return "Minimum bank tranfer amount is Rs. 100";

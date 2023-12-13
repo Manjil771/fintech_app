@@ -84,7 +84,6 @@ class Strings {
   static const String shitalAppTitle = 'Shital iSmart';
   static const String youthAppTitle = 'Youth iSmart';
   static const String devShreeAppTitle = 'Dev Shree iSmart';
-
   static const String kendrabinduAppTitle = 'Kendrabindu iSmart';
   static const String queenAppTitle = 'Queen iSmart';
   static const String pragatishilAppTitle = 'Pragatishil iSmart';
@@ -94,11 +93,16 @@ class Strings {
   static const String eastWestAppTitle = 'East West Saving iSmart';
   static const String ekataMultiAppTitle = 'Ekata Multipurpose iSmart';
   static const String hetaudaAppTitle = 'Hetauda Coop iSmart';
+  static const String shreeDigopanTitle = 'Hetauda Coop iSmart';
+  static const String sarbahitDangAppTitle = 'Sarbahit Coop iSmart';
+  static const String smartUdhamshilAppTitle = 'Smart Udhamshil iSmart';
+  static const String shwetbhairabAppTitle = 'Shwet Bhairab iSmart';
+  static const String karmathAppTitle = 'Karmath Samajik iSmart';
+  static const String shreeEkataAppTitle = 'Shree Ekata Saving iSmart';
+  static const String nayaKiranAppTitle = 'Naya Kiran iSmart';
 
-  static const String upakarAppTitle = 'Upakar iSmart';
-  static const String eastWestAppTitle = 'East West iSmart';
+  // static const String upakarAppTitle = 'Upakar iSmart';
+  // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = eastWestAppTitle;
-
-
+  static const APP_TITLE = annapurnaHealthAppTitle;
 }

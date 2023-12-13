@@ -41,13 +41,11 @@ class UserRepository {
   Future initialState() async {
     _token = await fetchToken();
     _isLoggedIn.value = _token.isNotEmpty;
-    // LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
-
+    LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
 
     if (_coopValue != null) {
       updateCoopValue(_coopValue);
     }
-
   }
 
   updateCoopValue(LoginCoOpValue coop) {
@@ -83,7 +81,7 @@ class UserRepository {
           context: NavigationService.context,
           message: "Session expired. Please re-login",
         );
-      NavigationService.pushReplacement(target: const LoginPage());
+      NavigationService.pushUntil(target: const LoginPage());
       return true;
     } on Exception catch (_) {
       print('custom exception is been obtained');

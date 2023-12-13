@@ -70,7 +70,7 @@
               "client_id": "484503989430-o1vastjg1m7mugichg7geljab07c0rkj.apps.googleusercontent.com",
               "client_type": 2,
               "ios_info": {
-                "bundle_id": "com.devanasoft.queen"
+                "bundle_id": "com.devanasoft.ismart"
               }
             }
           ]
@@ -81,7 +81,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:484503989430:android:8bf3b5006e271f694aca17",
         "android_client_info": {
-          "package_name": "com.devanasoft.janadhara"
+          "package_name": "com.devanasoft.queen"
         }
       },
       "oauth_client": [
