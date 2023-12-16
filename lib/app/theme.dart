@@ -108,7 +108,8 @@ class CustomTheme {
   static const Color shreeJanaekikritColor = Color(0xFF3D6028);
   static const Color mithilaColor = Color(0xFF009245);
 
-  static const Color primaryColor = bishalSavingColor;
+  static const Color primaryColor = uttargangaColor;
+
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
@@ -136,7 +137,8 @@ class CustomTheme {
     primaryColor: primaryColor,
     primaryColorDark: primaryColor,
     shadowColor: Colors.black,
-    appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
+    appBarTheme:
+        const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: backgroundColor,
     iconTheme: const IconThemeData(color: darkerBlack),
     fontFamily: Fonts.poppin,
@@ -166,7 +168,8 @@ class CustomTheme {
     primaryColor: primaryColor,
     primaryColorDark: primaryColor,
     shadowColor: Colors.white,
-    appBarTheme: AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
+    appBarTheme:
+        const AppBarTheme(iconTheme: IconThemeData(color: primaryColor)),
     scaffoldBackgroundColor: darkGray,
     iconTheme: const IconThemeData(color: Colors.white),
     fontFamily: Fonts.poppin,
