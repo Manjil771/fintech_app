@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -59,7 +60,11 @@ class _GraphWidgetState extends State<GraphWidget> {
                 ]),
           ]);
         } else {
-          return Container();
+          return NoDataScreen(
+            showImage: false,
+            title: "No Data.",
+            details: "No data avaliable for graph.",
+          );
         }
       },
     );

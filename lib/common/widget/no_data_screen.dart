@@ -3,10 +3,15 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class NoDataScreen extends StatelessWidget {
+  final bool showImage;
   final String title;
   final String details;
 
-  const NoDataScreen({Key? key, required this.title, required this.details})
+  const NoDataScreen(
+      {Key? key,
+      required this.title,
+      required this.details,
+      this.showImage = true})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -15,12 +20,14 @@ class NoDataScreen extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.center,
       children: [
-        Image.asset(
-          Assets.errorImage,
-          height: _height * 0.4,
-        ),
+        if (showImage)
+          Image.asset(
+            Assets.errorImage,
+            height: _height * 0.4,
+          ),
         Center(
           child: Text(
             title,

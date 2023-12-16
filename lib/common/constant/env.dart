@@ -1376,6 +1376,20 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative mithilaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/mithila/mithila_banner.png",
+    backgroundImage: "assets/mithila/mithila_background.png",
+    clientCode: 'A836WR7RBM',
+    clientSecret: "181433",
+    coOperativeName: 'Mithila Saving and Credit Co-operative Pvt. Ltd',
+    coOperativeLogo: 'assets/mithila/mithila_logo.png',
+    splashImage: "assets/mithila/mithila_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(
@@ -1429,7 +1443,7 @@ class CoOperativeValue {
     coOperativeName:
         'Sana Kisan Agriculture Cooperative Society Ltd. khudunabari',
     coOperativeLogo: 'assets/skKhudunabari/skKhudunabari_logo.png',
-    splashImage: "assets/skkhudunabari/skkhudunabari_splash.png",
+    splashImage: "assets/skKhudunabari/skKhudunabari_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

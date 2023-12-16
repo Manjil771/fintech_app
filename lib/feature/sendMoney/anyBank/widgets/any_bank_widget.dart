@@ -348,7 +348,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "NPR",
-                  textInputType: TextInputType.number,
+                  textInputType: TextInputType.numberWithOptions(decimal: true),
                   controller: _amountController,
                   onChanged: (val) {
                     if (val != _amountController.text) {
@@ -356,17 +356,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                       setState(() {});
                     }
                   },
-                  validator: (value) =>
-                      FormValidator.validateFieldNotEmpty(value, "Amount"),
-                  // validator: (val) {
-                  //   if ((int.tryParse(val ?? "") ?? 0) < 100) {
-                  //     return "Minimum bank tranfer amount is Rs. 100";
-                  //   } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
-                  //     return "Maximum bank transfer amount is Rs. 2,00,000";
-                  //   } else {
-                  //     return null;
-                  //   }
-                  // },
+                  // validator: (value) =>
+                  //     FormValidator.validateFieldNotEmpty(value, "Amount"),
+                  validator: (val) {
+                    if ((double.tryParse(val ?? "") ?? 0) < 100) {
+                      return "Minimum bank tranfer amount is Rs. 100";
+                    } else if ((double.tryParse(val ?? "") ?? 0) > 200000) {
+                      return "Maximum bank transfer amount is Rs. 2,00,000";
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 CustomTextField(
                   title: "Remarks",
