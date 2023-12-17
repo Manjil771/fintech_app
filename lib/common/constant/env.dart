@@ -1335,7 +1335,7 @@ class CoOperativeValue {
     splashImage: "assets/karmath/karmath_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative shreeEkata = CoOperative(
+  static final CoOperative shreeEkataCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',

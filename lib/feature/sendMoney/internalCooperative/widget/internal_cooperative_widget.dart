@@ -119,9 +119,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 showCancelButton: false,
                 title: _response.status,
                 buttonCallback: () {
-                  NavigationService.pushReplacement(
-                    target: const DashboardPage(),
-                  );
+                  NavigationService.pop();
                 },
               );
             }
