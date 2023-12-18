@@ -672,10 +672,22 @@ android {
             applicationId "com.devanasoft.shreeEkata"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
+        }
+        shreeJanaEkikrit{
+            dimension "app"
+            applicationId "com.devanasoft.shreeJanaEkikrit"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
         } 
         karmath{
             dimension "app"
             applicationId "com.devanasoft.karmath"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeMahilaTarkari{
+            dimension "app"
+            applicationId "com.devanasoft.shreeMahilaTarkari"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         } 

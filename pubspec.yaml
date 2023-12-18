@@ -109,7 +109,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -170,14 +170,14 @@ flutter:
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
-    - assets/annapurna/
-    - assets/kanchanjungha/
+    # - assets/annapurna/
+    # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
-    # - assets/bishalMulti/
+    - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
@@ -221,21 +221,21 @@ flutter:
     # - assets/shwetbhairab/
     # - assets/karmath/
     # - assets/shreeEkata/
-    - assets/shreeSiddhiGanesh/
-    # - assets/shreeJanaekikrit/
+    # - assets/shreeSiddhiGanesh/
+    # - assets/shreeJanaEkikrit/
     # - assets/mithila/
+    # - assets/shreeMahilaTarkari/
    
    
    
     #sana ksihan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
-
-    # - assets/skKhudunabari/
-    # - assets/skKhajurgachhi/
-    # - assets/skKohabara/
-    # - assets/skPatigaun/
-    # - assets/skJhurkiya/
+    - assets/skKhudunabari/
+    - assets/skKhajurgachhi/
+    - assets/skKohabara/
+    - assets/skPatigaun/
+    - assets/skJhurkiya/
 
 
   fonts:

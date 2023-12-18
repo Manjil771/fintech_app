@@ -1348,17 +1348,17 @@ class CoOperativeValue {
     splashImage: "assets/shreeEkata/shreeEkata_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative shreeJanaekikritCoop = CoOperative(
+  static final CoOperative shreeJanaEkikritCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/shreeJanaekikrit/shreeJanaekikrit_banner.png",
-    backgroundImage: "assets/shreeJanaekikrit/shreeJanaekikrit_background.png",
+    bannerImage: "assets/shreeJanaEkikrit/shreeJanaEkikrit_banner.png",
+    backgroundImage: "assets/shreeJanaEkikrit/shreeJanaEkikrit_background.png",
     clientCode: '6139Y4LZ2F',
     clientSecret: "170370",
     coOperativeName: 'Shree Jana Ekikrit Multipurpose Co-operative Society Ltd',
-    coOperativeLogo: 'assets/shreeJanaekikrit/shreeJanaekikrit_logo.png',
-    splashImage: "assets/shreeJanaekikrit/shreeJanaekikrit_splash.png",
+    coOperativeLogo: 'assets/shreeJanaEkikrit/shreeJanaEkikrit_logo.png',
+    splashImage: "assets/shreeJanaEkikrit/shreeJanaEkikrit_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative shreeSiddhiGaneshCoop = CoOperative(
@@ -1389,7 +1389,21 @@ class CoOperativeValue {
     splashImage: "assets/mithila/mithila_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-
+  static final CoOperative shreeMahilaTarkariCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeMahilaTarkari/shreeMahilaTarkari_banner.png",
+    backgroundImage:
+        "assets/shreeMahilaTarkari/shreeMahilaTarkari_background.png",
+    clientCode: 'BZB7NFYQS8',
+    clientSecret: "211773",
+    coOperativeName:
+        'Shree Mahila Tarkari Byabasai Saving and Credit Co-operative Limited',
+    coOperativeLogo: 'assets/shreeMahilaTarkari/shreeMahilaTarkari_logo.png',
+    splashImage: "assets/shreeMahilaTarkari/shreeMahilaTarkari_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(
