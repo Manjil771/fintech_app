@@ -177,9 +177,9 @@ flutter:
     # - assets/nayan/
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
-    - assets/bishalMulti/
+    # - assets/bishalMulti/
     # - assets/shreeMyagde/
-    # - assets/aarati/
+    - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
@@ -222,20 +222,20 @@ flutter:
     # - assets/karmath/
     # - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
-    # - assets/shreeJanaEkikrit/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
+    - assets/shreeJanaEkikrit/  
+    - assets/shreeMiteri/
    
    
-   
-    #sana ksihan assets
+    #sana kishan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
-    - assets/skKhudunabari/
-    - assets/skKhajurgachhi/
-    - assets/skKohabara/
-    - assets/skPatigaun/
-    - assets/skJhurkiya/
+    # - assets/skKhudunabari/
+    # - assets/skKhajurgachhi/
+    # - assets/skKohabara/
+    # - assets/skPatigaun/
+    # - assets/skJhurkiya/
 
 
   fonts:

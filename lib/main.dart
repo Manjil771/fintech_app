@@ -22,7 +22,7 @@ Future<void> main() async {
     HttpOverrides.global = MyHttpOverrides();
     runApp(
       LocalWrapper(
-          child: AppProd(env: CoOperativeValue.bishalMultiPurposeCoop)),
+          child: AppProd(env: CoOperativeValue.goldenCoop)),
     );
   }, (e, s) {
     Log.e(e);

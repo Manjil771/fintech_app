@@ -1404,6 +1404,34 @@ class CoOperativeValue {
     splashImage: "assets/shreeMahilaTarkari/shreeMahilaTarkari_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative aaratiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/aarati/aarati_banner.png",
+    backgroundImage: "assets/aarati/aarati_background.png",
+    clientCode: 'PHZDAEF1CW',
+    clientSecret: "156872",
+    coOperativeName: 'Aarati Saving and Credit Co-operative Ltd',
+    coOperativeLogo: 'assets/aarati/aarati_logo.png',
+    splashImage: "assets/aarati/aarati_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative shreeMiteriCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
+    bannerImage: "assets/shreeMiteri/shreeMiteri_banner.png",
+    backgroundImage: "assets/shreeMiteri/shreeMiteri_background.png",
+    clientCode: 'R5JUKWMHK7',
+    clientSecret: "111804",
+    coOperativeName: 'shreeMiteri MultiPurpose',
+    coOperativeLogo: 'assets/shreeMiteri/shreeMiteri_logo.png',
+    splashImage: "assets/shreeMiteri/shreeMiteri_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(
@@ -1489,20 +1517,6 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/jharana/jharana_logo.png',
     splashImage: "assets/jharana/jharana_splash.png",
     primaryColor: const Color.fromARGB(255, 57, 59, 61),
-  );
-  static final CoOperative aaratiCoop = CoOperative(
-    //need to add dynamic client credientials
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/', // 9866556708 : 24878
-    bannerImage: "assets/aarati/aarati_banner.png",
-    backgroundImage: "assets/aarati/aarati_background.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    coOperativeName: 'Aarati MultiPurpose',
-    coOperativeLogo: 'assets/aarati/aarati_logo.png',
-    splashImage: "assets/aarati/aarati_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
   );
 
 //  DEV TEST700746
