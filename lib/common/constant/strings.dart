@@ -116,5 +116,5 @@ class Strings {
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = goldenAppTitle;
+  static const APP_TITLE = queenAppTitle;
 }

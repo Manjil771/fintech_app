@@ -179,7 +179,7 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
-    - assets/aarati/
+    # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
@@ -211,7 +211,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    # - assets/queenCoop/
+    - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
@@ -224,8 +224,8 @@ flutter:
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
-    - assets/shreeJanaEkikrit/  
-    - assets/shreeMiteri/
+    # - assets/shreeJanaEkikrit/  
+    # - assets/shreeMiteri/
    
    
     #sana kishan assets
