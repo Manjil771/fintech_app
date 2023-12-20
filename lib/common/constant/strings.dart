@@ -110,11 +110,13 @@ class Strings {
   static const String mithilaAppTitle = 'Mithila iSmart';
   static const String shreeJanaEkikritAppTitle = 'Shree Jana Ekikrit iSmart';
   static const String shreeSiddhiGaneshAppTitle = 'Shree Siddhi Ganesh iSmart';
+  static const String janataAppTitle = 'Janata Coop iSmart';
+
   static const String shreeMahilaTarkariAppTitle =
       'Shree Mahila Tarkari iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = queenAppTitle;
+  static const APP_TITLE = janataAppTitle;
 }
