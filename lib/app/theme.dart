@@ -111,7 +111,7 @@ class CustomTheme {
   static const Color shreeMiteriColor = Color(0xFF00964F);
   static const Color janataColor = Color(0xFF00803E);
 
-  static const Color primaryColor = janataColor;
+  static const Color primaryColor = sanaKishanColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

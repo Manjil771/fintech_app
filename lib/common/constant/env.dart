@@ -1503,17 +1503,17 @@ class CoOperativeValue {
     splashImage: "assets/skJhurkiya/skJhurkiya_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative skShankarpur = CoOperative(
+  static final CoOperative skShankharpur = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/skShankarpur/skShankarpur_banner.png",
-    backgroundImage: "assets/skShankarpur/skShankarpur_background.png",
+    bannerImage: "assets/skShankharpur/skShankharpur_banner.png",
+    backgroundImage: "assets/skShankharpur/skShankharpur_background.png",
     clientCode: '56ILOXKHY1',
     clientSecret: "214152",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Ltd Shankarpur',
-    coOperativeLogo: 'assets/skShankarpur/skShankarpur_logo.png',
-    splashImage: "assets/skShankarpur/skShankarpur_splash.png",
+    coOperativeName: 'Sana Kisan Agriculture Cooperative Ltd Shankharpur',
+    coOperativeLogo: 'assets/skShankharpur/skShankharpur_logo.png',
+    splashImage: "assets/skShankharpur/skShankharpur_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 
@@ -1570,11 +1570,25 @@ class CoOperativeValue {
   static final CoOperative development = CoOperative(
     baseUrl: 'http://103.198.9.222:1231/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'VBMRDWEVFV',
+    clientCode: 'PHZDAEF1CW',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "199204",
+    clientSecret: "156872",
+    splashImage: "assets/images/ismart_splash.jpg",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+  );
+//  TEST for synergy cbs
+  static final CoOperative synergyDevTest = CoOperative(
+    baseUrl: 'http://103.198.9.222:1231/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: '92D1PSNS6P',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "131588",
     splashImage: "assets/images/ismart_splash.jpg",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
