@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.44+48 ##chirayu
+version: 0.0.48+48 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -109,8 +109,13 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
+
+    # - assets/kabil/
+    # - assets/uttarganga/
+
     - assets/kabil/
     - assets/uttarganga/
+
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -127,7 +132,7 @@ flutter:
     # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    - assets/bishal/
+    # - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -223,18 +228,30 @@ flutter:
     # - assets/karmath/
     # - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
-    # - assets/shreeJanaekikrit/
     # - assets/mithila/
 
+    # - assets/shreeMahilaTarkari/
+    - assets/shreeJanaEkikrit/  
+    # - assets/shreeMiteri/
+    # - assets/janata/
+    # - assets/agrasar/
+    # - assets/khotangJaleshwori/
+   
+   
+    #sana kishan assets
+
+
     #sana ksihan assets
+
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
-
     # - assets/skKhudunabari/
     # - assets/skKhajurgachhi/
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
+    # - assets/skShankharpur/
+
 
   fonts:
     - family: popinbold

@@ -60,11 +60,16 @@ class _GraphWidgetState extends State<GraphWidget> {
                 ]),
           ]);
         } else {
-          return NoDataScreen(
-            showImage: false,
-            title: "No Data.",
-            details: "No data avaliable for graph.",
-          );
+          return SfCartesianChart(
+              primaryXAxis: CategoryAxis(),
+              legend: Legend(isVisible: false),
+              series: <ChartSeries<dynamic, String>>[
+                LineSeries<dynamic, String>(
+                    dataSource: [],
+                    xValueMapper: (dynamic sales, _) => sales["day"].toString(),
+                    yValueMapper: (dynamic sales, _) => sales["balance"],
+                    dataLabelSettings: DataLabelSettings(isVisible: false))
+              ]);
         }
       },
     );
