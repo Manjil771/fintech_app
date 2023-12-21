@@ -90,6 +90,7 @@ dependencies:
   string_similarity: ^2.0.0
   local_session_timeout: ^2.3.2
   crop_your_image: ^0.7.4
+  fluttercontactpicker: ^4.7.0
 
 dev_dependencies:
   flutter_test:
@@ -108,8 +109,13 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
+
     # - assets/kabil/
     # - assets/uttarganga/
+
+    - assets/kabil/
+    - assets/uttarganga/
+
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -211,7 +217,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    # - assets/queenCoop/
+    - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
@@ -223,6 +229,7 @@ flutter:
     # - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
+
     # - assets/shreeMahilaTarkari/
     - assets/shreeJanaEkikrit/  
     # - assets/shreeMiteri/
@@ -232,6 +239,10 @@ flutter:
    
    
     #sana kishan assets
+
+
+    #sana ksihan assets
+
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
@@ -240,7 +251,6 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
-
 
 
   fonts:
