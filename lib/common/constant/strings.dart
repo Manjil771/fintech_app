@@ -4,7 +4,7 @@ class Strings {
   static const String janadharaAppTitle = "Janadhara Coop iSmart";
   static const String sahakaryaAppTitle = "Sahakarya Coop iSmart";
   static const String aviyanAppTitle = "Aviyan Coop iSmart";
-  static const String kabilAppTitle = "Kabil Coop iSmart";
+  static const String kabilAppTitle = "Kabil iSmart";
   static const String kamanaAppTitle = "Kamana Coop iSmart";
   static const String gomaganeshAppTitle = "Goma Ganesh Coop iSmart";
   static const String alangkarAppTitle = "Alangkar Coop iSmart";
@@ -113,5 +113,5 @@ class Strings {
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = queenAppTitle;
+  static const APP_TITLE = kabilAppTitle;
 }

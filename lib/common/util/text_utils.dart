@@ -69,6 +69,15 @@ class TextUtils {
 
   static List<TextInputFormatter> get decimalInputFormater =>
       [FilteringTextInputFormatter.allow(RegExp("[0-9.]"))];
+
+  static String filterSpecialCharacterExceptPlus(String val) {
+    return val
+        .replaceAll(RegExp('[^+0-9]'), "")
+        .trim()
+        .replaceAll("+977", "")
+        .replaceAll("977", "")
+        .trim();
+  }
 }
 
 extension Capitalize on String {
