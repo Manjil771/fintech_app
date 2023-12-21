@@ -120,14 +120,10 @@ class Strings {
   static const String shreeMahilaTarkariAppTitle =
       'Shree Mahila Tarkari iSmart';
 
-  static const String mithilaAppTitle = 'Jhurkiya SFACl iSmart';
   static const String aaratiAppTitle = 'Aarati iSmart';
-
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-
   static const APP_TITLE = shreeJanaEkikritAppTitle;
-
 }
