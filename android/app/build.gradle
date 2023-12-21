@@ -253,6 +253,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        agrasar {
+            dimension "app"
+            applicationId "com.devanasoft.agrasar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        khotangJaleshwori {
+            dimension "app"
+            applicationId "com.devanasoft.khotangJaleshwori"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         mithila {
             dimension "app"
             applicationId "com.devanasoft.mithila"

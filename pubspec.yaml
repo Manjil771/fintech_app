@@ -224,9 +224,11 @@ flutter:
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
-    # - assets/shreeJanaEkikrit/  
+    - assets/shreeJanaEkikrit/  
     # - assets/shreeMiteri/
     # - assets/janata/
+    # - assets/agrasar/
+    # - assets/khotangJaleshwori/
    
    
     #sana kishan assets
@@ -237,7 +239,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    - assets/skShankharpur/
+    # - assets/skShankharpur/
 
 
 

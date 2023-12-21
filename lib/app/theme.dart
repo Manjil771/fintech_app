@@ -110,8 +110,10 @@ class CustomTheme {
   static const Color shreeMahilaTarkariColor = Color(0xFF009245);
   static const Color shreeMiteriColor = Color(0xFF00964F);
   static const Color janataColor = Color(0xFF00803E);
+  static const Color agrasarColor = Color(0xFF0C7E40);
+  static const Color khotangJaleshworiColor = Color(0xFF005AAB);
 
-  static const Color primaryColor = sanaKishanColor;
+  static const Color primaryColor = shreeJanaekikritColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

@@ -1420,6 +1420,34 @@ class CoOperativeValue {
     splashImage: "assets/janata/janata_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative agrasarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/agrasar/agrasar_banner.png",
+    backgroundImage: "assets/agrasar/agrasar_background.png",
+    clientCode: '60851K9IMW',
+    clientSecret: "156581",
+    coOperativeName: 'agrasar Saving and Credit Co-operative Pvt. Ltd',
+    coOperativeLogo: 'assets/agrasar/agrasar_logo.png',
+    splashImage: "assets/agrasar/agrasar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative khotangJaleshworiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/khotangJaleshwori/khotangJaleshwori_banner.png",
+    backgroundImage:
+        "assets/khotangJaleshwori/khotangJaleshwori_background.png",
+    clientCode: 'SJ4IRJJQEO',
+    clientSecret: "135763",
+    coOperativeName:
+        'khotangJaleshwori Saving and Credit Co-operative Pvt. Ltd',
+    coOperativeLogo: 'assets/khotangJaleshwori/khotangJaleshwori_logo.png',
+    splashImage: "assets/khotangJaleshwori/khotangJaleshwori_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
   static final CoOperative shreeMiteriCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1428,7 +1456,7 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeMiteri/shreeMiteri_background.png",
     clientCode: 'R5JUKWMHK7',
     clientSecret: "111804",
-    coOperativeName: 'shreeMiteri MultiPurpose',
+    coOperativeName: 'Shree Miteri Saving and Credit Cooperative ltd',
     coOperativeLogo: 'assets/shreeMiteri/shreeMiteri_logo.png',
     splashImage: "assets/shreeMiteri/shreeMiteri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
