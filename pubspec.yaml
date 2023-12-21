@@ -207,7 +207,7 @@ flutter:
     # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/jharana/
-    # - assets/chaughada/
+    - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
@@ -232,12 +232,14 @@ flutter:
     # - assets/mithila/
 
     # - assets/shreeMahilaTarkari/
-    - assets/shreeJanaEkikrit/
+    # - assets/shreeJanaEkikrit/
     # - assets/shreeMiteri/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-
+    - assets/puspanjali/
+   
+   
     #sana kishan assets
 
     #sana ksihan assets
