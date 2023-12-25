@@ -13,14 +13,8 @@ import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transaction_detail_box.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
-import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
-import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 

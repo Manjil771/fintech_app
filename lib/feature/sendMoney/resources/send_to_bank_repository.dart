@@ -1,9 +1,12 @@
 import 'package:dio/dio.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_api_provider.dart';
 
@@ -130,6 +133,9 @@ class SendToBankRepository {
         final _res = await sendToBankAPIProvider.sendMoneyToBank(
           payloadData: sendToBankPayload,
         );
+        NavigationService.context
+            .read<CustomerDetailCubit>()
+            .fetchCustomerDetail();
         final _result = Map<String, dynamic>.from(_res);
         if (_result['data']?['code'] != "M0000") {
           return DataResponse.error(

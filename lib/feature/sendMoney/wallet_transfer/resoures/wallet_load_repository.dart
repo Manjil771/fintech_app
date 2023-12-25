@@ -5,6 +5,7 @@ import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_transfer_model.dart';
@@ -113,7 +114,9 @@ class WalletLoadRepository {
         walletAccountNumber: walletAccountNumber,
         remarks: remarks,
       );
-
+      NavigationService.context
+          .read<CustomerDetailCubit>()
+          .fetchCustomerDetail();
       if (_res['data'] != null) {
         Map<String, dynamic> _rawResponse =
             Map<String, dynamic>.from(_res['data'] ?? {});

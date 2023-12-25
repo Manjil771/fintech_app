@@ -624,7 +624,19 @@ android {
             applicationId "com.devanasoft.hetauda"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        }    
+        }
+        puspanjali {
+            dimension "app"
+            applicationId "com.devanasoft.puspanjali"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeMiteri {
+            dimension "app"
+            applicationId "com.devanasoft.shreeMiteri"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }        
         eastWest {
             dimension "app"
             applicationId "com.devanasoft.eastWest"

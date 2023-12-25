@@ -116,9 +116,10 @@ class Strings {
   static const String janataAppTitle = 'Janata Coop iSmart';
   static const String agrasarAppTitle = 'Agrasar Saving iSmart';
   static const String khotangJaleshworiAppTitle = 'Khotang Jaleshwori iSmart';
-
   static const String shreeMahilaTarkariAppTitle =
       'Shree Mahila Tarkari iSmart';
+  static const String shreeMiteriAppTitle = 'Shree Miteri Saving iSmart';
+  static const String puspanjaliAppTitle = 'Puspanjali Saving iSmart';
 
   static const String aaratiAppTitle = 'Aarati iSmart';
   static const String bhaktapurAppTitle = 'Bhaktapur iSmart';

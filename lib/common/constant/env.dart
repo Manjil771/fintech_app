@@ -1461,6 +1461,19 @@ class CoOperativeValue {
     splashImage: "assets/shreeMiteri/shreeMiteri_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative puspanjaliCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/puspanjali/puspanjali_banner.png",
+    backgroundImage: "assets/puspanjali/puspanjali_background.png",
+    clientCode: '0R05P85NRG',
+    clientSecret: "182841",
+    coOperativeName: 'Puspanjali Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/puspanjali/puspanjali_logo.png',
+    splashImage: "assets/puspanjali/puspanjali_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(

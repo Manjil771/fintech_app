@@ -100,9 +100,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                     message: state.data.message,
                     title: state.data.status,
                     buttonCallback: () {
-                      NavigationService.pushReplacement(
-                        target: const DashboardPage(),
-                      );
+                      NavigationService.pop();
                     },
                     showCancelButton: false,
                   );
