@@ -195,13 +195,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               ),
             ),
             onButtonPressed: () {
-              // context.read<UtilityPaymentCubit>().fetchDetails(
-              //       serviceIdentifier: "worldlink_online_topup",
-              //       accountDetails: {
-              //         "wlink_username": "onine_renew"
-              //       },
-              //       apiEndpoint: "api/wlinkpackages",
-              //     );
               _formKey.currentState!.save();
               if (TopUpUtils()
                   .getTopUpServiceImage(

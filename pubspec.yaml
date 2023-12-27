@@ -112,11 +112,16 @@ flutter:
 
     # - assets/kabil/
     # - assets/uttarganga/
+<<<<<<< HEAD
 
     - assets/kabil/
     - assets/uttarganga/
     - assets/bhaktapur_saccos/
 
+=======
+    # - assets/kabil/
+    # - assets/uttarganga/
+>>>>>>> a9c91f66 (apk build)
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -207,7 +212,7 @@ flutter:
     # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/jharana/
-    - assets/chaughada/
+    # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
     # - assets/pragatishil/
@@ -232,18 +237,27 @@ flutter:
     # - assets/mithila/
 
     # - assets/shreeMahilaTarkari/
+<<<<<<< HEAD
     # - assets/shreeJanaEkikrit/
+=======
+    # - assets/shreeJanaEkikrit/  
+>>>>>>> a9c91f66 (apk build)
     # - assets/shreeMiteri/
     # - assets/janata/
     # - assets/agrasar/
-    # - assets/khotangJaleshwori/
-    - assets/puspanjali/
+    - assets/khotangJaleshwori/
    
    
+<<<<<<< HEAD
     #sana kishan assets
 
     #sana ksihan assets
 
+=======
+
+
+    #sana ksihan assets
+>>>>>>> a9c91f66 (apk build)
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
@@ -253,6 +267,10 @@ flutter:
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> a9c91f66 (apk build)
   fonts:
     - family: popinbold
       fonts:
