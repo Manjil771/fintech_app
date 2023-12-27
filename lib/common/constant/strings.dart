@@ -121,9 +121,10 @@ class Strings {
       'Shree Mahila Tarkari iSmart';
 
   static const String aaratiAppTitle = 'Aarati iSmart';
+  static const String bhaktapurAppTitle = 'Bhaktapur iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = shreeJanaEkikritAppTitle;
+  static const APP_TITLE = bhaktapurAppTitle;
 }

@@ -1577,6 +1577,21 @@ class CoOperativeValue {
     shouldValidateCooperative: false,
   );
 
+  static final CoOperative bhaktapurSaccos = CoOperative(
+    backgroundImage: "assets/bhaktapur_saccos/bhaktapur_background.png",
+    bannerImage: "assets/bhaktapur_saccos/bhaktapur_banner.png",
+    coOperativeName: '',
+    coOperativeLogo: "assets/bhaktapur_saccos/bhaktapur_logo.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    splashImage: "assets/bhaktapur_saccos/bhaktapur_splash.png",
+    primaryColor: const Color(0xFF010C80),
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+    shouldValidateCooperative: false,
+  );
+
   // // // // DEV TEST70074
   // static final CoOperative development = CoOperative(
   //   backgroundImage: "assets/images/ismart_background_image.jpg",
