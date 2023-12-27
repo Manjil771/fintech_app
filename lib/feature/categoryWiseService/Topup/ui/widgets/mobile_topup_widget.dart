@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/contact_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -105,20 +106,20 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           },
                           showSearchIcon: true,
                           onSuffixPressed: () async {
-                            // String? pickedContact =
-                            //     await ContactUtils.pickContact;
-                            // if (pickedContact != null) {
-                            //   _mobileNumberController.text = pickedContact;
+                            String? pickedContact =
+                                await ContactUtils.pickContact;
+                            if (pickedContact != null) {
+                              _mobileNumberController.text = pickedContact;
+                              setState(() {});
+                            }
+                            //   String phoneNumber =
+                            //       await SecureStorageService.appPhoneNumber;
+                            //   _mobileNumberController.text = phoneNumber;
+                            //   TopUpUtils().getTopUpServiceImage(
+                            //       type: TopUpUtils().getTopUpServiceType(
+                            //           type: _topUpType.value),
+                            //       categories: widget.categoryList);
                             //   setState(() {});
-                            // }
-                            String phoneNumber =
-                                await SecureStorageService.appPhoneNumber;
-                            _mobileNumberController.text = phoneNumber;
-                            TopUpUtils().getTopUpServiceImage(
-                                type: TopUpUtils().getTopUpServiceType(
-                                    type: _topUpType.value),
-                                categories: widget.categoryList);
-                            setState(() {});
                           },
                         ),
                       ),

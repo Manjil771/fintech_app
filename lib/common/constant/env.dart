@@ -1443,7 +1443,7 @@ class CoOperativeValue {
     clientCode: 'SJ4IRJJQEO',
     clientSecret: "135763",
     coOperativeName:
-        'khotangJaleshwori Saving and Credit Co-operative Pvt. Ltd',
+        'Khotang Jaleshwori Saving and Credit Co-operative Pvt. Ltd',
     coOperativeLogo: 'assets/khotangJaleshwori/khotangJaleshwori_logo.png',
     splashImage: "assets/khotangJaleshwori/khotangJaleshwori_splash.png",
     primaryColor: const Color(0xFF0b67bb),
@@ -1474,6 +1474,87 @@ class CoOperativeValue {
     splashImage: "assets/puspanjali/puspanjali_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+
+  static final CoOperative aakashbaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aakashbani/aakashbani_banner.png",
+    backgroundImage: "assets/aakashbani/aakashbani_background.png",
+    clientCode: 'IPUSNJ3AJF',
+    clientSecret: "194455",
+    coOperativeName: 'Aakashbani Saving and Credit Cooperative Pvt Ltd',
+    coOperativeLogo: 'assets/aakashbani/aakashbani_logo.png',
+    splashImage: "assets/aakashbani/aakashbani_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeAmrapaliCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeAmrapali/shreeAmrapali_banner.png",
+    backgroundImage: "assets/shreeAmrapali/shreeAmrapali_background.png",
+    clientCode: 'BGJW1YZF5M',
+    clientSecret: "172325",
+    coOperativeName: 'Shree Amrapali Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeAmrapali/shreeAmrapali_logo.png',
+    splashImage: "assets/shreeAmrapali/shreeAmrapali_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative autobikashCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/autobikash/autobikash_banner.png",
+    backgroundImage: "assets/autobikash/autobikash_background.png",
+    clientCode: 'XKQPM6WHFO',
+    clientSecret: "126375",
+    coOperativeName: 'Auto Bikash Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/autobikash/autobikash_logo.png',
+    splashImage: "assets/autobikash/autobikash_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative starlightCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/starlight/starlight_banner.png",
+    backgroundImage: "assets/starlight/starlight_background.png",
+    clientCode: 'ND53ZGJ4IE',
+    clientSecret: "197881",
+    coOperativeName: 'Starlight Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/starlight/starlight_logo.png',
+    splashImage: "assets/starlight/starlight_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
+  static final CoOperative shreeMarsyangdiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeMarsyangdi/shreeMarsyangdi_banner.png",
+    backgroundImage: "assets/shreeMarsyangdi/shreeMarsyangdi_background.png",
+    clientCode: 'A99TH6FB12',
+    clientSecret: "191225",
+    coOperativeName: 'Shree Marsyangdi Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeMarsyangdi/shreeMarsyangdi_logo.png',
+    splashImage: "assets/shreeMarsyangdi/shreeMarsyangdi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative tanahunKalikaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tanahunKalika/tanahunKalika_banner.png",
+    backgroundImage: "assets/tanahunKalika/tanahunKalika_background.png",
+    clientCode: 'U82ELN31YI',
+    clientSecret: "218380",
+    coOperativeName: 'Tanahun Kalika Saving and Credit Cooperative Ltd	',
+    coOperativeLogo: 'assets/tanahunKalika/tanahunKalika_logo.png',
+    splashImage: "assets/tanahunKalika/tanahunKalika_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(
