@@ -232,13 +232,13 @@ flutter:
     # - assets/shreeMiteri/
     # - assets/janata/
     # - assets/agrasar/
-    - assets/khotangJaleshwori/
-    # - assets/aakashbani/
+    # - assets/khotangJaleshwori/
+    - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreemarshyangdi/
     # - assets/puspanjali/
     # - assets/autobikash/
-    - assets/aamrapali/
+    # - assets/aamrapali/
    
 
     #sana ksihan assets
