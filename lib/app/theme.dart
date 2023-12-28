@@ -114,13 +114,12 @@ class CustomTheme {
   static const Color khotangJaleshworiColor = Color(0xFF005AAB);
   static const Color puspanjaliColor = Color(0xFF009C4F);
   static const Color starlightColor = Color(0xFF01A54E);
-  static const Color shreeAmrapaliColor = Color(0xFF009C4F);
+  static const Color shreeAmrapaliColor = Color(0xFF004382);
   static const Color autobikashColor = Color(0xFF0071BC);
   static const Color aakashbaniColor = Color(0xFF00A650);
-  static const Color shreeAamrapaliColor = Color(0xFF00A650);
   static const Color shreeMarsyangdiColor = Color(0xFF006837);
 
-  static const Color primaryColor = aakashbaniColor;
+  static const Color primaryColor = autobikashColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

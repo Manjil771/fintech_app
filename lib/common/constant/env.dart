@@ -1492,13 +1492,13 @@ class CoOperativeValue {
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/shreeAmrapali/shreeAmrapali_banner.png",
-    backgroundImage: "assets/shreeAmrapali/shreeAmrapali_background.png",
+    bannerImage: "assets/amrapali/amrapali_banner.png",
+    backgroundImage: "assets/amrapali/amrapali_background.png",
     clientCode: 'BGJW1YZF5M',
     clientSecret: "172325",
     coOperativeName: 'Shree Amrapali Saving and Credit Co-operative Ltd.',
-    coOperativeLogo: 'assets/shreeAmrapali/shreeAmrapali_logo.png',
-    splashImage: "assets/shreeAmrapali/shreeAmrapali_splash.png",
+    coOperativeLogo: 'assets/amrapali/amrapali_logo.png',
+    splashImage: "assets/amrapali/amrapali_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative autobikashCoop = CoOperative(
