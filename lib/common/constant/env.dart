@@ -1555,6 +1555,33 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative khullabajarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/khullabajar/khullabajar_banner.png",
+    backgroundImage: "assets/khullabajar/khullabajar_background.png",
+    clientCode: 'FXUBBEG3VP',
+    clientSecret: "124580",
+    coOperativeName: 'Khulla Bajar Saving and Credit Co-operative Limited	',
+    coOperativeLogo: 'assets/khullabajar/khullabajar_logo.png',
+    splashImage: "assets/khullabajar/khullabajar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative abhibadanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/abhibadan/abhibadan_banner.png",
+    backgroundImage: "assets/abhibadan/abhibadan_background.png",
+    clientCode: 'WQPWTJYR85',
+    clientSecret: "179061",
+    coOperativeName: 'Abhibadan Multipurpose Co-operative Society Limited',
+    coOperativeLogo: 'assets/abhibadan/abhibadan_logo.png',
+    splashImage: "assets/abhibadan/abhibadan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(

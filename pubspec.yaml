@@ -237,8 +237,14 @@ flutter:
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
-    - assets/autobikash/
+    # - assets/autobikash/
     # - assets/amrapali/
+    # - assets/abhibadan/
+    # - assets/tanahunKalika/
+    - assets/khullabajar/
+    - assets/chandani/
+    - assets/sparkling/
+    - assets/lifeVision/
    
 
     #sana ksihan assets
