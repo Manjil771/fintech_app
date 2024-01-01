@@ -229,7 +229,7 @@ flutter:
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
-    # - assets/shreeMiteri/
+    # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
@@ -241,10 +241,11 @@ flutter:
     # - assets/amrapali/
     # - assets/abhibadan/
     # - assets/tanahunKalika/
-    - assets/khullabajar/
-    - assets/chandani/
-    - assets/sparkling/
-    - assets/lifeVision/
+    # - assets/khullabajar/
+    # - assets/chandani/
+    # - assets/sparkling/
+    # - assets/lifeVision/
+    - assets/pacific/
    
 
     #sana ksihan assets

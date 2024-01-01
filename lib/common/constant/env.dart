@@ -1448,17 +1448,17 @@ class CoOperativeValue {
     splashImage: "assets/khotangJaleshwori/khotangJaleshwori_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
-  static final CoOperative shreeMiteriCoop = CoOperative(
+  static final CoOperative shreeMitereeCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/shreeMiteri/shreeMiteri_banner.png",
-    backgroundImage: "assets/shreeMiteri/shreeMiteri_background.png",
+    bannerImage: "assets/shreeMiteree/shreeMiteree_banner.png",
+    backgroundImage: "assets/shreeMiteree/shreeMiteree_background.png",
     clientCode: 'R5JUKWMHK7',
     clientSecret: "111804",
-    coOperativeName: 'Shree Miteri Saving and Credit Cooperative ltd',
-    coOperativeLogo: 'assets/shreeMiteri/shreeMiteri_logo.png',
-    splashImage: "assets/shreeMiteri/shreeMiteri_splash.png",
+    coOperativeName: 'Shree Miteree Saving and Credit Cooperative ltd',
+    coOperativeLogo: 'assets/shreeMiteree/shreeMiteree_logo.png',
+    splashImage: "assets/shreeMiteree/shreeMiteree_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative puspanjaliCoop = CoOperative(
@@ -1579,6 +1579,58 @@ class CoOperativeValue {
     coOperativeName: 'Abhibadan Multipurpose Co-operative Society Limited',
     coOperativeLogo: 'assets/abhibadan/abhibadan_logo.png',
     splashImage: "assets/abhibadan/abhibadan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative lifeVisionCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/lifeVision/lifeVision_banner.png",
+    backgroundImage: "assets/lifeVision/lifeVision_background.png",
+    clientCode: 'VN9ZMLS8PT',
+    clientSecret: "169878",
+    coOperativeName: 'Life Vision Saving & Credit Co-operative Limited',
+    coOperativeLogo: 'assets/lifeVision/lifeVision_logo.png',
+    splashImage: "assets/lifeVision/lifeVision_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative chandaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/chandani/chandani_banner.png",
+    backgroundImage: "assets/chandani/chandani_background.png",
+    clientCode: '7IMKC3F79F',
+    clientSecret: "199867",
+    coOperativeName: 'Chandani Saving and Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/chandani/chandani_logo.png',
+    splashImage: "assets/chandani/chandani_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative sparklingCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sparkling/sparkling_banner.png",
+    backgroundImage: "assets/sparkling/sparkling_background.png",
+    clientCode: '4AJJY4XH26',
+    clientSecret: "217254",
+    coOperativeName: 'Sparkling Agricultural Co-operative Limited	',
+    coOperativeLogo: 'assets/sparkling/sparkling_logo.png',
+    splashImage: "assets/sparkling/sparkling_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative pacificCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pacific/pacific_banner.png",
+    backgroundImage: "assets/pacific/pacific_background.png",
+    clientCode: 'M66VVYESH8',
+    clientSecret: "126072",
+    coOperativeName: 'Pacific Saving and Credit Co-operative Limited',
+    coOperativeLogo: 'assets/pacific/pacific_logo.png',
+    splashImage: "assets/pacific/pacific_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
 

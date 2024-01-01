@@ -301,6 +301,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        lifeVision {
+            dimension "app"
+            applicationId "com.devanasoft.lifeVision"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        chandani {
+            dimension "app"
+            applicationId "com.devanasoft.chandani"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sparkling {
+            dimension "app"
+            applicationId "com.devanasoft.sparkling"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        pacific {
+            dimension "app"
+            applicationId "com.devanasoft.pacific"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         abhibadan{
             dimension "app"
             applicationId "com.devanasoft.abhibadan"
