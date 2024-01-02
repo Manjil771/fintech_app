@@ -125,8 +125,9 @@ class CustomTheme {
   static const Color lifeVisionColor = Color(0xFF0066B2);
   static const Color sparklingColor = Color(0xFF2B4C8F);
   static const Color pacificColor = Color(0xFF004382);
+  static const Color samutthanColor = Color(0xFF00713B);
 
-  static const Color primaryColor = chandaniColor;
+  static const Color primaryColor = samutthanColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

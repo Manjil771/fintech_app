@@ -1633,6 +1633,19 @@ class CoOperativeValue {
     splashImage: "assets/pacific/pacific_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative samutthanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samutthan/samutthan_banner.png",
+    backgroundImage: "assets/samutthan/samutthan_background.png",
+    clientCode: 'RF0O6228ND',
+    clientSecret: "143283",
+    coOperativeName: 'Samutthan Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/samutthan/samutthan_logo.png',
+    splashImage: "assets/samutthan/samutthan_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
