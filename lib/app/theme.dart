@@ -113,8 +113,7 @@ class CustomTheme {
   static const Color agrasarColor = Color(0xFF0C7E40);
   static const Color khotangJaleshworiColor = Color(0xFF005AAB);
 
-  static const Color primaryColor = agrasarColor;
-
+  static const Color primaryColor = shreeEkataColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

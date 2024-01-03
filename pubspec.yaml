@@ -227,7 +227,7 @@ flutter:
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/karmath/
-    # - assets/shreeEkata/
+    - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
 
