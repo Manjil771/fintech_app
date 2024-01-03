@@ -100,31 +100,41 @@ class Strings {
   static const String karmathAppTitle = 'Karmath Samajik iSmart';
   static const String shreeEkataAppTitle = 'Shree Ekata Saving iSmart';
   static const String nayaKiranAppTitle = 'Naya Kiran iSmart';
-
   static const String skKhajurachhiAppTitle = 'Khajurachhi SFACl iSmart';
   static const String skKohabaraAppTitle = 'Kohabara SFACl iSmart';
-
   static const String skPatigaunAppTitle = 'Patigaun SFACl iSmart';
   static const String skKhudunabariAppTitle = 'Khudunabari SFACl iSmart';
   static const String skJhurkiyaAppTitle = 'Jhurkiya SFACl iSmart';
-
   static const String skShankharpurAppTitle = 'Shankharpur SFACl iSmart';
-
   static const String mithilaAppTitle = 'Mithila iSmart';
   static const String shreeJanaEkikritAppTitle = 'Shree Jana Ekikrit iSmart';
   static const String shreeSiddhiGaneshAppTitle = 'Shree Siddhi Ganesh iSmart';
   static const String janataAppTitle = 'Janata Coop iSmart';
   static const String agrasarAppTitle = 'Agrasar Saving iSmart';
   static const String khotangJaleshworiAppTitle = 'Khotang Jaleshwori iSmart';
-
   static const String shreeMahilaTarkariAppTitle =
       'Shree Mahila Tarkari iSmart';
-
+  static const String shreeMitereeAppTitle = 'Shree Miteree iSmart';
+  static const String puspanjaliAppTitle = 'Puspanjali Saving iSmart';
   static const String aaratiAppTitle = 'Aarati iSmart';
   static const String bhaktapurAppTitle = 'Bhaktapur iSmart';
+  static const String starlightAppTitle = 'Starlight iSmart';
+  static const String shreeAmrapaliAppTitle = 'Shree Amrapali iSmart';
+  static const String autoBikashAppTitle = 'Auto Bikash iSmart';
+  static const String aakashbaniAppTitle = 'Aakashbani iSmart';
+  static const String shreeMarsyangdiAppTitle = 'Shree Marsyangdi iSmart';
+  static const String tanahunKalikaAppTitle = 'Tanahun Kalika iSmart';
+  static const String abhibadanAppTitle = 'Abhibadan iSmart';
+  static const String khullabazarAppTitle = 'Khulla Bazar iSmart';
+  static const String lifeVisionAppTitle = 'Life Vision iSmart';
+  static const String chandaniAppTitle = 'Chandani iSmart';
+  static const String sparklingAppTitle = 'Sparkling Agricultural iSmart';
+  static const String pacificAppTitle = 'Pacific iSmart';
+  static const String samutthanAppTitle = 'Samutthan iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
   static const APP_TITLE = shreeEkataAppTitle;
+
 }

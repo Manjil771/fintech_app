@@ -7,6 +7,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
@@ -44,28 +45,8 @@ class _BankingWidgetState extends State<BankingWidget> {
               width: double.infinity,
               // height: _height * 0.7,
               child: Container(
-                child: BlocConsumer<AppServiceCubit, CommonState>(
-                    listener: (context, state) {
-                  if (state is CommonLoading && !_isLoading) {
-                    _isLoading = true;
-                    showLoadingDialogBox(context);
-                  } else if (state is! CommonLoading && _isLoading) {
-                    _isLoading = false;
-                    NavigationService.pop();
-                  }
-
-                  if (state is CommonError) {
-                    showPopUpDialog(
-                      context: context,
-                      message: state.message,
-                      title: "Error",
-                      showCancelButton: false,
-                      buttonCallback: () {
-                        NavigationService.pop();
-                      },
-                    );
-                  }
-                }, builder: (context, state) {
+                child: BlocBuilder<AppServiceCubit, CommonState>(
+                    builder: (context, state) {
                   if (state
                       is CommonDataFetchSuccess<AppServiceManagementModel>) {
                     final filteredItems = state.data
@@ -95,6 +76,9 @@ class _BankingWidgetState extends State<BankingWidget> {
                         title: itemName[index],
                       ),
                     );
+                  }
+                  if (state is CommonLoading) {
+                    return CommonLoadingWidget();
                   } else {
                     return Container();
                   }

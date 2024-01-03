@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/contact_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/regex_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -195,13 +196,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               ),
             ),
             onButtonPressed: () {
-              // context.read<UtilityPaymentCubit>().fetchDetails(
-              //       serviceIdentifier: "worldlink_online_topup",
-              //       accountDetails: {
-              //         "wlink_username": "onine_renew"
-              //       },
-              //       apiEndpoint: "api/wlinkpackages",
-              //     );
               _formKey.currentState!.save();
               if (TopUpUtils()
                   .getTopUpServiceImage(

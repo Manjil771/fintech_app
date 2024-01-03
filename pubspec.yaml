@@ -109,14 +109,11 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-
     # - assets/kabil/
     # - assets/uttarganga/
-
-    - assets/kabil/
-    - assets/uttarganga/
-    - assets/bhaktapur_saccos/
-
+    # - assets/kabil/
+    # - assets/uttarganga/
+    # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -230,18 +227,29 @@ flutter:
     - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
-
     # - assets/shreeMahilaTarkari/
-    - assets/shreeJanaEkikrit/
-    # - assets/shreeMiteri/
+    # - assets/shreeJanaEkikrit/
+    # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-
-    #sana kishan assets
+    # - assets/aakashbani/
+    # - assets/starlight/
+    # - assets/shreeMarsyangdi/
+    # - assets/puspanjali/
+    # - assets/autobikash/
+    # - assets/amrapali/
+    # - assets/abhibadan/
+    # - assets/tanahunKalika/
+    # - assets/khullabajar/
+    # - assets/chandani/
+    - assets/sparkling/
+    # - assets/lifeVision/
+    # - assets/pacific/
+    - assets/samutthan/
+   
 
     #sana ksihan assets
-
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/

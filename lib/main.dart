@@ -9,7 +9,6 @@ import 'package:ismart/app/app_prod.dart';
 import 'package:ismart/app/local_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/log.dart';
-
 import 'main_development.dart';
 
 Future<void> main() async {
@@ -21,7 +20,9 @@ Future<void> main() async {
   runZonedGuarded(() {
     HttpOverrides.global = MyHttpOverrides();
     runApp(
+
       LocalWrapper(child: AppProd(env: CoOperativeValue.shreeEkataCoop)),
+
     );
   }, (e, s) {
     Log.e(e);
