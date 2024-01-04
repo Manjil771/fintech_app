@@ -1646,6 +1646,45 @@ class CoOperativeValue {
     splashImage: "assets/samutthan/samutthan_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative hamroDahachokCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/hamroDahachok/hamroDahachok_banner.png",
+    backgroundImage: "assets/hamroDahachok/hamroDahachok_background.png",
+    clientCode: 'E7T0N0IAZ5',
+    clientSecret: "154468",
+    coOperativeName: 'hamroDahachok Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/hamroDahachok/hamroDahachok_logo.png',
+    splashImage: "assets/hamroDahachok/hamroDahachok_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative globalMultiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/globalMulti/global_banner.png",
+    backgroundImage: "assets/globalMulti/global_background.png",
+    clientCode: 'HVAUGR1WUB',
+    clientSecret: "173627",
+    coOperativeName: 'globalMulti Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/globalMulti/global_logo.png',
+    splashImage: "assets/globalMulti/global_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative dhanapraptiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/dhanaprapti/dhanaprapti_banner.png",
+    backgroundImage: "assets/dhanaprapti/dhanaprapti_background.png",
+    clientCode: 'B4R4X90Z4K',
+    clientSecret: "209754",
+    coOperativeName: 'dhanaprapti Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/dhanaprapti/dhanaprapti_logo.png',
+    splashImage: "assets/dhanaprapti/dhanaprapti_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 

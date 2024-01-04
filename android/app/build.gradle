@@ -337,6 +337,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        globalMulti{
+            dimension "app"
+            applicationId "com.devanasoft.globalMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        hamroDahachok{
+            dimension "app"
+            applicationId "com.devanasoft.hamroDahachok"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        dhanaprapti{
+            dimension "app"
+            applicationId "com.devanasoft.dhanaprapti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         khotangJaleshwori {
             dimension "app"
             applicationId "com.devanasoft.khotangJaleshwori"

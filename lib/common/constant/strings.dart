@@ -131,9 +131,12 @@ class Strings {
   static const String sparklingAppTitle = 'Sparkling Agricultural iSmart';
   static const String pacificAppTitle = 'Pacific iSmart';
   static const String samutthanAppTitle = 'Samutthan iSmart';
+  static const String globalMultiAppTitle = 'Global Multipurpose iSmart';
+  static const String hamroDahachokAppTitle = 'Hamro Dahachok iSmart';
+  static const String dhanapraptiAppTitle = 'Dhanaprapti iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = samutthanAppTitle;
+  static const APP_TITLE = hamroDahachokAppTitle;
 }
