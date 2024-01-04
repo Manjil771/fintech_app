@@ -64,14 +64,14 @@ class BottomSheetWrapper extends StatelessWidget {
             ),
             child: Row(
               children: [
-                Spacer(),
-                Text(
-                  title,
-                  style: _textTheme.headlineSmall!.copyWith(
-                    fontWeight: FontWeight.bold,
+                Expanded(
+                  child: Text(
+                    title,
+                    style: _textTheme.headlineSmall!.copyWith(
+                      fontWeight: FontWeight.bold,
+                    ),
                   ),
                 ),
-                Spacer(),
                 if (showCancelButton)
                   InkWell(
                     onTap: () {
