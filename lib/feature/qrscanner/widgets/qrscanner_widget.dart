@@ -534,6 +534,35 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     maxAmount: 25000.00,
                     status: "Active")));
       }
+      if (_decode.containsKey("Khalti_ID")) {
+        final phoneNumber = _decode["Khalti_ID"];
+        NavigationService.pushReplacement(
+            target: LoadWalletFormScreen(
+                remarks: widget.remarks,
+                phoneNumber: phoneNumber,
+                selectedWallet: WalletModel(
+                    id: 12,
+                    name: "Khalti",
+                    descOneFieldName: "Wallet ID",
+                    descOneFieldType: "String",
+                    descOneFixedLength: true,
+                    descOneLength: 10,
+                    descOneMinLength: null,
+                    descOneMaxLength: null,
+                    descTwoFieldName: "Remarks",
+                    descTwoFieldType: "String",
+                    descTwoFixedLength: false,
+                    descTwoLength: 0,
+                    descTwoMinLength: 1,
+                    descTwoMaxLength: 35,
+                    icon:
+                        "1687440202035bff30621-50c8-4eb3-aa01-b13093f718f0.png",
+                    accountHead: "KHALTI",
+                    accountNumber: "KHALTIWALLET",
+                    minAmount: 10.00,
+                    maxAmount: 25000.00,
+                    status: "Active")));
+      }
 
       if (_decode.containsKey("bankCode")) {
         context.read<UtilityPaymentCubit>().fetchDetails(
