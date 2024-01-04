@@ -192,7 +192,7 @@ flutter:
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    # - assets/subhodaya/
+    - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
@@ -243,10 +243,10 @@ flutter:
     # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
-    - assets/sparkling/
+    # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
-    - assets/samutthan/
+    # - assets/samutthan/
    
 
     #sana ksihan assets
