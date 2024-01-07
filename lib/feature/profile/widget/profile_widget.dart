@@ -11,9 +11,11 @@ import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/crop_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -38,20 +40,20 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   _handleImageUpload(File file) {
     NavigationService.pop();
-    NavigationService.push(
-      target: CropImageView(
-        selectedImage: file,
-      ),
-    );
-    // showPopUpDialog(
-    //   context: context,
-    //   message: "Are you sure you want to upload image?",
-    //   title: "Upload Profile Picture",
-    //   buttonCallback: () {
-    //     context.read<ImageUploadCubit>().uploadImage(imageFile: file);
-    //     NavigationService.pop();
-    //   },
+    // NavigationService.push(
+    //   target: CropImageView(
+    //     selectedImage: file,
+    //   ),
     // );
+    showPopUpDialog(
+      context: context,
+      message: "Are you sure you want to upload image?",
+      title: "Upload Profile Picture",
+      buttonCallback: () {
+        context.read<ImageUploadCubit>().uploadImage(imageFile: file);
+        NavigationService.pop();
+      },
+    );
   }
 
   bool _isLoading = false;

@@ -128,9 +128,9 @@ class CustomTheme {
   static const Color samutthanColor = Color(0xFF00713B);
   static const Color hamroDahachokColor = Color(0xFF009245);
   static const Color globalMultiColor = Color(0xFF1A9640);
-  static const Color dhanpraptiColor = Color(0xFF1B1464);
+  static const Color dhanapraptiColor = Color(0xFF1B1464);
 
-  static const Color primaryColor = hamroDahachokColor;
+  static const Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
