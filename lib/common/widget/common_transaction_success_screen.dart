@@ -173,8 +173,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                     CustomRoundedButtom(
                         title: "Done",
                         onPressed: () {
-                          NavigationService.pushNamedAndRemoveUntil(
-                              routeName: Routes.dashboard);
+                          NavigationService.popUntilFirstPage();
                         }),
                     SizedBox(height: _height * 0.02),
                     pdfUrl == null
