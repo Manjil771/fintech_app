@@ -91,7 +91,7 @@ class Strings {
   static const String babiraAppTitle = 'Udhamshil Krishi iSmart';
   static const String devshreeAppTitle = 'Devshree iSmart';
   static const String eastWestAppTitle = 'East West Saving iSmart';
-  static const String ekataMultiAppTitle = 'Ekata Multipurpose iSmart';
+  static const String ektaMultiAppTitle = 'Ekta Multipurpose iSmart';
   static const String hetaudaAppTitle = 'Hetauda Coop iSmart';
   static const String shreeDigopanTitle = 'Hetauda Coop iSmart';
   static const String sarbahitDangAppTitle = 'Sarbahit Coop iSmart';
@@ -138,5 +138,5 @@ class Strings {
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = hamroDahachokAppTitle;
+  static const APP_TITLE = ektaMultiAppTitle;
 }

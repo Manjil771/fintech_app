@@ -1285,17 +1285,17 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
-  static final CoOperative ekataMultipurposeCoop = CoOperative(
+  static final CoOperative ektaMultipurposeCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/ekataMultipurpose/ekataMulti_banner.png",
-    backgroundImage: "assets/ekataMultipurpose/ekataMulti_background.png",
+    bannerImage: "assets/ektaMultipurpose/ektaMulti_banner.png",
+    backgroundImage: "assets/ektaMultipurpose/ektaMulti_background.png",
     clientCode: 'Z99TZE0GKZ',
     clientSecret: "113270",
-    coOperativeName: 'Ekata Multipurpose Cooperative Limited.',
-    coOperativeLogo: 'assets/ekataMultipurpose/ekataMulti_logo.png',
-    splashImage: "assets/ekataMultipurpose/ekataMulti_splash.png",
+    coOperativeName: 'Ekta Multipurpose Cooperative Limited.',
+    coOperativeLogo: 'assets/ektaMultipurpose/ektaMulti_logo.png',
+    splashImage: "assets/ektaMultipurpose/ektaMulti_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative shwetbhairabCoop = CoOperative(

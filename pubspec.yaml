@@ -220,7 +220,7 @@ flutter:
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
-    # - assets/ekataMultipurpose/
+    - assets/ektaMultipurpose/
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/karmath/
@@ -249,7 +249,7 @@ flutter:
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
-    - assets/hamroDahachok/
+    # - assets/hamroDahachok/
    
 
     #sana ksihan assets

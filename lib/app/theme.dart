@@ -99,7 +99,7 @@ class CustomTheme {
   static const Color kendrabinduColor = Color(0xFF308188);
   static const Color eastwestColor = Color(0xFF006311);
   static const Color babiraColor = Color(0xFF25428E);
-  static const Color ekataMultipurposeColor = Color(0xFF0C8387);
+  static const Color ektaMultipurposeColor = Color(0xFF0C8387);
   static const Color sarbahitDangColor = Color(0xFF009245);
   static const Color shwetBhairabColor = Color(0xFF1B1464);
   static const Color shreeEkataColor = Color(0xFF009444);
@@ -130,7 +130,7 @@ class CustomTheme {
   static const Color globalMultiColor = Color(0xFF1A9640);
   static const Color dhanapraptiColor = Color(0xFF1B1464);
 
-  static const Color primaryColor = testAppColor;
+  static const Color primaryColor = ektaMultipurposeColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
