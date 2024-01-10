@@ -108,12 +108,15 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   ],
                 ),
                 accountName: _accountNameController.text,
-                accountNumber:
-                    (selectedIDFromQr?.branchCode ?? branchCode.toString()) +
+                accountNumber: widget.isFavAccount == true
+                    ? (widget.bankCode.toString() +
+                        widget.accountNumber.toString())
+                    : (selectedIDFromQr?.bankCode ?? branchCode.toString()) +
                         _accountNumberController.text,
                 amount: _amountController.text,
-                branchCode:
-                    branchId ?? selectedIDFromQr?.bankId.toString() ?? "",
+                branchCode: widget.isFavAccount == true
+                    ? widget.branchCodeQr ?? ""
+                    : (branchId ?? selectedIDFromQr?.bankId.toString() ?? ""),
                 remarks: _remarksController.text,
               ));
             } else {
