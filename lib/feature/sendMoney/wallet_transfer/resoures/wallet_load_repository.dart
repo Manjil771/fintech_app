@@ -104,9 +104,8 @@ class WalletLoadRepository {
         walletId: walletId,
         accountNumber: RepositoryProvider.of<CustomerDetailRepository>(
                 NavigationService.context)
-            .accountsList
-            .value
-            .first
+            .selectedAccount
+            .value!
             .accountNumber,
         amount: amount,
         validationIdentifier: validationIdentifier,
