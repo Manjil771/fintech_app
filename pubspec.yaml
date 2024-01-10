@@ -169,7 +169,7 @@ flutter:
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
-    # - assets/buddhaCoop/
+    - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
@@ -249,7 +249,7 @@ flutter:
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
-    - assets/hamroDahachok/
+    # - assets/hamroDahachok/
    
 
     #sana ksihan assets

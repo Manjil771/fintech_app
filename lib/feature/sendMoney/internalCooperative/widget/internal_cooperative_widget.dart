@@ -11,7 +11,6 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
@@ -22,6 +21,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 
 class InternalCooperativeWidget extends StatefulWidget {
   final String? accountNumber;
+  final bool? isFavAccount;
+  final String? branchName;
+
   final String? accountName;
   final String? bankCode;
   final String? branchCodeQr;
@@ -33,7 +35,9 @@ class InternalCooperativeWidget extends StatefulWidget {
       this.accountName,
       this.bankCode,
       this.branchCodeQr,
-      this.remarks})
+      this.remarks,
+      this.isFavAccount = false,
+      this.branchName})
       : super(key: key);
 
   @override
@@ -142,54 +146,62 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                widget.branchCodeQr == null
+                widget.isFavAccount == true
                     ? CustomTextField(
-                        title: "Branch",
-                        hintText: "Select Branch",
                         readOnly: true,
-                        controller: _branchController,
-                        validator: (val) =>
-                            FormValidator.validateFieldNotEmpty(val, "Branch"),
-                        onTap: () {
-                          NavigationService.push(
-                            target: CoOperativeBranchPage(
-                              onBankSelected: (val) {
-                                NavigationService.pop();
-                                branchCode = val.branchCode;
-                                branchId = val.id.toString();
-                                _branchController.text = val.name;
-                              },
-                            ),
-                          );
-                        },
+                        title: "Branch",
+                        controller: _branchController
+                          ..text = widget.branchName ?? "",
                       )
-                    : BlocProvider(
-                        lazy: false,
-                        create: (context) => CoopListCubit(
-                            internalTransferRepository: RepositoryProvider.of<
-                                InternalTransferRepository>(context))
-                          ..fetchBanksList(),
-                        child: BlocConsumer<CoopListCubit, CommonState>(
-                          builder: (context, state) {
-                            print("state of state is $state");
-                            if (state
-                                is CommonDataFetchSuccess<InternalBranch>) {
-                              selectedIDFromQr = state.data.firstWhere(
-                                  (element) =>
-                                      element.branchCode ==
-                                      widget.branchCodeQr);
-                              return CustomTextField(
-                                readOnly: true,
-                                title: "Branch ",
-                                customHintTextStyle: true,
-                                hintText: selectedIDFromQr?.name ?? "",
+                    : widget.branchCodeQr == null
+                        ? CustomTextField(
+                            title: "Branch",
+                            hintText: "Select Branch",
+                            readOnly: true,
+                            controller: _branchController,
+                            validator: (val) =>
+                                FormValidator.validateFieldNotEmpty(
+                                    val, "Branch"),
+                            onTap: () {
+                              NavigationService.push(
+                                target: CoOperativeBranchPage(
+                                  onBankSelected: (val) {
+                                    NavigationService.pop();
+                                    branchCode = val.branchCode;
+                                    branchId = val.id.toString();
+                                    _branchController.text = val.name;
+                                  },
+                                ),
                               );
-                            } else {
-                              return Container();
-                            }
-                          },
-                          listener: (context, state) {},
-                        )),
+                            },
+                          )
+                        : BlocProvider(
+                            lazy: false,
+                            create: (context) => CoopListCubit(
+                                internalTransferRepository: RepositoryProvider
+                                    .of<InternalTransferRepository>(context))
+                              ..fetchBanksList(),
+                            child: BlocConsumer<CoopListCubit, CommonState>(
+                              builder: (context, state) {
+                                print("state of state is $state");
+                                if (state
+                                    is CommonDataFetchSuccess<InternalBranch>) {
+                                  selectedIDFromQr = state.data.firstWhere(
+                                      (element) =>
+                                          element.branchCode ==
+                                          widget.branchCodeQr);
+                                  return CustomTextField(
+                                    readOnly: true,
+                                    title: "Branch ",
+                                    customHintTextStyle: true,
+                                    hintText: selectedIDFromQr?.name ?? "",
+                                  );
+                                } else {
+                                  return Container();
+                                }
+                              },
+                              listener: (context, state) {},
+                            )),
                 CustomTextField(
                   title: "Destination Account",
                   hintText: "Account Number",
@@ -242,8 +254,9 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   accountDetails: {
                     "destinationAccountNumber": _accountNumberController.text,
                     "destinationAccountName": _accountNameController.text,
-                    "destinationBranchId":
-                        branchId ?? selectedIDFromQr?.id ?? "",
+                    "destinationBranchId": widget.isFavAccount == true
+                        ? widget.branchCodeQr
+                        : (branchId ?? selectedIDFromQr?.id ?? ""),
                     // "destinationBranchId": "26",
                   },
                   apiEndpoint: "/api/account/validation");
