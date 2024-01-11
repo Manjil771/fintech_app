@@ -1876,4 +1876,18 @@ class CoOperativeValue {
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
   );
+  //  TEST for Systematic  cbs
+  static final CoOperative systematicDevTest = CoOperative(
+    baseUrl: 'http://103.198.9.222:1231/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: 'O9YSV2CLCE',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "129387",
+    splashImage: "assets/images/ismart_splash.jpg",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+  );
 }
