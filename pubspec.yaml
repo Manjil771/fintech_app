@@ -229,13 +229,13 @@ flutter:
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
-    - assets/shreeMiteree/
+    # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
     # - assets/aakashbani/
     # - assets/starlight/
-    # - assets/shreeMarsyangdi/
+    - assets/shreeMarsyangdi/
     # - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/

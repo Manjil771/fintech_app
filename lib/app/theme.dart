@@ -130,7 +130,7 @@ class CustomTheme {
   static const Color globalMultiColor = Color(0xFF1A9640);
   static const Color dhanapraptiColor = Color(0xFF1B1464);
 
-  static const Color primaryColor = shreeMitereeColor;
+  static const Color primaryColor = shreeMarsyangdiColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
