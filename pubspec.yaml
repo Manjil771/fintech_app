@@ -124,7 +124,7 @@ flutter:
     # - assets/shreemitra/
     # - assets/kipoo/
     # - assets/suryadev/
-    # - assets/uddhamshil/
+    - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
     # - assets/vyas/
@@ -260,7 +260,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    - assets/skShankharpur/
+    # - assets/skShankharpur/
 
   fonts:
     - family: popinbold
