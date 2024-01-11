@@ -235,7 +235,7 @@ flutter:
     # - assets/khotangJaleshwori/
     # - assets/aakashbani/
     # - assets/starlight/
-    - assets/shreeMarsyangdi/
+    # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/
@@ -260,7 +260,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    # - assets/skShankharpur/
+    - assets/skShankharpur/
 
   fonts:
     - family: popinbold
