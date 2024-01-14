@@ -1685,6 +1685,84 @@ class CoOperativeValue {
     splashImage: "assets/dhanaprapti/dhanaprapti_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shubhashreeMultiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shubhashreeMulti/shubhashreeMulti_banner.png",
+    backgroundImage: "assets/shubhashreeMulti/shubhashreeMulti_background.png",
+    clientCode: 'LKTKXRWIH4',
+    clientSecret: "186278",
+    coOperativeName: 'Shubhashree Multipurpose Co-operative Society Ltd.',
+    coOperativeLogo: 'assets/shubhashreeMulti/shubhashreeMulti_logo.png',
+    splashImage: "assets/shubhashreeMulti/shubhashreeMulti_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative belchautaraCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/belchautara/belchautara_banner.png",
+    backgroundImage: "assets/belchautara/belchautara_background.png",
+    clientCode: 'HRFPRIDAFG',
+    clientSecret: "204591",
+    coOperativeName: 'Belchautara Saving and Credit Cooperative Ltd',
+    coOperativeLogo: 'assets/belchautara/belchautara_logo.png',
+    splashImage: "assets/belchautara/belchautara_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shreeNawadeepCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeNawadeep/shreeNawadeep_banner.png",
+    backgroundImage: "assets/shreeNawadeep/shreeNawadeep_background.png",
+    clientCode: 'OK5465LF0V',
+    clientSecret: "177524",
+    coOperativeName: 'Shree Nawadeep Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeNawadeep/shreeNawadeep_logo.png',
+    splashImage: "assets/shreeNawadeep/shreeNawadeep_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative shubhaShreeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shubhaShree/shubhaShree_banner.png",
+    backgroundImage: "assets/shubhaShree/shubhaShree_background.png",
+    clientCode: '57XRZEHTMC',
+    clientSecret: "151881",
+    coOperativeName: 'Shubha Shree Saving & Credit Co-operative Ltd',
+    coOperativeLogo: 'assets/shubhaShree/shubhaShree_logo.png',
+    splashImage: "assets/shubhaShree/shubhaShree_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative yugbaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/yugbani/yugbani_banner.png",
+    backgroundImage: "assets/yugbani/yugbani_background.png",
+    clientCode: 'D743MOWCBU',
+    clientSecret: "157464",
+    coOperativeName: 'Yugbani Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/yugbani/yugbani_logo.png',
+    splashImage: "assets/yugbani/yugbani_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative bouddhamodeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bouddhamode/bouddhamode_banner.png",
+    backgroundImage: "assets/bouddhamode/bouddhamode_background.png",
+    clientCode: 'ABDDG2TLRP',
+    clientSecret: "190516",
+    coOperativeName: 'Shree Boudhamode Krishi Sahakari Sanstha	',
+    coOperativeLogo: 'assets/bouddhamode/bouddhamode_logo.png',
+    splashImage: "assets/bouddhamode/bouddhamode_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
@@ -1696,7 +1774,7 @@ class CoOperativeValue {
     backgroundImage: "assets/skKohabara/skKohabara_background.png",
     clientCode: '8HBJ3GXUN6',
     clientSecret: "132064",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Kohabara',
+    coOperativeName: 'Shree Boudhamode Krishi Sahakari Sanstha',
     coOperativeLogo: 'assets/skKohabara/skKohabara_logo.png',
     splashImage: "assets/skKohabara/skKohabara_splash.png",
     primaryColor: const Color(0xFF0b67bb),
