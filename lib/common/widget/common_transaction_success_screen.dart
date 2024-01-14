@@ -5,7 +5,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -14,7 +13,6 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_detail_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 
@@ -171,11 +169,11 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                           ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                        title: "Done",
-                        onPressed: () {
-                          NavigationService.pushNamedAndRemoveUntil(
-                              routeName: Routes.dashboard);
-                        }),
+                      title: "Done",
+                      onPressed: () {
+                        NavigationService.popUntilFirstPage();
+                      },
+                    ),
                     SizedBox(height: _height * 0.02),
                     pdfUrl == null
                         ? BlocConsumer<TransactionDownloadCubit, CommonState>(
