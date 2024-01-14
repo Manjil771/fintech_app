@@ -9,6 +9,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class InternalCooperativePage extends StatelessWidget {
+  final bool? isFavAccount;
+  final String? branchName;
+
   final String? accountNumber;
   final String? accountName;
   final String? bankCode;
@@ -21,7 +24,9 @@ class InternalCooperativePage extends StatelessWidget {
       this.accountName,
       this.bankCode,
       this.branchCode,
-      this.remarks})
+      this.remarks,
+      this.isFavAccount,
+      this.branchName})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -46,6 +51,8 @@ class InternalCooperativePage extends StatelessWidget {
         ),
       ],
       child: InternalCooperativeWidget(
+        isFavAccount: isFavAccount,
+        branchName: branchName,
         remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,

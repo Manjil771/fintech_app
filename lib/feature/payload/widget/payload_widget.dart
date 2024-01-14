@@ -74,6 +74,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                 amountController.text = state.data.findValueString("amount");
               }
               return CommonContainer(
+                  showAccountSelection: true,
                   showDetail: false,
                   buttonName: "Procced",
                   title: "Make Payment",
@@ -112,7 +113,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                         .findValue(primaryKey: "imageUrl")
                         .toString()
                         .replaceAll("/ismart/serviceIcon/", "");
-                    NavigationService.pushReplacement(
+                    NavigationService.push(
                       target: CommonBillDetailPage(
                         service: ServiceList(
                             url: Url.URL,

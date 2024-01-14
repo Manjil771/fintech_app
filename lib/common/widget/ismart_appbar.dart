@@ -53,9 +53,7 @@ AppBar myAppbar({bool showBackButton = false}) {
             onTap: () {
               if (showBackButton) {
                 NavigationService.pop();
-              } else {
-                NavigationService.pushNamed(routeName: Routes.profileScreen);
-              }
+              } else {}
             },
             child: Padding(
                 padding: const EdgeInsets.all(8.0),

@@ -99,7 +99,7 @@ class CustomTheme {
   static const Color kendrabinduColor = Color(0xFF308188);
   static const Color eastwestColor = Color(0xFF006311);
   static const Color babiraColor = Color(0xFF25428E);
-  static const Color ekataMultipurposeColor = Color(0xFF0C8387);
+  static const Color ektaMultipurposeColor = Color(0xFF0C8387);
   static const Color sarbahitDangColor = Color(0xFF009245);
   static const Color shwetBhairabColor = Color(0xFF1B1464);
   static const Color shreeEkataColor = Color(0xFF009444);
@@ -118,7 +118,7 @@ class CustomTheme {
   static const Color autobikashColor = Color(0xFF0071BC);
   static const Color aakashbaniColor = Color(0xFF00A650);
   static const Color tanahuKalikaColor = Color(0xFF26CF02);
-  static const Color shreeMarsyangdiColor = Color.fromRGBO(0, 104, 55, 1);
+  static const Color shreeMarsyangdiColor = Color(0xFF006837);
   static const Color abhibadanColor = Color(0xFF009245);
   static const Color khullabazarColor = Color(0xFF009245);
   static const Color chandaniColor = Color(0xFF006837);
@@ -126,8 +126,11 @@ class CustomTheme {
   static const Color sparklingColor = Color(0xFF2B4C8F);
   static const Color pacificColor = Color(0xFF004382);
   static const Color samutthanColor = Color(0xFF00713B);
+  static const Color hamroDahachokColor = Color(0xFF009245);
+  static const Color globalMultiColor = Color(0xFF1A9640);
+  static const Color dhanapraptiColor = Color(0xFF1B1464);
 
-  static const Color primaryColor = shubhodayaColor;
+  static const Color primaryColor = testAppColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

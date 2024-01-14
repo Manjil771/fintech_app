@@ -10,6 +10,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
@@ -18,6 +19,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/eteller/screen/eteller_page.dart';
+import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
@@ -116,26 +118,74 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         secondaryKey: "branchCode")
                     .toString()
                     .isEmpty) {
-              NavigationService.pushReplacement(
-                  target: AnyBankpage(
-                remarks: widget.remarks,
-                accountName: _response.findValue(
-                  primaryKey: "accountDetails",
-                  secondaryKey: "accountName",
-                ),
-                accountNumber: _response.findValue(
-                  primaryKey: "accountDetails",
-                  secondaryKey: "accountNumber",
-                ),
-                bankCode: _response.findValue(
-                  primaryKey: "accountDetails",
-                  secondaryKey: "bankCode",
-                ),
-                bankName: _response.findValue(
-                  primaryKey: "accountDetails",
-                  secondaryKey: "bankName",
-                ),
-              ));
+              showGeneralDialog(
+                pageBuilder: (context, animation, secondaryAnimation) {
+                  return Column(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(18)),
+                        padding: EdgeInsets.all(18),
+                        margin: EdgeInsets.symmetric(horizontal: 32),
+                        child: Column(children: [
+                          CustomRoundedButtom(
+                              title: "Fund Transfer",
+                              onPressed: () {
+                                NavigationService.pushReplacement(
+                                    target: AnyBankpage(
+                                  remarks: widget.remarks,
+                                  accountName: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "accountName",
+                                  ),
+                                  accountNumber: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "accountNumber",
+                                  ),
+                                  bankCode: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "bankCode",
+                                  ),
+                                  bankName: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "bankName",
+                                  ),
+                                ));
+                              }),
+                          SizedBox(height: 15.hp),
+                          CustomRoundedButtom(
+                              title: "Add Favorite Account",
+                              onPressed: () {
+                                NavigationService.pushReplacement(
+                                    target: AddFavAccountPage(
+                                  accountNumber: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "accountNumber",
+                                  ),
+                                  accountName: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "accountName",
+                                  ),
+                                  bankCode: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "bankCode",
+                                  ),
+                                  bankName: _response.findValue(
+                                    primaryKey: "accountDetails",
+                                    secondaryKey: "bankName",
+                                  ),
+                                ));
+                              })
+                        ]),
+                      ),
+                    ],
+                  );
+                },
+                context: context,
+              );
             }
             if ((_response.findValue(primaryKey: "internalFundTransfer") ==
                     true) ||
@@ -530,6 +580,35 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
                     accountHead: "ESEWA",
                     accountNumber: "ESEWAWALLET",
+                    minAmount: 10.00,
+                    maxAmount: 25000.00,
+                    status: "Active")));
+      }
+      if (_decode.containsKey("Khalti_ID")) {
+        final phoneNumber = _decode["Khalti_ID"];
+        NavigationService.pushReplacement(
+            target: LoadWalletFormScreen(
+                remarks: widget.remarks,
+                phoneNumber: phoneNumber,
+                selectedWallet: WalletModel(
+                    id: 12,
+                    name: "Khalti",
+                    descOneFieldName: "Wallet ID",
+                    descOneFieldType: "String",
+                    descOneFixedLength: true,
+                    descOneLength: 10,
+                    descOneMinLength: null,
+                    descOneMaxLength: null,
+                    descTwoFieldName: "Remarks",
+                    descTwoFieldType: "String",
+                    descTwoFixedLength: false,
+                    descTwoLength: 0,
+                    descTwoMinLength: 1,
+                    descTwoMaxLength: 35,
+                    icon:
+                        "1687440202035bff30621-50c8-4eb3-aa01-b13093f718f0.png",
+                    accountHead: "KHALTI",
+                    accountNumber: "KHALTIWALLET",
                     minAmount: 10.00,
                     maxAmount: 25000.00,
                     status: "Active")));
