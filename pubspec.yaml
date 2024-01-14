@@ -192,7 +192,7 @@ flutter:
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    # - assets/subhodaya/
+    - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
@@ -224,7 +224,7 @@ flutter:
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/karmath/
-    # - assets/shreeEkata/
+    - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
