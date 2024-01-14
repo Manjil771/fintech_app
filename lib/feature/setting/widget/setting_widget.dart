@@ -4,7 +4,6 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
-import 'package:ismart/common/util/fingerprint_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
@@ -15,7 +14,7 @@ import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingWidget extends StatefulWidget {
-  SettingWidget({Key? key}) : super(key: key);
+  const SettingWidget({Key? key}) : super(key: key);
 
   @override
   State<SettingWidget> createState() => _SettingWidgetState();
@@ -25,20 +24,20 @@ class _SettingWidgetState extends State<SettingWidget> {
   final ValueNotifier<bool> _isBiometricEnabled = ValueNotifier(false);
 
   bool switchValue = false;
-  // _checkBiometric() async {
-  //   bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
-  //   if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
-  //     _isBiometricEnabled.value = true;
-  //     switchValue = _isBiometricEnabled.value;
-  //   }
-  // }
 
   @override
   void initState() {
-    // getBioMetricStatus();
-    // sp = getBioMetricStatus();
+    _checkBiometric();
 
     super.initState();
+  }
+
+  _checkBiometric() async {
+    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
+      _isBiometricEnabled.value = true;
+      switchValue = _isBiometricEnabled.value;
+    }
   }
 
   @override

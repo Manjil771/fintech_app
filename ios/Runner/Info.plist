@@ -33,6 +33,10 @@
 		<key>NSAllowsArbitraryLoads</key>
 		<true/>
 	</dict>
+	<key>LSApplicationQueriesSchemes</key>
+<array>
+    <string>viber</string>
+</array>
 	<key>NSCameraUsageDescription</key>
 	<string>iSmart would like to use Camera to scan QR Code</string>
 	<key>NSContactsUsageDescription</key>
