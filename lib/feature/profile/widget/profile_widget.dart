@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_cropper/image_cropper.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -10,10 +11,9 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
 import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/feature/crop_image.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/image_preview.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -36,13 +36,40 @@ class _ProfileWidgetState extends State<ProfileWidget> {
         .customerDetailModel;
   }
 
-  _handleImageUpload(File file) {
+  _handleImageUpload(File file) async {
     NavigationService.pop();
-    NavigationService.push(
-      target: CropImageView(
-        selectedImage: file,
-      ),
+    CroppedFile? croppedFile = await ImageCropper().cropImage(
+      sourcePath: file.path,
+      aspectRatioPresets: [
+        CropAspectRatioPreset.square,
+        CropAspectRatioPreset.ratio3x2,
+        CropAspectRatioPreset.original,
+        CropAspectRatioPreset.ratio4x3,
+        CropAspectRatioPreset.ratio16x9
+      ],
+      cropStyle: CropStyle.circle,
+      uiSettings: [
+        AndroidUiSettings(
+            toolbarTitle: 'Crop Image',
+            toolbarColor: Colors.deepOrange,
+            toolbarWidgetColor: Colors.white,
+            initAspectRatio: CropAspectRatioPreset.original,
+            lockAspectRatio: false),
+        IOSUiSettings(
+          title: 'Crop Image',
+        ),
+        WebUiSettings(
+          context: context,
+        ),
+      ],
     );
+    if (croppedFile != null) {
+      NavigationService.push(
+        target: ImagePreviewWidget(
+          selectedImage: File(croppedFile.path),
+        ),
+      );
+    }
     // showPopUpDialog(
     //   context: context,
     //   message: "Are you sure you want to upload image?",
@@ -54,7 +81,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
     // );
   }
 
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
