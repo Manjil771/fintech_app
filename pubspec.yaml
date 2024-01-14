@@ -91,6 +91,7 @@ dependencies:
   local_session_timeout: ^2.3.2
   crop_your_image: ^0.7.4
   fluttercontactpicker: ^4.7.0
+  image_cropper: ^4.0.1
 
 dev_dependencies:
   flutter_test:

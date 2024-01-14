@@ -54,8 +54,21 @@ class CustomerDetailRepository {
         customerDetailModel.value = _user;
 
         accountsList.value = _user.accountDetail;
+
         if (isCalledAtStartup) {
           selectedAccount.value = accountsList.value.first;
+        } else {
+          AccountDetail? _currentAccount = selectedAccount.value;
+
+          if (_currentAccount != null) {
+            List<AccountDetail> __ = accountsList.value
+                .where((element) =>
+                    element.accountNumber == _currentAccount.accountNumber)
+                .toList();
+            if (__.isNotEmpty) {
+              selectedAccount.value = __.first;
+            }
+          }
         }
 
         RepositoryProvider.of<FullStatementRepository>(
