@@ -1285,17 +1285,17 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
-  static final CoOperative ekataMultipurposeCoop = CoOperative(
+  static final CoOperative ektaMultipurposeCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/ekataMultipurpose/ekataMulti_banner.png",
-    backgroundImage: "assets/ekataMultipurpose/ekataMulti_background.png",
+    bannerImage: "assets/ektaMultipurpose/ektaMulti_banner.png",
+    backgroundImage: "assets/ektaMultipurpose/ektaMulti_background.png",
     clientCode: 'Z99TZE0GKZ',
     clientSecret: "113270",
-    coOperativeName: 'Ekata Multipurpose Cooperative Limited.',
-    coOperativeLogo: 'assets/ekataMultipurpose/ekataMulti_logo.png',
-    splashImage: "assets/ekataMultipurpose/ekataMulti_splash.png",
+    coOperativeName: 'Ekta Multipurpose Cooperative Limited.',
+    coOperativeLogo: 'assets/ektaMultipurpose/ektaMulti_logo.png',
+    splashImage: "assets/ektaMultipurpose/ektaMulti_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
   static final CoOperative shwetbhairabCoop = CoOperative(
@@ -1871,6 +1871,20 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "167956",
+    splashImage: "assets/images/ismart_splash.jpg",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+  );
+  //  TEST for Systematic  cbs
+  static final CoOperative systematicDevTest = CoOperative(
+    baseUrl: 'http://103.198.9.222:1231/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: 'O9YSV2CLCE',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "129387",
     splashImage: "assets/images/ismart_splash.jpg",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",

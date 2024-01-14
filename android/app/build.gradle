@@ -727,7 +727,7 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        shreeMiteri {
+        shreeMiteree {
             dimension "app"
             applicationId "com.devanasoft.shreeMiteri"
             versionCode flutterVersionCode.toInteger()
@@ -757,7 +757,7 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        ekataMulti{
+        ektaMulti{
             dimension "app"
             applicationId "com.devanasoft.ekataMulti"
             versionCode flutterVersionCode.toInteger()
