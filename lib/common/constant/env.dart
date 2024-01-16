@@ -1763,6 +1763,19 @@ class CoOperativeValue {
     splashImage: "assets/bouddhamode/bouddhamode_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative mangalpurCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mangalpur/mangalpur_banner.png",
+    backgroundImage: "assets/mangalpur/mangalpur_background.png",
+    clientCode: 'AM3WM748KK',
+    clientSecret: "219935",
+    coOperativeName: 'Shree Mangalpur Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/mangalpur/mangalpur_logo.png',
+    splashImage: "assets/mangalpur/mangalpur_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
