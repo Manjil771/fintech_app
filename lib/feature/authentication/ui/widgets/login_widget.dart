@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -14,6 +15,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
@@ -27,6 +29,7 @@ import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
+import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
@@ -307,33 +310,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
 
                     SizedBox(height: height * 0.01),
-
-                    Row(
-                      children: [
-                        TextButton(
-                            onPressed: () {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.forgotPin);
-                            },
-                            child: Text(
-                              "Forgot PIN ?",
-                              style: TextStyle(color: _theme.primaryColor),
-                            )),
-                        const Spacer(),
-                        TextButton(
-                          onPressed: () {
-                            NavigationService.push(
-                                target: const ActivateAccountPage());
-                          },
-                          child: Text(
-                            "Activate Account",
-                            style: TextStyle(color: _theme.primaryColor),
-                          ),
-                        ),
-                      ],
-                    ),
-
-                    SizedBox(height: height * 0.014),
                     ValueListenableBuilder<bool>(
                         valueListenable: _isBiometricEnabled,
                         builder: (context, val, _) {
@@ -381,6 +357,49 @@ class _LoginWidgetState extends State<LoginWidget> {
                             return Container();
                           }
                         }),
+                    SizedBox(height: height * 0.014),
+
+                    if (RepositoryProvider.of<CoOperative>(context)
+                            .clientCode !=
+                        "EHVNI7CZJ3")
+                      Row(
+                        children: [
+                          TextButton(
+                              onPressed: () {
+                                NavigationService.pushNamed(
+                                    routeName: Routes.forgotPin);
+                              },
+                              child: Text(
+                                "Forgot PIN ?",
+                                style: TextStyle(color: _theme.primaryColor),
+                              )),
+                          const Spacer(),
+                          TextButton(
+                            onPressed: () {
+                              NavigationService.push(
+                                  target: const ActivateAccountPage());
+                            },
+                            child: Text(
+                              "Activate Account",
+                              style: TextStyle(color: _theme.primaryColor),
+                            ),
+                          ),
+                        ],
+                      ),
+                    if (RepositoryProvider.of<CoOperative>(context)
+                            .clientCode ==
+                        "EHVNI7CZJ3")
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ...List.generate(
+                              3,
+                              (index) => CommonBox(
+                                  onContainerPress: onTapFunction[index],
+                                  containerImage: imageList[index],
+                                  title: nameList[index]))
+                        ],
+                      ),
                     SizedBox(height: height * 0.022),
                     if (_bannerImages.isNotEmpty)
                       CustomCarousel(
@@ -418,4 +437,24 @@ class _LoginWidgetState extends State<LoginWidget> {
       ),
     );
   }
+
+  final List nameList = [
+    "Reset Pin",
+    "Activate Account",
+    "Missed Call Banking"
+  ];
+  final List imageList = [
+    "assets/icons/Reset password.svg",
+    "assets/icons/activate account.svg",
+    "assets/icons/missedcall icon.svg",
+  ];
+  final List onTapFunction = [
+    () {
+      NavigationService.pushNamed(routeName: Routes.forgotPin);
+    },
+    () {
+      NavigationService.push(target: const ActivateAccountPage());
+    },
+    () {},
+  ];
 }
