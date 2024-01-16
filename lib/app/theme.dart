@@ -137,7 +137,7 @@ class CustomTheme {
   static const Color bouddhamodeColor = Color(0xFF09730E);
   static const Color mangalpurColor = Color(0xFF018D46);
 
-  static const Color primaryColor = testAppColor;
+  static const Color primaryColor = shubhaShreeColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

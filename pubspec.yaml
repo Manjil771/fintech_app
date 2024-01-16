@@ -251,13 +251,13 @@ flutter:
     # - assets/dhanaprapti/
     # - assets/globalMulti/
     # - assets/hamroDahachok/
-    # - assets/shreeNawadeep/
-    # - assets/belchautara/
-    # - assets/shubhashreeMulti/
-    # - assets/shubhaShree/
-    # - assets/yugbani/
-    # - assets/bouddhamode/
-    - assets/mangalpur/
+    - assets/shreeNawadeep/
+    - assets/belchautara/
+    - assets/shubhashreeMulti/
+    - assets/shubhaShree/
+    - assets/yugbani/
+    - assets/bouddhamode/
+    # - assets/mangalpur/
 
    
 
