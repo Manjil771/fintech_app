@@ -21,7 +21,7 @@ Future<void> main() async {
   runZonedGuarded(() {
     HttpOverrides.global = MyHttpOverrides();
     runApp(
-      LocalWrapper(child: AppProd(env: CoOperativeValue.lifeVisionCoop)),
+      LocalWrapper(child: AppProd(env: CoOperativeValue.mangalpurCoop)),
     );
   }, (e, s) {
     Log.e(e);

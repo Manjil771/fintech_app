@@ -139,10 +139,11 @@ class Strings {
   static const String shreeNawadeepAppTitle = 'Shree Nawadeep iSmart';
   static const String subhaShreeAppTitle = 'Shubha Shree iSmart';
   static const String yugbaniAppTitle = 'Yugbani iSmart';
-  static const String bouddhamodeTitle = 'Shree Bouddhamode iSmart';
+  static const String bouddhamodeAppTitle = 'Shree Bouddhamode iSmart';
+  static const String mangalPurAppTitle = 'Mangalpur iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';
 
-  static const APP_TITLE = lifeVisionAppTitle;
+  static const APP_TITLE = abhibadanAppTitle;
 }
