@@ -1776,6 +1776,19 @@ class CoOperativeValue {
     splashImage: "assets/mangalpur/mangalpur_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shreeGaneshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeGanesh/shreeGanesh_banner.png",
+    backgroundImage: "assets/shreeGanesh/shreeGanesh_background.png",
+    clientCode: 'XZLH1RFWZN',
+    clientSecret: "195593",
+    coOperativeName: 'Shree Ganesh Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeGanesh/shreeGanesh_logo.png',
+    splashImage: "assets/shreeGanesh/shreeGanesh_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
