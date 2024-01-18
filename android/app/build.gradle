@@ -391,6 +391,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        samyukta{
+            dimension "app"
+            applicationId "com.devanasoft.samyukta"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         globalMulti{
             dimension "app"
             applicationId "com.devanasoft.globalMulti"

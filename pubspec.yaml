@@ -260,7 +260,8 @@ flutter:
     # - assets/mangalpur/
     # - assets/shreeGanesh/
     # - assets/graminAarthik/
-    - assets/samyukta/
+    # - assets/samyukta/
+    - assets/systematic/
     
 
     #sana ksihan assets

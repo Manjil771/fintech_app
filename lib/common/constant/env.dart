@@ -1816,6 +1816,19 @@ class CoOperativeValue {
     splashImage: "assets/samyukta/samyukta_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative systematicCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/systematic/systematic_banner.png",
+    backgroundImage: "assets/systematic/systematic_background.png",
+    clientCode: 'O9YSV2CLCE',
+    clientSecret: "129387",
+    coOperativeName: 'systematic Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/systematic/systematic_logo.png',
+    splashImage: "assets/systematic/systematic_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
@@ -2002,20 +2015,6 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "167956",
-    splashImage: "assets/images/ismart_splash.jpg",
-    primaryColor: const Color(0xFF010C80),
-    packageName: "com.devanasoft.ismart",
-    appStoreID: "",
-  );
-  //  TEST for Systematic  cbs
-  static final CoOperative systematicDevTest = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
-    bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'O9YSV2CLCE',
-    backgroundImage: "assets/images/ismart_background_image.jpg",
-    coOperativeName: '',
-    coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "129387",
     splashImage: "assets/images/ismart_splash.jpg",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
