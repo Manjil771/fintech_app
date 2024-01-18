@@ -1790,6 +1790,33 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF0b67bb),
   );
 
+  static final CoOperative graminAarthikCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/graminAarthik/graminAarthik_banner.png",
+    backgroundImage: "assets/graminAarthik/graminAarthik_background.png",
+    clientCode: 'E7T0N0IAZ5',
+    clientSecret: "154468",
+    coOperativeName: 'Shree Ganesh Saving & Credit Co-operative Ltd.',
+    coOperativeLogo: 'assets/graminAarthik/graminAarthik_logo.png',
+    splashImage: "assets/graminAarthik/graminAarthik_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative samyuktaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samyukta/samyukta_banner.png",
+    backgroundImage: "assets/samyukta/samyukta_background.png",
+    clientCode: 'AZWL98N6RX',
+    clientSecret: "145007",
+    coOperativeName: 'Samyukta Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/samyukta/samyukta_logo.png',
+    splashImage: "assets/samyukta/samyukta_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+
 //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(

@@ -102,6 +102,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                           controller: merchantIdController,
                         ),
                         CustomTextField(
+                          textInputType: TextInputType.number,
                           validator: (value) =>
                               FormValidator.validateFieldNotEmpty(
                                   value, "Amount"),

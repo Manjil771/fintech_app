@@ -115,9 +115,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                 title: 'Full Name',
                 hintText: 'Full Name',
                 autovalidateMode: AutovalidateMode.onUserInteraction,
-                controller: contactName
-                  ..text =
-                      userDetail.selectedAccount.value?.accountHolderName ?? "",
+                controller: contactName,
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Name"),
               ),

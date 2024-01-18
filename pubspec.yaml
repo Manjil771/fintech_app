@@ -258,7 +258,10 @@ flutter:
     # - assets/yugbani/
     # - assets/bouddhamode/
     # - assets/mangalpur/
-    - assets/shreeGanesh/
+    # - assets/shreeGanesh/
+    # - assets/graminAarthik/
+    - assets/samyukta/
+    
 
     #sana ksihan assets
     # - assets/sanakishanHathasuwa/
