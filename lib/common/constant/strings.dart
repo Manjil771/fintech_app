@@ -128,12 +128,23 @@ class Strings {
   static const String khullabazarAppTitle = 'Khulla Bazar iSmart';
   static const String lifeVisionAppTitle = 'Life Vision iSmart';
   static const String chandaniAppTitle = 'Chandani iSmart';
-  static const String sparklingAppTitle = 'Sparkling Agricultural iSmart';
+  static const String sparklingAppTitle = 'Sparkling iSmart';
   static const String pacificAppTitle = 'Pacific iSmart';
   static const String samutthanAppTitle = 'Samutthan iSmart';
   static const String globalMultiAppTitle = 'Global Multipurpose iSmart';
   static const String hamroDahachokAppTitle = 'Hamro Dahachok iSmart';
   static const String dhanapraptiAppTitle = 'Dhanaprapti iSmart';
+  static const String shubhashreeMultiAppTitle = 'Shubhashree Multi iSmart';
+  static const String belchautaraAppTitle = 'Belchautara iSmart';
+  static const String shreeNawadeepAppTitle = 'Shree Nawadeep iSmart';
+  static const String shubhaShreeAppTitle = 'Shubha Shree iSmart';
+  static const String yugbaniAppTitle = 'Yugbani iSmart';
+  static const String bouddhamodeAppTitle = 'Shree Bouddhamode iSmart';
+  static const String mangalPurAppTitle = 'Mangalpur iSmart';
+  static const String shreeGaneshAppTitle = 'Shree Ganesh iSmart';
+
+  static const String graminAarthikAppTitle = 'Shree Ganesh iSmart';
+  static const String samyuktaAppTitle = 'Samyukta iSmart';
 
   // static const String upakarAppTitle = 'Upakar iSmart';
   // static const String eastWestAppTitle = 'East West iSmart';

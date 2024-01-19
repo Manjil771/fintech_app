@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.49+49 ##chirayu
+version: 0.0.48+48 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -125,7 +125,7 @@ flutter:
     # - assets/shreemitra/
     # - assets/kipoo/
     # - assets/suryadev/
-    - assets/uddhamshil/
+    # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
     # - assets/vyas/
@@ -170,7 +170,7 @@ flutter:
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
-    - assets/buddhaCoop/
+    # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
@@ -193,7 +193,7 @@ flutter:
     # - assets/chirayu/
     # - assets/digitalCoop/
     # - assets/upakar/
-    - assets/subhodaya/
+    # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
@@ -225,7 +225,7 @@ flutter:
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/karmath/
-    - assets/shreeEkata/
+    # - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
@@ -251,7 +251,18 @@ flutter:
     # - assets/dhanaprapti/
     # - assets/globalMulti/
     # - assets/hamroDahachok/
-   
+    # - assets/shreeNawadeep/
+    # - assets/belchautara/
+    # - assets/shubhashreeMulti/
+    # - assets/shubhaShree/
+    # - assets/yugbani/
+    # - assets/bouddhamode/
+    # - assets/mangalpur/
+    # - assets/shreeGanesh/
+    # - assets/graminAarthik/
+    # - assets/samyukta/
+    - assets/systematic/
+    
 
     #sana ksihan assets
     # - assets/sanakishanHathasuwa/

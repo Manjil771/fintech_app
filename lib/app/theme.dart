@@ -129,8 +129,18 @@ class CustomTheme {
   static const Color hamroDahachokColor = Color(0xFF009245);
   static const Color globalMultiColor = Color(0xFF1A9640);
   static const Color dhanapraptiColor = Color(0xFF1B1464);
+  static const Color shreeNawadeepColor = Color(0xFF00A95A);
+  static const Color belchautaraColor = Color(0xFF3F4070);
+  static const Color subhashreeMultiColor = Color(0xFF0087BC);
+  static const Color shubhaShreeColor = Color(0xFF3524BE);
+  static const Color yugbaniColor = Color(0xFF1F9400);
+  static const Color bouddhamodeColor = Color(0xFF09730E);
+  static const Color mangalpurColor = Color(0xFF018D46);
+  static const Color shreeGaneshColor = Color(0xFF006837);
+  static const Color graminAarthikColor = Color(0xFF066735);
+  static const Color samyuktaColor = Color(0xFF0DB14B);
 
-  static const Color primaryColor = testAppColor;
+  static const Color primaryColor = samyuktaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

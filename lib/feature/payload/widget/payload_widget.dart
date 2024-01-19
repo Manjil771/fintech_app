@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -33,6 +34,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
   final TextEditingController remarksController = TextEditingController();
 
   final TextEditingController merchantIdController = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   bool isFixedAmount = false;
   bool _isLoading = false;
   @override
@@ -79,94 +81,108 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                   buttonName: "Procced",
                   title: "Make Payment",
                   topbarName: "Payment",
-                  body: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.network(
-                        RepositoryProvider.of<CoOperative>(context).baseUrl +
-                            state.data.findValue(primaryKey: "imageUrl"),
-                        height: _height * 0.05,
-                      ),
-                      CustomTextField(
-                        readOnly: true,
-                        controller: merchantNameController,
-                        title: "Merchant Name",
-                      ),
-                      CustomTextField(
-                        title: "Merchant Id",
-                        controller: merchantIdController,
-                      ),
-                      CustomTextField(
-                        title: "Amount",
-                        controller: amountController,
-                        readOnly: isFixedAmount,
-                      ),
-                      CustomTextField(
-                        title: "Remarks",
-                        controller: remarksController
-                          ..text = widget.remarks ?? "",
-                      ),
-                    ],
+                  body: Form(
+                    key: _formKey,
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.network(
+                          RepositoryProvider.of<CoOperative>(context).baseUrl +
+                              state.data.findValue(primaryKey: "imageUrl"),
+                          height: _height * 0.05,
+                        ),
+                        CustomTextField(
+                          readOnly: true,
+                          controller: merchantNameController,
+                          title: "Merchant Name",
+                        ),
+                        CustomTextField(
+                          readOnly: true,
+                          title: "Merchant Id",
+                          controller: merchantIdController,
+                        ),
+                        CustomTextField(
+                          textInputType: TextInputType.number,
+                          validator: (value) =>
+                              FormValidator.validateFieldNotEmpty(
+                                  value, "Amount"),
+                          title: "Amount",
+                          controller: amountController,
+                          readOnly: isFixedAmount,
+                        ),
+                        CustomTextField(
+                          validator: (value) =>
+                              FormValidator.validateFieldNotEmpty(
+                                  value, "Remarks"),
+                          title: "Remarks",
+                          controller: remarksController
+                            ..text = widget.remarks ?? "",
+                        ),
+                      ],
+                    ),
                   ),
                   onButtonPressed: () {
                     final _icon = state.data
                         .findValue(primaryKey: "imageUrl")
                         .toString()
                         .replaceAll("/ismart/serviceIcon/", "");
-                    NavigationService.push(
-                      target: CommonBillDetailPage(
-                        service: ServiceList(
-                            url: Url.URL,
-                            id: 0,
-                            uniqueIdentifier: "fonepay",
-                            service: "",
-                            status: Status.ACTIVE,
-                            labelName: "",
-                            labelMaxLength: "",
-                            labelMinLength: "",
-                            labelSample: "",
-                            labelPrefix: "",
-                            instructions: "",
-                            fixedlabelSize: true,
-                            priceInput: true,
-                            notificationUrl: "fonepay",
-                            minValue: 0.0,
-                            maxValue: 5000.0,
-                            icon: _icon,
-                            categoryId: 21,
-                            serviceCategoryName: "",
-                            webView: true,
-                            isNew: true,
-                            appOrder: 0,
-                            isSmsMode: true),
-                        apiBody: {},
-                        serviceIdentifier: "",
-                        accountDetails: {
-                          "pay_load": widget.payload,
-                          "remarks": remarksController.text,
-                          "account_number":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber,
-                          "amount": amountController.text,
-                        },
-                        body: Column(children: [
-                          KeyValueTile(
-                              title: "Merchant Name",
-                              value: merchantNameController.text),
-                          KeyValueTile(
-                              title: "Merchant Id",
-                              value: merchantIdController.text),
-                          KeyValueTile(
-                              title: "Amount", value: amountController.text),
-                          KeyValueTile(
-                              title: "Remarks", value: remarksController.text),
-                        ]),
-                        apiEndpoint: "/api/qpay/payment",
-                      ),
-                    );
+                    if (_formKey.currentState!.validate()) {
+                      NavigationService.push(
+                        target: CommonBillDetailPage(
+                          service: ServiceList(
+                              url: Url.URL,
+                              id: 0,
+                              uniqueIdentifier: "fonepay",
+                              service: "",
+                              status: Status.ACTIVE,
+                              labelName: "",
+                              labelMaxLength: "",
+                              labelMinLength: "",
+                              labelSample: "",
+                              labelPrefix: "",
+                              instructions: "",
+                              fixedlabelSize: true,
+                              priceInput: true,
+                              notificationUrl: "fonepay",
+                              minValue: 0.0,
+                              maxValue: 5000.0,
+                              icon: _icon,
+                              categoryId: 21,
+                              serviceCategoryName: "",
+                              webView: true,
+                              isNew: true,
+                              appOrder: 0,
+                              isSmsMode: true),
+                          apiBody: {},
+                          serviceIdentifier: "",
+                          accountDetails: {
+                            "pay_load": widget.payload,
+                            "remarks": remarksController.text,
+                            "account_number":
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber,
+                            "amount": amountController.text,
+                          },
+                          body: Column(children: [
+                            KeyValueTile(
+                                title: "Merchant Name",
+                                value: merchantNameController.text),
+                            KeyValueTile(
+                                title: "Merchant Id",
+                                value: merchantIdController.text),
+                            KeyValueTile(
+                                title: "Amount", value: amountController.text),
+                            KeyValueTile(
+                                title: "Remarks",
+                                value: remarksController.text),
+                          ]),
+                          apiEndpoint: "/api/qpay/payment",
+                        ),
+                      );
+                    }
                   });
             } else {
               return Column(
