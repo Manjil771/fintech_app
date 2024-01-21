@@ -147,5 +147,5 @@ class Strings {
   static const String shreeJamuneAppTitle = 'Shree Jamune iSmart';
 
 
-  static const APP_TITLE = shreeJamuneAppTitle;
+  static const APP_TITLE = defaultAppTitle;
 }
