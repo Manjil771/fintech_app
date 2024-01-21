@@ -145,7 +145,7 @@ class Strings {
   static const String graminAarthikAppTitle = 'Shree Ganesh iSmart';
   static const String samyuktaAppTitle = 'Samyukta iSmart';
   static const String shreeJamuneAppTitle = 'Shree Jamune iSmart';
+  static const String drabyaAppTitle = 'Drabya iSmart';
 
-
-  static const APP_TITLE = defaultAppTitle;
+  static const APP_TITLE = drabyaAppTitle;
 }

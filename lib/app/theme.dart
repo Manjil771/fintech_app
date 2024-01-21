@@ -140,8 +140,10 @@ class CustomTheme {
   static const Color graminAarthikColor = Color(0xFF066735);
   static const Color samyuktaColor = Color(0xFF0DB14B);
   static const Color shreeJamuneColor = Color(0xFF312783);
+  static const Color drabyaColor = Color(0xFF009F4D);
+  static const Color omshreeomColor = Color(0xFF1B1464);
 
-  static const Color primaryColor = testAppColor;
+  static const Color primaryColor = omshreeomColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);

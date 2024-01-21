@@ -322,7 +322,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                         }
                       },
                     ),
-
                     SizedBox(height: height * 0.01),
                     ValueListenableBuilder<bool>(
                         valueListenable: _isBiometricEnabled,
@@ -372,7 +371,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-
                     if (RepositoryProvider.of<CoOperative>(context)
                             .clientCode !=
                         "EHVNI7CZJ3")
@@ -422,26 +420,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                         items: _bannerImages,
                       ),
                     SizedBox(height: height * 0.02),
-                    // TextButton(
-                    //   onPressed: () {
-                    //     // TODO Discover Product Navigation
-                    //     // Get.to(() => const DiscoverProduct());
-                    //   },
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       Text(
-                    //         "Discover our Products",
-                    //         style: TextStyle(
-                    //             fontSize: 18, color: _theme.primaryColor),
-                    //       ),
-                    //       Icon(
-                    //         CupertinoIcons.forward,
-                    //         color: _theme.primaryColor,
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
@@ -564,7 +542,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final List<Map<String, dynamic>> _contactUsOptions = [
     {
-      "title": "Miscall Banking",
+      "title": "Balance Topup",
       "action": () {
         NavigationService.pop();
       },

@@ -1842,6 +1842,32 @@ class CoOperativeValue {
     splashImage: "assets/shreeJamune/shreeJamune_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative drabyaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/drabya/drabya_banner.png",
+    backgroundImage: "assets/drabya/drabya_background.png",
+    clientCode: '9PNSYZ76AC',
+    clientSecret: "217994",
+    coOperativeName: 'Drabya Saving & credit Cooperative Ltd.',
+    coOperativeLogo: 'assets/drabya/drabya_logo.png',
+    splashImage: "assets/drabya/drabya_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
+  static final CoOperative omshreeomCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/omshreeom/omshreeom_banner.png",
+    backgroundImage: "assets/omshreeom/omshreeom_background.png",
+    clientCode: 'CYO161B42J',
+    clientSecret: "190103",
+    coOperativeName: 'Om Shree Om Saving & credit Cooperative Ltd.',
+    coOperativeLogo: 'assets/omshreeom/omshreeom_logo.png',
+    splashImage: "assets/omshreeom/omshreeom_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
