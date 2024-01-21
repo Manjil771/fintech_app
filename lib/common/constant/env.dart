@@ -1829,6 +1829,19 @@ class CoOperativeValue {
     splashImage: "assets/systematic/systematic_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative shreeJamuneCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeJamune/shreeJamune_banner.png",
+    backgroundImage: "assets/shreeJamune/shreeJamune_background.png",
+    clientCode: '6B9SEBIAJA',
+    clientSecret: "176165",
+    coOperativeName: 'Shree Jamune Multipurpose Co-operative Ltd.',
+    coOperativeLogo: 'assets/shreeJamune/shreeJamune_logo.png',
+    splashImage: "assets/shreeJamune/shreeJamune_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 

@@ -415,6 +415,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        jamune{
+            dimension "app"
+            applicationId "com.devanasoft.jamune"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         khotangJaleshwori {
             dimension "app"
             applicationId "com.devanasoft.khotangJaleshwori"
