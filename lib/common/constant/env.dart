@@ -1868,6 +1868,20 @@ class CoOperativeValue {
     splashImage: "assets/omshreeom/omshreeom_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative upayogiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/upayogi/upayogi_banner.png",
+    backgroundImage: "assets/upayogi/upayogi_background.png",
+    clientCode: '75ISE23Z2G',
+    clientSecret: "148720",
+    coOperativeName:
+        'Upayogi Sahasrabdi Bachat Tatha Rin Sahakari Sanstha Ltd.',
+    coOperativeLogo: 'assets/upayogi/upayogi_logo.png',
+    splashImage: "assets/upayogi/upayogi_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 

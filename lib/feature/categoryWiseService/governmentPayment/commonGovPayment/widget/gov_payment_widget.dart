@@ -185,7 +185,7 @@ class _GovPaymentWidgetState extends State<GovPaymentWidget> {
                   validator: (value) => FormValidator.validateAmount(
                       val: value.toString(),
                       maxAmount: widget.service.maxValue,
-                      minAmount: widget.service.maxValue),
+                      minAmount: widget.service.minValue),
                   controller: _amountController,
                   textInputType: TextInputType.number,
                   title: 'Amount',
