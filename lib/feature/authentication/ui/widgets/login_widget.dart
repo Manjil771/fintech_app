@@ -14,6 +14,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -44,6 +45,8 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
+  String _supportContact = "9801132218";
+
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
   List<String> _bannerImages = [];
@@ -109,6 +112,17 @@ class _LoginWidgetState extends State<LoginWidget> {
     final height = SizeUtils.height;
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
+    final List onTapFunction = [
+      () {
+        NavigationService.pushNamed(routeName: Routes.forgotPin);
+      },
+      () {
+        NavigationService.push(target: const ActivateAccountPage());
+      },
+      () {
+        miscallBanking();
+      },
+    ];
     return PageWrapper(
       backgroundColor: CustomTheme.white,
       showAppBar: false,
@@ -308,7 +322,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                         }
                       },
                     ),
-
                     SizedBox(height: height * 0.01),
                     ValueListenableBuilder<bool>(
                         valueListenable: _isBiometricEnabled,
@@ -358,7 +371,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-
                     if (RepositoryProvider.of<CoOperative>(context)
                             .clientCode !=
                         "EHVNI7CZJ3")
@@ -408,26 +420,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                         items: _bannerImages,
                       ),
                     SizedBox(height: height * 0.02),
-                    // TextButton(
-                    //   onPressed: () {
-                    //     // TODO Discover Product Navigation
-                    //     // Get.to(() => const DiscoverProduct());
-                    //   },
-                    //   child: Row(
-                    //     mainAxisAlignment: MainAxisAlignment.center,
-                    //     children: [
-                    //       Text(
-                    //         "Discover our Products",
-                    //         style: TextStyle(
-                    //             fontSize: 18, color: _theme.primaryColor),
-                    //       ),
-                    //       Icon(
-                    //         CupertinoIcons.forward,
-                    //         color: _theme.primaryColor,
-                    //       )
-                    //     ],
-                    //   ),
-                    // ),
                   ],
                 ),
               ),
@@ -448,13 +440,118 @@ class _LoginWidgetState extends State<LoginWidget> {
     "assets/icons/activate account.svg",
     "assets/icons/missedcall icon.svg",
   ];
-  final List onTapFunction = [
-    () {
-      NavigationService.pushNamed(routeName: Routes.forgotPin);
+
+  miscallBanking() {
+    final _textTheme = Theme.of(NavigationService.context).textTheme;
+
+    showModalBottomSheet(
+      context: NavigationService.context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.hp),
+          topRight: Radius.circular(30.hp),
+        ),
+      ),
+      builder: (context) => Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(24),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 24, bottom: 24),
+              height: 4,
+              width: 55,
+              decoration: BoxDecoration(
+                color: CustomTheme.lightGray.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            Text(
+              "Choose Option",
+              style: _textTheme.labelLarge!.copyWith(
+                color: CustomTheme.darkerBlack,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const Divider(
+              height: 40,
+            ),
+            ...List.generate(
+              _contactUsOptions.length,
+              (index) {
+                return InkWell(
+                  onTap: _contactUsOptions[index]['action'] as Function(),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.hp,
+                      vertical: 15.hp,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  _contactUsOptions[index]['title'],
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  _supportContact,
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    color: CustomTheme.darkGray,
+                                  ),
+                                )
+                              ],
+                            ),
+                            const Icon(
+                              Icons.arrow_forward_ios,
+                              color: CustomTheme.primaryColor,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  final List<Map<String, dynamic>> _contactUsOptions = [
+    {
+      "title": "Balance Topup",
+      "action": () {
+        NavigationService.pop();
+      },
     },
-    () {
-      NavigationService.push(target: const ActivateAccountPage());
+    {
+      "title": "Balance Inquiry",
+      "action": () {
+        NavigationService.pop();
+      },
     },
-    () {},
   ];
 }

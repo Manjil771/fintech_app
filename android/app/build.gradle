@@ -307,9 +307,27 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        upayogi {
+            dimension "app"
+            applicationId "com.devanasoft.upayogi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        omshreeom {
+            dimension "app"
+            applicationId "com.devanasoft.omshreeom"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         chandani {
             dimension "app"
             applicationId "com.devanasoft.chandani"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        drabya {
+            dimension "app"
+            applicationId "com.devanasoft.drabya"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -412,6 +430,12 @@ android {
         dhanaprapti{
             dimension "app"
             applicationId "com.devanasoft.dhanaprapti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        jamune{
+            dimension "app"
+            applicationId "com.devanasoft.jamune"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

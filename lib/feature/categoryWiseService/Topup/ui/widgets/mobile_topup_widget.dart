@@ -106,19 +106,19 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           },
                           showSearchIcon: true,
                           onSuffixPressed: () async {
-                            // String? pickedContact =
-                            //     await ContactUtils.pickContact;
-                            // if (pickedContact != null) {
-                            //   _mobileNumberController.text = pickedContact;
-                            //   setState(() {});
-                            // }
-                            String phoneNumber =
-                                await SecureStorageService.appPhoneNumber;
-                            _mobileNumberController.text = phoneNumber;
-                            TopUpUtils().getTopUpServiceImage(
-                                type: TopUpUtils().getTopUpServiceType(
-                                    type: _topUpType.value),
-                                categories: widget.categoryList);
+                            String? pickedContact =
+                                await ContactUtils.pickContact;
+                            if (pickedContact != null) {
+                              _mobileNumberController.text = pickedContact;
+                              setState(() {});
+                            }
+                            // String phoneNumber =
+                            //     await SecureStorageService.appPhoneNumber;
+                            // _mobileNumberController.text = phoneNumber;
+                            // TopUpUtils().getTopUpServiceImage(
+                            //     type: TopUpUtils().getTopUpServiceType(
+                            //         type: _topUpType.value),
+                            //     categories: widget.categoryList);
                             setState(() {});
                           },
                         ),
