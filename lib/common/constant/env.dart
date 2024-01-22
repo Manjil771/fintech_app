@@ -48,6 +48,7 @@ class CoOperative {
 }
 
 class CoOperativeValue {
+  static final CoOperative currentCoop = kabilCoop;
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",

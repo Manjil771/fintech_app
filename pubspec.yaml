@@ -111,12 +111,12 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
-    # - assets/kamana/
+    - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
@@ -157,7 +157,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -262,7 +262,6 @@ flutter:
     # - assets/graminAarthik/
     # - assets/samyukta/
     - assets/systematic/
-    
 
     #sana ksihan assets
     # - assets/sanakishanHathasuwa/
