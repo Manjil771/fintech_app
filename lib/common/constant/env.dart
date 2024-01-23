@@ -1882,6 +1882,19 @@ class CoOperativeValue {
     splashImage: "assets/upayogi/upayogi_splash.png",
     primaryColor: const Color(0xFF0b67bb),
   );
+  static final CoOperative sakarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sakar/sakar_banner.png",
+    backgroundImage: "assets/sakar/sakar_background.png",
+    clientCode: 'ZOF9U4YHED',
+    clientSecret: "111989",
+    coOperativeName: 'Sakar Agriculture Cooperative Ltd.',
+    coOperativeLogo: 'assets/sakar/sakar_logo.png',
+    splashImage: "assets/sakar/sakar_splash.png",
+    primaryColor: const Color(0xFF0b67bb),
+  );
 
 //*****************// All sanakishan coop env //*****************//
 
