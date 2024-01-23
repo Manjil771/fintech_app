@@ -4,13 +4,14 @@ import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/constant/strings.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/global_error_widget.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
+import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:local_session_timeout/local_session_timeout.dart';
 
 class AppProd extends StatefulWidget {
   final CoOperative env;
@@ -21,6 +22,25 @@ class AppProd extends StatefulWidget {
 }
 
 class _AppProdState extends State<AppProd> {
+  SessionConfig? sessionConfig;
+  @override
+  void initState() {
+    CustomTheme().initializeTheme(widget.env.primaryColor);
+
+    sessionConfig = SessionConfig(
+      invalidateSessionForAppLostFocus: const Duration(minutes: 2),
+    );
+    sessionConfig!.stream.listen((SessionTimeoutState timeoutEvent) {
+      print("Listening for session time out");
+      if (timeoutEvent == SessionTimeoutState.appFocusTimeout) {
+        NavigationService.pushReplacement(
+          target: const LoginPage(),
+        );
+      }
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MultiRepositoryWrapper(
@@ -41,7 +61,7 @@ class _AppProdState extends State<AppProd> {
             debugShowCheckedModeBanner: false,
             darkTheme: CustomTheme.lightTheme,
             theme: CustomTheme.lightTheme,
-            title: Strings.APP_TITLE,
+            title: widget.env.appTitle,
             initialRoute: Routes.root,
             onGenerateRoute: RouteGenerator.generateRoute,
           )),

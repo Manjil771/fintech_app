@@ -14,6 +14,7 @@ class CoOperative {
     required this.backgroundImage,
     required this.appStoreID,
     required this.packageName,
+    this.appTitle = "",
     this.shouldValidateCooperative = false,
   });
 
@@ -28,6 +29,7 @@ class CoOperative {
   String backgroundImage;
   String appStoreID;
   String packageName;
+  String appTitle;
   bool shouldValidateCooperative;
 
   CoOperative copyWith({required String clientCode}) {
@@ -43,12 +45,13 @@ class CoOperative {
       backgroundImage: backgroundImage,
       appStoreID: appStoreID,
       packageName: packageName,
+      appTitle: appTitle,
     );
   }
 }
 
 class CoOperativeValue {
-  static final CoOperative currentCoop = kabilCoop;
+  static final CoOperative currentCoop = aakashbaniCoop;
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",
@@ -1477,6 +1480,7 @@ class CoOperativeValue {
   );
 
   static final CoOperative aakashbaniCoop = CoOperative(
+    appTitle: "Aakashbani iSmart",
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -1487,7 +1491,7 @@ class CoOperativeValue {
     coOperativeName: 'Aakashbani Saving and Credit Cooperative Pvt Ltd',
     coOperativeLogo: 'assets/aakashbani/aakashbani_logo.png',
     splashImage: "assets/aakashbani/aakashbani_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A650),
   );
   static final CoOperative shreeAmrapaliCoop = CoOperative(
     appStoreID: "",

@@ -4,7 +4,6 @@ import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/constant/strings.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -25,6 +24,7 @@ class _AppDevState extends State<AppDev> {
   SessionConfig? sessionConfig;
   @override
   void initState() {
+    CustomTheme().initializeTheme(widget.env.primaryColor);
     sessionConfig = SessionConfig(
       invalidateSessionForAppLostFocus: const Duration(minutes: 2),
     );
@@ -54,10 +54,10 @@ class _AppDevState extends State<AppDev> {
                 navigatorKey: NavigationService.navigationKey,
                 supportedLocales: context.supportedLocales,
                 localizationsDelegates: context.localizationDelegates,
-                debugShowCheckedModeBanner: true,
+                debugShowCheckedModeBanner: false,
                 darkTheme: CustomTheme.lightTheme,
                 theme: CustomTheme.lightTheme,
-                title: Strings.APP_TITLE,
+                title: widget.env.appTitle,
                 initialRoute: Routes.root,
                 onGenerateRoute: RouteGenerator.generateRoute,
               ),
