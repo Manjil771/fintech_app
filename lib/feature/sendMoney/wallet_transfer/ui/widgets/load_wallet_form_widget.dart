@@ -127,12 +127,14 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 if (state.data.status.toLowerCase() == "success" ||
                     state.data.message.toLowerCase() ==
                         "validation not available") {
+                  final WalletValidationModel? _myValidationResult = state.data;
+
                   _isAccountValidated = true;
                   _validationResult = state.data;
                   showPopUpDialog(
                     context: context,
                     message:
-                        "Wallet ID Validated successfully. Do you want to continue transfer? ",
+                        "Wallet ID Validated successfully. Do you want to continue transfer?",
                     title: "Confirm",
                     buttonCallback: () {
                       NavigationService.pop();
@@ -143,7 +145,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                             customerName: _walletAccountController.text,
                             walletAccountNumber: _walletAccountController.text,
                             validationIdentifier:
-                                _validationResult?.validationIdentifier ?? "",
+                                _myValidationResult?.validationIdentifier ?? "",
                           );
                     },
                   );
@@ -218,34 +220,27 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                             val, "Wallet Id"),
                       ),
                 CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "Enter the amount",
                   controller: _amountController,
-                  validator: (val) {
-                    if (val == null) {
-                      return "Amount field cannot be empty";
-                    }
-                    if ((int.tryParse(val) ?? 0) < 100) {
-                      return "Minimum amount to transfer is Rs. 100";
-                    } else if ((int.tryParse(val) ?? 0) > 25000) {
-                      return "Maximum amount to transfer is Rs. 25000";
-                    }
-                    return null;
-                  },
+                  validator: (value) => FormValidator.validateAmount(
+                      val: value.toString(),
+                      minAmount: widget.selectedWallet.minAmount,
+                      maxAmount: widget.selectedWallet.maxAmount),
+                  // validator: (val) {
+                  //   if (val == null) {
+                  //     return "Amount field cannot be empty";
+                  //   }
+                  //   if ((int.tryParse(val) ?? 0) < 100) {
+                  //     return "Minimum amount to transfer is Rs. 100";
+                  //   } else if ((int.tryParse(val) ?? 0) > 25000) {
+                  //     return "Maximum amount to transfer is Rs. 25000";
+                  //   }
+                  //   return null;
+                  // },
                   textInputType: TextInputType.number,
                 ),
-                // Container(
-                //   padding: const EdgeInsets.only(top: 7),
-                //   height: size.height * 0.12,
-                //   width: double.infinity,
-                //   child: GridView.builder(
-                //     itemCount: 6,
-                //     gridDelegate:
-                //         const SliverGridDelegateWithFixedCrossAxisCount(
-                //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                //     itemBuilder: (context, index) => amountBox(context, index),
-                //   ),
-                // ),
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
@@ -253,25 +248,6 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Remarks"),
                 ),
-                // Row(
-                //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                //   children: [
-                //     Text(
-                //       "Recent Transaction",
-                //       style: Theme.of(context).textTheme.headlineSmall,
-                //     ),
-                //     TextButton(
-                //         onPressed: () {},
-                //         child: Text(
-                //           "View All",
-                //           style: TextStyle(
-                //               color: Theme.of(context).primaryColor,
-                //               fontFamily: "popinmedium",
-                //               fontSize: 16),
-                //         ))
-                //   ],
-                // ),
-                // SizedBox(height: size.height * 0.02)
               ],
             ),
           ),
