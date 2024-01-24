@@ -156,7 +156,7 @@ class CustomTheme {
   static const Color upayogiColor = Color(0xFF2E3192);
   static const Color sakarColor = Color(0xFF04A44C);
 
-  static const Color primaryColor = sakarColor;
+  // static const Color primaryColor = aasthaColor;
 
   static const double symmetricHozPadding = 13.0;
   static const Color lightGray = Color(0XFFF3F3F3);
