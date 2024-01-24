@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -14,9 +13,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
-import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
@@ -45,7 +42,7 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  String _supportContact = "9801132218";
+  final String _supportContact = "9801132218";
 
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
@@ -519,7 +516,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 )
                               ],
                             ),
-                            const Icon(
+                            Icon(
                               Icons.arrow_forward_ios,
                               color: CustomTheme.primaryColor,
                             )

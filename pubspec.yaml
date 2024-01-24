@@ -234,7 +234,7 @@ flutter:
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-    # - assets/aakashbani/
+    - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
