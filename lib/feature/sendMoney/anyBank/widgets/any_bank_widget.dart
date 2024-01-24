@@ -348,7 +348,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "NPR",
-                  textInputType: TextInputType.numberWithOptions(decimal: true),
+                  textInputType:
+                      const TextInputType.numberWithOptions(decimal: true),
                   controller: _amountController,
                   onChanged: (val) {
                     if (val != _amountController.text) {

@@ -48,21 +48,20 @@ class CoOperative {
 }
 
 class CoOperativeValue {
+  static final CoOperative currentCoop = kabilCoop;
+
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",
     clientCode: 'AA9ZZ33R9Z',
     clientSecret: "135639",
-    // clientCode: 'VBMRDWEVFV',
-    // clientSecret: "199204",
     backgroundImage: "assets/kabil/kabil_background_image.png",
-
-    coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/kabil/kabil_logo.png",
     splashImage: "assets/kabil/kabil_splash.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF1F972B),
     packageName: "com.devanasoft.kabil",
     appStoreID: "",
+    coOperativeName: "Kabil Saving and Credit Co-Operative Ltd",
   );
 
   static final CoOperative abhiyanCoop = CoOperative(
@@ -71,12 +70,12 @@ class CoOperativeValue {
     clientCode: 'L7CLJMN51D',
     clientSecret: "192939",
     backgroundImage: "assets/abhiyan/abhiyan_background_image.png",
-    coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/abhiyan/abhiyan_logo.png",
     splashImage: "assets/abhiyan/abhiyan_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.aviyan",
     appStoreID: "",
+    coOperativeName: "Aviyan Saving and Credit Cooperative Ltd",
   );
   static final CoOperative gomaGaneshCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -84,12 +83,12 @@ class CoOperativeValue {
     clientCode: 'TGUUH8ZXOE',
     clientSecret: "209233",
     backgroundImage: "assets/gomaGanesh/gomaGanesh_background_image.png",
-    coOperativeName: 'Goma Ganesh',
     coOperativeLogo: "assets/gomaGanesh/gomaGanesh_logo.png",
     splashImage: "assets/gomaGanesh/gomaGanesh_splash.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF1F972B),
     packageName: "com.devanasoft.gomaGanesh",
     appStoreID: "6455685898",
+    coOperativeName: "Goma Ganesh Saving & Credit Cooperative Ltd",
   );
   static final CoOperative alankarCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -97,12 +96,12 @@ class CoOperativeValue {
     clientCode: 'GY05KRRDJG',
     clientSecret: "132543",
     backgroundImage: "assets/alankar/alankar_background_image.png",
-    coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/alankar/alankar_logo.png",
     splashImage: "assets/alankar/alankar_splash.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF0088CF),
     packageName: "com.devanasoft.alankar",
     appStoreID: "6457205347",
+    coOperativeName: "Alangkar Multipurpose Cooperative Ltd",
   );
   static final CoOperative manankCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -110,12 +109,12 @@ class CoOperativeValue {
     clientCode: 'CGJQ1YHKZ3',
     clientSecret: "149077",
     backgroundImage: "assets/manank/manank_background_image.png",
-    coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/manank/manank_logo.png",
     splashImage: "assets/manank/manank_splash.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.manank",
     appStoreID: "6457205219",
+    coOperativeName: "Manank Saving And Credit Co-operative Ltd",
   );
 
   static final CoOperative arthaBagCoop = CoOperative(
@@ -124,12 +123,12 @@ class CoOperativeValue {
     clientCode: 'YT2HELT9H8',
     clientSecret: "117188",
     backgroundImage: "assets/arthaBag/arthaBag_background_image.png",
-    coOperativeName: 'Abhiyan',
     coOperativeLogo: "assets/arthaBag/arthaBag_logo.png",
     splashImage: "assets/arthaBag/arthaBag_splash.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF0729A4),
     packageName: "com.devanasoft.arthabag",
     appStoreID: "",
+    coOperativeName: "Arthabag Multipurpose Cooperative Ltd",
   );
 
   static final CoOperative kamanaCoop = CoOperative(
@@ -138,12 +137,12 @@ class CoOperativeValue {
     clientCode: 'LQ7QMJ5NRB',
     clientSecret: "118107",
     backgroundImage: "assets/kamana/kamana_background_image.png",
-    coOperativeName: 'Kamana',
     coOperativeLogo: "assets/kamana/kamana_logo.png",
     splashImage: "assets/kamana/kamana_splash_image.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF008133),
     packageName: "com.devanasoft.kamana",
     appStoreID: "",
+    coOperativeName: "Kamana Saving & Credit Cooperative Ltd",
   );
 
   static final CoOperative uttargangaCoop = CoOperative(
@@ -152,11 +151,11 @@ class CoOperativeValue {
     clientCode: '9DZS5N3TOY',
     clientSecret: "112213",
     backgroundImage: "assets/uttarganga/uttarganga_background_image.png",
-    coOperativeName: 'Uttarganga',
     coOperativeLogo: "assets/uttarganga/uttarganga_logo.png",
     splashImage: "assets/uttarganga/uttarganga_splash.png",
-    primaryColor: const Color(0xFF015017),
+    primaryColor: const Color(0xFF5E3192),
     packageName: "com.devanasoft.uttarganga",
+    coOperativeName: "Uttarganga Multipurpose Co-operative Ltd",
     appStoreID: "",
   );
 
@@ -166,12 +165,12 @@ class CoOperativeValue {
     clientCode: 'SMTZ26RF75',
     clientSecret: "194009",
     backgroundImage: "assets/sahakarya/sahakarya_background_image.png",
-    coOperativeName: 'Sahakarya',
     coOperativeLogo: "assets/sahakarya/sahakarya_logo.png",
     splashImage: "assets/sahakarya/sahakarya_splash_image.png",
     primaryColor: const Color(0xFF015017),
     packageName: "com.devanasoft.sahakarya",
     appStoreID: "6451393046",
+    coOperativeName: "Sahakarya Saving & Credit Co-operative Ltd",
   );
 
   static final CoOperative janadharaCoop = CoOperative(
@@ -179,13 +178,13 @@ class CoOperativeValue {
     bannerImage: "assets/janadhara/janadhara_banner.png",
     backgroundImage: "assets/janadhara/janadhara_background_image.png",
     clientCode: '6M0D7LSVNV',
-    coOperativeName: 'Janadhara',
     coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
     clientSecret: "180509",
     splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0B67BB),
     packageName: "com.devanasoft.janadhara",
     appStoreID: "6455494708",
+    coOperativeName: "Jandhara Multipurpose Co-Operative Ltd",
   );
 
   static final CoOperative shreeaaju = CoOperative(
@@ -195,11 +194,11 @@ class CoOperativeValue {
     bannerImage: "assets/shreeaaju/shreeaaju_banner.png",
     backgroundImage: "assets/shreeaaju/shreeaju_background.png",
     clientCode: 'D6CIBSGVA0',
-    coOperativeName: 'Shree Aaju',
     coOperativeLogo: 'assets/shreeaaju/shreeaju_logo.png',
     clientSecret: "155993",
     splashImage: "assets/shreeaaju/shreeaaju_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A900),
+    coOperativeName: "ShreeAaju Multipurpose Co-operative Ltd",
   );
   static final CoOperative shreeamitra = CoOperative(
     appStoreID: "",
@@ -208,11 +207,11 @@ class CoOperativeValue {
     bannerImage: "assets/shreemitra/shreemitra_banner.png",
     backgroundImage: "assets/shreemitra/shreemitra_background.png",
     clientCode: 'JYVHE7GL7S',
-    coOperativeName: 'Shree Mitra',
     coOperativeLogo: 'assets/shreemitra/shreemitra_logo.png',
     clientSecret: "128632",
     splashImage: "assets/shreemitra/shreemitra_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A551),
+    coOperativeName: "ShreeMitra Agriculture Co-operative Ltd",
   );
 
   static final CoOperative kipoo = CoOperative(
@@ -222,11 +221,11 @@ class CoOperativeValue {
     bannerImage: "assets/kipoo/kipoo_banner.png",
     backgroundImage: "assets/kipoo/kipoo_background.png",
     clientCode: 'JRC56V3YN4',
-    coOperativeName: 'Kipoo',
     coOperativeLogo: 'assets/kipoo/kipoo_logo.png',
     clientSecret: "135559",
     splashImage: "assets/kipoo/kipoo_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A551),
+    coOperativeName: "Kipoo Saving and Credit Cooperative Ltd",
   );
   static final CoOperative suryadev = CoOperative(
     appStoreID: "",
@@ -235,11 +234,11 @@ class CoOperativeValue {
     bannerImage: "assets/suryadev/suryadev_banner.png",
     backgroundImage: "assets/suryadev/suryadev_background.png",
     clientCode: 'RVERAQI2XY',
-    coOperativeName: 'Suryadev',
     coOperativeLogo: 'assets/suryadev/suryadev_logo.png',
     clientSecret: "181746",
     splashImage: "assets/suryadev/suryadev_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF8E191C),
+    coOperativeName: "Suryadev Multipurpose Co-operative Ltd",
   );
 
   static final CoOperative uddhamshil = CoOperative(
@@ -249,11 +248,11 @@ class CoOperativeValue {
     bannerImage: "assets/uddhamshil/uddhamshil_banner.png",
     backgroundImage: "assets/uddhamshil/uddhamshil_background.png",
     clientCode: 'VBJ07QPYUP',
-    coOperativeName: 'Uddhamshil',
     coOperativeLogo: 'assets/uddhamshil/uddhamshil_logo.png',
     clientSecret: "133034",
     splashImage: "assets/uddhamshil/uddhamshil_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF24B34B),
+    coOperativeName: "Uddhamshil Saving and Credit Cooperative Ltd",
   );
   static final CoOperative shreeNavaprabhat = CoOperative(
     appStoreID: "",
@@ -262,11 +261,11 @@ class CoOperativeValue {
     bannerImage: "assets/navaprabhat/navaprabhat_banner.png",
     backgroundImage: "assets/navaprabhat/nawaprabhat_background_2.png",
     clientCode: '9PI6BYBK1J',
-    coOperativeName: 'Shree Navaprabhat',
     coOperativeLogo: 'assets/navaprabhat/navaprabhat_logo.png',
     clientSecret: "163873",
     splashImage: "assets/navaprabhat/navaprabhat_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF35B54A),
+    coOperativeName: "ShreeNawaprabhat Saving and Credit Cooperative Ltd",
   );
 
   static final CoOperative vyasCoop = CoOperative(
@@ -276,11 +275,11 @@ class CoOperativeValue {
     bannerImage: "assets/vyas/vyas_banner.png",
     backgroundImage: "assets/vyas/vyas_background.png",
     clientCode: '5YODBM9KER',
-    coOperativeName: 'Vyas',
     coOperativeLogo: 'assets/vyas/vyas_logo.png',
     clientSecret: "220475",
     splashImage: "assets/vyas/vyas_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2B2A6A),
+    coOperativeName: "Vyas Saving and Credit Co-operative Ltd",
   );
 
   static final CoOperative newDhaulagiriCoop = CoOperative(
@@ -291,10 +290,10 @@ class CoOperativeValue {
     backgroundImage: "assets/newdhaulagiri/newdhaulagiri_background.png",
     clientCode: 'KMG1RP8OC6',
     clientSecret: "214269",
-    coOperativeName: 'New Dhaulagiri',
     coOperativeLogo: 'assets/newdhaulagiri/newdhaulagiri_logo.png',
     splashImage: "assets/newdhaulagiri/newdhaulagiri_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF662D91),
+    coOperativeName: "New Dhaulagiri Saving and Credit Co-operative Limited",
   );
 
   static final CoOperative shreeJanamukhiCoop = CoOperative(
@@ -305,10 +304,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreejanamukhi/shreejanamukhi_background.png",
     clientCode: 'S9ZHZK8INB',
     clientSecret: "164605",
-    coOperativeName: 'Shree Janamukhi',
     coOperativeLogo: 'assets/shreejanamukhi/shreejanamukhi_logo.png',
     splashImage: "assets/shreejanamukhi/shreejanamukhi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF017828),
+    coOperativeName: "ShreeJanamukhi Multipurpose Co-operative Society Ltd",
   );
 
   static final CoOperative ekataCoop = CoOperative(
@@ -319,10 +318,10 @@ class CoOperativeValue {
     backgroundImage: "assets/ekata/ekata_background.png",
     clientCode: '0R0CQVOX1I',
     clientSecret: "217556",
-    coOperativeName: 'Ekata',
     coOperativeLogo: 'assets/ekata/ekata_logo.png',
     splashImage: "assets/ekata/ekata_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2C2087),
+    coOperativeName: "Ekata Co-operative Society Ltd",
   );
   static final CoOperative bishalSavingCoop = CoOperative(
     appStoreID: "",
@@ -332,10 +331,10 @@ class CoOperativeValue {
     backgroundImage: "assets/bishal/bishal_background.png",
     clientCode: 'VDHZQSJBBN',
     clientSecret: "212617",
-    coOperativeName: 'Bishal',
     coOperativeLogo: 'assets/bishal/bishal_logo.png',
     splashImage: "assets/bishal/bishal_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF31318E),
+    coOperativeName: "Bishal Saving and Credit Cooperative Society Ltd",
   );
   static final CoOperative sardikholaCoop = CoOperative(
     appStoreID: "",
@@ -345,10 +344,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sardikhola/sardikhola_background.png",
     clientCode: 'ZV9721VXYZ',
     clientSecret: "147230",
-    coOperativeName: 'sardikhola',
     coOperativeLogo: 'assets/sardikhola/sardikhola_logo.png',
     splashImage: "assets/sardikhola/sardikhola_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF004B1C),
+    coOperativeName: "Sardikhola Saving and Credit Cooperative Ltd",
   );
   static final CoOperative kripaluCoop = CoOperative(
     appStoreID: "",
@@ -358,28 +357,24 @@ class CoOperativeValue {
     backgroundImage: "assets/kripalu/kripalu_background.png",
     clientCode: 'HFKNI8KCA7',
     clientSecret: "198431",
-    coOperativeName: 'kripalu',
     coOperativeLogo: 'assets/kripalu/kripalu_logo.png',
     splashImage: "assets/kripalu/kripalu_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Kripalu Saving and Credit Co-operative Ltd",
   );
-//sarbahit
   static final CoOperative sarbahitCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/sarbahit/sarbahit_banner.png",
-    backgroundImage: "assets/sarbahit/sarbahit_background.png",
-    clientCode: '137NBD0VEA',
-    clientSecret: "176079",
-    coOperativeName: 'sarbahit', //Address: pokhara
-    coOperativeLogo: 'assets/sarbahit/sarbahit_logo.png',
-    splashImage: "assets/sarbahit/sarbahit_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/sarbahit/sarbahit_banner.png",
+      backgroundImage: "assets/sarbahit/sarbahit_background.png",
+      clientCode: '137NBD0VEA',
+      clientSecret: "176079",
+      coOperativeLogo: 'assets/sarbahit/sarbahit_logo.png',
+      splashImage: "assets/sarbahit/sarbahit_splash.png",
+      primaryColor: const Color(0xFF26449F),
+      coOperativeName: "Sarbahit Saving and Credit Co-operative Ltd");
   static final CoOperative sarbahitDangCoop = CoOperative(
-    //Different coop
-
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -387,11 +382,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sarbahitDang/sarbahit_background.png",
     clientCode: '9M0432EDMA',
     clientSecret: "169999",
-    coOperativeName:
-        'Sarbahit Saving & Credit Co-operative Ltd', //Address: Dang
     coOperativeLogo: 'assets/sarbahitDang/sarbahit_logo.png',
     splashImage: "assets/sarbahitDang/sarbahit_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Sarbahit Saving & Credit Co-operative Ltd",
   );
   static final CoOperative bhanjyangCoop = CoOperative(
     appStoreID: "",
@@ -401,10 +395,10 @@ class CoOperativeValue {
     backgroundImage: "assets/bhanjyang/bhanjyang_background.png",
     clientCode: '9337H8GK5V',
     clientSecret: "196685",
-    coOperativeName: 'bhanjyang',
     coOperativeLogo: 'assets/bhanjyang/bhanjyang_logo.png',
     splashImage: "assets/bhanjyang/bhanjyang_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF059445),
+    coOperativeName: "Bhanjyang Saving & Credit Cooperative Society Ltd",
   );
   static final CoOperative macchaPuchhreCoop = CoOperative(
     appStoreID: "",
@@ -414,10 +408,10 @@ class CoOperativeValue {
     backgroundImage: "assets/macchaPuchhre/macchaPuchhre_background.png",
     clientCode: 'UO3QWA3P9M',
     clientSecret: "197951",
-    coOperativeName: 'macchaPuchhre',
     coOperativeLogo: 'assets/macchaPuchhre/macchaPuchhre_logo.png',
     splashImage: "assets/macchaPuchhre/macchaPuchhre_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF188453),
+    coOperativeName: "Machhapuchhre Saving & Credit Cooperative Society Ltd",
   );
   static final CoOperative nawajoshCoop = CoOperative(
     appStoreID: "",
@@ -427,10 +421,10 @@ class CoOperativeValue {
     backgroundImage: "assets/nawajosh/nawajosh_background.png",
     clientCode: 'PWXSUF8B6F',
     clientSecret: "203542",
-    coOperativeName: 'nawajosh',
     coOperativeLogo: 'assets/nawajosh/nawajosh_logo.png',
     splashImage: "assets/nawajosh/nawajosh_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF017828),
+    coOperativeName: "NAWAJOSH AGRICULTURE COOPERATIVE LTD",
   );
   static final CoOperative fewaCoop = CoOperative(
     appStoreID: "",
@@ -440,10 +434,10 @@ class CoOperativeValue {
     backgroundImage: "assets/fewa/fewa_background.png",
     clientCode: 'HEWD6NROMC',
     clientSecret: "156610",
-    coOperativeName: 'fewa',
     coOperativeLogo: 'assets/fewa/fewa_logo.png',
     splashImage: "assets/fewa/fewa_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00984A),
+    coOperativeName: "Fewa Saving and Credit Cooperative Ltd",
   );
   static final CoOperative matribhumiCoop = CoOperative(
     appStoreID: "",
@@ -453,10 +447,10 @@ class CoOperativeValue {
     backgroundImage: "assets/matribhumi/matribhumi_background.png",
     clientCode: 'NINX3DYNIB',
     clientSecret: "201110",
-    coOperativeName: 'matribhumi',
     coOperativeLogo: 'assets/matribhumi/matribhumi_logo.png',
     splashImage: "assets/matribhumi/matribhumi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00652E),
+    coOperativeName: "Matribhumi Saving and Credit Cooperative Society Ltd",
   );
 
   static final CoOperative gandakibesiCoop = CoOperative(
@@ -467,10 +461,10 @@ class CoOperativeValue {
     backgroundImage: "assets/gandakibesi/gandakibesi_background.png",
     clientCode: 'DBN0L2E9PD',
     clientSecret: "163838",
-    coOperativeName: 'Gandaki Besi',
     coOperativeLogo: 'assets/gandakibesi/gandakibesi_logo.png',
     splashImage: "assets/gandakibesi/gandakibesi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006838),
+    coOperativeName: "Gandakibeshi saving and credit co-operative ltd",
   );
 
   static final CoOperative batikaCoop = CoOperative(
@@ -481,10 +475,10 @@ class CoOperativeValue {
     backgroundImage: "assets/batika/batika_background.png",
     clientCode: '276POZRR0I',
     clientSecret: "144312",
-    coOperativeName: 'Batika',
     coOperativeLogo: 'assets/batika/batika_logo.png',
     splashImage: "assets/batika/batika_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "Batika Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative bhugolCoop = CoOperative(
     appStoreID: "",
@@ -494,10 +488,10 @@ class CoOperativeValue {
     backgroundImage: "assets/bhugol/bhugol_background.png",
     clientCode: 'DSZQVBJPBH',
     clientSecret: "211286",
-    coOperativeName: 'Bhugol',
     coOperativeLogo: 'assets/bhugol/bhugol_logo.png',
     splashImage: "assets/bhugol/bhugol_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0098444),
+    coOperativeName: "Bhugol Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative nepalBachatCoop = CoOperative(
     appStoreID: "",
@@ -507,10 +501,10 @@ class CoOperativeValue {
     backgroundImage: "assets/nepalbachat/nepalbachat_background.png",
     clientCode: 'VRSZGPX91G',
     clientSecret: "182223",
-    coOperativeName: 'Nepal Saving and Credit Co-Operative Ltd.',
     coOperativeLogo: 'assets/nepalbachat/nepalbachat_logo.png',
     splashImage: "assets/nepalbachat/nepalbachat_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF282D7C),
+    coOperativeName: "Nepal Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative nilgiriCoop = CoOperative(
     appStoreID: "",
@@ -520,10 +514,10 @@ class CoOperativeValue {
     backgroundImage: "assets/nilgiri/nilgiri_background.png",
     clientCode: 'HTAENKZ3DS',
     clientSecret: "126430",
-    coOperativeName: 'Nilgiri',
     coOperativeLogo: 'assets/nilgiri/nilgiri_logo.png',
     splashImage: "assets/nilgiri/nilgiri_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF3B4BA0),
+    coOperativeName: "Nilgiri Saving and Credit Co-operative Ltd",
   );
   static final CoOperative davisfallCoop = CoOperative(
     appStoreID: "",
@@ -533,10 +527,10 @@ class CoOperativeValue {
     backgroundImage: "assets/davisfall/davisfall_background.png",
     clientCode: 'R0CN59B1JQ',
     clientSecret: "193088",
-    coOperativeName: 'davisfall',
     coOperativeLogo: 'assets/davisfall/davisfall_logo.png',
     splashImage: "assets/davisfall/davisfall_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF016D3B),
+    coOperativeName: "Davisfall Saving and Credit Cooperative Ltd",
   );
   static final CoOperative sancharCoop = CoOperative(
     appStoreID: "",
@@ -546,10 +540,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sanchar/sanchar_background.png",
     clientCode: 'JGDS3TK6VO',
     clientSecret: "113528",
-    coOperativeName: 'sanchar',
     coOperativeLogo: 'assets/sanchar/sanchar_logo.png',
     splashImage: "assets/sanchar/sanchar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF016D3B),
+    coOperativeName: "Sanchar Saving and Credit Cooperative Ltd",
   );
   static final CoOperative hamiSabaikoKrishiCoop = CoOperative(
     appStoreID: "",
@@ -560,10 +554,10 @@ class CoOperativeValue {
         "assets/hamiSabaikokrishi/hamiSabaikokrishi_background.png",
     clientCode: 'LRIUMQ5JTT',
     clientSecret: "165705",
-    coOperativeName: 'Hami Sabaiko Krishi',
     coOperativeLogo: 'assets/hamiSabaikokrishi/hamiSabaikokrishi_logo.png',
     splashImage: "assets/hamiSabaikokrishi/hamiSabaikokrishi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF01812E),
+    coOperativeName: "HamiSabaiko Krishi & Multipurpose Co-Operative Ltd",
   );
   static final CoOperative rumjatarCoop = CoOperative(
     appStoreID: "",
@@ -573,10 +567,10 @@ class CoOperativeValue {
     backgroundImage: "assets/rumjatar/rumjatar_background.png",
     clientCode: 'ZVA5CQJ8JH',
     clientSecret: "152287",
-    coOperativeName: 'Rumjatar',
     coOperativeLogo: 'assets/rumjatar/rumjatar_logo.png',
     splashImage: "assets/rumjatar/rumjatar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF118B44),
+    coOperativeName: "Rumjatar Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative supremeCoop = CoOperative(
     appStoreID: "",
@@ -586,10 +580,10 @@ class CoOperativeValue {
     backgroundImage: "assets/supreme/supreme_background.png",
     clientCode: 'CHM8BUFXX6',
     clientSecret: "156621",
-    coOperativeName: 'Rumjatar',
     coOperativeLogo: 'Supreme/supreme/supreme_logo.png',
     splashImage: "assets/supreme/supreme_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF262262),
+    coOperativeName: "Supreme Saving & Credit Co-operative Ltd",
   );
   static final CoOperative shreeSagarmathaCoop = CoOperative(
     appStoreID: "",
@@ -599,10 +593,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sagarmatha/sagarmatha_background.png",
     clientCode: 'V9G6YBJ29X',
     clientSecret: "150239",
-    coOperativeName: 'Shree Sagarmatha',
     coOperativeLogo: 'assets/sagarmatha/sagarmatha_logo.png',
     splashImage: "assets/sagarmatha/sagarmatha_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009B4D),
+    coOperativeName: "ShreeSagarmatha Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative punjaCoop = CoOperative(
     appStoreID: "",
@@ -612,10 +606,10 @@ class CoOperativeValue {
     backgroundImage: "assets/punja/punja_background.png",
     clientCode: 'YF0E9QARF2',
     clientSecret: "177806",
-    coOperativeName: 'punja',
     coOperativeLogo: 'assets/punja/punja_logo.png',
     splashImage: "assets/punja/punja_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Punja Saving And Credit Cooperative Society Ltd",
   );
 
   static final CoOperative immanuelCoop = CoOperative(
@@ -626,10 +620,10 @@ class CoOperativeValue {
     backgroundImage: "assets/immanuel/immanuel_background.png",
     clientCode: 'HQ0RYHE5UW',
     clientSecret: "174569",
-    coOperativeName: 'Immanuel',
     coOperativeLogo: 'assets/immanuel/immanuel_logo.png',
     splashImage: "assets/immanuel/immanuel_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF02662C),
+    coOperativeName: "Immanuel Saving and Credit Co-Operative Ltd",
   );
 
   static final CoOperative thankotMahilaCoop = CoOperative(
@@ -641,10 +635,11 @@ class CoOperativeValue {
         "assets/thankotMahilaJagaran/thankot_mahila_background.png",
     clientCode: '0PY5GD8HOF',
     clientSecret: "176436",
-    coOperativeName: 'Thankot MahilaJagaran',
     coOperativeLogo: 'assets/thankotMahilaJagaran/thankot_mahila_logo.png',
     splashImage: "assets/thankotMahilaJagaran/thankot_mahila_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF366940),
+    coOperativeName:
+        "Thankot Mahila Jagaran Saving and Credit Co-Operative Ltd",
   );
 
   static final CoOperative bishnudolCoop = CoOperative(
@@ -655,10 +650,10 @@ class CoOperativeValue {
     backgroundImage: "assets/bishnudol/bishnudol_background.png",
     clientCode: 'DGT7IPWJ57',
     clientSecret: "146811",
-    coOperativeName: 'Bishnudol',
     coOperativeLogo: 'assets/bishnudol/bishnudol_logo.png',
     splashImage: "assets/bishnudol/bishnudol_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Bishnudol Multipurpose Cooperative Ltd",
   );
 
   static final CoOperative annapurnaCoop = CoOperative(
@@ -669,10 +664,10 @@ class CoOperativeValue {
     backgroundImage: "assets/annapurna/annapurna_background.png",
     clientCode: '9LMVZK6Y3Z',
     clientSecret: "138827",
-    coOperativeName: 'annapurna Health ',
     coOperativeLogo: 'assets/annapurna/annapurna_logo.png',
     splashImage: "assets/annapurna/annapurna_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF36AD1F),
+    coOperativeName: "Annapurna Health Co-Operative Ltd",
   );
   static final CoOperative kanchanjunghaCoop = CoOperative(
     appStoreID: "",
@@ -682,10 +677,10 @@ class CoOperativeValue {
     backgroundImage: "assets/kanchanjungha/kanchanjungha_background.png",
     clientCode: 'WBSSRVSEB9',
     clientSecret: "187636",
-    coOperativeName: 'Kanchanjangha Multipurpose Co-operative Ltd	',
     coOperativeLogo: 'assets/kanchanjungha/kanchanjungha_logo.png',
     splashImage: "assets/kanchanjungha/kanchanjungha_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF39B54A),
+    coOperativeName: "Kanchanjangha Multipurpose Co-operative Ltd",
   );
 
   static final CoOperative janasewaCoop = CoOperative(
@@ -696,10 +691,10 @@ class CoOperativeValue {
     backgroundImage: "assets/janasewa/janasewa_background.png",
     clientCode: 'W5QT17Z880',
     clientSecret: "171279",
-    coOperativeName: 'Janasewa',
     coOperativeLogo: 'assets/janasewa/janasewa_logo.png',
     splashImage: "assets/janasewa/janasewa_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF01A64E),
+    coOperativeName: "Janasewa Saving & Credit Co-Operative Society Ltd",
   );
 
   static final CoOperative goldenCoop = CoOperative(
@@ -710,10 +705,10 @@ class CoOperativeValue {
     backgroundImage: "assets/golden/golden_background.png",
     clientCode: '7OMBGHP0O6',
     clientSecret: "157652",
-    coOperativeName: 'Golden',
     coOperativeLogo: 'assets/golden/golden_logo.png',
     splashImage: "assets/golden/golden_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF157A3E),
+    coOperativeName: "Golden Saving And Credit Cooperative Ltd",
   );
   //For test
   static final CoOperative iconSoftCoop = CoOperative(
@@ -724,10 +719,10 @@ class CoOperativeValue {
     backgroundImage: "assets/iconsoftCoop/iconsoft_background.png",
     clientCode: 'OI6XM76XZT',
     clientSecret: "190021",
-    coOperativeName: 'IconSoft',
     coOperativeLogo: 'assets/iconsoftCoop/iconsoft_logo.png',
     splashImage: "assets/iconsoftCoop/iconsoft_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF7EA961),
+    coOperativeName: "ICONSOFT PVT LTD",
   );
   static final CoOperative royalGorkhaCoop = CoOperative(
     appStoreID: "",
@@ -737,10 +732,10 @@ class CoOperativeValue {
     backgroundImage: "assets/royalGorkha/royalGorkha_background.png",
     clientCode: 'VY5ZJ7PFHJ',
     clientSecret: "217188",
-    coOperativeName: 'Royal Gorkha Multipurpose',
     coOperativeLogo: 'assets/royalGorkha/royalGorkha_logo.png',
     splashImage: "assets/royalGorkha/royalGorkha_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00683A),
+    coOperativeName: "Royal Gorkha Multipurpose Co-Operative Ltd",
   );
   static final CoOperative buddhaCoop = CoOperative(
     appStoreID: "",
@@ -750,10 +745,10 @@ class CoOperativeValue {
     backgroundImage: "assets/buddhaCoop/buddha_background.png",
     clientCode: 'I42M8ZXXB6',
     clientSecret: "207412",
-    coOperativeName: 'Buddha Saving & Credit',
     coOperativeLogo: 'assets/buddhaCoop/buddha_logo.png',
     splashImage: "assets/buddhaCoop/buddha_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF3D4097),
+    coOperativeName: "Buddha Saving & Credit Cooperative Ltd",
   );
   static final CoOperative nayanCoop = CoOperative(
     appStoreID: "",
@@ -763,10 +758,10 @@ class CoOperativeValue {
     backgroundImage: "assets/nayan/nayan_background.png",
     clientCode: 'DQKWL4X17Y',
     clientSecret: "118273",
-    coOperativeName: 'Nayan Saving & Credit',
     coOperativeLogo: 'assets/nayan/nayan_logo.png',
     splashImage: "assets/nayan/nayan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0A6846),
+    coOperativeName: "Nayan Saving and Credit Cooperative Ltd",
   );
   static final CoOperative rithepaniCoop = CoOperative(
     appStoreID: "",
@@ -776,10 +771,10 @@ class CoOperativeValue {
     backgroundImage: "assets/rithepani/rithepani_background.png",
     clientCode: 'SGGSLNACQN',
     clientSecret: "207387",
-    coOperativeName: 'Rithepani Saving & Credit',
     coOperativeLogo: 'assets/rithepani/rithepani_logo.png',
     splashImage: "assets/rithepani/rithepani_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF01785C),
+    coOperativeName: "Rithepani Saving and Credit Co-Operative Ltd",
   );
 
   static final CoOperative shreeSubhakamanaCoop = CoOperative(
@@ -790,10 +785,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeSubhakamana/shree_subhakamana_background.png",
     clientCode: 'LC8A4TC6AX',
     clientSecret: "116572",
-    coOperativeName: 'Shree ShubhaKamana MultiPurpose',
     coOperativeLogo: 'assets/shreeSubhakamana/shree_subhakamana_logo.png',
     splashImage: "assets/shreeSubhakamana/shree_subhakamana_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF016934),
+    coOperativeName: "ShreeShubhakamana Multipurpose Co-Operative Society Ltd",
   );
   static final CoOperative bishalMultiPurposeCoop = CoOperative(
     appStoreID: "",
@@ -803,10 +798,10 @@ class CoOperativeValue {
     backgroundImage: "assets/bishalMulti/bishalMulti_background.png",
     clientCode: 'BHHZB5DT3H',
     clientSecret: "172650",
-    coOperativeName: 'Bishal Multipurpose Co-Operative Ltd.',
     coOperativeLogo: 'assets/bishalMulti/bishalMulti_logo.png',
     splashImage: "assets/bishalMulti/bishalMulti_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF08440E),
+    coOperativeName: "Bishal Multipurpose Co-Operative Ltd",
   );
 
   static final CoOperative sanaKishanCoop = CoOperative(
@@ -817,25 +812,24 @@ class CoOperativeValue {
     backgroundImage: "assets/sanakishan/sanakishan_background.png",
     clientCode: 'RPJTJAKDBR',
     clientSecret: "203763",
-    coOperativeName: 'SFACL Niglihawa',
     coOperativeLogo: 'assets/sanakishan/sanakishan_logo.png',
     splashImage: "assets/sanakishan/sanakishan_splash.png",
     shouldValidateCooperative: true,
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd",
   );
   static final CoOperative shreeMyagdeCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/shreeMyagde/shreeMyagde_banner.png",
-    backgroundImage: "assets/shreeMyagde/shreeMyagde_background.png",
-    clientCode: 'AG7KQ7NBUC',
-    clientSecret: "160745",
-    coOperativeName: 'Shree Myagde Dugdha Utpadak Cooperative Ltd',
-    coOperativeLogo: 'assets/shreeMyagde/shreeMyagde_logo.png',
-    splashImage: "assets/shreeMyagde/shreeMyagde_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/shreeMyagde/shreeMyagde_banner.png",
+      backgroundImage: "assets/shreeMyagde/shreeMyagde_background.png",
+      clientCode: 'AG7KQ7NBUC',
+      clientSecret: "160745",
+      coOperativeLogo: 'assets/shreeMyagde/shreeMyagde_logo.png',
+      splashImage: "assets/shreeMyagde/shreeMyagde_splash.png",
+      primaryColor: const Color(0xFF009245),
+      coOperativeName: "Shree Myagde Dugdha Utpadak Cooperative Ltd.");
   static final CoOperative vaidhikCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -844,10 +838,10 @@ class CoOperativeValue {
     backgroundImage: "assets/vaidhik/vaidhik_background.png",
     clientCode: '8QASJZYBA6',
     clientSecret: "131917",
-    coOperativeName: 'Vaidhik Multipurpose Cooperative Ltd',
     coOperativeLogo: 'assets/vaidhik/vaidhik_logo.png',
     splashImage: "assets/vaidhik/vaidhik_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00963F),
+    coOperativeName: "Vaidhik Multipurpose Cooperative Ltd",
   );
   static final CoOperative shreeKalikaCoop = CoOperative(
     appStoreID: "",
@@ -857,10 +851,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeKalika/shreeKalika_background.png",
     clientCode: 'J0JDLK7OFX',
     clientSecret: "132342",
-    coOperativeName: 'ShreeKalika Saving and Credit Cooperative Ltd	',
     coOperativeLogo: 'assets/shreeKalika/shreeKalika_logo.png',
     splashImage: "assets/shreeKalika/shreeKalika_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "ShreeKalika Saving and Credit Cooperative Ltd",
   );
   static final CoOperative shreeHemjaCoop = CoOperative(
     appStoreID: "",
@@ -870,10 +864,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeHemja/shreeHemja_background.png",
     clientCode: 'YZGRJX3M6Z',
     clientSecret: "117248",
-    coOperativeName: 'Shree Hemja Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeHemja/shreeHemja_logo.png',
     splashImage: "assets/shreeHemja/shreeHemja_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "ShreeHemja Saving and Credit Co-operative Ltd",
   );
   static final CoOperative shubhodayaCoop = CoOperative(
     appStoreID: "",
@@ -883,10 +877,10 @@ class CoOperativeValue {
     backgroundImage: "assets/subhodaya/subhodaya_background.png",
     clientCode: 'SJ24IDUMP1',
     clientSecret: "146404",
-    coOperativeName: 'Shubhodaya Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/subhodaya/subhodaya_logo.png',
     splashImage: "assets/subhodaya/subhodaya_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFFF46F2C),
+    coOperativeName: "Shubhodaya Multipurpose Co-operative Ltd",
   );
   static final CoOperative garimaAgriCoop = CoOperative(
     appStoreID: "",
@@ -896,10 +890,10 @@ class CoOperativeValue {
     backgroundImage: "assets/garimaAgri/garimaAgri_background.png",
     clientCode: 'OPSM0RJ5LH',
     clientSecret: "156691",
-    coOperativeName: 'Garima Agriculture Co-operative Ltd.',
     coOperativeLogo: 'assets/garimaAgri/garimaAgri_logo.png',
     splashImage: "assets/garimaAgri/garimaAgri_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Garima Agriculture Co-operative Ltd",
   );
   static final CoOperative aasthaCoop = CoOperative(
     appStoreID: "",
@@ -910,9 +904,9 @@ class CoOperativeValue {
     clientCode: 'H86KG3CCDO',
     clientSecret: "184352",
     splashImage: "assets/aastha/aastha_splash.png",
-    coOperativeName: 'Aastha Saving and Credit Co-operative Society Ltd',
     coOperativeLogo: 'assets/aastha/aastha_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2E3487),
+    coOperativeName: "Aastha Saving and Credit Cooperative Society Ltd",
   );
   static final CoOperative chirayuCoop = CoOperative(
     appStoreID: "",
@@ -923,9 +917,9 @@ class CoOperativeValue {
     clientCode: 'XTRYL40R9O',
     clientSecret: "219645",
     splashImage: "assets/chirayu/chirayu_splash.png",
-    coOperativeName: 'Chirayu Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/chirayu/chirayu_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Chirayu Multipurpose Co-operative Ltd",
   );
   static final CoOperative paschimanchalCoop = CoOperative(
     appStoreID: "",
@@ -936,9 +930,9 @@ class CoOperativeValue {
     clientCode: '7FF8IH0E1S',
     clientSecret: "157999",
     splashImage: "assets/paschimanchal/paschimanchal_splash.png",
-    coOperativeName: 'Paschimanchal Health Cooperative	',
     coOperativeLogo: 'assets/paschimanchal/paschimanchal_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2A3585),
+    coOperativeName: "Paschimanchal Health Cooperative",
   );
 
   static final CoOperative digitalCoop = CoOperative(
@@ -950,9 +944,9 @@ class CoOperativeValue {
     clientCode: 'HCXZNBLLII',
     clientSecret: "164512",
     splashImage: "assets/digitalCoop/digitalCoop_splash.png",
-    coOperativeName: 'Digital Multipurpose Co-operative Ltd',
     coOperativeLogo: 'assets/digitalCoop/digitalCoop_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0076BC),
+    coOperativeName: "Digital Multipurpose Co-operative Limited",
   );
   static final CoOperative upakarCoop = CoOperative(
     appStoreID: "",
@@ -963,9 +957,9 @@ class CoOperativeValue {
     clientCode: '84VHCKC8U3',
     clientSecret: "159493",
     splashImage: "assets/upakar/upakar_splash.png",
-    coOperativeName: 'Upakar Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/upakar/upakar_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Upakar Saving & Credit Co-operative Ltd",
   );
   static final CoOperative sunshineCoop = CoOperative(
     appStoreID: "",
@@ -975,10 +969,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sunshine/sunshine_background.png",
     clientCode: '0FKODTJ7G9',
     clientSecret: "194796",
-    coOperativeName: 'Sunshine Saving and Credit Co-operative Society Ltd',
     coOperativeLogo: 'assets/sunshine/sunshine_logo.png',
     splashImage: "assets/sunshine/sunshine_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0000FB),
+    coOperativeName: "Sunshine Saving and Credit Co-operative Ltd",
   );
   static final CoOperative uttarbahiniCoop = CoOperative(
     appStoreID: "",
@@ -988,10 +982,10 @@ class CoOperativeValue {
     backgroundImage: "assets/uttarbahini/uttarbahini_background.png",
     clientCode: 'YQK7VL2FJ7',
     clientSecret: "142120",
-    coOperativeName: 'Uttarbahini Multipurpose Co-operative LTD.',
     coOperativeLogo: 'assets/uttarbahini/uttarbahini_logo.png',
     splashImage: "assets/uttarbahini/uttarbahini_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Uttarbahini Multipurpose Co-operative LTD",
   );
   static final CoOperative noorCoop = CoOperative(
     appStoreID: "",
@@ -1001,10 +995,10 @@ class CoOperativeValue {
     backgroundImage: "assets/noor/noor_background.png",
     clientCode: '8S1I28RT16',
     clientSecret: "208165",
-    coOperativeName: 'NOOR Multipurpose Co-operative LTD.',
     coOperativeLogo: 'assets/noor/noor_logo.png',
     splashImage: "assets/noor/noor_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF003F1A),
+    coOperativeName: "NOOR Multipurpose Co-operative LTD",
   );
   static final CoOperative sudarshanCoop = CoOperative(
     appStoreID: "",
@@ -1014,10 +1008,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sudarshan/sudarshan_background.png",
     clientCode: 'AWXKVB17TV',
     clientSecret: "189674",
-    coOperativeName: 'Sudarshan Saving and Credit Co-operative Limited',
     coOperativeLogo: 'assets/sudarshan/sudarshan_logo.png',
     splashImage: "assets/sudarshan/sudarshan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Sudarshan Saving and Credit Co-operative Limited",
   );
 
   static final CoOperative shubhaSandeshCoop = CoOperative(
@@ -1028,10 +1022,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shubhaSandesh/shubha_sandesh_background.png",
     clientCode: 'JCJY7XP42T',
     clientSecret: "149163",
-    coOperativeName: 'Shubha Sandesh Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/shubhaSandesh/shubha_sandesh_logo.png',
     splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Shubha Sandesh Multipurpose Co-operative Ltd",
   );
   static final CoOperative metrangCoop = CoOperative(
     appStoreID: "",
@@ -1041,10 +1035,10 @@ class CoOperativeValue {
     backgroundImage: "assets/metrang/metrang_background.png",
     clientCode: 'I6ZCYOGUFO',
     clientSecret: "173517",
-    coOperativeName: 'Metrang Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/metrang/metrang_logo.png',
     splashImage: "assets/metrang/metrang_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Metrang Saving and Credit Co-operative Ltd",
   );
   static final CoOperative indreniCoop = CoOperative(
     appStoreID: "",
@@ -1054,25 +1048,25 @@ class CoOperativeValue {
     backgroundImage: "assets/indreni/indreni_background.png",
     clientCode: 'PLKPBMSN7M',
     clientSecret: "194012",
-    coOperativeName: 'Indreni Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/indreni/indreni_logo.png',
     splashImage: "assets/indreni/indreni_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2C732E),
+    coOperativeName: "Indreni Saving & Credit Co-operative Ltd",
   );
   static final CoOperative sanakishanHathasuwaCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_banner.png",
-    backgroundImage:
-        "assets/sanakishanHathasuwa/sanakisan_hathasuwa_background.png",
-    clientCode: 'S2KWS4JMTT',
-    clientSecret: "141752",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Ltd Hathausa',
-    coOperativeLogo: 'assets/sanakishanHathasuwa/sanakisan_hathasuwa_logo.png',
-    splashImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_banner.png",
+      backgroundImage:
+          "assets/sanakishanHathasuwa/sanakisan_hathasuwa_background.png",
+      clientCode: 'S2KWS4JMTT',
+      clientSecret: "141752",
+      coOperativeLogo:
+          'assets/sanakishanHathasuwa/sanakisan_hathasuwa_logo.png',
+      splashImage: "assets/sanakishanHathasuwa/sanakisan_hathasuwa_splash.png",
+      primaryColor: const Color(0xFF009A4E),
+      coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Hathausa");
   static final CoOperative avatarCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1081,10 +1075,10 @@ class CoOperativeValue {
     backgroundImage: "assets/avatar/avatar_background.png",
     clientCode: '5X3VCMWQN0',
     clientSecret: "111255",
-    coOperativeName: 'avatar Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/avatar/avatar_logo.png',
     splashImage: "assets/avatar/avatar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2C732E),
+    coOperativeName: "Avatar Saving and Credit Cooperative Ltd",
   );
   static final CoOperative chaughadaCoop = CoOperative(
     appStoreID: "",
@@ -1094,10 +1088,10 @@ class CoOperativeValue {
     backgroundImage: "assets/chaughada/chaughada_background.png",
     clientCode: '315US6F1SX',
     clientSecret: "114273",
-    coOperativeName: 'Chaughada Saving & Credit Co-Operative Society Ltd.',
     coOperativeLogo: 'assets/chaughada/chaughada_logo.png',
     splashImage: "assets/chaughada/chaughada_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF04A34F),
+    coOperativeName: "Chaughada Saving & Credit Co-Operative Society Ltd",
   );
 
   static final CoOperative hetaudaCoop = CoOperative(
@@ -1108,10 +1102,10 @@ class CoOperativeValue {
     backgroundImage: "assets/hetauda/hetauda_background.png",
     clientCode: 'XRVHIOR64A',
     clientSecret: "216602",
-    coOperativeName: 'Hetauda Saving & Credit Co-Operative Ltd',
     coOperativeLogo: 'assets/hetauda/hetauda_logo.png',
     splashImage: "assets/hetauda/hetauda_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Hetauda Saving & Credit Co-Operative Ltd",
   );
   static final CoOperative youthVoiceCoop = CoOperative(
     appStoreID: "",
@@ -1121,10 +1115,10 @@ class CoOperativeValue {
     backgroundImage: "assets/youthvoice/youthvoice_background.png",
     clientCode: 'WCZ8TW1S1P',
     clientSecret: "137947",
-    coOperativeName: 'Youth Voice Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/youthvoice/youthvoice_logo.png',
     splashImage: "assets/youthvoice/youthvoice_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Youth Voice Saving and Credit Co-operative Ltd",
   );
   static final CoOperative pragatishilCoop = CoOperative(
     appStoreID: "",
@@ -1134,13 +1128,12 @@ class CoOperativeValue {
     backgroundImage: "assets/pragatishil/pragatishil_background.png",
     clientCode: 'KFK94JBG3T',
     clientSecret: "152137",
-    coOperativeName: 'Pragatishil Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/pragatishil/pragatishil_logo.png',
     splashImage: "assets/pragatishil/pragatishil_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0C9044),
+    coOperativeName: "Pragatishil Saving & Credit Co-operative Ltd",
   );
   static final CoOperative shitalCoop = CoOperative(
-    //shree removed form name
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -1149,9 +1142,9 @@ class CoOperativeValue {
     clientCode: 'JVE6CTMBM0',
     clientSecret: "166409",
     splashImage: "assets/shital/shital_splash.png",
-    coOperativeName: 'Shital Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/shital/shital_logo.png',
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Shree Shital Saving and Credit Co-operative Ltd",
   );
   static final CoOperative darshanCoop = CoOperative(
     appStoreID: "",
@@ -1161,10 +1154,10 @@ class CoOperativeValue {
     backgroundImage: "assets/darshan/darshan_background.png",
     clientCode: '73NJJ0P2V8',
     clientSecret: "170801",
-    coOperativeName: 'Darshan Saving & Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/darshan/darshan_logo.png',
     splashImage: "assets/darshan/darshan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00AF01),
+    coOperativeName: "Darshan Saving & Credit Cooperative Ltd",
   );
   static final CoOperative smartUdhamshilCoop = CoOperative(
     appStoreID: "",
@@ -1174,10 +1167,10 @@ class CoOperativeValue {
     backgroundImage: "assets/smartUddhamshil/smartUddhamshil_background.png",
     clientCode: 'N5T3CEJ181',
     clientSecret: "138633",
-    coOperativeName: 'Smart Udhamshil Co-Operative Ltd',
     coOperativeLogo: 'assets/smartUddhamshil/smartUddhamshil_logo.png',
     splashImage: "assets/smartUddhamshil/smartUddhamshil_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF09BF3D),
+    coOperativeName: "Smart Udhamshil Co-Operative Ltd",
   );
   static final CoOperative udhamshilKrishiYantrikCoop = CoOperative(
     appStoreID: "",
@@ -1187,10 +1180,10 @@ class CoOperativeValue {
     backgroundImage: "assets/uddhamshilKrishi/uddhamshil_krishi_background.png",
     clientCode: 'ZPOP3RQEFJ',
     clientSecret: "185109",
-    coOperativeName: 'Udhamshil Krishi Yantrikaran Co-operative Ltd.',
     coOperativeLogo: 'assets/uddhamshilKrishi/uddhamshil_krishi_logo.png',
     splashImage: "assets/uddhamshilKrishi/uddhamshil_krishi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF8FC040),
+    coOperativeName: "Udhamshil Krishi Yantrikaran Co-operative Ltd",
   );
   static final CoOperative shreeDigopanCoop = CoOperative(
     appStoreID: "",
@@ -1200,10 +1193,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeDigopan/shreeDigopan_background.png",
     clientCode: '306KNIDTNO',
     clientSecret: "146815",
-    coOperativeName: 'Shree Digopan Samajik Udhami Mahila Sahakari Sanstha Ltd',
     coOperativeLogo: 'assets/shreeDigopan/shreeDigopan_logo.png',
     splashImage: "assets/shreeDigopan/shreeDigopan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009225),
+    coOperativeName: "Shree Digopan Samajik Udhami Mahila Sahakari Sanstha Ltd",
   );
   static final CoOperative queenCoop = CoOperative(
     appStoreID: "",
@@ -1213,10 +1206,10 @@ class CoOperativeValue {
     backgroundImage: "assets/queenCoop/queen_background.png",
     clientCode: 'NES36H9DCV',
     clientSecret: "196955",
-    coOperativeName: 'Queen Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/queenCoop/queen_logo.png',
     splashImage: "assets/queenCoop/queen_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0072BC),
+    coOperativeName: "Queen Saving and Credit Co-operative Ltd",
   );
   static final CoOperative nayaKiranCoop = CoOperative(
     appStoreID: "",
@@ -1226,10 +1219,10 @@ class CoOperativeValue {
     backgroundImage: "assets/nayakiran/nayakiran_background.png",
     clientCode: 'ZJE3W8JRYD',
     clientSecret: "116975",
-    coOperativeName: 'Naya Kiran Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/nayakiran/nayakiran_logo.png',
     splashImage: "assets/nayakiran/nayakiran_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF001A5A),
+    coOperativeName: "Naya Kiran Saving and Credit Co-operative Ltd",
   );
 
   static final CoOperative kendrabinduCoop = CoOperative(
@@ -1240,10 +1233,10 @@ class CoOperativeValue {
     backgroundImage: "assets/kendrabindu/kendrabindu_background.png",
     clientCode: 'S2S87QYX5O',
     clientSecret: "179940",
-    coOperativeName: 'Kendrabindu multipurpose sahakari sanstha Ltd.',
     coOperativeLogo: 'assets/kendrabindu/kendrabindu_logo.png',
     splashImage: "assets/kendrabindu/kendrabindu_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF308188),
+    coOperativeName: "Kendrabindu multipurpose Co-operative Ltd",
   );
   static final CoOperative eastwestCoop = CoOperative(
     appStoreID: "",
@@ -1253,10 +1246,10 @@ class CoOperativeValue {
     backgroundImage: "assets/eastwest/eastwest_background.png",
     clientCode: 'OKYT63VF2S',
     clientSecret: "210721",
-    coOperativeName: 'East West Saving and Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/eastwest/eastwest_logo.png',
     splashImage: "assets/eastwest/eastwest_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006311),
+    coOperativeName: "East West Saving and Credit Cooperative Ltd",
   );
   static final CoOperative babiraCoop = CoOperative(
     appStoreID: "",
@@ -1266,10 +1259,10 @@ class CoOperativeValue {
     backgroundImage: "assets/babira/babira_background.png",
     clientCode: '2VNQVLC1Z9',
     clientSecret: "131433",
-    coOperativeName: 'Babira Multipurpose Cooperative Limited.',
     coOperativeLogo: 'assets/babira/babira_logo.png',
     splashImage: "assets/babira/babira_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF25428E),
+    coOperativeName: "Babira Multipurpose Cooperative Limited",
   );
   static final CoOperative devshreeCoop = CoOperative(
     appStoreID: "",
@@ -1279,10 +1272,10 @@ class CoOperativeValue {
     backgroundImage: "assets/devshree/devshree_background.png",
     clientCode: '9B3YEMMDY2',
     clientSecret: "197212",
-    coOperativeName: 'Devashree Saving and Credit Co-operative Ltd',
     coOperativeLogo: 'assets/devshree/devshree_logo.png',
     splashImage: "assets/devshree/devshree_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF28A914),
+    coOperativeName: "Devshree Saving and Credit Co-operative Ltd",
   );
 
   static final CoOperative ektaMultipurposeCoop = CoOperative(
@@ -1293,10 +1286,10 @@ class CoOperativeValue {
     backgroundImage: "assets/ektaMultipurpose/ektaMulti_background.png",
     clientCode: 'Z99TZE0GKZ',
     clientSecret: "113270",
-    coOperativeName: 'Ekta Multipurpose Cooperative Limited.',
     coOperativeLogo: 'assets/ektaMultipurpose/ektaMulti_logo.png',
     splashImage: "assets/ektaMultipurpose/ektaMulti_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0C8387),
+    coOperativeName: "Ekta Multipurpose Co-operative Ltd",
   );
   static final CoOperative shwetbhairabCoop = CoOperative(
     appStoreID: "",
@@ -1306,10 +1299,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shwetbhairab/shwetbhairab_background.png",
     clientCode: '98ZAC5SMQB',
     clientSecret: "191770",
-    coOperativeName: 'ShwetBhairab Saving and Credit Co-operative Ltd',
     coOperativeLogo: 'assets/shwetbhairab/shwetbhairab_logo.png',
     splashImage: "assets/shwetbhairab/shwetbhairab_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF1B1464),
+    coOperativeName: "ShwetBhairab Saving and Credit Co-operative Ltd",
   );
   static final CoOperative karmathCoop = CoOperative(
     appStoreID: "",
@@ -1319,10 +1312,10 @@ class CoOperativeValue {
     backgroundImage: "assets/karmath/karmath_background.png",
     clientCode: 'XCNY87XJGV',
     clientSecret: "220744",
-    coOperativeName: 'Karmath Samajik Uddhami Mahila Sahakari Sastha Limited',
     coOperativeLogo: 'assets/karmath/karmath_logo.png',
     splashImage: "assets/karmath/karmath_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF008131),
+    coOperativeName: "Karmath Samajik Uddhami Mahila Sahakari Sastha Limited",
   );
   static final CoOperative shreeEkataCoop = CoOperative(
     appStoreID: "",
@@ -1332,10 +1325,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeEkata/shreeEkata_background.png",
     clientCode: 'NHQZWVPYQJ',
     clientSecret: "151694",
-    coOperativeName: 'ShreeEkata Saving and Credit Co-Operative Ltd',
     coOperativeLogo: 'assets/shreeEkata/shreeEkata_logo.png',
     splashImage: "assets/shreeEkata/shreeEkata_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "ShreeEkata Saving and Credit Co-Operative Ltd",
   );
   static final CoOperative shreeJanaEkikritCoop = CoOperative(
     appStoreID: "",
@@ -1345,10 +1338,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeJanaEkikrit/shreeJanaEkikrit_background.png",
     clientCode: '6139Y4LZ2F',
     clientSecret: "170370",
-    coOperativeName: 'Shree Jana Ekikrit Multipurpose Co-operative Society Ltd',
     coOperativeLogo: 'assets/shreeJanaEkikrit/shreeJanaEkikrit_logo.png',
     splashImage: "assets/shreeJanaEkikrit/shreeJanaEkikrit_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF3D6028),
+    coOperativeName: "Shree Jana Ekikrit Multipurpose Co-operative Society Ltd",
   );
   static final CoOperative shreeSiddhiGaneshCoop = CoOperative(
     appStoreID: "",
@@ -1359,10 +1352,10 @@ class CoOperativeValue {
         "assets/shreeSiddhiGanesh/shreeSiddhiGanesh_background.png",
     clientCode: 'KTAVSCY9WQ',
     clientSecret: "212150",
-    coOperativeName: 'Shree Siddi Ganesh Saving & Credit Co-operative Ltd',
     coOperativeLogo: 'assets/shreeSiddhiGanesh/shreeSiddhiGanesh_logo.png',
     splashImage: "assets/shreeSiddhiGanesh/shreeSiddhiGanesh_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF188649),
+    coOperativeName: "Shree Siddi Ganesh Saving & Credit Co-operative Ltd",
   );
 
   static final CoOperative mithilaCoop = CoOperative(
@@ -1373,10 +1366,10 @@ class CoOperativeValue {
     backgroundImage: "assets/mithila/mithila_background.png",
     clientCode: 'A836WR7RBM',
     clientSecret: "181433",
-    coOperativeName: 'Mithila Saving and Credit Co-operative Pvt. Ltd',
     coOperativeLogo: 'assets/mithila/mithila_logo.png',
     splashImage: "assets/mithila/mithila_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Mithila Saving and Credit Co-operative Pvt",
   );
   static final CoOperative shreeMahilaTarkariCoop = CoOperative(
     appStoreID: "",
@@ -1387,11 +1380,11 @@ class CoOperativeValue {
         "assets/shreeMahilaTarkari/shreeMahilaTarkari_background.png",
     clientCode: 'BZB7NFYQS8',
     clientSecret: "211773",
-    coOperativeName:
-        'Shree Mahila Tarkari Byabasai Saving and Credit Co-operative Limited',
     coOperativeLogo: 'assets/shreeMahilaTarkari/shreeMahilaTarkari_logo.png',
     splashImage: "assets/shreeMahilaTarkari/shreeMahilaTarkari_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName:
+        "Shree Mahila Tarkari Byabasai Saving and Credit Co-operative Limited",
   );
 
   static final CoOperative aaratiCoop = CoOperative(
@@ -1402,10 +1395,10 @@ class CoOperativeValue {
     backgroundImage: "assets/aarati/aarati_background.png",
     clientCode: 'PHZDAEF1CW',
     clientSecret: "156872",
-    coOperativeName: 'Aarati Saving and Credit Co-operative Ltd',
     coOperativeLogo: 'assets/aarati/aarati_logo.png',
     splashImage: "assets/aarati/aarati_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF1A81CA),
+    coOperativeName: "Aarati Saving and Credit Cooperative Ltd",
   );
   static final CoOperative janataCoop = CoOperative(
     appStoreID: "",
@@ -1415,10 +1408,10 @@ class CoOperativeValue {
     backgroundImage: "assets/janata/janata_background.png",
     clientCode: 'WZO4YQO6F6',
     clientSecret: "165161",
-    coOperativeName: 'Janata Multipurpose Co-operative Limited',
     coOperativeLogo: 'assets/janata/janata_logo.png',
     splashImage: "assets/janata/janata_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00803E),
+    coOperativeName: "Janata Multipurpose Co-operative Limited",
   );
   static final CoOperative agrasarCoop = CoOperative(
     appStoreID: "",
@@ -1428,10 +1421,10 @@ class CoOperativeValue {
     backgroundImage: "assets/agrasar/agrasar_background.png",
     clientCode: '60851K9IMW',
     clientSecret: "156581",
-    coOperativeName: 'agrasar Saving and Credit Co-operative Pvt. Ltd',
     coOperativeLogo: 'assets/agrasar/agrasar_logo.png',
     splashImage: "assets/agrasar/agrasar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0C7E40),
+    coOperativeName: "Agrasar Savings And Credits Cooperative Limited",
   );
   static final CoOperative khotangJaleshworiCoop = CoOperative(
     appStoreID: "",
@@ -1442,11 +1435,11 @@ class CoOperativeValue {
         "assets/khotangJaleshwori/khotangJaleshwori_background.png",
     clientCode: 'SJ4IRJJQEO',
     clientSecret: "135763",
-    coOperativeName:
-        'Khotang Jaleshwori Saving and Credit Co-operative Pvt. Ltd',
     coOperativeLogo: 'assets/khotangJaleshwori/khotangJaleshwori_logo.png',
     splashImage: "assets/khotangJaleshwori/khotangJaleshwori_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF005AAB),
+    coOperativeName:
+        "Khotang Jaleshwori Saving and Credit Co-operative Limited",
   );
   static final CoOperative shreeMitereeCoop = CoOperative(
     appStoreID: "",
@@ -1456,10 +1449,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeMiteree/shreeMiteree_background.png",
     clientCode: 'R5JUKWMHK7',
     clientSecret: "111804",
-    coOperativeName: 'Shree Miteree Saving and Credit Cooperative ltd',
     coOperativeLogo: 'assets/shreeMiteree/shreeMiteree_logo.png',
     splashImage: "assets/shreeMiteree/shreeMiteree_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00964F),
+    coOperativeName: "Shree Miteree Saving and Credit Cooperative ltd",
   );
   static final CoOperative puspanjaliCoop = CoOperative(
     appStoreID: "",
@@ -1469,10 +1462,10 @@ class CoOperativeValue {
     backgroundImage: "assets/puspanjali/puspanjali_background.png",
     clientCode: '0R05P85NRG',
     clientSecret: "182841",
-    coOperativeName: 'Puspanjali Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/puspanjali/puspanjali_logo.png',
     splashImage: "assets/puspanjali/puspanjali_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009C4F),
+    coOperativeName: "Puspanjali Saving & Credit Co-operative Ltd",
   );
 
   static final CoOperative aakashbaniCoop = CoOperative(
@@ -1483,10 +1476,10 @@ class CoOperativeValue {
     backgroundImage: "assets/aakashbani/aakashbani_background.png",
     clientCode: 'IPUSNJ3AJF',
     clientSecret: "194455",
-    coOperativeName: 'Aakashbani Saving and Credit Cooperative Pvt Ltd',
     coOperativeLogo: 'assets/aakashbani/aakashbani_logo.png',
     splashImage: "assets/aakashbani/aakashbani_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A655),
+    coOperativeName: "Aakashbani Saving and Credit Cooperative Pvt Ltd",
   );
   static final CoOperative shreeAmrapaliCoop = CoOperative(
     appStoreID: "",
@@ -1496,10 +1489,10 @@ class CoOperativeValue {
     backgroundImage: "assets/amrapali/amrapali_background.png",
     clientCode: 'BGJW1YZF5M',
     clientSecret: "172325",
-    coOperativeName: 'Shree Amrapali Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/amrapali/amrapali_logo.png',
     splashImage: "assets/amrapali/amrapali_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF004382),
+    coOperativeName: "Shree Amrapali Saving and Credit Co-operative Ltd",
   );
   static final CoOperative autobikashCoop = CoOperative(
     appStoreID: "",
@@ -1509,10 +1502,10 @@ class CoOperativeValue {
     backgroundImage: "assets/autobikash/autobikash_background.png",
     clientCode: 'XKQPM6WHFO',
     clientSecret: "126375",
-    coOperativeName: 'Auto Bikash Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/autobikash/autobikash_logo.png',
     splashImage: "assets/autobikash/autobikash_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0071BC),
+    coOperativeName: "Auto Bikash Saving and Credit Cooperative Ltd",
   );
   static final CoOperative starlightCoop = CoOperative(
     appStoreID: "",
@@ -1522,10 +1515,10 @@ class CoOperativeValue {
     backgroundImage: "assets/starlight/starlight_background.png",
     clientCode: 'ND53ZGJ4IE',
     clientSecret: "197881",
-    coOperativeName: 'Starlight Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/starlight/starlight_logo.png',
     splashImage: "assets/starlight/starlight_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF01A54E),
+    coOperativeName: "Starlight Saving and Credit Co-operative Ltd",
   );
 
   static final CoOperative shreeMarsyangdiCoop = CoOperative(
@@ -1536,10 +1529,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeMarsyangdi/shreeMarsyangdi_background.png",
     clientCode: 'A99TH6FB12',
     clientSecret: "191225",
-    coOperativeName: 'Shree Marsyangdi Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeMarsyangdi/shreeMarsyangdi_logo.png',
     splashImage: "assets/shreeMarsyangdi/shreeMarsyangdi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Shree Marsyangdi Multipurpose Co-operative Ltd",
   );
   static final CoOperative tanahunKalikaCoop = CoOperative(
     appStoreID: "",
@@ -1549,10 +1542,10 @@ class CoOperativeValue {
     backgroundImage: "assets/tanahunKalika/tanahunKalika_background.png",
     clientCode: 'U82ELN31YI',
     clientSecret: "218380",
-    coOperativeName: 'Tanahun Kalika Saving and Credit Cooperative Ltd	',
     coOperativeLogo: 'assets/tanahunKalika/tanahunKalika_logo.png',
     splashImage: "assets/tanahunKalika/tanahunKalika_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF26CF02),
+    coOperativeName: "Tanahun Kalika Saving and Credit Cooperative Ltd",
   );
 
   static final CoOperative khullabajarCoop = CoOperative(
@@ -1563,10 +1556,10 @@ class CoOperativeValue {
     backgroundImage: "assets/khullabajar/khullabajar_background.png",
     clientCode: 'FXUBBEG3VP',
     clientSecret: "124580",
-    coOperativeName: 'Khulla Bajar Saving and Credit Co-operative Limited	',
     coOperativeLogo: 'assets/khullabajar/khullabajar_logo.png',
     splashImage: "assets/khullabajar/khullabajar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Khulla Bajar Saving and Credit Co-operative Limited",
   );
   static final CoOperative abhibadanCoop = CoOperative(
     appStoreID: "",
@@ -1576,10 +1569,10 @@ class CoOperativeValue {
     backgroundImage: "assets/abhibadan/abhibadan_background.png",
     clientCode: 'WQPWTJYR85',
     clientSecret: "179061",
-    coOperativeName: 'Abhibadan Multipurpose Co-operative Society Limited',
     coOperativeLogo: 'assets/abhibadan/abhibadan_logo.png',
     splashImage: "assets/abhibadan/abhibadan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Abhibadan Multipurpose Cooperative Society Limited",
   );
   static final CoOperative lifeVisionCoop = CoOperative(
     appStoreID: "",
@@ -1589,10 +1582,10 @@ class CoOperativeValue {
     backgroundImage: "assets/lifeVision/lifeVision_background.png",
     clientCode: 'VN9ZMLS8PT',
     clientSecret: "169878",
-    coOperativeName: 'Life Vision Saving & Credit Co-operative Limited',
     coOperativeLogo: 'assets/lifeVision/lifeVision_logo.png',
     splashImage: "assets/lifeVision/lifeVision_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0066B2),
+    coOperativeName: "Life Vision Saving & Credit Co-operative Limited",
   );
   static final CoOperative chandaniCoop = CoOperative(
     appStoreID: "",
@@ -1602,10 +1595,10 @@ class CoOperativeValue {
     backgroundImage: "assets/chandani/chandani_background.png",
     clientCode: '7IMKC3F79F',
     clientSecret: "199867",
-    coOperativeName: 'Chandani Saving and Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/chandani/chandani_logo.png',
     splashImage: "assets/chandani/chandani_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Chandani Saving and Credit Co-operative Ltd",
   );
   static final CoOperative sparklingCoop = CoOperative(
     appStoreID: "",
@@ -1615,10 +1608,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sparkling/sparkling_background.png",
     clientCode: '4AJJY4XH26',
     clientSecret: "217254",
-    coOperativeName: 'Sparkling Agricultural Co-operative Limited	',
     coOperativeLogo: 'assets/sparkling/sparkling_logo.png',
     splashImage: "assets/sparkling/sparkling_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2B4C8F),
+    coOperativeName: "Sparkling Agricultural Co-operative Limited",
   );
   static final CoOperative pacificCoop = CoOperative(
     appStoreID: "",
@@ -1628,10 +1621,10 @@ class CoOperativeValue {
     backgroundImage: "assets/pacific/pacific_background.png",
     clientCode: 'M66VVYESH8',
     clientSecret: "126072",
-    coOperativeName: 'Pacific Saving and Credit Co-operative Limited',
     coOperativeLogo: 'assets/pacific/pacific_logo.png',
     splashImage: "assets/pacific/pacific_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF004382),
+    coOperativeName: "Pacific Saving and Credit Co-operative Limited",
   );
   static final CoOperative samutthanCoop = CoOperative(
     appStoreID: "",
@@ -1641,23 +1634,23 @@ class CoOperativeValue {
     backgroundImage: "assets/samutthan/samutthan_background.png",
     clientCode: 'RF0O6228ND',
     clientSecret: "143283",
-    coOperativeName: 'Samutthan Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/samutthan/samutthan_logo.png',
     splashImage: "assets/samutthan/samutthan_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00713B),
+    coOperativeName: "Samutthan Multipurpose Co-operative Ltd",
   );
   static final CoOperative hamroDahachokCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/hamroDahachok/hamroDahachok_banner.png",
-    backgroundImage: "assets/hamroDahachok/hamroDahachok_background.png",
-    clientCode: 'LGW0MSQB9C',
+    clientCode: "LGW0MSQB9C",
     clientSecret: "181863",
-    coOperativeName: 'hamroDahachok Multipurpose Co-operative Ltd.',
+    backgroundImage: "assets/hamroDahachok/hamroDahachok_background.png",
+    bannerImage: "assets/hamroDahachok/hamroDahachok_background.png",
     coOperativeLogo: 'assets/hamroDahachok/hamroDahachok_logo.png',
     splashImage: "assets/hamroDahachok/hamroDahachok_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Hamro Dahachok Saving & credit Cooperative Ltd",
   );
   static final CoOperative globalMultiCoop = CoOperative(
     appStoreID: "",
@@ -1667,10 +1660,10 @@ class CoOperativeValue {
     backgroundImage: "assets/globalMulti/global_background.png",
     clientCode: 'HVAUGR1WUB',
     clientSecret: "173627",
-    coOperativeName: 'globalMulti Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/globalMulti/global_logo.png',
     splashImage: "assets/globalMulti/global_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF1A9640),
+    coOperativeName: "Global Multipurpose Cooperative Ltd",
   );
   static final CoOperative dhanapraptiCoop = CoOperative(
     appStoreID: "",
@@ -1680,10 +1673,10 @@ class CoOperativeValue {
     backgroundImage: "assets/dhanaprapti/dhanaprapti_background.png",
     clientCode: 'B4R4X90Z4K',
     clientSecret: "209754",
-    coOperativeName: 'dhanaprapti Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/dhanaprapti/dhanaprapti_logo.png',
     splashImage: "assets/dhanaprapti/dhanaprapti_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF1B1464),
+    coOperativeName: "Dhanaprapti Multipurpose Co-operative Limited",
   );
   static final CoOperative shubhashreeMultiCoop = CoOperative(
     appStoreID: "",
@@ -1693,10 +1686,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shubhashreeMulti/shubhashreeMulti_background.png",
     clientCode: 'LKTKXRWIH4',
     clientSecret: "186278",
-    coOperativeName: 'Shubhashree Multipurpose Co-operative Society Ltd.',
     coOperativeLogo: 'assets/shubhashreeMulti/shubhashreeMulti_logo.png',
     splashImage: "assets/shubhashreeMulti/shubhashreeMulti_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF3524BE),
+    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd",
   );
   static final CoOperative belchautaraCoop = CoOperative(
     appStoreID: "",
@@ -1706,10 +1699,10 @@ class CoOperativeValue {
     backgroundImage: "assets/belchautara/belchautara_background.png",
     clientCode: 'HRFPRIDAFG',
     clientSecret: "204591",
-    coOperativeName: 'Belchautara Saving and Credit Cooperative Ltd',
     coOperativeLogo: 'assets/belchautara/belchautara_logo.png',
     splashImage: "assets/belchautara/belchautara_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF3F4070),
+    coOperativeName: "Belchautara Saving and Credit Cooperative Ltd",
   );
   static final CoOperative shreeNawadeepCoop = CoOperative(
     appStoreID: "",
@@ -1719,10 +1712,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeNawadeep/shreeNawadeep_background.png",
     clientCode: 'OK5465LF0V',
     clientSecret: "177524",
-    coOperativeName: 'Shree Nawadeep Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeNawadeep/shreeNawadeep_logo.png',
     splashImage: "assets/shreeNawadeep/shreeNawadeep_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF00A95A),
+    coOperativeName: "Shree Nawadeep Multipurpose Co-operative Ltd",
   );
   static final CoOperative shubhaShreeCoop = CoOperative(
     appStoreID: "",
@@ -1732,37 +1725,35 @@ class CoOperativeValue {
     backgroundImage: "assets/shubhaShree/shubhaShree_background.png",
     clientCode: '57XRZEHTMC',
     clientSecret: "151881",
-    coOperativeName: 'Shubha Shree Saving & Credit Co-operative Ltd',
     coOperativeLogo: 'assets/shubhaShree/shubhaShree_logo.png',
     splashImage: "assets/shubhaShree/shubhaShree_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0087BC),
+    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd",
   );
   static final CoOperative yugbaniCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/yugbani/yugbani_banner.png",
-    backgroundImage: "assets/yugbani/yugbani_background.png",
-    clientCode: 'D743MOWCBU',
-    clientSecret: "157464",
-    coOperativeName: 'Yugbani Saving & Credit Co-operative Ltd.',
-    coOperativeLogo: 'assets/yugbani/yugbani_logo.png',
-    splashImage: "assets/yugbani/yugbani_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/yugbani/yugbani_banner.png",
+      backgroundImage: "assets/yugbani/yugbani_background.png",
+      clientCode: 'D743MOWCBU',
+      clientSecret: "157464",
+      coOperativeLogo: 'assets/yugbani/yugbani_logo.png',
+      splashImage: "assets/yugbani/yugbani_splash.png",
+      primaryColor: const Color(0xFF1F9400),
+      coOperativeName: "Yugbani Saving & Credit Co-operative Ltd.");
   static final CoOperative bouddhamodeCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/bouddhamode/bouddhamode_banner.png",
-    backgroundImage: "assets/bouddhamode/bouddhamode_background.png",
-    clientCode: 'ABDDG2TLRP',
-    clientSecret: "190516",
-    coOperativeName: 'Shree Boudhamode Krishi Sahakari Sanstha	',
-    coOperativeLogo: 'assets/bouddhamode/bouddhamode_logo.png',
-    splashImage: "assets/bouddhamode/bouddhamode_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/bouddhamode/bouddhamode_banner.png",
+      backgroundImage: "assets/bouddhamode/bouddhamode_background.png",
+      clientCode: 'ABDDG2TLRP',
+      clientSecret: "190516",
+      coOperativeLogo: 'assets/bouddhamode/bouddhamode_logo.png',
+      splashImage: "assets/bouddhamode/bouddhamode_splash.png",
+      primaryColor: const Color(0xFF09730E),
+      coOperativeName: "Shree Boudhamode Krishi Sahakari Sanstha");
   static final CoOperative mangalpurCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1771,10 +1762,10 @@ class CoOperativeValue {
     backgroundImage: "assets/mangalpur/mangalpur_background.png",
     clientCode: 'AM3WM748KK',
     clientSecret: "219935",
-    coOperativeName: 'Shree Mangalpur Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/mangalpur/mangalpur_logo.png',
     splashImage: "assets/mangalpur/mangalpur_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF018D46),
+    coOperativeName: "Shree Mangalpur Saving & Credit Co-operative Ltd.",
   );
   static final CoOperative shreeGaneshCoop = CoOperative(
     appStoreID: "",
@@ -1784,10 +1775,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeGanesh/shreeGanesh_background.png",
     clientCode: 'XZLH1RFWZN',
     clientSecret: "195593",
-    coOperativeName: 'Shree Ganesh Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeGanesh/shreeGanesh_logo.png',
     splashImage: "assets/shreeGanesh/shreeGanesh_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Shree Ganesh Saving & Credit Co-operative Ltd.",
   );
 
   static final CoOperative graminAarthikCoop = CoOperative(
@@ -1798,10 +1789,10 @@ class CoOperativeValue {
     backgroundImage: "assets/graminAarthik/graminAarthik_background.png",
     clientCode: 'E7T0N0IAZ5',
     clientSecret: "154468",
-    coOperativeName: 'Shree Ganesh Saving & Credit Co-operative Ltd.',
     coOperativeLogo: 'assets/graminAarthik/graminAarthik_logo.png',
     splashImage: "assets/graminAarthik/graminAarthik_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF066735),
+    coOperativeName: "Gramin Aarthik Saving and Credit Co-operative Ltd.",
   );
   static final CoOperative samyuktaCoop = CoOperative(
     appStoreID: "",
@@ -1811,10 +1802,10 @@ class CoOperativeValue {
     backgroundImage: "assets/samyukta/samyukta_background.png",
     clientCode: 'AZWL98N6RX',
     clientSecret: "145007",
-    coOperativeName: 'Samyukta Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/samyukta/samyukta_logo.png',
     splashImage: "assets/samyukta/samyukta_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF0DB14B),
+    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd.",
   );
   static final CoOperative systematicCoop = CoOperative(
     appStoreID: "",
@@ -1824,10 +1815,10 @@ class CoOperativeValue {
     backgroundImage: "assets/systematic/systematic_background.png",
     clientCode: 'O9YSV2CLCE',
     clientSecret: "129387",
-    coOperativeName: 'systematic Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/systematic/systematic_logo.png',
     splashImage: "assets/systematic/systematic_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF010C80),
+    coOperativeName: "Systematic Demo CBS",
   );
   static final CoOperative shreeJamuneCoop = CoOperative(
     appStoreID: "",
@@ -1837,10 +1828,10 @@ class CoOperativeValue {
     backgroundImage: "assets/shreeJamune/shreeJamune_background.png",
     clientCode: '6B9SEBIAJA',
     clientSecret: "176165",
-    coOperativeName: 'Shree Jamune Multipurpose Co-operative Ltd.',
     coOperativeLogo: 'assets/shreeJamune/shreeJamune_logo.png',
     splashImage: "assets/shreeJamune/shreeJamune_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF312783),
+    coOperativeName: "Shree Jamune Multipurpose Co-operative Ltd",
   );
   static final CoOperative drabyaCoop = CoOperative(
     appStoreID: "",
@@ -1850,24 +1841,23 @@ class CoOperativeValue {
     backgroundImage: "assets/drabya/drabya_background.png",
     clientCode: '9PNSYZ76AC',
     clientSecret: "217994",
-    coOperativeName: 'Drabya Saving & credit Cooperative Ltd.',
     coOperativeLogo: 'assets/drabya/drabya_logo.png',
     splashImage: "assets/drabya/drabya_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009F4D),
+    coOperativeName: "Drabya Saving & credit Cooperative Ltd.",
   );
   static final CoOperative omshreeomCoop = CoOperative(
-    appStoreID: "",
-    packageName: "",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/omshreeom/omshreeom_banner.png",
-    backgroundImage: "assets/omshreeom/omshreeom_background.png",
-    clientCode: 'CYO161B42J',
-    clientSecret: "190103",
-    coOperativeName: 'Om Shree Om Saving & credit Cooperative Ltd.',
-    coOperativeLogo: 'assets/omshreeom/omshreeom_logo.png',
-    splashImage: "assets/omshreeom/omshreeom_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
-  );
+      appStoreID: "",
+      packageName: "",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/omshreeom/omshreeom_banner.png",
+      backgroundImage: "assets/omshreeom/omshreeom_background.png",
+      clientCode: 'CYO161B42J',
+      clientSecret: "190103",
+      coOperativeLogo: 'assets/omshreeom/omshreeom_logo.png',
+      splashImage: "assets/omshreeom/omshreeom_splash.png",
+      primaryColor: const Color(0xFF1B1464),
+      coOperativeName: "Om Shree Om Saving & Credit Co-operative Ltd.");
   static final CoOperative upayogiCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -1876,11 +1866,11 @@ class CoOperativeValue {
     backgroundImage: "assets/upayogi/upayogi_background.png",
     clientCode: '75ISE23Z2G',
     clientSecret: "148720",
-    coOperativeName:
-        'Upayogi Sahasrabdi Bachat Tatha Rin Sahakari Sanstha Ltd.',
     coOperativeLogo: 'assets/upayogi/upayogi_logo.png',
     splashImage: "assets/upayogi/upayogi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF2E3192),
+    coOperativeName:
+        "Upayogi Sahasrabdi Bachat Tatha Rin Sahakari Sanstha Ltd.",
   );
   static final CoOperative sakarCoop = CoOperative(
     appStoreID: "",
@@ -1890,10 +1880,10 @@ class CoOperativeValue {
     backgroundImage: "assets/sakar/sakar_background.png",
     clientCode: 'ZOF9U4YHED',
     clientSecret: "111989",
-    coOperativeName: 'Sakar Agriculture Cooperative Ltd.',
     coOperativeLogo: 'assets/sakar/sakar_logo.png',
     splashImage: "assets/sakar/sakar_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF04A44C),
+    coOperativeName: "Sakar Agriculture Cooperative Ltd.",
   );
 
 //*****************// All sanakishan coop env //*****************//
@@ -1906,10 +1896,10 @@ class CoOperativeValue {
     backgroundImage: "assets/skKohabara/skKohabara_background.png",
     clientCode: '8HBJ3GXUN6',
     clientSecret: "132064",
-    coOperativeName: 'Shree Boudhamode Krishi Sahakari Sanstha',
     coOperativeLogo: 'assets/skKohabara/skKohabara_logo.png',
     splashImage: "assets/skKohabara/skKohabara_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    coOperativeName: "Sana Kisan Agriculture Mahila Cooperative Ltd Kohabara",
+    primaryColor: const Color(0xFF009A4E),
   );
   static final CoOperative skKhajurgachhi = CoOperative(
     appStoreID: "",
@@ -1919,11 +1909,10 @@ class CoOperativeValue {
     backgroundImage: "assets/skKhajurgachhi/skKhajurgachhi_background.png",
     clientCode: 'NM2Q49HBNO',
     clientSecret: "140703",
-    coOperativeName:
-        'Sana Kisan Agriculture Cooperative Society Ltd. Khajurgachhi',
     coOperativeLogo: 'assets/skKhajurgachhi/skKhajurgachhi_logo.png',
     splashImage: "assets/skKhajurgachhi/skKhajurgachhi_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Khajurgachhi Sana Kisan Agriculture Cooperative Ltd",
   );
   static final CoOperative skPatigaun = CoOperative(
     appStoreID: "",
@@ -1933,10 +1922,10 @@ class CoOperativeValue {
     backgroundImage: "assets/skPatigaun/skPatigaun_background.png",
     clientCode: 'VX8Z9P1S9M',
     clientSecret: "151526",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Patigaun',
     coOperativeLogo: 'assets/skPatigaun/skPatigaun_logo.png',
     splashImage: "assets/skPatigaun/skPatigaun_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Patigaun",
   );
   static final CoOperative skKhudunabari = CoOperative(
     appStoreID: "",
@@ -1946,11 +1935,11 @@ class CoOperativeValue {
     backgroundImage: "assets/skKhudunabari/skKhudunabari_background.png",
     clientCode: '1ULEC7X5XE',
     clientSecret: "201567",
-    coOperativeName:
-        'Sana Kisan Agriculture Cooperative Society Ltd. khudunabari',
     coOperativeLogo: 'assets/skKhudunabari/skKhudunabari_logo.png',
     splashImage: "assets/skKhudunabari/skKhudunabari_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName:
+        "Sana Kisan Agriculture Cooperative Society Ltd. khudunabari",
   );
 
   static final CoOperative skJhurkiya = CoOperative(
@@ -1961,10 +1950,10 @@ class CoOperativeValue {
     backgroundImage: "assets/skJhurkiya/skJhurkiya_background.png",
     clientCode: 'AJ55922FRN',
     clientSecret: "117059",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Society Ltd. Jhurkiya',
     coOperativeLogo: 'assets/skJhurkiya/skJhurkiya_logo.png',
     splashImage: "assets/skJhurkiya/skJhurkiya_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Jhurkiya",
   );
   static final CoOperative skShankharpur = CoOperative(
     appStoreID: "",
@@ -1974,10 +1963,10 @@ class CoOperativeValue {
     backgroundImage: "assets/skShankharpur/skShankharpur_background.png",
     clientCode: '56ILOXKHY1',
     clientSecret: "214152",
-    coOperativeName: 'Sana Kisan Agriculture Cooperative Ltd Shankharpur',
     coOperativeLogo: 'assets/skShankharpur/skShankharpur_logo.png',
     splashImage: "assets/skShankharpur/skShankharpur_splash.png",
-    primaryColor: const Color(0xFF0b67bb),
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Shankharpur",
   );
 
   //TODO need to add client id and secret
@@ -1990,17 +1979,16 @@ class CoOperativeValue {
     backgroundImage: "assets/jharana/jharana_background.png",
     clientCode: 'EHVNI7CZJ3', //using ismart code for production for now
     clientSecret: "126489",
-    coOperativeName: 'Jharana Saving and Credit Cooperative Ltd.',
     coOperativeLogo: 'assets/jharana/jharana_logo.png',
     splashImage: "assets/jharana/jharana_splash.png",
-    primaryColor: const Color.fromARGB(255, 57, 59, 61),
+    primaryColor: const Color(0xFF2C732E),
+    coOperativeName: "Jharana Saving and Credit Cooperative Ltd",
   );
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
     backgroundImage: "assets/images/ismart_background_image.jpg",
     bannerImage: "assets/images/ismart_banner.png",
-    coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
@@ -2010,21 +1998,22 @@ class CoOperativeValue {
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
     shouldValidateCooperative: false,
+    coOperativeName: "ISMART DEMO APPKTM",
   );
 
   static final CoOperative bhaktapurSaccos = CoOperative(
     backgroundImage: "assets/bhaktapur_saccos/bhaktapur_background.png",
     bannerImage: "assets/bhaktapur_saccos/bhaktapur_banner.png",
-    coOperativeName: '',
     coOperativeLogo: "assets/bhaktapur_saccos/bhaktapur_logo.png",
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
     splashImage: "assets/bhaktapur_saccos/bhaktapur_splash.png",
-    primaryColor: const Color(0xFF010C80),
+    primaryColor: const Color(0xFF),
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
     shouldValidateCooperative: false,
+    coOperativeName: "ISMART DEMO APPKTM",
   );
 
   // // // // DEV TEST70074
@@ -2041,7 +2030,7 @@ class CoOperativeValue {
   //   clientSecret: "126489",
   //   splashImage: "assets/images/ismart_splash.jpg",
 
-  //   primaryColor: const Color(0xFF010C80),
+  //   primaryColor: const Color(0xFF),
   // );
 
   // DEV TEST70074
