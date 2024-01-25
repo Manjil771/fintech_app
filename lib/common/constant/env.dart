@@ -2257,5 +2257,5 @@ class CoOperativeValue {
     appTitle: "Kaldhara iSmart",
   );
 
-  static final CoOperative currentCoop = kaldharaCoop;
+  static final CoOperative currentCoop = aayamCoop;
 }
