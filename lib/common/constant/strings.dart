@@ -140,7 +140,7 @@ class Strings {
   static const String shubhaShreeAppTitle = 'Shubha Shree iSmart';
   static const String yugbaniAppTitle = 'Yugbani iSmart';
   static const String bouddhamodeAppTitle = 'Shree Bouddhamode iSmart';
-  static const String mangalPurAppTitle = 'Mangalpur iSmart';
+  static const String mangalpurAppTitle = 'Mangalpur iSmart';
   static const String shreeGaneshAppTitle = 'Shree Ganesh iSmart';
   static const String graminAarthikAppTitle = 'Shree Ganesh iSmart';
   static const String samyuktaAppTitle = 'Samyukta iSmart';
@@ -148,6 +148,7 @@ class Strings {
   static const String drabyaAppTitle = 'Drabya iSmart';
   static const String omshreeomAppTitle = 'Om Shree Om iSmart';
   static const String upayogiAppTitle = 'Upayogi Sahasrabdi iSmart';
+  static const String sakarAppTitle = 'Sakar iSmart';
 
-  static const APP_TITLE = aasthaAppTitle;
+  static const APP_TITLE = sakarAppTitle;
 }

@@ -154,6 +154,7 @@ class CustomTheme {
   static const Color drabyaColor = Color(0xFF009F4D);
   static const Color omshreeomColor = Color(0xFF1B1464);
   static const Color upayogiColor = Color(0xFF2E3192);
+  static const Color sakarColor = Color(0xFF04A44C);
 
   // static const Color primaryColor = aasthaColor;
 

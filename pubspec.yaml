@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.49+49 ##chirayu
+version: 0.0.48+48 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -111,12 +111,12 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
-    - assets/kamana/
+    # - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
@@ -157,7 +157,7 @@ flutter:
     # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -195,7 +195,7 @@ flutter:
     # - assets/upakar/
     # - assets/subhodaya/
     # - assets/garimaAgri/
-    - assets/aastha/
+    # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -234,7 +234,7 @@ flutter:
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-    - assets/aakashbani/
+    # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
@@ -261,14 +261,17 @@ flutter:
     # - assets/shreeGanesh/
     # - assets/graminAarthik/
     # - assets/samyukta/
-    - assets/systematic/
+    # - assets/systematic/
     # - assets/systematic/
     # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-  
-    #sana ksihan assets
+    # - assets/sakar/
+    - assets/aayam/
+    # - assets/kaldhara/
+    
+    # sana ksihan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
