@@ -34,11 +34,13 @@ import 'package:mobile_scanner/mobile_scanner.dart';
 import '../../../common/http/response.dart';
 
 class QRScannerWidgets extends StatefulWidget {
+  final List<WalletModel> walletLists;
   final String? remarks;
 
   const QRScannerWidgets({
     Key? key,
     this.remarks,
+    required this.walletLists,
   }) : super(key: key);
 
   @override
@@ -552,66 +554,92 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     });
   }
 
-  _processScannedQR({required String qrCode}) {
+  _processScannedQR({
+    required String qrCode,
+  }) {
     try {
       Map<String, dynamic> _decode = jsonDecode(qrCode);
+      WalletModel getWalletData(String walletName) {
+        return widget.walletLists.firstWhere((element) =>
+            element.name.toLowerCase().contains(walletName.toLowerCase()) &&
+            element.status == "Active");
+      }
+
       if (_decode.containsKey("eSewa_id")) {
         final phoneNumber = _decode["eSewa_id"];
         NavigationService.pushReplacement(
+          target: LoadWalletFormScreen(
+            remarks: widget.remarks,
+            phoneNumber: phoneNumber,
+            selectedWallet: getWalletData("esewa"),
+            // selectedWallet: WalletModel(
+            //   id: 11,
+            //   name: "eSewa",
+            //   descOneFieldName: "Wallet ID",
+            //   descOneFieldType: "String",
+            //   descOneFixedLength: true,
+            //   descOneLength: 10,
+            //   descOneMinLength: null,
+            //   descOneMaxLength: null,
+            //   descTwoFieldName: "Remarks",
+            //   descTwoFieldType: "String",
+            //   descTwoFixedLength: true,
+            //   descTwoLength: 0,
+            //   descTwoMinLength: null,
+            //   descTwoMaxLength: null,
+            //   icon: "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
+            //   accountHead: "ESEWA",
+            //   accountNumber: "ESEWAWALLET",
+            //   minAmount: 10.00,
+            //   maxAmount: 25000.00,
+            //   status: "Active",
+            // ),
+          ),
+        );
+      }
+
+      if (_decode.containsKey("service")) {
+        final phoneNumber = _decode["number"];
+        NavigationService.pushReplacement(
             target: LoadWalletFormScreen(
-                remarks: widget.remarks,
-                phoneNumber: phoneNumber,
-                selectedWallet: WalletModel(
-                    id: 11,
-                    name: "eSewa",
-                    descOneFieldName: "Wallet ID",
-                    descOneFieldType: "String",
-                    descOneFixedLength: true,
-                    descOneLength: 10,
-                    descOneMinLength: null,
-                    descOneMaxLength: null,
-                    descTwoFieldName: "Remarks",
-                    descTwoFieldType: "String",
-                    descTwoFixedLength: true,
-                    descTwoLength: 0,
-                    descTwoMinLength: null,
-                    descTwoMaxLength: null,
-                    icon:
-                        "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
-                    accountHead: "ESEWA",
-                    accountNumber: "ESEWAWALLET",
-                    minAmount: 10.00,
-                    maxAmount: 25000.00,
-                    status: "Active")));
+          remarks: widget.remarks,
+          phoneNumber: phoneNumber,
+          selectedWallet: getWalletData("paywell"),
+        ));
       }
       if (_decode.containsKey("Khalti_ID")) {
         final phoneNumber = _decode["Khalti_ID"];
         NavigationService.pushReplacement(
-            target: LoadWalletFormScreen(
-                remarks: widget.remarks,
-                phoneNumber: phoneNumber,
-                selectedWallet: WalletModel(
-                    id: 12,
-                    name: "Khalti",
-                    descOneFieldName: "Wallet ID",
-                    descOneFieldType: "String",
-                    descOneFixedLength: true,
-                    descOneLength: 10,
-                    descOneMinLength: null,
-                    descOneMaxLength: null,
-                    descTwoFieldName: "Remarks",
-                    descTwoFieldType: "String",
-                    descTwoFixedLength: false,
-                    descTwoLength: 0,
-                    descTwoMinLength: 1,
-                    descTwoMaxLength: 35,
-                    icon:
-                        "1687440202035bff30621-50c8-4eb3-aa01-b13093f718f0.png",
-                    accountHead: "KHALTI",
-                    accountNumber: "KHALTIWALLET",
-                    minAmount: 10.00,
-                    maxAmount: 25000.00,
-                    status: "Active")));
+          target: LoadWalletFormScreen(
+            remarks: widget.remarks,
+            phoneNumber: phoneNumber,
+            selectedWallet: getWalletData("khalti"),
+
+            // selectedWallet: WalletModel(
+            //     id: 12,
+            //     name: "Khalti",
+            //     descOneFieldName: "Wallet ID",
+            //     descOneFieldType: "String",
+            //     descOneFixedLength: true,
+            //     descOneLength: 10,
+            //     descOneMinLength: null,
+            //     descOneMaxLength: null,
+            //     descTwoFieldName: "Remarks",
+            //     descTwoFieldType: "String",
+            //     descTwoFixedLength: false,
+            //     descTwoLength: 0,
+            //     descTwoMinLength: 1,
+            //     descTwoMaxLength: 35,
+            //     icon:
+            //         "1687440202035bff30621-50c8-4eb3-aa01-b13093f718f0.png",
+            //     accountHead: "KHALTI",
+            //     accountNumber: "KHALTIWALLET",
+            //     minAmount: 10.00,
+            //     maxAmount: 25000.00,
+            //     status: "Active",
+            // ),
+          ),
+        );
       }
 
       if (_decode.containsKey("bankCode")) {
