@@ -269,7 +269,7 @@ flutter:
     # - assets/upayogi/
     # - assets/sakar/
     - assets/aayam/
-    # - assets/kaldhara/
+    - assets/kaldhara/
     
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
