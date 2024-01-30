@@ -22,7 +22,7 @@ class AppServiceManagementModel {
         name: json["name"],
         uniqueIdentifier: json["uniqueIdentifier"],
         type: json["type"] ?? "",
-        status: json["status"]!,
+        status: json["status"] ?? "",
         imageUrl: json["imageUrl"],
         appOrder: json["appOrder"],
         detailNew: json["new"],

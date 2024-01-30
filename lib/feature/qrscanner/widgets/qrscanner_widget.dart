@@ -7,6 +7,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -14,6 +15,8 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
@@ -111,7 +114,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         }
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+          final UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
             if (_response.findValue(primaryKey: "bankTransfer") == true &&
                 _response
@@ -236,6 +239,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       child:
           BlocBuilder<AppServiceCubit, CommonState>(builder: (context, state) {
         if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
+          appSeriveList = state.data;
           final filteredItems = state.data
               .where(
                 (item) =>
@@ -544,7 +548,10 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     );
   }
 
-  void _onQRCodeDetect(Barcode barcode, MobileScannerArguments? args) {
+  void _onQRCodeDetect(
+    Barcode barcode,
+    MobileScannerArguments? args,
+  ) {
     _cameraSubscription = cameraController.barcodes.listen((code) {
       if (code.rawValue != null && _isScanned == false && mounted) {
         _isScanned = true;
@@ -558,7 +565,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     required String qrCode,
   }) {
     try {
-      Map<String, dynamic> _decode = jsonDecode(qrCode);
+      final Map<String, dynamic> _decode = jsonDecode(qrCode);
       WalletModel getWalletData(String walletName) {
         return widget.walletLists.firstWhere((element) =>
             element.name.toLowerCase().contains(walletName.toLowerCase()) &&
@@ -566,118 +573,85 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       }
 
       if (_decode.containsKey("eSewa_id")) {
-        final phoneNumber = _decode["eSewa_id"];
-        NavigationService.pushReplacement(
-          target: LoadWalletFormScreen(
-            remarks: widget.remarks,
-            phoneNumber: phoneNumber,
-            selectedWallet: getWalletData("esewa"),
-            // selectedWallet: WalletModel(
-            //   id: 11,
-            //   name: "eSewa",
-            //   descOneFieldName: "Wallet ID",
-            //   descOneFieldType: "String",
-            //   descOneFixedLength: true,
-            //   descOneLength: 10,
-            //   descOneMinLength: null,
-            //   descOneMaxLength: null,
-            //   descTwoFieldName: "Remarks",
-            //   descTwoFieldType: "String",
-            //   descTwoFixedLength: true,
-            //   descTwoLength: 0,
-            //   descTwoMinLength: null,
-            //   descTwoMaxLength: null,
-            //   icon: "1687440159683b6770223-cf80-48e0-9856-f65a401c344a.png",
-            //   accountHead: "ESEWA",
-            //   accountNumber: "ESEWAWALLET",
-            //   minAmount: 10.00,
-            //   maxAmount: 25000.00,
-            //   status: "Active",
-            // ),
-          ),
-        );
+        if (appServiceFilter(identifier: Slugs.loadWallet, state: appSeriveList)
+                .status ==
+            "Active") {
+          final phoneNumber = _decode["eSewa_id"];
+          NavigationService.pushReplacement(
+            target: LoadWalletFormScreen(
+              remarks: widget.remarks,
+              phoneNumber: phoneNumber,
+              selectedWallet: getWalletData("esewa"),
+            ),
+          );
+        }
       }
 
       if (_decode.containsKey("service")) {
-        final phoneNumber = _decode["number"];
-        NavigationService.pushReplacement(
-            target: LoadWalletFormScreen(
-          remarks: widget.remarks,
-          phoneNumber: phoneNumber,
-          selectedWallet: getWalletData("paywell"),
-        ));
-      }
-      if (_decode.containsKey("Khalti_ID")) {
-        final phoneNumber = _decode["Khalti_ID"];
-        NavigationService.pushReplacement(
-          target: LoadWalletFormScreen(
+        if (appServiceFilter(identifier: Slugs.loadWallet, state: appSeriveList)
+                .status ==
+            "Active") {
+          final phoneNumber = _decode["number"];
+          NavigationService.pushReplacement(
+              target: LoadWalletFormScreen(
             remarks: widget.remarks,
             phoneNumber: phoneNumber,
-            selectedWallet: getWalletData("khalti"),
-
-            // selectedWallet: WalletModel(
-            //     id: 12,
-            //     name: "Khalti",
-            //     descOneFieldName: "Wallet ID",
-            //     descOneFieldType: "String",
-            //     descOneFixedLength: true,
-            //     descOneLength: 10,
-            //     descOneMinLength: null,
-            //     descOneMaxLength: null,
-            //     descTwoFieldName: "Remarks",
-            //     descTwoFieldType: "String",
-            //     descTwoFixedLength: false,
-            //     descTwoLength: 0,
-            //     descTwoMinLength: 1,
-            //     descTwoMaxLength: 35,
-            //     icon:
-            //         "1687440202035bff30621-50c8-4eb3-aa01-b13093f718f0.png",
-            //     accountHead: "KHALTI",
-            //     accountNumber: "KHALTIWALLET",
-            //     minAmount: 10.00,
-            //     maxAmount: 25000.00,
-            //     status: "Active",
-            // ),
-          ),
-        );
+            selectedWallet: getWalletData("paywell"),
+          ));
+        }
       }
-
-      if (_decode.containsKey("bankCode")) {
-        context.read<UtilityPaymentCubit>().fetchDetails(
-            serviceIdentifier: "",
-            accountDetails: {
-              "pay_load": qrCode,
-            },
-            apiEndpoint: "api/qpay/merchant_detail");
-
-        // NavigationService.pushReplacement(
-        //     target: AnyBankpage(
-        //   accountNumber: _accountNumber,
-        //   accountName: _accountName,
-        //   bankCode: _bankCode,
-        // ));
+      if (_decode.containsKey("Khalti_ID")) {
+        if (appServiceFilter(identifier: Slugs.loadWallet, state: appSeriveList)
+                .status ==
+            "Active") {
+          final phoneNumber = _decode["Khalti_ID"];
+          NavigationService.pushReplacement(
+            target: LoadWalletFormScreen(
+              remarks: widget.remarks,
+              phoneNumber: phoneNumber,
+              selectedWallet: getWalletData("khalti"),
+            ),
+          );
+        }
       }
-      // if (_decode.containsKey("branchCode")) {
-      //   String _accountNumber = _decode['accountNumber'];
-      //   String _accountName = _decode['accountName'];
-      //   String _branchCode = _decode['branchCode'];
-
-      //   String _bankCode = _decode['bankCode'];
-      //   NavigationService.pushReplacement(
-      //       target: InternalCooperativePage(
-      //     accountNumber: _accountNumber,
-      //     accountName: _accountName,
-      //     bankCode: _bankCode,
-      //     branchCode: _branchCode,
+      // else {
+      //   return NavigationService.pushReplacement(
+      //       target: NoServiceScreen(
+      //     data: appServiceFilter(
+      //         identifier: Slugs.bankTransfer, state: appSeriveList),
       //   ));
       // }
+
+      if (_decode.containsKey("bankCode")) {
+        if (appServiceFilter(
+                    identifier: Slugs.bankTransfer, state: appSeriveList)
+                .status ==
+            "Active") {
+          context.read<UtilityPaymentCubit>().fetchDetails(
+              serviceIdentifier: "",
+              accountDetails: {
+                "pay_load": qrCode,
+              },
+              apiEndpoint: "api/qpay/merchant_detail");
+        }
+      }
     } catch (e) {
       if (qrCode.toString().contains("fonepay.com")) {
-        NavigationService.pushReplacement(
-            target: PayloadPage(
-          remarks: widget.remarks,
-          payload: qrCode,
-        ));
+        if (appServiceFilter(identifier: Slugs.fonePay, state: appSeriveList)
+                .status ==
+            "Active") {
+          NavigationService.pushReplacement(
+              target: PayloadPage(
+            remarks: widget.remarks,
+            payload: qrCode,
+          ));
+        } else {
+          return NavigationService.pushReplacement(
+              target: NoServiceScreen(
+            data: appServiceFilter(
+                identifier: Slugs.bankTransfer, state: appSeriveList),
+          ));
+        }
       } else {
         NavigationService.pushReplacement(
             target: EtellerPage(
@@ -693,5 +667,37 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       _cameraSubscription?.cancel();
       super.dispose();
     }
+  }
+
+  List<AppServiceManagementModel> appSeriveList = [
+    AppServiceManagementModel(
+        name: "Test",
+        uniqueIdentifier: "test",
+        type: "type",
+        status: "Active",
+        appOrder: 1,
+        detailNew: true)
+  ];
+  AppServiceManagementModel appServiceFilter({
+    required String identifier,
+    required List<AppServiceManagementModel> state,
+  }) {
+    return state.firstWhere(
+      (item) => item.uniqueIdentifier.toString() == identifier,
+    );
+  }
+}
+
+class NoServiceScreen extends StatelessWidget {
+  final AppServiceManagementModel data;
+  const NoServiceScreen({super.key, required this.data});
+
+  @override
+  Widget build(BuildContext context) {
+    return PageWrapper(
+        showBackButton: true,
+        body: NoDataScreen(
+            title: "Service Unavailable",
+            details: "Service is currently unavailable please contact admin"));
   }
 }
