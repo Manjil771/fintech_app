@@ -48,7 +48,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 18),
+      padding: const EdgeInsets.only(top: 10),
       decoration: BoxDecoration(
           color: CustomTheme.white, borderRadius: BorderRadius.circular(18)),
       child: BlocConsumer<CategoryCubit, CommonState>(
@@ -80,250 +80,210 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                 : state.data.length >= 12
                     ? 11
                     : state.data.length;
-            return Column(
-              children: [
-                Expanded(
-                  child: Container(
-                      child: GridView.builder(
-                          itemCount: widget.showAllService
-                              ? itemLength
-                              : itemLength + 1,
-                          gridDelegate:
-                              const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: 4,
-                          ),
-                          itemBuilder: (context, index) {
-                            final data = state.data[index];
+            return GridView.builder(
+                physics: NeverScrollableScrollPhysics(),
+                shrinkWrap: true,
+                itemCount: widget.showAllService ? itemLength : itemLength + 1,
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 4,
+                ),
+                itemBuilder: (context, index) {
+                  final data = state.data[index];
 
-                            final filteredItems = data.services
-                                .where((item) => item.cashBackView != null)
-                                .toList();
+                  final filteredItems = data.services
+                      .where((item) => item.cashBackView != null)
+                      .toList();
 
-                            final _imageUrl =
-                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
-                            if (index < itemLength) {
-                              return InkWell(
-                                onTap: () {
-                                  if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      Slugs.topup) {
-                                    NavigationService.push(
-                                        target: MobileTopupPage(
-                                            categoryList: data));
-                                    return;
-                                  }
-                                  if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      Slugs.brokerPage) {
-                                    NavigationService.push(
-                                        target: BrokerPaymentPage(
-                                            service: data.services.first));
-                                  } else if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      "electricity") {
-                                    NavigationService.push(
-                                        target: ElectricityPaymentPage(
-                                      service: data.services[0],
-                                    ));
-                                  } else if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      "airlines") {
-                                    NavigationService.push(
-                                        target: AirlinesIntroPage(
-                                      service: data.services[0],
-                                    ));
-                                  } else if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      "credit_card") {
-                                    NavigationService.push(
-                                        target: CreditCardPaymentPage(
-                                      service: data.services[0],
-                                    ));
-                                  } else if (data.uniqueIdentifier
-                                              .toString()
-                                              .toLowerCase() ==
-                                          "landline".toLowerCase() ||
-                                      data.uniqueIdentifier
-                                              .toString()
-                                              .toLowerCase() ==
-                                          "category".toLowerCase()) {
-                                    NavigationService.push(
-                                        target: LandlinePaymentPage(
-                                      category: data,
-                                    ));
-                                  } else if (data.uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      Slugs.busTicket) {
-                                    NavigationService.push(
-                                        target: BusBookingPage(
-                                      service: data.services.first,
-                                    ));
-                                  } else {
-                                    NavigationService.push(
-                                      target: CategoriesWiseServicePage(
-                                          uniqueIdentifier:
-                                              data.uniqueIdentifier,
-                                          services: data.services,
-                                          topBarName: data.name),
-                                    );
-                                  }
-                                },
-                                child: Column(
-                                  children: [
-                                    Column(
+                  final _imageUrl =
+                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
+                  if (index < itemLength) {
+                    return InkWell(
+                      onTap: () {
+                        if (data.uniqueIdentifier.toString().toLowerCase() ==
+                            Slugs.topup) {
+                          NavigationService.push(
+                              target: MobileTopupPage(categoryList: data));
+                          return;
+                        }
+                        if (data.uniqueIdentifier.toString().toLowerCase() ==
+                            Slugs.brokerPage) {
+                          NavigationService.push(
+                              target: BrokerPaymentPage(
+                                  service: data.services.first));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
+                            "electricity") {
+                          NavigationService.push(
+                              target: ElectricityPaymentPage(
+                            service: data.services[0],
+                          ));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
+                            "airlines") {
+                          NavigationService.push(
+                              target: AirlinesIntroPage(
+                            service: data.services[0],
+                          ));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
+                            "credit_card") {
+                          NavigationService.push(
+                              target: CreditCardPaymentPage(
+                            service: data.services[0],
+                          ));
+                        } else if (data.uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase() ==
+                                "landline".toLowerCase() ||
+                            data.uniqueIdentifier.toString().toLowerCase() ==
+                                "category".toLowerCase()) {
+                          NavigationService.push(
+                              target: LandlinePaymentPage(
+                            category: data,
+                          ));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
+                            Slugs.busTicket) {
+                          NavigationService.push(
+                              target: BusBookingPage(
+                            service: data.services.first,
+                          ));
+                        } else {
+                          NavigationService.push(
+                            target: CategoriesWiseServicePage(
+                                uniqueIdentifier: data.uniqueIdentifier,
+                                services: data.services,
+                                topBarName: data.name),
+                          );
+                        }
+                      },
+                      child: Column(
+                        children: [
+                          Column(
+                            children: [
+                              data.isNew == true
+                                  ? Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
                                       children: [
-                                        data.isNew == true
-                                            ? Row(
-                                                mainAxisAlignment:
-                                                    MainAxisAlignment.end,
-                                                children: [
-                                                  Container(
-                                                    padding: const EdgeInsets
-                                                            .symmetric(
-                                                        horizontal: 4),
-                                                    decoration: BoxDecoration(
-                                                        color: CustomTheme
-                                                            .primaryColor,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(5)),
-                                                    child: Align(
-                                                      alignment:
-                                                          Alignment.topRight,
-                                                      child: Text(
-                                                        'New',
-                                                        style: _textTheme
-                                                            .bodyLarge!
-                                                            .copyWith(
-                                                                color:
-                                                                    CustomTheme
-                                                                        .white,
-                                                                fontSize: 8),
-                                                      ),
-                                                    ),
-                                                  ),
-                                                ],
-                                              )
-                                            : Container(),
                                         Container(
-                                          height: _height * 0.03,
-                                          child: _imageUrl
-                                                  .toLowerCase()
-                                                  .contains("svg")
-                                              ? SvgPicture.network(
-                                                  _imageUrl,
-                                                  color: _theme.primaryColor,
-                                                  placeholderBuilder:
-                                                      (BuildContext context) =>
-                                                          Center(
-                                                    child: Image.asset(
-                                                      Assets.logoImage,
-                                                    ),
-                                                  ),
-                                                )
-                                              : Image.network(
-                                                  _imageUrl,
-                                                  errorBuilder: (context, error,
-                                                      stackTrace) {
-                                                    return Center(
-                                                      child: Image.asset(
-                                                        Assets.logoImage,
-                                                      ),
-                                                    );
-                                                  },
-                                                ),
-                                        ),
-                                        Padding(
-                                          padding:
-                                              const EdgeInsets.only(top: 8),
-                                          child: Center(
+                                          padding: const EdgeInsets.symmetric(
+                                              horizontal: 4),
+                                          decoration: BoxDecoration(
+                                              color: CustomTheme.primaryColor,
+                                              borderRadius:
+                                                  BorderRadius.circular(5)),
+                                          child: Align(
+                                            alignment: Alignment.topRight,
                                             child: Text(
-                                              "${data.name}",
-                                              textAlign: TextAlign.center,
-                                              style: _textTheme.titleSmall!
-                                                  .copyWith(fontSize: 11.5),
-                                              // overflow: TextOverflow.ellipsis,
+                                              'New',
+                                              style: _textTheme.bodyLarge!
+                                                  .copyWith(
+                                                      color: CustomTheme.white,
+                                                      fontSize: 8),
                                             ),
                                           ),
                                         ),
-                                        filteredItems.isNotEmpty
-                                            ? Container(
-                                                margin: const EdgeInsets.only(
-                                                    bottom: 4),
-                                                padding:
-                                                    const EdgeInsets.symmetric(
-                                                        horizontal: 4),
-                                                decoration: BoxDecoration(
-                                                    color: CustomTheme
-                                                        .primaryColor,
-                                                    borderRadius:
-                                                        BorderRadius.circular(
-                                                            5)),
-                                                child: Text(
-                                                  "${filteredItems[0].cashBackView} cashback",
-                                                  overflow:
-                                                      TextOverflow.ellipsis,
-                                                  style: _textTheme.bodyLarge!
-                                                      .copyWith(
-                                                          color:
-                                                              CustomTheme.white,
-                                                          fontSize: 9),
-                                                ),
-                                              )
-                                            : Container(
-                                                margin: const EdgeInsets.only(
-                                                    bottom: 8),
-                                              ),
                                       ],
-                                    ),
-                                  ],
-                                ),
-                              );
-                            } else {
-                              return InkWell(
-                                onTap: () {
-                                  NavigationService.pushNamed(
-                                      routeName: Routes.allServicesDashboard);
-                                },
-                                child: Container(
-                                  child: Column(
-                                    children: [
-                                      Container(
-                                          height: _height * 0.03,
-                                          child: CircleAvatar(
-                                              backgroundColor:
-                                                  _theme.primaryColor,
-                                              child: Icon(
-                                                Icons.add,
-                                                color: Colors.white,
-                                              ))),
-                                      Padding(
-                                        padding: const EdgeInsets.only(top: 8),
-                                        child: Center(
-                                          child: Text(
-                                            "View More",
-                                            textAlign: TextAlign.center,
-                                            style: _textTheme.titleSmall!
-                                                .copyWith(fontSize: 11.5),
-                                            overflow: TextOverflow.ellipsis,
+                                    )
+                                  : Container(),
+                              Container(
+                                height: _height * 0.03,
+                                child: _imageUrl.toLowerCase().contains("svg")
+                                    ? SvgPicture.network(
+                                        _imageUrl,
+                                        color: _theme.primaryColor,
+                                        placeholderBuilder:
+                                            (BuildContext context) => Center(
+                                          child: Image.asset(
+                                            Assets.logoImage,
                                           ),
                                         ),
+                                      )
+                                    : Image.network(
+                                        _imageUrl,
+                                        errorBuilder:
+                                            (context, error, stackTrace) {
+                                          return Center(
+                                            child: Image.asset(
+                                              Assets.logoImage,
+                                            ),
+                                          );
+                                        },
                                       ),
-                                    ],
+                              ),
+                              Padding(
+                                padding: const EdgeInsets.only(top: 8),
+                                child: Center(
+                                  child: Text(
+                                    "${data.name}",
+                                    maxLines: 2,
+                                    textAlign: TextAlign.center,
+                                    style: _textTheme.titleSmall!
+                                        .copyWith(fontSize: 11.5),
+                                    overflow: TextOverflow.ellipsis,
                                   ),
                                 ),
-                              );
-                            }
-                          })),
-                ),
-              ],
-            );
+                              ),
+                              filteredItems.isNotEmpty
+                                  ? Container(
+                                      margin: const EdgeInsets.only(bottom: 4),
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 4),
+                                      decoration: BoxDecoration(
+                                          color: CustomTheme.primaryColor,
+                                          borderRadius:
+                                              BorderRadius.circular(5)),
+                                      child: Text(
+                                        "${filteredItems[0].cashBackView} cashback",
+                                        overflow: TextOverflow.ellipsis,
+                                        style: _textTheme.bodyLarge!.copyWith(
+                                            color: CustomTheme.white,
+                                            fontSize: 9),
+                                      ),
+                                    )
+                                  : Container(),
+                            ],
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    return InkWell(
+                      onTap: () {
+                        NavigationService.pushNamed(
+                            routeName: Routes.allServicesDashboard);
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                              height: _height * 0.03,
+                              child: CircleAvatar(
+                                  backgroundColor: _theme.primaryColor,
+                                  child: Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ))),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Center(
+                              child: Text(
+                                "View More",
+                                textAlign: TextAlign.center,
+                                style: _textTheme.titleSmall!
+                                    .copyWith(fontSize: 11.5),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }
+                });
           } else {
             return Container();
           }
