@@ -1803,7 +1803,7 @@ class CoOperativeValue {
     splashImage: "assets/amrapali/amrapali_splash.png",
     primaryColor: const Color(0xFF004382),
     coOperativeName: "Shree Amrapali Saving and Credit Co-operative Ltd",
-    appTitle: 'Shree Amrapali iSmart',
+    appTitle: 'Amrapali iSmart',
   );
   static final CoOperative autobikashCoop = CoOperative(
     appStoreID: "",
@@ -2257,5 +2257,5 @@ class CoOperativeValue {
     appTitle: "Kaldhara iSmart",
   );
 
-  static final CoOperative currentCoop = sudarshanCoop;
+  static final CoOperative currentCoop = development;
 }
