@@ -28,7 +28,6 @@ class InternalCoopBillDetailPage extends StatelessWidget {
   final String branchCode;
   final Widget body;
   final String message;
-  bool _isLoading = false;
 
   InternalCoopBillDetailPage(
       {super.key,

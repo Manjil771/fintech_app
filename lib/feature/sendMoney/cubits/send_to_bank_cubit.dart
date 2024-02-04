@@ -40,7 +40,7 @@ class SendToBankCubit extends Cubit<CommonState> {
       emit(CommonStateSuccess(data: res.data!));
     } else {
       emit(CommonError(
-        message: res.message ?? "Error fetching wallet balance.",
+        message: res.message ?? "Error fetching balance.",
       ));
     }
   }

@@ -1968,7 +1968,7 @@ class CoOperativeValue {
     clientCode: "LGW0MSQB9C",
     clientSecret: "181863",
     backgroundImage: "assets/hamroDahachok/hamroDahachok_background.png",
-    bannerImage: "assets/hamroDahachok/hamroDahachok_background.png",
+    bannerImage: "assets/hamroDahachok/hamroDahachok_banner.png",
     coOperativeLogo: 'assets/hamroDahachok/hamroDahachok_logo.png',
     splashImage: "assets/hamroDahachok/hamroDahachok_splash.png",
     primaryColor: const Color(0xFF009245),
@@ -2257,5 +2257,5 @@ class CoOperativeValue {
     appTitle: "Kaldhara iSmart",
   );
 
-  static final CoOperative currentCoop = development;
+  static final CoOperative currentCoop = devLive;
 }

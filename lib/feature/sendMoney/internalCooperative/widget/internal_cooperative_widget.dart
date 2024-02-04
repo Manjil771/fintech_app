@@ -24,7 +24,6 @@ class InternalCooperativeWidget extends StatefulWidget {
   final bool? isFavAccount;
   final String? branchName;
   final String branchId;
-
   final String? accountName;
   final String? branchCodeQr;
   final String? remarks;
@@ -77,7 +76,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "success") {
               final finalBranchCode = widget.branchId.isEmpty
-                  ? selectedIDFromQr?.branchCode ?? ""
+                  ? branchCode ?? selectedIDFromQr?.branchCode ?? ""
                   : widget.branchCodeQr;
               final finalAccountNumber = widget.branchId.isEmpty
                   ? _accountNumberController.text
@@ -118,7 +117,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 //     : (selectedIDFromQr?.bankCode ?? branchCode.toString()) +
                 //         _accountNumberController.text,
                 amount: _amountController.text,
-                branchCode: "",
+                branchCode: finalBranchCode.toString(),
                 remarks: _remarksController.text,
               ));
             } else {
@@ -250,9 +249,9 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   accountDetails: {
                     "destinationAccountNumber": _accountNumberController.text,
                     "destinationAccountName": _accountNameController.text,
-                    "destinationBranchId": widget.branchId.isNotEmpty
+                    "destinationBranchId": widget.isFavAccount == true
                         ? widget.branchId
-                        : selectedIDFromQr?.id ?? "",
+                        : branchId ?? selectedIDFromQr?.id.toString() ?? "",
                   },
                   apiEndpoint: "/api/account/validation");
             }
