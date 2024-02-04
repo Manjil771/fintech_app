@@ -19,9 +19,13 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_lis
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class SearchFlightWidget extends StatefulWidget {
+  final String cashbackAmount;
+
   final ServiceList service;
 
-  const SearchFlightWidget({Key? key, required this.service}) : super(key: key);
+  const SearchFlightWidget(
+      {Key? key, required this.service, required this.cashbackAmount})
+      : super(key: key);
 
   @override
   State<SearchFlightWidget> createState() => _SearchFlightWidgetState();
@@ -86,6 +90,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                   "Success".toLowerCase()) {
                 NavigationService.push(
                   target: AvailableFlightPage(
+                    cashbackAmount: widget.cashbackAmount,
                     fromSector: KeyValue(
                         title: _selectedSectorFrom.value?.title ?? "",
                         value: _selectedSectorFrom.value?.value ?? ""),

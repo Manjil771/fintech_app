@@ -126,4 +126,9 @@ class Slugs {
 
   //rideSharing
   static String pathaoTopup = "pathao_topup";
+  //App service managememt
+  static String bankTransfer = "bank_transfer";
+  static String loadWallet = "load_wallet";
+  static String coopFundTransfer = "fund_transfer";
+  static String fonePay = "fonepay";
 }

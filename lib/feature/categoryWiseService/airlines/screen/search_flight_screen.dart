@@ -8,9 +8,12 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class SearchFlightScreen extends StatelessWidget {
+  final String cashbackAmount;
+
   final ServiceList service;
 
-  const SearchFlightScreen({super.key, required this.service});
+  const SearchFlightScreen(
+      {super.key, required this.service, required this.cashbackAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +23,7 @@ class SearchFlightScreen extends StatelessWidget {
                 RepositoryProvider.of<AirlinesRepository>(context)),
         child: SearchFlightWidget(
           service: service,
+          cashbackAmount: cashbackAmount,
         ));
   }
 }

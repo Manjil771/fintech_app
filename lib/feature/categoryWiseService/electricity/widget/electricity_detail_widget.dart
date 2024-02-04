@@ -2,13 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/text_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_table_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -22,7 +19,6 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:jiffy/jiffy.dart';
 
 class ElectricityDetailsWidgets extends StatefulWidget {
   final UtilityResponseData useServiceResponse;
@@ -220,6 +216,10 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                   },
                   body: {
                     "customerId": widget.customerId,
+                    "sessionId": widget.useServiceResponse.findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "sessionId") ??
+                        ""
                   },
                   apiEndpoint: "/api/neapay",
                   mPin: p0);

@@ -32,10 +32,9 @@ class _CategoryPageState extends State<CategoryPage> {
       create: (context) => CategoryCubit(
         servicesRepository: RepositoryProvider.of<CategoryRepository>(context),
       ),
-      child: Column(
+      child: ListView(
         children: [
-          Expanded(
-              child: CategoryWidget(showAllService: widget.showAllServices)),
+          CategoryWidget(showAllService: widget.showAllServices),
           if (_bannerImages.isNotEmpty)
             CustomCarousel(
               height: 140.hp,

@@ -6,9 +6,12 @@ import 'package:ismart/feature/categoryWiseService/airlines/screen/search_flight
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class AirlinesIntroPage extends StatelessWidget {
+  final String cashbackAmount;
+
   final ServiceList service;
 
-  const AirlinesIntroPage({super.key, required this.service});
+  const AirlinesIntroPage(
+      {super.key, required this.service, required this.cashbackAmount});
 
   @override
   Widget build(BuildContext context) {
@@ -42,6 +45,7 @@ class AirlinesIntroPage extends StatelessWidget {
                   NavigationService.pop();
                   NavigationService.push(
                       target: SearchFlightScreen(
+                    cashbackAmount: cashbackAmount,
                     service: service,
                   ));
                 })
