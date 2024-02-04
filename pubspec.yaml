@@ -198,7 +198,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
-    # - assets/sudarshan/
+    - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
@@ -268,8 +268,8 @@ flutter:
     # - assets/omshreeom/
     # - assets/upayogi/
     # - assets/sakar/
-    - assets/aayam/
-    - assets/kaldhara/
+    # - assets/aayam/
+    # - assets/kaldhara/
     
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
