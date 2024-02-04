@@ -23,9 +23,9 @@ class InternalCooperativeWidget extends StatefulWidget {
   final String? accountNumber;
   final bool? isFavAccount;
   final String? branchName;
+  final String branchId;
 
   final String? accountName;
-  final String? bankCode;
   final String? branchCodeQr;
   final String? remarks;
 
@@ -33,11 +33,11 @@ class InternalCooperativeWidget extends StatefulWidget {
       {Key? key,
       this.accountNumber,
       this.accountName,
-      this.bankCode,
       this.branchCodeQr,
       this.remarks,
       this.isFavAccount = false,
-      this.branchName})
+      this.branchName,
+      required this.branchId})
       : super(key: key);
 
   @override
@@ -61,10 +61,6 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   InternalBranch? selectedIDFromQr;
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
@@ -77,9 +73,16 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "success") {
+              final finalBranchCode = widget.branchId.isEmpty
+                  ? selectedIDFromQr?.branchCode ?? ""
+                  : widget.branchCodeQr;
+              final finalAccountNumber = widget.branchId.isEmpty
+                  ? _accountNumberController.text
+                  : widget.accountNumber;
+
               NavigationService.pushReplacement(
                   target: InternalCoopBillDetailPage(
                 message: _response.message,
@@ -108,15 +111,14 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   ],
                 ),
                 accountName: _accountNameController.text,
-                accountNumber: widget.isFavAccount == true
-                    ? (widget.bankCode.toString() +
-                        widget.accountNumber.toString())
-                    : (selectedIDFromQr?.bankCode ?? branchCode.toString()) +
-                        _accountNumberController.text,
+                accountNumber: "$finalBranchCode$finalAccountNumber",
+                // accountNumber: widget.isFavAccount == true
+                //     ? (widget.branchCodeQr.toString() +
+                //         widget.accountNumber.toString())
+                //     : (selectedIDFromQr?.bankCode ?? branchCode.toString()) +
+                //         _accountNumberController.text,
                 amount: _amountController.text,
-                branchCode: widget.isFavAccount == true
-                    ? widget.branchCodeQr ?? ""
-                    : (branchId ?? selectedIDFromQr?.bankId.toString() ?? ""),
+                branchCode: "",
                 remarks: _remarksController.text,
               ));
             } else {
@@ -228,16 +230,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Amount"),
                 ),
-                // Text(
-                //   "Charge : Rs. 0",
-                //   style: _textTheme.displayMedium!.copyWith(
-                //     fontWeight: FontWeight.bold,
-                //     fontSize: 12,
-                //   ),
-                // ),
-                const SizedBox(
-                  height: 10,
-                ),
+                const SizedBox(height: 10),
                 CustomTextField(
                   title: "Remarks",
                   hintText: "Remarks",
@@ -257,10 +250,9 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   accountDetails: {
                     "destinationAccountNumber": _accountNumberController.text,
                     "destinationAccountName": _accountNameController.text,
-                    "destinationBranchId": widget.isFavAccount == true
-                        ? widget.branchCodeQr
-                        : (branchId ?? selectedIDFromQr?.id ?? ""),
-                    // "destinationBranchId": "26",
+                    "destinationBranchId": widget.branchId.isNotEmpty
+                        ? widget.branchId
+                        : selectedIDFromQr?.id ?? "",
                   },
                   apiEndpoint: "/api/account/validation");
             }

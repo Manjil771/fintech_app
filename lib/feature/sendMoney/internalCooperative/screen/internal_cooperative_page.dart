@@ -11,22 +11,21 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 class InternalCooperativePage extends StatelessWidget {
   final bool? isFavAccount;
   final String? branchName;
-
   final String? accountNumber;
   final String? accountName;
-  final String? bankCode;
   final String? branchCode;
   final String? remarks;
+  final String? branchId;
 
   const InternalCooperativePage(
       {Key? key,
       this.accountNumber,
       this.accountName,
-      this.bankCode,
       this.branchCode,
       this.remarks,
       this.isFavAccount,
-      this.branchName})
+      this.branchName,
+      this.branchId})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
@@ -51,12 +50,12 @@ class InternalCooperativePage extends StatelessWidget {
         ),
       ],
       child: InternalCooperativeWidget(
+        branchId: branchId ?? "",
         isFavAccount: isFavAccount,
         branchName: branchName,
         remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,
-        bankCode: bankCode,
         branchCodeQr: branchCode,
       ),
     );

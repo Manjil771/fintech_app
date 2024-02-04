@@ -75,6 +75,8 @@ class ListFavAccountWidget extends StatelessWidget {
                                           ))
                                         : NavigationService.push(
                                             target: InternalCooperativePage(
+                                            branchId: res[index]["data"]
+                                                ["destinationBankCode"],
                                             isFavAccount: true,
                                             branchName: res[index]["data"]
                                                 ["destinationBankName"],
@@ -82,8 +84,6 @@ class ListFavAccountWidget extends StatelessWidget {
                                                 ["destinationAccountName"],
                                             accountNumber: res[index]["data"]
                                                 ["destinationAccountNumber"],
-                                            bankCode: res[index]["data"]
-                                                ["destinationBankCode"],
                                             branchCode: res[index]["data"]
                                                 ["destinationBranchCode"],
                                           ));

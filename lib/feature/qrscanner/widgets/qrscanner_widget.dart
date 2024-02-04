@@ -212,10 +212,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                   primaryKey: "accountDetails",
                   secondaryKey: "accountNumber",
                 ),
-                bankCode: _response.findValue(
-                  primaryKey: "accountDetails",
-                  secondaryKey: "bankCode",
-                ),
                 branchCode: _response.findValue(
                   primaryKey: "accountDetails",
                   secondaryKey: "branchCode",
