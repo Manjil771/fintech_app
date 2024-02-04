@@ -124,6 +124,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                             "airlines") {
                           NavigationService.push(
                               target: AirlinesIntroPage(
+                            cashbackAmount:
+                                data.services[0].cashBackView.toString(),
                             service: data.services[0],
                           ));
                         } else if (data.uniqueIdentifier

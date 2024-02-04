@@ -6,8 +6,11 @@ import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avlia
 import 'package:ismart/feature/categoryWiseService/airlines/model/flight_information_model.dart';
 
 class AirlinesDetailBottomSheet extends StatefulWidget {
+  final String cashbackAmount;
+
   final Flight flight;
-  const AirlinesDetailBottomSheet({Key? key, required this.flight})
+  const AirlinesDetailBottomSheet(
+      {Key? key, required this.flight, required this.cashbackAmount})
       : super(key: key);
 
   @override
@@ -42,7 +45,8 @@ class _AirlinesDetailBottomSheetState extends State<AirlinesDetailBottomSheet> {
       FlightInformationModel(title: "Airport Tax", detail: f.tax),
       FlightInformationModel(title: "Fuel Surcharge", detail: f.fuelSurcharge),
       if (f.cashBack != null)
-        FlightInformationModel(title: "Cashback", detail: f.cashBack),
+        FlightInformationModel(
+            title: "Cashback", detail: widget.cashbackAmount.toString() + "%"),
       FlightInformationModel(
           title: "Total Amount", detail: f.totalFare.toString()),
     ];

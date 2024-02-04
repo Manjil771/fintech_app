@@ -5,6 +5,8 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_list_
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class FlightListTabWidget extends StatefulWidget {
+  final String cashbackAmount;
+
   const FlightListTabWidget({
     Key? key,
     required this.flightList,
@@ -13,6 +15,7 @@ class FlightListTabWidget extends StatefulWidget {
     required this.onSelectionChanged,
     required this.extraCallback,
     required this.serviceInfo,
+    required this.cashbackAmount,
   }) : super(key: key);
   final int selectedIndex;
   final Function() calculateTotalPrice;
@@ -55,6 +58,7 @@ class _FlightListTabWidgetState extends State<FlightListTabWidget> {
                           bottom: 15.hp,
                         ),
                   child: FlightDetailsListItemWidget(
+                    cashbackAmount: widget.cashbackAmount,
                     isSelected: index == widget.selectedIndex,
                     isAboveSelection: index == (widget.selectedIndex - 1),
                     flight: widget.flightList[index],

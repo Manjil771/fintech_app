@@ -15,8 +15,9 @@ class FlightDetailsListItemWidget extends StatefulWidget {
     required this.isSelected,
     required this.isAboveSelection,
     required this.serviceInfo,
+    required this.cashbackAmount,
   }) : super(key: key);
-
+  final String cashbackAmount;
   final bool isSelected;
   final bool isAboveSelection;
 
@@ -150,7 +151,7 @@ class _FlightDetailsListItemWidgetState
                             vertical: 3.hp,
                           ),
                           child: Text(
-                            "Cashback: NPR $_cashbackAmount",
+                            "Cashback: ${widget.cashbackAmount}%",
                             style: _textTheme.titleMedium!.copyWith(
                               color: _theme.primaryColor,
                               fontWeight: FontWeight.normal,
@@ -249,6 +250,7 @@ class _FlightDetailsListItemWidgetState
                                 context: context,
                                 builder: (context) {
                                   return AirlinesDetailBottomSheet(
+                                    cashbackAmount: widget.cashbackAmount,
                                     flight: widget.flight,
                                   );
                                 });

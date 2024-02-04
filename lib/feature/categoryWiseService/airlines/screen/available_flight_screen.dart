@@ -10,6 +10,8 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AvailableFlightPage extends StatelessWidget {
+  final String cashbackAmount;
+
   final KeyValue fromSector;
   final KeyValue toSector;
 
@@ -26,6 +28,7 @@ class AvailableFlightPage extends StatelessWidget {
     required this.isTwoWay,
     required this.fromSector,
     required this.toSector,
+    required this.cashbackAmount,
   });
   final int adultCount;
   final int childrenCount;
@@ -46,6 +49,7 @@ class AvailableFlightPage extends StatelessWidget {
         ),
       ],
       child: AvailableFlightsListWidget(
+        cashbackAmount: cashbackAmount,
         fromSector: fromSector,
         inboundFlights: flightDetail.inboundFlights,
         isTwoWay: isTwoWay,
