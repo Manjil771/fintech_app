@@ -268,9 +268,18 @@ flutter:
     # - assets/omshreeom/
     # - assets/upayogi/
     # - assets/sakar/
-    - assets/aayam/
-    - assets/kaldhara/
+    # - assets/aayam/
+    # - assets/kaldhara/
+    # - assets/shikshakheet/
+    # - assets/sarbajyoti/
+    # - assets/shubhsiris/
+    # - assets/rastrautthan/
+    # - assets/ekikrit/
     
+   
+   
+   
+   
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
@@ -280,7 +289,7 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
-
+  
   fonts:
     - family: popinbold
       fonts:
