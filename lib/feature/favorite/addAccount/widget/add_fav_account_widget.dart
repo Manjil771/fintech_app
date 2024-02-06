@@ -130,8 +130,8 @@ class _AddFavAccountWidgetState extends State<AddFavAccountWidget> {
                           _coopAccountNumberController.text,
                       "destinationAccountName": _coopAccountNameController.text,
                       "destinationBankName": _branchController.text,
-                      "destinationBankCode": branchCode,
-                      "destinationBranchCode": branchId,
+                      "destinationBankCode": branchId,
+                      "destinationBranchCode": branchCode,
                     }
                   },
                   apiEndpoint: "api/saveuserpayment",
@@ -143,7 +143,6 @@ class _AddFavAccountWidgetState extends State<AddFavAccountWidget> {
                   body: {
                     "reminderType": "OneTime",
                     "serviceInfoType": "CONNECT_IPS", // for bank tarsfer,
-
                     "data": {
                       "destinationAccountNumber": _accountNumberController.text,
                       "destinationBankName":

@@ -2326,7 +2326,7 @@ class CoOperativeValue {
     coOperativeName: "Ekikrit Saving & Credit Co-operative Ltd.",
     appTitle: "Ekikrit iSmart",
   );
-static final CoOperative machhapuchhreCoop = CoOperative(
+  static final CoOperative machhapuchhreCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -2340,5 +2340,5 @@ static final CoOperative machhapuchhreCoop = CoOperative(
     coOperativeName: "Machhapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
-  static final CoOperative currentCoop = macchaPuchhreCoop;
+  static final CoOperative currentCoop = devLive;
 }
