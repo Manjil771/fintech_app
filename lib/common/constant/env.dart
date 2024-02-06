@@ -1789,7 +1789,7 @@ class CoOperativeValue {
     splashImage: "assets/aakashbani/aakashbani_splash.png",
     primaryColor: const Color(0xFF00A655),
     coOperativeName: "Aakashbani Saving and Credit Cooperative Pvt Ltd",
-    appTitle: 'Aakashbani iSmart',
+    appTitle: 'Akashbani iSmart',
   );
   static final CoOperative shreeAmrapaliCoop = CoOperative(
     appStoreID: "",
