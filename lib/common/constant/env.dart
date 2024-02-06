@@ -2334,7 +2334,7 @@ class CoOperativeValue {
     bannerImage: "assets/machapuchhre/machapuchhre_banner.png",
     backgroundImage: "assets/machapuchhre/machapuchhre_background.png",
     clientCode: 'J7E85FIWNI',
-    clientSecret: "163813",
+    clientSecret: "162033",
     coOperativeLogo: 'assets/machapuchhre/machapuchhre_logo.png',
     splashImage: "assets/machapuchhre/machapuchhre_splash.png",
     primaryColor: const Color(0xFF199A48),
