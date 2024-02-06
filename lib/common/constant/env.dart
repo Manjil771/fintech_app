@@ -1585,7 +1585,7 @@ class CoOperativeValue {
     splashImage: "assets/ektaMultipurpose/ektaMulti_splash.png",
     primaryColor: const Color(0xFF0C8387),
     coOperativeName: "Ekta Multipurpose Co-operative Ltd",
-    appTitle: 'Ekta Multipurpose iSmart',
+    appTitle: 'Ekta iSmart',
   );
   static final CoOperative shwetbhairabCoop = CoOperative(
     appStoreID: "",
@@ -2268,7 +2268,7 @@ class CoOperativeValue {
     splashImage: "assets/shikshakheet/shikshakheet_splash.png",
     primaryColor: const Color(0xFF006837),
     coOperativeName: "Shikshak Heet Saving and Credit Co-operative Ltd.",
-    appTitle: "Shikshakheet iSmart",
+    appTitle: "Shikshak Heet iSmart",
   );
   static final CoOperative sarbajyoti = CoOperative(
     appStoreID: "",
@@ -2326,18 +2326,19 @@ class CoOperativeValue {
     coOperativeName: "Ekikrit Saving & Credit Co-operative Ltd.",
     appTitle: "Ekikrit iSmart",
   );
-  static final CoOperative machhapuchhreCoop = CoOperative(
+
+  static final CoOperative machapuchhreCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/machhapuchhre/machhapuchhre_banner.png",
-    backgroundImage: "assets/machhapuchhre/machhapuchhre_background.png",
+    bannerImage: "assets/machapuchhre/machapuchhre_banner.png",
+    backgroundImage: "assets/machapuchhre/machapuchhre_background.png",
     clientCode: 'J7E85FIWNI',
-    clientSecret: "162033",
-    coOperativeLogo: 'assets/machhapuchhre/machhapuchhre_logo.png',
-    splashImage: "assets/machhapuchhre/machhapuchhre_splash.png",
+    clientSecret: "163813",
+    coOperativeLogo: 'assets/machapuchhre/machapuchhre_logo.png',
+    splashImage: "assets/machapuchhre/machapuchhre_splash.png",
     primaryColor: const Color(0xFF199A48),
-    coOperativeName: "Machhapuchhre Saving and Credit Co-operative Ltd.",
+    coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
   static final CoOperative currentCoop = devLive;
