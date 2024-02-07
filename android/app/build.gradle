@@ -676,6 +676,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        citySaving {
+            dimension "app"
+            applicationId "com.devanasoft.citySaving"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        parishrami {
+            dimension "app"
+            applicationId "com.devanasoft.parishrami"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sahara {
+            dimension "app"
+            applicationId "com.devanasoft.sahara"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         fewa {
             dimension "app"
             applicationId "com.devanasoft.fewa"
