@@ -1585,7 +1585,7 @@ class CoOperativeValue {
     splashImage: "assets/ektaMultipurpose/ektaMulti_splash.png",
     primaryColor: const Color(0xFF0C8387),
     coOperativeName: "Ekta Multipurpose Co-operative Ltd",
-    appTitle: 'Ekta Multipurpose iSmart',
+    appTitle: 'Ekta iSmart',
   );
   static final CoOperative shwetbhairabCoop = CoOperative(
     appStoreID: "",
@@ -2268,7 +2268,7 @@ class CoOperativeValue {
     splashImage: "assets/shikshakheet/shikshakheet_splash.png",
     primaryColor: const Color(0xFF006837),
     coOperativeName: "Shikshak Heet Saving and Credit Co-operative Ltd.",
-    appTitle: "Shikshakheet iSmart",
+    appTitle: "Shikshak Heet iSmart",
   );
   static final CoOperative sarbajyoti = CoOperative(
     appStoreID: "",
@@ -2383,7 +2383,7 @@ class CoOperativeValue {
     splashImage:
         "assets/machhapuchreSystematic/machhapuchhre_systematic_splash.png",
     primaryColor: const Color(0xFF199A48),
-    coOperativeName: "Machhapuchhre Saving and Credit Co-operative Ltd.",
+    coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
   static final CoOperative currentCoop = drabyaCoop;
