@@ -628,9 +628,15 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        machhapuchhre {
+        machhapuchhre {    //for finact 
             dimension "app"
             applicationId "com.devanasoft.machhapuchhre"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        machhapuchhreS { // for systematic
+            dimension "app"
+            applicationId "com.devanasoft.machhapuchhreS"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

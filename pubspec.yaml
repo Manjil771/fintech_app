@@ -137,14 +137,11 @@ flutter:
     # - assets/kripalu/
     # - assets/sarbahit/
     # - assets/bhanjyang/
-    # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/bhanjyang/
-    # - assets/macchaPuchhre/
     # - assets/nawajosh/
-    # - assets/macchaPuchhre/
     # - assets/nawajosh/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -154,7 +151,7 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/hamiSabaikokrishi/
-    # - assets/macchaPuchhre/
+    # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
     # - assets/matribhumi/
@@ -198,7 +195,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
-    - assets/sudarshan/
+    # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
@@ -234,7 +231,7 @@ flutter:
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-    - assets/aakashbani/
+    # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
@@ -275,6 +272,10 @@ flutter:
     # - assets/shubhsiris/
     # - assets/rastrautthan/
     # - assets/ekikrit/
+    - assets/machhapuchreSystematic/
+    - assets/parishrami/
+    - assets/citySaving/
+    - assets/sahara/
     
    
    

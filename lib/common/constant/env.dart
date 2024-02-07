@@ -629,16 +629,16 @@ class CoOperativeValue {
     coOperativeName: "Bhanjyang Saving & Credit Cooperative Society Ltd",
     appTitle: "Bhanjyang Coop iSmart",
   );
-  static final CoOperative macchaPuchhreCoop = CoOperative(
+  static final CoOperative machhaPuchhreFinactCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/macchaPuchhre/macchaPuchhre_banner.png",
-    backgroundImage: "assets/macchaPuchhre/macchaPuchhre_background.png",
+    bannerImage: "assets/machhapuchhre/machhapuchhre_banner.png",
+    backgroundImage: "assets/machhapuchhre/machhapuchhre_background.png",
     clientCode: 'UO3QWA3P9M',
     clientSecret: "197951",
-    coOperativeLogo: 'assets/macchaPuchhre/macchaPuchhre_logo.png',
-    splashImage: "assets/macchaPuchhre/macchaPuchhre_splash.png",
+    coOperativeLogo: 'assets/machhapuchhre/machhapuchhre_logo.png',
+    splashImage: "assets/machhapuchhre/machhapuchhre_splash.png",
     primaryColor: const Color(0xFF188453),
     coOperativeName: "Machhapuchhre Saving & Credit Cooperative Society Ltd",
     appTitle: "Machhapuchhre Saving iSmart",
@@ -2326,19 +2326,65 @@ class CoOperativeValue {
     coOperativeName: "Ekikrit Saving & Credit Co-operative Ltd.",
     appTitle: "Ekikrit iSmart",
   );
-  static final CoOperative machhapuchhreCoop = CoOperative(
+  static final CoOperative saharaCoop = CoOperative(
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/machhapuchhre/machhapuchhre_banner.png",
-    backgroundImage: "assets/machhapuchhre/machhapuchhre_background.png",
+    bannerImage: "assets/sahara/sahara_banner.png",
+    backgroundImage: "assets/sahara/sahara_background.png",
+    clientCode: 'ZC9PTZYNF9',
+    clientSecret: "198213",
+    coOperativeLogo: 'assets/sahara/sahara_logo.png',
+    splashImage: "assets/sahara/sahara_splash.png",
+    primaryColor: const Color(0xFF393B82),
+    coOperativeName: "Sahara Saving & Credit Co-operative Ltd.",
+    appTitle: "Sahara iSmart",
+  );
+  static final CoOperative citySavingCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/citySaving/citySaving_banner.png",
+    backgroundImage: "assets/citySaving/citySaving_background.png",
+    clientCode: 'AY34OQZC8Q',
+    clientSecret: "198293",
+    coOperativeLogo: 'assets/citySaving/citySaving_logo.png',
+    splashImage: "assets/citySaving/citySaving_splash.png",
+    primaryColor: const Color(0xFF22205F),
+    coOperativeName: "City Saving & Credit Co-operative Ltd",
+    appTitle: "City Saving iSmart",
+  );
+  static final CoOperative parishramiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/parishrami/parishrami_banner.png",
+    backgroundImage: "assets/parishrami/parishrami_background.png",
+    clientCode: 'DUYZ24B9X1',
+    clientSecret: "130523",
+    coOperativeLogo: 'assets/parishrami/parishrami_logo.png',
+    splashImage: "assets/parishrami/parishrami_splash.png",
+    primaryColor: const Color(0xFF37499F),
+    coOperativeName: "Parishrami Saving & Credit Cooperative Ltd.",
+    appTitle: "Parishrami iSmart",
+  );
+  static final CoOperative machhapuchhreSystematicCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage:
+        "assets/machhapuchreSystematic/machhapuchhre_systematic_banner.png",
+    backgroundImage:
+        "assets/machhapuchreSystematic/machhapuchhre_systematic_background.png",
     clientCode: 'J7E85FIWNI',
     clientSecret: "162033",
-    coOperativeLogo: 'assets/machhapuchhre/machhapuchhre_logo.png',
-    splashImage: "assets/machhapuchhre/machhapuchhre_splash.png",
+    coOperativeLogo:
+        'assets/machhapuchreSystematic/machhapuchhre_systematic_logo.png',
+    splashImage:
+        "assets/machhapuchreSystematic/machhapuchhre_systematic_splash.png",
     primaryColor: const Color(0xFF199A48),
     coOperativeName: "Machhapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = machhapuchhreSystematicCoop;
 }
