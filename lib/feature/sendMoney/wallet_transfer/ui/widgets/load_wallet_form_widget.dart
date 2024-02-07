@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/contact_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -202,15 +203,21 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                             val, "Wallet Id"),
                         showSearchIcon: true,
                         suffixIcon: Icons.mobile_friendly,
-                        onSuffixPressed: () {
-                          final _userPhone =
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                          context)
-                                      .customerDetailModel
-                                      .value
-                                      ?.mobileNumber ??
-                                  "";
-                          _walletAccountController.text = _userPhone;
+                        onSuffixPressed: () async {
+                          String? pickedContact =
+                              await ContactUtils.pickContact;
+                          if (pickedContact != null) {
+                            _walletAccountController.text = pickedContact;
+                            setState(() {});
+                          }
+                          // final _userPhone =
+                          //     RepositoryProvider.of<CustomerDetailRepository>(
+                          //                 context)
+                          //             .customerDetailModel
+                          //             .value
+                          //             ?.mobileNumber ??
+                          //         "";
+                          // _walletAccountController.text = _userPhone;
                         },
                       )
                     : CustomTextField(

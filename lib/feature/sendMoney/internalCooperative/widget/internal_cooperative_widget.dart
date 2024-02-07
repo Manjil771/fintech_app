@@ -153,7 +153,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 widget.isFavAccount == true
                     ? CustomTextField(
                         readOnly: true,
-                        title: "Branch",
+                        title: "Branch ${widget.branchCodeQr}",
                         controller: _branchController
                           ..text = widget.branchName ?? "",
                       )
