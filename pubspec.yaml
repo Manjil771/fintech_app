@@ -264,8 +264,8 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    # - assets/sakar/
-    - assets/aayam/
+    - assets/sakar/
+    # - assets/aayam/
     # - assets/kaldhara/
     # - assets/shikshakheet/
     # - assets/sarbajyoti/

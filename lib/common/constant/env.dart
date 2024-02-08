@@ -2310,7 +2310,7 @@ class CoOperativeValue {
     splashImage: "assets/rastrautthan/rastrautthan_splash.png",
     primaryColor: const Color(0xFF234F26),
     coOperativeName: "Rastra Utthan Multipurpose Co-operative Ltd.",
-    appTitle: "Rastrautthan iSmart",
+    appTitle: "RastraUtthan iSmart",
   );
   static final CoOperative ekikritCoop = CoOperative(
     appStoreID: "",
@@ -2386,5 +2386,5 @@ class CoOperativeValue {
     coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
-  static final CoOperative currentCoop = aayamCoop;
+  static final CoOperative currentCoop = sakarCoop;
 }
