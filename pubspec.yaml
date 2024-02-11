@@ -114,7 +114,7 @@ flutter:
     # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
-    # - assets/bhaktapur_saccos/
+    - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -195,7 +195,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
-    - assets/sudarshan/
+    # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
@@ -236,7 +236,7 @@ flutter:
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
     # - assets/autobikash/
-    - assets/amrapali/
+    # - assets/amrapali/
     # - assets/abhibadan/
     # - assets/tanahunKalika/
     # - assets/khullabajar/
@@ -261,7 +261,7 @@ flutter:
     # - assets/systematic/
     # - assets/systematic/
     # - assets/shreeJamune/
-    - assets/drabya/
+    # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
     # - assets/sakar/
@@ -276,6 +276,10 @@ flutter:
     # - assets/parishrami/
     # - assets/citySaving/
     # - assets/sahara/
+    # - assets/wonderful/
+    # - assets/bhudev/
+    
+
     
    
    
