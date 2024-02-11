@@ -16,6 +16,7 @@ import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
+import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -32,6 +33,7 @@ import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
+import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -103,6 +105,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   final TextEditingController _selectedCoopController = TextEditingController();
+  bool agreedToTerms = true;
 
   @override
   Widget build(BuildContext context) {
@@ -278,7 +281,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             onChanged: (val) async {
                               if (FormValidator.validatePhoneNumber(val) ==
                                   null) {
-                                CoOperative currentCoop =
+                                final CoOperative currentCoop =
                                     RepositoryProvider.of<CoOperative>(context);
                                 if (currentCoop.shouldValidateCooperative) {
                                   await context
@@ -306,16 +309,50 @@ class _LoginWidgetState extends State<LoginWidget> {
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
-                    SizedBox(height: height * 0.014),
+                    Row(
+                      children: [
+                        Checkbox(
+                          value: agreedToTerms,
+                          activeColor: Colors.blue,
+                          onChanged: (value) {
+                            setState(() {
+                              agreedToTerms = !agreedToTerms;
+                            });
+                          },
+                        ),
+                        Expanded(
+                          child: InkWell(
+                            onTap: _makeUrlRequest,
+                            child: RichText(
+                              text: TextSpan(
+                                style: _theme.textTheme.titleSmall,
+                                children: [
+                                  TextSpan(text: "I have read & agree to "),
+                                  TextSpan(
+                                      text: "Terms & Conditions.",
+                                      style: TextStyle(color: Colors.blue)),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
                     CustomRoundedButtom(
                       title: "Login",
                       onPressed: () async {
                         if (_loginFormKey.currentState!.validate()) {
-                          context.read<LoginCubit>().loginUser(
-                                username: _getPhoneNumber(),
-                                password: passwordController.text,
-                                deviceUUID: await _getDeviceUUID(),
-                              );
+                          if (agreedToTerms) {
+                            context.read<LoginCubit>().loginUser(
+                                  username: _getPhoneNumber(),
+                                  password: passwordController.text,
+                                  deviceUUID: await _getDeviceUUID(),
+                                );
+                          } else {
+                            SnackBarUtils.showErrorBar(
+                                context: context,
+                                message: "Please agree to terms & conditions");
+                          }
                         }
                       },
                     ),
@@ -331,19 +368,28 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   context: NavigationService.context,
                                 );
                                 if (authenticated) {
-                                  final String phone =
-                                      await SecureStorageService.appPhoneNumber;
-                                  final String password =
-                                      await SecureStorageService.appPassword;
-                                  _isBiometricLogin = true;
+                                  if (agreedToTerms) {
+                                    final String phone =
+                                        await SecureStorageService
+                                            .appPhoneNumber;
+                                    final String password =
+                                        await SecureStorageService.appPassword;
+                                    _isBiometricLogin = true;
 
-                                  if (phone.isNotEmpty && password.isNotEmpty) {
-                                    context.read<LoginCubit>().loginUser(
-                                          username: phone,
-                                          password: password,
-                                          deviceUUID: await _getDeviceUUID(),
-                                        );
+                                    if (phone.isNotEmpty &&
+                                        password.isNotEmpty) {
+                                      context.read<LoginCubit>().loginUser(
+                                            username: phone,
+                                            password: password,
+                                            deviceUUID: await _getDeviceUUID(),
+                                          );
+                                    }
                                   }
+                                } else {
+                                  SnackBarUtils.showErrorBar(
+                                      context: context,
+                                      message:
+                                          "Please agree to terms & conditions");
                                 }
                               },
                               child: Row(
@@ -551,4 +597,13 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
     },
   ];
+  Future<void> _makeUrlRequest() async {
+    if (await canLaunchUrl(
+        Uri.parse("https://devanasoft.com.np/PrivacyPolicy.html"))) {
+      await launchUrl(
+          Uri.parse("https://devanasoft.com.np/PrivacyPolicy.html"));
+    } else {
+      throw 'Could not launch https://devanasoft.com.np/PrivacyPolicy.html';
+    }
+  }
 }
