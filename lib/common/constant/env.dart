@@ -2386,5 +2386,5 @@ class CoOperativeValue {
     coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
-  static final CoOperative currentCoop = sakarCoop;
+  static final CoOperative currentCoop = shreeAmrapaliCoop;
 }

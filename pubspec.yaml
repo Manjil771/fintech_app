@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.48+48 ##chirayu
+version: 0.0.49+49 ##chirayu
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -236,7 +236,7 @@ flutter:
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
     # - assets/autobikash/
-    # - assets/amrapali/
+    - assets/amrapali/
     # - assets/abhibadan/
     # - assets/tanahunKalika/
     # - assets/khullabajar/
@@ -264,7 +264,7 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    - assets/sakar/
+    # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
     # - assets/shikshakheet/
