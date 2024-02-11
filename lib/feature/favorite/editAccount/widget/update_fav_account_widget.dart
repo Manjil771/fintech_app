@@ -119,6 +119,7 @@ class _UpdateFavAccountWidgetState extends State<UpdateFavAccountWidget> {
         }
       },
       child: CommonContainer(
+        verticalPadding: 0,
         buttonName: "Update",
         onButtonPressed: () {
           if (_formKey.currentState!.validate()) {
@@ -229,7 +230,24 @@ class _UpdateFavAccountWidgetState extends State<UpdateFavAccountWidget> {
                   ..text = widget.accountName ?? "",
                 validator: (value) => FormValidator.validateFieldNotEmpty(
                     value, "Account Holder Name"),
-              )
+              ),
+              CustomRoundedButtom(
+                  title: "Delete",
+                  onPressed: () {
+                    showPopUpDialog(
+                        context: NavigationService.context,
+                        message: "Are you sure you want to Delete?.",
+                        title: "Alert",
+                        buttonText: "Delete",
+                        buttonCallback: () {
+                          context.read<UtilityPaymentCubit>().deleteReq(
+                              serviceIdentifier: "",
+                              accountDetails: {},
+                              apiEndpoint:
+                                  "api/deletesavedpayment/${widget.id}",
+                              mPin: "");
+                        });
+                  }),
             ],
           ),
         ),

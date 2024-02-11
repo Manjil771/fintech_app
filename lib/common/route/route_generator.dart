@@ -16,6 +16,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapa
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/download/screens/downloads_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
@@ -154,6 +155,12 @@ class RouteGenerator {
       case Routes.loginPage:
         return MaterialPageRoute(
           builder: (_) => LoginPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+
+      case Routes.dashboard:
+        return MaterialPageRoute(
+          builder: (_) => DashboardPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.listWalletScreen:

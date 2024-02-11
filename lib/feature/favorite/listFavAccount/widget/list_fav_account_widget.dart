@@ -1,17 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
 import 'package:ismart/feature/favorite/editAccount/screen/update_fav_account_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
@@ -47,53 +42,7 @@ class ListFavAccountWidget extends StatelessWidget {
                   }),
             ),
             Expanded(
-              child: BlocConsumer<UtilityPaymentCubit, CommonState>(
-                listener: (context, state) {
-                  if (state is CommonLoading && _isLoading == false) {
-                    _isLoading = true;
-                    showLoadingDialogBox(context);
-                  } else if (state is! CommonLoading && _isLoading) {
-                    _isLoading = false;
-                    NavigationService.pop();
-                  }
-                  if (state is CommonError) {
-                    showPopUpDialog(
-                      context: context,
-                      message: state.message,
-                      title: "Error",
-                      showCancelButton: false,
-                      buttonCallback: () {
-                        NavigationService.pop();
-                      },
-                    );
-                  }
-                  if (state is CommonStateSuccess<UtilityResponseData>) {
-                    final UtilityResponseData _res = state.data;
-                    if (_res.code == "M0000" ||
-                        _res.status.toLowerCase() == "success") {
-                      showPopUpDialog(
-                        context: context,
-                        message: _res.message,
-                        title: _res.status,
-                        showCancelButton: false,
-                        buttonCallback: () {
-                          NavigationService.pushReplacementNamed(
-                              routeName: Routes.dashboard);
-                        },
-                      );
-                    } else {
-                      showPopUpDialog(
-                        context: context,
-                        message: _res.message,
-                        title: _res.status,
-                        showCancelButton: false,
-                        buttonCallback: () {
-                          NavigationService.pop();
-                        },
-                      );
-                    }
-                  }
-                },
+              child: BlocBuilder<UtilityPaymentCubit, CommonState>(
                 builder: (context, state) {
                   if (state is CommonStateSuccess<UtilityResponseData>) {
                     final res = state.data.findValue(primaryKey: "data");
@@ -224,7 +173,7 @@ class ListFavAccountWidget extends StatelessWidget {
                                               color: _theme.primaryColor,
                                             ),
                                           ),
-                                        )
+                                        ),
                                       ],
                                     ),
                                   ),
