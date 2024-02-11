@@ -414,33 +414,33 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    if (RepositoryProvider.of<CoOperative>(context)
-                            .clientCode !=
-                        "EHVNI7CZJ3")
-                      Row(
-                        children: [
-                          TextButton(
-                              onPressed: () {
-                                NavigationService.pushNamed(
-                                    routeName: Routes.forgotPin);
-                              },
-                              child: Text(
-                                "Forgot PIN ?",
-                                style: TextStyle(color: _theme.primaryColor),
-                              )),
-                          const Spacer(),
-                          TextButton(
+                    // if (RepositoryProvider.of<CoOperative>(context)
+                    //         .clientCode !=
+                    //     "EHVNI7CZJ3")
+                    Row(
+                      children: [
+                        TextButton(
                             onPressed: () {
-                              NavigationService.push(
-                                  target: const ActivateAccountPage());
+                              NavigationService.pushNamed(
+                                  routeName: Routes.forgotPin);
                             },
                             child: Text(
-                              "Activate Account",
+                              "Forgot PIN ?",
                               style: TextStyle(color: _theme.primaryColor),
-                            ),
+                            )),
+                        const Spacer(),
+                        TextButton(
+                          onPressed: () {
+                            NavigationService.push(
+                                target: const ActivateAccountPage());
+                          },
+                          child: Text(
+                            "Activate Account",
+                            style: TextStyle(color: _theme.primaryColor),
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
+                    ),
                     if (RepositoryProvider.of<CoOperative>(context)
                             .clientCode ==
                         "EHVNI7CZJ3")
@@ -592,6 +592,12 @@ class _LoginWidgetState extends State<LoginWidget> {
     },
     {
       "title": "Balance Inquiry",
+      "action": () {
+        NavigationService.pop();
+      },
+    },
+    {
+      "title": "Mini Statement",
       "action": () {
         NavigationService.pop();
       },
