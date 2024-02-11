@@ -69,6 +69,8 @@ class Assets {
   static const String errorImage = "assets/images/error.png";
   static const String ismartSlogan = "assets/images/ismart_slogan.png";
   static const String luggageIcon = "assets/icon/luggage_icon.svg";
+  static const String editIcon = "assets/icon/edit_icon.svg";
+  static const String menuIcon = "assets/icon/menu_icon.svg";
 
 // send money
   static const String sendMoneyIcon =

@@ -5,11 +5,15 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
+import 'package:ismart/feature/favorite/editAccount/screen/update_fav_account_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -18,6 +22,8 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 class ListFavAccountWidget extends StatelessWidget {
   ListFavAccountWidget({super.key});
   bool isBankTransfer = true;
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -41,7 +47,53 @@ class ListFavAccountWidget extends StatelessWidget {
                   }),
             ),
             Expanded(
-              child: BlocBuilder<UtilityPaymentCubit, CommonState>(
+              child: BlocConsumer<UtilityPaymentCubit, CommonState>(
+                listener: (context, state) {
+                  if (state is CommonLoading && _isLoading == false) {
+                    _isLoading = true;
+                    showLoadingDialogBox(context);
+                  } else if (state is! CommonLoading && _isLoading) {
+                    _isLoading = false;
+                    NavigationService.pop();
+                  }
+                  if (state is CommonError) {
+                    showPopUpDialog(
+                      context: context,
+                      message: state.message,
+                      title: "Error",
+                      showCancelButton: false,
+                      buttonCallback: () {
+                        NavigationService.pop();
+                      },
+                    );
+                  }
+                  if (state is CommonStateSuccess<UtilityResponseData>) {
+                    final UtilityResponseData _res = state.data;
+                    if (_res.code == "M0000" ||
+                        _res.status.toLowerCase() == "success") {
+                      showPopUpDialog(
+                        context: context,
+                        message: _res.message,
+                        title: _res.status,
+                        showCancelButton: false,
+                        buttonCallback: () {
+                          NavigationService.pushReplacementNamed(
+                              routeName: Routes.dashboard);
+                        },
+                      );
+                    } else {
+                      showPopUpDialog(
+                        context: context,
+                        message: _res.message,
+                        title: _res.status,
+                        showCancelButton: false,
+                        buttonCallback: () {
+                          NavigationService.pop();
+                        },
+                      );
+                    }
+                  }
+                },
                 builder: (context, state) {
                   if (state is CommonStateSuccess<UtilityResponseData>) {
                     final res = state.data.findValue(primaryKey: "data");
@@ -140,11 +192,38 @@ class ListFavAccountWidget extends StatelessWidget {
                                                 ),
                                               ]),
                                         ),
-                                        SvgPicture.asset(
-                                          Assets.arrowRight,
-                                          height: 12.hp,
-                                          width: 12.wp,
-                                          color: _theme.primaryColor,
+                                        InkWell(
+                                          onTap: () {
+                                            NavigationService.push(
+                                                target: UpdateFavAccountPage(
+                                              remainderType: res[index]
+                                                      ["reminderType"]
+                                                  .toString(),
+                                              serviceInfoType: res[index]
+                                                      ["serviceInfoType"]
+                                                  .toString(),
+                                              id: res[index]["id"].toString(),
+                                              isBankTransfer: isBankTransfer,
+                                              accountName: res[index]["data"]
+                                                      ["destinationAccountName"]
+                                                  .toString(),
+                                              accountNumber: res[index]["data"]
+                                                  ["destinationAccountNumber"],
+                                              bankCode: res[index]["data"]
+                                                  ["destinationBankCode"],
+                                              bankName: res[index]["data"]
+                                                  ["destinationBankName"],
+                                            ));
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: Icon(
+                                              Icons.more_vert_outlined,
+                                              size: 25.hp,
+                                              color: _theme.primaryColor,
+                                            ),
+                                          ),
                                         )
                                       ],
                                     ),
