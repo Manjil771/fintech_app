@@ -2415,4 +2415,5 @@ class CoOperativeValue {
   );
 
   static final CoOperative currentCoop = bhaktapurSaccos;
+
 }
