@@ -183,7 +183,7 @@ flutter:
     # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
-    # - assets/shreeKalika/
+    - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/garimaAgri/
     # - assets/paschimanchal/
@@ -194,12 +194,11 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    # - assets/shubhaSandesh/
-    - assets/sudarshan/
+    - assets/shubhaSandesh/
+    # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
-    # - assets/shubhaSandesh/
     # - assets/noor/
     # - assets/jharana/
     # - assets/chaughada/

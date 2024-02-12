@@ -1,5 +1,4 @@
 import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -16,7 +15,6 @@ import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
-import 'package:ismart/common/widget/custom_checkbox.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -49,6 +47,8 @@ class _LoginWidgetState extends State<LoginWidget> {
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
   List<String> _bannerImages = [];
+  List<String> _defaultBannerImages = [];
+
   final TextEditingController phoneController = TextEditingController();
 
   final TextEditingController passwordController = TextEditingController();
@@ -97,6 +97,9 @@ class _LoginWidgetState extends State<LoginWidget> {
   void initState() {
     _checkBiometric();
     _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
+    _defaultBannerImages =
+        RepositoryProvider.of<StartUpRepository>(context).defaultbanners;
+
     if (Platform.isIOS) {
       _hasExistingLoginSaved.value = false;
     }
@@ -414,54 +417,59 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
+                    // // if (RepositoryProvider.of<CoOperative>(context)
+                    // //         .clientCode !=
+                    // //     "EHVNI7CZJ3")
+                    // Row(
+                    //   children: [
+                    //     TextButton(
+                    //         onPressed: () {
+                    //           NavigationService.pushNamed(
+                    //               routeName: Routes.forgotPin);
+                    //         },
+                    //         child: Text(
+                    //           "Forgot PIN ?",
+                    //           style: TextStyle(color: _theme.primaryColor),
+                    //         )),
+                    //     const Spacer(),
+                    //     TextButton(
+                    //       onPressed: () {
+                    //         NavigationService.push(
+                    //             target: const ActivateAccountPage());
+                    //       },
+                    //       child: Text(
+                    //         "Activate Account",
+                    //         style: TextStyle(color: _theme.primaryColor),
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     // if (RepositoryProvider.of<CoOperative>(context)
-                    //         .clientCode !=
+                    //         .clientCode ==
                     //     "EHVNI7CZJ3")
                     Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        TextButton(
-                            onPressed: () {
-                              NavigationService.pushNamed(
-                                  routeName: Routes.forgotPin);
-                            },
-                            child: Text(
-                              "Forgot PIN ?",
-                              style: TextStyle(color: _theme.primaryColor),
-                            )),
-                        const Spacer(),
-                        TextButton(
-                          onPressed: () {
-                            NavigationService.push(
-                                target: const ActivateAccountPage());
-                          },
-                          child: Text(
-                            "Activate Account",
-                            style: TextStyle(color: _theme.primaryColor),
-                          ),
-                        ),
+                        ...List.generate(
+                            3,
+                            (index) => CommonBox(
+                                onContainerPress: onTapFunction[index],
+                                containerImage: imageList[index],
+                                title: nameList[index]))
                       ],
                     ),
-                    if (RepositoryProvider.of<CoOperative>(context)
-                            .clientCode ==
-                        "EHVNI7CZJ3")
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          ...List.generate(
-                              3,
-                              (index) => CommonBox(
-                                  onContainerPress: onTapFunction[index],
-                                  containerImage: imageList[index],
-                                  title: nameList[index]))
-                        ],
-                      ),
                     SizedBox(height: height * 0.022),
-                    if (_bannerImages.isNotEmpty)
-                      CustomCarousel(
-                        height: 140.hp,
-                        topMargin: 10,
-                        items: _bannerImages,
-                      ),
+                    _bannerImages.isNotEmpty
+                        ? CustomCarousel(
+                            height: 140.hp,
+                            topMargin: 10,
+                            items: _bannerImages,
+                          )
+                        : CustomCarousel(
+                            height: 140.hp,
+                            topMargin: 10,
+                            items: _defaultBannerImages,
+                          ),
                     SizedBox(height: height * 0.02),
                   ],
                 ),

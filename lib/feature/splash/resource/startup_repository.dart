@@ -28,6 +28,7 @@ class StartUpRepository {
   }
 
   List<String> banners = [];
+  List<String> defaultbanners = [];
 
   AppUpdate? appUpdate;
 
@@ -47,6 +48,30 @@ class StartUpRepository {
           print(element1);
         });
         return DataResponse.success(banners);
+      } else {
+        return DataResponse.error("Error fetching banners.");
+      }
+    } catch (e) {
+      return DataResponse.error("Error fetching banners");
+    }
+  }
+
+  Future<DataResponse<List<String>>> fetchdefaultBannerImages() async {
+    defaultbanners.clear();
+    try {
+      final _res = await startupApiProvider.fetchdefaultBannerImages();
+      if (_res['data']?['code'] == "M0000") {
+        List<String> _rawBanners =
+            List<String>.from(_res['data']?['details'] ?? []);
+        _rawBanners.forEach((element) {
+          element = env.baseUrl + element;
+          defaultbanners.add(
+              element.replaceAll("//", "/").replaceAll("https:/", "https://"));
+        });
+        defaultbanners.forEach((element1) {
+          print(element1);
+        });
+        return DataResponse.success(defaultbanners);
       } else {
         return DataResponse.error("Error fetching banners.");
       }
