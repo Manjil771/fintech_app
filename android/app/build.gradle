@@ -799,6 +799,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shreegodawari {
+            dimension "app"
+            applicationId "com.devanasoft.shreegodawari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         suryadev {
             dimension "app"
             applicationId "com.devanasoft.suryadev"
@@ -892,6 +898,18 @@ android {
         hetauda {
             dimension "app"
             applicationId "com.devanasoft.hetauda"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        navadurga {
+            dimension "app"
+            applicationId "com.devanasoft.navadurga"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        lamosanghu {
+            dimension "app"
+            applicationId "com.devanasoft.lamosanghu"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

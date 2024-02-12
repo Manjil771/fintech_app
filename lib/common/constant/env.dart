@@ -2414,5 +2414,48 @@ class CoOperativeValue {
     appTitle: "Bhudev iSmart",
   );
 
-  static final CoOperative currentCoop = bhaktapurSaccos;
+  static final CoOperative shreeGodawariCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeGodawari/shreeGodawari_banner.png",
+    backgroundImage: "assets/shreeGodawari/shreeGodawari_background.png",
+    clientCode: 'I3M5ULRQBD',
+    clientSecret: "146160",
+    coOperativeLogo: 'assets/shreeGodawari/shreeGodawari_logo.png',
+    splashImage: "assets/shreeGodawari/shreeGodawari_splash.png",
+    primaryColor: const Color(0xFF015D1C),
+    coOperativeName: "Shree Godawari Saving & Credit Co-operative Ltd.",
+    appTitle: "Shree Godawari iSmart",
+  );
+  static final CoOperative navadurgaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/navadurga/navadurga_banner.png",
+    backgroundImage: "assets/navadurga/navadurga_background.png",
+    clientCode: '4ZTBTTFZTF',
+    clientSecret: "154263",
+    coOperativeLogo: 'assets/navadurga/navadurga_logo.png',
+    splashImage: "assets/navadurga/navadurga_splash.png",
+    primaryColor: const Color(0xFF467F30),
+    coOperativeName: "Navadurga Saving and Credit Co-operative Ltd.",
+    appTitle: "Navadurga iSmart",
+  );
+  static final CoOperative lamosanghuCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/lamosanghu/lamosanghu_banner.png",
+    backgroundImage: "assets/lamosanghu/lamosanghu_background.png",
+    clientCode: '7VLN4AT5MT',
+    clientSecret: "188196",
+    coOperativeLogo: 'assets/lamosanghu/lamosanghu_logo.png',
+    splashImage: "assets/lamosanghu/lamosanghu_splash.png",
+    primaryColor: const Color(0xFF00923F),
+    coOperativeName: "Lamosanghu Saving & Credit Co-operative Ltd.",
+    appTitle: "Lamosanghu iSmart",
+  );
+
+  static final CoOperative currentCoop = lamosanghuCoop;
 }
