@@ -178,16 +178,15 @@ class CoOperativeValue {
     backgroundImage: "assets/bhaktapur_saccos/bhaktapur_background.png",
     bannerImage: "assets/bhaktapur_saccos/bhaktapur_banner.png",
     coOperativeLogo: "assets/bhaktapur_saccos/bhaktapur_logo.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
+    clientCode: 'HQLF655S0I',
+    clientSecret: "182987",
     splashImage: "assets/bhaktapur_saccos/bhaktapur_splash.png",
-    primaryColor: const Color(0xFF),
+    primaryColor: const Color(0xFF015017),
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
-    shouldValidateCooperative: false,
-    coOperativeName: "ISMART DEMO APPKTM",
-    appTitle: 'Bhaktapur iSmart',
+    coOperativeName: "Bhaktapur Saving & credit Co-operative Ltd.",
+    appTitle: 'Bhaktapur Saving iSmart',
   );
 
   // // // // DEV TEST70074
@@ -2310,7 +2309,7 @@ class CoOperativeValue {
     splashImage: "assets/rastrautthan/rastrautthan_splash.png",
     primaryColor: const Color(0xFF234F26),
     coOperativeName: "Rastra Utthan Multipurpose Co-operative Ltd.",
-    appTitle: "Rastrautthan iSmart",
+    appTitle: "RastraUtthan iSmart",
   );
   static final CoOperative ekikritCoop = CoOperative(
     appStoreID: "",
@@ -2386,5 +2385,35 @@ class CoOperativeValue {
     coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
-  static final CoOperative currentCoop = shreeSiddhiGaneshCoop;
+  static final CoOperative wonderfulCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/wonderful/wonderful_banner.png",
+    backgroundImage: "assets/wonderful/wonderful_background.png",
+    clientCode: 'WG6J3U9F7A',
+    clientSecret: "138074",
+    coOperativeLogo: 'assets/wonderful/wonderful_logo.png',
+    splashImage: "assets/wonderful/wonderful_splash.png",
+    primaryColor: const Color(0xFF045AAB),
+    coOperativeName: "Wonderful Multipurpose Co-operative Society Ltd.",
+    appTitle: "Wonderful iSmart",
+  );
+  static final CoOperative bhudevCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bhudev/bhudev_banner.png",
+    backgroundImage: "assets/bhudev/bhudev_background.png",
+    clientCode: '28AMNA207M',
+    clientSecret: "175619",
+    coOperativeLogo: 'assets/bhudev/bhudev_logo.png',
+    splashImage: "assets/bhudev/bhudev_splash.png",
+    primaryColor: const Color(0xFF0027730),
+    coOperativeName: "Bhudev Multipurpose Co-operative Ltd.",
+    appTitle: "Bhudev iSmart",
+  );
+
+  static final CoOperative currentCoop = bhaktapurSaccos;
+
 }
