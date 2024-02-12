@@ -23,8 +23,8 @@ class _CategoryPageState extends State<CategoryPage> {
   @override
   void initState() {
     _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
-    // _defaultBannerImages =
-    // RepositoryProvider.of<StartUpRepository>(context).defaultbanners;
+    _defaultBannerImages =
+        RepositoryProvider.of<StartUpRepository>(context).defaultbanners;
 
     super.initState();
   }
@@ -38,17 +38,18 @@ class _CategoryPageState extends State<CategoryPage> {
       child: ListView(
         children: [
           CategoryWidget(showAllService: widget.showAllServices),
-          _bannerImages.isNotEmpty
-              ? CustomCarousel(
-                  height: 140.hp,
-                  topMargin: 10,
-                  items: _bannerImages,
-                )
-              : CustomCarousel(
-                  height: 140.hp,
-                  topMargin: 10,
-                  items: _defaultBannerImages,
-                ),
+          if (_bannerImages.isNotEmpty)
+            CustomCarousel(
+              height: 140.hp,
+              topMargin: 10,
+              items: _bannerImages,
+            ),
+          if (_bannerImages.isEmpty && _defaultBannerImages.isNotEmpty)
+            CustomCarousel(
+              height: 140.hp,
+              topMargin: 10,
+              items: _defaultBannerImages,
+            ),
         ],
       ),
     );

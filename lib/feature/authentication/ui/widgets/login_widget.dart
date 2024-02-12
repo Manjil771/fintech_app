@@ -459,17 +459,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                       ],
                     ),
                     SizedBox(height: height * 0.022),
-                    _bannerImages.isNotEmpty
-                        ? CustomCarousel(
-                            height: 140.hp,
-                            topMargin: 10,
-                            items: _bannerImages,
-                          )
-                        : CustomCarousel(
-                            height: 140.hp,
-                            topMargin: 10,
-                            items: _defaultBannerImages,
-                          ),
+                    if (_bannerImages.isNotEmpty)
+                      CustomCarousel(
+                        height: 140.hp,
+                        topMargin: 10,
+                        items: _bannerImages,
+                      ),
+                    if (_bannerImages.isEmpty &&
+                        _defaultBannerImages.isNotEmpty)
+                      CustomCarousel(
+                        height: 140.hp,
+                        topMargin: 10,
+                        items: _defaultBannerImages,
+                      ),
                     SizedBox(height: height * 0.02),
                   ],
                 ),
