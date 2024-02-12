@@ -247,9 +247,27 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        wonderful {
+            dimension "app"
+            applicationId "com.devanasoft.wonderful"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        bhudev {
+            dimension "app"
+            applicationId "com.devanasoft."
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         autoBikash {
             dimension "app"
             applicationId "com.devanasoft.autoBikash"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        bhaktapur {
+            dimension "app"
+            applicationId "com.devanasoft.bhaktapur"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
