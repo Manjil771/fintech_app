@@ -196,8 +196,8 @@ flutter:
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
-    - assets/sudarshan/
+    # - assets/shubhaSandesh/
+    # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
@@ -224,7 +224,7 @@ flutter:
     # - assets/shwetbhairab/
     # - assets/karmath/
     # - assets/shreeEkata/
-    - assets/shreeSiddhiGanesh/
+    # - assets/shreeSiddhiGanesh/
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
@@ -261,7 +261,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    # - assets/shreeJamune/
+    - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
@@ -281,7 +281,8 @@ flutter:
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
-    - assets/lamosanghu/
+    # - assets/lamosanghu/
+    # - assets/greenhouse/
 
     
 
