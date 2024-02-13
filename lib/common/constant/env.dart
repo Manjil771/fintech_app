@@ -2415,7 +2415,5 @@ class CoOperativeValue {
     appTitle: "Bhudev iSmart",
   );
 
-  static final CoOperative currentCoop = bhaktapurSaccos;
-
-
+  static final CoOperative currentCoop = devLive;
 }
