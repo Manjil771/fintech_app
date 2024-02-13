@@ -2414,6 +2414,7 @@ class CoOperativeValue {
     appTitle: "Bhudev iSmart",
   );
 
+<<<<<<< HEAD
   static final CoOperative shreeGodawariCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -2458,4 +2459,8 @@ class CoOperativeValue {
   );
 
   static final CoOperative currentCoop = lamosanghuCoop;
+=======
+  static final CoOperative currentCoop = bhaktapurSaccos;
+
+>>>>>>> a7fc3bc80678f562dd2590d600017a3093330807
 }
