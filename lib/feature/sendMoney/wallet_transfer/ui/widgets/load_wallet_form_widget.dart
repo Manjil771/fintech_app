@@ -12,6 +12,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
@@ -107,9 +108,14 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   );
                 }
               } else if (state is CommonError) {
-                SnackBarUtils.showErrorBar(
+                showPopUpDialog(
                   context: context,
                   message: state.message,
+                  title: "Error",
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                  showCancelButton: false,
                 );
               }
             },
@@ -139,15 +145,23 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                     title: "Confirm",
                     buttonCallback: () {
                       NavigationService.pop();
-                      context.read<WalletSendCubit>().sendToWallet(
-                            remarks: _remarksController.text,
-                            walletId: widget.selectedWallet.id.toString(),
-                            amount: _amountController.text,
-                            customerName: _walletAccountController.text,
-                            walletAccountNumber: _walletAccountController.text,
-                            validationIdentifier:
-                                _myValidationResult?.validationIdentifier ?? "",
-                          );
+                      NavigationService.push(target: TransactionPinScreen(
+                        onValueCallback: (p0) {
+                          NavigationService.pop();
+                          context.read<WalletSendCubit>().sendToWallet(
+                                mPin: p0,
+                                remarks: _remarksController.text,
+                                walletId: widget.selectedWallet.id.toString(),
+                                amount: _amountController.text,
+                                customerName: _walletAccountController.text,
+                                walletAccountNumber:
+                                    _walletAccountController.text,
+                                validationIdentifier:
+                                    _myValidationResult?.validationIdentifier ??
+                                        "",
+                              );
+                        },
+                      ));
                     },
                   );
                   _isAccountValidated = false;

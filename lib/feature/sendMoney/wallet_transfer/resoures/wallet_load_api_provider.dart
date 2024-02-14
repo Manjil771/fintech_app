@@ -57,6 +57,7 @@ class WalletLoadAPIProvider {
     required String walletAccountNumber,
     required String validationIdentifier,
     required String remarks,
+    required String mPin,
   }) async {
     final _body = {
       "desc_one": customerName,
@@ -66,6 +67,7 @@ class WalletLoadAPIProvider {
       "amount": amount,
       "validationIdentifier": validationIdentifier,
       "skipValidation": true,
+      "mPin": mPin,
     };
     final _url = coOperative.baseUrl + "/api/wallet/load";
     final _uri = UrlUtils.getUri(url: _url, params: _body);
