@@ -12,6 +12,7 @@ import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
@@ -192,7 +193,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         child: ListView(
           children: [
             SizedBox(height: height * 0.05),
-            const IsmartTopWidget(),
+            IsmartTopWidget(showSupportIcon: true, supportAction: supportSheet),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 15.hp),
               child: Form(
@@ -329,7 +330,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             child: RichText(
                               text: TextSpan(
                                 style: _theme.textTheme.titleSmall,
-                                children: [
+                                children: const [
                                   TextSpan(text: "I have read & agree to "),
                                   TextSpan(
                                       text: "Terms & Conditions.",
@@ -536,10 +537,10 @@ class _LoginWidgetState extends State<LoginWidget> {
               height: 40,
             ),
             ...List.generate(
-              _contactUsOptions.length,
+              _miscallBankingOptions.length,
               (index) {
                 return InkWell(
-                  onTap: _contactUsOptions[index]['action'] as Function(),
+                  onTap: _miscallBankingOptions[index]['action'] as Function(),
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 15.hp,
@@ -554,7 +555,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  _contactUsOptions[index]['title'],
+                                  _miscallBankingOptions[index]['title'],
                                   style: _textTheme.bodyLarge!.copyWith(
                                     fontSize: 12,
                                     fontWeight: FontWeight.bold,
@@ -593,7 +594,106 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List<Map<String, dynamic>> _contactUsOptions = [
+  supportSheet() {
+    final _textTheme = Theme.of(NavigationService.context).textTheme;
+
+    showModalBottomSheet(
+      context: NavigationService.context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(30.hp),
+          topRight: Radius.circular(30.hp),
+        ),
+      ),
+      builder: (context) => Container(
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.vertical(
+            top: Radius.circular(24),
+          ),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Container(
+              margin: const EdgeInsets.only(top: 24, bottom: 24),
+              height: 4,
+              width: 55,
+              decoration: BoxDecoration(
+                color: CustomTheme.lightGray.withOpacity(0.4),
+                borderRadius: BorderRadius.circular(4),
+              ),
+            ),
+            Text(
+              "Choose Option",
+              style: _textTheme.labelLarge!.copyWith(
+                color: CustomTheme.darkerBlack,
+                fontWeight: FontWeight.bold,
+                fontSize: 15,
+              ),
+            ),
+            const Divider(
+              height: 40,
+            ),
+            ...List.generate(
+              _supportOptions.length,
+              (index) {
+                return InkWell(
+                  onTap: _supportOptions[index]['action'] as Function(),
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.hp,
+                      vertical: 15.hp,
+                    ),
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Call",
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                                const SizedBox(
+                                  height: 6,
+                                ),
+                                Text(
+                                  contactNumberList[index],
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    color: CustomTheme.darkGray,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: CustomTheme.primaryColor,
+                            )
+                          ],
+                        )
+                      ],
+                    ),
+                  ),
+                );
+              },
+            ),
+            const SizedBox(
+              height: 30,
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  final List<Map<String, dynamic>> _miscallBankingOptions = [
     {
       "title": "Balance Topup",
       "action": () {
@@ -613,13 +713,28 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
     },
   ];
+  final List contactNumberList = ["9801132219", "9801132218"];
+
+  final List<Map<String, dynamic>> _supportOptions = [
+    {
+      "title": "Call",
+      "action": () async {
+        await UrlLauncher.launchPhone(
+            context: NavigationService.context, phone: "9801132218");
+      },
+    },
+    {
+      "title": "Call",
+      "action": () async {
+        await UrlLauncher.launchPhone(
+            context: NavigationService.context, phone: "9801132219");
+      },
+    },
+  ];
+
   Future<void> _makeUrlRequest() async {
-    if (await canLaunchUrl(
-        Uri.parse("https://devanasoft.com.np/PrivacyPolicy.html"))) {
-      await launchUrl(
-          Uri.parse("https://devanasoft.com.np/PrivacyPolicy.html"));
-    } else {
-      throw 'Could not launch https://devanasoft.com.np/PrivacyPolicy.html';
-    }
+    if (await UrlLauncher.launchWebsite(
+        context: context,
+        url: "https://devanasoft.com.np/PrivacyPolicy.html")) ;
   }
 }
