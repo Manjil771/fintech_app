@@ -2526,5 +2526,5 @@ class CoOperativeValue {
     coOperativeName: "Nagarik Saving & Credit Co-operative Ltd.",
     appTitle: "Nagarik iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative currentCoop = aaratiCoop;
 }
