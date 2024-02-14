@@ -2498,5 +2498,19 @@ class CoOperativeValue {
     coOperativeName: "Jyotidaya Saving & Credit Co-operative Ltd.",
     appTitle: "Jyotidaya iSmart",
   );
-  static final CoOperative currentCoop = jyotidayaCoop;
+  static final CoOperative sunakothiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sunakothi/sunakothi_banner.png",
+    backgroundImage: "assets/sunakothi/sunakothi_background.png",
+    clientCode: 'EE0F8IXU5R',
+    clientSecret: "141623",
+    coOperativeLogo: 'assets/sunakothi/sunakothi_logo.png',
+    splashImage: "assets/sunakothi/sunakothi_splash.png",
+    primaryColor: const Color(0xFF176F00),
+    coOperativeName: "Sunakothi Multipurpose Co-operative Ltd.",
+    appTitle: "Sunakothi iSmart",
+  );
+  static final CoOperative currentCoop = sunakothiCoop;
 }

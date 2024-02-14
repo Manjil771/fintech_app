@@ -284,7 +284,9 @@ flutter:
     # - assets/lamosanghu/
     # - assets/greenhouse/
     # - assets/prime/
-    - assets/jyotidaya/
+    # - assets/jyotidaya/
+    - assets/sunakothi/
+
 
      
 
