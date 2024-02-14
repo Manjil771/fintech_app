@@ -540,7 +540,11 @@ class _LoginWidgetState extends State<LoginWidget> {
               _miscallBankingOptions.length,
               (index) {
                 return InkWell(
-                  onTap: _miscallBankingOptions[index]['action'] as Function(),
+                  // onTap: _miscallBankingOptions[index]['action'] as Function(),
+                  onTap: () async {
+                    await UrlLauncher.launchPhone(
+                        context: context, phone: _miscallBankingNumbers[index]);
+                  },
                   child: Container(
                     padding: EdgeInsets.symmetric(
                       horizontal: 15.hp,
@@ -566,7 +570,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   height: 6,
                                 ),
                                 Text(
-                                  _supportContact,
+                                  _miscallBankingNumbers[index],
                                   style: _textTheme.bodyLarge!.copyWith(
                                     color: CustomTheme.darkGray,
                                   ),
@@ -665,7 +669,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   height: 6,
                                 ),
                                 Text(
-                                  contactNumberList[index],
+                                  _miscallBankingNumbers[index],
                                   style: _textTheme.bodyLarge!.copyWith(
                                     color: CustomTheme.darkGray,
                                   ),
@@ -720,14 +724,14 @@ class _LoginWidgetState extends State<LoginWidget> {
       "title": "Call",
       "action": () async {
         await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132218");
+            context: NavigationService.context, phone: "9801132219");
       },
     },
     {
       "title": "Call",
       "action": () async {
         await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132219");
+            context: NavigationService.context, phone: "9801132218");
       },
     },
   ];
@@ -737,4 +741,10 @@ class _LoginWidgetState extends State<LoginWidget> {
         context: context,
         url: "https://devanasoft.com.np/PrivacyPolicy.html")) ;
   }
+
+  List _miscallBankingNumbers = [
+    "9820499111",
+    "9820499222",
+    "9820488444",
+  ];
 }

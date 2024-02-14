@@ -2429,5 +2429,5 @@ class CoOperativeValue {
     appTitle: "Prime iSmart",
   );
 
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative currentCoop = devLive;
 }
