@@ -2481,8 +2481,22 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/prime/prime_logo.png',
     splashImage: "assets/prime/prime_splash.png",
     primaryColor: const Color(0xFF0DA84C),
-    coOperativeName: "Prime Multipurpose Cooperative Ltd..",
+    coOperativeName: "Prime Multipurpose Cooperative Ltd.",
     appTitle: "Prime Multi iSmart",
   );
-  static final CoOperative currentCoop = primeMultiCoop;
+  static final CoOperative jyotidayaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jyotidaya/jyotidaya_banner.png",
+    backgroundImage: "assets/jyotidaya/jyotidaya_background.png",
+    clientCode: '1AEFCPYDWJ',
+    clientSecret: "176713",
+    coOperativeLogo: 'assets/jyotidaya/jyotidaya_logo.png',
+    splashImage: "assets/jyotidaya/jyotidaya_splash.png",
+    primaryColor: const Color(0xFF176F00),
+    coOperativeName: "Jyotidaya Saving & Credit Co-operative Ltd.",
+    appTitle: "Jyotidaya iSmart",
+  );
+  static final CoOperative currentCoop = jyotidayaCoop;
 }

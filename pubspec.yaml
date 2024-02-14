@@ -283,7 +283,8 @@ flutter:
     # - assets/navadurga/
     # - assets/lamosanghu/
     # - assets/greenhouse/
-    - assets/prime/
+    # - assets/prime/
+    - assets/jyotidaya/
 
      
 
