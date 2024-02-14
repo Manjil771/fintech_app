@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
+import 'package:ismart/feature/favorite/editAccount/screen/update_fav_account_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -18,6 +17,8 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 class ListFavAccountWidget extends StatelessWidget {
   ListFavAccountWidget({super.key});
   bool isBankTransfer = true;
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -140,12 +141,39 @@ class ListFavAccountWidget extends StatelessWidget {
                                                 ),
                                               ]),
                                         ),
-                                        SvgPicture.asset(
-                                          Assets.arrowRight,
-                                          height: 12.hp,
-                                          width: 12.wp,
-                                          color: _theme.primaryColor,
-                                        )
+                                        InkWell(
+                                          onTap: () {
+                                            NavigationService.push(
+                                                target: UpdateFavAccountPage(
+                                              remainderType: res[index]
+                                                      ["reminderType"]
+                                                  .toString(),
+                                              serviceInfoType: res[index]
+                                                      ["serviceInfoType"]
+                                                  .toString(),
+                                              id: res[index]["id"].toString(),
+                                              isBankTransfer: isBankTransfer,
+                                              accountName: res[index]["data"]
+                                                      ["destinationAccountName"]
+                                                  .toString(),
+                                              accountNumber: res[index]["data"]
+                                                  ["destinationAccountNumber"],
+                                              bankCode: res[index]["data"]
+                                                  ["destinationBankCode"],
+                                              bankName: res[index]["data"]
+                                                  ["destinationBankName"],
+                                            ));
+                                          },
+                                          child: Padding(
+                                            padding: const EdgeInsets.only(
+                                                left: 8.0),
+                                            child: Icon(
+                                              Icons.more_vert_outlined,
+                                              size: 25.hp,
+                                              color: _theme.primaryColor,
+                                            ),
+                                          ),
+                                        ),
                                       ],
                                     ),
                                   ),

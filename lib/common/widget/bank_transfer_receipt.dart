@@ -5,6 +5,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -133,7 +134,8 @@ class BankTransferReciptWidget extends StatelessWidget {
                     CustomRoundedButtom(
                         title: "Done",
                         onPressed: () {
-                          NavigationService.popUntilFirstPage();
+                          NavigationService.pushReplacementNamed(
+                              routeName: Routes.dashboard);
 
                           // NavigationService.pushReplacement(
                           //     target: const DashboardPage());

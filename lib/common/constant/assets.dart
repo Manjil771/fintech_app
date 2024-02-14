@@ -15,10 +15,10 @@ class Assets {
   static const String groupIcon = "assets/icons/Group 1035.svg";
   static const String verify = "assets/icons/verify your number.svg";
   static const String loader = "assets/icons/ismart_loader_test2.gif";
-  //TODO :need to add user image to profile picture
 
-  static const String profilePicture =
-      "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png";
+  static const String profilePicture = "assets/images/profile.png";
+  // static const String profilePicture =
+  //     "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png";
   static const String ismartLogo = "assets/ismartlogo.png";
 
   static const String notificationIcon = "assets/icons/Notification.svg";
@@ -69,6 +69,8 @@ class Assets {
   static const String errorImage = "assets/images/error.png";
   static const String ismartSlogan = "assets/images/ismart_slogan.png";
   static const String luggageIcon = "assets/icon/luggage_icon.svg";
+  static const String editIcon = "assets/icon/edit_icon.svg";
+  static const String menuIcon = "assets/icon/menu_icon.svg";
 
 // send money
   static const String sendMoneyIcon =
