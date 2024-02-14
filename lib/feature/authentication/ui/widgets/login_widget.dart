@@ -669,7 +669,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   height: 6,
                                 ),
                                 Text(
-                                  _miscallBankingNumbers[index],
+                                  contactNumberList[index],
                                   style: _textTheme.bodyLarge!.copyWith(
                                     color: CustomTheme.darkGray,
                                   ),
@@ -699,7 +699,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final List<Map<String, dynamic>> _miscallBankingOptions = [
     {
-      "title": "Balance Topup",
+      "title": "Topup",
       "action": () {
         NavigationService.pop();
       },

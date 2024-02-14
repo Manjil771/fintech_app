@@ -196,7 +196,7 @@ flutter:
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -285,7 +285,9 @@ flutter:
     # - assets/greenhouse/
     # - assets/prime/
     # - assets/jyotidaya/
-    - assets/sunakothi/
+    # - assets/sunakothi/
+    # - assets/nagarik/
+
 
 
      
