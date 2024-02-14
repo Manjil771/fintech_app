@@ -2470,6 +2470,19 @@ class CoOperativeValue {
     coOperativeName: "Green House Bachat Tatha Rin Sahakari Sanstha Ltd.",
     appTitle: "Green House iSmart",
   );
-
-  static final CoOperative currentCoop = shreeJamuneCoop;
+  static final CoOperative primeMultiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/prime/prime_banner.png",
+    backgroundImage: "assets/prime/prime_background.png",
+    clientCode: 'QHWWY69XRL',
+    clientSecret: "155340",
+    coOperativeLogo: 'assets/prime/prime_logo.png',
+    splashImage: "assets/prime/prime_splash.png",
+    primaryColor: const Color(0xFF0DA84C),
+    coOperativeName: "Prime Multipurpose Cooperative Ltd..",
+    appTitle: "Prime Multi iSmart",
+  );
+  static final CoOperative currentCoop = primeMultiCoop;
 }
