@@ -19,6 +19,7 @@ class StartupCubit extends Cubit<StartupState> {
     await userRepository.initialState();
     await startUpRepository.fetchBannerImages();
     await startUpRepository.fetchAppConfig();
+    await startUpRepository.fetchdefaultBannerImages();
 
     if (isFirstTime) {
       await SharedPref.setFirstTimeAppOpen(false);

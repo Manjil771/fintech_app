@@ -71,6 +71,34 @@ class UtilityPaymentAPIProvider {
     );
   }
 
+  deleteReq({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required String apiEndpoint,
+    required mPin,
+  }) async {
+    final _params = {
+      ...accountDetails,
+    };
+    if (serviceIdentifier.isNotEmpty) {
+      _params["service_identifier"] = "$serviceIdentifier";
+    }
+    if (mPin.isNotEmpty) {
+      _params["mPin"] = "$mPin";
+    }
+
+    final url = UrlUtils.getUri(
+      url: baseUrl + "$apiEndpoint",
+      params: _params,
+    );
+
+    return await apiProvider.delete(
+      userId: 0,
+      url.toString(),
+      token: userRepository.token,
+    );
+  }
+
   fetchDetails(
       {required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,

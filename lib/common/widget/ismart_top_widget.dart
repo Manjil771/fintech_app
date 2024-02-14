@@ -10,7 +10,11 @@ import 'package:ismart/common/util/url_launcher.dart';
 // import 'package:ismart/view/Auth/loginScreen/select_language.dart';
 
 class IsmartTopWidget extends StatelessWidget {
-  const IsmartTopWidget({Key? key}) : super(key: key);
+  final Function()? supportAction;
+  final bool showSupportIcon;
+  const IsmartTopWidget(
+      {Key? key, this.showSupportIcon = false, this.supportAction})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,41 +25,44 @@ class IsmartTopWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (!repo.bannerImage.contains("https"))
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Image.asset(
-                repo.bannerImage,
-              ),
+          Padding(
+            padding: const EdgeInsets.only(left: 15),
+            child: Image.asset(
+              repo.bannerImage,
+              height: 60.hp,
             ),
           ),
         if (repo.bannerImage.contains("https"))
-          Expanded(
-            child: Padding(
-              padding: const EdgeInsets.only(left: 15),
-              child: Image.network(
-                repo.bannerImage,
-              ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 15),
+            child: Image.network(
+              repo.bannerImage,
+              height: 60.hp,
             ),
           ),
-        SizedBox(width: _width * 0.1),
-        SvgPicture.asset(
-          Assets.translateImage,
-          height: _height * 0.03,
-        ),
-        SizedBox(width: 15.hp),
-        InkWell(
-          onTap: () {
-            UrlLauncher.launchWebsite(
-              context: NavigationService.context,
-              url: "viber://chat?number=%2B9779801132218",
-            );
-          },
-          child: SvgPicture.asset(
-            Assets.contactUsIcon,
-            height: _height * 0.03,
+        if (showSupportIcon)
+          Container(
+            child: Row(
+              children: [
+                SvgPicture.asset(
+                  Assets.translateImage,
+                  height: _height * 0.03,
+                ),
+                SizedBox(width: 15.hp),
+                InkWell(
+                  onTap: supportAction
+                  // UrlLauncher.launchPhone(
+                  //     context: NavigationService.context,
+                  //     phone: "9801132218");
+                  ,
+                  child: SvgPicture.asset(
+                    Assets.contactUsIcon,
+                    height: _height * 0.03,
+                  ),
+                ),
+              ],
+            ),
           ),
-        ),
         SizedBox(width: 15.hp),
       ],
     );

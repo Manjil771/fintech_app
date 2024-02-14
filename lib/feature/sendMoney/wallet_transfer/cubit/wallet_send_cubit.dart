@@ -16,10 +16,12 @@ class WalletSendCubit extends Cubit<CommonState> {
     required String walletAccountNumber,
     required String validationIdentifier,
     required String remarks,
+    required String mPin,
   }) async {
     emit(CommonLoading());
     try {
       final response = await walletLoadRepository.sendToWallet(
+        mPin: mPin,
         remarks: remarks,
         walletId: walletId,
         amount: amount,

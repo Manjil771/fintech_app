@@ -177,6 +177,36 @@ class UtilityPaymentRepository {
     }
   }
 
+  Future<DataResponse<UtilityResponseData>> deleteReq({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required String apiEndpoint,
+    required mPin,
+  }) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.deleteReq(
+        mPin: mPin,
+        serviceIdentifier: serviceIdentifier,
+        accountDetails: accountDetails,
+        apiEndpoint: apiEndpoint,
+      );
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      NavigationService.context
+          .read<CustomerDetailCubit>()
+          .fetchCustomerDetail();
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
   Future<DataResponse<String>> getCharges(
       {required Map<String, dynamic> accountDetails,
       required String apiEndpoint}) async {

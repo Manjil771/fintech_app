@@ -98,9 +98,11 @@ class WalletLoadRepository {
     required String walletAccountNumber,
     required String validationIdentifier,
     required String remarks,
+    required String mPin,
   }) async {
     try {
       final _res = await walletLoadAPIProvider.sendToWallet(
+        mPin: mPin,
         walletId: walletId,
         accountNumber: RepositoryProvider.of<CustomerDetailRepository>(
                 NavigationService.context)
