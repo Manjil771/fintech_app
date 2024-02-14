@@ -2385,6 +2385,7 @@ class CoOperativeValue {
     coOperativeName: "Machapuchhre Saving and Credit Co-operative Ltd.",
     appTitle: "Machhapuchhre iSmart",
   );
+
   static final CoOperative wonderfulCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -2413,7 +2414,22 @@ class CoOperativeValue {
     coOperativeName: "Bhudev Multipurpose Co-operative Ltd.",
     appTitle: "Bhudev iSmart",
   );
+  static final CoOperative primeCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/prime/prime_banner.png",
+    backgroundImage: "assets/prime/prime_background.png",
+    clientCode: 'QHWWY69XRL',
+    clientSecret: "155340",
+    coOperativeLogo: 'assets/prime/prime_logo.png',
+    splashImage: "assets/prime/prime_splash.png",
+    primaryColor: const Color(0xFF0DA84C),
+    coOperativeName: "Prime Multipurpose Cooperative Ltd.",
+    appTitle: "Prime iSmart",
+  );
 
+<<<<<<< HEAD
   static final CoOperative shreeGodawariCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -2513,4 +2529,7 @@ class CoOperativeValue {
     appTitle: "Sunakothi iSmart",
   );
   static final CoOperative currentCoop = sunakothiCoop;
+=======
+  static final CoOperative currentCoop = devLive;
+>>>>>>> 38f494ad2da019744c2bc7de7f0843b960e827df
 }

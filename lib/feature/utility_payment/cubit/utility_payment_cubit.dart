@@ -128,6 +128,31 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     }
   }
 
+  deleteReq({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required String apiEndpoint,
+    required mPin,
+  }) async {
+    emit(CommonLoading());
+
+    final _res = await utilityPaymentRepository.deleteReq(
+      mPin: mPin,
+      serviceIdentifier: serviceIdentifier,
+      accountDetails: accountDetails,
+      apiEndpoint: apiEndpoint,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
+
   getCharges({
     required Map<String, dynamic> accountDetails,
     required String apiEndpoint,

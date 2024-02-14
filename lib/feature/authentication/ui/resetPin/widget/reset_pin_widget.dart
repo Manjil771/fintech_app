@@ -38,140 +38,143 @@ class ResetPinWidget extends StatelessWidget {
     return PageWrapper(
       showAppBar: true,
       useOwnAppBar: true,
-      body: Container(
-        child: BlocListener<ResetPinCubit, CommonState>(
-          listener: (context, state) {
-            if (state is CommonLoading && _isLoading == false) {
-              _isLoading = true;
-              showLoadingDialogBox(context);
-            } else if (state is! CommonLoading && _isLoading) {
-              _isLoading = false;
-              NavigationService.pop();
-            }
-            if (state is CommonError) {
-              // if (state.message.toLowerCase().contains("OTP".toLowerCase())) {
-              //   NavigationService.push(target: OTPWidget(onValueCallback: (p0) {
-              //     NavigationService.pop();
-              //     context.read<ResetPinCubit>().makePayment(
-              //         serviceIdentifier: "",
-              //         accountDetails: {
-              //           "mobileNumber": _mobileNumberController.text,
-              //           "otp": p0,
-              //           "clientId": RepositoryProvider.of<CoOperative>(context)
-              //               .clientCode,
-              //         },
-              //         body: {},
-              //         apiEndpoint: "/customer/reset/verify/",
-              //         mPin: "");
-              //   }));
-              // }
-              showPopUpDialog(
-                context: context,
-                message: state.message,
-                title: "Error",
-                showCancelButton: false,
-                buttonCallback: () {
-                  NavigationService.pop();
-                },
-              );
-            }
-
-            if (state is CommonStateSuccess) {
-              UtilityResponseData _response = state.data;
-              if (_response.status.toLowerCase() == "success".toLowerCase()) {
-                NavigationService.push(
-                    target: ResetOTPPage(
-                  mobileNumber: _mobileNumberController.text,
-                ));
-              } else {
+      body: SafeArea(
+        child: Container(
+          child: BlocListener<ResetPinCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoading && _isLoading == false) {
+                _isLoading = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading) {
+                _isLoading = false;
+                NavigationService.pop();
+              }
+              if (state is CommonError) {
+                // if (state.message.toLowerCase().contains("OTP".toLowerCase())) {
+                //   NavigationService.push(target: OTPWidget(onValueCallback: (p0) {
+                //     NavigationService.pop();
+                //     context.read<ResetPinCubit>().makePayment(
+                //         serviceIdentifier: "",
+                //         accountDetails: {
+                //           "mobileNumber": _mobileNumberController.text,
+                //           "otp": p0,
+                //           "clientId": RepositoryProvider.of<CoOperative>(context)
+                //               .clientCode,
+                //         },
+                //         body: {},
+                //         apiEndpoint: "/customer/reset/verify/",
+                //         mPin: "");
+                //   }));
+                // }
                 showPopUpDialog(
                   context: context,
-                  message: _response.message,
-                  title: _response.status,
+                  message: state.message,
+                  title: "Error",
                   showCancelButton: false,
                   buttonCallback: () {
                     NavigationService.pop();
                   },
                 );
               }
-            }
-            print("state is $state");
-          },
-          child: Column(
-            children: [
-              Container(height: 70.hp, child: IsmartTopWidget()),
-              Expanded(
-                child: Container(
-                  child: CommonContainer(
-                      onButtonPressed: () {
-                        if (_fromKey.currentState!.validate()) {
-                          context.read<ResetPinCubit>().resetPin(
-                              serviceIdentifier: "",
-                              accountDetails: {
-                                "mobileNumber": _mobileNumberController.text,
-                                "accountNumber":
-                                    "${internalBranch?.branchCode ?? ""}${_accountNumberController.text}",
-                                //001001-001-101-0001091
-                                "clientId":
-                                    RepositoryProvider.of<CoOperative>(context)
-                                        .clientCode,
-                                // "smsReadToken"
-                              },
-                              body: {},
-                              apiEndpoint: "/customer/reset/send",
-                              mPin: "");
-                        }
-                      },
-                      buttonName: "Proceed",
-                      title: "Reset Pin",
-                      showDetail: false,
-                      body: Form(
-                        key: _fromKey,
-                        child: Column(
-                          children: [
-                            CustomTextField(
-                              controller: _mobileNumberController,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              title: "Mobile Number",
-                              validator: (value) =>
-                                  FormValidator.validatePhoneNumber(value),
-                            ),
-                            CustomTextField(
-                              controller: _accountNumberController,
-                              autovalidateMode:
-                                  AutovalidateMode.onUserInteraction,
-                              title: "Account Number",
-                              validator: (value) =>
-                                  FormValidator.validateFieldNotEmpty(
-                                      value, "Account Number"),
-                            ),
-                            CustomTextField(
-                                title: "Branch",
-                                hintText: "Select Branch",
-                                readOnly: true,
-                                controller: _branchController,
-                                validator: (val) =>
+
+              if (state is CommonStateSuccess) {
+                UtilityResponseData _response = state.data;
+                if (_response.status.toLowerCase() == "success".toLowerCase()) {
+                  NavigationService.push(
+                      target: ResetOTPPage(
+                    mobileNumber: _mobileNumberController.text,
+                  ));
+                } else {
+                  showPopUpDialog(
+                    context: context,
+                    message: _response.message,
+                    title: _response.status,
+                    showCancelButton: false,
+                    buttonCallback: () {
+                      NavigationService.pop();
+                    },
+                  );
+                }
+              }
+              print("state is $state");
+            },
+            child: Column(
+              children: [
+                IsmartTopWidget(),
+                Expanded(
+                  child: Container(
+                    child: CommonContainer(
+                        onButtonPressed: () {
+                          if (_fromKey.currentState!.validate()) {
+                            context.read<ResetPinCubit>().resetPin(
+                                serviceIdentifier: "",
+                                accountDetails: {
+                                  "mobileNumber": _mobileNumberController.text,
+                                  "accountNumber":
+                                      "${internalBranch?.branchCode ?? ""}${_accountNumberController.text}",
+                                  //001001-001-101-0001091
+                                  "clientId":
+                                      RepositoryProvider.of<CoOperative>(
+                                              context)
+                                          .clientCode,
+                                  // "smsReadToken"
+                                },
+                                body: {},
+                                apiEndpoint: "/customer/reset/send",
+                                mPin: "");
+                          }
+                        },
+                        buttonName: "Proceed",
+                        title: "Reset Pin",
+                        showDetail: false,
+                        body: Form(
+                          key: _fromKey,
+                          child: Column(
+                            children: [
+                              CustomTextField(
+                                controller: _mobileNumberController,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                title: "Mobile Number",
+                                validator: (value) =>
+                                    FormValidator.validatePhoneNumber(value),
+                              ),
+                              CustomTextField(
+                                controller: _accountNumberController,
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                title: "Account Number",
+                                validator: (value) =>
                                     FormValidator.validateFieldNotEmpty(
-                                        val, "Branch"),
-                                onTap: () {
-                                  NavigationService.push(
-                                    target: CoOperativeBranchPage(
-                                      onBankSelected: (val) {
-                                        NavigationService.pop();
-                                        internalBranch = val;
-                                        _branchController.text = val.name;
-                                      },
-                                    ),
-                                  );
-                                }),
-                          ],
+                                        value, "Account Number"),
+                              ),
+                              CustomTextField(
+                                  title: "Branch",
+                                  hintText: "Select Branch",
+                                  readOnly: true,
+                                  controller: _branchController,
+                                  validator: (val) =>
+                                      FormValidator.validateFieldNotEmpty(
+                                          val, "Branch"),
+                                  onTap: () {
+                                    NavigationService.push(
+                                      target: CoOperativeBranchPage(
+                                        onBankSelected: (val) {
+                                          NavigationService.pop();
+                                          internalBranch = val;
+                                          _branchController.text = val.name;
+                                        },
+                                      ),
+                                    );
+                                  }),
+                            ],
+                          ),
                         ),
-                      ),
-                      topbarName: "Reset Pin"),
-                ),
-              )
-            ],
+                        topbarName: "Reset Pin"),
+                  ),
+                )
+              ],
+            ),
           ),
         ),
       ),

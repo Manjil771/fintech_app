@@ -97,39 +97,43 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                         Expanded(
                                           child: buildDetails(
                                               context,
-                                              "accrued interest.svg",
-                                              "Accrued Interest",
-                                              "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                              "actual balance profile page.svg",
+                                              "Actual Balance",
+                                              "NPR ${_detail.accountDetail[index].actualBalance}"),
                                         ),
                                         SizedBox(
                                           width: _width * 0.4,
                                           child: buildDetails(
                                               context,
-                                              "interest rate profile.svg",
-                                              "Interest Rate",
-                                              "${_detail.accountDetail[index].interestRate} %"),
+                                              "money-send-svgrepo-com 1.svg",
+                                              "Available Bal.",
+                                              "NPR ${_detail.accountDetail[index].availableBalance}"),
                                         ),
                                       ],
                                     ),
                                   Row(
                                     children: [
-                                      Expanded(
-                                        child: buildDetails(
-                                            context,
-                                            "actual balance profile page.svg",
-                                            "Actual Balance",
-                                            "NPR ${_detail.accountDetail[index].actualBalance}"),
-                                      ),
+                                      if (_detail.accountDetail[index]
+                                              .accruedInterest
+                                              .toString() ==
+                                          "0")
+                                        Expanded(
+                                          child: buildDetails(
+                                              context,
+                                              "accrued interest.svg",
+                                              "Accrued Interest",
+                                              "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                        ),
                                       SizedBox(
                                         width: _width * 0.4,
                                         child: buildDetails(
                                             context,
-                                            "money-send-svgrepo-com 1.svg",
-                                            "Available Bal.",
-                                            "NPR ${_detail.accountDetail[index].availableBalance}"),
+                                            "interest rate profile.svg",
+                                            "Interest Rate",
+                                            "${_detail.accountDetail[index].interestRate} %"),
                                       ),
                                     ],
-                                  )
+                                  ),
                                 ],
                               ),
                             ),
