@@ -181,7 +181,7 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
-    - assets/aarati/
+    # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
@@ -235,7 +235,7 @@ flutter:
     # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
-    # - assets/puspanjali/
+    - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
