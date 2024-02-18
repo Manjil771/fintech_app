@@ -2527,5 +2527,5 @@ class CoOperativeValue {
     coOperativeName: "Sunakothi Multipurpose Co-operative Ltd.",
     appTitle: "Sunakothi iSmart",
   );
-  static final CoOperative currentCoop = sunakothiCoop;
+  static final CoOperative currentCoop = khotangJaleshworiCoop;
 }
