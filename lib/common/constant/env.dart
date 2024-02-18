@@ -2526,5 +2526,19 @@ class CoOperativeValue {
     coOperativeName: "Nagarik Saving & Credit Co-operative Ltd.",
     appTitle: "Nagarik iSmart",
   );
-  static final CoOperative currentCoop = khotangJaleshworiCoop;
+  static final CoOperative thechomahilajagaranCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/thechoMahilajagaran/thechoMahilaJagaran_banner.png",
+    backgroundImage:"assets/thechoMahilaJagaran/thechoMahilaJagaran_background.png",
+    clientCode: '1B1JG4LFPF',
+    clientSecret: "185231",
+    coOperativeLogo: 'assets/thechoMahilajagaran/thechoMahilaJagaran_logo.png',
+    splashImage: "assets/thechoMahilajagaran/thechoMahilaJagaran_splash.png",
+    primaryColor: const Color(0xFF467F30),
+    coOperativeName: "Thecho Maila Jagaran Saving and Credit Co-operative Ltd.",
+    appTitle: "Thecho Mahila Jagaran iSmart",
+  );
+  static final CoOperative currentCoop = thechomahilajagaranCoop;
 }

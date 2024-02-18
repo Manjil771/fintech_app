@@ -231,7 +231,7 @@ flutter:
     # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
-    - assets/khotangJaleshwori/
+    # - assets/khotangJaleshwori/
     # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
@@ -287,6 +287,8 @@ flutter:
     # - assets/jyotidaya/
     # - assets/sunakothi/
     # - assets/nagarik/
+    - assets/thechomahilajagaran/
+
 
 
 
