@@ -177,7 +177,7 @@ flutter:
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
-    # - assets/rithepani/
+    - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
