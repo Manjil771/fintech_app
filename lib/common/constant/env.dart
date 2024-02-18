@@ -2530,15 +2530,44 @@ class CoOperativeValue {
     appStoreID: "",
     packageName: "",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/thechoMahilajagaran/thechoMahilaJagaran_banner.png",
-    backgroundImage:"assets/thechoMahilaJagaran/thechoMahilaJagaran_background.png",
+    bannerImage: "assets/thechomahilajagaran/thechoMahilaJagaran_banner.png",
+    backgroundImage:
+        "assets/thechomahilajagaran/thechoMahilaJagaran_background.png",
     clientCode: '1B1JG4LFPF',
     clientSecret: "185231",
-    coOperativeLogo: 'assets/thechoMahilajagaran/thechoMahilaJagaran_logo.png',
-    splashImage: "assets/thechoMahilajagaran/thechoMahilaJagaran_splash.png",
+    coOperativeLogo: 'assets/thechomahilajagaran/thechoMahilaJagaran_logo.png',
+    splashImage: "assets/thechomahilajagaran/thechoMahilaJagaran_splash.png",
     primaryColor: const Color(0xFF467F30),
     coOperativeName: "Thecho Maila Jagaran Saving and Credit Co-operative Ltd.",
     appTitle: "Thecho Mahila Jagaran iSmart",
   );
-  static final CoOperative currentCoop = thechomahilajagaranCoop;
+  static final CoOperative sayapatriCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sayapatri/sayapatri_banner.png",
+    backgroundImage: "assets/sayapatri/sayapatri_background.png",
+    clientCode: '4FIMMBQ9II',
+    clientSecret: "157832",
+    coOperativeLogo: 'assets/sayapatri/sayapatri_logo.png',
+    splashImage: "assets/sayapatri/sayapatri_splash.png",
+    primaryColor: const Color(0xFF37603E),
+    coOperativeName: "Sayapatri Multipurpose Co-operative Ltd.",
+    appTitle: "Sayapatri iSmart",
+  );
+  static final CoOperative unitedCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/united/united_banner.png",
+    backgroundImage: "assets/united/united_background.png",
+    clientCode: 'RLKZHV1AHG',
+    clientSecret: "141222",
+    coOperativeLogo: 'assets/united/united_logo.png',
+    splashImage: "assets/united/united_splash.png",
+    primaryColor: const Color(0xFF353364),
+    coOperativeName: "United Multipurpose Co-operative Ltd.",
+    appTitle: "United Multi iSmart",
+  );
+  static final CoOperative currentCoop = matribhumiCoop;
 }
