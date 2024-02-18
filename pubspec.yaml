@@ -231,11 +231,11 @@ flutter:
     # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
-    # - assets/khotangJaleshwori/
+    - assets/khotangJaleshwori/
     # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
-    - assets/puspanjali/
+    # - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
