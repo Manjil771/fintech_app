@@ -154,7 +154,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -177,7 +177,7 @@ flutter:
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
-    # - assets/rithepani/
+    - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
@@ -231,7 +231,7 @@ flutter:
     # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
-    # - assets/khotangJaleshwori/
+    - assets/khotangJaleshwori/
     # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
@@ -261,7 +261,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    # - assets/shreeJamune/
+    - assets/shreeJamune/
     # - assets/drabya/
     - assets/omshreeom/
     # - assets/upayogi/

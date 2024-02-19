@@ -499,9 +499,40 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        nagarik{
+            dimension "app"
+            applicationId "com.devanasoft.nagarik"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        
         sunakothi{
             dimension "app"
             applicationId "com.devanasoft.sunakothi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        thechomahila{
+            dimension "app"
+            applicationId "com.devanasoft.thechomahila"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        gairigaun{
+            dimension "app"
+            applicationId "com.devanasoft.gairigaun"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        united{
+            dimension "app"
+            applicationId "com.devanasoft.united"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sayapatri{
+            dimension "app"
+            applicationId "com.devanasoft.sayapatri"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -532,6 +563,12 @@ android {
         mithila {
             dimension "app"
             applicationId "com.devanasoft.mithila"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aarati {
+            dimension "app"
+            applicationId "com.devanasoft.aarati"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
