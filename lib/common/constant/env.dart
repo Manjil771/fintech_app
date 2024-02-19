@@ -2569,5 +2569,20 @@ class CoOperativeValue {
     coOperativeName: "United Multipurpose Co-operative Ltd.",
     appTitle: "United Multi iSmart",
   );
+  static final CoOperative gairigaunCoop = CoOperative(
+    appStoreID: "",
+    packageName: "",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/gairigaun/gairigaun_banner.png",
+    backgroundImage: "assets/gairigaun/gairigaun_background.png",
+    clientCode: 'B8R7EFOUK1',
+    clientSecret: "218483",
+    coOperativeLogo: 'assets/gairigaun/gairigaun_logo.png',
+    splashImage: "assets/gairigaun/gairigaun_splash.png",
+    primaryColor: const Color(0xFF006837),
+    coOperativeName: "Gairigaun Saving & Credit Co-operative Ltd.",
+    appTitle: "Gairigaun iSmart",
+  );
+
   static final CoOperative currentCoop = matribhumiCoop;
 }

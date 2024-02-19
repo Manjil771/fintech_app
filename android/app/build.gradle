@@ -518,6 +518,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        gairigaun{
+            dimension "app"
+            applicationId "com.devanasoft.gairigaun"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         united{
             dimension "app"
             applicationId "com.devanasoft.united"
