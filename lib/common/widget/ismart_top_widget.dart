@@ -25,19 +25,23 @@ class IsmartTopWidget extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         if (!repo.bannerImage.contains("https"))
-          Padding(
-            padding: const EdgeInsets.only(left: 15),
-            child: Image.asset(
-              repo.bannerImage,
-              height: 60.hp,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Image.asset(
+                repo.bannerImage,
+                height: 60.hp,
+              ),
             ),
           ),
         if (repo.bannerImage.contains("https"))
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Image.network(
-              repo.bannerImage,
-              height: 60.hp,
+          Expanded(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 15),
+              child: Image.network(
+                repo.bannerImage,
+                height: 60.hp,
+              ),
             ),
           ),
         if (showSupportIcon)
