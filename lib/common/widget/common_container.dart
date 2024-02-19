@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
+import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_service_page.dart';
 import '../util/size_utils.dart';
@@ -30,6 +31,7 @@ class CommonContainer extends StatelessWidget {
   final bool showTitleText;
   final double verticalPadding;
   final double horizontalPadding;
+  final Function(RecentTransactionModel)? onRecentTransactionPressed;
 
   final Function()? onButtonPressed;
   const CommonContainer({
@@ -51,6 +53,7 @@ class CommonContainer extends StatelessWidget {
     this.detail = "",
     this.associatedId = "",
     this.serviceName,
+    this.onRecentTransactionPressed,
   });
   @override
   Widget build(BuildContext context) {
@@ -173,6 +176,8 @@ class CommonContainer extends StatelessWidget {
             ),
             if (showRecentTransaction)
               RecentTransactionServiceScreen(
+                  onRecentTransactionPressed:
+                      onRecentTransactionPressed ?? (RecentTransactionModel) {},
                   service: serviceName,
                   serviceCategoryId: serviceCategoryId,
                   associatedId: associatedId),

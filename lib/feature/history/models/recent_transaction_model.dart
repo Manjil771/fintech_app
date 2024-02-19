@@ -16,6 +16,8 @@ class RecentTransactionModel {
   String service;
   var serviceTo;
   String accountNumber;
+  String remarks;
+
   String transactionIdentifier;
   DateTime date;
   String status;
@@ -51,6 +53,7 @@ class RecentTransactionModel {
     required this.iconUrl,
     required this.debit,
     required this.channelType,
+    required this.remarks,
   });
 
   factory RecentTransactionModel.fromJson(Map<String, dynamic> json) =>
@@ -74,6 +77,7 @@ class RecentTransactionModel {
         iconUrl: json["iconUrl"],
         debit: json["debit"],
         channelType: json["channelType"] ?? "",
+        remarks: json["remarks"] ?? "Remarks",
       );
 
   Map<String, dynamic> toJson() => {
@@ -95,6 +99,7 @@ class RecentTransactionModel {
         "responseDetail": responseDetail.toJson(),
         "iconUrl": iconUrl,
         "debit": debit,
+        "remarks": remarks,
         "channelType": channelTypeValues.reverse[channelType],
       };
 }

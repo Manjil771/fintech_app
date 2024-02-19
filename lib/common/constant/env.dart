@@ -208,22 +208,23 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
+    baseUrl: 'http://103.198.9.203:8080/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'PHZDAEF1CW',
+    clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "156872",
+    clientSecret: "199204",
     splashImage: "assets/images/ismart_splash.jpg",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
     appTitle: "iSmart Devanasoft",
     appStoreID: "",
+    shouldValidateCooperative: false,
   );
 //  TEST for synergy cbs
   static final CoOperative synergyDevTest = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
+    baseUrl: 'http://103.198.9.203:8080/',
     bannerImage: "assets/images/ismart_banner.png",
     clientCode: '92D1PSNS6P',
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -238,7 +239,7 @@ class CoOperativeValue {
   );
   //  TEST for finnact cbs
   static final CoOperative finnactDevTest = CoOperative(
-    baseUrl: 'http://103.198.9.222:1231/',
+    baseUrl: 'http://103.198.9.203:8080/',
     bannerImage: "assets/images/ismart_banner.png",
     clientCode: 'UDMIFJMEKF',
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -2527,5 +2528,5 @@ class CoOperativeValue {
     coOperativeName: "Sunakothi Multipurpose Co-operative Ltd.",
     appTitle: "Sunakothi iSmart",
   );
-  static final CoOperative currentCoop = sunakothiCoop;
+  static final CoOperative currentCoop = devLive;
 }

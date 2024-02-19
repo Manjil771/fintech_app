@@ -263,7 +263,7 @@ flutter:
     # - assets/systematic/
     # - assets/shreeJamune/
     # - assets/drabya/
-    # - assets/omshreeom/
+    - assets/omshreeom/
     # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
@@ -285,7 +285,7 @@ flutter:
     # - assets/greenhouse/
     # - assets/prime/
     # - assets/jyotidaya/
-    - assets/sunakothi/
+    # - assets/sunakothi/
 
 
      
