@@ -159,6 +159,7 @@
 		8B72936AEE78C86B452E5311 /* Pods-Runner.debug-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-ekata.xcconfig"; sourceTree = "<group>"; };
 		8B959FFB44D6DBC88931002F /* Pods-Runner.release-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nepalbachat.xcconfig"; sourceTree = "<group>"; };
 		8E90828FF0BE3004946F25DA /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
+		8E9A2C8A37D325FB4CDBB5FF /* Pods-Runner.release-myagdedugdha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-myagdedugdha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-myagdedugdha.xcconfig"; sourceTree = "<group>"; };
 		8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8F583D772A4EB8F3006C2DA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F93B5A52A4D6CE10022D0CC /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
@@ -395,6 +396,7 @@
 				CDA1ABB101C7BDF8DFD2F897 /* Pods-Runner.release-metrang.xcconfig */,
 				B4800973F2D3CEBA540DA284 /* Pods-Runner.release-mangalpur.xcconfig */,
 				EF84ED24A17DDB87B9DBBFE0 /* Pods-Runner.release-parishrami.xcconfig */,
+				8E9A2C8A37D325FB4CDBB5FF /* Pods-Runner.release-myagdedugdha.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -11934,7 +11936,7 @@
 			};
 			name = "Release-parishrami";
 		};
-		B686E9E82B84AB8400A90029 /* Release-kabil copy */ = {
+		B686E9E82B84AB8400A90029 /* Release-myagdeDugdha */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -11985,22 +11987,22 @@
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};
-			name = "Release-kabil copy";
+			name = "Release-myagdeDugdha";
 		};
-		B686E9E92B84AB8400A90029 /* Release-kabil copy */ = {
+		B686E9E92B84AB8400A90029 /* Release-myagdeDugdha */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
 			buildSettings = {
-				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
+				ASSETCATALOG_COMPILER_APPICON_NAME = MyagdeDugdhaAppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				COOP_NAME = "Kabil Coop iSmart";
+				COOP_NAME = "Myagde iSmart";
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.30;
+				FLUTTER_BUILD_NAME = 0.0.35;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabil iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -12010,14 +12012,14 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kabilCoop;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.myagdeDugdha;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
-			name = "Release-kabil copy";
+			name = "Release-myagdeDugdha";
 		};
 		B6FF29222B7DE828001793AD /* Release-puspanjali */ = {
 			isa = XCBuildConfiguration;
@@ -12136,7 +12138,7 @@
 				8FC9F6362A76DC8D0053DAF6 /* Debug-arthabag */,
 				8F79BA972A88D48A000D06BF /* Debug-uttarganga */,
 				8FC00C6E2A64D66800B2CFB7 /* Release-kabil */,
-				B686E9E82B84AB8400A90029 /* Release-kabil copy */,
+				B686E9E82B84AB8400A90029 /* Release-myagdeDugdha */,
 				B686E9E62B84AA2A00A90029 /* Release-parishrami */,
 				B686E9E42B84A82700A90029 /* Release-mangalpur */,
 				B686E9E02B84A18200A90029 /* Release-shreeKalika */,
@@ -12280,7 +12282,7 @@
 				8FC9F6372A76DC8D0053DAF6 /* Debug-arthabag */,
 				8F79BA982A88D48A000D06BF /* Debug-uttarganga */,
 				8FC00C6F2A64D66800B2CFB7 /* Release-kabil */,
-				B686E9E92B84AB8400A90029 /* Release-kabil copy */,
+				B686E9E92B84AB8400A90029 /* Release-myagdeDugdha */,
 				B686E9E72B84AA2A00A90029 /* Release-parishrami */,
 				B686E9E52B84A82700A90029 /* Release-mangalpur */,
 				B686E9E12B84A18200A90029 /* Release-shreeKalika */,
