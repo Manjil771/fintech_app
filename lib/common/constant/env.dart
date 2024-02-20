@@ -1108,7 +1108,7 @@ class CoOperativeValue {
   );
   static final CoOperative shreeKalikaCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.shreeKalika",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/shreeKalika/shreeKalika_banner.png",
     backgroundImage: "assets/shreeKalika/shreeKalika_background.png",
@@ -1306,7 +1306,7 @@ class CoOperativeValue {
   );
   static final CoOperative metrangCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.metrang",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/metrang/metrang_banner.png",
     backgroundImage: "assets/metrang/metrang_background.png",
@@ -1547,7 +1547,7 @@ class CoOperativeValue {
   );
   static final CoOperative babiraCoop = CoOperative(
       appStoreID: "",
-      packageName: "",
+      packageName: "com.devanasoft.babira",
       baseUrl: 'https://ismart.devanasoft.com.np/',
       bannerImage: "assets/babira/babira_banner.png",
       backgroundImage: "assets/babira/babira_background.png",
@@ -1575,7 +1575,7 @@ class CoOperativeValue {
 
   static final CoOperative ektaMultipurposeCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.ekataMulti",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/ektaMultipurpose/ektaMulti_banner.png",
     backgroundImage: "assets/ektaMultipurpose/ektaMulti_background.png",
@@ -2089,7 +2089,7 @@ class CoOperativeValue {
   );
   static final CoOperative mangalpurCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.mangalpur",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/mangalpur/mangalpur_banner.png",
     backgroundImage: "assets/mangalpur/mangalpur_background.png",
@@ -2585,5 +2585,5 @@ class CoOperativeValue {
     appTitle: "Gairigaun iSmart",
   );
 
-  static final CoOperative currentCoop = aaratiCoop;
+  static final CoOperative currentCoop = mangalpurCoop;
 }
