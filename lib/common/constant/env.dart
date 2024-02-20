@@ -2356,7 +2356,7 @@ class CoOperativeValue {
   );
   static final CoOperative parishramiCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.parishrami",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/parishrami/parishrami_banner.png",
     backgroundImage: "assets/parishrami/parishrami_background.png",
@@ -2585,5 +2585,5 @@ class CoOperativeValue {
     appTitle: "Gairigaun iSmart",
   );
 
-  static final CoOperative currentCoop = mangalpurCoop;
+  static final CoOperative currentCoop = aaratiCoop;
 }
