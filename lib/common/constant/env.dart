@@ -51,6 +51,7 @@ class CoOperative {
 }
 
 class CoOperativeValue {
+  static const String baseUrl = "https://ismart.devanasoft.com.np/";
   //*****************// All sanakishan coop env //*****************//
 
   static final CoOperative skKohabara = CoOperative(
@@ -169,7 +170,7 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
     appStoreID: "",
-    shouldValidateCooperative: false,
+    shouldValidateCooperative: true,
     coOperativeName: "ISMART DEMO APPKTM",
     appTitle: "iSmart Devanasoft",
   );
@@ -1699,7 +1700,7 @@ class CoOperativeValue {
     clientSecret: "156872",
     coOperativeLogo: 'assets/aarati/aarati_logo.png',
     splashImage: "assets/aarati/aarati_splash.png",
-    primaryColor: const Color(0xFF1A81CA),
+    primaryColor: const Color(0xFF00A859),
     coOperativeName: "Aarati Saving and Credit Cooperative Ltd",
     appTitle: 'Aarati iSmart',
   );
@@ -2584,5 +2585,5 @@ class CoOperativeValue {
     appTitle: "Gairigaun iSmart",
   );
 
-  static final CoOperative currentCoop = matribhumiCoop;
+  static final CoOperative currentCoop = devLive;
 }
