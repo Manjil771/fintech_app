@@ -599,7 +599,7 @@ class CoOperativeValue {
     splashImage: "assets/sarbahit/sarbahit_splash.png",
     primaryColor: const Color(0xFF26449F),
     coOperativeName: "Sarbahit Saving and Credit Co-operative Ltd",
-    appTitle: "Sarbahit Coop iSmart",
+    appTitle: "Sarbahit Saving iSmart",
   );
   static final CoOperative sarbahitDangCoop = CoOperative(
     appStoreID: "",
@@ -2585,5 +2585,5 @@ class CoOperativeValue {
     appTitle: "Gairigaun iSmart",
   );
 
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = aaratiCoop;
 }
