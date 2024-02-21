@@ -181,14 +181,14 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
-    - assets/aarati/
+    # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
     # - assets/shreeHemja/
     # - assets/garimaAgri/
     # - assets/paschimanchal/
     # - assets/chirayu/
-    # - assets/digitalCoop/
+    - assets/digitalCoop/
     # - assets/upakar/
     # - assets/subhodaya/
     # - assets/garimaAgri/

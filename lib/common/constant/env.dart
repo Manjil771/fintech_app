@@ -1207,7 +1207,7 @@ class CoOperativeValue {
 
   static final CoOperative digitalCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.digitalCoop",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/digitalCoop/digitalCoop_banner.png",
     backgroundImage: "assets/digitalCoop/digitalCoop_background.png",
@@ -2585,5 +2585,5 @@ class CoOperativeValue {
     appTitle: "Gairigaun iSmart",
   );
 
-  static final CoOperative currentCoop = aaratiCoop;
+  static final CoOperative currentCoop = digitalCoop;
 }
