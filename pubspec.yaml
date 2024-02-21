@@ -188,7 +188,7 @@ flutter:
     # - assets/garimaAgri/
     # - assets/paschimanchal/
     # - assets/chirayu/
-    - assets/digitalCoop/
+    # - assets/digitalCoop/
     # - assets/upakar/
     # - assets/subhodaya/
     # - assets/garimaAgri/
@@ -218,7 +218,7 @@ flutter:
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
-    # - assets/babira/
+    - assets/babira/
     # - assets/ektaMultipurpose/
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
@@ -291,6 +291,7 @@ flutter:
     # - assets/sayapatri/
     # - assets/united/
     # - assets/gairigaun/
+    # - assets/manokanksha/
    
    
    

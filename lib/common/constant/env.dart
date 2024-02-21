@@ -1235,7 +1235,7 @@ class CoOperativeValue {
   );
   static final CoOperative sunshineCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.sunshine",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sunshine/sunshine_banner.png",
     backgroundImage: "assets/sunshine/sunshine_background.png",
@@ -2584,6 +2584,19 @@ class CoOperativeValue {
     coOperativeName: "Gairigaun Saving & Credit Co-operative Ltd.",
     appTitle: "Gairigaun iSmart",
   );
-
-  static final CoOperative currentCoop = digitalCoop;
+  static final CoOperative manokankshaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.manokanksha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/manokanksha/manokanksha_banner.png",
+    backgroundImage: "assets/manokanksha/manokanksha_background.png",
+    clientCode: 'BFYWVFBZKV',
+    clientSecret: "215439",
+    coOperativeLogo: 'assets/manokanksha/manokanksha_logo.png',
+    splashImage: "assets/manokanksha/manokanksha_splash.png",
+    primaryColor: const Color(0xFF1276C4),
+    coOperativeName: "Manokanksha Saving And Credit Co-operative Ltd.",
+    appTitle: "Manokanksha iSmart",
+  );
+  static final CoOperative currentCoop = babiraCoop;
 }
