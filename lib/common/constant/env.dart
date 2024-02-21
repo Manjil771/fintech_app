@@ -2598,5 +2598,19 @@ class CoOperativeValue {
     coOperativeName: "Manokanksha Saving And Credit Co-operative Ltd.",
     appTitle: "Manokanksha iSmart",
   );
-  static final CoOperative currentCoop = babiraCoop;
+  static final CoOperative ilumMultiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.ilummulti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ilum/ilum_banner.png",
+    backgroundImage: "assets/ilum/ilum_background.png",
+    clientCode: 'M4UCVY4T3Z',
+    clientSecret: "168389",
+    coOperativeLogo: 'assets/ilum/ilum_logo.png',
+    splashImage: "assets/ilum/ilum_splash.png",
+    primaryColor: const Color(0xFF0065B3),
+    coOperativeName: "Ilum Multipurpose Co-operative Ltd",
+    appTitle: "Ilum iSmart",
+  );
+  static final CoOperative currentCoop = ilumMultiCoop;
 }

@@ -218,7 +218,7 @@ flutter:
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
-    - assets/babira/
+    # - assets/babira/
     # - assets/ektaMultipurpose/
     # - assets/sarbahitDang/
     # - assets/shwetbhairab/
@@ -292,6 +292,7 @@ flutter:
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
+    - assets/ilum/
    
    
    
