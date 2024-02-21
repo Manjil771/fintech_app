@@ -499,6 +499,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        ilum{
+            dimension "app"
+            applicationId "com.devanasoft.ilum"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         dhanaprapti{
             dimension "app"
             applicationId "com.devanasoft.dhanaprapti"

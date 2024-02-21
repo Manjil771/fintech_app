@@ -2598,9 +2598,9 @@ class CoOperativeValue {
     coOperativeName: "Manokanksha Saving And Credit Co-operative Ltd.",
     appTitle: "Manokanksha iSmart",
   );
-  static final CoOperative ilumMultiCoop = CoOperative(
+  static final CoOperative ilumCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.ilummulti",
+    packageName: "com.devanasoft.ilum",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/ilum/ilum_banner.png",
     backgroundImage: "assets/ilum/ilum_background.png",
@@ -2612,5 +2612,5 @@ class CoOperativeValue {
     coOperativeName: "Ilum Multipurpose Co-operative Ltd",
     appTitle: "Ilum iSmart",
   );
-  static final CoOperative currentCoop = ilumMultiCoop;
+  static final CoOperative currentCoop = ilumCoop;
 }
