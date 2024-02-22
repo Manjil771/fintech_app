@@ -115,7 +115,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                     children: [
                                       if (_detail.accountDetail[index]
                                               .accruedInterest
-                                              .toString() ==
+                                              .toString() !=
                                           "0")
                                         Expanded(
                                           child: buildDetails(

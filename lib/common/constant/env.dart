@@ -2610,7 +2610,7 @@ class CoOperativeValue {
     clientSecret: "201624",
     coOperativeLogo: 'assets/tarapunja/tarapunja_logo.png',
     splashImage: "assets/tarapunja/tarapunja_splash.png",
-    primaryColor: const Color(0xFF467F30),
+    primaryColor: const Color(0xFF21355A),
     coOperativeName: "Tarapunja Multipurpose Co-operative Ltd.",
     appTitle: "Tarapunja iSmart",
   );
@@ -2628,5 +2628,5 @@ class CoOperativeValue {
     coOperativeName: "Ilum Multipurpose Co-operative Ltd",
     appTitle: "Ilum iSmart",
   );
-  static final CoOperative currentCoop = unitedCoop;
+  static final CoOperative currentCoop = tarapunjaCoop;
 }
