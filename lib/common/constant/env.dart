@@ -2612,5 +2612,5 @@ class CoOperativeValue {
     coOperativeName: "Ilum Multipurpose Co-operative Ltd",
     appTitle: "Ilum iSmart",
   );
-  static final CoOperative currentCoop = ilumCoop;
+  static final CoOperative currentCoop = unitedCoop;
 }
