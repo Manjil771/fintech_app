@@ -2389,7 +2389,7 @@ class CoOperativeValue {
   );
   static final CoOperative wonderfulCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.wonderful",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/wonderful/wonderful_banner.png",
     backgroundImage: "assets/wonderful/wonderful_background.png",
@@ -2613,5 +2613,5 @@ class CoOperativeValue {
     coOperativeName: "Ilum Multipurpose Co-operative Ltd",
     appTitle: "Ilum iSmart",
   );
-  static final CoOperative currentCoop = ilumCoop;
+  static final CoOperative currentCoop = wonderfulCoop;
 }

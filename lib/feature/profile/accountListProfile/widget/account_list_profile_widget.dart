@@ -81,7 +81,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                         child: buildDetails(
                                             context,
                                             "clientcode.svg",
-                                            "Client Code",
+                                            "Member ID",
                                             "${_detail.accountDetail[index].id}"),
                                       )
                                     ],

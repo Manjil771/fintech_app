@@ -277,11 +277,11 @@ flutter:
     # - assets/parishrami/
     # - assets/citySaving/
     # - assets/sahara/
-    # - assets/wonderful/
+    - assets/wonderful/
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
-    - assets/lamosanghu/
+    # - assets/lamosanghu/
     # - assets/greenhouse/
     # - assets/prime/
     # - assets/jyotidaya/
