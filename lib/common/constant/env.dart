@@ -2431,7 +2431,7 @@ class CoOperativeValue {
   );
   static final CoOperative navadurgaCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.navadurga",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/navadurga/navadurga_banner.png",
     backgroundImage: "assets/navadurga/navadurga_background.png",
@@ -2513,5 +2513,19 @@ class CoOperativeValue {
     coOperativeName: "Sunakothi Multipurpose Co-operative Ltd.",
     appTitle: "Sunakothi Multi iSmart",
   );
-  static final CoOperative currentCoop = samutthanCoop;
+  static final CoOperative nagarikCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.lamosanghu",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nagarik/nagarik_banner.png",
+    backgroundImage: "assets/nagarik/nagarik_background.png",
+    clientCode: 'SHT8UIFXPT',
+    clientSecret: "207279",
+    coOperativeLogo: 'assets/nagarik/nagarik_logo.png',
+    splashImage: "assets/nagarik/nagarik_splash.png",
+    primaryColor: const Color(0xFF08A659),
+    coOperativeName: "Nagarik Saving & Credit Co-operative Ltd.",
+    appTitle: "Nagarik iSmart",
+  );
+  static final CoOperative currentCoop = lamosanghuCoop;
 }

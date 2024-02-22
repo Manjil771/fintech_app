@@ -255,7 +255,7 @@ android {
         }
         bhudev {
             dimension "app"
-            applicationId "com.devanasoft."
+            applicationId "com.devanasoft.bhudev"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
