@@ -2543,6 +2543,7 @@ class CoOperativeValue {
     coOperativeName: "Thecho Maila Jagaran Saving and Credit Co-operative Ltd.",
     appTitle: "Thecho Mahila Jagaran iSmart",
   );
+
   static final CoOperative sayapatriCoop = CoOperative(
     appStoreID: "",
     packageName: "",
@@ -2559,7 +2560,7 @@ class CoOperativeValue {
   );
   static final CoOperative unitedCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.united",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/united/united_banner.png",
     backgroundImage: "assets/united/united_background.png",
@@ -2573,7 +2574,7 @@ class CoOperativeValue {
   );
   static final CoOperative gairigaunCoop = CoOperative(
     appStoreID: "",
-    packageName: "",
+    packageName: "com.devanasoft.gairigaun",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/gairigaun/gairigaun_banner.png",
     backgroundImage: "assets/gairigaun/gairigaun_background.png",
@@ -2599,6 +2600,20 @@ class CoOperativeValue {
     coOperativeName: "Manokanksha Saving And Credit Co-operative Ltd.",
     appTitle: "Manokanksha iSmart",
   );
+  static final CoOperative tarapunjaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.tarapunja",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tarapunja/tarapunja_banner.png",
+    backgroundImage: "assets/tarapunja/tarapunja_background.png",
+    clientCode: 'Y5WIEQ1KHX',
+    clientSecret: "201624",
+    coOperativeLogo: 'assets/tarapunja/tarapunja_logo.png',
+    splashImage: "assets/tarapunja/tarapunja_splash.png",
+    primaryColor: const Color(0xFF467F30),
+    coOperativeName: "Tarapunja Multipurpose Co-operative Ltd.",
+    appTitle: "Tarapunja iSmart",
+  );
   static final CoOperative ilumCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.ilum",
@@ -2613,5 +2628,5 @@ class CoOperativeValue {
     coOperativeName: "Ilum Multipurpose Co-operative Ltd",
     appTitle: "Ilum iSmart",
   );
-  static final CoOperative currentCoop = wonderfulCoop;
+  static final CoOperative currentCoop = unitedCoop;
 }

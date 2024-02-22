@@ -250,7 +250,7 @@ flutter:
     # - assets/globalMulti/
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
-    # - assets/belchautara/>
+    # - assets/belchautara/
     # - assets/shubhashreeMulti/
     # - assets/shubhaShree/
     # - assets/yugbani/
@@ -277,7 +277,7 @@ flutter:
     # - assets/parishrami/
     # - assets/citySaving/
     # - assets/sahara/
-    - assets/wonderful/
+    # - assets/wonderful/
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
@@ -292,6 +292,7 @@ flutter:
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
+    - assets/tarapunja/
     # - assets/ilum/
    
    
