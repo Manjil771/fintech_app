@@ -52,6 +52,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   String? bestMatchBankId;
   String? bestMatchBankName;
+  String bankNameRecentTransaction = "";
 
   @override
   void initState() {
@@ -72,12 +73,14 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
 
   bool _isLoading = false;
   String? charges;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+
     return PageWrapper(
       body: MultiBlocListener(
         listeners: [
@@ -108,9 +111,11 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                   .accountNumber),
                       KeyValueTile(
                         title: "Destination Bank",
-                        value: widget.bankCode == null
-                            ? selectedBank?.bankName ?? ""
-                            : widget.bankName ?? "ismart",
+                        value: bestMatchBankName != null
+                            ? bestMatchBankName.toString()
+                            : widget.bankCode == null
+                                ? selectedBank?.bankName ?? ""
+                                : widget.bankName ?? "ismart",
                       ),
                       KeyValueTile(
                           title: "Destination Account Number",
@@ -143,9 +148,11 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             : widget.bankCode.toString()),
                     accountName: _accountNameController.text,
                     accountNumber: _accountNumberController.text,
-                    bankName: widget.bankCode == null
-                        ? selectedBank?.bankName ?? ""
-                        : widget.bankName ?? "ismart",
+                    bankName: bestMatchBankName != null
+                        ? bestMatchBankName.toString()
+                        : widget.bankCode == null
+                            ? selectedBank?.bankName ?? ""
+                            : widget.bankName ?? "ismart",
                   ));
                 } else {
                   showPopUpDialog(
@@ -178,6 +185,18 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
           showRecentTransaction: true,
           showDetail: true,
           showAccountSelection: true,
+          onRecentTransactionPressed: (p0) {
+            NavigationService.pop();
+            bankNameRecentTransaction =
+                p0.requestDetail.destinationBankName.toString();
+            _accountNameController.text =
+                p0.requestDetail.destinationAccountName.toString();
+            _accountNumberController.text =
+                p0.requestDetail.destinationAccountNumber.toString();
+            _amountController.text = p0.amount.toString();
+            _remarksController.text = p0.remarks.toString();
+            setState(() {});
+          },
           body: Form(
             key: _formKey,
             child: Column(
@@ -243,7 +262,14 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   ),
                 ),
                 SizedBox(height: _height * 0.02),
-                widget.bankName == null
+                // Text(
+                //   bestMatchBankName != null
+                //       ? bestMatchBankName.toString()
+                //       : widget.bankCode == null
+                //           ? selectedBank?.bankName ?? ""
+                //           : widget.bankName ?? "ismart",
+                // ),
+                widget.bankName == null && bankNameRecentTransaction.isEmpty
                     ? CustomTextField(
                         hintText: "Select Bank",
                         title: "Select Bank",
@@ -290,10 +316,14 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                   "ISMARTCHECK : Checking for Bank : ${widget.bankName}");
                               state.data.forEach((element) {
                                 final matchValue = jaro(
-                                    widget.bankName
-                                            ?.toLowerCase()
-                                            .replaceAll("ltd", "limited") ??
-                                        "",
+                                    widget.bankName == null
+                                        ? bankNameRecentTransaction
+                                            .toLowerCase()
+                                            .replaceAll("ltd", "limited")
+                                        : widget.bankName
+                                                ?.toLowerCase()
+                                                .replaceAll("ltd", "limited") ??
+                                            "",
                                     element.bankName
                                         .toLowerCase()
                                         .replaceAll("ltd", "limited"));
@@ -393,39 +423,6 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                     destinationBankId: bestMatchBankId ??
                         (widget.bankCode ?? selectedBank?.bankId ?? ""),
                   );
-
-              // else {
-              //   NavigationService.push(
-              //     target: TransactionPinScreen(
-              //       onValueCallback: (pin) {
-              //         NavigationService.pop();
-              //         context.read<SendToBankCubit>().sendMoneyToBank(
-              //               charge: charges.toString(),
-              //               amount: _amountController.text,
-              //               mpin: pin,
-              //               remarks: _remarksController.text,
-              //               destinationBankInstrumentCode: bestMatchBankId ??
-              //                   (widget.bankCode == null
-              //                       ? selectedBank?.bankId ?? ""
-              //                       : widget.bankCode.toString()),
-              //               destinationBankAccountName:
-              //                   _accountNameController.text,
-              //               destinationBankAccountNumber:
-              //                   _accountNumberController.text,
-              //               destinationBankName: widget.bankCode == null
-              //                   ? selectedBank?.bankName ?? ""
-              //                   : widget.bankName ?? "ismart",
-              //               sendingAccount:
-              //                   RepositoryProvider.of<CustomerDetailRepository>(
-              //                           context)
-              //                       .selectedAccount
-              //                       .value!
-              //                       .accountNumber,
-              //             );
-              //       },
-              //     ),
-              //   );
-              // }
             }
           },
           title: "Any Bank",

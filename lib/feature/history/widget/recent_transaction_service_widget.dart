@@ -21,11 +21,14 @@ class RecentTransactionServiceWidget extends StatefulWidget {
   final String serviceCategoryId;
   final String associatedId;
   final String service;
+  final Function(RecentTransactionModel) onRecentTransactionPressed;
+
   const RecentTransactionServiceWidget(
       {Key? key,
       required this.serviceCategoryId,
       required this.associatedId,
-      required this.service})
+      required this.service,
+      required this.onRecentTransactionPressed})
       : super(key: key);
 
   @override
@@ -116,6 +119,9 @@ class _RecentTransactionServiceWidgetState
                             itemBuilder: (context, index) {
                               final _detail = state.data[index];
                               return TransactionDetailBox(
+                                onClickAction: () {
+                                  widget.onRecentTransactionPressed(_detail);
+                                },
                                 recentTransactionModel: _detail,
                                 // onClickAction: () {
                                 //   context.read<TransactionDownloadCubit>().generateUrl(

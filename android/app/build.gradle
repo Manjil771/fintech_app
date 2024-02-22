@@ -261,7 +261,7 @@ android {
         }
         bhudev {
             dimension "app"
-            applicationId "com.devanasoft."
+            applicationId "com.devanasoft.bhudev"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -292,6 +292,12 @@ android {
         digitalCoop {
             dimension "app"
             applicationId "com.devanasoft.digitalCoop"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        tarapunja {
+            dimension "app"
+            applicationId "com.devanasoft.tarapunja"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
