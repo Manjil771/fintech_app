@@ -2627,19 +2627,19 @@ class CoOperativeValue {
     appTitle: "Astha Krishi iSmart",
   );
   static final CoOperative sabhyasamajCoop = CoOperative(
-    appStoreID: "com.devanasoft.sabhyaSamaj",
-    packageName: "com.devanasoft.sabhyaSamaj",
+    appStoreID: "com.devanasoft.sabhyasamaj",
+    packageName: "com.devanasoft.sabhyasamaj",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sabhyaSamaj/sabhyaSamaj_banner.png",
     backgroundImage: "assets/sabhyaSamaj/sabhyaSamaj_background.png",
-    clientCode: 'R63RK8BCA7',
-    clientSecret: "139121",
+    clientCode: '3GEJSB5NZ5	',
+    clientSecret: "179234",
     coOperativeLogo: 'assets/sabhyaSamaj/sabhyaSamaj_logo.png',
     splashImage: "assets/sabhyaSamaj/sabhyaSamaj_splash.png",
-    primaryColor: const Color(0xFF55BE47),
-    coOperativeName: "Astha Agriculture Co-operative Ltd.",
-    appTitle: "Astha Krishi iSmart",
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "Sabhya Samaj Multipurpose Co-operative Ltd.",
+    appTitle: "Sabhya Samaj iSmart",
   );
-  
-  static final CoOperative currentCoop = asthakrishiCoop;
+
+  static final CoOperative currentCoop = sabhyasamajCoop;
 }
