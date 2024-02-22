@@ -279,7 +279,7 @@ flutter:
     # - assets/sahara/
     # - assets/wonderful/
     # - assets/bhudev/
-    # - assets/shreeGodawari/
+    - assets/shreeGodawari/
     # - assets/navadurga/
     # - assets/lamosanghu/
     # - assets/greenhouse/
