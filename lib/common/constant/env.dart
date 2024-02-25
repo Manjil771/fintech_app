@@ -2668,7 +2668,21 @@ class CoOperativeValue {
     splashImage: "assets/sunadevi/sunadevi_splash.png",
     primaryColor: const Color(0xFF467F30),
     coOperativeName: "Sunadevi Saving & Credit Co-operative Ltd.",
-    appTitle: "Sabhya Samaj iSmart",
+    appTitle: "Sunadevi iSmart",
+  );
+  static final CoOperative samabeshiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sunadevi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sunadevi/sunadevi_banner.png",
+    backgroundImage: "assets/sunadevi/sunadevi_background.png",
+    clientCode: 'PUMBWLZHFQ',
+    clientSecret: "216761",
+    coOperativeLogo: 'assets/sunadevi/sunadevi_logo.png',
+    splashImage: "assets/sunadevi/sunadevi_splash.png",
+    primaryColor: const Color(0xFF467F30),
+    coOperativeName: "Sunadevi Saving & Credit Co-operative Ltd.",
+    appTitle: "Sunadevi iSmart",
   );
 
   static final CoOperative currentCoop = asthaKrishiCoop;
