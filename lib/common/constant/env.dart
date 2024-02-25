@@ -2672,17 +2672,17 @@ class CoOperativeValue {
   );
   static final CoOperative samabeshiCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.sunadevi",
+    packageName: "com.devanasoft.samabeshi",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/sunadevi/sunadevi_banner.png",
-    backgroundImage: "assets/sunadevi/sunadevi_background.png",
+    bannerImage: "assets/samabeshi/samabeshi_banner.png",
+    backgroundImage: "assets/samabeshi/samabeshi_background.png",
     clientCode: 'PUMBWLZHFQ',
     clientSecret: "216761",
-    coOperativeLogo: 'assets/sunadevi/sunadevi_logo.png',
-    splashImage: "assets/sunadevi/sunadevi_splash.png",
-    primaryColor: const Color(0xFF467F30),
-    coOperativeName: "Sunadevi Saving & Credit Co-operative Ltd.",
-    appTitle: "Sunadevi iSmart",
+    coOperativeLogo: 'assets/samabeshi/samabeshi_logo.png',
+    splashImage: "assets/samabeshi/samabeshi_splash.png",
+    primaryColor: const Color(0xFF0B8140),
+    coOperativeName: "Samabeshi Saving & Credit Co-operative Ltd.",
+    appTitle: "Samabeshi iSmart",
   );
 
   static final CoOperative currentCoop = asthaKrishiCoop;
