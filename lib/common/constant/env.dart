@@ -2676,8 +2676,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/samabeshi/samabeshi_banner.png",
     backgroundImage: "assets/samabeshi/samabeshi_background.png",
-    clientCode: 'PUMBWLZHFQ',
-    clientSecret: "216761",
+    clientCode: 'QZVT15HESE',
+    clientSecret: "200943",
     coOperativeLogo: 'assets/samabeshi/samabeshi_logo.png',
     splashImage: "assets/samabeshi/samabeshi_splash.png",
     primaryColor: const Color(0xFF0B8140),
@@ -2685,5 +2685,5 @@ class CoOperativeValue {
     appTitle: "Samabeshi iSmart",
   );
 
-  static final CoOperative currentCoop = asthaKrishiCoop;
+  static final CoOperative currentCoop = samabeshiCoop;
 }
