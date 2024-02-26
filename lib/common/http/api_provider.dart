@@ -413,12 +413,12 @@ class ApiProvider {
             response.statusCode);
       case 401:
       case 403:
-        if (responseJson['data']?['error_description'] != null) {
-          throw BadRequestException(
-            responseJson['data']?['error_description'] ?? "",
-            response.statusCode,
-          );
-        }
+        // if (responseJson['data']?['error_description'] != null) {
+        //   throw BadRequestException(
+        //     responseJson['data']?['error_description'] ?? "",
+        //     response.statusCode,
+        //   );
+        // }
         // TODO Check status from Response and Logout only when session is expire
         String _responseCode = (responseJson['data']?['code'] ?? "").toString();
         String _responseStatus =
