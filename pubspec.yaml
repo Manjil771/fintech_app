@@ -192,7 +192,7 @@ flutter:
     # - assets/upakar/
     # - assets/subhodaya/
     # - assets/garimaAgri/
-    - assets/aastha/
+    # - assets/aastha/
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -238,7 +238,7 @@ flutter:
     # - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/
-    # - assets/abhibadan/
+    - assets/abhibadan/
     # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
@@ -294,8 +294,9 @@ flutter:
     # - assets/manokanksha/
     # - assets/tarapunja/
     # - assets/ilum/
-    - assets/asthaKrishi/
+    # - assets/asthaKrishi/
     # - assets/sabhyaSamaj/
+
 
 
    
