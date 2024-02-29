@@ -2685,5 +2685,5 @@ class CoOperativeValue {
     appTitle: "Samabeshi iSmart",
   );
 
-  static final CoOperative currentCoop = samabeshiCoop;
+  static final CoOperative currentCoop = devLive;
 }

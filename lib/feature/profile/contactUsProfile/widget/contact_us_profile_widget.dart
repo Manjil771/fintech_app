@@ -2,48 +2,57 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsProfileWidget extends StatelessWidget {
+  final String latitude;
+  final String longitude;
   final List details;
-  ContactUsProfileWidget({Key? key, required this.details}) : super(key: key);
-  bool _isLoading = false;
+  const ContactUsProfileWidget(
+      {Key? key,
+      required this.details,
+      required this.latitude,
+      required this.longitude})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-    // return BlocBuilder<UtilityPaymentCubit, CommonState>(
-    //     builder: (context, state) {
-    //   if (state is CommonLoading && !_isLoading) {
-    //     _isLoading = true;
-    //     showLoadingDialogBox(context);
-    //   } else if (state is! CommonLoading && _isLoading) {
-    //     _isLoading = false;
-    //     NavigationService.pop();
-    //   }
+    final List<Function()> _makeUrlRequest = [
+      () {
+        UrlLauncher.launchPhone(context: context, phone: details[0]);
+      },
+      () {
+        UrlLauncher.launchWebsite(context: context, url: details[1]);
+      },
+      () {
+        UrlLauncher.launchGoogleMap(
+            context: context,
+            latitude: latitude == "null" ? "27.714774" : latitude,
+            longitude: longitude == "null" ? "85.347024" : longitude);
+      },
+      () async {
+        String emailUrl =
+            'mailto:aswinkarki073@gmail.com?subject=Subject%20Line&body=Body%20Text';
 
-    //   if (state is CommonStateSuccess<UtilityResponseData>) {
-    //     final res = state.data;
-    //     final List details = [
-    //       res.findValueString("contactNumber"),
-    //       res.findValueString("registerUrl"),
-    //       res.findValueString("address"),
-    //       res.findValueString("email"),
-    //     ];
+        if (await canLaunchUrl(Uri.parse(emailUrl))) {
+          await launchUrl(Uri.parse(emailUrl));
+        } else {
+          // Handle the case where no email app is found
+        }
+
+        //   UrlLauncher.launchEmail(
+        //       context: context,
+        //       // email: details[3],
+        //       email: "aswinkarki073@gmail.com");
+      }
+    ];
+
     return Column(
       children: [
         Container(
-          height: _height * 0.37,
           decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(12),
               color: CustomTheme.white),
@@ -54,7 +63,6 @@ class ContactUsProfileWidget extends StatelessWidget {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(8),
                 color: Theme.of(context).scaffoldBackgroundColor,
-                // border: Border.all(color: Colors.black),
               ),
               child: Center(
                 child: Image.asset(
@@ -62,38 +70,25 @@ class ContactUsProfileWidget extends StatelessWidget {
               ),
             ),
             const Divider(height: 20, color: Colors.black54),
-            Expanded(
-              child: GridView.builder(
-                itemCount: images.length,
-                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: 2, childAspectRatio: 0.8 / 0.3),
-                itemBuilder: (context, index) => InkWell(
-                  onTap: () {
-                    _makeUrlRequest(urls[index]);
-                  },
-                  child: Row(
-                    children: [
-                      Container(
-                        width: _width * 0.07,
-                        height: _width * 0.07,
-                        margin: const EdgeInsets.symmetric(horizontal: 8),
-                        padding: const EdgeInsets.all(6),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(8),
-                          border: Border.all(color: Colors.black),
-                        ),
-                        child:
-                            SvgPicture.asset("assets/icons/${images[index]}"),
-                      ),
-                      Expanded(
-                        child: Text(
-                          details[index],
-                          overflow: TextOverflow.ellipsis,
-                          style: const TextStyle(fontSize: 12),
-                        ),
-                      ),
-                    ],
+            ListView.builder(
+              shrinkWrap: true,
+              physics: const AlwaysScrollableScrollPhysics(),
+              itemCount: images.length,
+              itemBuilder: (context, index) => ListTile(
+                onTap: _makeUrlRequest[index],
+                leading: Container(
+                  width: _width * 0.07,
+                  height: _width * 0.07,
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(color: Colors.black),
                   ),
+                  child: SvgPicture.asset("assets/icons/${images[index]}"),
+                ),
+                title: Text(
+                  details[index],
+                  style: const TextStyle(fontSize: 12),
                 ),
               ),
             )
@@ -108,24 +103,9 @@ class ContactUsProfileWidget extends StatelessWidget {
   }
 }
 
-Future<void> _makeUrlRequest(String url) async {
-  if (await canLaunchUrl(Uri.parse(url))) {
-    await launchUrl(Uri.parse(url));
-  } else {
-    throw 'Could not launch $url';
-  }
-}
-
 final List images = [
   "contact us page profile call.svg",
   "website contact us page.svg",
   "location profile ko.svg",
   "website contact us page.svg",
-];
-
-final List urls = [
-  "",
-  "https://www.devanasoft.com.np/",
-  "https://www.google.com/maps/search/?api=1&query=27.714774,85.347024",
-  "mailto:info@devanasoft.com.np?subject=Greetings&body=Hello%",
 ];
