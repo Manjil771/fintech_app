@@ -2684,6 +2684,20 @@ class CoOperativeValue {
     coOperativeName: "Samabeshi Saving & Credit Co-operative Ltd.",
     appTitle: "Samabeshi iSmart",
   );
+  static final CoOperative aaganCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.aagan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aagan/aagan_banner.png",
+    backgroundImage: "assets/aagan/aagan_background.png",
+    clientCode: 'OR0Y100AE2',
+    clientSecret: "151958",
+    coOperativeLogo: 'assets/aagan/aagan_logo.png',
+    splashImage: "assets/aagan/aagan_splash.png",
+    primaryColor: const Color(0xFF55BE47),
+    coOperativeName: "Aagan Multipurpose Co-operative Ltd.",
+    appTitle: "Aagan iSmart",
+  );
 
   static final CoOperative currentCoop = devLive;
 }

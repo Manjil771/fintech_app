@@ -184,6 +184,18 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           )
         ],
         child: CommonContainer(
+          onRecentTransactionPressed: (p0) {
+            NavigationService.pop();
+
+            // widget.selectedWallet =
+            // p0.requestDetail.destinationBankName.toString();
+            _walletAccountController.text = p0.serviceTo.toString();
+
+            _amountController.text = p0.totalAmount.toString();
+            _remarksController.text = p0.remarks.toString();
+            setState(() {});
+          },
+          associatedId: widget.selectedWallet.id.toString(),
           showRecentTransaction: true,
           showDetail: true,
           serviceName: "WALLET",
