@@ -2690,12 +2690,12 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/karmashil/karmashil_banner.png",
     backgroundImage: "assets/karmashil/karmashil_background.png",
-    clientCode: '',
-    clientSecret: "155796",
+    clientCode: 'UW2NFYU8CO',
+    clientSecret: "156533",
     coOperativeLogo: 'assets/karmashil/karmashil_logo.png',
     splashImage: "assets/karmashil/karmashil_splash.png",
     primaryColor: const Color(0xFF55BE47),
-    coOperativeName: "",
+    coOperativeName: "Karmashil Saving & Credit Co-operative Ltd",
     appTitle: "Karmashil iSmart",
   );
   static final CoOperative currentCoop = karmashilCoop;
