@@ -5,7 +5,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
-import 'package:url_launcher/url_launcher.dart';
 
 class ContactUsProfileWidget extends StatelessWidget {
   final String latitude;
@@ -33,20 +32,11 @@ class ContactUsProfileWidget extends StatelessWidget {
             latitude: latitude == "null" ? "27.714774" : latitude,
             longitude: longitude == "null" ? "85.347024" : longitude);
       },
-      () async {
-        String emailUrl =
-            'mailto:aswinkarki073@gmail.com?subject=Subject%20Line&body=Body%20Text';
-
-        if (await canLaunchUrl(Uri.parse(emailUrl))) {
-          await launchUrl(Uri.parse(emailUrl));
-        } else {
-          // Handle the case where no email app is found
-        }
-
-        //   UrlLauncher.launchEmail(
-        //       context: context,
-        //       // email: details[3],
-        //       email: "aswinkarki073@gmail.com");
+      () {
+        UrlLauncher.launchEmail(
+            context: context,
+            // email: details[3],
+            email: "aswinkarki073@gmail.com");
       }
     ];
 

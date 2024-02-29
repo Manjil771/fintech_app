@@ -120,7 +120,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                                 await SecureStorageService.appPhoneNumber;
                             _mobileNumberController.text = phoneNumber;
                             TopUpUtils().getTopUpServiceImage(
-                                type: TopUpUtils().getTopUpServiceType(
+                                type: TopUpUtils().getTopUpServiceType( 
                                     type: _topUpType.value),
                                 categories: widget.categoryList);
                             setState(() {});
