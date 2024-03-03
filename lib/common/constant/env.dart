@@ -2698,5 +2698,6 @@ class CoOperativeValue {
     coOperativeName: "Karmashil Saving & Credit Co-operative Ltd",
     appTitle: "Karmashil iSmart",
   );
-  static final CoOperative currentCoop = karmashilCoop;
+  
+  static final CoOperative currentCoop = ekikritCoop;
 }
