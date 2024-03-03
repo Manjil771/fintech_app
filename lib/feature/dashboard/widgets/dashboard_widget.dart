@@ -20,7 +20,6 @@ import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
 import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
-
 import 'package:open_filex/open_filex.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -121,106 +120,120 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     final _theme = Theme.of(context);
     return _currentIndex == 2
         ? const QRScannerScreens()
-        : PageWrapper(
-            body: PageView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return screens[_currentIndex];
-                }),
-            floatinActionButton: Padding(
-              padding: const EdgeInsets.only(bottom: 8),
-              child: FloatingActionButton(
-                backgroundColor: _theme.primaryColor,
-                onPressed: () async {
-                  final _cameraPermission =
-                      await PermissionUtils.isCameraPermissionAvailable;
-                  if (_cameraPermission) {
-                    NavigationService.push(target: const QRScannerScreens());
-                  } else {
-                    showPopUpDialog(
-                      context: context,
-                      message:
-                          "We need camera permission to use QR Payment. You will be redirected to App Settings where you can enable the permission.",
-                      title: "Permission Denied",
-                      buttonCallback: () {
-                        openAppSettings();
-                      },
-                      showCancelButton: true,
-                    );
-                    // SnackBarUtils.showErrorBar(
-                    //   context: context,
-                    //   message: "Please allow camera permission to use Scan QR",
-                    // );
-                  }
-                },
-                child: SvgPicture.asset(
-                  Assets.qrCodeIcon,
-                  height: 30,
+        : WillPopScope(
+            onWillPop: () {
+              showPopUpDialog(
+                context: context,
+                message: "Are you sure you want to exit ?",
+                title: "Logout",
+                buttonCallback: () {},
+                buttonText: "Yes",
+                showCancelButton: true,
+              );
+
+              return Future.value(true);
+            },
+            child: PageWrapper(
+              body: PageView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemBuilder: (context, index) {
+                    return screens[_currentIndex];
+                  }),
+              floatinActionButton: Padding(
+                padding: const EdgeInsets.only(bottom: 8),
+                child: FloatingActionButton(
+                  backgroundColor: _theme.primaryColor,
+                  onPressed: () async {
+                    final _cameraPermission =
+                        await PermissionUtils.isCameraPermissionAvailable;
+                    if (_cameraPermission) {
+                      NavigationService.push(target: const QRScannerScreens());
+                    } else {
+                      showPopUpDialog(
+                        context: context,
+                        message:
+                            "We need camera permission to use QR Payment. You will be redirected to App Settings where you can enable the permission.",
+                        title: "Permission Denied",
+                        buttonCallback: () {
+                          openAppSettings();
+                        },
+                        showCancelButton: true,
+                      );
+                      // SnackBarUtils.showErrorBar(
+                      //   context: context,
+                      //   message: "Please allow camera permission to use Scan QR",
+                      // );
+                    }
+                  },
+                  child: SvgPicture.asset(
+                    Assets.qrCodeIcon,
+                    height: 30,
+                  ),
                 ),
               ),
-            ),
-            bottomNavBar: BottomNavigationBar(
-              type: BottomNavigationBarType.fixed,
-              backgroundColor: CustomTheme.white,
-              selectedLabelStyle:
-                  const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
-              unselectedLabelStyle:
-                  TextStyle(color: CustomTheme.darkGray.withOpacity(0.5)),
-              selectedItemColor: Theme.of(context).primaryColor,
-              showUnselectedLabels: true,
-              currentIndex: _currentIndex,
-              onTap: (index) => setState(() {
-                _currentIndex = index;
-              }),
-              items: [
-                BottomNavigationBarItem(
+              bottomNavBar: BottomNavigationBar(
+                type: BottomNavigationBarType.fixed,
+                backgroundColor: CustomTheme.white,
+                selectedLabelStyle:
+                    const TextStyle(fontSize: 12, fontWeight: FontWeight.bold),
+                unselectedLabelStyle:
+                    TextStyle(color: CustomTheme.darkGray.withOpacity(0.5)),
+                selectedItemColor: Theme.of(context).primaryColor,
+                showUnselectedLabels: true,
+                currentIndex: _currentIndex,
+                onTap: (index) => setState(() {
+                  _currentIndex = index;
+                }),
+                items: [
+                  BottomNavigationBarItem(
+                      icon: SvgPicture.asset(
+                        Assets.homeIcon,
+                        height: 20,
+                        color: _currentIndex == 0
+                            ? _theme.primaryColor
+                            : CustomTheme.darkGray.withOpacity(0.5),
+                      ),
+                      label: 'Home'),
+                  BottomNavigationBarItem(
                     icon: SvgPicture.asset(
-                      Assets.homeIcon,
+                      Assets.bankingIcon,
                       height: 20,
-                      color: _currentIndex == 0
+                      color: _currentIndex == 1
                           ? _theme.primaryColor
                           : CustomTheme.darkGray.withOpacity(0.5),
                     ),
-                    label: 'Home'),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.bankingIcon,
-                    height: 20,
-                    color: _currentIndex == 1
-                        ? _theme.primaryColor
-                        : CustomTheme.darkGray.withOpacity(0.5),
+                    label: 'Banking',
                   ),
-                  label: 'Banking',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.bankingIcon,
-                    height: 25,
-                    color: CustomTheme.white,
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.bankingIcon,
+                      height: 25,
+                      color: CustomTheme.white,
+                    ),
+                    label: 'Scan QR',
                   ),
-                  label: 'Scan QR',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.historyIcon,
-                    height: 20,
-                    color: _currentIndex == 3
-                        ? _theme.primaryColor
-                        : CustomTheme.darkGray.withOpacity(0.5),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.historyIcon,
+                      height: 20,
+                      color: _currentIndex == 3
+                          ? _theme.primaryColor
+                          : CustomTheme.darkGray.withOpacity(0.5),
+                    ),
+                    label: 'History',
                   ),
-                  label: 'History',
-                ),
-                BottomNavigationBarItem(
-                  icon: SvgPicture.asset(
-                    Assets.moreIcon,
-                    height: 20,
-                    color: _currentIndex == 4
-                        ? _theme.primaryColor
-                        : CustomTheme.darkGray.withOpacity(0.5),
+                  BottomNavigationBarItem(
+                    icon: SvgPicture.asset(
+                      Assets.moreIcon,
+                      height: 20,
+                      color: _currentIndex == 4
+                          ? _theme.primaryColor
+                          : CustomTheme.darkGray.withOpacity(0.5),
+                    ),
+                    label: 'More',
                   ),
-                  label: 'More',
-                ),
-              ],
+                ],
+              ),
             ),
           );
   }
