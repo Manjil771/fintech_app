@@ -45,7 +45,7 @@
       "client_info": {
         "mobilesdk_app_id": "1:484503989430:android:8bf3b5006e271f694aca17",
         "android_client_info": {
-          "package_name": "com.devanasoft.sunadevi"
+          "package_name": "com.devanasoft.karmashil"
         }
       },
       "oauth_client": [
@@ -151,8 +151,4 @@
     }
   ],
   "configuration_version": "1"
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> b5fe1623d3fcb564a58689582cfcc89cefaf959a
