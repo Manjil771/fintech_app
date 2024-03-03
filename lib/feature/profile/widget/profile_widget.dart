@@ -1,26 +1,14 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_cropper/image_cropper.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/common/util/image_picker_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/cusom_rounded_image.dart';
-import 'package:ismart/common/widget/image_picker_bottom_sheet.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-
-import 'package:ismart/feature/image_preview.dart';
 import 'package:ismart/feature/profile/screen/profile_picture_screen.dart';
-
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -91,12 +79,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   //   // );
   // }
 
-  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
         showBackButton: true,
@@ -112,11 +97,19 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final res = state.data;
-            final List details = [
-              res.findValueString("contactNumber"),
-              res.findValueString("registerUrl"),
-              res.findValueString("address"),
-              res.findValueString("email"),
+            final List<String> details = [
+              res.findValueString("contactNumber").toString() == "null"
+                  ? "9801132219"
+                  : res.findValueString("contactNumber").toString(),
+              res.findValueString("web").toString() == "null"
+                  ? "https://devanasoft.com.np/"
+                  : res.findValueString("web").toString(),
+              res.findValueString("address").toString() == "null"
+                  ? "Gaurighatmarg , KTM"
+                  : res.findValueString("address").toString(),
+              res.findValueString("email").toString() == "null"
+                  ? "info@devanasoft.com.np"
+                  : res.findValueString("email").toString(),
             ];
             return ValueListenableBuilder<CustomerDetailModel?>(
                 valueListenable: customerDetail,
@@ -125,12 +118,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     return Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        // IconButton(
-                        //   onPressed: () {
-                        //     NavigationService.pop();
-                        //   },
-                        //   icon: const Icon(Icons.arrow_back),
-                        // ),
                         Container(
                           decoration: BoxDecoration(
                               color: CustomTheme.white,
@@ -169,7 +156,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     child: Column(
                                       children: [
                                         Container(
-                                            padding: EdgeInsets.all(8),
+                                            padding: const EdgeInsets.all(8),
                                             decoration: BoxDecoration(
                                                 border: Border.all(
                                                     width: 2,
@@ -199,15 +186,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                     image: val.imageUrl,
                                                     width: 100,
                                                   )),
-                                        // SizedBox(height: 5.hp),
-                                        // Text(
-                                        //   "Upload Image",
-                                        //   style: _textTheme.titleSmall!
-                                        //       .copyWith(
-                                        //           fontWeight: FontWeight.bold,
-                                        //           fontSize: 11,
-                                        //           color: _theme.primaryColor),
-                                        // ),
                                       ],
                                     ),
                                   ),
@@ -249,6 +227,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                         SizedBox(height: _height * 0.01),
                         Expanded(
                             child: ProfileTabbarPage(
+                          latitude: res.findValueString("latitude"),
+                          longitude: res.findValueString("longitude"),
                           details: details,
                           customerDetail: customerDetail,
                         ))

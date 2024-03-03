@@ -18,11 +18,13 @@ class RecentTransactionApiProvider {
   Future<dynamic> fetchRecentTransaction(
       {required String serviceCategoryId,
       required String associatedId,
+      required String serviceId,
       required String service}) async {
     final _params = {
       "serviceOf": service,
       if (serviceCategoryId.isNotEmpty) "serviceCategoryId": serviceCategoryId,
-      if (associatedId.isNotEmpty) "associatedId": associatedId
+      if (associatedId.isNotEmpty) "associatedId": associatedId,
+      if (serviceId.isNotEmpty) "serviceId": serviceId,
     };
     final _uri = UrlUtils.getUri(
         url: coOperative.baseUrl + "/api/recentTransaction", params: _params);

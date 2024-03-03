@@ -12,11 +12,13 @@ class RecentTransactionCubit extends Cubit<CommonState> {
   Future<dynamic> fetchrecentTransaction(
       {String? service,
       required String serviceCategoryId,
+      required String serviceId,
       required String associatedId}) async {
     emit(CommonLoading());
     try {
       String mPin = await SecureStorageService.appPassword;
       final response = await recentTransactionRepository.getRecentTransaction(
+          serviceId: serviceId,
           service: service ?? "SERVICE",
           serviceCategoryId: serviceCategoryId,
           associatedId: associatedId);

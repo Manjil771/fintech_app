@@ -88,12 +88,22 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                     children: [
                       Expanded(
                         child: CustomTextField(
+                          suffixImage: "assets/icons/Contact from phone.svg",
                           title: "Mobile Number",
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           hintText: "xxxxxxxxxx",
                           controller: _mobileNumberController,
                           validator: FormValidator.validatePhoneNumber,
                           suffixIcon: Icons.phone_android_outlined,
+                          showSuffixImage: true,
+                          onSurffixImagePress: () async {
+                            final String? pickedContact =
+                                await ContactUtils.pickContact;
+                            if (pickedContact != null) {
+                              _mobileNumberController.text = pickedContact;
+                              setState(() {});
+                            }
+                          },
                           onChanged: (value) {
                             if (value.length == 10) {
                               final String topupType = TopUpUtils()
@@ -106,32 +116,17 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           },
                           showSearchIcon: true,
                           onSuffixPressed: () async {
-                            String? pickedContact =
-                                await ContactUtils.pickContact;
-                            if (pickedContact != null) {
-                              _mobileNumberController.text = pickedContact;
-                              setState(() {});
-                            }
-                            // String phoneNumber =
-                            //     await SecureStorageService.appPhoneNumber;
-                            // _mobileNumberController.text = phoneNumber;
-                            // TopUpUtils().getTopUpServiceImage(
-                            //     type: TopUpUtils().getTopUpServiceType(
-                            //         type: _topUpType.value),
-                            //     categories: widget.categoryList);
+                            final String phoneNumber =
+                                await SecureStorageService.appPhoneNumber;
+                            _mobileNumberController.text = phoneNumber;
+                            TopUpUtils().getTopUpServiceImage(
+                                type: TopUpUtils().getTopUpServiceType( 
+                                    type: _topUpType.value),
+                                categories: widget.categoryList);
                             setState(() {});
                           },
                         ),
                       ),
-                      // Container(
-                      //   padding: const EdgeInsets.all(6),
-                      //   margin: const EdgeInsets.only(left: 8, top: 28),
-                      //   height: _height * 0.06,
-                      //   width: _width * 0.12,
-                      //   child: SvgPicture.asset(
-                      //     "assets/icons/Contact from phone.svg",
-                      //   ),
-                      // )
                     ],
                   ),
                   if (_mobileNumberController.text.length == 10)
@@ -179,19 +174,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                     validator: (val) =>
                         FormValidator.validateFieldNotEmpty(val, "Amount"),
                   ),
-
-                  // Container(
-                  //   padding: const EdgeInsets.only(top: 7),
-                  //   height: _height * 0.12,
-                  //   width: double.infinity,
-                  //   child: GridView.builder(
-                  //     itemCount: 6,
-                  //     gridDelegate:
-                  //         const SliverGridDelegateWithFixedCrossAxisCount(
-                  //             crossAxisCount: 3, childAspectRatio: 1.4 / 0.6),
-                  //     itemBuilder: (context, index) => amountBox(context, index),
-                  //   ),
-                  // ),
                 ],
               ),
             ),
@@ -237,7 +219,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           ),
                           categoryList: widget.categoryList));
                 }
-                // NavigationService.push(target: CommonTransactionSuccessfulPage());
               }
             },
           )),

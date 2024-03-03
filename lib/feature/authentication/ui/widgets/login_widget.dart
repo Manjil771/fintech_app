@@ -1,4 +1,5 @@
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -32,7 +33,6 @@ import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
-import 'package:url_launcher/url_launcher.dart';
 import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -739,10 +739,10 @@ class _LoginWidgetState extends State<LoginWidget> {
   Future<void> _makeUrlRequest() async {
     if (await UrlLauncher.launchWebsite(
         context: context,
-        url: "https://devanasoft.com.np/PrivacyPolicy.html")) ;
+        url: "https://devanasoft.com.np/PrivacyPolicy.html")) {}
   }
 
-  List _miscallBankingNumbers = [
+  final List _miscallBankingNumbers = [
     "9820499111",
     "9820499222",
     "9820488444",

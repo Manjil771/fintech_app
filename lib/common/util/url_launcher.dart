@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
 class UrlLauncher {
@@ -77,7 +76,7 @@ class UrlLauncher {
       } else {
         SnackBarUtils.showErrorBar(
           context: context,
-          message: "Unable to launch URL.",
+          message: "No email app found.",
         );
       }
     } catch (e) {
@@ -112,6 +111,29 @@ class UrlLauncher {
       {required BuildContext context, required String url}) async {
     try {
       final _url = Uri.parse(url);
+      if (await canLaunchUrl(_url)) {
+        await launchUrl(_url);
+      } else {
+        SnackBarUtils.showErrorBar(
+          context: context,
+          message: "Unable to launch URL.",
+        );
+      }
+    } catch (e) {
+      SnackBarUtils.showErrorBar(
+        context: context,
+        message: "Unable to launch URL.",
+      );
+    }
+  }
+
+  static Future<void> launchGoogleMap(
+      {required BuildContext context,
+      required String latitude,
+      required String longitude}) async {
+    try {
+      final _url = Uri.parse(
+          'https://www.google.com/maps/search/?api=1&query=$latitude,$longitude');
       if (await canLaunchUrl(_url)) {
         await launchUrl(_url);
       } else {

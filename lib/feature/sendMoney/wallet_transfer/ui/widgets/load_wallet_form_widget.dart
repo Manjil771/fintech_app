@@ -4,6 +4,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/contact_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -13,8 +14,6 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
@@ -185,7 +184,21 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           )
         ],
         child: CommonContainer(
+          onRecentTransactionPressed: (p0) {
+            NavigationService.pop();
+
+            // widget.selectedWallet =
+            // p0.requestDetail.destinationBankName.toString();
+            _walletAccountController.text = p0.serviceTo.toString();
+
+            _amountController.text = p0.totalAmount.toString();
+            _remarksController.text = p0.remarks.toString();
+            setState(() {});
+          },
+          associatedId: widget.selectedWallet.id.toString(),
+          showRecentTransaction: true,
           showDetail: true,
+          serviceName: "WALLET",
           showAccountSelection: true,
           topbarName: "Load Wallet",
           title: "Load ${widget.selectedWallet.name}",
@@ -217,21 +230,21 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                             val, "Wallet Id"),
                         showSearchIcon: true,
                         suffixIcon: Icons.mobile_friendly,
-                        onSuffixPressed: () async {
-                          String? pickedContact =
+                        showSuffixImage: true,
+                        suffixImage: "assets/icons/Contact from phone.svg",
+                        onSurffixImagePress: () async {
+                          final String? pickedContact =
                               await ContactUtils.pickContact;
                           if (pickedContact != null) {
                             _walletAccountController.text = pickedContact;
                             setState(() {});
                           }
-                          // final _userPhone =
-                          //     RepositoryProvider.of<CustomerDetailRepository>(
-                          //                 context)
-                          //             .customerDetailModel
-                          //             .value
-                          //             ?.mobileNumber ??
-                          //         "";
-                          // _walletAccountController.text = _userPhone;
+                        },
+                        onSuffixPressed: () async {
+                          final String phoneNumber =
+                              await SecureStorageService.appPhoneNumber;
+                          _walletAccountController.text = phoneNumber;
+                          setState(() {});
                         },
                       )
                     : CustomTextField(

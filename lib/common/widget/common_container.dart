@@ -1,21 +1,21 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
-import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
-import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_service_page.dart';
+
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
   final Widget body;
   final String? serviceName;
   final String serviceCategoryId;
+  final String? serviceId;
+
   final String associatedId;
   final bool showRecentTransaction;
   final String accountTitle;
@@ -30,6 +30,7 @@ class CommonContainer extends StatelessWidget {
   final bool showTitleText;
   final double verticalPadding;
   final double horizontalPadding;
+  final Function(RecentTransactionModel)? onRecentTransactionPressed;
 
   final Function()? onButtonPressed;
   const CommonContainer({
@@ -51,6 +52,8 @@ class CommonContainer extends StatelessWidget {
     this.detail = "",
     this.associatedId = "",
     this.serviceName,
+    this.onRecentTransactionPressed,
+    this.serviceId = "",
   });
   @override
   Widget build(BuildContext context) {
@@ -173,6 +176,9 @@ class CommonContainer extends StatelessWidget {
             ),
             if (showRecentTransaction)
               RecentTransactionServiceScreen(
+                  serviceId: serviceId ?? "",
+                  onRecentTransactionPressed:
+                      onRecentTransactionPressed ?? (RecentTransactionModel) {},
                   service: serviceName,
                   serviceCategoryId: serviceCategoryId,
                   associatedId: associatedId),
