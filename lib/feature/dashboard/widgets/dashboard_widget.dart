@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -126,7 +127,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                 context: context,
                 message: "Are you sure you want to exit ?",
                 title: "Logout",
-                buttonCallback: () {},
+                buttonCallback: () {
+                  exit(0);
+                },
                 buttonText: "Yes",
                 showCancelButton: true,
               );
