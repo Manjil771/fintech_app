@@ -11,10 +11,7 @@ import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_widget.dart';
-
-import '../../../common/constant/env.dart';
 
 class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -28,9 +25,8 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   @override
   void initState() {
     super.initState();
-    context
-        .read<RecentTransactionCubit>()
-        .fetchrecentTransaction(serviceCategoryId: "", associatedId: "");
+    context.read<RecentTransactionCubit>().fetchrecentTransaction(
+        serviceCategoryId: "", associatedId: "", serviceId: "");
   }
 
   bool _isLoading = false;
@@ -83,7 +79,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     color: Colors.white,
                     // height: double.maxFinite,
                     child: ListView.builder(
-                      physics: ScrollPhysics(),
+                      physics: const ScrollPhysics(),
                       shrinkWrap: true,
                       // scrollDirection: Axis.vertical,
                       itemCount: state.data.length,

@@ -6,21 +6,19 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/no_data_screen.dart';
-import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/widget/transaction_detail_alert_widget.dart';
 
 class RecentTransactionServiceWidget extends StatefulWidget {
   final String serviceCategoryId;
   final String associatedId;
   final String service;
+  final String serviceId;
+
   final Function(RecentTransactionModel) onRecentTransactionPressed;
 
   const RecentTransactionServiceWidget(
@@ -28,7 +26,8 @@ class RecentTransactionServiceWidget extends StatefulWidget {
       required this.serviceCategoryId,
       required this.associatedId,
       required this.service,
-      required this.onRecentTransactionPressed})
+      required this.onRecentTransactionPressed,
+      required this.serviceId})
       : super(key: key);
 
   @override
@@ -42,6 +41,7 @@ class _RecentTransactionServiceWidgetState
   void initState() {
     super.initState();
     context.read<RecentTransactionCubit>().fetchrecentTransaction(
+        serviceId: widget.serviceId,
         associatedId: widget.associatedId,
         service: widget.service,
         serviceCategoryId: widget.serviceCategoryId);
@@ -85,7 +85,7 @@ class _RecentTransactionServiceWidgetState
               },
               child: InkWell(
                   child: Container(
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     child: Row(
                       children: [
                         Text(
@@ -94,7 +94,7 @@ class _RecentTransactionServiceWidgetState
                               color: CustomTheme.primaryColor,
                               fontWeight: FontWeight.w600),
                         ),
-                        SizedBox(width: 5),
+                        const SizedBox(width: 5),
                         RotatedBox(
                           quarterTurns: 15,
                           child: SvgPicture.asset(
@@ -114,7 +114,7 @@ class _RecentTransactionServiceWidgetState
                         child: Expanded(
                           child: ListView.builder(
                             scrollDirection: Axis.vertical,
-                            physics: ScrollPhysics(),
+                            physics: const ScrollPhysics(),
                             itemCount: state.data.length,
                             itemBuilder: (context, index) {
                               final _detail = state.data[index];

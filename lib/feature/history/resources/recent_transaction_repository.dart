@@ -27,10 +27,12 @@ class RecentTransactionRepository {
   Future<DataResponse<List<RecentTransactionModel>>> getRecentTransaction(
       {required String serviceCategoryId,
       required String associatedId,
+      required String serviceId,
       required String service}) async {
     List<RecentTransactionModel> _recentTxnList = [];
     try {
       final _res = await recentTransactionApiProvider.fetchRecentTransaction(
+        serviceId: serviceId,
         associatedId: associatedId,
         service: service,
         serviceCategoryId: serviceCategoryId,
