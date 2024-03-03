@@ -2699,5 +2699,20 @@ class CoOperativeValue {
     appTitle: "Aagan iSmart",
   );
 
-  static final CoOperative currentCoop = abhibadanCoop;
+  static final CoOperative sadasyaSewaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sadasyaSewa",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sadasyaSewa/sadasyaSewa_banner.png",
+    backgroundImage: "assets/sadasyaSewa/sadasyaSewa_background.png",
+    clientCode: 'JY2BVRD208',
+    clientSecret: "164786",
+    coOperativeLogo: 'assets/sadasyaSewa/sadasyaSewa_logo.png',
+    splashImage: "assets/sadasyaSewa/sadasyaSewa_splash.png",
+    primaryColor: const Color(0xFF0072BB),
+    coOperativeName: "Sadasya Sewa Saving & Credit Co-operative Ltd.",
+    appTitle: "Sadasya Sewa iSmart",
+  );
+
+  static final CoOperative currentCoop = sadasyaSewaCoop;
 }
