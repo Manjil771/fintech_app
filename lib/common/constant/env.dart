@@ -2714,5 +2714,5 @@ class CoOperativeValue {
     appTitle: "Sadasya Sewa iSmart",
   );
 
-  static final CoOperative currentCoop = sadasyaSewaCoop;
+  static final CoOperative currentCoop = aaganCoop;
 }
