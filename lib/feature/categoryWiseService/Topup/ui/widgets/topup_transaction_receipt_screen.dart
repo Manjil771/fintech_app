@@ -11,7 +11,6 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 
@@ -122,9 +121,7 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
                     CustomRoundedButtom(
                         title: "Done",
                         onPressed: () {
-                          NavigationService.pushReplacement(
-                            target: const DashboardPage(),
-                          );
+                          NavigationService.popUntilFirstPage();
                         }),
                     SizedBox(height: _height * 0.02),
                     BlocConsumer<TransactionDownloadCubit, CommonState>(
