@@ -1,8 +1,8 @@
-import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -128,7 +128,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                 message: "Are you sure you want to exit ?",
                 title: "Logout",
                 buttonCallback: () {
-                  exit(0);
+                  SystemChannels.platform.invokeMethod('SystemNavigator.pop');
                 },
                 buttonText: "Yes",
                 showCancelButton: true,
