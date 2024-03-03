@@ -238,7 +238,7 @@ flutter:
     # - assets/puspanjali/
     # - assets/autobikash/
     # - assets/amrapali/
-    # - assets/abhibadan/
+    - assets/abhibadan/
     # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
@@ -299,6 +299,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     - assets/aagan/
+
 
 
    
