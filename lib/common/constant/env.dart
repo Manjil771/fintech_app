@@ -2698,20 +2698,21 @@ class CoOperativeValue {
     coOperativeName: "Karmashil Saving & Credit Co-operative Ltd",
     appTitle: "Karmashil iSmart",
   );
-   static final CoOperative babylonCoop = CoOperative(
+
+  static final CoOperative sadasyaSewaCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.babylon",
+    packageName: "com.devanasoft.sadasyaSewa",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/babylon/babylon_banner.png",
-    backgroundImage: "assets/babylon/babylon_background.png",
-    clientCode: 'OI7SY6KK6E',
-    clientSecret: "175338",
-    coOperativeLogo: 'assets/babylon/babylon_logo.png',
-    splashImage: "assets/babylon/babylon_splash.png",
-    primaryColor: const Color(0xFF14902D),
-    coOperativeName: "Babylon Consumers Co-operative Ltd.",
-    appTitle: "Babylon iSmart",
+    bannerImage: "assets/sadasyaSewa/sadasyaSewa_banner.png",
+    backgroundImage: "assets/sadasyaSewa/sadasyaSewa_background.png",
+    clientCode: 'JY2BVRD208',
+    clientSecret: "164786",
+    coOperativeLogo: 'assets/sadasyaSewa/sadasyaSewa_logo.png',
+    splashImage: "assets/sadasyaSewa/sadasyaSewa_splash.png",
+    primaryColor: const Color(0xFF0072BB),
+    coOperativeName: "Sadasya Sewa Saving & Credit Co-operative Ltd.",
+    appTitle: "Sadasya Sewa iSmart",
   );
-  
-  static final CoOperative currentCoop = kamanaCoop;
+
+  static final CoOperative currentCoop = sadasyaSewaCoop;
 }
