@@ -116,7 +116,7 @@ flutter:
     # - assets/uttarganga/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
-    # - assets/kamana/
+    - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
@@ -272,7 +272,7 @@ flutter:
     # - assets/sarbajyoti/
     # - assets/shubhsiris/
     # - assets/rastrautthan/
-    - assets/ekikrit/
+    # - assets/ekikrit/
     # - assets/machhapuchreSystematic/
     # - assets/parishrami/
     # - assets/citySaving/
@@ -299,6 +299,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/aagraj/
     # - assets/karmashil/
+    # - assets/babylon/
     
 
 
