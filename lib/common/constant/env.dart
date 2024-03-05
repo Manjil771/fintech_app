@@ -2713,6 +2713,20 @@ class CoOperativeValue {
     coOperativeName: "Sadasya Sewa Saving & Credit Co-operative Ltd.",
     appTitle: "Sadasya Sewa iSmart",
   );
+  static final CoOperative asaanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.asaan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/asaan/asaan_banner.png",
+    backgroundImage: "assets/asaan/asaan_background.png",
+    clientCode: 'VMWWMD0KBP',
+    clientSecret: "138607",
+    coOperativeLogo: 'assets/asaan/asaan_logo.png',
+    splashImage: "assets/asaan/asaan_splash.png",
+    primaryColor: const Color(0xFF014886),
+    coOperativeName: "Asaan Export Import Pvt. Ltd.",
+    appTitle: "Asaan iSmart",
+  );
 
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = asaanCoop;
 }
