@@ -173,8 +173,11 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                       Expanded(
                                         child: CommonGridViewContainer(
                                           onContainerPress: () async {
+                                            final bankName = RepositoryProvider
+                                                    .of<CoOperative>(context)
+                                                .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: ${_detail.accountDetail[index].branchName} \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,

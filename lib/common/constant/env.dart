@@ -240,19 +240,19 @@ class CoOperativeValue {
   );
   //  TEST for finnact cbs
   static final CoOperative finnactDevTest = CoOperative(
-    baseUrl: 'http://103.198.9.203:8080/',
-    bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'UDMIFJMEKF',
-    backgroundImage: "assets/images/ismart_background_image.jpg",
-    coOperativeName: '',
-    coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "167956",
-    splashImage: "assets/images/ismart_splash.jpg",
-    primaryColor: const Color(0xFF010C80),
-    packageName: "com.devanasoft.ismart",
-    appStoreID: "",
-    appTitle: "Finnact Demo",
-  );
+      baseUrl: 'http://103.198.9.203:8080/',
+      bannerImage: "assets/images/ismart_banner.png",
+      clientCode: 'UDMIFJMEKF',
+      backgroundImage: "assets/images/ismart_background_image.jpg",
+      coOperativeName: '',
+      coOperativeLogo: Assets.ismartLogo,
+      clientSecret: "167956",
+      splashImage: "assets/images/ismart_splash.jpg",
+      primaryColor: const Color(0xFF010C80),
+      packageName: "com.devanasoft.ismart",
+      appStoreID: "",
+      appTitle: "Finnact Demo",
+      shouldValidateCooperative: true);
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",
@@ -2728,5 +2728,5 @@ class CoOperativeValue {
     appTitle: "Asaan iSmart",
   );
 
-  static final CoOperative currentCoop = asaanCoop;
+  static final CoOperative currentCoop = finnactDevTest;
 }
