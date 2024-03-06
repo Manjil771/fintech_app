@@ -772,7 +772,7 @@ android {
             versionName flutterVersionName
         }
 
-        nepalbachat {
+        nepalbachat { //for nepal saving
             dimension "app"
             applicationId "com.devanasoft.nepalbachat"
             versionCode flutterVersionCode.toInteger()
