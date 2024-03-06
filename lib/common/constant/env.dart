@@ -1293,7 +1293,7 @@ class CoOperativeValue {
 
   static final CoOperative shubhaSandeshCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.shubhaSandesh",
+    packageName: "com.devanasoft.subhaSandesh",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/shubhaSandesh/shubha_sandesh_banner.png",
     backgroundImage: "assets/shubhaSandesh/shubha_sandesh_background.png",
