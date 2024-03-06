@@ -2728,5 +2728,5 @@ class CoOperativeValue {
     appTitle: "Babylon iSmart",
   );
 
-  static final CoOperative currentCoop = babylonCoop;
+  static final CoOperative currentCoop = devLive;
 }
