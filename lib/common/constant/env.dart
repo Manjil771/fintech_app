@@ -240,19 +240,19 @@ class CoOperativeValue {
   );
   //  TEST for finnact cbs
   static final CoOperative finnactDevTest = CoOperative(
-    baseUrl: 'http://103.198.9.203:8080/',
-    bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'UDMIFJMEKF',
-    backgroundImage: "assets/images/ismart_background_image.jpg",
-    coOperativeName: '',
-    coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "167956",
-    splashImage: "assets/images/ismart_splash.jpg",
-    primaryColor: const Color(0xFF010C80),
-    packageName: "com.devanasoft.ismart",
-    appStoreID: "",
-    appTitle: "Finnact Demo",
-  );
+      baseUrl: 'http://103.198.9.203:8080/',
+      bannerImage: "assets/images/ismart_banner.png",
+      clientCode: 'UDMIFJMEKF',
+      backgroundImage: "assets/images/ismart_background_image.jpg",
+      coOperativeName: '',
+      coOperativeLogo: Assets.ismartLogo,
+      clientSecret: "167956",
+      splashImage: "assets/images/ismart_splash.jpg",
+      primaryColor: const Color(0xFF010C80),
+      packageName: "com.devanasoft.ismart",
+      appStoreID: "",
+      appTitle: "Finnact Demo",
+      shouldValidateCooperative: true);
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",
@@ -2713,20 +2713,20 @@ class CoOperativeValue {
     coOperativeName: "Sadasya Sewa Saving & Credit Co-operative Ltd.",
     appTitle: "Sadasya Sewa iSmart",
   );
-  static final CoOperative babylonCoop = CoOperative(
+  static final CoOperative asaanCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.babylon",
+    packageName: "com.devanasoft.asaan",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/babylon/babylon_banner.png",
-    backgroundImage: "assets/babylon/babylon_background.png",
-    clientCode: 'OI7SY6KK6E',
-    clientSecret: "175338",
-    coOperativeLogo: 'assets/babylon/babylon_logo.png',
-    splashImage: "assets/babylon/babylon_splash.png",
-    primaryColor: const Color(0xFF14902D),
-    coOperativeName: "Babylon Consumers Co-operative Ltd",
-    appTitle: "Babylon iSmart",
+    bannerImage: "assets/asaan/asaan_banner.png",
+    backgroundImage: "assets/asaan/asaan_background.png",
+    clientCode: 'VMWWMD0KBP',
+    clientSecret: "138607",
+    coOperativeLogo: 'assets/asaan/asaan_logo.png',
+    splashImage: "assets/asaan/asaan_splash.png",
+    primaryColor: const Color(0xFF014886),
+    coOperativeName: "Asaan Export Import Pvt. Ltd.",
+    appTitle: "Asaan iSmart",
   );
 
-  static final CoOperative currentCoop = janadharaCoop;
+  static final CoOperative currentCoop = devLive;
 }

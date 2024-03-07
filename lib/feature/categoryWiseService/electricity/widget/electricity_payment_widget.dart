@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -7,10 +5,8 @@ import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -32,6 +28,7 @@ class ElectricityPaymentWidget extends StatefulWidget {
 
 class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   KeyValue? selectedCounter;
+  String recentTransactionOfficeCode = "";
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _selectedCounterController =
       TextEditingController();
@@ -42,6 +39,15 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        onRecentTransactionPressed: (p0) {
+          NavigationService.pop();
+          _selectedCounterController.text =
+              p0.requestDetail.officeCode.toString();
+          recentTransactionOfficeCode = p0.requestDetail.officeCode.toString();
+          _customerIDController.text = p0.requestDetail.customerId.toString();
+          _scNumberController.text = p0.requestDetail.scno.toString();
+          setState(() {});
+        },
         showRecentTransaction: true,
         associatedId: widget.service.id.toString(),
         showAccountSelection: true,
@@ -119,6 +125,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                     if (_selectedCounterController.text.isEmpty) {
                       return "Please Select Counter";
                     }
+                    return null;
                   },
                 ),
                 CustomTextField(
@@ -151,7 +158,8 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                   serviceIdentifier: "nea_online_topup",
                   accountDetails: {
                     "scno": _scNumberController.text,
-                    "office_code": selectedCounter?.value ?? "",
+                    "office_code":
+                        selectedCounter?.value ?? recentTransactionOfficeCode,
                     "customerId": _customerIDController.text,
                   },
                   apiEndpoint: "/api/getneabill",

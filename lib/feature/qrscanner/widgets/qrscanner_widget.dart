@@ -31,7 +31,6 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../common/http/response.dart';
@@ -133,8 +132,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(18)),
-                        padding: EdgeInsets.all(18),
-                        margin: EdgeInsets.symmetric(horizontal: 32),
+                        padding: const EdgeInsets.all(18),
+                        margin: const EdgeInsets.symmetric(horizontal: 32),
                         child: Column(children: [
                           CustomRoundedButtom(
                               title: "Fund Transfer",
@@ -690,7 +689,7 @@ class NoServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageWrapper(
+    return const PageWrapper(
         showBackButton: true,
         body: NoDataScreen(
             title: "Service Unavailable",

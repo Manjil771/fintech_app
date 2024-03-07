@@ -22,12 +22,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final _detail = widget.customerDetail.value!;
     bool showPrimaryAccount = false;
-    bool showSecondaryAccount = false;
 
     return PageWrapper(
       padding: EdgeInsets.zero,
@@ -82,7 +79,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                             context,
                                             "clientcode.svg",
                                             "Member ID",
-                                            "${_detail.accountDetail[index].id}"),
+                                            "${_detail.accountDetail[index].clientCode}"),
                                       )
                                     ],
                                   ),
@@ -152,7 +149,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
   final List accountType = ["Primary Account", "Secondary Account"];
 
   buildDetails(BuildContext context, images, title, value) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Row(
       children: [
         SvgPicture.asset(
