@@ -178,6 +178,7 @@
 		99AEC34F0C3EB1CD09004017 /* Pods-Runner.release-upayogi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upayogi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upayogi.xcconfig"; sourceTree = "<group>"; };
 		9D31370ADAD4144F46BBF0DD /* Pods-Runner.release-batika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-batika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-batika.xcconfig"; sourceTree = "<group>"; };
 		9EA249BFEAC35D1F7367EE0B /* Pods-Runner.debug-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-alankar.xcconfig"; sourceTree = "<group>"; };
+		9F3D2E6E1BAB04644E6FD2EC /* Pods-Runner.release-shubhashreemulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreemulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreemulti.xcconfig"; sourceTree = "<group>"; };
 		A0028DA3AE6A3A911B336BE0 /* Pods-Runner.release-babira.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-babira.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-babira.xcconfig"; sourceTree = "<group>"; };
 		A07F7FA66240157A4E4B2E95 /* Pods-Runner.release-rumjatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rumjatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rumjatar.xcconfig"; sourceTree = "<group>"; };
 		B4800973F2D3CEBA540DA284 /* Pods-Runner.release-mangalpur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-mangalpur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-mangalpur.xcconfig"; sourceTree = "<group>"; };
@@ -403,6 +404,7 @@
 				5B2C065670D8FB24497729EA /* Pods-Runner.release-abhibadan.xcconfig */,
 				9906FD5CB889FADA136642B6 /* Pods-Runner.release-sadasyasewa.xcconfig */,
 				4E36312192EDB10FB66CAE2B /* Pods-Runner.release-kjismart.xcconfig */,
+				9F3D2E6E1BAB04644E6FD2EC /* Pods-Runner.release-shubhashreemulti.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -11247,7 +11249,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.35;
+				FLUTTER_BUILD_NAME = 0.0.36;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabil iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
