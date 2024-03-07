@@ -251,7 +251,7 @@ flutter:
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
     # - assets/belchautara/
-    # - assets/shubhashreeMulti/
+    - assets/shubhashreeMulti/
     # - assets/shubhaShree/
     # - assets/yugbani/
     # - assets/bouddhamode/
@@ -299,7 +299,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     # - assets/aagan/
-    - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/babylon/
