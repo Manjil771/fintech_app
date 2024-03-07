@@ -126,6 +126,9 @@ class RequestDetail {
   String? mobileNumber;
   String? serviceId;
   String? serviceTo;
+  String? scno;
+  String? officeCode;
+  String? customerId;
 
   RequestDetail({
     this.destinationBankId,
@@ -138,6 +141,9 @@ class RequestDetail {
     this.mobileNumber,
     this.serviceId,
     this.serviceTo,
+    this.customerId,
+    this.officeCode,
+    this.scno,
   });
 
   factory RequestDetail.fromJson(Map<String, dynamic> json) => RequestDetail(
@@ -151,6 +157,9 @@ class RequestDetail {
         mobileNumber: json["mobile_number"],
         serviceId: json["serviceId"],
         serviceTo: json["serviceTo"],
+        customerId: json["customerId"],
+        officeCode: json["officeCode"],
+        scno: json["scno"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -164,6 +173,9 @@ class RequestDetail {
         "mobile_number": mobileNumber,
         "serviceId": serviceId,
         "serviceTo": serviceTo,
+        "customerId": customerId,
+        "officeCode": officeCode,
+        "scno": scno,
       };
 }
 

@@ -28,12 +28,10 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
 
     Widget _getCoOpLogo() {
-      String _coOpLogo =
+      final String _coOpLogo =
           RepositoryProvider.of<CoOperative>(context).coOperativeLogo;
 
       if (_coOpLogo.contains("https://")) {
@@ -80,7 +78,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                   ),
                                   child: Column(
                                     children: [
-                                      Padding(
+                                      Padding( 
                                         padding: const EdgeInsets.all(20.0),
                                         child: Row(
                                           mainAxisAlignment:
@@ -177,7 +175,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .of<CoOperative>(context)
                                                 .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].accountNumber} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].mainCode} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,

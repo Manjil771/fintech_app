@@ -2728,5 +2728,5 @@ class CoOperativeValue {
     appTitle: "Asaan iSmart",
   );
 
-  static final CoOperative currentCoop = finnactDevTest;
+  static final CoOperative currentCoop = devLive;
 }
