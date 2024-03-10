@@ -261,7 +261,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    # - assets/shreeJamune/
+    - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
@@ -303,6 +303,7 @@ flutter:
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
+    # - assets/babylon/
 
 
 
