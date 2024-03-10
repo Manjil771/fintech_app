@@ -2758,5 +2758,5 @@ class CoOperativeValue {
     appTitle: "Babylon iSmart",
   );
 
-  static final CoOperative currentCoop = unitedCoop;
+  static final CoOperative currentCoop = globalMultiCoop;
 }
