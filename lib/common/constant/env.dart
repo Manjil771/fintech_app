@@ -2072,7 +2072,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/shubhaShree/shubhaShree_logo.png',
     splashImage: "assets/shubhaShree/shubhaShree_splash.png",
     primaryColor: const Color(0xFF0087BC),
-    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd",
+    coOperativeName: "Shubhashree Saving Co-operative Society Ltd",
     appTitle: 'Shubha Shree iSmart',
   );
   static final CoOperative yugbaniCoop = CoOperative(
@@ -2758,5 +2758,5 @@ class CoOperativeValue {
     appTitle: "Babylon iSmart",
   );
 
-  static final CoOperative currentCoop = shreeJamuneCoop;
+  static final CoOperative currentCoop = unitedCoop;
 }

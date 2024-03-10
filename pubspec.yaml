@@ -247,7 +247,7 @@ flutter:
     # - assets/pacific/
     # - assets/samutthan/
     # - assets/dhanaprapti/
-    # - assets/globalMulti/
+    - assets/globalMulti/
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
     # - assets/belchautara/
@@ -289,7 +289,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
-    # - assets/united/
+    - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
     # - assets/tarapunja/
