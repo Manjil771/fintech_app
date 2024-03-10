@@ -302,7 +302,8 @@ flutter:
     # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
-    - assets/asaan/
+    # - assets/asaan/
+    # - assets/babylon/
 
 
 

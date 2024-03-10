@@ -174,6 +174,21 @@ class CoOperativeValue {
     coOperativeName: "ISMART DEMO APPKTM",
     appTitle: "iSmart Devanasoft",
   );
+  static final CoOperative externalQrTest = CoOperative(
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    bannerImage: "assets/images/ismart_banner.png",
+    coOperativeLogo: Assets.ismartLogo,
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    splashImage: "assets/images/ismart_splash.jpg",
+    primaryColor: const Color(0xFF010C80),
+    baseUrl: 'http://192.168.1.75:8080/',
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+    shouldValidateCooperative: true,
+    coOperativeName: "ISMART DEMO APPKTM",
+    appTitle: "iSmart Devanasoft",
+  );
 
   static final CoOperative bhaktapurSaccos = CoOperative(
     backgroundImage: "assets/bhaktapur_saccos/bhaktapur_background.png",
@@ -2728,5 +2743,20 @@ class CoOperativeValue {
     appTitle: "Asaan iSmart",
   );
 
-  static final CoOperative currentCoop = asaanCoop;
+  static final CoOperative babylonCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.babylon",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/babylon/babylon_banner.png",
+    backgroundImage: "assets/babylon/babylon_background.png",
+    clientCode: 'OI7SY6KK6E',
+    clientSecret: "175338",
+    coOperativeLogo: 'assets/babylon/babylon_logo.png',
+    splashImage: "assets/babylon/babylon_splash.png",
+    primaryColor: const Color(0xFF14902D),
+    coOperativeName: "Babylon Consumers Co-operative Ltd",
+    appTitle: "Babylon iSmart",
+  );
+
+  static final CoOperative currentCoop = shreeJamuneCoop;
 }

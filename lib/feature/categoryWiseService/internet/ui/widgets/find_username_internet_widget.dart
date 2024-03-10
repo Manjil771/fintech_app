@@ -4,11 +4,9 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_payment_detail_screen.dart';
@@ -19,7 +17,8 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import '../../../../../common/util/size_utils.dart';
 
 class FindInternetUserWidget extends StatefulWidget {
-  FindInternetUserWidget({Key? key, required this.service}) : super(key: key);
+  const FindInternetUserWidget({Key? key, required this.service})
+      : super(key: key);
 
   final ServiceList service;
 
@@ -36,8 +35,6 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
@@ -53,7 +50,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.push(
                 target: InternetPaymentDeatilScreen(
@@ -76,8 +73,13 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
         child: Form(
           key: _formKey,
           child: CommonContainer(
+            onRecentTransactionPressed: (p0) {
+              NavigationService.pop();
+              _usernameController.text = p0.requestDetail.serviceTo.toString();
+              onButtonPressed(username: p0.requestDetail.serviceTo.toString());
+            },
             showRecentTransaction: true,
-            associatedId: widget.service.id.toString(),
+            serviceId: widget.service.id.toString(),
             showDetail: true,
             title: 'Internet Payment',
             detail: 'Pay your internet bill of you ISP from here',
@@ -136,18 +138,29 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
-                context.read<UtilityPaymentCubit>().fetchDetails(
-                      serviceIdentifier: "worldlink_online_topup",
-                      accountDetails: {
-                        "wlink_username": _usernameController.text,
-                      },
-                      apiEndpoint: "api/wlinkpackages",
-                    );
+                onButtonPressed(username: _usernameController.text);
+                // context.read<UtilityPaymentCubit>().fetchDetails(
+                //       serviceIdentifier: "worldlink_online_topup",
+                //       accountDetails: {
+                //         "wlink_username": _usernameController.text,
+                //       },
+                //       apiEndpoint: "api/wlinkpackages",
+                //     );
               }
             },
           ),
         ),
       ),
     );
+  }
+
+  void onButtonPressed({required String username}) {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+          serviceIdentifier: widget.service.uniqueIdentifier,
+          accountDetails: {
+            "wlink_username": username,
+          },
+          apiEndpoint: "api/wlinkpackages",
+        );
   }
 }
