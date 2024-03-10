@@ -10,6 +10,7 @@ import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -23,7 +24,7 @@ class SettingWidget extends StatefulWidget {
 class _SettingWidgetState extends State<SettingWidget> {
   final ValueNotifier<bool> _isBiometricEnabled = ValueNotifier(false);
 
-  bool switchValue = false;
+  // bool switchValue = false;
 
   @override
   void initState() {
@@ -36,7 +37,6 @@ class _SettingWidgetState extends State<SettingWidget> {
     bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
-      switchValue = _isBiometricEnabled.value;
     }
   }
 
@@ -80,33 +80,50 @@ class _SettingWidgetState extends State<SettingWidget> {
                 children: [
                   Expanded(
                     child: CommonDetailBox(
-                        showTrailingIcon: false,
-                        leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
-                        onBoxPressed: () {
-                          NavigationService.push(
-                              target: const ChangeMpinPage());
-                        },
-                        title: "Biometric Setup",
-                        detail: "Enable/Disable biometric"),
+                      showTrailingIcon: false,
+                      leadingImage: "assets/icons/pin-code-svgrepo-com 1.svg",
+                      onBoxPressed: () {
+                        // NavigationService.push(target: const ChangeMpinPage());
+                      },
+                      title: "Biometric Setup",
+                      detail: "Enable/Disable biometric",
+                    ),
                   ),
-                  Switch(
-                    value: switchValue,
-                    onChanged: (value) async {
-                      setState(() {
-                        switchValue = !switchValue;
-                        if (switchValue == true) {
-                          SharedPref.setBiometricLogin(true);
-                          SnackBarUtils.showSuccessBar(
-                              context: context, message: "Biometric Enable");
-                        } else {
-                          SharedPref.setBiometricLogin(false);
-                          SnackBarUtils.showErrorBar(
-                              context: context, message: "Biometric Disable");
-                        }
-                      });
-                      // sp = getBioMetricStatus();
-                    },
-                  )
+                  ValueListenableBuilder<bool>(
+                      valueListenable: _isBiometricEnabled,
+                      builder: (context, val, child) {
+                        print("Default Value : Biometrics: $val");
+                        return Switch(
+                          value: val,
+                          onChanged: (value) async {
+                            print("Onchange Value : Biometrics: $value");
+                            if (value) {
+                              NavigationService.pushReplacement(
+                                target: BiometricLoginPage(
+                                  onValueCallback: (p0) {
+                                    NavigationService.pop();
+                                    if (p0) {
+                                      _isBiometricEnabled.value = value;
+                                      SharedPref.setBiometricLogin(true);
+                                      SnackBarUtils.showSuccessBar(
+                                        context: context,
+                                        message: "Biometric Enable",
+                                      );
+                                    }
+                                  },
+                                ),
+                              );
+                            } else {
+                              _isBiometricEnabled.value = value;
+                              SharedPref.setBiometricLogin(false);
+                              SnackBarUtils.showErrorBar(
+                                context: context,
+                                message: "Biometric Disable",
+                              );
+                            }
+                          },
+                        );
+                      })
                 ],
               ),
               // : Container(),

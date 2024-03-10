@@ -7,6 +7,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
@@ -24,6 +25,7 @@ class _AppDevState extends State<AppDev> {
   SessionConfig? sessionConfig;
   @override
   void initState() {
+    ServiceHiveUtils.init();
     CustomTheme().initializeTheme(widget.env.primaryColor);
     sessionConfig = SessionConfig(
       invalidateSessionForAppLostFocus: const Duration(minutes: 2),
@@ -37,6 +39,12 @@ class _AppDevState extends State<AppDev> {
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    ServiceHiveUtils.close();
+    super.dispose();
   }
 
   @override

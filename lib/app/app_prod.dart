@@ -7,6 +7,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/common/widget/global_error_widget.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
@@ -27,6 +28,8 @@ class _AppProdState extends State<AppProd> {
   void initState() {
     CustomTheme().initializeTheme(widget.env.primaryColor);
 
+    ServiceHiveUtils.init();
+
     sessionConfig = SessionConfig(
       invalidateSessionForAppLostFocus: const Duration(minutes: 2),
     );
@@ -39,6 +42,12 @@ class _AppProdState extends State<AppProd> {
       }
     });
     super.initState();
+  }
+
+  @override
+  void dispose() {
+    ServiceHiveUtils.close();
+    super.dispose();
   }
 
   @override

@@ -7,7 +7,6 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
-import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -137,13 +136,16 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                 ),
                 showTitleText: false,
                 topbarName: "Send Money");
-          } else {
-            return const NoDataScreen(
-              title: "Services unavailable now.",
-              details:
-                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
-            );
           }
+          // else {
+          //   return const NoDataScreen(
+          //     title: "Services unavailable now.",
+          //     details:
+          //         'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+          //   );
+          // }
+
+          return Container();
         },
       ),
     );

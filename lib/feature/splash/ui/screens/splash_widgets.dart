@@ -31,12 +31,14 @@ class _SplashWidgetState extends State<SplashWidget> {
       listener: (context, state) {
         if (state is StartupSuccess) {
           NavigationService.pushReplacement(target: const LoginPage());
-          // if (state.isFirstTime) {
-          //   NavigationService.push(target: OnboardPage());
-          // } else
+
           if (state.isLogged && kDebugMode) {
             NavigationService.pushReplacement(target: const DashboardPage());
           }
+          // if (state.isFirstTime) {
+          //   NavigationService.push(target: OnboardPage());
+          // } else
+
           // else {
           //   NavigationService.pushReplacement(target: const LoginPage());
           // }
