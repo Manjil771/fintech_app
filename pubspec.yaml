@@ -242,7 +242,7 @@ flutter:
     # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
-    - assets/sparkling/
+    # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
     # - assets/samutthan/
@@ -277,7 +277,7 @@ flutter:
     # - assets/parishrami/
     # - assets/citySaving/
     # - assets/sahara/
-    # - assets/wonderful/
+    - assets/wonderful/
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
@@ -289,7 +289,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
-    - assets/united/
+    # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
     # - assets/tarapunja/
@@ -304,12 +304,6 @@ flutter:
     # - assets/karmashil/
     # - assets/asaan/
     # - assets/babylon/
-
-
-
-   
-   
-   
    
    
     # sana ksihan assets

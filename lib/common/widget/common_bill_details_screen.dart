@@ -34,7 +34,7 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.apiBody,
       required this.service,
       required this.serviceIdentifier});
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -65,7 +65,7 @@ class CommonBillDetailWidget extends StatefulWidget {
   final Widget body;
   final String serviceIdentifier;
 
-  CommonBillDetailWidget({
+  const CommonBillDetailWidget({
     super.key,
     required this.accountDetails,
     required this.apiEndpoint,
@@ -146,7 +146,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -155,7 +155,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                       onPressed: () {
                         NavigationService.pop();
                       },
-                      icon: Icon(Icons.arrow_back)),
+                      icon: const Icon(Icons.arrow_back)),
                   Center(
                     child: Image.network(
                       "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
@@ -168,7 +168,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                         ? Container()
                         : Text(
                             widget.service.service,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w500),
