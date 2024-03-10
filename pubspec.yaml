@@ -242,12 +242,12 @@ flutter:
     # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
-    # - assets/sparkling/
+    - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
     # - assets/samutthan/
     # - assets/dhanaprapti/
-    - assets/globalMulti/
+    # - assets/globalMulti/
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
     # - assets/belchautara/
