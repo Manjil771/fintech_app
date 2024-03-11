@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_page.dart';
 
 class ReceiveMoneyWidget extends StatefulWidget {
   const ReceiveMoneyWidget({Key? key}) : super(key: key);
@@ -149,16 +150,14 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                         "load_from_connectIps".toLowerCase())) {
                                   NavigationService.pushNamed(
                                       routeName: Routes.connectIps);
-                                }
-                                // else if (filteredItems[index]
-                                //         .uniqueIdentifier
-                                //         .toString()
-                                //         .toLowerCase() ==
-                                //     "remittance".toLowerCase()) {
-                                //   NavigationService.push(
-                                //       target: RemittancePage());
-                                // }
-                                else if (filteredItems[index]
+                                } else if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "remittance".toLowerCase()) {
+                                  NavigationService.push(
+                                      target: const ReceiveRemittancePage());
+                                } else if (filteredItems[index]
                                         .uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
