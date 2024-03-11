@@ -190,13 +190,16 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                 ),
                 showTitleText: false,
                 topbarName: "Receive Money");
-          } else {
-            return const NoDataScreen(
-              title: "Services unavailable now.",
-              details:
-                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
-            );
           }
+
+          return Container();
+          // else {
+          //   return const NoDataScreen(
+          //     title: "Services unavailable now.",
+          //     details:
+          //         'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+          //   );
+          // }
         },
       ),
     );
