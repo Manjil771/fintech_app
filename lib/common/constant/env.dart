@@ -2744,19 +2744,32 @@ class CoOperativeValue {
   );
 
   static final CoOperative babylonCoop = CoOperative(
+      appStoreID: "",
+      packageName: "com.devanasoft.babylon",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/babylon/babylon_banner.png",
+      backgroundImage: "assets/babylon/babylon_background.png",
+      clientCode: 'OI7SY6KK6E',
+      clientSecret: "175338",
+      coOperativeLogo: 'assets/babylon/babylon_logo.png',
+      splashImage: "assets/babylon/babylon_splash.png",
+      primaryColor: const Color(0xFF14902D),
+      coOperativeName: "Babylon Consumers Co-operative Ltd",
+      appTitle: "Babylon iSmart");
+  static final CoOperative shakambhariCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.babylon",
+    packageName: "com.devanasoft.shakambhari",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/babylon/babylon_banner.png",
-    backgroundImage: "assets/babylon/babylon_background.png",
-    clientCode: 'OI7SY6KK6E',
-    clientSecret: "175338",
-    coOperativeLogo: 'assets/babylon/babylon_logo.png',
-    splashImage: "assets/babylon/babylon_splash.png",
-    primaryColor: const Color(0xFF14902D),
-    coOperativeName: "Babylon Consumers Co-operative Ltd",
-    appTitle: "Babylon iSmart",
+    bannerImage: "assets/shakambhari/shakambhari_banner.png",
+    backgroundImage: "assets/shakambhari/shakambhari_background.png",
+    clientCode: '65LVRSIJB6',
+    clientSecret: "199046",
+    coOperativeLogo: 'assets/shakambhari/shakambhari_logo.png',
+    splashImage: "assets/shakambhari/shakambhari_splash.png",
+    primaryColor: const Color(0xFF559A47),
+    coOperativeName: "Shakambhari Saving & Credit Co-operative Ltd.",
+    appTitle: "Shakambhari iSmart",
   );
 
-  static final CoOperative currentCoop = wonderfulCoop;
+  static final CoOperative currentCoop = shakambhariCoop;
 }

@@ -277,7 +277,7 @@ flutter:
     # - assets/parishrami/
     # - assets/citySaving/
     # - assets/sahara/
-    - assets/wonderful/
+    # - assets/wonderful/
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
@@ -304,6 +304,7 @@ flutter:
     # - assets/karmashil/
     # - assets/asaan/
     # - assets/babylon/
+    - assets/shakambhari/
    
    
     # sana ksihan assets
