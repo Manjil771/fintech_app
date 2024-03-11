@@ -165,7 +165,7 @@ class CoOperativeValue {
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
@@ -2771,5 +2771,5 @@ class CoOperativeValue {
     appTitle: "Shakambhari iSmart",
   );
 
-  static final CoOperative currentCoop = shakambhariCoop;
+  static final CoOperative currentCoop = devLive;
 }
