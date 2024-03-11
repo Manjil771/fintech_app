@@ -1,15 +1,3 @@
-// To parse this JSON data, do
-//
-//     final recentTransactionModel = recentTransactionModelFromJson(jsonString);
-
-import 'dart:convert';
-
-List<RecentTransactionModel> recentTransactionModelFromJson(String str) =>
-    List<RecentTransactionModel>.from(
-        json.decode(str).map((x) => RecentTransactionModel.fromJson(x)));
-
-String recentTransactionModelToJson(List<RecentTransactionModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
 
 class RecentTransactionModel {
   double amount;
