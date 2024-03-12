@@ -2770,6 +2770,21 @@ class CoOperativeValue {
     coOperativeName: "Shakambhari Saving & Credit Co-operative Ltd.",
     appTitle: "Shakambhari iSmart",
   );
+  static final CoOperative tarkariphalafoolCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.tarkariphalafool",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tarkariphalafool/tarkariphalafool_banner.png",
+    backgroundImage: "assets/tarkariphalafool/tarkariphalafool_background.png",
+    clientCode: 'ZTSTEFT8AO',
+    clientSecret: "200118",
+    coOperativeLogo: 'assets/tarkariphalafool/tarkariphalafool_logo.png',
+    splashImage: "assets/tarkariphalafool/tarkariphalafool_splash.png",
+    primaryColor: const Color(0xFF036C44),
+    coOperativeName:
+        "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
+    appTitle: "Tarkariphalafool iSmart",
+  );
 
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = tarkariphalafoolCoop;
 }
