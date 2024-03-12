@@ -2785,6 +2785,21 @@ class CoOperativeValue {
         "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
     appTitle: "Tarkariphalafool iSmart",
   );
+   static final CoOperative abhinnaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.abhinna",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/abhinna/abhinna_banner.png",
+    backgroundImage: "assets/abhinna/abhinna_background.png",
+    clientCode: 'GFIW0V6A0T',
+    clientSecret: "187071",
+    coOperativeLogo: 'assets/abhinna/abhinna_logo.png',
+    splashImage: "assets/abhinna/abhinna_splash.png",
+    primaryColor: const Color(0xFF036C44),
+    coOperativeName:
+        "Abhinna Multipurpose Co-operative Ltd.",
+    appTitle: "Abhinna Multi iSmart",
+  );
 
-  static final CoOperative currentCoop = tarkariphalafoolCoop;
+  static final CoOperative currentCoop = abhinnaCoop;
 }
