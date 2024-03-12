@@ -309,6 +309,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                         } else {
                           return CustomTextField(
                             title: "Mobile Number",
+                            readOnly: true,
                             hintText: maskPhoneNumber(_existingPhoneNumber),
                             customHintTextStyle: true,
                           );
