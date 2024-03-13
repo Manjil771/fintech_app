@@ -1,17 +1,11 @@
-import 'package:flutter/foundation.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_api_provider.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_api_provider.dart';
-import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/resources/recent_tranasction_api_provider.dart';
-import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
-import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_api_provider.dart';
 
 class AppServiceRepository {
   final ApiProvider apiProvider;
@@ -32,7 +26,7 @@ class AppServiceRepository {
         userRepository: userRepository);
   }
   Future<DataResponse<List<AppServiceManagementModel>>> getAppService() async {
-    List<AppServiceManagementModel> _recentTxnList = [];
+    List<AppServiceManagementModel> _appServiceList = [];
     try {
       final _res = await appServiceApiProvider.fetchAppService();
 
@@ -45,14 +39,18 @@ class AppServiceRepository {
           return DataResponse.error("Error fetching dat.");
         }
 
-        _userMap.forEach((element) {
-          AppServiceManagementModel _txn =
-              AppServiceManagementModel.fromJson(element);
+        _userMap.forEach(
+          (element) {
+            final AppServiceManagementModel _txn =
+                AppServiceManagementModel.fromJson(element);
 
-          _recentTxnList.add(_txn);
-        });
+            _appServiceList.add(_txn);
+          },
+        );
+        final _ = await ServiceHiveUtils.setAppService(
+            item: _appServiceList, slug: "app_service");
 
-        return DataResponse.success(_recentTxnList);
+        return DataResponse.success(_appServiceList);
       } else {
         return DataResponse.error("No Transaction");
       }

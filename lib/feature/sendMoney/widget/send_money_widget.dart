@@ -7,6 +7,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -136,6 +137,8 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                 ),
                 showTitleText: false,
                 topbarName: "Send Money");
+          } else if (state is CommonLoading) {
+            return const CommonLoadingWidget();
           }
           // else {
           //   return const NoDataScreen(
