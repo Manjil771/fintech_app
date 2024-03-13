@@ -2785,7 +2785,7 @@ class CoOperativeValue {
         "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
     appTitle: "Tarkariphalafool iSmart",
   );
-   static final CoOperative abhinnaCoop = CoOperative(
+  static final CoOperative abhinnaCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.abhinna",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -2796,8 +2796,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/abhinna/abhinna_logo.png',
     splashImage: "assets/abhinna/abhinna_splash.png",
     primaryColor: const Color(0xFF036C44),
-    coOperativeName:
-        "Abhinna Multipurpose Co-operative Ltd.",
+    coOperativeName: "Abhinna Multipurpose Co-operative Ltd.",
     appTitle: "Abhinna Multi iSmart",
   );
 
