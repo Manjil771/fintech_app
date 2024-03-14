@@ -2785,7 +2785,7 @@ class CoOperativeValue {
         "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
     appTitle: "Tarkariphalafool iSmart",
   );
-   static final CoOperative abhinnaCoop = CoOperative(
+  static final CoOperative abhinnaCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.abhinna",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -2796,10 +2796,37 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/abhinna/abhinna_logo.png',
     splashImage: "assets/abhinna/abhinna_splash.png",
     primaryColor: const Color(0xFF036C44),
-    coOperativeName:
-        "Abhinna Multipurpose Co-operative Ltd.",
-    appTitle: "Abhinna Multi iSmart",
+    coOperativeName: "Abhinna Multipurpose Co-operative Ltd.",
+    appTitle: "Abhinna iSmart",
+  );
+  static final CoOperative adarshaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.adarsha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/adarsha/adarsha_banner.png",
+    backgroundImage: "assets/adarsha/adarsha_background.png",
+    clientCode: 'LDSFON6DI',
+    clientSecret: "219548",
+    coOperativeLogo: 'assets/adarsha/adarsha_logo.png',
+    splashImage: "assets/adarsha/adarsha_splash.png",
+    primaryColor: const Color(0xFF0C6F41),
+    coOperativeName: "Adarsha Multipurpose Co-operative Ltd.",
+    appTitle: "Adarsha Multi iSmart",
+  );
+  static final CoOperative samabeshiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.samabeshi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samabeshi/samabeshi_banner.png",
+    backgroundImage: "assets/samabeshi/samabeshi_background.png",
+    clientCode: 'QZVT15HESE',
+    clientSecret: "200943",
+    coOperativeLogo: 'assets/samabeshi/samabeshi_logo.png',
+    splashImage: "assets/samabeshi/samabeshi_splash.png",
+    primaryColor: const Color(0xFF0C6F41),
+    coOperativeName: "Samabeshi Saving & Credit Co-operative Ltd.",
+    appTitle: "Samabeshi Multi iSmart",
   );
 
-  static final CoOperative currentCoop = abhinnaCoop;
+  static final CoOperative currentCoop = samabeshiCoop;
 }
