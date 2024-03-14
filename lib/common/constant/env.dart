@@ -2157,7 +2157,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/samyukta/samyukta_logo.png',
     splashImage: "assets/samyukta/samyukta_splash.png",
     primaryColor: const Color(0xFF0DB14B),
-    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd.",
+    coOperativeName: "",
     appTitle: 'Samyukta iSmart',
   );
   static final CoOperative systematicCoop = CoOperative(
@@ -2823,10 +2823,10 @@ class CoOperativeValue {
     clientSecret: "200943",
     coOperativeLogo: 'assets/samabeshi/samabeshi_logo.png',
     splashImage: "assets/samabeshi/samabeshi_splash.png",
-    primaryColor: const Color(0xFF0C6F41),
+    primaryColor: const Color(0xFF0B8140),
     coOperativeName: "Samabeshi Saving & Credit Co-operative Ltd.",
     appTitle: "Samabeshi Multi iSmart",
   );
 
-  static final CoOperative currentCoop = samabeshiCoop;
+  static final CoOperative currentCoop = unitedCoop;
 }
