@@ -2061,7 +2061,7 @@ class CoOperativeValue {
     coOperativeName: "Shree Nawadeep Multipurpose Co-operative Ltd",
     appTitle: 'Shree Nawadeep iSmart',
   );
-  static final CoOperative shubhaShreeCoop = CoOperative(
+  static final CoOperative shubhaShreeSavingCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.shubhaShree",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -2828,5 +2828,5 @@ class CoOperativeValue {
     appTitle: "Samabeshi Multi iSmart",
   );
 
-  static final CoOperative currentCoop = unitedCoop;
+  static final CoOperative currentCoop = shubhaShreeSavingCoop;
 }
