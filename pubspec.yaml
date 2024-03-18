@@ -229,7 +229,7 @@ flutter:
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
-    - assets/shreeMiteree/
+    # - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
@@ -290,7 +290,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
-    # - assets/united/
+    - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
     # - assets/tarapunja/
@@ -310,6 +310,8 @@ flutter:
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
+    - assets/samudayik/
+
 
    
    
