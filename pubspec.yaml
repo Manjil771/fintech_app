@@ -229,7 +229,7 @@ flutter:
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
-    # - assets/shreeMiteree/
+    - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
@@ -253,7 +253,7 @@ flutter:
     # - assets/shreeNawadeep/
     # - assets/belchautara/
     # - assets/shubhashreeMulti/
-    - assets/shubhaShree/
+    # - assets/shubhaShree/
     # - assets/yugbani/
     # - assets/bouddhamode/
     # - assets/mangalpur/
@@ -309,7 +309,7 @@ flutter:
     # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
-    - assets/tapobhumi/
+    # - assets/tapobhumi/
 
    
    

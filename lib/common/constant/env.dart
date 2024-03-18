@@ -2841,6 +2841,20 @@ class CoOperativeValue {
     coOperativeName: "Tapobhumi Saving and Credit Co-operative Ltd.",
     appTitle: "Tapobhumi Saving iSmart",
   );
+  static final CoOperative samudayikCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.samudayik",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samudayik/samudayik_banner.png",
+    backgroundImage: "assets/samudayik/samudayik_background.png",
+    clientCode: '763F6J7P9B',
+    clientSecret: "149953",
+    coOperativeLogo: 'assets/samudayik/samudayik_logo.png',
+    splashImage: "assets/samudayik/samudayik_splash.png",
+    primaryColor: const Color(0xFF00A85A),
+    coOperativeName: "Samudayik Saving & Credit Co-operative Ltd.",
+    appTitle: "Samudayik Saving iSmart",
+  );
 
-  static final CoOperative currentCoop = tapobhumiCoop;
+  static final CoOperative currentCoop = shreeMitereeCoop;
 }
