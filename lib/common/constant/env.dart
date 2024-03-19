@@ -165,7 +165,7 @@ class CoOperativeValue {
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     baseUrl: 'https://ismart.devanasoft.com.np/',
     packageName: "com.devanasoft.ismart",
@@ -2072,7 +2072,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/shubhaShree/shubhaShree_logo.png',
     splashImage: "assets/shubhaShree/shubhaShree_splash.png",
     primaryColor: const Color(0xFF0087BC),
-    coOperativeName: "Shubhashree Multipurpose Co-operative Society Ltd",
+    coOperativeName: "Shubhashree Saving Co-operative Society Ltd",
     appTitle: 'Shubha Shree iSmart',
   );
   static final CoOperative yugbaniCoop = CoOperative(
@@ -2744,19 +2744,61 @@ class CoOperativeValue {
   );
 
   static final CoOperative babylonCoop = CoOperative(
+      appStoreID: "",
+      packageName: "com.devanasoft.babylon",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/babylon/babylon_banner.png",
+      backgroundImage: "assets/babylon/babylon_background.png",
+      clientCode: 'OI7SY6KK6E',
+      clientSecret: "175338",
+      coOperativeLogo: 'assets/babylon/babylon_logo.png',
+      splashImage: "assets/babylon/babylon_splash.png",
+      primaryColor: const Color(0xFF14902D),
+      coOperativeName: "Babylon Consumers Co-operative Ltd",
+      appTitle: "Babylon iSmart");
+  static final CoOperative shakambhariCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.babylon",
+    packageName: "com.devanasoft.shakambhari",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/babylon/babylon_banner.png",
-    backgroundImage: "assets/babylon/babylon_background.png",
-    clientCode: 'OI7SY6KK6E',
-    clientSecret: "175338",
-    coOperativeLogo: 'assets/babylon/babylon_logo.png',
-    splashImage: "assets/babylon/babylon_splash.png",
-    primaryColor: const Color(0xFF14902D),
-    coOperativeName: "Babylon Consumers Co-operative Ltd",
-    appTitle: "Babylon iSmart",
+    bannerImage: "assets/shakambhari/shakambhari_banner.png",
+    backgroundImage: "assets/shakambhari/shakambhari_background.png",
+    clientCode: '65LVRSIJB6',
+    clientSecret: "199046",
+    coOperativeLogo: 'assets/shakambhari/shakambhari_logo.png',
+    splashImage: "assets/shakambhari/shakambhari_splash.png",
+    primaryColor: const Color(0xFF559A47),
+    coOperativeName: "Shakambhari Saving & Credit Co-operative Ltd.",
+    appTitle: "Shakambhari iSmart",
+  );
+  static final CoOperative tarkariphalafoolCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.tarkariphalafool",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tarkariphalafool/tarkariphalafool_banner.png",
+    backgroundImage: "assets/tarkariphalafool/tarkariphalafool_background.png",
+    clientCode: 'ZTSTEFT8AO',
+    clientSecret: "200118",
+    coOperativeLogo: 'assets/tarkariphalafool/tarkariphalafool_logo.png',
+    splashImage: "assets/tarkariphalafool/tarkariphalafool_splash.png",
+    primaryColor: const Color(0xFF036C44),
+    coOperativeName:
+        "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
+    appTitle: "Tarkariphalafool iSmart",
+  );
+  static final CoOperative abhinnaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.abhinna",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/abhinna/abhinna_banner.png",
+    backgroundImage: "assets/abhinna/abhinna_background.png",
+    clientCode: 'GFIW0V6A0T',
+    clientSecret: "187071",
+    coOperativeLogo: 'assets/abhinna/abhinna_logo.png',
+    splashImage: "assets/abhinna/abhinna_splash.png",
+    primaryColor: const Color(0xFF036C44),
+    coOperativeName: "Abhinna Multipurpose Co-operative Ltd.",
+    appTitle: "Abhinna Multi iSmart",
   );
 
-  static final CoOperative currentCoop = shreeJamuneCoop;
+  static final CoOperative currentCoop = devLive;
 }

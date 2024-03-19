@@ -195,7 +195,7 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -262,7 +262,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    - assets/shreeJamune/
+    # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
@@ -305,9 +305,16 @@ flutter:
     # - assets/karmashil/
     # - assets/asaan/
     # - assets/babylon/
+    # - assets/shakambhari/
+    # - assets/tarkariphalafool/
+    # - assets/abhinna/
 
-
-
+   
+   
+   
+   
+   
+   
    
    
    

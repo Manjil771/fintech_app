@@ -110,6 +110,13 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final TextEditingController _selectedCoopController = TextEditingController();
   bool agreedToTerms = true;
+  String maskPhoneNumber(String number) {
+    final String firstTwo = number.substring(0, 2);
+    final String lastTwo = number.substring(number.length - 2);
+    final String masked = firstTwo + "******" + lastTwo;
+
+    return masked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -300,7 +307,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                             },
                           );
                         } else {
-                          return Container();
+                          return CustomTextField(
+                            title: "Mobile Number",
+                            readOnly: true,
+                            hintText: maskPhoneNumber(_existingPhoneNumber),
+                            customHintTextStyle: true,
+                          );
                         }
                       },
                     ),
