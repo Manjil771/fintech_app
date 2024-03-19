@@ -53,10 +53,11 @@ class _GovPaymentWidgetState extends State<GovPaymentWidget> {
                 showCancelButton: false);
           }
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000") {
               NavigationService.push(
                   target: CommonBillDetailPage(
+                serviceName: widget.service.service,
                 service: widget.service,
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 accountDetails: {

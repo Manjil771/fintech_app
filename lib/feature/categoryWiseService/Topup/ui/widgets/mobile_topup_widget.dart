@@ -197,6 +197,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
               if (selectedService.isNotEmpty)
                 NavigationService.push(
                     target: CommonBillDetailPage(
+                  serviceName: selectedService.first.service,
                   service: getTopupType(phoneNumber).first,
                   apiBody: const {},
                   serviceIdentifier:
@@ -213,7 +214,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                   apiEndpoint: "/api/topup",
                   body: Column(
                     children: [
-                      KeyValueTile(title: "Mobile Number", value: phoneNumber),
+                      KeyValueTile(title: "Target Number", value: phoneNumber),
                       KeyValueTile(
                           title: "Amount", value: _amountController.text),
                     ],

@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_amount_box.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -20,7 +17,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 
 class RidePaymentWidget extends StatefulWidget {
   final ServiceList service;
-  RidePaymentWidget({Key? key, required this.service}) : super(key: key);
+  const RidePaymentWidget({Key? key, required this.service}) : super(key: key);
 
   @override
   State<RidePaymentWidget> createState() => _RidePaymentWidgetState();
@@ -39,10 +36,6 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
   Widget build(BuildContext context) {
     final TextEditingController remarksController =
         TextEditingController(text: "${widget.service.service} ride payment");
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
@@ -66,13 +59,14 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
-            if (_response.details == "M0000" ||
+            final UtilityResponseData _response = state.data;
+            if (_response.details.toString() == "M0000" ||
                 _response.status.toLowerCase() == "success") {
               if (_response.findValue(primaryKey: "exists").toString() ==
                   "true") {
                 NavigationService.push(
                     target: CommonBillDetailPage(
+                        serviceName: widget.service.service,
                         body: Column(
                           children: [
                             KeyValueTile(
@@ -85,7 +79,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                                 value: remarksController.text),
                           ],
                         ),
-                        accountDetails: {},
+                        accountDetails: const {},
                         apiEndpoint: "/api/pathao/payment",
                         apiBody: {
                           "accountNo":

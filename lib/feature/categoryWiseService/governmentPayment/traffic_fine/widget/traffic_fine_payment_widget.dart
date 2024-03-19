@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -11,8 +10,6 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/possible_date_traffic_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -47,10 +44,6 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
         body: BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
@@ -74,12 +67,12 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
         }
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
-          final myAmount = _response
-              .findValue(
-                  primaryKey: "hashResponse",
-                  secondaryKey: "formattedFinalAmount")
-              .toString();
+          final UtilityResponseData _response = state.data;
+          // final myAmount = _response
+          //     .findValue(
+          //         primaryKey: "hashResponse",
+          //         secondaryKey: "formattedFinalAmount")
+          //     .toString();
 
           final serviceCharge = _response
               .findValue(primaryKey: "hashResponse", secondaryKey: "charge")
@@ -88,6 +81,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                serviceName: widget.service.service,
                 service: widget.service,
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/governmentpayment/pay",
@@ -216,7 +210,7 @@ class _TrafficFinePaymentWidgetState extends State<TrafficFinePaymentWidget> {
                   NavigationService.push(
                     target: GovPlacePage(
                       isProvince: true,
-                      accountDetails: {},
+                      accountDetails: const {},
                       apiEndpoint: "/api/governmentpayment/getProvance",
                       serviceIdentifier: "",
                       onBankSelected: ({required value, required name}) {

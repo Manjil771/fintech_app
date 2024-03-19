@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -7,6 +8,7 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
@@ -25,6 +27,7 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final String? pdfUrl;
   final Flight? departure;
   final Flight? arrival;
+  final String serviceName;
 
   const CommonTransactionSuccessPage(
       {super.key,
@@ -34,7 +37,8 @@ class CommonTransactionSuccessPage extends StatelessWidget {
       required this.transactionID,
       this.pdfUrl,
       this.departure,
-      this.arrival});
+      this.arrival,
+      required this.serviceName});
 
   @override
   Widget build(BuildContext context) {
@@ -50,18 +54,20 @@ class CommonTransactionSuccessPage extends StatelessWidget {
         transactionID: transactionID,
         message: message,
         service: service,
+        serviceName: serviceName,
       ),
     );
   }
 }
 
-class CommonTransactionSuccessfulWidget extends StatelessWidget {
+class CommonTransactionSuccessfulWidget extends StatefulWidget {
   final Widget body;
   final String message;
   final String transactionID;
   final String? pdfUrl;
   final Flight? departure;
   final Flight? arrival;
+  final String serviceName;
 
   final ServiceList? service;
   const CommonTransactionSuccessfulWidget(
@@ -72,14 +78,35 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
       required this.transactionID,
       this.pdfUrl,
       this.departure,
-      this.arrival});
+      this.arrival,
+      required this.serviceName});
+
+  @override
+  State<CommonTransactionSuccessfulWidget> createState() =>
+      _CommonTransactionSuccessfulWidgetState();
+}
+
+class _CommonTransactionSuccessfulWidgetState
+    extends State<CommonTransactionSuccessfulWidget> {
+  String? phoneNumber;
+  getUserPhoneNumber() async {
+    final number = await SecureStorageService.appPhoneNumber;
+    phoneNumber = number;
+    setState(() {});
+    return number;
+  }
+
+  @override
+  void initState() {
+    getUserPhoneNumber();
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       showAppBar: false,
@@ -110,13 +137,13 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                           fontWeight: FontWeight.w500),
                     ),
                     SizedBox(height: _height * 0.02),
-                    Text(message,
+                    Text(widget.message,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleSmall),
                     SizedBox(height: _height * 0.02),
                     const Divider(thickness: 1),
                     SizedBox(height: _height * 0.02),
-                    (service?.uniqueIdentifier ?? "") == "ARS"
+                    (widget.service?.uniqueIdentifier ?? "") == "ARS"
                         ? Column(
                             children: [
                               Text(
@@ -126,10 +153,10 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                               ),
                               SizedBox(height: 5.hp),
                               FlightDetailBox(
-                                flight: departure,
+                                flight: widget.departure,
                               ),
                               SizedBox(height: 10.hp),
-                              if (arrival != null)
+                              if (widget.arrival != null)
                                 Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
@@ -140,7 +167,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                                     ),
                                     SizedBox(height: 5.hp),
                                     FlightDetailBox(
-                                      flight: arrival,
+                                      flight: widget.arrival,
                                     )
                                   ],
                                 ),
@@ -163,8 +190,21 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                                 SizedBox(height: _height * 0.01),
                                 KeyValueTile(
                                     title: "Transaction ID",
-                                    value: transactionID),
-                                body,
+                                    value: widget.transactionID),
+                                KeyValueTile(
+                                  title: "Initiator(Mobile Number)",
+                                  value: phoneNumber ?? "",
+                                ),
+                                KeyValueTile(
+                                    title: "Date Time",
+                                    value: DateFormat('EEEE, MMM d, HH:mm')
+                                        .format(DateTime.now())),
+                                KeyValueTile(
+                                  title: "Service",
+                                  value: widget.service?.service ??
+                                      "Utility Payment",
+                                ),
+                                widget.body,
                               ],
                             ),
                           ),
@@ -177,7 +217,7 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                       },
                     ),
                     SizedBox(height: _height * 0.02),
-                    pdfUrl == null
+                    widget.pdfUrl == null
                         ? BlocConsumer<TransactionDownloadCubit, CommonState>(
                             listener: (context, state) {},
                             builder: (context, state) {
@@ -192,7 +232,8 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                                       downloadLink: state.data,
                                       fileName: FileDownloadUtils
                                           .generateDownloadFileName(
-                                        name: service?.serviceCategoryName ??
+                                        name: widget
+                                                .service?.serviceCategoryName ??
                                             "Utility_Payment",
                                         filetype: FileType.pdf,
                                       ),
@@ -211,12 +252,12 @@ class CommonTransactionSuccessfulWidget extends StatelessWidget {
                             title: "Download Receipt",
                             color: Colors.transparent,
                             onPressed: () {
-                              print(pdfUrl.toString());
+                              print(widget.pdfUrl.toString());
                               FileDownloadUtils.downloadFile(
-                                downloadLink: pdfUrl.toString(),
+                                downloadLink: widget.pdfUrl.toString(),
                                 fileName:
                                     FileDownloadUtils.generateDownloadFileName(
-                                  name: service?.serviceCategoryName ??
+                                  name: widget.service?.serviceCategoryName ??
                                       "Utility_Payment",
                                   filetype: FileType.pdf,
                                 ),

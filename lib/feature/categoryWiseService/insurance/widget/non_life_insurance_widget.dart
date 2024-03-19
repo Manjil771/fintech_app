@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/constant/slugs.dart';
@@ -17,7 +15,6 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -26,7 +23,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 class NonLifeInsurcnceWidget extends StatefulWidget {
   final ServiceList service;
 
-  NonLifeInsurcnceWidget({super.key, required this.service});
+  const NonLifeInsurcnceWidget({super.key, required this.service});
 
   @override
   State<NonLifeInsurcnceWidget> createState() => _NonLifeInsurcnceWidgetState();
@@ -62,6 +59,7 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(
+                serviceName: widget.service.service,
                 service: widget.service,
                 serviceIdentifier: widget.service.uniqueIdentifier,
                 apiEndpoint: "/api/insurance/pay",
@@ -174,9 +172,9 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                     ),
                   ],
                 ),
-                Text(
+                const Text(
                   "From Account",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontFamily: Fonts.poppin,
                     fontWeight: FontWeight.w600,
                     fontSize: 13,
