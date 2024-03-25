@@ -478,25 +478,24 @@ class _LoginWidgetState extends State<LoginWidget> {
                         FocusManager.instance.primaryFocus?.unfocus();
 
                         if (_loginFormKey.currentState!.validate()) {
-                          if (_selectedCountryValue.toString().toLowerCase() ==
-                              "np") {
-                            if (agreedToTerms) {
-                              context.read<LoginCubit>().loginUser(
-                                    username: _getPhoneNumber(),
-                                    password: passwordController.text,
-                                    deviceUUID: await _getDeviceUUID(),
-                                  );
-                            } else {
-                              SnackBarUtils.showErrorBar(
-                                  context: context,
-                                  message:
-                                      "Please agree to terms & conditions");
-                            }
+                          // if (_selectedCountryValue.toString().toLowerCase() ==
+                          //     "np") {
+                          if (agreedToTerms) {
+                            context.read<LoginCubit>().loginUser(
+                                  username: _getPhoneNumber(),
+                                  password: passwordController.text,
+                                  deviceUUID: await _getDeviceUUID(),
+                                );
                           } else {
                             SnackBarUtils.showErrorBar(
                                 context: context,
-                                message: "Invalid Username or Password");
+                                message: "Please agree to terms & conditions");
                           }
+                          // } else {
+                          //   SnackBarUtils.showErrorBar(
+                          //       context: context,
+                          //       message: "Invalid Username or Password");
+                          // }
                         }
                       },
                     ),
