@@ -7,7 +7,7 @@ class LoanStatementRowWidget extends StatelessWidget {
   final int index;
   final UtilityResponseData responseData;
 
-  LoanStatementRowWidget({
+  const LoanStatementRowWidget({
     Key? key,
     required this.index,
     required this.responseData,
@@ -50,7 +50,8 @@ class LoanStatementRowWidget extends StatelessWidget {
                       child: Center(
                         child: Text(
                           response[index]["issuedAmount"].toString(),
-                          style: TextStyle(color: CustomTheme.googleColor),
+                          style:
+                              const TextStyle(color: CustomTheme.googleColor),
                         ),
                       ),
                     ),

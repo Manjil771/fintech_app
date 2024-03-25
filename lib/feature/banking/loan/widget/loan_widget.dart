@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_key_value_tile.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -168,7 +172,11 @@ class _LoanWidgetState extends State<LoanWidget> {
                           Expanded(
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12),
-                              onTap: () {},
+                              onTap: () {
+                                NavigationService.push(
+                                  target: LoanStatementPage(),
+                                );
+                              },
                               child: Container(
                                 alignment: Alignment.center,
                                 padding:
@@ -184,11 +192,22 @@ class _LoanWidgetState extends State<LoanWidget> {
                                     ],
                                     color: _theme.scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(8)),
-                                child: Text(
-                                  "Statement",
-                                  style: _textTheme.titleLarge!.copyWith(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SvgPicture.asset(
+                                      Assets.loanStatement,
+                                      height: 25.hp,
                                       color: _theme.primaryColor,
-                                      fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Loan Statement",
+                                      style: _textTheme.titleLarge!.copyWith(
+                                          color: _theme.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
@@ -213,11 +232,22 @@ class _LoanWidgetState extends State<LoanWidget> {
                                     ],
                                     color: _theme.scaffoldBackgroundColor,
                                     borderRadius: BorderRadius.circular(8)),
-                                child: Text(
-                                  "Loan Schedule",
-                                  style: _textTheme.titleLarge!.copyWith(
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SvgPicture.asset(
+                                      Assets.loanSchedule,
+                                      height: 25.hp,
                                       color: _theme.primaryColor,
-                                      fontWeight: FontWeight.bold),
+                                    ),
+                                    Text(
+                                      "Loan Schedule",
+                                      style: _textTheme.titleLarge!.copyWith(
+                                          color: _theme.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
                                 ),
                               ),
                             ),
