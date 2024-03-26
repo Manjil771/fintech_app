@@ -102,7 +102,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                       label: Text('Statement Reference')),
                                 ],
                                 rows: List.generate(
-                                  _response,
+                                  _response.length,
                                   (index) => DataRow(
                                       color: MaterialStatePropertyAll(
                                           index.isEven

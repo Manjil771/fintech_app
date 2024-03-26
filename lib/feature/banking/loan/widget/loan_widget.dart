@@ -10,6 +10,7 @@ import 'package:ismart/common/widget/account_list_box.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_page.dart';
 import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_key_value_tile.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -216,7 +217,10 @@ class _LoanWidgetState extends State<LoanWidget> {
                           Expanded(
                             child: InkWell(
                               borderRadius: BorderRadius.circular(12),
-                              onTap: () {},
+                              onTap: () {
+                                NavigationService.push(
+                                    target: LoanSchedulePage());
+                              },
                               child: Container(
                                 alignment: Alignment.center,
                                 padding:
@@ -252,6 +256,56 @@ class _LoanWidgetState extends State<LoanWidget> {
                               ),
                             ),
                           ),
+                        ],
+                      ),
+                      SizedBox(height: 20.hp),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () {
+                                NavigationService.push(
+                                  target: LoanStatementPage(),
+                                );
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 18),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.3),
+                                        offset: const Offset(7, 7),
+                                        blurRadius: 8,
+                                        spreadRadius: -5,
+                                      ),
+                                    ],
+                                    color: _theme.scaffoldBackgroundColor,
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    SvgPicture.asset(
+                                      Assets.loanIcon,
+                                      height: 25.hp,
+                                      color: _theme.primaryColor,
+                                    ),
+                                    Text(
+                                      "Loan Payment",
+                                      style: _textTheme.titleLarge!.copyWith(
+                                          color: _theme.primaryColor,
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ),
+                          SizedBox(width: 10.wp),
+                          const Spacer(),
                         ],
                       ),
                     ],
