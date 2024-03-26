@@ -203,7 +203,7 @@ flutter:
     # - assets/indreni/
     # - assets/uttarbahini/
     # - assets/noor/
-    # - assets/jharana/
+    - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
     # - assets/hetauda/
@@ -290,7 +290,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
-    - assets/united/
+    # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
     # - assets/tarapunja/
@@ -310,7 +310,7 @@ flutter:
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
-    - assets/samudayik/
+    # - assets/samudayik/
 
 
    

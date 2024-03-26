@@ -141,16 +141,14 @@ class CoOperativeValue {
     appTitle: 'Shankharpur SFACl iSmart',
   );
 
-  //TODO need to add client id and secret
-
   static final CoOperative jharanaCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.jharana",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/jharana/jharana_banner.png",
     backgroundImage: "assets/jharana/jharana_background.png",
-    clientCode: 'EHVNI7CZJ3', //using ismart code for production for now
-    clientSecret: "126489",
+    clientCode: 'CTYB8TKXX0',
+    clientSecret: "208577",
     coOperativeLogo: 'assets/jharana/jharana_logo.png',
     splashImage: "assets/jharana/jharana_splash.png",
     primaryColor: const Color(0xFF2C732E),
@@ -2841,7 +2839,7 @@ class CoOperativeValue {
     coOperativeName: "Tapobhumi Saving and Credit Co-operative Ltd.",
     appTitle: "Tapobhumi Saving iSmart",
   );
-static final CoOperative samudayikCoop = CoOperative(
+  static final CoOperative samudayikCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.samudayik",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -2856,5 +2854,5 @@ static final CoOperative samudayikCoop = CoOperative(
     appTitle: "Samudayik Saving iSmart",
   );
 
-  static final CoOperative currentCoop =unitedCoop;
+  static final CoOperative currentCoop = jharanaCoop;
 }

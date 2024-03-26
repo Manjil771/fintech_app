@@ -10338,7 +10338,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.29;
+				FLUTTER_BUILD_NAME = 0.0.35;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Uttarbahini Saving iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
