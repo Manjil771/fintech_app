@@ -2853,6 +2853,20 @@ class CoOperativeValue {
     coOperativeName: "Samudayik Saving & Credit Co-operative Ltd.",
     appTitle: "Samudayik Saving iSmart",
   );
+  static final CoOperative supyaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.supya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/supya/supya_banner.png",
+    backgroundImage: "assets/supya/supya_background.png",
+    clientCode: 'BJZKGSUHZ9',
+    clientSecret: "207078",
+    coOperativeLogo: 'assets/supya/supya_logo.png',
+    splashImage: "assets/supya/supya_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Supya Saving & Credit Co-operative Society Ltd.",
+    appTitle: "Supya Saving iSmart",
+  );
 
-  static final CoOperative currentCoop = jharanaCoop;
+  static final CoOperative currentCoop = samudayikCoop;
 }
