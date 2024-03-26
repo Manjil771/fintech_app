@@ -10,7 +10,6 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 
-import '../../../../common/widget/custom_carousel.dart';
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
 import 'home_page_user_widget.dart';

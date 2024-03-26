@@ -47,10 +47,10 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final String _supportContact = "9801132218";
-  String? _selectedCountryCode;
-  String? _selectedCountryValue;
-  final String _constCountryCode = "977";
-  final String _constCountryValue = "np";
+  String _selectedCountryCode = "977";
+  String _selectedCountryValue = "np";
+  // final String _constCountryCode = "977";
+  // final String _constCountryValue = "np";
   bool showCountyCode = false;
 
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
@@ -270,12 +270,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       (value) => setState(() {}),
                                     );
                                   },
-                                  // onBankSelected: (val) {
-                                  //   NavigationService.pop();
-                                  //   // internalBranch = val;
-                                  //   // branchCode = val.branchCode;
-                                  //   // _branchController.text = val.name;
-                                  // },
                                 ),
                               );
                             },
@@ -302,15 +296,14 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       child: Row(
                                         children: [
                                           Image.network(
-                                            "https://www.geonames.org/flags/x/${_selectedCountryValue != null ? _selectedCountryValue.toString().toLowerCase() : _constCountryValue}.gif",
+                                            "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
                                             height: 20,
                                             width: 30,
                                           ),
                                           SizedBox(width: 5.wp),
                                           if (showCountyCode)
                                             Text(
-                                              _selectedCountryCode ??
-                                                  _constCountryCode,
+                                              _selectedCountryCode,
                                               style:
                                                   _theme.textTheme.titleLarge,
                                             ),
@@ -419,7 +412,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             leading: Row(
                               children: [
                                 Image.network(
-                                  "https://www.geonames.org/flags/x/$_constCountryValue.gif",
+                                  "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
                                   height: 20,
                                   width: 30,
                                 ),
@@ -478,24 +471,25 @@ class _LoginWidgetState extends State<LoginWidget> {
                         FocusManager.instance.primaryFocus?.unfocus();
 
                         if (_loginFormKey.currentState!.validate()) {
-                          // if (_selectedCountryValue.toString().toLowerCase() ==
-                          //     "np") {
-                          if (agreedToTerms) {
-                            context.read<LoginCubit>().loginUser(
-                                  username: _getPhoneNumber(),
-                                  password: passwordController.text,
-                                  deviceUUID: await _getDeviceUUID(),
-                                );
+                          if (_selectedCountryValue.toString().toLowerCase() ==
+                              "np") {
+                            if (agreedToTerms) {
+                              context.read<LoginCubit>().loginUser(
+                                    username: _getPhoneNumber(),
+                                    password: passwordController.text,
+                                    deviceUUID: await _getDeviceUUID(),
+                                  );
+                            } else {
+                              SnackBarUtils.showErrorBar(
+                                  context: context,
+                                  message:
+                                      "Please agree to terms & conditions");
+                            }
                           } else {
                             SnackBarUtils.showErrorBar(
                                 context: context,
-                                message: "Please agree to terms & conditions");
+                                message: "Invalid Mobile Number");
                           }
-                          // } else {
-                          //   SnackBarUtils.showErrorBar(
-                          //       context: context,
-                          //       message: "Invalid Username or Password");
-                          // }
                         }
                       },
                     ),

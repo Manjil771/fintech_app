@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/flutter_svg.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
+import 'package:ismart/feature/dashboard/event/screen/event_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/category_widget.dart';
@@ -31,6 +36,9 @@ class _CategoryPageState extends State<CategoryPage> {
 
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+
     return BlocProvider(
       create: (context) => CategoryCubit(
         servicesRepository: RepositoryProvider.of<CategoryRepository>(context),
@@ -38,6 +46,86 @@ class _CategoryPageState extends State<CategoryPage> {
       child: ListView(
         children: [
           CategoryWidget(showAllService: widget.showAllServices),
+          SizedBox(height: 10.hp),
+          Row(
+            children: [
+              Expanded(
+                child: InkWell(
+                  onTap: () {},
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: const Offset(7, 7),
+                            blurRadius: 8,
+                            spreadRadius: -5,
+                          ),
+                        ],
+                        color: CustomTheme.white,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.loanStatement,
+                          height: 25.hp,
+                          color: _theme.primaryColor,
+                        ),
+                        SizedBox(width: 10.wp),
+                        Text(
+                          "Event",
+                          style: _textTheme.titleLarge!
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              SizedBox(width: 10.wp),
+              Expanded(
+                child: InkWell(
+                  onTap: () {
+                    NavigationService.push(target: const EventPage());
+                  },
+                  child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: const Offset(7, 7),
+                            blurRadius: 8,
+                            spreadRadius: -5,
+                          ),
+                        ],
+                        color: CustomTheme.white,
+                        borderRadius: BorderRadius.circular(12)),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        SvgPicture.asset(
+                          Assets.loanSchedule,
+                          height: 25.hp,
+                          color: _theme.primaryColor,
+                        ),
+                        SizedBox(width: 10.wp),
+                        Text(
+                          "Notice",
+                          style: _textTheme.titleLarge!
+                              .copyWith(fontWeight: FontWeight.w500),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            ],
+          ),
           if (_bannerImages.isNotEmpty)
             CustomCarousel(
               height: 140.hp,
