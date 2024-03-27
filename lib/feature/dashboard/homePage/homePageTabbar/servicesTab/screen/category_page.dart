@@ -10,6 +10,7 @@ import 'package:ismart/feature/dashboard/event/screen/event_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/category_widget.dart';
+import 'package:ismart/feature/dashboard/notice/screen/notice_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -51,7 +52,9 @@ class _CategoryPageState extends State<CategoryPage> {
             children: [
               Expanded(
                 child: InkWell(
-                  onTap: () {},
+                  onTap: () {
+                    NavigationService.push(target: const NoticePage());
+                  },
                   child: Container(
                     alignment: Alignment.center,
                     padding: const EdgeInsets.symmetric(vertical: 18),
@@ -70,7 +73,7 @@ class _CategoryPageState extends State<CategoryPage> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         SvgPicture.asset(
-                          Assets.loanStatement,
+                          Assets.eventIcon,
                           height: 25.hp,
                           color: _theme.primaryColor,
                         ),

@@ -22,6 +22,8 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
+import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
@@ -46,11 +48,8 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  final String _supportContact = "9801132218";
   String _selectedCountryCode = "977";
   String _selectedCountryValue = "np";
-  // final String _constCountryCode = "977";
-  // final String _constCountryValue = "np";
   bool showCountyCode = false;
 
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
@@ -83,7 +82,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   _checkBiometric() async {
-    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    final bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
@@ -126,6 +125,18 @@ class _LoginWidgetState extends State<LoginWidget> {
     return masked;
   }
 
+  getAppContactDetails() {
+    return BlocBuilder<AppContactCubit, CommonState>(
+      builder: (context, state) {
+        if (state is CommonStateSuccess<UtilityResponseData>) {
+          return Container();
+        } else {
+          return Container();
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = SizeUtils.height;
@@ -142,6 +153,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         miscallBanking();
       },
     ];
+
     return PageWrapper(
       backgroundColor: CustomTheme.white,
       showAppBar: false,
@@ -207,6 +219,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         },
         child: ListView(
           children: [
+            getAppContactDetails(),
             SizedBox(height: height * 0.05),
             IsmartTopWidget(showSupportIcon: true, supportAction: supportSheet),
             Padding(
@@ -500,7 +513,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           if (val) {
                             return InkWell(
                               onTap: () async {
-                                bool authenticated =
+                                final bool authenticated =
                                     await FingerPrintUtils.verifyFingerPrint(
                                   context: NavigationService.context,
                                 );
@@ -551,36 +564,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    // // if (RepositoryProvider.of<CoOperative>(context)
-                    // //         .clientCode !=
-                    // //     "EHVNI7CZJ3")
-                    // Row(
-                    //   children: [
-                    //     TextButton(
-                    //         onPressed: () {
-                    //           NavigationService.pushNamed(
-                    //               routeName: Routes.forgotPin);
-                    //         },
-                    //         child: Text(
-                    //           "Forgot PIN ?",
-                    //           style: TextStyle(color: _theme.primaryColor),
-                    //         )),
-                    //     const Spacer(),
-                    //     TextButton(
-                    //       onPressed: () {
-                    //         NavigationService.push(
-                    //             target: const ActivateAccountPage());
-                    //       },
-                    //       child: Text(
-                    //         "Activate Account",
-                    //         style: TextStyle(color: _theme.primaryColor),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // if (RepositoryProvider.of<CoOperative>(context)
-                    //         .clientCode ==
-                    //     "EHVNI7CZJ3")
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -733,6 +716,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   supportSheet() {
     final _textTheme = Theme.of(NavigationService.context).textTheme;
+    final contactNumber =
+        RepositoryProvider.of<AppContactRepository>(context).contactNumber;
 
     showModalBottomSheet(
       context: NavigationService.context,
@@ -772,54 +757,52 @@ class _LoginWidgetState extends State<LoginWidget> {
             const Divider(
               height: 40,
             ),
-            ...List.generate(
-              _supportOptions.length,
-              (index) {
-                return InkWell(
-                  onTap: _supportOptions[index]['action'] as Function(),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.hp,
-                      vertical: 15.hp,
-                    ),
-                    child: Column(
+            InkWell(
+              onTap: () async {
+                await UrlLauncher.launchPhone(
+                    context: NavigationService.context, phone: contactNumber);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.hp,
+                  vertical: 15.hp,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Call",
-                                  style: _textTheme.bodyLarge!.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: CustomTheme.primaryColor,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Text(
-                                  contactNumberList[index],
-                                  style: _textTheme.bodyLarge!.copyWith(
-                                    color: CustomTheme.darkGray,
-                                  ),
-                                )
-                              ],
+                            Text(
+                              "Call",
+                              style: _textTheme.bodyLarge!.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: CustomTheme.primaryColor,
+                              ),
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: CustomTheme.primaryColor,
+                            const SizedBox(height: 6),
+                            Text(
+                              RepositoryProvider.of<AppContactRepository>(
+                                      context)
+                                  .contactNumber,
+                              style: _textTheme.bodyLarge!.copyWith(
+                                color: CustomTheme.darkGray,
+                              ),
                             )
                           ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: CustomTheme.primaryColor,
                         )
                       ],
-                    ),
-                  ),
-                );
-              },
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 30,
@@ -847,24 +830,6 @@ class _LoginWidgetState extends State<LoginWidget> {
       "title": "Mini Statement",
       "action": () {
         NavigationService.pop();
-      },
-    },
-  ];
-  final List contactNumberList = ["9801132219", "9801132218"];
-
-  final List<Map<String, dynamic>> _supportOptions = [
-    {
-      "title": "Call",
-      "action": () async {
-        await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132219");
-      },
-    },
-    {
-      "title": "Call",
-      "action": () async {
-        await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132218");
       },
     },
   ];

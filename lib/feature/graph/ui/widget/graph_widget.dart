@@ -2,13 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/no_data_screen.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
-import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class GraphWidget extends StatefulWidget {
   const GraphWidget({Key? key}) : super(key: key);
@@ -56,9 +54,12 @@ class _GraphWidgetState extends State<GraphWidget> {
                       xValueMapper: (dynamic sales, _) =>
                           sales["day"].toString(),
                       yValueMapper: (dynamic sales, _) => sales["balance"],
-                      dataLabelSettings: DataLabelSettings(isVisible: false))
+                      dataLabelSettings:
+                          const DataLabelSettings(isVisible: false))
                 ]),
           ]);
+        } else if (state is CommonLoading) {
+          return const CommonLoadingWidget();
         } else {
           return SfCartesianChart(
               primaryXAxis: CategoryAxis(),
@@ -68,7 +69,8 @@ class _GraphWidgetState extends State<GraphWidget> {
                     dataSource: [],
                     xValueMapper: (dynamic sales, _) => sales["day"].toString(),
                     yValueMapper: (dynamic sales, _) => sales["balance"],
-                    dataLabelSettings: DataLabelSettings(isVisible: false))
+                    dataLabelSettings:
+                        const DataLabelSettings(isVisible: false))
               ]);
         }
       },
