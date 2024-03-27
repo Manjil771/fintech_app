@@ -178,7 +178,7 @@ class CommonContainer extends StatelessWidget {
               RecentTransactionServiceScreen(
                   serviceId: serviceId ?? "",
                   onRecentTransactionPressed:
-                      onRecentTransactionPressed ?? (RecentTransactionModel) {},
+                      onRecentTransactionPressed ?? (v) {},
                   service: serviceName,
                   serviceCategoryId: serviceCategoryId,
                   associatedId: associatedId),

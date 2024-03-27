@@ -39,14 +39,14 @@ class CategoryRepository {
 
         _userMap.forEach((element) {
           CategoryList _serviceList = CategoryList.fromJson(element);
-          List<ServiceList> _dummyList = [];
-          Set<String> _uniqueID = {};
+          final List<ServiceList> _dummyList = [];
+          final Set<String> _uniqueID = {};
           _serviceList.services.forEach((element) {
             _uniqueID.add(element.uniqueIdentifier);
           });
 
           _uniqueID.forEach((uniqEelement) {
-            ServiceList _singleValue = _serviceList.services.firstWhere(
+            final ServiceList _singleValue = _serviceList.services.firstWhere(
                 (elementService) =>
                     uniqEelement == elementService.uniqueIdentifier);
             _dummyList.add(_singleValue);

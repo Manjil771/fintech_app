@@ -8,8 +8,6 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 
@@ -27,7 +25,6 @@ class _BankingWidgetState extends State<BankingWidget> {
     context.read<AppServiceCubit>().fetchAppService();
   }
 
-  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -78,7 +75,7 @@ class _BankingWidgetState extends State<BankingWidget> {
                     );
                   }
                   if (state is CommonLoading) {
-                    return CommonLoadingWidget();
+                    return const CommonLoadingWidget();
                   } else {
                     return Container();
                   }

@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -174,7 +172,7 @@ class MoreWidget extends StatelessWidget {
       NavigationService.push(target: const SettingPage());
     },
     () {
-      NavigationService.push(target: FeedBackPage());
+      NavigationService.push(target: const FeedBackPage());
     },
   ];
 
@@ -184,10 +182,7 @@ class MoreWidget extends StatelessWidget {
     "Downloads",
     "Support",
     "Settings",
-    if (RepositoryProvider.of<CoOperative>(NavigationService.context)
-            .clientCode ==
-        "EHVNI7CZJ3")
-      "FeedBack",
+    "FeedBack",
   ];
   @override
   Widget build(BuildContext context) {
@@ -198,7 +193,7 @@ class MoreWidget extends StatelessWidget {
     return CommonContainer(
       showTitleText: false,
       body: GridView.builder(
-        physics: NeverScrollableScrollPhysics(),
+        physics: const NeverScrollableScrollPhysics(),
         shrinkWrap: true,
         itemCount: names.length,
         gridDelegate:

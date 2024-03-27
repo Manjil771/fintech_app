@@ -8,6 +8,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -41,6 +42,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     return PageWrapper(
+      showBackButton: true,
       body: BlocConsumer<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
@@ -153,7 +155,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                               isNew: true,
                               appOrder: 0,
                               isSmsMode: true),
-                          apiBody: {},
+                          apiBody: const {},
                           serviceIdentifier: "",
                           accountDetails: {
                             "pay_load": widget.payload,
@@ -207,6 +209,9 @@ class _PayloadWidgetState extends State<PayloadWidget> {
               //   },
               // );
             }
+          }
+          if (state is CommonLoading) {
+            return const CommonLoadingWidget();
           } else {
             return Container();
           }
