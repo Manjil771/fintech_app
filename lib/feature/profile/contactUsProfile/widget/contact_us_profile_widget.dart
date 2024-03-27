@@ -37,7 +37,7 @@ class ContactUsProfileWidget extends StatelessWidget {
             context: context,
             // email: details[3],
             email: "aswinkarki073@gmail.com");
-      }
+    }
     ];
 
     return Column(

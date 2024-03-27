@@ -2758,5 +2758,21 @@ class CoOperativeValue {
     appTitle: "Babylon iSmart",
   );
 
-  static final CoOperative currentCoop = shreeJamuneCoop;
+  // Local Debug purpose
+  static final CoOperative localDev = CoOperative(
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    bannerImage: "assets/images/ismart_banner.png",
+    coOperativeLogo: Assets.ismartLogo,
+    clientCode: 'VBMRDWEVFV',
+    clientSecret: "199204",
+    splashImage: "assets/images/ismart_splash.jpg",
+    primaryColor: const Color(0xFF010C80),
+    baseUrl: 'http://192.168.1.56:8080/',
+    packageName: "com.devanasoft.ismart",
+    appStoreID: "",
+    shouldValidateCooperative: true,
+    coOperativeName: "ISMART DEMO APPKTM",
+    appTitle: "iSmart Devanasoft",
+  );
+  static final CoOperative currentCoop = localDev;
 }

@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -101,8 +102,10 @@ class _LoginWidgetState extends State<LoginWidget> {
     _defaultBannerImages =
         RepositoryProvider.of<StartUpRepository>(context).defaultbanners;
 
-    if (Platform.isIOS) {
-      _hasExistingLoginSaved.value = false;
+    if (!kIsWeb) {
+      if (Platform.isIOS) {
+        _hasExistingLoginSaved.value = false;
+      }
     }
 
     super.initState();

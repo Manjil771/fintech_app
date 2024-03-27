@@ -1,6 +1,7 @@
 import 'dart:isolate';
 import 'dart:ui';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -56,11 +57,13 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
 
   @override
   void initState() {
-    _performStartupActions();
     context
         .read<CustomerDetailCubit>()
         .fetchCustomerDetail(isCalledAtStatup: true);
-    FlutterDownloader.registerCallback(downloadCallback);
+    if (!kIsWeb) {
+      _performStartupActions();
+      FlutterDownloader.registerCallback(downloadCallback);
+    }
   }
 
   _performStartupActions() async {
