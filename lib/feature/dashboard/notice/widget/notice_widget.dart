@@ -10,14 +10,14 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class EventWidget extends StatefulWidget {
-  const EventWidget({super.key});
+class NoticeWidget extends StatefulWidget {
+  const NoticeWidget({super.key});
 
   @override
-  State<EventWidget> createState() => _EventWidgetState();
+  State<NoticeWidget> createState() => _NoticeWidgetState();
 }
 
-class _EventWidgetState extends State<EventWidget> {
+class _NoticeWidgetState extends State<NoticeWidget> {
   int? selectedIdex;
   bool viewMore = false;
 
@@ -112,7 +112,7 @@ class _EventWidgetState extends State<EventWidget> {
             }
           },
         ),
-        topbarName: "Notices",
+        topbarName: "Events",
       ),
     );
   }
