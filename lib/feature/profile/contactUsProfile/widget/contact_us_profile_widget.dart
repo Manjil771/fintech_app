@@ -34,9 +34,9 @@ class ContactUsProfileWidget extends StatelessWidget {
       },
       () {
         UrlLauncher.launchEmail(
-            context: context,
-            // email: details[3],
-            email: "aswinkarki073@gmail.com");
+          context: context,
+          email: details[4],
+        );
       }
     ];
 

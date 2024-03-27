@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -7,10 +8,13 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
-String _supportContact = "9801132218";
+String _supportContact =
+    RepositoryProvider.of<AppContactRepository>(NavigationService.context)
+        .contactNumber;
 List<Map<String, dynamic>> _contactUsOptions = [
   {
     "title": "Call Support",
