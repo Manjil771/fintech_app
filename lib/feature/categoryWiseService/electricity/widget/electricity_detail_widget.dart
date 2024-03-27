@@ -25,7 +25,7 @@ class ElectricityDetailsWidgets extends StatefulWidget {
   final String counterName;
   final String customerId;
   final String scNumber;
-  final ServiceList services;
+  final ServiceList service;
   final String counterCode;
   const ElectricityDetailsWidgets({
     Key? key,
@@ -33,7 +33,7 @@ class ElectricityDetailsWidgets extends StatefulWidget {
     required this.counterName,
     required this.customerId,
     required this.scNumber,
-    required this.services,
+    required this.service,
     required this.counterCode,
   }) : super(key: key);
 
@@ -44,7 +44,7 @@ class ElectricityDetailsWidgets extends StatefulWidget {
 
 class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
   final TextEditingController _amountController = TextEditingController();
-  ValueNotifier<String> _promoCode = ValueNotifier("");
+  final ValueNotifier<String> _promoCode = ValueNotifier("");
 
   bool _makeAdvancePayment = false;
 
@@ -145,6 +145,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
           if (_response.status.toLowerCase() == "success".toLowerCase()) {
             NavigationService.push(
                 target: CommonTransactionSuccessPage(
+                    serviceName: widget.service.service,
                     body: Column(
                       children: [
                         KeyValueTile(
@@ -200,7 +201,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                 target: TransactionPinScreen(onValueCallback: (p0) {
               NavigationService.pop();
               context.read<UtilityPaymentCubit>().makePayment(
-                  serviceIdentifier: widget.services.uniqueIdentifier,
+                  serviceIdentifier: widget.service.uniqueIdentifier,
                   accountDetails: {
                     "scno": widget.scNumber,
                     "office_code": widget.counterCode,
@@ -226,10 +227,10 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
             }));
           },
           buttonName: "Procced",
-          title: widget.services.service,
-          detail: widget.services.instructions,
+          title: widget.service.service,
+          detail: widget.service.instructions,
           showDetail: true,
-          topbarName: widget.services.serviceCategoryName,
+          topbarName: widget.service.serviceCategoryName,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -265,7 +266,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
               ),
               Container(
                 margin: EdgeInsets.only(top: 20.hp, bottom: 10.hp),
-                padding: EdgeInsets.symmetric(
+                padding: const EdgeInsets.symmetric(
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(

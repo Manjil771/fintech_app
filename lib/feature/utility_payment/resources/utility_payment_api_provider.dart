@@ -102,6 +102,7 @@ class UtilityPaymentAPIProvider {
   fetchDetails(
       {required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,
+      Map<String, dynamic>? extraHeaders,
       required String apiEndpoint}) async {
     final _params = {
       ...accountDetails,
@@ -110,15 +111,13 @@ class UtilityPaymentAPIProvider {
       _params["service_identifier"] = "$serviceIdentifier";
     }
 
-    final url = UrlUtils.getUri(
-      url: baseUrl + "$apiEndpoint",
-      params: _params,
-    );
+    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint", params: _params);
 
     return await apiProvider.get(
       url,
       token: userRepository.token,
       userId: 0,
+      extraHeaders: extraHeaders,
     );
   }
 

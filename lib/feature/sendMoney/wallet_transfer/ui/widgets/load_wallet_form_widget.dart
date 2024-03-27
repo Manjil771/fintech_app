@@ -74,6 +74,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 if (state.data.code == "M0000") {
                   NavigationService.pushReplacement(
                       target: CommonTransactionSuccessPage(
+                          serviceName: "Load Wallet",
                           body: Column(children: [
                             KeyValueTile(
                                 title: "Wallet",

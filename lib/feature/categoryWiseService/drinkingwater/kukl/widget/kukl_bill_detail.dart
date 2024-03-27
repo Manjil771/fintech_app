@@ -15,7 +15,6 @@ import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -46,7 +45,7 @@ class KuklBillDetailPage extends StatelessWidget {
     required this.sessionAuthenticationSignature,
     required this.counterValue,
   });
-  bool _isLoading = false;
+  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -86,7 +85,7 @@ class KuklBillDetailWidget extends StatefulWidget {
   final String sessionAuthenticationSignature;
   final String counterValue;
 
-  KuklBillDetailWidget({
+  const KuklBillDetailWidget({
     super.key,
     required this.accountDetails,
     required this.apiEndpoint,
@@ -147,6 +146,8 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                     .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                  serviceName: widget.service.service,
+
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
@@ -175,7 +176,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                   color: CustomTheme.white,
                   borderRadius: BorderRadius.circular(18),
                 ),
-                padding: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -196,7 +197,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                                   ? Container()
                                   : Text(
                                       widget.service.service,
-                                      style: TextStyle(
+                                      style: const TextStyle(
                                           fontSize: 20,
                                           color: Colors.black,
                                           fontWeight: FontWeight.w500),

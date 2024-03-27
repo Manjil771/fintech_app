@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/refno_search_remittance.dart';
 
 import 'remittance_box_deign.dart';
 
@@ -14,14 +16,30 @@ class ReceiveRemittanceWidget extends StatelessWidget {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
       body: CommonContainer(
+        horizontalPadding: 4,
         verticalPadding: 0,
-        body: ListView.builder(
-          shrinkWrap: true,
-          physics: const NeverScrollableScrollPhysics(),
-          itemBuilder: (context, index) => const RemitBoxDesign(
-            title: "Money Gram",
-            containerImage: "assets/Asset 1.png",
+        body: Container(
+          child: Wrap(
+            runSpacing: 10,
+            runAlignment: WrapAlignment.spaceBetween,
+            crossAxisAlignment: WrapCrossAlignment.center,
+            // spacing: 26,
+            direction: Axis.horizontal,
+            children: [
+              ...List.generate(
+                4,
+                (index) => RemitBoxDesign(
+                  onContainerPress: () {
+                    NavigationService.push(
+                        target: const RefnoSearchRemitPage());
+                  },
+                  title: "Money Gram",
+                  containerImage: "assets/Asset 1.png",
+                ),
+              )
+            ],
           ),
         ),
         topbarName: "Remittance",

@@ -152,7 +152,7 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/hamiSabaikokrishi/
-    # - assets/machhapuchhre/
+    - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
     # - assets/matribhumi/
@@ -197,7 +197,6 @@ flutter:
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -229,7 +228,7 @@ flutter:
     # - assets/mithila/
     # - assets/shreeMahilaTarkari/
     # - assets/shreeJanaEkikrit/
-    # - assets/shreeMiteree/
+    - assets/shreeMiteree/
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
@@ -308,12 +307,6 @@ flutter:
     # - assets/shakambhari/
     # - assets/tarkariphalafool/
     # - assets/abhinna/
-    # - assets/adarsha/
-    # - assets/tapobhumi/
-    # - assets/samudayik/
-    - assets/supya/
-
-
 
    
    

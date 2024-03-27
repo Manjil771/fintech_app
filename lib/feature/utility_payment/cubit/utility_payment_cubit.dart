@@ -1,5 +1,4 @@
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
@@ -44,10 +43,12 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,
     required String apiEndpoint,
+    Map<String, dynamic>? extraHeaders,
   }) async {
     emit(CommonLoading());
 
     final _res = await utilityPaymentRepository.fetchDetails(
+      extraHeaders: extraHeaders,
       serviceIdentifier: serviceIdentifier,
       accountDetails: accountDetails,
       apiEndpoint: apiEndpoint,

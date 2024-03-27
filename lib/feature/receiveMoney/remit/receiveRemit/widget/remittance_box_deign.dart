@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
@@ -29,38 +28,35 @@ class RemitBoxDesign extends StatelessWidget {
     return InkWell(
       onTap: onContainerPress,
       child: Container(
-        padding: const EdgeInsets.all(12),
+        width: 100.wp,
         margin: margin,
-        decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(22),
-          color: _theme.primaryColor.withOpacity(0.05),
-        ),
         child: Column(
-          mainAxisSize: MainAxisSize.min,
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Container(
-              width: width,
-              padding: const EdgeInsets.all(12),
-              height: height,
-              child: isNetworkImage == true
-                  ? SvgPicture.network(
-                      containerImage,
-                      height: 50,
-                      width: 50,
-                      color: _theme.primaryColor,
-                    )
-                  : SvgPicture.asset(
-                      containerImage,
-                      color: _theme.primaryColor,
-                      height: 50,
-                      width: 50,
-                    ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(12),
+                color: _theme.primaryColor.withOpacity(0.05),
+              ),
+              child: Container(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
+                child: isNetworkImage == true
+                    ? Image.network(
+                        containerImage,
+                        fit: BoxFit.fitWidth,
+                      )
+                    : Image.asset(
+                        fit: BoxFit.fitWidth,
+                        containerImage,
+                      ),
+              ),
             ),
-            SizedBox(height: _height * 0.01),
+            SizedBox(height: 8.hp),
             Text(
               title,
               textAlign: TextAlign.center,
+              maxLines: 2,
+              overflow: TextOverflow.ellipsis,
               style: TextStyle(
                   color: CustomTheme.darkerBlack.withOpacity(0.6),
                   fontSize: 11,

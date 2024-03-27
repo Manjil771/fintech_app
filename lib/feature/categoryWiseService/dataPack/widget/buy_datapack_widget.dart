@@ -15,7 +15,6 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -23,7 +22,8 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class BuyDatapackWidget extends StatefulWidget {
-  BuyDatapackWidget({Key? key, required this.service, required this.package})
+  const BuyDatapackWidget(
+      {Key? key, required this.service, required this.package})
       : super(key: key);
   final ServiceList service;
   final DataPackPackage package;
@@ -58,6 +58,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             NavigationService.pushReplacement(
                 target: CommonTransactionSuccessPage(
+                    serviceName: widget.service.service,
                     transactionID:
                         state.data.findValueString("transactionIdentifier"),
                     body: Container(),
@@ -100,6 +101,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
               if (_formKey.currentState!.validate()) {
                 NavigationService.push(
                     target: CommonBillDetailPage(
+                        serviceName: widget.service.service,
                         service: widget.service,
                         body: Column(
                           children: [

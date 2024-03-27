@@ -1,4 +1,5 @@
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 
 import '../../feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -63,5 +64,29 @@ class ServiceHiveUtils {
 
   static close() async {
     await Hive.close();
+  }
+
+  static Future<void> setAppService(
+      {required List<AppServiceManagementModel> item,
+      required String slug}) async {
+    final _utilitiesHive = await Hive.openBox(_serviceListing);
+    await _utilitiesHive.put(slug, item.map((e) => e.toJson()).toList());
+    await _utilitiesHive.close();
+  }
+
+  static Future<List<AppServiceManagementModel>> getAppService(
+      {required String slug}) async {
+    try {
+      final _utilitiesHive = await Hive.openBox(_serviceListing);
+      final _data = _utilitiesHive.get(slug);
+      final _items = List.from(_data ?? []);
+      await _utilitiesHive.close();
+      return _items
+          .map((e) =>
+              AppServiceManagementModel.fromJson(Map<String, dynamic>.from(e)))
+          .toList();
+    } catch (e) {
+      return [];
+    }
   }
 }

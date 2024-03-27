@@ -81,8 +81,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
         builder: (context, state) {
           final itemLength = widget.showAllService
               ? _categoryList.length
-              : _categoryList.length >= 12
-                  ? 11
+              : _categoryList.length >= 8
+                  ? 7
                   : _categoryList.length;
           if (itemLength > 0)
             return GridView.builder(

@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/banking/loan/loanInformation/widget/loan_info_choose_account_widget.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/widget/loan_schedule_choose_account_widget.dart';
-import 'package:ismart/feature/banking/loan/loanStatement/widget/loan_statement_choose_account_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
 class LoanInfoChooseAccountPage extends StatelessWidget {

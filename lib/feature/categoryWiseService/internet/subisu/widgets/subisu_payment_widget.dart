@@ -5,17 +5,16 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class SubisuPaymentWidget extends StatefulWidget {
-  SubisuPaymentWidget({Key? key, required this.service}) : super(key: key);
+  const SubisuPaymentWidget({Key? key, required this.service})
+      : super(key: key);
 
   final ServiceList service;
 
@@ -31,8 +30,6 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
@@ -113,6 +110,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
             if (_formKey.currentState!.validate()) {
               NavigationService.push(
                   target: CommonBillDetailPage(
+                      serviceName: widget.service.service,
                       body: Column(
                         children: [
                           KeyValueTile(
@@ -137,7 +135,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
                         "phone_number": _mobileNumberController.text,
                       },
                       apiEndpoint: "/api/subisupay",
-                      apiBody: {},
+                      apiBody: const {},
                       service: widget.service,
                       serviceIdentifier: widget.service.uniqueIdentifier));
             }

@@ -19,6 +19,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
+import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
@@ -33,6 +34,8 @@ import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -44,6 +47,11 @@ class LoginWidget extends StatefulWidget {
 
 class _LoginWidgetState extends State<LoginWidget> {
   final String _supportContact = "9801132218";
+  String _selectedCountryCode = "977";
+  String _selectedCountryValue = "np";
+  // final String _constCountryCode = "977";
+  // final String _constCountryValue = "np";
+  bool showCountyCode = false;
 
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
@@ -110,6 +118,13 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   final TextEditingController _selectedCoopController = TextEditingController();
   bool agreedToTerms = true;
+  String maskPhoneNumber(String number) {
+    final String firstTwo = number.substring(0, 2);
+    final String lastTwo = number.substring(number.length - 2);
+    final String masked = firstTwo + "******" + lastTwo;
+
+    return masked;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -255,12 +270,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       (value) => setState(() {}),
                                     );
                                   },
-                                  // onBankSelected: (val) {
-                                  //   NavigationService.pop();
-                                  //   // internalBranch = val;
-                                  //   // branchCode = val.branchCode;
-                                  //   // _branchController.text = val.name;
-                                  // },
                                 ),
                               );
                             },
@@ -274,11 +283,110 @@ class _LoginWidgetState extends State<LoginWidget> {
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
                         if (!val) {
-                          return CustomTextField(
+                          return LoginCustomTextField(
+                            leading:
+                                BlocBuilder<UtilityPaymentCubit, CommonState>(
+                              builder: (context, state) {
+                                if (state is CommonStateSuccess<
+                                    UtilityResponseData>) {
+                                  final List countryCode =
+                                      state.data.findValue(primaryKey: "data");
+
+                                  return InkWell(
+                                      child: Row(
+                                        children: [
+                                          Image.network(
+                                            "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
+                                            height: 20,
+                                            width: 30,
+                                          ),
+                                          SizedBox(width: 5.wp),
+                                          if (showCountyCode)
+                                            Text(
+                                              _selectedCountryCode,
+                                              style:
+                                                  _theme.textTheme.titleLarge,
+                                            ),
+                                          SizedBox(width: 5.wp),
+                                        ],
+                                      ),
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title:
+                                                  const Text('Select Country'),
+                                              content: Container(
+                                                width: double.maxFinite,
+                                                height: 300,
+                                                child: ListView.builder(
+                                                    itemCount:
+                                                        countryCode.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      return InkWell(
+                                                        onTap: () {
+                                                          _selectedCountryCode =
+                                                              countryCode[index]
+                                                                  ["dialCode"];
+                                                          _selectedCountryValue =
+                                                              countryCode[index]
+                                                                  ["isoTwo"];
+                                                          NavigationService
+                                                              .pop();
+                                                          setState(() {});
+                                                        },
+                                                        child: Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  vertical: 10),
+                                                          child: Row(
+                                                            children: [
+                                                              Expanded(
+                                                                flex: 1,
+                                                                child: Image
+                                                                    .network(
+                                                                  "https://www.geonames.org/flags/x/${countryCode[index]["isoTwo"].toString().toLowerCase()}.gif",
+                                                                  height: 10,
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                flex: 3,
+                                                                child: Text(
+                                                                  countryCode[
+                                                                          index]
+                                                                      ["name"],
+                                                                  style: _theme
+                                                                      .textTheme
+                                                                      .bodyLarge,
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      });
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
                             title: "Mobile Number",
                             hintText: "Mobile Number",
                             controller: phoneController,
                             textInputType: TextInputType.phone,
+                            onTap: () {
+                              setState(() {
+                                showCountyCode = true;
+                              });
+                            },
                             validator: (value) =>
                                 FormValidator.validateFieldNotEmpty(
                                     value, "Phone Number"),
@@ -300,7 +408,22 @@ class _LoginWidgetState extends State<LoginWidget> {
                             },
                           );
                         } else {
-                          return Container();
+                          return LoginCustomTextField(
+                            leading: Row(
+                              children: [
+                                Image.network(
+                                  "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
+                                  height: 20,
+                                  width: 30,
+                                ),
+                                SizedBox(width: 5.wp),
+                              ],
+                            ),
+                            title: "Mobile Number",
+                            readOnly: true,
+                            hintText: maskPhoneNumber(_existingPhoneNumber),
+                            customHintTextStyle: true,
+                          );
                         }
                       },
                     ),
@@ -345,17 +468,27 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomRoundedButtom(
                       title: "Login",
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
+
                         if (_loginFormKey.currentState!.validate()) {
-                          if (agreedToTerms) {
-                            context.read<LoginCubit>().loginUser(
-                                  username: _getPhoneNumber(),
-                                  password: passwordController.text,
-                                  deviceUUID: await _getDeviceUUID(),
-                                );
+                          if (_selectedCountryValue.toString().toLowerCase() ==
+                              "np") {
+                            if (agreedToTerms) {
+                              context.read<LoginCubit>().loginUser(
+                                    username: _getPhoneNumber(),
+                                    password: passwordController.text,
+                                    deviceUUID: await _getDeviceUUID(),
+                                  );
+                            } else {
+                              SnackBarUtils.showErrorBar(
+                                  context: context,
+                                  message:
+                                      "Please agree to terms & conditions");
+                            }
                           } else {
                             SnackBarUtils.showErrorBar(
                                 context: context,
-                                message: "Please agree to terms & conditions");
+                                message: "Invalid Mobile Number");
                           }
                         }
                       },

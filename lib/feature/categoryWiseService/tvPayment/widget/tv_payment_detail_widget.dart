@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
@@ -113,6 +112,7 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                   _response.status == "M0000") {
                 NavigationService.pushReplacement(
                     target: CommonTransactionSuccessPage(
+                        serviceName: widget.service.service,
                         body: Column(
                           children: [
                             if (hashResponse.customerName.isEmpty)

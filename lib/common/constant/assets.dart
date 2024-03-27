@@ -110,4 +110,7 @@ class Assets {
   //bus
   static const String busSeatIcon = "assets/icons/bus_seat_icon.svg";
   static const String busSideIcon = "assets/icons/bus_side.svg";
+  //loan
+  static const String loanStatement = "assets/icons/Group 1008.svg";
+  static const String loanSchedule = "assets/icons/Group 1069.svg";
 }
