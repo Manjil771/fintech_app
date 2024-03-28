@@ -38,8 +38,6 @@ class UtilityPaymentRepository {
 
   String get myQrCode => _myQrCode;
 
-  List<AppSe> appService = [];
-
   Future<DataResponse<UtilityResponseData>> getTopup({
     required String serviceIdentifier,
     required String phoneNumber,
