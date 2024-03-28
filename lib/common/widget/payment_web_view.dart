@@ -92,9 +92,25 @@ class _PaymentWebViewState extends State<PaymentWebView> {
     if (uri != null && !_hasBeenResponded) {
       if (uri.toString().toLowerCase().contains("exitme")) {
         if (uri.toString().toLowerCase().contains("success")) {
-          // Handle success Here
+          showPopUpDialog(
+            context: context,
+            message: "Your load fund transaction is successfull.",
+            title: "Success",
+            buttonCallback: () {
+              NavigationService.pushReplacement(target: const DashboardPage());
+            },
+            showCancelButton: false,
+          );
         } else {
-          // Handle failure here
+          showPopUpDialog(
+            context: context,
+            message: "Your load fund transaction is failed.",
+            title: "Failed",
+            buttonCallback: () {
+              NavigationService.pushReplacement(target: const DashboardPage());
+            },
+            showCancelButton: false,
+          );
         }
 
         return;
@@ -111,7 +127,6 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               message: "Your load fund transaction is successfull.",
               title: "Success",
               buttonCallback: () {
-                
                 NavigationService.pushReplacement(
                     target: const DashboardPage());
               },
