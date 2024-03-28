@@ -34,6 +34,7 @@ class ApiProvider {
       final Map<String, String> _requestHeader = {
         'Content-Type': 'application/json',
         'accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'origin': '*',
         ...header,
         // // ...await DeviceUtils.deviceInfoHeader,
@@ -142,6 +143,7 @@ class ApiProvider {
         'content-type': 'application/json',
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         ...extraHeaders ?? {},
         // // ...await DeviceUtils.deviceInfoHeader,
       };
@@ -178,6 +180,7 @@ class ApiProvider {
         'content-type': 'application/json',
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         // // ...await DeviceUtils.deviceInfoHeader,
       };
       debugPrint('TOKEN ' + token);
@@ -204,6 +207,7 @@ class ApiProvider {
       final Map<String, String> header = {
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         // ...await DeviceUtils.deviceInfoHeader,
       };
       if (token.isNotEmpty) {

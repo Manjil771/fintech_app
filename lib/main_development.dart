@@ -2,6 +2,7 @@ import 'dart:async';
 import 'dart:io';
 
 import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:ismart/app/app_dev.dart';
@@ -14,8 +15,11 @@ Future<void> main() async {
   /// use run zoned to catch all uncaught exceptions
   runZonedGuarded(() async {
     WidgetsFlutterBinding.ensureInitialized();
+
+    if (!kIsWeb) {
+      await FlutterDownloader.initialize();
+    }
     await EasyLocalization.ensureInitialized();
-    await FlutterDownloader.initialize();
     HttpOverrides.global = MyHttpOverrides();
     runApp(
       LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),

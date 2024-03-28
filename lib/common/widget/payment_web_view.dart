@@ -1,12 +1,12 @@
 import 'dart:collection';
 import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
-
 import 'package:url_launcher/url_launcher.dart';
 
 class PaymentWebView extends StatefulWidget {
@@ -90,6 +90,31 @@ class _PaymentWebViewState extends State<PaymentWebView> {
   final int _count = 0;
   _handleRedirection(Uri? uri) async {
     if (uri != null && !_hasBeenResponded) {
+      if (uri.toString().toLowerCase().contains("exitme")) {
+        if (uri.toString().toLowerCase().contains("success")) {
+          showPopUpDialog(
+            context: context,
+            message: "Your load fund transaction is successfull.",
+            title: "Success",
+            buttonCallback: () {
+              NavigationService.pushReplacement(target: const DashboardPage());
+            },
+            showCancelButton: false,
+          );
+        } else {
+          showPopUpDialog(
+            context: context,
+            message: "Your load fund transaction is failed.",
+            title: "Failed",
+            buttonCallback: () {
+              NavigationService.pushReplacement(target: const DashboardPage());
+            },
+            showCancelButton: false,
+          );
+        }
+
+        return;
+      }
       if (uri.toString().toLowerCase().contains("ismart.devanasoft.com")) {
         print(uri.toString().toLowerCase());
         final String? merchantTxnId = uri.queryParameters['MerchantTxnId'];
@@ -102,7 +127,6 @@ class _PaymentWebViewState extends State<PaymentWebView> {
               message: "Your load fund transaction is successfull.",
               title: "Success",
               buttonCallback: () {
-                
                 NavigationService.pushReplacement(
                     target: const DashboardPage());
               },
