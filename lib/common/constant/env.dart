@@ -2800,5 +2800,5 @@ class CoOperativeValue {
     appTitle: "Abhinna Multi iSmart",
   );
 
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

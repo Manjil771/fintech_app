@@ -40,9 +40,9 @@ List<Map<String, dynamic>> _contactUsOptions = [
     "title": "Chat on WhatsApp",
     "action": () {
       NavigationService.pop();
-      UrlLauncher.launchPhone(
+      UrlLauncher.launchUrlLink(
         context: NavigationService.context,
-        phone: "https://wa.me/%2B977$_supportContact",
+        url: "https://wa.me/%2B977$_supportContact",
       );
     },
   },
