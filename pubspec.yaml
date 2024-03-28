@@ -263,7 +263,7 @@ flutter:
     # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
-    # - assets/upayogi/
+    - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -306,6 +306,12 @@ flutter:
     # - assets/shakambhari/
     # - assets/tarkariphalafool/
     # - assets/abhinna/
+    # - assets/adarsha/
+    # - assets/tapobhumi/
+    # - assets/samudayik/
+    # - assets/supya/
+
+
 
    
    
