@@ -43,7 +43,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                   .toList();
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
+                child: Row( 
                   // scrollDirection: Axis.horizontal,
                   children: [
                     ...List.generate(

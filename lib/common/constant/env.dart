@@ -2867,6 +2867,33 @@ class CoOperativeValue {
     coOperativeName: "Supya Saving & Credit Co-operative Society Ltd.",
     appTitle: "Supya Saving iSmart",
   );
-
-  static final CoOperative currentCoop = upayogiCoop;
+  static final CoOperative shreepathibharaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreepathibhara",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreepathibhara/shreepathibhara_banner.png",
+    backgroundImage: "assets/shreepathibhara/shreepathibhara_background.png",
+    clientCode: 'X7AJ41MN9L',
+    clientSecret: "200783",
+    coOperativeLogo: 'assets/shreepathibhara/shreepathibhara_logo.png',
+    splashImage: "assets/shreepathibhara/shreepathibhara_splash.png",
+    primaryColor: const Color(0xFF299B44),
+    coOperativeName: "Shree Pathibhara Saving & Credit Co-operative Ltd.",
+    appTitle: "Shree pathibhara iSmart",
+  );
+  static final CoOperative maryaditCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.maryadit",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/maryadit/maryadit_banner.png",
+    backgroundImage: "assets/maryadit/maryadit_background.png",
+    clientCode: '71R3PTCXG8',
+    clientSecret: "219044",
+    coOperativeLogo: 'assets/maryadit/maryadit_logo.png',
+    splashImage: "assets/maryadit/maryadit_splash.png",
+    primaryColor: const Color(0xFF018136),
+    coOperativeName: "Maryadit Multipurpose Co-operative Ltd.",
+    appTitle: "Maryadit iSmart",
+  );
+  static final CoOperative currentCoop = maryaditCoop;
 }
