@@ -80,16 +80,16 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                           "Active".toLowerCase(),
                 )
                 .toList();
-            final filteredItems = state.data;
+            // final filteredItems = state.data;
 
-            // final filteredItems = state.data
-            //     .where((item) =>
-            //         item.type
-            //             .toString()
-            //             .toLowerCase()
-            //             .contains("receive".toLowerCase()) &&
-            //         item.status.toLowerCase() == "Active".toLowerCase())
-            //     .toList();
+            final filteredItems = state.data
+                .where((item) =>
+                    item.type
+                        .toString()
+                        .toLowerCase()
+                        .contains("receive".toLowerCase()) &&
+                    item.status.toLowerCase() == "Active".toLowerCase())
+                .toList();
 
             return CommonContainer(
                 verticalPadding: 0,

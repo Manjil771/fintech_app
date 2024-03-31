@@ -6,6 +6,6 @@ class ReceiveRemitDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const ReceiveRemitDetailWidget();
+    return ReceiveRemitDetailWidget();
   }
 }

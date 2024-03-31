@@ -19,6 +19,6 @@ class _LoanPaymentPageState extends State<LoanPaymentPage> {
               utilityPaymentRepository:
                   RepositoryProvider.of<UtilityPaymentRepository>(context),
             ),
-        child: LoanPaymentWidget());
+        child: const LoanPaymentWidget());
   }
 }

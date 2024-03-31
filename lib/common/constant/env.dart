@@ -2884,5 +2884,5 @@ class CoOperativeValue {
     appTitle: "Supya Saving iSmart",
   );
 
-  static final CoOperative currentCoop = development;
+  static final CoOperative currentCoop = devLive;
 }
