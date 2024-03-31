@@ -1,9 +1,15 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/refno_search_remittance.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import 'remittance_box_deign.dart';
 
@@ -20,27 +26,43 @@ class ReceiveRemittanceWidget extends StatelessWidget {
       body: CommonContainer(
         horizontalPadding: 4,
         verticalPadding: 0,
-        body: Container(
-          child: Wrap(
-            runSpacing: 10,
-            runAlignment: WrapAlignment.spaceBetween,
-            crossAxisAlignment: WrapCrossAlignment.center,
-            // spacing: 26,
-            direction: Axis.horizontal,
-            children: [
-              ...List.generate(
-                4,
-                (index) => RemitBoxDesign(
-                  onContainerPress: () {
-                    NavigationService.push(
-                        target: const RefnoSearchRemitPage());
-                  },
-                  title: "Money Gram",
-                  containerImage: "assets/Asset 1.png",
+        body: BlocBuilder<UtilityPaymentCubit, CommonState>(
+          builder: (context, state) {
+            if (state is CommonStateSuccess<UtilityResponseData>) {
+              final List res = state.data.findValue(primaryKey: "data");
+              return Container(
+                child: Wrap(
+                  runSpacing: 10,
+                  runAlignment: WrapAlignment.spaceBetween,
+                  crossAxisAlignment: WrapCrossAlignment.center,
+                  // spacing: 26,
+                  direction: Axis.horizontal,
+                  children: [
+                    ...List.generate(
+                      res.length,
+                      (index) => RemitBoxDesign(
+                        onContainerPress: () {
+                          NavigationService.push(
+                              target: RefnoSearchRemitPage(
+                            serviceId: res[index]["serviceName"],
+                            imageUrl: res[index]["image"],
+                            companyName: res[index]["company"],
+                          ));
+                        },
+                        title: res[index]["company"],
+                        imageUrl: res[index]["image"],
+                      ),
+                    )
+                  ],
                 ),
-              )
-            ],
-          ),
+              );
+            } else if (state is CommonLoading) {
+              return const CommonLoadingWidget();
+            } else {
+              return const NoDataScreen(
+                  title: "Not Found", details: "No remit list found.");
+            }
+          },
         ),
         topbarName: "Remittance",
         showRoundBotton: false,

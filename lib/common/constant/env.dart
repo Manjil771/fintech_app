@@ -178,7 +178,7 @@ class CoOperativeValue {
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
     clientSecret: "126489",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     baseUrl: 'http://192.168.1.75:8080/',
     packageName: "com.devanasoft.ismart",
@@ -215,7 +215,7 @@ class CoOperativeValue {
   //   coOperativeName: '',
   //   coOperativeLogo: Assets.ismartLogo,
   //   clientSecret: "126489",
-  //   splashImage: "assets/images/ismart_splash.jpg",
+  //   splashImage: "assets/images/ismart_splash.png",
 
   //   primaryColor: const Color(0xFF),
   // );
@@ -229,7 +229,7 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "199204",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
     appTitle: "iSmart Devanasoft",
@@ -245,7 +245,7 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "159136",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
     appTitle: "iSmart Devanasoft",
@@ -261,7 +261,7 @@ class CoOperativeValue {
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
     clientSecret: "131588",
-    splashImage: "assets/images/ismart_splash.jpg",
+    splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
     appTitle: "Synergy Demo",
@@ -276,7 +276,7 @@ class CoOperativeValue {
       coOperativeName: '',
       coOperativeLogo: Assets.ismartLogo,
       clientSecret: "167956",
-      splashImage: "assets/images/ismart_splash.jpg",
+      splashImage: "assets/images/ismart_splash.png",
       primaryColor: const Color(0xFF010C80),
       packageName: "com.devanasoft.ismart",
       appStoreID: "",
@@ -2884,5 +2884,5 @@ class CoOperativeValue {
     appTitle: "Supya Saving iSmart",
   );
 
-  static final CoOperative currentCoop = copasCoop;
+  static final CoOperative currentCoop = development;
 }
