@@ -353,6 +353,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           },
                           listener: (context, state) {},
                         )),
+                Text(selectedBank?.bankId ?? "".toString()), 
+
                 CustomTextField(
                   title: "Account Number",
                   hintText: "Destination Account Number",

@@ -1314,7 +1314,7 @@ class CoOperativeValue {
     clientSecret: "149163",
     coOperativeLogo: 'assets/shubhaSandesh/shubha_sandesh_logo.png',
     splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
-    primaryColor: const Color(0xFF006837),
+    primaryColor: const Color(0xFF527595),
     coOperativeName: "Shubha Sandesh Multipurpose Co-operative Ltd",
     appTitle: "Shubha Sandesh iSmart",
   );
@@ -2895,5 +2895,5 @@ class CoOperativeValue {
     coOperativeName: "Maryadit Multipurpose Co-operative Ltd.",
     appTitle: "Maryadit iSmart",
   );
-  static final CoOperative currentCoop = maryaditCoop;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

@@ -173,7 +173,7 @@ flutter:
     # - assets/immanuel/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
-    # - assets/annapurna/
+    # - assets/annapurna/ 
     # - assets/kanchanjungha/
     # - assets/janasewa/
     # - assets/golden/
@@ -195,7 +195,7 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -313,7 +313,7 @@ flutter:
     # - assets/samudayik/
     # - assets/supya/
     # - assets/shreepathibhara/
-    - assets/maryadit/
+    # - assets/maryadit/
 
 
 
