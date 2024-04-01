@@ -237,6 +237,22 @@ class CoOperativeValue {
     shouldValidateCooperative: false,
   );
 
+  static final CoOperative developmentTest = CoOperative(
+    baseUrl: 'http://192.168.1.56:8080/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: '6IEUN6KHY9',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "137791",
+    splashImage: "assets/images/ismart_splash.png",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appTitle: "iSmart Devanasoft",
+    appStoreID: "",
+    shouldValidateCooperative: false,
+  );
+
   static final CoOperative copasCoop = CoOperative(
     baseUrl: 'http://103.198.9.203:8080/',
     bannerImage: "assets/images/ismart_banner.png",
@@ -2884,5 +2900,5 @@ class CoOperativeValue {
     appTitle: "Supya Saving iSmart",
   );
 
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = development;
 }

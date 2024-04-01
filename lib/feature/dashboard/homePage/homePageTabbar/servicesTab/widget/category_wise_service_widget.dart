@@ -50,7 +50,6 @@ class _CategoriesWiseServicesWidgetState
   Timer? _debounce;
 
   @override
-  
   void initState() {
     searchItems = widget.services;
     super.initState();
@@ -72,7 +71,6 @@ class _CategoriesWiseServicesWidgetState
     });
   }
 
-
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -81,7 +79,6 @@ class _CategoriesWiseServicesWidgetState
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
-        
           showRoundBotton: false,
           title: "Choose Service Povider",
           body: Column(

@@ -49,82 +49,91 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
         showDetail: false,
         showRoundBotton: false,
         showTitleText: false,
-        topbarName: "My Qr",
-        body: Container(
-          height: _height / 1.5,
-          child: BlocConsumer<QrCubit, CommonState>(
-            listener: (context, state) {
-              if (state is CommonLoading && !_isLoading) {
-                _isLoading = true;
-                showLoadingDialogBox(context);
-              } else if (state is! CommonLoading && _isLoading) {
-                _isLoading = false;
-                NavigationService.pop();
-              }
+        topbarName: "My QR",
+        body: BlocConsumer<QrCubit, CommonState>(
+          listener: (context, state) {
+            if (state is CommonLoading && !_isLoading) {
+              _isLoading = true;
+              showLoadingDialogBox(context);
+            } else if (state is! CommonLoading && _isLoading) {
+              _isLoading = false;
+              NavigationService.pop();
+            }
 
-              if (state is CommonError) {
-                showPopUpDialog(
-                  context: context,
-                  message: state.message,
-                  title: "Error",
-                  showCancelButton: false,
-                  buttonCallback: () {
-                    NavigationService.pop();
-                  },
-                );
-              }
-            },
-            builder: (context, state) {
-              if (state is CommonStateSuccess) {
-                return Container(
-                  child: (state.data["data"]?["details"]?["ExternalQRURL"] ??
-                              "")
-                          .toString()
-                          .isNotEmpty
-                      ? DefaultTabController(
-                          initialIndex: 0,
-                          length: 2,
-                          child: Column(
-                            children: [
-                              TabBar(
-                                labelColor: Colors.black,
-                                unselectedLabelColor: const Color(0xFF989898),
-                                labelStyle: const TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
-                                indicatorColor: _theme.primaryColor,
-                                automaticIndicatorColorAdjustment: true,
-                                tabs: const [
-                                  Tab(text: "External Qr"),
-                                  Tab(text: "Internal Qr"),
+            if (state is CommonError) {
+              showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is CommonStateSuccess) {
+              return Container(
+                height: _height,
+                child: (state.data["data"]?["details"]?["ExternalQRURL"] ?? "")
+                        .toString()
+                        .isNotEmpty
+                    ? DefaultTabController(
+                        initialIndex: 0,
+                        length: 2,
+                        child: Column(
+                          children: [
+                            TabBar(
+                              labelColor: Colors.black,
+                              unselectedLabelColor: const Color(0xFF989898),
+                              labelStyle: const TextStyle(
+                                  fontSize: 16, fontWeight: FontWeight.w500),
+                              indicatorColor: _theme.primaryColor,
+                              automaticIndicatorColorAdjustment: true,
+                              tabs: const [
+                                Tab(text: "FonePay QR"),
+                                Tab(text: "Internal QR"),
+                              ],
+                            ),
+                            SizedBox(height: _height * 0.02),
+                            Expanded(
+                              child: TabBarView(
+                                children: [
+                                  // Column(
+                                  //   children: [
+                                  //     const NoDataScreen(
+                                  //       title: "No FonePay QR found.",
+                                  //       details: "",
+                                  //     ),
+                                  //     // const SizedBox(height: 10),
+                                  //     CustomRoundedButtom(
+                                  //         title: "Request for QR",
+                                  //         onPressed: () {})
+                                  //   ],
+                                  // ),
+                                  ExternalQrWidget(
+                                      qrPath: state.data["data"]["details"]
+                                              ["ExternalQRURL"]
+                                          .toString()),
+                                  InternalQrWidget(
+                                      qrPath: state.data["data"]["details"]
+                                              ["QRCodePath"]
+                                          .toString()),
                                 ],
                               ),
-                              SizedBox(height: _height * 0.02),
-                              Expanded(
-                                child: TabBarView(
-                                  children: [
-                                    ExternalQrWidget(
-                                        qrPath: state.data["data"]["details"]
-                                                ["ExternalQRURL"]
-                                            .toString()),
-                                    InternalQrWidget(
-                                        qrPath: state.data["data"]["details"]
-                                                ["QRCodePath"]
-                                            .toString()),
-                                  ],
-                                ),
-                              )
-                            ],
-                          ),
-                        )
-                      : InternalQrWidget(
-                          qrPath: state.data["data"]["details"]["QRCodePath"]
-                              .toString()),
-                );
-              } else {
-                return Container();
-              }
-            },
-          ),
+                            )
+                          ],
+                        ),
+                      )
+                    : InternalQrWidget(
+                        qrPath: state.data["data"]["details"]["QRCodePath"]
+                            .toString()),
+              );
+            } else {
+              return Container();
+            }
+          },
         ),
       ),
     );
