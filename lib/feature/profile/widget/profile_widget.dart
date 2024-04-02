@@ -173,6 +173,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                         .textTheme
                                         .displaySmall,
                                   ),
+                                  Text(
+                                    val.mobileNumber,
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge,
+                                  ),
                                   if (val.email.toString().isNotEmpty)
                                     Text(
                                       val.email,
