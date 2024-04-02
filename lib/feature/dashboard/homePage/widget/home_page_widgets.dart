@@ -70,28 +70,35 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                     NavigationService.pushNamed(routeName: Routes.reveiveMoney);
                   },
                   child: Container(
+                    alignment: Alignment.center,
+                    padding: const EdgeInsets.symmetric(vertical: 7),
                     decoration: BoxDecoration(
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.3),
+                            offset: const Offset(7, 7),
+                            blurRadius: 8,
+                            spreadRadius: -5,
+                          ),
+                        ],
                         color: CustomTheme.white,
-                        borderRadius: BorderRadius.circular(12)),
-                    height: _height * 0.08,
+                        borderRadius: BorderRadius.circular(8)),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         CircleAvatar(
                           backgroundColor:
                               _theme.primaryColor.withOpacity(0.05),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
-                            child: SvgPicture.asset(
-                              Assets.reveiceMoneyIcon,
-                              color: _theme.primaryColor,
-                            ),
+                          child: SvgPicture.asset(
+                            Assets.reveiceMoneyIcon,
+                            height: 18.hp,
+                            color: _theme.primaryColor,
                           ),
                         ),
                         SizedBox(width: _width * 0.02),
                         Text(
                           "Receive",
-                          style: _textTheme.titleLarge,
+                          style: _textTheme.titleLarge!.copyWith(fontSize: 12),
                         ),
                       ],
                     ),
@@ -99,48 +106,51 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 )),
                 SizedBox(width: _width * 0.1),
                 Expanded(
-                    child: InkWell(
-                  borderRadius: BorderRadius.circular(12),
-                  onTap: () {
-                    NavigationService.pushNamed(routeName: Routes.sendMoney);
-                  },
-                  child: Container(
-                    decoration: BoxDecoration(
-                        color: CustomTheme.white,
-                        borderRadius: BorderRadius.circular(12)),
-                    height: _height * 0.08,
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          backgroundColor:
-                              _theme.primaryColor.withOpacity(0.05),
-                          child: Padding(
-                            padding: const EdgeInsets.all(8.0),
+                  child: InkWell(
+                    borderRadius: BorderRadius.circular(12),
+                    onTap: () {
+                      NavigationService.pushNamed(routeName: Routes.sendMoney);
+                    },
+                    child: Container(
+                      alignment: Alignment.center,
+                      padding: const EdgeInsets.symmetric(vertical: 7),
+                      decoration: BoxDecoration(
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.3),
+                              offset: const Offset(7, 7),
+                              blurRadius: 8,
+                              spreadRadius: -5,
+                            ),
+                          ],
+                          color: CustomTheme.white,
+                          borderRadius: BorderRadius.circular(8)),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          CircleAvatar(
+                            backgroundColor:
+                                _theme.primaryColor.withOpacity(0.05),
                             child: SvgPicture.asset(
                               Assets.sendMoneyIcon,
+                              height: 22.hp,
                               color: _theme.primaryColor,
                             ),
                           ),
-                        ),
-                        SizedBox(width: _width * 0.02),
-                        Text(
-                          "Send",
-                          style: _textTheme.titleLarge,
-                        ),
-                      ],
+                          SizedBox(width: _width * 0.02),
+                          Text(
+                            "Send",
+                            style:
+                                _textTheme.titleLarge!.copyWith(fontSize: 12),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                )),
+                ),
               ],
             ),
           const Expanded(child: HomePageTabbarWidget()),
-          // if (_bannerImages.isNotEmpty)
-          //   CustomCarousel(
-          //     height: 140.hp,
-          //     topMargin: 10,
-          //     items: _bannerImages,
-          //   ),
         ],
       ),
     );

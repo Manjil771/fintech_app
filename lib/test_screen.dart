@@ -1,100 +1,156 @@
-import 'dart:io';
-
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
-import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
-import 'package:open_filex/open_filex.dart';
-import 'package:path_provider/path_provider.dart';
 
 class TestPage extends StatefulWidget {
-  const TestPage({super.key});
-
   @override
   State<TestPage> createState() => _TestPageState();
 }
 
 class _TestPageState extends State<TestPage> {
-  getData() {
-    return RepositoryProvider.of<AppContactRepository>(context)
-        .appContactDetail
-        .findValueString("contactNumber");
+  int _currentPageIndex = 0; // Start with the first page
+
+  final PageController _pageController =
+      PageController(initialPage: 0); // Controller for the PageView
+
+  @override
+  void dispose() {
+    _pageController.dispose(); // Dispose the page controller when not needed
+    super.dispose();
   }
+
+  void _changePage(int index) {
+    setState(() {
+      _currentPageIndex = index;
+    });
+  }
+
+  final ScrollController controller = ScrollController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Text(getData()),
-    );
-  }
-}
-
-class TestScreens extends StatefulWidget {
-  const TestScreens({Key? key}) : super(key: key);
-
-  @override
-  State<TestScreens> createState() => _TestScreensState();
-}
-
-class _TestScreensState extends State<TestScreens> {
-  getData() {
-    return RepositoryProvider.of<AppContactRepository>(context)
-        .appContactDetail
-        .findValueString("contactNumber");
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-    return Scaffold(
-      body: BlocProvider(
-        create: (context) => AppContactCubit(
-            appContactRepository:
-                RepositoryProvider.of<AppContactRepository>(context))
-          ..fetchAppContact(),
-        child: BlocBuilder<AppContactCubit, CommonState>(
-          builder: (context, state) {
-            return Center(
-                child: ElevatedButton(
-              child: Text(state.toString() + getData()),
-              onPressed: () {
-                openFile(
-                    url: "https://www.devanasoft.com.np/images/11.jpg",
-                    fileName: "video.jpg");
-              },
-            ));
-          },
+      body: SingleChildScrollView(
+        controller: controller,
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ElevatedButton(
+                  onPressed: () {
+                    _pageController.animateToPage(0,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease);
+                    _changePage(0);
+                  },
+                  child: const Text('Page 1'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _pageController.animateToPage(1,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease);
+                    _changePage(1);
+                  },
+                  child: const Text('Page 2'),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    _pageController.animateToPage(2,
+                        duration: const Duration(milliseconds: 300),
+                        curve: Curves.ease);
+                    _changePage(2);
+                  },
+                  child: const Text('Page 3'),
+                ),
+              ],
+            ),
+            const SizedBox(height: 20),
+            Scrollable(
+              controller: controller,
+              physics: const NeverScrollableScrollPhysics(),
+              viewportBuilder: (context, position) => Container(
+                // height: 1500,
+                child: Scaffold(
+                  body: PageView(
+                    physics: const NeverScrollableScrollPhysics(),
+                    controller: _pageController,
+                    onPageChanged: (index) {
+                      _changePage(index);
+                    },
+                    children: [
+                      Page1(controller: controller),
+                      Page2(),
+                      Page3(),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
+}
 
-  Future openFile({required String url, required String fileName}) async {
-    final file = await downloadFile(url, fileName);
+class Page1 extends StatelessWidget {
+  final ScrollController controller;
 
-    OpenFilex.open(file.path);
-    print("file path is ${file.path}");
-  }
-
-  Future<File> downloadFile(String url, String name) async {
-    final appStorage = await getApplicationDocumentsDirectory();
-    final file = File('${appStorage.path}/$name');
-    final response = await Dio().get(
-      url,
-      options: Options(
-          responseType: ResponseType.bytes,
-          followRedirects: false,
-          receiveTimeout: 0),
+  const Page1({super.key, required this.controller});
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      shrinkWrap: true,
+      physics: const NeverScrollableScrollPhysics(),
+      children: [
+        Container(
+          height: 500,
+          color: Colors.blue,
+          child: const Center(
+            child: Text('Page 1', style: TextStyle(color: Colors.white)),
+          ),
+        ),
+        Container(
+          height: 500,
+          color: Colors.red,
+          child: const Center(
+            child: Text('Page 1', style: TextStyle(color: Colors.white)),
+          ),
+        ),
+        Container(
+          height: 500,
+          color: Colors.yellow,
+          child: const Center(
+            child: Text('Page 1', style: TextStyle(color: Colors.white)),
+          ),
+        ),
+      ],
     );
-    final raf = file.openSync(mode: FileMode.write);
-    raf.writeFromSync(response.data);
-    await raf.close();
-    return file;
+  }
+}
+
+class Page2 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 1500,
+      color: Colors.green,
+      child: const Center(
+        child: Text('Page 2', style: TextStyle(color: Colors.white)),
+      ),
+    );
+  }
+}
+
+class Page3 extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: 500,
+      color: Colors.orange,
+      child: const Center(
+        child: Text('Page 3', style: TextStyle(color: Colors.white)),
+      ),
+    );
   }
 }
