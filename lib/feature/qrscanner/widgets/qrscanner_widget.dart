@@ -483,7 +483,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           child: InkWell(
                             onTap: () {
                               NavigationService.pushReplacement(
-                                  target: const ShareQrPage());
+                                  target: ShareQrPage());
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
