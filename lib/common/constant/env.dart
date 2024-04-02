@@ -1314,7 +1314,7 @@ class CoOperativeValue {
     clientSecret: "149163",
     coOperativeLogo: 'assets/shubhaSandesh/shubha_sandesh_logo.png',
     splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
-    primaryColor: const Color(0xFF527595),
+    primaryColor: const Color(0xFF1589FF),
     coOperativeName: "Shubha Sandesh Multipurpose Co-operative Ltd",
     appTitle: "Shubha Sandesh iSmart",
   );
