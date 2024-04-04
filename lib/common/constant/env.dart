@@ -2895,5 +2895,33 @@ class CoOperativeValue {
     coOperativeName: "Maryadit Multipurpose Co-operative Ltd.",
     appTitle: "Maryadit iSmart",
   );
-  static final CoOperative currentCoop = samudayikCoop;
+  static final CoOperative shreeSansari = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreeSansari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeSansari/shreeSansari_banner.png",
+    backgroundImage: "assets/shreeSansari/shreeSansari_background.png",
+    clientCode: 'K3CN6CKL8L',
+    clientSecret: "210207",
+    coOperativeLogo: 'assets/shreeSansari/shreeSansari_logo.png',
+    splashImage: "assets/shreeSansari/shreeSansari_splash.png",
+    primaryColor: const Color(0xFF2E3192),
+    coOperativeName: "Shree Sansari Multipurpose Co-operative Ltd.",
+    appTitle: "Shree Sansari iSmart",
+  );
+  static final CoOperative chaulaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.chaulani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/chaulani/chaulani_banner.png",
+    backgroundImage: "assets/chaulani/chaulani_background.png",
+    clientCode: 'ZDMW5YZBEU',
+    clientSecret: "164156",
+    coOperativeLogo: 'assets/chaulani/chaulani_logo.png',
+    splashImage: "assets/chaulani/chaulani_splash.png",
+    primaryColor: const Color(0xFF168340),
+    coOperativeName: "Chaulani Multipurpose Co-operative Society Ltd.",
+    appTitle: "Chaulani iSmart",
+  );
+  static final CoOperative currentCoop = chaulaniCoop;
 }
