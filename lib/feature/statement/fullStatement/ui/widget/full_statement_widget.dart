@@ -184,15 +184,15 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           customHintTextStyle: true,
                                           readOnly: true,
                                           hintText:
-                                              "${toDate.year}-${toDate.month}-${toDate.day}",
+                                              "${toDateAlert.year}-${toDateAlert.month}-${toDateAlert.day}",
                                           title: "To Date",
                                           onTap: () async {
                                             final DateTime? picked =
                                                 await showDatePicker(
                                                     context: context,
-                                                    initialDate: DateTime.now(),
+                                                    initialDate: toDate,
                                                     firstDate:
-                                                        DateTime(2015, 8),
+                                                        DateTime(2020, 8),
                                                     lastDate: DateTime.now());
                                             setState(() {
                                               toDateAlert = picked!;
@@ -433,7 +433,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                     ],
                   );
                 } else {
-                  return NoDataScreen(
+                  return const NoDataScreen(
                     title: "No transactions yet",
                     details: "Make Your First Transfer",
                   );

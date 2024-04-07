@@ -1,5 +1,6 @@
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 
 import '../../feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -84,6 +85,27 @@ class ServiceHiveUtils {
       return _items
           .map((e) =>
               AppServiceManagementModel.fromJson(Map<String, dynamic>.from(e)))
+          .toList();
+    } catch (e) {
+      return [];
+    }
+  }
+
+  static Future<void> setWalletList(
+      {required List<WalletModel> item, required String slug}) async {
+    final _utilitiesHive = await Hive.openBox(_serviceListing);
+    await _utilitiesHive.put(slug, item.map((e) => e.toJson()).toList());
+    await _utilitiesHive.close();
+  }
+
+  static Future<List<WalletModel>> getWalletList({required String slug}) async {
+    try {
+      final _utilitiesHive = await Hive.openBox(_serviceListing);
+      final _data = _utilitiesHive.get(slug);
+      final _items = List.from(_data ?? []);
+      await _utilitiesHive.close();
+      return _items
+          .map((e) => WalletModel.fromJson(Map<String, dynamic>.from(e)))
           .toList();
     } catch (e) {
       return [];

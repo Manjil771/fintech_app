@@ -145,6 +145,7 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
                     "amount": _response.findValueString("total_dues"),
                     "customer_code": _response.findValueString("customer_code"),
                     "counter": widget.selectedCounter,
+                    "customer_name": _response.findValueString("customer_name")
                   },
                   apiEndpoint: "/api/khanepanipay",
                   apiBody: const {},

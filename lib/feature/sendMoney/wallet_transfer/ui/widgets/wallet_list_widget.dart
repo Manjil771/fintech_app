@@ -10,14 +10,14 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/widgets/wallet_box_widget.dart';
 
-class WalletTransferWidget extends StatefulWidget {
-  const WalletTransferWidget({super.key});
+class WalletListWidget extends StatefulWidget {
+  const WalletListWidget({super.key});
 
   @override
-  State<WalletTransferWidget> createState() => _WalletTransferWidgetState();
+  State<WalletListWidget> createState() => _WalletListWidgetState();
 }
 
-class _WalletTransferWidgetState extends State<WalletTransferWidget> {
+class _WalletListWidgetState extends State<WalletListWidget> {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -47,7 +47,7 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
                     return const CommonLoadingWidget();
                   }
                   if (state is CommonDataFetchSuccess<WalletModel>) {
-                    List<WalletModel> _walletsList = state.data;
+                    final List<WalletModel> _walletsList = state.data;
 
                     return Expanded(
                       child: GridView.builder(
@@ -61,7 +61,8 @@ class _WalletTransferWidgetState extends State<WalletTransferWidget> {
                       ),
                     );
                   } else if (state is CommonError) {
-                    return NoDataScreen(title: "No Wallet Found", details: "");
+                    return const NoDataScreen(
+                        title: "No Wallet Found", details: "");
                   }
                   return Container();
                 },

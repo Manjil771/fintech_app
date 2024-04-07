@@ -24,7 +24,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_list_screen.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
@@ -152,7 +152,7 @@ class RouteGenerator {
         );
       case Routes.listWalletScreen:
         return MaterialPageRoute(
-          builder: (_) => const WalletTransferScreen(),
+          builder: (_) => const WalletListScreen(),
           settings: RouteSettings(name: settings.name),
         );
 

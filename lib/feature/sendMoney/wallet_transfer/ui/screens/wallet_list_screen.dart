@@ -3,10 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/resoures/wallet_load_repository.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/widgets/wallet_transfer_widget.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/widgets/wallet_list_widget.dart';
 
-class WalletTransferScreen extends StatelessWidget {
-  const WalletTransferScreen({Key? key}) : super(key: key);
+class WalletListScreen extends StatelessWidget {
+  const WalletListScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class WalletTransferScreen extends StatelessWidget {
         walletLoadRepository:
             RepositoryProvider.of<WalletLoadRepository>(context),
       )..fetchWalletList(),
-      child: WalletTransferWidget(),
+      child: const WalletListWidget(),
     );
   }
 }
