@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/util/hive_utils.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_validation_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/resoures/wallet_load_repository.dart';
 
@@ -22,7 +21,7 @@ class WalletListCubit extends Cubit<CommonState> {
       final response = await walletLoadRepository.fetchWalletList();
 
       if (response.status == Status.Success && response.data != null) {
-        emit(CommonDataFetchSuccess<WalletModel>(data: response.data!));
+        // emit(CommonDataFetchSuccess<WalletModel>(data: response.data!));
       } else {
         emit(CommonError(
             message: response.message ?? "Error fetching wallet list."));

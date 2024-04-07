@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
@@ -43,9 +42,9 @@ class _WalletListWidgetState extends State<WalletListWidget> {
             children: [
               BlocBuilder<WalletListCubit, CommonState>(
                 builder: (context, state) {
-                  if (state is CommonLoading) {
-                    return const CommonLoadingWidget();
-                  }
+                  // if (state is CommonLoading) {
+                  //   return const CommonLoadingWidget();
+                  // }
                   if (state is CommonDataFetchSuccess<WalletModel>) {
                     final List<WalletModel> _walletsList = state.data;
 
