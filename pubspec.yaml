@@ -325,7 +325,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    # - assets/skShankharpur/
+    - assets/skShankharpur/
 
   fonts:
     - family: popinbold

@@ -2923,5 +2923,5 @@ class CoOperativeValue {
     coOperativeName: "Chaulani Multipurpose Co-operative Society Ltd.",
     appTitle: "Chaulani iSmart",
   );
-  static final CoOperative currentCoop = aaratiCoop;
+  static final CoOperative currentCoop = skShankharpur;
 }
