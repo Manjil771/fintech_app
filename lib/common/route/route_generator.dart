@@ -7,7 +7,6 @@ import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
 import 'package:ismart/feature/banking/loan/screen/loan_page.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/download/screens/downloads_page.dart';
@@ -52,11 +51,11 @@ class RouteGenerator {
           settings: RouteSettings(name: settings.name),
         );
 
-      case Routes.allServicesDashboard:
-        return MaterialPageRoute(
-          builder: (_) => const AllCategoryScreen(),
-          settings: RouteSettings(name: settings.name),
-        );
+      // case Routes.allServicesDashboard:
+      //   return MaterialPageRoute(
+      //     builder: (_) => const AllCategoryScreen(),
+      //     settings: RouteSettings(name: settings.name),
+      //   );
       case Routes.sendMoney:
         return MaterialPageRoute(
           builder: (_) => const SendMoneyPage(),

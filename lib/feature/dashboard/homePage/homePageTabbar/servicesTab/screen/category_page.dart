@@ -16,7 +16,10 @@ import 'package:ismart/feature/splash/resource/startup_repository.dart';
 class CategoryPage extends StatefulWidget {
   final bool showAllServices;
 
-  const CategoryPage({super.key, required this.showAllServices});
+  const CategoryPage({
+    super.key,
+    required this.showAllServices,
+  });
 
   @override
   State<CategoryPage> createState() => _CategoryPageState();
@@ -45,8 +48,13 @@ class _CategoryPageState extends State<CategoryPage> {
         servicesRepository: RepositoryProvider.of<CategoryRepository>(context),
       ),
       child: ListView(
+        // controller: widget.scrollController,
+        // shrinkWrap: true,
+        // physics: const NeverScrollableScrollPhysics(),
         children: [
-          CategoryWidget(showAllService: widget.showAllServices),
+          CategoryWidget(
+            showAllService: widget.showAllServices,
+          ),
           SizedBox(height: 10.hp),
           if (_bannerImages.isNotEmpty)
             CustomCarousel(

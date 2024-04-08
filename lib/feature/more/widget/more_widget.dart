@@ -11,7 +11,6 @@ import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
-import 'package:ismart/test_screen.dart';
 
 String _supportContact =
     RepositoryProvider.of<AppContactRepository>(NavigationService.context)
@@ -62,8 +61,7 @@ class MoreWidget extends StatelessWidget {
   ];
   List tapFunction = [
     () {
-      // NavigationService.pushNamed(routeName: Routes.discountCalculator);
-      NavigationService.push(target: TestPage());
+      NavigationService.pushNamed(routeName: Routes.discountCalculator);
     },
     () {
       NavigationService.pushNamed(routeName: Routes.emiCalculator);

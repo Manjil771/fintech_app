@@ -5,10 +5,8 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
-import 'package:ismart/feature/qrCode/shareQr/resources/qr_repository.dart';
 import 'package:ismart/feature/qrscanner/widgets/qrscanner_widget.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/resoures/wallet_load_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -49,9 +47,6 @@ class QRScannerScreens extends StatelessWidget {
         ],
         child: BlocBuilder<WalletListCubit, CommonState>(
           builder: (context, state) {
-            if (state is CommonLoading) {
-              return const CommonLoadingWidget();
-            }
             if (state is CommonDataFetchSuccess<WalletModel>) {
               List<WalletModel> _walletList = state.data;
 
@@ -59,8 +54,11 @@ class QRScannerScreens extends StatelessWidget {
                 walletLists: _walletList,
                 remarks: remarks,
               );
+            }
+            if (state is CommonLoading) {
+              return const CommonLoadingWidget();
             } else if (state is CommonError) {
-              return NoDataScreen(title: "No Wallet Found", details: "");
+              return const NoDataScreen(title: "No Wallet Found", details: "");
             }
             return Container();
           },

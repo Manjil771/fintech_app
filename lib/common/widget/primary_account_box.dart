@@ -13,7 +13,7 @@ class PrimaryAccountBox extends StatefulWidget {
 }
 
 class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
-  bool showAmount = false;
+  bool showAmount = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => AccountDetailBox(),
+                builder: (context) => const AccountDetailBox(),
               );
             },
             child: Container(
@@ -57,7 +57,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       SizedBox(width: _width * 0.03),
                       Text(
                         showAmount
-                            ? "XXXXXXXXX"
+                            ? "XXXXXXX"
                             : "NPR ${selectedAcc?.availableBalance}",
                         style: TextStyle(
                             fontSize: 16,
@@ -66,16 +66,16 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       ),
                       Expanded(
                         child: InkWell(
-                          onTap: () {
-                            setState(() {
-                              showAmount = !showAmount;
-                            });
-                          },
-                          child: SvgPicture.asset(
-                            "assets/icons/akar-icons_eye-slashed.svg",
-                            height: _height * 0.025,
-                          ),
-                        ),
+                            onTap: () {
+                              setState(() {
+                                showAmount = !showAmount;
+                              });
+                            },
+                            child: Icon(
+                              showAmount
+                                  ? Icons.visibility
+                                  : Icons.visibility_off,
+                            )),
                       ),
                       const Spacer(),
                       if (selectedAcc?.primary.toString() == "true")

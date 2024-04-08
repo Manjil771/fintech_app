@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +37,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
   ValueNotifier<AccountDetail?> selectedAccountNotifier = ValueNotifier(null);
   ValueNotifier<dynamic> accountDetail = ValueNotifier([]);
-  String formattedDate = DateFormat('a').format(DateTime.now());
 
   String bannerImage = "";
 
@@ -180,9 +178,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                       showDialog(
                                         context: context,
                                         builder: (context) =>
-                                            const AccountDetailBox(
-                                              
-                                            ),
+                                            const AccountDetailBox(),
                                       );
                                     },
                                     child: Container(
@@ -355,76 +351,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             ],
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(
-                        //     // vertical: 12,
-                        //     horizontal: 12,
-                        //   ),
-                        //   child: InkWell(
-                        //     onTap: () {
-                        //       setState(() {
-                        //         showAmountDetail = !showAmountDetail;
-                        //       });
-                        //     },
-                        //     child: Row(
-                        //       mainAxisAlignment:
-                        //           MainAxisAlignment.spaceBetween,
-                        //       children: [
-                        //         Column(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.start,
-                        //           children: [
-                        //             Text(
-                        //               "Actual Balance",
-                        //               style: _textTheme.titleSmall!
-                        //                   .copyWith(color: CustomTheme.white),
-                        //             ),
-                        //             Text(
-                        //               showAmountDetail
-                        //                   ? "NPR ${selectedAcc?.actualBalance}"
-                        //                   : "XXXXXXXXX",
-                        //               style: _textTheme.titleLarge!.copyWith(
-                        //                   fontWeight: FontWeight.bold,
-                        //                   color: CustomTheme.white),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         InkWell(
-                        //           // onTap: () {
-                        //           //   setState(() {
-                        //           //     showAmountDetail = !showAmountDetail;
-                        //           //   });
-                        //           // },
-                        //           child: Icon(
-                        //             showAmountDetail
-                        //                 ? Icons.visibility
-                        //                 : Icons.visibility_off,
-                        //             color: CustomTheme.white,
-                        //           ),
-                        //         ),
-                        //         Column(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.start,
-                        //           children: [
-                        //             Text(
-                        //               "Available Balance",
-                        //               style: _textTheme.titleSmall!
-                        //                   .copyWith(color: CustomTheme.white),
-                        //             ),
-                        //             Text(
-                        //               showAmountDetail
-                        //                   ? "NPR ${selectedAcc?.availableBalance}"
-                        //                   : "XXXXXXXXX",
-                        //               style: _textTheme.titleLarge!.copyWith(
-                        //                   fontWeight: FontWeight.bold,
-                        //                   color: CustomTheme.white),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     );
                   } else {

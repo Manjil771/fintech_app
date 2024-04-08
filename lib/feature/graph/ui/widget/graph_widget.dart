@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -18,27 +17,8 @@ class GraphWidget extends StatefulWidget {
 class _GraphWidgetState extends State<GraphWidget> {
   List<AccountStatementDtos> statementLists = [];
 
-  // @override
-  // void initState() {
-  //   statementLists = RepositoryProvider.of<FullStatementRepository>(context)
-  //       .getGraphData(days: 90);
-
-  //   statementLists
-  //       .sort((a, b) => a.transactionDate.compareTo(b.transactionDate));
-
-  //   statementLists.forEach((element) {
-  //     print(element.balance);
-  //   });
-
-  //   super.initState();
-  // }
-
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return BlocBuilder<UtilityPaymentCubit, CommonState>(
       builder: (context, state) {
         if (state is CommonStateSuccess<UtilityResponseData>) {
