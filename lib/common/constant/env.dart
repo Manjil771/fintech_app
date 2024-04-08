@@ -2923,5 +2923,19 @@ class CoOperativeValue {
     coOperativeName: "Chaulani Multipurpose Co-operative Society Ltd.",
     appTitle: "Chaulani iSmart",
   );
-  static final CoOperative currentCoop = skShankharpur;
+  static final CoOperative mahilaAbhiyan = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.mahilaAbhiyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mahilaAbhiyan/mahilaAbhiyan_banner.png",
+    backgroundImage: "assets/mahilaAbhiyan/mahilaAbhiyan_background.png",
+    clientCode: '5ZDWEH3ZYU',
+    clientSecret: "146765",
+    coOperativeLogo: 'assets/mahilaAbhiyan/mahilaAbhiyan_logo.png',
+    splashImage: "assets/mahilaAbhiyan/mahilaAbhiyan_splash.png",
+    primaryColor: const Color(0xFF00A654),
+    coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
+    appTitle: "Mahila Abhiyan iSmart",
+  );
+  static final CoOperative currentCoop = shubhaSandeshCoop ;
 }
