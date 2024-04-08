@@ -66,16 +66,17 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       ),
                       Expanded(
                         child: InkWell(
-                            onTap: () {
-                              setState(() {
-                                showAmount = !showAmount;
-                              });
-                            },
-                            child: Icon(
-                              showAmount
-                                  ? Icons.visibility
-                                  : Icons.visibility_off,
-                            )),
+                          onTap: () {
+                            setState(() {
+                              showAmount = !showAmount;
+                            });
+                          },
+                          child: Icon(
+                            showAmount
+                                ? Icons.visibility_off
+                                : Icons.visibility,
+                          ),
+                        ),
                       ),
                       const Spacer(),
                       if (selectedAcc?.primary.toString() == "true")
@@ -85,7 +86,6 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: _theme.primaryColor,
-                            // border: Border.all(color: Colors.black),
                           ),
                           child: const Center(
                             child: Text(
