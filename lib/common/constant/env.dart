@@ -1346,7 +1346,7 @@ class CoOperativeValue {
     clientSecret: "149163",
     coOperativeLogo: 'assets/shubhaSandesh/shubha_sandesh_logo.png',
     splashImage: "assets/shubhaSandesh/shubha_sandesh_splash.png",
-    primaryColor: const Color(0xFF006837),
+    primaryColor: const Color(0xFF1589FF),
     coOperativeName: "Shubha Sandesh Multipurpose Co-operative Ltd",
     appTitle: "Shubha Sandesh iSmart",
   );
@@ -2899,6 +2899,75 @@ class CoOperativeValue {
     coOperativeName: "Supya Saving & Credit Co-operative Society Ltd.",
     appTitle: "Supya Saving iSmart",
   );
-
-  static final CoOperative currentCoop = copasCoop;
+  static final CoOperative shreepathibharaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreepathibhara",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreepathibhara/shreepathibhara_banner.png",
+    backgroundImage: "assets/shreepathibhara/shreepathibhara_background.png",
+    clientCode: 'X7AJ41MN9L',
+    clientSecret: "200783",
+    coOperativeLogo: 'assets/shreepathibhara/shreepathibhara_logo.png',
+    splashImage: "assets/shreepathibhara/shreepathibhara_splash.png",
+    primaryColor: const Color(0xFF299B44),
+    coOperativeName: "Shree Pathibhara Saving & Credit Co-operative Ltd.",
+    appTitle: "Shree pathibhara iSmart",
+  );
+  static final CoOperative maryaditCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.maryadit",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/maryadit/maryadit_banner.png",
+    backgroundImage: "assets/maryadit/maryadit_background.png",
+    clientCode: '71R3PTCXG8',
+    clientSecret: "219044",
+    coOperativeLogo: 'assets/maryadit/maryadit_logo.png',
+    splashImage: "assets/maryadit/maryadit_splash.png",
+    primaryColor: const Color(0xFF018136),
+    coOperativeName: "Maryadit Multipurpose Co-operative Ltd.",
+    appTitle: "Maryadit iSmart",
+  );
+  static final CoOperative shreeSansari = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreeSansari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeSansari/shreeSansari_banner.png",
+    backgroundImage: "assets/shreeSansari/shreeSansari_background.png",
+    clientCode: 'K3CN6CKL8L',
+    clientSecret: "210207",
+    coOperativeLogo: 'assets/shreeSansari/shreeSansari_logo.png',
+    splashImage: "assets/shreeSansari/shreeSansari_splash.png",
+    primaryColor: const Color(0xFF2E3192),
+    coOperativeName: "Shree Sansari Multipurpose Co-operative Ltd.",
+    appTitle: "Shree Sansari iSmart",
+  );
+  static final CoOperative chaulaniCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.chaulani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/chaulani/chaulani_banner.png",
+    backgroundImage: "assets/chaulani/chaulani_background.png",
+    clientCode: 'ZDMW5YZBEU',
+    clientSecret: "164156",
+    coOperativeLogo: 'assets/chaulani/chaulani_logo.png',
+    splashImage: "assets/chaulani/chaulani_splash.png",
+    primaryColor: const Color(0xFF168340),
+    coOperativeName: "Chaulani Multipurpose Co-operative Society Ltd.",
+    appTitle: "Chaulani iSmart",
+  );
+  static final CoOperative mahilaAbhiyan = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.mahilaAbhiyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mahilaAbhiyan/mahilaAbhiyan_banner.png",
+    backgroundImage: "assets/mahilaAbhiyan/mahilaAbhiyan_background.png",
+    clientCode: '5ZDWEH3ZYU',
+    clientSecret: "146765",
+    coOperativeLogo: 'assets/mahilaAbhiyan/mahilaAbhiyan_logo.png',
+    splashImage: "assets/mahilaAbhiyan/mahilaAbhiyan_splash.png",
+    primaryColor: const Color(0xFF00A654),
+    coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
+    appTitle: "Mahila Abhiyan iSmart",
+  );
+  static final CoOperative currentCoop = shubhaSandeshCoop ;
 }
