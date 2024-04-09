@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
@@ -10,11 +11,11 @@ import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/statement_detail_box.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -53,6 +54,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
         toDate: todate);
   }
 
+  bool sortList = false;
+
   @override
   void initState() {
     super.initState();
@@ -63,8 +66,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   }
 
   int selectedDays = 0;
-  bool _isLoading = false;
   double progress = 0.0;
+  getList({required List<AccountStatementDtos> dataList}) {
+    return sortList == true ? dataList.reversed.toList() : dataList;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -76,11 +81,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
       body: CommonContainer(
         showRoundBotton: false,
         showDetail: true,
-        topbarName: "Statement",
+        verticalPadding: 0,
         showTitleText: false,
         buttonName: "Close",
-        title: "Full Statement",
-        detail: "Full Statement ",
+        topbarName: "Full Statement",
         body: Column(
           children: [
             Row(
@@ -247,65 +251,67 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                 ),
               ],
             ),
-            SizedBox(height: _height * 0.01),
-            BlocConsumer<FullStatementCubit, CommonState>(
-              listener: (context, state) {
-                if (state is CommonLoading && !_isLoading) {
-                  _isLoading = true;
-                  showLoadingDialogBox(context);
-                }
-                if (state is! CommonLoading && _isLoading) {
-                  _isLoading = false;
-                  NavigationService.pop();
-                }
-
-                // if (state is CommonError) {
-                //   showPopUpDialog(
-                //     context: context,
-                //     message: state.message,
-                //     title: "Error",
-                //     showCancelButton: false,
-                //     buttonCallback: () {
-                //       NavigationService.pop();
-                //     },
-                //   );
-                // }
-              },
+            BlocBuilder<FullStatementCubit, CommonState>(
               builder: (context, state) {
                 if (state is CommonStateSuccess<FullStatementModel>) {
+                  final List<AccountStatementDtos> resData =
+                      state.data.accountStatementDtos;
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      SizedBox(height: _height * 0.01),
-                      InkWell(
-                          onTap: () {
-                            FileDownloadUtils.downloadFile(
-                              downloadLink:
-                                  RepositoryProvider.of<CoOperative>(context)
-                                          .baseUrl +
-                                      state.data.pdfUrl.toString(),
-                              fileName:
-                                  FileDownloadUtils.generateDownloadFileName(
-                                name: "Statement",
-                                filetype: FileType.pdf,
-                              ),
-                              context: context,
-                            );
-                          },
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.end,
-                            children: [
-                              Text(
-                                "Download  ",
-                                style: _textTheme.labelLarge!
-                                    .copyWith(fontWeight: FontWeight.bold),
-                              ),
-                              SvgPicture.asset(
-                                Assets.downloadIcon,
-                                height: 20.hp,
-                              ),
-                            ],
-                          )),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          InkWell(
+                              onTap: () {
+                                FileDownloadUtils.downloadFile(
+                                  downloadLink:
+                                      RepositoryProvider.of<CoOperative>(
+                                                  context)
+                                              .baseUrl +
+                                          state.data.pdfUrl.toString(),
+                                  fileName: FileDownloadUtils
+                                      .generateDownloadFileName(
+                                    name: "Statement",
+                                    filetype: FileType.pdf,
+                                  ),
+                                  context: context,
+                                );
+                              },
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.end,
+                                children: [
+                                  Text(
+                                    "Download  ",
+                                    style: _textTheme.labelLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                  SvgPicture.asset(
+                                    Assets.downloadIcon,
+                                    height: 20.hp,
+                                  ),
+                                ],
+                              )),
+                          const Spacer(),
+                          Text(
+                            "Sorting",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                letterSpacing: 0.3,
+                                color: CustomTheme.primaryColor),
+                          ),
+                          Switch(
+                            activeColor: CustomTheme.primaryColor,
+                            value: sortList,
+                            onChanged: (value) {
+                              setState(() {
+                                sortList = !sortList;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
                       SizedBox(height: _height * 0.01),
                       state.data.accountStatementDtos.isEmpty
                           ? const NoDataScreen(
@@ -376,47 +382,28 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                     ],
                                   ),
                                 ),
-                                SizedBox(height: _height * 0.01),
-                                // Row(children: [
-                                //   Text(
-                                //     "Statement",
-                                //     style: _textTheme.titleLarge!
-                                //         .copyWith(
-                                //             fontWeight: FontWeight.w600),
-                                //   ),
-                                //   const Spacer(),
-                                //   InkWell(
-                                //     onTap: () {},
-                                //     child: SvgPicture.asset(
-                                //       Assets.downloadIcon,
-                                //       height: _height * 0.03,
-                                //     ),
-                                //   )
-                                // ]),
-                                SizedBox(height: _height * 0.01),
                                 Container(
                                   width: double.infinity,
                                   height: 500,
                                   child: ListView.builder(
-                                    itemCount:
-                                        state.data.accountStatementDtos.length,
+                                    itemCount: resData.length,
                                     itemBuilder: (context, index) {
-                                      final data = List.from(state
-                                          .data
-                                          .accountStatementDtos
-                                          .reversed)[index];
+                                      final data = getList(dataList: resData);
                                       return StatementDetailBox(
-                                          balance: data.balance.toString(),
-                                          isCredit:
-                                              data.credit != 0 ? true : false,
-                                          desc: data.remarks.toString(),
-                                          amount: data.credit == 0
-                                              ? data.debit.toString()
-                                              : data.credit.toString(),
-                                          dateTime:
-                                              data.transactionDate.toString(),
+                                          balance:
+                                              data[index].balance.toString(),
+                                          isCredit: data[index].credit != 0
+                                              ? true
+                                              : false,
+                                          desc: data[index].remarks.toString(),
+                                          amount: data[index].credit == 0
+                                              ? data[index].debit.toString()
+                                              : data[index].credit.toString(),
+                                          dateTime: data[index]
+                                              .transactionDate
+                                              .toString(),
                                           imageUrl: "",
-                                          status: data.credit != 0
+                                          status: data[index].credit != 0
                                               ? "Deposit"
                                               : "Withdrawl");
                                     },
@@ -432,6 +419,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                             ),
                     ],
                   );
+                } else if (state is CommonLoading) {
+                  return const CommonLoadingWidget();
                 } else {
                   return const NoDataScreen(
                     title: "No transactions yet",

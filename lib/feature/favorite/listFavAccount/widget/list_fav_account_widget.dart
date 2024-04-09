@@ -169,7 +169,7 @@ class ListFavAccountWidget extends StatelessWidget {
                     );
                   } else {
                     return const NoDataScreen(
-                        showImage: false,
+                        showImage: true,
                         title: "No Account Found",
                         details:
                             "No favorite account found . Please try again later.");
