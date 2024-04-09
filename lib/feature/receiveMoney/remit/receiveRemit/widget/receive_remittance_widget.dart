@@ -30,32 +30,27 @@ class ReceiveRemittanceWidget extends StatelessWidget {
           builder: (context, state) {
             if (state is CommonStateSuccess<UtilityResponseData>) {
               final List res = state.data.findValue(primaryKey: "data");
-              return Container(
-                child: Wrap(
-                  runSpacing: 10,
-                  runAlignment: WrapAlignment.spaceBetween,
-                  crossAxisAlignment: WrapCrossAlignment.center,
-                  // spacing: 26,
-                  direction: Axis.horizontal,
-                  children: [
-                    ...List.generate(
-                      res.length,
-                      (index) => RemitBoxDesign(
-                        onContainerPress: () {
-                          NavigationService.push(
-                              target: RefnoSearchRemitPage(
+              return GridView.builder(
+                  shrinkWrap: true,
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 3),
+                  itemCount: res.length,
+                  itemBuilder: (context, index) {
+                    return RemitBoxDesign(
+                      margin: const EdgeInsets.symmetric(horizontal: 10),
+                      onContainerPress: () {
+                        NavigationService.push(
+                          target: RefnoSearchRemitPage(
                             serviceId: res[index]["serviceName"],
                             imageUrl: res[index]["image"],
                             companyName: res[index]["company"],
-                          ));
-                        },
-                        title: res[index]["company"],
-                        imageUrl: res[index]["image"],
-                      ),
-                    )
-                  ],
-                ),
-              );
+                          ),
+                        );
+                      },
+                      title: res[index]["company"],
+                      imageUrl: res[index]["image"],
+                    );
+                  });
             } else if (state is CommonLoading) {
               return const CommonLoadingWidget();
             } else {

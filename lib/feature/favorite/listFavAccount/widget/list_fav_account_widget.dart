@@ -38,153 +38,149 @@ class ListFavAccountWidget extends StatelessWidget {
                     NavigationService.push(target: const AddFavAccountPage());
                   }),
             ),
-            Expanded(
-              child: BlocBuilder<UtilityPaymentCubit, CommonState>(
-                builder: (context, state) {
-                  if (state is CommonStateSuccess<UtilityResponseData>) {
-                    final res = state.data.findValue(primaryKey: "data");
+            BlocBuilder<UtilityPaymentCubit, CommonState>(
+              builder: (context, state) {
+                if (state is CommonStateSuccess<UtilityResponseData>) {
+                  final res = state.data.findValue(primaryKey: "data");
 
-                    if (res.isNotEmpty) {
-                      return ListView.builder(
-                        itemCount: res.length,
-                        itemBuilder: (context, index) {
-                          final bool isBankTransfer =
-                              res[index]["serviceInfoType"].toString() ==
-                                      "CONNECT_IPS"
-                                  ? true
-                                  : false;
-                          return InkWell(
-                            onTap: () {
-                              isBankTransfer == true
-                                  ? NavigationService.push(
-                                      target: AnyBankpage(
+                  if (res.isNotEmpty) {
+                    return ListView.builder(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      itemCount: res.length,
+                      itemBuilder: (context, index) {
+                        final bool isBankTransfer =
+                            res[index]["serviceInfoType"].toString() ==
+                                    "CONNECT_IPS"
+                                ? true
+                                : false;
+                        return InkWell(
+                          onTap: () {
+                            isBankTransfer == true
+                                ? NavigationService.push(
+                                    target: AnyBankpage(
+                                    accountName: res[index]["data"]
+                                        ["destinationAccountName"],
+                                    accountNumber: res[index]["data"]
+                                        ["destinationAccountNumber"],
+                                    bankCode: res[index]["data"]
+                                        ["destinationBankCode"],
+                                    bankName: res[index]["data"]
+                                        ["destinationBankName"],
+                                  ))
+                                : NavigationService.push(
+                                    target: InternalCooperativePage(
+                                    branchId: res[index]["data"]
+                                        ["destinationBankCode"],
+                                    isFavAccount: true,
+                                    branchName: res[index]["data"]
+                                        ["destinationBankName"],
+                                    accountName: res[index]["data"]
+                                        ["destinationAccountName"],
+                                    accountNumber: res[index]["data"]
+                                        ["destinationAccountNumber"],
+                                    branchCode: res[index]["data"]
+                                        ["destinationBranchCode"],
+                                  ));
+                          },
+                          child: Container(
+                            margin: const EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
+                            decoration: BoxDecoration(
+                              border: Border.all(color: Colors.black12),
+                              borderRadius: BorderRadius.circular(12),
+                              // color: _theme.primaryColor.withOpacity(0.1)
+                            ),
+                            child: Row(
+                              children: [
+                                Expanded(
+                                  child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        Text(
+                                          res[index]["data"]
+                                              ["destinationAccountName"],
+                                          style: _textTheme.labelLarge!
+                                              .copyWith(
+                                                  fontSize: 12,
+                                                  fontWeight: FontWeight.w600),
+                                        ),
+                                        Text(
+                                          (isBankTransfer
+                                                  ? "Connect IPS "
+                                                  : "Fund Transfer ") +
+                                              res[index]["data"]
+                                                  ["destinationAccountNumber"],
+                                          style: _textTheme.labelLarge!
+                                              .copyWith(
+                                                  color: _theme.primaryColor,
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w500),
+                                        ),
+                                        Text(
+                                          res[index]["data"]
+                                                  ["destinationBankName"]
+                                              .toString(),
+                                          style: _textTheme.labelLarge!
+                                              .copyWith(
+                                                  color: _theme.primaryColor,
+                                                  fontSize: 11,
+                                                  fontWeight: FontWeight.w500),
+                                        ),
+                                      ]),
+                                ),
+                                InkWell(
+                                  onTap: () {
+                                    NavigationService.push(
+                                        target: UpdateFavAccountPage(
+                                      remainderType:
+                                          res[index]["reminderType"].toString(),
+                                      serviceInfoType: res[index]
+                                              ["serviceInfoType"]
+                                          .toString(),
+                                      id: res[index]["id"].toString(),
+                                      isBankTransfer: isBankTransfer,
                                       accountName: res[index]["data"]
-                                          ["destinationAccountName"],
+                                              ["destinationAccountName"]
+                                          .toString(),
                                       accountNumber: res[index]["data"]
                                           ["destinationAccountNumber"],
                                       bankCode: res[index]["data"]
                                           ["destinationBankCode"],
                                       bankName: res[index]["data"]
                                           ["destinationBankName"],
-                                    ))
-                                  : NavigationService.push(
-                                      target: InternalCooperativePage(
-                                      branchId: res[index]["data"]
-                                          ["destinationBankCode"],
-                                      isFavAccount: true,
-                                      branchName: res[index]["data"]
-                                          ["destinationBankName"],
-                                      accountName: res[index]["data"]
-                                          ["destinationAccountName"],
-                                      accountNumber: res[index]["data"]
-                                          ["destinationAccountNumber"],
-                                      branchCode: res[index]["data"]
-                                          ["destinationBranchCode"],
                                     ));
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.all(8),
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.black12),
-                                borderRadius: BorderRadius.circular(12),
-                                // color: _theme.primaryColor.withOpacity(0.1)
-                              ),
-                              child: Row(
-                                children: [
-                                  Expanded(
-                                    child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            res[index]["data"]
-                                                ["destinationAccountName"],
-                                            style: _textTheme.labelLarge!
-                                                .copyWith(
-                                                    fontSize: 12,
-                                                    fontWeight:
-                                                        FontWeight.w600),
-                                          ),
-                                          Text(
-                                            (isBankTransfer
-                                                    ? "Connect IPS "
-                                                    : "Fund Transfer ") +
-                                                res[index]["data"][
-                                                    "destinationAccountNumber"],
-                                            style: _textTheme.labelLarge!
-                                                .copyWith(
-                                                    color: _theme.primaryColor,
-                                                    fontSize: 11,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                          ),
-                                          Text(
-                                            res[index]["data"]
-                                                    ["destinationBankName"]
-                                                .toString(),
-                                            style: _textTheme.labelLarge!
-                                                .copyWith(
-                                                    color: _theme.primaryColor,
-                                                    fontSize: 11,
-                                                    fontWeight:
-                                                        FontWeight.w500),
-                                          ),
-                                        ]),
-                                  ),
-                                  InkWell(
-                                    onTap: () {
-                                      NavigationService.push(
-                                          target: UpdateFavAccountPage(
-                                        remainderType: res[index]
-                                                ["reminderType"]
-                                            .toString(),
-                                        serviceInfoType: res[index]
-                                                ["serviceInfoType"]
-                                            .toString(),
-                                        id: res[index]["id"].toString(),
-                                        isBankTransfer: isBankTransfer,
-                                        accountName: res[index]["data"]
-                                                ["destinationAccountName"]
-                                            .toString(),
-                                        accountNumber: res[index]["data"]
-                                            ["destinationAccountNumber"],
-                                        bankCode: res[index]["data"]
-                                            ["destinationBankCode"],
-                                        bankName: res[index]["data"]
-                                            ["destinationBankName"],
-                                      ));
-                                    },
-                                    child: Padding(
-                                      padding: const EdgeInsets.only(left: 8.0),
-                                      child: Icon(
-                                        Icons.more_vert_outlined,
-                                        size: 25.hp,
-                                        color: _theme.primaryColor,
-                                      ),
+                                  },
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(left: 8.0),
+                                    child: Icon(
+                                      Icons.more_vert_outlined,
+                                      size: 25.hp,
+                                      color: _theme.primaryColor,
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
                             ),
-                          );
-                        },
-                      );
-                    } else {
-                      return const NoDataScreen(
-                          showImage: false,
-                          title: "No Account Found",
-                          details:
-                              "No favorite account found . Please try again later.");
-                    }
-                  }
-                  if (state is CommonLoading) {
-                    return const CommonLoadingWidget();
+                          ),
+                        );
+                      },
+                    );
                   } else {
-                    return Container();
+                    return const NoDataScreen(
+                        showImage: false,
+                        title: "No Account Found",
+                        details:
+                            "No favorite account found . Please try again later.");
                   }
-                },
-              ),
+                }
+                if (state is CommonLoading) {
+                  return const CommonLoadingWidget();
+                } else {
+                  return Container();
+                }
+              },
             ),
           ],
         ));

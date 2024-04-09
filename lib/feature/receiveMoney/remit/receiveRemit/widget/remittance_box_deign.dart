@@ -29,26 +29,23 @@ class RemitBoxDesign extends StatelessWidget {
     return InkWell(
       onTap: onContainerPress,
       child: Container(
-        width: 100.wp,
-        // color: Colors.red.withOpacity(0.5),
-        height: 130,
         margin: margin,
         child: Column(
           children: [
             Container(
-              height: 80,
+              height: 70,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: _theme.primaryColor.withOpacity(0.05),
               ),
               child: CustomCachedNetworkImage(
-                fit: BoxFit.contain,
+                fit: BoxFit.cover,
                 url: RepositoryProvider.of<CoOperative>(context).baseUrl +
                     imageUrl,
               ),
             ),
-            SizedBox(height: 8.hp),
+            // SizedBox(height: .hp),
             Expanded(
               child: Text(
                 title,

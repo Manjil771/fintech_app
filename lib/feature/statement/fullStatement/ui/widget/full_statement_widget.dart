@@ -168,7 +168,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                     context: context,
                                                     initialDate: fromDate,
                                                     firstDate:
-                                                        DateTime(2015, 8),
+                                                        DateTime(2000, 8),
                                                     lastDate: DateTime.now());
                                             setState(() {
                                               fromDateAlert = picked!;
