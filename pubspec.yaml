@@ -312,7 +312,7 @@ flutter:
     # - assets/tapobhumi/
     # - assets/samudayik/
     # - assets/supya/
-    # - assets/shreepathibhara/
+    - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
     # - assets/chaulani/
