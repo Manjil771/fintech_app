@@ -2603,6 +2603,20 @@ class CoOperativeValue {
     coOperativeName: "Sayapatri Multipurpose Co-operative Ltd.",
     appTitle: "Sayapatri iSmart",
   );
+  static final CoOperative sayapatriTestCopas = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sayapatri",
+    baseUrl: 'http://103.198.9.203:8080/',
+    bannerImage: "assets/sayapatri/sayapatri_banner.png",
+    backgroundImage: "assets/sayapatri/sayapatri_background.png",
+    clientCode: 'N7D61UMPQH',
+    clientSecret: "186241",
+    coOperativeLogo: 'assets/sayapatri/sayapatri_logo.png',
+    splashImage: "assets/sayapatri/sayapatri_splash.png",
+    primaryColor: const Color(0xFF37603E),
+    coOperativeName: "Sayapatri Multipurpose Co-operative Ltd.",
+    appTitle: "Sayapatri Test iSmart",
+  );
   static final CoOperative unitedCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.united",
@@ -2969,5 +2983,5 @@ class CoOperativeValue {
     coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
     appTitle: "Mahila Abhiyan iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop ;
+  static final CoOperative currentCoop = devLive;
 }

@@ -24,7 +24,7 @@ class LoanInformationWiget extends StatelessWidget {
         body: Column(
           children: [
             Container(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
                   color: _theme.primaryColor.withOpacity(0.05)),
@@ -45,7 +45,7 @@ class LoanInformationWiget extends StatelessWidget {
             ),
             // Divider(thickness: 2),
             Container(
-              padding: EdgeInsets.symmetric(horizontal: 15, vertical: 12),
+              padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 12),
               child: Table(
                 children: [
                   TableRow(children: [

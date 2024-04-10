@@ -112,6 +112,11 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                             width: _width * 0.2,
                             decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(8),
+                                color: fromDateAlert != DateTime.now()
+                                    ? selectedDays == index
+                                        ? _theme.primaryColor
+                                        : Colors.white
+                                    : Colors.black54,
                                 border: Border.all(
                                     color: fromDateAlert != DateTime.now()
                                         ? selectedDays == index
@@ -125,7 +130,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                   fontWeight: FontWeight.bold,
                                   color: fromDateAlert != DateTime.now()
                                       ? selectedDays == index
-                                          ? _theme.primaryColor
+                                          ? Colors.white
                                           : Colors.black54
                                       : Colors.black54),
                             )),
@@ -385,6 +390,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                 Container(
                                   width: double.infinity,
                                   height: 500,
+                                  padding: const EdgeInsets.only(bottom: 20),
                                   child: ListView.builder(
                                     itemCount: resData.length,
                                     itemBuilder: (context, index) {

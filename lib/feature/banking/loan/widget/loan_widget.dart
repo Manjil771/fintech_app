@@ -72,100 +72,108 @@ class _LoanWidgetState extends State<LoanWidget> {
                             ),
                           );
                         },
-                        child: Container(
-                          padding: const EdgeInsets.all(8),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: _theme.primaryColor.withOpacity(0.05)),
-                          child: Column(
-                            children: [
-                              LoanKeyValueTile(
-                                title: "Product Name",
-                                value: response.findValueString("product"),
-                                axis: Axis.horizontal,
-                              ),
-                              LoanKeyValueTile(
-                                title: "Account Number",
-                                value:
-                                    response.findValueString("accountNumber"),
-                                axis: Axis.horizontal,
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                            horizontal: 12, vertical: 12),
-                        child: Table(
+                        child: Column(
                           children: [
-                            TableRow(children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
+                            Container(
+                              padding: const EdgeInsets.all(8),
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: _theme.primaryColor.withOpacity(0.05)),
+                              child: Column(
                                 children: [
                                   LoanKeyValueTile(
-                                    title: "Interest Type",
+                                    title: "Product Name",
+                                    value: response.findValueString("product"),
+                                    axis: Axis.horizontal,
+                                  ),
+                                  LoanKeyValueTile(
+                                    title: "Account Number",
                                     value: response
-                                        .findValueString("interestType"),
-                                    axis: Axis.vertical,
-                                  ),
-                                  LoanKeyValueTile(
-                                    title: "Issued On",
-                                    value: response.findValueString("issuedOn"),
-                                    axis: Axis.vertical,
-                                  ),
-                                  LoanKeyValueTile(
-                                    title: "Principal Installments",
-                                    value: response.findValueString(
-                                        "principalInstallments"),
-                                    axis: Axis.vertical,
-                                  ),
-                                  LoanKeyValueTile(
-                                    title: "Interest Installments",
-                                    value: response.findValueString(
-                                        "interestInstallments"),
-                                    axis: Axis.vertical,
-                                  ),
-                                  LoanKeyValueTile(
-                                    title: "Balance",
-                                    value: response.findValueString("balance"),
-                                    axis: Axis.vertical,
+                                        .findValueString("accountNumber"),
+                                    axis: Axis.horizontal,
                                   ),
                                 ],
                               ),
-                              Padding(
-                                padding: EdgeInsets.only(left: 10.wp),
-                                child: Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    LoanKeyValueTile(
-                                      title: "Interest Rate",
-                                      value: response
-                                          .findValueString("interestRate"),
-                                      axis: Axis.vertical,
+                            ),
+                            Container(
+                              padding: const EdgeInsets.symmetric(
+                                  horizontal: 12, vertical: 12),
+                              child: Table(
+                                children: [
+                                  TableRow(children: [
+                                    Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        LoanKeyValueTile(
+                                          title: "Interest Type",
+                                          value: response
+                                              .findValueString("interestType"),
+                                          axis: Axis.vertical,
+                                        ),
+                                        LoanKeyValueTile(
+                                          title: "Issued On",
+                                          value: response
+                                              .findValueString("issuedOn"),
+                                          axis: Axis.vertical,
+                                        ),
+                                        LoanKeyValueTile(
+                                          title: "Principal Installments",
+                                          value: response.findValueString(
+                                              "principalInstallments"),
+                                          axis: Axis.vertical,
+                                        ),
+                                        LoanKeyValueTile(
+                                          title: "Interest Installments",
+                                          value: response.findValueString(
+                                              "interestInstallments"),
+                                          axis: Axis.vertical,
+                                        ),
+                                        LoanKeyValueTile(
+                                          title: "Balance",
+                                          value: response
+                                              .findValueString("balance"),
+                                          axis: Axis.vertical,
+                                        ),
+                                      ],
                                     ),
-                                    LoanKeyValueTile(
-                                      title: "Matures On",
-                                      value:
-                                          response.findValueString("maturesOn"),
-                                      axis: Axis.vertical,
+                                    Padding(
+                                      padding: EdgeInsets.only(left: 10.wp),
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          LoanKeyValueTile(
+                                            title: "Interest Rate",
+                                            value: response.findValueString(
+                                                "interestRate"),
+                                            axis: Axis.vertical,
+                                          ),
+                                          LoanKeyValueTile(
+                                            title: "Matures On",
+                                            value: response
+                                                .findValueString("maturesOn"),
+                                            axis: Axis.vertical,
+                                          ),
+                                          LoanKeyValueTile(
+                                            title: "Disbursed Amount",
+                                            value: response.findValueString(
+                                                "disbursedAmount"),
+                                            axis: Axis.vertical,
+                                          ),
+                                          LoanKeyValueTile(
+                                            title: "Duration",
+                                            value: response
+                                                .findValueString("duration"),
+                                            axis: Axis.vertical,
+                                          ),
+                                        ],
+                                      ),
                                     ),
-                                    LoanKeyValueTile(
-                                      title: "Disbursed Amount",
-                                      value: response
-                                          .findValueString("disbursedAmount"),
-                                      axis: Axis.vertical,
-                                    ),
-                                    LoanKeyValueTile(
-                                      title: "Duration",
-                                      value:
-                                          response.findValueString("duration"),
-                                      axis: Axis.vertical,
-                                    ),
-                                  ],
-                                ),
+                                  ]),
+                                ],
                               ),
-                            ]),
+                            ),
                           ],
                         ),
                       ),
@@ -322,6 +330,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                 }
               },
             ),
+            detail: "Tap to Select Account",
             topbarName: "Loan"));
   }
 }

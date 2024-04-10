@@ -69,7 +69,8 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                     _customerDetailRepo.selectedAccount.value =
                                         account;
                                     NavigationService.pop();
-                                    widget.onPressed!.call();
+                                    if (widget.onPressed != null)
+                                      widget.onPressed!.call();
                                   },
                                   borderRadius: BorderRadius.circular(8),
                                   child: Container(

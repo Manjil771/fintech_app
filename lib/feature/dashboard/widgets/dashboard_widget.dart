@@ -1,3 +1,4 @@
+import 'dart:io';
 import 'dart:isolate';
 import 'dart:ui';
 
@@ -132,6 +133,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                 title: "Logout",
                 buttonCallback: () {
                   SystemChannels.platform.invokeMethod('SystemNavigator.pop');
+                  exit(0);
                 },
                 buttonText: "Yes",
                 showCancelButton: true,
