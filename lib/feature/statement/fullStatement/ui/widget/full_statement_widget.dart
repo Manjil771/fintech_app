@@ -390,7 +390,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                 Container(
                                   width: double.infinity,
                                   height: 500,
-                                  padding: const EdgeInsets.only(bottom: 20),
+                                  padding: const EdgeInsets.only(bottom: 70),
                                   child: ListView.builder(
                                     itemCount: resData.length,
                                     itemBuilder: (context, index) {
