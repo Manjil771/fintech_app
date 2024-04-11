@@ -84,7 +84,10 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
         print("Download callback received");
         print(data);
         final String downloadId = data[0];
-        final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
+        // final DownloadTaskStatus status = DownloadTaskStatus(data[1]);
+        final DownloadTaskStatus status =
+            DownloadTaskStatus.values[data[1] as int];
+
         print(status);
         if (status == DownloadTaskStatus.enqueued) {
           NotificationUtils.generateDownloadingNotification();
@@ -99,7 +102,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
           if (_downloadedTask.isNotEmpty) {
             _filePath =
                 "${_downloadedTask.first.savedDir}/${_downloadedTask.first.filename}";
-            DownloadedFile _downloadedFile = DownloadedFile(
+            final DownloadedFile _downloadedFile = DownloadedFile(
               fileName: _downloadedTask.first.filename ?? "",
               filePath: _filePath,
               downloadedDate: DateTime.now(),

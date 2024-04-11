@@ -543,15 +543,26 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     );
   }
 
+  // void _onQRCodeDetect(
+  //   Barcode barcode,
+  //   MobileScannerArguments? args,
+  // ) {
+  //   _cameraSubscription = cameraController.barcodes.listen((code) {
+  //     if (code.rawValue != null && _isScanned == false && mounted) {
+  //       _isScanned = true;
+
+  //       _processScannedQR(qrCode: code.rawValue ?? "");
+  //     }
+  //   });
+  // }
   void _onQRCodeDetect(
-    Barcode barcode,
-    MobileScannerArguments? args,
+    BarcodeCapture barcodeCapture,
   ) {
     _cameraSubscription = cameraController.barcodes.listen((code) {
-      if (code.rawValue != null && _isScanned == false && mounted) {
+      if (code.raw != null && _isScanned == false && mounted) {
         _isScanned = true;
 
-        _processScannedQR(qrCode: code.rawValue ?? "");
+        _processScannedQR(qrCode: code.raw ?? "");
       }
     });
   }
