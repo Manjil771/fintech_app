@@ -253,6 +253,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                   fit: BoxFit.cover,
                   controller: cameraController,
                   onDetect: _onQRCodeDetect,
+                  
                 ),
                 Container(
                   height: MediaQuery.of(context).size.height,

@@ -2983,5 +2983,19 @@ class CoOperativeValue {
     coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
     appTitle: "Mahila Abhiyan iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative ajambariCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.ajambari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ajambari/ajambari_banner.png",
+    backgroundImage: "assets/ajambari/ajambari_background.png",
+    clientCode: 'D35UBMFHJ6',
+    clientSecret: "164182",
+    coOperativeLogo: 'assets/ajambari/ajambari_logo.png',
+    splashImage: "assets/ajambari/ajambari_splash.png",
+    primaryColor: const Color(0xFF034FA3),
+    coOperativeName: "Ajambari Saving & Credit Cooperative Ltd.",
+    appTitle: "Ajambari iSmart",
+  );
+  static final CoOperative currentCoop = ajambariCoop;
 }
