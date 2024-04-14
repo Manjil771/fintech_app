@@ -559,11 +559,13 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     BarcodeCapture barcodeCapture,
   ) {
     _cameraSubscription = cameraController.barcodes.listen((code) {
-      if (code.raw != null && _isScanned == false && mounted) {
-        _isScanned = true;
-
-        _processScannedQR(qrCode: code.raw ?? "");
-      }
+      _cameraSubscription = cameraController.barcodes.listen((code) {
+        final rawValue = code.raw.first["rawValue"];
+        if (rawValue != null && _isScanned == false && mounted) {
+          _isScanned = true;
+          _processScannedQR(qrCode: rawValue ?? "");
+        }
+      });
     });
   }
 
