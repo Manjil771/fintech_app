@@ -36,12 +36,8 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.service,
       required this.serviceIdentifier,
       required this.serviceName});
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -90,7 +86,6 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
@@ -117,7 +112,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message
