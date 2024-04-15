@@ -2997,5 +2997,47 @@ class CoOperativeValue {
     coOperativeName: "Ajambari Saving & Credit Cooperative Ltd.",
     appTitle: "Ajambari iSmart",
   );
-  static final CoOperative currentCoop = ajambariCoop;
+  static final CoOperative sundarbagmati = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sundarbagmati",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sundarbagmati/sundarbagmati_banner.png",
+    backgroundImage: "assets/sundarbagmati/sundarbagmati_background.png",
+    clientCode: 'U3URQRMDCV',
+    clientSecret: "173901",
+    coOperativeLogo: 'assets/sundarbagmati/sundarbagmati_logo.png',
+    splashImage: "assets/sundarbagmati/sundarbagmati_splash.png",
+    primaryColor: const Color(0xFF034EA2),
+    coOperativeName: "Sundar Bagmati Multipurpose Co-operative Ltd.",
+    appTitle: "Sundarbagmati iSmart",
+  );
+  static final CoOperative jayarupatal = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.jayarupatal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jayarupatal/jayarupatal_banner.png",
+    backgroundImage: "assets/jayarupatal/jayarupatal_background.png",
+    clientCode: 'MJ2RQIRV3Q',
+    clientSecret: "143101",
+    coOperativeLogo: 'assets/jayarupatal/jayarupatal_logo.png',
+    splashImage: "assets/jayarupatal/jayarupatal_splash.png",
+    primaryColor: const Color(0xFF058645),
+    coOperativeName: "Jaya Rupatal Saving & Credit Co-Operative Ltd..",
+    appTitle: "Jaya Rupatal iSmart",
+  );
+  static final CoOperative sunshineLaxmi = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sunshineLaxmi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sunshineLaxmi/sunshineLaxmi_banner.png",
+    backgroundImage: "assets/sunshineLaxmi/sunshineLaxmi_background.png",
+    clientCode: 'AE2ME3HRXP',
+    clientSecret: "181694",
+    coOperativeLogo: 'assets/sunshineLaxmi/sunshineLaxmi_logo.png',
+    splashImage: "assets/sunshineLaxmi/sunshineLaxmi_splash.png",
+    primaryColor: const Color(0xFF034EA2), //color change garnu parni
+    coOperativeName: "Sunshine Laxmi Multipurpose Co-operative Ltd.",
+    appTitle: "SunshineLaxmi iSmart",
+  );
+  static final CoOperative currentCoop = sundarbagmati;
 }

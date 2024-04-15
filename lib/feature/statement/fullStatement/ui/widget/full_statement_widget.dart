@@ -261,6 +261,10 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                 if (state is CommonStateSuccess<FullStatementModel>) {
                   final List<AccountStatementDtos> resData =
                       state.data.accountStatementDtos;
+                  final selectedAccount =
+                      RepositoryProvider.of<CustomerDetailRepository>(context)
+                          .selectedAccount
+                          .value;
                   return Column(
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -327,6 +331,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 SizedBox(height: _height * 0.01),
+                                Text("Account No. ${selectedAccount!.mainCode}",
+                                    style:
+                                        Theme.of(context).textTheme.titleLarge),
                                 Container(
                                   padding: const EdgeInsets.all(18),
                                   width: double.infinity,

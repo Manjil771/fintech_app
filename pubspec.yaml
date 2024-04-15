@@ -112,7 +112,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
@@ -196,7 +196,6 @@ flutter:
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -316,7 +315,10 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    - assets/ajambari/
+    # - assets/ajambari/
+    # - assets/sunshineLaxmi/
+    # - assets/sundarbagmati/
+    - assets/jayarupatal/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
