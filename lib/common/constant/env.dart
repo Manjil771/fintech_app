@@ -2827,7 +2827,7 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF036C44),
     coOperativeName:
         "Tarakari Phalafool Saving & Credit Co-operative Society Ltd.",
-    appTitle: "Tarkariphalafool iSmart",
+    appTitle: "Tarkari Phalafool iSmart",
   );
   static final CoOperative abhinnaCoop = CoOperative(
     appStoreID: "",
@@ -2849,7 +2849,7 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/adarsha/adarsha_banner.png",
     backgroundImage: "assets/adarsha/adarsha_background.png",
-    clientCode: 'LDSFON6DI',
+    clientCode: '6LDSFON6DI',
     clientSecret: "219548",
     coOperativeLogo: 'assets/adarsha/adarsha_logo.png',
     splashImage: "assets/adarsha/adarsha_splash.png",
@@ -3035,9 +3035,9 @@ class CoOperativeValue {
     clientSecret: "181694",
     coOperativeLogo: 'assets/sunshineLaxmi/sunshineLaxmi_logo.png',
     splashImage: "assets/sunshineLaxmi/sunshineLaxmi_splash.png",
-    primaryColor: const Color(0xFF034EA2), //color change garnu parni
+    primaryColor: const Color(0xFF3b4279),
     coOperativeName: "Sunshine Laxmi Multipurpose Co-operative Ltd.",
     appTitle: "SunshineLaxmi iSmart",
   );
-  static final CoOperative currentCoop = sundarbagmati;
+  static final CoOperative currentCoop = tarkariphalafoolCoop;
 }

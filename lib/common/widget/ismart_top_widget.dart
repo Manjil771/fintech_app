@@ -46,10 +46,10 @@ class IsmartTopWidget extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                SvgPicture.asset(
-                  Assets.translateImage,
-                  height: _height * 0.03,
-                ),
+                // SvgPicture.asset(
+                //   Assets.translateImage,
+                //   height: _height * 0.03,
+                // ),
                 SizedBox(width: 15.hp),
                 InkWell(
                   onTap: supportAction
