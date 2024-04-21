@@ -3039,5 +3039,19 @@ class CoOperativeValue {
     coOperativeName: "Sunshine Laxmi Multipurpose Co-operative Ltd.",
     appTitle: "SunshineLaxmi iSmart",
   );
-  static final CoOperative currentCoop = tarkariphalafoolCoop;
+  static final CoOperative saptakaushikaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.saptakaushika",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/saptakaushika/saptakaushika_banner.png",
+    backgroundImage: "assets/saptakaushika/saptakaushika_background.png",
+    clientCode: 'KQTU7ZLDRK',
+    clientSecret: "165051",
+    coOperativeLogo: 'assets/saptakaushika/saptakaushika_logo.png',
+    splashImage: "assets/saptakaushika/saptakaushika_splash.png",
+    primaryColor: const Color(0xFF168340),
+    coOperativeName: "Saptakaushika Saving & Credit Co-Operative Ltd.",
+    appTitle: "Saptakaushika iSmart",
+  );
+  static final CoOperative currentCoop = saptakaushikaCoop;
 }

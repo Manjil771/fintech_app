@@ -304,7 +304,7 @@ flutter:
     # - assets/asaan/
     # - assets/babylon/
     # - assets/shakambhari/
-    - assets/tarkariphalafool/
+    # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -319,6 +319,7 @@ flutter:
     # - assets/sunshineLaxmi/
     # - assets/sundarbagmati/
     # - assets/jayarupatal/
+    - assets/saptakaushika/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
