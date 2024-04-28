@@ -3081,5 +3081,19 @@ class CoOperativeValue {
     coOperativeName: "Tikeshwar Krishi Bahuuddesiya Sahakari Sanstha Ltd.",
     appTitle: "Tikeshwar Krishi iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+   static final CoOperative upadeshCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.upadesh",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/upadesh/upadesh_banner.png",
+    backgroundImage: "assets/upadesh/upadesh_background.png",
+    clientCode: 'MN70QIFMQO',
+    clientSecret: "182746",
+    coOperativeLogo: 'assets/upadesh/upadesh_logo.png',
+    splashImage: "assets/upadesh/upadesh_splash.png",
+    primaryColor: const Color(0xFF384392),
+    coOperativeName: "Upadesh Saving & Credit Co-operative Ltd.",
+    appTitle: "Upadesh iSmart",
+  );
+  static final CoOperative currentCoop = upadeshCoop;
 }
