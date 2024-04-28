@@ -6,7 +6,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -85,13 +84,14 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
   calculateTotalPrice() {
     totalPrice = 0.00;
     if (selectedInboundIndex != -1) {
-      double fareTotalInbound = _inboundValue[selectedInboundIndex].totalFare;
+      final double fareTotalInbound =
+          _inboundValue[selectedInboundIndex].totalFare;
 
       totalPrice += fareTotalInbound;
     }
 
     if (selectedOutboundIndex != -1) {
-      double fareTotalInbound =
+      final double fareTotalInbound =
           _outboundValues[selectedOutboundIndex].totalFare;
       totalPrice += fareTotalInbound;
     }
@@ -322,7 +322,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
     final _width = SizeUtils.width;
 
     return PageWrapper(
-      // TODO Filter add
+      // TODOFilter add
       // appActions: [
       //   IconButton(
       //     icon: const Icon(Icons.search),
@@ -366,7 +366,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
               NavigationService.push(

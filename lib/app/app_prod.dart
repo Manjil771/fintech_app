@@ -58,22 +58,34 @@ class _AppProdState extends State<AppProd> {
         env: widget.env,
         child: NotificationWrapper(
           child: UpdateWrapper(
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                final FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus &&
+                    currentFocus.focusedChild != null) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+              },
               child: MaterialApp(
-            locale: context.locale,
-            navigatorKey: NavigationService.navigationKey,
-            builder: (context, Widget? widget) {
-              setErrorBuilder(context);
-              return widget!;
-            },
-            supportedLocales: context.supportedLocales,
-            localizationsDelegates: context.localizationDelegates,
-            debugShowCheckedModeBanner: false,
-            darkTheme: CustomTheme.lightTheme,
-            theme: CustomTheme.lightTheme,
-            title: widget.env.appTitle,
-            initialRoute: Routes.root,
-            onGenerateRoute: RouteGenerator.generateRoute,
-          )),
+                locale: context.locale,
+                navigatorKey: NavigationService.navigationKey,
+                builder: (context, Widget? widget) {
+                  setErrorBuilder(context);
+                  return widget!;
+                },
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                debugShowCheckedModeBanner: false,
+                darkTheme: CustomTheme.lightTheme,
+                theme: CustomTheme.lightTheme,
+                title: widget.env.appTitle,
+                initialRoute: Routes.root,
+                onGenerateRoute: RouteGenerator.generateRoute,
+              ),
+            ),
+          ),
         ),
       ),
     );
