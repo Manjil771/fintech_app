@@ -3053,5 +3053,33 @@ class CoOperativeValue {
     coOperativeName: "Saptakaushika Saving & Credit Co-Operative Ltd.",
     appTitle: "Saptakaushika iSmart",
   );
-  static final CoOperative currentCoop = saptakaushikaCoop;
+  static final CoOperative samadhanCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.samadhan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samadhan/samadhan_banner.png",
+    backgroundImage: "assets/samadhan/samadhan_background.png",
+    clientCode: 'NVP24J9BPV',
+    clientSecret: "176876",
+    coOperativeLogo: 'assets/samadhan/samadhan_logo.png',
+    splashImage: "assets/samadhan/samadhan_splash.png",
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "Samadhan Saving & Credit Co-operative Ltd.",
+    appTitle: "Samadhan iSmart",
+  );
+  static final CoOperative tikeshwarKrishi = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.tikeshwar",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tikeshwar/tikeshwar_banner.png",
+    backgroundImage: "assets/tikeshwar/tikeshwar_background.png",
+    clientCode: 'W2X766HMBS',
+    clientSecret: "135340",
+    coOperativeLogo: 'assets/tikeshwar/tikeshwar_logo.png',
+    splashImage: "assets/tikeshwar/tikeshwar_splash.png",
+    primaryColor: const Color(0xFF007203),
+    coOperativeName: "Tikeshwar Krishi Bahuuddesiya Sahakari Sanstha Ltd.",
+    appTitle: "Tikeshwar Krishi iSmart",
+  );
+  static final CoOperative currentCoop = tikeshwarKrishi;
 }
