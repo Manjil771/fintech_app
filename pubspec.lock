@@ -1312,9 +1312,11 @@ packages:
   qr_code_utils:
     dependency: "direct main"
     description:
-      path: "/Users/nsubash38/qr_code_utils/qr_code_utils"
-      relative: false
-    source: path
+      path: "."
+      ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
+      resolved-ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
+      url: "git@github.com:nsubash38/qr_code_test.git"
+    source: git
     version: "0.0.1"
   qr_code_utils_android:
     dependency: transitive

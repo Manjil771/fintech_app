@@ -79,7 +79,10 @@ dependencies:
   flutter_native_image: ^0.0.6+1
   image_picker: ^1.0.1
   qr_code_utils:
-    path: /Users/nsubash38/qr_code_utils/qr_code_utils
+    git:
+      url: git@github.com:nsubash38/qr_code_test.git
+      ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
+    # path: /Users/nsubash38/qr_code_utils/qr_code_utils
   flutter_fgbg: ^0.3.0
   android_id: ^0.3.3
   fk_user_agent: ^2.1.0
