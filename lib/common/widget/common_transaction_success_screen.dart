@@ -202,7 +202,7 @@ class _CommonTransactionSuccessfulWidgetState
                                 KeyValueTile(
                                   title: "Service",
                                   value: widget.service?.service ??
-                                      "Utility Payment",
+                                      (widget.serviceName),
                                 ),
                                 widget.body,
                               ],

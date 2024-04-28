@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
@@ -68,8 +67,8 @@ class ExternalQrWidget extends StatelessWidget {
             child: Column(
               children: [
                 const SizedBox(height: 10),
-                qrDetail["terminalName"].toString().toLowerCase() != "null" &&
-                        qrDetail["terminalName"].toString().isNotEmpty
+                qrDetail["qrLogoPath"].toString().toLowerCase() != "null" &&
+                        qrDetail["qrLogoPath"].toString().isNotEmpty
                     ? CustomCachedNetworkImage(
                         url: repo.baseUrl + qrDetail["qrLogoPath"],
                         fit: BoxFit.cover,

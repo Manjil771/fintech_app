@@ -236,6 +236,21 @@ class CoOperativeValue {
     appStoreID: "",
     shouldValidateCooperative: false,
   );
+  static final CoOperative oxpanTest = CoOperative(
+    baseUrl: 'http://103.198.9.203:8080/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: '4CPX5J50DC',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "211626",
+    splashImage: "assets/images/ismart_splash.png",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appTitle: "iSmart Devanasoft",
+    appStoreID: "",
+    shouldValidateCooperative: false,
+  );
 
   static final CoOperative developmentTest = CoOperative(
     baseUrl: 'http://192.168.1.56:8080/',
@@ -2983,5 +2998,5 @@ class CoOperativeValue {
     coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
     appTitle: "Mahila Abhiyan iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = oxpanTest;
 }
