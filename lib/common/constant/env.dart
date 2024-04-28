@@ -3081,5 +3081,5 @@ class CoOperativeValue {
     coOperativeName: "Tikeshwar Krishi Bahuuddesiya Sahakari Sanstha Ltd.",
     appTitle: "Tikeshwar Krishi iSmart",
   );
-  static final CoOperative currentCoop = tikeshwarKrishi;
+  static final CoOperative currentCoop = devLive;
 }
