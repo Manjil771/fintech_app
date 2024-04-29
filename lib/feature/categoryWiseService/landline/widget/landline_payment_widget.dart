@@ -1,14 +1,8 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:http/http.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/regex_utils.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -16,15 +10,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/enums/topup_type.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/utils/topup_utils.dart';
-
-import 'package:flutter/material.dart';
-import 'package:ismart/common/util/size_utils.dart';
 
 import '../../../customerDetail/resource/customer_detail_repository.dart';
 import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -32,7 +18,7 @@ import '../../../dashboard/homePage/homePageTabbar/servicesTab/model/category_mo
 class LandlinePaymentWidget extends StatefulWidget {
   final CategoryList category;
 
-  LandlinePaymentWidget({super.key, required this.category});
+  const LandlinePaymentWidget({super.key, required this.category});
 
   @override
   State<LandlinePaymentWidget> createState() => _LandlinePaymentWidgetState();
@@ -56,10 +42,6 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -106,6 +88,7 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                           return "Enter a valid Number";
                         }
                         FormValidator.validateFieldNotEmpty(val, "Number");
+                        return null;
                       }),
                   CustomTextField(
                     textInputType: TextInputType.number,
@@ -127,8 +110,9 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                     .substring(_phoneNumberController.text.length - 8));
                 NavigationService.push(
                     target: CommonBillDetailPage(
+                  serviceName: widget.category.services.first.service,
                   serviceIdentifier: "pstn_online_topup",
-                  apiBody: {},
+                  apiBody: const {},
                   apiEndpoint: "/api/topup",
                   service: getService(),
                   accountDetails: {

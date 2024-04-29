@@ -80,6 +80,8 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                           "Active".toLowerCase(),
                 )
                 .toList();
+            // final filteredItems = state.data;
+
             final filteredItems = state.data
                 .where((item) =>
                     item.type
@@ -123,6 +125,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: filteredItems.length,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         checkItems(filteredItems[index].uniqueIdentifier);
                         return Column(
@@ -148,7 +151,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                     .toLowerCase()
                                     .contains(
                                         "load_from_connectIps".toLowerCase())) {
-                                  NavigationService.pushNamed( 
+                                  NavigationService.pushNamed(
                                       routeName: Routes.connectIps);
                                 } else if (filteredItems[index]
                                         .uniqueIdentifier

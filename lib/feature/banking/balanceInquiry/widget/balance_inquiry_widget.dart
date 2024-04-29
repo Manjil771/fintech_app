@@ -78,7 +78,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                   ),
                                   child: Column(
                                     children: [
-                                      Padding( 
+                                      Padding(
                                         padding: const EdgeInsets.all(20.0),
                                         child: Row(
                                           mainAxisAlignment:
@@ -206,8 +206,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
             ),
           ],
         ),
-        topbarName: "Banking",
-        title: "Balance Inquiry",
+        topbarName: "Balance Inquiry",
         detail: "Details about your account is shown below.",
       ),
     );

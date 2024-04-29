@@ -101,19 +101,16 @@ class CommonContainer extends StatelessWidget {
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                showTitleText
-                                    ? Text(title,
-                                        style: _textTheme.displaySmall!
-                                            .copyWith(
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.bold))
-                                    : Container(),
-                                showDetail
-                                    ? Text(
-                                        detail,
-                                        style: _textTheme.titleLarge,
-                                      )
-                                    : Container(),
+                                if (title.isNotEmpty)
+                                  Text(title,
+                                      style: _textTheme.displaySmall!.copyWith(
+                                          fontSize: 16,
+                                          fontWeight: FontWeight.bold)),
+                                if (detail.isNotEmpty)
+                                  Text(
+                                    detail,
+                                    style: _textTheme.titleLarge,
+                                  )
                               ],
                             ),
                           ),

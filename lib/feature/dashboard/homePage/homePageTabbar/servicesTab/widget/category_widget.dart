@@ -24,8 +24,10 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/scr
 
 class CategoryWidget extends StatefulWidget {
   final bool showAllService;
-  const CategoryWidget({Key? key, this.showAllService = true})
-      : super(key: key);
+  const CategoryWidget({
+    Key? key,
+    this.showAllService = true,
+  }) : super(key: key);
 
   @override
   State<CategoryWidget> createState() => _CategoryWidgetState();

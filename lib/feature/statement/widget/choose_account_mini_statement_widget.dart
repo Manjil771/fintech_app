@@ -2,9 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 
 class ChooseAccountMiniStatementWidget extends StatelessWidget {
@@ -20,12 +18,11 @@ class ChooseAccountMiniStatementWidget extends StatelessWidget {
         showDetail: true,
         showAccountSelection: true,
         accountTitle: "Select Account",
-        topbarName: "Statement",
-        title: "Mini Statement",
+        topbarName: "Mini Statement",
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {
-          NavigationService.pushReplacement(target: MiniStatementPage());
+          NavigationService.pushReplacement(target: const MiniStatementPage());
         },
         body: Container(),
       ),

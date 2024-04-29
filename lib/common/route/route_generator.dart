@@ -4,9 +4,6 @@ import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_pin_scree
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
-import 'package:ismart/feature/banking/loan/loanInformation/page/loan_info_choose_account_page.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_choose_account_page.dart';
-import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_choose_account_page.dart';
 import 'package:ismart/feature/banking/loan/screen/loan_page.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
@@ -27,7 +24,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_list_screen.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
@@ -155,7 +152,7 @@ class RouteGenerator {
         );
       case Routes.listWalletScreen:
         return MaterialPageRoute(
-          builder: (_) => const WalletTransferScreen(),
+          builder: (_) => const WalletListScreen(),
           settings: RouteSettings(name: settings.name),
         );
 
@@ -203,21 +200,6 @@ class RouteGenerator {
       case Routes.loanPage:
         return MaterialPageRoute(
           builder: (_) => const LoanPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanInformationPage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanInfoChooseAccountPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanSchedulePage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanScheduleChooseAccountPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanStatementPage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanStatementChooseAccountPage(),
           settings: RouteSettings(name: settings.name),
         );
 

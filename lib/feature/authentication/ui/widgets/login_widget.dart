@@ -20,8 +20,11 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
+import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
+import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
@@ -34,6 +37,8 @@ import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
@@ -44,7 +49,9 @@ class LoginWidget extends StatefulWidget {
 }
 
 class _LoginWidgetState extends State<LoginWidget> {
-  final String _supportContact = "9801132218";
+  String _selectedCountryCode = "977";
+  String _selectedCountryValue = "np";
+  bool showCountyCode = false;
 
   ValueNotifier<LoginCoOpValue?> selectedCoop = ValueNotifier(null);
   String _currentUUID = "";
@@ -76,7 +83,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   _checkBiometric() async {
-    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    final bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
@@ -121,6 +128,18 @@ class _LoginWidgetState extends State<LoginWidget> {
     return masked;
   }
 
+  getAppContactDetails() {
+    return BlocBuilder<AppContactCubit, CommonState>(
+      builder: (context, state) {
+        if (state is CommonStateSuccess<UtilityResponseData>) {
+          return Container();
+        } else {
+          return Container();
+        }
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final height = SizeUtils.height;
@@ -137,6 +156,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         miscallBanking();
       },
     ];
+
     return PageWrapper(
       backgroundColor: CustomTheme.white,
       showAppBar: false,
@@ -202,6 +222,7 @@ class _LoginWidgetState extends State<LoginWidget> {
         },
         child: ListView(
           children: [
+            getAppContactDetails(),
             SizedBox(height: height * 0.05),
             IsmartTopWidget(showSupportIcon: true, supportAction: supportSheet),
             Padding(
@@ -265,12 +286,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                                       (value) => setState(() {}),
                                     );
                                   },
-                                  // onBankSelected: (val) {
-                                  //   NavigationService.pop();
-                                  //   // internalBranch = val;
-                                  //   // branchCode = val.branchCode;
-                                  //   // _branchController.text = val.name;
-                                  // },
                                 ),
                               );
                             },
@@ -284,11 +299,110 @@ class _LoginWidgetState extends State<LoginWidget> {
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
                         if (!val) {
-                          return CustomTextField(
+                          return LoginCustomTextField(
+                            leading:
+                                BlocBuilder<UtilityPaymentCubit, CommonState>(
+                              builder: (context, state) {
+                                if (state is CommonStateSuccess<
+                                    UtilityResponseData>) {
+                                  final List countryCode =
+                                      state.data.findValue(primaryKey: "data");
+
+                                  return InkWell(
+                                      child: Row(
+                                        children: [
+                                          Image.network(
+                                            "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
+                                            height: 20,
+                                            width: 30,
+                                          ),
+                                          SizedBox(width: 5.wp),
+                                          if (showCountyCode)
+                                            Text(
+                                              _selectedCountryCode,
+                                              style:
+                                                  _theme.textTheme.titleLarge,
+                                            ),
+                                          SizedBox(width: 5.wp),
+                                        ],
+                                      ),
+                                      onTap: () {
+                                        showDialog(
+                                          context: context,
+                                          builder: (BuildContext context) {
+                                            return AlertDialog(
+                                              title:
+                                                  const Text('Select Country'),
+                                              content: Container(
+                                                width: double.maxFinite,
+                                                height: 300,
+                                                child: ListView.builder(
+                                                    itemCount:
+                                                        countryCode.length,
+                                                    itemBuilder:
+                                                        (context, index) {
+                                                      return InkWell(
+                                                        onTap: () {
+                                                          _selectedCountryCode =
+                                                              countryCode[index]
+                                                                  ["dialCode"];
+                                                          _selectedCountryValue =
+                                                              countryCode[index]
+                                                                  ["isoTwo"];
+                                                          NavigationService
+                                                              .pop();
+                                                          setState(() {});
+                                                        },
+                                                        child: Container(
+                                                          margin:
+                                                              const EdgeInsets
+                                                                      .symmetric(
+                                                                  vertical: 10),
+                                                          child: Row(
+                                                            children: [
+                                                              Expanded(
+                                                                flex: 1,
+                                                                child: Image
+                                                                    .network(
+                                                                  "https://www.geonames.org/flags/x/${countryCode[index]["isoTwo"].toString().toLowerCase()}.gif",
+                                                                  height: 10,
+                                                                ),
+                                                              ),
+                                                              Expanded(
+                                                                flex: 3,
+                                                                child: Text(
+                                                                  countryCode[
+                                                                          index]
+                                                                      ["name"],
+                                                                  style: _theme
+                                                                      .textTheme
+                                                                      .bodyLarge,
+                                                                ),
+                                                              )
+                                                            ],
+                                                          ),
+                                                        ),
+                                                      );
+                                                    }),
+                                              ),
+                                            );
+                                          },
+                                        );
+                                      });
+                                } else {
+                                  return Container();
+                                }
+                              },
+                            ),
                             title: "Mobile Number",
                             hintText: "Mobile Number",
                             controller: phoneController,
                             textInputType: TextInputType.phone,
+                            onTap: () {
+                              setState(() {
+                                showCountyCode = true;
+                              });
+                            },
                             validator: (value) =>
                                 FormValidator.validateFieldNotEmpty(
                                     value, "Phone Number"),
@@ -310,7 +424,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                             },
                           );
                         } else {
-                          return CustomTextField(
+                          return LoginCustomTextField(
+                            leading: Row(
+                              children: [
+                                Image.network(
+                                  "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
+                                  height: 20,
+                                  width: 30,
+                                ),
+                                SizedBox(width: 5.wp),
+                              ],
+                            ),
                             title: "Mobile Number",
                             readOnly: true,
                             hintText: maskPhoneNumber(_existingPhoneNumber),
@@ -360,17 +484,27 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomRoundedButtom(
                       title: "Login",
                       onPressed: () async {
+                        FocusManager.instance.primaryFocus?.unfocus();
+
                         if (_loginFormKey.currentState!.validate()) {
-                          if (agreedToTerms) {
-                            context.read<LoginCubit>().loginUser(
-                                  username: _getPhoneNumber(),
-                                  password: passwordController.text,
-                                  deviceUUID: await _getDeviceUUID(),
-                                );
+                          if (_selectedCountryValue.toString().toLowerCase() ==
+                              "np") {
+                            if (agreedToTerms) {
+                              context.read<LoginCubit>().loginUser(
+                                    username: _getPhoneNumber(),
+                                    password: passwordController.text,
+                                    deviceUUID: await _getDeviceUUID(),
+                                  );
+                            } else {
+                              SnackBarUtils.showErrorBar(
+                                  context: context,
+                                  message:
+                                      "Please agree to terms & conditions");
+                            }
                           } else {
                             SnackBarUtils.showErrorBar(
                                 context: context,
-                                message: "Please agree to terms & conditions");
+                                message: "Invalid Mobile Number");
                           }
                         }
                       },
@@ -382,7 +516,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                           if (val) {
                             return InkWell(
                               onTap: () async {
-                                bool authenticated =
+                                final bool authenticated =
                                     await FingerPrintUtils.verifyFingerPrint(
                                   context: NavigationService.context,
                                 );
@@ -433,36 +567,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    // // if (RepositoryProvider.of<CoOperative>(context)
-                    // //         .clientCode !=
-                    // //     "EHVNI7CZJ3")
-                    // Row(
-                    //   children: [
-                    //     TextButton(
-                    //         onPressed: () {
-                    //           NavigationService.pushNamed(
-                    //               routeName: Routes.forgotPin);
-                    //         },
-                    //         child: Text(
-                    //           "Forgot PIN ?",
-                    //           style: TextStyle(color: _theme.primaryColor),
-                    //         )),
-                    //     const Spacer(),
-                    //     TextButton(
-                    //       onPressed: () {
-                    //         NavigationService.push(
-                    //             target: const ActivateAccountPage());
-                    //       },
-                    //       child: Text(
-                    //         "Activate Account",
-                    //         style: TextStyle(color: _theme.primaryColor),
-                    //       ),
-                    //     ),
-                    //   ],
-                    // ),
-                    // if (RepositoryProvider.of<CoOperative>(context)
-                    //         .clientCode ==
-                    //     "EHVNI7CZJ3")
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
@@ -615,6 +719,8 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   supportSheet() {
     final _textTheme = Theme.of(NavigationService.context).textTheme;
+    final contactNumber =
+        RepositoryProvider.of<AppContactRepository>(context).contactNumber;
 
     showModalBottomSheet(
       context: NavigationService.context,
@@ -654,54 +760,52 @@ class _LoginWidgetState extends State<LoginWidget> {
             const Divider(
               height: 40,
             ),
-            ...List.generate(
-              _supportOptions.length,
-              (index) {
-                return InkWell(
-                  onTap: _supportOptions[index]['action'] as Function(),
-                  child: Container(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: 15.hp,
-                      vertical: 15.hp,
-                    ),
-                    child: Column(
+            InkWell(
+              onTap: () async {
+                await UrlLauncher.launchPhone(
+                    context: NavigationService.context, phone: contactNumber);
+              },
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                  horizontal: 15.hp,
+                  vertical: 15.hp,
+                ),
+                child: Column(
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  "Call",
-                                  style: _textTheme.bodyLarge!.copyWith(
-                                    fontSize: 12,
-                                    fontWeight: FontWeight.bold,
-                                    color: CustomTheme.primaryColor,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 6,
-                                ),
-                                Text(
-                                  contactNumberList[index],
-                                  style: _textTheme.bodyLarge!.copyWith(
-                                    color: CustomTheme.darkGray,
-                                  ),
-                                )
-                              ],
+                            Text(
+                              "Call",
+                              style: _textTheme.bodyLarge!.copyWith(
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                                color: CustomTheme.primaryColor,
+                              ),
                             ),
-                            Icon(
-                              Icons.arrow_forward_ios,
-                              color: CustomTheme.primaryColor,
+                            const SizedBox(height: 6),
+                            Text(
+                              RepositoryProvider.of<AppContactRepository>(
+                                      context)
+                                  .contactNumber,
+                              style: _textTheme.bodyLarge!.copyWith(
+                                color: CustomTheme.darkGray,
+                              ),
                             )
                           ],
+                        ),
+                        Icon(
+                          Icons.arrow_forward_ios,
+                          color: CustomTheme.primaryColor,
                         )
                       ],
-                    ),
-                  ),
-                );
-              },
+                    )
+                  ],
+                ),
+              ),
             ),
             const SizedBox(
               height: 30,
@@ -729,24 +833,6 @@ class _LoginWidgetState extends State<LoginWidget> {
       "title": "Mini Statement",
       "action": () {
         NavigationService.pop();
-      },
-    },
-  ];
-  final List contactNumberList = ["9801132219", "9801132218"];
-
-  final List<Map<String, dynamic>> _supportOptions = [
-    {
-      "title": "Call",
-      "action": () async {
-        await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132219");
-      },
-    },
-    {
-      "title": "Call",
-      "action": () async {
-        await UrlLauncher.launchPhone(
-            context: NavigationService.context, phone: "9801132218");
       },
     },
   ];

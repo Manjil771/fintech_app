@@ -1,5 +1,4 @@
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/widget/electricity_detail_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -37,7 +36,7 @@ class ElectricityDetailPage extends StatelessWidget {
         counterName: counterName,
         customerId: customerId,
         scNumber: scNumber,
-        services: services,
+        service: services,
       ),
     );
   }

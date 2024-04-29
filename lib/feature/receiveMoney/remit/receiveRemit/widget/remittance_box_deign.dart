@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
 class RemitBoxDesign extends StatelessWidget {
-  final bool isNetworkImage;
-  final String containerImage;
+  final String imageUrl;
   final String title;
   final Function()? onContainerPress;
   final EdgeInsets? margin;
@@ -13,8 +15,7 @@ class RemitBoxDesign extends StatelessWidget {
 
   const RemitBoxDesign(
       {super.key,
-      required this.containerImage,
-      this.isNetworkImage = false,
+      required this.imageUrl,
       this.margin = const EdgeInsets.all(8),
       required this.title,
       this.onContainerPress,
@@ -28,39 +29,34 @@ class RemitBoxDesign extends StatelessWidget {
     return InkWell(
       onTap: onContainerPress,
       child: Container(
-        width: 100.wp,
         margin: margin,
         child: Column(
           children: [
             Container(
+              height: 70,
+              padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: _theme.primaryColor.withOpacity(0.05),
               ),
-              child: Container(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                child: isNetworkImage == true
-                    ? Image.network(
-                        containerImage,
-                        fit: BoxFit.fitWidth,
-                      )
-                    : Image.asset(
-                        fit: BoxFit.fitWidth,
-                        containerImage,
-                      ),
+              child: CustomCachedNetworkImage(
+                fit: BoxFit.cover,
+                url: RepositoryProvider.of<CoOperative>(context).baseUrl +
+                    imageUrl,
               ),
             ),
-            SizedBox(height: 8.hp),
-            Text(
-              title,
-              textAlign: TextAlign.center,
-              maxLines: 2,
-              overflow: TextOverflow.ellipsis,
-              style: TextStyle(
-                  color: CustomTheme.darkerBlack.withOpacity(0.6),
-                  fontSize: 11,
-                  fontWeight: FontWeight.bold),
+            // SizedBox(height: .hp),
+            Expanded(
+              child: Text(
+                title,
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                    color: CustomTheme.darkerBlack.withOpacity(0.6),
+                    fontSize: 11,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
           ],
         ),

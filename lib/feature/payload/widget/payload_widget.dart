@@ -131,6 +131,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                     if (_formKey.currentState!.validate()) {
                       NavigationService.push(
                         target: CommonBillDetailPage(
+                          serviceName: "QR Payment",
                           service: ServiceList(
                               url: Url.URL,
                               id: 0,

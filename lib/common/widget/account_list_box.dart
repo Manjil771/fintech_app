@@ -9,10 +9,12 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class AccountDetailBox extends StatefulWidget {
+  final Function()? onPressed;
   // ValueNotifier<CustomerDetailModel?> customerDetail;
 
   const AccountDetailBox({
     super.key,
+    this.onPressed,
   });
 
   @override
@@ -67,6 +69,8 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                     _customerDetailRepo.selectedAccount.value =
                                         account;
                                     NavigationService.pop();
+                                    if (widget.onPressed != null)
+                                      widget.onPressed!.call();
                                   },
                                   borderRadius: BorderRadius.circular(8),
                                   child: Container(

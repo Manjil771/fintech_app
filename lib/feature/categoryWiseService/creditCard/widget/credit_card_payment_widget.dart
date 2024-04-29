@@ -15,11 +15,13 @@ import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_ca
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_bank_list_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+
 import '../../../../common/widget/common_text_field.dart';
 
 class CreditCardPaymentWidget extends StatefulWidget {
   final ServiceList service;
-  CreditCardPaymentWidget({Key? key, required this.service}) : super(key: key);
+  const CreditCardPaymentWidget({Key? key, required this.service})
+      : super(key: key);
 
   @override
   State<CreditCardPaymentWidget> createState() =>
@@ -66,6 +68,7 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
 
               NavigationService.push(
                   target: CommonBillDetailPage(
+                      serviceName: widget.service.service,
                       body: Column(
                         children: [
                           KeyValueTile(
@@ -80,7 +83,7 @@ class _CreditCardPaymentWidgetState extends State<CreditCardPaymentWidget> {
                               title: "Amount", value: _amountController.text),
                         ],
                       ),
-                      accountDetails: {},
+                      accountDetails: const {},
                       apiEndpoint: "/api/credit_card/payment",
                       apiBody: {
                         "accountNumber":

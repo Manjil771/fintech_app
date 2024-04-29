@@ -4,18 +4,15 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/notification/resources/notification_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class NotificationWidget extends StatefulWidget {
-  NotificationWidget({Key? key}) : super(key: key);
+  const NotificationWidget({Key? key}) : super(key: key);
 
   @override
   State<NotificationWidget> createState() => _NotificationWidgetState();
@@ -51,8 +48,8 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         final data = state.data.detail[index];
 
                         return Container(
-                          margin: EdgeInsets.only(bottom: 10),
-                          padding: EdgeInsets.symmetric(
+                          margin: const EdgeInsets.only(bottom: 10),
+                          padding: const EdgeInsets.symmetric(
                               horizontal: 10, vertical: 10),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
@@ -92,13 +89,15 @@ class _NotificationWidgetState extends State<NotificationWidget> {
                         );
                       });
                 } else {
-                  return NoDataScreen(
+                  return const NoDataScreen(
                     title: "No Notification Found",
                     details: "Notification List is empty.",
                   );
                 }
+              } else if (state is CommonLoading) {
+                return const CommonLoadingWidget();
               } else {
-                return NoDataScreen(
+                return const NoDataScreen(
                   title: "No Notification Found",
                   details: "Notification List is empty.",
                 );

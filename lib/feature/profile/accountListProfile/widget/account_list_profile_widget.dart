@@ -85,7 +85,10 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                   ),
                                   if (_detail.accountDetail[index].interestRate
                                               .toString() !=
-                                          "0.0" &&
+                                          "0.0" ||
+                                      _detail.accountDetail[index].interestRate
+                                              .toString() !=
+                                          "0" ||
                                       _detail.accountDetail[index].interestRate
                                               .toString() !=
                                           "N/A")

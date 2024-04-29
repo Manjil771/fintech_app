@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/models/common_contact_model.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -16,15 +15,11 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_key_value_tile.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_detail_box.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_location_widget.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
-import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class BusBillDetailWidget extends StatelessWidget {
   final BusTopBarModel busTopBarModel;
@@ -85,6 +80,7 @@ class BusBillDetailWidget extends StatelessWidget {
               if (_response.code == "M0000") {
                 NavigationService.push(
                     target: CommonTransactionSuccessPage(
+                        serviceName: service.service,
                         body: Column(
                           children: [
                             KeyValueTile(
@@ -143,9 +139,9 @@ class BusBillDetailWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(
+                      const Text(
                         "From Account",
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontFamily: Fonts.poppin,
                           fontWeight: FontWeight.w600,
                           fontSize: 14,
@@ -153,7 +149,7 @@ class BusBillDetailWidget extends StatelessWidget {
                         ),
                       ),
                       Container(
-                          padding: EdgeInsets.symmetric(horizontal: 12),
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(12),
                             color: CustomTheme.white,
@@ -162,12 +158,12 @@ class BusBillDetailWidget extends StatelessWidget {
                       SizedBox(height: _height * 0.01),
                       Container(
                         width: _width,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: CustomTheme.white,
                         ),
-                        margin: EdgeInsets.symmetric(vertical: 5),
+                        margin: const EdgeInsets.symmetric(vertical: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
@@ -201,12 +197,12 @@ class BusBillDetailWidget extends StatelessWidget {
                       ),
                       Container(
                         width: _width,
-                        padding: EdgeInsets.all(10),
+                        padding: const EdgeInsets.all(10),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(12),
                           color: CustomTheme.white,
                         ),
-                        margin: EdgeInsets.symmetric(vertical: 5),
+                        margin: const EdgeInsets.symmetric(vertical: 5),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [

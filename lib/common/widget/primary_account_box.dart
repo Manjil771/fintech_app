@@ -13,7 +13,7 @@ class PrimaryAccountBox extends StatefulWidget {
 }
 
 class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
-  bool showAmount = false;
+  bool showAmount = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => AccountDetailBox(),
+                builder: (context) => const AccountDetailBox(),
               );
             },
             child: Container(
@@ -57,7 +57,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       SizedBox(width: _width * 0.03),
                       Text(
                         showAmount
-                            ? "XXXXXXXXX"
+                            ? "XXXXXXX"
                             : "NPR ${selectedAcc?.availableBalance}",
                         style: TextStyle(
                             fontSize: 16,
@@ -71,9 +71,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                               showAmount = !showAmount;
                             });
                           },
-                          child: SvgPicture.asset(
-                            "assets/icons/akar-icons_eye-slashed.svg",
-                            height: _height * 0.025,
+                          child: Icon(
+                            showAmount
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                           ),
                         ),
                       ),
@@ -85,7 +86,6 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: _theme.primaryColor,
-                            // border: Border.all(color: Colors.black),
                           ),
                           child: const Center(
                             child: Text(

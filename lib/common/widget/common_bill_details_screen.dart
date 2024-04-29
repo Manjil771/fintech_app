@@ -25,15 +25,17 @@ class CommonBillDetailPage extends StatelessWidget {
   final String apiEndpoint;
   final Widget body;
   final ServiceList service;
+  final String serviceName;
 
-  CommonBillDetailPage(
+  const CommonBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
       required this.service,
-      required this.serviceIdentifier});
+      required this.serviceIdentifier,
+      required this.serviceName});
   final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -52,6 +54,7 @@ class CommonBillDetailPage extends StatelessWidget {
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
         serviceIdentifier: serviceIdentifier,
+        serviceName: serviceName,
       ),
     );
   }
@@ -64,6 +67,7 @@ class CommonBillDetailWidget extends StatefulWidget {
   final ServiceList service;
   final Widget body;
   final String serviceIdentifier;
+  final String serviceName;
 
   const CommonBillDetailWidget({
     super.key,
@@ -73,6 +77,7 @@ class CommonBillDetailWidget extends StatefulWidget {
     required this.apiBody,
     required this.service,
     required this.serviceIdentifier,
+    required this.serviceName,
   });
 
   @override
@@ -120,6 +125,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                     .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                      serviceName: widget.serviceName,
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,

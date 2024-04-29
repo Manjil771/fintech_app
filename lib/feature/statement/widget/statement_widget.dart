@@ -6,9 +6,6 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
-import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_page.dart';
-import 'package:ismart/feature/statement/miniStatement/ui/screen/choose_account_mini_statement_page.dart';
 
 class StatementWidget extends StatelessWidget {
   const StatementWidget({Key? key}) : super(key: key);
@@ -22,7 +19,6 @@ class StatementWidget extends StatelessWidget {
       body: CommonContainer(
         showDetail: false,
         topbarName: "Statement",
-        title: "Statement",
         detail: "Select the type of statement you want to  view",
         showRoundBotton: false,
         body: Column(

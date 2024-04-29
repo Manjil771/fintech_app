@@ -32,7 +32,7 @@ class NoDataScreen extends StatelessWidget {
           child: Text(
             title,
             textAlign: TextAlign.center,
-            style: _textTheme.displayLarge,
+            style: _textTheme.displayLarge!.copyWith(fontSize: 20),
           ),
         ),
         Text(

@@ -4,6 +4,7 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -30,19 +31,25 @@ class WalletLoadRepository {
       userRepository: userRepository,
     );
   }
+
   Future<DataResponse<List<WalletModel>>> fetchWalletList() async {
+    final List<WalletModel> _allWalletList = [];
+
     try {
       final _res = await walletLoadAPIProvider.fetchWalletList();
 
       if (_res['data']['details'] != null) {
-        List<WalletModel> _walletList = [];
+        // final List<WalletModel> _walletList = [];
         final List _rawList = List.from(_res['data']?['details'] ?? []);
 
         _rawList.forEach((element) {
-          WalletModel _wallet = WalletModel.fromJson(element);
-          _walletList.add(_wallet);
+          final WalletModel _wallet = WalletModel.fromJson(element);
+          _allWalletList.add(_wallet);
         });
-        return DataResponse.success(_walletList);
+        final _ = await ServiceHiveUtils.setWalletList(
+            item: _allWalletList, slug: "wallet_list");
+
+        return DataResponse.success(_allWalletList);
       } else {
         return DataResponse.error("error message");
       }
@@ -69,12 +76,12 @@ class WalletLoadRepository {
       );
 
       if (_res['data']?['detail'] != null) {
-        Map<String, dynamic> _rawResponse =
+        final Map<String, dynamic> _rawResponse =
             Map<String, dynamic>.from(_res['data']?['detail'] ?? {});
         if (_rawResponse.isEmpty) {
           return DataResponse.error("Error while validating wallet");
         }
-        WalletValidationModel _validatedData =
+        final WalletValidationModel _validatedData =
             WalletValidationModel.fromJson(_rawResponse);
 
         return DataResponse.success(_validatedData);
@@ -119,12 +126,12 @@ class WalletLoadRepository {
           .read<CustomerDetailCubit>()
           .fetchCustomerDetail();
       if (_res['data'] != null) {
-        Map<String, dynamic> _rawResponse =
+        final Map<String, dynamic> _rawResponse =
             Map<String, dynamic>.from(_res['data'] ?? {});
         if (_rawResponse.isEmpty) {
           return DataResponse.error("Error while loading wallet.");
         }
-        WalletTransferModel _validatedData =
+        final WalletTransferModel _validatedData =
             WalletTransferModel.fromJson(_rawResponse);
 
         return DataResponse.success(_validatedData);
