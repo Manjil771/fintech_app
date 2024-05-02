@@ -139,7 +139,7 @@ flutter:
     # - assets/bhanjyang/
     # - assets/nawajosh/
     # - assets/gandakibesi/
-    # - assets/kripalu/
+    - assets/kripalu/
     # - assets/bhanjyang/
     # - assets/nawajosh/
     # - assets/nawajosh/
@@ -322,7 +322,7 @@ flutter:
     # - assets/saptakaushika/
     # - assets/samadhan/
     # - assets/tikeshwar/
-    - assets/upadesh/
+    # - assets/upadesh/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/

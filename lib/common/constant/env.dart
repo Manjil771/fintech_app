@@ -2009,7 +2009,7 @@ class CoOperativeValue {
   );
   static final CoOperative hamroDahachokCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.hamroDahachowk",
+    packageName: "com.devanasoft.hamroDahachok",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     clientCode: "LGW0MSQB9C",
     clientSecret: "181863",
@@ -3081,7 +3081,7 @@ class CoOperativeValue {
     coOperativeName: "Tikeshwar Krishi Bahuuddesiya Sahakari Sanstha Ltd.",
     appTitle: "Tikeshwar Krishi iSmart",
   );
-   static final CoOperative upadeshCoop = CoOperative(
+  static final CoOperative upadeshCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.upadesh",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -3095,5 +3095,5 @@ class CoOperativeValue {
     coOperativeName: "Upadesh Saving & Credit Co-operative Ltd.",
     appTitle: "Upadesh iSmart",
   );
-  static final CoOperative currentCoop = upadeshCoop;
+  static final CoOperative currentCoop = kripaluCoop;
 }
