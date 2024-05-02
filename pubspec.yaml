@@ -114,7 +114,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    - assets/bhaktapur_saccos/
+    # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -139,7 +139,7 @@ flutter:
     # - assets/bhanjyang/
     # - assets/nawajosh/
     # - assets/gandakibesi/
-    - assets/kripalu/
+    # - assets/kripalu/
     # - assets/bhanjyang/
     # - assets/nawajosh/
     # - assets/nawajosh/
@@ -323,6 +323,8 @@ flutter:
     # - assets/samadhan/
     # - assets/tikeshwar/
     # - assets/upadesh/
+    # - assets/aatmabal/
+    - assets/skBhawanipur/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/

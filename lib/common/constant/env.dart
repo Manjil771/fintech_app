@@ -3095,5 +3095,33 @@ class CoOperativeValue {
     coOperativeName: "Upadesh Saving & Credit Co-operative Ltd.",
     appTitle: "Upadesh iSmart",
   );
-  static final CoOperative currentCoop = kripaluCoop;
+  static final CoOperative aatmabalCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.aatmabal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aatmabal/aatmabal_banner.png",
+    backgroundImage: "assets/aatmabal/aatmabal_background.png",
+    clientCode: 'HOE5NGOM7E',
+    clientSecret: "192523",
+    coOperativeLogo: 'assets/aatmabal/aatmabal_logo.png',
+    splashImage: "assets/aatmabal/aatmabal_splash.png",
+    primaryColor: const Color(0xFF262262),
+    coOperativeName: "Aatmabal Saving & Credit Co-Operative Ltd.",
+    appTitle: "Aatmabal iSmart",
+  );
+  static final CoOperative skBhawanipur = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skBhawanipur",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skBhawanipur/skBhawanipur_banner.png",
+    backgroundImage: "assets/skBhawanipur/skBhawanipur_background.png",
+    clientCode: 'BWC5PUMS76',
+    clientSecret: "173340",
+    coOperativeLogo: 'assets/skBhawanipur/skBhawanipur_logo.png',
+    splashImage: "assets/skBhawanipur/skBhawanipur_splash.png",
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Mahila Sana Kisan Krishi Sahakari Sanstha Ltd.",
+    appTitle: "SFACL Mahila iSmart",
+  );
+  static final CoOperative currentCoop = skBhawanipur;
 }
