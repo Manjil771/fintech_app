@@ -1,6 +1,3 @@
-import 'dart:io';
-
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -12,45 +9,44 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 
 class ExternalQrWidget extends StatelessWidget {
   final Map<String, dynamic> qrDetail;
 
   ExternalQrWidget({super.key, required this.qrDetail});
   final _screenShotController = ScreenshotController();
-  XFile? imageFile;
+  // XFile? imageFile;
 
   final detail =
       RepositoryProvider.of<CustomerDetailRepository>(NavigationService.context)
           .selectedAccount
           .value!;
   final repo = RepositoryProvider.of<CoOperative>(NavigationService.context);
-  takeScreenshot() async {
-    final image = await _screenShotController.capture();
-    final tempFile = await _createTempImageFile(image!);
+  // takeScreenshot() async {
+  //   final image = await _screenShotController.capture();
+  //   final tempFile = await _createTempImageFile(image!);
 
-    if (tempFile != null) {
-      Share.shareXFiles([XFile(tempFile.path)]);
-    }
-  }
+  //   if (tempFile != null) {
+  //     Share.shareXFiles([XFile(tempFile.path)]);
+  //   }
+  // }
 
-  Future<XFile?> _createTempImageFile(Uint8List image) async {
-    try {
-      final directory = await getTemporaryDirectory();
-      const tempFileName = 'screenshot.png';
-      final tempFilePath = '${directory.path}/$tempFileName';
+  // Future<XFile?> _createTempImageFile(Uint8List image) async {
+  //   try {
+  //     final directory = await getTemporaryDirectory();
+  //     const tempFileName = 'screenshot.png';
+  //     final tempFilePath = '${directory.path}/$tempFileName';
 
-      await File(tempFilePath).writeAsBytes(image);
+  //     await File(tempFilePath).writeAsBytes(image);
 
-      return XFile(tempFilePath);
-    } catch (e) {
-      print('Error creating temp image file: $e');
-      return null;
-    }
-  }
+  //     return XFile(tempFilePath);
+  //   } catch (e) {
+  //     print('Error creating temp image file: $e');
+  //     return null;
+  //   }
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -128,7 +124,7 @@ class ExternalQrWidget extends StatelessWidget {
         CustomRoundedButtom(
           title: "Share",
           onPressed: () async {
-            takeScreenshot();
+            // takeScreenshot();
           },
         ),
       ],

@@ -7,7 +7,7 @@ import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:share_plus/share_plus.dart';
+// import 'package:share_plus/share_plus.dart';
 
 class BalanceInquiryWidget extends StatefulWidget {
   const BalanceInquiryWidget({Key? key}) : super(key: key);
@@ -174,9 +174,9 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                             final bankName = RepositoryProvider
                                                     .of<CoOperative>(context)
                                                 .appTitle;
-                                            await Share.share(
-                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].mainCode} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
-                                            );
+                                            // await Share.share(
+                                            //   'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].mainCode} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                            // );
                                           },
                                           isNetworkImage: false,
                                           containerImage:
