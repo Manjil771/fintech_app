@@ -11,12 +11,12 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 }
-def keystoreProperties = new Properties()
-//   def keystorePropertiesFile = rootProject.file('key.properties')
-  def keystorePropertiesFile = rootProject.file(System.getenv("KEYSTORE_FILE"))
-  if (keystorePropertiesFile.exists()) {
-      keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-}
+// def keystoreProperties = new Properties()
+// //   def keystorePropertiesFile = rootProject.file('key.properties')
+//   def keystorePropertiesFile = rootProject.file(System.getenv("KEYSTORE_FILE"))
+//   if (keystorePropertiesFile.exists()) {
+//       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+// }
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
