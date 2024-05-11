@@ -119,7 +119,7 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    # - assets/kabil/
+    - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
@@ -204,7 +204,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/

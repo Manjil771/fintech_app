@@ -2998,5 +2998,5 @@ class CoOperativeValue {
     coOperativeName: "Mahila Abhiyan Saving & Credit Co-operative Ltd.",
     appTitle: "Mahila Abhiyan iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = kabilCoop;
 }
