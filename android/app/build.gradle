@@ -11,12 +11,11 @@ if (localPropertiesFile.exists()) {
         localProperties.load(reader)
     }
 }
-// def keystoreProperties = new Properties()
-// //   def keystorePropertiesFile = rootProject.file('key.properties')
-//   def keystorePropertiesFile = rootProject.file(System.getenv("KEYSTORE_FILE"))
-//   if (keystorePropertiesFile.exists()) {
-//       keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
-// }
+def keystoreProperties = new Properties()
+  def keystorePropertiesFile = rootProject.file('key.properties')
+  if (keystorePropertiesFile.exists()) {
+      keystoreProperties.load(new FileInputStream(keystorePropertiesFile))
+}
 
 def flutterVersionCode = localProperties.getProperty('flutter.versionCode')
 if (flutterVersionCode == null) {
@@ -1250,18 +1249,18 @@ android {
     }
 
     signingConfigs {
-        release {
-            storeFile file(System.getenv("KEYSTORE_FILE"))
-            storePassword System.getenv("KEYSTORE_PASSWORD")
-            keyAlias System.getenv("KEY_ALIAS")
-            keyPassword System.getenv("KEY_PASSWORD")
-        }
-    //    release {
-    //        keyAlias keystoreProperties['keyAlias']
-    //        keyPassword keystoreProperties['keyPassword']
-    //        storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
-    //        storePassword keystoreProperties['storePassword']
-    //    }
+        // release {
+        //     storeFile file(System.getenv("KEYSTORE_FILE"))
+        //     storePassword System.getenv("KEYSTORE_PASSWORD")
+        //     keyAlias System.getenv("KEY_ALIAS")
+        //     keyPassword System.getenv("KEY_PASSWORD")
+        // }
+       release {
+           keyAlias keystoreProperties['keyAlias']
+           keyPassword keystoreProperties['keyPassword']
+           storeFile keystoreProperties['storeFile'] ? file(keystoreProperties['storeFile']) : null
+           storePassword keystoreProperties['storePassword']
+       }
    }
 
     buildTypes {
