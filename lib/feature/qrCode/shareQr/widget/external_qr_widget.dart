@@ -5,14 +5,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
@@ -53,86 +59,181 @@ class ExternalQrWidget extends StatelessWidget {
     }
   }
 
+  bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Screenshot(
-          controller: _screenShotController,
-          child: Container(
-            margin: const EdgeInsets.all(18),
-            decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: CustomTheme.darkerBlack)),
-            padding: const EdgeInsets.symmetric(horizontal: 32),
-            child: Column(
-              children: [
-                const SizedBox(height: 10),
-                qrDetail["terminalName"].toString().toLowerCase() != "null" &&
-                        qrDetail["terminalName"].toString().isNotEmpty
-                    ? CustomCachedNetworkImage(
-                        url: repo.baseUrl + qrDetail["qrLogoPath"],
-                        fit: BoxFit.cover,
-                        height: 3.h,
-                      )
-                    : Image.asset(
-                        Assets.ismartLogo,
-                        height: 3.h,
-                      ),
-                CustomCachedNetworkImage(
-                    url: repo.baseUrl + qrDetail["imagePath"],
-                    fit: BoxFit.cover),
-                Image.asset(
-                    RepositoryProvider.of<CoOperative>(context).bannerImage,
-                    height: 10.h),
-              ],
+    // final List newData = qrData
+    //     .where(
+    //       (element) =>
+    //           element["imagePath"].toString().isNotEmpty &&
+    //           element["imagePath"].toString().toLowerCase() != "null",
+    //     )
+    //     .toList();
+    return BlocListener<UtilityPaymentCubit, CommonState>(
+      listener: (context, state) {
+        if (state is CommonLoading && _isLoading == false) {
+          _isLoading = true;
+          showLoadingDialogBox(context);
+        } else if (state is! CommonLoading && _isLoading) {
+          _isLoading = false;
+          NavigationService.pop();
+        }
+        if (state is CommonError) {
+          showPopUpDialog(
+            context: context,
+            message: state.message,
+            title: "Error",
+            showCancelButton: false,
+            buttonCallback: () {
+              NavigationService.pop();
+            },
+          );
+        }
+        if (state is CommonStateSuccess<UtilityResponseData>) {
+          final UtilityResponseData _response = state.data;
+          if (_response.code == "M0000") {
+            showPopUpDialog(
+              context: context,
+              message: _response.message,
+              title: _response.status,
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          } else {
+            showPopUpDialog(
+              context: context,
+              message: _response.message,
+              title: "Exception",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
+          }
+        }
+      },
+      child: Column(
+        children: [
+          Screenshot(
+            controller: _screenShotController,
+            child: Container(
+              margin: const EdgeInsets.all(18),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  border: Border.all(color: CustomTheme.darkerBlack)),
+              padding: const EdgeInsets.symmetric(horizontal: 32),
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+                  qrDetail["qrLogoPath"].toString().toLowerCase() != "null" &&
+                          qrDetail["qrLogoPath"].toString().isNotEmpty
+                      ? CustomCachedNetworkImage(
+                          url: repo.baseUrl + qrDetail["qrLogoPath"],
+                          fit: BoxFit.cover,
+                          height: 3.h,
+                        )
+                      : Image.asset(
+                          Assets.ismartLogo,
+                          height: 3.h,
+                        ),
+                  qrDetail["imagePath"].toString().toLowerCase() != "null" &&
+                          qrDetail["imagePath"].toString().isNotEmpty
+                      ? CustomCachedNetworkImage(
+                          url: repo.baseUrl + qrDetail["imagePath"],
+                          fit: BoxFit.cover)
+                      : Container(
+                          height: 250.hp,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Text(
+                                "No External Qr found. Please request your Co-operative.",
+                                textAlign: TextAlign.center,
+                                style: TextStyle(
+                                    fontSize: 16, fontWeight: FontWeight.w500),
+                              ),
+                            ],
+                          ),
+                        ),
+                  Image.asset(
+                      RepositoryProvider.of<CoOperative>(context).bannerImage,
+                      height: 10.h),
+                ],
+              ),
             ),
           ),
-        ),
-        if (qrDetail["qrType"] == "internal")
-          Column(
-            children: [
-              KeyValueTile(
-                title: "Name",
-                value: detail.accountHolderName,
-              ),
-              KeyValueTile(
-                title: "Account Number",
-                value: detail.mainCode,
-              ),
-            ],
-          ),
-        if (qrDetail["qrType"] == "external")
-          Column(
-            children: [
-              if (qrDetail["terminalName"].toString().toLowerCase() != "null" &&
-                  qrDetail["terminalName"].toString().isNotEmpty)
+          if (qrDetail["qrType"] == "internal")
+            Column(
+              children: [
                 KeyValueTile(
                   title: "Name",
-                  value: qrDetail["terminalName"].toString(),
+                  value: detail.accountHolderName,
                 ),
-              if (qrDetail["qrPhoneNumber"].toString().toLowerCase() !=
-                      "null" &&
-                  qrDetail["qrPhoneNumber"].toString().isNotEmpty)
                 KeyValueTile(
-                  title: "Mobile Number",
-                  value: qrDetail["qrPhoneNumber"].toString(),
+                  title: "Account Number",
+                  value: detail.mainCode,
                 ),
-              if (qrDetail["terminalId"].toString().toLowerCase() != "null" &&
-                  qrDetail["terminalId"].toString().isNotEmpty)
-                KeyValueTile(
-                  title: "Terminal ID",
-                  value: qrDetail["terminalId"].toString(),
+              ],
+            ),
+          if (qrDetail["qrType"] == "external")
+            Column(
+              children: [
+                if (qrDetail["terminalName"].toString().toLowerCase() !=
+                        "null" &&
+                    qrDetail["terminalName"].toString().isNotEmpty)
+                  KeyValueTile(
+                    title: "Name",
+                    value: qrDetail["terminalName"].toString(),
+                  ),
+                if (qrDetail["qrPhoneNumber"].toString().toLowerCase() !=
+                        "null" &&
+                    qrDetail["qrPhoneNumber"].toString().isNotEmpty)
+                  KeyValueTile(
+                    title: "Mobile Number",
+                    value: qrDetail["qrPhoneNumber"].toString(),
+                  ),
+                if (qrDetail["terminalId"].toString().toLowerCase() != "null" &&
+                    qrDetail["terminalId"].toString().isNotEmpty)
+                  KeyValueTile(
+                    title: "Terminal ID",
+                    value: qrDetail["terminalId"].toString(),
+                  ),
+              ],
+            ),
+          qrDetail["imagePath"].toString().toLowerCase() != "null" &&
+                  qrDetail["imagePath"].toString().isNotEmpty
+              ? CustomRoundedButtom(
+                  title: "Share",
+                  onPressed: () async {
+                    takeScreenshot();
+                  },
+                )
+              : CustomRoundedButtom(
+                  title: "Request QR",
+                  onPressed: () async {
+                    final String mPin = await SecureStorageService.appPassword;
+                    context.read<UtilityPaymentCubit>().makePayment(
+                        serviceIdentifier: "",
+                        accountDetails: {},
+                        body: {
+                          "accountNumber":
+                              RepositoryProvider.of<CustomerDetailRepository>(
+                                      context)
+                                  .selectedAccount
+                                  .value!
+                                  .accountNumber,
+                          "chequeLeaves": "10",
+                          "mPin": mPin,
+                        },
+                        apiEndpoint: "api/chequerequest",
+                        mPin: mPin);
+                  },
                 ),
-            ],
-          ),
-        CustomRoundedButtom(
-          title: "Share",
-          onPressed: () async {
-            takeScreenshot();
-          },
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
