@@ -96,6 +96,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
                                     utilityPaymentRepository: RepositoryProvider
                                         .of<UtilityPaymentRepository>(context)),
                                 child: ExternalQrWidget(
+                                  showQr: true,
                                   qrDetail: qrData[index],
                                 ),
                               ),

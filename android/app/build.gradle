@@ -601,6 +601,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        sklakhanpur{
+            dimension "app"
+            applicationId "com.devanasoft.sklakhanpur"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         shakambhari{
             dimension "app"
             applicationId "com.devanasoft.shakambhari"
@@ -619,6 +625,13 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         pratham{
+            dimension "app"
+            applicationId "com.devanasoft.pratham"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+       
         aatmabal{
             dimension "app"
             applicationId "com.devanasoft.aatmabal"

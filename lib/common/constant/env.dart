@@ -3123,5 +3123,34 @@ class CoOperativeValue {
     coOperativeName: "Mahila Sana Kisan Krishi Sahakari Sanstha Ltd.",
     appTitle: "SFACL Mahila iSmart",
   );
-  static final CoOperative currentCoop = skBhawanipur;
+  static final CoOperative prathamMultiCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.pratham",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pratham/pratham_banner.png",
+    backgroundImage: "assets/pratham/pratham_background.png",
+    clientCode: 'B4SEGK13GE',
+    clientSecret: "205060",
+    coOperativeLogo: 'assets/pratham/pratham_logo.png',
+    splashImage: "assets/pratham/pratham_splash.png",
+    primaryColor: const Color(0xFF303184),
+    coOperativeName: "Pratham Multipurpose Co-operative Ltd.",
+    appTitle: "Pratham Multi iSmart",
+  );
+
+  static final CoOperative skLakhanpur = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sklakhanpur",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sklakhanpur/sklakhanpur_banner.png",
+    backgroundImage: "assets/sklakhanpur/sklakhanpur_background.png",
+    clientCode: 'WYUYSH0GPB',
+    clientSecret: "205916",
+    coOperativeLogo: 'assets/sklakhanpur/sklakhanpur_logo.png',
+    splashImage: "assets/sklakhanpur/sklakhanpur_splash.png",
+    primaryColor: const Color(0xFF3ea247),
+    coOperativeName: "Lakhanpur Sana Kisan Agriculture Cooperative Ltd.",
+    appTitle: "SFACL Lakhanpur iSmart",
+  );
+  static final CoOperative currentCoop = sadasyaSewaCoop;
 }

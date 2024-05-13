@@ -9,7 +9,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
@@ -24,9 +23,10 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ExternalQrWidget extends StatelessWidget {
-  final Map<String, dynamic> qrDetail;
+  final Map<String, dynamic> qrDetail;final bool showQr;
 
-  ExternalQrWidget({super.key, required this.qrDetail});
+
+  ExternalQrWidget({super.key, required this.qrDetail, required this.showQr});
   final _screenShotController = ScreenshotController();
   XFile? imageFile;
 
@@ -214,22 +214,12 @@ class ExternalQrWidget extends StatelessWidget {
               : CustomRoundedButtom(
                   title: "Request QR",
                   onPressed: () async {
-                    final String mPin = await SecureStorageService.appPassword;
                     context.read<UtilityPaymentCubit>().makePayment(
                         serviceIdentifier: "",
                         accountDetails: {},
-                        body: {
-                          "accountNumber":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber,
-                          "chequeLeaves": "10",
-                          "mPin": mPin,
-                        },
-                        apiEndpoint: "api/chequerequest",
-                        mPin: mPin);
+                        body: {},
+                        apiEndpoint: "api/qrRequest",
+                        mPin: "");
                   },
                 ),
         ],
