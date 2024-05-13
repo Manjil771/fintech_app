@@ -146,7 +146,7 @@ flutter:
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
-    # - assets/nepalbachat/
+    - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
