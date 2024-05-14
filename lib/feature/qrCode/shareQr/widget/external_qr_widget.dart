@@ -23,8 +23,8 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
 class ExternalQrWidget extends StatelessWidget {
-  final Map<String, dynamic> qrDetail;final bool showQr;
-
+  final Map<String, dynamic> qrDetail;
+  final bool showQr;
 
   ExternalQrWidget({super.key, required this.qrDetail, required this.showQr});
   final _screenShotController = ScreenshotController();
@@ -96,7 +96,7 @@ class ExternalQrWidget extends StatelessWidget {
             showPopUpDialog(
               context: context,
               message: _response.message,
-              title: _response.status,
+              title: "Success",
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -148,12 +148,16 @@ class ExternalQrWidget extends StatelessWidget {
                           height: 250.hp,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Text(
+                            children: [
+                              Image.asset(
+                                "assets/images/qr infographics.png",
+                                height: 200.hp,
+                              ),
+                              const Text(
                                 "No External Qr found. Please request your Co-operative.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
-                                    fontSize: 16, fontWeight: FontWeight.w500),
+                                    fontSize: 12, fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),

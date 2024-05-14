@@ -3152,5 +3152,19 @@ class CoOperativeValue {
     coOperativeName: "Lakhanpur Sana Kisan Agriculture Cooperative Ltd.",
     appTitle: "SFACL Lakhanpur iSmart",
   );
-  static final CoOperative currentCoop = sadasyaSewaCoop;
+  static final CoOperative gagankalikaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.gagankalika",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/gagankalika/gagankalika_banner.png",
+    backgroundImage: "assets/gagankalika/gagankalika_background.png",
+    clientCode: 'WYUYSH0GPB',
+    clientSecret: "205916",
+    coOperativeLogo: 'assets/gagankalika/gagankalika_logo.png',
+    splashImage: "assets/gagankalika/gagankalika_splash.png",
+    primaryColor: const Color(0xFF007948),
+    coOperativeName: "Lakhanpur Sana Kisan Agriculture Cooperative Ltd.",
+    appTitle: "SFACL Lakhanpur iSmart",
+  );
+  static final CoOperative currentCoop = devLive;
 }
