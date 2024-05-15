@@ -133,11 +133,11 @@ class ExternalQrWidget extends StatelessWidget {
                       ? CustomCachedNetworkImage(
                           url: repo.baseUrl + qrDetail["qrLogoPath"],
                           fit: BoxFit.cover,
-                          height: 3.h,
+                          height: 5.h,
                         )
                       : Image.asset(
                           Assets.ismartLogo,
-                          height: 3.h,
+                          height: 5.h,
                         ),
                   qrDetail["imagePath"].toString().toLowerCase() != "null" &&
                           qrDetail["imagePath"].toString().isNotEmpty
@@ -154,7 +154,7 @@ class ExternalQrWidget extends StatelessWidget {
                                 height: 200.hp,
                               ),
                               const Text(
-                                "No External Qr found. Please request your Co-operative.",
+                                "No External QR found. Please request your co-operative.",
                                 textAlign: TextAlign.center,
                                 style: TextStyle(
                                     fontSize: 12, fontWeight: FontWeight.w500),
