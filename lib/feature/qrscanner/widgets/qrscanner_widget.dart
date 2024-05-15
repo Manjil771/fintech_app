@@ -627,6 +627,11 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 "pay_load": qrCode,
               },
               apiEndpoint: "api/qpay/merchant_detail");
+        } else {
+          return NavigationService.pushReplacement(
+              target: NoServiceScreen(
+                  data: appServiceFilter(
+                      identifier: Slugs.bankTransfer, state: appSeriveList)));
         }
       }
     } catch (e) {
@@ -692,6 +697,7 @@ class NoServiceScreen extends StatelessWidget {
         showBackButton: true,
         body: NoDataScreen(
             title: "Service Unavailable",
-            details: "Service is currently unavailable please contact admin"));
+            details:
+                "Service is currently unavailable please contact your Co-operative."));
   }
 }
