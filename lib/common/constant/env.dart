@@ -3166,5 +3166,5 @@ class CoOperativeValue {
     coOperativeName: "Shree Gagankalika Saving & Credit Co-Operative Ltd.",
     appTitle: "Gagankalika iSmart",
   );
-  static final CoOperative currentCoop = babiraCoop;
+  static final CoOperative currentCoop = sadasyaSewaCoop;
 }
