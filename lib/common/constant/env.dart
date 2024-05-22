@@ -3166,5 +3166,35 @@ class CoOperativeValue {
     coOperativeName: "Shree Gagankalika Saving & Credit Co-Operative Ltd.",
     appTitle: "Gagankalika iSmart",
   );
-  static final CoOperative currentCoop = sadasyaSewaCoop;
+  static final CoOperative skDhankuta = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skDhankuta",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skDhankuta/skDhankuta_banner.png",
+    backgroundImage: "assets/skDhankuta/skDhankuta_background.png",
+    clientCode: 'N4I9IO1AUH',
+    clientSecret: "151314",
+    coOperativeLogo: 'assets/skDhankuta/skDhankuta_logo.png',
+    splashImage: "assets/skDhankuta/skDhankuta_splash.png",
+    primaryColor: const Color(0xFF007948),
+    coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Dhankuta",
+    appTitle: "SFACL Dhankuta iSmart",
+  );
+  static final CoOperative jayShreeNavadurga = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.jayshreenavadurga",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jayshreenavadurga/jayshreenavadurga_banner.png",
+    backgroundImage:
+        "assets/jayshreenavadurga/jayshreenavadurga_background.png",
+    clientCode: 'Q1SGJ2CMB1',
+    clientSecret: "193621",
+    coOperativeLogo: 'assets/jayshreenavadurga/jayshreenavadurga_logo.png',
+    splashImage: "assets/jayshreenavadurga/jayshreenavadurga_splash.png",
+    primaryColor: const Color(0xFF059848),
+    coOperativeName:
+        "Jay Shree Mata Navadurga Saving & Credit Co-oerative Ltd.",
+    appTitle: " Jay Shree Navadurga iSmart",
+  );
+  static final CoOperative currentCoop = jayShreeNavadurga;
 }
