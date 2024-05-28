@@ -28,7 +28,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "com.devanasoft.ismart_flutter"
+    // namespace "com.devanasoft.ismart_flutter"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
