@@ -17,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
+
 class InternalQrWidget extends StatelessWidget {
   final String qrPath;
   InternalQrWidget({Key? key, required this.qrPath}) : super(key: key);

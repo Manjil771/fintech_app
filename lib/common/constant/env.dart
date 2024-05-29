@@ -3196,5 +3196,33 @@ class CoOperativeValue {
         "Jay Shree Mata Navadurga Saving & Credit Co-oerative Ltd.",
     appTitle: " Jay Shree Navadurga iSmart",
   );
-  static final CoOperative currentCoop = jayShreeNavadurga;
+  static final CoOperative shreeKrishnaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreekrishna",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreekrishna/shreekrishna_banner.png",
+    backgroundImage: "assets/shreekrishna/shreekrishna_background.png",
+    clientCode: 'P1D1ZVJRBI',
+    clientSecret: "146850",
+    coOperativeLogo: 'assets/shreekrishna/shreekrishna_logo.png',
+    splashImage: "assets/shreekrishna/shreekrishna_splash.png",
+    primaryColor: const Color(0xFF00A551),
+    coOperativeName: "Shree Krishna Saving & Credit Co-operative Litd.",
+    appTitle: "Shree Krishna iSmart",
+  );
+  static final CoOperative amanaMulti = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.amana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/amana/amana_banner.png",
+    backgroundImage: "assets/amana/amana_background.png",
+    clientCode: 'F68XPDCHDZ',
+    clientSecret: "214594",
+    coOperativeLogo: 'assets/amana/amana_logo.png',
+    splashImage: "assets/amana/amana_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Amana Multipurpose Co-operative Ltd.",
+    appTitle: "Amana Multi iSmart",
+  );
+  static final CoOperative currentCoop = amanaMulti;
 }

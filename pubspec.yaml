@@ -325,7 +325,9 @@ flutter:
     # - assets/aatmabal/
     # - assets/pratham/
     # - assets/gagankalika/
-    - assets/jayshreenavadurga/
+    # - assets/jayshreenavadurga/
+    # - assets/shreekrishna/
+    - assets/amana/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
