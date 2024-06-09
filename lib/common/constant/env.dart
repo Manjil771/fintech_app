@@ -298,6 +298,20 @@ class CoOperativeValue {
       appStoreID: "",
       appTitle: "Finnact Demo",
       shouldValidateCooperative: true);
+  static final CoOperative magnusDevTest = CoOperative(
+      baseUrl: 'http://192.168.1.7:8080/',
+      bannerImage: "assets/images/ismart_banner.png",
+      clientCode: '2GTJLFR1K6',
+      backgroundImage: "assets/images/ismart_background_image.jpg",
+      coOperativeName: '',
+      coOperativeLogo: Assets.ismartLogo,
+      clientSecret: "185890",
+      splashImage: "assets/images/ismart_splash.png",
+      primaryColor: const Color(0xFF010C80),
+      packageName: "com.devanasoft.ismart",
+      appStoreID: "",
+      appTitle: "Magnus Demo",
+      shouldValidateCooperative: false);
   static final CoOperative kabilCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/kabil/kabil_banner.png",
@@ -3224,5 +3238,5 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = amanaMulti;
+  static final CoOperative currentCoop = tikeshwarKrishi;
 }

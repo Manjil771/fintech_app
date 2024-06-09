@@ -1,14 +1,16 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
-import 'package:ismart/app/app_dev.dart';
-import 'package:ismart/app/local_wrapper.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/log.dart';
+
+import 'app/app_dev.dart';
+import 'app/local_wrapper.dart';
+import 'common/constant/env.dart';
 
 /// entrypoint to app in dev mode
 Future<void> main() async {
@@ -21,9 +23,11 @@ Future<void> main() async {
     }
     await EasyLocalization.ensureInitialized();
     HttpOverrides.global = MyHttpOverrides();
-    runApp(
-      LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),
-    );
+    runApp(DevicePreview(
+      enabled: false,
+      builder: (context) =>
+          LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),
+    ));
   }, (e, s) {
     Log.e(e);
     Log.d(s);

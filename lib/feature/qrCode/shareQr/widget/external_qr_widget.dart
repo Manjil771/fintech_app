@@ -59,6 +59,23 @@ class ExternalQrWidget extends StatelessWidget {
     }
   }
 
+  Widget _getImageWidget() {
+    String coOpLogo =
+        RepositoryProvider.of<CoOperative>(NavigationService.context)
+            .bannerImage;
+    if (coOpLogo.contains("https://")) {
+      return Image.network(
+        coOpLogo,
+        height: 5.h,
+      );
+    } else {
+      return Image.asset(
+        coOpLogo,
+        height: 5.h,
+      );
+    }
+  }
+
   bool _isLoading = false;
 
   @override
@@ -162,9 +179,7 @@ class ExternalQrWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                  Image.asset(
-                      RepositoryProvider.of<CoOperative>(context).bannerImage,
-                      height: 10.h),
+                  _getImageWidget(),
                 ],
               ),
             ),
