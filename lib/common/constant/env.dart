@@ -299,7 +299,7 @@ class CoOperativeValue {
       appTitle: "Finnact Demo",
       shouldValidateCooperative: true);
   static final CoOperative magnusDevTest = CoOperative(
-      baseUrl: 'http://192.168.1.7:8080/',
+      baseUrl: 'http://192.168.1.43:8080/',
       bannerImage: "assets/images/ismart_banner.png",
       clientCode: '2GTJLFR1K6',
       backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -3238,5 +3238,5 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = tikeshwarKrishi;
+  static final CoOperative currentCoop = devLive;
 }

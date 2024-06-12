@@ -97,6 +97,7 @@
 		3FCD55F7C5254679CE6D62C7 /* Pods-Runner.debug-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-shreemitra.xcconfig"; sourceTree = "<group>"; };
 		3FF1AEA5227F4D78D71E0551 /* Pods-Runner.release-matribhumi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-matribhumi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-matribhumi.xcconfig"; sourceTree = "<group>"; };
 		41973AE0ABA4AECDFF4E8AA9 /* Pods-Runner.release-nayan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nayan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nayan.xcconfig"; sourceTree = "<group>"; };
+		428BB8EEB094AEFDDE86E644 /* Pods-Runner.release-shreekrishna.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreekrishna.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreekrishna.xcconfig"; sourceTree = "<group>"; };
 		46A2D265BC8E165938ABED9A /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
 		46EE0944B8797355237D19FA /* Pods-Runner.release-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gomaganesh.xcconfig"; sourceTree = "<group>"; };
 		49645A18B17F622DBC40FE18 /* Pods-Runner.release-shreeaaju.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreeaaju.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreeaaju.xcconfig"; sourceTree = "<group>"; };
@@ -433,6 +434,7 @@
 				4E77E5E79E294EA68AEDA38E /* Pods-Runner.release-tarkariphalafool.xcconfig */,
 				80A36221B7EF45698B690D40 /* Pods-Runner.release-ajambari.xcconfig */,
 				721EA45E0BF1032BDF162F23 /* Pods-Runner.release-omshreeom.xcconfig */,
+				428BB8EEB094AEFDDE86E644 /* Pods-Runner.release-shreekrishna.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2613,6 +2615,7 @@
 				FLUTTER_BUILD_NAME = 0.0.36;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Akashbani iSmart";
+				"INFOPLIST_KEY_CFBundleDisplayName[sdk=*]" = "Akashbani iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
 				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -7316,7 +7319,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.36;
+				FLUTTER_BUILD_NAME = 0.0.37;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Matribhumi Coop iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -11023,7 +11026,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.42;
+				FLUTTER_BUILD_NAME = 0.0.44;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Devanasoft iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";

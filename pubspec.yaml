@@ -264,7 +264,7 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    - assets/sakar/
+    # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
     # - assets/shikshakheet/
@@ -302,7 +302,7 @@ flutter:
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
-    # - assets/babylon/
+    - assets/babylon/
     # - assets/shakambhari/
     # - assets/tarkariphalafool/
     # - assets/abhinna/
