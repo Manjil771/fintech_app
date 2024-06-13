@@ -3238,5 +3238,5 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = matribhumiCoop;
 }

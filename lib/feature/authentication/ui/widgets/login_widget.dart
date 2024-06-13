@@ -298,7 +298,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
-                        if (!val) {
+                        if (val) {
                           return LoginCustomTextField(
                             leading:
                                 BlocBuilder<UtilityPaymentCubit, CommonState>(

@@ -419,7 +419,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                               showCancelButton: false,
                               buttonCallback: () {
                                 NavigationService.pop();
-                                NavigationService.pop();
                               },
                               title: 'Scan QR ',
                             );

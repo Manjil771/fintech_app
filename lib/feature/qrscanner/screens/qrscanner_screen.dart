@@ -49,12 +49,13 @@ class QRScannerScreens extends StatelessWidget {
         child: BlocBuilder<WalletListCubit, CommonState>(
           builder: (context, state) {
             if (state is CommonDataFetchSuccess<WalletModel>) {
-             final List<WalletModel> _walletList = state.data;
+              final List<WalletModel> _walletList = state.data;
 
-              return QRScannerWidgets(
+              final qrScannerWidgets = QRScannerWidgets(
                 walletLists: _walletList,
                 remarks: remarks,
               );
+              return qrScannerWidgets;
             }
             if (state is CommonLoading) {
               return const CommonLoadingWidget();
