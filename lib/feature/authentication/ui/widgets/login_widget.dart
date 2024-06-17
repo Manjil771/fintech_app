@@ -17,6 +17,7 @@ import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
@@ -262,13 +263,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                         if (state is CommonDataFetchSuccess<LoginCoOpValue> &&
                             state.data.length > 1) {
                           return CustomTextField(
-                            title: "CoOperative",
-                            hintText: "Select CoOperative",
+                            title: "Cooperative",
+                            hintText: "Select Cooperative",
                             readOnly: true,
                             controller: _selectedCoopController,
                             validator: (val) =>
                                 FormValidator.validateFieldNotEmpty(
-                                    val, "CoOperative"),
+                                    val, "Cooperative"),
                             onTap: () {
                               NavigationService.push(
                                 target: CoopSelectWidget(
@@ -298,7 +299,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
-                        if (val) {
+                        if (!val) {
                           return LoginCustomTextField(
                             leading:
                                 BlocBuilder<UtilityPaymentCubit, CommonState>(
@@ -311,10 +312,12 @@ class _LoginWidgetState extends State<LoginWidget> {
                                   return InkWell(
                                       child: Row(
                                         children: [
-                                          Image.network(
-                                            "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
+                                          CustomCachedNetworkImage(
+                                            url:
+                                                "https://www.geonames.org/flags/x/$_selectedCountryValue.gif",
                                             height: 20,
                                             width: 30,
+                                            fit: BoxFit.fitHeight,
                                           ),
                                           SizedBox(width: 5.wp),
                                           if (showCountyCode)
