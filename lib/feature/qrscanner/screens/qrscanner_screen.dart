@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/qrscanner/widgets/qrscanner_widget.dart';
@@ -48,17 +49,23 @@ class QRScannerScreens extends StatelessWidget {
         child: BlocBuilder<WalletListCubit, CommonState>(
           builder: (context, state) {
             if (state is CommonDataFetchSuccess<WalletModel>) {
-              List<WalletModel> _walletList = state.data;
+              final List<WalletModel> _walletList = state.data;
 
-              return QRScannerWidgets(
+              final qrScannerWidgets = QRScannerWidgets(
                 walletLists: _walletList,
                 remarks: remarks,
               );
+              return qrScannerWidgets;
             }
             if (state is CommonLoading) {
               return const CommonLoadingWidget();
             } else if (state is CommonError) {
-              return const NoDataScreen(title: "No Wallet Found", details: "");
+              return const PageWrapper(
+                  showAppBar: true,
+                  showBackButton: true,
+                  body: NoDataScreen(
+                      title: "No Wallet List Found",
+                      details: "Please contact your Co-operative"));
             }
             return Container();
           },

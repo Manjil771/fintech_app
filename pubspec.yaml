@@ -1,7 +1,7 @@
 name: ismart
 description: A new Flutter project.
 
-version: 0.0.48+48
+version: 0.0.50+50
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -15,7 +15,6 @@ dependencies:
   # ui  widgets
   cupertino_icons: ^1.0.4
   flutter_svg: ^1.1.4
-
   cached_network_image: ^3.2.0
   flutter_cache_manager: ^3.3.0
   shimmer: ^2.0.0
@@ -33,6 +32,7 @@ dependencies:
   # network
   dio: ^4.0.6
   http: ^0.13.4
+  device_preview: ^1.1.0
 
   # connectivity_plus: ^4.0.1
 
@@ -90,7 +90,7 @@ dependencies:
   string_similarity: ^2.0.0
   local_session_timeout: ^2.3.2
   crop_your_image: ^0.7.4
-  fluttercontactpicker: ^4.7.0 
+  fluttercontactpicker: ^4.7.0
   image_cropper: ^4.0.1
   hive_flutter: ^1.1.0
 
@@ -111,10 +111,9 @@ flutter:
     - assets/images/
     # - assets/janadhara/
     # - assets/sahakarya/
-    # - assets/kabil/
+
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/uttarganga/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -155,7 +154,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -197,7 +196,6 @@ flutter:
     # - assets/sunshine/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -289,7 +287,7 @@ flutter:
     # - assets/sunakothi/
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
-    - assets/sayapatri/
+    # - assets/sayapatri/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
@@ -312,11 +310,25 @@ flutter:
     # - assets/tapobhumi/
     # - assets/samudayik/
     # - assets/supya/
-    - assets/shreepathibhara/
+    # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
+    # - assets/ajambari/
+    # - assets/sunshineLaxmi/
+    # - assets/sundarbagmati/
+    # - assets/jayarupatal/
+    # - assets/saptakaushika/
+    # - assets/samadhan/
+    # - assets/tikeshwar/
+    # - assets/upadesh/
+    # - assets/aatmabal/
+    # - assets/pratham/
+    # - assets/gagankalika/
+    # - assets/jayshreenavadurga/
+    # - assets/shreekrishna/
+    # - assets/amana/
 
     # sana ksihan assets
     # - assets/sanakishanHathasuwa/
@@ -327,6 +339,9 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
+    # - assets/sklakhanpur/
+    # - assets/skBhawanipur/
+    # - assets/skDhankuta/
 
   fonts:
     - family: popinbold

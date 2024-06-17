@@ -422,7 +422,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               _selectedSectorTo.value == null) {
             showPopUpDialog(
                 context: context,
-                message: "Select Select Sector",
+                message: "Select Sector",
                 title: "Select Location",
                 showCancelButton: false,
                 buttonCallback: () {

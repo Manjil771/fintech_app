@@ -21,6 +21,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/eteller/screen/eteller_page.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
@@ -224,7 +225,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               title: _response.status,
               buttonCallback: () {
                 NavigationService.pop();
-                NavigationService.pop();
               },
               buttonText: "Okay",
             );
@@ -361,7 +361,11 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                       crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Image.asset(
-                          Assets.ismartSlogan,
+                          RepositoryProvider.of<CoOperative>(context)
+                                      .clientCode ==
+                                  "JY2BVRD208"
+                              ? "assets/sadasyaSewa/sadasyasewa slogan.png"
+                              : Assets.ismartSlogan,
                           height: 60.hp,
                         ),
                       ],
@@ -414,7 +418,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                               message: _res.message ?? "Invalid QR Code.",
                               showCancelButton: false,
                               buttonCallback: () {
-                                NavigationService.pop();
                                 NavigationService.pop();
                               },
                               title: 'Scan QR ',
@@ -628,6 +631,11 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 "pay_load": qrCode,
               },
               apiEndpoint: "api/qpay/merchant_detail");
+        } else {
+          return NavigationService.pushReplacement(
+              target: NoServiceScreen(
+                  data: appServiceFilter(
+                      identifier: Slugs.bankTransfer, state: appSeriveList)));
         }
       }
     } catch (e) {
@@ -689,10 +697,23 @@ class NoServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const PageWrapper(
+    return PageWrapper(
         showBackButton: true,
-        body: NoDataScreen(
-            title: "Service Unavailable",
-            details: "Service is currently unavailable please contact admin"));
+        body: Column(
+          children: [
+            const NoDataScreen(
+                title: "QR Not Identified.",
+                details: "Please contact your co-operative."),
+            const SizedBox(
+              height: 20,
+            ),
+            CustomRoundedButtom(
+                title: "Dashboard",
+                onPressed: () {
+                  NavigationService.pushReplacement(
+                      target: const DashboardPage());
+                })
+          ],
+        ));
   }
 }

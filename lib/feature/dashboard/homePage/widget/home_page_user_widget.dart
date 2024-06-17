@@ -189,16 +189,23 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         children: [
                                           Row(
                                             children: [
-                                              Text(
-                                                "${selectedAcc?.accountType} A/C",
-                                                style: _textTheme.titleSmall
-                                                    ?.copyWith(
-                                                  color: CustomTheme.white,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold,
+                                              Expanded(
+                                                child: Container(
+                                                  child: Text(
+                                                    "${selectedAcc?.accountType}",
+                                                    style: _textTheme.titleSmall
+                                                        ?.copyWith(
+                                                      color: CustomTheme.white,
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                    // overflow: TextOverflow.clip,
+                                                    maxLines: 1,
+                                                  ),
                                                 ),
                                               ),
-                                              const SizedBox(width: 10),
+                                              SizedBox(width: _width * 0.01),
                                               RotatedBox(
                                                 quarterTurns: 5,
                                                 child: SvgPicture.asset(
@@ -207,30 +214,29 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                                   height: _height * 0.015,
                                                 ),
                                               ),
-                                              SizedBox(width: _width * 0.04),
+                                              SizedBox(width: _width * 0.02),
                                               if (selectedAcc?.primary
                                                       .toString() ==
                                                   "true")
-                                                Expanded(
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            CustomTheme.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8)),
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Primary",
-                                                        style: _textTheme
-                                                            .titleSmall
-                                                            ?.copyWith(
-                                                          color: CustomTheme
-                                                              .primaryColor,
-                                                          fontSize: 9,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(2),
+                                                  decoration: BoxDecoration(
+                                                      color: CustomTheme.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "P",
+                                                      style: _textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                        color: CustomTheme
+                                                            .primaryColor,
+                                                        fontSize: 9,
+                                                        fontWeight:
+                                                            FontWeight.bold,
                                                       ),
                                                     ),
                                                   ),

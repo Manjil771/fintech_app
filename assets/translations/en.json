@@ -2,7 +2,8 @@
   "appName": "This app",
   "auth": {
     "unableToLogin": "Unable to login",
-    "password" : "Password"
+    "password" : "Password",
+    "email" : "Email"
   },
   "dashboard" : {
     "dashboard" : "Dashboard"

@@ -15,6 +15,10 @@ class ServiceHiveUtils {
 
   static const String _serviceListing = "serviceListing";
   static const String _serviceDetails = "serviceDetails";
+  static const String _appServiceListing = "appServiceListing";
+  static const String _appServiceDetails = "appServiceDetails";
+  static const String _walletServiceListing = "walletServiceListing";
+  static const String _walletServiceDetails = "walletServiceDetails";
 
   static init() async {
     print("Hive Initialized");
@@ -70,7 +74,7 @@ class ServiceHiveUtils {
   static Future<void> setAppService(
       {required List<AppServiceManagementModel> item,
       required String slug}) async {
-    final _utilitiesHive = await Hive.openBox(_serviceListing);
+    final _utilitiesHive = await Hive.openBox(_appServiceDetails);
     await _utilitiesHive.put(slug, item.map((e) => e.toJson()).toList());
     await _utilitiesHive.close();
   }
@@ -78,7 +82,7 @@ class ServiceHiveUtils {
   static Future<List<AppServiceManagementModel>> getAppService(
       {required String slug}) async {
     try {
-      final _utilitiesHive = await Hive.openBox(_serviceListing);
+      final _utilitiesHive = await Hive.openBox(_appServiceListing);
       final _data = _utilitiesHive.get(slug);
       final _items = List.from(_data ?? []);
       await _utilitiesHive.close();
@@ -93,14 +97,14 @@ class ServiceHiveUtils {
 
   static Future<void> setWalletList(
       {required List<WalletModel> item, required String slug}) async {
-    final _utilitiesHive = await Hive.openBox(_serviceListing);
+    final _utilitiesHive = await Hive.openBox(_walletServiceDetails);
     await _utilitiesHive.put(slug, item.map((e) => e.toJson()).toList());
     await _utilitiesHive.close();
   }
 
   static Future<List<WalletModel>> getWalletList({required String slug}) async {
     try {
-      final _utilitiesHive = await Hive.openBox(_serviceListing);
+      final _utilitiesHive = await Hive.openBox(_walletServiceListing);
       final _data = _utilitiesHive.get(slug);
       final _items = List.from(_data ?? []);
       await _utilitiesHive.close();

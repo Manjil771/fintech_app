@@ -131,15 +131,22 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                         .actualBalance),
                                             detailROw(context, "Member ID",
                                                 "${_detail.accountDetail[index].clientCode}"),
+                                            detailROw(context, "Account Type",
+                                                "${_detail.accountDetail[index].accountType}"),
                                             detailROw(context, "Acc Number",
                                                 "${_detail.accountDetail[index].mainCode}"),
                                             if (_detail.accountDetail[index]
                                                         .interestRate !=
-                                                    "0" ||
+                                                    "0" &&
                                                 _detail.accountDetail[index]
                                                         .interestRate
                                                         .toString() !=
-                                                    "N/A")
+                                                    "N/A" &&
+                                                _detail.accountDetail[index]
+                                                        .interestRate
+                                                        .toString()
+                                                        .toLowerCase() !=
+                                                    "null")
                                               Column(
                                                 children: [
                                                   detailROw(

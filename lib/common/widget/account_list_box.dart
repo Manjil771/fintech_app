@@ -139,6 +139,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
                                               child: Text(account.accountType,
+                                                  maxLines: 2,
                                                   style: _theme
                                                       .textTheme.labelLarge),
                                             ),

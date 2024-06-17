@@ -36,6 +36,13 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                 itemCount: widget.customerDetail.value!.accountDetail.length,
                 itemBuilder: (context, index) {
                   final _detail = widget.customerDetail.value!;
+                  final accuredInterest = _detail
+                      .accountDetail[index].accruedInterest
+                      .toString()
+                      .toLowerCase();
+                  final interestRate = _detail.accountDetail[index].interestRate
+                      .toString()
+                      .toLowerCase();
 
                   return Container(
                     color: Colors.white,
@@ -113,10 +120,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                     ),
                                   Row(
                                     children: [
-                                      if (_detail.accountDetail[index]
-                                              .accruedInterest
-                                              .toString() !=
-                                          "0")
+                                      if (accuredInterest != "0" &&
+                                          accuredInterest != "null" &&
+                                          accuredInterest != "n/a")
                                         Expanded(
                                           child: buildDetails(
                                               context,
@@ -124,14 +130,17 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                               "Accrued Interest",
                                               "NPR ${_detail.accountDetail[index].accruedInterest}"),
                                         ),
-                                      SizedBox(
-                                        width: _width * 0.4,
-                                        child: buildDetails(
-                                            context,
-                                            "interest rate profile.svg",
-                                            "Interest Rate",
-                                            "${_detail.accountDetail[index].interestRate} %"),
-                                      ),
+                                      if (interestRate != "0" &&
+                                          interestRate != "null" &&
+                                          interestRate != "n/a")
+                                        SizedBox(
+                                          width: _width * 0.4,
+                                          child: buildDetails(
+                                              context,
+                                              "interest rate profile.svg",
+                                              "Interest Rate",
+                                              "${_detail.accountDetail[index].interestRate} %"),
+                                        ),
                                     ],
                                   ),
                                 ],

@@ -94,7 +94,6 @@ class RefnoSearchRemitWidget extends StatelessWidget {
               },
               child: Column(
                 children: [
-                  Text(imageUrl),
                   Row(
                     children: [
                       Container(
