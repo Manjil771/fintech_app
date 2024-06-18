@@ -12,6 +12,7 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/models/downloaded_file.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -320,10 +321,19 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                                   decoration: BoxDecoration(
                                     border: Border.all(color: Colors.black),
                                   ),
-                                  child: CustomCachedNetworkImage(
-                                    url: offerBanners[index],
+                                  child: Image.network(
+                                    offerBanners[index],
                                     width: double.infinity,
                                     fit: BoxFit.fill,
+                                    errorBuilder:
+                                        (context, error, stackTrace) => Column(
+                                      children: [
+                                        Image.asset(
+                                            RepositoryProvider.of<CoOperative>(
+                                                    context)
+                                                .coOperativeLogo),
+                                      ],
+                                    ),
                                   ),
                                 ),
                               );

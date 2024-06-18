@@ -1,19 +1,27 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/common_transaction_success_screen.dart';
+import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/receiveMoney/cubit/khalti_txn_confirm_cubit.dart';
 import 'package:ismart/feature/receiveMoney/cubit/receive_money_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
+import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 import 'package:khalti_checkout_flutter/khalti_checkout_flutter.dart';
 
 class LoadFromKhaltiWidget extends StatefulWidget {
@@ -38,22 +46,28 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
   @override
   void initState() {
     // TODO: implement initState
+
     _token = RepositoryProvider.of<UserRepository>(context).token;
+
     super.initState();
   }
 
+  String stateis = "";
+
+  String generatedTransactionId = "2";
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocListener<ReceiveMoneyCubit, CommonState>(
         listener: (context, state) async {
+          stateis = state.toString();
           if (state is CommonStateSuccess) {
             final List<String> _data = state.data.toString().split("-");
+            generatedTransactionId = _data[3].toString();
+            // print("my data is " + _data.toString() + _data[3]);
             if (_data.isNotEmpty) {
+              stateis = state.toString();
+
               pidx = _data[0];
               final payConfig = KhaltiPayConfig(
                 publicKey: _data[1],
@@ -91,7 +105,19 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                 onReturn: () {
                   khalti!.close(context);
                   NavigationService.pushReplacement(
-                    target: const DashboardPage(),
+                    target: CommonTransactionSuccessPage(
+                      body: Column(
+                        children: [
+                          KeyValueTile(
+                              title: "Amount", value: _amountController.text),
+                          KeyValueTile(
+                              title: "Remarks", value: _remarksController.text),
+                        ],
+                      ),
+                      message: "Transaction Complete",
+                      transactionID: generatedTransactionId,
+                      serviceName: "Load Money",
+                    ),
                   );
                 },
               );
@@ -104,6 +130,16 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                 );
               }
             }
+          } else if (state is CommonError) {
+            showPopUpDialog(
+              context: context,
+              message: state.message,
+              title: "Error",
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+              },
+            );
           }
         },
         child: CommonContainer(
@@ -115,20 +151,24 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
             child: Column(
               children: [
                 CustomTextField(
-                  title: "Amount",
-                  hintText: "NPR ",
-                  controller: _amountController,
-                  validator: (val) {
-                    if ((int.tryParse(val ?? "") ?? 0) < 10) {
-                      return "Minimum amount is Rs. 10";
-                    } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
-                      return "Maximum amount is Rs. 2,00,000";
-                    } else {
-                      return null;
-                    }
-                  },
-                ),
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    title: "Amount",
+                    hintText: "NPR ",
+                    controller: _amountController,
+                    validator: (value) =>
+                        FormValidator.validateFieldNotEmpty(value, "Amount")
+                    // validator: (val) {
+                    // if ((int.tryParse(val ?? "") ?? 0) < 10) {
+                    //   return "Minimum amount is Rs. 10";
+                    // } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
+                    //   return "Maximum amount is Rs. 2,00,000";
+                    // } else {
+                    //   return null;
+                    // }
+                    // },
+                    ),
                 CustomTextField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Remarks",
                   hintText: "Remarks",
                   controller: _remarksController,

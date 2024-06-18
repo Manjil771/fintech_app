@@ -102,10 +102,11 @@ class ReceiveMoneyRepository {
         final Map<String, dynamic> _rawResponse =
             Map<String, dynamic>.from(_res['data']?['details'] ?? {});
         if (_rawResponse.isEmpty) {
-          return DataResponse.error("Error while loading wallet.");
+          return DataResponse.error(
+              _res['data']["message"] ?? "Error while loading wallet.");
         }
         final String _response =
-            "${_rawResponse['pidx']}-${_rawResponse['publicKey']}-${_rawResponse['productName']}";
+            "${_rawResponse['pidx']}-${_rawResponse['publicKey']}-${_rawResponse['productName']}-${_rawResponse['productIdentity']}";
 
         return DataResponse.success(_response);
       } else {
