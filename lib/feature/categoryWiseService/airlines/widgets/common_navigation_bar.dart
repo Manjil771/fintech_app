@@ -75,7 +75,7 @@ class _CommonNavigationBarState extends State<CommonNavigationBar> {
                               ),
                               child: Text(
                                 widget.items[index],
-                                style: _textTheme.headline6!.copyWith(
+                                style: _textTheme.titleLarge!.copyWith(
                                   fontWeight: FontWeight.w400,
                                 ),
                               ),

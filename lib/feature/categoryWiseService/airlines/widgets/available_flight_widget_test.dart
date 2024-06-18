@@ -6,18 +6,17 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/wrapper/nested_tab_wrapper.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/airlines_resource/common_navigation_bar.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/airlines_resource/flight_location_widget.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/passenger_detail_page.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/common_navigation_bar.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_amount_with_button_widget.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_list_tab_widget.dart';
+import 'package:ismart/feature/categoryWiseService/airlines/widgets/flutter_location_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:sliver_tools/sliver_tools.dart';
@@ -85,13 +84,14 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
   calculateTotalPrice() {
     totalPrice = 0.00;
     if (selectedInboundIndex != -1) {
-      double fareTotalInbound = _inboundValue[selectedInboundIndex].totalFare;
+      final double fareTotalInbound =
+          _inboundValue[selectedInboundIndex].totalFare;
 
       totalPrice += fareTotalInbound;
     }
 
     if (selectedOutboundIndex != -1) {
-      double fareTotalInbound =
+      final double fareTotalInbound =
           _outboundValues[selectedOutboundIndex].totalFare;
       totalPrice += fareTotalInbound;
     }
@@ -322,7 +322,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
     final _width = SizeUtils.width;
 
     return PageWrapper(
-      // TODO Filter add
+      // TODOFilter add
       // appActions: [
       //   IconButton(
       //     icon: const Icon(Icons.search),
@@ -366,7 +366,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
               NavigationService.push(

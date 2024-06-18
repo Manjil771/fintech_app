@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/splash/ui/screens/splash_widgets.dart';
@@ -27,6 +28,8 @@ class _SplashScreensState extends State<SplashScreens> {
       create: (context) => StartupCubit(
         startUpRepository: RepositoryProvider.of<StartUpRepository>(context),
         userRepository: RepositoryProvider.of<UserRepository>(context),
+        bannerRepository :RepositoryProvider.of<BannerRepository>(context) 
+
       )..fetchStartupData(),
       child: SplashWidget(),
     );

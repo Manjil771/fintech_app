@@ -57,17 +57,28 @@ class _AppDevState extends State<AppDev> {
           child: UpdateWrapper(
             child: SessionTimeoutManager(
               sessionConfig: sessionConfig,
-              child: MaterialApp(
-                locale: context.locale,
-                navigatorKey: NavigationService.navigationKey,
-                supportedLocales: context.supportedLocales,
-                localizationsDelegates: context.localizationDelegates,
-                debugShowCheckedModeBanner: false,
-                darkTheme: CustomTheme.lightTheme,
-                theme: CustomTheme.lightTheme,
-                title: widget.env.appTitle,
-                initialRoute: Routes.root,
-                onGenerateRoute: RouteGenerator.generateRoute,
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () {
+                  final FocusScopeNode currentFocus = FocusScope.of(context);
+
+                  if (!currentFocus.hasPrimaryFocus &&
+                      currentFocus.focusedChild != null) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  }
+                },
+                child: MaterialApp(
+                  locale: context.locale,
+                  navigatorKey: NavigationService.navigationKey,
+                  supportedLocales: context.supportedLocales,
+                  localizationsDelegates: context.localizationDelegates,
+                  debugShowCheckedModeBanner: false,
+                  darkTheme: CustomTheme.lightTheme,
+                  theme: CustomTheme.lightTheme,
+                  title: widget.env.appTitle,
+                  initialRoute: Routes.root,
+                  onGenerateRoute: RouteGenerator.generateRoute,
+                ),
               ),
             ),
           ),

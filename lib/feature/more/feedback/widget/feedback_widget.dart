@@ -164,7 +164,7 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
                 ],
               ),
             ),
-            topbarName: "Report"),
+            topbarName: "Report Issue"),
       ),
     );
   }

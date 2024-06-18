@@ -27,7 +27,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   List<String> _bannerImages = [];
 
   _checkMenu() {
-    List<String> _clientCodesListForDifferentMenu = [
+    final List<String> _clientCodesListForDifferentMenu = [
       "9DZS5N3TOY", // Uttarganga
     ];
 
@@ -75,7 +75,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                       borderRadius: BorderRadius.circular(12),
                       onTap: () {
                         NavigationService.pushNamed(
-                            routeName: Routes.reveiveMoney);
+                          routeName: Routes.loadFromKhalti,
+                        );
                       },
                       child: Container(
                         alignment: Alignment.center,

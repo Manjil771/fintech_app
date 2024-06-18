@@ -23,7 +23,7 @@ class MobileBankingWidget extends StatefulWidget {
 
 class _MobileBankingWidgetState extends State<MobileBankingWidget> {
   final TextEditingController _amountController = TextEditingController();
-  final TextEditingController _remarksController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController()  ;
   final TextEditingController _bankNameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Bank? selectedBank;

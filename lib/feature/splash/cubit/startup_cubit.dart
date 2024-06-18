@@ -2,17 +2,18 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 
 part 'startup_state.dart';
 
 class StartupCubit extends Cubit<StartupState> {
-  StartupCubit({required this.startUpRepository, required this.userRepository})
+  StartupCubit( {required this.startUpRepository, required this.userRepository , required this.bannerRepository})
       : super(StartupInitial());
 
   final StartUpRepository startUpRepository;
   final UserRepository userRepository;
-
+  final BannerRepository bannerRepository;
   fetchStartupData() async {
     emit(StartupLoading());
     final isFirstTime = await SharedPref.getFirstTimeAppOpen();
@@ -20,6 +21,7 @@ class StartupCubit extends Cubit<StartupState> {
     await startUpRepository.fetchBannerImages();
     await startUpRepository.fetchAppConfig();
     await startUpRepository.fetchdefaultBannerImages();
+    await bannerRepository.fetchBannerImages(bannerImageType: "OfferBanner");
 
     if (isFirstTime) {
       await SharedPref.setFirstTimeAppOpen(false);

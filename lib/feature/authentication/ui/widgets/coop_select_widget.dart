@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
@@ -25,9 +26,30 @@ class CoopSelectWidget extends StatefulWidget {
 class _CoopSelectWidgetState extends State<CoopSelectWidget> {
   final bool _showTitleAndDesc = true;
 
+  List<LoginCoOpValue> _allCoops = [];
+  List<LoginCoOpValue> _searchResults = [];
+
   @override
   void initState() {
     super.initState();
+    _allCoops = widget.allCoops;
+    _searchResults = _allCoops;
+  }
+
+  _searchValue(String? query) {
+    if (query == null) {
+      _searchResults = List.from(_allCoops);
+
+      setState(() {});
+    }
+
+    _searchResults = List.from(_allCoops);
+
+    _searchResults = _searchResults
+        .where((element) =>
+            element.bank.toLowerCase().contains(query!.toLowerCase()))
+        .toList();
+    setState(() {});
   }
 
   final bool _isLoading = false;
@@ -37,6 +59,7 @@ class _CoopSelectWidgetState extends State<CoopSelectWidget> {
     final _textTheme = _theme.textTheme;
     return PageWrapper(
       padding: EdgeInsets.zero,
+      showBackButton: true,
       body: CustomScrollView(
         slivers: [
           SliverToBoxAdapter(child: SizedBox(height: 15.hp)),
@@ -47,7 +70,7 @@ class _CoopSelectWidgetState extends State<CoopSelectWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Co-Operative",
+                  "Cooperative",
                   style: _textTheme.displayLarge,
                 ),
               ),
@@ -59,35 +82,46 @@ class _CoopSelectWidgetState extends State<CoopSelectWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Select Co-Operative",
+                  "Select Cooperative",
                   style: _textTheme.titleLarge,
                 ),
               ),
             ),
           if (_showTitleAndDesc)
             const SliverToBoxAdapter(child: SizedBox(height: 25)),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16),
+              child: CustomTextField(
+                hintText: "Enter to search",
+                onChanged: (query) {
+                  _searchValue(query);
+                },
+              ),
+            ),
+          ),
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                String _baseUrl = RepositoryProvider.of<CoOperative>(
+                final String _baseUrl = RepositoryProvider.of<CoOperative>(
                         NavigationService.context)
                     .baseUrl;
 
                 return CustomListTile(
-                  title: widget.allCoops[index].bank,
+                  title: _searchResults[index].bank,
                   description: "",
                   trailing: Container(),
-                  imageUrl: _baseUrl + widget.allCoops[index].logo,
+                  imageUrl: _baseUrl + _searchResults[index].logo,
                   maxLines: 2,
                   onPressed: () {
-                    widget.selectedCoop.value = widget.allCoops[index];
-                    widget.onValueSelected(widget.allCoops[index]);
+                    widget.selectedCoop.value = _searchResults[index];
+                    widget.onValueSelected(_searchResults[index]);
                     NavigationService.pop();
                   },
                   horizontalPadding: CustomTheme.symmetricHozPadding,
                 );
               },
-              childCount: widget.allCoops.length,
+              childCount: _searchResults.length,
             ),
           ),
         ],
