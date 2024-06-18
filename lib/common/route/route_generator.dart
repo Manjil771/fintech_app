@@ -17,6 +17,7 @@ import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
 import 'package:ismart/feature/receiveMoney/internetBanking/screen/internet_banking_page.dart';
 import 'package:ismart/feature/receiveMoney/loadViacard/screen/load_via_card_page.dart';
+import 'package:ismart/feature/receiveMoney/load_from_khalti/screen/load_from_khalti_page.dart';
 import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_bannking_page.dart';
 import 'package:ismart/feature/receiveMoney/requestSapati/screen/request_sapati_page.dart';
 import 'package:ismart/feature/receiveMoney/screens/receive_money_page.dart';
@@ -107,6 +108,11 @@ class RouteGenerator {
       case Routes.internetbanking:
         return MaterialPageRoute(
           builder: (_) => const InternetBankingPage(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.loadFromKhalti:
+        return MaterialPageRoute(
+          builder: (_) => const LoadFromKhaltiPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.requestSapati:

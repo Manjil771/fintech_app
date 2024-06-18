@@ -64,14 +64,14 @@ dependencies:
   animations: ^2.0.7
   qr_code_scanner: ^1.0.1
   screenshot: ^2.3.0
-  syncfusion_flutter_pdfviewer: ^21.2.3
+  # syncfusion_flutter_pdfviewer: ^21.2.3
   syncfusion_flutter_charts: ^21.2.4
   carousel_slider: ^4.2.1
   flutter_downloader: ^1.8.3
   android_path_provider: ^0.3.0
   jiffy: ^6.2.1
   awesome_notifications: ^0.8.2
-  package_info_plus: ^4.0.2
+  package_info_plus: ^5.0.1
   uuid: ^3.0.7
   # share_plus: ^9.0.0
   permission_handler: ^11.0.1
@@ -98,6 +98,7 @@ dependencies:
   fluttercontactpicker: ^4.7.0
   image_cropper: ^5.0.1
   hive_flutter: ^1.1.0
+  khalti_checkout_flutter: ^1.0.0-dev.4
 
 dev_dependencies:
   flutter_test:
@@ -109,6 +110,7 @@ dev_dependencies:
 
 dependency_overrides:
   http: ^1.1.0
+  package_info_plus: ^5.0.1
 
 flutter:
   assets:
@@ -307,7 +309,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     # - assets/aagan/
-    # - assets/sadasyaSewa/
+    - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/

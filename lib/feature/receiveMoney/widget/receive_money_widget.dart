@@ -141,6 +141,14 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                     .uniqueIdentifier
                                     .toString()
                                     .toLowerCase()
+                                    .contains(
+                                        "load_fund_khalti".toLowerCase())) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.loadFromKhalti);
+                                } else if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase()
                                     .contains("load_fund".toLowerCase())) {
                                   NavigationService.pushNamed(
                                       routeName: Routes.mobileBanking);
@@ -211,8 +219,8 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
     if (uniqueIdentifier
         .toString()
         .toLowerCase()
-        .contains("load_fund".toLowerCase())) {
-      return "Make financial transactions using your phone";
+        .contains("load_fund_khalti".toLowerCase())) {
+      return "Load Money from Ebanking, Mobile Banking, Khalti and more.";
     } else if (uniqueIdentifier
         .toString()
         .toLowerCase()
@@ -223,6 +231,11 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
         .toLowerCase()
         .contains("request_sapati".toLowerCase())) {
       return "Lend money from your friends using app";
+    } else if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("load_fund".toLowerCase())) {
+      return "Make financial transactions using your phone";
     } else if (uniqueIdentifier
         .toString()
         .toLowerCase()

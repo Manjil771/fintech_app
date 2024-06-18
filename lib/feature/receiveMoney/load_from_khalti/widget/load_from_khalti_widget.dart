@@ -1,0 +1,163 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/receiveMoney/cubit/khalti_txn_confirm_cubit.dart';
+import 'package:ismart/feature/receiveMoney/cubit/receive_money_cubit.dart';
+import 'package:ismart/feature/sendMoney/models/bank.dart';
+import 'package:khalti_checkout_flutter/khalti_checkout_flutter.dart';
+
+class LoadFromKhaltiWidget extends StatefulWidget {
+  const LoadFromKhaltiWidget({Key? key}) : super(key: key);
+
+  @override
+  State<LoadFromKhaltiWidget> createState() => _LoadFromKhaltiWidgetState();
+}
+
+class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
+  Khalti? khalti;
+
+  String _token = "";
+
+  final TextEditingController _amountController = TextEditingController();
+  final TextEditingController _remarksController = TextEditingController();
+  final TextEditingController _bankNameController = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  Bank? selectedBank;
+  String? pidx;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    _token = RepositoryProvider.of<UserRepository>(context).token;
+    super.initState();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+    final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+    return PageWrapper(
+      body: BlocListener<ReceiveMoneyCubit, CommonState>(
+        listener: (context, state) async {
+          if (state is CommonStateSuccess) {
+            final List<String> _data = state.data.toString().split("-");
+            if (_data.isNotEmpty) {
+              pidx = _data[0];
+              final payConfig = KhaltiPayConfig(
+                publicKey: _data[1],
+                pidx: _data[0],
+                returnUrl: Uri.parse('https://ismart.devanasoft.com'),
+                environment: Environment.prod,
+                openInKhalti: true,
+              );
+
+              khalti = await Khalti.init(
+                enableDebugging: false,
+                payConfig: payConfig,
+                onPaymentResult: (paymentResult, khalti) {
+                  context.read<KhaltiTxnConfirmCubit>().completeKhaltiTxn(
+                        amount: _amountController.text,
+                        status: paymentResult.status,
+                        transaction_id:
+                            paymentResult.payload?.transactionId ?? "",
+                        pidx: paymentResult.payload?.pidx ?? "",
+                      );
+                },
+                onMessage: (
+                  khalti, {
+                  description,
+                  statusCode,
+                  event,
+                  needsPaymentConfirmation,
+                }) async {
+                  // if (event == KhaltiEvent) {
+                  //   SnackBarUtils.showErrorBar(
+                  //       context: context,
+                  //       message: "Please check transaction for details. ");
+                  // }
+                },
+                onReturn: () {
+                  khalti!.close(context);
+                  NavigationService.pushReplacement(
+                    target: const DashboardPage(),
+                  );
+                },
+              );
+              if (khalti != null) {
+                khalti!.open(context);
+              } else {
+                SnackBarUtils.showErrorBar(
+                  context: context,
+                  message: "Error when connecting to server. Please retry.",
+                );
+              }
+            }
+          }
+        },
+        child: CommonContainer(
+          showDetail: true,
+          showAccountSelection: true,
+          accountTitle: "To Account",
+          body: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomTextField(
+                  title: "Amount",
+                  hintText: "NPR ",
+                  controller: _amountController,
+                  validator: (val) {
+                    if ((int.tryParse(val ?? "") ?? 0) < 10) {
+                      return "Minimum amount is Rs. 10";
+                    } else if ((int.tryParse(val ?? "") ?? 0) > 200000) {
+                      return "Maximum amount is Rs. 2,00,000";
+                    } else {
+                      return null;
+                    }
+                  },
+                ),
+                CustomTextField(
+                  title: "Remarks",
+                  hintText: "Remarks",
+                  controller: _remarksController,
+                  validator: (value) =>
+                      FormValidator.validateFieldNotEmpty(value, "Remarks"),
+                ),
+              ],
+            ),
+          ),
+          topbarName: "Receive Money",
+          buttonName: "Proceed",
+          onButtonPressed: () {
+            if (_formKey.currentState!.validate()) {
+              context.read<ReceiveMoneyCubit>().loadFromKhalti(
+                    amount: _amountController.text,
+                    remarks: _remarksController.text,
+                    accountNumber:
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                                .selectedAccount
+                                .value
+                                ?.accountNumber ??
+                            "",
+                  );
+            }
+          },
+          title: "Load Fund",
+          detail: "Load fund instantly to your account.",
+        ),
+      ),
+    );
+  }
+}
