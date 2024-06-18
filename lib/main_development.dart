@@ -1,7 +1,6 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:device_preview/device_preview.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -23,11 +22,9 @@ Future<void> main() async {
     }
     await EasyLocalization.ensureInitialized();
     HttpOverrides.global = MyHttpOverrides();
-    runApp(DevicePreview(
-      enabled: false,
-      builder: (context) =>
-          LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),
-    ));
+    runApp(
+      LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),
+    );
   }, (e, s) {
     Log.e(e);
     Log.d(s);

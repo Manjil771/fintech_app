@@ -359,7 +359,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                                         child: Container(
                                                           margin:
                                                               const EdgeInsets
-                                                                      .symmetric(
+                                                                  .symmetric(
                                                                   vertical: 10),
                                                           child: Row(
                                                             children: [

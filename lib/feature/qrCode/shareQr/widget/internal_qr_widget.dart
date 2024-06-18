@@ -15,8 +15,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
-import 'package:share_plus/share_plus.dart';
-
+// import 'package:share_plus/share_plus.dart';
 
 class InternalQrWidget extends StatelessWidget {
   final String qrPath;
@@ -34,7 +33,7 @@ class InternalQrWidget extends StatelessWidget {
     final tempFile = await _createTempImageFile(image!);
 
     if (tempFile != null) {
-      Share.shareXFiles([XFile(tempFile.path)]);
+      // Share.shareXFiles([XFile(tempFile.path)]);
     }
   }
 

@@ -129,7 +129,9 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
 
             NavigationService.push(
               target: PaymentWebView(
-                urlRequest: URLRequest(url: url, headers: {
+                // urlRequest: URLRequest(url: url, headers: {
+
+                urlRequest: URLRequest(url: WebUri.uri(url), headers: {
                   "Authorization": "Bearer $_token",
                 }),
                 receiptUrl: "receiptUrl",
