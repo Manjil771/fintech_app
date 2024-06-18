@@ -4,47 +4,26 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_money_repository.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 
-class ReceiveMoneyCubit extends Cubit<CommonState> {
+class KhaltiTxnConfirmCubit extends Cubit<CommonState> {
   ReceiveMoneyRepository receiveMoneyRepository;
 
-  ReceiveMoneyCubit({
+  KhaltiTxnConfirmCubit({
     required this.receiveMoneyRepository,
   }) : super(CommonInitial());
 
-  loadFromBank({
-    required String bankCode,
+  completeKhaltiTxn({
     required String amount,
-    required String remarks,
-    required String accountNumber,
+    required String status,
+    required String transaction_id,
+    required String pidx,
   }) async {
     emit(CommonLoading());
 
-    final res = await receiveMoneyRepository.loadFromBank(
-      bankCode: bankCode,
-      accountNumber: accountNumber,
+    final res = await receiveMoneyRepository.completeKhaltiTxn(
+      status: status,
       amount: amount,
-      remarks: remarks,
-    );
-    if (res.status == Status.Success && res.data != null) {
-      emit(CommonStateSuccess(data: res.data!));
-    } else {
-      emit(CommonError(
-        message: res.message ?? "Error fetching wallet balance.",
-      ));
-    }
-  }
-
-  loadFromKhalti({
-    required String amount,
-    required String remarks,
-    required String accountNumber,
-  }) async {
-    emit(CommonLoading());
-
-    final res = await receiveMoneyRepository.loadFromKhalti(
-      accountNumber: accountNumber,
-      amount: amount,
-      remarks: remarks,
+      pidx: pidx,
+      transaction_id: transaction_id,
     );
     if (res.status == Status.Success && res.data != null) {
       emit(CommonStateSuccess(data: res.data!));

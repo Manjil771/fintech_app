@@ -48,4 +48,44 @@ class ReceiveMoneyAPIProvider {
       userId: 0,
     );
   }
+
+  Future<dynamic> loadFromKhalti({
+    required String amount,
+    required String remarks,
+    required String accountNumber,
+  }) async {
+    final _body = {
+      "accountNo": accountNumber,
+      "amount": amount,
+      "remarks": remarks,
+    };
+    final _url = coOperative.baseUrl + "/api/load_from_bank/auth/payment/";
+    final url = UrlUtils.getUri(url: _url, params: _body);
+    return await apiProvider.post(
+      url.toString(),
+      {},
+      token: userRepository.token,
+    );
+  }
+
+  Future<dynamic> completeKhaltiTxn({
+    required String amount,
+    required String status,
+    required String transaction_id,
+    required String pidx,
+  }) async {
+    final _body = {
+      "status": status,
+      "amount": amount,
+      "pidx": pidx,
+      "transaction_id": transaction_id,
+    };
+    final _url = coOperative.baseUrl + "/api/npay/kl/";
+    final url = UrlUtils.getUri(url: _url, params: _body);
+    return await apiProvider.post(
+      url.toString(),
+      {},
+      token: userRepository.token,
+    );
+  }
 }
