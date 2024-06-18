@@ -13,6 +13,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/resources/datapack_r
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 import 'package:ismart/feature/profile/resources/image_upload_repository.dart';
@@ -239,6 +240,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
           create: (context) => AppContactRepository(
             customerDetailRepository:
                 RepositoryProvider.of<CustomerDetailRepository>(context),
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => BannerRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),

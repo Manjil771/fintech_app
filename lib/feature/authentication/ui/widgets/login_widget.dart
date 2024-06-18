@@ -36,6 +36,7 @@ import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.da
 import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -102,7 +103,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (phoneController.text.isNotEmpty) return phoneController.text;
     return _existingPhoneNumber;
   }
-
+ List myBanners = []; 
   @override
   void initState() {
     _checkBiometric();
