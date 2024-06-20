@@ -1,4 +1,3 @@
-
 class RecentTransactionModel {
   double amount;
   String service;
@@ -65,7 +64,7 @@ class RecentTransactionModel {
         iconUrl: json["iconUrl"],
         debit: json["debit"],
         channelType: json["channelType"] ?? "",
-        remarks: json["remarks"] ?? "Remarks",
+        remarks: json["remarks"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {

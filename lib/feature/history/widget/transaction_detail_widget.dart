@@ -228,6 +228,12 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                               ? "Online"
                               : "SMS",
                         ),
+                        customKeyValue(
+                          title: "Remarks",
+                          value: widget.recentTransactionModel.remarks.isEmpty
+                              ? "-"
+                              : widget.recentTransactionModel.remarks,
+                        ),
                         if (r.requestDetail.customerAddress != null)
                           customKeyValue(
                               title: "Address",
