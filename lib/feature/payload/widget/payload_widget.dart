@@ -17,6 +17,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -60,7 +61,8 @@ class _PayloadWidgetState extends State<PayloadWidget> {
               title: "Error",
               showCancelButton: false,
               buttonCallback: () {
-                NavigationService.pop();
+                NavigationService.pushReplacement(
+                    target: const DashboardPage());
               },
             );
           }

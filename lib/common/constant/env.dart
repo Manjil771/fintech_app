@@ -314,7 +314,7 @@ class CoOperativeValue {
       appTitle: "Finnact Demo",
       shouldValidateCooperative: true);
   static final CoOperative magnusDevTest = CoOperative(
-      baseUrl: 'http://192.168.1.43:8080/',
+      baseUrl: 'http://192.168.1.25:8080/',
       bannerImage: "assets/images/ismart_banner.png",
       clientCode: '2GTJLFR1K6',
       backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -3178,7 +3178,7 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/sklakhanpur/sklakhanpur_logo.png',
     splashImage: "assets/sklakhanpur/sklakhanpur_splash.png",
     primaryColor: const Color(0xFF3ea247),
-    coOperativeName: "Lakhanpur Sana Kisan Agriculture Cooperative Ltd.",
+    coOperativeName: "Lakhanpur Sana Kissan Agriculture Cooperative Ltd.",
     appTitle: "SFACL Lakhanpur iSmart",
   );
   static final CoOperative gagankalikaCoop = CoOperative(
@@ -3253,5 +3253,5 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = ajambariCoop;
+  static final CoOperative currentCoop = skLakhanpur;
 }

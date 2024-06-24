@@ -559,7 +559,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   ) {
     _cameraSubscription = cameraController.barcodes.listen((code) {
       _cameraSubscription = cameraController.barcodes.listen((code) {
-        List _rawData = List.from(code.raw ?? []);
+        final List _rawData = List.from(code.raw ?? []);
         if (_rawData.isNotEmpty) {
           final rawValue = _rawData.first["rawValue"];
           if (rawValue != null && _isScanned == false && mounted) {
