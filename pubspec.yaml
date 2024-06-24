@@ -328,8 +328,9 @@ flutter:
     # - assets/mahilaAbhiyan/
     # - assets/ajambari/
     # - assets/sundarbagmati/
-    # - assets/amana/ 
-    - assets/skLakhanpur/
+    - assets/amana/ 
+    # - assets/sklakhanpur/
+    # - assets/shreekrishna/
     
     
     # sana ksihan assets
