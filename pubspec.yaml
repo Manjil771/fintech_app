@@ -139,10 +139,9 @@ flutter:
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
-    # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    # - assets/bishal/
+    - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -298,7 +297,7 @@ flutter:
     # - assets/sunakothi/
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
-    # - assets/sayapatri/
+    - assets/sayapatri/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
@@ -328,7 +327,7 @@ flutter:
     # - assets/mahilaAbhiyan/
     # - assets/ajambari/
     # - assets/sundarbagmati/
-    - assets/amana/ 
+    # - assets/amana/ 
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     
