@@ -124,7 +124,6 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/uttarganga/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -141,7 +140,7 @@ flutter:
     # - assets/vyas/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
-    - assets/bishal/
+    # - assets/bishal/
     # - assets/ekata/
     # - assets/sardikhola/
     # - assets/kripalu/
@@ -150,9 +149,11 @@ flutter:
     # - assets/nawajosh/
     # - assets/gandakibesi/
     # - assets/kripalu/
+    # - assets/upadesh/
     # - assets/bhanjyang/
     # - assets/nawajosh/
     # - assets/nawajosh/
+
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -164,7 +165,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    # - assets/matribhumi/
+    - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -297,7 +298,7 @@ flutter:
     # - assets/sunakothi/
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
-    - assets/sayapatri/
+    # - assets/sayapatri/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/

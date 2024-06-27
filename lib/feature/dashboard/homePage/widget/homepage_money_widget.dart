@@ -43,7 +43,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                   .toList();
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row( 
+                child: Row(
                   // scrollDirection: Axis.horizontal,
                   children: [
                     ...List.generate(
@@ -126,7 +126,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         NavigationService.pushNamed(
-                            routeName: Routes.reveiveMoney);
+                            routeName: Routes.loadFromKhalti);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),
