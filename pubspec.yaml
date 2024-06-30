@@ -128,7 +128,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    # - assets/gomaGanesh/
+    - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -165,7 +165,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/fewa/
-    - assets/matribhumi/
+    # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -242,7 +242,7 @@ flutter:
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-    # - assets/aakashbani/
+    - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/

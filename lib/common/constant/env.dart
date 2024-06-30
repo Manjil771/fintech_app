@@ -1854,7 +1854,7 @@ class CoOperativeValue {
 
   static final CoOperative aakashbaniCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.aakashbani",
+    packageName: "com.devanasoft.aakashBani",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/aakashbani/aakashbani_banner.png",
     backgroundImage: "assets/aakashbani/aakashbani_background.png",
@@ -3253,5 +3253,5 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = matribhumiCoop;
+  static final CoOperative currentCoop = aakashbaniCoop;
 }
