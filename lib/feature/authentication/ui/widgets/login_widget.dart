@@ -103,7 +103,8 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (phoneController.text.isNotEmpty) return phoneController.text;
     return _existingPhoneNumber;
   }
- List myBanners = []; 
+
+  List myBanners = [];
   @override
   void initState() {
     _checkBiometric();
@@ -491,25 +492,24 @@ class _LoginWidgetState extends State<LoginWidget> {
                         FocusManager.instance.primaryFocus?.unfocus();
 
                         if (_loginFormKey.currentState!.validate()) {
-                          if (_selectedCountryValue.toString().toLowerCase() ==
-                              "np") {
-                            if (agreedToTerms) {
-                              context.read<LoginCubit>().loginUser(
-                                    username: _getPhoneNumber(),
-                                    password: passwordController.text,
-                                    deviceUUID: await _getDeviceUUID(),
-                                  );
-                            } else {
-                              SnackBarUtils.showErrorBar(
-                                  context: context,
-                                  message:
-                                      "Please agree to terms & conditions");
-                            }
+                          // if (_selectedCountryValue.toString().toLowerCase() ==
+                          //     "np") {
+                          if (agreedToTerms) {
+                            context.read<LoginCubit>().loginUser(
+                                  username: _getPhoneNumber(),
+                                  password: passwordController.text,
+                                  deviceUUID: await _getDeviceUUID(),
+                                );
                           } else {
                             SnackBarUtils.showErrorBar(
                                 context: context,
-                                message: "Invalid Mobile Number");
+                                message: "Please agree to terms & conditions");
                           }
+                          // } else {
+                          //   SnackBarUtils.showErrorBar(
+                          //       context: context,
+                          //       message: "Invalid Mobile Number");
+                          // }
                         }
                       },
                     ),
