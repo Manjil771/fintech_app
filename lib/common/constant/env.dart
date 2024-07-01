@@ -3253,5 +3253,19 @@ class CoOperativeValue {
     coOperativeName: "Amana Multipurpose Co-operative Ltd.",
     appTitle: "Amana Multi iSmart",
   );
-  static final CoOperative currentCoop = metrangCoop;
+  static final CoOperative dupcheshworCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.dupcheshwor",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/dupcheshwor/dupcheshwor_banner.png",
+    backgroundImage: "assets/dupcheshwor/dupcheshwor_background.png",
+    clientCode: '4KBB3IXWB8',
+    clientSecret: "148116",
+    coOperativeLogo: 'assets/dupcheshwor/dupcheshwor_logo.png',
+    splashImage: "assets/dupcheshwor/dupcheshwor_splash.png",
+    primaryColor: const Color(0xFF20924b),
+    coOperativeName: "Dupcheshwor Saving & Credit Co-operative Ltd..",
+    appTitle: "Dupcheshwor iSmart",
+  );
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

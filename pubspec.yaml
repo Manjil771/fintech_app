@@ -119,7 +119,7 @@ flutter:
     - assets/icons/
     - assets/events/
     - assets/images/
-    # - assets/janadhara/
+    - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
     # - assets/uttarganga/
@@ -130,7 +130,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    - assets/gomaGanesh/
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -209,9 +209,9 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
-    - assets/metrang/
+    # - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
     # - assets/noor/
@@ -245,7 +245,7 @@ flutter:
     # - assets/janata/
     # - assets/agrasar/
     # - assets/khotangJaleshwori/
-    - assets/aakashbani/
+    # - assets/aakashbani/
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
@@ -334,6 +334,7 @@ flutter:
     # - assets/amana/ 
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
+    # - assets/dupcheshwor/
     
     
     # sana ksihan assets
