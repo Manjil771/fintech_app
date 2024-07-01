@@ -189,7 +189,7 @@ flutter:
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
-    # - assets/golden/
+    - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
@@ -209,7 +209,7 @@ flutter:
     # - assets/aastha/
     # - assets/sunshine/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
