@@ -124,6 +124,8 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
+    # - assets/uttarganga/
+    # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -181,6 +183,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
+    # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
@@ -208,7 +211,7 @@ flutter:
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
-    # - assets/metrang/
+    - assets/metrang/
     # - assets/indreni/
     # - assets/uttarbahini/
     # - assets/noor/

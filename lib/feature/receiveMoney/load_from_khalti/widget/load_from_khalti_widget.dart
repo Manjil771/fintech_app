@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -52,6 +53,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
     super.initState();
   }
 
+  bool _isLoading = false;
   String stateis = "";
 
   String generatedTransactionId = "2";
@@ -61,6 +63,13 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
       body: BlocListener<ReceiveMoneyCubit, CommonState>(
         listener: (context, state) async {
           stateis = state.toString();
+          if (state is CommonLoading && _isLoading == false) {
+            _isLoading = true;
+            showLoadingDialogBox(context);
+          } else if (state is! CommonLoading && _isLoading) {
+            _isLoading = false;
+            NavigationService.pop();
+          }
           if (state is CommonStateSuccess) {
             final List<String> _data = state.data.toString().split("-");
             generatedTransactionId = _data[3].toString();
