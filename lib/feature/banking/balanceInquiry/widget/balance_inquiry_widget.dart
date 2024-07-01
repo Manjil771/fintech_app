@@ -165,7 +165,6 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                   ),
                                 ),
                                 Container(
-                                  height: 150,
                                   child: Row(
                                     children: [
                                       Expanded(
