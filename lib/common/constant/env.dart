@@ -3267,5 +3267,5 @@ class CoOperativeValue {
     coOperativeName: "Dupcheshwor Saving & Credit Co-operative Ltd..",
     appTitle: "Dupcheshwor iSmart",
   );
-  static final CoOperative currentCoop = goldenCoop;
+  static final CoOperative currentCoop = dupcheshworCoop;
 }
