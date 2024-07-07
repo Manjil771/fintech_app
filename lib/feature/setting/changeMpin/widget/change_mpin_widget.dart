@@ -9,6 +9,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -24,6 +25,10 @@ class ChangeMpinWidget extends StatelessWidget {
   TextEditingController reEnterPinController = TextEditingController();
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
+  final bool _showOldPin = false;
+  final bool _showNewPin = false;
+  final bool _showConfirmPin = false;
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -96,9 +101,9 @@ class ChangeMpinWidget extends StatelessWidget {
             key: _formKey,
             child: Column(
               children: [
-                CustomTextField(
+                CustomPasswordField(
+                  autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputType: TextInputType.number,
-                  obscureText: true,
                   controller: oldPinController,
                   title: "Old MPin",
                   hintText: "XXXXXXX",
@@ -109,10 +114,9 @@ class ChangeMpinWidget extends StatelessWidget {
                   },
                 ),
                 SizedBox(height: _height * 0.02),
-                CustomTextField(
+                CustomPasswordField(
                     textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
@@ -122,10 +126,9 @@ class ChangeMpinWidget extends StatelessWidget {
                     title: "New MPin",
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
-                CustomTextField(
+                CustomPasswordField(
                     textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    obscureText: true,
                     validator: (val) {
                       if (val!.length != 5) {
                         return "Invalid MPin";
