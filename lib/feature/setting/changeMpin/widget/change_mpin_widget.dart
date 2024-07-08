@@ -4,16 +4,12 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
-import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_password_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -25,15 +21,9 @@ class ChangeMpinWidget extends StatelessWidget {
   TextEditingController reEnterPinController = TextEditingController();
   bool _isLoading = false;
   final _formKey = GlobalKey<FormState>();
-  final bool _showOldPin = false;
-  final bool _showNewPin = false;
-  final bool _showConfirmPin = false;
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
