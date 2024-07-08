@@ -1,0 +1,46 @@
+# This file contains the fastlane.tools configuration
+# You can find the documentation at https://docs.fastlane.tools
+#
+# For a list of all available actions, check out
+#
+#     https://docs.fastlane.tools/actions
+#
+# For a list of all available plugins, check out
+#
+#     https://docs.fastlane.tools/plugins/available-plugins
+#
+
+# Uncomment the line if you want fastlane to automatically update itself
+# update_fastlane
+
+default_platform(:android)
+
+platform :android do
+  desc "Deploy to Play Store"
+  lane :deploy do |options|
+    flavor = options[:flavor]
+    unless flavor
+      UI.user_error!("Flavor must be specified")
+    end
+
+    # Ensure the keystore file is present
+    unless File.exist?("../android/app/keystore.jks")
+      UI.user_error!("Keystore file is missing. Ensure it's present at android/app/keystore.jks")
+    end
+
+    # Get the package name from the AndroidManifest.xml file
+    manifest_file = "./app/src/main/AndroidManifest.xml"
+    package_name = File.read(manifest_file).match(/package="(.*?)"/)[1]
+
+    # Upload to Play Store
+    upload_to_play_store(
+      package_name: "#{package_name}.#{flavor}",
+      track: 'internal',  # or 'alpha', 'beta', 'production'
+      aab: "../build/app/outputs/bundle/#{flavor}Release/app-#{flavor}-release.aab",
+      json_key_file: "/home/ubuntu/secrets/creds.json",
+      skip_upload_metadata: true,
+      skip_upload_images: true,
+      skip_upload_screenshots: true
+    )
+  end
+end
