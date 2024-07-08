@@ -34,10 +34,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
               );
             },
             child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 15),
+              margin: const EdgeInsets.symmetric(vertical: 12),
               padding: const EdgeInsets.all(18),
               width: double.infinity,
-              height: _width * 0.35,
+              height: _height * 0.15,
               decoration: BoxDecoration(
                 color: _theme.scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(8),
