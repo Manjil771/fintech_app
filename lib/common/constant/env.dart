@@ -1809,7 +1809,7 @@ class CoOperativeValue {
   );
   static final CoOperative khotangJaleshworiCoop = CoOperative(
     appStoreID: "",
-    packageName: "com.devanasoft.khotangJalesghwori",
+    packageName: "com.devanasoft.khotangJalesghwori", 
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/khotangJaleshwori/khotangJaleshwori_banner.png",
     backgroundImage:
@@ -3267,5 +3267,5 @@ class CoOperativeValue {
     coOperativeName: "Dupcheshwor Saving & Credit Co-operative Ltd..",
     appTitle: "Dupcheshwor iSmart",
   );
-  static final CoOperative currentCoop = dupcheshworCoop;
+  static final CoOperative currentCoop = upakarCoop;
 }
