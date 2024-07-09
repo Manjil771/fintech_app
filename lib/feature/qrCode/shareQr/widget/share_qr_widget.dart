@@ -8,10 +8,10 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/qrCode/shareQr/widget/external_qr_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class ShareQrWidget extends StatefulWidget {
   const ShareQrWidget({super.key});
@@ -32,12 +32,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
-        .selectedAccount
-        .value!;
     return PageWrapper(
       body: CommonContainer(
         verticalPadding: 0,
@@ -71,6 +66,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
             if (state is CommonStateSuccess<UtilityResponseData>) {
               List qrData = state.data.findValue(primaryKey: "data");
               qrData = qrData.reversed.toList();
+
               return Container(
                   height: _height,
                   child: DefaultTabController(
@@ -95,8 +91,22 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
                           child: TabBarView(
                             children: List.generate(
                               qrData.length,
-                              (index) => ExternalQrWidget(
-                                qrDetail: qrData[index],
+                              (index) => BlocProvider(
+                                create: (context) => UtilityPaymentCubit(
+                                    utilityPaymentRepository: RepositoryProvider
+                                        .of<UtilityPaymentRepository>(context)),
+                                child: ExternalQrWidget(
+                                  showQr: qrData[index]["qrLogoPath"]
+                                                  .toString()
+                                                  .toLowerCase() !=
+                                              "null" ||
+                                          qrData[index]["qrLogoPath"]
+                                              .toString()
+                                              .isNotEmpty
+                                      ? true
+                                      : false,
+                                  qrDetail: qrData[index],
+                                ),
                               ),
                             ),
                           ),
