@@ -29,7 +29,7 @@ class _WalletListWidgetState extends State<WalletListWidget> {
         topbarName: "Send Money",
         showTitleText: true,
         body: Container(
-          height: _height * 0.6,
+          // height: _height * 0.6,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -48,16 +48,16 @@ class _WalletListWidgetState extends State<WalletListWidget> {
                   if (state is CommonDataFetchSuccess<WalletModel>) {
                     final List<WalletModel> _walletsList = state.data;
 
-                    return Expanded(
-                      child: GridView.builder(
-                        padding: const EdgeInsets.all(0),
-                        gridDelegate:
-                            const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 2, childAspectRatio: 1 / 0.85),
-                        itemCount: _walletsList.length,
-                        itemBuilder: (context, index) =>
-                            WalletBoxWidget(wallet: _walletsList[index]),
-                      ),
+                    return GridView.builder(
+                      shrinkWrap: true,
+                      // physics: NeverScrollableScrollPhysics(),
+                      padding: const EdgeInsets.all(0),
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2, childAspectRatio: 1 / 0.85),
+                      itemCount: _walletsList.length,
+                      itemBuilder: (context, index) =>
+                          WalletBoxWidget(wallet: _walletsList[index]),
                     );
                   } else if (state is CommonError) {
                     return const NoDataScreen(
