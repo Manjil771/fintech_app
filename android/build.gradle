@@ -3,7 +3,7 @@ buildscript {
     ext.buildToolsVersion = "33.0.0"
     ext.compileSdkVersion = 34
     ext.minSdkVersion = 23
-    ext.targetSdkVersion = 33
+    ext.targetSdkVersion = 34
     repositories {
         google()
         mavenCentral()

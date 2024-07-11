@@ -119,7 +119,7 @@ flutter:
     - assets/icons/
     - assets/events/
     - assets/images/
-    - assets/janadhara/
+    # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
     # - assets/uttarganga/
@@ -189,7 +189,7 @@ flutter:
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
-    - assets/golden/
+    # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
