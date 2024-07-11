@@ -313,9 +313,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                               showCountyCode = true;
                             });
                           },
-                          validator: (value) =>
+                          validator: (value) {
+                            if (rememberMe == false)
                               FormValidator.validateFieldNotEmpty(
-                                  value, "Phone Number"),
+                                  value, "Phone Number");
+                          },
                           onChanged: (val) async {
                             if (FormValidator.validatePhoneNumber(val) ==
                                 null) {
