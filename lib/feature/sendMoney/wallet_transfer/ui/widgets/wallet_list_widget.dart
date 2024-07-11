@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -19,7 +18,6 @@ class WalletListWidget extends StatefulWidget {
 class _WalletListWidgetState extends State<WalletListWidget> {
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,
@@ -29,7 +27,6 @@ class _WalletListWidgetState extends State<WalletListWidget> {
         topbarName: "Send Money",
         showTitleText: true,
         body: Container(
-          // height: _height * 0.6,
           decoration: const BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.only(
@@ -50,7 +47,7 @@ class _WalletListWidgetState extends State<WalletListWidget> {
 
                     return GridView.builder(
                       shrinkWrap: true,
-                      // physics: NeverScrollableScrollPhysics(),
+                      physics: const NeverScrollableScrollPhysics(),
                       padding: const EdgeInsets.all(0),
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
