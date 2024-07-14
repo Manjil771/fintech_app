@@ -13,6 +13,7 @@ class SecureStorageService {
   static const String _walletPassword = "wallet_pass";
 
   static const String _walletPhoneNumber = "wallet_phone";
+  static const String _loginStatus = "login_status";
 
   static FlutterSecureStorage get _storage {
     return const FlutterSecureStorage(
@@ -48,6 +49,23 @@ class SecureStorageService {
     try {
       final String _phone = await _storage.read(key: _walletPhoneNumber) ?? "";
       return _phone;
+    } catch (e) {
+      return "";
+    }
+  }
+
+  static setLoginStatus(String loginStatus) async {
+    try {
+      final _ = await _storage.write(key: _loginStatus, value: loginStatus);
+    } catch (e) {
+      print("Error saving login status.");
+    }
+  }
+
+  static Future<String> get loginStatus async {
+    try {
+      final String _status = await _storage.read(key: _loginStatus) ?? "";
+      return _status;
     } catch (e) {
       return "";
     }
