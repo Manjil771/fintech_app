@@ -24,20 +24,25 @@ platform :android do
     end
 
     # Ensure the keystore file is present
-    unless File.exist?("../android/app/keystore.jks")
+    unless File.exist?("../app/ismart-keystore.jks")
       UI.user_error!("Keystore file is missing. Ensure it's present at android/app/keystore.jks")
     end
 
     # Get the package name from the AndroidManifest.xml file
-    manifest_file = "./app/src/main/AndroidManifest.xml"
-    package_name = File.read(manifest_file).match(/package="(.*?)"/)[1]
+    manifest_file = "../app/src/main/AndroidManifest.xml"
+    # package_name = File.read(manifest_file).match(/package="(.*?)"/)[1]
 
+    if flavor == 'prod'
+      package_name = "com.devanasoft.ismart"
+    else
+      package_name = "com.devanasoft.#{flavor}"
+    end
     # Upload to Play Store
     upload_to_play_store(
-      package_name: "#{package_name}.#{flavor}",
+      package_name: package_name,
       track: 'internal',  # or 'alpha', 'beta', 'production'
       aab: "../build/app/outputs/bundle/#{flavor}Release/app-#{flavor}-release.aab",
-      json_key_file: "/home/ubuntu/secrets/creds.json",
+      json_key: "/home/ubuntu/secrets/creds.json",
       skip_upload_metadata: true,
       skip_upload_images: true,
       skip_upload_screenshots: true
