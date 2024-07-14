@@ -150,9 +150,8 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nawajosh/
-    # - assets/nawajosh/
+
 
     # - assets/gandakibesi/
     # - assets/batika/
@@ -177,7 +176,7 @@ flutter:
     # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
-    # - assets/royalGorkha/
+    - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
@@ -333,6 +332,8 @@ flutter:
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
+    # - assets/gagankalika/
+  
     
     
     # sana ksihan assets
