@@ -37,6 +37,12 @@ platform :android do
     else
       package_name = "com.devanasoft.#{flavor}"
     end
+	    # Run the custom version increment script
+    sh "ruby fastlane/increment_version_code.rb"
+
+    # Build the app
+    gradle(task: "assemble#{flavor.capitalize}Release")
+
     # Upload to Play Store
     upload_to_play_store(
       package_name: package_name,
