@@ -16,5 +16,5 @@ def increment_version_code(pubspec_path)
   puts "Version updated to: #{new_version}"
 end
 
-pubspec_path = File.join(__dir__, '..', 'pubspec.yaml')
+pubspec_path = File.join(__dir__, '../..', 'pubspec.yaml')
 increment_version_code(pubspec_path)
