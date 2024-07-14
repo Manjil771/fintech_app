@@ -124,7 +124,9 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
                 } else if (state is CommonLoading) {
                   return const CommonLoadingWidget();
                 } else if (state is CommonError) {
-                  return Text(state.message);
+                  return Text(state.message.isEmpty
+                      ? "Could not fetch Loan Schedule."
+                      : state.message);
                 } else {
                   return Container();
                 }
