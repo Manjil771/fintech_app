@@ -176,7 +176,7 @@ flutter:
     # - assets/supreme/
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
-    - assets/royalGorkha/
+    # - assets/royalGorkha/
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
@@ -224,7 +224,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    - assets/queenCoop/
+    # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
@@ -330,7 +330,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/ 
     # - assets/sklakhanpur/
-    # - assets/shreekrishna/
+    - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/gagankalika/
   
