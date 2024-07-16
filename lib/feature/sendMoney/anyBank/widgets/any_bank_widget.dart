@@ -411,7 +411,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               ],
             ),
           ),
-          topbarName: "Send Money",
+          topbarName: "Bank Transfer",
           buttonName: charges != null ? "Confirm" : "Check Transfer",
           onButtonPressed: () {
             // NavigationService.push(target: const LimitScreen());
