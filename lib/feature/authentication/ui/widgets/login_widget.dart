@@ -230,7 +230,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    Text(
+                    const Text(
                       "Login",
                       style: TextStyle(
                         fontFamily: "popinbold",
@@ -317,6 +317,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             if (rememberMe == false)
                               FormValidator.validateFieldNotEmpty(
                                   value, "Phone Number");
+                            return null;
                           },
                           onChanged: (val) async {
                             if (FormValidator.validatePhoneNumber(val) ==
@@ -339,8 +340,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security pin",
-                      hintText: "Security pin",
+                      title: "Mpin",
+                      hintText: "Mpin",
                       controller: passwordController,
                       textInputType: TextInputType.number,
                       validator: (value) =>
@@ -360,7 +361,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            Text("Remember Me"),
+                            const Text("Remember Me"),
                           ],
                         );
                       },
