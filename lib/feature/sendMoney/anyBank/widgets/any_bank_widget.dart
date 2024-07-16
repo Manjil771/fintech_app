@@ -308,8 +308,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           builder: (context, state) {
                             print("state of state is $state");
                             if (state is CommonDataFetchSuccess<Bank>) {
-                              List<Bank> _banks = state.data;
-                              List<String> _bankNames = [];
+                              final List<Bank> _banks = state.data;
+                              final List<String> _bankNames = [];
                               double highestMatch = 0;
                               int selectedIndex = -1;
                               print(
@@ -353,7 +353,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           },
                           listener: (context, state) {},
                         )),
-                Text(selectedBank?.bankId ?? "".toString()), 
+                Text(selectedBank?.bankId ?? "".toString()),
 
                 CustomTextField(
                   title: "Account Number",
@@ -427,7 +427,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   );
             }
           },
-          title: "Any Bank",
+          title: "Bank Transfer",
           detail: "Transfer funds to accounts held at various banks.",
         ),
       ),
@@ -444,16 +444,16 @@ double jaro(String s1, String s2) {
   //   return 1.0;
   // }
 
-  int matchDistance = (s1.length / 2).floor() - 1;
-  List<bool> s1Matches = List.filled(s1.length, false);
-  List<bool> s2Matches = List.filled(s2.length, false);
+  final int matchDistance = (s1.length / 2).floor() - 1;
+  final List<bool> s1Matches = List.filled(s1.length, false);
+  final List<bool> s2Matches = List.filled(s2.length, false);
 
   int matches = 0;
   int transpositions = 0;
 
   for (int i = 0; i < s1.length; i++) {
-    int start = max(0, i - matchDistance);
-    int end = min(s2.length - 1, i + matchDistance);
+    final int start = max(0, i - matchDistance);
+    final int end = min(s2.length - 1, i + matchDistance);
 
     for (int j = start; j <= end; j++) {
       if (s2Matches[j]) continue;
@@ -475,7 +475,7 @@ double jaro(String s1, String s2) {
     k++;
   }
 
-  double jaroScore = (matches / s1.length +
+  final double jaroScore = (matches / s1.length +
           matches / s2.length +
           (matches - transpositions / 2.0) / matches) /
       3.0;
@@ -485,7 +485,7 @@ double jaro(String s1, String s2) {
 double jaroWinkler(String s1, String s2) {
   const double prefixWeight = 0.1;
 
-  double jaroDistance = jaro(s1, s2);
+  final double jaroDistance = jaro(s1, s2);
   int prefixLength = 0;
 
   for (int i = 0; i < min(s1.length, s2.length); i++) {
@@ -495,7 +495,7 @@ double jaroWinkler(String s1, String s2) {
       break;
   }
 
-  double score =
+  final double score =
       jaroDistance + prefixWeight * prefixLength * (1 - jaroDistance);
   return score * 100; // Convert score to a range between 0 and 100
 }
