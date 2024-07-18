@@ -13,6 +13,8 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
@@ -69,6 +71,18 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
       _accountNumberController.text = widget.accountNumber.toString();
       _selectedBankController.text = widget.bankName.toString();
     }
+  }
+
+  final appService =
+      RepositoryProvider.of<AppServiceRepository>(NavigationService.context)
+          .appService;
+
+  bool checkOtpStatus() {
+    final AppServiceManagementModel filteredList = appService.firstWhere(
+        (element) => element.uniqueIdentifier.toString() == "transaction_otp");
+    return filteredList.status.toString().toLowerCase() == "active"
+        ? true
+        : false;
   }
 
   bool _isLoading = false;

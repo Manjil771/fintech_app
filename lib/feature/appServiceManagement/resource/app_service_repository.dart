@@ -25,8 +25,9 @@ class AppServiceRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
+  List<AppServiceManagementModel> appService = [];
   Future<DataResponse<List<AppServiceManagementModel>>> getAppService() async {
-    List<AppServiceManagementModel> _appServiceList = [];
+    final List<AppServiceManagementModel> _appServiceList = [];
     try {
       final _res = await appServiceApiProvider.fetchAppService();
 
@@ -49,7 +50,7 @@ class AppServiceRepository {
         );
         final _ = await ServiceHiveUtils.setAppService(
             item: _appServiceList, slug: "app_service");
-
+        appService = _appServiceList;
         return DataResponse.success(_appServiceList);
       } else {
         return DataResponse.error("No Transaction");
