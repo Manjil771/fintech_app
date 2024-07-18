@@ -203,7 +203,8 @@ flutter:
     # - assets/subhodaya/
     # - assets/garimaAgri/
     # - assets/aastha/
-    - assets/sunshine/
+    # - assets/sunshine/
+    # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -334,7 +335,7 @@ flutter:
     # - assets/gagankalika/
     # - assets/camellia/
     # - assets/agrajMahila/
-    # - assets/mahabir/
+    - assets/mahabir/
     
     
     
