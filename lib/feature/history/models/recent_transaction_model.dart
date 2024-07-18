@@ -1,16 +1,3 @@
-// To parse this JSON data, do
-//
-//     final recentTransactionModel = recentTransactionModelFromJson(jsonString);
-
-import 'dart:convert';
-
-List<RecentTransactionModel> recentTransactionModelFromJson(String str) =>
-    List<RecentTransactionModel>.from(
-        json.decode(str).map((x) => RecentTransactionModel.fromJson(x)));
-
-String recentTransactionModelToJson(List<RecentTransactionModel> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class RecentTransactionModel {
   double amount;
   String service;
@@ -77,7 +64,7 @@ class RecentTransactionModel {
         iconUrl: json["iconUrl"],
         debit: json["debit"],
         channelType: json["channelType"] ?? "",
-        remarks: json["remarks"] ?? "Remarks",
+        remarks: json["remarks"] ?? "",
       );
 
   Map<String, dynamic> toJson() => {
@@ -126,6 +113,10 @@ class RequestDetail {
   String? mobileNumber;
   String? serviceId;
   String? serviceTo;
+  String? scno;
+  String? officeCode;
+  String? customerId;
+  String? counterCode;
 
   RequestDetail({
     this.destinationBankId,
@@ -138,20 +129,27 @@ class RequestDetail {
     this.mobileNumber,
     this.serviceId,
     this.serviceTo,
+    this.customerId,
+    this.officeCode,
+    this.scno,
+    this.counterCode,
   });
 
   factory RequestDetail.fromJson(Map<String, dynamic> json) => RequestDetail(
-        destinationBankId: json["destinationBankId"],
-        destinationBranchName: json["destinationBranchName"],
-        destinationAccountNumber: json["destinationAccountNumber"],
-        destinationBankName: json["destinationBankName"],
-        destinationAccountName: json["destinationAccountName"],
-        customerAddress: json["customer_address"],
-        amount: json["amount"],
-        mobileNumber: json["mobile_number"],
-        serviceId: json["serviceId"],
-        serviceTo: json["serviceTo"],
-      );
+      destinationBankId: json["destinationBankId"],
+      destinationBranchName: json["destinationBranchName"],
+      destinationAccountNumber: json["destinationAccountNumber"],
+      destinationBankName: json["destinationBankName"],
+      destinationAccountName: json["destinationAccountName"],
+      customerAddress: json["customer_address"],
+      amount: json["amount"],
+      mobileNumber: json["mobile_number"],
+      serviceId: json["serviceId"],
+      serviceTo: json["serviceTo"],
+      customerId: json["customerId"],
+      officeCode: json["officeCode"],
+      scno: json["scno"],
+      counterCode: json["counter_code"]);
 
   Map<String, dynamic> toJson() => {
         "destinationBankId": destinationBankId,
@@ -164,6 +162,10 @@ class RequestDetail {
         "mobile_number": mobileNumber,
         "serviceId": serviceId,
         "serviceTo": serviceTo,
+        "customerId": customerId,
+        "officeCode": officeCode,
+        "scno": scno,
+        "counter_code": counterCode,
       };
 }
 

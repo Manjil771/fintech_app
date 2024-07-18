@@ -59,6 +59,7 @@ class EtellerWidget extends StatelessWidget {
             if (res.code == "M0000" && res.status.toLowerCase() == "success") {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                      serviceName: "QR Payment",
                       body: Column(children: [
                         KeyValueTile(
                             title: "From Account",

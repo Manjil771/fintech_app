@@ -2,33 +2,27 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/select_counter_widget.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/widget/kukl_bill_detail.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/kukl/widget/kukl_select_counter_widget.dart';
-import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class KuklPaymentWidget extends StatefulWidget {
   final ServiceList service;
 
-  KuklPaymentWidget({Key? key, required this.service}) : super(key: key);
+  const KuklPaymentWidget({Key? key, required this.service}) : super(key: key);
 
   @override
   State<KuklPaymentWidget> createState() => _KuklPaymentWidgetState();
@@ -143,6 +137,15 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
           }
         },
         child: CommonContainer(
+            onRecentTransactionPressed: (p0) {
+              NavigationService.pop();
+              selectedCounterValue = p0.requestDetail.counterCode.toString();
+              _selectedCounterController.text =
+                  p0.requestDetail.counterCode.toString();
+              saveValueToController(p0.requestDetail.serviceTo.toString(),
+                  _customerNoCOntroller, _connectionNumberController);
+              setState(() {});
+            },
             showRecentTransaction: true,
             associatedId: widget.service.id.toString(),
             buttonName: "Show Bill",
@@ -231,32 +234,6 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
                     ),
                   ),
                   SizedBox(height: _height * 0.02),
-                  // Row(
-                  //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  //   children: [
-                  //     CustomRoundedButtom(
-                  //         color: isCustomerNo == true
-                  //             ? _theme.primaryColor
-                  //             : _theme.primaryColor.withOpacity(0.5),
-                  //         title: "Customer No",
-                  //         onPressed: () {
-                  //           _connectionNumberController.clear();
-                  //           isCustomerNo = !isCustomerNo;
-                  //           setState(() {});
-                  //         }),
-                  //     CustomRoundedButtom(
-                  //         color: isCustomerNo == false
-                  //             ? _theme.primaryColor
-                  //             : _theme.primaryColor.withOpacity(0.5),
-                  //         title: "Connection No",
-                  //         onPressed: () {
-                  //           _customerNoCOntroller.clear();
-                  //           isCustomerNo = !isCustomerNo;
-                  //           setState(() {});
-                  //         }),
-                  //   ],
-                  // ),
-                  // SizedBox(height: 10.hp),
                   CustomTextField(
                     title: "Select Counter",
                     hintText: "Select From List",
@@ -290,5 +267,18 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
             )),
       ),
     );
+  }
+
+  void saveValueToController(
+      String text,
+      TextEditingController customerNoController,
+      TextEditingController connectionNumberController) {
+    if (text.contains('customerno')) {
+      isCustomerNo = true;
+      customerNoController.text = text.split('-').last;
+    } else if (text.contains('customercode')) {
+      isCustomerNo = false;
+      connectionNumberController.text = text.split('-').last;
+    }
   }
 }

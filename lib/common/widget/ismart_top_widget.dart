@@ -3,9 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/util/url_launcher.dart';
 // import 'package:get/get.dart';
 // import 'package:ismart/view/Auth/loginScreen/select_language.dart';
 
@@ -48,10 +46,10 @@ class IsmartTopWidget extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                SvgPicture.asset(
-                  Assets.translateImage,
-                  height: _height * 0.03,
-                ),
+                // SvgPicture.asset(
+                //   Assets.translateImage,
+                //   height: _height * 0.03,
+                // ),
                 SizedBox(width: 15.hp),
                 InkWell(
                   onTap: supportAction

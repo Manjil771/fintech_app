@@ -25,21 +25,19 @@ class CommonBillDetailPage extends StatelessWidget {
   final String apiEndpoint;
   final Widget body;
   final ServiceList service;
+  final String serviceName;
 
-  CommonBillDetailPage(
+  const CommonBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
       required this.apiEndpoint,
       required this.apiBody,
       required this.service,
-      required this.serviceIdentifier});
-  bool _isLoading = false;
+      required this.serviceIdentifier,
+      required this.serviceName});
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -52,6 +50,7 @@ class CommonBillDetailPage extends StatelessWidget {
         apiEndpoint: apiEndpoint,
         accountDetails: accountDetails,
         serviceIdentifier: serviceIdentifier,
+        serviceName: serviceName,
       ),
     );
   }
@@ -64,8 +63,9 @@ class CommonBillDetailWidget extends StatefulWidget {
   final ServiceList service;
   final Widget body;
   final String serviceIdentifier;
+  final String serviceName;
 
-  CommonBillDetailWidget({
+  const CommonBillDetailWidget({
     super.key,
     required this.accountDetails,
     required this.apiEndpoint,
@@ -73,6 +73,7 @@ class CommonBillDetailWidget extends StatefulWidget {
     required this.apiBody,
     required this.service,
     required this.serviceIdentifier,
+    required this.serviceName,
   });
 
   @override
@@ -85,7 +86,6 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
@@ -112,7 +112,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message
@@ -120,6 +120,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                     .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                      serviceName: widget.serviceName,
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
@@ -146,7 +147,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -155,7 +156,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                       onPressed: () {
                         NavigationService.pop();
                       },
-                      icon: Icon(Icons.arrow_back)),
+                      icon: const Icon(Icons.arrow_back)),
                   Center(
                     child: Image.network(
                       "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}",
@@ -168,7 +169,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                         ? Container()
                         : Text(
                             widget.service.service,
-                            style: TextStyle(
+                            style: const TextStyle(
                                 fontSize: 20,
                                 color: Colors.black,
                                 fontWeight: FontWeight.w500),

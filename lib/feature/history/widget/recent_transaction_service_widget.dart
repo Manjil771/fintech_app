@@ -7,11 +7,11 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/transaction_detail_box.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
+import 'package:ismart/feature/history/widget/transaction_detail_box_service.dart';
 
 class RecentTransactionServiceWidget extends StatefulWidget {
   final String serviceCategoryId;
@@ -90,7 +90,7 @@ class _RecentTransactionServiceWidgetState
                       children: [
                         Text(
                           "Recent Transaction",
-                          style: _textTheme.titleLarge!.copyWith(
+                          style: _textTheme.titleSmall!.copyWith(
                               color: CustomTheme.primaryColor,
                               fontWeight: FontWeight.w600),
                         ),
@@ -118,7 +118,7 @@ class _RecentTransactionServiceWidgetState
                             itemCount: state.data.length,
                             itemBuilder: (context, index) {
                               final _detail = state.data[index];
-                              return TransactionDetailBox(
+                              return TransactionDetailBoxService(
                                 onClickAction: () {
                                   widget.onRecentTransactionPressed(_detail);
                                 },

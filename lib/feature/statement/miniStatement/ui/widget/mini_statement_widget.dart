@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -41,6 +42,11 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     );
   }
 
+  bool sortList = false;
+  getList({required List dataList}) {
+    return sortList == true ? dataList.reversed.toList() : dataList;
+  }
+
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -79,182 +85,213 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
             final res = state.data.ministatementList;
 
             return CommonContainer(
-                horizontalPadding: 0,
-                showDetail: false,
-                body: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    ValueListenableBuilder<CustomerDetailModel?>(
-                        valueListenable: customerDetail,
-                        builder: (context, val, _) {
-                          if (val != null) {
-                            return Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Padding(
-                                  padding: const EdgeInsets.symmetric(
-                                      horizontal: 18),
-                                  child: Column(
-                                    children: [
-                                      Text(
-                                          "Account Details ${selectedAccount!.accountNumber}",
-                                          style: Theme.of(context)
-                                              .textTheme
-                                              .titleLarge),
-                                      SizedBox(height: _height * 0.01),
-                                      Container(
-                                        padding: const EdgeInsets.all(18),
-                                        width: double.infinity,
-                                        height: _height * 0.11,
-                                        decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(8),
-                                          color: Theme.of(context)
-                                              .scaffoldBackgroundColor,
-                                          border: Border.all(
-                                              color: Theme.of(context)
-                                                  .primaryColor),
+              horizontalPadding: 0,
+              showDetail: false,
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: [
+                  // InkWell(
+                  //   onTap: () {
+                  //     setState(() {
+                  //       shotList = !shotList;
+                  //     });
+                  //   },
+                  //   child: Padding(
+                  //     padding: const EdgeInsets.symmetric(horizontal: 12.0),
+                  //     child: SvgPicture.asset(Assets.sortICon, height: 20),
+                  //   ),
+                  // ),
+                  ValueListenableBuilder<CustomerDetailModel?>(
+                      valueListenable: customerDetail,
+                      builder: (context, val, _) {
+                        if (val != null) {
+                          return Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Padding(
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 18),
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Expanded(
+                                          child: Text(
+                                              "Account No. ${selectedAccount!.mainCode}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge),
                                         ),
-                                        child: Row(
-                                          mainAxisAlignment:
-                                              MainAxisAlignment.spaceBetween,
-                                          children: [
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Available Balance",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleLarge,
-                                                ),
-                                                Text(
-                                                  "NPR ${selectedAccount.availableBalance}",
-                                                  style: TextStyle(
-                                                      fontFamily: "popinBold",
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
-                                                ),
-                                              ],
-                                            ),
-                                            Column(
-                                              crossAxisAlignment:
-                                                  CrossAxisAlignment.start,
-                                              children: [
-                                                Text(
-                                                  "Actual Balance",
-                                                  style: Theme.of(context)
-                                                      .textTheme
-                                                      .titleLarge,
-                                                ),
-                                                Text(
-                                                  "NPR ${selectedAccount.actualBalance}",
-                                                  style: TextStyle(
-                                                      fontSize: 18,
-                                                      fontWeight:
-                                                          FontWeight.w500,
-                                                      fontFamily: "popinBold",
-                                                      color: Theme.of(context)
-                                                          .primaryColor),
-                                                ),
-                                              ],
-                                            ),
-                                          ],
+                                        SizedBox(width: 15.wp),
+                                        Text(
+                                          "Sorting",
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.w600,
+                                              fontSize: 12,
+                                              letterSpacing: 0.3,
+                                              color: CustomTheme.primaryColor),
                                         ),
+                                        Switch(
+                                          activeColor: CustomTheme.primaryColor,
+                                          value: sortList,
+                                          onChanged: (value) {
+                                            setState(() {
+                                              sortList = !sortList;
+                                            });
+                                          },
+                                        ),
+                                      ],
+                                    ),
+                                    SizedBox(height: _height * 0.01),
+                                    Container(
+                                      padding: const EdgeInsets.all(18),
+                                      width: double.infinity,
+                                      height: _height * 0.11,
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(8),
+                                        color: Theme.of(context)
+                                            .scaffoldBackgroundColor,
+                                        border: Border.all(
+                                            color:
+                                                Theme.of(context).primaryColor),
                                       ),
-                                      SizedBox(height: _height * 0.02),
-                                    ],
-                                  ),
-                                ),
-                              ],
-                            );
-                          } else {
-                            return Container();
-                          }
-                        }),
-                    if (state.data.ministatementList.isNotEmpty)
-                      DataTable(
-                        sortAscending: false,
-
-                        columnSpacing: _width / 5,
-                        headingRowHeight: 40,
-                        dataTextStyle:
-                            const TextStyle(fontSize: 12, color: Colors.black),
-                        headingRowColor:
-                            const MaterialStatePropertyAll(Colors.black12),
-                        columns: const [
-                          DataColumn(
-                              label: Text(
-                            "Date",
-                            style: TextStyle(fontWeight: FontWeight.w700),
-                          )),
-                          DataColumn(
-                              label: Text("Amount",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w700))),
-                          DataColumn(
-                              label: Text("Status",
-                                  style:
-                                      TextStyle(fontWeight: FontWeight.w700))),
-                        ],
-                        rows: List.from(res.reversed)
-                            .map((e) => DataRow(
-                                  cells: [
-                                    DataCell(Text(
-                                        "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
-                                    DataCell(Text(
-                                      e.amount.toString(),
-                                      style: TextStyle(
-                                          color: e.credit
-                                              ? Colors.green
-                                              : Colors.red),
-                                    )),
-                                    DataCell(Text(
-                                      e.credit ? "Deposit" : "Withdrawl",
-                                      style: TextStyle(
-                                          color: e.credit
-                                              ? Colors.green
-                                              : Colors.red),
-                                    )),
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Available Balance",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge,
+                                              ),
+                                              Text(
+                                                "NPR ${selectedAccount.availableBalance}",
+                                                style: TextStyle(
+                                                    fontFamily: "popinBold",
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w500,
+                                                    color: Theme.of(context)
+                                                        .primaryColor),
+                                              ),
+                                            ],
+                                          ),
+                                          Column(
+                                            crossAxisAlignment:
+                                                CrossAxisAlignment.start,
+                                            children: [
+                                              Text(
+                                                "Actual Balance",
+                                                style: Theme.of(context)
+                                                    .textTheme
+                                                    .titleLarge,
+                                              ),
+                                              Text(
+                                                "NPR ${selectedAccount.actualBalance}",
+                                                style: TextStyle(
+                                                    fontSize: 18,
+                                                    fontWeight: FontWeight.w500,
+                                                    fontFamily: "popinBold",
+                                                    color: Theme.of(context)
+                                                        .primaryColor),
+                                              ),
+                                            ],
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    SizedBox(height: _height * 0.02),
                                   ],
-                                ))
-                            .toList(),
+                                ),
+                              ),
+                            ],
+                          );
+                        } else {
+                          return Container();
+                        }
+                      }),
+                  if (state.data.ministatementList.isNotEmpty)
+                    DataTable(
+                      sortAscending: false,
 
-                        // DataRow(cells: [
-                        //   DataCell(Text(state.data.ministatementList[0].remarks)),
-                        //   DataCell(Text(state
-                        //       .data.ministatementList[0].transactionDate
-                        //       .toString())),
-                        //   DataCell(Text(
-                        //       state.data.ministatementList[0].amount.toString())),
-                        // ])
-                      ),
-                    if (state.data.ministatementList.isEmpty)
-                      Container(
-                        child: const Center(
-                          child: Text(
-                            "No data found.",
-                            style: TextStyle(
-                              fontWeight: FontWeight.bold,
-                              fontSize: 15,
-                            ),
+                      columnSpacing: _width / 5,
+                      headingRowHeight: 40,
+                      dataTextStyle:
+                          const TextStyle(fontSize: 12, color: Colors.black),
+                      headingRowColor:
+                          const MaterialStatePropertyAll(Colors.black12),
+                      columns: const [
+                        DataColumn(
+                            label: Text(
+                          "Date",
+                          style: TextStyle(fontWeight: FontWeight.w700),
+                        )),
+                        DataColumn(
+                            label: Text("Amount",
+                                style: TextStyle(fontWeight: FontWeight.w700))),
+                        DataColumn(
+                            label: Text("Status",
+                                style: TextStyle(fontWeight: FontWeight.w700))),
+                      ],
+                      rows: List.from(getList(dataList: res))
+                          .map((e) => DataRow(
+                                cells: [
+                                  DataCell(Text(e.transactionDate.toString())),
+                                  // DataCell(Text(
+                                  //     "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
+                                  DataCell(Text(
+                                    e.amount.toString(),
+                                    style: TextStyle(
+                                        color: e.credit
+                                            ? Colors.green
+                                            : Colors.red),
+                                  )),
+                                  DataCell(Text(
+                                    e.credit ? "Deposit" : "Withdrawl",
+                                    style: TextStyle(
+                                        color: e.credit
+                                            ? Colors.green
+                                            : Colors.red),
+                                  )),
+                                ],
+                              ))
+                          .toList(),
+
+                      // DataRow(cells: [
+                      //   DataCell(Text(state.data.ministatementList[0].remarks)),
+                      //   DataCell(Text(state
+                      //       .data.ministatementList[0].transactionDate
+                      //       .toString())),
+                      //   DataCell(Text(
+                      //       state.data.ministatementList[0].amount.toString())),
+                      // ])
+                    ),
+                  if (state.data.ministatementList.isEmpty)
+                    Container(
+                      child: const Center(
+                        child: Text(
+                          "No data found.",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 15,
                           ),
                         ),
                       ),
-                  ],
-                ),
-                onButtonPressed: () {
-                  NavigationService.pushReplacement(
-                      target: const DashboardPage());
-                },
-                buttonName: "Close",
-                title: "  Mini Statement",
-                detail: "",
-                topbarName: "Statement");
+                    ),
+                ],
+              ),
+              onButtonPressed: () {
+                NavigationService.pushReplacement(
+                    target: const DashboardPage());
+              },
+              verticalPadding: 0,
+              buttonName: "Close",
+              topbarName: "  Mini Statement",
+            );
           } else {
             return Container();
           }

@@ -4,19 +4,11 @@ import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_pin_scree
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
-import 'package:ismart/feature/banking/balanceInquiry/screen/balance_inquiry_page.dart';
-import 'package:ismart/feature/banking/loan/loanInformation/page/loan_info_choose_account_page.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_choose_account_page.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_page.dart';
-import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_choose_account_page.dart';
-import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
 import 'package:ismart/feature/banking/loan/screen/loan_page.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
-import 'package:ismart/feature/categoryWiseService/dataPack/screen/select_datapack_screen.dart';
-import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/download/screens/downloads_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
@@ -25,6 +17,7 @@ import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
 import 'package:ismart/feature/receiveMoney/internetBanking/screen/internet_banking_page.dart';
 import 'package:ismart/feature/receiveMoney/loadViacard/screen/load_via_card_page.dart';
+import 'package:ismart/feature/receiveMoney/load_from_khalti/screen/load_from_khalti_page.dart';
 import 'package:ismart/feature/receiveMoney/mobileBanking/screen/mobile_bannking_page.dart';
 import 'package:ismart/feature/receiveMoney/requestSapati/screen/request_sapati_page.dart';
 import 'package:ismart/feature/receiveMoney/screens/receive_money_page.dart';
@@ -32,10 +25,7 @@ import 'package:ismart/feature/sendMoney/anyBank/screen/any_bank_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/otherCooperative/screen/other_cooperative_page.dart';
 import 'package:ismart/feature/sendMoney/screens/send_money_page.dart';
-import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_transfer_screen.dart';
-import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
-import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
-import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
+import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/wallet_list_screen.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 import 'package:ismart/feature/splash/ui/widgets/splash_screen.dart';
 import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
@@ -43,8 +33,6 @@ import 'package:ismart/feature/statement/fullStatement/ui/screen/full_statement_
 import 'package:ismart/feature/statement/miniStatement/ui/screen/choose_account_mini_statement_page.dart';
 import 'package:ismart/feature/statement/miniStatement/ui/screen/mini_statement_page.dart';
 import 'package:ismart/feature/statement/screen/statement_page.dart';
-
-import '../../feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
@@ -122,6 +110,11 @@ class RouteGenerator {
           builder: (_) => const InternetBankingPage(),
           settings: RouteSettings(name: settings.name),
         );
+      case Routes.loadFromKhalti:
+        return MaterialPageRoute(
+          builder: (_) => const LoadFromKhaltiPage(),
+          settings: RouteSettings(name: settings.name),
+        );
       case Routes.requestSapati:
         return MaterialPageRoute(
           builder: (_) => const RequestSapatiPage(),
@@ -154,18 +147,18 @@ class RouteGenerator {
         );
       case Routes.loginPage:
         return MaterialPageRoute(
-          builder: (_) => LoginPage(),
+          builder: (_) => const LoginPage(),
           settings: RouteSettings(name: settings.name),
         );
 
       case Routes.dashboard:
         return MaterialPageRoute(
-          builder: (_) => DashboardPage(),
+          builder: (_) => const DashboardPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.listWalletScreen:
         return MaterialPageRoute(
-          builder: (_) => const WalletTransferScreen(),
+          builder: (_) => const WalletListScreen(),
           settings: RouteSettings(name: settings.name),
         );
 
@@ -213,21 +206,6 @@ class RouteGenerator {
       case Routes.loanPage:
         return MaterialPageRoute(
           builder: (_) => const LoanPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanInformationPage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanInfoChooseAccountPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanSchedulePage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanScheduleChooseAccountPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanStatementPage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanStatementChooseAccountPage(),
           settings: RouteSettings(name: settings.name),
         );
 

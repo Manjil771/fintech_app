@@ -126,7 +126,7 @@ class HomePageMoneyWidget extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         NavigationService.pushNamed(
-                            routeName: Routes.reveiveMoney);
+                            routeName: Routes.loadFromKhalti);
                       },
                       child: Padding(
                         padding: const EdgeInsets.all(10.0),

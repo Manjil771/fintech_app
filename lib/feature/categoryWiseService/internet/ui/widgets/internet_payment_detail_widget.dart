@@ -45,7 +45,6 @@ class _InternetPaymentDeatilWidgetState
 
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
 
     _dueAmount = double.tryParse(widget.detailFetchData
@@ -97,7 +96,6 @@ class _InternetPaymentDeatilWidgetState
     final bool _isPackageAvailable = _packageOptions.isNotEmpty;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
@@ -129,7 +127,7 @@ class _InternetPaymentDeatilWidgetState
             }
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              UtilityResponseData _response = state.data;
+              final UtilityResponseData _response = state.data;
 
               if (_response.code == "M0000") {
               } else {
@@ -361,6 +359,7 @@ class _InternetPaymentDeatilWidgetState
 
           NavigationService.push(
               target: CommonBillDetailPage(
+                  serviceName: widget.service.service,
                   body: Column(children: [
                     KeyValueTile(
                       title: "Customer Name",

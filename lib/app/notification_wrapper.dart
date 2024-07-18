@@ -5,6 +5,7 @@ import 'dart:math';
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/models/local_notification.dart';
@@ -28,28 +29,31 @@ class NotificationWrapper extends StatefulWidget {
 
 class _NotificationWrapperState extends State<NotificationWrapper> {
   Future<void> initialiseFirebase() async {
-    await Firebase.initializeApp();
+    if (!kIsWeb) {
+      await Firebase.initializeApp();
+    }
   }
 
   late UserRepository userRepository;
 
   @override
   void initState() {
-    print("initState for Notification wrapper called");
+    // print("initState for Notification wrapper called");
     super.initState();
-    initialiseFirebase().then((value) {
-      userRepository = RepositoryProvider.of<UserRepository>(context);
-      initialiseFCM();
-      registerFirebaseBackgroundNotification();
-      registerFirebaseToken();
-      // fetchNotificationTopics();
-      listenRefreshToken();
-      onForegroundMessageListen();
-      onBackgroundMessageListened();
-      onNotificationOpenedFromTerminated();
-      onForegroundLocalNotification();
-      // subscribeToNotificationTopic();
-    });
+    if (!kIsWeb) {
+      initialiseFirebase().then((value) {
+        userRepository = RepositoryProvider.of<UserRepository>(context);
+        initialiseFCM();
+        registerFirebaseBackgroundNotification();
+        registerFirebaseToken();
+
+        listenRefreshToken();
+        onForegroundMessageListen();
+        onBackgroundMessageListened();
+        onNotificationOpenedFromTerminated();
+        onForegroundLocalNotification();
+      });
+    }
   }
 
   // subscribeToNotificationTopic() {
@@ -132,33 +136,63 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
     });
   }
 
+  // Future<void> onForegroundLocalNotification() async {
+  //   AwesomeNotifications().actionStream.listen((message) {
+  //     if (message.payload?["data"] != null) {
+  //       final _encodedData = message.payload!["data"]!;
+  //       dynamic _decodedData;
+  //       try {
+  //         _decodedData = json.decode(_encodedData);
+  //       } catch (e) {
+  //         _decodedData = _encodedData;
+  //       }
+  //       if (_decodedData is Map) {
+  //         final Map<String, dynamic> _data =
+  //             Map<String, dynamic>.from(_decodedData);
+  //         final _tempNotificationData =
+  //             NotificationUtils.convertToLocalPushNofication(_data);
+  //         NotificationUtils.handleNavigation(
+  //           _tempNotificationData,
+  //           NavigationService.context,
+  //         );
+  //       } else if (_decodedData is String) {
+  //         final _doesFileExist = File(_decodedData).existsSync();
+  //         // if (_doesFileExist) {
+  //         //   OpenFilex.open(_decodedData);
+  //         // }
+  //       }
+  //     }
+  //   });
+  // }
   Future<void> onForegroundLocalNotification() async {
-    AwesomeNotifications().actionStream.listen((message) {
-      if (message.payload?["data"] != null) {
-        final _encodedData = message.payload!["data"]!;
-        dynamic _decodedData;
-        try {
-          _decodedData = json.decode(_encodedData);
-        } catch (e) {
-          _decodedData = _encodedData;
+    AwesomeNotifications().setListeners(
+      onActionReceivedMethod: (ReceivedAction receivedAction) async {
+        if (receivedAction.payload?["data"] != null) {
+          final _encodedData = receivedAction.payload!["data"]!;
+          dynamic _decodedData;
+          try {
+            _decodedData = json.decode(_encodedData);
+          } catch (e) {
+            _decodedData = _encodedData;
+          }
+          if (_decodedData is Map) {
+            final Map<String, dynamic> _data =
+                Map<String, dynamic>.from(_decodedData);
+            final _tempNotificationData =
+                NotificationUtils.convertToLocalPushNofication(_data);
+            NotificationUtils.handleNavigation(
+              _tempNotificationData,
+              NavigationService.context,
+            );
+          } else if (_decodedData is String) {
+            final _doesFileExist = File(_decodedData).existsSync();
+            // if (_doesFileExist) {
+            //   OpenFilex.open(_decodedData);
+            // }
+          }
         }
-        if (_decodedData is Map) {
-          final Map<String, dynamic> _data =
-              Map<String, dynamic>.from(_decodedData);
-          final _tempNotificationData =
-              NotificationUtils.convertToLocalPushNofication(_data);
-          NotificationUtils.handleNavigation(
-            _tempNotificationData,
-            NavigationService.context,
-          );
-        } else if (_decodedData is String) {
-          final _doesFileExist = File(_decodedData).existsSync();
-          // if (_doesFileExist) {
-          //   OpenFilex.open(_decodedData);
-          // }
-        }
-      }
-    });
+      },
+    );
   }
 
   Future<void> onNotificationOpenedFromTerminated() async {

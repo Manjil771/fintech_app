@@ -21,6 +21,7 @@ class Routes {
   static const loadViaCard = "/load_via_card";
   static const connectIps = "/connect_ips";
   static const internetbanking = "/internet_banking";
+  static const loadFromKhalti = "/load_from_khalti";
   static const requestSapati = "/request_sapati";
   static const statementPage = "/statement_page";
   static const balanceInquiry = "/balance_inquiry_choose_account";

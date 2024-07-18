@@ -1,7 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
@@ -33,6 +31,20 @@ class StartUpApiProvider {
 
   fetchdefaultBannerImages() async {
     final url = "$baseUrl" "get/bannerimage/";
+    return await apiProvider.get(
+      UrlUtils.getUri(url: url),
+      extraHeaders: {
+        "client": "EHVNI7CZJ3",
+        "type": "LoginScreenImage",
+      },
+      token: userRepository.token,
+      userId: -1,
+    );
+  }
+
+  fetchAppService() async {
+    final url = "$baseUrl"
+        "/appServiceManagement/appServices/bank/app/${env.clientCode}";
     return await apiProvider.get(
       UrlUtils.getUri(url: url),
       extraHeaders: {

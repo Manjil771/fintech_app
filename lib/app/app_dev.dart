@@ -7,6 +7,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/common/wrapper/multi_bloc_wrapper.dart';
 import 'package:ismart/common/wrapper/multi_repository_wrapper.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
@@ -24,6 +25,7 @@ class _AppDevState extends State<AppDev> {
   SessionConfig? sessionConfig;
   @override
   void initState() {
+    ServiceHiveUtils.init();
     CustomTheme().initializeTheme(widget.env.primaryColor);
     sessionConfig = SessionConfig(
       invalidateSessionForAppLostFocus: const Duration(minutes: 2),
@@ -40,6 +42,12 @@ class _AppDevState extends State<AppDev> {
   }
 
   @override
+  void dispose() {
+    ServiceHiveUtils.close();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MultiRepositoryWrapper(
       env: widget.env,
@@ -49,17 +57,28 @@ class _AppDevState extends State<AppDev> {
           child: UpdateWrapper(
             child: SessionTimeoutManager(
               sessionConfig: sessionConfig,
-              child: MaterialApp(
-                locale: context.locale,
-                navigatorKey: NavigationService.navigationKey,
-                supportedLocales: context.supportedLocales,
-                localizationsDelegates: context.localizationDelegates,
-                debugShowCheckedModeBanner: false,
-                darkTheme: CustomTheme.lightTheme,
-                theme: CustomTheme.lightTheme,
-                title: widget.env.appTitle,
-                initialRoute: Routes.root,
-                onGenerateRoute: RouteGenerator.generateRoute,
+              child: GestureDetector(
+                behavior: HitTestBehavior.translucent,
+                onTap: () {
+                  final FocusScopeNode currentFocus = FocusScope.of(context);
+
+                  if (!currentFocus.hasPrimaryFocus &&
+                      currentFocus.focusedChild != null) {
+                    FocusManager.instance.primaryFocus?.unfocus();
+                  }
+                },
+                child: MaterialApp(
+                  locale: context.locale,
+                  navigatorKey: NavigationService.navigationKey,
+                  supportedLocales: context.supportedLocales,
+                  localizationsDelegates: context.localizationDelegates,
+                  debugShowCheckedModeBanner: false,
+                  darkTheme: CustomTheme.lightTheme,
+                  theme: CustomTheme.lightTheme,
+                  title: widget.env.appTitle,
+                  initialRoute: Routes.root,
+                  onGenerateRoute: RouteGenerator.generateRoute,
+                ),
               ),
             ),
           ),

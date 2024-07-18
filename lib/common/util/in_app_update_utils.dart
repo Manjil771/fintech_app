@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:in_app_update/in_app_update.dart';
-import 'package:new_version/new_version.dart';
+import 'package:new_version_plus/new_version_plus.dart';
 
 class InAppUpdateUtils {
   static Future<bool> get isUpdateAvailable async {
@@ -14,7 +14,7 @@ class InAppUpdateUtils {
         return false;
       }
     } else {
-      final newVersion = NewVersion();
+      final newVersion = NewVersionPlus();
       final res = await newVersion.getVersionStatus();
       if (res != null) {
         return res.canUpdate;

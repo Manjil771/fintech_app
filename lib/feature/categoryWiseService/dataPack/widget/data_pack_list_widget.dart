@@ -151,7 +151,7 @@ class _DataPackListState extends State<DataPackList> {
         },
       );
     } else {
-      return NoDataScreen(
+      return const NoDataScreen(
         details: "",
         title: "No Data Found.",
         showImage: true,

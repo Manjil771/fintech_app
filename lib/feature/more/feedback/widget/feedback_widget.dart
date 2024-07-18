@@ -1,5 +1,8 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -12,19 +15,29 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-class FeedBackWidget extends StatelessWidget {
+class FeedBackWidget extends StatefulWidget {
   final String? transactionIdentifier;
-  FeedBackWidget({Key? key, this.transactionIdentifier}) : super(key: key);
+  const FeedBackWidget({Key? key, this.transactionIdentifier})
+      : super(key: key);
+
+  @override
+  State<FeedBackWidget> createState() => _FeedBackWidgetState();
+}
+
+class _FeedBackWidgetState extends State<FeedBackWidget> {
   final TextEditingController emailController = TextEditingController();
+
   final TextEditingController messageController = TextEditingController();
+
   final dateNow = DateTime.now();
+
   bool _isLoading = false;
+
   final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -76,7 +89,7 @@ class FeedBackWidget extends StatelessWidget {
                     accountDetails: {
                       "email": emailController.text,
                       "message":
-                          "${transactionIdentifier} ${messageController.text}",
+                          "${widget.transactionIdentifier} ${messageController.text}",
                     },
                     body: {},
                     apiEndpoint: "/api/addSuggestionBox",
@@ -94,25 +107,23 @@ class FeedBackWidget extends StatelessWidget {
                     customHintTextStyle: true,
                     hintText: dateNow.toString(),
                   ),
-                  if (transactionIdentifier != null)
+                  if (widget.transactionIdentifier != null)
                     CustomTextField(
                       title: "Transaction Identifier",
-                      hintText: transactionIdentifier.toString(),
+                      hintText: widget.transactionIdentifier.toString(),
                       customHintTextStyle: true,
                     ),
                   CustomTextField(
                     maxLine: 3,
-
                     hintText: "Message",
                     title: "Message",
                     textInputType: TextInputType.multiline,
-                    // maxLine: 5,
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Message"),
                   ),
-                  Text(
+                  const Text(
                     "Picture",
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: Fonts.poppin,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
@@ -120,32 +131,55 @@ class FeedBackWidget extends StatelessWidget {
                     ),
                   ),
                   InkWell(
-                    child: Container(
-                      width: _width,
-                      decoration: BoxDecoration(
-                          color: _theme.primaryColor.withOpacity(0.05),
-                          borderRadius: BorderRadius.circular(18)),
-                      height: _height * 0.2,
-                      child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Image.asset(
-                              Assets.uploadImageIcon,
-                              height: 50.hp,
-                            ),
-                            SizedBox(height: 10.hp),
-                            Text(
-                              "Upload Picture",
-                              style: _textTheme.titleSmall,
-                            )
-                          ]),
-                    ),
+                    onTap: () {
+                      _pickImage();
+                    },
+                    child: _image == null
+                        ? Container(
+                            width: _width,
+                            decoration: BoxDecoration(
+                                color: _theme.primaryColor.withOpacity(0.05),
+                                borderRadius: BorderRadius.circular(18)),
+                            height: _height * 0.2,
+                            child: Column(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Image.asset(
+                                    Assets.uploadImageIcon,
+                                    height: 50.hp,
+                                  ),
+                                  SizedBox(height: 10.hp),
+                                  Text(
+                                    "Upload Picture",
+                                    style: _textTheme.titleSmall,
+                                  )
+                                ]),
+                          )
+                        : Container(
+                            alignment: Alignment.center,
+                            height: 140.hp,
+                            child: Image.file(_image!),
+                          ),
                   ),
                 ],
               ),
             ),
-            topbarName: "Report"),
+            topbarName: "Report Issue"),
       ),
     );
+  }
+
+  File? _image;
+  Future<void> _pickImage() async {
+    final picker = ImagePicker();
+    final pickedFile = await picker.pickImage(source: ImageSource.gallery);
+
+    if (pickedFile != null) {
+      setState(() {
+        _image = File(pickedFile.path);
+      });
+    } else {
+      NavigationService.pop();
+    }
   }
 }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/resources/reset_otp_register_repository.dart';
@@ -12,6 +13,7 @@ import 'package:ismart/feature/categoryWiseService/dataPack/resources/datapack_r
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 import 'package:ismart/feature/profile/resources/image_upload_repository.dart';
@@ -228,6 +230,24 @@ class MultiRepositoryWrapper extends StatelessWidget {
         ),
         RepositoryProvider(
           create: (context) => TvPaymentRepository(
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => AppContactRepository(
+            customerDetailRepository:
+                RepositoryProvider.of<CustomerDetailRepository>(context),
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => BannerRepository(
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             env: RepositoryProvider.of<CoOperative>(context),

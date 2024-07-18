@@ -22,7 +22,10 @@ class QrApiProvider {
       "customerBankAccountId": customerId
     };
     final _uri = UrlUtils.getUri(
-        url: coOperative.baseUrl + "/api/generateAndQRCode", params: _params);
+        // url: coOperative.baseUrl + "/api/generateAndQRCode", params: _params);
+        url: coOperative.baseUrl + "/api/generateAndQRCodeNew",
+        params: _params);
+
     return await apiProvider.get(Uri.parse(_uri.toString()),
         userId: 0, token: userRepository.token);
   }

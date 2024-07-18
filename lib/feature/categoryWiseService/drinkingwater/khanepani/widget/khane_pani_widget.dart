@@ -4,22 +4,15 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/enum/counters_fetch_enum.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/util/text_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_table_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/screen/khanepani_detail_screen.dart';
-import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/widget/khanepani_detail_widget.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_search_page.dart';
-import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -40,7 +33,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
   final TextEditingController _customerIdController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+  String recentTransactionCounterCode = "";
   KeyValue? selectedCounter;
   bool _isLoading = false;
 
@@ -171,6 +164,16 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
           }
         },
         child: CommonContainer(
+            onRecentTransactionPressed: (p0) {
+              NavigationService.pop();
+              _customerIdController.text =
+                  p0.requestDetail.serviceTo.toString();
+              recentTransactionCounterCode =
+                  p0.requestDetail.counterCode.toString();
+              _selectedCounterController.text =
+                  p0.requestDetail.counterCode.toString();
+              setState(() {});
+            },
             showRecentTransaction: true,
             associatedId: widget.service.id.toString(),
             buttonName: "Show Bill",
@@ -181,21 +184,10 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
             topbarName: "Khane Pani",
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
-                context.read<UtilityPaymentCubit>().fetchDetails(
-                      serviceIdentifier: widget.service.uniqueIdentifier,
-                      accountDetails: {
-                        "account_number":
-                            RepositoryProvider.of<CustomerDetailRepository>(
-                                    context)
-                                .selectedAccount
-                                .value!
-                                .accountNumber,
-                        "customer_code": _customerIdController.text,
-                        "counter": selectedCounter?.value ?? "",
-                        "month_id": 0,
-                      },
-                      apiEndpoint: "api/getkhanepanibill",
-                    );
+                onButtonPressed(
+                    custmerCode: _customerIdController.text,
+                    counterCode:
+                        selectedCounter?.value ?? recentTransactionCounterCode);
               }
             },
             body: Form(
@@ -234,5 +226,25 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
             )),
       ),
     );
+  }
+
+  void onButtonPressed({
+    required String custmerCode,
+    required String counterCode,
+  }) {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+          serviceIdentifier: widget.service.uniqueIdentifier,
+          accountDetails: {
+            "account_number":
+                RepositoryProvider.of<CustomerDetailRepository>(context)
+                    .selectedAccount
+                    .value!
+                    .accountNumber,
+            "customer_code": custmerCode,
+            "counter": counterCode,
+            "month_id": 0,
+          },
+          apiEndpoint: "api/getkhanepanibill",
+        );
   }
 }

@@ -31,7 +31,6 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart
 import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_form_screen.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-
 import 'package:mobile_scanner/mobile_scanner.dart';
 
 import '../../../common/http/response.dart';
@@ -72,7 +71,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       if (status == AnimationStatus.completed) {
         animationController.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        animationController.forward();
+        animationController.forward(); 
       }
     });
   }
@@ -133,8 +132,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         decoration: BoxDecoration(
                             color: Colors.white,
                             borderRadius: BorderRadius.circular(18)),
-                        padding: EdgeInsets.all(18),
-                        margin: EdgeInsets.symmetric(horizontal: 32),
+                        padding: const EdgeInsets.all(18),
+                        margin: const EdgeInsets.symmetric(horizontal: 32),
                         child: Column(children: [
                           CustomRoundedButtom(
                               title: "Fund Transfer",
@@ -416,7 +415,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                               showCancelButton: false,
                               buttonCallback: () {
                                 NavigationService.pop();
-                                NavigationService.pop();
                               },
                               title: 'Scan QR ',
                             );
@@ -484,7 +482,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           child: InkWell(
                             onTap: () {
                               NavigationService.pushReplacement(
-                                  target: const ShareQrPage());
+                                  target: ShareQrPage());
                             },
                             child: Container(
                               padding: const EdgeInsets.symmetric(
@@ -544,16 +542,32 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     );
   }
 
+  // void _onQRCodeDetect(
+  //   Barcode barcode,
+  //   MobileScannerArguments? args,
+  // ) {
+  //   _cameraSubscription = cameraController.barcodes.listen((code) {
+  //     if (code.rawValue != null && _isScanned == false && mounted) {
+  //       _isScanned = true;
+
+  //       _processScannedQR(qrCode: code.rawValue ?? "");
+  //     }
+  //   });
+  // }
   void _onQRCodeDetect(
-    Barcode barcode,
-    MobileScannerArguments? args,
+    BarcodeCapture barcodeCapture,
   ) {
     _cameraSubscription = cameraController.barcodes.listen((code) {
-      if (code.rawValue != null && _isScanned == false && mounted) {
-        _isScanned = true;
-
-        _processScannedQR(qrCode: code.rawValue ?? "");
-      }
+      _cameraSubscription = cameraController.barcodes.listen((code) {
+        final List _rawData = List.from(code.raw ?? []);
+        if (_rawData.isNotEmpty) {
+          final rawValue = _rawData.first["rawValue"];
+          if (rawValue != null && _isScanned == false && mounted) {
+            _isScanned = true;
+            _processScannedQR(qrCode: rawValue ?? "");
+          }
+        }
+      });
     });
   }
 
@@ -690,7 +704,7 @@ class NoServiceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return PageWrapper(
+    return const PageWrapper(
         showBackButton: true,
         body: NoDataScreen(
             title: "Service Unavailable",

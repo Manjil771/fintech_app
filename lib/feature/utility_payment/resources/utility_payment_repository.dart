@@ -73,15 +73,16 @@ class UtilityPaymentRepository {
   }
 
   Future<DataResponse<UtilityResponseData>> fetchDetails(
-      {required String serviceIdentifier,
+      {Map<String, dynamic>? extraHeaders,
+      required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,
       required String apiEndpoint}) async {
     try {
       final _res = await utilityPaymentAPIProvider.fetchDetails(
-        serviceIdentifier: serviceIdentifier,
-        accountDetails: accountDetails,
-        apiEndpoint: apiEndpoint,
-      );
+          serviceIdentifier: serviceIdentifier,
+          accountDetails: accountDetails,
+          apiEndpoint: apiEndpoint,
+          extraHeaders: extraHeaders);
 
       UtilityResponseData _responseData =
           UtilityResponseData.fromJson(_res['data'] ?? {});

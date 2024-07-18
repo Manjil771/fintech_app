@@ -22,12 +22,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final _detail = widget.customerDetail.value!;
     bool showPrimaryAccount = false;
-    bool showSecondaryAccount = false;
 
     return PageWrapper(
       padding: EdgeInsets.zero,
@@ -39,6 +36,13 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                 itemCount: widget.customerDetail.value!.accountDetail.length,
                 itemBuilder: (context, index) {
                   final _detail = widget.customerDetail.value!;
+                  final accuredInterest = _detail
+                      .accountDetail[index].accruedInterest
+                      .toString()
+                      .toLowerCase();
+                  final interestRate = _detail.accountDetail[index].interestRate
+                      .toString()
+                      .toLowerCase();
 
                   return Container(
                     color: Colors.white,
@@ -82,13 +86,16 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                             context,
                                             "clientcode.svg",
                                             "Member ID",
-                                            "${_detail.accountDetail[index].id}"),
+                                            "${_detail.accountDetail[index].clientCode}"),
                                       )
                                     ],
                                   ),
                                   if (_detail.accountDetail[index].interestRate
                                               .toString() !=
-                                          "0.0" &&
+                                          "0.0" ||
+                                      _detail.accountDetail[index].interestRate
+                                              .toString() !=
+                                          "0" ||
                                       _detail.accountDetail[index].interestRate
                                               .toString() !=
                                           "N/A")
@@ -113,10 +120,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                     ),
                                   Row(
                                     children: [
-                                      if (_detail.accountDetail[index]
-                                              .accruedInterest
-                                              .toString() !=
-                                          "0")
+                                      if (accuredInterest != "0" &&
+                                          accuredInterest != "null" &&
+                                          accuredInterest != "n/a")
                                         Expanded(
                                           child: buildDetails(
                                               context,
@@ -124,14 +130,17 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                               "Accrued Interest",
                                               "NPR ${_detail.accountDetail[index].accruedInterest}"),
                                         ),
-                                      SizedBox(
-                                        width: _width * 0.4,
-                                        child: buildDetails(
-                                            context,
-                                            "interest rate profile.svg",
-                                            "Interest Rate",
-                                            "${_detail.accountDetail[index].interestRate} %"),
-                                      ),
+                                      if (interestRate != "0" &&
+                                          interestRate != "null" &&
+                                          interestRate != "n/a")
+                                        SizedBox(
+                                          width: _width * 0.4,
+                                          child: buildDetails(
+                                              context,
+                                              "interest rate profile.svg",
+                                              "Interest Rate",
+                                              "${_detail.accountDetail[index].interestRate} %"),
+                                        ),
                                     ],
                                   ),
                                 ],
@@ -152,7 +161,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
   final List accountType = ["Primary Account", "Secondary Account"];
 
   buildDetails(BuildContext context, images, title, value) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Row(
       children: [
         SvgPicture.asset(

@@ -34,6 +34,7 @@ class ApiProvider {
       final Map<String, String> _requestHeader = {
         'Content-Type': 'application/json',
         'accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
         'origin': '*',
         ...header,
         // // ...await DeviceUtils.deviceInfoHeader,
@@ -142,6 +143,7 @@ class ApiProvider {
         'content-type': 'application/json',
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         ...extraHeaders ?? {},
         // // ...await DeviceUtils.deviceInfoHeader,
       };
@@ -153,8 +155,10 @@ class ApiProvider {
         url,
         options: Options(
           headers: header,
-          sendTimeout: timeOut * 1000,
-          receiveTimeout: timeOut * 1000,
+          // sendTimeout: timeOut * 1000,
+          // receiveTimeout: timeOut * 1000,
+          sendTimeout: Duration(seconds: timeOut),
+          receiveTimeout: Duration(seconds: timeOut),
         ),
       );
 
@@ -178,6 +182,7 @@ class ApiProvider {
         'content-type': 'application/json',
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         // // ...await DeviceUtils.deviceInfoHeader,
       };
       debugPrint('TOKEN ' + token);
@@ -204,6 +209,7 @@ class ApiProvider {
       final Map<String, String> header = {
         'accept': 'application/json',
         'origin': '*',
+        'Access-Control-Allow-Origin': '*',
         // ...await DeviceUtils.deviceInfoHeader,
       };
       if (token.isNotEmpty) {
@@ -384,7 +390,7 @@ class ApiProvider {
       case 201:
         return responseJson;
       case 400:
-        String _responseStatus =
+        final String _responseStatus =
             (responseJson['data']?['status'] ?? "").toString();
 
         if (_responseStatus.toLowerCase() == "FAILURE".toLowerCase()) {
@@ -419,9 +425,10 @@ class ApiProvider {
         //     response.statusCode,
         //   );
         // }
-        // TODO Check status from Response and Logout only when session is expire
-        String _responseCode = (responseJson['data']?['code'] ?? "").toString();
-        String _responseStatus =
+        // TODOCheck status from Response and Logout only when session is expire
+        final String _responseCode =
+            (responseJson['data']?['code'] ?? "").toString();
+        final String _responseStatus =
             (responseJson['data']?['responseStatus'] ?? "").toString();
 
         if (_responseCode == "M0025" ||

@@ -71,6 +71,7 @@ class Assets {
   static const String luggageIcon = "assets/icon/luggage_icon.svg";
   static const String editIcon = "assets/icon/edit_icon.svg";
   static const String menuIcon = "assets/icon/menu_icon.svg";
+  static const String sortICon = "assets/icons/Group 1100.svg";
 
 // send money
   static const String sendMoneyIcon =
@@ -110,4 +111,8 @@ class Assets {
   //bus
   static const String busSeatIcon = "assets/icons/bus_seat_icon.svg";
   static const String busSideIcon = "assets/icons/bus_side.svg";
+  //loan
+  static const String loanStatement = "assets/icons/Group 1008.svg";
+  static const String loanSchedule = "assets/icons/Group 1069.svg";
+  static const String eventIcon = "assets/icons/event icon.svg";
 }

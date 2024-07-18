@@ -1,22 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
-
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/common_error_dialog.dart';
 import 'package:ismart/common/widget/common_table_widget.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class KhanepaniDetailsWidgets extends StatefulWidget {
@@ -143,6 +135,7 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
         onButtonPressed: () {
           NavigationService.pushReplacement(
               target: CommonBillDetailPage(
+                  serviceName: widget.service.service,
                   accountDetails: {
                     "account_number":
                         RepositoryProvider.of<CustomerDetailRepository>(context)
@@ -152,9 +145,10 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
                     "amount": _response.findValueString("total_dues"),
                     "customer_code": _response.findValueString("customer_code"),
                     "counter": widget.selectedCounter,
+                    "customer_name": _response.findValueString("customer_name")
                   },
                   apiEndpoint: "/api/khanepanipay",
-                  apiBody: {},
+                  apiBody: const {},
                   service: widget.service,
                   serviceIdentifier: widget.service.uniqueIdentifier,
                   body: Column(

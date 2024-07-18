@@ -5,7 +5,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 
 class ChooseAccountFullStatementWidget extends StatefulWidget {
-  ChooseAccountFullStatementWidget({Key? key}) : super(key: key);
+  const ChooseAccountFullStatementWidget({Key? key}) : super(key: key);
 
   @override
   State<ChooseAccountFullStatementWidget> createState() =>
@@ -20,8 +20,7 @@ class _ChooseAccountFullStatementWidgetState
       body: CommonContainer(
         showDetail: true,
         showAccountSelection: true,
-        topbarName: "Statement",
-        title: "Full Statement",
+        topbarName: "Full Statement",
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {

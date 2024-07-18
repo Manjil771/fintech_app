@@ -14,6 +14,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
 
 class ReceiveMoneyWidget extends StatefulWidget {
   const ReceiveMoneyWidget({Key? key}) : super(key: key);
@@ -79,6 +80,8 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                           "Active".toLowerCase(),
                 )
                 .toList();
+            // final filteredItems = state.data;
+
             final filteredItems = state.data
                 .where((item) =>
                     item.type
@@ -122,6 +125,7 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                     ListView.builder(
                       shrinkWrap: true,
                       itemCount: filteredItems.length,
+                      physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {
                         checkItems(filteredItems[index].uniqueIdentifier);
                         return Column(
@@ -137,6 +141,14 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                     .uniqueIdentifier
                                     .toString()
                                     .toLowerCase()
+                                    .contains(
+                                        "load_fund_khalti".toLowerCase())) {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.loadFromKhalti);
+                                } else if (filteredItems[index]
+                                    .uniqueIdentifier
+                                    .toString()
+                                    .toLowerCase()
                                     .contains("load_fund".toLowerCase())) {
                                   NavigationService.pushNamed(
                                       routeName: Routes.mobileBanking);
@@ -149,16 +161,14 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                         "load_from_connectIps".toLowerCase())) {
                                   NavigationService.pushNamed(
                                       routeName: Routes.connectIps);
-                                }
-                                // else if (filteredItems[index]
-                                //         .uniqueIdentifier
-                                //         .toString()
-                                //         .toLowerCase() ==
-                                //     "remittance".toLowerCase()) {
-                                //   NavigationService.push(
-                                //       target: RemittancePage());
-                                // }
-                                else if (filteredItems[index]
+                                } else if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase() ==
+                                    "remittance".toLowerCase()) {
+                                  NavigationService.push(
+                                      target: const ReceiveRemittancePage());
+                                } else if (filteredItems[index]
                                         .uniqueIdentifier
                                         .toString()
                                         .toLowerCase() ==
@@ -190,13 +200,16 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                 ),
                 showTitleText: false,
                 topbarName: "Receive Money");
-          } else {
-            return const NoDataScreen(
-              title: "Services unavailable now.",
-              details:
-                  'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
-            );
           }
+
+          return Container();
+          // else {
+          //   return const NoDataScreen(
+          //     title: "Services unavailable now.",
+          //     details:
+          //         'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
+          //   );
+          // }
         },
       ),
     );
@@ -206,8 +219,8 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
     if (uniqueIdentifier
         .toString()
         .toLowerCase()
-        .contains("load_fund".toLowerCase())) {
-      return "Make financial transactions using your phone";
+        .contains("load_fund_khalti".toLowerCase())) {
+      return "Load Money from Ebanking, Mobile Banking, Khalti and more.";
     } else if (uniqueIdentifier
         .toString()
         .toLowerCase()
@@ -218,6 +231,11 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
         .toLowerCase()
         .contains("request_sapati".toLowerCase())) {
       return "Lend money from your friends using app";
+    } else if (uniqueIdentifier
+        .toString()
+        .toLowerCase()
+        .contains("load_fund".toLowerCase())) {
+      return "Make financial transactions using your phone";
     } else if (uniqueIdentifier
         .toString()
         .toLowerCase()

@@ -1,25 +1,57 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/common/util/size_utils.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/profile/contactUsProfile/widget/contact_us_profile_widget.dart';
 
 class ContactUsProfilePage extends StatelessWidget {
-  final List details;
-  final String? latitude;
-  final String? longitude;
-  const ContactUsProfilePage(
-      {Key? key, required this.details, this.latitude, this.longitude})
-      : super(key: key);
+  final _contactRepo =
+      RepositoryProvider.of<AppContactRepository>(NavigationService.context);
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
+    final List detail = [
+      _contactRepo.contactNumber,
+      _contactRepo.appContactDetail
+                      .findValueString("web")
+                      .toString()
+                      .toLowerCase() ==
+                  "null" ||
+              _contactRepo.appContactDetail
+                  .findValueString("web")
+                  .toString()
+                  .isEmpty
+          ? "https://devanasoft.com.np/"
+          : _contactRepo.appContactDetail.findValueString("web").toString(),
+      _contactRepo.appContactDetail
+                      .findValueString("address")
+                      .toString()
+                      .toLowerCase() ==
+                  "null" ||
+              _contactRepo.appContactDetail.findValueString("address").isEmpty
+          ? "Gaurighatmarg , KTM"
+          : _contactRepo.appContactDetail.findValueString("address").toString(),
+      _contactRepo.appContactDetail
+                      .findValueString("email")
+                      .toString()
+                      .toString() ==
+                  "null" ||
+              _contactRepo.appContactDetail
+                  .findValueString("email")
+                  .toString()
+                  .isEmpty
+          ? "devanasoftpvtltd@gmail.com"
+          : _contactRepo.appContactDetail.findValueString("email").toString(),
+      // _contactRepo.contactNumber,
+      // _contactRepo.appContactDetail.findValue(primaryKey: "web"),
+      // _contactRepo.appContactDetail.findValue(primaryKey: "address"),
+      // _contactRepo.appContactDetail.findValue(primaryKey: "email"),
+    ];
     return ContactUsProfileWidget(
-      latitude: latitude.toString(),
-      longitude: longitude.toString(),
-      details: details,
+      latitude: _contactRepo.appContactDetail.findValue(primaryKey: "latitude"),
+      longitude:
+          _contactRepo.appContactDetail.findValue(primaryKey: "longitude"),
+      details: detail,
     );
   }
 }

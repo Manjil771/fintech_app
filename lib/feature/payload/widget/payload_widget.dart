@@ -8,6 +8,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -16,6 +17,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -41,6 +43,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
     return PageWrapper(
+      showBackButton: true,
       body: BlocConsumer<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && !_isLoading) {
@@ -58,7 +61,8 @@ class _PayloadWidgetState extends State<PayloadWidget> {
               title: "Error",
               showCancelButton: false,
               buttonCallback: () {
-                NavigationService.pop();
+                NavigationService.pushReplacement(
+                    target: const DashboardPage());
               },
             );
           }
@@ -129,6 +133,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                     if (_formKey.currentState!.validate()) {
                       NavigationService.push(
                         target: CommonBillDetailPage(
+                          serviceName: "QR Payment",
                           service: ServiceList(
                               url: Url.URL,
                               id: 0,
@@ -153,7 +158,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                               isNew: true,
                               appOrder: 0,
                               isSmsMode: true),
-                          apiBody: {},
+                          apiBody: const {},
                           serviceIdentifier: "",
                           accountDetails: {
                             "pay_load": widget.payload,
@@ -207,6 +212,9 @@ class _PayloadWidgetState extends State<PayloadWidget> {
               //   },
               // );
             }
+          }
+          if (state is CommonLoading) {
+            return const CommonLoadingWidget();
           } else {
             return Container();
           }

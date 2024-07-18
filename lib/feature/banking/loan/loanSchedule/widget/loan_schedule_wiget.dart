@@ -2,33 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
-import 'package:ismart/common/widget/no_data_screen.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/widget/loan_schedule_choose_account_widget.dart';
-import 'package:ismart/feature/banking/loan/loanSchedule/widget/loan_schedule_row_widget.dart';
-import 'package:ismart/feature/banking/loan/loanStatement/widget/loan_statement_row_widget.dart';
-import 'package:ismart/feature/banking/loan/widget/loan_detail_box_widget.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanScheduleWidget extends StatefulWidget {
-  final UtilityResponseData response;
-  LoanScheduleWidget({Key? key, required this.response}) : super(key: key);
-
   @override
   State<LoanScheduleWidget> createState() => _LoanScheduleWidgetState();
 }
 
 class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
-  bool _isLoading = false;
+  @override
+  void initState() {
+    fetchLoanSchedule();
+    super.initState();
+  }
+
+  fetchLoanSchedule() async {
+    final String mPin = await SecureStorageService.appPassword;
+    context.read<UtilityPaymentCubit>().fetchDetails(
+        serviceIdentifier: "",
+        accountDetails: {
+          "accountNumber":
+              RepositoryProvider.of<CustomerDetailRepository>(context)
+                  .selectedAccount
+                  .value!
+                  .accountNumber,
+          "mPin": mPin,
+        },
+        apiEndpoint: "api/loan/schedule");
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -36,110 +44,97 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
-    final _response = widget.response.findValue(primaryKey: "data");
     return PageWrapper(
-        body: CommonContainer(
-            showTitleText: false,
-            verticalPadding: 0,
-            horizontalPadding: 0,
-            topbarName: "Loan Schedule",
-            showRoundBotton: false,
-            body: Column(
-              children: [
-                BlocBuilder<UtilityPaymentCubit, CommonState>(
-                  builder: (context, state) {
-                    if (state is CommonStateSuccess) {
-                      final UtilityResponseData loanResponse = state.data;
-                      return LoanDetailBoxWidget(
-                        loanResponse: loanResponse,
-                      );
-                    } else {
-                      return Container();
-                    }
-                  },
-                ),
-                widget.response.details.isNotEmpty
-                    ? Column(
-                        children: [
-                          Container(
-                            height: 60.hp,
-                            color: _theme.primaryColor.withOpacity(0.05),
-                            child: Row(children: [
-                              Flexible(
-                                flex: 1,
-                                child: Container(
-                                  child: Center(
-                                      child: Text(
-                                    "SN",
-                                    style: _textTheme.headlineSmall!
-                                        .copyWith(fontSize: 12),
+      body: CommonContainer(
+        verticalPadding: 0,
+        horizontalPadding: 0,
+        topbarName: "Loan Schedule",
+        showRoundBotton: false,
+        body: Column(
+          children: [
+            BlocBuilder<UtilityPaymentCubit, CommonState>(
+              builder: (context, state) {
+                if (state is CommonStateSuccess) {
+                  final UtilityResponseData response = state.data;
+                  final _response = response.findValue(primaryKey: "data");
+                  return response.details.isNotEmpty
+                      ? Column(
+                          children: [
+                            SingleChildScrollView(
+                              scrollDirection: Axis.horizontal,
+                              child: DataTable(
+                                headingRowColor: MaterialStatePropertyAll(
+                                    _theme.primaryColor.withOpacity(0.05)),
+                                columnSpacing: 10,
+                                columns: const [
+                                  DataColumn(label: Text('Date')),
+                                  DataColumn(
+                                      label: Text(
+                                    'Schedule\nNumber',
+                                    textAlign: TextAlign.center,
                                   )),
+                                  DataColumn(label: Text('Amount')),
+                                  DataColumn(label: Text('Principal')),
+                                  DataColumn(label: Text('Interest')),
+                                  DataColumn(
+                                      label: Text(
+                                    'Principal\nBalance',
+                                    textAlign: TextAlign.center,
+                                  )),
+                                ],
+                                rows: List.generate(
+                                  _response.length,
+                                  (index) => DataRow(
+                                      color: MaterialStatePropertyAll(
+                                          index.isEven
+                                              ? CustomTheme.white
+                                              : _theme.primaryColor
+                                                  .withOpacity(0.03)),
+                                      cells: [
+                                        DataCell(Text(
+                                          "${_response[index]['scheduleDate']}\n${_response[index]['scheduleDateNepali'].toString()}",
+                                        )),
+                                        DataCell(
+                                          Center(
+                                            child: Text(
+                                              _response[index]['scheduleNumber']
+                                                  .toString(),
+                                            ),
+                                          ),
+                                        ),
+                                        DataCell(Text(_response[index]
+                                                ['scheduleAmount']
+                                            .toString())),
+                                        DataCell(Text(_response[index]
+                                                ['principal']
+                                            .toString())),
+                                        DataCell(Text(_response[index]
+                                                ['interest']
+                                            .toString())),
+                                        DataCell(Text(_response[index]
+                                                ['principalBalance']
+                                            .toString())),
+                                      ]),
                                 ),
                               ),
-                              Flexible(
-                                flex: 10,
-                                child: Row(
-                                  children: [
-                                    Flexible(
-                                      flex: 1,
-                                      child: Center(
-                                        child: Text(
-                                          "Date",
-                                          style: _textTheme.headlineSmall!
-                                              .copyWith(fontSize: 12),
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Container(
-                                        child: Center(
-                                          child: Text("Installment",
-                                              textAlign: TextAlign.center,
-                                              style: _textTheme.headlineSmall!
-                                                  .copyWith(fontSize: 12)),
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Center(
-                                        child: Text(
-                                          "Principal",
-                                          style: _textTheme.headlineSmall!
-                                              .copyWith(fontSize: 12),
-                                        ),
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 1,
-                                      child: Center(
-                                        child: Text(
-                                          "Interest",
-                                          style: _textTheme.headlineSmall!
-                                              .copyWith(fontSize: 12),
-                                        ),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              )
-                            ]),
-                          ),
-                          ListView.builder(
-                              shrinkWrap: true,
-                              physics: NeverScrollableScrollPhysics(),
-                              itemCount: _response.length,
-                              itemBuilder: (context, index) {
-                                return LoanScheduleRowWidget(
-                                  index: index,
-                                  responseData: widget.response,
-                                );
-                              })
-                        ],
-                      )
-                    : Container(),
-              ],
-            )));
+                            ),
+                          ],
+                        )
+                      : Container();
+                } else if (state is CommonLoading) {
+                  return const CommonLoadingWidget();
+                } else if (state is CommonError) {
+                  return Text(state.message.isEmpty
+                      ? "Could not fetch Loan Schedule."
+                      : state.message);
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          ],
+        ),
+      ),
+    );
   }
 }

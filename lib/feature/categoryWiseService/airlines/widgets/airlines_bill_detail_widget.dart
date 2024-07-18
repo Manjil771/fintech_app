@@ -1,28 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/date_formater.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/flight_detail_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
-import 'package:ismart/common/widget/primary_account_box.dart';
 
 class AirlinesBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
@@ -171,6 +166,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                     .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
+                      serviceName: widget.service.service,
                       arrival: widget.arrivalFlight,
                       departure: widget.departureFlight,
                       pdfUrl:
@@ -203,9 +199,9 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        Text(
+                        const Text(
                           "From Account",
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontWeight: FontWeight.w600,
                             fontSize: 14,
                             color: CustomTheme.lightTextColor,
@@ -221,7 +217,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                         ),
                         if (widget.departureFlight != widget.arrivalFlight)
                           Padding(
-                            padding: EdgeInsets.symmetric(vertical: 10),
+                            padding: const EdgeInsets.symmetric(vertical: 10),
                             child: FlightDetailBox(
                               flight: widget.arrivalFlight,
                             ),

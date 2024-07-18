@@ -20,13 +20,14 @@ import 'package:ismart/feature/categoryWiseService/electricity/screen/electricit
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
 class CategoryWidget extends StatefulWidget {
   final bool showAllService;
-  const CategoryWidget({Key? key, this.showAllService = true})
-      : super(key: key);
+  const CategoryWidget({
+    Key? key,
+    this.showAllService = true,
+  }) : super(key: key);
 
   @override
   State<CategoryWidget> createState() => _CategoryWidgetState();
@@ -40,6 +41,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
   }
 
   bool _isLoading = false;
+
+  List<CategoryList> _categoryList = [];
 
   @override
   Widget build(BuildContext context) {
@@ -72,23 +75,27 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               },
             );
           }
+
+          if (state is CommonDataFetchSuccess<CategoryList>) {
+            _categoryList = state.data;
+          }
         },
         builder: (context, state) {
-          if (state is CommonStateSuccess<List<CategoryList>>) {
-            final itemLength = widget.showAllService
-                ? state.data.length
-                : state.data.length >= 12
-                    ? 11
-                    : state.data.length;
+          final itemLength = widget.showAllService
+              ? _categoryList.length
+              : _categoryList.length >= 12
+                  ? 11
+                  : _categoryList.length;
+          if (itemLength > 0)
             return GridView.builder(
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
                 itemCount: widget.showAllService ? itemLength : itemLength + 1,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                 ),
                 itemBuilder: (context, index) {
-                  final data = state.data[index];
+                  final data = _categoryList[index];
 
                   final filteredItems = data.services
                       .where((item) => item.cashBackView != null)
@@ -265,7 +272,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               height: _height * 0.03,
                               child: CircleAvatar(
                                   backgroundColor: _theme.primaryColor,
-                                  child: Icon(
+                                  child: const Icon(
                                     Icons.add,
                                     color: Colors.white,
                                   ))),
@@ -286,9 +293,16 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                     );
                   }
                 });
-          } else {
-            return Container();
-          }
+          return Container();
+          // if (state is CommonStateSuccess<List<CategoryList>>) {
+          //   final itemLength = widget.showAllService
+          //       ? state.data.length
+          //       : state.data.length >= 12
+          //           ? 11
+          //           : state.data.length;
+          // } else {
+          //   return Container();
+          // }
         },
       ),
     );

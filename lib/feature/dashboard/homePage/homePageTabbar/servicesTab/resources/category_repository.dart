@@ -2,6 +2,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_api_provider.dart';
@@ -25,13 +26,11 @@ class CategoryRepository {
         userRepository: userRepository);
   }
   Future<DataResponse<List<CategoryList>>> getCategoryList() async {
-    List<CategoryList> _recentTxnList = [];
+    List<CategoryList> _allServices = [];
     try {
       final _res = await categoryApiProvider.fetchServices();
 
       if (_res['data']['details'] != null) {
-        // Parse Data from API
-
         final List _userMap = List.from(_res["data"]['details'] ?? []);
 
         if (_userMap.isEmpty) {
@@ -39,24 +38,27 @@ class CategoryRepository {
         }
 
         _userMap.forEach((element) {
-          CategoryList _txn = CategoryList.fromJson(element);
-          List<ServiceList> _dummyList = [];
-          Set<String> _uniqueID = {};
-          _txn.services.forEach((element) {
+          CategoryList _serviceList = CategoryList.fromJson(element);
+          final List<ServiceList> _dummyList = [];
+          final Set<String> _uniqueID = {};
+          _serviceList.services.forEach((element) {
             _uniqueID.add(element.uniqueIdentifier);
           });
 
           _uniqueID.forEach((uniqEelement) {
-            ServiceList _singleValue = _txn.services.firstWhere(
+            final ServiceList _singleValue = _serviceList.services.firstWhere(
                 (elementService) =>
                     uniqEelement == elementService.uniqueIdentifier);
             _dummyList.add(_singleValue);
           });
-          _txn = _txn.copyWith(_dummyList);
-          _recentTxnList.add(_txn);
+          _serviceList = _serviceList.copyWith(_dummyList);
+          _allServices.add(_serviceList);
         });
 
-        return DataResponse.success(_recentTxnList);
+        final _ = await ServiceHiveUtils.setUtilitiesServices(
+            item: _allServices, slug: "wallet_service");
+
+        return DataResponse.success(_allServices);
       } else {
         return DataResponse.error("error message");
       }

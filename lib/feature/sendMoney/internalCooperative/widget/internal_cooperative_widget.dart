@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
@@ -240,7 +239,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
               ],
             ),
           ),
-          topbarName: "Send Money",
+          topbarName: "Fund Transfer",
           showDetail: true,
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {

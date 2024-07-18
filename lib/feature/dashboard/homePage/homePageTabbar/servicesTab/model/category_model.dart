@@ -1,15 +1,3 @@
-// To parse this JSON data, do
-//
-//     final categoryList = categoryListFromJson(jsonString);
-
-import 'dart:convert';
-
-List<CategoryList> categoryListFromJson(String str) => List<CategoryList>.from(
-    json.decode(str).map((x) => CategoryList.fromJson(x)));
-
-String categoryListToJson(List<CategoryList> data) =>
-    json.encode(List<dynamic>.from(data.map((x) => x.toJson())));
-
 class CategoryList {
   int id;
   String name;
@@ -36,8 +24,8 @@ class CategoryList {
         uniqueIdentifier: json["uniqueIdentifier"],
         isNew: json["isNew"],
         appOrder: json["appOrder"],
-        services: List<ServiceList>.from(
-            json["services"].map((x) => ServiceList.fromJson(x))),
+        services: List<ServiceList>.from(json["services"]
+            .map((x) => ServiceList.fromJson(Map<String, dynamic>.from(x)))),
       );
 
   CategoryList copyWith(List<ServiceList> updatedValues) => CategoryList(

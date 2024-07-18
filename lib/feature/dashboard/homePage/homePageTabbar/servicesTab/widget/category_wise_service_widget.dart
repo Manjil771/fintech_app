@@ -5,7 +5,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/slugs.dart';
-import 'package:ismart/common/enum/text_field_type.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -24,13 +23,10 @@ import 'package:ismart/feature/categoryWiseService/internet/common/screen/common
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/ridePayment/screen/ride_payment_page.dart';
-import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/common_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/net_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
-import 'package:ismart/feature/qrscanner/widgets/qrscanner_widget.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<ServiceList> services;
@@ -75,9 +71,6 @@ class _CategoriesWiseServicesWidgetState
     });
   }
 
-  TextEditingController _selectedServiceCategory = TextEditingController();
-  // final KeyValue? ignoreValue;
-
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
@@ -103,7 +96,7 @@ class _CategoriesWiseServicesWidgetState
                 child: GridView.builder(
                     shrinkWrap: true,
                     scrollDirection: Axis.vertical,
-                    physics: NeverScrollableScrollPhysics(),
+                    physics: const NeverScrollableScrollPhysics(),
                     itemCount: searchItems.length,
                     gridDelegate:
                         const SliverGridDelegateWithFixedCrossAxisCount(

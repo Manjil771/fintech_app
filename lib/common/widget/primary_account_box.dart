@@ -13,7 +13,7 @@ class PrimaryAccountBox extends StatefulWidget {
 }
 
 class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
-  bool showAmount = false;
+  bool showAmount = true;
 
   @override
   Widget build(BuildContext context) {
@@ -30,14 +30,14 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => AccountDetailBox(),
+                builder: (context) => const AccountDetailBox(),
               );
             },
             child: Container(
-              margin: const EdgeInsets.symmetric(vertical: 15),
+              margin: const EdgeInsets.symmetric(vertical: 12),
               padding: const EdgeInsets.all(18),
               width: double.infinity,
-              height: _width * 0.35,
+              height: _height * 0.15,
               decoration: BoxDecoration(
                 color: _theme.scaffoldBackgroundColor,
                 borderRadius: BorderRadius.circular(8),
@@ -57,7 +57,7 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       SizedBox(width: _width * 0.03),
                       Text(
                         showAmount
-                            ? "XXXXXXXXX"
+                            ? "XXXXXXX"
                             : "NPR ${selectedAcc?.availableBalance}",
                         style: TextStyle(
                             fontSize: 16,
@@ -71,9 +71,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                               showAmount = !showAmount;
                             });
                           },
-                          child: SvgPicture.asset(
-                            "assets/icons/akar-icons_eye-slashed.svg",
-                            height: _height * 0.025,
+                          child: Icon(
+                            showAmount
+                                ? Icons.visibility_off
+                                : Icons.visibility,
                           ),
                         ),
                       ),
@@ -85,7 +86,6 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(8),
                             color: _theme.primaryColor,
-                            // border: Border.all(color: Colors.black),
                           ),
                           child: const Center(
                             child: Text(
@@ -104,8 +104,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                         color: _theme.primaryColor,
                       ),
                       SizedBox(width: _width * 0.03),
-                      Text("${selectedAcc?.accountType}",
-                          style: _theme.textTheme.labelLarge),
+                      Expanded(
+                        child: Text("${selectedAcc?.accountType}",
+                            maxLines: 2, style: _theme.textTheme.labelLarge),
+                      ),
                     ],
                   ),
                   Row(

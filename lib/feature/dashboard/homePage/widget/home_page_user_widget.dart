@@ -2,7 +2,6 @@
 
 import 'dart:io';
 
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -38,7 +37,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
   ValueNotifier<AccountDetail?> selectedAccountNotifier = ValueNotifier(null);
   ValueNotifier<dynamic> accountDetail = ValueNotifier([]);
-  String formattedDate = DateFormat('a').format(DateTime.now());
 
   String bannerImage = "";
 
@@ -191,16 +189,23 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         children: [
                                           Row(
                                             children: [
-                                              Text(
-                                                "${selectedAcc?.accountType} A/C",
-                                                style: _textTheme.titleSmall
-                                                    ?.copyWith(
-                                                  color: CustomTheme.white,
-                                                  fontSize: 10,
-                                                  fontWeight: FontWeight.bold,
+                                              Expanded(
+                                                child: Container(
+                                                  child: Text(
+                                                    "${selectedAcc?.accountType}",
+                                                    style: _textTheme.titleSmall
+                                                        ?.copyWith(
+                                                      color: CustomTheme.white,
+                                                      fontSize: 10,
+                                                      fontWeight:
+                                                          FontWeight.bold,
+                                                    ),
+                                                    // overflow: TextOverflow.clip,
+                                                    maxLines: 1,
+                                                  ),
                                                 ),
                                               ),
-                                              const SizedBox(width: 10),
+                                              SizedBox(width: _width * 0.01),
                                               RotatedBox(
                                                 quarterTurns: 5,
                                                 child: SvgPicture.asset(
@@ -209,30 +214,29 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                                   height: _height * 0.015,
                                                 ),
                                               ),
-                                              SizedBox(width: _width * 0.04),
+                                              SizedBox(width: _width * 0.02),
                                               if (selectedAcc?.primary
                                                       .toString() ==
                                                   "true")
-                                                Expanded(
-                                                  child: Container(
-                                                    decoration: BoxDecoration(
-                                                        color:
-                                                            CustomTheme.white,
-                                                        borderRadius:
-                                                            BorderRadius
-                                                                .circular(8)),
-                                                    child: Center(
-                                                      child: Text(
-                                                        "Primary",
-                                                        style: _textTheme
-                                                            .titleSmall
-                                                            ?.copyWith(
-                                                          color: CustomTheme
-                                                              .primaryColor,
-                                                          fontSize: 9,
-                                                          fontWeight:
-                                                              FontWeight.bold,
-                                                        ),
+                                                Container(
+                                                  padding:
+                                                      const EdgeInsets.all(2),
+                                                  decoration: BoxDecoration(
+                                                      color: CustomTheme.white,
+                                                      borderRadius:
+                                                          BorderRadius.circular(
+                                                              8)),
+                                                  child: Center(
+                                                    child: Text(
+                                                      "P",
+                                                      style: _textTheme
+                                                          .titleSmall
+                                                          ?.copyWith(
+                                                        color: CustomTheme
+                                                            .primaryColor,
+                                                        fontSize: 9,
+                                                        fontWeight:
+                                                            FontWeight.bold,
                                                       ),
                                                     ),
                                                   ),
@@ -353,76 +357,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                             ],
                           ),
                         ),
-                        // Padding(
-                        //   padding: const EdgeInsets.symmetric(
-                        //     // vertical: 12,
-                        //     horizontal: 12,
-                        //   ),
-                        //   child: InkWell(
-                        //     onTap: () {
-                        //       setState(() {
-                        //         showAmountDetail = !showAmountDetail;
-                        //       });
-                        //     },
-                        //     child: Row(
-                        //       mainAxisAlignment:
-                        //           MainAxisAlignment.spaceBetween,
-                        //       children: [
-                        //         Column(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.start,
-                        //           children: [
-                        //             Text(
-                        //               "Actual Balance",
-                        //               style: _textTheme.titleSmall!
-                        //                   .copyWith(color: CustomTheme.white),
-                        //             ),
-                        //             Text(
-                        //               showAmountDetail
-                        //                   ? "NPR ${selectedAcc?.actualBalance}"
-                        //                   : "XXXXXXXXX",
-                        //               style: _textTheme.titleLarge!.copyWith(
-                        //                   fontWeight: FontWeight.bold,
-                        //                   color: CustomTheme.white),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //         InkWell(
-                        //           // onTap: () {
-                        //           //   setState(() {
-                        //           //     showAmountDetail = !showAmountDetail;
-                        //           //   });
-                        //           // },
-                        //           child: Icon(
-                        //             showAmountDetail
-                        //                 ? Icons.visibility
-                        //                 : Icons.visibility_off,
-                        //             color: CustomTheme.white,
-                        //           ),
-                        //         ),
-                        //         Column(
-                        //           crossAxisAlignment:
-                        //               CrossAxisAlignment.start,
-                        //           children: [
-                        //             Text(
-                        //               "Available Balance",
-                        //               style: _textTheme.titleSmall!
-                        //                   .copyWith(color: CustomTheme.white),
-                        //             ),
-                        //             Text(
-                        //               showAmountDetail
-                        //                   ? "NPR ${selectedAcc?.availableBalance}"
-                        //                   : "XXXXXXXXX",
-                        //               style: _textTheme.titleLarge!.copyWith(
-                        //                   fontWeight: FontWeight.bold,
-                        //                   color: CustomTheme.white),
-                        //             ),
-                        //           ],
-                        //         ),
-                        //       ],
-                        //     ),
-                        //   ),
-                        // ),
                       ],
                     );
                   } else {

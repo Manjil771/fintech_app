@@ -28,7 +28,7 @@ class MiniStatementModel {
 }
 
 class MinistatementList {
-  DateTime transactionDate;
+  String transactionDate;
   String remarks;
   bool isCredit;
   double amount;
@@ -46,8 +46,7 @@ class MinistatementList {
 
   factory MinistatementList.fromJson(Map<String, dynamic> json) =>
       MinistatementList(
-        transactionDate:
-            DateTime.tryParse(json["transactionDate"]) ?? DateTime.now(),
+        transactionDate: json["transactionDate"] ?? "",
         remarks: json["remarks"] ?? "",
         isCredit: json["isCredit"] ?? false,
         amount: json["amount"] ?? 0.0,
@@ -56,8 +55,7 @@ class MinistatementList {
       );
 
   Map<String, dynamic> toJson() => {
-        "transactionDate":
-            "${transactionDate.year.toString().padLeft(4, '0')}-${transactionDate.month.toString().padLeft(2, '0')}-${transactionDate.day.toString().padLeft(2, '0')}",
+        "transactionDate": transactionDate,
         "remarks": remarks,
         "isCredit": isCredit,
         "amount": amount,
