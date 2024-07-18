@@ -13,7 +13,6 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
@@ -21,6 +20,9 @@ import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -73,17 +75,12 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     }
   }
 
+  String minAmount = "100";
+  String maxAmount = "200000";
+
   final appService =
       RepositoryProvider.of<AppServiceRepository>(NavigationService.context)
           .appService;
-
-  bool checkOtpStatus() {
-    final AppServiceManagementModel filteredList = appService.firstWhere(
-        (element) => element.uniqueIdentifier.toString() == "transaction_otp");
-    return filteredList.status.toString().toLowerCase() == "active"
-        ? true
-        : false;
-  }
 
   bool _isLoading = false;
   String? charges;
@@ -390,30 +387,51 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         validator: (val) => FormValidator.validateFieldNotEmpty(
                             val, "Account Name"),
                       ),
-                CustomTextField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  title: "Amount",
-                  hintText: "NPR",
-                  textInputType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  controller: _amountController,
-                  onChanged: (val) {
-                    if (val != _amountController.text) {
-                      charges = null;
-                      setState(() {});
-                    }
-                  },
-                  validator: (value) =>
-                      FormValidator.validateFieldNotEmpty(value, "Amount"),
-                  // validator: (val) {
-                  //   if ((double.tryParse(val ?? "") ?? 0) < 100) {
-                  //     return "Minimum bank tranfer amount is Rs. 100";
-                  //   } else if ((double.tryParse(val ?? "") ?? 0) > 200000) {
-                  //     return "Maximum bank transfer amount is Rs. 2,00,000";
-                  //   } else {
-                  //     return null;
-                  //   }
-                  // },
+                BlocProvider(
+                  create: (context) => UtilityPaymentCubit(
+                      utilityPaymentRepository:
+                          RepositoryProvider.of<UtilityPaymentRepository>(
+                              context))
+                    ..fetchDetails(
+                        serviceIdentifier: "",
+                        accountDetails: {"serviceCategory": "BANK_TRANSFER"},
+                        apiEndpoint: "/merchant/service/amountLimit"),
+                  child: BlocBuilder<UtilityPaymentCubit, CommonState>(
+                    builder: (context, state) {
+                      if (state is CommonStateSuccess) {
+                        final UtilityResponseData res = state.data;
+                        minAmount = res.findValue(primaryKey: "minimum_amount");
+                        maxAmount = res.findValue(primaryKey: "maximum_amount");
+                      }
+                      return CustomTextField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        title: "Amount",
+                        hintText: "NPR",
+                        textInputType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        controller: _amountController,
+                        onChanged: (val) {
+                          if (val != _amountController.text) {
+                            charges = null;
+                            setState(() {});
+                          }
+                        },
+                        validator: (value) => FormValidator.validateAmount(
+                            val: value.toString(),
+                            maxAmount: double.parse(maxAmount),
+                            minAmount: double.parse(minAmount)),
+                        // validator: (val) {
+                        //   if ((double.tryParse(val ?? "") ?? 0) < 100) {
+                        //     return "Minimum bank tranfer amount is Rs. 100";
+                        //   } else if ((double.tryParse(val ?? "") ?? 0) > 200000) {
+                        //     return "Maximum bank transfer amount is Rs. 2,00,000";
+                        //   } else {
+                        //     return null;
+                        //   }
+                        // },
+                      );
+                    },
+                  ),
                 ),
                 CustomTextField(
                   title: "Remarks",
