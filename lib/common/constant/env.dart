@@ -3323,5 +3323,5 @@ class CoOperativeValue {
     coOperativeName: "Mahabir E-sewa Saving & Credit Co-operative Ltd.",
     appTitle: "Mahabir iSmart",
   );
-  static final CoOperative currentCoop = mahabirCoop;
+  static final CoOperative currentCoop = sudarshanCoop;
 }
