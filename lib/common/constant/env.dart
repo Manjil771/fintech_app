@@ -3323,5 +3323,19 @@ class CoOperativeValue {
     coOperativeName: "Mahabir E-sewa Saving & Credit Co-operative Ltd.",
     appTitle: "Mahabir iSmart",
   );
-  static final CoOperative currentCoop = sudarshanCoop;
+  static final CoOperative abhiyanKrishi = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.abhiyankrishi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/abhiyankrishi/abhiyankrishi_banner.png",
+    backgroundImage: "assets/abhiyankrishi/abhiyankrishi_background.png",
+    clientCode: 'HCBSNKQQQR',
+    clientSecret: "111243",
+    coOperativeLogo: 'assets/abhiyankrishi/abhiyankrishi_logo.png',
+    splashImage: "assets/abhiyankrishi/abhiyankrishi_splash.png",
+    primaryColor: const Color(0xFF0f8842),
+    coOperativeName: "Abhiyan Agro Co-operative Ltd.",
+    appTitle: "Abhiyan Krishi iSmart",
+  );
+  static final CoOperative currentCoop = abhiyanKrishi;
 }
