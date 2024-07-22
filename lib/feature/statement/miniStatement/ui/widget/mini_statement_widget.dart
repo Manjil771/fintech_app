@@ -32,6 +32,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         .customerDetailModel;
     WidgetsBinding.instance.addPostFrameCallback(
       (timeStamp) {
+        // ignore: unused_local_variable
         final cubit = context.read<MiniStatementCubit>().fetchMiniStatement(
             accountNumbner:
                 RepositoryProvider.of<CustomerDetailRepository>(context)
@@ -54,7 +55,6 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         RepositoryProvider.of<CustomerDetailRepository>(context)
             .selectedAccount
             .value;
-    final _theme = Theme.of(context);
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(

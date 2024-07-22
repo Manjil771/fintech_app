@@ -12,6 +12,7 @@ import 'package:ismart/feature/sendMoney/internalCooperative/screen/internal_coo
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class ListFavAccountWidget extends StatelessWidget {
   bool isBankTransfer = true;
 

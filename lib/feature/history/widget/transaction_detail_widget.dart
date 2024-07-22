@@ -32,11 +32,9 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
   String? downloadUrl;
   @override
   Widget build(BuildContext context) {
-    final e = widget.recentTransactionModel;
+    // final e = widget.recentTransactionModel;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     final r = widget.recentTransactionModel;
     return PageWrapper(
         padding: EdgeInsets.zero,

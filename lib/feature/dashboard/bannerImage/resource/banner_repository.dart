@@ -1,13 +1,8 @@
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/dashboard/bannerImage/resource/banner_api_provider.dart';
-import 'package:ismart/feature/splash/models/app_config_model.dart';
-import 'package:ismart/feature/splash/resource/startup_api_provider.dart';
-import 'package:ismart/feature/update/model/app_update.dart';
-import 'package:ismart/feature/update/model/update.dart';
 
 class BannerRepository {
   ApiProvider apiProvider;
@@ -30,15 +25,14 @@ class BannerRepository {
 
   List<String> banners = [];
 
-
   Future<DataResponse<List<String>>> fetchBannerImages(
-    {required String bannerImageType}
-  ) async {
+      {required String bannerImageType}) async {
     banners.clear();
     try {
-      final _res = await bannerApiProvider.fetchBannerImages(bannerImageType: bannerImageType);
+      final _res = await bannerApiProvider.fetchBannerImages(
+          bannerImageType: bannerImageType);
       if (_res['data']?['code'] == "M0000") {
-        List<String> _rawBanners =
+        final List<String> _rawBanners =
             List<String>.from(_res['data']?['details'] ?? []);
         _rawBanners.forEach((element) {
           element = env.baseUrl + element;
@@ -56,6 +50,4 @@ class BannerRepository {
       return DataResponse.error("Error fetching banners");
     }
   }
-
-
 }

@@ -5,7 +5,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
@@ -14,9 +13,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
-import 'package:ismart/feature/authentication/ui/resetPin/screen/input_new_pin_page.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RegisterMpinWidget extends StatefulWidget {
@@ -55,7 +52,7 @@ class _RegisterMpinWidgetState extends State<RegisterMpinWidget> {
               }
 
               if (state is CommonStateSuccess) {
-                UtilityResponseData _response = state.data;
+                final UtilityResponseData _response = state.data;
                 if (_response.status.toLowerCase() == "success".toLowerCase()) {
                   showPopUpDialog(
                     context: context,
@@ -63,7 +60,8 @@ class _RegisterMpinWidgetState extends State<RegisterMpinWidget> {
                     title: _response.status,
                     showCancelButton: false,
                     buttonCallback: () {
-                      NavigationService.pushReplacement(target: LoginPage());
+                      NavigationService.pushReplacement(
+                          target: const LoginPage());
                     },
                   );
                 } else {

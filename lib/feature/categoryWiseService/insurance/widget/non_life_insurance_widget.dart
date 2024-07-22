@@ -38,8 +38,6 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
@@ -55,7 +53,7 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
         }
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+          final UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
             NavigationService.push(
               target: CommonBillDetailPage(

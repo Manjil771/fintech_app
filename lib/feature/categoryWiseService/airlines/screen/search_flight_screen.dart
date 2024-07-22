@@ -4,8 +4,6 @@ import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit
 import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_repository.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/search_flight_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class SearchFlightScreen extends StatelessWidget {
   final String cashbackAmount;

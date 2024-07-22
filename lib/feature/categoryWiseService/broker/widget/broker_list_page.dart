@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
-
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
@@ -34,8 +33,6 @@ class _BrokerSearchPageState extends State<BrokerSearchPage> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     return BlocProvider(
       lazy: false,
       create: (context) => UtilityPaymentCubit(

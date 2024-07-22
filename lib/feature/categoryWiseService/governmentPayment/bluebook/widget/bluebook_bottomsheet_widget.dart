@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 
 class BlueBookBottomSheet extends StatelessWidget {
   final Function(String name, String id) onPress;
@@ -19,7 +16,7 @@ class BlueBookBottomSheet extends StatelessWidget {
   final bool showTopDivider;
   final int titleTopPadding;
   final int titleBottomPadding;
-  BlueBookBottomSheet({
+  const BlueBookBottomSheet({
     this.padding,
     this.showCancelButton = false,
     this.backgroundColor = CustomTheme.backgroundColor,
@@ -38,8 +35,6 @@ class BlueBookBottomSheet extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
 
     return Container(
         padding: padding ??
@@ -95,7 +90,7 @@ class BlueBookBottomSheet extends StatelessWidget {
                             style: _textTheme.titleSmall!
                                 .copyWith(color: CustomTheme.googleColor),
                           ),
-                          Icon(
+                          const Icon(
                             Icons.cancel_outlined,
                             size: 20,
                             color: CustomTheme.googleColor,
@@ -128,11 +123,12 @@ class BlueBookBottomSheet extends StatelessWidget {
                           NavigationService.pop();
                         },
                         child: Container(
-                          margin: EdgeInsets.symmetric(vertical: 8),
-                          padding: EdgeInsets.all(12),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          padding: const EdgeInsets.all(12),
                           decoration: BoxDecoration(
                             color: _theme.primaryColor.withOpacity(0.05),
-                            borderRadius: BorderRadius.all(Radius.circular(18)),
+                            borderRadius:
+                                const BorderRadius.all(Radius.circular(18)),
                           ),
                           child: Center(
                             child: Text(

@@ -8,8 +8,6 @@ import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/cubit/khanepani_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/model/khanepani_model.dart';
-import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
 
 class SelectCounterKhanePaniWidget extends StatefulWidget {
   const SelectCounterKhanePaniWidget({Key? key, required this.onBankSelected})
@@ -84,7 +82,7 @@ class _SelectCounterKhanePaniWidgetState
               );
             }
             if (state is CommonDataFetchSuccess<KhanePaniModel>) {
-              List<KhanePaniModel> _list = state.data;
+              final List<KhanePaniModel> _list = state.data;
 
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -114,7 +112,7 @@ class _SelectCounterKhanePaniWidgetState
                   state.statusCode != 404) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: CommonLoadingWidget(), // TODO Replace with maintenance
+                  child: CommonLoadingWidget(), // TODOReplace with maintenance
                 );
               }
               return SliverFillRemaining(

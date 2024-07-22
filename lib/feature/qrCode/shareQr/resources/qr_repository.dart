@@ -3,8 +3,6 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/history/models/recent_transaction_model.dart';
-import 'package:ismart/feature/history/resources/recent_tranasction_api_provider.dart';
 import 'package:ismart/feature/qrCode/shareQr/resources/qr_api_provider.dart';
 
 class QrRepository {

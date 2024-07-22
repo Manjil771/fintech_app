@@ -8,10 +8,6 @@ import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/cubit/cerdit_card_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_bank_model.dart';
-import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class CreditCardBankListWidget extends StatefulWidget {
   const CreditCardBankListWidget({Key? key, required this.onBankSelected})
@@ -116,7 +112,7 @@ class _CreditCardBankListWidgetState extends State<CreditCardBankListWidget> {
                   state.statusCode != 404) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: CommonLoadingWidget(), // TODO Replace with maintenance
+                  child: CommonLoadingWidget(), // TODOReplace with maintenance
                 );
               }
               return SliverFillRemaining(

@@ -42,7 +42,6 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(

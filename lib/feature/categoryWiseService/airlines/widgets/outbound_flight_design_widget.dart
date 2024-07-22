@@ -27,13 +27,11 @@ class OutBoundFlightsDesign extends StatefulWidget {
 
 class _OutBoundFlightsDesignState extends State<OutBoundFlightsDesign> {
   @override
-  Flight? departureFlight;
+  // Flight? departureFlight;
 
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return Container(
       // height: 100,
       // padding: const EdgeInsets.symmetric(vertical: 20),

@@ -4,7 +4,6 @@ import 'package:flutter_inappwebview/flutter_inappwebview.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -40,10 +39,6 @@ class _InternetBankingWidgetState extends State<InternetBankingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,

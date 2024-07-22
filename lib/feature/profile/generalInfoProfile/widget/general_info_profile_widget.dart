@@ -53,7 +53,6 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     final _detail = widget.customerDetail.value!;
@@ -206,7 +205,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
   }
 
   buildDetails(BuildContext context, images, title, value) {
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
     return Row(
       children: [
         SvgPicture.asset(

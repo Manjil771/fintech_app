@@ -16,7 +16,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ChequeRequestWidget extends StatefulWidget {
-  ChequeRequestWidget({Key? key}) : super(key: key);
+  const ChequeRequestWidget({Key? key}) : super(key: key);
 
   @override
   State<ChequeRequestWidget> createState() => _ChequeRequestWidgetState();
@@ -35,7 +35,6 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
@@ -58,7 +57,7 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
           );
         }
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+          final UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
             showPopUpDialog(
               context: context,
@@ -104,9 +103,9 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
                             ...List.generate(
                                 numberOfCheque.length,
                                 (index) => Container(
-                                      padding: EdgeInsets.all(20),
-                                      margin: EdgeInsets.only(right: 15),
-                                      decoration: BoxDecoration(
+                                      padding: const EdgeInsets.all(20),
+                                      margin: const EdgeInsets.only(right: 15),
+                                      decoration: const BoxDecoration(
                                         shape: BoxShape.circle,
                                         color: Colors.white,
                                         // borderRadius: BorderRadius.circular(100),

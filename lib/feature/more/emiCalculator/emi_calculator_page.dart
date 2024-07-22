@@ -2,13 +2,12 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 
 class EmiCalculatorPage extends StatefulWidget {
-  EmiCalculatorPage({Key? key}) : super(key: key);
+  const EmiCalculatorPage({Key? key}) : super(key: key);
 
   @override
   State<EmiCalculatorPage> createState() => _EmiCalculatorPageState();
@@ -25,7 +24,6 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
@@ -41,7 +39,7 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Container(
-                padding: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
                 height: _height * 0.1,
                 width: double.infinity,
                 decoration: BoxDecoration(
@@ -82,6 +80,7 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
                     if (value!.isEmpty) {
                       return "required *";
                     }
+                    return null;
                   },
                   textInputType: TextInputType.number,
                   onChanged: (value) {
@@ -97,6 +96,7 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
                     if (value!.isEmpty) {
                       return "required *";
                     }
+                    return null;
                   },
                   textInputType: TextInputType.number,
                   onChanged: (value) {
@@ -111,6 +111,7 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
                     if (value!.isEmpty) {
                       return "required *";
                     }
+                    return null;
                   },
                   textInputType: TextInputType.number,
                   onChanged: (value) {
@@ -135,8 +136,8 @@ class _EmiCalculatorPageState extends State<EmiCalculatorPage> {
 
   void calculateEMI() {
     setState(() {
-      double monthlyInterestRate = annualInterestRate! / 12 / 100;
-      double numberOfMonths = loanTenure! * 12;
+      final double monthlyInterestRate = annualInterestRate! / 12 / 100;
+      final double numberOfMonths = loanTenure! * 12;
 
       monthlyEMI = (loanAmount! *
               monthlyInterestRate *

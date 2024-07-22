@@ -415,8 +415,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           builder: (context, state) {
                             print("state of state is $state");
                             if (state is CommonDataFetchSuccess<Bank>) {
-                              final List<Bank> _banks = state.data;
-                              final List<String> _bankNames = [];
+                              // final List<Bank> _banks = state.data;
+                              // final List<String> _bankNames = [];
                               double highestMatch = 0;
                               int selectedIndex = -1;
                               print(

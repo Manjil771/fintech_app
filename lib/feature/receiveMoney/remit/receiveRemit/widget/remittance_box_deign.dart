@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
 class RemitBoxDesign extends StatelessWidget {
@@ -24,7 +23,6 @@ class RemitBoxDesign extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _height = SizeUtils.height;
 
     return InkWell(
       onTap: onContainerPress,

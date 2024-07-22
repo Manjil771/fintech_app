@@ -1,5 +1,4 @@
 import 'package:ismart/common/http/api_provider.dart';
-import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 class ReceiveFromBankAPIProvider {
@@ -90,7 +89,7 @@ class ReceiveFromBankAPIProvider {
   receiveMoneyFromBank({
     required Map<String, dynamic> payloadData,
   }) async {
-    final url = "$baseUrl" + "api/load_from_bank/payment";
+    final url = "$baseUrl" "api/load_from_bank/payment";
     // final url = "$baseUrl/api/load_from_bank/payment/ebanks";
 
     // Uri _uri = UrlUtils.getUri(url: url, params: payloadData);

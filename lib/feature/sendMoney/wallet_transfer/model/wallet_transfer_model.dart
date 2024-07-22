@@ -26,6 +26,7 @@ class WalletTransferModel {
       );
   T? findValue<T>({required String primaryKey, String? secondaryKey}) {
     final _index = details.indexWhere(
+        // ignore: unnecessary_type_check
         (e) => e.title == primaryKey && (T is dynamic ? true : e.value is T));
     if (_index == -1) {
       return null;

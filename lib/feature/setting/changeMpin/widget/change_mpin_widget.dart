@@ -14,6 +14,7 @@ import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class ChangeMpinWidget extends StatelessWidget {
   TextEditingController oldPinController = TextEditingController();
 
@@ -101,6 +102,7 @@ class ChangeMpinWidget extends StatelessWidget {
                     if (val!.length != 5) {
                       return "Invalid MPin";
                     }
+                    return null;
                   },
                 ),
                 SizedBox(height: _height * 0.02),
@@ -111,6 +113,7 @@ class ChangeMpinWidget extends StatelessWidget {
                       if (val!.length != 5) {
                         return "Invalid MPin";
                       }
+                      return null;
                     },
                     controller: newPinController,
                     title: "New MPin",
@@ -126,6 +129,7 @@ class ChangeMpinWidget extends StatelessWidget {
                       if (newPinController.text != val) {
                         return "Confirm Pin doesnot match.";
                       }
+                      return null;
                     },
                     controller: reEnterPinController,
                     title: "Re-Enter MPin",

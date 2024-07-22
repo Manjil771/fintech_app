@@ -48,6 +48,7 @@ List<Map<String, dynamic>> _contactUsOptions = [
   },
 ];
 
+// ignore: must_be_immutable
 class MoreWidget extends StatelessWidget {
   MoreWidget({Key? key}) : super(key: key);
   final List<String> itemImage = [
@@ -190,10 +191,6 @@ class MoreWidget extends StatelessWidget {
   ];
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return CommonContainer(
       showTitleText: false,
       body: GridView.builder(

@@ -6,7 +6,6 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -19,8 +18,6 @@ import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/custom_cached_network_image.dart';
-import 'package:ismart/common/widget/custom_carousel.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
@@ -67,6 +64,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   List<String> offerBanners = [];
   @override
   void initState() {
+    super.initState();
     context
         .read<CustomerDetailCubit>()
         .fetchCustomerDetail(isCalledAtStatup: true);
@@ -272,7 +270,8 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
               child: Container(
                 color: Colors.black.withOpacity(0.5),
                 child: Container(
-                    margin: EdgeInsets.symmetric(horizontal: 0, vertical: 50),
+                    margin:
+                        const EdgeInsets.symmetric(horizontal: 0, vertical: 50),
                     alignment: Alignment.center,
                     child: Scaffold(
                       backgroundColor: Colors.transparent,
@@ -296,9 +295,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                                         fontWeight: FontWeight.bold,
                                         color: CustomTheme.white),
                                   ),
-                                  Icon(Icons.close_rounded,
+                                  const Icon(Icons.close_rounded,
                                       size: 20, color: CustomTheme.googleColor),
-                                  SizedBox(
+                                  const SizedBox(
                                     width: 10,
                                   ),
                                 ],

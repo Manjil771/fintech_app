@@ -4,7 +4,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/resources/reset_otp_register_repository.dart';
-import 'package:ismart/feature/authentication/ui/resetPin/resources/reset_pin_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ResetOtpRegistrationCubit extends Cubit<CommonState> {

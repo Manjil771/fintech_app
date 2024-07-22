@@ -1,4 +1,3 @@
-import 'package:dio/dio.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';

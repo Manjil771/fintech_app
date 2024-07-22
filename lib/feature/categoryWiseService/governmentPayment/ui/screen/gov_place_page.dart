@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/model/province_list_gov_model.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/widget/gov_place_widget.dart';
-import 'package:ismart/feature/sendMoney/anyBank/widgets/bank_list_widget.dart';
-import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class GovPlacePage extends StatelessWidget {

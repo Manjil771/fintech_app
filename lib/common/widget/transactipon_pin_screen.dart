@@ -7,7 +7,6 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
-
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
@@ -35,7 +34,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
   }
 
   _checkBiometric() async {
-    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    final bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
@@ -44,12 +43,11 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     final width = SizeUtils.width;
     final height = SizeUtils.height;
     final _theme = Theme.of(context);
-    Size size = MediaQuery.of(context).size;
+    final Size size = MediaQuery.of(context).size;
 
     return Scaffold(
       body: SafeArea(
@@ -126,7 +124,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                             if (val) {
                               return InkWell(
                                 onTap: () async {
-                                  bool authenticated =
+                                  final bool authenticated =
                                       await FingerPrintUtils.verifyFingerPrint(
                                     context: NavigationService.context,
                                   );

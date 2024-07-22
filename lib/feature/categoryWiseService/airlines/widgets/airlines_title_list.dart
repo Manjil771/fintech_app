@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/util/size_utils.dart';
 
 class AirlinesTitleList extends StatelessWidget {
   final Function(String) onPress;
@@ -10,15 +9,14 @@ class AirlinesTitleList extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return Row(
       children: [
         ...List.generate(
             title.length,
             (index) => Container(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 6),
-                  margin: EdgeInsets.only(right: 15),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 15, vertical: 6),
+                  margin: const EdgeInsets.only(right: 15),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(8),
                     border: Border.all(color: CustomTheme.darkerBlack),

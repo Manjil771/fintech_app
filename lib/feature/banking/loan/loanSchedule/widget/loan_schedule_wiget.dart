@@ -3,7 +3,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -42,9 +41,6 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
         verticalPadding: 0,

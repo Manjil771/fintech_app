@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class BusKeyValueTile extends StatelessWidget {

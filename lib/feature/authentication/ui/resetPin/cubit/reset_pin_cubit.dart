@@ -5,7 +5,6 @@ import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/resources/reset_pin_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class ResetPinCubit extends Cubit<CommonState> {
   ResetPinCubit({required this.resetPinRepository}) : super(CommonInitial());

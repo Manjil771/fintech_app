@@ -31,7 +31,7 @@ class FlightDetailsListItemWidget extends StatefulWidget {
 
 class _FlightDetailsListItemWidgetState
     extends State<FlightDetailsListItemWidget> {
-  final double _cashbackAmount = 0.0;
+  // final double _cashbackAmount = 0.0;
 
   @override
   void initState() {

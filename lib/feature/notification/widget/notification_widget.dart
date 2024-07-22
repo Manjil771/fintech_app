@@ -29,8 +29,6 @@ class _NotificationWidgetState extends State<NotificationWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       showBackButton: true,
       // backgroundColor: CustomTheme.white,
@@ -40,7 +38,7 @@ class _NotificationWidgetState extends State<NotificationWidget> {
           return BlocBuilder<UtilityPaymentCubit, CommonState>(
             builder: (context, state) {
               if (state is CommonStateSuccess<NotificationModel>) {
-                final _data = state.data;
+                // final _data = state.data;
                 if (state.data.detail.isNotEmpty) {
                   return ListView.builder(
                       itemCount: state.data.detail.length,

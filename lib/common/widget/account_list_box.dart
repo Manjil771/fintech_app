@@ -26,7 +26,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
   Widget build(BuildContext context) {
     final _customerDetailRepo =
         RepositoryProvider.of<CustomerDetailRepository>(context);
-    int myIndex = 0;
+    // int myIndex = 0;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;

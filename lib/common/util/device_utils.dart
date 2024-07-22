@@ -83,7 +83,7 @@ class DeviceUtils {
         final res = await _deviceInfo.iosInfo;
         final _deviceMarketNames = DeviceMarketingNames();
         String _iosName = _deviceMarketNames.getSingleNameFromModel(
-            DeviceType.ios, res.utsname.machine ?? "");
+            DeviceType.ios, res.utsname.machine);
         if (_iosName.isEmpty) {
           _iosName = "APPLE iPhone (iPhone)";
         }

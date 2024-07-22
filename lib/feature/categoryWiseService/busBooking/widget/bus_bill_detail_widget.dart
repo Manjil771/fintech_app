@@ -75,7 +75,7 @@ class BusBillDetailWidget extends StatelessWidget {
             }
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              UtilityResponseData _response = state.data;
+              final UtilityResponseData _response = state.data;
 
               if (_response.code == "M0000") {
                 NavigationService.push(

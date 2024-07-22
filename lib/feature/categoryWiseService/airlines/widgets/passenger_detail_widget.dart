@@ -1,17 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
@@ -20,8 +14,6 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_nat
 import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_title_list.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class PassengerDetailWidget extends StatefulWidget {
   Flight? departureFlight;
@@ -58,7 +50,6 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
 
   List<PassengerDetailModel> passengers = [];
 
-  bool _isLoading = false;
   @override
   void initState() {
     super.initState();
@@ -94,9 +85,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
+    // final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
 
     return PageWrapper(
       body: CommonContainer(
@@ -175,6 +164,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                                 if (passenger.title == "Select") {
                                   return "Please select Title";
                                 }
+                                return null;
                               },
                               onTap: () {
                                 showBottomSheet(
@@ -223,6 +213,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                                 if (passenger.nationalityName == "Select") {
                                   return "Please select Nationality";
                                 }
+                                return null;
                               },
                               hintText: passenger.nationalityName,
                               customHintTextStyle: true,

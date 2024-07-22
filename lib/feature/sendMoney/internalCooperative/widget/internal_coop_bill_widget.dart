@@ -53,6 +53,7 @@ class InternalCoopBillDetailPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class InternalCoopBillDetailWidget extends StatelessWidget {
   final String amount;
   final String accountNumber;
@@ -101,7 +102,7 @@ class InternalCoopBillDetailWidget extends StatelessWidget {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message

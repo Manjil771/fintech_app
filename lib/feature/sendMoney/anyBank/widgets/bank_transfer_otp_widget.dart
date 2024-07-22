@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/custom_pin_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 
+// ignore: must_be_immutable
 class BankTransferOTPWidget extends StatelessWidget {
   final String otpAmountLimit;
 

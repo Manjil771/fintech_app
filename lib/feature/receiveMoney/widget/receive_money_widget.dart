@@ -5,7 +5,6 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -41,9 +40,6 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return PageWrapper(
       body: BlocConsumer<AppServiceCubit, CommonState>(
         listener: (context, state) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
-
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
@@ -35,12 +34,10 @@ class FlightAmountWidgetWithButton extends StatelessWidget {
   final String bookingId;
   final double totalPrice;
   final ServiceList services;
-  final bool _isLoading = false;
 
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _width = SizeUtils.width;
     return Container(
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(

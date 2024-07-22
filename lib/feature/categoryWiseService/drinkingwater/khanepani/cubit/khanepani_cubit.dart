@@ -3,8 +3,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
 
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
-
 class KhanePaniCubit extends Cubit<CommonState> {
   final KhanePaniRepository khanePaniRepository;
   KhanePaniCubit({required this.khanePaniRepository}) : super(CommonInitial());

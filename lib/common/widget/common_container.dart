@@ -62,7 +62,6 @@ class CommonContainer extends StatelessWidget {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       showAppBar: false,

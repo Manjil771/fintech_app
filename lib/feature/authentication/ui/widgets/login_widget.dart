@@ -819,7 +819,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   getAppService() async {
     final appServiceRepo = RepositoryProvider.of<AppServiceRepository>(context);
-    final response = await appServiceRepo.getAppService();
+    // final response = await appServiceRepo.getAppService();
     setState(() {
       appService = appServiceRepo.appService;
     });

@@ -3,10 +3,8 @@ import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
-import 'package:ismart/feature/receiveMoney/cubits/receive_from_bank_cubit.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_from_bank_api_provider.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_api_provider.dart';
 
 class ReceiveFromBankRepository {
   final UserRepository userRepository;
@@ -27,13 +25,13 @@ class ReceiveFromBankRepository {
   }
 
   Future<DataResponse<List<Bank>>> getBanksList() async {
-    List<Bank> _banksList = [];
+    final List<Bank> _banksList = [];
     try {
       final _res = await receiveFromBankAPIProvider.getBanksList();
       final _result = Map<String, dynamic>.from(_res);
       if (_result['data']['details'] != null) {
         List.from(_result['data']['details']).forEach((element) {
-          Bank _bank = Bank.fromJson(element);
+          final Bank _bank = Bank.fromJson(element);
           _banksList.add(_bank);
         });
         return DataResponse.success(_banksList);
@@ -87,7 +85,7 @@ class ReceiveFromBankRepository {
     // required String destinationBankAccountNumber,
     // required String serviceCharge,
   }) async {
-    Map<String, dynamic> receiveFromBankPayload = {
+    final Map<String, dynamic> receiveFromBankPayload = {
       "accountNo": accountNumber,
       "amount": amount,
       "bankCode": bankInstrumentCode,

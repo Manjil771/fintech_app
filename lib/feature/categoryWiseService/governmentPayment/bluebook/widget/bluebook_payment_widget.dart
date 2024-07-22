@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -14,7 +12,6 @@ import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/bluebook/screen/bluebook_details_page.dart';
 import 'package:ismart/feature/categoryWiseService/governmentPayment/bluebook/widget/bluebook_bottomsheet_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -52,10 +49,6 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: BlocConsumer<UtilityPaymentCubit, CommonState>(
         builder: (context, state) {
@@ -323,7 +316,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
             );
           }
           if (state is CommonLoading) {
-            return CommonLoadingWidget();
+            return const CommonLoadingWidget();
           } else {
             return Container();
           }
@@ -349,7 +342,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" &&
                 _response.status.toLowerCase() == "success") {
               NavigationService.push(

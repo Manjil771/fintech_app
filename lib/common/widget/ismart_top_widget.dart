@@ -17,7 +17,6 @@ class IsmartTopWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
     final repo = RepositoryProvider.of<CoOperative>(context);
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,

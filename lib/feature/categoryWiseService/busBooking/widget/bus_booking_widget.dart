@@ -7,18 +7,12 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/screen/available_flight_screen.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/widgets/location_list_widget.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_location_widget.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
@@ -56,8 +50,6 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
 
     return PageWrapper(
       body: CommonContainer(
@@ -241,7 +233,7 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index) {
                       return Padding(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
                         child: CustomRoundedButtom(
                             color: selectedIndex == index
                                 ? _theme.primaryColor

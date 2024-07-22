@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/statement/miniStatement/models/mini_statement_model.dart';
 import 'package:ismart/feature/statement/miniStatement/resources/mini_statement_repository.dart';
 
@@ -13,7 +12,7 @@ class MiniStatementCubit extends Cubit<CommonState> {
   Future<dynamic> fetchMiniStatement({required String accountNumbner}) async {
     emit(CommonLoading());
     try {
-      String mPin = await SecureStorageService.appPassword;
+      final String mPin = await SecureStorageService.appPassword;
 
       final response =
           await miniStatementRepository.getMiniStatement(accountNumbner, mPin);

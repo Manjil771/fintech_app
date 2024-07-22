@@ -21,8 +21,6 @@ class BiometricLoginPage extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       showAppBar: false,
       body: Column(
@@ -60,7 +58,7 @@ class BiometricLoginPage extends StatelessWidget {
           CustomRoundedButtom(
             title: "Enable Now",
             onPressed: () async {
-              bool _isFingerprintAvailable =
+              final bool _isFingerprintAvailable =
                   await FingerPrintUtils.hasFingerPrint;
               if (_isFingerprintAvailable) {
                 onValueCallback(

@@ -49,12 +49,8 @@ class AirlinesBillDetailPage extends StatelessWidget {
       required this.contactPhoneNumber,
       required this.contactEmail,
       required this.passengerList});
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -121,7 +117,6 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _height = SizeUtils.height;
 
     return PageWrapper(
       backgroundColor: CustomTheme.white,
@@ -158,7 +153,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message

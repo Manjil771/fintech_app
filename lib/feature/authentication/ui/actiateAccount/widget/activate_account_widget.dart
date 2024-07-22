@@ -4,7 +4,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -15,10 +14,8 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/registration_otp_page.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
-import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_otp_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ActivateAccountWidget extends StatelessWidget {
@@ -35,8 +32,6 @@ class ActivateAccountWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       showAppBar: false,
       body: SafeArea(
@@ -82,7 +77,7 @@ class ActivateAccountWidget extends StatelessWidget {
           },
           child: ListView(
             children: [
-              IsmartTopWidget(),
+              const IsmartTopWidget(),
               SizedBox(height: 10.hp),
               Center(
                   child: Text("Activate Your Service",
@@ -96,7 +91,7 @@ class ActivateAccountWidget extends StatelessWidget {
               ),
               SizedBox(height: 20.hp),
               Container(
-                padding: EdgeInsets.all(18),
+                padding: const EdgeInsets.all(18),
                 decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(18),
                     color: CustomTheme.white),

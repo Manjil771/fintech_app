@@ -1,15 +1,10 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/resources/reset_pin_api_provider.dart';
-import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-import 'package:ismart/feature/utility_payment/resources/utility_payment_api_provider.dart';
 
 class ResetPinRepository {
   ApiProvider apiProvider;
@@ -44,7 +39,7 @@ class ResetPinRepository {
         body: body,
       );
 
-      UtilityResponseData _responseData =
+      final UtilityResponseData _responseData =
           UtilityResponseData.fromJson(_res['data'] ?? {});
       print(_responseData);
 

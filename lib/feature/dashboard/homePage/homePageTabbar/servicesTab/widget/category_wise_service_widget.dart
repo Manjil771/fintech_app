@@ -73,8 +73,6 @@ class _CategoriesWiseServicesWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
@@ -148,10 +146,10 @@ class _CategoriesWiseServicesWidgetState
   }
 
   onTapFunction({required String uniqueIdentifier, required int index}) {
-    final selectedService = widget.services
-        .where((e) =>
-            e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
-        .toList();
+    // final selectedService = widget.services
+    // .where((e) =>
+    // e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
+    // .toList();
     final servicess = searchItems[index];
 
     if (widget.uniqueIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {

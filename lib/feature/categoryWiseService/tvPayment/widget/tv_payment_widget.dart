@@ -1,34 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_amount_box.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/custom_checkbox.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/ui/screen/gov_place_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_detail_page.dart';
-import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/receiveMoney/models/bank.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
-import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class TvPaymentWidget extends StatefulWidget {
   final ServiceList service;
@@ -43,7 +28,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
   final TextEditingController amountController = TextEditingController();
   final TextEditingController customerIDController = TextEditingController();
   final TextEditingController setupBoxController = TextEditingController();
-  bool _changePackage = false;
+  // final bool _changePackage = false;
 
   String? selectedDistrictValue;
   String? selectedProvinceValue;
@@ -59,10 +44,6 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
         body: BlocListener<TvPaymentCubit, CommonState>(
       listener: (context, state) {

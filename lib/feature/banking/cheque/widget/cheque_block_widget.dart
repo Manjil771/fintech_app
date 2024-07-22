@@ -14,6 +14,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class ChequeBlockWidget extends StatelessWidget {
   ChequeBlockWidget({Key? key}) : super(key: key);
   final TextEditingController chequeNumberController = TextEditingController();
@@ -21,9 +22,6 @@ class ChequeBlockWidget extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
@@ -45,7 +43,7 @@ class ChequeBlockWidget extends StatelessWidget {
           );
         }
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+          final UtilityResponseData _response = state.data;
           if (_response.code == "M0000") {
             showPopUpDialog(
               context: context,

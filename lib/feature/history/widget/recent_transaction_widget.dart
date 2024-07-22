@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -32,7 +31,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
     return PageWrapper(
       padding: EdgeInsets.zero,
       showAppBar: false,
@@ -66,7 +64,8 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
           },
           builder: (context, state) {
             print("state iss $state");
-            ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
+            final ValueNotifier<String> _downloadNotifierValue =
+                ValueNotifier("");
             if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
               return BlocListener<TransactionDownloadCubit, CommonState>(
                 listener: (context, state) {

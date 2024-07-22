@@ -2,15 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
-
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/cubit/airlines_cubit.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_sector_model.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -41,8 +37,6 @@ class _PossibleDatetrafficPageState extends State<PossibleDatetrafficPage> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     return BlocProvider(
       lazy: false,
       create: (context) => UtilityPaymentCubit(
