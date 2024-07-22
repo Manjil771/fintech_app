@@ -4615,7 +4615,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.26;
+				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dhaulagiri Coop iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -8494,6 +8494,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_NAME = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -9209,7 +9210,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = YWWTUL8N7V;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.31;
+				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kamana Coop iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -12458,7 +12459,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.35;
+				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabil iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -12766,7 +12767,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FLUTTER_BUILD_DIR = "";
-				FLUTTER_BUILD_NAME = 1.5.30;
+				FLUTTER_BUILD_NAME = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -13540,6 +13541,8 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				FLUTTER_BUILD_DIR = "";
+				FLUTTER_BUILD_NAME = "";
+				"FLUTTER_BUILD_NAME[arch=*]" = "";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -13573,7 +13576,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.35;
+				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabil iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";

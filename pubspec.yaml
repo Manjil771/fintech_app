@@ -337,6 +337,8 @@ flutter:
     # - assets/agrajMahila/
     # - assets/mahabir/   
     # - assets/abhiyankrishi/ 
+    - assets/unnati/ 
+
     
     
     # sana kishan assets
@@ -350,7 +352,7 @@ flutter:
     # - assets/skShankharpur/
     # - assets/skDharan/  
     # - assets/sklakhanpur/ 
-    - assets/skDhankuta/ 
+    # - assets/skDhankuta/ 
 
     
  
