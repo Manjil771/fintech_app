@@ -15,6 +15,7 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_tit
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
+// ignore: must_be_immutable
 class PassengerDetailWidget extends StatefulWidget {
   Flight? departureFlight;
   Flight? arrivalFlight;

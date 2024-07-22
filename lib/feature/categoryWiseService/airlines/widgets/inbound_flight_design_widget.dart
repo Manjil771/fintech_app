@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
+// ignore: must_be_immutable
 class InboundFlightDesign extends StatelessWidget {
   final List<Flight> availableFlights;
   final Function(Flight) onpress;

@@ -33,7 +33,6 @@ class BuyDatapackWidget extends StatefulWidget {
 }
 
 class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
-  @override
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
 

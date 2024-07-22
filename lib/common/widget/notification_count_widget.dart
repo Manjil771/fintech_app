@@ -24,6 +24,7 @@ class _NotificationCountIconState extends State<NotificationCountIcon> {
 
   @override
   void initState() {
+    super.initState();
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
   }

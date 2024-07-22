@@ -18,6 +18,7 @@ import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_bra
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class ActivateAccountWidget extends StatelessWidget {
   ActivateAccountWidget({Key? key}) : super(key: key);
   final TextEditingController _mobileNumberController = TextEditingController();

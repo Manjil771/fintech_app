@@ -21,6 +21,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
 
   @override
   void initState() {
+    super.initState();
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
   }
@@ -170,9 +171,9 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                       Expanded(
                                         child: CommonGridViewContainer(
                                           onContainerPress: () async {
-                                            final bankName = RepositoryProvider
-                                                    .of<CoOperative>(context)
-                                                .appTitle;
+                                            // final bankName = RepositoryProvider
+                                            // .of<CoOperative>(context)
+                                            // .appTitle;
                                             // await Share.share(
                                             //   'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].mainCode} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
                                             // );

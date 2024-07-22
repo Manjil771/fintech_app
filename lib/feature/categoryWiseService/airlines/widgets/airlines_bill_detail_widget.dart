@@ -19,6 +19,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
+// ignore: must_be_immutable
 class AirlinesBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
   Flight? departureFlight;
@@ -74,6 +75,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class AirlinesBillDetailWidget extends StatefulWidget {
   final ServiceList service;
   final List passengerList;
