@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
@@ -18,10 +17,6 @@ class LoadWalletFormScreen extends StatelessWidget {
   final WalletModel selectedWallet;
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(

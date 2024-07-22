@@ -24,6 +24,7 @@ class HomePageWidget extends StatefulWidget {
 
 class _HomePageWidgetState extends State<HomePageWidget> {
   bool _shouldShowDifferentMenu = false;
+  // ignore: unused_field
   List<String> _bannerImages = [];
 
   _checkMenu() {
