@@ -185,7 +185,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                   suffixIcon: Icons.phone_android_outlined,
                   showSearchIcon: true,
                   onSuffixPressed: () async {
-                    String phoneNumber =
+                    final String phoneNumber =
                         await SecureStorageService.appPhoneNumber;
                     _mobileNumberController.text = phoneNumber;
                   },
@@ -210,7 +210,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
                 ],
               )
             ]),
-            topbarName: 'Payment'),
+            topbarName: 'Data Pack'),
       ),
     );
   }

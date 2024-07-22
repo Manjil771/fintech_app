@@ -74,7 +74,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
               );
             }
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              UtilityResponseData _response = state.data;
+              final UtilityResponseData _response = state.data;
               if (_response.status == "M0000") {
                 NavigationService.push(
                     target: ElectricityDetailPage(
@@ -166,7 +166,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                 );
           }
         },
-        topbarName: "Payment",
+        topbarName: "Electricity",
       ),
     );
   }
