@@ -29,6 +29,8 @@ class BankTransferBillPage extends StatelessWidget {
   final String? bankName;
   final Widget body;
   final String message;
+  final String otp;
+
   const BankTransferBillPage({
     super.key,
     required this.body,
@@ -42,6 +44,7 @@ class BankTransferBillPage extends StatelessWidget {
     required this.serviceName,
     required this.message,
     this.imageUrl,
+    required this.otp,
   });
   final bool _isLoading = false;
   @override
@@ -55,6 +58,7 @@ class BankTransferBillPage extends StatelessWidget {
             RepositoryProvider.of<SendToBankRepository>(context),
       ),
       child: BankTransferBillWidget(
+        otp: otp,
         iamgeUrl: imageUrl,
         accountName: accountName,
         message: message,
@@ -84,6 +88,7 @@ class BankTransferBillWidget extends StatefulWidget {
   final String? accountName;
   final String? accountNumber;
   final String? bankName;
+  final String otp;
 
   const BankTransferBillWidget({
     super.key,
@@ -98,6 +103,7 @@ class BankTransferBillWidget extends StatefulWidget {
     required this.serviceName,
     required this.message,
     required this.iamgeUrl,
+    required this.otp,
   });
 
   @override
@@ -178,7 +184,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                       ),
                     ],
                   ),
-
                   SizedBox(height: _height * 0.01),
                   const Divider(thickness: 1),
                   SizedBox(height: _height * 0.02),
@@ -210,6 +215,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                             NavigationService.pop();
 
                             context.read<SendToBankCubit>().sendMoneyToBank(
+                                  otp: widget.otp,
                                   charge: widget.charge ?? "",
                                   amount: widget.amount ?? "",
 
@@ -235,17 +241,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                           },
                         ));
                       }),
-                  // Container(
-                  //   decoration: BoxDecoration(
-                  //       borderRadius: BorderRadius.circular(18),
-                  //       border:
-                  //           Border.all(color: Theme.of(context).primaryColor)),
-                  //   child: CustomRoundedButtom(
-                  //       textColor: Theme.of(context).primaryColor,
-                  //       title: "Download Receipt",
-                  //       color: Colors.transparent,
-                  //       onPressed: () {}),
-                  // ),
                 ],
               ),
             ),
