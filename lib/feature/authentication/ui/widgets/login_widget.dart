@@ -325,20 +325,21 @@ class _LoginWidgetState extends State<LoginWidget> {
                             return null;
                           },
                           onChanged: (val) async {
-                            if (FormValidator.validatePhoneNumber(val) ==
-                                null) {
-                              final CoOperative currentCoop =
-                                  RepositoryProvider.of<CoOperative>(context);
-                              if (currentCoop.shouldValidateCooperative) {
-                                await context
-                                    .read<ValidateCoOpCubit>()
-                                    .validateCoOperative(username: val);
-                                Future.delayed(const Duration(seconds: 3))
-                                    .then((value) {
-                                  setState(() {});
-                                });
-                              }
-                            }
+                            // if (FormValidator.validatePhoneNumber(val) ==
+                            //     null) {
+
+                            // final CoOperative currentCoop =
+                            //     RepositoryProvider.of<CoOperative>(context);
+                            // if (currentCoop.shouldValidateCooperative) {
+                            //   await context
+                            //       .read<ValidateCoOpCubit>()
+                            //       .validateCoOperative(username: val);
+                            //   Future.delayed(const Duration(seconds: 3))
+                            //       .then((value) {
+                            //     setState(() {});
+                            //   });
+                            // }
+                            // }
                           },
                         );
                       },
@@ -347,6 +348,20 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomPasswordField(
                       title: "Mpin",
                       hintText: "Mpin",
+                      onTap: () async {
+                        final CoOperative currentCoop =
+                            RepositoryProvider.of<CoOperative>(context);
+                        if (currentCoop.shouldValidateCooperative) {
+                          await context
+                              .read<ValidateCoOpCubit>()
+                              .validateCoOperative(
+                                  username: phoneController.text);
+                          Future.delayed(const Duration(seconds: 3))
+                              .then((value) {
+                            setState(() {});
+                          });
+                        }
+                      },
                       controller: passwordController,
                       textInputType: TextInputType.number,
                       validator: (value) =>
