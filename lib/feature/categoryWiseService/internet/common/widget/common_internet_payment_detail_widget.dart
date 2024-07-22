@@ -78,6 +78,7 @@ class _CommonInternetPaymentDeatilWidgetState
         []);
 
     bool _isLoading = false;
+    // ignore: unused_local_variable
     final bool _isPackageAvailable = _packageOptions.isNotEmpty;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
