@@ -3209,6 +3209,20 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Dhankuta",
     appTitle: "SFACL Dhankuta iSmart",
   );
+  static final CoOperative skDharan = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skDharan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skDharan/skDharan_banner.png",
+    backgroundImage: "assets/skDharan/skDharan_background.png",
+    clientCode: 'HATT40NDZ6',
+    clientSecret: "191118",
+    coOperativeLogo: 'assets/skDharan/skDharan_logo.png',
+    splashImage: "assets/skDharan/skDharan_splash.png",
+    primaryColor: const Color(0xFF007948),
+    coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Dharan",
+    appTitle: "SFACL Dharan iSmart",
+  );
   static final CoOperative jayShreeNavadurga = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.jayshreenavadurga",
@@ -3337,5 +3351,5 @@ class CoOperativeValue {
     coOperativeName: "Abhiyan Agro Co-operative Ltd.",
     appTitle: "Abhiyan Krishi iSmart",
   );
-  static final CoOperative currentCoop = abhiyanKrishi;
+  static final CoOperative currentCoop = skDhankuta;
 }

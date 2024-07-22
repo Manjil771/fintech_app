@@ -330,17 +330,16 @@ flutter:
     # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/ 
-    # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/gagankalika/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/   
-    - assets/abhiyankrishi/   
+    # - assets/abhiyankrishi/ 
     
     
-    # sana ksihan assets
+    # sana kishan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
@@ -349,6 +348,10 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
+    # - assets/skDharan/  
+    # - assets/sklakhanpur/ 
+    - assets/skDhankuta/ 
+
     
  
  
