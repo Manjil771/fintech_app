@@ -3365,5 +3365,19 @@ class CoOperativeValue {
     coOperativeName: "Unnati Krishi Co-operative Ltd.",
     appTitle: "Unnati Krishi iSmart",
   );
-  static final CoOperative currentCoop = unnatiCoop;
+   static final CoOperative skOdraha = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skOdraha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skOdraha/skOdraha_banner.png",
+    backgroundImage: "assets/skOdraha/skOdraha_background.png",
+    clientCode: 'L6IDP9NHCX',
+    clientSecret: "166787",
+    coOperativeLogo: 'assets/skOdraha/skOdraha_logo.png',
+    splashImage: "assets/skOdraha/skOdraha_splash.png",
+    primaryColor: const Color(0xFF0009245),
+    coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Odraha",
+    appTitle: "SFACL ODRAHA iSmart",
+  );
+  static final CoOperative currentCoop = skOdraha;
 }

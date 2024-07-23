@@ -188,7 +188,7 @@ flutter:
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
-    # - assets/rithepani/
+    - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
@@ -337,7 +337,8 @@ flutter:
     # - assets/agrajMahila/
     # - assets/mahabir/   
     # - assets/abhiyankrishi/ 
-    - assets/unnati/ 
+    # - assets/unnati/ 
+    - assets/skOdraha/ 
 
     
     
