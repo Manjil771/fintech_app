@@ -9,7 +9,10 @@ import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
+import 'package:ismart/feature/more/authenticationScreen/biometric_screen.dart';
+import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
+import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
 String _supportContact =
@@ -52,20 +55,26 @@ List<Map<String, dynamic>> _contactUsOptions = [
 class MoreWidget extends StatelessWidget {
   MoreWidget({Key? key}) : super(key: key);
   final List<String> itemImage = [
+    Assets.fingerPrintImage,
+    "assets/icons/pin-code-svgrepo-com 1.svg",
     Assets.discountCalculator,
-    Assets.emiCalculator,
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
     Assets.feedBackIcon
-    // Assets.settingIcon,
   ];
   List tapFunction = [
     () {
-      NavigationService.pushNamed(routeName: Routes.discountCalculator);
+      NavigationService.push(
+          target: AuthenticationScreen(
+        onValueCallback: (p0) {},
+      ));
     },
     () {
-      NavigationService.pushNamed(routeName: Routes.emiCalculator);
+      NavigationService.push(target: const ChangeMpinPage());
+    },
+    () {
+      NavigationService.push(target: const CalculatorScreen());
     },
     () {
       NavigationService.pushNamed(routeName: Routes.downloadScreen);
@@ -166,12 +175,6 @@ class MoreWidget extends StatelessWidget {
           ),
         ),
       );
-
-      // if (await canLaunchUrl(Uri.parse("tel:9801132218"))) {
-      //   await launchUrl(Uri.parse("tel:9801132218"));
-      // } else {
-      //   throw 'Could not launch tel:9801132218';
-      // }
     },
     () {
       NavigationService.push(target: const SettingPage());
@@ -182,8 +185,9 @@ class MoreWidget extends StatelessWidget {
   ];
 
   final List names = [
-    "Discount Calculator",
-    "EMI Calculator",
+    "Biometric",
+    "Change mPin",
+    "Calculator",
     "Downloads",
     "Support",
     "Settings",
