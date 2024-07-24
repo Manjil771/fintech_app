@@ -14,8 +14,10 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 class TransactionPinScreen extends StatefulWidget {
   final Function(String) onValueCallback;
+  final bool showBiometric;
 
-  const TransactionPinScreen({super.key, required this.onValueCallback});
+  const TransactionPinScreen(
+      {super.key, required this.onValueCallback, this.showBiometric = true});
   @override
   State<TransactionPinScreen> createState() => _TransactionPinScreenState();
 }
@@ -118,46 +120,49 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       SizedBox(height: _height * 0.01),
                       SizedBox(height: size.height * 0.01),
                       SizedBox(height: height * 0.014),
-                      ValueListenableBuilder<bool>(
-                          valueListenable: _isBiometricEnabled,
-                          builder: (context, val, _) {
-                            if (val) {
-                              return InkWell(
-                                onTap: () async {
-                                  final bool authenticated =
-                                      await FingerPrintUtils.verifyFingerPrint(
-                                    context: NavigationService.context,
-                                  );
-                                  if (authenticated) {
-                                    final String password =
-                                        await SecureStorageService.appPassword;
+                      if (widget.showBiometric == true)
+                        ValueListenableBuilder<bool>(
+                            valueListenable: _isBiometricEnabled,
+                            builder: (context, val, _) {
+                              if (val) {
+                                return InkWell(
+                                  onTap: () async {
+                                    final bool authenticated =
+                                        await FingerPrintUtils
+                                            .verifyFingerPrint(
+                                      context: NavigationService.context,
+                                    );
+                                    if (authenticated) {
+                                      final String password =
+                                          await SecureStorageService
+                                              .appPassword;
 
-                                    if (password.isNotEmpty) {
-                                      widget.onValueCallback(password);
+                                      if (password.isNotEmpty) {
+                                        widget.onValueCallback(password);
+                                      }
                                     }
-                                  }
-                                },
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    const Icon(
-                                      Icons.fingerprint,
-                                      size: 35,
-                                    ),
-                                    SizedBox(
-                                      width: width * 0.03,
-                                    ),
-                                    Text(
-                                      "User Biometric ",
-                                      style: _theme.textTheme.labelMedium,
-                                    ),
-                                  ],
-                                ),
-                              );
-                            } else {
-                              return Container();
-                            }
-                          }),
+                                  },
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      const Icon(
+                                        Icons.fingerprint,
+                                        size: 35,
+                                      ),
+                                      SizedBox(
+                                        width: width * 0.03,
+                                      ),
+                                      Text(
+                                        "User Biometric ",
+                                        style: _theme.textTheme.labelMedium,
+                                      ),
+                                    ],
+                                  ),
+                                );
+                              } else {
+                                return Container();
+                              }
+                            }),
                       TextButton(
                           onPressed: () {
                             NavigationService.pop();
