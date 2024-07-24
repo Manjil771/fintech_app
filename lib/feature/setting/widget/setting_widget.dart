@@ -118,9 +118,13 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: _launchUrl,
                   detail: "View complete privacy policy",
                   title: "Privacy Policy"),
-              const CommonDetailBox(
-                  leadingImage: "assets/icons/privacy policy.svg",
-                  onBoxPressed: _launchUrl,
+              const Divider(thickness: 1),
+
+              CommonDetailBox(
+                  leadingImage: Assets.resetPinIcon,
+                  onBoxPressed: () {
+                    NavigationService.pushNamed(routeName: Routes.forgotPin);
+                  },
                   detail: "Tap to reset your mPin.",
                   title: "Forget Pin"),
 
