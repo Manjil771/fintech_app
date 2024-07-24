@@ -127,7 +127,7 @@ flutter:
     # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
-    # - assets/kamana/
+    - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
@@ -188,7 +188,7 @@ flutter:
     # - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
-    - assets/rithepani/
+    # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
@@ -300,6 +300,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
+    # - assets/jayshreenavadurga/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
@@ -338,7 +339,7 @@ flutter:
     # - assets/mahabir/   
     # - assets/abhiyankrishi/ 
     # - assets/unnati/ 
-    - assets/skOdraha/ 
+    # - assets/skOdraha/ 
 
     
     

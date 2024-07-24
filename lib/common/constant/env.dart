@@ -3351,7 +3351,7 @@ class CoOperativeValue {
     coOperativeName: "Abhiyan Agro Co-operative Ltd.",
     appTitle: "Abhiyan Krishi iSmart",
   );
-   static final CoOperative unnatiCoop = CoOperative(
+  static final CoOperative unnatiCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.unnati",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -3365,7 +3365,7 @@ class CoOperativeValue {
     coOperativeName: "Unnati Krishi Co-operative Ltd.",
     appTitle: "Unnati Krishi iSmart",
   );
-   static final CoOperative skOdraha = CoOperative(
+  static final CoOperative skOdraha = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.skOdraha",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -3379,5 +3379,5 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Odraha",
     appTitle: "SFACL ODRAHA iSmart",
   );
-  static final CoOperative currentCoop = skOdraha;
+  static final CoOperative currentCoop = kamanaCoop;
 }
