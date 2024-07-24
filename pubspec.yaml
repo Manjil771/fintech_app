@@ -123,11 +123,11 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
-    - assets/kamana/
+    # - assets/kamana/
     # - assets/arthaBag/
     # - assets/gomaGanesh/
     # - assets/alankar/
