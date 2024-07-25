@@ -330,9 +330,10 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/ 
     # - assets/sklakhanpur/
-    - assets/shreekrishna/
+    # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/gagankalika/
+    - assets/argha/
   
     
     

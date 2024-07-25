@@ -3266,6 +3266,21 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF20924b),
     coOperativeName: "Dupcheshwor Saving & Credit Co-operative Ltd..",
     appTitle: "Dupcheshwor iSmart",
+
   );
-  static final CoOperative currentCoop = shreeKrishnaCoop;
+  static final CoOperative arghaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.argha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/argha/argha_banner.png",
+    backgroundImage: "assets/argha/argha_background.png",
+    clientCode: 'BBIJOVO6WA',
+    clientSecret: "140163",
+    coOperativeLogo: 'assets/argha/argha_logo.png',
+    splashImage: "assets/argha/argha_splash.png",
+    primaryColor: const Color(0xFF06075A),
+    coOperativeName: "Argha Saving & Credit Co-operative Ltd.",
+    appTitle: "Argha iSmart",
+  );
+  static final CoOperative currentCoop = arghaCoop;
 }
