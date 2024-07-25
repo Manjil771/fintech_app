@@ -3379,5 +3379,5 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Odraha",
     appTitle: "SFACL ODRAHA iSmart",
   );
-  static final CoOperative currentCoop = ;
+  static final CoOperative currentCoop = skBhawanipur;
 }
