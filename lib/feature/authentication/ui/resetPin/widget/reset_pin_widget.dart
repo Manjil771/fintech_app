@@ -130,7 +130,8 @@ class ResetPinWidget extends StatelessWidget {
                                     AutovalidateMode.onUserInteraction,
                                 title: "Mobile Number",
                                 validator: (value) =>
-                                    FormValidator.validatePhoneNumber(value),
+                                    FormValidator.validateFieldNotEmpty(
+                                        value, "Mobile Number"),
                               ),
                               CustomTextField(
                                 controller: _accountNumberController,

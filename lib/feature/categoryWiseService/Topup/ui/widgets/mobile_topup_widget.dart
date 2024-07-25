@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -104,6 +105,19 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                             return FormValidator.validatePhoneNumber(value);
                           }
                         },
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                          TextInputFormatter.withFunction((oldValue, newValue) {
+                            final String newText = newValue.text
+                                .replaceAll('+977', '')
+                                .replaceAll('-', '');
+                            return TextEditingValue(
+                              text: newText,
+                              selection: TextSelection.collapsed(
+                                  offset: newText.length),
+                            );
+                          }),
+                        ],
                         controller: _mobileNumberController,
                         suffixIcon: Icons.phone_android_outlined,
                         showSuffixImage: true,
@@ -112,7 +126,8 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                           final String? pickedContact =
                               await ContactUtils.pickContact;
                           if (pickedContact != null) {
-                            _mobileNumberController.text = pickedContact;
+                            _mobileNumberController.text =
+                                removeSpecificPatterns(pickedContact);
                             setState(() {});
                           }
                         },
@@ -225,6 +240,14 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
         ),
       ),
     );
+  }
+
+  String removeSpecificPatterns(String input) {
+    if (input.startsWith('+977')) {
+      input = input.substring(4);
+    }
+    input = input.replaceAll('-', '');
+    return input;
   }
 }
 
