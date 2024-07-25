@@ -51,7 +51,7 @@ android {
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
         minSdkVersion 21
-        targetSdkVersion flutter.targetSdkVersion
+        targetSdkVersion 34
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
     }
@@ -166,6 +166,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        agrajMahila {
+            dimension "app"
+            applicationId "com.devanasoft.agrajMahilas"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         nirika {
+            dimension "app"
+            applicationId "com.devanasoft.nirika"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         ekikrit {
             dimension "app"
             applicationId "com.devanasoft.ekikrit"
@@ -256,6 +268,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        mahabir {
+            dimension "app"
+            applicationId "com.devanasoft.mahabir"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         sundarbagmati {
             dimension "app"
             applicationId "com.devanasoft.sundarbagmati"
@@ -289,6 +307,32 @@ android {
         sunshineLaxmi {
             dimension "app"
             applicationId "com.devanasoft.sunshineLaxmi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skOdraha {
+            dimension "app"
+            applicationId "com.devanasoft.skOdraha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        unnati {
+            dimension "app"
+            applicationId "com.devanasoft.unnati"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skDharan {
+            dimension "app"
+            applicationId "com.devanasoft.skDharan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        
+        
+        abhiyankrishi {
+            dimension "app"
+            applicationId "com.devanasoft.abhiyankrishi"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -854,6 +898,12 @@ android {
         bishalMulti {
             dimension "app"
             applicationId "com.devanasoft.bishalMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        camellia {
+            dimension "app"
+            applicationId "com.devanasoft.camellia"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
