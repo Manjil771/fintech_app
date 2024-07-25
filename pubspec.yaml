@@ -300,7 +300,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
-    # - assets/jayshreenavadurga/
+    - assets/jayshreenavadurga/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
