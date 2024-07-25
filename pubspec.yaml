@@ -331,6 +331,12 @@ flutter:
     # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/ 
+    # - assets/sklakhanpur/
+    # - assets/shreekrishna/
+    # - assets/dupcheshwor/
+    # - assets/gagankalika/
+    - assets/argha/
+  
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/gagankalika/
