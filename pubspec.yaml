@@ -177,7 +177,7 @@ flutter:
     # - assets/iconsoftCoop/
     # - assets/sagarmatha/
     # - assets/royalGorkha/
-    # - assets/buddhaCoop/
+    - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
     # - assets/ajambari/
@@ -275,7 +275,7 @@ flutter:
     # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
-    - assets/upayogi/
+    # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
