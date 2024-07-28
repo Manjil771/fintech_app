@@ -7,7 +7,6 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
-
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/custom_pin_field.dart';
@@ -76,11 +75,11 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       ),
                       SizedBox(height: _height * 0.02),
                       Text(
-                        "Enter your MPIN",
+                        "Enter your Security Pin",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       SizedBox(height: _height * 0.01),
-                      Text("Please enter your MPIN to proceed.",
+                      Text("Please enter your Security Pin to proceed.",
                           style: Theme.of(context).textTheme.headlineSmall),
                       SizedBox(height: _height * 0.04),
                       //TODO need to remove condition ,using just for test

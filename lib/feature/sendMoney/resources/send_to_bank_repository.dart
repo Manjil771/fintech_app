@@ -29,13 +29,13 @@ class SendToBankRepository {
   }
 
   Future<DataResponse<List<Bank>>> getBanksList() async {
-    List<Bank> _banksList = [];
+    final List<Bank> _banksList = [];
     try {
       final _res = await sendToBankAPIProvider.getBanksList();
       final _result = Map<String, dynamic>.from(_res);
       if (_result['data']['details'] != null) {
         List.from(_result['data']['details']).forEach((element) {
-          Bank _bank = Bank.fromJson(element);
+          final Bank _bank = Bank.fromJson(element);
           _banksList.add(_bank);
         });
         return DataResponse.success(_banksList);
@@ -59,7 +59,7 @@ class SendToBankRepository {
     required String destinationBankAccountName,
     required String destinationBankAccountNumber,
   }) async {
-    Map<String, dynamic> accountValidationPayload = {
+    final Map<String, dynamic> accountValidationPayload = {
       "destinationBankId": destinationBankInstrumentCode,
       "destinationAccountName": destinationBankAccountName,
       "destinationAccountNumber": destinationBankAccountNumber,
@@ -108,9 +108,10 @@ class SendToBankRepository {
     required String destinationBankAccountNumber,
     required String serviceCharge,
     required String sendingAccount,
+    required String otp,
   }) async {
     try {
-      Map<String, dynamic> sendToBankPayload = {
+      final Map<String, dynamic> sendToBankPayload = {
         // "account_number": "00100101000002886000001",
         // "account_number": "002001-001-102-0001010",
         "account_number": sendingAccount,
@@ -127,6 +128,7 @@ class SendToBankRepository {
         "remarks": remarks,
         "mPin": mpin,
         "skipValidation": true,
+        "otp": otp
       };
 
       try {

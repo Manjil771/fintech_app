@@ -5,6 +5,8 @@ import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AnyBankpage extends StatelessWidget {
   final String? remarks;
@@ -39,6 +41,12 @@ class AnyBankpage extends StatelessWidget {
           create: (_) => SendToBankCubit(
             sendToBankRepository:
                 RepositoryProvider.of<SendToBankRepository>(context),
+          ),
+        ),
+        BlocProvider(
+          create: (_) => UtilityPaymentCubit(
+            utilityPaymentRepository:
+                RepositoryProvider.of<UtilityPaymentRepository>(context),
           ),
         ),
       ],

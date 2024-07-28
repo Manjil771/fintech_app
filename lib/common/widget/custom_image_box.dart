@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
@@ -20,7 +18,7 @@ class CustomImageBox extends StatelessWidget {
   final double iconSize;
   final bool shadow;
   final bool isNetworkImage;
-  CustomImageBox({
+   CustomImageBox({
     Key? key,
     required this.image,
     this.imageHeight = 20,

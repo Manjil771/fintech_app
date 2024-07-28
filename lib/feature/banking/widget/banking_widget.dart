@@ -90,7 +90,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     "Account Info",
     "Balance Inquiry",
     "Statement",
-    "Fund Transfer",
+    // "Fund Transfer",
     'Cheque Request',
     'Loan'
   ];
@@ -98,7 +98,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Assets.accountInfo,
     Assets.balanceInquiry,
     Assets.statement,
-    Assets.sendMoneyRemit,
+    // Assets.sendMoneyRemit,
     Assets.chequeBookIcon,
     Assets.loanIcon
   ];
@@ -106,7 +106,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Routes.profileScreen,
     Routes.balanceInquiry,
     Routes.statementPage,
-    Routes.internalCooperative,
+    // Routes.internalCooperative,
     Routes.chequeScreen,
     Routes.loanPage,
   ];

@@ -71,7 +71,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       if (status == AnimationStatus.completed) {
         animationController.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        animationController.forward();
+        animationController.forward(); 
       }
     });
   }

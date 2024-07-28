@@ -7,6 +7,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -63,7 +64,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
           children: [
             BlocBuilder<UtilityPaymentCubit, CommonState>(
               builder: (context, state) {
-                if (state is CommonStateSuccess) {
+                if (state is CommonStateSuccess<UtilityResponseData>) {
                   final UtilityResponseData response = state.data;
                   final _response = response.findValue(primaryKey: "data");
                   return response.details.isNotEmpty
@@ -224,11 +225,14 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                             //         })
                           ],
                         )
-                      : Container();
+                      : NoDataScreen(
+                          title: "No Statement Found",
+                          details: response.message);
                 } else if (state is CommonLoading) {
                   return const CommonLoadingWidget();
                 } else if (state is CommonError) {
-                  return Text(state.message);
+                  return NoDataScreen(
+                      title: "No Statement Found", details: state.message);
                 } else {
                   return Container();
                 }

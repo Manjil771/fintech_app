@@ -34,7 +34,7 @@ class _SettingWidgetState extends State<SettingWidget> {
   }
 
   _checkBiometric() async {
-    bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
+    final bool? isLocalBiometricEnabled = await SharedPref.getBiometricLogin();
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
@@ -133,7 +133,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: () {
                     NavigationService.push(target: const ChangeMpinPage());
                   },
-                  detail: "Change mPin frequently to be secure",
+                  detail: "Change Security Pin frequently to be secure",
                   title: "Change mPin"),
               // const Divider(thickness: 1),
               // CommonDetailBox(

@@ -6,6 +6,7 @@ import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -120,15 +121,16 @@ class _LoanScheduleWidgetState extends State<LoanScheduleWidget> {
                             ),
                           ],
                         )
-                      : Container();
+                      : NoDataScreen(
+                          title: "No Statement Found",
+                          details: response.message.toString());
                 } else if (state is CommonLoading) {
                   return const CommonLoadingWidget();
                 } else if (state is CommonError) {
-                  return Text(state.message.isEmpty
-                      ? "Could not fetch Loan Schedule."
-                      : state.message);
+                  return NoDataScreen(
+                      title: "No Loan Schedule Found", details: state.message);
                 } else {
-                  return Container();
+                  return Text(state.toString());
                 }
               },
             ),

@@ -39,7 +39,7 @@ class ImagePickerUtils {
 
       return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
     }
-    return null;
+    
   }
 
   static Future<File?> compressImage(File file) async {

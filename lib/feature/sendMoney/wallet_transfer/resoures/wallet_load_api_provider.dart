@@ -61,13 +61,14 @@ class WalletLoadAPIProvider {
   }) async {
     final _body = {
       "desc_one": customerName,
-      "desc_two": walletAccountNumber + remarks,
+      "desc_two": walletAccountNumber,
       "wallet_id": walletId,
       "account_number": accountNumber,
       "amount": amount,
       "validationIdentifier": validationIdentifier,
       "skipValidation": true,
       "mPin": mPin,
+      "remarks": remarks
     };
     final _url = coOperative.baseUrl + "/api/wallet/load";
     final _uri = UrlUtils.getUri(url: _url, params: _body);
