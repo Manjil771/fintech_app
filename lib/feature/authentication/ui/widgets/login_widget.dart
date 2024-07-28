@@ -230,7 +230,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    Text(
+                    const Text(
                       "Login",
                       style: TextStyle(
                         fontFamily: "popinbold",
@@ -317,6 +317,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                             if (rememberMe == false)
                               FormValidator.validateFieldNotEmpty(
                                   value, "Phone Number");
+                            return null;
                           },
                           onChanged: (val) async {
                             if (FormValidator.validatePhoneNumber(val) ==
@@ -360,7 +361,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            Text("Remember Me"),
+                            const Text("Remember Me"),
                           ],
                         );
                       },
@@ -368,6 +369,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomRoundedButtom(
                       title: "Login",
                       onPressed: () async {
+                        // showDatePickerBottomSheet(
+                        //   context: context,
+                        //   currentDate: DateTime.now(),
+                        //   onChanged: (value) {
+                            
+                        //   },
+                        //   maxDate: DateTime(2030),
+                        //   minDate: DateTime.now(),
+                          
+                        // );
                         FocusManager.instance.primaryFocus?.unfocus();
                         SecureStorageService.setLoginStatus(
                             rememberMe.toString());
