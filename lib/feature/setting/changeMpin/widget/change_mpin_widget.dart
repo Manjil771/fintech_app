@@ -95,12 +95,13 @@ class ChangeMpinWidget extends StatelessWidget {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   textInputType: TextInputType.number,
                   controller: oldPinController,
-                  title: "Old MPin",
+                  title: "Old Security Pin",
                   hintText: "XXXXXXX",
                   validator: (val) {
                     if (val!.length != 5) {
-                      return "Invalid MPin";
+                      return "Invalid Security Pin";
                     }
+                    return null;
                   },
                 ),
                 SizedBox(height: _height * 0.02),
@@ -109,11 +110,12 @@ class ChangeMpinWidget extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (val) {
                       if (val!.length != 5) {
-                        return "Invalid MPin";
+                        return "Invalid Security Pin";
                       }
+                      return null;
                     },
                     controller: newPinController,
-                    title: "New MPin",
+                    title: "New Security Pin",
                     hintText: "XXXXXXX"),
                 SizedBox(height: _height * 0.02),
                 CustomPasswordField(
@@ -121,14 +123,15 @@ class ChangeMpinWidget extends StatelessWidget {
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     validator: (val) {
                       if (val!.length != 5) {
-                        return "Invalid MPin";
+                        return "Invalid Security Pin";
                       }
                       if (newPinController.text != val) {
                         return "Confirm Pin doesnot match.";
                       }
+                      return null;
                     },
                     controller: reEnterPinController,
-                    title: "Re-Enter MPin",
+                    title: "Re-Enter Security Pin",
                     hintText: "XXXXXXX"),
               ],
             ),

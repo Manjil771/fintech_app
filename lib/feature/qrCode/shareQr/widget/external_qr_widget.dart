@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -20,6 +19,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
+import 'package:share_plus/share_plus.dart';
 // import 'package:share_plus/share_plus.dart';
 
 class ExternalQrWidget extends StatelessWidget {
@@ -39,9 +39,9 @@ class ExternalQrWidget extends StatelessWidget {
     final image = await _screenShotController.capture();
     final tempFile = await _createTempImageFile(image!);
 
-    // if (tempFile != null) {
-    //   Share.shareXFiles([XFile(tempFile.path)]);
-    // }
+    if (tempFile != null) {
+      Share.shareXFiles([XFile(tempFile.path)]);
+    }
   }
 
   Future<XFile?> _createTempImageFile(Uint8List image) async {

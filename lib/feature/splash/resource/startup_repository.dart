@@ -1,7 +1,10 @@
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/util/device_utils.dart';
+import 'package:ismart/common/util/hive_utils.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/splash/models/app_config_model.dart';
 import 'package:ismart/feature/splash/resource/startup_api_provider.dart';
@@ -37,7 +40,7 @@ class StartUpRepository {
     try {
       final _res = await startupApiProvider.fetchBannerImages();
       if (_res['data']?['code'] == "M0000") {
-        List<String> _rawBanners =
+        final List<String> _rawBanners =
             List<String>.from(_res['data']?['details'] ?? []);
         _rawBanners.forEach((element) {
           element = env.baseUrl + element;
@@ -61,7 +64,7 @@ class StartUpRepository {
     try {
       final _res = await startupApiProvider.fetchdefaultBannerImages();
       if (_res['data']?['code'] == "M0000") {
-        List<String> _rawBanners =
+        final List<String> _rawBanners =
             List<String>.from(_res['data']?['details'] ?? []);
         _rawBanners.forEach((element) {
           element = env.baseUrl + element;
@@ -84,10 +87,10 @@ class StartUpRepository {
     try {
       final _res = await startupApiProvider.fetchAppConfig();
       if (_res['data']?['code'] == "M0000") {
-        Map<String, dynamic> _configDetailsRaw =
+        final Map<String, dynamic> _configDetailsRaw =
             Map.from(_res['data']?['detail'] ?? {});
         if (_configDetailsRaw.isNotEmpty) {
-          AppConfigDetails _appConfig =
+          final AppConfigDetails _appConfig =
               AppConfigDetails.fromJson(_configDetailsRaw);
           appUpdate = AppUpdate(
             android: Update(
@@ -112,6 +115,45 @@ class StartUpRepository {
     } catch (e) {
       print(e);
       return DataResponse.error("Error fetching banners");
+    }
+  }
+
+  Future<DataResponse<List<AppServiceManagementModel>>> getAppService() async {
+    final List<AppServiceManagementModel> _appServiceList = [];
+    try {
+      final _res = await startupApiProvider.fetchAppService();
+
+      if (_res['data']['details'] != null) {
+        // Parse Data from API
+
+        final List _userMap = List.from(_res["data"]['details'] ?? []);
+
+        if (_userMap.isEmpty) {
+          return DataResponse.error("Error fetching dat.");
+        }
+
+        _userMap.forEach(
+          (element) {
+            final AppServiceManagementModel _txn =
+                AppServiceManagementModel.fromJson(element);
+
+            _appServiceList.add(_txn);
+          },
+        );
+        final _ = await ServiceHiveUtils.setAppService(
+            item: _appServiceList, slug: "app_service");
+
+        return DataResponse.success(_appServiceList);
+      } else {
+        return DataResponse.error("No Transaction");
+      }
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message!, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
     }
   }
 }

@@ -24,7 +24,7 @@ class _WalletListWidgetState extends State<WalletListWidget> {
         title: "Wallet Transfer",
         detail: "Load Money to your preferred wallet account",
         showRoundBotton: false,
-        topbarName: "Send Money",
+        topbarName: "Load Wallet",
         showTitleText: true,
         body: Container(
           decoration: const BoxDecoration(

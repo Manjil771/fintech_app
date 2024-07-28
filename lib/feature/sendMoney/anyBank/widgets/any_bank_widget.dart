@@ -13,12 +13,17 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
+import 'package:ismart/feature/sendMoney/anyBank/widgets/bank_transfer_otp_widget.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AnyBankWidget extends StatefulWidget {
   final String? accountNumber;
@@ -71,7 +76,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     }
   }
 
+  String minAmount = "100";
+  String maxAmount = "200000";
+
+  final appService =
+      RepositoryProvider.of<AppServiceRepository>(NavigationService.context)
+          .appService;
+
   bool _isLoading = false;
+
+  bool _isLoading2 = false;
+
   String? charges;
 
   @override
@@ -84,6 +99,156 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     return PageWrapper(
       body: MultiBlocListener(
         listeners: [
+          BlocListener<UtilityPaymentCubit, CommonState>(
+            listener: (context, state) {
+              String otp = "";
+              if (state is CommonLoading && _isLoading2 == false) {
+                _isLoading2 = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading2) {
+                _isLoading2 = false;
+                NavigationService.pop();
+              }
+              if (state is CommonStateSuccess) {
+                final UtilityResponseData res = state.data;
+                if (res.code == "M0000") {
+                  final otpRequired = res.findValue(primaryKey: "otpRequired");
+                  final otpAmountLimit =
+                      res.findValue(primaryKey: "amountLimit");
+
+                  if (otpRequired == true) {
+                    NavigationService.push(
+                        target: BankTransferOTPWidget(
+                      otpAmountLimit: otpAmountLimit.toString() == "null" ||
+                              otpAmountLimit.isEmpty
+                          ? "Limit"
+                          : otpAmountLimit,
+                      onValueCallback: (p0) {
+                        otp = p0;
+                        NavigationService.pushReplacement(
+                            target: BankTransferBillPage(
+                          otp: otp,
+                          imageUrl: selectedBank?.iconUrl ?? "",
+                          body: Column(children: [
+                            KeyValueTile(
+                                title: "From Account",
+                                value: RepositoryProvider.of<
+                                        CustomerDetailRepository>(context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber),
+                            KeyValueTile(
+                              title: "Destination Bank",
+                              value: bestMatchBankName != null
+                                  ? bestMatchBankName.toString()
+                                  : widget.bankCode == null
+                                      ? selectedBank?.bankName ?? ""
+                                      : widget.bankName ?? "ismart",
+                            ),
+                            KeyValueTile(
+                                title: "Destination Account Number",
+                                value: _accountNumberController.text),
+                            KeyValueTile(
+                                title: "Destination Account Name",
+                                value: _accountNameController.text),
+                            KeyValueTile(
+                              title: "Charge",
+                              value: charges ?? "0",
+                            ),
+                            KeyValueTile(
+                              title: "Amount",
+                              value: _amountController.text,
+                            ),
+                            KeyValueTile(
+                              title: "Remarks",
+                              value: _remarksController.text,
+                            ),
+                          ]),
+                          serviceName: "Bank Transfer",
+                          message:
+                              "Details for payment of service Bank Transfer is shown below.",
+                          charge: charges.toString(),
+                          amount: _amountController.text,
+                          remarks: _remarksController.text,
+                          bankCode: bestMatchBankId ??
+                              (widget.bankCode == null
+                                  ? selectedBank?.bankId ?? ""
+                                  : widget.bankCode.toString()),
+                          accountName: _accountNameController.text,
+                          accountNumber: _accountNumberController.text,
+                          bankName: bestMatchBankName != null
+                              ? bestMatchBankName.toString()
+                              : widget.bankCode == null
+                                  ? selectedBank?.bankName ?? ""
+                                  : widget.bankName ?? "ismart",
+                        ));
+                      },
+                    ));
+                  } else {
+                    NavigationService.pushReplacement(
+                        target: BankTransferBillPage(
+                      otp: otp,
+                      imageUrl: selectedBank?.iconUrl ?? "",
+                      body: Column(children: [
+                        KeyValueTile(
+                            title: "From Account",
+                            value:
+                                RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .selectedAccount
+                                    .value!
+                                    .accountNumber),
+                        KeyValueTile(
+                          title: "Destination Bank",
+                          value: bestMatchBankName != null
+                              ? bestMatchBankName.toString()
+                              : widget.bankCode == null
+                                  ? selectedBank?.bankName ?? ""
+                                  : widget.bankName ?? "ismart",
+                        ),
+                        KeyValueTile(
+                            title: "Destination Account Number",
+                            value: _accountNumberController.text),
+                        KeyValueTile(
+                            title: "Destination Account Name",
+                            value: _accountNameController.text),
+                        KeyValueTile(
+                          title: "Charge",
+                          value: charges ?? "0",
+                        ),
+                        KeyValueTile(
+                          title: "Amount",
+                          value: _amountController.text,
+                        ),
+                        KeyValueTile(
+                          title: "Remarks",
+                          value: _remarksController.text,
+                        ),
+                      ]),
+                      serviceName: "Bank Transfer",
+                      message:
+                          "Details for payment of service Bank Transfer is shown below.",
+                      charge: charges.toString(),
+                      amount: _amountController.text,
+                      remarks: _remarksController.text,
+                      bankCode: bestMatchBankId ??
+                          (widget.bankCode == null
+                              ? selectedBank?.bankId ?? ""
+                              : widget.bankCode.toString()),
+                      accountName: _accountNameController.text,
+                      accountNumber: _accountNumberController.text,
+                      bankName: bestMatchBankName != null
+                          ? bestMatchBankName.toString()
+                          : widget.bankCode == null
+                              ? selectedBank?.bankName ?? ""
+                              : widget.bankName ?? "ismart",
+                    ));
+                  }
+                }
+              }
+            },
+            child: Container(),
+          ),
           BlocListener<BankChargeCubit, CommonState>(
             listener: (context, state) {
               if (state is CommonLoading && _isLoading == false) {
@@ -97,73 +262,15 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 charges = state.data;
 
                 if (charges != null) {
-                  NavigationService.pushReplacement(
-                      target: BankTransferBillPage(
-                    imageUrl: selectedBank?.iconUrl ?? "",
-                    body: Column(children: [
-                      KeyValueTile(
-                          title: "From Account",
-                          value:
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value!
-                                  .accountNumber),
-                      KeyValueTile(
-                        title: "Destination Bank",
-                        value: bestMatchBankName != null
-                            ? bestMatchBankName.toString()
-                            : widget.bankCode == null
-                                ? selectedBank?.bankName ?? ""
-                                : widget.bankName ?? "ismart",
-                      ),
-                      KeyValueTile(
-                          title: "Destination Account Number",
-                          value: _accountNumberController.text),
-                      KeyValueTile(
-                          title: "Destination Account Name",
-                          value: _accountNameController.text),
-                      KeyValueTile(
-                        title: "Charge",
-                        value: charges ?? "0",
-                      ),
-                      KeyValueTile(
-                        title: "Amount",
-                        value: _amountController.text,
-                      ),
-                      KeyValueTile(
-                        title: "Remarks",
-                        value: _remarksController.text,
-                      ),
-                    ]),
-                    serviceName: "Bank Transfer",
-                    message:
-                        "Details for payment of service Bank Transfer is shown below.",
-                    charge: charges.toString(),
-                    amount: _amountController.text,
-                    remarks: _remarksController.text,
-                    bankCode: bestMatchBankId ??
-                        (widget.bankCode == null
-                            ? selectedBank?.bankId ?? ""
-                            : widget.bankCode.toString()),
-                    accountName: _accountNameController.text,
-                    accountNumber: _accountNumberController.text,
-                    bankName: bestMatchBankName != null
-                        ? bestMatchBankName.toString()
-                        : widget.bankCode == null
-                            ? selectedBank?.bankName ?? ""
-                            : widget.bankName ?? "ismart",
-                  ));
-                } else {
-                  showPopUpDialog(
-                    context: context,
-                    message: state.data,
-                    title: "Error",
-                    buttonCallback: () {
-                      NavigationService.pop();
-                    },
-                    showCancelButton: false,
-                  );
+                  context.read<UtilityPaymentCubit>().fetchDetails(
+                        serviceIdentifier: "",
+                        accountDetails: {
+                          "amount": _amountController.text,
+                          "associatedId": "1",
+                          "serviceInfoType": "Fund_Transfer",
+                        },
+                        apiEndpoint: "/api/otp/request",
+                      );
                 }
               } else if (state is CommonError) {
                 showPopUpDialog(
@@ -308,8 +415,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           builder: (context, state) {
                             print("state of state is $state");
                             if (state is CommonDataFetchSuccess<Bank>) {
-                              List<Bank> _banks = state.data;
-                              List<String> _bankNames = [];
+                              final List<Bank> _banks = state.data;
+                              final List<String> _bankNames = [];
                               double highestMatch = 0;
                               int selectedIndex = -1;
                               print(
@@ -353,7 +460,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           },
                           listener: (context, state) {},
                         )),
-                Text(selectedBank?.bankId ?? "".toString()), 
+                Text(selectedBank?.bankId ?? "".toString()),
 
                 CustomTextField(
                   title: "Account Number",
@@ -376,30 +483,51 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         validator: (val) => FormValidator.validateFieldNotEmpty(
                             val, "Account Name"),
                       ),
-                CustomTextField(
-                  autovalidateMode: AutovalidateMode.onUserInteraction,
-                  title: "Amount",
-                  hintText: "NPR",
-                  textInputType:
-                      const TextInputType.numberWithOptions(decimal: true),
-                  controller: _amountController,
-                  onChanged: (val) {
-                    if (val != _amountController.text) {
-                      charges = null;
-                      setState(() {});
-                    }
-                  },
-                  validator: (value) =>
-                      FormValidator.validateFieldNotEmpty(value, "Amount"),
-                  // validator: (val) {
-                  //   if ((double.tryParse(val ?? "") ?? 0) < 100) {
-                  //     return "Minimum bank tranfer amount is Rs. 100";
-                  //   } else if ((double.tryParse(val ?? "") ?? 0) > 200000) {
-                  //     return "Maximum bank transfer amount is Rs. 2,00,000";
-                  //   } else {
-                  //     return null;
-                  //   }
-                  // },
+                BlocProvider(
+                  create: (context) => UtilityPaymentCubit(
+                      utilityPaymentRepository:
+                          RepositoryProvider.of<UtilityPaymentRepository>(
+                              context))
+                    ..fetchDetails(
+                        serviceIdentifier: "",
+                        accountDetails: {"serviceCategory": "BANK_TRANSFER"},
+                        apiEndpoint: "/merchant/service/amountLimit"),
+                  child: BlocBuilder<UtilityPaymentCubit, CommonState>(
+                    builder: (context, state) {
+                      if (state is CommonStateSuccess) {
+                        final UtilityResponseData res = state.data;
+                        minAmount = res.findValue(primaryKey: "minimum_amount");
+                        maxAmount = res.findValue(primaryKey: "maximum_amount");
+                      }
+                      return CustomTextField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        title: "Amount",
+                        hintText: "NPR",
+                        textInputType: const TextInputType.numberWithOptions(
+                            decimal: true),
+                        controller: _amountController,
+                        onChanged: (val) {
+                          if (val != _amountController.text) {
+                            charges = null;
+                            setState(() {});
+                          }
+                        },
+                        validator: (value) => FormValidator.validateAmount(
+                            val: value.toString(),
+                            maxAmount: double.parse(maxAmount),
+                            minAmount: double.parse(minAmount)),
+                        // validator: (val) {
+                        //   if ((double.tryParse(val ?? "") ?? 0) < 100) {
+                        //     return "Minimum bank tranfer amount is Rs. 100";
+                        //   } else if ((double.tryParse(val ?? "") ?? 0) > 200000) {
+                        //     return "Maximum bank transfer amount is Rs. 2,00,000";
+                        //   } else {
+                        //     return null;
+                        //   }
+                        // },
+                      );
+                    },
+                  ),
                 ),
                 CustomTextField(
                   title: "Remarks",
@@ -411,7 +539,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               ],
             ),
           ),
-          topbarName: "Send Money",
+          topbarName: "Bank Transfer",
           buttonName: charges != null ? "Confirm" : "Check Transfer",
           onButtonPressed: () {
             // NavigationService.push(target: const LimitScreen());
@@ -427,7 +555,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   );
             }
           },
-          title: "Any Bank",
+          title: "Bank Transfer",
           detail: "Transfer funds to accounts held at various banks.",
         ),
       ),
@@ -444,16 +572,16 @@ double jaro(String s1, String s2) {
   //   return 1.0;
   // }
 
-  int matchDistance = (s1.length / 2).floor() - 1;
-  List<bool> s1Matches = List.filled(s1.length, false);
-  List<bool> s2Matches = List.filled(s2.length, false);
+  final int matchDistance = (s1.length / 2).floor() - 1;
+  final List<bool> s1Matches = List.filled(s1.length, false);
+  final List<bool> s2Matches = List.filled(s2.length, false);
 
   int matches = 0;
   int transpositions = 0;
 
   for (int i = 0; i < s1.length; i++) {
-    int start = max(0, i - matchDistance);
-    int end = min(s2.length - 1, i + matchDistance);
+    final int start = max(0, i - matchDistance);
+    final int end = min(s2.length - 1, i + matchDistance);
 
     for (int j = start; j <= end; j++) {
       if (s2Matches[j]) continue;
@@ -475,7 +603,7 @@ double jaro(String s1, String s2) {
     k++;
   }
 
-  double jaroScore = (matches / s1.length +
+  final double jaroScore = (matches / s1.length +
           matches / s2.length +
           (matches - transpositions / 2.0) / matches) /
       3.0;
@@ -485,7 +613,7 @@ double jaro(String s1, String s2) {
 double jaroWinkler(String s1, String s2) {
   const double prefixWeight = 0.1;
 
-  double jaroDistance = jaro(s1, s2);
+  final double jaroDistance = jaro(s1, s2);
   int prefixLength = 0;
 
   for (int i = 0; i < min(s1.length, s2.length); i++) {
@@ -495,7 +623,7 @@ double jaroWinkler(String s1, String s2) {
       break;
   }
 
-  double score =
+  final double score =
       jaroDistance + prefixWeight * prefixLength * (1 - jaroDistance);
   return score * 100; // Convert score to a range between 0 and 100
 }

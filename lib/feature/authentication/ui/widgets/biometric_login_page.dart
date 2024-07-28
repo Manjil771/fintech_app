@@ -51,7 +51,7 @@ class BiometricLoginPage extends StatelessWidget {
             height: 15.hp,
           ),
           Text(
-            "Enable biometric login to login without your MPIN.",
+            "Enable biometric login to login without your Security Pin.",
             style: _textTheme.bodyLarge,
           ),
           SizedBox(
@@ -60,7 +60,7 @@ class BiometricLoginPage extends StatelessWidget {
           CustomRoundedButtom(
             title: "Enable Now",
             onPressed: () async {
-              bool _isFingerprintAvailable =
+              final bool _isFingerprintAvailable =
                   await FingerPrintUtils.hasFingerPrint;
               if (_isFingerprintAvailable) {
                 onValueCallback(

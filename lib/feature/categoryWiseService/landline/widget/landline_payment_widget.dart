@@ -70,7 +70,7 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
             showDetail: true,
             showAccountSelection: true,
             buttonName: "Proceed",
-            topbarName: "Payment",
+            topbarName: "Landline",
             title: "LandLine Payment",
             detail: "Pay your Landline Bills.",
             body: Form(

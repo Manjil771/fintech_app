@@ -23,6 +23,8 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
+import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
@@ -95,13 +97,16 @@ class _LoginWidgetState extends State<LoginWidget> {
     return _existingPhoneNumber;
   }
 
-  List myBanners = [];
+  final List myBanners = [];
   @override
   void initState() {
     _checkBiometric();
     _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
     _defaultBannerImages =
         RepositoryProvider.of<StartUpRepository>(context).defaultbanners;
+    getAppService();
+    // appService =
+    // RepositoryProvider.of<AppServiceRepository>(context).appService;
     getLoginStatus();
     super.initState();
   }
@@ -230,7 +235,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    Text(
+                    const Text(
                       "Login",
                       style: TextStyle(
                         fontFamily: "popinbold",
@@ -317,30 +322,46 @@ class _LoginWidgetState extends State<LoginWidget> {
                             if (rememberMe == false)
                               FormValidator.validateFieldNotEmpty(
                                   value, "Phone Number");
+                            return null;
                           },
                           onChanged: (val) async {
-                            if (FormValidator.validatePhoneNumber(val) ==
-                                null) {
-                              final CoOperative currentCoop =
-                                  RepositoryProvider.of<CoOperative>(context);
-                              if (currentCoop.shouldValidateCooperative) {
-                                await context
-                                    .read<ValidateCoOpCubit>()
-                                    .validateCoOperative(username: val);
-                                Future.delayed(const Duration(seconds: 3))
-                                    .then((value) {
-                                  setState(() {});
-                                });
-                              }
-                            }
+                            // if (FormValidator.validatePhoneNumber(val) ==
+                            //     null) {
+
+                            // final CoOperative currentCoop =
+                            //     RepositoryProvider.of<CoOperative>(context);
+                            // if (currentCoop.shouldValidateCooperative) {
+                            //   await context
+                            //       .read<ValidateCoOpCubit>()
+                            //       .validateCoOperative(username: val);
+                            //   Future.delayed(const Duration(seconds: 3))
+                            //       .then((value) {
+                            //     setState(() {});
+                            //   });
+                            // }
+                            // }
                           },
                         );
                       },
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security pin",
-                      hintText: "Security pin",
+                      title: "Mpin",
+                      hintText: "Mpin",
+                      onTap: () async {
+                        final CoOperative currentCoop =
+                            RepositoryProvider.of<CoOperative>(context);
+                        if (currentCoop.shouldValidateCooperative) {
+                          await context
+                              .read<ValidateCoOpCubit>()
+                              .validateCoOperative(
+                                  username: phoneController.text);
+                          Future.delayed(const Duration(seconds: 3))
+                              .then((value) {
+                            setState(() {});
+                          });
+                        }
+                      },
                       controller: passwordController,
                       textInputType: TextInputType.number,
                       validator: (value) =>
@@ -360,7 +381,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            Text("Remember Me"),
+                            const Text("Remember Me"),
                           ],
                         );
                       },
@@ -792,6 +813,16 @@ class _LoginWidgetState extends State<LoginWidget> {
         }
       },
     );
+  }
+
+  List<AppServiceManagementModel> appService = [];
+
+  getAppService() async {
+    final appServiceRepo = RepositoryProvider.of<AppServiceRepository>(context);
+    final response = await appServiceRepo.getAppService();
+    setState(() {
+      appService = appServiceRepo.appService;
+    });
   }
 }
 

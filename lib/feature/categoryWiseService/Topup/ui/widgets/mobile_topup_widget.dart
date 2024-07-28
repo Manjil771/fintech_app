@@ -79,7 +79,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
           showAccountSelection: true,
           accountTitle: "From Account",
           buttonName: "Proceed",
-          topbarName: "Payment",
+          topbarName: "Top Up",
           title: "Mobile Top Up",
           detail: "Topup your mobile number.",
           serviceCategoryId: widget.categoryList.id.toString(),
