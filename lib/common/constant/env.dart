@@ -3393,6 +3393,20 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Co-operative Ltd. Odraha",
     appTitle: "SFACL ODRAHA iSmart",
   );
+  static final CoOperative shreeKanchan = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreeKanchan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeKanchan/shreeKanchan_banner.png",
+    backgroundImage: "assets/shreeKanchan/shreeKanchan_background.png",
+    clientCode: '8VS6PBNL53',
+    clientSecret: "183191",
+    coOperativeLogo: 'assets/shreeKanchan/shreeKanchan_logo.png',
+    splashImage: "assets/shreeKanchan/shreeKanchan_splash.png",
+    primaryColor: const Color(0xFF0009245),
+    coOperativeName: "Shree Kanchan Saving & Credit Co-operative Ltd.",
+    appTitle: "Shree Kanchan iSmart",
+  );
 
-  static final CoOperative currentCoop =rastrautthanCoop ;
+  static final CoOperative currentCoop = ;
 }
