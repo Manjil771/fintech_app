@@ -106,7 +106,7 @@ flutter:
     # - assets/shreemitra/
     # - assets/kipoo/
     # - assets/suryadev/
-    # - assets/uddhamshil/
+    - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
     # - assets/newdhaulagiri/
@@ -252,7 +252,7 @@ flutter:
     # - assets/shikshakheet/
     # - assets/sarbajyoti/
     # - assets/shubhsiris/
-    - assets/rastrautthan/
+    # - assets/rastrautthan/
     # - assets/ekikrit/
     # - assets/machhapuchreSystematic/
     # - assets/parishrami/
