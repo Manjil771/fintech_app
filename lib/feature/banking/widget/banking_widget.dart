@@ -59,7 +59,7 @@ class _BankingWidgetState extends State<BankingWidget> {
                     return GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: filteredItems.isEmpty ? 5 : itemName.length,
+                      itemCount: filteredItems.isEmpty ? 4 : itemName.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2),
