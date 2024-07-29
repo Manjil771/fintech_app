@@ -91,7 +91,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
