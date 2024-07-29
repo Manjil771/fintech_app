@@ -3394,5 +3394,5 @@ class CoOperativeValue {
     appTitle: "SFACL ODRAHA iSmart",
   );
 
-  static final CoOperative currentCoop =uttargangaCoop ;
+  static final CoOperative currentCoop =rastrautthanCoop ;
 }

@@ -91,7 +91,7 @@ flutter:
     # - assets/janadhara/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
@@ -252,7 +252,7 @@ flutter:
     # - assets/shikshakheet/
     # - assets/sarbajyoti/
     # - assets/shubhsiris/
-    # - assets/rastrautthan/
+    - assets/rastrautthan/
     # - assets/ekikrit/
     # - assets/machhapuchreSystematic/
     # - assets/parishrami/
