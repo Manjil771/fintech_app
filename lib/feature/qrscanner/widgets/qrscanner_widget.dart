@@ -9,6 +9,7 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -71,7 +72,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       if (status == AnimationStatus.completed) {
         animationController.reverse();
       } else if (status == AnimationStatus.dismissed) {
-        animationController.forward(); 
+        animationController.forward();
       }
     });
   }
@@ -124,68 +125,79 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     .isEmpty) {
               showGeneralDialog(
                 pageBuilder: (context, animation, secondaryAnimation) {
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(18)),
-                        padding: const EdgeInsets.all(18),
-                        margin: const EdgeInsets.symmetric(horizontal: 32),
-                        child: Column(children: [
-                          CustomRoundedButtom(
-                              title: "Fund Transfer",
-                              onPressed: () {
-                                NavigationService.pushReplacement(
-                                    target: AnyBankpage(
-                                  remarks: widget.remarks,
-                                  accountName: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "accountName",
-                                  ),
-                                  accountNumber: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "accountNumber",
-                                  ),
-                                  bankCode: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "bankCode",
-                                  ),
-                                  bankName: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "bankName",
-                                  ),
-                                ));
-                              }),
-                          SizedBox(height: 15.hp),
-                          CustomRoundedButtom(
-                              title: "Add Favorite Account",
-                              onPressed: () {
-                                NavigationService.pushReplacement(
-                                    target: AddFavAccountPage(
-                                  accountNumber: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "accountNumber",
-                                  ),
-                                  accountName: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "accountName",
-                                  ),
-                                  bankCode: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "bankCode",
-                                  ),
-                                  bankName: _response.findValue(
-                                    primaryKey: "accountDetails",
-                                    secondaryKey: "bankName",
-                                  ),
-                                ));
-                              })
-                        ]),
-                      ),
-                    ],
+                  return PopScope(
+                    canPop: false,
+                    onPopInvoked: (didPop) async {
+                      if (didPop) {
+                        return;
+                      }
+                      NavigationService.pushNamedAndRemoveUntil(
+                          routeName: Routes.dashboard);
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(18)),
+                          padding: const EdgeInsets.all(18),
+                          margin: const EdgeInsets.symmetric(horizontal: 32),
+                          child: Column(children: [
+                            CustomRoundedButtom(
+                                title: "Fund Transfer",
+                                onPressed: () {
+                                  NavigationService.pushReplacement(
+                                      target: AnyBankpage(
+                                    isScanQr: true,
+                                    remarks: widget.remarks,
+                                    accountName: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "accountName",
+                                    ),
+                                    accountNumber: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "accountNumber",
+                                    ),
+                                    bankCode: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "bankCode",
+                                    ),
+                                    bankName: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "bankName",
+                                    ),
+                                  ));
+                                }),
+                            SizedBox(height: 15.hp),
+                            CustomRoundedButtom(
+                                title: "Add Favorite Account",
+                                onPressed: () {
+                                  NavigationService.pushReplacement(
+                                      target: AddFavAccountPage(
+                                    accountNumber: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "accountNumber",
+                                    ),
+                                    accountName: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "accountName",
+                                    ),
+                                    bankCode: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "bankCode",
+                                    ),
+                                    bankName: _response.findValue(
+                                      primaryKey: "accountDetails",
+                                      secondaryKey: "bankName",
+                                    ),
+                                  ));
+                                })
+                          ]),
+                        ),
+                      ],
+                    ),
                   );
                 },
                 context: context,

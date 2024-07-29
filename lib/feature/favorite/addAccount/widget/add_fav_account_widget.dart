@@ -28,7 +28,7 @@ class AddFavAccountWidget extends StatefulWidget {
   final String? bankName;
   final String? branchCodeQr;
 
-  AddFavAccountWidget({
+  const AddFavAccountWidget({
     super.key,
     this.accountNumber,
     this.accountName,
@@ -66,241 +66,260 @@ class _AddFavAccountWidgetState extends State<AddFavAccountWidget> {
   Widget build(BuildContext context) {
     final bool readOnly = widget.bankCode == null ? false : true;
     // isBankTransfer = widget.branchCode == null ? true : false;
-    return PageWrapper(
-        body: BlocListener<UtilityPaymentCubit, CommonState>(
-      listener: (context, state) {
-        if (state is CommonLoading && _isLoading == false) {
-          _isLoading = true;
-          showLoadingDialogBox(context);
-        } else if (state is! CommonLoading && _isLoading) {
-          _isLoading = false;
-          NavigationService.pop();
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) async {
+        if (didPop) {
+          return;
         }
-        if (state is CommonError) {
-          showPopUpDialog(
-            context: context,
-            message: state.message,
-            title: "Error",
-            showCancelButton: false,
-            buttonCallback: () {
-              NavigationService.pop();
-            },
-          );
-        }
-        if (state is CommonStateSuccess<UtilityResponseData>) {
-          final UtilityResponseData _res = state.data;
-          if (_res.code == "M0000" || _res.status.toLowerCase() == "success") {
-            showPopUpDialog(
-              context: context,
-              message: _res.message,
-              title: _res.status,
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.pushNamedAndRemoveUntil(
-                    routeName: Routes.dashboard);
-              },
-            );
-          } else {
-            showPopUpDialog(
-              context: context,
-              message: _res.message,
-              title: _res.status,
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.pop();
-              },
-            );
-          }
-        }
+        NavigationService.pushNamedAndRemoveUntil(routeName: Routes.dashboard);
       },
-      child: CommonContainer(
-        buttonName: "Add Account",
-        onButtonPressed: () {
-          if (_formKey.currentState!.validate()) {
-            if (isBankTransfer == false) {
-              context.read<UtilityPaymentCubit>().makePayment(
-                  serviceIdentifier: "",
-                  accountDetails: {},
-                  body: {
-                    "reminderType": "OneTime",
-                    "serviceInfoType": "Fund_Transfer", // for bank tarsfer,
+      child: PageWrapper(
+          showBackButton: false,
+          body: BlocListener<UtilityPaymentCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoading && _isLoading == false) {
+                _isLoading = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading) {
+                _isLoading = false;
+                NavigationService.pop();
+              }
+              if (state is CommonError) {
+                showPopUpDialog(
+                  context: context,
+                  message: state.message,
+                  title: "Error",
+                  showCancelButton: false,
+                  buttonCallback: () {
+                    NavigationService.pop();
+                  },
+                );
+              }
+              if (state is CommonStateSuccess<UtilityResponseData>) {
+                final UtilityResponseData _res = state.data;
+                if (_res.code == "M0000" ||
+                    _res.status.toLowerCase() == "success") {
+                  showPopUpDialog(
+                    context: context,
+                    message: _res.message,
+                    title: _res.status,
+                    showCancelButton: false,
+                    buttonCallback: () {
+                      NavigationService.pushNamedAndRemoveUntil(
+                          routeName: Routes.dashboard);
+                    },
+                  );
+                } else {
+                  showPopUpDialog(
+                    context: context,
+                    message: _res.message,
+                    title: _res.status,
+                    showCancelButton: false,
+                    buttonCallback: () {
+                      NavigationService.pop();
+                    },
+                  );
+                }
+              }
+            },
+            child: CommonContainer(
+              onBackPressed: () => NavigationService.pushReplacementNamed(
+                  routeName: Routes.dashboard),
+              buttonName: "Add Account",
+              onButtonPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  if (isBankTransfer == false) {
+                    context.read<UtilityPaymentCubit>().makePayment(
+                        serviceIdentifier: "",
+                        accountDetails: {},
+                        body: {
+                          "reminderType": "OneTime",
+                          "serviceInfoType":
+                              "Fund_Transfer", // for bank tarsfer,
 
-                    "data": {
-                      "destinationAccountNumber":
-                          _coopAccountNumberController.text,
-                      "destinationAccountName": _coopAccountNameController.text,
-                      "destinationBankName": _branchController.text,
-                      "destinationBankCode": branchId,
-                      "destinationBranchCode": branchCode,
-                    }
-                  },
-                  apiEndpoint: "api/saveuserpayment",
-                  mPin: "");
-            } else {
-              context.read<UtilityPaymentCubit>().makePayment(
-                  serviceIdentifier: "",
-                  accountDetails: {},
-                  body: {
-                    "reminderType": "OneTime",
-                    "serviceInfoType": "CONNECT_IPS", // for bank tarsfer,
-                    "data": {
-                      "destinationAccountNumber": _accountNumberController.text,
-                      "destinationBankName":
-                          selectedBank?.bankName ?? widget.bankName,
-                      "destinationAccountName": _accountNameController.text,
-                      "destinationBankCode":
-                          selectedBank?.bankId ?? widget.bankCode,
-                    }
-                  },
-                  apiEndpoint: "api/saveuserpayment",
-                  mPin: "");
-            }
-          }
-        },
-        showDetail: false,
-        showTitleText: false,
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              Row(
-                children: [
-                  Expanded(
-                    child: CustomRoundedButtom(
-                      title: "Bank Transfer",
-                      onPressed: () {
-                        setState(() {
-                          isBankTransfer = true;
-                        });
-                      },
-                      color: isBankTransfer
-                          ? CustomTheme.primaryColor
-                          : CustomTheme.primaryColor.withOpacity(0.6),
-                    ),
-                  ),
-                  SizedBox(width: 10.wp),
-                  Expanded(
-                    child: CustomRoundedButtom(
-                      title: "Coop Transfer",
-                      onPressed: () {
-                        setState(() {});
-                        isBankTransfer = false;
-                      },
-                      color: isBankTransfer
-                          ? CustomTheme.primaryColor.withOpacity(0.6)
-                          : CustomTheme.primaryColor,
-                    ),
-                  )
-                ],
-              ),
-              SizedBox(height: 10.hp),
-              if (isBankTransfer == true)
-                widget.bankName == null
-                    ? CustomTextField(
-                        hintText: "Select Bank",
-                        title: "Select Bank",
-                        readOnly: true,
-                        controller: _selectedBankController,
-                        onTap: () {
-                          NavigationService.push(
-                            target: BankListPage(
-                              onBankSelected: (val) {
-                                NavigationService.pop();
-                                _selectedBankController.text = val.bankName;
-                                selectedBank = val;
-                                setState(() {});
-                              },
-                            ),
-                          );
+                          "data": {
+                            "destinationAccountNumber":
+                                _coopAccountNumberController.text,
+                            "destinationAccountName":
+                                _coopAccountNameController.text,
+                            "destinationBankName": _branchController.text,
+                            "destinationBankCode": branchId,
+                            "destinationBranchCode": branchCode,
+                          }
                         },
-                        // : null,
-                        validator: (value) =>
-                            FormValidator.validateFieldNotEmpty(
-                                value, "Destination bank."),
-                      )
-                    : CustomTextField(
-                        readOnly: true,
-                        title: "Bank Name",
-                        controller: _bankNameController
-                          ..text = widget.bankName ?? "",
-                        validator: (value) =>
-                            FormValidator.validateFieldNotEmpty(
-                                value, "Bank Name"),
-                      ),
-              if (isBankTransfer == false)
-                widget.branchCodeQr == null
-                    ? CustomTextField(
-                        title: "Branch",
-                        hintText: "Select Branch",
-                        readOnly: true,
-                        controller: _branchController,
-                        validator: (val) =>
-                            FormValidator.validateFieldNotEmpty(val, "Branch"),
-                        onTap: () {
-                          NavigationService.push(
-                            target: CoOperativeBranchPage(
-                              onBankSelected: (val) {
-                                NavigationService.pop();
-                                branchCode = val.branchCode;
-                                branchId = val.id.toString();
-                                _branchController.text = val.name;
-                              },
-                            ),
-                          );
+                        apiEndpoint: "api/saveuserpayment",
+                        mPin: "");
+                  } else {
+                    context.read<UtilityPaymentCubit>().makePayment(
+                        serviceIdentifier: "",
+                        accountDetails: {},
+                        body: {
+                          "reminderType": "OneTime",
+                          "serviceInfoType": "CONNECT_IPS", // for bank tarsfer,
+                          "data": {
+                            "destinationAccountNumber":
+                                _accountNumberController.text,
+                            "destinationBankName":
+                                selectedBank?.bankName ?? widget.bankName,
+                            "destinationAccountName":
+                                _accountNameController.text,
+                            "destinationBankCode":
+                                selectedBank?.bankId ?? widget.bankCode,
+                          }
                         },
-                      )
-                    : BlocProvider(
-                        lazy: false,
-                        create: (context) => CoopListCubit(
-                            internalTransferRepository: RepositoryProvider.of<
-                                InternalTransferRepository>(context))
-                          ..fetchBanksList(),
-                        child: BlocConsumer<CoopListCubit, CommonState>(
-                          builder: (context, state) {
-                            print("state of state is $state");
-                            if (state
-                                is CommonDataFetchSuccess<InternalBranch>) {
-                              selectedIDFromQr = state.data.firstWhere(
-                                  (element) =>
-                                      element.branchCode ==
-                                      widget.branchCodeQr);
-                              return CustomTextField(
-                                readOnly: true,
-                                title: "Branch ",
-                                customHintTextStyle: true,
-                                hintText: selectedIDFromQr?.name ?? "",
-                              );
-                            } else {
-                              return Container();
-                            }
-                          },
-                          listener: (context, state) {},
-                        )),
-              CustomTextField(
-                readOnly: readOnly,
-                title: "Account Number",
-                controller: isBankTransfer == true
-                    ? _accountNumberController
-                    : _coopAccountNumberController
-                  ..text = widget.accountNumber ?? "",
-                validator: (value) => FormValidator.validateFieldNotEmpty(
-                    value, "Account Number"),
+                        apiEndpoint: "api/saveuserpayment",
+                        mPin: "");
+                  }
+                }
+              },
+              showDetail: false,
+              showTitleText: false,
+              body: Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Expanded(
+                          child: CustomRoundedButtom(
+                            title: "Bank Transfer",
+                            onPressed: () {
+                              setState(() {
+                                isBankTransfer = true;
+                              });
+                            },
+                            color: isBankTransfer
+                                ? CustomTheme.primaryColor
+                                : CustomTheme.primaryColor.withOpacity(0.6),
+                          ),
+                        ),
+                        SizedBox(width: 10.wp),
+                        Expanded(
+                          child: CustomRoundedButtom(
+                            title: "Coop Transfer",
+                            onPressed: () {
+                              setState(() {});
+                              isBankTransfer = false;
+                            },
+                            color: isBankTransfer
+                                ? CustomTheme.primaryColor.withOpacity(0.6)
+                                : CustomTheme.primaryColor,
+                          ),
+                        )
+                      ],
+                    ),
+                    SizedBox(height: 10.hp),
+                    if (isBankTransfer == true)
+                      widget.bankName == null
+                          ? CustomTextField(
+                              hintText: "Select Bank",
+                              title: "Select Bank",
+                              readOnly: true,
+                              controller: _selectedBankController,
+                              onTap: () {
+                                NavigationService.push(
+                                  target: BankListPage(
+                                    onBankSelected: (val) {
+                                      NavigationService.pop();
+                                      _selectedBankController.text =
+                                          val.bankName;
+                                      selectedBank = val;
+                                      setState(() {});
+                                    },
+                                  ),
+                                );
+                              },
+                              // : null,
+                              validator: (value) =>
+                                  FormValidator.validateFieldNotEmpty(
+                                      value, "Destination bank."),
+                            )
+                          : CustomTextField(
+                              readOnly: true,
+                              title: "Bank Name",
+                              controller: _bankNameController
+                                ..text = widget.bankName ?? "",
+                              validator: (value) =>
+                                  FormValidator.validateFieldNotEmpty(
+                                      value, "Bank Name"),
+                            ),
+                    if (isBankTransfer == false)
+                      widget.branchCodeQr == null
+                          ? CustomTextField(
+                              title: "Branch",
+                              hintText: "Select Branch",
+                              readOnly: true,
+                              controller: _branchController,
+                              validator: (val) =>
+                                  FormValidator.validateFieldNotEmpty(
+                                      val, "Branch"),
+                              onTap: () {
+                                NavigationService.push(
+                                  target: CoOperativeBranchPage(
+                                    onBankSelected: (val) {
+                                      NavigationService.pop();
+                                      branchCode = val.branchCode;
+                                      branchId = val.id.toString();
+                                      _branchController.text = val.name;
+                                    },
+                                  ),
+                                );
+                              },
+                            )
+                          : BlocProvider(
+                              lazy: false,
+                              create: (context) => CoopListCubit(
+                                  internalTransferRepository: RepositoryProvider
+                                      .of<InternalTransferRepository>(context))
+                                ..fetchBanksList(),
+                              child: BlocConsumer<CoopListCubit, CommonState>(
+                                builder: (context, state) {
+                                  print("state of state is $state");
+                                  if (state is CommonDataFetchSuccess<
+                                      InternalBranch>) {
+                                    selectedIDFromQr = state.data.firstWhere(
+                                        (element) =>
+                                            element.branchCode ==
+                                            widget.branchCodeQr);
+                                    return CustomTextField(
+                                      readOnly: true,
+                                      title: "Branch ",
+                                      customHintTextStyle: true,
+                                      hintText: selectedIDFromQr?.name ?? "",
+                                    );
+                                  } else {
+                                    return Container();
+                                  }
+                                },
+                                listener: (context, state) {},
+                              )),
+                    CustomTextField(
+                      readOnly: readOnly,
+                      title: "Account Number",
+                      controller: isBankTransfer == true
+                          ? _accountNumberController
+                          : _coopAccountNumberController
+                        ..text = widget.accountNumber ?? "",
+                      validator: (value) => FormValidator.validateFieldNotEmpty(
+                          value, "Account Number"),
+                    ),
+                    CustomTextField(
+                      readOnly: readOnly,
+                      title: "Account Holder Name",
+                      controller: isBankTransfer == true
+                          ? _accountNameController
+                          : _coopAccountNameController
+                        ..text = widget.accountName ?? "",
+                      validator: (value) => FormValidator.validateFieldNotEmpty(
+                          value, "Account Holder Name"),
+                    )
+                  ],
+                ),
               ),
-              CustomTextField(
-                readOnly: readOnly,
-                title: "Account Holder Name",
-                controller: isBankTransfer == true
-                    ? _accountNameController
-                    : _coopAccountNameController
-                  ..text = widget.accountName ?? "",
-                validator: (value) => FormValidator.validateFieldNotEmpty(
-                    value, "Account Holder Name"),
-              )
-            ],
-          ),
-        ),
-        topbarName: "Favorite",
-      ),
-    ));
+              topbarName: "Favorite",
+            ),
+          )),
+    );
   }
 }

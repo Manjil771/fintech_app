@@ -13,6 +13,7 @@ class AnyBankpage extends StatelessWidget {
   final String? accountName;
   final String? bankCode;
   final String? bankName;
+  final bool? isScanQr;
 
   const AnyBankpage(
       {Key? key,
@@ -20,6 +21,7 @@ class AnyBankpage extends StatelessWidget {
       this.accountName,
       this.bankCode,
       this.bankName,
+      this.isScanQr,
       this.remarks})
       : super(key: key);
   @override
@@ -46,6 +48,7 @@ class AnyBankpage extends StatelessWidget {
         ),
       ],
       child: AnyBankWidget(
+        isScanQr: isScanQr,
         remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,

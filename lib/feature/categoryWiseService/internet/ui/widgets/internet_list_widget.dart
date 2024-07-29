@@ -15,7 +15,13 @@ class InternetListWidget extends StatelessWidget {
     return PageWrapper(
       body: ListView(
         children: [
-          const ScaffoldTopBar(name: "Payment", showBackButton: true),
+          ScaffoldTopBar(
+            name: "Payment",
+            showBackButton: true,
+            onBackPressed: () {
+              NavigationService.pop();
+            },
+          ),
           Container(
             decoration: const BoxDecoration(
                 color: Colors.white,
