@@ -15,7 +15,7 @@ class CategoriesWiseServicePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CategoriesWiseServicesWidget(
-      uniqueIdentifier: uniqueIdentifier,
+      categoryIdentifier: uniqueIdentifier,
       topBarName: topBarName,
       services: services,
     );

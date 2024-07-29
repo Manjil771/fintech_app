@@ -30,13 +30,13 @@ import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 
 class CategoriesWiseServicesWidget extends StatefulWidget {
   final List<ServiceList> services;
-  final String uniqueIdentifier;
+  final String categoryIdentifier;
   final String topBarName;
   const CategoriesWiseServicesWidget(
       {Key? key,
       required this.services,
       required this.topBarName,
-      required this.uniqueIdentifier})
+      required this.categoryIdentifier})
       : super(key: key);
 
   @override
@@ -104,7 +104,7 @@ class _CategoriesWiseServicesWidgetState
                         onTap: () {
                           onTapFunction(
                               index: index,
-                              uniqueIdentifier:
+                              serviceIdentifier:
                                   searchItems[index].uniqueIdentifier);
                         },
                         child: Column(children: [
@@ -145,15 +145,15 @@ class _CategoriesWiseServicesWidgetState
     );
   }
 
-  onTapFunction({required String uniqueIdentifier, required int index}) {
+  onTapFunction({required String serviceIdentifier, required int index}) {
     // final selectedService = widget.services
     // .where((e) =>
     // e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
     // .toList();
     final servicess = searchItems[index];
 
-    if (widget.uniqueIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {
-      if (uniqueIdentifier.toLowerCase() ==
+    if (widget.categoryIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {
+      if (serviceIdentifier.toLowerCase() ==
           Slugs.netTvOnlineTopup.toLowerCase()) {
         NavigationService.push(
             target: NetTvPaymentPage(
@@ -166,42 +166,43 @@ class _CategoriesWiseServicesWidgetState
         ));
       }
     }
-    if (uniqueIdentifier.toLowerCase() == "digital_dakshina_service") {
+    if (serviceIdentifier.toLowerCase() == "digital_dakshina_service") {
       NavigationService.push(
           target: QRScannerScreens(
         remarks: servicess.instructions,
       ));
     }
-    if (widget.uniqueIdentifier.toLowerCase() == "internet".toLowerCase()) {
-      if (uniqueIdentifier.toLowerCase() ==
+    if (widget.categoryIdentifier.toLowerCase() == "internet".toLowerCase()) {
+      if (serviceIdentifier.toLowerCase() ==
           Slugs.worldlinkPayment.toLowerCase()) {
         NavigationService.push(
             target: FindInternetUserScreen(
           service: servicess,
         ));
-      } else if (uniqueIdentifier.toLowerCase() ==
+      } else if (serviceIdentifier.toLowerCase() ==
           "subisu_online_topup".toLowerCase()) {
         NavigationService.push(
             target: SubisuPaymentPage(
           service: servicess,
         ));
-      } else if (uniqueIdentifier.toLowerCase() ==
+      } else if (serviceIdentifier.toLowerCase() ==
               Slugs.alishaTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() == Slugs.infonetTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() == Slugs.infonetTopup.toLowerCase() ||
+          serviceIdentifier.toLowerCase() ==
               Slugs.royalnetworkTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() == Slugs.eastlinkTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
+              Slugs.eastlinkTopup.toLowerCase() ||
+          serviceIdentifier.toLowerCase() ==
               Slugs.ntFtthInternetTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.webnetworkTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.virtualnetworkTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.pokharainternetTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.adsluOnlineTopup.toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.metrolinkTopup.toLowerCase()) {
         NavigationService.push(
             target: CommonInternetWithAmountPage(
@@ -214,43 +215,51 @@ class _CategoriesWiseServicesWidgetState
         ));
       }
     }
-    if (uniqueIdentifier == Slugs.pathaoTopup) {
+
+    if (widget.categoryIdentifier.toLowerCase() ==
+        Slugs.rideSharing.toLowerCase()) {
       NavigationService.push(
           target: RidePaymentPage(
         service: servicess,
       ));
     }
-    if (uniqueIdentifier.toLowerCase() ==
+    // if (serviceIdentifier == Slugs.pathaoTopup) {
+    //   NavigationService.push(
+    //       target: RidePaymentPage(
+    //     service: servicess,
+    //   ));
+    // }
+    if (serviceIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(
           target: KhanePaniPage(
         service: servicess,
       ));
-    } else if (uniqueIdentifier.toLowerCase() == Slugs.kukl.toLowerCase()) {
+    } else if (serviceIdentifier.toLowerCase() == Slugs.kukl.toLowerCase()) {
       NavigationService.push(
           target: KuklPaymentPage(
         service: servicess,
       ));
     }
-    if (widget.uniqueIdentifier == "data_pack") {
+    if (widget.categoryIdentifier == "data_pack") {
       NavigationService.push(
           target: SelectDatapackScreen(
         service: servicess,
       ));
     }
 
-    if (widget.uniqueIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      if (uniqueIdentifier.toLowerCase() ==
+    if (widget.categoryIdentifier.toLowerCase() == "insurance".toLowerCase()) {
+      if (serviceIdentifier.toLowerCase() ==
               "nepal_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               "reliance_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               "Union_Life_Insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               "prabhu_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               "sura_life_insurance".toLowerCase() ||
-          uniqueIdentifier.toLowerCase() ==
+          serviceIdentifier.toLowerCase() ==
               Slugs.jyotiLifeInsurance.toLowerCase()) {
         NavigationService.push(
             target: LifeInsurancePage(
@@ -263,14 +272,14 @@ class _CategoriesWiseServicesWidgetState
         ));
       }
     }
-    if (widget.uniqueIdentifier == Slugs.governmentPayment) {
-      if (uniqueIdentifier.toLowerCase() ==
+    if (widget.categoryIdentifier == Slugs.governmentPayment) {
+      if (serviceIdentifier.toLowerCase() ==
           "traffic_fine_payments".toLowerCase()) {
         NavigationService.push(
             target: TrafficFinePaymentPage(
           service: servicess,
         ));
-      } else if (uniqueIdentifier.toLowerCase() ==
+      } else if (serviceIdentifier.toLowerCase() ==
           Slugs.bluebookRenewal.toLowerCase()) {
         NavigationService.push(
             target: BlueBookRenewalPage(

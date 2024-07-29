@@ -200,7 +200,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         },
                       ));
                     } else {
-                      NavigationService.pushReplacement(
+                      NavigationService.push(
                           target: BankTransferBillPage(
                         otp: otp,
                         imageUrl: selectedBank?.iconUrl ?? "",
