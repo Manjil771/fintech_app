@@ -194,7 +194,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
             _walletAccountController.text = p0.serviceTo.toString();
 
             _amountController.text = p0.totalAmount.toString();
-            _remarksController.text = p0.remarks.toString();
+            _remarksController.text = p0.customerRemarks.toString();
             setState(() {});
           },
           associatedId: widget.selectedWallet.id.toString(),

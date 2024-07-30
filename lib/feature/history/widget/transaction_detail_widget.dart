@@ -228,9 +228,10 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                         ),
                         customKeyValue(
                           title: "Remarks",
-                          value: widget.recentTransactionModel.remarks.isEmpty
+                          value: widget.recentTransactionModel.customerRemarks
+                                  .isEmpty
                               ? "-"
-                              : widget.recentTransactionModel.remarks,
+                              : widget.recentTransactionModel.customerRemarks,
                         ),
                         if (r.requestDetail.customerAddress != null)
                           customKeyValue(

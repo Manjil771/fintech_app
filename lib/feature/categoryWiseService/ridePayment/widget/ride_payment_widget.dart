@@ -129,6 +129,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
           }
         },
         child: CommonContainer(
+            showRecentTransaction: true,
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<UtilityPaymentCubit>().fetchDetails(
