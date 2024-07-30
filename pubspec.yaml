@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.30+62
+version: 1.5.31+61
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -39,6 +39,7 @@ dependencies:
   screenshot: "^2.3.0"
   syncfusion_flutter_charts: "^21.2.4"
   carousel_slider: "^4.2.1"
+  share_plus: ^7.2.2
   flutter_downloader: "^1.8.3"
   android_path_provider: "^0.3.0"
   jiffy: "^6.2.1"
@@ -50,7 +51,8 @@ dependencies:
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
   qr_code_utils:
-    git:
+    git: 
+    
       url: git@github.com:nsubash38/qr_code_test.git
       ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
@@ -119,10 +121,8 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nawajosh/
-    # - assets/nawajosh/
-
+    # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -175,6 +175,7 @@ flutter:
     # - assets/garimaAgri/
     # - assets/aastha/
     # - assets/sunshine/
+    # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
     # - assets/sudarshan/
@@ -194,7 +195,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    - assets/queenCoop/
+    # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
@@ -244,7 +245,7 @@ flutter:
     # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
-    # - assets/upayogi/
+    - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -269,6 +270,7 @@ flutter:
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
     # - assets/sayapatri/
+    # - assets/jayshreenavadurga/
     # - assets/united/
     # - assets/gairigaun/
     # - assets/manokanksha/
@@ -300,11 +302,24 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/ 
     # - assets/sklakhanpur/
+    - assets/shreekrishna/
+    # - assets/dupcheshwor/
+    # - assets/gagankalika/
+    # - assets/argha/
+  
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
+    # - assets/gagankalika/
+    # - assets/camellia/
+    # - assets/agrajMahila/
+    # - assets/mahabir/   
+    # - assets/abhiyankrishi/ 
+    # - assets/unnati/ 
+    # - assets/skOdraha/ 
+
     
     
-    # sana ksihan assets
+    # sana kishan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
@@ -313,6 +328,10 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
+    # - assets/skDharan/  
+    # - assets/sklakhanpur/ 
+    # - assets/skDhankuta/ 
+
     
  
  

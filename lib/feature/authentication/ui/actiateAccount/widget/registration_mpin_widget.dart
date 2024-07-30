@@ -106,11 +106,12 @@ class _RegisterMpinWidgetState extends State<RegisterMpinWidget> {
                       ),
                       SizedBox(height: _height * 0.02),
                       Text(
-                        "Enter your Mpin",
+                        "Enter your Security Pin",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       SizedBox(height: _height * 0.02),
-                      Text("Enter 5 digit strong Mpin for registration.",
+                      Text(
+                          "Enter 5 digit strong Security Pin for registration.",
                           textAlign: TextAlign.center,
                           style: Theme.of(context).textTheme.headlineSmall),
                       SizedBox(height: _height * 0.04),

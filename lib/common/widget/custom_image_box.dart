@@ -19,7 +19,7 @@ class CustomImageBox extends StatelessWidget {
   final double iconSize;
   final bool shadow;
   final bool isNetworkImage;
-  CustomImageBox({
+   CustomImageBox({
     Key? key,
     required this.image,
     this.imageHeight = 20,

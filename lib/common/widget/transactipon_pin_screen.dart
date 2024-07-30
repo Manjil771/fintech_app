@@ -76,11 +76,11 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       ),
                       SizedBox(height: _height * 0.02),
                       Text(
-                        "Enter your MPIN",
+                        "Enter your Security Pin",
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       SizedBox(height: _height * 0.01),
-                      Text("Please enter your MPIN to proceed.",
+                      Text("Please enter your Security Pin to proceed.",
                           style: Theme.of(context).textTheme.headlineSmall),
                       SizedBox(height: _height * 0.04),
                       //TODO need to remove condition ,using just for test

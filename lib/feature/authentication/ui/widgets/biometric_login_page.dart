@@ -49,7 +49,7 @@ class BiometricLoginPage extends StatelessWidget {
             height: 15.hp,
           ),
           Text(
-            "Enable biometric login to login without your MPIN.",
+            "Enable biometric login to login without your Security Pin.",
             style: _textTheme.bodyLarge,
           ),
           SizedBox(
