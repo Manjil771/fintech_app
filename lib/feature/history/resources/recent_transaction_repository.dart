@@ -28,14 +28,18 @@ class RecentTransactionRepository {
       {required String serviceCategoryId,
       required String associatedId,
       required String serviceId,
+      required String fromDate,
+      required String toDate,
       required String service}) async {
-    List<RecentTransactionModel> _recentTxnList = [];
+    final List<RecentTransactionModel> _recentTxnList = [];
     try {
       final _res = await recentTransactionApiProvider.fetchRecentTransaction(
         serviceId: serviceId,
         associatedId: associatedId,
         service: service,
         serviceCategoryId: serviceCategoryId,
+        fromDate: fromDate,
+        toDate: toDate,
       );
 
       if (_res['data']['details'] != null) {
@@ -48,7 +52,7 @@ class RecentTransactionRepository {
         }
 
         _userMap.forEach((element) {
-          RecentTransactionModel _txn =
+          final RecentTransactionModel _txn =
               RecentTransactionModel.fromJson(element);
 
           _recentTxnList.add(_txn);
@@ -82,9 +86,10 @@ class RecentTransactionRepository {
         final Map _userMap = Map.from(_res["data"]?['detail'] ?? []);
 
         if (_userMap['URL'] != null) {
-          String path = _userMap['URL'];
+          final String path = _userMap['URL'];
 
-          String downloadUrl = coOperative.baseUrl + path.replaceFirst("/", "");
+          final String downloadUrl =
+              coOperative.baseUrl + path.replaceFirst("/", "");
 
           return DataResponse.success(downloadUrl);
         }

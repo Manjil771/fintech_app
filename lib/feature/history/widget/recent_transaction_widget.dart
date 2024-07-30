@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -21,9 +22,17 @@ class RecentTransactionWidget extends StatefulWidget {
 }
 
 class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
+  DateTime fromDate = DateTime.now();
+  DateTime toDate = DateTime.now().subtract(const Duration(days: 15));
+
   @override
   void initState() {
     super.initState();
+    context.read<RecentTransactionCubit>().fetchrecentTransaction(
+        serviceCategoryId: "", associatedId: "", serviceId: "");
+  }
+
+  getRecentTransaction(DateTime fromDate, DateTime toDate) {
     context.read<RecentTransactionCubit>().fetchrecentTransaction(
         serviceCategoryId: "", associatedId: "", serviceId: "");
   }
@@ -49,18 +58,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
               _isLoading = false;
               NavigationService.pop();
             }
-
-            // if (state is CommonError) {
-            //   showPopUpDialog(
-            //     context: context,
-            //     message: state.message,
-            //     title: "Error",
-            //     showCancelButton: false,
-            //     buttonCallback: () {
-            //       NavigationService.pop();
-            //     },
-            //   );
-            // }
           },
           builder: (context, state) {
             print("state iss $state");
@@ -73,14 +70,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     _downloadNotifierValue.value = state.data;
                   }
                 },
-                child: Container(
-                    // height: _height * 0.65,
-                    color: Colors.white,
-                    // height: double.maxFinite,
-                    child: ListView.builder(
+                child: Column(
+                  children: [
+                    ListView.builder(
                       physics: const ScrollPhysics(),
                       shrinkWrap: true,
-                      // scrollDirection: Axis.vertical,
                       itemCount: state.data.length,
                       itemBuilder: (context, index) {
                         final _detail = state.data[index];
@@ -92,46 +86,18 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                 .generateUrl(
                                   transactionId: _detail.transactionIdentifier,
                                 );
-                            // RepositoryProvider.of<CoOperative>(
-                            //                 NavigationService.context)
-                            //             .clientCode ==
-                            //         "EHVNI7CZJ3"
-                            //     ?
+
                             NavigationService.push(
                                 target: TransactionDetailWidget(
                               downloadUrlNotifier: _downloadNotifierValue,
                               recentTransactionModel: _detail,
                             ));
-                            // : showDialog(
-                            //     context: context,
-                            //     builder: (context) {
-                            //       return Dialog(
-                            //         insetPadding:
-                            //             const EdgeInsets.symmetric(
-                            //                 horizontal: 18),
-                            //         child: Container(
-                            //           padding: const EdgeInsets.symmetric(
-                            //               vertical: 10),
-                            //           width: double.infinity,
-                            //           // height: _height * 0.5,
-                            //           child: TransactionDetailAlertWidget(
-                            //             recentTransactionModel: _detail,
-                            //             downloadUrlNotifier:
-                            //                 _downloadNotifierValue,
-                            //           ),
-                            //         ),
-                            //       );
-                            //     },
-                            //   );
-                            // NavigationService.push(
-                            //   target: TransactionDetailScreen(
-                            //     recentTransactionModel: _detail,
-                            //   ),
-                            // );
                           },
                         );
                       },
-                    )),
+                    ),
+                  ],
+                ),
               );
             } else {
               return const NoDataScreen(
@@ -142,6 +108,12 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
           },
         ),
       ),
+    );
+  }
+
+  dateFilterBox({required String title, required Function() onPressed}) {
+    return InkWell(
+      child: CustomRoundedButtom(title: title, onPressed: onPressed),
     );
   }
 }

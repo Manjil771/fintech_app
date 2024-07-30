@@ -63,8 +63,11 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
             final UtilityResponseData _response = state.data;
             if (_response.details.toString() == "M0000" ||
                 _response.status.toLowerCase() == "success") {
-              if (_response.findValue(primaryKey: "exists").toString() ==
-                  "true") {
+              if (_response
+                      .findValue(primaryKey: "status")
+                      .toString()
+                      .toLowerCase() ==
+                  "success") {
                 NavigationService.push(
                     target: CommonBillDetailPage(
                         serviceName: widget.service.service,
@@ -102,7 +105,11 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
               } else {
                 showPopUpDialog(
                     context: context,
-                    message: _response.findValue(primaryKey: "message"),
+                    message:
+                        _response.findValue(primaryKey: "message").toString() ==
+                                "null"
+                            ? "Something went wrong.Please try again later."
+                            : _response.findValue(primaryKey: "message"),
                     title: _response.findValueString("status"),
                     buttonCallback: () {
                       NavigationService.pop();
@@ -128,6 +135,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                       serviceIdentifier: widget.service.uniqueIdentifier,
                       accountDetails: {
                         "mobileNo": riderIDController.text,
+                        "amount": amountController.text,
                       },
                       apiEndpoint:
                           widget.service.uniqueIdentifier.toLowerCase() ==

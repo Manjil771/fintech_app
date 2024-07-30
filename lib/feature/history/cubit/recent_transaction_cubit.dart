@@ -12,11 +12,15 @@ class RecentTransactionCubit extends Cubit<CommonState> {
       {String? service,
       required String serviceCategoryId,
       required String serviceId,
+      String? fromDate,
+      String? toDate,
       required String associatedId}) async {
     emit(CommonLoading());
     try {
       // final String mPin = await SecureStorageService.appPassword;
       final response = await recentTransactionRepository.getRecentTransaction(
+          fromDate: fromDate ?? "",
+          toDate: toDate ?? "",
           serviceId: serviceId,
           service: service ?? "SERVICE",
           serviceCategoryId: serviceCategoryId,
