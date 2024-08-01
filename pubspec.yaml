@@ -316,7 +316,8 @@ flutter:
     # - assets/abhiyankrishi/ 
     # - assets/unnati/ 
     # - assets/skOdraha/
-    # - assets/shreeKanchan/ 
+    # - assets/shreeKanchan/
+    - assets/arjunchaupari/  
  
 
     
@@ -333,7 +334,7 @@ flutter:
     # - assets/skDharan/  
     # - assets/sklakhanpur/ 
     # - assets/skDhankuta/ 
-    - assets/skChisapani/ 
+    # - assets/skChisapani/ 
     
  
  
