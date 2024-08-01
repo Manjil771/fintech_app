@@ -28,7 +28,7 @@ class RecentTransactionApiProvider {
       if (associatedId.isNotEmpty) "associatedId": associatedId,
       if (serviceId.isNotEmpty) "serviceId": serviceId,
       "fromDate": fromDate,
-      "toDtae": toDate,
+      "toDate": toDate,
     };
     final _uri = UrlUtils.getUri(
         url: coOperative.baseUrl + "/api/recentTransaction", params: _params);
