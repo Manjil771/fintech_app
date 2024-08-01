@@ -76,7 +76,7 @@ class _MoreWidgetState extends State<MoreWidget> {
 
   final List names = [
     "Biometric",
-    "Change mPin",
+    "Change Security Pin",
     "Calculator",
     "Downloads",
     "Support",
@@ -119,7 +119,7 @@ class _MoreWidgetState extends State<MoreWidget> {
               print("mpin is $mPin");
               SnackBarUtils.showErrorBar(
                   context: NavigationService.context,
-                  message: "Invalid mPin .Please try again.");
+                  message: "Invalid Security Pin .Please try again.");
             }
           },
         ));

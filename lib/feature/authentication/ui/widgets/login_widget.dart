@@ -346,8 +346,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Mpin",
-                      hintText: "Mpin",
+                      title: "Security Pin",
+                      hintText: "Secrity Pin",
                       onTap: () async {
                         final CoOperative currentCoop =
                             RepositoryProvider.of<CoOperative>(context);

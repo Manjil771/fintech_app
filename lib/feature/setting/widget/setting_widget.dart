@@ -125,7 +125,7 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: () {
                     NavigationService.pushNamed(routeName: Routes.forgotPin);
                   },
-                  detail: "Tap to reset your mPin.",
+                  detail: "Tap to reset your Security Pin.",
                   title: "Forget Pin"),
 
               const Divider(thickness: 1),

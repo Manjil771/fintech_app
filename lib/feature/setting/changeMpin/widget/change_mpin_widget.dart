@@ -48,7 +48,7 @@ class _ChangeMpinWidgetState extends State<ChangeMpinWidget> {
       body: CommonContainer(
         title: "",
         detail: "Change your Pin frequently to be more secure.",
-        topbarName: "Change mPin",
+        topbarName: "Change Security Pin",
         showRoundBotton: false,
         onButtonPressed: () {},
         body: BlocListener<UtilityPaymentCubit, CommonState>(
@@ -104,7 +104,7 @@ class _ChangeMpinWidgetState extends State<ChangeMpinWidget> {
                       children: [
                         SizedBox(height: 10.hp),
                         const Text(
-                          "New mPin",
+                          "New Security Pin",
                           style: TextStyle(
                             fontFamily: Fonts.poppin,
                             fontWeight: FontWeight.w600,
