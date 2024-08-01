@@ -3407,6 +3407,20 @@ class CoOperativeValue {
     coOperativeName: "Shree Kanchan Saving & Credit Co-operative Ltd.",
     appTitle: "Shree Kanchan iSmart",
   );
+  static final CoOperative skChisapani = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skChisapani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skChisapani/skChisapani_banner.png",
+    backgroundImage: "assets/skChisapani/skChisapani_background.png",
+    clientCode: 'MW5V622PMA',
+    clientSecret: "188145",
+    coOperativeLogo: 'assets/skChisapani/skChisapani_logo.png',
+    splashImage: "assets/skChisapani/skChisapani_splash.png",
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Chisapani Sana Kisan Agriculture Co-operative Ltd.",
+    appTitle: "SFACL Chisapani iSmart",
+  );
 
-  static final CoOperative currentCoop = queenCoop;
+  static final CoOperative currentCoop = skChisapani;
 }
