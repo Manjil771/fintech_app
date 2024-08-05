@@ -3435,6 +3435,20 @@ class CoOperativeValue {
     coOperativeName: "Arjunchaupari Pokhara Saving & Credit Co-operative Ltd.",
     appTitle: "Arjunchaupari iSmart",
   );
+  static final CoOperative sajiloSaving = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.sajiloSaving",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sajiloSaving/sajiloSaving_banner.png",
+    backgroundImage: "assets/sajiloSaving/sajiloSaving_background.png",
+    clientCode: 'I50MXUWWXV',
+    clientSecret: "212203",
+    coOperativeLogo: 'assets/sajiloSaving/sajiloSaving_logo.png',
+    splashImage: "assets/sajiloSaving/sajiloSaving_splash.png",
+    primaryColor: const Color(0xFF134729),
+    coOperativeName: "Sajilo Saving & Credit Co-operative Ltd.",
+    appTitle: "Sajilo Saving iSmart",
+  );
 
-  static final CoOperative currentCoop = arjunchaupariCoop;
+  static final CoOperative currentCoop = sajiloSaving;
 }

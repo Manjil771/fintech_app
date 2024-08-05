@@ -1072,6 +1072,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        sajiloSaving {
+            dimension "app"
+            applicationId "com.devanasoft.sajiloSaving"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         sarbahit {
             dimension "app"
             applicationId "com.devanasoft.sarbahit"

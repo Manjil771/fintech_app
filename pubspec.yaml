@@ -317,7 +317,8 @@ flutter:
     # - assets/unnati/ 
     # - assets/skOdraha/
     # - assets/shreeKanchan/
-    - assets/arjunchaupari/  
+    # - assets/arjunchaupari/  
+    - assets/sajiloSaving/
  
 
     
