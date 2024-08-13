@@ -466,7 +466,7 @@ class CoOperativeValue {
     clientCode: '6M0D7LSVNV',
     coOperativeLogo: 'assets/janadhara/janadhar_logo.png',
     clientSecret: "180509",
-    splashImage: "assets/janadhara/Janadhara-Splash-Resized.png",
+    splashImage: "assets/janadhara/janadhara_splash.png",
     primaryColor: const Color(0xFF0B67BB),
     packageName: "com.devanasoft.janadhara",
     appStoreID: "6455494708",
@@ -3405,7 +3405,7 @@ class CoOperativeValue {
     splashImage: "assets/shreeKanchan/shreeKanchan_splash.png",
     primaryColor: const Color(0xFF0009245),
     coOperativeName: "Shree Kanchan Saving & Credit Co-operative Ltd.",
-    appTitle: "Shree Kanchan iSmart",
+    appTitle: "Kanchan iSmart",
   );
   static final CoOperative skChisapani = CoOperative(
     appStoreID: "",
@@ -3450,5 +3450,5 @@ class CoOperativeValue {
     appTitle: "Sajilo Saving iSmart",
   );
 
-  static final CoOperative currentCoop = arjunchaupariCoop;
+  static final CoOperative currentCoop = uttargangaCoop;
 }
