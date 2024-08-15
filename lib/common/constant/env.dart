@@ -3449,6 +3449,19 @@ class CoOperativeValue {
     coOperativeName: "Sajilo Saving & Credit Co-operative Ltd.",
     appTitle: "Sajilo Saving iSmart",
   );
-
-  static final CoOperative currentCoop = uttargangaCoop;
+  static final CoOperative krishnaGandaki = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.krishnaGandaki",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/krishnaGandaki/krishnaGandaki_banner.png",
+    backgroundImage: "assets/krishnaGandaki/krishnaGandaki_background.png",
+    clientCode: 'S614M71DSY',
+    clientSecret: "131529 ",
+    coOperativeLogo: 'assets/krishnaGandaki/krishnaGandaki_logo.png',
+    splashImage: "assets/krishnaGandaki/krishnaGandaki_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Krishna Gandaki Saving & Credit Co-operative Ltd.",
+    appTitle: "Krishna Gandaki iSmart",
+  );
+  static final CoOperative currentCoop = krishnaGandaki;
 }
