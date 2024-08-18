@@ -221,6 +221,10 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                     "sessionId": widget.useServiceResponse.findValue(
                             primaryKey: "hashResponse",
                             secondaryKey: "sessionId") ??
+                        "",
+                    "customerName": widget.useServiceResponse.findValue<String>(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "Customer Name") ??
                         ""
                   },
                   apiEndpoint: "/api/neapay",
