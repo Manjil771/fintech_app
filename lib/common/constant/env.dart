@@ -3456,12 +3456,26 @@ class CoOperativeValue {
     bannerImage: "assets/krishnaGandaki/krishnaGandaki_banner.png",
     backgroundImage: "assets/krishnaGandaki/krishnaGandaki_background.png",
     clientCode: 'S614M71DSY',
-    clientSecret: "131529 ",
+    clientSecret: "131529",
     coOperativeLogo: 'assets/krishnaGandaki/krishnaGandaki_logo.png',
     splashImage: "assets/krishnaGandaki/krishnaGandaki_splash.png",
     primaryColor: const Color(0xFF39a748),
     coOperativeName: "Krishna Gandaki Saving & Credit Co-operative Ltd.",
     appTitle: "Krishna Gandaki iSmart",
+  );
+  static final CoOperative siddhibinayak = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.siddhibinayak",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/siddhibinayak/siddhibinayak_banner.png",
+    backgroundImage: "assets/siddhibinayak/siddhibinayak_background.png",
+    clientCode: 'RW5GYH84MI',
+    clientSecret: "155627",
+    coOperativeLogo: 'assets/siddhibinayak/siddhibinayak_logo.png',
+    splashImage: "assets/siddhibinayak/siddhibinayak_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Siddhi Binayak Saving & credit Co-operative Ltd.",
+    appTitle: "Siddhi Binayak iSmart",
   );
   static final CoOperative currentCoop = krishnaGandaki;
 }
