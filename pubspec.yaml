@@ -319,7 +319,7 @@ flutter:
     # - assets/shreeKanchan/
     # - assets/arjunchaupari/  
     # - assets/sajiloSaving/
-    - assets/krishnaGandaki/
+    # - assets/krishnaGandaki/
  
 
     
@@ -337,7 +337,7 @@ flutter:
     # - assets/sklakhanpur/ 
     # - assets/skDhankuta/ 
     # - assets/skChisapani/ 
-    # - assets/siddhibinayak/
+    - assets/siddhibinayak/
     
  
  
