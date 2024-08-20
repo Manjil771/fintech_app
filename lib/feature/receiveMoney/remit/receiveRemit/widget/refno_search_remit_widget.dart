@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -15,7 +17,6 @@ import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/reveice_re
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-// ignore: must_be_immutable
 class RefnoSearchRemitWidget extends StatelessWidget {
   final String serviceId;
   final String companyName;
