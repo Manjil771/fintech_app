@@ -1,5 +1,3 @@
-import 'package:flutter/material.dart';
-
 class CommonGridViewModel {
   final String image;
   final String title;

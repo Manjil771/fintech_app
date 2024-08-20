@@ -24,7 +24,7 @@ class BusSeatsListWidget extends StatefulWidget {
   final columnNumber;
   final List<dynamic> busList;
   final int index;
-  BusSeatsListWidget(
+  const BusSeatsListWidget(
       {Key? key,
       required this.seatLayout,
       required this.columnNumber,
@@ -53,8 +53,6 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
         padding: EdgeInsets.zero,
         showBackButton: true,
@@ -80,7 +78,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
             }
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              UtilityResponseData _response = state.data;
+              final UtilityResponseData _response = state.data;
 
               if (_response.code == "M0000") {
                 NavigationService.push(
@@ -127,7 +125,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                         "${widget.busList[widget.index]["busType"]} - ${widget.busList[widget.index]["departureTime"]}",
                         style: _textTheme.titleSmall,
                       ),
-                      Divider(thickness: 1),
+                      const Divider(thickness: 1),
                       Padding(
                         padding: const EdgeInsets.all(8.0),
                         child: Row(
@@ -184,7 +182,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                           ],
                         ),
                       ),
-                      Divider(thickness: 1),
+                      const Divider(thickness: 1),
 
                       Text("FRONT", style: _textTheme.titleLarge),
                       // Container(

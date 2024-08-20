@@ -17,6 +17,7 @@ import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 // import 'package:share_plus/share_plus.dart';
 
+// ignore: must_be_immutable
 class InternalQrWidget extends StatelessWidget {
   final String qrPath;
   InternalQrWidget({Key? key, required this.qrPath}) : super(key: key);
@@ -54,9 +55,6 @@ class InternalQrWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Column(
       children: [

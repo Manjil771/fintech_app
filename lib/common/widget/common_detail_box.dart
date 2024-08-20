@@ -70,7 +70,8 @@ class CommonDetailBox extends StatelessWidget {
                           .textTheme
                           .titleLarge!
                           .copyWith(fontWeight: FontWeight.w700)),
-                  Text(detail, style: Theme.of(context).textTheme.titleSmall),
+                  if (detail.isNotEmpty)
+                    Text(detail, style: Theme.of(context).textTheme.titleSmall),
                 ],
               ),
             ),

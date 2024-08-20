@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/cubit/cerdit_card_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_repository.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/widget/credit_card_payment_widget.dart';
@@ -14,10 +13,6 @@ class CreditCardPaymentPage extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(

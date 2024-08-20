@@ -60,7 +60,6 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       showAppBar: false,

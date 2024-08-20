@@ -7,7 +7,7 @@ class LoanScheduleRowWidget extends StatelessWidget {
   final int index;
   final UtilityResponseData responseData;
 
-  LoanScheduleRowWidget({
+  const LoanScheduleRowWidget({
     Key? key,
     required this.index,
     required this.responseData,
@@ -15,9 +15,6 @@ class LoanScheduleRowWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     final response = responseData.findValue(primaryKey: "data");
     return Container(
       color: index.isEven
@@ -50,7 +47,8 @@ class LoanScheduleRowWidget extends StatelessWidget {
                       child: Center(
                         child: Text(
                           response[index]["scheduleAmount"].toString(),
-                          style: TextStyle(color: CustomTheme.googleColor),
+                          style:
+                              const TextStyle(color: CustomTheme.googleColor),
                         ),
                       ),
                     ),

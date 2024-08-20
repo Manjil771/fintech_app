@@ -33,7 +33,6 @@ class _TransactionDetailAlertWidgetState
     final e = widget.recentTransactionModel;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return RepositoryProvider.of<CoOperative>(NavigationService.context)
                 .clientCode ==
@@ -78,11 +77,11 @@ class _TransactionDetailAlertWidgetState
                         itemBuilder: (context) => [
                               PopupMenuItem(
                                   child: Container(
-                                child: Text("hello1"),
+                                child: const Text("hello1"),
                               )),
                               PopupMenuItem(
                                   child: Container(
-                                child: Text("hello1"),
+                                child: const Text("hello1"),
                               ))
                             ]),
                   ],

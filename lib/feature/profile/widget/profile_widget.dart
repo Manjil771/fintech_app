@@ -24,6 +24,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 
   @override
   void initState() {
+    super.initState();
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
   }

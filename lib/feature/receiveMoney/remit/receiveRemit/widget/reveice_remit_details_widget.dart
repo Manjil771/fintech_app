@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
+// ignore: must_be_immutable
 class ReceiveRemitDetailWidget extends StatelessWidget {
   ReceiveRemitDetailWidget({super.key});
   bool _isLoading = false;
@@ -36,7 +37,7 @@ class ReceiveRemitDetailWidget extends StatelessWidget {
               );
             }
           },
-          child: Column(),
+          child: const Column(),
         ),
         topbarName: "Remit Details",
       ),

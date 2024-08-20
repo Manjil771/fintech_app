@@ -6,7 +6,6 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/enum/text_field_type.dart';
 import 'package:ismart/common/models/key_value.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -122,7 +121,6 @@ class _SearchWidgetsState extends State<CategorySearchWidgets> {
                       trailing: Container(),
                       onPressed: widget.onPressed,
                     );
-                    ;
                   }
                 },
               ),

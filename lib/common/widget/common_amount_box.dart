@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
@@ -27,8 +24,6 @@ class _CommonAmountBoxState extends State<CommonAmountBox> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     final priceRange = widget.service.priceRange ?? "";
     final List priceRangeList = priceRange.split(",");
 
@@ -65,8 +60,8 @@ class _CommonAmountBoxState extends State<CommonAmountBox> {
                 child: Column(
                   children: [
                     Container(
-                      padding:
-                          EdgeInsets.symmetric(vertical: 5, horizontal: 18),
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 5, horizontal: 18),
                       decoration: BoxDecoration(
                           border: Border.all(color: _theme.primaryColor),
                           borderRadius: BorderRadius.circular(8)),

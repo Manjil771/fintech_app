@@ -84,7 +84,7 @@ class _ReceiveMoneyBanksListWidgetState
             }
 
             if (state is CommonDataFetchSuccess<Bank>) {
-              List<Bank> _list = state.data;
+              // List<Bank> _list = state.data;
               _localBanks = state.data;
               _totalBanks = state.data;
               setState(() {});
@@ -127,7 +127,7 @@ class _ReceiveMoneyBanksListWidgetState
                   state.statusCode != 404) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: CommonLoadingWidget(), // TODO Replace with maintenance
+                  child: CommonLoadingWidget(), // TODOReplace with maintenance
                 );
               }
               return SliverFillRemaining(

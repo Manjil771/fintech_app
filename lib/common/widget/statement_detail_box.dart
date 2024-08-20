@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 
 class StatementDetailBox extends StatelessWidget {
@@ -15,7 +13,7 @@ class StatementDetailBox extends StatelessWidget {
   final String imageUrl;
   final String status;
 
-  StatementDetailBox(
+  const StatementDetailBox(
       {Key? key,
       this.isCredit = false,
       required this.balance,
@@ -28,12 +26,10 @@ class StatementDetailBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -84,7 +80,7 @@ class StatementDetailBox extends StatelessWidget {
                 ),
                 Container(
                   width: _width * 0.2,
-                  padding: EdgeInsets.symmetric(vertical: 5),
+                  padding: const EdgeInsets.symmetric(vertical: 5),
                   decoration: BoxDecoration(
                     color: isCredit ? Colors.green : Colors.red,
                     borderRadius: BorderRadius.circular(4),
@@ -92,7 +88,7 @@ class StatementDetailBox extends StatelessWidget {
                   child: Center(
                     child: Text(
                       status,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popinsemibold",
                         color: CustomTheme.white,
                       ),
@@ -101,7 +97,7 @@ class StatementDetailBox extends StatelessWidget {
                 ),
                 Text(
                   "NPR $balance",
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontFamily: "popinsemibold",
                       fontSize: 12,
                       color: Colors.black54),

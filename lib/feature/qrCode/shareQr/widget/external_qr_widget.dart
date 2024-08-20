@@ -22,6 +22,7 @@ import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 // import 'package:share_plus/share_plus.dart';
 
+// ignore: must_be_immutable
 class ExternalQrWidget extends StatelessWidget {
   final Map<String, dynamic> qrDetail;
   final bool showQr;
@@ -37,6 +38,7 @@ class ExternalQrWidget extends StatelessWidget {
   final repo = RepositoryProvider.of<CoOperative>(NavigationService.context);
   takeScreenshot() async {
     final image = await _screenShotController.capture();
+    // ignore: unused_local_variable
     final tempFile = await _createTempImageFile(image!);
 
     if (tempFile != null) {

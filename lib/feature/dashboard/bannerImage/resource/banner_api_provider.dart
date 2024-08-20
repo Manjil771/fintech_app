@@ -1,7 +1,5 @@
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
-import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
@@ -30,8 +28,4 @@ class BannerApiProvider {
       userId: -1,
     );
   }
-
-  
-
-  
 }

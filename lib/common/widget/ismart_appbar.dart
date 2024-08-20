@@ -16,7 +16,6 @@ import '../../feature/authentication/resource/user_repository.dart';
 
 AppBar myAppbar({bool showBackButton = false}) {
   final _height = SizeUtils.height;
-  final _width = SizeUtils.width;
 
   Widget _getImageWidget() {
     final String coOpLogo =

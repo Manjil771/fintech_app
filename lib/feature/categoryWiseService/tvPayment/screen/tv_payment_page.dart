@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_cubit.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_repository.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/widget/tv_payment_widget.dart';
@@ -13,10 +12,6 @@ class TvPaymentPage extends StatelessWidget {
   const TvPaymentPage({Key? key, required this.service}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(

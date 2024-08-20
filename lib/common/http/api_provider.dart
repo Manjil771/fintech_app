@@ -217,6 +217,7 @@ class ApiProvider {
       }
       final String fileName = file.path.split('/').last;
       // final String _extention = file.path.split('.').last;
+      // ignore: unused_local_variable
       final String type = lookupMimeType(file.path)!.split('/').first;
 
       final FormData formData = FormData.fromMap(<String, dynamic>{
@@ -254,6 +255,7 @@ class ApiProvider {
     );
     dynamic responseJson;
     try {
+      // ignore: unused_local_variable
       final Map<String, String> header = {
         'accept': 'application/json',
         'origin': '*',
@@ -264,6 +266,7 @@ class ApiProvider {
       final String type = lookupMimeType(file.path)!.split('/').first;
       print(type);
 
+      // ignore: unused_local_variable
       final FormData formData = FormData.fromMap(<String, dynamic>{
         'file': await MultipartFile.fromFile(
           file.path,

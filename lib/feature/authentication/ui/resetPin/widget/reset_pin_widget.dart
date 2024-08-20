@@ -1,11 +1,9 @@
-import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/ismart_top_widget.dart';
@@ -14,12 +12,11 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_otp_page.dart';
-import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class ResetPinWidget extends StatelessWidget {
   ResetPinWidget({Key? key}) : super(key: key);
   final _accountNumberController = TextEditingController();
@@ -31,10 +28,6 @@ class ResetPinWidget extends StatelessWidget {
   final _fromKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       showAppBar: true,
       useOwnAppBar: true,
@@ -78,7 +71,7 @@ class ResetPinWidget extends StatelessWidget {
               }
 
               if (state is CommonStateSuccess) {
-                UtilityResponseData _response = state.data;
+                final UtilityResponseData _response = state.data;
                 if (_response.status.toLowerCase() == "success".toLowerCase()) {
                   NavigationService.push(
                       target: ResetOTPPage(
@@ -100,7 +93,7 @@ class ResetPinWidget extends StatelessWidget {
             },
             child: Column(
               children: [
-                IsmartTopWidget(),
+                const IsmartTopWidget(),
                 Expanded(
                   child: Container(
                     child: CommonContainer(
@@ -137,7 +130,8 @@ class ResetPinWidget extends StatelessWidget {
                                     AutovalidateMode.onUserInteraction,
                                 title: "Mobile Number",
                                 validator: (value) =>
-                                    FormValidator.validatePhoneNumber(value),
+                                    FormValidator.validateFieldNotEmpty(
+                                        value, "Mobile Number"),
                               ),
                               CustomTextField(
                                 controller: _accountNumberController,

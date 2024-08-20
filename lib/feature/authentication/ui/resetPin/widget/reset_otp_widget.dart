@@ -14,7 +14,6 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/screen/input_new_pin_page.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class ResetOTPWidget extends StatefulWidget {
@@ -47,7 +46,7 @@ class _ResetOTPWidgetState extends State<ResetOTPWidget> {
               }
 
               if (state is CommonStateSuccess) {
-                UtilityResponseData _response = state.data;
+                final UtilityResponseData _response = state.data;
                 if (_response.status.toLowerCase() == "success".toLowerCase()) {
                   NavigationService.push(
                       target: InputNewPinPage(
@@ -154,7 +153,7 @@ class _ResetOTPWidgetState extends State<ResetOTPWidget> {
                       TextButton(
                           onPressed: () {
                             // Get.offAll(() => const MainScreen());
-                            // TODO Resend OTP Logic
+                            // TODOResend OTP Logic
                           },
                           child: Text(
                             "Resend",

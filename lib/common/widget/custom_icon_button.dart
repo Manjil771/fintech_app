@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 
+// ignore: must_be_immutable
 class CustomIconButton extends StatelessWidget {
   final IconData icon;
   final void Function()? onPressed;

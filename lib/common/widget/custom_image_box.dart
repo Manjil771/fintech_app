@@ -4,6 +4,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
+// ignore: must_be_immutable
 class CustomImageBox extends StatelessWidget {
   final String image;
   final double imageHeight;

@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
-import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_detail_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class CommonInternetPackageSearchWidgets extends StatelessWidget {

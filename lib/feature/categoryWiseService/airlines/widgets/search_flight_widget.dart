@@ -6,7 +6,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -52,8 +51,6 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
         serviceCategoryId: widget.service.categoryId.toString(),
@@ -84,7 +81,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
             }
 
             if (state is CommonStateSuccess<SearchFlightResponse>) {
-              SearchFlightResponse _response = state.data;
+              final SearchFlightResponse _response = state.data;
 
               if (_response.responseStatus.toLowerCase() ==
                   "Success".toLowerCase()) {

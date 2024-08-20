@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
 class FlightDetailBox extends StatelessWidget {
@@ -16,10 +13,8 @@ class FlightDetailBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-    final adultFare = double.parse(flight?.adultFare ?? "0");
-    final childFare = double.parse(flight?.adultFare ?? "0");
+    // final adultFare = double.parse(flight?.adultFare ?? "0");
+    // final childFare = double.parse(flight?.adultFare ?? "0");
 
     final d = flight;
     return Container(

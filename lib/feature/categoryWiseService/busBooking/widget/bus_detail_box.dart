@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_seat_page.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_booking_widget.dart';
-import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_seat_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -31,8 +25,6 @@ class BusDetailBox extends StatelessWidget {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     final busList = response.findValue(primaryKey: "data");
 
     final data = busList[index];
@@ -56,7 +48,7 @@ class BusDetailBox extends StatelessWidget {
           color: CustomTheme.white,
         ),
         // padding: EdgeInsets.all(18),
-        margin: EdgeInsets.symmetric(vertical: 5),
+        margin: const EdgeInsets.symmetric(vertical: 5),
         child: Column(
           children: [
             Padding(
@@ -95,7 +87,7 @@ class BusDetailBox extends StatelessWidget {
                 ],
               ),
             ),
-            Divider(),
+            const Divider(),
             Row(
               mainAxisAlignment: MainAxisAlignment.end,
               crossAxisAlignment: CrossAxisAlignment.end,
@@ -115,9 +107,9 @@ class BusDetailBox extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.all(8),
+                  padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.only(
+                      borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(12),
                           bottomRight: Radius.circular(12)),
                       color: _theme.primaryColor),

@@ -21,6 +21,7 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class BusBillDetailWidget extends StatelessWidget {
   final BusTopBarModel busTopBarModel;
   final ServiceList service;
@@ -75,7 +76,7 @@ class BusBillDetailWidget extends StatelessWidget {
             }
 
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              UtilityResponseData _response = state.data;
+              final UtilityResponseData _response = state.data;
 
               if (_response.code == "M0000") {
                 NavigationService.push(

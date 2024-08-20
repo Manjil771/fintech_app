@@ -6,7 +6,6 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
@@ -26,7 +25,7 @@ class TopUpBillDetailPage extends StatelessWidget {
   final Widget body;
   final CategoryList categoryList;
 
-  TopUpBillDetailPage(
+  const TopUpBillDetailPage(
       {super.key,
       required this.body,
       required this.accountDetails,
@@ -34,12 +33,8 @@ class TopUpBillDetailPage extends StatelessWidget {
       required this.apiBody,
       required this.categoryList,
       required this.serviceIdentifier});
-  bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -57,6 +52,7 @@ class TopUpBillDetailPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class TopupBillDetailWidget extends StatelessWidget {
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
@@ -82,7 +78,6 @@ class TopupBillDetailWidget extends StatelessWidget {
             (element) => element.uniqueIdentifier.contains(serviceIdentifier))
         .toList();
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
@@ -111,7 +106,7 @@ class TopupBillDetailWidget extends StatelessWidget {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.status == "M0000") {
               NavigationService.pushReplacement(
                   target: TopUpTransactionReceiptPage(
@@ -139,13 +134,13 @@ class TopupBillDetailWidget extends StatelessWidget {
                 onPressed: () {
                   NavigationService.pop();
                 },
-                icon: Icon(Icons.arrow_back)),
+                icon: const Icon(Icons.arrow_back)),
             Container(
               decoration: BoxDecoration(
                 color: CustomTheme.white,
                 borderRadius: BorderRadius.circular(18),
               ),
-              padding: EdgeInsets.all(18),
+              padding: const EdgeInsets.all(18),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
@@ -156,7 +151,7 @@ class TopupBillDetailWidget extends StatelessWidget {
                   SizedBox(height: _height * 0.02),
                   Text(
                     selectedService[0].service,
-                    style: TextStyle(
+                    style: const TextStyle(
                         fontSize: 20,
                         color: Colors.black,
                         fontWeight: FontWeight.w500),

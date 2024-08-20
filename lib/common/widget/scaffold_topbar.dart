@@ -2,14 +2,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 
-import '../navigation/navigation_service.dart';
-
 class ScaffoldTopBar extends StatelessWidget {
   final String name;
   final bool showBackButton;
+  final VoidCallback onBackPressed;
 
   const ScaffoldTopBar(
-      {super.key, required this.name, this.showBackButton = true});
+      {super.key,
+      required this.name,
+      this.showBackButton = true,
+      required this.onBackPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -28,9 +30,7 @@ class ScaffoldTopBar extends StatelessWidget {
           children: [
             showBackButton
                 ? IconButton(
-                    onPressed: () {
-                      NavigationService.pop();
-                    },
+                    onPressed: onBackPressed,
                     icon: const Icon(
                       Icons.arrow_back,
                       color: Colors.white,

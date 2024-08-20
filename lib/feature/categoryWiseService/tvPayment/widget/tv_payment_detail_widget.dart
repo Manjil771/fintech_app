@@ -46,11 +46,11 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
         widget.detailFetchData.details.hashResponse;
     final List<TvPackages> tvPackages =
         widget.detailFetchData.details.tvPackages;
-    final currentPackage =
-        tvPackages.where((element) => element.text == hashResponse.currentPlan);
+    // final currentPackage =
+    // tvPackages.where((element) => element.text == hashResponse.currentPlan);
     final TextEditingController selectedAmount = TextEditingController();
     final TextEditingController selectedPackageId = TextEditingController();
-    String packageName = "1";
+    const String packageName = "1";
     // TvPackages? selectedPackage;
 
     // TvPackages? packageDetail() {
@@ -138,7 +138,8 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
                                     value: hashResponse.balance,
                                   ),
                             KeyValueTile(title: "Amount", value: getAmount()),
-                            KeyValueTile(title: "Package", value: packageName),
+                            const KeyValueTile(
+                                title: "Package", value: packageName),
 
                             //  Container(
                             //     width: double.infinity,

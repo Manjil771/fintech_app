@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
@@ -62,8 +63,11 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
             final UtilityResponseData _response = state.data;
             if (_response.details.toString() == "M0000" ||
                 _response.status.toLowerCase() == "success") {
-              if (_response.findValue(primaryKey: "exists").toString() ==
-                  "true") {
+              if (_response
+                      .findValue(primaryKey: "status")
+                      .toString()
+                      .toLowerCase() ==
+                  "success") {
                 NavigationService.push(
                     target: CommonBillDetailPage(
                         serviceName: widget.service.service,
@@ -80,7 +84,11 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                           ],
                         ),
                         accountDetails: const {},
-                        apiEndpoint: "/api/pathao/payment",
+                        apiEndpoint:
+                            widget.service.uniqueIdentifier.toLowerCase() ==
+                                    Slugs.pathaoTopup
+                                ? "/api/pathao/payment"
+                                : "/api/indrive/payment",
                         apiBody: {
                           "accountNo":
                               RepositoryProvider.of<CustomerDetailRepository>(
@@ -97,8 +105,12 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
               } else {
                 showPopUpDialog(
                     context: context,
-                    message: "Rider ID doesnot exist.",
-                    title: "Failure",
+                    message:
+                        _response.findValue(primaryKey: "message").toString() ==
+                                "null"
+                            ? "Something went wrong.Please try again later."
+                            : _response.findValue(primaryKey: "message"),
+                    title: _response.findValueString("status"),
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -108,7 +120,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
               showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: _response.status,
                   buttonCallback: () {
                     NavigationService.pop();
                   },
@@ -117,14 +129,21 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
           }
         },
         child: CommonContainer(
+            showRecentTransaction: true,
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<UtilityPaymentCubit>().fetchDetails(
-                    serviceIdentifier: widget.service.uniqueIdentifier,
-                    accountDetails: {
-                      "mobileNo": riderIDController.text,
-                    },
-                    apiEndpoint: "/api/pathao/validate");
+                      serviceIdentifier: widget.service.uniqueIdentifier,
+                      accountDetails: {
+                        "mobileNo": riderIDController.text,
+                        "amount": amountController.text,
+                      },
+                      apiEndpoint:
+                          widget.service.uniqueIdentifier.toLowerCase() ==
+                                  Slugs.pathaoTopup
+                              ? "/api/pathao/validate"
+                              : "/api/indrive/validate",
+                    );
               }
             },
             detail: widget.service.instructions,
@@ -141,12 +160,17 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                     hintText: widget.service.labelSample,
                     controller: riderIDController,
                     validator: (value) =>
-                        FormValidator.validateFieldNotEmpty(value, "rider ID"),
+                        FormValidator.validateFieldNotEmpty(value, "Rider ID"),
                   ),
                   CustomTextField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: amountController,
                     title: "Amount",
                     hintText: "XXXXX",
+                    validator: (value) => FormValidator.validateAmount(
+                        val: value.toString(),
+                        minAmount: widget.service.minValue,
+                        maxAmount: widget.service.maxValue),
                   ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,

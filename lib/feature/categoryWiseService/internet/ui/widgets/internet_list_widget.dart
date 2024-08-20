@@ -10,14 +10,18 @@ import '../../../../../common/util/size_utils.dart';
 class InternetListWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
       body: ListView(
         children: [
-          const ScaffoldTopBar(name: "Payment", showBackButton: true),
+          ScaffoldTopBar(
+            name: "Payment",
+            showBackButton: true,
+            onBackPressed: () {
+              NavigationService.pop();
+            },
+          ),
           Container(
             decoration: const BoxDecoration(
                 color: Colors.white,

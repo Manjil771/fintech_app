@@ -31,8 +31,8 @@ class FullStatementRepository {
   List<AccountStatementDtos> getGraphData({required int days}) {
     _statementsLists.clear();
     if (fullStatement == null) return _statementsLists;
-    final _startDate = DateTime(2022, 9, 1);
-    final _endDate = _startDate.add(Duration(days: days));
+    // final _startDate = DateTime(2022, 9, 1);
+    // final _endDate = _startDate.add(Duration(days: days));
 
     // fullStatement!.accountStatementDtos.forEach((element) {
     //   if (element.transactionDate.isBefore(_endDate) &&

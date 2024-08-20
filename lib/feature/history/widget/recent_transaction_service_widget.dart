@@ -51,7 +51,6 @@ class _RecentTransactionServiceWidgetState
   @override
   Widget build(BuildContext context) {
     final _textTheme = Theme.of(context).textTheme;
-    final _height = SizeUtils.height;
     return BlocConsumer<RecentTransactionCubit, CommonState>(
       listener: (context, state) {
         if (state is CommonLoading && !_isLoading) {
@@ -75,7 +74,7 @@ class _RecentTransactionServiceWidgetState
         // }
       },
       builder: (context, state) {
-        ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
+        final ValueNotifier<String> _downloadNotifierValue = ValueNotifier("");
         if (state is CommonDataFetchSuccess<RecentTransactionModel>) {
           return BlocListener<TransactionDownloadCubit, CommonState>(
               listener: (context, state) {
