@@ -647,21 +647,21 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       }
     } catch (e) {
       if (qrCode.toString().contains("fonepay.com")) {
-        if (appServiceFilter(identifier: Slugs.fonePay, state: appSeriveList)
-                .status ==
-            "Active") {
-          NavigationService.pushReplacement(
-              target: PayloadPage(
-            remarks: widget.remarks,
-            payload: qrCode,
-          ));
-        } else {
-          return NavigationService.pushReplacement(
-              target: NoServiceScreen(
-            data: appServiceFilter(
-                identifier: Slugs.bankTransfer, state: appSeriveList),
-          ));
-        }
+        // if (appServiceFilter(identifier: Slugs.fonePay, state: appSeriveList)
+        //         .status ==
+        //     "Active") {
+        NavigationService.pushReplacement(
+            target: PayloadPage(
+          remarks: widget.remarks,
+          payload: qrCode,
+        ));
+        // } else {
+        //   return NavigationService.pushReplacement(
+        //       target: NoServiceScreen(
+        //     data: appServiceFilter(
+        //         identifier: Slugs.bankTransfer, state: appSeriveList),
+        //   ));
+        // }
       } else {
         NavigationService.pushReplacement(
             target: EtellerPage(

@@ -3477,5 +3477,19 @@ class CoOperativeValue {
     coOperativeName: "Siddhi Binayak Saving & credit Co-operative Ltd.",
     appTitle: "Siddhi Binayak iSmart",
   );
-  static final CoOperative currentCoop = krishnaGandaki;
+  static final CoOperative shubhechhaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shubhechha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shubhechha/shubhechha_banner.png",
+    backgroundImage: "assets/shubhechha/shubhechha_background.png",
+    clientCode: 'B57I64I8KU',
+    clientSecret: "203833",
+    coOperativeLogo: 'assets/shubhechha/shubhechha_logo.png',
+    splashImage: "assets/shubhechha/shubhechha_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Shubhechha Saving & Credit Co-operative Ltd.",
+    appTitle: "Shubhechha iSmart",
+  );
+  static final CoOperative currentCoop = babylonCoop;
 }
