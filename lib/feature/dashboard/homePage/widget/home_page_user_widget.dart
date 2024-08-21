@@ -41,8 +41,10 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   String bannerImage = "";
 
   String? imageUrl;
+
   @override
   void initState() {
+    super.initState();
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
     accountDetail =

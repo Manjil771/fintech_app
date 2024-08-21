@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/authentication/ui/widgets/login_widget.dart';
@@ -12,10 +11,6 @@ class LoginPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(

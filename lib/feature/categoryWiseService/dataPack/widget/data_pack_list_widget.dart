@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/model/datapack_model.dart';
@@ -26,8 +25,6 @@ class _DataPackListState extends State<DataPackList> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     if (widget.dataList.isNotEmpty) {
       return ListView.builder(
         scrollDirection: Axis.vertical,

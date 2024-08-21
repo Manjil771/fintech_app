@@ -44,7 +44,7 @@ class ElectricityDetailsWidgets extends StatefulWidget {
 
 class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
   final TextEditingController _amountController = TextEditingController();
-  final ValueNotifier<String> _promoCode = ValueNotifier("");
+  // final ValueNotifier<String> _promoCode = ValueNotifier("");
 
   bool _makeAdvancePayment = false;
 
@@ -79,9 +79,10 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
       return;
     }
 
-    double _totalBillDue = _totalDueAmount;
+    final double _totalBillDue = _totalDueAmount;
 
-    double _totalAdvAmount = double.tryParse(_amountController.text) ?? 0.0;
+    final double _totalAdvAmount =
+        double.tryParse(_amountController.text) ?? 0.0;
     _totalAmountToPay = _totalBillDue + _totalAdvAmount;
     setState(() {});
   }
@@ -141,7 +142,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
         }
 
         if (state is CommonStateSuccess<UtilityResponseData>) {
-          UtilityResponseData _response = state.data;
+          final UtilityResponseData _response = state.data;
           if (_response.status.toLowerCase() == "success".toLowerCase()) {
             NavigationService.push(
                 target: CommonTransactionSuccessPage(
@@ -214,13 +215,17 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                             .selectedAccount
                             .value!
                             .accountNumber,
+                    "customerName": widget.useServiceResponse.findValue<String>(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "Customer Name") ??
+                        ""
                   },
                   body: {
                     "customerId": widget.customerId,
                     "sessionId": widget.useServiceResponse.findValue(
                             primaryKey: "hashResponse",
                             secondaryKey: "sessionId") ??
-                        ""
+                        "",
                   },
                   apiEndpoint: "/api/neapay",
                   mPin: p0);

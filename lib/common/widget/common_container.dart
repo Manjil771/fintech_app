@@ -32,6 +32,8 @@ class CommonContainer extends StatelessWidget {
   final bool showTitleText;
   final double verticalPadding;
   final double horizontalPadding;
+  final VoidCallback? onBackPressed;
+
   final Function(RecentTransactionModel)? onRecentTransactionPressed;
 
   final Function()? onButtonPressed;
@@ -56,13 +58,13 @@ class CommonContainer extends StatelessWidget {
     this.serviceName,
     this.onRecentTransactionPressed,
     this.serviceId = "",
+    this.onBackPressed,
   });
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
 
     return PageWrapper(
       showAppBar: false,
@@ -77,7 +79,10 @@ class CommonContainer extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            ScaffoldTopBar(name: topbarName, showBackButton: showBackBotton),
+            ScaffoldTopBar(
+                name: topbarName,
+                showBackButton: showBackBotton,
+                onBackPressed: onBackPressed ?? () => NavigationService.pop()),
             Expanded(
               child: SingleChildScrollView(
                 child: Container(
@@ -116,35 +121,6 @@ class CommonContainer extends StatelessWidget {
                               ],
                             ),
                           ),
-                          // if (showRecentTransaction)
-                          //   InkWell(
-                          //     // icon: Icons.keyboard_arrow_down_outlined,
-                          //     onTap: () {
-                          //       showModalBottomSheet(
-                          //         context: context,
-                          //         builder: (context) => BottomSheetWrapper(
-                          //           backgroundColor: CustomTheme.white,
-                          //           showTopDivider: true,
-                          //           title: "Recent Transaction",
-                          //           child: Expanded(
-                          //             child: RecentTransactionServiceScreen(
-                          //               serviceId: "",
-                          //               onRecentTransactionPressed: (a) {
-                          //                 NavigationService.pop();
-                          //               },
-                          //               serviceCategoryId: serviceCategoryId,
-                          //               associatedId: associatedId,
-                          //             ),
-                          //           ),
-                          //         ),
-                          //       );
-                          //     },
-                          //     child: SvgPicture.asset(
-                          //       Assets.historyIcon,
-                          //       height: 20,
-                          //       color: _theme.primaryColor,
-                          //     ),
-                          //   ),
                         ],
                       ),
                       SizedBox(height: _height * 0.01),
@@ -167,7 +143,6 @@ class CommonContainer extends StatelessWidget {
                           : Container(),
                       if (showRecentTransaction)
                         InkWell(
-                          // icon: Icons.keyboard_arrow_down_outlined,
                           onTap: () {
                             showModalBottomSheet(
                               context: context,
@@ -199,11 +174,6 @@ class CommonContainer extends StatelessWidget {
                                     service: serviceName,
                                     serviceCategoryId: serviceCategoryId,
                                     associatedId: associatedId),
-                              // SvgPicture.asset(
-                              //   Assets.historyIcon,
-                              //   height: 20,
-                              //   color: _theme.primaryColor,
-                              // ),
                             ],
                           ),
                         ),
@@ -218,14 +188,6 @@ class CommonContainer extends StatelessWidget {
                 ),
               ),
             ),
-            // if (showRecentTransaction)
-            //   RecentTransactionServiceScreen(
-            //       serviceId: serviceId ?? "",
-            //       onRecentTransactionPressed:
-            //           onRecentTransactionPressed ?? (v) {},
-            //       service: serviceName,
-            //       serviceCategoryId: serviceCategoryId,
-            //       associatedId: associatedId),
           ],
         ),
       ),

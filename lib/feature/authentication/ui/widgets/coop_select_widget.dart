@@ -52,7 +52,6 @@ class _CoopSelectWidgetState extends State<CoopSelectWidget> {
     setState(() {});
   }
 
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);

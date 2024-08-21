@@ -6,9 +6,6 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/categoryWiseService/governmentPayment/model/province_list_gov_model.dart';
-import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -18,7 +15,7 @@ class GovnPlaceWidget extends StatefulWidget {
   final bool isProvince;
 
   final accountDetail;
-  GovnPlaceWidget(
+  const GovnPlaceWidget(
       {Key? key,
       required this.onBankSelected,
       required this.serviceIdentifier,
@@ -98,7 +95,7 @@ class _GovnPlaceWidgetState extends State<GovnPlaceWidget> {
               );
             }
             if (state is CommonStateSuccess<UtilityResponseData>) {
-              List _list = state.data.findValue(primaryKey: "data");
+              final List _list = state.data.findValue(primaryKey: "data");
               print(_list);
               return SliverList(
                 delegate: SliverChildBuilderDelegate(
@@ -136,7 +133,7 @@ class _GovnPlaceWidgetState extends State<GovnPlaceWidget> {
                   state.statusCode != 404) {
                 return const SliverFillRemaining(
                   hasScrollBody: false,
-                  child: CommonLoadingWidget(), // TODO Replace with maintenance
+                  child: CommonLoadingWidget(), // TODOReplace with maintenance
                 );
               }
               return SliverFillRemaining(

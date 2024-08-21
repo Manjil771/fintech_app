@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/resources/recent_transaction_repository.dart';
 
@@ -13,11 +12,15 @@ class RecentTransactionCubit extends Cubit<CommonState> {
       {String? service,
       required String serviceCategoryId,
       required String serviceId,
+      String? fromDate,
+      String? toDate,
       required String associatedId}) async {
     emit(CommonLoading());
     try {
-      String mPin = await SecureStorageService.appPassword;
+      // final String mPin = await SecureStorageService.appPassword;
       final response = await recentTransactionRepository.getRecentTransaction(
+          fromDate: fromDate ?? "",
+          toDate: toDate ?? "",
           serviceId: serviceId,
           service: service ?? "SERVICE",
           serviceCategoryId: serviceCategoryId,

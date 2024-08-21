@@ -4,7 +4,6 @@ import 'dart:typed_data';
 import 'package:crop_your_image/crop_your_image.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/image_preview.dart';
@@ -19,7 +18,6 @@ class CropImageView extends StatefulWidget {
 }
 
 class _CropImageViewState extends State<CropImageView> {
-  final bool _isLoading = false;
   Uint8List? _croppedValue;
 
   @override
@@ -32,8 +30,6 @@ class _CropImageViewState extends State<CropImageView> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       body: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

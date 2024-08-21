@@ -16,9 +16,6 @@ class LoadingDialogBox extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-
     return WillPopScope(
       onWillPop: () => Future.value(false),
       child: Dialog(

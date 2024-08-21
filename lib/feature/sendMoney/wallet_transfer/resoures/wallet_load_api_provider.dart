@@ -70,6 +70,7 @@ class WalletLoadAPIProvider {
       "mPin": mPin,
       "remarks": remarks
     };
+
     final _url = coOperative.baseUrl + "/api/wallet/load";
     final _uri = UrlUtils.getUri(url: _url, params: _body);
 

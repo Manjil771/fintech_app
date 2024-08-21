@@ -6,7 +6,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/notification/screen/notification_page.dart';
@@ -25,6 +24,7 @@ class _NotificationCountIconState extends State<NotificationCountIcon> {
 
   @override
   void initState() {
+    super.initState();
     customerDetail = RepositoryProvider.of<CustomerDetailRepository>(context)
         .customerDetailModel;
   }
@@ -42,7 +42,7 @@ class _NotificationCountIconState extends State<NotificationCountIcon> {
       child: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonStateSuccess) {
-            NavigationService.push(target: NotificationPage());
+            NavigationService.push(target: const NotificationPage());
           }
         },
         child: ValueListenableBuilder<CustomerDetailModel?>(

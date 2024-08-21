@@ -15,10 +15,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/cubit/reset_otp_register_cubit.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/resources/reset_otp_register_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/registration_mpin_page.dart';
-import 'package:ismart/feature/authentication/ui/actiateAccount/widget/registration_mpin_widget.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
-import 'package:ismart/feature/authentication/ui/resetPin/screen/input_new_pin_page.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RegisterOtpWidget extends StatefulWidget {
@@ -53,7 +50,7 @@ class _RegisterOtpWidgetState extends State<RegisterOtpWidget> {
               }
 
               if (state is CommonStateSuccess) {
-                UtilityResponseData _response = state.data;
+                final UtilityResponseData _response = state.data;
                 if (_response.status.toLowerCase() == "success".toLowerCase()) {
                   print("navigating to screen");
                   print("navigating to screen 2");
@@ -178,7 +175,7 @@ class _RegisterOtpWidgetState extends State<RegisterOtpWidget> {
                             }
 
                             if (state is CommonStateSuccess) {
-                              UtilityResponseData _response = state.data;
+                              final UtilityResponseData _response = state.data;
 
                               showPopUpDialog(
                                 context: context,

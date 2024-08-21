@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/sendMoney/anyBank/widgets/any_bank_widget.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
 import 'package:ismart/feature/sendMoney/cubits/send_to_bank_cubit.dart';
@@ -14,6 +13,7 @@ class AnyBankpage extends StatelessWidget {
   final String? accountName;
   final String? bankCode;
   final String? bankName;
+  final bool? isScanQr;
 
   const AnyBankpage(
       {Key? key,
@@ -21,14 +21,11 @@ class AnyBankpage extends StatelessWidget {
       this.accountName,
       this.bankCode,
       this.bankName,
+      this.isScanQr,
       this.remarks})
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -51,6 +48,7 @@ class AnyBankpage extends StatelessWidget {
         ),
       ],
       child: AnyBankWidget(
+        isScanQr: isScanQr,
         remarks: remarks,
         accountName: accountName,
         accountNumber: accountNumber,

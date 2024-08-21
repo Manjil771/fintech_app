@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/flight_information_model.dart';
 
@@ -23,10 +22,9 @@ class _AirlinesDetailBottomSheetState extends State<AirlinesDetailBottomSheet> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     final f = widget.flight;
-    List<FlightInformationModel> flights = [
+    final List<FlightInformationModel> flights = [
       FlightInformationModel(title: "Airlines", detail: f.airline),
       FlightInformationModel(title: "Flight Type", detail: f.aircraftType),
       FlightInformationModel(
@@ -67,7 +65,7 @@ class _AirlinesDetailBottomSheetState extends State<AirlinesDetailBottomSheet> {
             itemCount: flights.length,
             itemBuilder: (context, index) {
               return Container(
-                padding: EdgeInsets.symmetric(horizontal: 18),
+                padding: const EdgeInsets.symmetric(horizontal: 18),
                 color: index.isOdd
                     ? CustomTheme.testAppColor.withOpacity(0.05)
                     : CustomTheme.white,

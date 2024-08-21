@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_key_value_tile.dart';
 
 class BusPriceBoxWidget extends StatelessWidget {
@@ -21,14 +19,9 @@ class BusPriceBoxWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-
     return Container(
-      padding: EdgeInsets.all(12),
-      decoration: BoxDecoration(
+      padding: const EdgeInsets.all(12),
+      decoration: const BoxDecoration(
           borderRadius: BorderRadius.horizontal(
               left: Radius.circular(12), right: Radius.circular(12)),
           color: CustomTheme.white),

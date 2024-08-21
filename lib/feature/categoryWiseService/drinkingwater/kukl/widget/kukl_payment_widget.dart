@@ -29,8 +29,6 @@ class KuklPaymentWidget extends StatefulWidget {
 }
 
 class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
-  final TextEditingController _amountController = TextEditingController();
-
   final TextEditingController _customerNoCOntroller = TextEditingController();
 
   final TextEditingController _connectionNumberController =

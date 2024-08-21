@@ -24,7 +24,6 @@ class CommonBox extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _height = SizeUtils.height;
 
     return InkWell(
       onTap: onContainerPress,

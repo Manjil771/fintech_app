@@ -3,7 +3,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/receiveMoney/resources/receive_from_bank_repository.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 
 class ReceiveFromBankCubit extends Cubit<CommonState> {
   ReceiveFromBankRepository receiveFromBankRepository;

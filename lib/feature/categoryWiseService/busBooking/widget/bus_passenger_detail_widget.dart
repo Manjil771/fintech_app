@@ -1,29 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/common_contact_model.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_loading_dialog.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/resources/passenger_detail_model.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_bill_detail_widget.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_nationality.dart';
-import 'package:ismart/feature/categoryWiseService/airlines/widgets/airlines_title_list.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_bill_detail_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class BusPassengerDetailWidget extends StatefulWidget {
@@ -35,7 +22,7 @@ class BusPassengerDetailWidget extends StatefulWidget {
   final selectedBusData;
   final UtilityResponseData response;
 
-  BusPassengerDetailWidget({
+  const BusPassengerDetailWidget({
     Key? key,
     required this.service,
     required this.totalFare,
@@ -60,14 +47,11 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
   final contactNumber = TextEditingController();
   final remarksController = TextEditingController();
 
-  bool _isLoading = false;
   String? boardingPoint;
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
     final List<dynamic> responseData =
         widget.response.findValue(primaryKey: "boardingPoints");
@@ -123,6 +107,7 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
                 if (boardingPoint == null) {
                   return "Please select boarding point";
                 }
+                return null;
               },
               onTap: () {
                 showModalBottomSheet(

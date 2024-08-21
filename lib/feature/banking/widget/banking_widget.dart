@@ -4,7 +4,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
@@ -27,9 +26,6 @@ class _BankingWidgetState extends State<BankingWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return CommonContainer(
       showDetail: false,
       topbarName: "Banking",

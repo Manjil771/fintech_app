@@ -1,5 +1,6 @@
 import 'dart:io';
 import 'dart:math';
+
 import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:image_picker/image_picker.dart';
 
@@ -26,7 +27,7 @@ class ImagePickerUtils {
 
       return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
     }
-    return null;
+    // return null;
   }
 
   static Future<File?> getGallery({bool isVideo = false}) async {
@@ -39,7 +40,6 @@ class ImagePickerUtils {
 
       return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
     }
-    
   }
 
   static Future<File?> compressImage(File file) async {

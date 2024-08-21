@@ -5,15 +5,12 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/scaffold_topbar.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_payment_detail_page.dart';
-import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_payment_detail_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -21,7 +18,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import '../../../../../common/util/size_utils.dart';
 
 class CommonFindInternetUserWidget extends StatefulWidget {
-  CommonFindInternetUserWidget({Key? key, required this.service})
+  const CommonFindInternetUserWidget({Key? key, required this.service})
       : super(key: key);
 
   final ServiceList service;
@@ -43,8 +40,6 @@ class _CommonFindInternetUserWidgetState
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(

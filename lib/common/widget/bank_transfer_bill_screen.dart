@@ -46,12 +46,8 @@ class BankTransferBillPage extends StatelessWidget {
     this.imageUrl,
     required this.otp,
   });
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => SendToBankCubit(
         sendToBankRepository:
@@ -116,7 +112,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     return PageWrapper(

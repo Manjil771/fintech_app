@@ -8,6 +8,7 @@ import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
 
+// ignore: must_be_immutable
 class OutBoundFlightsDesign extends StatefulWidget {
   List<Flight> availableFlights;
   Flight? selectedFlight;
@@ -27,13 +28,11 @@ class OutBoundFlightsDesign extends StatefulWidget {
 
 class _OutBoundFlightsDesignState extends State<OutBoundFlightsDesign> {
   @override
-  Flight? departureFlight;
+  // Flight? departureFlight;
 
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return Container(
       // height: 100,
       // padding: const EdgeInsets.symmetric(vertical: 20),

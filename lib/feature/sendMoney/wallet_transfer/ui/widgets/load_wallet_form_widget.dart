@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -74,10 +75,8 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 if (state.data.code == "M0000") {
                   NavigationService.pushReplacement(
                       target: CommonTransactionSuccessPage(
-                         
                           serviceName: "Load Wallet",
                           body: Column(children: [
-
                             KeyValueTile(
                                 title: "Wallet",
                                 value: _response.findValue(
@@ -195,7 +194,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
             _walletAccountController.text = p0.serviceTo.toString();
 
             _amountController.text = p0.totalAmount.toString();
-            _remarksController.text = p0.remarks.toString();
+            _remarksController.text = p0.customerRemarks.toString();
             setState(() {});
           },
           associatedId: widget.selectedWallet.id.toString(),
@@ -239,10 +238,24 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                           final String? pickedContact =
                               await ContactUtils.pickContact;
                           if (pickedContact != null) {
-                            _walletAccountController.text = pickedContact;
+                            _walletAccountController.text =
+                                removeSpecificPatterns(pickedContact);
                             setState(() {});
                           }
                         },
+                        inputFormatters: [
+                          FilteringTextInputFormatter.allow(RegExp(r'[0-9]')),
+                          TextInputFormatter.withFunction((oldValue, newValue) {
+                            final String newText = newValue.text
+                                .replaceAll('+977', '')
+                                .replaceAll('-', '');
+                            return TextEditingValue(
+                              text: newText,
+                              selection: TextSelection.collapsed(
+                                  offset: newText.length),
+                            );
+                          }),
+                        ],
                         onSuffixPressed: () async {
                           final String phoneNumber =
                               await SecureStorageService.appPhoneNumber;
@@ -291,5 +304,13 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
         ),
       ),
     );
+  }
+
+  String removeSpecificPatterns(String input) {
+    if (input.startsWith('+977')) {
+      input = input.substring(4);
+    }
+    input = input.replaceAll('-', '');
+    return input;
   }
 }

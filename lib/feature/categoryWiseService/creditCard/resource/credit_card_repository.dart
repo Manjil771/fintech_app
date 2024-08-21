@@ -6,8 +6,6 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_api_provider.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_bank_model.dart';
-import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_api_provider.dart';
 
 class CreditCardRepository {
   final UserRepository userRepository;
@@ -29,14 +27,14 @@ class CreditCardRepository {
 
   Future<DataResponse<List<CreditCardBankList>>> getBanksList(
       {required String apiEndpoint}) async {
-    List<CreditCardBankList> _banksList = [];
+    final List<CreditCardBankList> _banksList = [];
     try {
       final _res =
           await creditCardAPIProvider.getBanksList(apiEndpoint: apiEndpoint);
       final _result = Map<String, dynamic>.from(_res);
       if (_result['data']['details'] != null) {
         List.from(_result['data']['details']).forEach((element) {
-          CreditCardBankList _bank = CreditCardBankList.fromJson(element);
+          final CreditCardBankList _bank = CreditCardBankList.fromJson(element);
           _banksList.add(_bank);
         });
         return DataResponse.success(_banksList);

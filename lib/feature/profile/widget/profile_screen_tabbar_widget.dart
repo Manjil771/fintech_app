@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/profile/accountListProfile/screen/acoount_list_profile_page.dart';
 import 'package:ismart/feature/profile/contactUsProfile/screen/contact_us_profile_page.dart';

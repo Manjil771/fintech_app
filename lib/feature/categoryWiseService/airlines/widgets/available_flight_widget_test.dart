@@ -100,8 +100,8 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
   List<String> _items = [];
   final ValueNotifier<int> _currentIndex = ValueNotifier(0);
 
-  final int _leastPrice = 0;
-  final int _highestPrice = 0;
+  // final int _leastPrice = 0;
+  // final int _highestPrice = 0;
   @override
   void initState() {
     super.initState();
@@ -159,7 +159,7 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
     // );
   }
 
-  final _airlinesList = <String>{};
+  // final _airlinesList = <String>{};
 
   // onResetFilterCallback() {
   //   isTimeFilterApplied = false;

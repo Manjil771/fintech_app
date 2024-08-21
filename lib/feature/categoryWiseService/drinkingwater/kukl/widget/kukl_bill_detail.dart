@@ -32,7 +32,7 @@ class KuklBillDetailPage extends StatelessWidget {
   final String sessionAuthenticationSignature;
   final String counterValue;
 
-  KuklBillDetailPage({
+  const KuklBillDetailPage({
     super.key,
     required this.body,
     required this.accountDetails,
@@ -45,12 +45,8 @@ class KuklBillDetailPage extends StatelessWidget {
     required this.sessionAuthenticationSignature,
     required this.counterValue,
   });
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -138,7 +134,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message
@@ -146,8 +142,7 @@ class _KuklBillDetailWidgetState extends State<KuklBillDetailWidget> {
                     .contains("success".toLowerCase())) {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
-                  serviceName: widget.service.service,
-
+                      serviceName: widget.service.service,
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,

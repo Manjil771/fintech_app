@@ -85,9 +85,9 @@ class _PaymentWebViewState extends State<PaymentWebView> {
     super.dispose();
   }
 
-  String? _lastTrackedUri;
+  // String? _lastTrackedUri;
   final bool _hasBeenResponded = false;
-  final int _count = 0;
+  // final int _count = 0;
   _handleRedirection(Uri? uri) async {
     if (uri != null && !_hasBeenResponded) {
       if (uri.toString().toLowerCase().contains("exitme")) {
@@ -117,9 +117,9 @@ class _PaymentWebViewState extends State<PaymentWebView> {
       }
       if (uri.toString().toLowerCase().contains("ismart.devanasoft.com")) {
         print(uri.toString().toLowerCase());
-        final String? merchantTxnId = uri.queryParameters['MerchantTxnId'];
+        // final String? merchantTxnId = uri.queryParameters['MerchantTxnId'];
 
-        Map<String, dynamic> _params = uri.queryParameters;
+        final Map<String, dynamic> _params = uri.queryParameters;
         if (_params.containsKey("status")) {
           if (_params['status'] == 200) {
             showPopUpDialog(

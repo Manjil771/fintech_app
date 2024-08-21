@@ -19,6 +19,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
+// ignore: must_be_immutable
 class AirlinesBillDetailPage extends StatelessWidget {
   final String serviceIdentifier;
   Flight? departureFlight;
@@ -49,12 +50,8 @@ class AirlinesBillDetailPage extends StatelessWidget {
       required this.contactPhoneNumber,
       required this.contactEmail,
       required this.passengerList});
-  final bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
-    final _height = SizeUtils.height;
-    final _width = SizeUtils.width;
-
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
         utilityPaymentRepository:
@@ -78,6 +75,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class AirlinesBillDetailWidget extends StatefulWidget {
   final ServiceList service;
   final List passengerList;
@@ -121,7 +119,6 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _height = SizeUtils.height;
 
     return PageWrapper(
       backgroundColor: CustomTheme.white,
@@ -158,7 +155,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
           }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
                 _response.status.toLowerCase() == "Success" ||
                 _response.message

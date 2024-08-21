@@ -97,6 +97,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
         provisional: false,
         sound: true,
       );
+      // ignore: unused_local_variable
       final _permissionValue =
           await PermissionUtils.notificationPermissionAvailable;
       // if (!_permissionValue) {
@@ -185,6 +186,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
               NavigationService.context,
             );
           } else if (_decodedData is String) {
+            // ignore: unused_local_variable
             final _doesFileExist = File(_decodedData).existsSync();
             // if (_doesFileExist) {
             //   OpenFilex.open(_decodedData);
@@ -222,6 +224,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
           final Map<String, String> _notificationPayload = {
             "data": message.data.isNotEmpty ? json.encode(message.data) : ""
           };
+          // ignore: unused_local_variable
           LocalPushNotification? _pushNotification;
           if (message.data.isNotEmpty) {
             _pushNotification =

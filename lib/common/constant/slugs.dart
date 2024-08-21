@@ -11,7 +11,7 @@ class Slugs {
   static String governmentPayment = "government_payment";
   static String creditCard = "credit_card";
   static String dataPack = "data_pack";
-  static String rideSharing = "ride_sharing";
+  static String rideSharing = "RIDE";
   static String dematShare = "demat_share";
   static String worldCupPackage = "world_cup_package";
 

@@ -4,17 +4,24 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
+import 'package:ismart/feature/more/authenticationScreen/biometric_screen.dart';
+import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
+import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
 String _supportContact =
     RepositoryProvider.of<AppContactRepository>(NavigationService.context)
         .contactNumber;
+
 List<Map<String, dynamic>> _contactUsOptions = [
   {
     "title": "Call Support",
@@ -48,152 +55,186 @@ List<Map<String, dynamic>> _contactUsOptions = [
   },
 ];
 
-class MoreWidget extends StatelessWidget {
-  MoreWidget({Key? key}) : super(key: key);
+// ignore: must_be_immutable
+class MoreWidget extends StatefulWidget {
+  const MoreWidget({Key? key}) : super(key: key);
+
+  @override
+  State<MoreWidget> createState() => _MoreWidgetState();
+}
+
+class _MoreWidgetState extends State<MoreWidget> {
   final List<String> itemImage = [
+    Assets.fingerPrintImage,
+    "assets/icons/pin-code-svgrepo-com 1.svg",
     Assets.discountCalculator,
-    Assets.emiCalculator,
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
     Assets.feedBackIcon
-    // Assets.settingIcon,
-  ];
-  List tapFunction = [
-    () {
-      NavigationService.pushNamed(routeName: Routes.discountCalculator);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.emiCalculator);
-    },
-    () {
-      NavigationService.pushNamed(routeName: Routes.downloadScreen);
-    },
-    () async {
-      final _textTheme = Theme.of(NavigationService.context).textTheme;
-      showModalBottomSheet(
-        context: NavigationService.context,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(30.hp),
-            topRight: Radius.circular(30.hp),
-          ),
-        ),
-        builder: (context) => Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.vertical(
-              top: Radius.circular(24),
-            ),
-          ),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Container(
-                margin: const EdgeInsets.only(top: 24, bottom: 24),
-                height: 4,
-                width: 55,
-                decoration: BoxDecoration(
-                  color: CustomTheme.lightGray.withOpacity(0.4),
-                  borderRadius: BorderRadius.circular(4),
-                ),
-              ),
-              Text(
-                "Choose Option",
-                style: _textTheme.labelLarge!.copyWith(
-                  color: CustomTheme.darkerBlack,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 15,
-                ),
-              ),
-              const Divider(
-                height: 40,
-              ),
-              ...List.generate(
-                _contactUsOptions.length,
-                (index) {
-                  return InkWell(
-                    onTap: _contactUsOptions[index]['action'] as Function(),
-                    child: Container(
-                      padding: EdgeInsets.symmetric(
-                        horizontal: 15.hp,
-                        vertical: 15.hp,
-                      ),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    _contactUsOptions[index]['title'],
-                                    style: _textTheme.bodyLarge!.copyWith(
-                                      fontSize: 12,
-                                      fontWeight: FontWeight.bold,
-                                      color: CustomTheme.primaryColor,
-                                    ),
-                                  ),
-                                  const SizedBox(
-                                    height: 6,
-                                  ),
-                                  Text(
-                                    _supportContact,
-                                    style: _textTheme.bodyLarge!.copyWith(
-                                      color: CustomTheme.darkGray,
-                                    ),
-                                  )
-                                ],
-                              ),
-                              Icon(
-                                Icons.arrow_forward_ios,
-                                color: CustomTheme.primaryColor,
-                              )
-                            ],
-                          )
-                        ],
-                      ),
-                    ),
-                  );
-                },
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-            ],
-          ),
-        ),
-      );
-
-      // if (await canLaunchUrl(Uri.parse("tel:9801132218"))) {
-      //   await launchUrl(Uri.parse("tel:9801132218"));
-      // } else {
-      //   throw 'Could not launch tel:9801132218';
-      // }
-    },
-    () {
-      NavigationService.push(target: const SettingPage());
-    },
-    () {
-      NavigationService.push(target: const FeedBackPage());
-    },
   ];
 
   final List names = [
-    "Discount Calculator",
-    "EMI Calculator",
+    "Biometric",
+    "Change Security Pin",
+    "Calculator",
     "Downloads",
     "Support",
     "Settings",
     "FeedBack",
   ];
+  String mPin = "";
+  @override
+  void initState() {
+    getMpin();
+    super.initState();
+  }
+
+  getMpin() async {
+    mPin = await SecureStorageService.appPassword;
+  }
+
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
+    final List tapFunction = [
+      () {
+        NavigationService.push(
+            target: AuthenticationScreen(
+          onValueCallback: (p0) {},
+        ));
+      },
+      () {
+        NavigationService.push(
+            target: TransactionPinScreen(
+          showBiometric: false,
+          onValueCallback: (p0) {
+            NavigationService.pop();
+
+            if (p0 == mPin) {
+              NavigationService.push(
+                  target: ChangeMpinPage(
+                oldMpin: p0,
+              ));
+            } else {
+              print("mpin is $mPin");
+              SnackBarUtils.showErrorBar(
+                  context: NavigationService.context,
+                  message: "Invalid Security Pin .Please try again.");
+            }
+          },
+        ));
+      },
+      () {
+        NavigationService.push(target: const CalculatorScreen());
+      },
+      () {
+        NavigationService.pushNamed(routeName: Routes.downloadScreen);
+      },
+      () async {
+        final _textTheme = Theme.of(NavigationService.context).textTheme;
+        showModalBottomSheet(
+          context: NavigationService.context,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(30.hp),
+              topRight: Radius.circular(30.hp),
+            ),
+          ),
+          builder: (context) => Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.vertical(
+                top: Radius.circular(24),
+              ),
+            ),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 24, bottom: 24),
+                  height: 4,
+                  width: 55,
+                  decoration: BoxDecoration(
+                    color: CustomTheme.lightGray.withOpacity(0.4),
+                    borderRadius: BorderRadius.circular(4),
+                  ),
+                ),
+                Text(
+                  "Choose Option",
+                  style: _textTheme.labelLarge!.copyWith(
+                    color: CustomTheme.darkerBlack,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 15,
+                  ),
+                ),
+                const Divider(
+                  height: 40,
+                ),
+                ...List.generate(
+                  _contactUsOptions.length,
+                  (index) {
+                    return InkWell(
+                      onTap: _contactUsOptions[index]['action'] as Function(),
+                      child: Container(
+                        padding: EdgeInsets.symmetric(
+                          horizontal: 15.hp,
+                          vertical: 15.hp,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      _contactUsOptions[index]['title'],
+                                      style: _textTheme.bodyLarge!.copyWith(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.bold,
+                                        color: CustomTheme.primaryColor,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      height: 6,
+                                    ),
+                                    Text(
+                                      _supportContact,
+                                      style: _textTheme.bodyLarge!.copyWith(
+                                        color: CustomTheme.darkGray,
+                                      ),
+                                    )
+                                  ],
+                                ),
+                                Icon(
+                                  Icons.arrow_forward_ios,
+                                  color: CustomTheme.primaryColor,
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
+                const SizedBox(
+                  height: 30,
+                ),
+              ],
+            ),
+          ),
+        );
+      },
+      () {
+        NavigationService.push(target: const SettingPage());
+      },
+      () {
+        NavigationService.push(target: const FeedBackPage());
+      },
+    ];
+
     return CommonContainer(
       showTitleText: false,
       body: GridView.builder(

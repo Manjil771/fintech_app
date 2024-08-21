@@ -15,18 +15,15 @@ class SplashWidget extends StatefulWidget {
 }
 
 class _SplashWidgetState extends State<SplashWidget> {
-  String _splashAsset = "";
+  // String _splashAsset = "";
   @override
   void initState() {
-    _splashAsset = RepositoryProvider.of<CoOperative>(context).splashImage;
+    // _splashAsset = RepositoryProvider.of<CoOperative>(context).splashImage;
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-
     return BlocListener<StartupCubit, StartupState>(
       listener: (context, state) {
         if (state is StartupSuccess) {

@@ -1,14 +1,10 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/common_transaction_success_screen.dart';
@@ -16,13 +12,10 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/receiveMoney/cubit/khalti_txn_confirm_cubit.dart';
 import 'package:ismart/feature/receiveMoney/cubit/receive_money_cubit.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
-import 'package:ismart/feature/sendMoney/resources/send_to_bank_repository.dart';
 import 'package:khalti_checkout_flutter/khalti_checkout_flutter.dart';
 
 class LoadFromKhaltiWidget extends StatefulWidget {
@@ -35,11 +28,11 @@ class LoadFromKhaltiWidget extends StatefulWidget {
 class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
   Khalti? khalti;
 
-  String _token = "";
+  //  String _token = "";
 
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
-  final TextEditingController _bankNameController = TextEditingController();
+  // final TextEditingController _bankNameController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   Bank? selectedBank;
   String? pidx;
@@ -48,7 +41,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
   void initState() {
     // TODO: implement initState
 
-    _token = RepositoryProvider.of<UserRepository>(context).token;
+    // _token = RepositoryProvider.of<UserRepository>(context).token;
 
     super.initState();
   }

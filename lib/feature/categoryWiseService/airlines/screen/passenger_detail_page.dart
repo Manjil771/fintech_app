@@ -7,6 +7,7 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
+// ignore: must_be_immutable
 class PassengerDetailScreen extends StatelessWidget {
   Flight? departureFlight;
   final UtilityResponseData utilityResponseData;

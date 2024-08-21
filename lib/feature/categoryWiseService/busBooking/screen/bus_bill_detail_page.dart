@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/models/common_contact_model.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_bill_detail_widget.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -35,10 +34,6 @@ class BusBillDetailPage extends StatelessWidget {
       : super(key: key);
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:

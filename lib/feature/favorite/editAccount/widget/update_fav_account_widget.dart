@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
-import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -13,9 +11,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
-import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
-import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/sendMoney/models/bank.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -32,7 +28,7 @@ class UpdateFavAccountWidget extends StatefulWidget {
   final String remainderType;
   final String serviceInfoType;
 
-  UpdateFavAccountWidget({
+  const UpdateFavAccountWidget({
     super.key,
     this.accountNumber,
     this.accountName,
@@ -54,7 +50,7 @@ class _UpdateFavAccountWidgetState extends State<UpdateFavAccountWidget> {
   String? branchCode;
   InternalBranch? selectedIDFromQr;
 
-  final TextEditingController _bankNameController = TextEditingController();
+  // final TextEditingController _bankNameController = TextEditingController();
   final TextEditingController _selectedBankController = TextEditingController();
   final TextEditingController _accountNumberController =
       TextEditingController();

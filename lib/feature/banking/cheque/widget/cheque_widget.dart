@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_block_page.dart';
@@ -12,7 +11,6 @@ class ChequeWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
     return PageWrapper(
         body: CommonContainer(
@@ -44,13 +42,13 @@ class ChequeWidget extends StatelessWidget {
                   ),
                   unselectedLabelColor: CustomTheme.darkGray,
                   // automaticIndicatorColorAdjustment: true,
-                  tabs: [
+                  tabs: const [
                     Tab(text: "Cheque Request"),
                     Tab(text: "Cheque Stop"),
                   ],
                 ),
               ),
-              Expanded(
+              const Expanded(
                 child: TabBarView(
                   children: [
                     ChequeRequestScreen(),

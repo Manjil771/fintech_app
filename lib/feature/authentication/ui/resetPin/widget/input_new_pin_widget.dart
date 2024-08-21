@@ -4,7 +4,6 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
-import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -15,6 +14,7 @@ import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/resetPin/cubit/reset_pin_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
+// ignore: must_be_immutable
 class InputNewPinWidget extends StatelessWidget {
   final String otp;
   final String mobileNumber;
@@ -26,10 +26,6 @@ class InputNewPinWidget extends StatelessWidget {
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-    final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
     return PageWrapper(
       showAppBar: false,
       body: BlocListener<ResetPinCubit, CommonState>(
@@ -54,7 +50,7 @@ class InputNewPinWidget extends StatelessWidget {
           }
 
           if (state is CommonStateSuccess) {
-            UtilityResponseData _response = state.data;
+            final UtilityResponseData _response = state.data;
             if (_response.status.toLowerCase() == "success".toLowerCase()) {
               showPopUpDialog(
                 context: context,
@@ -84,7 +80,7 @@ class InputNewPinWidget extends StatelessWidget {
         },
         child: Column(
           children: [
-            Container(height: 70.hp, child: IsmartTopWidget()),
+            Container(height: 70.hp, child: const IsmartTopWidget()),
             Expanded(
               child: CommonContainer(
                   onButtonPressed: () {
@@ -125,6 +121,7 @@ class InputNewPinWidget extends StatelessWidget {
                               if (value!.length != 5) {
                                 return "Enter 5 digits pin.";
                               }
+                              return null;
                             }),
                         CustomTextField(
                             textInputType: TextInputType.number,
@@ -136,6 +133,7 @@ class InputNewPinWidget extends StatelessWidget {
                               if (value != _pinController.text) {
                                 return "Confirm Pin doesnot match.";
                               }
+                              return null;
                             }),
                       ],
                     ),
