@@ -150,26 +150,26 @@ class _CategoriesWiseServicesWidgetState
     // .where((e) =>
     // e.uniqueIdentifier.toString().toLowerCase() == uniqueIdentifier)
     // .toList();
-    final servicess = searchItems[index];
+    final searchedService = searchItems[index];
 
     if (widget.categoryIdentifier.toLowerCase() == Slugs.tv.toLowerCase()) {
       if (serviceIdentifier.toLowerCase() ==
           Slugs.netTvOnlineTopup.toLowerCase()) {
         NavigationService.push(
             target: NetTvPaymentPage(
-          service: servicess,
+          service: searchedService,
         ));
       } else {
         NavigationService.push(
             target: TvPaymentPage(
-          service: servicess,
+          service: searchedService,
         ));
       }
     }
     if (serviceIdentifier.toLowerCase() == "digital_dakshina_service") {
       NavigationService.push(
           target: QRScannerScreens(
-        remarks: servicess.instructions,
+        remarks: searchedService.instructions,
       ));
     }
     if (widget.categoryIdentifier.toLowerCase() == "internet".toLowerCase()) {
@@ -177,13 +177,13 @@ class _CategoriesWiseServicesWidgetState
           Slugs.worldlinkPayment.toLowerCase()) {
         NavigationService.push(
             target: FindInternetUserScreen(
-          service: servicess,
+          service: searchedService,
         ));
       } else if (serviceIdentifier.toLowerCase() ==
           "subisu_online_topup".toLowerCase()) {
         NavigationService.push(
             target: SubisuPaymentPage(
-          service: servicess,
+          service: searchedService,
         ));
       } else if (serviceIdentifier.toLowerCase() ==
               Slugs.alishaTopup.toLowerCase() ||
@@ -206,12 +206,12 @@ class _CategoriesWiseServicesWidgetState
               Slugs.metrolinkTopup.toLowerCase()) {
         NavigationService.push(
             target: CommonInternetWithAmountPage(
-          service: servicess,
+          service: searchedService,
         ));
       } else {
         NavigationService.push(
             target: CommonInternetPage(
-          service: servicess,
+          service: searchedService,
         ));
       }
     }
@@ -220,7 +220,7 @@ class _CategoriesWiseServicesWidgetState
         Slugs.rideSharing.toLowerCase()) {
       NavigationService.push(
           target: RidePaymentPage(
-        service: servicess,
+        service: searchedService,
       ));
     }
     // if (serviceIdentifier == Slugs.pathaoTopup) {
@@ -233,42 +233,48 @@ class _CategoriesWiseServicesWidgetState
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(
           target: KhanePaniPage(
-        service: servicess,
+        service: searchedService,
       ));
     } else if (serviceIdentifier.toLowerCase() == Slugs.kukl.toLowerCase()) {
       NavigationService.push(
           target: KuklPaymentPage(
-        service: servicess,
+        service: searchedService,
       ));
     }
     if (widget.categoryIdentifier == "data_pack") {
       NavigationService.push(
           target: SelectDatapackScreen(
-        service: servicess,
+        service: searchedService,
       ));
     }
 
     if (widget.categoryIdentifier.toLowerCase() == "insurance".toLowerCase()) {
-      if (serviceIdentifier.toLowerCase() ==
-              "nepal_life_insurance".toLowerCase() ||
-          serviceIdentifier.toLowerCase() ==
-              "reliance_life_insurance".toLowerCase() ||
-          serviceIdentifier.toLowerCase() ==
-              "Union_Life_Insurance".toLowerCase() ||
-          serviceIdentifier.toLowerCase() ==
-              "prabhu_life_insurance".toLowerCase() ||
-          serviceIdentifier.toLowerCase() ==
-              "sura_life_insurance".toLowerCase() ||
-          serviceIdentifier.toLowerCase() ==
-              Slugs.jyotiLifeInsurance.toLowerCase()) {
+      // if (serviceIdentifier.toLowerCase() ==
+      //         "nepal_life_insurance".toLowerCase() ||
+      //     serviceIdentifier.toLowerCase() ==
+      //         "reliance_life_insurance".toLowerCase() ||
+      //     serviceIdentifier.toLowerCase() ==
+      //         "Union_Life_Insurance".toLowerCase() ||
+      //     serviceIdentifier.toLowerCase() ==
+      //         "prabhu_life_insurance".toLowerCase() ||
+      //     serviceIdentifier.toLowerCase() ==
+      //         "sura_life_insurance".toLowerCase() ||
+      //     serviceIdentifier.toLowerCase() ==
+      //         Slugs.jyotiLifeInsurance.toLowerCase()) {
+      //   NavigationService.push(
+      //       target: LifeInsurancePage(
+      //     service: servicess,
+      //   ));
+      if (searchedService.labelPrefix.toString().toLowerCase() ==
+          "lifeinsurance") {
         NavigationService.push(
             target: LifeInsurancePage(
-          service: servicess,
+          service: searchedService,
         ));
       } else {
         NavigationService.push(
             target: NonLifeInsurancePage(
-          service: servicess,
+          service: searchedService,
         ));
       }
     }
@@ -277,18 +283,18 @@ class _CategoriesWiseServicesWidgetState
           "traffic_fine_payments".toLowerCase()) {
         NavigationService.push(
             target: TrafficFinePaymentPage(
-          service: servicess,
+          service: searchedService,
         ));
       } else if (serviceIdentifier.toLowerCase() ==
           Slugs.bluebookRenewal.toLowerCase()) {
         NavigationService.push(
             target: BlueBookRenewalPage(
-          service: servicess,
+          service: searchedService,
         ));
       } else {
         NavigationService.push(
             target: GovernmentPaymentPage(
-          services: servicess,
+          services: searchedService,
         ));
       }
     }

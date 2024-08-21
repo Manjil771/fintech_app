@@ -205,8 +205,8 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                                         context)
                                     .selectedAccount
                                     .value!
-                                    .accountNumber),
-                        SizedBox(height: 10.hp),
+                                    .mainCode),
+                        SizedBox(height: 5.hp),
                         widget.body,
                         KeyValueTile(
                             title: "Cashback",
