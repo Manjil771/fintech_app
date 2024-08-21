@@ -285,7 +285,7 @@ flutter:
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
-    # - assets/babylon/
+    - assets/babylon/
     # - assets/shakambhari/
     # - assets/tarkariphalafool/
     # - assets/abhinna/
@@ -339,7 +339,8 @@ flutter:
     # - assets/skDhankuta/ 
     # - assets/skChisapani/ 
     # - assets/siddhibinayak/
-    - assets/gaunle/
+    # - assets/gaunle/
+    # - assets/kendradip/
     
  
  

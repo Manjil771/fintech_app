@@ -151,7 +151,7 @@ class _ChangeMpinWidgetState extends State<ChangeMpinWidget> {
                       children: [
                         SizedBox(height: 10.hp),
                         const Text(
-                          "Confirm mPin",
+                          "Confirm Security Pin",
                           style: TextStyle(
                             fontFamily: Fonts.poppin,
                             fontWeight: FontWeight.w600,

@@ -1297,6 +1297,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        kendradip {
+            dimension "app"
+            applicationId "com.devanasoft.kendradip"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         kabil {
             dimension "app"
             applicationId "com.devanasoft.kabil"

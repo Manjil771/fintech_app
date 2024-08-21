@@ -3502,8 +3502,22 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/gaunle/gaunle_logo.png',
     splashImage: "assets/gaunle/gaunle_splash.png",
     primaryColor: const Color(0xFF39a748),
-    coOperativeName: "gaunle Saving & Credit Co-operative Ltd.",
-    appTitle: "gaunle iSmart",
+    coOperativeName: "Gaunle Saving & Credit Co-operative Ltd.",
+    appTitle: "Gaunle iSmart",
   );
-  static final CoOperative currentCoop = siddhibinayak;
+  static final CoOperative kendradipCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.kendradip",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kendradip/kendradip_banner.png",
+    backgroundImage: "assets/kendradip/kendradip_background.png",
+    clientCode: 'M4JWL4D8XH',
+    clientSecret: "112472",
+    coOperativeLogo: 'assets/kendradip/kendradip_logo.png',
+    splashImage: "assets/kendradip/kendradip_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Kendradip Saving & Credit Co-operative Ltd.",
+    appTitle: "Kendradip iSmart",
+  );
+  static final CoOperative currentCoop = babylonCoop;
 }
