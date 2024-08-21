@@ -155,7 +155,7 @@ flutter:
     # - assets/bishnudol/
     # - assets/annapurna/
     # - assets/kanchanjungha/
-    # - assets/janasewa/
+    - assets/janasewa/
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
@@ -320,7 +320,7 @@ flutter:
     # - assets/arjunchaupari/  
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
-    - assets/shubhechha/
+    # - assets/shubhechha/
  
 
     
@@ -338,7 +338,7 @@ flutter:
     # - assets/sklakhanpur/ 
     # - assets/skDhankuta/ 
     # - assets/skChisapani/ 
-    - assets/siddhibinayak/
+    # - assets/siddhibinayak/
     
  
  
