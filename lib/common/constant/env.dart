@@ -3491,5 +3491,19 @@ class CoOperativeValue {
     coOperativeName: "Shubhechha Saving & Credit Co-operative Ltd.",
     appTitle: "Shubhechha iSmart",
   );
-  static final CoOperative currentCoop = janasewaCoop;
+  static final CoOperative gaunleCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.gaunle",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/gaunle/gaunle_banner.png",
+    backgroundImage: "assets/gaunle/gaunle_background.png",
+    clientCode: '911EUG1XBM',
+    clientSecret: "163386",
+    coOperativeLogo: 'assets/gaunle/gaunle_logo.png',
+    splashImage: "assets/gaunle/gaunle_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "gaunle Saving & Credit Co-operative Ltd.",
+    appTitle: "gaunle iSmart",
+  );
+  static final CoOperative currentCoop = siddhibinayak;
 }
