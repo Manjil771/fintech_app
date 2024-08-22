@@ -10,6 +10,7 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -74,7 +75,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
               merchantNameController.text =
                   state.data.findValue(primaryKey: "merchant_name");
               merchantIdController.text =
-                  state.data.findValue(primaryKey: "merchant_id");
+                  state.data.findValue(primaryKey: "merchant_id").toString();
               if (state.data.findValueString("amount").toString() != "null") {
                 isFixedAmount = true;
                 amountController.text = state.data.findValueString("amount");
@@ -90,10 +91,17 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Image.network(
-                          RepositoryProvider.of<CoOperative>(context).baseUrl +
-                              state.data.findValue(primaryKey: "imageUrl"),
+                        CustomCachedNetworkImage(
+                          url: RepositoryProvider.of<CoOperative>(context)
+                                  .baseUrl +
+                              state.data
+                                  .findValue(primaryKey: "imageUrl")
+                                  .toString(),
                           height: _height * 0.05,
+                          fit: BoxFit.cover,
+                          customPlaceHolder: Image.asset(
+                              RepositoryProvider.of<CoOperative>(context)
+                                  .coOperativeLogo),
                         ),
                         CustomTextField(
                           readOnly: true,
