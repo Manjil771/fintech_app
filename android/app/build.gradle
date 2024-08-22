@@ -1303,6 +1303,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        taksar {
+            dimension "app"
+            applicationId "com.devanasoft.taksar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         skWaling {
             dimension "app"
             applicationId "com.devanasoft.skWaling"

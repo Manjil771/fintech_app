@@ -3525,8 +3525,8 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/uddhyamshilata/uddhyamshilata_banner.png",
     backgroundImage: "assets/uddhyamshilata/uddhyamshilata_background.png",
-    clientCode: 'M4JWL4D8XH', //have to change
-    clientSecret: "112472", //have to change
+    clientCode: '2SFNMB8NYB',
+    clientSecret: "164526",
     coOperativeLogo: 'assets/uddhyamshilata/uddhyamshilata_logo.png',
     splashImage: "assets/uddhyamshilata/uddhyamshilata_splash.png",
     primaryColor: const Color(0xFF39a748),
@@ -3547,5 +3547,19 @@ class CoOperativeValue {
     coOperativeName: "Walling Sana Kisan Krishi Sahakari Ltd.",
     appTitle: "SFACL Waling iSmart",
   );
-  static final CoOperative currentCoop = gaunleCoop;
+  static final CoOperative taksarCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.taksar",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/taksar/taksar_banner.png",
+    backgroundImage: "assets/taksar/taksar_background.png",
+    clientCode: 'BTOEHC7LZE',
+    clientSecret: "123357",
+    coOperativeLogo: 'assets/taksar/taksar_logo.png',
+    splashImage: "assets/taksar/taksar_splash.png",
+    primaryColor: const Color(0xFFf38a2c),
+    coOperativeName: "Taksar Saving & Credit Co-operative Ltd.",
+    appTitle: "Taksar iSmart",
+  );
+  static final CoOperative currentCoop = taksarCoop;
 }

@@ -116,4 +116,5 @@ class Assets {
   static const String loanStatement = "assets/icons/Group 1008.svg";
   static const String loanSchedule = "assets/icons/Group 1069.svg";
   static const String eventIcon = "assets/icons/event icon.svg";
+  static const String calenderIcon = "assets/icons/calender.svg";
 }
