@@ -285,7 +285,7 @@ flutter:
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
-    - assets/babylon/
+    # - assets/babylon/
     # - assets/shakambhari/
     # - assets/tarkariphalafool/
     # - assets/abhinna/
@@ -321,6 +321,7 @@ flutter:
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
     # - assets/shubhechha/
+    - assets/uddhyamshilata/
  
 
     

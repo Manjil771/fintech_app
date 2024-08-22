@@ -3519,5 +3519,19 @@ class CoOperativeValue {
     coOperativeName: "Kendradip Saving & Credit Co-operative Ltd.",
     appTitle: "Kendradip iSmart",
   );
-  static final CoOperative currentCoop = babylonCoop;
+  static final CoOperative uddhyamshilataCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.uddhyamshilata",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/uddhyamshilata/uddhyamshilata_banner.png",
+    backgroundImage: "assets/uddhyamshilata/uddhyamshilata_background.png",
+    clientCode: 'M4JWL4D8XH',   //have to change 
+    clientSecret: "112472",   //have to change 
+    coOperativeLogo: 'assets/uddhyamshilata/uddhyamshilata_logo.png',
+    splashImage: "assets/uddhyamshilata/uddhyamshilata_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Uddhyamshilata Saving & Credit Co-operative Ltd.",
+    appTitle: "Uddhyamshilata iSmart",
+  );
+  static final CoOperative currentCoop = uddhyamshilataCoop;
 }
