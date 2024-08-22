@@ -62,15 +62,15 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     NavigationService.push(target: const EmiCalculatorPage());
                   },
                   detail: "",
-                  title: "Emi Calculator"),
+                  title: "EMI Calculator"),
               const Divider(thickness: 1),
               CommonDetailBox(
-                  leadingImage: Assets.calanderIcon,
+                  leadingImage: Assets.calenderIconDark,
                   onBoxPressed: () {
                     NavigationService.push(target: const DateCalculatorPage());
                   },
                   detail: "",
-                  title: "Date Convetor"),
+                  title: "Date Converter"),
               const Divider(thickness: 1),
             ],
           ),
