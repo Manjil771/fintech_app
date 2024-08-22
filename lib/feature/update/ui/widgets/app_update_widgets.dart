@@ -5,14 +5,12 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
-
 import 'package:ismart/common/constant/constants.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
-
 import 'package:ismart/common/widget/page_wrapper.dart';
 
 class AppUpdateWidgets extends StatelessWidget {
@@ -81,9 +79,9 @@ class AppUpdateWidgets extends StatelessWidget {
               CustomRoundedButtom(
                 title: "Update Now",
                 onPressed: () {
-                  String _appStoreID =
+                  final String _appStoreID =
                       RepositoryProvider.of<CoOperative>(context).appStoreID;
-                  String _packageName =
+                  final String _packageName =
                       RepositoryProvider.of<CoOperative>(context).packageName;
                   if (Platform.isAndroid) {
                     UrlLauncher.launchWebsite(

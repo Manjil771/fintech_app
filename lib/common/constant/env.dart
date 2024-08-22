@@ -222,7 +222,7 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://103.198.9.203:8080/',
+    baseUrl: 'http://45.117.153.192:8082/',
     bannerImage: "assets/images/ismart_banner.png",
     clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",

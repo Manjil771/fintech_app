@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/date_formater.dart';
@@ -60,7 +62,10 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                 service: widget.service,
                 apiEndpoint: "/api/insurance/pay",
                 apiBody: {
-                  "policyNo": policyNoController.text,
+                  "policyNo": _response.findValue(
+                    primaryKey: "hashResponse",
+                    secondaryKey: "policyNo",
+                  ),
                   "policyName": _response.findValue(
                     primaryKey: "hashResponse",
                     secondaryKey: "policyName",
@@ -69,8 +74,6 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                   // "IsNepDob": false,
                   // "isNepDob": false,
                   // "is_nep_dob": false,
-
-                  // "username": policyNoController.text
                 },
                 accountDetails: {
                   "account_number":
@@ -81,21 +84,9 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                   "amount": _response.findValue(
                       primaryKey: "hashResponse", secondaryKey: "amount"),
                   "dob": selectedDateController.text,
-                  // "IsNepDob": false,
-                  // "isNepDob": false,
-                  // "is_nep_dob": false,
                 },
                 body: Column(
                   children: [
-                    KeyValueTile(
-                      title: "Policy Number",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "policyNo",
-                          )
-                          .toString(),
-                    ),
                     KeyValueTile(
                       title: "Username",
                       value: _response
@@ -105,16 +96,61 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           )
                           .toString(),
                     ),
-                    KeyValueTile(
-                      title: "Amount",
+                    checkEmptyCase(
+                      title: "Address",
                       value: _response
                           .findValue(
                             primaryKey: "hashResponse",
-                            secondaryKey: "amount",
+                            secondaryKey: "address",
                           )
                           .toString(),
                     ),
                     KeyValueTile(
+                      title: "Policy Number",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "policyNo",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Payment Mode",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "paymentMode",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Session Id",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "sessionId",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Product Name",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "productName",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Customer Id",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "customerId",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
                       title: "Premium",
                       value: _response
                           .findValue(
@@ -123,7 +159,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           )
                           .toString(),
                     ),
-                    KeyValueTile(
+                    checkEmptyCase(
                       title: "Due Date",
                       value: _response
                           .findValue(
@@ -132,7 +168,34 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                           )
                           .toString(),
                     ),
-                    KeyValueTile(
+                    checkEmptyCase(
+                      title: "Invoice Number",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "invoiceNumber",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Due Date",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "nextDueDate",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
+                      title: "Amount",
+                      value: _response
+                          .findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "amount",
+                          )
+                          .toString(),
+                    ),
+                    checkEmptyCase(
                       title: "Penalty",
                       value: _response
                           .findValue(
@@ -228,33 +291,34 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                       }
                       return null;
                     },
-
                     inputFormatters: [
                       FilteringTextInputFormatter.allow(RegExp("[0-9/]")),
                       LengthLimitingTextInputFormatter(10),
                       DateFormatter()
                     ],
-                    // onTap: () async {
-                    //   final date = await showDatePicker(
-                    //       context: context,
-                    //       initialDate: DateTime.now(),
-                    //       firstDate: DateTime(1905),
-                    //       lastDate: DateTime.now());
-                    //   setState(
-                    //     () {
-                    //       selectedDateController.text =
-                    //           "${date!.year}-${date.month}-${date.day}";
-                    //     },
-                    //   );
-                    // },
+                    onTap: () async {
+                      final date = await showDatePicker(
+                          context: context,
+                          initialDate: DateTime.now(),
+                          firstDate: DateTime(1905),
+                          lastDate: DateTime.now());
+                      setState(
+                        () {
+                          selectedDateController.text =
+                              "${date!.year}-${date.month}-${date.day}";
+                        },
+                      );
+                    },
+                    readOnly: true,
                     title: "Date of Birth",
                     hintText: "yyyy-mm-dd",
-
                     controller: selectedDateController,
-                    // trailing: SvgPicture.asset(
-                    //   Assets.calanderIcon,
-                    //   height: _height * 0.05,
-                    // ),
+                    trailing: SvgPicture.asset(
+                      Assets.calanderIcon,
+                      height: 40.hp,
+                      colorFilter: const ColorFilter.mode(
+                          Colors.black54, BlendMode.srcIn),
+                    ),
                   ),
                 ],
               )
@@ -277,5 +341,13 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
         },
       ),
     ));
+  }
+
+  checkEmptyCase({required String title, required String value}) {
+    if (value.isNotEmpty) {
+      return KeyValueTile(title: title, value: value);
+    } else {
+      return Container();
+    }
   }
 }

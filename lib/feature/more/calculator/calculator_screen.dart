@@ -5,6 +5,7 @@ import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/more/dateCalculator/date_calculator_page.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
 
@@ -62,6 +63,14 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   },
                   detail: "",
                   title: "Emi Calculator"),
+              const Divider(thickness: 1),
+              CommonDetailBox(
+                  leadingImage: Assets.calanderIcon,
+                  onBoxPressed: () {
+                    NavigationService.push(target: const DateCalculatorPage());
+                  },
+                  detail: "",
+                  title: "Date Convetor"),
               const Divider(thickness: 1),
             ],
           ),
