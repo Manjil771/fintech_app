@@ -3525,13 +3525,27 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/uddhyamshilata/uddhyamshilata_banner.png",
     backgroundImage: "assets/uddhyamshilata/uddhyamshilata_background.png",
-    clientCode: 'M4JWL4D8XH',   //have to change 
-    clientSecret: "112472",   //have to change 
+    clientCode: 'M4JWL4D8XH', //have to change
+    clientSecret: "112472", //have to change
     coOperativeLogo: 'assets/uddhyamshilata/uddhyamshilata_logo.png',
     splashImage: "assets/uddhyamshilata/uddhyamshilata_splash.png",
     primaryColor: const Color(0xFF39a748),
     coOperativeName: "Uddhyamshilata Saving & Credit Co-operative Ltd.",
     appTitle: "Uddhyamshilata iSmart",
   );
-  static final CoOperative currentCoop = uddhyamshilataCoop;
+  static final CoOperative skWaling = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skWaling",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skWaling/skWaling_banner.png",
+    backgroundImage: "assets/skWaling/skWaling_background.png",
+    clientCode: 'A5WTU7I355',
+    clientSecret: "191744",
+    coOperativeLogo: 'assets/skWaling/skWaling_logo.png',
+    splashImage: "assets/skWaling/skWaling_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Walling Sana Kisan Krishi Sahakari Ltd.",
+    appTitle: "SFACL Waling iSmart",
+  );
+  static final CoOperative currentCoop = gaunleCoop;
 }

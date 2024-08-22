@@ -321,9 +321,10 @@ flutter:
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
     # - assets/shubhechha/
-    - assets/uddhyamshilata/
- 
-
+    # - assets/uddhyamshilata/
+    - assets/gaunle/
+    # - assets/kendradip/
+    # - assets/siddhibinayak/
     
     
     # sana kishan assets
@@ -339,10 +340,7 @@ flutter:
     # - assets/sklakhanpur/ 
     # - assets/skDhankuta/ 
     # - assets/skChisapani/ 
-    # - assets/siddhibinayak/
-    # - assets/gaunle/
-    # - assets/kendradip/
-    
+    # - assets/skWaling/
  
  
  
