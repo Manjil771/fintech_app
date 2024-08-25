@@ -76,6 +76,12 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                   // "is_nep_dob": false,
                 },
                 accountDetails: {
+                  "sessionId": _response
+                      .findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "sessionId",
+                      )
+                      .toString(),
                   "account_number":
                       RepositoryProvider.of<CustomerDetailRepository>(context)
                           .selectedAccount
