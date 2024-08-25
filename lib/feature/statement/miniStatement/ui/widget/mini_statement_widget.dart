@@ -215,60 +215,69 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                         }
                       }),
                   if (state.data.ministatementList.isNotEmpty)
-                    DataTable(
-                      sortAscending: false,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                        sortAscending: false,
 
-                      columnSpacing: _width / 5,
-                      headingRowHeight: 40,
-                      dataTextStyle:
-                          const TextStyle(fontSize: 12, color: Colors.black),
-                      headingRowColor:
-                          const MaterialStatePropertyAll(Colors.black12),
-                      columns: const [
-                        DataColumn(
-                            label: Text(
-                          "Date",
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        )),
-                        DataColumn(
-                            label: Text("Amount",
-                                style: TextStyle(fontWeight: FontWeight.w700))),
-                        DataColumn(
-                            label: Text("Status",
-                                style: TextStyle(fontWeight: FontWeight.w700))),
-                      ],
-                      rows: List.from(getList(dataList: res))
-                          .map((e) => DataRow(
-                                cells: [
-                                  DataCell(Text(e.transactionDate.toString())),
-                                  // DataCell(Text(
-                                  //     "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
-                                  DataCell(Text(
-                                    e.amount.toString(),
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                  DataCell(Text(
-                                    e.credit ? "Deposit" : "Withdrawl",
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                ],
-                              ))
-                          .toList(),
+                        columnSpacing: _width / 5,
+                        headingRowHeight: 40,
+                        dataTextStyle:
+                            const TextStyle(fontSize: 12, color: Colors.black),
+                        headingRowColor:
+                            const MaterialStatePropertyAll(Colors.black12),
+                        columns: const [
+                          DataColumn(
+                              label: Text(
+                            "Date",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          )),
+                          DataColumn(
+                              label: Text("Amount",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                          DataColumn(
+                              label: Text("Status",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                        ],
+                        rows: List.from(getList(dataList: res))
+                            .map((e) => DataRow(
+                                  cells: [
+                                    DataCell(Text(
+                                      "${e.transactionDate.toString().substring(0, 10)}\n${e.transactionDate.toString().substring(10)}",
+                                      textAlign: TextAlign.start,
+                                    )),
+                                    // DataCell(Text(
+                                    //     "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
+                                    DataCell(Text(
+                                      e.amount.toString(),
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
 
-                      // DataRow(cells: [
-                      //   DataCell(Text(state.data.ministatementList[0].remarks)),
-                      //   DataCell(Text(state
-                      //       .data.ministatementList[0].transactionDate
-                      //       .toString())),
-                      //   DataCell(Text(
-                      //       state.data.ministatementList[0].amount.toString())),
-                      // ])
+                                    DataCell(Text(
+                                      e.credit ? "Deposit" : "Withdrawl",
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
+                                  ],
+                                ))
+                            .toList(),
+
+                        // DataRow(cells: [
+                        //   DataCell(Text(state.data.ministatementList[0].remarks)),
+                        //   DataCell(Text(state
+                        //       .data.ministatementList[0].transactionDate
+                        //       .toString())),
+                        //   DataCell(Text(
+                        //       state.data.ministatementList[0].amount.toString())),
+                        // ])
+                      ),
                     ),
                   if (state.data.ministatementList.isEmpty)
                     Container(
