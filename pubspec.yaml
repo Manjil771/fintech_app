@@ -199,7 +199,7 @@ flutter:
     # - assets/uddhamshilKrishi/
     # - assets/smartUddhamshil/
     # - assets/shreeDigopan/
-    - assets/queenCoop/
+    # - assets/queenCoop/
     # - assets/queenCoop/
     # - assets/nayakiran/
     # - assets/kendrabindu/
@@ -226,7 +226,7 @@ flutter:
     # - assets/amrapali/
     # - assets/abhibadan/
     # - assets/tanahunKalika/
-    # - assets/khullabajar/
+    - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
     # - assets/lifeVision/
@@ -251,7 +251,7 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    - assets/upayogi/
+    # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -337,7 +337,7 @@ flutter:
     # - assets/gaunle/
     # - assets/kendradip/
     # - assets/siddhibinayak/
-    - assets/taksar/
+    # - assets/taksar/
     
     
     # sana kishan assets
