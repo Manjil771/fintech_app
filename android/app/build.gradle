@@ -594,6 +594,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        chetana {
+            dimension "app"
+            applicationId "com.devanasoft.chetana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         chandani {
             dimension "app"
             applicationId "com.devanasoft.chandani"
