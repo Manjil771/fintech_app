@@ -3561,19 +3561,19 @@ class CoOperativeValue {
     coOperativeName: "Taksar Saving & Credit Co-operative Ltd.",
     appTitle: "Taksar iSmart",
   );
-   static final CoOperative chetanaCoop = CoOperative(
+  static final CoOperative chetanaCoop = CoOperative(
     appStoreID: "",
     packageName: "com.devanasoft.chetana",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/chetana/chetana_banner.png",
     backgroundImage: "assets/chetana/chetana_background.png",
-    clientCode: 'BTOEHC7LZE',
-    clientSecret: "123357",
+    clientCode: 'UTNJUDPOQR',
+    clientSecret: "218315",
     coOperativeLogo: 'assets/chetana/chetana_logo.png',
     splashImage: "assets/chetana/chetana_splash.png",
-    primaryColor: const Color(0xFFf38a2c),
+    primaryColor: const Color(0xFF39a748),
     coOperativeName: "Chetana Saving & Credit Co-Operative Society Ltd..",
     appTitle: "Chetana iSmart",
   );
-  static final CoOperative currentCoop = chetanaCoop;
+  static final CoOperative currentCoop = kendradipCoop;
 }
