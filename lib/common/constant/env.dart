@@ -3561,5 +3561,5 @@ class CoOperativeValue {
     coOperativeName: "Taksar Saving & Credit Co-operative Ltd.",
     appTitle: "Taksar iSmart",
   );
-  static final CoOperative currentCoop = khullabajarCoop;
+  static final CoOperative currentCoop = skWaling;
 }
