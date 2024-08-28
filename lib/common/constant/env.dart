@@ -3575,5 +3575,20 @@ class CoOperativeValue {
     coOperativeName: "Chetana Saving & Credit Co-Operative Society Ltd..",
     appTitle: "Chetana iSmart",
   );
-  static final CoOperative currentCoop = sayapatriCoop;
+  static final CoOperative skGlobal = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skglobal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skglobal/skglobal_banner.png",
+    backgroundImage: "assets/skglobal/skglobal_background.png",
+    coOperativeLogo: "assets/skglobal/skglobal_logo.png",
+    clientCode: 'EHVNI7CZJ3',
+    clientSecret: "126489",
+    splashImage: "assets/skglobal/skglobal_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    shouldValidateCooperative: true,
+    coOperativeName: "SanaKisan Global",
+    appTitle: "Sana Kisan Global",
+  );
+  static final CoOperative currentCoop = skGlobal;
 }
