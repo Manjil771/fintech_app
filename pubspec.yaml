@@ -275,7 +275,7 @@ flutter:
     # - assets/sunakothi/
     # - assets/nagarik/
     # - assets/thechomahilajagaran/
-    # - assets/sayapatri/
+    - assets/sayapatri/
     # - assets/jayshreenavadurga/
     # - assets/united/
     # - assets/gairigaun/
@@ -335,7 +335,7 @@ flutter:
     # - assets/shubhechha/
     # - assets/uddhyamshilata/
     # - assets/gaunle/
-    - assets/kendradip/
+    # - assets/kendradip/
     # - assets/siddhibinayak/
     # - assets/taksar/
     # - assets/chetana/

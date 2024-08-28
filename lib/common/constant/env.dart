@@ -3575,5 +3575,5 @@ class CoOperativeValue {
     coOperativeName: "Chetana Saving & Credit Co-Operative Society Ltd..",
     appTitle: "Chetana iSmart",
   );
-  static final CoOperative currentCoop = kendradipCoop;
+  static final CoOperative currentCoop = sayapatriCoop;
 }
