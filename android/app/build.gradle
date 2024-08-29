@@ -859,6 +859,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        megaplus{
+            dimension "app"
+            applicationId "com.devanasoft.megaplus"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         skglobal{
             dimension "app"
             applicationId "com.devanasoft.skglobal"

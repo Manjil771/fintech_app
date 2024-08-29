@@ -3590,5 +3590,20 @@ class CoOperativeValue {
     coOperativeName: "SanaKisan Global",
     appTitle: "Sana Kisan Global",
   );
-  static final CoOperative currentCoop = skGlobal;
+  static final CoOperative megaplus = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.megaplus",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/megaplus/megaplus_banner.png",
+    backgroundImage: "assets/megaplus/megaplus_background.png",
+    clientCode: 'T3UKONYMG8',
+    clientSecret: "142145",
+    coOperativeLogo: 'assets/megaplus/megaplus_logo.png',
+    splashImage: "assets/megaplus/megaplus_splash.png",
+    primaryColor: const Color(0xFF8CB853),
+    coOperativeName: "Mega Plus Saving & Credit Co-operative Ltd.",
+    appTitle: "Megaplus iSmart",
+  );
+
+  static final CoOperative currentCoop = megaplus;
 }
