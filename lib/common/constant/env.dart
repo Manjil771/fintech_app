@@ -3618,6 +3618,19 @@ class CoOperativeValue {
     coOperativeName: "Shree Badhai Agricultural Co-operative Ltd.",
     appTitle: "Shree Badhai iSmart",
   );
-
-  static final CoOperative currentCoop = shreebadhai;
+  static final CoOperative shishuwaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shishuwa",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shishuwa/shishuwa_banner.png",
+    backgroundImage: "assets/shishuwa/shishuwa_background.png",
+    clientCode: '5HACR4EQG1',
+    clientSecret: "213909",
+    coOperativeLogo: 'assets/shishuwa/shishuwa_logo.png',
+    splashImage: "assets/shishuwa/shishuwa_splash.png",
+    primaryColor: const Color(0xFF047940),
+    coOperativeName: "Shishuwa Saving & Credit Co-operative Society Ltd.",
+    appTitle: "Shishuwa iSmart",
+  );
+  static final CoOperative currentCoop = shishuwaCoop;
 }

@@ -236,7 +236,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
               title: _response.status,
               buttonCallback: () {
                 NavigationService.pop();
-                NavigationService.pop();
               },
               buttonText: "Okay",
             );
