@@ -2954,7 +2954,7 @@ class CoOperativeValue {
     splashImage: "assets/shreepathibhara/shreepathibhara_splash.png",
     primaryColor: const Color(0xFF299B44),
     coOperativeName: "Shree Pathibhara Saving & Credit Co-operative Ltd.",
-    appTitle: "Shree pathibhara iSmart",
+    appTitle: "Shree Pathibhara iSmart",
   );
   static final CoOperative maryaditCoop = CoOperative(
     appStoreID: "",
@@ -3605,5 +3605,5 @@ class CoOperativeValue {
     appTitle: "Megaplus iSmart",
   );
 
-  static final CoOperative currentCoop = megaplus;
+  static final CoOperative currentCoop = shreepathibharaCoop;
 }
