@@ -51,7 +51,7 @@ dependencies:
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
   qr_code_utils:
-    git:
+    git: 
       url: git@github.com:nsubash38/qr_code_test.git
       ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
@@ -299,7 +299,7 @@ flutter:
     # - assets/tapobhumi/
     # - assets/samudayik/
     # - assets/supya/
-    - assets/shreepathibhara/
+    # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
     # - assets/chaulani/
@@ -310,7 +310,11 @@ flutter:
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
-
+    - assets/shreebadhai/
+    
+    
+    
+    
     # sana ksihan assets
     # - assets/amana/
     # - assets/sklakhanpur/

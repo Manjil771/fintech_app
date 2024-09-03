@@ -3604,6 +3604,20 @@ class CoOperativeValue {
     coOperativeName: "Mega Plus Saving & Credit Co-operative Ltd.",
     appTitle: "Megaplus iSmart",
   );
+  static final CoOperative shreebadhai = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shreebadhai",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreebadhai/shreebadhai_banner.png",
+    backgroundImage: "assets/shreebadhai/shreebadhai_background.png",
+    clientCode: 'J1ELU7DR06',
+    clientSecret: "114821",
+    coOperativeLogo: 'assets/shreebadhai/shreebadhai_logo.png',
+    splashImage: "assets/shreebadhai/shreebadhai_splash.png",
+    primaryColor: const Color(0xFF1F390C),
+    coOperativeName: "Shree Badhai Agricultural Co-operative Ltd.",
+    appTitle: "Shree Badhai iSmart",
+  );
 
-  static final CoOperative currentCoop = shreepathibharaCoop;
+  static final CoOperative currentCoop = shreebadhai;
 }
