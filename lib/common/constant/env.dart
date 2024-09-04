@@ -3632,5 +3632,5 @@ class CoOperativeValue {
     coOperativeName: "Shishuwa Saving & Credit Co-operative Society Ltd.",
     appTitle: "Shishuwa iSmart",
   );
-  static final CoOperative currentCoop = shishuwaCoop;
+  static final CoOperative currentCoop = tapobhumiCoop;
 }

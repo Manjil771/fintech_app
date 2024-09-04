@@ -296,7 +296,7 @@ flutter:
     # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
-    # - assets/tapobhumi/
+    - assets/tapobhumi/
     # - assets/samudayik/
     # - assets/supya/
     # - assets/shreepathibhara/
@@ -338,7 +338,7 @@ flutter:
     # - assets/taksar/
     # - assets/chetana/
     # - assets/megaplus/
-    - assets/shishuwa/
+    # - assets/shishuwa/
     
     
     # sana kishan assets
