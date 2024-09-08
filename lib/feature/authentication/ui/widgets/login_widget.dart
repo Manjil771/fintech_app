@@ -393,11 +393,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                         //   context: context,
                         //   currentDate: DateTime.now(),
                         //   onChanged: (value) {
-                            
+
                         //   },
                         //   maxDate: DateTime(2030),
                         //   minDate: DateTime.now(),
-                          
+
                         // );
                         FocusManager.instance.primaryFocus?.unfocus();
                         SecureStorageService.setLoginStatus(
@@ -612,8 +612,10 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   supportSheet() {
     final _textTheme = Theme.of(NavigationService.context).textTheme;
-    final contactNumber =
-        RepositoryProvider.of<AppContactRepository>(context).contactNumber;
+    final List contactList =
+        RepositoryProvider.of<AppContactRepository>(context)
+            .contactNumber
+            .split(',');
 
     showModalBottomSheet(
       context: NavigationService.context,
@@ -653,52 +655,58 @@ class _LoginWidgetState extends State<LoginWidget> {
             const Divider(
               height: 40,
             ),
-            InkWell(
-              onTap: () async {
-                await UrlLauncher.launchPhone(
-                    context: NavigationService.context, phone: contactNumber);
-              },
-              child: Container(
-                padding: EdgeInsets.symmetric(
-                  horizontal: 15.hp,
-                  vertical: 15.hp,
-                ),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            ...List.generate(
+              contactList.length,
+              (index) {
+                return InkWell(
+                  onTap: () {
+                    NavigationService.pop();
+                    UrlLauncher.launchPhone(
+                      context: NavigationService.context,
+                      phone: contactList[index],
+                    );
+                  },
+                  child: Container(
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 15.hp,
+                      vertical: 15.hp,
+                    ),
+                    child: Column(
                       children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
-                              "Call",
-                              style: _textTheme.bodyLarge!.copyWith(
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                                color: CustomTheme.primaryColor,
-                              ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  "Call Support",
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    fontSize: 12,
+                                    fontWeight: FontWeight.bold,
+                                    color: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                                const SizedBox(height: 6),
+                                Text(
+                                  contactList[index],
+                                  style: _textTheme.bodyLarge!.copyWith(
+                                    color: CustomTheme.darkGray,
+                                  ),
+                                )
+                              ],
                             ),
-                            const SizedBox(height: 6),
-                            Text(
-                              RepositoryProvider.of<AppContactRepository>(
-                                      context)
-                                  .contactNumber,
-                              style: _textTheme.bodyLarge!.copyWith(
-                                color: CustomTheme.darkGray,
-                              ),
+                            Icon(
+                              Icons.arrow_forward_ios,
+                              color: CustomTheme.primaryColor,
                             )
                           ],
-                        ),
-                        Icon(
-                          Icons.arrow_forward_ios,
-                          color: CustomTheme.primaryColor,
                         )
                       ],
-                    )
-                  ],
-                ),
-              ),
+                    ),
+                  ),
+                );
+              },
             ),
             const SizedBox(
               height: 30,

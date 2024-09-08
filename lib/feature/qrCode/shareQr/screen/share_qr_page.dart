@@ -10,18 +10,19 @@ class ShareQrPage extends StatelessWidget {
   ShareQrPage({Key? key}) : super(key: key);
   final detail =
       RepositoryProvider.of<CustomerDetailRepository>(NavigationService.context)
-          .selectedAccount
-          .value!;
+          .accountsList
+          .value
+          .firstWhere((element) => element.primary.toString() == "true");
+
   @override
   Widget build(BuildContext context) {
-   
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
               RepositoryProvider.of<UtilityPaymentRepository>(context))
-        ..fetchDetails(
+        ..fetchDetails(               
           serviceIdentifier: "",
-          accountDetails: {
+          accountDetails: {                                 
             "customerName": detail.accountHolderName,
             "customerBankAccountId": detail.id,
           },

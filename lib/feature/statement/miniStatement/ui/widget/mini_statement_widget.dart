@@ -58,36 +58,42 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: BlocConsumer<MiniStatementCubit, CommonState>(
-        listener: (context, state) {
-          if (state is CommonLoading && !_isLoading) {
-            _isLoading = true;
-            showLoadingDialogBox(context);
-          } else if (state is! CommonLoading && _isLoading) {
-            _isLoading = false;
-            NavigationService.pop();
-          }
-
-          if (state is CommonError) {
-            showPopUpDialog(
-              context: context,
-              message: state.message,
-              title: "Error",
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.pop();
-              },
-            );
-          }
+      body: CommonContainer(
+        onButtonPressed: () {
+          NavigationService.pushReplacement(target: const DashboardPage());
         },
-        builder: (context, state) {
-          if (state is CommonStateSuccess<MiniStatementModel>) {
-            final res = state.data.ministatementList;
+        showRoundBotton: false,
+        verticalPadding: 0,
+        topbarName: "  Mini Statement",
+        horizontalPadding: 0,
+        showDetail: false,
+        body: BlocConsumer<MiniStatementCubit, CommonState>(
+          listener: (context, state) {
+            if (state is CommonLoading && !_isLoading) {
+              _isLoading = true;
+              showLoadingDialogBox(context);
+            } else if (state is! CommonLoading && _isLoading) {
+              _isLoading = false;
+              NavigationService.pop();
+            }
 
-            return CommonContainer(
-              horizontalPadding: 0,
-              showDetail: false,
-              body: Column(
+            if (state is CommonError) {
+              showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is CommonStateSuccess<MiniStatementModel>) {
+              final res = state.data.ministatementList;
+
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   // InkWell(
@@ -215,60 +221,59 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                         }
                       }),
                   if (state.data.ministatementList.isNotEmpty)
-                    DataTable(
-                      sortAscending: false,
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: DataTable(
+                        sortAscending: false,
+                        columnSpacing: _width / 5,
+                        headingRowHeight: 40,
+                        dataTextStyle:
+                            const TextStyle(fontSize: 12, color: Colors.black),
+                        headingRowColor:
+                            const MaterialStatePropertyAll(Colors.black12),
+                        columns: const [
+                          DataColumn(
+                              label: Text(
+                            "Date",
+                            style: TextStyle(fontWeight: FontWeight.w700),
+                          )),
+                          DataColumn(
+                              label: Text("Amount",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                          DataColumn(
+                              label: Text("Status",
+                                  style:
+                                      TextStyle(fontWeight: FontWeight.w700))),
+                        ],
+                        rows: List.from(getList(dataList: res))
+                            .map((e) => DataRow(
+                                  cells: [
+                                    DataCell(Text(
+                                      "${e.transactionDate.toString().substring(0, 10)}\n${e.transactionDate.toString().substring(10)}",
+                                      textAlign: TextAlign.start,
+                                    )),
+                                    // DataCell(Text(
+                                    //     "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
+                                    DataCell(Text(
+                                      e.amount.toString(),
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
 
-                      columnSpacing: _width / 5,
-                      headingRowHeight: 40,
-                      dataTextStyle:
-                          const TextStyle(fontSize: 12, color: Colors.black),
-                      headingRowColor:
-                          const MaterialStatePropertyAll(Colors.black12),
-                      columns: const [
-                        DataColumn(
-                            label: Text(
-                          "Date",
-                          style: TextStyle(fontWeight: FontWeight.w700),
-                        )),
-                        DataColumn(
-                            label: Text("Amount",
-                                style: TextStyle(fontWeight: FontWeight.w700))),
-                        DataColumn(
-                            label: Text("Status",
-                                style: TextStyle(fontWeight: FontWeight.w700))),
-                      ],
-                      rows: List.from(getList(dataList: res))
-                          .map((e) => DataRow(
-                                cells: [
-                                  DataCell(Text(e.transactionDate.toString())),
-                                  // DataCell(Text(
-                                  //     "${e.transactionDate.year}-${e.transactionDate.month}-${e.transactionDate.day}")),
-                                  DataCell(Text(
-                                    e.amount.toString(),
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                  DataCell(Text(
-                                    e.credit ? "Deposit" : "Withdrawl",
-                                    style: TextStyle(
-                                        color: e.credit
-                                            ? Colors.green
-                                            : Colors.red),
-                                  )),
-                                ],
-                              ))
-                          .toList(),
-
-                      // DataRow(cells: [
-                      //   DataCell(Text(state.data.ministatementList[0].remarks)),
-                      //   DataCell(Text(state
-                      //       .data.ministatementList[0].transactionDate
-                      //       .toString())),
-                      //   DataCell(Text(
-                      //       state.data.ministatementList[0].amount.toString())),
-                      // ])
+                                    DataCell(Text(
+                                      e.credit ? "Deposit" : "Withdrawl",
+                                      style: TextStyle(
+                                          color: e.credit
+                                              ? Colors.green
+                                              : Colors.red),
+                                    )),
+                                  ],
+                                ))
+                            .toList(),
+                      ),
                     ),
                   if (state.data.ministatementList.isEmpty)
                     Container(
@@ -283,19 +288,12 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       ),
                     ),
                 ],
-              ),
-              onButtonPressed: () {
-                NavigationService.pushReplacement(
-                    target: const DashboardPage());
-              },
-              verticalPadding: 0,
-              buttonName: "Close",
-              topbarName: "  Mini Statement",
-            );
-          } else {
-            return Container();
-          }
-        },
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }

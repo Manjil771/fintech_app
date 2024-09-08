@@ -3647,4 +3647,5 @@ class CoOperativeValue {
     appTitle: "SFACL Deuri iSmart",
   );
   static final CoOperative currentCoop = skdeuri;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

@@ -22,38 +22,38 @@ String _supportContact =
     RepositoryProvider.of<AppContactRepository>(NavigationService.context)
         .contactNumber;
 
-List<Map<String, dynamic>> _contactUsOptions = [
-  {
-    "title": "Call Support",
-    "action": () {
-      NavigationService.pop();
-      UrlLauncher.launchPhone(
-        context: NavigationService.context,
-        phone: _supportContact,
-      );
-    },
-  },
-  {
-    "title": "Chat on Viber",
-    "action": () {
-      NavigationService.pop();
-      UrlLauncher.launchWebsite(
-        context: NavigationService.context,
-        url: "viber://chat?number=%2B977$_supportContact",
-      );
-    },
-  },
-  {
-    "title": "Chat on WhatsApp",
-    "action": () {
-      NavigationService.pop();
-      UrlLauncher.launchUrlLink(
-        context: NavigationService.context,
-        url: "https://wa.me/%2B977$_supportContact",
-      );
-    },
-  },
-];
+// List<Map<String, dynamic>> _contactUsOptions = [
+//   {
+//     "title": "Call Support",
+//     "action": () {
+//       // NavigationService.pop();
+//       // UrlLauncher.launchPhone(
+//       //   context: NavigationService.context,
+//       //   phone: _supportContact,
+//       // );
+//     },
+//   },
+//   {
+//     "title": "Chat on Viber",
+//     "action": () {
+//       NavigationService.pop();
+//       UrlLauncher.launchWebsite(
+//         context: NavigationService.context,
+//         url: "viber://chat?number=%2B977$_supportContact",
+//       );
+//     },
+//   },
+//   {
+//     "title": "Chat on WhatsApp",
+//     "action": () {
+//       NavigationService.pop();
+//       UrlLauncher.launchUrlLink(
+//         context: NavigationService.context,
+//         url: "https://wa.me/%2B977$_supportContact",
+//       );
+//     },
+//   },
+// ];
 
 // ignore: must_be_immutable
 class MoreWidget extends StatefulWidget {
@@ -96,6 +96,7 @@ class _MoreWidgetState extends State<MoreWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final contactList = _supportContact.split(",");
     final List tapFunction = [
       () {
         NavigationService.push(
@@ -171,10 +172,16 @@ class _MoreWidgetState extends State<MoreWidget> {
                   height: 40,
                 ),
                 ...List.generate(
-                  _contactUsOptions.length,
+                  contactList.length,
                   (index) {
                     return InkWell(
-                      onTap: _contactUsOptions[index]['action'] as Function(),
+                      onTap: () {
+                        NavigationService.pop();
+                        UrlLauncher.launchPhone(
+                          context: NavigationService.context,
+                          phone: contactList[index],
+                        );
+                      },
                       child: Container(
                         padding: EdgeInsets.symmetric(
                           horizontal: 15.hp,
@@ -189,18 +196,16 @@ class _MoreWidgetState extends State<MoreWidget> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      _contactUsOptions[index]['title'],
+                                      "Call Support",
                                       style: _textTheme.bodyLarge!.copyWith(
                                         fontSize: 12,
                                         fontWeight: FontWeight.bold,
                                         color: CustomTheme.primaryColor,
                                       ),
                                     ),
-                                    const SizedBox(
-                                      height: 6,
-                                    ),
+                                    const SizedBox(height: 6),
                                     Text(
-                                      _supportContact,
+                                      contactList[index],
                                       style: _textTheme.bodyLarge!.copyWith(
                                         color: CustomTheme.darkGray,
                                       ),
