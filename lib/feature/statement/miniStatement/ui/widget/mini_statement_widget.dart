@@ -58,36 +58,42 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      body: BlocConsumer<MiniStatementCubit, CommonState>(
-        listener: (context, state) {
-          if (state is CommonLoading && !_isLoading) {
-            _isLoading = true;
-            showLoadingDialogBox(context);
-          } else if (state is! CommonLoading && _isLoading) {
-            _isLoading = false;
-            NavigationService.pop();
-          }
-
-          if (state is CommonError) {
-            showPopUpDialog(
-              context: context,
-              message: state.message,
-              title: "Error",
-              showCancelButton: false,
-              buttonCallback: () {
-                NavigationService.pop();
-              },
-            );
-          }
+      body: CommonContainer(
+        onButtonPressed: () {
+          NavigationService.pushReplacement(target: const DashboardPage());
         },
-        builder: (context, state) {
-          if (state is CommonStateSuccess<MiniStatementModel>) {
-            final res = state.data.ministatementList;
+        showRoundBotton: false,
+        verticalPadding: 0,
+        topbarName: "  Mini Statement",
+        horizontalPadding: 0,
+        showDetail: false,
+        body: BlocConsumer<MiniStatementCubit, CommonState>(
+          listener: (context, state) {
+            if (state is CommonLoading && !_isLoading) {
+              _isLoading = true;
+              showLoadingDialogBox(context);
+            } else if (state is! CommonLoading && _isLoading) {
+              _isLoading = false;
+              NavigationService.pop();
+            }
 
-            return CommonContainer(
-              horizontalPadding: 0,
-              showDetail: false,
-              body: Column(
+            if (state is CommonError) {
+              showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                showCancelButton: false,
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+              );
+            }
+          },
+          builder: (context, state) {
+            if (state is CommonStateSuccess<MiniStatementModel>) {
+              final res = state.data.ministatementList;
+
+              return Column(
                 crossAxisAlignment: CrossAxisAlignment.end,
                 children: [
                   // InkWell(
@@ -219,7 +225,6 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       scrollDirection: Axis.horizontal,
                       child: DataTable(
                         sortAscending: false,
-
                         columnSpacing: _width / 5,
                         headingRowHeight: 40,
                         dataTextStyle:
@@ -268,15 +273,6 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                                   ],
                                 ))
                             .toList(),
-
-                        // DataRow(cells: [
-                        //   DataCell(Text(state.data.ministatementList[0].remarks)),
-                        //   DataCell(Text(state
-                        //       .data.ministatementList[0].transactionDate
-                        //       .toString())),
-                        //   DataCell(Text(
-                        //       state.data.ministatementList[0].amount.toString())),
-                        // ])
                       ),
                     ),
                   if (state.data.ministatementList.isEmpty)
@@ -292,19 +288,12 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                       ),
                     ),
                 ],
-              ),
-              onButtonPressed: () {
-                NavigationService.pushReplacement(
-                    target: const DashboardPage());
-              },
-              verticalPadding: 0,
-              buttonName: "Close",
-              topbarName: "  Mini Statement",
-            );
-          } else {
-            return Container();
-          }
-        },
+              );
+            } else {
+              return Container();
+            }
+          },
+        ),
       ),
     );
   }
