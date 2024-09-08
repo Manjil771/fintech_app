@@ -773,7 +773,7 @@ class CoOperativeValue {
     splashImage: "assets/gandakibesi/gandakibesi_splash.png",
     primaryColor: const Color(0xFF006838),
     coOperativeName: "Gandakibeshi saving and credit co-operative ltd",
-    appTitle: "GandakiBesi Saccos iSmart",
+    appTitle: "Gandaki Beshi iSmart",
   );
 
   static final CoOperative batikaCoop = CoOperative(
@@ -3632,5 +3632,19 @@ class CoOperativeValue {
     coOperativeName: "Shishuwa Saving & Credit Co-operative Society Ltd.",
     appTitle: "Shishuwa iSmart",
   );
-  static final CoOperative currentCoop = tapobhumiCoop;
+  static final CoOperative skdeuri = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.skDeuri",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skDeuri/skDeuri_banner.png",
+    backgroundImage: "assets/skDeuri/skDeuri_background.png",
+    clientCode: 'FUG5KIZDVE',
+    clientSecret: "209196",
+    coOperativeLogo: 'assets/skDeuri/skDeuri_logo.png',
+    splashImage: "assets/skDeuri/skDeuri_splash.png",
+    primaryColor: const Color(0xFF39a748),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Deuri,Udayapur",
+    appTitle: "SFACL Deuri iSmart",
+  );
+  static final CoOperative currentCoop = skdeuri;
 }

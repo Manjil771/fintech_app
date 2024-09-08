@@ -296,7 +296,7 @@ flutter:
     # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
-    - assets/tapobhumi/
+    # - assets/tapobhumi/
     # - assets/samudayik/
     # - assets/supya/
     # - assets/shreepathibhara/
@@ -356,6 +356,7 @@ flutter:
     # - assets/skChisapani/ 
     # - assets/skWaling/
     # - assets/skglobal/
+    - assets/skDeuri/
  
  
  
