@@ -181,7 +181,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -304,7 +304,7 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
@@ -356,7 +356,7 @@ flutter:
     # - assets/skChisapani/ 
     # - assets/skWaling/
     # - assets/skglobal/
-    - assets/skDeuri/
+    # - assets/skDeuri/
  
  
  
