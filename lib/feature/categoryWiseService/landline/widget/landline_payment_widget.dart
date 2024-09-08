@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
@@ -42,6 +43,8 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final selectedService = widget.category.services.firstWhere((element) =>
+        element.uniqueIdentifier.toString() == Slugs.pstnOnlineTopup);
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -72,24 +75,20 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
             buttonName: "Proceed",
             topbarName: "Landline",
             title: "LandLine Payment",
-            detail: "Pay your Landline Bills.",
+            detail: selectedService.instructions,
             body: Form(
               key: _fromKey,
               child: Column(
                 children: [
                   CustomTextField(
-                      textInputType: TextInputType.number,
-                      title: "Landline Number",
-                      autovalidateMode: AutovalidateMode.onUserInteraction,
-                      hintText: "xxxxxxxxxx",
-                      controller: _phoneNumberController,
-                      validator: (val) {
-                        if (val!.length <= 7) {
-                          return "Enter a valid Number";
-                        }
-                        FormValidator.validateFieldNotEmpty(val, "Number");
-                        return null;
-                      }),
+                    textInputType: TextInputType.number,
+                    title: "Landline Number",
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
+                    hintText: "xxxxxxxxxx",
+                    controller: _phoneNumberController,
+                    validator: (value) =>
+                        FormValidator.validateFieldNotEmpty(value, "Number"),
+                  ),
                   CustomTextField(
                     textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -98,8 +97,8 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                     controller: _amountController,
                     validator: (val) => FormValidator.validateAmount(
                         val: val.toString(),
-                        maxAmount: getService().maxValue,
-                        minAmount: getService().minValue),
+                        maxAmount: selectedService.maxValue,
+                        minAmount: selectedService.minValue),
                   ),
                 ],
               ),
@@ -110,14 +109,16 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                     .substring(_phoneNumberController.text.length - 8));
                 NavigationService.push(
                     target: CommonBillDetailPage(
-                  serviceName: widget.category.services.first.service,
+                  serviceName: selectedService.service,
                   serviceIdentifier: "pstn_online_topup",
                   apiBody: const {},
                   apiEndpoint: "/api/topup",
                   service: getService(),
                   accountDetails: {
-                    "phone_number": _phoneNumberController.text.substring(
-                        _phoneNumberController.text.length - 8), //14232352
+                    // "phone_number": _phoneNumberController.text.substring(
+                    //     _phoneNumberController.text.length - 8),
+                    "phone_number": _phoneNumberController.text,
+
                     "amount": _amountController.text,
                     "account_number":
                         RepositoryProvider.of<CustomerDetailRepository>(context)
