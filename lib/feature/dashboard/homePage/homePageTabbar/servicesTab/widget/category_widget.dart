@@ -80,29 +80,69 @@ class _CategoryWidgetState extends State<CategoryWidget> {
           }
         },
         builder: (context, state) {
-          final itemLength = widget.showAllService
-              ? _categoryList.length
-              : _categoryList.length >= 12
-                  ? 11
-                  : _categoryList.length;
+          int itemLength;
+          bool showViewMore = false;
+
+          if (widget.showAllService) {
+            itemLength = _categoryList.length;
+          } else {
+            if (_categoryList.length > 11) {
+              itemLength = 12; // 7 items + 1 "View More" option
+              showViewMore = true;
+            } else {
+              itemLength = _categoryList.length;
+            }
+          }
+
           if (itemLength > 0)
             return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 shrinkWrap: true,
-                itemCount: widget.showAllService ? itemLength : itemLength + 1,
+                itemCount: itemLength,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 4,
                 ),
                 itemBuilder: (context, index) {
-                  final data = _categoryList[index];
+                  if (showViewMore && index == 11) {
+                    return InkWell(
+                      onTap: () {
+                        NavigationService.pushNamed(
+                            routeName: Routes.allServicesDashboard);
+                      },
+                      child: Column(
+                        children: [
+                          Container(
+                              height: _height * 0.03,
+                              child: CircleAvatar(
+                                  backgroundColor: _theme.primaryColor,
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  ))),
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8),
+                            child: Center(
+                              child: Text(
+                                "View More",
+                                textAlign: TextAlign.center,
+                                style: _textTheme.titleSmall!
+                                    .copyWith(fontSize: 11.5),
+                                overflow: TextOverflow.ellipsis,
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  } else {
+                    final data = _categoryList[index];
 
-                  final filteredItems = data.services
-                      .where((item) => item.cashBackView != null)
-                      .toList();
+                    final filteredItems = data.services
+                        .where((item) => item.cashBackView != null)
+                        .toList();
 
-                  final _imageUrl =
-                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
-                  if (index < itemLength) {
+                    final _imageUrl =
+                        "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
                     return InkWell(
                       onTap: () {
                         if (data.uniqueIdentifier.toString().toLowerCase() ==
@@ -259,49 +299,9 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         ],
                       ),
                     );
-                  } else {
-                    return InkWell(
-                      onTap: () {
-                        NavigationService.pushNamed(
-                            routeName: Routes.allServicesDashboard);
-                      },
-                      child: Column(
-                        children: [
-                          Container(
-                              height: _height * 0.03,
-                              child: CircleAvatar(
-                                  backgroundColor: _theme.primaryColor,
-                                  child: const Icon(
-                                    Icons.add,
-                                    color: Colors.white,
-                                  ))),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 8),
-                            child: Center(
-                              child: Text(
-                                "View More",
-                                textAlign: TextAlign.center,
-                                style: _textTheme.titleSmall!
-                                    .copyWith(fontSize: 11.5),
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    );
                   }
                 });
           return Container();
-          // if (state is CommonStateSuccess<List<CategoryList>>) {
-          //   final itemLength = widget.showAllService
-          //       ? state.data.length
-          //       : state.data.length >= 12
-          //           ? 11
-          //           : state.data.length;
-          // } else {
-          //   return Container();
-          // }
         },
       ),
     );
