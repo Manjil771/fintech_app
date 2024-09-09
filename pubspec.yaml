@@ -122,10 +122,6 @@ flutter:
     # - assets/kripalu/
     # - assets/upadesh/
     # - assets/bhanjyang/
-    # - assets/nawajosh/
-    # - assets/nawajosh/
-
-    # - assets/nawajosh/
     # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -304,7 +300,7 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    - assets/ajambari/
+    # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/

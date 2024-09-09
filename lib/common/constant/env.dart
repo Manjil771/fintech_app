@@ -3646,5 +3646,5 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Deuri,Udayapur",
     appTitle: "SFACL Deuri iSmart",
   );
-  static final CoOperative currentCoop = ajambariCoop;
+  static final CoOperative currentCoop = devLive;
 }
