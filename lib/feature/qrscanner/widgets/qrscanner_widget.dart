@@ -123,85 +123,102 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         secondaryKey: "branchCode")
                     .toString()
                     .isEmpty) {
-              showGeneralDialog(
-                pageBuilder: (context, animation, secondaryAnimation) {
-                  return PopScope(
-                    canPop: false,
-                    onPopInvoked: (didPop) async {
-                      if (didPop) {
-                        return;
-                      }
-                      NavigationService.pushNamedAndRemoveUntil(
-                          routeName: Routes.dashboard);
-                    },
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(18)),
-                          padding: const EdgeInsets.all(18),
-                          margin: const EdgeInsets.symmetric(horizontal: 32),
-                          child: Column(children: [
-                            CustomRoundedButtom(
-                                title: "Fund Transfer",
-                                onPressed: () {
-                                  NavigationService.pushReplacement(
-                                      target: AnyBankpage(
-                                    isScanQr: true,
-                                    remarks: widget.remarks,
-                                    accountName: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "accountName",
-                                    ),
-                                    accountNumber: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "accountNumber",
-                                    ),
-                                    bankCode: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "bankCode",
-                                    ),
-                                    bankName: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "bankName",
-                                    ),
-                                  ));
-                                }),
-                            SizedBox(height: 15.hp),
-                            CustomRoundedButtom(
-                                title: "Add Favorite Account",
-                                onPressed: () {
-                                  NavigationService.pushReplacement(
-                                      target: AddFavAccountPage(
-                                    accountNumber: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "accountNumber",
-                                    ),
-                                    accountName: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "accountName",
-                                    ),
-                                    bankCode: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "bankCode",
-                                    ),
-                                    bankName: _response.findValue(
-                                      primaryKey: "accountDetails",
-                                      secondaryKey: "bankName",
-                                    ),
-                                  ));
-                                })
-                          ]),
-                        ),
-                      ],
-                    ),
-                  );
-                },
-                context: context,
-              );
+              if (appServiceFilter(
+                          identifier: Slugs.bankTransfer, state: appSeriveList)
+                      .status ==
+                  "Active") {
+                showGeneralDialog(
+                  pageBuilder: (context, animation, secondaryAnimation) {
+                    return PopScope(
+                      canPop: false,
+                      onPopInvoked: (didPop) async {
+                        if (didPop) {
+                          return;
+                        }
+                        NavigationService.pushNamedAndRemoveUntil(
+                            routeName: Routes.dashboard);
+                      },
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Container(
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.circular(18)),
+                            padding: const EdgeInsets.all(18),
+                            margin: const EdgeInsets.symmetric(horizontal: 32),
+                            child: Column(children: [
+                              CustomRoundedButtom(
+                                  title: "Fund Transfer",
+                                  onPressed: () {
+                                    NavigationService.pushReplacement(
+                                        target: AnyBankpage(
+                                      isScanQr: true,
+                                      remarks: widget.remarks,
+                                      accountName: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "accountName",
+                                      ),
+                                      accountNumber: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "accountNumber",
+                                      ),
+                                      bankCode: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "bankCode",
+                                      ),
+                                      bankName: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "bankName",
+                                      ),
+                                    ));
+                                  }),
+                              SizedBox(height: 15.hp),
+                              CustomRoundedButtom(
+                                  title: "Add Favorite Account",
+                                  onPressed: () {
+                                    NavigationService.pushReplacement(
+                                        target: AddFavAccountPage(
+                                      accountNumber: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "accountNumber",
+                                      ),
+                                      accountName: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "accountName",
+                                      ),
+                                      bankCode: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "bankCode",
+                                      ),
+                                      bankName: _response.findValue(
+                                        primaryKey: "accountDetails",
+                                        secondaryKey: "bankName",
+                                      ),
+                                    ));
+                                  })
+                            ]),
+                          ),
+                        ],
+                      ),
+                    );
+                  },
+                  context: context,
+                );
+              } else {
+                showPopUpDialog(
+                  context: context,
+                  title: "INFO",
+                  message: "Invalid QR",
+                  showCancelButton: false,
+                  buttonCallback: () {
+                    NavigationService.pop();
+                    NavigationService.pop();
+                  },
+                  buttonText: "Okay",
+                );
+              }
             }
             if ((_response.findValue(primaryKey: "internalFundTransfer") ==
                     true) ||
@@ -645,17 +662,12 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
       // }
 
       if (_decode.containsKey("bankCode")) {
-        if (appServiceFilter(
-                    identifier: Slugs.bankTransfer, state: appSeriveList)
-                .status ==
-            "Active") {
-          context.read<UtilityPaymentCubit>().fetchDetails(
-              serviceIdentifier: "",
-              accountDetails: {
-                "pay_load": qrCode,
-              },
-              apiEndpoint: "api/qpay/merchant_detail");
-        }
+        context.read<UtilityPaymentCubit>().fetchDetails(
+            serviceIdentifier: "",
+            accountDetails: {
+              "pay_load": qrCode,
+            },
+            apiEndpoint: "api/qpay/merchant_detail");
       }
     } catch (e) {
       if (qrCode.toString().contains("fonepay.com")) {

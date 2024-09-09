@@ -287,7 +287,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     # - assets/aagan/
-    # - assets/sadasyaSewa/
+    - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
