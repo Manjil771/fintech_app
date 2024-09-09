@@ -3646,5 +3646,19 @@ class CoOperativeValue {
     coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Deuri,Udayapur",
     appTitle: "SFACL Deuri iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative shuvkaryaCoop = CoOperative(
+    appStoreID: "",
+    packageName: "com.devanasoft.shuvkarya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shuvkarya/shuvkarya_banner.png",
+    backgroundImage: "assets/shuvkarya/shuvkarya_background.png",
+    clientCode: 'GQOR2GU3JA',
+    clientSecret: "218176",
+    coOperativeLogo: 'assets/shuvkarya/shuvkarya_logo.png',
+    splashImage: "assets/shuvkarya/shuvkarya_splash.png",
+    primaryColor: const Color(0xFF181862),
+    coOperativeName: "Shuvkarya Krishi Sahakari Sanstha Ltd.",
+    appTitle: "Shuvkarya iSmart",
+  );
+  static final CoOperative currentCoop = shuvkaryaCoop;
 }
