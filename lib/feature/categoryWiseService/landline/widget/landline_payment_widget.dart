@@ -117,7 +117,8 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                   accountDetails: {
                     // "phone_number": _phoneNumberController.text.substring(
                     //     _phoneNumberController.text.length - 8),
-                    "phone_number": _phoneNumberController.text,
+                    "phone_number":
+                        _phoneNumberController.text.replaceAll("-", ""),
 
                     "amount": _amountController.text,
                     "account_number":
