@@ -10,8 +10,10 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 // ignore: must_be_immutable
 class PassengerDetailScreen extends StatelessWidget {
   Flight? departureFlight;
+  final String? airlineID;
   final UtilityResponseData utilityResponseData;
   Flight? arrivalFlight;
+  final bool isTwoWay;
 
   final double totalFare;
   final ServiceList service;
@@ -24,7 +26,9 @@ class PassengerDetailScreen extends StatelessWidget {
       this.arrivalFlight,
       required this.service,
       required this.totalFare,
-      required this.utilityResponseData});
+      required this.utilityResponseData,
+      this.airlineID,
+      required this.isTwoWay});
   final adultCount;
   final childrenCount;
 
@@ -39,6 +43,8 @@ class PassengerDetailScreen extends StatelessWidget {
         )
       ],
       child: PassengerDetailWidget(
+        isTwoWay: isTwoWay,
+        airlineID: airlineID,
         totalFare: totalFare,
         service: service,
         adultCount: adultCount,

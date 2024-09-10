@@ -26,6 +26,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
   Flight? arrivalFlight;
   final String contactName;
   final String contactPhoneNumber;
+  final bool isTwoWay;
   final String contactEmail;
 
   final double totalFare;
@@ -49,7 +50,8 @@ class AirlinesBillDetailPage extends StatelessWidget {
       required this.contactName,
       required this.contactPhoneNumber,
       required this.contactEmail,
-      required this.passengerList});
+      required this.passengerList,
+      required this.isTwoWay});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -58,6 +60,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: AirlinesBillDetailWidget(
+        isTwoWay: isTwoWay,
         contactEmail: contactEmail,
         contactName: contactName,
         contactPhoneNumber: contactPhoneNumber,
@@ -79,6 +82,7 @@ class AirlinesBillDetailPage extends StatelessWidget {
 class AirlinesBillDetailWidget extends StatefulWidget {
   final ServiceList service;
   final List passengerList;
+  final bool isTwoWay;
 
   final Map<String, dynamic> accountDetails;
   final Map<String, dynamic> apiBody;
@@ -105,6 +109,7 @@ class AirlinesBillDetailWidget extends StatefulWidget {
     required this.contactPhoneNumber,
     required this.contactEmail,
     required this.passengerList,
+    required this.isTwoWay,
   });
 
   @override
@@ -157,7 +162,8 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final UtilityResponseData _response = state.data;
             if (_response.code == "M0000" ||
-                _response.status.toLowerCase() == "Success" ||
+                _response.status.toLowerCase() == "M0000" ||
+                _response.status.toLowerCase() == "success" ||
                 _response.message
                     .toLowerCase()
                     .contains("success".toLowerCase())) {
@@ -212,7 +218,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                         FlightDetailBox(
                           flight: widget.departureFlight,
                         ),
-                        if (widget.departureFlight != widget.arrivalFlight)
+                        if (widget.isTwoWay == true)
                           Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: FlightDetailBox(
@@ -239,7 +245,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                                 value: widget.contactEmail),
                             KeyValueTile(
                                 title: "Contact Contact",
-                                value: widget.contactName)
+                                value: widget.contactPhoneNumber)
                           ]),
                         ),
                         Text(
