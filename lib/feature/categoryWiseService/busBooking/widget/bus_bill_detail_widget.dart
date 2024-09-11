@@ -223,6 +223,7 @@ class BusBillDetailWidget extends StatelessWidget {
                             LoanKeyValueTile(
                                 title: "Mobile Number",
                                 value: contactDetail.phoneNumber),
+                            LoanKeyValueTile(title: "Remarks", value: remarks),
                           ],
                         ),
                       )
