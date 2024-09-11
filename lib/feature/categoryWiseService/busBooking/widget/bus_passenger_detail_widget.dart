@@ -58,7 +58,6 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
     final List<dynamic> responseData =
         widget.response.findValue(primaryKey: "boardingPoints");
     // final boardingPonit = responseData.findValue(primaryKey:"")

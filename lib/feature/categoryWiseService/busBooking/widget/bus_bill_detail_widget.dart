@@ -259,7 +259,7 @@ class BusBillDetailWidget extends StatelessWidget {
                                     response.findValueString("ticketSrlNo"),
                                 "busId": selectedBusData["id"],
                                 "remarks": remarks,
-                                "seats": selectedSeats,
+                                "seats": selectedSeats.toString(),
                                 "contactName": contactDetail.fullName,
                                 "contactNumber": contactDetail.phoneNumber,
                                 "contactEmail": contactDetail.email,
