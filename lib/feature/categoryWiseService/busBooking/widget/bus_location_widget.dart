@@ -3,7 +3,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/models/key_value.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/search_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -30,6 +32,7 @@ class BusLocationWidget extends StatelessWidget {
           apiEndpoint: "/api/busSewa/getRoutes",
         ),
       child: PageWrapper(
+        showBackButton: true,
         leadingAppIcon: CustomIconButton(
           icon: Icons.close_rounded,
           shadow: false,
@@ -53,6 +56,10 @@ class BusLocationWidget extends StatelessWidget {
                       title: _counters?[index], value: _counters?[index]),
                 ),
               );
+            } else if (state is CommonError) {
+              return NoDataScreen(title: "", details: state.message);
+            } else if (state is CommonLoading) {
+              return const CommonLoadingWidget();
             } else {
               return Container();
             }

@@ -250,15 +250,15 @@ class BusBillDetailWidget extends StatelessWidget {
                                             .findValueString("totalAmount")
                                             .toString() ==
                                         "null"
-                                    ? totalFare
-                                    : response.findValueString("tottalAmount"),
+                                    ? totalFare.toString()
+                                    : response.findValueString("totalAmount"),
                                 "from": busTopBarModel.sectorFrom,
                                 "to": busTopBarModel.sectorTo,
                                 "ticketId":
                                     response.findValueString("ticketSrlNo"),
                                 "busId": selectedBusData["id"],
                                 "remarks": remarks,
-                                "seats": selectedSeats.toString(),
+                                "seats": selectedSeats,
                                 "contactName": contactDetail.fullName,
                                 "contactNumber": contactDetail.phoneNumber,
                                 "contactEmail": contactDetail.email,

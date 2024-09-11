@@ -42,7 +42,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
   getColor(index) {
     return widget.seatLayout[index]["bookingStatus"].toString().toLowerCase() !=
             "no"
-        ? CustomTheme.darkGray
+        ? CustomTheme.darkGray.withOpacity(0.5)
         : CustomTheme.green;
   }
 
@@ -152,13 +152,13 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                                 SvgPicture.asset(
                                   Assets.busSeatIcon,
                                   height: 20.hp,
-                                  color: CustomTheme.testAppColor,
+                                  color: CustomTheme.googleColor,
                                 ),
                                 SizedBox(width: 10.wp),
                                 Text(
                                   "Selected",
                                   style: _textTheme.titleSmall!.copyWith(
-                                    color: CustomTheme.testAppColor,
+                                    color: CustomTheme.googleColor,
                                   ),
                                 )
                               ],
@@ -168,7 +168,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                                 SvgPicture.asset(
                                   Assets.busSeatIcon,
                                   height: 20.hp,
-                                  color: CustomTheme.darkGray,
+                                  color: CustomTheme.darkGray.withOpacity(0.5),
                                 ),
                                 SizedBox(width: 10.wp),
                                 Text(
@@ -237,7 +237,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                                           Assets.busSeatIcon,
                                           height: 20.hp,
                                           color: isSelected
-                                              ? CustomTheme.testAppColor
+                                              ? CustomTheme.googleColor
                                               : getColor(index),
                                         ),
                                         Text(
@@ -246,7 +246,7 @@ class _BusSeatsListWidgetState extends State<BusSeatsListWidget> {
                                           style: _textTheme.titleSmall!
                                               .copyWith(
                                                   color: isSelected
-                                                      ? CustomTheme.testAppColor
+                                                      ? CustomTheme.googleColor
                                                       : getColor(index)),
                                         ),
                                       ],
