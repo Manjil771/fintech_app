@@ -1441,6 +1441,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        uddhamsil {
+            dimension "app"
+            applicationId "com.devanasoft.uddhamshil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
      
         udhamshilKrishi{
             dimension "app"
