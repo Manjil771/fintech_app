@@ -59,6 +59,7 @@ class _LoanWidgetState extends State<LoanWidget> {
               builder: (context, state) {
                 if (state is CommonStateSuccess<UtilityResponseData>) {
                   final UtilityResponseData response = state.data;
+                  final loanList = state.data.findValue(primaryKey: "data");
                   return Column(
                     children: [
                       InkWell(

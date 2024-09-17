@@ -177,7 +177,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -331,7 +331,7 @@ flutter:
     # - assets/gaunle/
     # - assets/kendradip/
     # - assets/siddhibinayak/
-    - assets/taksar/
+    # - assets/taksar/
     # - assets/chetana/
     # - assets/megaplus/
     # - assets/shishuwa/

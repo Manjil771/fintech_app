@@ -22,6 +22,8 @@ class Assets {
   static const String ismartLogo = "assets/ismartlogo.png";
 
   static const String notificationIcon = "assets/icons/Notification.svg";
+  static const String marketPlaceIcon = "assets/icons/marketplace_icon.svg";
+
   static const String searchIcon = "assets/icons/search.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
   static const String topupPaymentIcon = "assets/icons/Top up payment.svg";
