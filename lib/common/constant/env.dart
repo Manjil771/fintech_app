@@ -3582,8 +3582,8 @@ class CoOperativeValue {
     bannerImage: "assets/skglobal/skglobal_banner.png",
     backgroundImage: "assets/skglobal/skglobal_background.png",
     coOperativeLogo: "assets/skglobal/skglobal_logo.png",
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
+    clientCode: ' RPJTJAKDBR',
+    clientSecret: "203763",
     splashImage: "assets/skglobal/skglobal_splash.png",
     primaryColor: const Color(0xFF39a748),
     shouldValidateCooperative: true,
@@ -3661,5 +3661,5 @@ class CoOperativeValue {
     appTitle: "Shuvkarya iSmart",
   );
 
-  static final CoOperative currentCoop = pacificCoop;
+  static final CoOperative currentCoop =skGlobal ;
 }

@@ -226,7 +226,7 @@ flutter:
     # - assets/chandani/
     # - assets/sparkling/
     # - assets/lifeVision/
-    - assets/pacific/
+    # - assets/pacific/
     # - assets/samutthan/x
     # - assets/dhanaprapti/
     # - assets/globalMulti/
@@ -311,11 +311,10 @@ flutter:
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
-    # - assets/gagankalika/
+    - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
-    # - assets/gagankalika/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/   
