@@ -3660,6 +3660,20 @@ class CoOperativeValue {
     coOperativeName: "Shuvkarya Krishi Sahakari Sanstha Ltd.",
     appTitle: "Shuvkarya iSmart",
   );
+  static final CoOperative sunischitCoop = CoOperative(
+    appStoreID: "com.devanasoft.sunischit",
+    packageName: "com.devanasoft.sunischit",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sunischit/sunischit_banner.png",
+    backgroundImage: "assets/sunischit/sunischit_background.png",
+    clientCode: 'UFOXNMPMKK',
+    clientSecret: "125378",
+    coOperativeLogo: 'assets/sunischit/sunischit_logo.png',
+    splashImage: "assets/sunischit/sunischit_splash.png",
+    primaryColor: const Color(0xFF2B3482),
+    coOperativeName: "Sunischit Saving & Credit Co-operative Ltd.",
+    appTitle: "Sunischit iSmart",
+  );
 
-  static final CoOperative currentCoop =skGlobal ;
+  static final CoOperative currentCoop = sunischitCoop;
 }

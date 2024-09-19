@@ -311,7 +311,7 @@ flutter:
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
-    - assets/gagankalika/
+    # - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
@@ -335,6 +335,7 @@ flutter:
     # - assets/megaplus/
     # - assets/shishuwa/
     # - assets/shuvkarya/
+    - assets/sunischit/
     
     
     # sana kishan assets
