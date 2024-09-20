@@ -150,7 +150,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                       "${_detail.accountDetail[index].interestRate} %"),
                                                   detailROw(
                                                       context,
-                                                      "Accured Interest",
+                                                      "Accured Interestj",
                                                       "NPR ${_detail.accountDetail[index].accruedInterest}"),
                                                 ],
                                               ),

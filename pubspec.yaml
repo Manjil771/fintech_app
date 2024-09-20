@@ -352,7 +352,7 @@ flutter:
     # - assets/skDhankuta/ 
     # - assets/skChisapani/ 
     # - assets/skWaling/
-    # - assets/skglobal/
+    - assets/skglobal/
     # - assets/skDeuri/
  
  
