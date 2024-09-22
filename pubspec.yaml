@@ -226,7 +226,7 @@ flutter:
     # - assets/chandani/
     # - assets/sparkling/
     # - assets/lifeVision/
-    # - assets/pacific/
+    - assets/pacific/
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
