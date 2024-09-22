@@ -2018,7 +2018,7 @@ class CoOperativeValue {
     clientSecret: "126072",
     coOperativeLogo: 'assets/pacific/pacific_logo.png',
     splashImage: "assets/pacific/pacific_splash.png",
-    primaryColor: const Color(0xFF004382),
+    primaryColor: const Color(0xFF1A9640),
     coOperativeName: "Pacific Saving and Credit Co-operative Limited",
     appTitle: 'Pacific iSmart',
   );
@@ -3675,5 +3675,5 @@ class CoOperativeValue {
     appTitle: "Sunischit iSmart",
   );
 
-  static final CoOperative currentCoop = bhaktapurSaccos;
+  static final CoOperative currentCoop = devLive;
 }

@@ -227,7 +227,7 @@ flutter:
     # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
-    # - assets/samutthan/x
+    # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
     # - assets/hamroDahachok/
@@ -335,7 +335,7 @@ flutter:
     # - assets/megaplus/
     # - assets/shishuwa/
     # - assets/shuvkarya/
-    - assets/sunischit/
+    # - assets/sunischit/
     
     
     # sana kishan assets
