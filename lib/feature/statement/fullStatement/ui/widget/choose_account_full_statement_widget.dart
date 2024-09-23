@@ -18,7 +18,7 @@ class _ChooseAccountFullStatementWidgetState
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
-        validateMobileBankingStatus: true,
+        validateMobileBankingStatus: false,
         showDetail: true,
         showAccountSelection: true,
         topbarName: "Full Statement",
