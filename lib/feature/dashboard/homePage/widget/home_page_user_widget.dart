@@ -180,7 +180,9 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                       showDialog(
                                         context: context,
                                         builder: (context) =>
-                                            const AccountDetailBox(),
+                                            const AccountDetailBox(
+                                          validateMobileBankingStatus: false,
+                                        ),
                                       );
                                     },
                                     child: Container(

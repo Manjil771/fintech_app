@@ -24,6 +24,7 @@ class Assets {
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String marketPlaceIcon = "assets/icons/marketplace_icon.svg";
   static const String movieSeatIcon = "assets/icons/movie_seat.svg";
+  static const String downloadBorderIcon = "assets/icons/download_border.svg";
 
   static const String searchIcon = "assets/icons/search.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";

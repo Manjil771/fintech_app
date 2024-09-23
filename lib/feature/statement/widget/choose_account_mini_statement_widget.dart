@@ -10,6 +10,7 @@ class ChooseAccountMiniStatementWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        validateMobileBankingStatus: false,
         showDetail: true,
         showAccountSelection: true,
         accountTitle: "Select Account",

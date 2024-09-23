@@ -10,11 +10,13 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 class AccountDetailBox extends StatefulWidget {
   final Function()? onPressed;
+  final bool? validateMobileBankingStatus;
   // ValueNotifier<CustomerDetailModel?> customerDetail;
 
   const AccountDetailBox({
     super.key,
     this.onPressed,
+    this.validateMobileBankingStatus = true,
   });
 
   @override
@@ -44,6 +46,17 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                         element.accountType.toLowerCase() == "saving" ||
                         element.accountType.toLowerCase() == "current")
                     .toList();
+                final List validMobileBankingList =
+                    widget.validateMobileBankingStatus == true
+                        ? showValidAccount
+                            .where((element) =>
+                                element.mobileBanking
+                                    .toString()
+                                    .toLowerCase() !=
+                                "false")
+                            .toList()
+                        : showValidAccount;
+
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -59,9 +72,9 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                       ),
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: showValidAccount.length,
+                          itemCount: validMobileBankingList.length,
                           itemBuilder: (context, index) {
-                            final account = showValidAccount[index];
+                            final account = validMobileBankingList[index];
 
                             final _isSelectedAccount = account.accountNumber
                                 .toLowerCase()
@@ -105,7 +118,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                             ),
                                             SizedBox(width: _width * 0.03),
                                             Text(
-                                              "NPR ${account.availableBalance}",
+                                              "NPR ${account.availableBalance} ${account.mobileBanking}",
                                               style: TextStyle(
                                                   fontSize: 18,
                                                   fontFamily: "popinsemibold",

@@ -60,7 +60,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
   List<Map<String, dynamic>> allData = [
     {"key": "tranDate", "title": "Txn Date"},
     {"key": "interestDate", "title": "Interest Date"},
-    {"key": "statementReference", "title": "Remarks"},
+    {"key": "statementReference", "title": "Description"},
     {"key": "issuedAmount", "title": "Issued Amount"},
     {"key": "payment", "title": "Payment"},
     {"key": "principal", "title": "Principal"},
@@ -443,8 +443,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                             tempFromDate = picked;
                             if (tempToDate.difference(tempFromDate).inDays >
                                 90) {
-                              tempToDate =
-                                  tempFromDate.add(const Duration(days: 90));
+                              tempToDate = DateTime.now();
                             }
                           });
                         }

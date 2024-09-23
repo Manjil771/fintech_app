@@ -28,11 +28,13 @@ class AppContactRepository {
     );
   }
   UtilityResponseData appContactDetail = UtilityResponseData(
-      status: "",
-      code: "",
-      message: "",
-      transactionIdentifier: "",
-      details: []);
+    status: "",
+    code: "",
+    message: "",
+    transactionIdentifier: "",
+    details: [],
+    detail: "",
+  );
   String contactNumber = "9801132218";
   Future<DataResponse<UtilityResponseData>> fetchAppContact() async {
     try {
