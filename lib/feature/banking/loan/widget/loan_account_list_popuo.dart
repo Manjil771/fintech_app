@@ -8,25 +8,24 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
-class AccountDetailBox extends StatefulWidget {
-  final Function()? onPressed;
-  // ValueNotifier<CustomerDetailModel?> customerDetail;
+class LoanAccountDetailPopUpBox extends StatefulWidget {
+  final Function(String accountNumber)? onPressed;
 
-  const AccountDetailBox({
+  const LoanAccountDetailPopUpBox({
     super.key,
     this.onPressed,
   });
 
   @override
-  State<AccountDetailBox> createState() => _AccountDetailBoxState();
+  State<LoanAccountDetailPopUpBox> createState() =>
+      _LoanAccountDetailPopUpBoxState();
 }
 
-class _AccountDetailBoxState extends State<AccountDetailBox> {
+class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
   @override
   Widget build(BuildContext context) {
     final _customerDetailRepo =
         RepositoryProvider.of<CustomerDetailRepository>(context);
-    // int myIndex = 0;
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
@@ -41,8 +40,8 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
               if (val != null) {
                 final List showValidAccount = val.accountDetail
                     .where((element) =>
-                        element.accountType.toLowerCase() == "saving" ||
-                        element.accountType.toLowerCase() == "current")
+                        element.accountType.toLowerCase() == "loan" ||
+                        element.accountType.toLowerCase() == "od")
                     .toList();
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -51,7 +50,6 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                       margin: const EdgeInsets.symmetric(horizontal: 20),
                       padding: const EdgeInsets.all(18),
                       width: double.infinity,
-                      // height: _width * 0.35,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(18),
                         color: CustomTheme.white,
@@ -77,7 +75,8 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                         account;
                                     NavigationService.pop();
                                     if (widget.onPressed != null)
-                                      widget.onPressed!.call();
+                                      widget.onPressed!
+                                          .call(account.accountNumber);
                                   },
                                   borderRadius: BorderRadius.circular(8),
                                   child: Container(
@@ -99,56 +98,16 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                         Row(
                                           children: [
                                             SvgPicture.asset(
-                                              Assets.walletIcon,
-                                              height: _height * 0.023,
-                                              color: _theme.primaryColor,
-                                            ),
-                                            SizedBox(width: _width * 0.03),
-                                            Text(
-                                              "NPR ${account.availableBalance}",
-                                              style: TextStyle(
-                                                  fontSize: 18,
-                                                  fontFamily: "popinsemibold",
-                                                  color: _theme.primaryColor),
-                                            ),
-                                            const Spacer(),
-                                            account.primary == "true"
-                                                ? Container(
-                                                    width: _width * 0.2,
-                                                    height: _width * 0.06,
-                                                    decoration: BoxDecoration(
-                                                      borderRadius:
-                                                          BorderRadius.circular(
-                                                              8),
-                                                      color:
-                                                          _theme.primaryColor,
-                                                      // border: Border.all(color: Colors.black),
-                                                    ),
-                                                    child: const Center(
-                                                      child: Text(
-                                                        "Primary",
-                                                        style: TextStyle(
-                                                            color:
-                                                                Colors.white),
-                                                      ),
-                                                    ),
-                                                  )
-                                                : Container()
-                                          ],
-                                        ),
-                                        Row(
-                                          children: [
-                                            SvgPicture.asset(
                                               Assets.bankingIcon,
-                                              height: _height * 0.023,
+                                              height: 25.hp,
                                               color: _theme.primaryColor,
                                             ),
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
                                               child: Text(account.accountType,
                                                   maxLines: 2,
-                                                  style: _theme
-                                                      .textTheme.labelLarge),
+                                                  style: _theme.textTheme
+                                                      .headlineMedium),
                                             ),
                                           ],
                                         ),
@@ -156,13 +115,13 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                           children: [
                                             SvgPicture.asset(
                                               Assets.personIcon,
-                                              height: _height * 0.023,
+                                              height: 25.hp,
                                               color: _theme.primaryColor,
                                             ),
                                             SizedBox(width: _width * 0.03),
                                             Text(
                                               account.mainCode,
-                                              style: _textTheme.labelMedium,
+                                              style: _textTheme.headlineMedium,
                                             ),
                                           ],
                                         )

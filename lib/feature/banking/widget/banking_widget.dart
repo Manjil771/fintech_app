@@ -104,6 +104,6 @@ class _BankingWidgetState extends State<BankingWidget> {
     Routes.statementPage,
     // Routes.internalCooperative,
     Routes.chequeScreen,
-    Routes.loanPage,
+    Routes.chooseLoanAccountPage,
   ];
 }

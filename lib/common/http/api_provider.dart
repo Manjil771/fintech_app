@@ -443,6 +443,7 @@ class ApiProvider {
             response.statusCode,
           );
         } else {
+          // await SharedPref.removeBiometricLogin();
           RepositoryProvider.of<UserRepository>(NavigationService.context)
               .logout(isSessionExpired: true);
           throw UnauthorisedException(

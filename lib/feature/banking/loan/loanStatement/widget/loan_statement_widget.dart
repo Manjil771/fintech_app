@@ -1,12 +1,15 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/util/secure_storage_service.dart';
+import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
+import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -19,7 +22,7 @@ class LoanStatementWidget extends StatefulWidget {
 }
 
 class _LoanStatementWidgetState extends State<LoanStatementWidget> {
-  DateTime fromDate = DateTime.now().subtract(const Duration(days: 90));
+  DateTime fromDate = DateTime.now().subtract(const Duration(days: 30));
   DateTime toDate = DateTime.now();
   @override
   void initState() {
@@ -30,10 +33,12 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
     super.initState();
   }
 
+  int currentIndex = 0;
+
   fetchLoanStatement(
       {required DateTime fromDate, required DateTime toDate}) async {
-    final String mPin = await SecureStorageService.appPassword;
     context.read<UtilityPaymentCubit>().fetchDetails(
+        shouldIncludeMPIN: true,
         serviceIdentifier: "",
         accountDetails: {
           "accountNumber":
@@ -41,16 +46,32 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                   .selectedAccount
                   .value!
                   .accountNumber,
-          "mPin": mPin,
           "fromDate": DateFormat("yyyy-MM-dd").format(fromDate),
           "toDate": DateFormat("yyyy-MM-dd").format(toDate),
         },
         apiEndpoint: "api/loan/statement");
   }
 
+  bool showInterestRate = false;
+
+  List<Map<String, dynamic>> allData = [
+    {"key": "tranDate", "title": "Txn Date"},
+    {"key": "interestDate", "title": "Interest Date"},
+    {"key": "statementReference", "title": "Remarks"},
+    {"key": "issuedAmount", "title": "Issued Amount"},
+    {"key": "payment", "title": "Payment"},
+    {"key": "principal", "title": "Principal"},
+    {"key": "interest", "title": "Interest"},
+    {"key": "fine", "title": "Fine"},
+    {"key": "discount", "title": "Discount"},
+    {"key": "balance", "title": "Balance"}
+  ];
+
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+
     return PageWrapper(
       body: CommonContainer(
         verticalPadding: 0,
@@ -59,11 +80,82 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
         showRoundBotton: false,
         body: Column(
           children: [
-            BlocBuilder<UtilityPaymentCubit, CommonState>(
+            Container(
+              height: 40.hp,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Row(
+                    children: List.generate(
+                      predefinedPeriods.length,
+                      (index) => predefinedPeriodButton(
+                        predefinedPeriods[index],
+                        currentIndex == index,
+                      ),
+                    ),
+                  ),
+                  InkWell(
+                    onTap: showFilterDialog,
+                    child: Container(
+                      height: 40.hp,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(6),
+                        border: Border.all(
+                          color: currentIndex == -1
+                              ? _theme.primaryColor
+                              : Colors.black54,
+                        ),
+                      ),
+                      margin: const EdgeInsets.only(left: 5),
+                      padding: const EdgeInsets.all(4),
+                      child: Row(
+                        children: [
+                          Text(
+                            "Filter",
+                            style: _textTheme.labelLarge!.copyWith(
+                              color: currentIndex == -1
+                                  ? _theme.primaryColor
+                                  : Colors.black54,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          SizedBox(width: 20.wp),
+                          SvgPicture.asset(
+                            Assets.filterIcon,
+                            height: 25.hp,
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            BlocConsumer<UtilityPaymentCubit, CommonState>(
+              listener: (context, state) {
+                if (state is CommonStateSuccess<UtilityResponseData>) {
+                  final UtilityResponseData response = state.data;
+                  final _response = response.findValue(primaryKey: "data");
+                  // showInterestRate = _response
+                  //         .where((e) => e['interestDate'] == "N/A")
+                  //         .length !=
+                  //     _response.length;
+                }
+              },
               builder: (context, state) {
                 if (state is CommonStateSuccess<UtilityResponseData>) {
                   final UtilityResponseData response = state.data;
                   final _response = response.findValue(primaryKey: "data");
+                  if ((int.tryParse(_response?.length.toString() ?? "") ?? 0) <
+                      1) {
+                    return NoDataScreen(
+                        title: "Loan Statement", details: response.message);
+                  }
+                  final firstItem = _response[0];
+                  final availableValues = allData.where((e) =>
+                      firstItem[e['key']] != 'N/A' &&
+                      firstItem[e['key']] != null);
+
                   return response.details.isNotEmpty
                       ? Column(
                           children: [
@@ -73,31 +165,35 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                 headingRowColor: MaterialStatePropertyAll(
                                     _theme.primaryColor.withOpacity(0.05)),
                                 columnSpacing: 10,
-                                columns: const [
-                                  DataColumn(label: Text('SN')),
-                                  DataColumn(
-                                      label: Text(
-                                    'Tranaction \nDate',
-                                    textAlign: TextAlign.center,
-                                  )),
-                                  DataColumn(
-                                      label: Text(
-                                    'Interest\nDate',
-                                    textAlign: TextAlign.center,
-                                  )),
-                                  DataColumn(
-                                      label: Text(
-                                    'Issued\nAmount',
-                                    textAlign: TextAlign.center,
-                                  )),
-                                  DataColumn(label: Text('Payment')),
-                                  DataColumn(label: Text('Principal')),
-                                  DataColumn(label: Text('Interest')),
-                                  DataColumn(label: Text('Fine')),
-                                  DataColumn(label: Text('Discount')),
-                                  DataColumn(label: Text('Balance')),
-                                  DataColumn(
-                                      label: Text('Statement Reference')),
+                                columns: [
+                                  const DataColumn(label: Text('SN')),
+                                  ...availableValues.map((e) =>
+                                      DataColumn(label: Text(e['title'])))
+
+                                  // const DataColumn(
+                                  //     label: Text(
+                                  //   'Tranaction\nDate',
+                                  //   textAlign: TextAlign.center,
+                                  // )),
+                                  // if (showInterestRate)
+                                  //   const DataColumn(
+                                  //       label: Text(
+                                  //     'Interest\nDate',
+                                  //     textAlign: TextAlign.center,
+                                  //   )),
+                                  // const DataColumn(
+                                  //     label: Text(
+                                  //   'Issued\nAmount',
+                                  //   textAlign: TextAlign.center,
+                                  // )),
+                                  // const DataColumn(label: Text('Payment')),
+                                  // const DataColumn(label: Text('Principal')),
+                                  // const DataColumn(label: Text('Interest')),
+                                  // const DataColumn(label: Text('Fine')),
+                                  // const DataColumn(label: Text('Discount')),
+                                  // const DataColumn(label: Text('Balance')),
+                                  // const DataColumn(
+                                  //     label: Text('Statement Reference')),
                                 ],
                                 rows: List.generate(
                                   _response.length,
@@ -109,38 +205,41 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                                   .withOpacity(0.03)),
                                       cells: [
                                         DataCell(Text("${index + 1}")),
-                                        DataCell(Text(_response[index]
-                                                ['tranDate'] ??
-                                            '')),
-                                        DataCell(Text(_response[index]
-                                                ['interestDate']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['issuedAmount']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['payment']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['principal']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['interest']
-                                            .toString())),
-                                        DataCell(Text(_response[index]['fine']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['discount']
-                                            .toString())),
-                                        DataCell(Text(_response[index]
-                                                ['balance']
-                                            .toString())),
-                                        DataCell(SizedBox(
-                                          width: 30.w,
-                                          child: Text(_response[index]
-                                                  ['statementReference']
-                                              .toString()),
-                                        )),
+                                        ...availableValues.map((e) => DataCell(
+                                            Text(_response[index][e['key']]
+                                                .toString()))),
+                                        // DataCell(Text(_response[index]
+                                        //         ['tranDate'] ??
+                                        //     '')),
+                                        // DataCell(Text(_response[index]
+                                        //         ['interestDate']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['issuedAmount']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['payment']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['principal']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['interest']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]['fine']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['discount']
+                                        //     .toString())),
+                                        // DataCell(Text(_response[index]
+                                        //         ['balance']
+                                        //     .toString())),
+                                        // DataCell(SizedBox(
+                                        //   width: 30.w,
+                                        //   child: Text(_response[index]
+                                        //           ['statementReference']
+                                        //       .toString()),
+                                        // )),
                                       ]),
                                 ),
                               ),
@@ -238,6 +337,138 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
           ],
         ),
       ),
+    );
+  }
+
+  final List<int> predefinedPeriods = [30, 60, 120];
+  Widget predefinedPeriodButton(int days, bool isSelected) {
+    return CustomRoundedButtom(
+      color: CustomTheme.primaryColor.withOpacity(isSelected ? 1 : 0.5),
+      title: "$days days",
+      onPressed: () => selectPredefinedPeriod(days),
+      fontSize: 11,
+    );
+  }
+
+  void selectPredefinedPeriod(int days) {
+    setState(() {
+      toDate = DateTime.now();
+      fromDate = toDate.subtract(Duration(days: days));
+      currentIndex = predefinedPeriods.indexOf(days);
+    });
+    fetchLoanStatement(fromDate: fromDate, toDate: toDate);
+  }
+
+  DateTime filtertoDate = DateTime.now();
+  DateTime filterfromDate = DateTime.now().subtract(const Duration(days: 90));
+  Future<void> showFilterDialog() async {
+    DateTime tempFromDate = filterfromDate;
+    DateTime tempToDate = filtertoDate;
+
+    await showDialog(
+      context: context,
+      builder: (context) {
+        return StatefulBuilder(
+          builder: (context, setState) {
+            return Dialog(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(18),
+              ),
+              elevation: 0,
+              backgroundColor: Colors.transparent,
+              child: Container(
+                padding: const EdgeInsets.all(18),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(18),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.black26,
+                      blurRadius: 10.0,
+                      offset: Offset(0.0, 10.0),
+                    ),
+                  ],
+                ),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Text(
+                      "Select Date",
+                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
+                            fontWeight: FontWeight.bold,
+                            fontSize: 16,
+                          ),
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      readOnly: true,
+                      onTap: () async {
+                        final DateTime? picked = await showDatePicker(
+                          context: context,
+                          initialDate: tempFromDate,
+                          firstDate: DateTime(2021),
+                          lastDate: DateTime.now(),
+                        );
+                        if (picked != null) {
+                          setState(() {
+                            tempFromDate = picked;
+                            if (tempToDate.difference(tempFromDate).inDays >
+                                90) {
+                              tempToDate =
+                                  tempFromDate.add(const Duration(days: 90));
+                            }
+                          });
+                        }
+                      },
+                      title: "From Date",
+                      hintText:
+                          "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
+                      showSuffixImage: true,
+                    ),
+                    const SizedBox(height: 16),
+                    CustomTextField(
+                      readOnly: true,
+                      onTap: () async {
+                        final DateTime? picked = await showDatePicker(
+                          context: context,
+                          initialDate: tempToDate,
+                          firstDate: tempFromDate,
+                          lastDate: DateTime.now(),
+                        );
+                        if (picked != null) {
+                          setState(() {
+                            tempToDate = picked;
+                          });
+                        }
+                      },
+                      title: "To Date",
+                      hintText:
+                          "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
+                      showSuffixImage: true,
+                    ),
+                    const SizedBox(height: 24),
+                    CustomRoundedButtom(
+                      title: "View",
+                      onPressed: () {
+                        setState(() {
+                          filterfromDate = tempFromDate;
+                          filtertoDate = tempToDate;
+                          fromDate = filterfromDate;
+                          toDate = filtertoDate;
+                          currentIndex = -1; // Custom range selected
+                        });
+                        fetchLoanStatement(fromDate: fromDate, toDate: toDate);
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              ),
+            );
+          },
+        );
+      },
     );
   }
 }
