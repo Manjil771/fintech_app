@@ -5,6 +5,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -48,6 +50,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                   .accountNumber,
           "fromDate": DateFormat("yyyy-MM-dd").format(fromDate),
           "toDate": DateFormat("yyyy-MM-dd").format(toDate),
+          "loanType": "loanType",
         },
         apiEndpoint: "api/loan/statement");
   }
@@ -159,6 +162,31 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                   return response.details.isNotEmpty
                       ? Column(
                           children: [
+                            if (response.detail.isNotEmpty)
+                              InkWell(
+                                onTap: () {
+                                  FileDownloadUtils.downloadFile(
+                                    downloadLink:
+                                        RepositoryProvider.of<CoOperative>(
+                                                    context)
+                                                .baseUrl +
+                                            response.detail,
+                                    fileName: FileDownloadUtils
+                                        .generateDownloadFileName(
+                                      name: "Loan Statement",
+                                      filetype: FileType.pdf,
+                                    ),
+                                    context: context,
+                                  );
+                                },
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: SvgPicture.asset(
+                                    Assets.downloadBorderIcon,
+                                    height: 20.hp,
+                                  ),
+                                ),
+                              ),
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: DataTable(
