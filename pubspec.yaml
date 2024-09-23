@@ -104,7 +104,7 @@ flutter:
     # - assets/manank/
     # - assets/shreeaaju/
     # - assets/shreemitra/
-    # - assets/kipoo/
+    - assets/kipoo/
     # - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
@@ -226,7 +226,7 @@ flutter:
     # - assets/chandani/
     # - assets/sparkling/
     # - assets/lifeVision/
-    - assets/pacific/
+    # - assets/pacific/
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/

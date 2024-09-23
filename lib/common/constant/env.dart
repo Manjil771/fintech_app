@@ -3664,16 +3664,16 @@ class CoOperativeValue {
     appStoreID: "com.devanasoft.sunischit",
     packageName: "com.devanasoft.sunischit",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/sunishchit/sunishchit_banner.png",
-    backgroundImage: "assets/sunishchit/sunishchit_background.png",
+    bannerImage: "assets/sunischit/sunischit_banner.png",
+    backgroundImage: "assets/sunischit/sunischit_background.png",
     clientCode: 'UFOXNMPMKK',
     clientSecret: "125378",
-    coOperativeLogo: 'assets/sunishchit/sunishchit_logo.png',
-    splashImage: "assets/sunishchit/sunishchit_splash.png",
+    coOperativeLogo: 'assets/sunischit/sunischit_logo.png',
+    splashImage: "assets/sunischit/sunischit_splash.png",
     primaryColor: const Color(0xFF2B3482),
     coOperativeName: "Sunischit Saving & Credit Co-operative Ltd.",
     appTitle: "Sunischit iSmart",
   );
 
-  static final CoOperative currentCoop = pacificCoop;
+  static final CoOperative currentCoop = kipoo;
 }
