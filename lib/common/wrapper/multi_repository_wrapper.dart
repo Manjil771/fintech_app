@@ -11,6 +11,7 @@ import 'package:ismart/feature/categoryWiseService/airlines/resources/airlines_r
 import 'package:ismart/feature/categoryWiseService/creditCard/resource/credit_card_repository.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/resources/datapack_repository.dart';
 import 'package:ismart/feature/categoryWiseService/drinkingwater/khanepani/resources/khanepani_repository.dart';
+import 'package:ismart/feature/categoryWiseService/movie/resource/movie_repository.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/resources/tv_payment_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
@@ -106,6 +107,14 @@ class MultiRepositoryWrapper extends StatelessWidget {
             apiProvider: RepositoryProvider.of<ApiProvider>(context),
             userRepository: RepositoryProvider.of<UserRepository>(context),
             coOperative: RepositoryProvider.of<CoOperative>(context),
+          ),
+          lazy: true,
+        ),
+        RepositoryProvider(
+          create: (context) => MovieRepository(
+            userRepository: RepositoryProvider.of<UserRepository>(context),
+            apiProvider: RepositoryProvider.of<ApiProvider>(context),
+            env: RepositoryProvider.of<CoOperative>(context),
           ),
           lazy: true,
         ),

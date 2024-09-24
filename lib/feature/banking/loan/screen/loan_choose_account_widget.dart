@@ -39,6 +39,7 @@ class _ChooseAccountLoanWidgetState extends State<ChooseAccountLoanWidget> {
                               element.accountType.toLowerCase() == "od")
                           .toList();
                       return CommonContainer(
+                        showRoundBotton: showValidAccount.isNotEmpty,
                         showAccountSelection: false,
                         accountTitle: "Select Account",
                         topbarName: "Loan",
@@ -51,15 +52,24 @@ class _ChooseAccountLoanWidgetState extends State<ChooseAccountLoanWidget> {
                             accountNumber: showValidAccount.first.accountNumber,
                           ));
                         },
-                        body: LoanAccountBox(
-                          onPressed: (p0) {
-                            selectedAccountNumber = p0;
-                            setState(() {});
-                            NavigationService.pushReplacement(
-                                target: LoanPage(
-                              accountNumber: selectedAccountNumber,
-                            ));
-                          },
+                        body: Column(
+                          children: [
+                            showValidAccount.isNotEmpty
+                                ? LoanAccountBox(
+                                    onPressed: (p0) {
+                                      selectedAccountNumber = p0;
+                                      setState(() {});
+                                      NavigationService.pushReplacement(
+                                          target: LoanPage(
+                                        accountNumber: selectedAccountNumber,
+                                      ));
+                                    },
+                                  )
+                                : const NoDataScreen(
+                                    title: "No Loan Found.",
+                                    details:
+                                        "No Loan Account associated found.")
+                          ],
                         ),
                       );
                     } else {
