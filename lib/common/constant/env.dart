@@ -3675,5 +3675,5 @@ class CoOperativeValue {
     appTitle: "Sunischit iSmart",
   );
 
-  static final CoOperative currentCoop = arghaCoop;
+  static final CoOperative currentCoop = gagankalikaCoop;
 }
