@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/resource/bus_detail_model.dart';
 import 'package:ismart/feature/notification/resources/notification_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -44,9 +45,13 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     required Map<String, dynamic> accountDetails,
     required String apiEndpoint,
     Map<String, dynamic>? extraHeaders,
+    bool shouldIncludeMPIN = false,
   }) async {
     emit(CommonLoading());
-
+    if (shouldIncludeMPIN) {
+      final mPin = await SecureStorageService.appPassword;
+      accountDetails['mPin'] = mPin;
+    }
     final _res = await utilityPaymentRepository.fetchDetails(
       extraHeaders: extraHeaders,
       serviceIdentifier: serviceIdentifier,

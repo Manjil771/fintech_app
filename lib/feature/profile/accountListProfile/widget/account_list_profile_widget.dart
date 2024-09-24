@@ -90,17 +90,18 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                       )
                                     ],
                                   ),
-                                  if (_detail.accountDetail[index].interestRate
-                                              .toString() !=
-                                          "0.0" ||
-                                      _detail.accountDetail[index].interestRate
-                                              .toString() !=
-                                          "0" ||
-                                      _detail.accountDetail[index].interestRate
-                                              .toString() !=
-                                          "N/A")
-                                    Row(
-                                      children: [
+                                  Row(
+                                    children: [
+                                      if (_detail.accountDetail[index]
+                                                  .actualBalance
+                                                  .toString()
+                                                  .toLowerCase() !=
+                                              "n/a" ||
+                                          _detail.accountDetail[index]
+                                                  .actualBalance
+                                                  .toString()
+                                                  .toLowerCase() !=
+                                              "null")
                                         Expanded(
                                           child: buildDetails(
                                               context,
@@ -108,6 +109,16 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                               "Actual Balance",
                                               "NPR ${_detail.accountDetail[index].actualBalance}"),
                                         ),
+                                      if (_detail.accountDetail[index]
+                                                  .availableBalance
+                                                  .toString()
+                                                  .toLowerCase() !=
+                                              "N/A".toLowerCase() ||
+                                          _detail.accountDetail[index]
+                                                  .availableBalance
+                                                  .toString()
+                                                  .toLowerCase() !=
+                                              "null")
                                         SizedBox(
                                           width: _width * 0.4,
                                           child: buildDetails(
@@ -116,8 +127,8 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                               "Available Bal.",
                                               "NPR ${_detail.accountDetail[index].availableBalance}"),
                                         ),
-                                      ],
-                                    ),
+                                    ],
+                                  ),
                                   Row(
                                     children: [
                                       if (accuredInterest != "0" &&

@@ -172,21 +172,21 @@ class CoOperativeValue {
     coOperativeName: "ISMART DEMO APPKTM",
     appTitle: "iSmart Devanasoft",
   );
-  static final CoOperative externalQrTest = CoOperative(
-    backgroundImage: "assets/images/ismart_background_image.jpg",
-    bannerImage: "assets/images/ismart_banner.png",
-    coOperativeLogo: Assets.ismartLogo,
-    clientCode: 'EHVNI7CZJ3',
-    clientSecret: "126489",
-    splashImage: "assets/images/ismart_splash.png",
-    primaryColor: const Color(0xFF010C80),
-    baseUrl: 'http://192.168.1.75:8080/',
-    packageName: "com.devanasoft.ismart",
-    appStoreID: "com.devanasoft.ismart",
-    shouldValidateCooperative: true,
-    coOperativeName: "ISMART DEMO APPKTM",
-    appTitle: "iSmart Devanasoft",
-  );
+  // static final CoOperative externalQrTest = CoOperative(
+  //   backgroundImage: "assets/images/ismart_background_image.jpg",
+  //   bannerImage: "assets/images/ismart_banner.png",
+  //   coOperativeLogo: Assets.ismartLogo,
+  //   clientCode: 'EHVNI7CZJ3',
+  //   clientSecret: "126489",
+  //   splashImage: "assets/images/ismart_splash.png",
+  //   primaryColor: const Color(0xFF010C80),
+  //   baseUrl: 'http://192.168.1.75:8080/',
+  //   packageName: "",
+  //   appStoreID: "com.devanasoft.ismart",
+  //   shouldValidateCooperative: true,
+  //   coOperativeName: "ISMART DEMO APPKTM",
+  //   appTitle: "iSmart Devanasoft",
+  // );
 
   static final CoOperative bhaktapurSaccos = CoOperative(
     packageName: 'com.devanasoft.bhaktapur',
@@ -370,7 +370,7 @@ class CoOperativeValue {
     coOperativeName: "Goma Ganesh Saving & Credit Cooperative Ltd",
     appTitle: "Goma Ganesh Coop iSmart",
   );
-  static final CoOperative alankarCoop = CoOperative(
+  static final CoOperative alangkarCoop = CoOperative(
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/alankar/alankar_banner.png",
     clientCode: 'GY05KRRDJG',

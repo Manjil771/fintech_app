@@ -10,11 +10,13 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 class AccountDetailBox extends StatefulWidget {
   final Function()? onPressed;
+  final bool? validateMobileBankingStatus;
   // ValueNotifier<CustomerDetailModel?> customerDetail;
 
   const AccountDetailBox({
     super.key,
     this.onPressed,
+    this.validateMobileBankingStatus = true,
   });
 
   @override
@@ -39,6 +41,22 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
             valueListenable: _customerDetailRepo.customerDetailModel,
             builder: (context, val, _) {
               if (val != null) {
+                final List showValidAccount = val.accountDetail
+                    .where((element) =>
+                        element.accountType.toLowerCase() == "saving" ||
+                        element.accountType.toLowerCase() == "current")
+                    .toList();
+                final List validMobileBankingList =
+                    widget.validateMobileBankingStatus == true
+                        ? showValidAccount
+                            .where((element) =>
+                                element.mobileBanking
+                                    .toString()
+                                    .toLowerCase() !=
+                                "false")
+                            .toList()
+                        : showValidAccount;
+
                 return Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -54,12 +72,14 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                       ),
                       child: ListView.builder(
                           shrinkWrap: true,
-                          itemCount: val.accountDetail.length,
+                          itemCount: validMobileBankingList.length,
                           itemBuilder: (context, index) {
-                            final account = val.accountDetail[index];
+                            final account = validMobileBankingList[index];
+
                             final _isSelectedAccount = account.accountNumber
                                 .toLowerCase()
                                 .contains(selectedAccount?.accountNumber ?? "");
+
                             return Padding(
                               padding: const EdgeInsets.symmetric(vertical: 10),
                               child: Material(

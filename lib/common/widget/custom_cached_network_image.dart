@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
-import 'package:ismart/common/constant/assets.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/custom_cache_manager.dart';
 
 class CustomCachedNetworkImage extends StatelessWidget {
@@ -40,7 +41,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
       errorWidget: (a, b, c) =>
           customPlaceHolder ??
           Image.asset(
-            placeholder ?? Assets.logoImage,
+            placeholder ??
+                RepositoryProvider.of<CoOperative>(context).coOperativeLogo,
             fit: placeholderFit ?? fit,
             height: height,
             alignment: alignment,
@@ -49,7 +51,8 @@ class CustomCachedNetworkImage extends StatelessWidget {
       placeholder: (a, c) =>
           customPlaceHolder ??
           Image.asset(
-            placeholder ?? Assets.logoImage,
+            placeholder ??
+                RepositoryProvider.of<CoOperative>(context).coOperativeLogo,
             fit: placeholderFit ?? fit,
             height: height,
             alignment: alignment,

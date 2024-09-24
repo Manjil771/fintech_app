@@ -7,6 +7,7 @@ class UtilityResponseData {
   final String message;
   final String transactionIdentifier;
   final List<KeyValue> details;
+  final String detail;
 
   UtilityResponseData({
     required this.status,
@@ -14,6 +15,7 @@ class UtilityResponseData {
     required this.message,
     required this.transactionIdentifier,
     required this.details,
+    required this.detail,
   });
 
   factory UtilityResponseData.fromJson(Map<String, dynamic> json) =>
@@ -23,6 +25,7 @@ class UtilityResponseData {
         message: json["message"] ?? "",
         transactionIdentifier: json["transactionIdentifier"] ?? "",
         details: ParseUtils.parseKeyValue(json['details'] ?? json['detail']),
+        detail: json["detail"] ?? "",
       );
 
   T? findValue<T>({required String primaryKey, String? secondaryKey}) {

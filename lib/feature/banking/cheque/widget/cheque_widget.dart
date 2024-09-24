@@ -32,6 +32,7 @@ class ChequeWidget extends StatelessWidget {
                     fontWeight: FontWeight.w700,
                     fontSize: 14,
                   ),
+                  indicatorSize: TabBarIndicatorSize.tab,
                   indicator: BoxDecoration(
                       color: _theme.primaryColor.withOpacity(0.8),
                       borderRadius: BorderRadius.circular(12)),
@@ -41,7 +42,6 @@ class ChequeWidget extends StatelessWidget {
                     fontSize: 14,
                   ),
                   unselectedLabelColor: CustomTheme.darkGray,
-                  // automaticIndicatorColorAdjustment: true,
                   tabs: const [
                     Tab(text: "Cheque Request"),
                     Tab(text: "Cheque Stop"),

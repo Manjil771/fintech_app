@@ -223,6 +223,7 @@ class BusBillDetailWidget extends StatelessWidget {
                             LoanKeyValueTile(
                                 title: "Mobile Number",
                                 value: contactDetail.phoneNumber),
+                            LoanKeyValueTile(title: "Remarks", value: remarks),
                           ],
                         ),
                       )
@@ -250,8 +251,8 @@ class BusBillDetailWidget extends StatelessWidget {
                                             .findValueString("totalAmount")
                                             .toString() ==
                                         "null"
-                                    ? totalFare
-                                    : response.findValueString("tottalAmount"),
+                                    ? totalFare.toString()
+                                    : response.findValueString("totalAmount"),
                                 "from": busTopBarModel.sectorFrom,
                                 "to": busTopBarModel.sectorTo,
                                 "ticketId":

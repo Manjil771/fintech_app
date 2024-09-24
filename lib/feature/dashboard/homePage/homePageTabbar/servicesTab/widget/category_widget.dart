@@ -18,6 +18,7 @@ import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_booking
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/movie/screen/movie_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
@@ -190,6 +191,14 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 "category".toLowerCase()) {
                           NavigationService.push(
                               target: LandlinePaymentPage(
+                            category: data,
+                          ));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
+                            "movies".toLowerCase()) {
+                          NavigationService.push(
+                              target: MoviePage(
                             category: data,
                           ));
                         } else if (data.uniqueIdentifier

@@ -48,9 +48,12 @@ class ContactUsProfilePage extends StatelessWidget {
       // _contactRepo.appContactDetail.findValue(primaryKey: "email"),
     ];
     return ContactUsProfileWidget(
-      latitude: _contactRepo.appContactDetail.findValue(primaryKey: "latitude"),
-      longitude:
-          _contactRepo.appContactDetail.findValue(primaryKey: "longitude"),
+      latitude: _contactRepo.appContactDetail
+          .findValue(primaryKey: "latitude")
+          .toString(),
+      longitude: _contactRepo.appContactDetail
+          .findValue(primaryKey: "longitude")
+          .toString(),
       details: detail,
     );
   }

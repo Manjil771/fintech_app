@@ -13,6 +13,7 @@ import 'package:ismart/feature/history/screen/recent_transaction_service_page.da
 import '../util/size_utils.dart';
 
 class CommonContainer extends StatelessWidget {
+  final bool? validateMobileBankingStatus;
   final Widget body;
   final String? serviceName;
   final String serviceCategoryId;
@@ -59,6 +60,7 @@ class CommonContainer extends StatelessWidget {
     this.onRecentTransactionPressed,
     this.serviceId = "",
     this.onBackPressed,
+    this.validateMobileBankingStatus = true,
   });
   @override
   Widget build(BuildContext context) {
@@ -137,7 +139,10 @@ class CommonContainer extends StatelessWidget {
                                     color: CustomTheme.lightTextColor,
                                   ),
                                 ),
-                                PrimaryAccountBox(),
+                                PrimaryAccountBox(
+                                  validateMobileBankingStatus:
+                                      validateMobileBankingStatus,
+                                ),
                               ],
                             )
                           : Container(),

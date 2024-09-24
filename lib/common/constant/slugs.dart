@@ -20,6 +20,7 @@ class Slugs {
   static String brokerPayment = "broker_payment";
 
   static String worldlinkPayment = "worldlink_online_topup";
+  static String movieBooking = "movie_ticket_booking";
 
 //Tv
   // static String netTvOnlineTopup = "net_tv_online_topup";

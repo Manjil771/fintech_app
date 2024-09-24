@@ -371,10 +371,12 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                 _response.status.toLowerCase() == "Success".toLowerCase()) {
               NavigationService.push(
                 target: PassengerDetailScreen(
+                  isTwoWay: widget.isTwoWay,
+                  airlineID: _response.findValueString("airlineId").toString(),
                   utilityResponseData: _response,
-                  arrivalFlight: selectedInboundIndex.isNegative
-                      ? _outboundValues[selectedOutboundIndex]
-                      : _inboundValue[selectedInboundIndex],
+                  arrivalFlight: widget.isTwoWay
+                      ? _inboundValue[selectedInboundIndex]
+                      : null,
                   totalFare: totalPrice,
                   service: widget.serviceInfo,
                   adultCount: widget.adultCount,

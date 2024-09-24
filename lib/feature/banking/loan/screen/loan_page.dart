@@ -4,14 +4,29 @@ import 'package:ismart/feature/banking/loan/widget/loan_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class LoanPage extends StatelessWidget {
-  const LoanPage({Key? key}) : super(key: key);
+class LoanPage extends StatefulWidget {
+  final String accountNumber;
+  const LoanPage({Key? key, required this.accountNumber}) : super(key: key);
+
+  @override
+  State<LoanPage> createState() => _LoanPageState();
+}
+
+class _LoanPageState extends State<LoanPage> {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
         create: (context) => UtilityPaymentCubit(
             utilityPaymentRepository:
-                RepositoryProvider.of<UtilityPaymentRepository>(context)),
+                RepositoryProvider.of<UtilityPaymentRepository>(context))
+          ..fetchDetails(
+              serviceIdentifier: "",
+              accountDetails: {
+                "accountNumber": widget.accountNumber,
+                // "mPin": getMpin(),
+              },
+              shouldIncludeMPIN: true,
+              apiEndpoint: "/api/loan/details"),
         child: const LoanWidget());
   }
 }

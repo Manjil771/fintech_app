@@ -18,6 +18,7 @@ class _ChooseAccountFullStatementWidgetState
   Widget build(BuildContext context) {
     return PageWrapper(
       body: CommonContainer(
+        validateMobileBankingStatus: false,
         showDetail: true,
         showAccountSelection: true,
         topbarName: "Full Statement",
@@ -26,7 +27,7 @@ class _ChooseAccountFullStatementWidgetState
         onButtonPressed: () {
           NavigationService.pushNamed(routeName: Routes.fullStatement);
         },
-        body: Column(),
+        body: const Column(),
       ),
     );
   }

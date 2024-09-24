@@ -40,7 +40,13 @@ class BusPassengerDetailWidget extends StatefulWidget {
 class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
   final _formKey = GlobalKey<FormState>();
 
-  final contactName = TextEditingController();
+  final contactName = TextEditingController()
+    ..text = RepositoryProvider.of<CustomerDetailRepository>(
+                NavigationService.context)
+            .selectedAccount
+            .value
+            ?.accountHolderName ??
+        "";
 
   final contactEmail = TextEditingController();
 
@@ -52,7 +58,6 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final userDetail = RepositoryProvider.of<CustomerDetailRepository>(context);
     final List<dynamic> responseData =
         widget.response.findValue(primaryKey: "boardingPoints");
     // final boardingPonit = responseData.findValue(primaryKey:"")
@@ -73,9 +78,7 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
               title: 'Full Name',
               hintText: 'Full Name',
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              controller: contactName
-                ..text =
-                    userDetail.selectedAccount.value?.accountHolderName ?? "",
+              controller: contactName,
               validator: (value) =>
                   FormValidator.validateFieldNotEmpty(value, "Name"),
             ),

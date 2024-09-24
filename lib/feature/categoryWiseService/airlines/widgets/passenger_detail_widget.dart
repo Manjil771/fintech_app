@@ -18,6 +18,9 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 // ignore: must_be_immutable
 class PassengerDetailWidget extends StatefulWidget {
   Flight? departureFlight;
+  final String? airlineID;
+
+  final bool isTwoWay;
   Flight? arrivalFlight;
 
   final double totalFare;
@@ -31,6 +34,8 @@ class PassengerDetailWidget extends StatefulWidget {
     required this.departureFlight,
     required this.service,
     required this.totalFare,
+    this.airlineID,
+    required this.isTwoWay,
   }) : super(key: key);
 
   final int adultCount;
@@ -333,6 +338,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
           if (_formKey.currentState!.validate()) {
             NavigationService.pushReplacement(
                 target: AirlinesBillDetailPage(
+                    isTwoWay: widget.isTwoWay,
                     passengerList: passengerList,
                     contactEmail: contactEmail.text,
                     contactName: contactName.text,
@@ -350,7 +356,7 @@ class _PassengerDetailWidgetState extends State<PassengerDetailWidget> {
                               .value!
                               .accountNumber,
                       "agencyCommission": totalAgencyComission,
-                      "airlineId": "",
+                      "airlineId": widget.airlineID,
                       "amount": widget.totalFare,
                       "channel": "MOBILE",
                       "serviceIdentifier": "ARS",
