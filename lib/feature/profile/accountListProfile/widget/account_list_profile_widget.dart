@@ -75,10 +75,15 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                     children: [
                                       Expanded(
                                         child: buildDetails(
-                                            context,
-                                            "Banking.svg",
-                                            "Account Type",
-                                            "${_detail.accountDetail[index].accountType} A/C"),
+                                          context,
+                                          "Banking.svg",
+                                          "Account Type",
+                                          _detail.accountDetail[index]
+                                                  .accountTypeDescription ??
+                                              _detail.accountDetail[index]
+                                                      .accountType +
+                                                  " A/C",
+                                        ),
                                       ),
                                       SizedBox(
                                         width: _width * 0.4,

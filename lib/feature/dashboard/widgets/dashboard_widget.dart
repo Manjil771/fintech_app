@@ -383,11 +383,11 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
-import 'package:ismart/feature/categoryWiseService/movie/widget/count_down_movie_widget.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:permission_handler/permission_handler.dart';
@@ -409,10 +409,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const Bankingpage(),
     const QRScannerScreens(),
     const RecentTransactionScreen(),
-    // const MorePage()
-    const TimerScreen(
-      minutes: 10,
-    ),
+    const MorePage()
   ];
 
   @pragma('vm:entry-point')

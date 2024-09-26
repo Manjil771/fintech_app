@@ -112,8 +112,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       ),
                       SizedBox(width: _width * 0.03),
                       Expanded(
-                        child: Text("${selectedAcc?.accountType}",
-                            maxLines: 2, style: _theme.textTheme.labelLarge),
+                        child: Text(
+                            "${selectedAcc?.accountTypeDescription ?? selectedAcc?.accountType}",
+                            maxLines: 2,
+                            style: _theme.textTheme.labelLarge),
                       ),
                     ],
                   ),

@@ -103,7 +103,7 @@ class CustomerDetailModel {
   static String _getUserImageUrl(Map<String, dynamic> json) {
     String _url = "";
 
-    String _clippedUrl = json['imageUrl'] ?? "";
+    final String _clippedUrl = json['imageUrl'] ?? "";
 
     if (_clippedUrl.isNotEmpty) {
       _url = "https://ismart.devanasoft.com.np" + _clippedUrl;
@@ -148,6 +148,8 @@ class CustomerDetailModel {
 class AccountDetail {
   String interestRate;
   String accountType;
+  String? accountTypeDescription;
+
   String branchName;
   String accruedInterest;
   String accountNumber;
@@ -179,12 +181,14 @@ class AccountDetail {
     required this.mobileBanking,
     required this.sms,
     required this.id,
+    this.accountTypeDescription,
     required this.primary,
   });
 
   factory AccountDetail.fromJson(Map<String, dynamic> json) => AccountDetail(
         interestRate: json["interestRate"] ?? "",
         accountType: json["accountType"] ?? "",
+        accountTypeDescription: json["accountTypeDescription"],
         branchName: json["branchName"] ?? "",
         accruedInterest: json["accruedInterest"] ?? "",
         accountNumber: json["accountNumber"] ?? "",
@@ -204,6 +208,7 @@ class AccountDetail {
   Map<String, dynamic> toJson() => {
         "interestRate": interestRate,
         "accountType": accountType,
+        "accountTypeDescription": accountTypeDescription,
         "branchName": branchName,
         "accruedInterest": accruedInterest,
         "accountNumber": accountNumber,

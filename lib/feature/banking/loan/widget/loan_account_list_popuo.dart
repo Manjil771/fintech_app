@@ -58,7 +58,8 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
                           shrinkWrap: true,
                           itemCount: showValidAccount.length,
                           itemBuilder: (context, index) {
-                            final account = showValidAccount[index];
+                            final AccountDetail account =
+                                showValidAccount[index];
 
                             final _isSelectedAccount = account.accountNumber
                                 .toLowerCase()
@@ -103,7 +104,9 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
                                             ),
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
-                                              child: Text(account.accountType,
+                                              child: Text(
+                                                  account.accountTypeDescription ??
+                                                      account.accountType,
                                                   maxLines: 2,
                                                   style: _theme.textTheme
                                                       .headlineMedium),
