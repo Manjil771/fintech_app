@@ -42,6 +42,7 @@ class MovieBillPage extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class MovieBillWidget extends StatelessWidget {
   final MovieDetails? movieDetails;
   final List<Seats?> selectedSeats;

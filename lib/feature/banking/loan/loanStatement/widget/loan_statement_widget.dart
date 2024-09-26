@@ -137,8 +137,8 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
             BlocConsumer<UtilityPaymentCubit, CommonState>(
               listener: (context, state) {
                 if (state is CommonStateSuccess<UtilityResponseData>) {
-                  final UtilityResponseData response = state.data;
-                  final _response = response.findValue(primaryKey: "data");
+                  // final UtilityResponseData response = state.data;
+                  // final _response = response.findValue(primaryKey: "data");
                   // showInterestRate = _response
                   //         .where((e) => e['interestDate'] == "N/A")
                   //         .length !=

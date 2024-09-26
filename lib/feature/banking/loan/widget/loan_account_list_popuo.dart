@@ -28,7 +28,6 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
         RepositoryProvider.of<CustomerDetailRepository>(context);
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
-    final _height = SizeUtils.height;
     final _width = SizeUtils.width;
 
     return ValueListenableBuilder<AccountDetail?>(

@@ -28,9 +28,6 @@ class _MovieWidgetState extends State<MovieWidget> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-
     return Scaffold(
       body: SafeArea(
           child: CommonContainer(
