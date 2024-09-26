@@ -3672,7 +3672,7 @@ class CoOperativeValue {
     splashImage: "assets/sunischit/sunischit_splash.png",
     primaryColor: const Color(0xFF2B3482),
     coOperativeName: "Sunischit Saving & Credit Co-operative Ltd.",
-    appTitle: "Sunischit iSmart",
+    appTitle: "Sunishchit iSmart",
   );
   static final CoOperative safalCoop = CoOperative(
     appStoreID: "com.devanasoft.safal",
@@ -3688,5 +3688,5 @@ class CoOperativeValue {
     coOperativeName: "Safal Saving & Credit Co-operative Ltd.",
     appTitle: "Safal iSmart",
   );
-  static final CoOperative currentCoop = shreeKanchan;
+  static final CoOperative currentCoop = sunischitCoop;
 }
