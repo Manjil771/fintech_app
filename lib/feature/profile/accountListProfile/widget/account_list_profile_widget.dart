@@ -265,13 +265,13 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                                   context,
                                                   "accrued interest.svg",
                                                   "Interest Rate",
-                                                  "NPR ${res.findValueString("interestRate")}"),
+                                                  "${res.findValueString("interestRate")}"),
                                             ),
                                             SizedBox(
                                               width: _width * 0.4,
                                               child: buildDetails(
                                                   context,
-                                                  "interest rate profile.svg",
+                                                  "uit_calender.svg",
                                                   "Duration",
                                                   "${res.findValueString("duration")} "),
                                             ),
@@ -295,7 +295,8 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                 ),
               );
             },
-          )
+          ),
+          SizedBox(height: 10.hp),
         ],
       ),
     );
@@ -310,6 +311,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
         SvgPicture.asset(
           "assets/icons/$images",
           height: size.height * 0.025,
+          color: Colors.black,
         ),
         SizedBox(width: size.width * 0.03),
         Column(
