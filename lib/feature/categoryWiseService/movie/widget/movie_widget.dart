@@ -81,28 +81,25 @@ class _MovieWidgetState extends State<MovieWidget> {
                     final List response =
                         state.data.findValue(primaryKey: "movies");
 
-                    return GridView.builder(
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                              crossAxisCount: 2),
-                      itemCount: response.length,
-                      shrinkWrap: true,
-                      physics: const NeverScrollableScrollPhysics(),
-                      itemBuilder: (context, index) => MovieDetailBox(
-                          onContainerPress: () {
-                            NavigationService.push(
-                                target: MovieTimeDetailPage(
-                              selectedMovie: response[index],
-                              processId: state.data
-                                  .findValue(primaryKey: "processId")
-                                  .toString(),
-                              showId: response[index]["movieId"].toString(),
-                            ));
-                          },
-                          height: 180.hp,
-                          width: 150,
-                          containerImage: response[index]["poster"],
-                          title: response[index]["movieName"]),
+                    return Center(
+                      child: Wrap(
+                          children: List.generate(
+                        response.length,
+                        (index) => MovieDetailBox(
+                            onContainerPress: () {
+                              NavigationService.push(
+                                  target: MovieTimeDetailPage(
+                                selectedMovie: response[index],
+                                processId: state.data
+                                    .findValue(primaryKey: "processId")
+                                    .toString(),
+                                showId: response[index]["movieId"].toString(),
+                              ));
+                            },
+                            containerImage: response[index]["poster"],
+                            height: 180.hp,
+                            title: response[index]["movieName"]),
+                      )),
                     );
                   } else if (state is CommonError) {
                     return NoDataScreen(title: "Error", details: state.message);

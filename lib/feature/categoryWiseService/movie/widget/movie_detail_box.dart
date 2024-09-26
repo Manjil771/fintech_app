@@ -24,6 +24,7 @@ class MovieDetailBox extends StatelessWidget {
     final _theme = Theme.of(context);
 
     return Container(
+      width: 170.wp,
       padding: const EdgeInsets.symmetric(horizontal: 10),
       child: InkWell(
         onTap: onContainerPress,
@@ -31,20 +32,20 @@ class MovieDetailBox extends StatelessWidget {
           children: [
             Image.network(
               containerImage,
-              width: width,
+              width: double.infinity,
               height: height,
               fit: BoxFit.cover,
               errorBuilder: (context, error, stackTrace) => Image.asset(
                   RepositoryProvider.of<CoOperative>(context).coOperativeLogo),
             ),
             SizedBox(height: 5.hp),
-            Expanded(
-              child: Text(
-                title,
-                textAlign: TextAlign.center,
-                style: _theme.textTheme.displaySmall!.copyWith(fontSize: 11),
-              ),
+            Text(
+              title,
+              textAlign: TextAlign.center,
+              maxLines: 2,
+              style: _theme.textTheme.displaySmall!.copyWith(fontSize: 11),
             ),
+            SizedBox(height: 5.hp),
           ],
         ),
       ),

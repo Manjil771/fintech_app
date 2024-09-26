@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,15 +6,18 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/categoryWiseService/movie/resource/model/movie_seat_model.dart';
 import 'package:ismart/feature/categoryWiseService/movie/resource/model/movie_seat_select_model.dart';
 import 'package:ismart/feature/categoryWiseService/movie/resource/movie_cubit.dart';
+import 'package:ismart/feature/categoryWiseService/movie/widget/count_down_movie_widget.dart';
 import 'package:ismart/feature/categoryWiseService/movie/widget/movie_bill_confirm_widget.dart';
 
 class MovieSeatWidget extends StatefulWidget {
@@ -27,6 +31,324 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
   bool _isLoading = false;
   Seats? currentSeatId;
   List<Seats?> selectedSeatList = [];
+
+  @override
+  Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+
+    return WillPopScope(
+      onWillPop: () async {
+        return await showExitAlertDialogue();
+      },
+      child: PageWrapper(
+        showAppBar: false,
+        onBackPressed: () async {
+          return await showExitAlertDialogue();
+        },
+        padding: const EdgeInsets.symmetric(horizontal: 0),
+        body: SafeArea(
+          child: BlocListener<MovieCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonLoading && !_isLoading) {
+                _isLoading = true;
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading && _isLoading) {
+                _isLoading = false;
+                NavigationService.pop();
+              }
+              if (state is CommonStateSuccess<MovieSeatSelectModel>) {
+                final MovieSeatSelectModel res = state.data;
+
+                if (res.code == "M0000") {
+                  setState(() {
+                    if (selectedSeatList.contains(currentSeatId)) {
+                      selectedSeatList.remove(currentSeatId);
+                      subtractTotalAmount(
+                          ticketPrice:
+                              double.parse(currentSeatId?.price ?? "0"));
+                    } else {
+                      selectedSeatList.add(currentSeatId);
+                      addTotalAmount(
+                          ticketPrice:
+                              double.parse(currentSeatId?.price ?? "0"));
+                    }
+                  });
+                  SnackBarUtils.showSuccessBar(
+                      context: context, message: res.message ?? "");
+                } else {
+                  SnackBarUtils.showErrorBar(
+                      context: context, message: res.message ?? "");
+                }
+              } else if (state is CommonError) {
+                SnackBarUtils.showErrorBar(
+                    context: context, message: state.message.toString());
+              }
+            },
+            child: BlocBuilder<MovieCubit, CommonState>(
+              buildWhen: (previous, current) {
+                return current is CommonStateSuccess<MovieSeatModel>;
+              },
+              builder: (context, state) {
+                if (state is CommonStateSuccess<MovieSeatModel>) {
+                  final MovieSeatModel res = state.data;
+                  if (res.code == "M0000") {
+                    final List<SeatRows> seatRowList =
+                        res.details?.seatRows ?? [];
+
+                    return Column(
+                      children: [
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 0, vertical: 16),
+                          color: CustomTheme.testAppColor,
+                          child: Row(
+                            children: [
+                              IconButton(
+                                onPressed: () async {
+                                  return await showExitAlertDialogue();
+                                },
+                                icon: const Icon(
+                                  CupertinoIcons.back,
+                                  color: CustomTheme.white,
+                                ),
+                              ),
+                              Expanded(
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(
+                                      res.details?.movieName ?? "",
+                                      style: _textTheme.titleLarge!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                    SizedBox(height: 10.hp),
+                                    Text(
+                                      "${res.details!.theaterName} || ${res.details!.theaterAddress}",
+                                      style: _textTheme.titleSmall!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                    Text(
+                                      "${res.details!.showDate} || ${res.details!.showTime} || ${res.details!.duration}",
+                                      style: _textTheme.titleMedium!
+                                          .copyWith(color: Colors.white),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        TimerScreen(
+                          minutes: int.parse(res.details?.holdTime ?? "5"),
+                        ),
+                        const Divider(),
+                        Expanded(
+                          child: CustomScrollView(
+                            slivers: [
+                              SliverToBoxAdapter(
+                                child: SingleChildScrollView(
+                                  scrollDirection: Axis.horizontal,
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: seatRowList.map((seatRow) {
+                                      return Row(
+                                        mainAxisSize: MainAxisSize.min,
+                                        children:
+                                            (seatRow.seats ?? []).map((seat) {
+                                          return buildSeat(seat,
+                                              seatRow.category.toString(), res);
+                                        }).toList(),
+                                      );
+                                    }).toList(),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.all(8),
+                          margin: const EdgeInsets.symmetric(vertical: 8),
+                          color: Colors.lightBlue.shade200,
+                          child: Text(
+                            "Screen This Side",
+                            textAlign: TextAlign.center,
+                            style: _textTheme.titleSmall,
+                          ),
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: List.generate(
+                            seatStatusValue.length,
+                            (index) => Column(
+                              children: [
+                                Container(
+                                  height: 20.hp,
+                                  width: 20.wp,
+                                  margin: const EdgeInsets.symmetric(
+                                      horizontal: 4, vertical: 2),
+                                  child: SvgPicture.asset(
+                                    Assets.movieSeatIcon,
+                                    colorFilter: ColorFilter.mode(
+                                        checkSeatStatus(seatStatusValue[index]
+                                            .toString()
+                                            .toLowerCase()),
+                                        BlendMode.srcIn),
+                                  ),
+                                ),
+                                Text(seatStatusValue[index].toString()),
+                              ],
+                            ),
+                          ),
+                        ),
+                        if (selectedSeatList.isNotEmpty)
+                          Container(
+                            decoration: BoxDecoration(
+                                color: CustomTheme.white,
+                                borderRadius: BorderRadius.circular(16),
+                                border:
+                                    Border.all(color: CustomTheme.darkerBlack)),
+                            width: double.infinity,
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.all(8),
+                              leading: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text("Total"),
+                                  Text(
+                                    "Rs $totalPrice",
+                                    style: _textTheme.titleLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              title: Column(
+                                children: [
+                                  const Text("Selected Seats: "),
+                                  Wrap(
+                                    children: List.generate(
+                                        selectedSeatList.length,
+                                        (index) => Text(
+                                              (selectedSeatList[index]
+                                                          ?.seatName ??
+                                                      "") +
+                                                  " ",
+                                              style: _textTheme.titleLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            )),
+                                  )
+                                ],
+                              ),
+                              trailing: InkWell(
+                                onTap: () {
+                                  NavigationService.push(
+                                      target: MovieBillPage(
+                                          totalAmount: totalPrice.toString(),
+                                          movieDetails: res.details,
+                                          selectedSeats: selectedSeatList));
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.all(16),
+                                  margin: const EdgeInsets.all(4),
+                                  child: Text(
+                                    "Book",
+                                    style: _textTheme.displaySmall!.copyWith(
+                                        color: CustomTheme.white, fontSize: 16),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: CustomTheme.testAppColor),
+                                ),
+                              ),
+                            ),
+                          )
+                      ],
+                    );
+                  } else {
+                    return PageWrapper(
+                      showBackButton: true,
+                      body: NoDataScreen(
+                          title: res.code ?? "",
+                          details: res.message ?? "No Data Found"),
+                    );
+                  }
+                } else if (state is CommonError) {
+                  return NoDataScreen(title: "Error", details: state.message);
+                } else if (state is CommonLoading) {
+                  return const CommonLoadingWidget();
+                } else {
+                  return Container();
+                }
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget buildSeat(Seats seat, String category, MovieSeatModel res) {
+    final seatId = seat.seatId;
+    return InkWell(
+      onTap: () {
+        if (seatId != null &&
+            seat.status != "sold" &&
+            seat.status != "reserved") {
+          currentSeatId = seat;
+          final seatIdLists =
+              selectedSeatList.map((seat) => seat?.seatId ?? "").toList();
+
+          context.read<MovieCubit>().selectSeat(
+                serviceIdentifier: "",
+                accountDetails: {
+                  "processId": res.details?.processId ?? " ",
+                  "movieId": res.details?.movieId ?? "",
+                  "seatId": seatId,
+                  "seatCategory": category,
+                  "showId": res.details?.showId.toString(),
+                },
+                body: {},
+                apiEndpoint: seatIdLists.contains(seatId)
+                    ? "/api/movie/seat/unselect"
+                    : "/api/movie/seat/select",
+                mPin: "",
+              );
+        }
+      },
+      child: seatId != null
+          ? Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Container(
+                  height: 25.hp,
+                  width: 25.wp,
+                  margin:
+                      const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
+                  child: SvgPicture.asset(
+                    Assets.movieSeatIcon,
+                    colorFilter: ColorFilter.mode(
+                      selectedSeatList.contains(seat)
+                          ? checkSeatStatus("selected")
+                          : checkSeatStatus(seat.status.toString()),
+                      BlendMode.srcIn,
+                    ),
+                  ),
+                ),
+                Text(seat.seatName.toString(),
+                    style: const TextStyle(fontSize: 10)),
+              ],
+            )
+          : SizedBox(height: 29.hp, width: 29.wp),
+    );
+  }
 
   final List<String> seatStatusValue = [
     "Available",
@@ -60,266 +382,16 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
     }
   }
 
-  Widget buildSeat(Seats seat, String category, MovieSeatModel res) {
-    final seatId = seat.seatId;
-    return InkWell(
-      onTap: () {
-        if (seatId != null) {
-          currentSeatId = seat;
-          final seatIdLists =
-              selectedSeatList.map((seat) => seat?.seatId ?? "").toList();
-
-          context.read<MovieCubit>().selectSeat(
-                serviceIdentifier: "",
-                accountDetails: {
-                  "processId": res.details?.processId ?? " ",
-                  "movieId": res.details?.movieId ?? "",
-                  "seatId": seatId,
-                  "seatCategory": category,
-                  "showId": res.details?.showId.toString(),
-                },
-                body: {},
-                apiEndpoint: seatIdLists.contains(seatId)
-                    ? "/api/movie/seat/unselect"
-                    : "/api/movie/seat/select",
-                mPin: "",
-              );
-        }
+  showExitAlertDialogue() {
+    showPopUpDialog(
+      context: context,
+      message: "Are you sure you want to exit?",
+      title: "Exit",
+      buttonCallback: () {
+        NavigationService.pushNamedAndRemoveUntil(routeName: Routes.dashboard);
       },
-      child: seatId != null
-          ? Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Container(
-                  height: 20.hp,
-                  width: 20.wp,
-                  margin:
-                      const EdgeInsets.symmetric(horizontal: 4, vertical: 2),
-                  child: SvgPicture.asset(
-                    Assets.movieSeatIcon,
-                    colorFilter: ColorFilter.mode(
-                      selectedSeatList.contains(seat)
-                          ? checkSeatStatus("selected")
-                          : checkSeatStatus(seat.status.toString()),
-                      BlendMode.srcIn,
-                    ),
-                  ),
-                ),
-                Text(seat.seatName.toString(),
-                    style: const TextStyle(fontSize: 10)),
-              ],
-            )
-          : SizedBox(height: 24.hp, width: 24.wp),
-    );
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
-
-    return PageWrapper(
-      showBackButton: true,
-      padding: const EdgeInsets.symmetric(horizontal: 0),
-      body: BlocListener<MovieCubit, CommonState>(
-        listener: (context, state) {
-          if (state is CommonLoading && !_isLoading) {
-            _isLoading = true;
-            showLoadingDialogBox(context);
-          } else if (state is! CommonLoading && _isLoading) {
-            _isLoading = false;
-            NavigationService.pop();
-          }
-          if (state is CommonStateSuccess<MovieSeatSelectModel>) {
-            final MovieSeatSelectModel res = state.data;
-
-            if (res.code == "M0000") {
-              setState(() {
-                if (selectedSeatList.contains(currentSeatId)) {
-                  selectedSeatList.remove(currentSeatId);
-                  subtractTotalAmount(
-                      ticketPrice: double.parse(currentSeatId?.price ?? "0"));
-                } else {
-                  selectedSeatList.add(currentSeatId);
-                  addTotalAmount(
-                      ticketPrice: double.parse(currentSeatId?.price ?? "0"));
-                }
-              });
-              SnackBarUtils.showSuccessBar(
-                  context: context, message: res.message ?? "");
-            } else {
-              SnackBarUtils.showErrorBar(
-                  context: context, message: res.message ?? "");
-            }
-          } else if (state is CommonError) {
-            SnackBarUtils.showErrorBar(
-                context: context, message: state.message.toString());
-          }
-        },
-        child: BlocBuilder<MovieCubit, CommonState>(
-          buildWhen: (previous, current) {
-            return current is CommonStateSuccess<MovieSeatModel>;
-          },
-          builder: (context, state) {
-            if (state is CommonStateSuccess<MovieSeatModel>) {
-              final MovieSeatModel res = state.data;
-              final List<SeatRows> seatRowList = res.details?.seatRows ?? [];
-
-              return Column(
-                children: [
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(12),
-                    color: CustomTheme.testAppColor,
-                    child: Column(
-                      children: [
-                        Text(
-                          res.details?.movieName ?? "",
-                          style: _textTheme.titleLarge!
-                              .copyWith(color: Colors.white),
-                        ),
-                        SizedBox(height: 10.hp),
-                        Text(
-                          "${res.details!.theaterName} || ${res.details!.theaterAddress}",
-                          style: _textTheme.titleSmall!
-                              .copyWith(color: Colors.white),
-                        ),
-                        Text(
-                          "${res.details!.showDate} || ${res.details!.showTime} || ${res.details!.duration}",
-                          style: _textTheme.titleMedium!
-                              .copyWith(color: Colors.white),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: CustomScrollView(
-                      slivers: [
-                        SliverToBoxAdapter(
-                          child: SingleChildScrollView(
-                            scrollDirection: Axis.horizontal,
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: seatRowList.map((seatRow) {
-                                return Row(
-                                  mainAxisSize: MainAxisSize.min,
-                                  children: (seatRow.seats ?? []).map((seat) {
-                                    return buildSeat(
-                                        seat, seatRow.category.toString(), res);
-                                  }).toList(),
-                                );
-                              }).toList(),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Container(
-                    width: double.infinity,
-                    padding: const EdgeInsets.all(8),
-                    margin: const EdgeInsets.symmetric(vertical: 8),
-                    color: Colors.lightBlue.shade200,
-                    child: Text(
-                      "Screen This Side",
-                      textAlign: TextAlign.center,
-                      style: _textTheme.titleSmall,
-                    ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: List.generate(
-                      seatStatusValue.length,
-                      (index) => Column(
-                        children: [
-                          Container(
-                            height: 20.hp,
-                            width: 20.wp,
-                            margin: const EdgeInsets.symmetric(
-                                horizontal: 4, vertical: 2),
-                            child: SvgPicture.asset(
-                              Assets.movieSeatIcon,
-                              colorFilter: ColorFilter.mode(
-                                  checkSeatStatus(seatStatusValue[index]
-                                      .toString()
-                                      .toLowerCase()),
-                                  BlendMode.srcIn),
-                            ),
-                          ),
-                          Text(seatStatusValue[index].toString()),
-                        ],
-                      ),
-                    ),
-                  ),
-                  Container(
-                    decoration: BoxDecoration(
-                        color: CustomTheme.white,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: CustomTheme.darkerBlack)),
-                    width: double.infinity,
-                    child: ListTile(
-                      contentPadding: const EdgeInsets.all(8),
-                      leading: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Total"),
-                          Text(
-                            "Rs $totalPrice",
-                            style: _textTheme.titleLarge!
-                                .copyWith(fontWeight: FontWeight.bold),
-                          ),
-                        ],
-                      ),
-                      title: Column(
-                        children: [
-                          const Text("Selected Seats: "),
-                          Wrap(
-                            children: List.generate(
-                                selectedSeatList.length,
-                                (index) => Text(
-                                      selectedSeatList[index]?.seatName ?? "",
-                                      style: _textTheme.titleLarge!.copyWith(
-                                          fontWeight: FontWeight.bold),
-                                    )),
-                          )
-                        ],
-                      ),
-                      trailing: InkWell(
-                        onTap: () {
-                          NavigationService.push(
-                              target: MovieBillPage(
-                                  totalAmount: totalPrice.toString(),
-                                  movieDetails: res.details,
-                                  selectedSeats: selectedSeatList));
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(16),
-                          margin: const EdgeInsets.all(4),
-                          child: Text(
-                            "Book",
-                            style: _textTheme.displaySmall!.copyWith(
-                                color: CustomTheme.white, fontSize: 16),
-                          ),
-                          decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(8),
-                              color: CustomTheme.testAppColor),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              );
-            } else if (state is CommonError) {
-              return NoDataScreen(title: "Error", details: state.message);
-            } else if (state is CommonLoading) {
-              return const CommonLoadingWidget();
-            } else {
-              return Container();
-            }
-          },
-        ),
-      ),
+      buttonText: "Exit",
+      showCancelButton: true,
     );
   }
 }
