@@ -3688,5 +3688,5 @@ class CoOperativeValue {
     coOperativeName: "Safal Saving & Credit Co-operative Ltd.",
     appTitle: "Safal iSmart",
   );
-  static final CoOperative currentCoop = sunischitCoop;
+  static final CoOperative currentCoop = bhaktapurSaccos;
 }
