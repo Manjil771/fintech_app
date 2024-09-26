@@ -3674,6 +3674,19 @@ class CoOperativeValue {
     coOperativeName: "Sunischit Saving & Credit Co-operative Ltd.",
     appTitle: "Sunischit iSmart",
   );
-
-  static final CoOperative currentCoop = gagankalikaCoop;
+  static final CoOperative safalCoop = CoOperative(
+    appStoreID: "com.devanasoft.safal",
+    packageName: "com.devanasoft.safal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/safal/safal_banner.png",
+    backgroundImage: "assets/safal/safal_background.png",
+    clientCode: 'RTF9R9YEBC',
+    clientSecret: "158755",
+    coOperativeLogo: 'assets/safal/safal_logo.png',
+    splashImage: "assets/safal/safal_splash.png",
+    primaryColor: const Color(0xFF03A053),
+    coOperativeName: "Safal Saving & Credit Co-operative Ltd.",
+    appTitle: "Safal iSmart",
+  );
+  static final CoOperative currentCoop = shreeKanchan;
 }
