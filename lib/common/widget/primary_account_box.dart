@@ -113,7 +113,11 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       SizedBox(width: _width * 0.03),
                       Expanded(
                         child: Text(
-                            "${selectedAcc?.accountTypeDescription ?? selectedAcc?.accountType}",
+                            (selectedAcc?.accountTypeDescription)
+                                    .toString()
+                                    .isEmpty
+                                ? (selectedAcc?.accountNumber ?? "")
+                                : "${selectedAcc?.accountTypeDescription}",
                             maxLines: 2,
                             style: _theme.textTheme.labelLarge),
                       ),

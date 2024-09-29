@@ -18,7 +18,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanWidget extends StatefulWidget {
-  const LoanWidget({super.key});
+  final String loanAccountNumber;
+
+  const LoanWidget({super.key, required this.loanAccountNumber});
 
   @override
   State<LoanWidget> createState() => _LoanWidgetState();
@@ -181,7 +183,10 @@ class _LoanWidgetState extends State<LoanWidget> {
                                 borderRadius: BorderRadius.circular(12),
                                 onTap: () {
                                   NavigationService.push(
-                                    target: LoanStatementPage(),
+                                    target: LoanStatementPage(
+                                      loanAccountNumber:
+                                          widget.loanAccountNumber,
+                                    ),
                                   );
                                 },
                                 child: Container(

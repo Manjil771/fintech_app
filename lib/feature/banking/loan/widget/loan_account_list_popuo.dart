@@ -71,8 +71,6 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
                                 color: Colors.transparent,
                                 child: InkWell(
                                   onTap: () {
-                                    _customerDetailRepo.selectedAccount.value =
-                                        account;
                                     NavigationService.pop();
                                     if (widget.onPressed != null)
                                       widget.onPressed!
@@ -105,8 +103,11 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
                                               child: Text(
-                                                  account.accountTypeDescription ??
-                                                      account.accountType,
+                                                  account.accountTypeDescription
+                                                          .toString()
+                                                          .isNotEmpty
+                                                      ? account.accountType
+                                                      : account.accountType,
                                                   maxLines: 2,
                                                   style: _theme.textTheme
                                                       .headlineMedium),
@@ -120,10 +121,13 @@ class _LoanAccountDetailPopUpBoxState extends State<LoanAccountDetailPopUpBox> {
                                               height: 25.hp,
                                               color: _theme.primaryColor,
                                             ),
-                                            SizedBox(width: _width * 0.03),
-                                            Text(
-                                              account.mainCode,
-                                              style: _textTheme.headlineMedium,
+                                            SizedBox(width: 5.wp),
+                                            Expanded(
+                                              child: Text(
+                                                account.mainCode,
+                                                style:
+                                                    _textTheme.headlineMedium,
+                                              ),
                                             ),
                                           ],
                                         )

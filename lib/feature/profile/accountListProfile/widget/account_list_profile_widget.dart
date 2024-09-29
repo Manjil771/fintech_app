@@ -216,9 +216,12 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                 title: CommonDetailBox(
                                     showTrailingIcon: false,
                                     leadingImage: Assets.profileIcon,
-                                    title:
-                                        _detail[index].accountTypeDescription ??
-                                            _detail[index].accountType,
+                                    title: _detail[index]
+                                            .accountTypeDescription
+                                            .toString()
+                                            .isNotEmpty
+                                        ? _detail[index].accountTypeDescription
+                                        : _detail[index].accountType,
                                     detail: "A/C : ${_detail[index].mainCode}",
                                     onBoxPressed: () {
                                       setState(() {
@@ -243,8 +246,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                               child: buildDetails(
                                                   context,
                                                   "money-send-svgrepo-com 1.svg",
-                                                  "Outstanding Balance",
-                                                  "${_detail[index].clientCode}"),
+                                                  "Balance",
+                                                  res.findValueString(
+                                                      "balance")),
                                             ),
                                             SizedBox(
                                               width: _width * 0.4,
@@ -302,7 +306,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
     );
   }
 
-  final List accountType = ["Primary Account", "Secondary Account"];
+  // final List accountType = ["Primary Account", "Secondary Account"];
 
   buildDetails(BuildContext context, images, title, value) {
     final Size size = MediaQuery.of(context).size;

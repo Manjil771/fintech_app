@@ -160,8 +160,13 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
                                               child: Text(
-                                                  account.accountTypeDescription ??
-                                                      account.accountType,
+                                                  account.accountTypeDescription
+                                                          .toString()
+                                                          .isNotEmpty
+                                                      ? account
+                                                          .accountTypeDescription
+                                                          .toString()
+                                                      : account.accountType,
                                                   maxLines: 2,
                                                   style: _theme
                                                       .textTheme.labelLarge),

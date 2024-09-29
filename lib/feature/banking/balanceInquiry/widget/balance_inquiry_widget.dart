@@ -130,7 +130,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 "Available Balance",
                                                 "NPR " +
                                                     showValidAccount[index]
-                                                        .accountTypeDescription
+                                                        .availableBalance
                                                         .toString()),
                                             detailROw(
                                                 context,
