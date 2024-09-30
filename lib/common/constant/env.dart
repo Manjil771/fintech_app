@@ -3688,5 +3688,33 @@ class CoOperativeValue {
     coOperativeName: "Safal Saving & Credit Co-operative Ltd.",
     appTitle: "Safal iSmart",
   );
-  static final CoOperative currentCoop = chaulaniCoop;
+  static final CoOperative shreeArunodaya = CoOperative(
+    appStoreID: "com.devanasoft.shreeArunodaya",
+    packageName: "com.devanasoft.shreeArunodaya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeArunodaya/shreeArunodaya_banner.png",
+    backgroundImage: "assets/shreeArunodaya/shreeArunodaya_background.png",
+    clientCode: 'VPTR7JXAII',
+    clientSecret: "147128",
+    coOperativeLogo: 'assets/shreeArunodaya/shreeArunodaya_logo.png',
+    splashImage: "assets/shreeArunodaya/shreeArunodaya_splash.png",
+    primaryColor: const Color(0xFF03A053),
+    coOperativeName: "",
+    appTitle: "Shree Arunodaya iSmart",
+  );
+  static final CoOperative exoticCoop = CoOperative(
+    appStoreID: "com.devanasoft.exotic",
+    packageName: "com.devanasoft.exotic",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/exotic/exotic_banner.png",
+    backgroundImage: "assets/exotic/exotic_background.png",
+    clientCode: '5A8795RJY0',
+    clientSecret: "185648",
+    coOperativeLogo: 'assets/exotic/exotic_logo.png',
+    splashImage: "assets/exotic/exotic_splash.png",
+    primaryColor: const Color(0xFF2596be),
+    coOperativeName: "Exotic Saving and Credit Co-operative Ltd.",
+    appTitle: "Exotic iSmart",
+  );
+  static final CoOperative currentCoop = exoticCoop;
 }

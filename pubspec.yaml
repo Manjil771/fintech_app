@@ -95,7 +95,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    - assets/bhaktapur_saccos/
+    # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -298,7 +298,7 @@ flutter:
     # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
-    - assets/chaulani/
+    # - assets/chaulani
     # - assets/mahilaAbhiyan/
     # - assets/ajambari/
     # - assets/sundarbagmati/
@@ -337,6 +337,8 @@ flutter:
     # - assets/shuvkarya/
     # - assets/sunischit/
     # - assets/safal/
+    # - assets/shreeArunodaya/
+    - assets/exotic/
     
     
     # sana kishan assets
