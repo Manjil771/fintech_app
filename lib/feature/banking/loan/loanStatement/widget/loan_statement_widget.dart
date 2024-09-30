@@ -14,11 +14,13 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanStatementWidget extends StatefulWidget {
+  final String loanAccountNumber;
+
+  const LoanStatementWidget({super.key, required this.loanAccountNumber});
   @override
   State<LoanStatementWidget> createState() => _LoanStatementWidgetState();
 }
@@ -43,11 +45,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
         shouldIncludeMPIN: true,
         serviceIdentifier: "",
         accountDetails: {
-          "accountNumber":
-              RepositoryProvider.of<CustomerDetailRepository>(context)
-                  .selectedAccount
-                  .value!
-                  .accountNumber,
+          "accountNumber": widget.loanAccountNumber,
           "fromDate": DateFormat("yyyy-MM-dd").format(fromDate),
           "toDate": DateFormat("yyyy-MM-dd").format(toDate),
           "loanType": "loanType",
@@ -137,8 +135,8 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
             BlocConsumer<UtilityPaymentCubit, CommonState>(
               listener: (context, state) {
                 if (state is CommonStateSuccess<UtilityResponseData>) {
-                  final UtilityResponseData response = state.data;
-                  final _response = response.findValue(primaryKey: "data");
+                  // final UtilityResponseData response = state.data;
+                  // final _response = response.findValue(primaryKey: "data");
                   // showInterestRate = _response
                   //         .where((e) => e['interestDate'] == "N/A")
                   //         .length !=

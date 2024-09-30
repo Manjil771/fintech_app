@@ -10,7 +10,6 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/banking/loan/loanPayment/page/loan_payment_page.dart';
 import 'package:ismart/feature/banking/loan/loanSchedule/page/loan_schedule_page.dart';
 import 'package:ismart/feature/banking/loan/loanStatement/page/loan_statement_page.dart';
 import 'package:ismart/feature/banking/loan/widget/loan_key_value_tile.dart';
@@ -19,7 +18,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class LoanWidget extends StatefulWidget {
-  const LoanWidget({super.key});
+  final String loanAccountNumber;
+
+  const LoanWidget({super.key, required this.loanAccountNumber});
 
   @override
   State<LoanWidget> createState() => _LoanWidgetState();
@@ -182,7 +183,10 @@ class _LoanWidgetState extends State<LoanWidget> {
                                 borderRadius: BorderRadius.circular(12),
                                 onTap: () {
                                   NavigationService.push(
-                                    target: LoanStatementPage(),
+                                    target: LoanStatementPage(
+                                      loanAccountNumber:
+                                          widget.loanAccountNumber,
+                                    ),
                                   );
                                 },
                                 child: Container(
@@ -266,55 +270,55 @@ class _LoanWidgetState extends State<LoanWidget> {
                           ],
                         ),
                         SizedBox(height: 20.hp),
-                        Row(
-                          children: [
-                            Expanded(
-                              child: InkWell(
-                                borderRadius: BorderRadius.circular(12),
-                                onTap: () {
-                                  NavigationService.push(
-                                    target: const LoanPaymentPage(),
-                                  );
-                                },
-                                child: Container(
-                                  alignment: Alignment.center,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 18),
-                                  decoration: BoxDecoration(
-                                      boxShadow: [
-                                        BoxShadow(
-                                          color: Colors.grey.withOpacity(0.3),
-                                          offset: const Offset(7, 7),
-                                          blurRadius: 8,
-                                          spreadRadius: -5,
-                                        ),
-                                      ],
-                                      color: _theme.scaffoldBackgroundColor,
-                                      borderRadius: BorderRadius.circular(8)),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceEvenly,
-                                    children: [
-                                      SvgPicture.asset(
-                                        Assets.loanIcon,
-                                        height: 25.hp,
-                                        color: _theme.primaryColor,
-                                      ),
-                                      Text(
-                                        "Loan Payment",
-                                        style: _textTheme.titleLarge!.copyWith(
-                                            color: _theme.primaryColor,
-                                            fontWeight: FontWeight.bold),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                            SizedBox(width: 10.wp),
-                            const Spacer(),
-                          ],
-                        ),
+                        //   Row(
+                        //     children: [
+                        //       Expanded(
+                        //         child: InkWell(
+                        //           borderRadius: BorderRadius.circular(12),
+                        //           onTap: () {
+                        //             NavigationService.push(
+                        //               target: const LoanPaymentPage(),
+                        //             );
+                        //           },
+                        //           child: Container(
+                        //             alignment: Alignment.center,
+                        //             padding:
+                        //                 const EdgeInsets.symmetric(vertical: 18),
+                        //             decoration: BoxDecoration(
+                        //                 boxShadow: [
+                        //                   BoxShadow(
+                        //                     color: Colors.grey.withOpacity(0.3),
+                        //                     offset: const Offset(7, 7),
+                        //                     blurRadius: 8,
+                        //                     spreadRadius: -5,
+                        //                   ),
+                        //                 ],
+                        //                 color: _theme.scaffoldBackgroundColor,
+                        //                 borderRadius: BorderRadius.circular(8)),
+                        //             child: Row(
+                        //               mainAxisAlignment:
+                        //                   MainAxisAlignment.spaceEvenly,
+                        //               children: [
+                        //                 SvgPicture.asset(
+                        //                   Assets.loanIcon,
+                        //                   height: 25.hp,
+                        //                   color: _theme.primaryColor,
+                        //                 ),
+                        //                 Text(
+                        //                   "Loan Payment",
+                        //                   style: _textTheme.titleLarge!.copyWith(
+                        //                       color: _theme.primaryColor,
+                        //                       fontWeight: FontWeight.bold),
+                        //                 ),
+                        //               ],
+                        //             ),
+                        //           ),
+                        //         ),
+                        //       ),
+                        //       SizedBox(width: 10.wp),
+                        //       const Spacer(),
+                        //     ],
+                        //   ),
                       ],
                     );
                   } else {

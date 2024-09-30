@@ -3716,5 +3716,5 @@ class CoOperativeValue {
     coOperativeName: "Exotic Saving and Credit Co-operative Ltd.",
     appTitle: "Exotic iSmart",
   );
-  static final CoOperative currentCoop = exoticCoop;
+  static final CoOperative currentCoop = chaulaniCoop;
 }

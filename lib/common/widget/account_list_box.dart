@@ -74,7 +74,8 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                           shrinkWrap: true,
                           itemCount: validMobileBankingList.length,
                           itemBuilder: (context, index) {
-                            final account = validMobileBankingList[index];
+                            final AccountDetail account =
+                                validMobileBankingList[index];
 
                             final _isSelectedAccount = account.accountNumber
                                 .toLowerCase()
@@ -158,7 +159,14 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                             ),
                                             SizedBox(width: _width * 0.03),
                                             Expanded(
-                                              child: Text(account.accountType,
+                                              child: Text(
+                                                  account.accountTypeDescription
+                                                          .toString()
+                                                          .isNotEmpty
+                                                      ? account
+                                                          .accountTypeDescription
+                                                          .toString()
+                                                      : account.accountType,
                                                   maxLines: 2,
                                                   style: _theme
                                                       .textTheme.labelLarge),

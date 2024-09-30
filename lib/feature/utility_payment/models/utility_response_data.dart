@@ -7,7 +7,7 @@ class UtilityResponseData {
   final String message;
   final String transactionIdentifier;
   final List<KeyValue> details;
-  final String detail;
+  final dynamic detail;
 
   UtilityResponseData({
     required this.status,
@@ -18,15 +18,23 @@ class UtilityResponseData {
     required this.detail,
   });
 
-  factory UtilityResponseData.fromJson(Map<String, dynamic> json) =>
-      UtilityResponseData(
-        status: json["status"] ?? "",
-        code: json["code"] ?? "",
-        message: json["message"] ?? "",
-        transactionIdentifier: json["transactionIdentifier"] ?? "",
-        details: ParseUtils.parseKeyValue(json['details'] ?? json['detail']),
-        detail: json["detail"] ?? "",
-      );
+  factory UtilityResponseData.fromJson(Map<String, dynamic> json) {
+    dynamic detailData;
+
+    if (json['detail'] is String) {
+      detailData = json['detail'];
+    } else if (json['detail'] is Map<String, dynamic>) {
+      detailData = json['detail'];
+    }
+    return UtilityResponseData(
+      status: json["status"] ?? "",
+      code: json["code"] ?? "",
+      message: json["message"] ?? "",
+      transactionIdentifier: json["transactionIdentifier"] ?? "",
+      details: ParseUtils.parseKeyValue(json['details'] ?? json['detail']),
+      detail: detailData ?? "",
+    );
+  }
 
   T? findValue<T>({required String primaryKey, String? secondaryKey}) {
     final _index = details.indexWhere(

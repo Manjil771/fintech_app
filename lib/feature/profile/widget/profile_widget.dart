@@ -87,6 +87,9 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             valueListenable: customerDetail,
             builder: (context, val, _) {
               if (val != null) {
+                final AccountDetail memberId = val.accountDetail.firstWhere(
+                    (element) => element.accountType.toLowerCase() == "saving");
+
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -191,6 +194,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     style:
                                         Theme.of(context).textTheme.titleSmall,
                                   ),
+                                  if (memberId.clientCode != "N/A")
+                                    Text(
+                                      memberId.clientCode,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall,
+                                    ),
                                 ],
                               ),
                             ),

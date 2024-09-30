@@ -196,7 +196,15 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                               Expanded(
                                                 child: Container(
                                                   child: Text(
-                                                    "${selectedAcc?.accountType}",
+                                                    (selectedAcc?.accountTypeDescription)
+                                                            .toString()
+                                                            .isEmpty
+                                                        ? (selectedAcc
+                                                                ?.accountType ??
+                                                            "")
+                                                        : (selectedAcc
+                                                                ?.accountTypeDescription ??
+                                                            ""),
                                                     style: _textTheme.titleSmall
                                                         ?.copyWith(
                                                       color: CustomTheme.white,

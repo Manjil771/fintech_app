@@ -71,7 +71,9 @@ class _LoanAccountBoxState extends State<LoanAccountBox> {
                               ),
                               SizedBox(width: _width * 0.03),
                               Expanded(
-                                child: Text("${showValidAccount.accountType}",
+                                child: Text(
+                                    showValidAccount.accountTypeDescription ??
+                                        showValidAccount.accountType,
                                     maxLines: 2,
                                     style: _theme.textTheme.headlineSmall!
                                         .copyWith(fontWeight: FontWeight.bold)),
@@ -86,12 +88,13 @@ class _LoanAccountBoxState extends State<LoanAccountBox> {
                                 color: _theme.primaryColor,
                               ),
                               SizedBox(width: _width * 0.03),
-                              Text(
-                                "${showValidAccount.mainCode}",
-                                style: _textTheme.headlineSmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                              Expanded(
+                                child: Text(
+                                  "${showValidAccount.mainCode}",
+                                  style: _textTheme.headlineSmall!
+                                      .copyWith(fontWeight: FontWeight.bold),
+                                ),
                               ),
-                              const Spacer(),
                               RotatedBox(
                                 quarterTurns: 5,
                                 child: SvgPicture.asset(

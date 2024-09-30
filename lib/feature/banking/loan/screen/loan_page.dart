@@ -27,6 +27,8 @@ class _LoanPageState extends State<LoanPage> {
               },
               shouldIncludeMPIN: true,
               apiEndpoint: "/api/loan/details"),
-        child: const LoanWidget());
+        child: LoanWidget(
+          loanAccountNumber: widget.accountNumber,
+        ));
   }
 }
