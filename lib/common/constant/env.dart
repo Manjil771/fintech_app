@@ -3716,5 +3716,33 @@ class CoOperativeValue {
     coOperativeName: "Exotic Saving and Credit Co-operative Ltd.",
     appTitle: "Exotic iSmart",
   );
-  static final CoOperative currentCoop = chaulaniCoop;
+  static final CoOperative arthaGanesh = CoOperative(
+    appStoreID: "com.devanasoft.arthaGanesh",
+    packageName: "com.devanasoft.arthaGanesh",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/arthaGanesh/arthaGanesh_banner.png",
+    backgroundImage: "assets/arthaGanesh/arthaGanesh_background.png",
+    clientCode: 'Y7E74W3BJ5',
+    clientSecret: "212638",
+    coOperativeLogo: 'assets/arthaGanesh/arthaGanesh_logo.png',
+    splashImage: "assets/arthaGanesh/arthaGanesh_splash.png",
+    primaryColor: const Color(0xFF05603D),
+    coOperativeName: "Arthaganesh Saving and Credit co-operative Society ltd",
+    appTitle: "ArthaGanesh iSmart",
+  );
+  static final CoOperative jananiCoop = CoOperative(
+    appStoreID: "com.devanasoft.janani",
+    packageName: "com.devanasoft.janani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janani/janani_banner.png",
+    backgroundImage: "assets/janani/janani_background.png",
+    clientCode: 'QGNCAUZ9CV',
+    clientSecret: "126352",
+    coOperativeLogo: 'assets/janani/janani_logo.png',
+    splashImage: "assets/janani/janani_splash.png",
+    primaryColor: const Color(0xFF0B7139),
+    coOperativeName: "Janani Samajik Udhyami Mahila Sahakari Sanstha Ltd.",
+    appTitle: "Janani Samajik iSmart",
+  );
+  static final CoOperative currentCoop = jananiCoop;
 }
