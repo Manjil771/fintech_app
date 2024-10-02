@@ -3744,5 +3744,5 @@ class CoOperativeValue {
     coOperativeName: "Janani Samajik Udhyami Mahila Sahakari Sanstha Ltd.",
     appTitle: "Janani Samajik iSmart",
   );
-  static final CoOperative currentCoop = jananiCoop;
+  static final CoOperative currentCoop = sarbahitDangCoop;
 }
