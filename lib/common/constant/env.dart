@@ -3660,5 +3660,5 @@ class CoOperativeValue {
     coOperativeName: "Shuvkarya Krishi Sahakari Sanstha Ltd.",
     appTitle: "Shuvkarya iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative currentCoop = nayaKiranCoop;
 }

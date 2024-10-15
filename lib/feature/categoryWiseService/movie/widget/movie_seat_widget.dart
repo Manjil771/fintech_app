@@ -74,8 +74,8 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                               double.parse(currentSeatId?.price ?? "0"));
                     }
                   });
-                  SnackBarUtils.showSuccessBar(
-                      context: context, message: res.message ?? "");
+                  // SnackBarUtils.showSuccessBar(
+                  //     context: context, message: res.message ?? "");
                 } else {
                   SnackBarUtils.showErrorBar(
                       context: context, message: res.message ?? "");
