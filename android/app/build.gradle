@@ -1515,6 +1515,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        narayani{
+            dimension "app"
+            applicationId "com.devanasoft.narayani"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         chadani{
+            dimension "app"
+            applicationId "com.devanasoft.chadani"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         sarbahitDang{
             dimension "app"
             applicationId "com.devanasoft.sarbahitDang"

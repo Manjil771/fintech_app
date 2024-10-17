@@ -3744,5 +3744,33 @@ class CoOperativeValue {
     coOperativeName: "Janani Samajik Udhyami Mahila Sahakari Sanstha Ltd.",
     appTitle: "Janani Samajik iSmart",
   );
-  static final CoOperative currentCoop = sarbahitDangCoop;
+  static final CoOperative narayani = CoOperative(
+    appStoreID: "com.devanasoft.narayani",
+    packageName: "com.devanasoft.narayani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/narayani/narayani_banner.png",
+    backgroundImage: "assets/narayani/narayani_background.png",
+    clientCode: 'BI4K7ARR00',
+    clientSecret: "182244",
+    coOperativeLogo: 'assets/narayani/narayani_logo.png',
+    splashImage: "assets/narayani/narayani_splash.png",
+    primaryColor: const Color(0xFF0f17d2),
+    coOperativeName: "Narayani Saving & Credit Co-operative Ltd.",
+    appTitle: "Narayani iSmart",
+  );
+  static final CoOperative chadaniCoop = CoOperative(
+    appStoreID: "com.devanasoft.chadani",
+    packageName: "com.devanasoft.chadani",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/chadani/chadani_banner.png",
+    backgroundImage: "assets/chadani/chadani_background.png",
+    clientCode: 'OL5ORTHYPT',
+    clientSecret: "200259",
+    coOperativeLogo: 'assets/chadani/chadani_logo.png',
+    splashImage: "assets/chadani/chadani_splash.png",
+    primaryColor: const Color(0xFF077B24),
+    coOperativeName: "Chandani Krishi Sahakari Sanstha Ltd.",
+    appTitle: "Chandani iSmart",
+  );
+  static final CoOperative currentCoop = matribhumiCoop;
 }
