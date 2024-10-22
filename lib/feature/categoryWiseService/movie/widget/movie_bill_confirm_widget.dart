@@ -5,13 +5,13 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
-import 'package:ismart/common/widget/common_transaction_success_screen.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/categoryWiseService/movie/resource/model/movie_seat_model.dart';
+import 'package:ismart/feature/categoryWiseService/movie/widget/movie_transaction_success_screen.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -95,9 +95,17 @@ class MovieBillWidget extends StatelessWidget {
                 _response.message
                     .toLowerCase()
                     .contains("success".toLowerCase())) {
+              final List<String> selectedSeatNames = selectedSeats
+                  .map(
+                    (e) => e?.seatName ?? "",
+                  )
+                  .toList();
+
               NavigationService.pushReplacement(
-                  target: CommonTransactionSuccessPage(
-                transactionID: _response.transactionIdentifier,
+                  target: MovieTransactionSuccessPage(
+                transactionID:
+                    _response.findValueString("transactionIdentifier"),
+                // transactionID: "2674729494435403",
                 message: _response.message,
                 serviceName: "Movie",
                 body: Column(
@@ -105,14 +113,15 @@ class MovieBillWidget extends StatelessWidget {
                     KeyValueTile(
                         title: "Movie", value: movieDetails?.movieName ?? ""),
                     KeyValueTile(
-                        title: "", value: movieDetails?.movieName ?? ""),
+                        title: "Duration", value: movieDetails?.duration ?? ""),
                     KeyValueTile(
-                        title: "", value: movieDetails?.duration ?? ""),
+                        title: "Theater",
+                        value: movieDetails?.theaterName ?? ""),
                     KeyValueTile(
-                        title: "", value: movieDetails?.theaterName ?? ""),
+                        title: "Theater Address",
+                        value: movieDetails?.theaterAddress ?? ""),
                     KeyValueTile(
-                        title: "", value: movieDetails?.theaterAddress ?? ""),
-                    KeyValueTile(title: "", value: selectedSeats.toString()),
+                        title: "Seats", value: selectedSeatNames.toString()),
                     KeyValueTile(title: "Total Amount", value: totalAmount),
                   ],
                 ),

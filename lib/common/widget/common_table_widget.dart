@@ -15,14 +15,14 @@ class CommonTableWidget extends StatelessWidget {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
 
-    final titleStyle = _textTheme.bodyText1!.copyWith(
+    final titleStyle = _textTheme.labelLarge!.copyWith(
+      fontSize: 11,
       fontWeight: FontWeight.bold,
       color: CustomTheme.darkGray,
     );
 
-    final bodyStyle = _textTheme.bodyText1!.copyWith(
-      fontWeight: FontWeight.w400,
-    );
+    final bodyStyle = _textTheme.labelLarge!
+        .copyWith(fontWeight: FontWeight.w400, fontSize: 11);
 
     final _dataList = values.sublist(1);
 
