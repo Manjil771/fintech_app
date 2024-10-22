@@ -80,8 +80,11 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       SizedBox(height: _height * 0.01),
-                      Text("Please enter your Security Pin to proceed.",
-                          style: Theme.of(context).textTheme.headlineSmall),
+                      Text(
+                        "Please enter your Security Pin to proceed.",
+                        style: Theme.of(context).textTheme.headlineSmall,
+                        textAlign: TextAlign.center,
+                      ),
                       SizedBox(height: _height * 0.04),
                       //TODO need to remove condition ,using just for test
                       CustomPinCodeField(
