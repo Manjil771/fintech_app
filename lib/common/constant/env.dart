@@ -3772,5 +3772,19 @@ class CoOperativeValue {
     coOperativeName: "Chandani Krishi Sahakari Sanstha Ltd.",
     appTitle: "Chandani iSmart",
   );
-  static final CoOperative currentCoop = matribhumiCoop;
+  static final CoOperative sapanaTirtha = CoOperative(
+    appStoreID: "com.devanasoft.shreesapana",
+    packageName: "com.devanasoft.shreesapana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreesapana/shreesapana_banner.png",
+    backgroundImage: "assets/shreesapana/shreesapana_background.png",
+    clientCode: '23RWUIUKPP',
+    clientSecret: "129385",
+    coOperativeLogo: 'assets/shreesapana/shreesapana_logo.png',
+    splashImage: "assets/shreesapana/shreesapana_splash.png",
+    primaryColor: const Color(0xFFED1C24),
+    coOperativeName: "Shree Sapanatirtha Multiputpose Co-operative Ltd.",
+    appTitle: "Shree Sapanatirtha iSmart",
+  );
+  static final CoOperative currentCoop = sapanaTirtha;
 }
