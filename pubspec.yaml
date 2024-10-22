@@ -133,6 +133,7 @@ flutter:
     # - assets/hamiSabaikokrishi/
     # - assets/machhapuchhre/
     # - assets/nawajosh/
+    # - assets/tikeshwar/
     # - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
@@ -341,7 +342,10 @@ flutter:
     # - assets/exotic/
     # - assets/chaulani/
     # - assets/arthaGanesh/
-    - assets/janani/
+    # - assets/janani/
+    # - assets/narayani/
+    # - assets/chadani/
+    - assets/shreesapana/
     
     
     # sana kishan assets
