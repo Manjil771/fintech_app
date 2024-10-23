@@ -3786,5 +3786,19 @@ class CoOperativeValue {
     coOperativeName: "Shree Sapanatirtha Multiputpose Co-operative Ltd.",
     appTitle: "Shree Sapanatirtha iSmart",
   );
-  static final CoOperative currentCoop = sapanaTirtha;
+  static final CoOperative mirmireCoop = CoOperative(
+    appStoreID: "com.devanasoft.mirmire",
+    packageName: "com.devanasoft.mirmire",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mirmire/mirmire_banner.png",
+    backgroundImage: "assets/mirmire/mirmire_background.png",
+    clientCode: 'L2IJJPBQPR',
+    clientSecret: "143905",
+    coOperativeLogo: 'assets/mirmire/mirmire_logo.png',
+    splashImage: "assets/mirmire/mirmire_splash.png",
+    primaryColor: const Color(0xFF01723C),
+    coOperativeName: "Mirmire Saving & Credit Co-operative Ltd",
+    appTitle: "Mirmire iSmart",
+  );
+  static final CoOperative currentCoop = mirmireCoop;
 }

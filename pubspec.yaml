@@ -344,7 +344,8 @@ flutter:
     # - assets/janani/
     # - assets/narayani/
     # - assets/chadani/
-    - assets/shreesapana/
+    # - assets/shreesapana/
+    - assets/mirmire/
     
     
     # sana kishan assets
