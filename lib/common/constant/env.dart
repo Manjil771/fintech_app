@@ -3786,5 +3786,5 @@ class CoOperativeValue {
     coOperativeName: "Shree Sapanatirtha Multiputpose Co-operative Ltd.",
     appTitle: "Shree Sapanatirtha iSmart",
   );
-  static final CoOperative currentCoop = sapanaTirtha;
+  static final CoOperative currentCoop = devLive;
 }

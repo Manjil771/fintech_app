@@ -23,6 +23,7 @@ import 'package:ismart/feature/categoryWiseService/internet/common/screen/common
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/ridePayment/screen/ride_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/ridePayment/tootle/screen/tootle_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/net_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -218,17 +219,19 @@ class _CategoriesWiseServicesWidgetState
 
     if (widget.categoryIdentifier.toLowerCase() ==
         Slugs.rideSharing.toLowerCase()) {
-      NavigationService.push(
-          target: RidePaymentPage(
-        service: searchedService,
-      ));
+      if (serviceIdentifier == Slugs.tootleTopup) {
+        NavigationService.push(
+            target: TootlepaymentPage(
+          service: searchedService,
+        ));
+      } else {
+        NavigationService.push(
+            target: RidePaymentPage(
+          service: searchedService,
+        ));
+      }
     }
-    // if (serviceIdentifier == Slugs.pathaoTopup) {
-    //   NavigationService.push(
-    //       target: RidePaymentPage(
-    //     service: servicess,
-    //   ));
-    // }
+
     if (serviceIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(
