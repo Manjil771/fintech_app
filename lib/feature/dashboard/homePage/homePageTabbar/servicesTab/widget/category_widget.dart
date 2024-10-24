@@ -230,7 +230,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                           padding: const EdgeInsets.symmetric(
                                               horizontal: 4),
                                           decoration: BoxDecoration(
-                                              color: CustomTheme.primaryColor,
+                                              color: Colors.red,
                                               borderRadius:
                                                   BorderRadius.circular(5)),
                                           child: Align(

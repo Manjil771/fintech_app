@@ -3800,5 +3800,5 @@ class CoOperativeValue {
     coOperativeName: "Mirmire Saving & Credit Co-operative Ltd",
     appTitle: "Mirmire iSmart",
   );
-  static final CoOperative currentCoop = mirmireCoop;
+  static final CoOperative currentCoop = ;
 }
