@@ -29,6 +29,7 @@ class CustomerDetailModel {
   int unseenNotificationCount;
   bool registered;
   String imageUrl;
+  bool instaLoanEnable;
 
   CustomerDetailModel({
     required this.fullName,
@@ -61,6 +62,7 @@ class CustomerDetailModel {
     required this.unseenNotificationCount,
     required this.registered,
     required this.imageUrl,
+    required this.instaLoanEnable,
   });
 
   factory CustomerDetailModel.fromJson(Map<String, dynamic> json) =>
@@ -98,6 +100,7 @@ class CustomerDetailModel {
         unseenNotificationCount: json["unseenNotificationCount"],
         registered: json["registered"],
         imageUrl: _getUserImageUrl(json),
+        instaLoanEnable: json['instaLoanEnable'] ?? false,
       );
 
   static String _getUserImageUrl(Map<String, dynamic> json) {
@@ -142,13 +145,14 @@ class CustomerDetailModel {
         "bankTransferOtp": bankTransferOtp,
         "unseenNotificationCount": unseenNotificationCount,
         "registered": registered,
+        "instaLoanEnable": instaLoanEnable,
       };
 }
 
 class AccountDetail {
   String interestRate;
   String accountType;
-  String? accountTypeDescription;
+  String accountTypeDescription;
 
   String branchName;
   String accruedInterest;
@@ -181,14 +185,14 @@ class AccountDetail {
     required this.mobileBanking,
     required this.sms,
     required this.id,
-    this.accountTypeDescription,
+    required this.accountTypeDescription,
     required this.primary,
   });
 
   factory AccountDetail.fromJson(Map<String, dynamic> json) => AccountDetail(
         interestRate: json["interestRate"] ?? "",
         accountType: json["accountType"] ?? "",
-        accountTypeDescription: json["accountTypeDescription"],
+        accountTypeDescription: json["accountTypeDescription"] ?? "",
         branchName: json["branchName"] ?? "",
         accruedInterest: json["accruedInterest"] ?? "",
         accountNumber: json["accountNumber"] ?? "",

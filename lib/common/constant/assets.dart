@@ -97,6 +97,10 @@ class Assets {
       "assets/images/infographics_10.png";
 
 //*********//
+  static const String instaLoanBanner = "assets/images/insta_lona_banner.png";
+  static const String instaLoanIcon = "assets/images/Group 1167.png";
+  static const String instaLoanSuccessIcon =
+      "assets/images/insta_loan_success copy.png";
 
 //remittance
   static const String findAgentsRemit = "assets/icons/find agents.svg";

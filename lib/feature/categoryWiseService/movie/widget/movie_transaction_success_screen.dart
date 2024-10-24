@@ -121,8 +121,6 @@ class _MovieTransactionSuccessfulWidgetState
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
 
     return BlocConsumer<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
