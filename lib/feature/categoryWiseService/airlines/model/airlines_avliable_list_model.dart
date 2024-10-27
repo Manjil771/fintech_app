@@ -223,6 +223,10 @@ class Flight {
     );
   }
 
+  double getTotalFareAfterCashback() {
+    return totalFare - cashBack;
+  }
+
   Map<String, dynamic> toJson() => {
         "airline": airline,
         "airlineLogo": airlineLogo,

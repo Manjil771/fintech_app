@@ -92,16 +92,16 @@ class FlightDetailBox extends StatelessWidget {
             Column(
               children: [
                 Text(
-                  "Total Fare",
+                  "Total Paying",
                   style: _textTheme.labelLarge,
                 ),
                 Text(
-                  "NPR." + (d?.totalFare ?? "").toString(),
+                  "NPR " + (d?.getTotalFareAfterCashback() ?? "").toString(),
                   style: _textTheme.labelLarge!.copyWith(
                       fontWeight: FontWeight.w600, color: _theme.primaryColor),
                 ),
               ],
-            )
+            ),
           ],
         ),
         SizedBox(height: 5.hp),
