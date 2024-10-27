@@ -24,8 +24,6 @@ import 'package:sliver_tools/sliver_tools.dart';
 import '../../../utility_payment/cubit/utility_payment_cubit.dart';
 
 class AvailableFlightsListWidget extends StatefulWidget {
-  final String cashbackAmount;
-
   const AvailableFlightsListWidget({
     Key? key,
     required this.useServiceResponse,
@@ -38,7 +36,6 @@ class AvailableFlightsListWidget extends StatefulWidget {
     required this.serviceInfo,
     required this.adultCount,
     required this.childrenCount,
-    required this.cashbackAmount,
   }) : super(key: key);
 
   final SearchFlightResponse useServiceResponse;
@@ -582,7 +579,6 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                         padding: EdgeInsets.zero,
                         sliver: _outboundValues.isNotEmpty
                             ? FlightListTabWidget(
-                                cashbackAmount: widget.cashbackAmount,
                                 selectedIndex: selectedOutboundIndex,
                                 calculateTotalPrice: calculateTotalPrice,
                                 onSelectionChanged: (val) {
@@ -619,7 +615,6 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
                           padding: EdgeInsets.zero,
                           sliver: _inboundValue.isNotEmpty
                               ? FlightListTabWidget(
-                                  cashbackAmount: widget.cashbackAmount,
                                   selectedIndex: selectedInboundIndex,
                                   calculateTotalPrice: calculateTotalPrice,
                                   onSelectionChanged: (val) {

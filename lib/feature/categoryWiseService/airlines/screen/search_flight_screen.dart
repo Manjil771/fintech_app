@@ -6,12 +6,9 @@ import 'package:ismart/feature/categoryWiseService/airlines/widgets/search_fligh
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class SearchFlightScreen extends StatelessWidget {
-  final String cashbackAmount;
-
   final ServiceList service;
 
-  const SearchFlightScreen(
-      {super.key, required this.service, required this.cashbackAmount});
+  const SearchFlightScreen({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +18,6 @@ class SearchFlightScreen extends StatelessWidget {
                 RepositoryProvider.of<AirlinesRepository>(context)),
         child: SearchFlightWidget(
           service: service,
-          cashbackAmount: cashbackAmount,
         ));
   }
 }

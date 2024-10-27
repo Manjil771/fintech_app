@@ -48,16 +48,16 @@ class SearchFlightResponse {
 
   static List<Flight> _getFlightsFromResponse(
       {required String key, required Map<String, dynamic> jsonResponse}) {
-    List<Flight> _availableFlightsByKey = [];
-    Map<String, dynamic> _flightsAvailabilityResponse =
+    final List<Flight> _availableFlightsByKey = [];
+    final Map<String, dynamic> _flightsAvailabilityResponse =
         Map.from(jsonResponse['detail']?['flightAvailability'] ?? {});
 
     if (_flightsAvailabilityResponse.isNotEmpty) {
-      List<Map<String, dynamic>> _availableFightsForKey =
+      final List<Map<String, dynamic>> _availableFightsForKey =
           List.from(_flightsAvailabilityResponse[key]['availability'] ?? []);
 
       _availableFightsForKey.forEach((element) {
-        Flight _flight = Flight.fromJson(element);
+        final Flight _flight = Flight.fromJson(element);
         _availableFlightsByKey.add(_flight);
       });
     }
@@ -152,7 +152,7 @@ class Flight {
   dynamic callingStation;
   String airlineImage;
   double totalFare;
-  dynamic cashBack;
+  double cashBack;
 
   Flight({
     required this.airline,
@@ -184,7 +184,7 @@ class Flight {
     this.callingStation,
     required this.airlineImage,
     required this.totalFare,
-    this.cashBack,
+    required this.cashBack,
   });
 
   factory Flight.fromJson(Map<String, dynamic> json) {
@@ -219,7 +219,7 @@ class Flight {
       airlineImage: "https://ismart.devanasoft.com.np/ismart/airlinesPdfUrl/" +
           json["airlineImage"],
       totalFare: json["totalFare"],
-      cashBack: json["cashBack"],
+      cashBack: double.tryParse(json["cashBack"]?.toString() ?? "0.0") ?? 0.0,
     );
   }
 
