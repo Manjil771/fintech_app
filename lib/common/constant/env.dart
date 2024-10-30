@@ -3800,5 +3800,19 @@ class CoOperativeValue {
     coOperativeName: "Mirmire Saving & Credit Co-operative Ltd",
     appTitle: "Mirmire iSmart",
   );
-  static final CoOperative currentCoop =  jayShreeNavadurga;
+  static final CoOperative nilgiree = CoOperative(
+    appStoreID: "com.devanasoft.nilgiree",
+    packageName: "com.devanasoft.nilgiree",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nilgiree/nilgiree_banner.png",
+    backgroundImage: "assets/nilgiree/nilgiree_background.png",
+    clientCode: 'RWJ8UHSZLM',
+    clientSecret: "131341",
+    coOperativeLogo: 'assets/nilgiree/nilgiree_logo.png',
+    splashImage: "assets/nilgiree/nilgiree_splash.png",
+    primaryColor: const Color(0xFF009600),
+    coOperativeName: "Nilgiree Saving & Credit Co-operative Ltd.",
+    appTitle: "Nilgiree iSmart",
+  );
+  static final CoOperative currentCoop = nilgiree;
 }
