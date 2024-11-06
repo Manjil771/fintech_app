@@ -121,7 +121,6 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -345,7 +344,8 @@ flutter:
     # - assets/chadani/
     # - assets/shreesapana/
     # - assets/mirmire/
-    - assets/nilgiree/
+    # - assets/nilgiree/
+    - assets/prerana/
     
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

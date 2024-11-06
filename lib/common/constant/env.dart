@@ -3814,5 +3814,33 @@ class CoOperativeValue {
     coOperativeName: "Nilgiree Saving & Credit Co-operative Ltd.",
     appTitle: "Nilgiree iSmart",
   );
-  static final CoOperative currentCoop = nilgiree;
+  static final CoOperative preranaCoop = CoOperative(
+    appStoreID: "com.devanasoft.prerana",
+    packageName: "com.devanasoft.prerana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/prerana/prerana_banner.png",
+    backgroundImage: "assets/prerana/prerana_background.png",
+    clientCode: 'IELLJOSA6J',
+    clientSecret: "190949",
+    coOperativeLogo: 'assets/prerana/prerana_logo.png',
+    splashImage: "assets/prerana/prerana_splash.png",
+    primaryColor: const Color(0xFF009600),
+    coOperativeName: "Prerana Saving & Credit Co-operative Ltd.",
+    appTitle: "Prerana iSmart",
+  );
+  static final CoOperative automobiles = CoOperative(
+    appStoreID: "com.devanasoft.automobiles",
+    packageName: "com.devanasoft.automobiles",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/automobiles/automobiles_banner.png",
+    backgroundImage: "assets/automobiles/automobiles_background.png",
+    clientCode: 'IELLJOSA6J',
+    clientSecret: "190949",
+    coOperativeLogo: 'assets/automobiles/automobiles_logo.png',
+    splashImage: "assets/automobiles/automobiles_splash.png",
+    primaryColor: const Color(0xFF009600),
+    coOperativeName: "automobiles Saving & Credit Co-operative Ltd.",
+    appTitle: "automobiles iSmart",
+  );
+  static final CoOperative currentCoop =preranaCoop ;
 }
