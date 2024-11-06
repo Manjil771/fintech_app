@@ -3829,18 +3829,18 @@ class CoOperativeValue {
     appTitle: "Prerana iSmart",
   );
   static final CoOperative automobiles = CoOperative(
-    appStoreID: "com.devanasoft.automobiles",
-    packageName: "com.devanasoft.automobiles",
+    appStoreID: "com.devanasoft.automobilies",
+    packageName: "com.devanasoft.automobilies",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/automobiles/automobiles_banner.png",
     backgroundImage: "assets/automobiles/automobiles_background.png",
-    clientCode: 'IELLJOSA6J',
-    clientSecret: "190949",
+    clientCode: 'DIKGZ3H0KV',
+    clientSecret: "148321",
     coOperativeLogo: 'assets/automobiles/automobiles_logo.png',
     splashImage: "assets/automobiles/automobiles_splash.png",
     primaryColor: const Color(0xFF009600),
-    coOperativeName: "automobiles Saving & Credit Co-operative Ltd.",
-    appTitle: "automobiles iSmart",
+    coOperativeName: "Automobilies Saving and Credit Co-operative Society Ltd.",
+    appTitle: "Automobilies iSmart",
   );
-  static final CoOperative currentCoop =preranaCoop ;
+  static final CoOperative currentCoop = automobiles;
 }

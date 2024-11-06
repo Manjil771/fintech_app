@@ -345,7 +345,14 @@ flutter:
     # - assets/shreesapana/
     # - assets/mirmire/
     # - assets/nilgiree/
-    - assets/prerana/
+    # - assets/prerana/
+    - assets/automobiles/
+    
+    
+    
+    
+    
+    
     
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
