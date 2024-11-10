@@ -43,6 +43,12 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
       body: SafeArea(
         child: BlocListener<MovieCubit, CommonState>(
           listener: (context, state) {
+            if (state is CommonError) {
+              _isLoading = false;
+              NavigationService.pop(); // Navigate back
+              SnackBarUtils.showErrorBar(
+                  context: context, message: state.message.toString());
+            }
             if (state is CommonLoading && !_isLoading) {
               _isLoading = true;
               showLoadingDialogBox(context);

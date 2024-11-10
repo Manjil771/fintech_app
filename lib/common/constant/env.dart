@@ -3842,5 +3842,5 @@ class CoOperativeValue {
     coOperativeName: "Automobilies Saving and Credit Co-operative Society Ltd.",
     appTitle: "Automobilies iSmart",
   );
-  static final CoOperative currentCoop = automobiles;
+  static final CoOperative currentCoop = sunischitCoop;
 }
