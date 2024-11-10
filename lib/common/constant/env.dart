@@ -3842,5 +3842,47 @@ class CoOperativeValue {
     coOperativeName: "Automobilies Saving and Credit Co-operative Society Ltd.",
     appTitle: "Automobilies iSmart",
   );
-  static final CoOperative currentCoop = sunischitCoop;
+  static final CoOperative pameCoop = CoOperative(
+    appStoreID: "com.devanasoft.pame",
+    packageName: "com.devanasoft.pame",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pame/pame_banner.png",
+    backgroundImage: "assets/pame/pame_background.png",
+    clientCode: 'F8UIL4SKJU',
+    clientSecret: "180115",
+    coOperativeLogo: 'assets/pame/pame_logo.png',
+    splashImage: "assets/pame/pame_splash.png",
+    primaryColor: const Color(0xFF006838),
+    coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
+    appTitle: "Pame iSmart",
+  );
+  static final CoOperative missionCoop = CoOperative(
+    appStoreID: "com.devanasoft.mission",
+    packageName: "com.devanasoft.mission",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mission/mission_banner.png",
+    backgroundImage: "assets/mission/mission_background.png",
+    clientCode: '9WYSW147SG',
+    clientSecret: "193208",
+    coOperativeLogo: 'assets/mission/mission_logo.png',
+    splashImage: "assets/mission/mission_splash.png",
+    primaryColor: const Color(0xFFB82035),
+    coOperativeName: "Mission Saving and Credit Co-operative Society Ltd.",
+    appTitle: "Mission iSmart",
+  );
+  static final CoOperative aabhashCoop = CoOperative(
+    appStoreID: "com.devanasoft.aabhash",
+    packageName: "com.devanasoft.aabhash",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aabhash/aabhash_banner.png",
+    backgroundImage: "assets/aabhash/aabhash_background.png",
+    clientCode: 'HWDL8RSA8X',
+    clientSecret: "164706",
+    coOperativeLogo: 'assets/aabhash/aabhash_logo.png',
+    splashImage: "assets/aabhash/aabhash_splash.png",
+    primaryColor: const Color(0xFF0E954D),
+    coOperativeName: "Aabhash Saving & Credit Co-operative Ltd.",
+    appTitle: "Aabhash iSmart",
+  );
+  static final CoOperative currentCoop = aabhashCoop;
 }
