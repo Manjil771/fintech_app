@@ -3884,5 +3884,20 @@ class CoOperativeValue {
     coOperativeName: "Aabhash Saving & Credit Co-operative Ltd.",
     appTitle: "Aabhash iSmart",
   );
-  static final CoOperative currentCoop = aabhashCoop;
+  static final CoOperative aarthikBikash = CoOperative(
+    appStoreID: "com.devanasoft.aarthikBikash",
+    packageName: "com.devanasoft.aarthikBikash",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aarthikBikash/aarthikBikash_banner.png",
+    backgroundImage: "assets/aarthikBikash/aarthikBikash_background.png",
+    clientCode: 'KY3LZWN2VF',
+    clientSecret: "183245",
+    coOperativeLogo: 'assets/aarthikBikash/aarthikBikash_logo.png',
+    splashImage: "assets/aarthikBikash/aarthikBikash_splash.png",
+    primaryColor: const Color(0xFF129648),
+    coOperativeName:
+        "Aarthik Bikash Mitra Saving and Credit Co-operative Society Ltd.",
+    appTitle: "Aarthik Bikash iSmart",
+  );
+  static final CoOperative currentCoop = aarthikBikash;
 }

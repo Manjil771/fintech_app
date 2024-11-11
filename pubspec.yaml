@@ -349,7 +349,8 @@ flutter:
     # - assets/automobiles/
     # - assets/pame/
     # - assets/mission/
-    - assets/aabhash/
+    # - assets/aabhash/
+    - assets/aarthikBikash/
     
     
     
