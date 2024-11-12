@@ -350,7 +350,9 @@ flutter:
     # - assets/pame/
     # - assets/mission/
     # - assets/aabhash/
-    - assets/aarthikBikash/
+    # - assets/aarthikBikash/
+    # - assets/janakalyan/
+    - assets/sarbashakti/
     
     
     

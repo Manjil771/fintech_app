@@ -3866,7 +3866,7 @@ class CoOperativeValue {
     clientSecret: "193208",
     coOperativeLogo: 'assets/mission/mission_logo.png',
     splashImage: "assets/mission/mission_splash.png",
-    primaryColor: const Color(0xFFB82035),
+    primaryColor: const Color(0xFF098040),
     coOperativeName: "Mission Saving and Credit Co-operative Society Ltd.",
     appTitle: "Mission iSmart",
   );
@@ -3899,5 +3899,34 @@ class CoOperativeValue {
         "Aarthik Bikash Mitra Saving and Credit Co-operative Society Ltd.",
     appTitle: "Aarthik Bikash iSmart",
   );
-  static final CoOperative currentCoop = aarthikBikash;
+  static final CoOperative shreejanakalyan = CoOperative(
+    appStoreID: "com.devanasoft.janakalyan",
+    packageName: "com.devanasoft.janakalyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janakalyan/janakalyan_banner.png",
+    backgroundImage: "assets/janakalyan/janakalyan_background.png",
+    clientCode: 'BTFHVDXIE7',
+    clientSecret: "187449",
+    coOperativeLogo: 'assets/janakalyan/janakalyan_logo.png',
+    splashImage: "assets/janakalyan/janakalyan_splash.png",
+    primaryColor: const Color(0xFF0E954D),
+    coOperativeName:
+        "Shree Janakalyan Gandaki Multipurpose Co-operative Society Ltd.",
+    appTitle: " Shree Janakalyan iSmart",
+  );
+  static final CoOperative sarbashakti = CoOperative(
+    appStoreID: "com.devanasoft.sarbashakti",
+    packageName: "com.devanasoft.sarbashakti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sarbashakti/sarbashakti_banner.png",
+    backgroundImage: "assets/sarbashakti/sarbashakti_background.png",
+    clientCode: 'YCAADUAYBP',
+    clientSecret: "200764",
+    coOperativeLogo: 'assets/sarbashakti/sarbashakti_logo.png',
+    splashImage: "assets/sarbashakti/sarbashakti_splash.png",
+    primaryColor: const Color(0xFF006600),
+    coOperativeName: "SarbaShakti Saving & credit Cooperative Ltd.",
+    appTitle: "Sarbashakti iSmart",
+  );
+  static final CoOperative currentCoop = sarbashakti;
 }
