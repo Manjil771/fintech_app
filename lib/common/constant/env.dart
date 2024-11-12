@@ -3928,5 +3928,19 @@ class CoOperativeValue {
     coOperativeName: "SarbaShakti Saving & credit Cooperative Ltd.",
     appTitle: "Sarbashakti iSmart",
   );
-  static final CoOperative currentCoop = sarbashakti;
+  static final CoOperative chamberCoop = CoOperative(
+    appStoreID: "com.devanasoft.chamber",
+    packageName: "com.devanasoft.chamber",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/chamber/chamber_banner.png",
+    backgroundImage: "assets/chamber/chamber_background.png",
+    clientCode: 'UAXZWFTDQM',
+    clientSecret: "170546",
+    coOperativeLogo: 'assets/chamber/chamber_logo.png',
+    splashImage: "assets/chamber/chamber_splash.png",
+    primaryColor: const Color(0xFF006600),
+    coOperativeName: "Chamber Multipurpose Co-operative society Ltd.",
+    appTitle: "Chamber iSmart",
+  );
+  static final CoOperative currentCoop = chamberCoop;
 }
