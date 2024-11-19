@@ -3880,7 +3880,7 @@ class CoOperativeValue {
     clientSecret: "164706",
     coOperativeLogo: 'assets/aabhash/aabhash_logo.png',
     splashImage: "assets/aabhash/aabhash_splash.png",
-    primaryColor: const Color(0xFF0E954D),
+    primaryColor: const Color(0xFFFF0000),
     coOperativeName: "Aabhash Saving & Credit Co-operative Ltd.",
     appTitle: "Aabhash iSmart",
   );
@@ -3942,5 +3942,61 @@ class CoOperativeValue {
     coOperativeName: "Chamber Multipurpose Co-operative society Ltd.",
     appTitle: "Chamber iSmart",
   );
-  static final CoOperative currentCoop = chamberCoop;
+  static final CoOperative sajhaSaving = CoOperative(
+    appStoreID: "com.devanasoft.sajha",
+    packageName: "com.devanasoft.sajha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sajha/sajha_banner.png",
+    backgroundImage: "assets/sajha/sajha_background.png",
+    clientCode: 'UOHMWXAH8Z',
+    clientSecret: "176673",
+    coOperativeLogo: 'assets/sajha/sajha_logo.png',
+    splashImage: "assets/sajha/sajha_splash.png",
+    primaryColor: const Color(0xFF39B54A),
+    coOperativeName: "Sajha saving & credit Co-oprative Ltd.",
+    appTitle: "Sajha iSmart",
+  );
+  static final CoOperative digoBikash = CoOperative(
+    appStoreID: "com.devanasoft.digoBikash",
+    packageName: "com.devanasoft.digoBikash",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/digoBikash/digoBikash_banner.png",
+    backgroundImage: "assets/digoBikash/digoBikash_background.png",
+    clientCode: 'S057SEA6YS',
+    clientSecret: "120188",
+    coOperativeLogo: 'assets/digoBikash/digoBikash_logo.png',
+    splashImage: "assets/digoBikash/digoBikash_splash.png",
+    primaryColor: const Color(0xFF116C38),
+    coOperativeName: "Digo Bikash Agriculture Co-operative Ltd.",
+    appTitle: "Digo Bikash  Agri iSmart",
+  );
+  static final CoOperative raceCoop = CoOperative(
+    appStoreID: "com.devanasoft.race",
+    packageName: "com.devanasoft.race",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/race/race_banner.png",
+    backgroundImage: "assets/race/race_background.png",
+    clientCode: 'GL36AWSYAQ',
+    clientSecret: "159595",
+    coOperativeLogo: 'assets/race/race_logo.png',
+    splashImage: "assets/race/race_splash.png",
+    primaryColor: const Color(0xFF116C38),
+    coOperativeName: "Race Saving & Loan Co-operative Society Ltd.",
+    appTitle: "Race iSmart",
+  );
+  static final CoOperative bishwakarmaCoop = CoOperative(
+    appStoreID: "com.devanasoft.bishwakarma",
+    packageName: "com.devanasoft.bishwakarma",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bishwakarma/bishwakarma_banner.png",
+    backgroundImage: "assets/bishwakarma/bishwakarma_background.png",
+    clientCode: 'JUL0782HQZ',
+    clientSecret: "133707",
+    coOperativeLogo: 'assets/bishwakarma/bishwakarma_logo.png',
+    splashImage: "assets/bishwakarma/bishwakarma_splash.png",
+    primaryColor: const Color(0xFF116C38),
+    coOperativeName: "Bishwakarma Saving & Credit Cooperative Ltd.",
+    appTitle: "Bishwakarma iSmart",
+  );
+  static final CoOperative currentCoop = ajambariCoop;
 }
