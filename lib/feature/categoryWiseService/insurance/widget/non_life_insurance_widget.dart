@@ -141,7 +141,7 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
         }
       },
       child: CommonContainer(
-        title: "Insurance Paymenent",
+        title: "Insurance Payment",
         detail: "Pay for your Insurance premium from here.",
         showDetail: true,
         topbarName: "Insurance Payment",
@@ -179,7 +179,7 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                     color: CustomTheme.lightTextColor,
                   ),
                 ),
-                PrimaryAccountBox(),
+                const PrimaryAccountBox(),
                 CustomTextField(
                   title: widget.service.labelName,
                   hintText: widget.service.labelSample,

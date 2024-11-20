@@ -99,7 +99,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    # - assets/gomaGanesh/s
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -121,7 +121,6 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -151,7 +150,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
@@ -198,7 +197,7 @@ flutter:
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/queenCoop/
-    - assets/nayakiran/
+    # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
@@ -301,14 +300,12 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
-    # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
@@ -345,7 +342,26 @@ flutter:
     # - assets/janani/
     # - assets/narayani/
     # - assets/chadani/
-    - assets/shreesapana/
+    # - assets/shreesapana/
+    # - assets/mirmire/
+    # - assets/nilgiree/
+    # - assets/prerana/
+    # - assets/automobiles/
+    # - assets/pame/
+    # - assets/mission/ 
+    # - assets/aabhash/
+    # - assets/aarthikBikash/
+    # - assets/janakalyan/
+    # - assets/sarbashakti/
+    # - assets/chamber/
+    # - assets/sajha/
+    # - assets/digobikash/
+    # - assets/race/
+    # - assets/bishwakarma/
+    
+    
+    
+    
     
     
     # sana kishan assets
