@@ -3999,5 +3999,5 @@ class CoOperativeValue {
     appTitle: "Bishwakarma iSmart",
   );
   
-  static final CoOperative currentCoop = ajambariCoop;
+  static final CoOperative currentCoop = annapurnaCoop;
 }
