@@ -3786,5 +3786,80 @@ class CoOperativeValue {
     coOperativeName: "Shree Sapanatirtha Multiputpose Co-operative Ltd.",
     appTitle: "Shree Sapanatirtha iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+
+////////////////////////
+    static final CoOperative sampada = CoOperative(
+    appStoreID: "com.devanasoft.sampada",
+    packageName: "com.devanasoft.sampada",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sampada/sampada_banner.png",
+    backgroundImage: "assets/sampada/sampada_background.png",
+    clientCode: 'ZFE5H1CGH0',
+    clientSecret: "134823",
+    coOperativeLogo: 'assets/sampada/sampada_logo.png',
+    splashImage: "assets/sampada/sampada_splash.png",
+    primaryColor: const Color(0xFF00893D),
+    coOperativeName: "Sampada Samudayik krishi Co-operative Ltd.",
+    appTitle: "Sampada Samudayik iSmart",
+  );
+
+   static final CoOperative pame = CoOperative(
+    appStoreID: "com.devanasoft.pame",
+    packageName: "com.devanasoft.pame",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pame/pame_banner.png",
+    backgroundImage: "assets/pame/pame_background.png",
+    clientCode: 'F8UIL4SKJU',
+    clientSecret: "180115",
+    coOperativeLogo: 'assets/pame/pame_logo.png',
+    splashImage: "assets/pame/pame_splash.png",
+    primaryColor: const Color(0xFF116839),
+    coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
+    appTitle: "Pame iSmart",
+  );
+
+
+    static final CoOperative dhanalaxmi = CoOperative(
+    appStoreID: "com.devanasoft.dhanalaxmi",
+    packageName: "com.devanasoft.dhanalaxmi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/dhanalaxmi/dhanalaxmi_banner.png",
+    backgroundImage: "assets/dhanalaxmi/dhanalaxmi_background.png",
+    clientCode: 'NRAI53RC8K',
+    clientSecret: "119521",
+    coOperativeLogo: 'assets/dhanalaxmi/dhanalaxmi_logo.png',
+    splashImage: "assets/dhanalaxmi/dhanalaxmi_splash.png",
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Dhanalaxmi Saving & Credit Co-operative Ltd.",
+    appTitle: "Dhanalaxmi iSmart",
+  );
+     static final CoOperative bishwakarma = CoOperative(
+    appStoreID: "com.devanasoft.bishwakarma",
+    packageName: "com.devanasoft.bishwakarma",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bishwakarma/bishwakarma_banner.png",
+    backgroundImage: "assets/bishwakarma/bishwakarma_background.png",
+    clientCode: 'JUL0782HQZ',
+    clientSecret: "133707",
+    coOperativeLogo: 'assets/bishwakarma/bishwakarma_logo.png',
+    splashImage: "assets/bishwakarma/bishwakarma_splash.png",
+    primaryColor: const Color(0xFF45883F),
+    coOperativeName: "Bishwakarma Saving & Credit Cooperative Ltd.",
+    appTitle: "Bishwakarma iSmart",
+  );
+     static final CoOperative race = CoOperative(
+    appStoreID: "com.devanasoft.race",
+    packageName: "com.devanasoft.race",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/race/race_banner.png",
+    backgroundImage: "assets/race/race_background.png",
+    clientCode: 'GL36AWSYAQ',
+    clientSecret: "159595",
+    coOperativeLogo: 'assets/race/race_logo.png',
+    splashImage: "assets/race/race_splash.png",
+    primaryColor: const Color(0xFF007236),
+    coOperativeName: "Race Saving & Loan Co-operative Society Ltd.",
+    appTitle: "Race iSmart",
+  );
+  static final CoOperative currentCoop = pame;
 }

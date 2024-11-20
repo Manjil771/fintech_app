@@ -198,7 +198,7 @@ flutter:
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/queenCoop/
-    - assets/nayakiran/
+    # - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
@@ -345,8 +345,11 @@ flutter:
     # - assets/janani/
     # - assets/narayani/
     # - assets/chadani/
-    - assets/shreesapana/
-    
+    # - assets/shreesapana/
+    # - assets/sampada/
+    # - assets/bishwakarma/
+    - assets/pame/
+ 
     
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

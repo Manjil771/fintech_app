@@ -1593,6 +1593,36 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         sampada {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        dhanalaxmi {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         pame {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         bishwakarma {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         race {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
