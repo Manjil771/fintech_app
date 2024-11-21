@@ -1642,6 +1642,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         dhanalaxmi{
+            dimension "app"
+            applicationId "com.devanasoft.dhanalaxmi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         shwetBhairab{
             dimension "app"
             applicationId "com.devanasoft.shwetBhairab"
@@ -1686,34 +1692,12 @@ android {
         }
          sampada {
             dimension "app"
-            applicationId "com.devanasoft.ismart.dev"
+            applicationId "com.devanasoft.sampada"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        dhanalaxmi {
-            dimension "app"
-            applicationId "com.devanasoft.ismart.dev"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
-         pame {
-            dimension "app"
-            applicationId "com.devanasoft.ismart.dev"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
-         bishwakarma {
-            dimension "app"
-            applicationId "com.devanasoft.ismart.dev"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
-         race {
-            dimension "app"
-            applicationId "com.devanasoft.ismart.dev"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
+        
+      
     }
 
     signingConfigs {

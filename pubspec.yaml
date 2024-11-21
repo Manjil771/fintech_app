@@ -150,7 +150,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    - assets/ajambari/
+    # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/annapurna/
@@ -346,7 +346,11 @@ flutter:
     # - assets/sampada/
     # - assets/bishwakarma/
     # - assets/pame/
- 
+    # - assets/aabhash/
+    # - assets/chamber/
+    - assets/race/
+    
+
     
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
