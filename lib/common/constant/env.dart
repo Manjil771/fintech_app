@@ -3798,7 +3798,7 @@ class CoOperativeValue {
     clientSecret: "134823",
     coOperativeLogo: 'assets/sampada/sampada_logo.png',
     splashImage: "assets/sampada/sampada_splash.png",
-    primaryColor: const Color(0xFF00893D),
+    primaryColor: const Color(0xFF009444 ),
     coOperativeName: "Sampada Samudayik krishi Co-operative Ltd.",
     appTitle: "Sampada Samudayik iSmart",
   );
@@ -3861,5 +3861,19 @@ class CoOperativeValue {
     coOperativeName: "Race Saving & Loan Co-operative Society Ltd.",
     appTitle: "Race iSmart",
   );
-  static final CoOperative currentCoop = pame;
+    static final CoOperative digoBikash = CoOperative(
+    appStoreID: "com.devanasoft.digoBikash",
+    packageName: "com.devanasoft.digoBikash",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/digoBikash/digoBikash_banner.png",
+    backgroundImage: "assets/digoBikash/digoBikash_background.png",
+    clientCode: 'S057SEA6YS',
+    clientSecret: "120188",
+    coOperativeLogo: 'assets/digoBikash/digoBikash_logo.png',
+    splashImage: "assets/digoBikash/digoBikash_splash.png",
+    primaryColor: const Color(0xFF116C38),
+    coOperativeName: "Digo Bikash Agriculture Co-operative Ltd.",
+    appTitle: "Digo Bikash iSmart",
+  );
+  static final CoOperative currentCoop = sampada;
 }

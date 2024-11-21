@@ -89,6 +89,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
     # - assets/uttarganga/
@@ -346,9 +347,9 @@ flutter:
     # - assets/narayani/
     # - assets/chadani/
     # - assets/shreesapana/
-    # - assets/sampada/
+    - assets/sampada/
     # - assets/bishwakarma/
-    - assets/pame/
+    # - assets/pame/
  
     
     # sana kishan assets

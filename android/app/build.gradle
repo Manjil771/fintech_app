@@ -1623,6 +1623,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+          digoBikash {
+            dimension "app"
+            applicationId "com.devanasoft.ismart.dev"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
