@@ -3875,5 +3875,20 @@ class CoOperativeValue {
     coOperativeName: "Digo Bikash Agriculture Co-operative Ltd.",
     appTitle: "Digo Bikash iSmart",
   );
-  static final CoOperative currentCoop = sampada;
+    static final CoOperative shreeFulbari = CoOperative(
+    appStoreID: "com.devanasoft.shreeFulbari",
+    packageName: "com.devanasoft.shreeFulbari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeFulbari/shreeFulbari_banner.png",
+    backgroundImage: "assets/shreeFulbari/shreeFulbari_background.png",
+    clientCode: 'I2ZT2OUBMP',
+    clientSecret: "132953",
+    coOperativeLogo: 'assets/shreeFulbari/shreeFulbari_logo.png',
+    splashImage: "assets/shreeFulbari/shreeFulbari_splash.png",
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Shree Fulbari Mahila Sana kishan krishi sahakari sanstha Ltd.",
+    appTitle: "SK Fulbari iSmart",
+  );
+  
+  static final CoOperative currentCoop = prathamMultiCoop;
 }
