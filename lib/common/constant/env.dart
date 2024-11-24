@@ -3890,5 +3890,5 @@ class CoOperativeValue {
     appTitle: "SK Fulbari iSmart",
   );
   
-  static final CoOperative currentCoop = prathamMultiCoop;
+  static final CoOperative currentCoop = dhanalaxmi;
 }

@@ -351,7 +351,8 @@ flutter:
     # - assets/sampada/
     # - assets/bishwakarma/
     # - assets/pame/
-    - assets/pratham/
+    # - assets/pratham/
+    - assets/dhanalaxmi/
  
     
     # sana kishan assets
