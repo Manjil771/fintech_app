@@ -154,7 +154,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
               children: [
                 CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    textInputType: TextInputType.phone,
+                    textInputType: TextInputType.number,
                     title: "Amount",
                     hintText: "NPR ",
                     controller: _amountController,
