@@ -3890,5 +3890,19 @@ class CoOperativeValue {
     appTitle: "SK Fulbari iSmart",
   );
   
+  static final CoOperative samriddha = CoOperative(
+    appStoreID: "com.devanasoft.samriddha",
+    packageName: "com.devanasoft.samriddha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samriddha/samriddha_banner.png",
+    backgroundImage: "assets/samriddha/samriddha_background.png",
+    clientCode: 'IU6MRJ74I1',
+    clientSecret: "221875",
+    coOperativeLogo: 'assets/samriddha/samriddha_logo.png',
+    splashImage: "assets/samriddha/samriddha_splash.png",
+    primaryColor: const Color(0xFF009345),
+    coOperativeName: "Samriddha Chapakot Bahuuddesiya Sahakari Sanstha Ltd.",
+    appTitle: "Samriddha iSmart",
+  );
   static final CoOperative currentCoop = dhanalaxmi;
 }

@@ -1635,6 +1635,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+           samriddha {
+            dimension "app"
+            applicationId "com.devanasoft.samriddha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
