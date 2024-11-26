@@ -3803,21 +3803,6 @@ class CoOperativeValue {
     appTitle: "Sampada Samudayik iSmart",
   );
 
-  static final CoOperative pame = CoOperative(
-    appStoreID: "com.devanasoft.pame",
-    packageName: "com.devanasoft.pame",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/pame/pame_banner.png",
-    backgroundImage: "assets/pame/pame_background.png",
-    clientCode: 'F8UIL4SKJU',
-    clientSecret: "180115",
-    coOperativeLogo: 'assets/pame/pame_logo.png',
-    splashImage: "assets/pame/pame_splash.png",
-    primaryColor: const Color(0xFF116839),
-    coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
-    appTitle: "Pame iSmart",
-  );
-
   static final CoOperative dhanalaxmi = CoOperative(
     appStoreID: "com.devanasoft.dhanalaxmi",
     packageName: "com.devanasoft.dhanalaxmi",
@@ -3903,20 +3888,7 @@ class CoOperativeValue {
     coOperativeName: "Automobilies Saving and Credit Co-operative Society Ltd.",
     appTitle: "Automobilies iSmart",
   );
-  static final CoOperative pameCoop = CoOperative(
-    appStoreID: "com.devanasoft.pame",
-    packageName: "com.devanasoft.pame",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/pame/pame_banner.png",
-    backgroundImage: "assets/pame/pame_background.png",
-    clientCode: 'F8UIL4SKJU',
-    clientSecret: "180115",
-    coOperativeLogo: 'assets/pame/pame_logo.png',
-    splashImage: "assets/pame/pame_splash.png",
-    primaryColor: const Color(0xFF006838),
-    coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
-    appTitle: "Pame iSmart",
-  );
+
   static final CoOperative missionCoop = CoOperative(
     appStoreID: "com.devanasoft.mission",
     packageName: "com.devanasoft.mission",
@@ -4059,5 +4031,19 @@ class CoOperativeValue {
     coOperativeName: "Bishwakarma Saving & Credit Cooperative Ltd.",
     appTitle: "Bishwakarma iSmart",
   );
-  static final CoOperative currentCoop = raceCoop;
+  static final CoOperative pameCoop = CoOperative(
+    appStoreID: "com.devanasoft.pame",
+    packageName: "com.devanasoft.pame",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pame/pame_banner.png",
+    backgroundImage: "assets/pame/pame_background.png",
+    clientCode: 'F8UIL4SKJU',
+    clientSecret: "180115",
+    coOperativeLogo: 'assets/pame/pame_logo.png',
+    splashImage: "assets/pame/pame_splash.png",
+    primaryColor: const Color(0xFF116C38),
+    coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
+    appTitle: "Pame iSmart",
+  );
+  static final CoOperative currentCoop = nirikaCoop;
 }

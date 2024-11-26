@@ -100,18 +100,19 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        chirayu {
-            dimension "app"
-            applicationId "com.devanasoft.chirayu"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
         pame {
             dimension "app"
             applicationId "com.devanasoft.pame"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        chirayu {
+            dimension "app"
+            applicationId "com.devanasoft.chirayu"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+       
         automobilies {
             dimension "app"
             applicationId "com.devanasoft.automobilies"

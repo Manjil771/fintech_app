@@ -109,6 +109,7 @@ flutter:
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
+    # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
@@ -121,7 +122,7 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/nirika/
+    - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
     # - assets/bhugol/
@@ -345,10 +346,11 @@ flutter:
     # - assets/shreesapana/
     # - assets/sampada/
     # - assets/bishwakarma/
-    # - assets/pame/
     # - assets/aabhash/
     # - assets/chamber/
-    - assets/race/
+    # - assets/race/
+    # - assets/pame/
+    # - assets/aarthikBikash/
     
 
     
