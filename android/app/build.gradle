@@ -155,9 +155,9 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        aarthikBikash {
+        arthikBikash {
             dimension "app"
-            applicationId "com.devanasoft.aarthikBikash"
+            applicationId "com.devanasoft.arthikBikash"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

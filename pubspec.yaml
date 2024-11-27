@@ -346,11 +346,11 @@ flutter:
     # - assets/shreesapana/
     # - assets/sampada/
     # - assets/bishwakarma/
-    - assets/aabhash/
+    # - assets/aabhash/
     # - assets/chamber/
     # - assets/race/
     # - assets/pame/
-    # - assets/aarthikBikash/
+    - assets/arthikBikash/
     
 
     

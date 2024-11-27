@@ -3917,20 +3917,20 @@ class CoOperativeValue {
     coOperativeName: "Aabhash Saving & Credit Co-operative Ltd.",
     appTitle: "Aabhash iSmart",
   );
-  static final CoOperative aarthikBikash = CoOperative(
-    appStoreID: "com.devanasoft.aarthikBikash",
-    packageName: "com.devanasoft.aarthikBikash",
+  static final CoOperative arthikBikash = CoOperative(
+    appStoreID: "com.devanasoft.arthikBikash",
+    packageName: "com.devanasoft.arthikBikash",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/aarthikBikash/aarthikBikash_banner.png",
-    backgroundImage: "assets/aarthikBikash/aarthikBikash_background.png",
+    bannerImage: "assets/arthikBikash/arthikBikash_banner.png",
+    backgroundImage: "assets/arthikBikash/arthikBikash_background.png",
     clientCode: 'KY3LZWN2VF',
     clientSecret: "183245",
-    coOperativeLogo: 'assets/aarthikBikash/aarthikBikash_logo.png',
-    splashImage: "assets/aarthikBikash/aarthikBikash_splash.png",
+    coOperativeLogo: 'assets/arthikBikash/arthikBikash_logo.png',
+    splashImage: "assets/arthikBikash/arthikBikash_splash.png",
     primaryColor: const Color(0xFF129648),
     coOperativeName:
-        "Aarthik Bikash Mitra Saving and Credit Co-operative Society Ltd.",
-    appTitle: "Aarthik Bikash iSmart",
+        "Arthik Bikash Mitra Saving and Credit Co-operative Society Ltd.",
+    appTitle: "Arthik Bikash iSmart",
   );
   static final CoOperative shreejanakalyan = CoOperative(
     appStoreID: "com.devanasoft.janakalyan",
