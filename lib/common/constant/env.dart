@@ -4045,5 +4045,5 @@ class CoOperativeValue {
     coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
     appTitle: "Pame iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = aabhashCoop;
 }
