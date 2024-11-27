@@ -3904,5 +3904,33 @@ class CoOperativeValue {
     coOperativeName: "Samriddha Chapakot Bahuuddesiya Sahakari Sanstha Ltd.",
     appTitle: "Samriddha iSmart",
   );
-  static final CoOperative currentCoop = dhanalaxmi;
+    static final CoOperative siddhartha = CoOperative(
+    appStoreID: "com.devanasoft.siddhartha",
+    packageName: "com.devanasoft.siddhartha",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/siddhartha/siddhartha_banner.png",
+    backgroundImage: "assets/siddhartha/siddhartha_background.png",
+    clientCode: '3VR4WBGQ42',
+    clientSecret: "204027",
+    coOperativeLogo: 'assets/siddhartha/siddhartha_logo.png',
+    splashImage: "assets/siddhartha/siddhartha_splash.png",
+    primaryColor: const Color(0xFF2E3192),
+    coOperativeName: "Siddhartha Saving & Credit Cooperative Ltd.",
+    appTitle: "Siddhartha iSmart",
+  );
+     static final CoOperative janakalyan = CoOperative(
+    appStoreID: "com.devanasoft.janakalyan",
+    packageName: "com.devanasoft.janakalyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janakalyan/janakalyan_banner.png",
+    backgroundImage: "assets/janakalyan/janakalyan_background.png",
+    clientCode: 'BTFHVDXIE7',
+    clientSecret: "187449",
+    coOperativeLogo: 'assets/janakalyan/janakalyan_logo.png',
+    splashImage: "assets/janakalyan/janakalyan_splash.png",
+    primaryColor: const Color(0xFF39B54A),
+    coOperativeName: "Shree Janakalyan Gandaki Multipurpose Co-operative Society Ltd.",
+    appTitle: "Janakalyan iSmart",
+  );
+  static final CoOperative currentCoop = janakalyan;
 }
