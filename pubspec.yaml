@@ -341,16 +341,18 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
-    # - assets/narayani/
+    # - assets/narayani/65
     # - assets/chadani/
     # - assets/shreesapana/
     # - assets/sampada/
     # - assets/bishwakarma/
-    # - assets/aabhash/
+    - assets/aabhash/
     # - assets/chamber/
     # - assets/race/
     # - assets/pame/
-    - assets/arthikBikash/
+    # - assets/arthikBikash/
+    # - assets/sarbashaktiKtm/
+    # - assets/pathibhara/
     
 
     

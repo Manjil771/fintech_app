@@ -88,8 +88,11 @@ class _ProfileWidgetState extends State<ProfileWidget> {
             builder: (context, val, _) {
               if (val != null) {
                 final AccountDetail memberId = val.accountDetail.firstWhere(
-                    (element) => element.accountType.toLowerCase() == "saving");
-
+                  (element) => element.accountType.toLowerCase() == "saving",
+                  orElse: () => val.accountDetail.firstWhere(
+                    (element) => element.accountType.toLowerCase() == "current",
+                  ),
+                );
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

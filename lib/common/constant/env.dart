@@ -3927,7 +3927,7 @@ class CoOperativeValue {
     clientSecret: "183245",
     coOperativeLogo: 'assets/arthikBikash/arthikBikash_logo.png',
     splashImage: "assets/arthikBikash/arthikBikash_splash.png",
-    primaryColor: const Color(0xFF129648),
+    primaryColor: const Color(0xFFbd2529),
     coOperativeName:
         "Arthik Bikash Mitra Saving and Credit Co-operative Society Ltd.",
     appTitle: "Arthik Bikash iSmart",
@@ -4044,6 +4044,34 @@ class CoOperativeValue {
     primaryColor: const Color(0xFF116C38),
     coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
     appTitle: "Pame iSmart",
+  );
+  static final CoOperative sarbashaktiKtm = CoOperative(
+    appStoreID: "com.devanasoft.sarbashaktiKtm",
+    packageName: "com.devanasoft.sarbashaktiKtm",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sarbashaktiKtm/sarbashaktiKtm_banner.png",
+    backgroundImage: "assets/sarbashaktiKtm/sarbashaktiKtm_background.png",
+    clientCode: 'YCAADUAYBP',
+    clientSecret: "200764",
+    coOperativeLogo: 'assets/sarbashaktiKtm/sarbashaktiKtm_logo.png',
+    splashImage: "assets/sarbashaktiKtm/sarbashaktiKtm_splash.png",
+    primaryColor: const Color(0xFF0e8241),
+    coOperativeName: "Sarbashakti Saving & credit Cooperative Ltd.",
+    appTitle: "Sarbashakti iSmart",
+  );
+  static final CoOperative shreepathibharamai = CoOperative(
+    appStoreID: "com.devanasoft.pathibhara",
+    packageName: "com.devanasoft.pathibhara",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/pathibhara/pathibhara_banner.png",
+    backgroundImage: "assets/pathibhara/pathibhara_background.png",
+    clientCode: 'UHXXCCNAC4',
+    clientSecret: "195441",
+    coOperativeLogo: 'assets/pathibhara/pathibhara_logo.png',
+    splashImage: "assets/pathibhara/pathibhara_splash.png",
+    primaryColor: const Color(0xFFED1C24),
+    coOperativeName: "Shree Pathibhara Mai Saving & Credit Co-operative Ltd.",
+    appTitle: "Shree Pathibhara Mai iSmart",
   );
   static final CoOperative currentCoop = aabhashCoop;
 }
