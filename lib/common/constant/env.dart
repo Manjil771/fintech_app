@@ -4073,5 +4073,19 @@ class CoOperativeValue {
     coOperativeName: "Shree Pathibhara Mai Saving & Credit Co-operative Ltd.",
     appTitle: "Shree Pathibhara Mai iSmart",
   );
-  static final CoOperative currentCoop = aabhashCoop;
+  static final CoOperative shubhashreebalkumari = CoOperative(
+    appStoreID: "com.devanasoft.ssbalkumari",
+    packageName: "com.devanasoft.ssbalkumari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ssbalkumari/ssbalkumari_banner.png",
+    backgroundImage: "assets/ssbalkumari/ssbalkumari_background.png",
+    clientCode: '5MFR1N3IKD',
+    clientSecret: "142708",
+    coOperativeLogo: 'assets/ssbalkumari/ssbalkumari_logo.png',
+    splashImage: "assets/ssbalkumari/ssbalkumari_splash.png",
+    primaryColor: const Color(0xFFbd2529),
+    coOperativeName: "Shubha Shree Balkumari Saving & Credit Co-operative Ltd.",
+    appTitle: "ShubhaShree Balkumari iSmart",
+  );
+  static final CoOperative currentCoop = shubhashreebalkumari;
 }
