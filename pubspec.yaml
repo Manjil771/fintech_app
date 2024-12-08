@@ -366,8 +366,8 @@ flutter:
 
 
     # sana kishan assets
-    # - assets/sanakishanHathasuwa/
-    # - assets/sanakishan/
+    - assets/sanakishanHathasuwa/
+    - assets/sanakishan/
     # - assets/skKhudunabari/
     # - assets/skKhajurgachhi/
     # - assets/skKohabara/

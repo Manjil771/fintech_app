@@ -42,7 +42,7 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'package:uuid/uuid.dart';
 
 class LoginWidget extends StatefulWidget {
-  const   LoginWidget({Key? key}) : super(key: key);
+  const LoginWidget({Key? key}) : super(key: key);
 
   @override
   State<LoginWidget> createState() => _LoginWidgetState();
@@ -355,7 +355,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           await context
                               .read<ValidateCoOpCubit>()
                               .validateCoOperative(
-                                  username: phoneController.text);
+                                username: phoneController.text,
+                                channelPartner: currentCoop.channelPartner,
+                              );
                           Future.delayed(const Duration(seconds: 3))
                               .then((value) {
                             setState(() {});
