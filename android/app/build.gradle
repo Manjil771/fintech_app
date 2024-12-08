@@ -1715,6 +1715,61 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        dhanalaxmi {
+            dimension "app"
+            applicationId "com.devanasoft.dhanalaxmi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         pame {
+            dimension "app"
+            applicationId "com.devanasoft.pame"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         bishwakarma {
+            dimension "app"
+            applicationId "com.devanasoft.bishwakarma"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         race {
+            dimension "app"
+            applicationId "com.devanasoft.race"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+          digoBikash {
+            dimension "app"
+            applicationId "com.devanasoft.digoBikash"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+          shreeFulbari {
+            dimension "app"
+            applicationId "com.devanasoft.shreeFulbari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        
+             samriddha {
+            dimension "app"
+            applicationId "com.devanasoft.samriddha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+             siddhartha {
+            dimension "app"
+            applicationId "com.devanasoft.siddhartha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+           janakalyan {
+            dimension "app"
+            applicationId "com.devanasoft.janakalyan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         
       
     }
