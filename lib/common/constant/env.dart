@@ -4166,5 +4166,5 @@ class CoOperativeValue {
     appTitle: "Bhargo iSmart",
   );
   
-  static final CoOperative currentCoop = bhargo;
+  static final CoOperative currentCoop = pathibhara;
 }

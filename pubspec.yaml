@@ -356,11 +356,11 @@ flutter:
     # - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/
-    # - assets/pathibhara/
+    - assets/pathibhara/
     # - assets/indrawati/
     # - assets/siddhartha/
     # - assets/shubhashreebalkumari/
-    - assets/paurakhi/
+    # - assets/paurakhi/
 
 
 
