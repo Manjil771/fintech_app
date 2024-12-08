@@ -89,7 +89,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
-    - assets/shreeFulbari/
+    # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
@@ -352,13 +352,19 @@ flutter:
     # - assets/pratham/
     # - assets/dhanalaxmi/
     # - assets/samriddha/
+    # - assets/kohinoor/
+    # - assets/bhargo/
+    # - assets/sarbashakti/
     # - assets/janakalyan/
+    # - assets/pathibhara/
+    # - assets/indrawati/
     # - assets/siddhartha/
-    - assets/mission/
-    
-    
-    
-    
+    # - assets/shubhashreebalkumari/
+    - assets/paurakhi/
+
+
+
+
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/

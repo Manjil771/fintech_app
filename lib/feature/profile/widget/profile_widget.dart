@@ -93,6 +93,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                     (element) => element.accountType.toLowerCase() == "current",
                   ),
                 );
+
                 return Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

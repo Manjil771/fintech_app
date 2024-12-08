@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
   <string name="app_name">Shree Pathibhara Mai iSmart</string>
+=======
+  <string name="app_name">Pathibhara iSmart</string>
+>>>>>>> 6fcde5d0e8bdb52d5b0653dd65da96070e6c8afe
   <string name="flutter_downloader_notification_started">Download started</string>
   <string name="flutter_downloader_notification_in_progress">Downloading file</string>
   <string name="flutter_downloader_notification_canceled">Download canceled</string>
