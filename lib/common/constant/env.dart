@@ -4033,6 +4033,47 @@ class CoOperativeValue {
     coOperativeName: "Bhargo Multipurpose Co-operative Society Ltd.",
     appTitle: "Bhargo iSmart",
   );
-  
-  static final CoOperative currentCoop = bhargo;
+         static final CoOperative nilpashan  = CoOperative(
+    appStoreID: "com.devanasoft.nilpashan",
+    packageName: "com.devanasoft.nilpashan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nilpashan/nilpashan_banner.png",
+    backgroundImage: "assets/nilpashan/nilpashan_background.png",
+    clientCode: '7YLWGHSS63',
+    clientSecret: "199929",
+    coOperativeLogo: 'assets/nilpashan/nilpashan_logo.png',
+    splashImage: "assets/nilpashan/nilpashan_splash.png",
+    primaryColor: const Color(0xFF303376),
+    coOperativeName: "Nil Pashan Multipurpose Cooperative Ltd.",
+    appTitle: "Nil Pashan iSmart",
+  );
+  //          static final CoOperative godawari  = CoOperative(
+  //   appStoreID: "com.devanasoft.godawari",
+  //   packageName: "com.devanasoft.godawari",
+  //   baseUrl: 'https://ismart.devanasoft.com.np/'
+  //   bannerImage: "assets/godawari/godawari_banner.png",
+  //   backgroundImage: "assets/godawari/godawari_background.png",
+  //   clientCode: 'EELPM6DDPU',
+  //   clientSecret: "184143",
+  //   coOperativeLogo: 'assets/godawari/godawari_logo.png',
+  //   splashImage: "assets/godawari/godawari_splash.png",
+  //   primaryColor: const Color(0xFF0BAA1D),
+  //   coOperativeName: "Godawari Multi-Purpose Cooperative Ltd.",
+  //   appTitle: "Godawari iSmart",
+  // );
+      static final CoOperative jhigu  = CoOperative(
+    appStoreID: "com.devanasoft.jhigu",
+    packageName: "com.devanasoft.jhigu",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jhigu/jhigu_banner.png",
+    backgroundImage: "assets/jhigu/jhigu_background.png",
+    clientCode: 'U4J0MP6DPF',
+    clientSecret: "126422",
+    coOperativeLogo: 'assets/jhigu/jhigu_logo.png',
+    splashImage: "assets/jhigu/jhigu_splash.png",
+    primaryColor: const Color(0xFFFA8415),
+    coOperativeName: "Jhigu Daan Kala Saving & Credit Co-operative Ltd.",
+    appTitle: "Jhigu iSmart",
+  );
+  static final CoOperative currentCoop = nilpashan;
 }

@@ -1696,6 +1696,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+              nilpashan {
+            dimension "app"
+            applicationId "com.devanasoft.nilpashan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+              jhigu {
+            dimension "app"
+            applicationId "com.devanasoft.jhigu"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

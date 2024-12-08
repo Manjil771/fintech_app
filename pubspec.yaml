@@ -362,8 +362,9 @@ flutter:
     # - assets/indrawati/
     # - assets/siddhartha/
     # - assets/shubhashreebalkumari/
-    - assets/paurakhi/
-
+    # - assets/paurakhi/
+    # - assets/nilpashan/
+    - assets/jhigu/
 
 
 
