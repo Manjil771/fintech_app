@@ -2843,9 +2843,9 @@
 				CODE_SIGN_STYLE = Automatic;
 				COOP_NAME = "SFACL Niglihawa iSmart";
 				CURRENT_PROJECT_VERSION = 007;
-				DEVELOPMENT_TEAM = XHKT78GUZR;
+				DEVELOPMENT_TEAM = 73W753UKPL;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 0.0.26;
+				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "SFACL Niglihawa iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -2855,7 +2855,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.sanakishan;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.sanakishan.app;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -9149,7 +9149,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -9223,7 +9223,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				COOP_NAME = "Kamana Coop iSmart";
 				CURRENT_PROJECT_VERSION = 007;
-				DEVELOPMENT_TEAM = YWWTUL8N7V;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_NAME = 1.5.30;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -9235,7 +9235,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
@@ -9321,7 +9321,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.0.25;
-				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.kamana.test;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
