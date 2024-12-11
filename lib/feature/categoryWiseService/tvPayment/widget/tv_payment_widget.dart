@@ -96,7 +96,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         showRecentTransaction: true,
         associatedId: widget.service.id.toString(),
         showAccountSelection: true,
-        buttonName: "Show Bill",
+        buttonName: "Show Bill ",
         title: widget.service.service,
         detail: widget.service.instructions,
         showDetail: true,

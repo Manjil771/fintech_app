@@ -11,10 +11,12 @@ class ValidateCoOpCubit extends Cubit<CommonState> {
 
   validateCoOperative({
     required String username,
+    required String channelPartner,
   }) async {
     emit(CommonLoading());
     final res = await userRepository.validateCoOperative(
       username: username,
+      channelPartner: channelPartner,
     );
     if (res.status == Status.Success && res.data != null) {
       emit(CommonDataFetchSuccess<LoginCoOpValue>(data: res.data!));

@@ -5,6 +5,6 @@ class MorePage extends StatelessWidget {
   const MorePage({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
-    return MoreWidget();
+    return const MoreWidget();
   }
 }

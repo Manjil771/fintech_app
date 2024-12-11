@@ -101,7 +101,7 @@ flutter:
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    # - assets/gomaGanesh/s
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -111,6 +111,7 @@ flutter:
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
+    # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
@@ -123,7 +124,6 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -303,14 +303,12 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
-    # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
@@ -345,6 +343,7 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
+    # - assets/kshstrashakti/
     # - assets/narayani/
     # - assets/chadani/
     # - assets/shreesapana/
@@ -364,13 +363,18 @@ flutter:
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
     # - assets/nilpashan/
-    - assets/jhigu/
+    # - assets/jhigu/
+    # - assets/godawari/
+    # - assets/shreePaurakhi/
+    - assets/sarba/
+    
+
 
 
 
     # sana kishan assets
-    # - assets/sanakishanHathasuwa/
-    # - assets/sanakishan/
+    - assets/sanakishanHathasuwa/
+    - assets/sanakishan/
     # - assets/skKhudunabari/
     # - assets/skKhajurgachhi/
     # - assets/skKohabara/
