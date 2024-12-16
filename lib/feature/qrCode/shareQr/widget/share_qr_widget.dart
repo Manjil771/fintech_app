@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -12,6 +14,7 @@ import 'package:ismart/feature/qrCode/shareQr/widget/external_qr_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 
 class ShareQrWidget extends StatefulWidget {
   const ShareQrWidget({super.key});
@@ -21,9 +24,46 @@ class ShareQrWidget extends StatefulWidget {
 }
 
 class _ShareQrWidgetState extends State<ShareQrWidget> {
+  final ScreenBrightness _screenBrightness = ScreenBrightness.instance;
+  double? _previousBrightnessLevel;
+  StreamSubscription? _brightnessSubscription;
+
   @override
   void initState() {
     super.initState();
+    _setupScreenBrightness();
+  }
+
+  Future<void> _setupScreenBrightness() async {
+    try {
+      _previousBrightnessLevel = await _screenBrightness.system;
+
+      await _screenBrightness.setSystemScreenBrightness(0.9);
+
+      _brightnessSubscription = _screenBrightness
+          .onSystemScreenBrightnessChanged
+          .listen((brightness) {});
+    } catch (e) {
+      print('Failed to adjust screen brightness: $e');
+    }
+  }
+
+  @override
+  dispose() {
+    _restoreScreenBrightness();
+    _brightnessSubscription?.cancel();
+    super.dispose();
+  }
+
+  Future<void> _restoreScreenBrightness() async {
+    try {
+      if (_previousBrightnessLevel != null) {
+        await _screenBrightness
+            .setSystemScreenBrightness(_previousBrightnessLevel!);
+      }
+    } catch (e) {
+      print('Failed to restore screen brightness: $e');
+    }
   }
 
   bool isInternalQr = false;

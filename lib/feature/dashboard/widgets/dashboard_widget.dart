@@ -368,6 +368,7 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -556,7 +557,10 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                       child: SvgPicture.asset(
                         Assets.qrCodeIcon,
                         height: 30,
-                      ),
+                      )
+                          .animate(autoPlay: true, delay: 100.ms)
+                          .fade(delay: 100.ms)
+                          .shake(delay: 1500.ms),
                     ),
                   ),
                   bottomNavBar: BottomNavigationBar(
