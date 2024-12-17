@@ -2564,7 +2564,7 @@ class CoOperativeValue {
     splashImage: "assets/prime/prime_splash.png",
     primaryColor: const Color(0xFF0DA84C),
     coOperativeName: "Prime Multipurpose Cooperative Ltd.",
-    appTitle: "Prime Multi iSmart",
+    appTitle: "Prime iSmart",
   );
   static final CoOperative jyotidayaCoop = CoOperative(
     appStoreID: "com.devanasoft.jyotidaya",
@@ -3994,7 +3994,7 @@ class CoOperativeValue {
     splashImage: "assets/digoBikash/digoBikash_splash.png",
     primaryColor: const Color(0xFF116C38),
     coOperativeName: "Digo Bikash Agriculture Co-operative Ltd.",
-    appTitle: "Digo Bikash  Agri iSmart",
+    appTitle: "Digo Bikash iSmart",
   );
   static final CoOperative raceCoop = CoOperative(
     appStoreID: "com.devanasoft.race",
@@ -4140,7 +4140,7 @@ class CoOperativeValue {
     splashImage: "assets/shubhashreebalkumari/shubhashreebalkumari_splash.png",
     primaryColor: const Color(0xFFBD2529),
     coOperativeName: "Shubha Shree Balkumari Saving & Credit Co-operative Ltd.",
-    appTitle: "Shubha Shree iSmart",
+    appTitle: "Shubhashree Balkumari iSmart",
   );
   static final CoOperative paurakhi = CoOperative(
     appStoreID: "com.devanasoft.paurakhi",
@@ -4269,7 +4269,7 @@ class CoOperativeValue {
     appTitle: "Kshstrashakti iSmart",
   );
   
-  static final CoOperative currentCoop = sarba;
+  static final CoOperative currentCoop = narayani;
 
 
 }
