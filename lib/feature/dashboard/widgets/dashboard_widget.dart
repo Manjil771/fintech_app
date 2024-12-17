@@ -393,8 +393,8 @@ import 'package:open_filex/open_filex.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class DashBoardWidget extends StatefulWidget {
-  final int currentPage;
-  const DashBoardWidget({Key? key, this.currentPage = 0}) : super(key: key);
+  
+  const DashBoardWidget({Key? key, }) : super(key: key);
 
   @override
   State<DashBoardWidget> createState() => _DashBoardWidgetState();
@@ -429,7 +429,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   void initState() {
     super.initState();
 
-    _currentIndex = widget.currentPage;
+   
     context
         .read<CustomerDetailCubit>()
         .fetchCustomerDetail(isCalledAtStatup: true);
