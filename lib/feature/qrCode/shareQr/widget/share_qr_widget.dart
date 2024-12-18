@@ -27,6 +27,7 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
   final ScreenBrightness _screenBrightness = ScreenBrightness.instance;
   double? _previousBrightnessLevel;
   StreamSubscription? _brightnessSubscription;
+  bool _brightnessPermissionGranted = false;
 
   @override
   void initState() {
@@ -37,14 +38,14 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
   Future<void> _setupScreenBrightness() async {
     try {
       _previousBrightnessLevel = await _screenBrightness.system;
-
       await _screenBrightness.setSystemScreenBrightness(0.9);
-
+      _brightnessPermissionGranted = true;
       _brightnessSubscription = _screenBrightness
           .onSystemScreenBrightnessChanged
           .listen((brightness) {});
     } catch (e) {
-      print('Failed to adjust screen brightness: $e');
+      print('Unexpected error in brightness setup: $e');
+      _brightnessPermissionGranted = false;
     }
   }
 
@@ -57,12 +58,12 @@ class _ShareQrWidgetState extends State<ShareQrWidget> {
 
   Future<void> _restoreScreenBrightness() async {
     try {
-      if (_previousBrightnessLevel != null) {
+      if (_brightnessPermissionGranted && _previousBrightnessLevel != null) {
         await _screenBrightness
             .setSystemScreenBrightness(_previousBrightnessLevel!);
       }
     } catch (e) {
-      print('Failed to restore screen brightness: $e');
+      print('Unexpected error restoring screen brightness: $e');
     }
   }
 
