@@ -50,7 +50,6 @@ dependencies:
   mobile_scanner: "^4.0.1"
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
-  qrcode_flutter: ^3.0.0
   qr_code_utils:
     git:
       url: git@github.com:nsubash38/qr_code_test.git
@@ -72,6 +71,8 @@ dependencies:
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "^1.0.0-dev.4"
   nepali_utils: ^3.0.6
+  flutter_zxing: ^1.8.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -82,6 +83,7 @@ dev_dependencies:
 dependency_overrides:
   http: "^1.1.0"
   package_info_plus: "^5.0.1"
+
 flutter:
   assets:
     - assets/translations/

@@ -193,6 +193,46 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
+  camera:
+    dependency: transitive
+    description:
+      name: camera
+      sha256: "26ff41045772153f222ffffecba711a206f670f5834d40ebf5eed3811692f167"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.11.0+2"
+  camera_android_camerax:
+    dependency: transitive
+    description:
+      name: camera_android_camerax
+      sha256: "59967e6d80df9d682a33b86f228cc524e6b52d6184b84f6ac62151dd98bd1ea0"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.6.5+2"
+  camera_avfoundation:
+    dependency: transitive
+    description:
+      name: camera_avfoundation
+      sha256: "2e4c568f70e406ccb87376bc06b53d2f5bebaab71e2fbcc1a950e31449381bcf"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.9.17+5"
+  camera_platform_interface:
+    dependency: transitive
+    description:
+      name: camera_platform_interface
+      sha256: b3ede1f171532e0d83111fe0980b46d17f1aa9788a07a2fbed07366bbdbb9061
+      url: "https://pub.dev"
+    source: hosted
+    version: "2.8.0"
+  camera_web:
+    dependency: transitive
+    description:
+      name: camera_web
+      sha256: b9235ec0a2ce949daec546f1f3d86f05c3921ed31c7d9ab6b7c03214d152fc2d
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.3.4"
   carousel_slider:
     dependency: "direct main"
     description:
@@ -725,6 +765,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_zxing:
+    dependency: "direct main"
+    description:
+      name: flutter_zxing
+      sha256: "5b2670f151a6d96643204ff3a781e073739c23a91ef5fc39742bf13fb8287b4c"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.8.2"
   fluttercontactpicker:
     dependency: "direct main"
     description:
@@ -1398,14 +1446,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.0.1"
-  qrcode_flutter:
-    dependency: "direct main"
-    description:
-      name: qrcode_flutter
-      sha256: "015762f099442e3c23488fb2c9c5186d61540ef619a319dc30d05aa3f49f8bbe"
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.0.0"
   rxdart:
     dependency: "direct main"
     description:
