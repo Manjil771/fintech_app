@@ -4273,5 +4273,4 @@ class CoOperativeValue {
 
 
 
-  static final CoOperative currentCoop =bhargo ;
 }
