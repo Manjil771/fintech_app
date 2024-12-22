@@ -4096,7 +4096,7 @@ class CoOperativeValue {
     splashImage: "assets/indrawati/indrawati_splash.png",
     primaryColor: const Color(0xFF417F68),
     coOperativeName: "Indrawati Sana Kisan Krishi Sahakari Co-operative Ltd.",
-    appTitle: "SK Indrawati iSmart",
+    appTitle: "samriddha",
   );
   static final CoOperative kohinoor = CoOperative(
     appStoreID: "com.devanasoft.kohinoor",
@@ -4269,7 +4269,7 @@ class CoOperativeValue {
     appTitle: "Kshstrashakti iSmart",
   );
   
-  static final CoOperative currentCoop = bishwakarma;
+  static final CoOperative currentCoop = samriddha;
 
 
 }

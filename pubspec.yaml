@@ -348,11 +348,11 @@ flutter:
     # - assets/chadani/
     # - assets/shreesapana/
     # - assets/sampada/
-    - assets/bishwakarma/
+    # - assets/bishwakarma/
     # - assets/pame/
     # - assets/pratham/
     # - assets/dhanalaxmi/
-    # - assets/samriddha/
+    - assets/samriddha/
     # - assets/kohinoor/
     # - assets/bhargo/
     # - assets/sarbashakti/

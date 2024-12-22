@@ -393,8 +393,8 @@ import 'package:open_filex/open_filex.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class DashBoardWidget extends StatefulWidget {
-  
-  const DashBoardWidget({Key? key, }) : super(key: key);
+  final int currentPage;
+  const DashBoardWidget({Key? key, this.currentPage = 0}) : super(key: key);
 
   @override
   State<DashBoardWidget> createState() => _DashBoardWidgetState();
