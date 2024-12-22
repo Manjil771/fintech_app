@@ -3582,20 +3582,20 @@ class CoOperativeValue {
     appTitle: "Chetana iSmart",
   );
   static final CoOperative skGlobal = CoOperative(
-    appStoreID: "com.devanasoft.skglobal",
-    packageName: "com.devanasoft.skglobal",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/skglobal/skglobal_banner.png",
-    backgroundImage: "assets/skglobal/skglobal_background.png",
-    coOperativeLogo: "assets/skglobal/skglobal_logo.png",
-    clientCode: ' RPJTJAKDBR',
-    clientSecret: "203763",
-    splashImage: "assets/skglobal/skglobal_splash.png",
-    primaryColor: const Color(0xFF39a748),
-    shouldValidateCooperative: true,
-    coOperativeName: "SanaKisan Global",
-    appTitle: "Sana Kisan Global",
-  );
+      appStoreID: "com.devanasoft.skglobal",
+      packageName: "com.devanasoft.skglobal",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/skglobal/skglobal_banner.png",
+      backgroundImage: "assets/skglobal/skglobal_background.png",
+      coOperativeLogo: "assets/skglobal/skglobal_logo.png",
+      clientCode: 'RPJTJAKDBR',
+      clientSecret: "203763",
+      splashImage: "assets/skglobal/skglobal_splash.png",
+      primaryColor: const Color(0xFF39a748),
+      shouldValidateCooperative: true,
+      coOperativeName: "SanaKisan Global",
+      appTitle: "Sana Kisan Global",
+      channelPartner: "MAGNUS");
   static final CoOperative megaplus = CoOperative(
     appStoreID: "com.devanasoft.megaplus",
     packageName: "com.devanasoft.megaplus",
@@ -4270,6 +4270,7 @@ class CoOperativeValue {
   );
   
   static final CoOperative currentCoop = samriddha;
+
 
 
 }
