@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.32+62
+version: 1.5.31+61
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -24,7 +24,7 @@ dependencies:
   dio: "^5.4.2+1"
   shared_preferences: "^2.0.13"
   easy_localization: "^3.0.3"
-  path_provider: "^2.0.2"
+  path_provider: "^2.1.4"
   open_filex: "^4.2.2"
   encrypt: "^5.0.0"
   firebase_core: "^2.13.0"
@@ -51,7 +51,7 @@ dependencies:
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
   qr_code_utils:
-    git: 
+    git:
       url: git@github.com:nsubash38/qr_code_test.git
       ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
@@ -71,6 +71,8 @@ dependencies:
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "^1.0.0-dev.4"
   nepali_utils: ^3.0.6
+  flutter_zxing: ^1.8.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +83,7 @@ dev_dependencies:
 dependency_overrides:
   http: "^1.1.0"
   package_info_plus: "^5.0.1"
+
 flutter:
   assets:
     - assets/translations/
@@ -318,12 +321,12 @@ flutter:
     # - assets/dupcheshwor/
     # - assets/camellia/
     # - assets/agrajMahila/
-    # - assets/mahabir/   
-    # - assets/abhiyankrishi/ 
-    # - assets/unnati/ 
+    # - assets/mahabir/
+    # - assets/abhiyankrishi/
+    # - assets/unnati/
     # - assets/skOdraha/
     # - assets/shreeKanchan/
-    # - assets/arjunchaupari/  
+    # - assets/arjunchaupari/
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
     # - assets/shubhechha/
@@ -343,7 +346,6 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
-    # - assets/kshstrashakti/
     # - assets/narayani/
     # - assets/chadani/
     # - assets/shreesapana/
@@ -354,7 +356,7 @@ flutter:
     # - assets/dhanalaxmi/
     - assets/samriddha/
     # - assets/kohinoor/
-    # - assets/bhargo/
+    - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/
     # - assets/pathibhara/
@@ -362,6 +364,9 @@ flutter:
     # - assets/siddhartha/
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
+    # - assets/paschimanchal/
+    # - assets/sadasyaSewa/
+    # - assets/aabhash/
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -383,18 +388,15 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
-    # - assets/skDharan/  
-    # - assets/sklakhanpur/ 
-    # - assets/skDhankuta/ 
-    # - assets/skChisapani/ 
+    # - assets/skDharan/
+    # - assets/sklakhanpur/
+    # - assets/skDhankuta/
+    # - assets/skChisapani/
     # - assets/skWaling/
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
- 
- 
- 
- 
+
   fonts:
     - family: popinbold
       fonts:
