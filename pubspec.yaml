@@ -343,7 +343,8 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
-    # - assets/narayani/65
+    # - assets/kshstrashakti/
+    # - assets/narayani/
     # - assets/chadani/
     # - assets/shreesapana/
     # - assets/sampada/
@@ -351,7 +352,7 @@ flutter:
     # - assets/pame/
     # - assets/pratham/
     # - assets/dhanalaxmi/
-    # - assets/samriddha/
+    - assets/samriddha/
     # - assets/kohinoor/
     # - assets/bhargo/
     # - assets/sarbashakti/
@@ -361,8 +362,15 @@ flutter:
     # - assets/siddhartha/
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
-    - assets/paschimanchal/
 
+    # - assets/nilpashan/
+    # - assets/jhigu/
+    # - assets/godawari/
+    # - assets/shreePaurakhi/
+    # - assets/sarba/
+    # - assets/prerana/
+    # - assets/nilgiree/
+    
 
 
 

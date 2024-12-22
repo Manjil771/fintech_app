@@ -35,7 +35,7 @@ AppBar myAppbar({bool showBackButton = false}) {
     }
   }
 
-  return AppBar(
+ return AppBar(
     backgroundColor:
         Theme.of(NavigationService.context).scaffoldBackgroundColor,
     elevation: 0,
@@ -54,20 +54,10 @@ AppBar myAppbar({bool showBackButton = false}) {
               } else {}
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: showBackButton
-                  ? const Icon(Icons.arrow_back_ios)
-                  : IconButton(
-                      icon: const Icon(Icons.menu),
-                      onPressed: () {
-                        NavigationService.push(
-                          target: const DashBoardWidget(
-                            currentPage: 4,
-                          ),
-                        );
-                      },
-                    ),
-            ),
+                padding: const EdgeInsets.all(8.0),
+                child: showBackButton
+                    ? const Icon(Icons.arrow_back_ios)
+                    : Container()),
           );
         }),
     title: Padding(

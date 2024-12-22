@@ -1812,6 +1812,42 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+              nilpashan {
+            dimension "app"
+            applicationId "com.devanasoft.nilpashan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+              jhigu {
+            dimension "app"
+            applicationId "com.devanasoft.jhigu"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+             godawari {
+            dimension "app"
+            applicationId "com.devanasoft.godawari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+              shreePaurakhi {
+            dimension "app"
+            applicationId "com.devanasoft.shreePaurakhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+                sarba {
+            dimension "app"
+            applicationId "com.devanasoft.sarba"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+                kshstrashakti {
+            dimension "app"
+            applicationId "com.devanasoft.kshstrashakti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
