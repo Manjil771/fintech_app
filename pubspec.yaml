@@ -356,7 +356,7 @@ flutter:
     # - assets/dhanalaxmi/
     # - assets/samriddha/
     # - assets/kohinoor/
-    # - assets/bhargo/
+    - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/
     # - assets/pathibhara/
@@ -366,7 +366,7 @@ flutter:
     # - assets/paurakhi/
     # - assets/paschimanchal/
     # - assets/sadasyaSewa/
-    - assets/aabhash/
+    # - assets/aabhash/
 
 
 
