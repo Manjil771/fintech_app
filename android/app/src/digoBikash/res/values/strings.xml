@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+<<<<<<< HEAD
   <string name="app_name">Digo Bikash Agri iSmart</string>
+=======
+  <string name="app_name">Digo Bikash iSmart</string>
+>>>>>>> 8ac2188d87158541e4b2ebe143eee8c9322a2a80
   <string name="flutter_downloader_notification_started">Download started</string>
   <string name="flutter_downloader_notification_in_progress">Downloading file</string>
   <string name="flutter_downloader_notification_canceled">Download canceled</string>

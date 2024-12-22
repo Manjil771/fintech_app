@@ -355,7 +355,9 @@ class _LoginWidgetState extends State<LoginWidget> {
                           await context
                               .read<ValidateCoOpCubit>()
                               .validateCoOperative(
-                                  username: phoneController.text);
+                                username: phoneController.text,
+                                channelPartner: currentCoop.channelPartner,
+                              );
                           Future.delayed(const Duration(seconds: 3))
                               .then((value) {
                             setState(() {});

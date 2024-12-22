@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/widget/test_loading_widget.dart';
 
 showLoadingDialogBox(BuildContext context) {
   showDialog(
@@ -26,11 +27,15 @@ class LoadingDialogBox extends StatelessWidget {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Image.asset(
-                Assets.loader,
-                height: 80,
-                width: 80,
-              ),
+              TestLoadingWidget(
+                ringColor: CustomTheme.primaryColor,
+                
+              )
+              // Image.asset(
+              //   Assets.loader,
+              //   height: 80,
+              //   width: 80,
+              // ),
               // const SizedBox(height: 14),
               // Text(
               //   "Loading...",

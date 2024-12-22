@@ -41,7 +41,7 @@ class UserRepository {
   Future initialState() async {
     _token = await fetchToken();
     _isLoggedIn.value = _token.isNotEmpty;
-    LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
+    final LoginCoOpValue? _coopValue = await SharedPref.getLoginCoop();
 
     if (_coopValue != null) {
       updateCoopValue(_coopValue);
@@ -53,7 +53,7 @@ class UserRepository {
         .shouldValidateCooperative) {
       return;
     }
-    String _baseUrl =
+    final String _baseUrl =
         RepositoryProvider.of<CoOperative>(NavigationService.context).baseUrl;
 
     RepositoryProvider.of<CoOperative>(NavigationService.context).bannerImage =
@@ -175,8 +175,8 @@ class UserRepository {
         deviceUUID: deviceUUID,
       );
 
-      String _accessToken = _res['data']?['access_token'] ?? "";
-      String _refreshToken = _res['data']?['refresh_token'] ?? "";
+      final String _accessToken = _res['data']?['access_token'] ?? "";
+      final String _refreshToken = _res['data']?['refresh_token'] ?? "";
 
       if (_accessToken.isNotEmpty && _refreshToken.isNotEmpty) {
         persistToken(_accessToken);
@@ -184,8 +184,8 @@ class UserRepository {
 
         return DataResponse.success(LoginResponseValue.Success);
       } else {
-        String error = _res['data']['error'] ?? "";
-        String errorDescription = _res['data']['error_description'] ?? "";
+        final String error = _res['data']['error'] ?? "";
+        final String errorDescription = _res['data']['error_description'] ?? "";
         if (error.toLowerCase().contains("access_denied") &&
             errorDescription.toLowerCase().contains("otp")) {
           return DataResponse.success(LoginResponseValue.OTPVerification);
@@ -232,16 +232,16 @@ class UserRepository {
     }
   }
 
-  Future<DataResponse<List<LoginCoOpValue>>> validateCoOperative({
-    required String username,
-  }) async {
-    List<LoginCoOpValue> _allCoops = [];
+  Future<DataResponse<List<LoginCoOpValue>>> validateCoOperative(
+      {required String username, required String channelPartner}) async {
+    final List<LoginCoOpValue> _allCoops = [];
     try {
       final _res = await authApiProvider.validateCoOperative(
         username: username,
+        channelPartner: channelPartner,
       );
 
-      List<Map<String, dynamic>> _coopList = List.from(
+      final List<Map<String, dynamic>> _coopList = List.from(
         _res['data']?['detail'] ?? [],
       );
 

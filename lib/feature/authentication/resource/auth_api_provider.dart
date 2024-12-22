@@ -55,13 +55,14 @@ class AuthApiProvider {
 
   Future<dynamic> validateCoOperative({
     required String username,
+    required String channelPartner,
   }) async {
     // final _body = {
     //   "mobileNumber": username,
     // };
 
     final _uri = coOperative.baseUrl +
-        "ismart/getBanks?mobileNumber=$username&channelPartner=";
+        "ismart/getBanks?mobileNumber=$username&channelPartner=$channelPartner";
     return await apiProvider.post(
       _uri.toString(),
       {},
