@@ -13,8 +13,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: "^1.0.4"
+  intl: "^0.18.1"
   flutter_animate: ^4.5.2 ##added SKp
-  screen_brightness: ^2.0.1 ## added SKP
+  ##screen_brightness: ^2.0.1 ## added SKP on hold for now
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
   flutter_cache_manager: "^3.3.0"
@@ -345,7 +346,7 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
-    # - assets/kshstrashakti/
+    - assets/kshstrashakti/
     # - assets/narayani/
     # - assets/chadani/
     # - assets/shreesapana/
@@ -365,7 +366,7 @@ flutter:
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
     # - assets/nilpashan/
-    - assets/jhigu/
+    # - assets/jhigu/
     # - assets/godawari/
     # - assets/shreePaurakhi/
     # - assets/sarba/

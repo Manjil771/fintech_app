@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 
 class NetTvPaymentWidget extends StatefulWidget {
   final ServiceList service;
@@ -33,7 +34,7 @@ class _NetTvPaymentWidgetState extends State<NetTvPaymentWidget> {
         showRecentTransaction: true,
         associatedId: widget.service.id.toString(),
         showAccountSelection: true,
-        buttonName: "Show Bill",
+        buttonName: "Proceed",
         title: widget.service.service,
         detail: widget.service.instructions,
         showDetail: true,
@@ -63,53 +64,56 @@ class _NetTvPaymentWidgetState extends State<NetTvPaymentWidget> {
               // ),
               // SizedBox(height: _height * 0.02),
               CustomTextField(
-                title: widget.service.labelName,
+                title: "Customer ID",
                 hintText: "XXXXXXXXX",
                 controller: usernameController,
                 validator: (value) =>
                     FormValidator.validateFieldNotEmpty(value, "Username"),
               ),
-              CustomTextField(
-                title: "Amount",
-                hintText: "NPR",
-                controller: amountController,
-                // validator: (value) => FormValidator.validateAmount(
-                //     val: value.toString(),
-                //     maxAmount: widget.service.maxValue,
-                //     minAmount: widget.service.minValue.toDouble())),
-              )
             ],
           ),
         ),
         onButtonPressed: () {
           if (_formKey.currentState!.validate()) {
-            NavigationService.push(
-                target: CommonBillDetailPage(
-                    serviceName: widget.service.service,
-                    body: Column(children: [
-                      KeyValueTile(
-                          title: "Username", value: usernameController.text),
-                      KeyValueTile(
-                          title: "Amount", value: amountController.text),
-                    ]),
-                    accountDetails: {
-                      "amount": amountController.text,
-                      "account_number":
-                          RepositoryProvider.of<CustomerDetailRepository>(
-                                  context)
-                              .selectedAccount
-                              .value!
-                              .accountNumber,
-                      "phone_number": usernameController.text
-                    },
-                    apiEndpoint: "/api/topup",
-                    apiBody: const {},
-                    service: widget.service,
-                    serviceIdentifier: widget.service.uniqueIdentifier));
+            NavigationService.push(target: Container()
+                // target: CommonBillDetailPage(
+                //     serviceName: widget.service.service,
+                //     body: Column(children: [
+                //       KeyValueTile(
+                //           title: "Username", value: usernameController.text),
+                //       KeyValueTile(
+                //           title: "Amount", value: amountController.text),
+                //     ]),
+                //     accountDetails: {
+                //       "amount": amountController.text,
+                //       "account_number":
+                //           RepositoryProvider.of<CustomerDetailRepository>(
+                //                   context)
+                //               .selectedAccount
+                //               .value!
+                //               .accountNumber,
+                //       "phone_number": usernameController.text
+                //     },
+                //     apiEndpoint: "/api/topup",
+                //     apiBody: const {},
+                //     service: widget.service,
+                //     serviceIdentifier: widget.service.uniqueIdentifier)
+
+                );
           }
         },
       ),
     );
+  }
+
+  void onButtonPressed({required String username}) {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+          serviceIdentifier: widget.service.uniqueIdentifier,
+          accountDetails: {
+            "userId": username,
+          },
+          apiEndpoint: "api/nettv/details",
+        );
   }
 }
 

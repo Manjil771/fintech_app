@@ -63,7 +63,6 @@ class Slugs {
   static String adsluOnlineTopup = "adslu_online_topup";
   static String ntFtthInternetTopup = "nt_ftth_internet_topup";
   static String cgnetTopup = "cgnet_topup";
-
   //nea
   static String neaOnlineTopup = "nea_online_topup";
   // khanepani

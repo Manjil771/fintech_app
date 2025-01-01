@@ -1,4 +1,4 @@
-import 'dart:async';
+// import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -14,7 +14,7 @@ import 'package:ismart/feature/qrCode/shareQr/widget/external_qr_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
-import 'package:screen_brightness/screen_brightness.dart';
+// import 'package:screen_brightness/screen_brightness.dart';
 
 class ShareQrWidget extends StatefulWidget {
   const ShareQrWidget({super.key});
@@ -24,48 +24,48 @@ class ShareQrWidget extends StatefulWidget {
 }
 
 class _ShareQrWidgetState extends State<ShareQrWidget> {
-  final ScreenBrightness _screenBrightness = ScreenBrightness.instance;
-  double? _previousBrightnessLevel;
-  StreamSubscription? _brightnessSubscription;
-  bool _brightnessPermissionGranted = false;
+  // final ScreenBrightness _screenBrightness = ScreenBrightness.instance;
+  // double? _previousBrightnessLevel;
+  // StreamSubscription? _brightnessSubscription;
+  // bool _brightnessPermissionGranted = false;
 
   @override
   void initState() {
     super.initState();
-    _setupScreenBrightness();
+    // _setupScreenBrightness();
   }
 
-  Future<void> _setupScreenBrightness() async {
-    try {
-      _previousBrightnessLevel = await _screenBrightness.system;
-      await _screenBrightness.setSystemScreenBrightness(0.9);
-      _brightnessPermissionGranted = true;
-      _brightnessSubscription = _screenBrightness
-          .onSystemScreenBrightnessChanged
-          .listen((brightness) {});
-    } catch (e) {
-      print('Unexpected error in brightness setup: $e');
-      _brightnessPermissionGranted = false;
-    }
-  }
+  // Future<void> _setupScreenBrightness() async {
+  //   try {
+  //     _previousBrightnessLevel = await _screenBrightness.system;
+  //     await _screenBrightness.setSystemScreenBrightness(0.9);
+  //     _brightnessPermissionGranted = true;
+  //     _brightnessSubscription = _screenBrightness
+  //         .onSystemScreenBrightnessChanged
+  //         .listen((brightness) {});
+  //   } catch (e) {
+  //     print('Unexpected error in brightness setup: $e');
+  //     _brightnessPermissionGranted = false;
+  //   }
+  // }
 
   @override
   dispose() {
-    _restoreScreenBrightness();
-    _brightnessSubscription?.cancel();
+    // _restoreScreenBrightness();
+    // _brightnessSubscription?.cancel();
     super.dispose();
   }
 
-  Future<void> _restoreScreenBrightness() async {
-    try {
-      if (_brightnessPermissionGranted && _previousBrightnessLevel != null) {
-        await _screenBrightness
-            .setSystemScreenBrightness(_previousBrightnessLevel!);
-      }
-    } catch (e) {
-      print('Unexpected error restoring screen brightness: $e');
-    }
-  }
+  // Future<void> _restoreScreenBrightness() async {
+  //   try {
+  //     if (_brightnessPermissionGranted && _previousBrightnessLevel != null) {
+  //       await _screenBrightness
+  //           .setSystemScreenBrightness(_previousBrightnessLevel!);
+  //     }
+  //   } catch (e) {
+  //     print('Unexpected error restoring screen brightness: $e');
+  //   }
+  // }
 
   bool isInternalQr = false;
 

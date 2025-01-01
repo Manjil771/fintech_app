@@ -4269,5 +4269,5 @@ class CoOperativeValue {
     appTitle: "Kshstrashakti iSmart",
   );
 
-  static final CoOperative currentCoop = jhigu;
+  static final CoOperative currentCoop = devLive;
 }
