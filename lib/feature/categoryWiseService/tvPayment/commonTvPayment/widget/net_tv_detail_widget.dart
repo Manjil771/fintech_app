@@ -43,12 +43,9 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
   Map<String, dynamic>? _selectedPackage;
   UtilityResponseData? _packageDetails;
   List<Map<String, dynamic>> serialList = [];
-  double _Amount = 0;
-
-  //double _dueAmount = 0;
+  String _amount = "0";
   @override
   void dispose() {
-    // Dispose controllers when the widget is removed
     _packageController.dispose();
     _amountController.dispose();
     super.dispose();
@@ -61,17 +58,21 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
         .findValue<List<dynamic>>(primaryKey: "serialList");
     if (serialData != null) {
       try {
-        serialList = List<Map<String, dynamic>>.from(serialData);
+        serialList =
+            serialData.map((item) => Map<String, dynamic>.from(item)).toList();
       } catch (e) {
         print("Error casting serialList: $e");
+        serialList = [];
       }
+    } else {
+      serialList = [];
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
+    // final _theme = Theme.of(context);
+    // final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
 
     return PageWrapper(
@@ -126,8 +127,6 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               SizedBox(height: _height * 0.02),
-
-              // Serial Number Selection
               OpenContainer(
                 closedColor: Colors.transparent,
                 closedElevation: 0.0,
@@ -154,7 +153,8 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                     body: ListView.builder(
                       itemCount: serialList.length,
                       itemBuilder: (context, index) {
-                        final serial = serialList[index]["serial"];
+                        final serial =
+                            serialList[index].values.first ?? "Unknown Serial";
                         return CustomListTile(
                             title: serial,
                             description: '',
@@ -179,7 +179,6 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                   );
                 },
               ),
-
               if (_packageDetails != null) ...[
                 SizedBox(height: _height * 0.02),
 
@@ -217,12 +216,19 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                       .toString(),
                 ),
                 KeyValueTile(
+                  title: "Serial Number",
+                  value: _packageDetails!
+                      .findValue(
+                        primaryKey: "stb",
+                      )
+                      .toString(),
+                ),
+                KeyValueTile(
                   title: "Amount",
-                  value: _Amount.toString(),
+                  value: _amount.toString(),
                 ),
                 SizedBox(height: _height * 0.02),
 
-                // Package Selection
                 OpenContainer(
                   closedColor: Colors.transparent,
                   closedElevation: 0.0,
@@ -264,12 +270,35 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                           itemCount: packageList.length,
                           itemBuilder: (context, index) {
                             final package = packageList[index];
-
-                            return ListTile(
-                              title: Text(package["name"]),
-                              subtitle: package["discount"] > 0.0
-                                  ? Text("Discount: ${package["discount"]}")
-                                  : const SizedBox(height: 2),
+                            // return ListTile(
+                            //   title: Text(package["name"]),
+                            //   subtitle: package["discount"] > 0.0
+                            //       ? Text("Discount: ${package["discount"]}")
+                            //       : const SizedBox(height: 2),
+                            //   trailing: Text(
+                            //     "Rs." +
+                            //         (double.tryParse(
+                            //                     package["amount"].toString()) ??
+                            //                 0.0)
+                            //             .toStringAsFixed(0),
+                            //   ),
+                            //   onTap: () {
+                            //     setState(() {
+                            //       _amount = double.tryParse(
+                            //               package["amount"].toString()) ??
+                            //           0.0;
+                            //       _packageController.text = package["name"];
+                            //       _selectedPackage = package;
+                            //     });
+                            //     Navigator.pop(context);
+                            //   },
+                            // );
+                            return CustomListTile(
+                              title: package["name"],
+                              description: package["discount"] > 0.0
+                                  ? "Discount: ${package["discount"]}"
+                                  : "",
+                              titleFontWeight: FontWeight.w400,
                               trailing: Text(
                                 "Rs." +
                                     (double.tryParse(
@@ -277,11 +306,9 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                                             0.0)
                                         .toStringAsFixed(0),
                               ),
-                              onTap: () {
+                              onPressed: () {
                                 setState(() {
-                                  _Amount = double.tryParse(
-                                          package["amount"].toString()) ??
-                                      0.0;
+                                  _amount = package["amount"].toString();
                                   _packageController.text = package["name"];
                                   _selectedPackage = package;
                                 });
@@ -338,7 +365,7 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
                 ),
                 KeyValueTile(
                   title: "Amount",
-                  value: _Amount.toString(),
+                  value: _amount.toString(),
                 ),
               ]),
               accountDetails: {
