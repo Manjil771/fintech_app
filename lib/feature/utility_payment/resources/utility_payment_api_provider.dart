@@ -121,6 +121,32 @@ class UtilityPaymentAPIProvider {
     );
   }
 
+/* Fetch details post */
+  fetchDetailsPost(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      Map<String, dynamic>? extraHeaders,
+      required String apiEndpoint}) async {
+    final _params = {
+      ...accountDetails,
+    };
+    final Map<String, dynamic> queryParams = {};
+    if (serviceIdentifier.isNotEmpty) {
+      _params["service_identifier"] = "$serviceIdentifier";
+    }
+
+    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint", params: _params);
+
+    return await apiProvider.postReq(
+      url.toString(),
+      _params,
+      token: userRepository.token,
+      userId: 0,
+      extraHeaders: extraHeaders,
+      queryParameters: queryParams,
+    );
+  }
+
   getCharges({
     required Map<String, dynamic> accountDetails,
     required String apiEndpoint,
