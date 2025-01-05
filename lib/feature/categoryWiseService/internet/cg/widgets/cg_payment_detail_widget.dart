@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payement_inquiry_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -61,9 +62,10 @@ class _CgPaymentDeatilWidgetState extends State<CgPaymentDeatilWidget> {
       body: CommonContainer(
         showDetail: true,
         topbarName: 'Payment',
-        title: 'Internet Payment',
+        title: 'Customer Detail',
         buttonName: 'Proceed',
-        detail: 'Pay your internet bill of you ISP from here',
+        detail:
+            'Proceed to the Next page for the package selection and Payment',
         showAccountSelection: true,
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -90,6 +92,15 @@ class _CgPaymentDeatilWidgetState extends State<CgPaymentDeatilWidget> {
               final UtilityResponseData _response = state.data;
 
               if (_response.code == "M0000") {
+                NavigationService.push(
+                  target: CgPaymentInquiryScreen(
+                    service: widget.service,
+                    detailFetchData: _response,
+                    userId: widget.detailFetchData
+                        .findValue(primaryKey: "userId")
+                        .toString(),
+                  ),
+                );
               } else {
                 showPopUpDialog(
                     context: context,
@@ -200,7 +211,12 @@ class _CgPaymentDeatilWidgetState extends State<CgPaymentDeatilWidget> {
             ],
           ),
         ),
-        onButtonPressed: () {},
+        onButtonPressed: () {
+          onButtonPressed(
+              username: widget.detailFetchData
+                  .findValue(primaryKey: "userId")
+                  .toString());
+        },
       ),
     );
   }
@@ -216,5 +232,15 @@ class _CgPaymentDeatilWidgetState extends State<CgPaymentDeatilWidget> {
     }
 
     return 'Invalid date';
+  }
+
+  void onButtonPressed({required String username}) {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+          serviceIdentifier: widget.service.uniqueIdentifier,
+          accountDetails: {
+            "userId": username,
+          },
+          apiEndpoint: "api/cg_net/bill_inquiry",
+        );
   }
 }

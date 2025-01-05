@@ -1,18 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/feature/categoryWiseService/internet/cg/widgets/cg_payment.widget.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/widgets/cg_payment_inquiry_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
-class CgPaymentDeatilScreen extends StatelessWidget {
+class CgPaymentInquiryScreen extends StatelessWidget {
   final ServiceList service;
 
   final UtilityResponseData detailFetchData;
+  final String userId;
 
-  const CgPaymentDeatilScreen(
-      {super.key, required this.detailFetchData, required this.service});
+  const CgPaymentInquiryScreen(
+      {super.key,
+      required this.detailFetchData,
+      required this.service,
+      required this.userId});
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -20,9 +24,10 @@ class CgPaymentDeatilScreen extends StatelessWidget {
         utilityPaymentRepository:
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
-      child: CgPaymentDeatilWidget(
+      child: CgPaymentInquiryWidget(
         detailFetchData: detailFetchData,
         service: service,
+        userId: userId,
       ),
     );
   }

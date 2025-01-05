@@ -5,16 +5,13 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
-import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
-import 'package:ismart/common/widget/key_value_tile.dart';
+import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payment_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payment_detail_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -78,7 +75,7 @@ class _CgPaymentWidgetState extends State<CgPaymentWidget> {
             title: 'Internet Payment',
             detail: 'Pay your internet bill of your ISP from here',
             associatedId: widget.service.id.toString(),
-            showAccountSelection: true,
+            showAccountSelection: false,
             showDetail: true,
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
