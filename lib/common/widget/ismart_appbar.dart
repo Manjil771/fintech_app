@@ -11,7 +11,6 @@ import 'package:ismart/common/widget/notification_count_widget.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 
 import '../../feature/authentication/resource/user_repository.dart';
 
@@ -35,7 +34,7 @@ AppBar myAppbar({bool showBackButton = false}) {
     }
   }
 
-  return AppBar(
+ return AppBar(
     backgroundColor:
         Theme.of(NavigationService.context).scaffoldBackgroundColor,
     elevation: 0,
@@ -54,20 +53,10 @@ AppBar myAppbar({bool showBackButton = false}) {
               } else {}
             },
             child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: showBackButton
-                  ? const Icon(Icons.arrow_back_ios)
-                  : IconButton(
-                      icon: const Icon(Icons.menu),
-                      onPressed: () {
-                        NavigationService.push(
-                          target: const DashBoardWidget(
-                            currentPage: 4,
-                          ),
-                        );
-                      },
-                    ),
-            ),
+                padding: const EdgeInsets.all(8.0),
+                child: showBackButton
+                    ? const Icon(Icons.arrow_back_ios)
+                    : Container()),
           );
         }),
     title: Padding(

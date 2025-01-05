@@ -2564,7 +2564,7 @@ class CoOperativeValue {
     splashImage: "assets/prime/prime_splash.png",
     primaryColor: const Color(0xFF0DA84C),
     coOperativeName: "Prime Multipurpose Cooperative Ltd.",
-    appTitle: "Prime Multi iSmart",
+    appTitle: "Prime iSmart",
   );
   static final CoOperative jyotidayaCoop = CoOperative(
     appStoreID: "com.devanasoft.jyotidaya",
@@ -3582,20 +3582,20 @@ class CoOperativeValue {
     appTitle: "Chetana iSmart",
   );
   static final CoOperative skGlobal = CoOperative(
-    appStoreID: "com.devanasoft.skglobal",
-    packageName: "com.devanasoft.skglobal",
-    baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/skglobal/skglobal_banner.png",
-    backgroundImage: "assets/skglobal/skglobal_background.png",
-    coOperativeLogo: "assets/skglobal/skglobal_logo.png",
-    clientCode: ' RPJTJAKDBR',
-    clientSecret: "203763",
-    splashImage: "assets/skglobal/skglobal_splash.png",
-    primaryColor: const Color(0xFF39a748),
-    shouldValidateCooperative: true,
-    coOperativeName: "SanaKisan Global",
-    appTitle: "Sana Kisan Global",
-  );
+      appStoreID: "com.devanasoft.skglobal",
+      packageName: "com.devanasoft.skglobal",
+      baseUrl: 'https://ismart.devanasoft.com.np/',
+      bannerImage: "assets/skglobal/skglobal_banner.png",
+      backgroundImage: "assets/skglobal/skglobal_background.png",
+      coOperativeLogo: "assets/skglobal/skglobal_logo.png",
+      clientCode: 'RPJTJAKDBR',
+      clientSecret: "203763",
+      splashImage: "assets/skglobal/skglobal_splash.png",
+      primaryColor: const Color(0xFF39a748),
+      shouldValidateCooperative: true,
+      coOperativeName: "SanaKisan Global",
+      appTitle: "Sana Kisan Global",
+      channelPartner: "MAGNUS");
   static final CoOperative megaplus = CoOperative(
     appStoreID: "com.devanasoft.megaplus",
     packageName: "com.devanasoft.megaplus",
@@ -3994,7 +3994,7 @@ class CoOperativeValue {
     splashImage: "assets/digoBikash/digoBikash_splash.png",
     primaryColor: const Color(0xFF116C38),
     coOperativeName: "Digo Bikash Agriculture Co-operative Ltd.",
-    appTitle: "Digo Bikash  Agri iSmart",
+    appTitle: "Digo Bikash iSmart",
   );
   static final CoOperative raceCoop = CoOperative(
     appStoreID: "com.devanasoft.race",
@@ -4096,7 +4096,7 @@ class CoOperativeValue {
     splashImage: "assets/indrawati/indrawati_splash.png",
     primaryColor: const Color(0xFF417F68),
     coOperativeName: "Indrawati Sana Kisan Krishi Sahakari Co-operative Ltd.",
-    appTitle: "SK Indrawati iSmart",
+    appTitle: "samriddha",
   );
   static final CoOperative kohinoor = CoOperative(
     appStoreID: "com.devanasoft.kohinoor",
@@ -4140,7 +4140,7 @@ class CoOperativeValue {
     splashImage: "assets/shubhashreebalkumari/shubhashreebalkumari_splash.png",
     primaryColor: const Color(0xFFBD2529),
     coOperativeName: "Shubha Shree Balkumari Saving & Credit Co-operative Ltd.",
-    appTitle: "Shubha Shree iSmart",
+    appTitle: "Shubhashree Balkumari iSmart",
   );
   static final CoOperative paurakhi = CoOperative(
     appStoreID: "com.devanasoft.paurakhi",
