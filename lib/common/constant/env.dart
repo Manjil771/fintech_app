@@ -4354,6 +4354,7 @@ class CoOperativeValue {
     coOperativeName: "Subarnapur Saving & Credit Co-operative Society Ltd.",
     appTitle: "Subarnapur iSmart",
   );
-  static final CoOperative currentCoop = tikeshwarKrishi;
+  
+  static final CoOperative currentCoop = suryadev;
 
 }

@@ -107,7 +107,7 @@ flutter:
     # - assets/shreeaaju/
     # - assets/shreemitra/
     # - assets/kipoo/
-    # - assets/suryadev/
+    - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
@@ -135,12 +135,12 @@ flutter:
     # - assets/hamiSabaikokrishi/
     # - assets/machhapuchhre/
     # - assets/nawajosh/
-    - assets/tikeshwar/
+    # - assets/tikeshwar/
     # - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
-    # - assets/bhugol/
+    - assets/bhugol/
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
@@ -405,6 +405,7 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    
  
  
  
