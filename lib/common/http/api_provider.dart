@@ -56,6 +56,46 @@ class ApiProvider {
     return responseJson;
   }
 
+  /* Post request */
+  Future<Map<String, dynamic>> postReq(
+    String url,
+    dynamic body, {
+    String token = '',
+    required int? userId,
+    bool isRefreshRequest = false,
+    Map<String, dynamic>? extraHeaders,
+    Map<String, dynamic>? queryParameters, //added
+  }) async {
+    dynamic responseJson;
+    final DioClient _dioClient = DioClient(baseUrl: baseUrl);
+
+    try {
+      final Map<String, String> _requestHeader = {
+        'Content-Type': 'application/json',
+        'accept': 'application/json',
+        'Access-Control-Allow-Origin': '*',
+        'origin': '*',
+        if (extraHeaders != null) ...extraHeaders,
+        // // ...await DeviceUtils.deviceInfoHeader,
+      };
+
+      if (token.isNotEmpty) {
+        _requestHeader['Authorization'] = 'Bearer ' + token;
+      }
+      final dynamic response = await _dioClient.post(
+        Uri.parse(url),
+        data: body,
+        options: Options(headers: _requestHeader),
+        queryParameters: queryParameters, //added
+      );
+      responseJson = _response(response, url);
+    } on DioError catch (e) {
+      print(e);
+      responseJson = await _handleErrorResponse(e);
+    }
+    return responseJson;
+  }
+
   Future<dynamic> patch(
     String url,
     dynamic body, {

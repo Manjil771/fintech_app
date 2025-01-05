@@ -60,6 +60,10 @@ class UtilityPaymentAPIProvider {
       params: _params,
     );
 
+    if (serviceIdentifier == "cgnet_topup") {
+      body['mpin'] = mPin;
+    }
+
     if (serviceIdentifier == "ARS") {
       body['mobilePin'] = mPin;
     }
@@ -118,6 +122,32 @@ class UtilityPaymentAPIProvider {
       token: userRepository.token,
       userId: 0,
       extraHeaders: extraHeaders,
+    );
+  }
+
+/* Fetch details post */
+  fetchDetailsPost(
+      {required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      Map<String, dynamic>? extraHeaders,
+      required String apiEndpoint}) async {
+    final _params = {
+      ...accountDetails,
+    };
+    final Map<String, dynamic> queryParams = {};
+    if (serviceIdentifier.isNotEmpty) {
+      _params["service_identifier"] = "$serviceIdentifier";
+    }
+
+    final url = UrlUtils.getUri(url: baseUrl + "$apiEndpoint", params: _params);
+
+    return await apiProvider.postReq(
+      url.toString(),
+      _params,
+      token: userRepository.token,
+      userId: 0,
+      extraHeaders: extraHeaders,
+      queryParameters: queryParams,
     );
   }
 

@@ -23,6 +23,7 @@ class PageWrapper extends StatefulWidget {
   final FloatingActionButtonType floatingActionButtonType;
   final Function()? onBackPressed;
   final bool showBackButton;
+
   const PageWrapper({
     this.useOwnAppBar = false,
     required this.body,

@@ -574,6 +574,14 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_animate:
+    dependency: "direct main"
+    description:
+      name: flutter_animate
+      sha256: "7befe2d3252728afb77aecaaea1dec88a89d35b9b1d2eea6d04479e8af9117b5"
+      url: "https://pub.dev"
+    source: hosted
+    version: "4.5.2"
   flutter_app_badger:
     dependency: "direct main"
     description:
@@ -747,6 +755,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.1"
+  flutter_shaders:
+    dependency: transitive
+    description:
+      name: flutter_shaders
+      sha256: "34794acadd8275d971e02df03afee3dee0f98dbfb8c4837082ad0034f612a3e2"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.1.3"
   flutter_svg:
     dependency: "direct main"
     description:
@@ -974,7 +990,7 @@ packages:
     source: hosted
     version: "2.3.0"
   intl:
-    dependency: transitive
+    dependency: "direct main"
     description:
       name: intl
       sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
@@ -1427,7 +1443,7 @@ packages:
       path: "."
       ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
       resolved-ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
-      url: "git@github.com:nsubash38/qr_code_test.git"
+      url: "https://github.com/nsubash38/qr_code_test.git"
     source: git
     version: "0.0.1"
   qr_code_utils_android:

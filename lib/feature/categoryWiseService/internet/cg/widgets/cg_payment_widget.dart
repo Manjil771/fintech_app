@@ -4,33 +4,28 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_payment_detail_screen.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payment_detail_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
-import '../../../../../common/util/size_utils.dart';
-
-class FindInternetUserWidget extends StatefulWidget {
-  const FindInternetUserWidget({Key? key, required this.service})
-      : super(key: key);
-
+class CgPaymentWidget extends StatefulWidget {
+  const CgPaymentWidget({Key? key, required this.service}) : super(key: key);
   final ServiceList service;
 
   @override
-  State<FindInternetUserWidget> createState() => _FindInternetUserWidgetState();
+  State<CgPaymentWidget> createState() => _CgPaymentWidgetState();
 }
 
-class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
-  final TextEditingController _usernameController = TextEditingController();
-
-  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
-
+class _CgPaymentWidgetState extends State<CgPaymentWidget> {
+  final _formKey = GlobalKey<FormState>();
+  final _usernameController = TextEditingController();
   bool _isLoading = false;
 
   @override
@@ -51,9 +46,10 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final UtilityResponseData _response = state.data;
+            print("${state.data.toString()} this is my response check SKP ");
             if (_response.code == "M0000") {
               NavigationService.push(
-                target: InternetPaymentDeatilScreen(
+                target: CgPaymentDeatilScreen(
                   service: widget.service,
                   detailFetchData: _response,
                 ),
@@ -73,16 +69,14 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
         child: Form(
           key: _formKey,
           child: CommonContainer(
-            onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
-              _usernameController.text = p0.requestDetail.serviceTo.toString();
-              onButtonPressed(username: p0.requestDetail.serviceTo.toString());
-            },
             showRecentTransaction: true,
-            serviceId: widget.service.id.toString(),
-            showDetail: true,
+            topbarName: "Payment",
+            buttonName: 'Proceed',
             title: 'Internet Payment',
             detail: 'Pay your internet bill of your ISP from here',
+            associatedId: widget.service.id.toString(),
+            showAccountSelection: false,
+            showDetail: true,
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -105,10 +99,9 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                           //color: _theme.primaryColor.withOpacity(0.05),
                           borderRadius: BorderRadius.circular(18)),
                       child: ClipRRect(
-                        borderRadius: BorderRadius.circular(18),
-                        child: Image.network(
-                            "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}"),
-                      ),
+                          borderRadius: BorderRadius.circular(18),
+                          child: Image.network(
+                              "${RepositoryProvider.of<CoOperative>(context).baseUrl}/ismart/serviceIcon/${widget.service.icon}")),
                     ),
                     Expanded(
                       child: Text(widget.service.service,
@@ -120,32 +113,22 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                   ],
                 ),
                 SizedBox(height: _height * 0.03),
-                Text(
-                    "Provide Username to fetch details and pay respective amount.",
+                Text("Provide Username and Details to pay.",
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
-                  title: 'Username',
+                  title: 'User Id',
                   controller: _usernameController,
-                  hintText: 'Enter Username',
+                  hintText: 'Enter User Id',
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, 'Username'),
                 ),
               ],
             ),
-            topbarName: 'Payment',
-            buttonName: 'Proceed',
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
                 onButtonPressed(username: _usernameController.text);
-                // context.read<UtilityPaymentCubit>().fetchDetails(
-                //       serviceIdentifier: "worldlink_online_topup",
-                //       accountDetails: {
-                //         "wlink_username": _usernameController.text,
-                //       },
-                //       apiEndpoint: "api/wlinkpackages",
-                //     );
               }
             },
           ),
@@ -158,9 +141,9 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
     context.read<UtilityPaymentCubit>().fetchDetails(
           serviceIdentifier: widget.service.uniqueIdentifier,
           accountDetails: {
-            "wlink_username": username,
+            "userId": username,
           },
-          apiEndpoint: "api/wlinkpackages",
+          apiEndpoint: "api/cg_net/customer_details",
         );
   }
 }
