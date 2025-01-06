@@ -82,7 +82,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             serviceId: widget.service.id.toString(),
             showDetail: true,
             title: 'Internet Payment',
-            detail: 'Pay your internet bill of your ISP from here',
+            detail: 'Pay your internet bill of your ISP from here.',
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
