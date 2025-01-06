@@ -107,7 +107,7 @@ flutter:
     # - assets/shreeaaju/
     # - assets/shreemitra/
     # - assets/kipoo/
-    - assets/suryadev/
+    # - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
@@ -140,7 +140,7 @@ flutter:
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
-    - assets/bhugol/
+    # - assets/bhugol/
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
@@ -383,6 +383,9 @@ flutter:
     # - assets/people/
     # - assets/shreechandani/
     # - assets/subarnapur/
+    - assets/narayaniMulti/
+    # - assets/samriddhaNepal/
+
 
 
 

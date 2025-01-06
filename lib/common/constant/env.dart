@@ -534,7 +534,7 @@ class CoOperativeValue {
     splashImage: "assets/suryadev/suryadev_splash.png",
     primaryColor: const Color(0xFF8E191C),
     coOperativeName: "Suryadev Multipurpose Co-operative Ltd",
-    appTitle: "Surya Dev Coop iSmart",
+    appTitle: "flu",
   );
 
   static final CoOperative uddhamshil = CoOperative(
@@ -4354,7 +4354,35 @@ class CoOperativeValue {
     coOperativeName: "Subarnapur Saving & Credit Co-operative Society Ltd.",
     appTitle: "Subarnapur iSmart",
   );
+   static final CoOperative narayaniMulti = CoOperative(
+    appStoreID: "com.devanasoft.narayaniMulti",
+    packageName: "com.devanasoft.narayaniMulti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/narayaniMulti/narayaniMulti_banner.png",
+    backgroundImage: "assets/narayaniMulti/narayaniMulti_background.png",
+    clientCode: 'AGI1WE86V5',
+    clientSecret: "198617",
+    coOperativeLogo: 'assets/narayaniMulti/narayaniMulti_logo.png',
+    splashImage: "assets/narayaniMulti/narayaniMulti_splash.png",
+    primaryColor: const Color(0xFF0300fd),
+    coOperativeName: "Narayani Multipurpose Co-operative Society Ltd.",
+    appTitle: "Narayani iSmart",
+  );
+  static final CoOperative samriddhaNepalCoop = CoOperative(
+    appStoreID: "com.devanasoft.samriddhaNepal",
+    packageName: "com.devanasoft.samriddhaNepal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samriddhaNepal/samriddhaNepal_banner.png",
+    backgroundImage: "assets/samriddhaNepal/samriddhaNepal_background.png",
+    clientCode: '0R9EYYPUWJ',
+    clientSecret: "172864",
+    coOperativeLogo: 'assets/samriddhaNepal/samriddhaNepal_logo.png',
+    splashImage: "assets/samriddhaNepal/samriddhaNepal_splash.png",
+    primaryColor: const Color(0xFF027e38),
+    coOperativeName: "Samriddha Nepal Agriculture Co-operative Ltd.",
+    appTitle: "Samriddha iSmart",
+  );
   
-  static final CoOperative currentCoop = suryadev;
+  static final CoOperative currentCoop = narayaniMulti;
 
 }

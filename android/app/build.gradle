@@ -1884,6 +1884,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        narayaniMulti {
+            dimension "app"
+            applicationId "com.devanasoft.narayaniMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        samriddhaNepal {
+            dimension "app"
+            applicationId "com.devanasoft.samriddhaNepal"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
