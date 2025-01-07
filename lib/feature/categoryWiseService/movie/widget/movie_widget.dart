@@ -93,7 +93,7 @@ class _MovieWidgetState extends State<MovieWidget> {
                           ));
                         },
                         containerImage: response[index]["poster"],
-                        height: 180.hp,
+                        height: 185.hp,
                         title: response[index]["movieName"]),
                   )),
                 );
