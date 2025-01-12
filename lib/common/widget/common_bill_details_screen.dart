@@ -121,6 +121,8 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       serviceName: widget.serviceName,
+
+                      ///test
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
