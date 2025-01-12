@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:ismart/app/theme.dart';
+//import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 // import 'package:youtube_player_iframe/youtube_player_iframe.dart';
@@ -46,8 +47,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
+    //   final _theme = Theme.of(context);
+    //  final _textTheme = _theme.textTheme;
     return Scaffold(
       body: SingleChildScrollView(
         child: Column(
@@ -107,23 +108,44 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
             ),
             Padding(
               padding: EdgeInsets.symmetric(vertical: 2.h),
-              child: Center(
-                child: Container(
-                  width: 92.w,
-                  height: 25.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(12),
-                    image: DecorationImage(
-                      image: NetworkImage(
-                          widget.moviedetail.findValue(primaryKey: "banner")),
-                      fit: BoxFit.cover,
+              child: Column(
+                children: [
+                  Center(
+                    child: Container(
+                      width: 92.w,
+                      height: 25.h,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        image: DecorationImage(
+                          image: NetworkImage(widget.moviedetail
+                              .findValue(primaryKey: "banner")),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
                     ),
+
+                    // child: YoutubePlayer(
+                    //   controller: _controller,
+                    //   aspectRatio: 16 / 9,
+                    // ),
                   ),
-                ),
-                // child: YoutubePlayer(
-                //   controller: _controller,
-                //   aspectRatio: 16 / 9,
-                // ),
+                  SizedBox(height: 8.hp),
+                  CustomRoundedButtom(
+                    borderColor: Colors.grey[600],
+                    textColor: Colors.grey[600],
+                    horizontalMargin: 30.w,
+                    padding: EdgeInsets.all(1.5.w),
+                    title: 'Watch Trailer',
+                    color: Colors.transparent,
+                    onPressed: () {
+                      final channelId = _extractVideoId(widget.moviedetail
+                          .findValue(primaryKey: "trailerVideo"));
+                      //  print(" this is the result ::${channelId}");
+                      UrlLauncher.launchYoutubeChannel(
+                          context: context, channelId: channelId);
+                    },
+                  ),
+                ],
               ),
             ),
             Padding(
@@ -208,5 +230,13 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         ),
       ),
     );
+  }
+
+  String _extractVideoId(String embedUrl) {
+    final match = RegExp(r"embed\/([a-zA-Z0-9_-]+)").firstMatch(embedUrl);
+    if (match != null && match.group(1) != null) {
+      return match.group(1)!;
+    }
+    throw const FormatException('Invalid YouTube embed URL');
   }
 }
