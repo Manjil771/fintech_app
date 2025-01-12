@@ -4425,6 +4425,20 @@ class CoOperativeValue {
     coOperativeName: "Shree Kalidevi Multipurpose Co-operative Ltd.",
     appTitle: "Shree Kalidevi iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+      static final CoOperative aakashCoop = CoOperative(
+    appStoreID: "com.devanasoft.aakash",
+    packageName: "com.devanasoft.aakash",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aakash/aakash_banner.png",
+    backgroundImage: "assets/aakash/aakash_background.png",
+    clientCode: 'DT056P3TLW',
+    clientSecret: "154903",
+    coOperativeLogo: 'assets/aakash/aakash_logo.png',
+    splashImage: "assets/aakash/aakash_splash.png",
+    primaryColor: const Color(0xFF17aa4f),
+    coOperativeName: "Aakash Saving & Credit Co-operative Ltd.",
+    appTitle: "Aakash iSmart",
+  );
+  static final CoOperative currentCoop = aakashCoop;
 
 }
