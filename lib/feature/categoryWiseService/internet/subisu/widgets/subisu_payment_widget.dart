@@ -41,7 +41,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
           showAccountSelection: true,
           showDetail: true,
           title: 'Internet Payment',
-          detail: 'Pay your internet bill of you ISP from here',
+          detail: 'Pay your internet bill of your ISP from here',
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [

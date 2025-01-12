@@ -193,31 +193,33 @@ class _CommonInternetWithAmountWidgetState
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
                 NavigationService.push(
-                    target: CommonBillDetailPage(
-                  serviceName: widget.service.service,
-                  body: Column(
-                    children: [
-                      KeyValueTile(
-                          title: "Username", value: _usernameController.text),
-                      KeyValueTile(
-                          title: "Amount", value: _amountController.text),
-                    ],
+                  target: CommonBillDetailPage(
+                    serviceName: widget.service.service,
+                    body: Column(
+                      children: [
+                        KeyValueTile(
+                            title: "Username", value: _usernameController.text),
+                        KeyValueTile(
+                            title: "Amount", value: _amountController.text),
+                      ],
+                    ),
+                    apiBody: const {},
+                    service: widget.service,
+                    serviceIdentifier: widget.service.uniqueIdentifier,
+                    accountDetails: {
+                      "account_number":
+                          RepositoryProvider.of<CustomerDetailRepository>(
+                                  context)
+                              .selectedAccount
+                              .value!
+                              .accountNumber,
+                      // "username": _usernameController.text,
+                      "phone_number": _usernameController.text,
+                      "amount": _amountController.text,
+                    },
+                    apiEndpoint: "api/topup",
                   ),
-                  apiBody: const {},
-                  service: widget.service,
-                  serviceIdentifier: widget.service.uniqueIdentifier,
-                  accountDetails: {
-                    "account_number":
-                        RepositoryProvider.of<CustomerDetailRepository>(context)
-                            .selectedAccount
-                            .value!
-                            .accountNumber,
-                    // "username": _usernameController.text,
-                    "phone_number": _usernameController.text,
-                    "amount": _amountController.text,
-                  },
-                  apiEndpoint: "api/topup",
-                ));
+                );
               }
             },
           ),

@@ -69,6 +69,36 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
     }
   }
 
+/* for Fecth details using post method */
+  fetchDetailsPost({
+    required String serviceIdentifier,
+    required Map<String, dynamic> accountDetails,
+    required String apiEndpoint,
+    Map<String, dynamic>? extraHeaders,
+    bool shouldIncludeMPIN = false,
+  }) async {
+    emit(CommonLoading());
+    if (shouldIncludeMPIN) {
+      final mPin = await SecureStorageService.appPassword;
+      accountDetails['mPin'] = mPin;
+    }
+    final _res = await utilityPaymentRepository.fetchDetailsPost(
+      extraHeaders: extraHeaders,
+      serviceIdentifier: serviceIdentifier,
+      accountDetails: accountDetails,
+      apiEndpoint: apiEndpoint,
+    );
+    if (_res.status == Status.Success && _res.data != null) {
+      emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
+    } else {
+      emit(
+        CommonError(
+          message: _res.message ?? LocaleKeys.error.tr(),
+        ),
+      );
+    }
+  }
+
   fetchBusDetails({
     required String serviceIdentifier,
     required Map<String, dynamic> accountDetails,

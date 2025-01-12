@@ -37,6 +37,7 @@ class AirlinesCubit extends Cubit<CommonState> {
     if (_res.status == Status.Success && _res.data != null) {
       emit(CommonStateSuccess<SearchFlightResponse>(data: _res.data!));
     } else {
+      print(_res);
       emit(
         CommonError(
           message: _res.message.toString(),

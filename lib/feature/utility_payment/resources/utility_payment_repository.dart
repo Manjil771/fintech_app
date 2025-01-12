@@ -98,6 +98,33 @@ class UtilityPaymentRepository {
     }
   }
 
+/* For details fetch using post method */
+  Future<DataResponse<UtilityResponseData>> fetchDetailsPost(
+      {Map<String, dynamic>? extraHeaders,
+      required String serviceIdentifier,
+      required Map<String, dynamic> accountDetails,
+      required String apiEndpoint}) async {
+    try {
+      final _res = await utilityPaymentAPIProvider.fetchDetailsPost(
+          serviceIdentifier: serviceIdentifier,
+          accountDetails: accountDetails,
+          apiEndpoint: apiEndpoint,
+          extraHeaders: extraHeaders);
+
+      UtilityResponseData _responseData =
+          UtilityResponseData.fromJson(_res['data'] ?? {});
+      print(_responseData);
+      return DataResponse.success(_responseData);
+    } on CustomException catch (e) {
+      if (e is SessionExpireErrorException) {
+        rethrow;
+      }
+      return DataResponse.error(e.message, e.statusCode);
+    } catch (e) {
+      return DataResponse.error(e.toString());
+    }
+  }
+
   Future<DataResponse<BusDetailModel>> fetchBusDetails(
       {required String serviceIdentifier,
       required Map<String, dynamic> accountDetails,

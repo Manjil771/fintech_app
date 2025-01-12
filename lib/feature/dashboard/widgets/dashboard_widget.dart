@@ -429,7 +429,6 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   void initState() {
     super.initState();
 
-   
     context
         .read<CustomerDetailCubit>()
         .fetchCustomerDetail(isCalledAtStatup: true);

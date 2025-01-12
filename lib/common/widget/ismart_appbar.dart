@@ -11,7 +11,6 @@ import 'package:ismart/common/widget/notification_count_widget.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 
 import '../../feature/authentication/resource/user_repository.dart';
 

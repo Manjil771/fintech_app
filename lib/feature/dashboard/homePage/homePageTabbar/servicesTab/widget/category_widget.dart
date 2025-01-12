@@ -161,6 +161,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 .toString()
                                 .toLowerCase() ==
                             "electricity") {
+                              
                           NavigationService.push(
                               target: ElectricityPaymentPage(
                             service: data.services[0],

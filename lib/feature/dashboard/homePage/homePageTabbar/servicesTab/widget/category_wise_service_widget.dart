@@ -18,6 +18,7 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/commonGovPa
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_with_amount_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
@@ -184,6 +185,12 @@ class _CategoriesWiseServicesWidgetState
           "subisu_online_topup".toLowerCase()) {
         NavigationService.push(
             target: SubisuPaymentPage(
+          service: searchedService,
+        ));
+      } else if (serviceIdentifier.toLowerCase() ==
+          Slugs.cgnetTopup.toLowerCase()) {
+        NavigationService.push(
+            target: CgPaymentPage(
           service: searchedService,
         ));
       } else if (serviceIdentifier.toLowerCase() ==

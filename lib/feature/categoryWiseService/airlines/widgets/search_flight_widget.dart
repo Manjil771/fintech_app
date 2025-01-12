@@ -81,6 +81,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
 
               if (_response.responseStatus.toLowerCase() ==
                   "Success".toLowerCase()) {
+                print("this is the adata ${_response}");
                 NavigationService.push(
                   target: AvailableFlightPage(
                     fromSector: KeyValue(
