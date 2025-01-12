@@ -4440,6 +4440,4 @@ class CoOperativeValue {
     appTitle: "Aakash iSmart",
   );
   static final CoOperative currentCoop = aakashCoop;
-
-
 }
