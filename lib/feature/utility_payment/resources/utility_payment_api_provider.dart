@@ -60,10 +60,6 @@ class UtilityPaymentAPIProvider {
       params: _params,
     );
 
-    if (serviceIdentifier == "cgnet_topup") {
-      body['mpin'] = mPin;
-    }
-
     if (serviceIdentifier == "ARS") {
       body['mobilePin'] = mPin;
     }

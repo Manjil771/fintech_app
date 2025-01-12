@@ -138,11 +138,12 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     title: 'Watch Trailer',
                     color: Colors.transparent,
                     onPressed: () {
-                      final channelId = _extractVideoId(widget.moviedetail
-                          .findValue(primaryKey: "trailerVideo"));
                       //  print(" this is the result ::${channelId}");
-                      UrlLauncher.launchYoutubeChannel(
-                          context: context, channelId: channelId);
+                      UrlLauncher.launchUrlLink(
+                        context: context,
+                        url: widget.moviedetail
+                            .findValue(primaryKey: "trailerVideo"),
+                      );
                     },
                   ),
                 ],
@@ -230,13 +231,5 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
         ),
       ),
     );
-  }
-
-  String _extractVideoId(String embedUrl) {
-    final match = RegExp(r"embed\/([a-zA-Z0-9_-]+)").firstMatch(embedUrl);
-    if (match != null && match.group(1) != null) {
-      return match.group(1)!;
-    }
-    throw const FormatException('Invalid YouTube embed URL');
   }
 }
