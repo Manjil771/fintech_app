@@ -11,6 +11,7 @@ import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/movie/screen/movie_seat_page.dart';
 import 'package:ismart/feature/categoryWiseService/movie/widget/animated_date_selector.dart';
+import 'package:ismart/feature/categoryWiseService/movie/widget/movie_detail_board_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -70,11 +71,18 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(7),
-                              child: CustomCachedNetworkImage(
-                                url: res.findValue(primaryKey: "poster"),
-                                fit: BoxFit.cover,
-                                height: 17.h,
-                                width: 13.h,
+                              child: GestureDetector(
+                                onTap: () {
+                                  NavigationService.push(
+                                      target:
+                                          MovieDetailsScreen(moviedetail: res));
+                                },
+                                child: CustomCachedNetworkImage(
+                                  url: res.findValue(primaryKey: "poster"),
+                                  fit: BoxFit.cover,
+                                  height: 17.h,
+                                  width: 13.h,
+                                ),
                               ),
                             ),
                             SizedBox(width: 4.w),

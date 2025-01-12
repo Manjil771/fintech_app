@@ -72,16 +72,19 @@ class AirlinesRepository {
         body: body,
       );
 
+      print("ranjan dhakal ${_res['data']}");
       SearchFlightResponse _responseData =
           SearchFlightResponse.fromJson(_res['data'] ?? {});
-      print(_responseData);
+      print(_responseData.toJson());
       return DataResponse.success(_responseData);
     } on CustomException catch (e) {
+      print(e);
       if (e is SessionExpireErrorException) {
         rethrow;
       }
-      return DataResponse.error(e.message, e.statusCode);
+      return DataResponse.error(e.toString(), e.statusCode);
     } catch (e) {
+      print(e);
       return DataResponse.error(e.toString());
     }
   }
