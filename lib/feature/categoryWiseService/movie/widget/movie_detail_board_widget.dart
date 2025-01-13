@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:ismart/app/theme.dart';
 //import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -93,14 +94,14 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   Icon(
                     Icons.access_time,
                     size: 15,
-                    color: Colors.grey[600],
+                    color: CustomTheme.darkGray.withOpacity(0.5),
                   ),
                   SizedBox(width: 1.w),
                   Text(
                     widget.moviedetail.findValue(primaryKey: "duration"),
                     style: TextStyle(
                       fontSize: 13,
-                      color: Colors.grey[600],
+                      color: CustomTheme.darkGray.withOpacity(0.5),
                     ),
                   ),
                 ],
@@ -131,8 +132,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                   SizedBox(height: 8.hp),
                   CustomRoundedButtom(
-                    borderColor: Colors.grey[600],
-                    textColor: Colors.grey[600],
+                    borderColor: CustomTheme.darkGray.withOpacity(0.5),
+                    textColor: CustomTheme.darkGray.withOpacity(0.5),
                     horizontalMargin: 30.w,
                     padding: EdgeInsets.all(1.5.w),
                     title: 'Watch Trailer',
@@ -167,7 +168,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     widget.moviedetail.findValue(primaryKey: "synopsis") ?? "",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: CustomTheme.darkGray.withOpacity(0.5),
                     ),
                   ),
                 ],
@@ -190,7 +191,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     widget.moviedetail.findValue(primaryKey: "director") ?? "",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: CustomTheme.darkGray.withOpacity(0.5),
                     ),
                   ),
                 ],
@@ -213,7 +214,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                     widget.moviedetail.findValue(primaryKey: "casts") ?? "",
                     style: TextStyle(
                       fontSize: 14,
-                      color: Colors.grey[600],
+                      color: CustomTheme.darkGray.withOpacity(0.5),
                     ),
                   ),
                 ],

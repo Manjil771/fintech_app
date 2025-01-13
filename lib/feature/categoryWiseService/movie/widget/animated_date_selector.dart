@@ -40,7 +40,6 @@ class _AnimatedDateSelectorState extends State<AnimatedDateSelector>
   late Animation<double> _indicatorAnimation;
   final ScrollController _scrollController = ScrollController();
   double _currentIndicatorOffset = 0.0;
-  double _scrollStartOffset = 0.0;
   late int selectedIndex;
 
   @override
@@ -54,6 +53,7 @@ class _AnimatedDateSelectorState extends State<AnimatedDateSelector>
     _indicatorAnimation = Tween<double>(begin: 0, end: 0).animate(
       CurvedAnimation(parent: _controller, curve: Curves.easeInOut),
     );
+    _scrollController.addListener(_updateIndicatorOnScroll);
 
     WidgetsBinding.instance.addPostFrameCallback((_) {
       _animateIndicator(selectedIndex, false);
@@ -63,16 +63,24 @@ class _AnimatedDateSelectorState extends State<AnimatedDateSelector>
   @override
   void dispose() {
     _controller.dispose();
+    _scrollController.removeListener(_updateIndicatorOnScroll);
     _scrollController.dispose();
     super.dispose();
+  }
+
+  void _updateIndicatorOnScroll() {
+    setState(() {
+      _indicatorAnimation = Tween<double>(
+        begin: _currentIndicatorOffset,
+        end: _currentIndicatorOffset,
+      ).animate(CurvedAnimation(parent: _controller, curve: Curves.easeInOut));
+    });
   }
 
   void _animateIndicator(int index, [bool animate = true]) {
     final targetScroll = index * widget.itemWidth;
     final screenWidth = MediaQuery.of(context).size.width;
     final maxScroll = _scrollController.position.maxScrollExtent;
-
-    _scrollStartOffset = _scrollController.offset;
 
     if (animate) {
       if (targetScroll >
@@ -93,7 +101,6 @@ class _AnimatedDateSelectorState extends State<AnimatedDateSelector>
       _scrollController.jumpTo(
         math.min(targetScroll, maxScroll),
       );
-      _scrollStartOffset = _scrollController.offset;
     }
 
     setState(() {
@@ -152,22 +159,20 @@ class _AnimatedDateSelectorState extends State<AnimatedDateSelector>
             bottom: 0,
             child: AnimatedBuilder(
               animation: _indicatorAnimation,
-              builder: (context, child) {
-                return Transform.translate(
-                  offset: Offset(
-                    _indicatorAnimation.value - _scrollController.offset,
-                    0,
+              builder: (context, child) => Transform.translate(
+                offset: Offset(
+                  _indicatorAnimation.value - _scrollController.offset,
+                  0,
+                ),
+                child: Container(
+                  height: 2,
+                  width: widget.itemWidth,
+                  decoration: BoxDecoration(
+                    color: widget.indicatorColor,
+                    borderRadius: BorderRadius.circular(1),
                   ),
-                  child: Container(
-                    height: 2,
-                    width: widget.itemWidth,
-                    decoration: BoxDecoration(
-                      color: widget.indicatorColor,
-                      borderRadius: BorderRadius.circular(1),
-                    ),
-                  ),
-                );
-              },
+                ),
+              ),
             ),
           ),
         ],

@@ -113,14 +113,16 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                                       Icon(
                                         Icons.schedule,
                                         size: 15,
-                                        color: Colors.grey[600],
+                                        color: CustomTheme.darkGray
+                                            .withOpacity(0.5),
                                       ),
                                       SizedBox(width: 1.w),
                                       Text(
                                         res.findValue(primaryKey: "duration"),
                                         style: TextStyle(
                                           fontSize: 13,
-                                          color: Colors.grey[600],
+                                          color: CustomTheme.darkGray
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                       SizedBox(width: 4.w),
@@ -139,9 +141,10 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                       dates: _prepareDateItems(dates),
                       onDateSelected: _handleDateSelected,
                       initialSelectedIndex: selectedDateIndex,
-                      indicatorColor: CustomTheme.testAppColor,
-                      selectedTextColor: CustomTheme.testAppColor,
-                      unselectedTextColor: Colors.grey[600]!,
+                      indicatorColor: CustomTheme.primaryColor,
+                      selectedTextColor: CustomTheme.primaryColor,
+                      unselectedTextColor:
+                          CustomTheme.darkGray.withOpacity(0.5),
                       textStyle: _textTheme.displaySmall,
                     ),
                   if (threaterList.isNotEmpty)
@@ -212,11 +215,11 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                                             },
                                             child: Container(
                                               alignment: Alignment.center,
-                                              decoration: const BoxDecoration(
+                                              decoration: BoxDecoration(
                                                   color:
-                                                      CustomTheme.testAppColor,
+                                                      CustomTheme.primaryColor,
                                                   borderRadius:
-                                                      BorderRadius.all(
+                                                      const BorderRadius.all(
                                                           Radius.circular(12))),
                                               padding: const EdgeInsets.all(10),
                                               margin:
@@ -228,7 +231,9 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                                                 style: _textTheme.titleSmall!
                                                     .copyWith(
                                                         color:
-                                                            CustomTheme.white),
+                                                            CustomTheme.white,
+                                                        fontWeight:
+                                                            FontWeight.w600),
                                                 maxLines: 3,
                                               ),
                                             ),
