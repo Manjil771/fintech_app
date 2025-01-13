@@ -78,7 +78,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
               child: Row(
                 children: [
                   Text(
-                    widget.moviedetail.findValue(primaryKey: "genre"),
+                    widget.moviedetail.findValue(primaryKey: "genre") ?? '',
                     style: const TextStyle(
                       fontSize: 14,
                     ),
@@ -142,7 +142,8 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                       UrlLauncher.launchUrlLink(
                         context: context,
                         url: widget.moviedetail
-                            .findValue(primaryKey: "trailerVideo"),
+                                .findValue(primaryKey: "trailerVideo") ??
+                            '',
                       );
                     },
                   ),
@@ -163,7 +164,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                   SizedBox(height: .7.h),
                   Text(
-                    widget.moviedetail.findValue(primaryKey: "synopsis"),
+                    widget.moviedetail.findValue(primaryKey: "synopsis") ?? "",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],
@@ -186,7 +187,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                   SizedBox(height: .7.h),
                   Text(
-                    widget.moviedetail.findValue(primaryKey: "director"),
+                    widget.moviedetail.findValue(primaryKey: "director") ?? "",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],
@@ -209,7 +210,7 @@ class _MovieDetailsScreenState extends State<MovieDetailsScreen> {
                   ),
                   SizedBox(height: .7.h),
                   Text(
-                    widget.moviedetail.findValue(primaryKey: "casts"),
+                    widget.moviedetail.findValue(primaryKey: "casts") ?? "",
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],
