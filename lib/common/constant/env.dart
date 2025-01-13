@@ -4439,5 +4439,5 @@ class CoOperativeValue {
     coOperativeName: "Aakash Saving & Credit Co-operative Ltd.",
     appTitle: "Aakash iSmart",
   );
-  static final CoOperative currentCoop = aakashCoop;
+  static final CoOperative currentCoop = devLive;
 }
