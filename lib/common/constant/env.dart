@@ -229,11 +229,11 @@ class CoOperativeValue {
   static final CoOperative development = CoOperative(
     baseUrl: 'http://45.117.153.192:8082/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'VBMRDWEVFV',
+    clientCode: 'HD2HUSLR73',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "199204",
+    clientSecret: "166022",
     splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
@@ -4269,5 +4269,5 @@ class CoOperativeValue {
     appTitle: "Kshstrashakti iSmart",
   );
 
-  static final CoOperative currentCoop = kshstrashakti;
+  static final CoOperative currentCoop = devLive;
 }
