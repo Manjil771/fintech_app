@@ -1,6 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/dashboard/widgets/dashboard_widget.dart';
 
@@ -64,10 +66,27 @@ class _TimerScreenState extends State<TimerScreen> {
   Widget build(BuildContext context) {
     return Align(
       alignment: Alignment.center,
-      child: Text(
-        "Please fill the form within :" + timerText,
-        style: const TextStyle(
-            fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black38),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          const Text(
+            "Please fill the form within :",
+            style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+                color: Colors.black38),
+          ),
+          SizedBox(
+            width: 10.w,
+            child: Text(
+              timerText,
+              style: const TextStyle(
+                  fontSize: 12,
+                  fontWeight: FontWeight.w500,
+                  color: Colors.black87),
+            ),
+          ),
+        ],
       ),
     );
   }
