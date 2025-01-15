@@ -161,6 +161,10 @@ flutter:
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
+    # - assets/automobiles/
+    # - assets/chandani/
+
+
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
@@ -253,7 +257,7 @@ flutter:
     # - assets/systematic/
     # - assets/shreeJamune/
     # - assets/drabya/
-    # - assets/omshreeom/
+    - assets/omshreeom/
     # - assets/upayogi/
     # - assets/upayogi/
     # - assets/sakar/
@@ -348,8 +352,10 @@ flutter:
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/
-    - assets/kshstrashakti/
+    # - assets/kshstrashakti/
+    # - assets/tokha/
     # - assets/narayani/
+    # - assets/mahalaxmi/
     # - assets/chadani/
     # - assets/shreesapana/
     # - assets/sampada/
@@ -357,7 +363,7 @@ flutter:
     # - assets/pame/
     # - assets/pratham/
     # - assets/dhanalaxmi/
-    - assets/samriddha/
+    # - assets/samriddha/
     # - assets/kohinoor/
     - assets/bhargo/
     # - assets/sarbashakti/
@@ -376,6 +382,27 @@ flutter:
     # - assets/godawari/
     # - assets/shreePaurakhi/
     # - assets/sarba/
+    # - assets/prerana/
+    # - assets/nilgiree/
+    # - assets/sajha/
+    # - assets/samadhan/
+    # - assets/saptakaushika/
+    # - assets/aggrim/
+    # - assets/shreemalunga/
+    # - assets/people/
+    # - assets/shreechandani/
+    # - assets/subarnapur/
+    # - assets/narayaniMulti/
+    # - assets/samriddhaNepal/
+    # - assets/shreeTriganga/
+    # - assets/sanjeewani/
+    # - assets/shreeKalidevi/
+    - assets/aakash/
+
+
+
+
+
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
@@ -394,7 +421,11 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
-
+    
+ 
+ 
+ 
+ 
   fonts:
     - family: popinbold
       fonts:
