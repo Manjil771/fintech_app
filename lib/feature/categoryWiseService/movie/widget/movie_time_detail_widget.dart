@@ -113,14 +113,16 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                                       Icon(
                                         Icons.schedule,
                                         size: 15,
-                                        color: Colors.grey[600],
+                                        color: CustomTheme.darkGray
+                                            .withOpacity(0.5),
                                       ),
                                       SizedBox(width: 1.w),
                                       Text(
                                         res.findValue(primaryKey: "duration"),
                                         style: TextStyle(
                                           fontSize: 13,
-                                          color: Colors.grey[600],
+                                          color: CustomTheme.darkGray
+                                              .withOpacity(0.5),
                                         ),
                                       ),
                                       SizedBox(width: 4.w),
@@ -139,9 +141,10 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                       dates: _prepareDateItems(dates),
                       onDateSelected: _handleDateSelected,
                       initialSelectedIndex: selectedDateIndex,
-                      indicatorColor: CustomTheme.testAppColor,
-                      selectedTextColor: CustomTheme.testAppColor,
-                      unselectedTextColor: Colors.grey[600]!,
+                      indicatorColor: CustomTheme.primaryColor,
+                      selectedTextColor: CustomTheme.primaryColor,
+                      unselectedTextColor:
+                          CustomTheme.darkGray.withOpacity(0.5),
                       textStyle: _textTheme.displaySmall,
                     ),
                   if (threaterList.isNotEmpty)
@@ -161,69 +164,84 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
                                 ),
                                 color: Colors.white,
                               ),
-                              child: Column(
-                                children: [
-                                  ListTile(
-                                    title: Column(
-                                      children: [
-                                        Text(
-                                          threaterList[index]["theaterName"],
-                                          style: _textTheme.headlineSmall!
-                                              .copyWith(
-                                                  fontWeight: FontWeight.bold),
-                                        ),
-                                        Text(
-                                          threaterList[index]["theaterAddress"],
-                                          style: _textTheme.bodyLarge,
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                  if (showList.isNotEmpty)
-                                    GridView.builder(
-                                      itemCount: showList.length,
-                                      shrinkWrap: true,
-                                      physics:
-                                          const NeverScrollableScrollPhysics(),
-                                      gridDelegate:
-                                          const SliverGridDelegateWithFixedCrossAxisCount(
-                                        crossAxisCount: 4,
-                                      ),
-                                      itemBuilder: (context, showListindex) {
-                                        return InkWell(
-                                          onTap: () {
-                                            NavigationService.push(
-                                                target: MovieSeatPage(
-                                              showId: showList[showListindex]
-                                                  ["showId"],
-                                              processId: res.findValue(
-                                                  primaryKey: "processId"),
-                                              movieId: res.findValue(
-                                                  primaryKey: "movieId"),
-                                            ));
-                                          },
-                                          child: Container(
-                                            alignment: Alignment.center,
-                                            decoration: const BoxDecoration(
-                                                color: CustomTheme.testAppColor,
-                                                borderRadius: BorderRadius.all(
-                                                    Radius.circular(12))),
-                                            padding: const EdgeInsets.all(10),
-                                            margin: const EdgeInsets.fromLTRB(
-                                                12, 10, 0, 12),
-                                            child: Text(
-                                              "${showList[showListindex]["screenName"]}\n${showList[showListindex]["showTime"]}",
-                                              textAlign: TextAlign.center,
-                                              style: _textTheme.titleSmall!
-                                                  .copyWith(
-                                                      color: CustomTheme.white),
-                                              maxLines: 3,
-                                            ),
+                              child: Padding(
+                                padding: const EdgeInsets.only(bottom: 5),
+                                child: Column(
+                                  children: [
+                                    ListTile(
+                                      title: Column(
+                                        children: [
+                                          Text(
+                                            threaterList[index]["theaterName"],
+                                            style: _textTheme.headlineSmall!
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.bold),
                                           ),
-                                        );
-                                      },
-                                    )
-                                ],
+                                          Text(
+                                            threaterList[index]
+                                                ["theaterAddress"],
+                                            style: _textTheme.bodyLarge,
+                                          ),
+                                        ],
+                                      ),
+                                    ),
+                                    if (showList.isNotEmpty)
+                                      GridView.builder(
+                                        itemCount: showList.length,
+                                        shrinkWrap: true,
+                                        physics:
+                                            const NeverScrollableScrollPhysics(),
+                                        padding: const EdgeInsets.symmetric(
+                                            horizontal: 10),
+                                        gridDelegate:
+                                            const SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 4,
+                                          mainAxisSpacing: 10,
+                                          crossAxisSpacing: 10,
+                                        ),
+                                        itemBuilder: (context, showListindex) {
+                                          return InkWell(
+                                            onTap: () {
+                                              NavigationService.push(
+                                                  target: MovieSeatPage(
+                                                showId: showList[showListindex]
+                                                    ["showId"],
+                                                processId: res.findValue(
+                                                    primaryKey: "processId"),
+                                                movieId: res.findValue(
+                                                    primaryKey: "movieId"),
+                                              ));
+                                            },
+                                            child: Container(
+                                              alignment: Alignment.center,
+                                              decoration: BoxDecoration(
+                                                  color:
+                                                      CustomTheme.primaryColor,
+                                                  borderRadius:
+                                                      const BorderRadius.all(
+                                                          Radius.circular(12))),
+                                              padding: const EdgeInsets.all(10),
+                                              margin:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 5),
+                                              child: Text(
+                                                "${showList[showListindex]["screenName"]}\n${showList[showListindex]["showTime"]}",
+                                                textAlign: TextAlign.center,
+                                                style: _textTheme.titleSmall!
+                                                    .copyWith(
+                                                        color:
+                                                            CustomTheme.white,
+                                                        fontWeight:
+                                                            FontWeight.w600),
+                                                maxLines: 3,
+                                              ),
+                                            ),
+                                          );
+                                        },
+                                      )
+                                  ],
+                                ),
                               ),
                             );
                           }),
