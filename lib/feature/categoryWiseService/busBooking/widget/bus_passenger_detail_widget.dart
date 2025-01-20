@@ -48,6 +48,13 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
             ?.accountHolderName ??
         "";
 
+  String _currentAmount = '';
+  @override
+  void initState() {
+    _currentAmount = widget.totalFare.toString();
+    super.initState();
+  }
+
   final contactEmail = TextEditingController();
 
   final contactNumber = TextEditingController();
@@ -68,6 +75,7 @@ class _BusPassengerDetailWidgetState extends State<BusPassengerDetailWidget> {
         buttonName: "Procced",
         showDetail: true,
         title: "Contact Person Details",
+        verificationAmount: _currentAmount,
         detail: widget.response.message,
         topbarName: widget.service.serviceCategoryName,
         body: Form(
