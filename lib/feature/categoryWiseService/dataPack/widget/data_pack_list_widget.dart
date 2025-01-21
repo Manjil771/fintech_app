@@ -127,6 +127,7 @@ class _DataPackListState extends State<DataPackList> {
                     ),
                     CustomRoundedButtom(
                       verticalPadding: 10,
+                      verificationAmount: data.amount.toString(),
                       fontSize: 10,
                       title: 'Buy Now',
                       onPressed: () {

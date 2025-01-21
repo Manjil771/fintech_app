@@ -95,12 +95,27 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
                   children: [
                     KeyValueTile(
                       title: "Username",
-                      value: _response
-                          .findValue(
-                            primaryKey: "hashResponse",
-                            secondaryKey: "policyName",
-                          )
-                          .toString(),
+                      value: (() {
+                        final policyName = _response.findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "policyName",
+                        );
+                        if (policyName != null &&
+                            policyName.toString().isNotEmpty) {
+                          return policyName.toString();
+                        }
+
+                        final customerName = _response.findValue(
+                          primaryKey: "hashResponse",
+                          secondaryKey: "customerName",
+                        );
+                        if (customerName != null &&
+                            customerName.toString().isNotEmpty) {
+                          return customerName.toString();
+                        }
+
+                        return "";
+                      })(),
                     ),
                     checkEmptyCase(
                       title: "Address",

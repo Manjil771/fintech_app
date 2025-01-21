@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class CustomRoundedButtom extends StatefulWidget {
   const CustomRoundedButtom({
@@ -20,6 +22,7 @@ class CustomRoundedButtom extends StatefulWidget {
     this.horizontalMargin = 0,
     this.icon,
     this.iconColor,
+    this.verificationAmount,
   }) : super(key: key);
   final String title;
   final Function()? onPressed;
@@ -36,6 +39,7 @@ class CustomRoundedButtom extends StatefulWidget {
   final IconData? icon;
   final Color? iconColor;
   final Color? borderColor;
+  final String? verificationAmount;
 
   @override
   CustomRoundedButtomState createState() => CustomRoundedButtomState();
@@ -44,6 +48,11 @@ class CustomRoundedButtom extends StatefulWidget {
 class CustomRoundedButtomState extends State<CustomRoundedButtom> {
   @override
   Widget build(BuildContext context) {
+    final _customerDetailRepo =
+        RepositoryProvider.of<CustomerDetailRepository>(context);
+    final currentBalance =
+        _customerDetailRepo.selectedAccount.value?.availableBalance;
+    print('This is the printed amount: ${currentBalance}');
     final _theme = Theme.of(context);
     print(_theme.primaryColor);
     return Container(
@@ -54,7 +63,38 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
             : (widget.color ?? _theme.primaryColor),
         borderRadius: BorderRadius.circular(15),
         child: InkWell(
-          onTap: widget.isDisabled ? null : widget.onPressed,
+          onTap: widget.isDisabled
+              ? null
+              : () {
+                  if (widget.verificationAmount == null ||
+                      currentBalance == null) {
+                    widget.onPressed?.call();
+                    return;
+                  }
+                  final verificationAmountDouble =
+                      double.tryParse(widget.verificationAmount!) ?? 0.0;
+                  final currentBalanceDouble =
+                      double.tryParse(currentBalance) ?? 0.0;
+                  print(
+                      'This is the printed amount is: ${verificationAmountDouble} and ${currentBalanceDouble}');
+
+                  if (verificationAmountDouble <= currentBalanceDouble) {
+                    widget.onPressed?.call();
+                  } else {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        backgroundColor: Colors.red,
+                        content: Align(
+                          alignment: Alignment.center,
+                          child: Text(
+                            "Requested amount exceeds the current balance.",
+                            style: TextStyle(color: Colors.white, fontSize: 12),
+                          ),
+                        ),    
+                      ),
+                    );
+                  }
+                },
           borderRadius: BorderRadius.circular(15),
           child: Container(
             padding: widget.padding ??

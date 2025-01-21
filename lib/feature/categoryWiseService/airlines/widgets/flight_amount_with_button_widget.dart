@@ -102,6 +102,7 @@ class FlightAmountWidgetWithButton extends StatelessWidget {
                 child: Container(
                   height: 45.hp,
                   child: CustomRoundedButtom(
+                    verificationAmount: totalPrice.toString(),
                     padding: EdgeInsets.zero,
                     title: "Book",
                     onPressed: () {

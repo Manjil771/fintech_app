@@ -34,6 +34,7 @@ class CommonContainer extends StatelessWidget {
   final double verticalPadding;
   final double horizontalPadding;
   final VoidCallback? onBackPressed;
+  final String? verificationAmount;
 
   final Function(RecentTransactionModel)? onRecentTransactionPressed;
 
@@ -61,6 +62,7 @@ class CommonContainer extends StatelessWidget {
     this.serviceId = "",
     this.onBackPressed,
     this.validateMobileBankingStatus = true,
+    this.verificationAmount,
   });
   @override
   Widget build(BuildContext context) {
@@ -186,7 +188,9 @@ class CommonContainer extends StatelessWidget {
                       SizedBox(height: _height * 0.03),
                       showRoundBotton
                           ? CustomRoundedButtom(
-                              title: buttonName, onPressed: onButtonPressed)
+                              verificationAmount: verificationAmount,
+                              title: buttonName,
+                              onPressed: onButtonPressed)
                           : Container(),
                     ],
                   ),
