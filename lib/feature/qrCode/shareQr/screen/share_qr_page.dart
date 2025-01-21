@@ -20,9 +20,9 @@ class ShareQrPage extends StatelessWidget {
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
               RepositoryProvider.of<UtilityPaymentRepository>(context))
-        ..fetchDetails(               
+        ..fetchDetails(
           serviceIdentifier: "",
-          accountDetails: {                                 
+          accountDetails: {
             "customerName": detail.accountHolderName,
             "customerBankAccountId": detail.id,
           },
