@@ -36,6 +36,7 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
   final TextEditingController _packageController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _serialController = TextEditingController();
+  //String _currentAmount = '';
   bool _isLoading = false;
   String _selectedSerialNo = "";
   Map<String, dynamic>? _selectedPackage;
@@ -75,6 +76,7 @@ class _NetTvDetailWidgetState extends State<NetTvDetailWidget> {
 
     return PageWrapper(
       body: CommonContainer(
+        verificationAmount: _amount.toString(),
         showDetail: true,
         topbarName: 'Payment',
         title: 'NetTV Payment',
