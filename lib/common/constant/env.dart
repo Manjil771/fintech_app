@@ -4440,7 +4440,7 @@ class CoOperativeValue {
     coOperativeName: "Aakash Saving & Credit Co-operative Ltd.",
     appTitle: "Aakash iSmart",
   );
-      static final CoOperative atharwaCoop = CoOperative(
+  static final CoOperative atharwaCoop = CoOperative(
     appStoreID: "com.devanasoft.atharwa",
     packageName: "com.devanasoft.atharwa",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4454,7 +4454,7 @@ class CoOperativeValue {
     coOperativeName: "Atharwa Saving and Credit Cooperative Society Ltd.",
     appTitle: "Atharwa iSmart",
   );
-      static final CoOperative shubhadipawaliCoop = CoOperative(
+  static final CoOperative shubhadipawaliCoop = CoOperative(
     appStoreID: "com.devanasoft.shubhadipawali",
     packageName: "com.devanasoft.shubhadipawali",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4465,10 +4465,11 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/shubhadipawali/shubhadipawali_logo.png',
     splashImage: "assets/shubhadipawali/shubhadipawali_splash.png",
     primaryColor: const Color(0xFF006838),
-    coOperativeName: "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
+    coOperativeName:
+        "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
     appTitle: "Shubha Dipawali iSmart",
   );
-    static final CoOperative aichchhikCoop = CoOperative(
+  static final CoOperative aichchhikCoop = CoOperative(
     appStoreID: "com.devanasoft.aichchhik",
     packageName: "com.devanasoft.aichchhik",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4482,5 +4483,5 @@ class CoOperativeValue {
     coOperativeName: "Aichchhik Saving & Credit Co-operative Ltd.",
     appTitle: "Aichchhik iSmart",
   );
-  static final CoOperative currentCoop = atharwaCoop;
+  static final CoOperative currentCoop = aichchhikCoop;
 }

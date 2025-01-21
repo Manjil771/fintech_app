@@ -53,6 +53,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   final TextEditingController _accountNameController = TextEditingController();
   final TextEditingController _branchController = TextEditingController();
   final TextEditingController _remarksController = TextEditingController();
+  String _currentAmount = "";
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   InternalBranch? branchFromQr;
   bool _isLoading = false;
@@ -144,6 +145,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
           }
         },
         child: CommonContainer(
+          verificationAmount: _currentAmount,
           body: Form(
             key: _formKey,
             child: Column(
@@ -224,6 +226,11 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   title: "Amount",
                   textInputType: TextInputType.number,
                   hintText: "NPR",
+                  onChanged: (value) {
+                    setState(() {
+                      _currentAmount = value;
+                    });
+                  },
                   controller: _amountController,
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Amount"),
