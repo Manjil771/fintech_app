@@ -61,6 +61,7 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
 
     return PageWrapper(
       body: CommonContainer(
+        verificationAmount: _response.findValueString("total_dues"),
         detail: widget.service.instructions,
         title: widget.service.service,
         showAccountSelection: true,

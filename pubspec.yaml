@@ -164,7 +164,6 @@ flutter:
     # - assets/automobiles/
     # - assets/chandani/
 
-
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
@@ -331,7 +330,7 @@ flutter:
     # - assets/abhiyankrishi/
     # - assets/unnati/
     # - assets/skOdraha/
-    # - assets/shreeKanchan/
+    - assets/shreeKanchan/
     # - assets/arjunchaupari/
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
@@ -398,7 +397,7 @@ flutter:
     # - assets/sanjeewani/
     # - assets/shreeKalidevi/
     # - assets/aakash/
-    - assets/shubhadipawali/
+    # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
 
@@ -424,11 +423,7 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
-    
- 
- 
- 
- 
+
   fonts:
     - family: popinbold
       fonts:

@@ -61,6 +61,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   String? bestMatchBankId;
   String? bestMatchBankName;
   String bankNameRecentTransaction = "";
+  String _currentAmount = '';
 
   @override
   void initState() {
@@ -531,6 +532,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               decimal: true),
                           controller: _amountController,
                           onChanged: (val) {
+                            _currentAmount = val;
                             if (val != _amountController.text) {
                               charges = null;
                               setState(() {});
@@ -565,6 +567,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
             ),
             topbarName: "Bank Transfer",
             buttonName: charges != null ? "Confirm" : "Check Transfer",
+            verificationAmount: _currentAmount,
             onButtonPressed: () {
               // NavigationService.push(target: const LimitScreen());
               if (_formKey.currentState!.validate()) {
