@@ -1920,6 +1920,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shubhadipawali {
+            dimension "app"
+            applicationId "com.devanasoft.shubhadipawali"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        atharwa {
+            dimension "app"
+            applicationId "com.devanasoft.atharwa"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aichchhik {
+            dimension "app"
+            applicationId "com.devanasoft.aichchhik"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

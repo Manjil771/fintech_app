@@ -124,7 +124,10 @@ class FormValidator {
       required double minAmount,
       required double maxAmount}) {
     if (val.isEmpty) {
+      print('Min Amount: $minAmount');
+    print('Max Amount: $maxAmount');
       return "Amount field cannot be empty";
+      
     } else {
       double? amount = double.tryParse(val);
       if (amount == null) {

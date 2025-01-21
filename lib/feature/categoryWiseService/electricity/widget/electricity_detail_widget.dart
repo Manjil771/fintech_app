@@ -197,6 +197,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
       },
       child: PageWrapper(
         body: CommonContainer(
+          verificationAmount: _totalAmountToPay.toString(),
           onButtonPressed: () {
             NavigationService.push(
                 target: TransactionPinScreen(onValueCallback: (p0) {

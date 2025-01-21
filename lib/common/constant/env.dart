@@ -4440,5 +4440,48 @@ class CoOperativeValue {
     coOperativeName: "Aakash Saving & Credit Co-operative Ltd.",
     appTitle: "Aakash iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative atharwaCoop = CoOperative(
+    appStoreID: "com.devanasoft.atharwa",
+    packageName: "com.devanasoft.atharwa",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/atharwa/atharwa_banner.png",
+    backgroundImage: "assets/atharwa/atharwa_background.png",
+    clientCode: 'V31ZF8CUW3',
+    clientSecret: "154903",
+    coOperativeLogo: 'assets/atharwa/atharwa_logo.png',
+    splashImage: "assets/atharwa/atharwa_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Atharwa Saving and Credit Cooperative Society Ltd.",
+    appTitle: "Atharwa iSmart",
+  );
+  static final CoOperative shubhadipawaliCoop = CoOperative(
+    appStoreID: "com.devanasoft.shubhadipawali",
+    packageName: "com.devanasoft.shubhadipawali",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shubhadipawali/shubhadipawali_banner.png",
+    backgroundImage: "assets/shubhadipawali/shubhadipawali_background.png",
+    clientCode: 'OQ7KFUOWTO',
+    clientSecret: "135016",
+    coOperativeLogo: 'assets/shubhadipawali/shubhadipawali_logo.png',
+    splashImage: "assets/shubhadipawali/shubhadipawali_splash.png",
+    primaryColor: const Color(0xFF006838),
+    coOperativeName:
+        "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
+    appTitle: "Shubha Dipawali iSmart",
+  );
+  static final CoOperative aichchhikCoop = CoOperative(
+    appStoreID: "com.devanasoft.aichchhik",
+    packageName: "com.devanasoft.aichchhik",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aichchhik/aichchhik_banner.png",
+    backgroundImage: "assets/aichchhik/aichchhik_background.png",
+    clientCode: 'ECHVCEFZP1',
+    clientSecret: "163363",
+    coOperativeLogo: 'assets/aichchhik/aichchhik_logo.png',
+    splashImage: "assets/aichchhik/aichchhik_splash.png",
+    primaryColor: const Color(0xFF44b749),
+    coOperativeName: "Aichchhik Saving & Credit Co-operative Ltd.",
+    appTitle: "Aichchhik iSmart",
+  );
+  static final CoOperative currentCoop = aichchhikCoop;
 }
