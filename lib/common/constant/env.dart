@@ -4447,7 +4447,7 @@ class CoOperativeValue {
     bannerImage: "assets/atharwa/atharwa_banner.png",
     backgroundImage: "assets/atharwa/atharwa_background.png",
     clientCode: 'V31ZF8CUW3',
-    clientSecret: "154903",
+    clientSecret: "206955",
     coOperativeLogo: 'assets/atharwa/atharwa_logo.png',
     splashImage: "assets/atharwa/atharwa_splash.png",
     primaryColor: const Color(0xFF009245),
@@ -4466,7 +4466,7 @@ class CoOperativeValue {
     splashImage: "assets/shubhadipawali/shubhadipawali_splash.png",
     primaryColor: const Color(0xFF006838),
     coOperativeName: "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
-    appTitle: "Shubha Dipawali iSmart",
+    appTitle: "Shubh Dipawali iSmart",
   );
     static final CoOperative aichchhikCoop = CoOperative(
     appStoreID: "com.devanasoft.aichchhik",
@@ -4482,5 +4482,6 @@ class CoOperativeValue {
     coOperativeName: "Aichchhik Saving & Credit Co-operative Ltd.",
     appTitle: "Aichchhik iSmart",
   );
-  static final CoOperative currentCoop = atharwaCoop;
+  static final CoOperative currentCoop = shubhadipawaliCoop;
 }
+

@@ -65,6 +65,7 @@ class _CgPaymentInquiryWidgetState extends State<CgPaymentInquiryWidget> {
 
     return PageWrapper(
       body: CommonContainer(
+        verificationAmount: _amount,
         showDetail: true,
         topbarName: 'Payment',
         title: 'CG Net Payment',

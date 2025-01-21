@@ -87,7 +87,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                         content: Align(
                           alignment: Alignment.center,
                           child: Text(
-                            "Requested amount exceeds the current balance.",
+                            "Balance Insufficient",
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
                         ),    
