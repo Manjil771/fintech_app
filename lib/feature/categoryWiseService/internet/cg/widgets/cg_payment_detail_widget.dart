@@ -59,7 +59,10 @@ class _CgPaymentDeatilWidgetState extends State<CgPaymentDeatilWidget> {
         widget.detailFetchData.findValue(primaryKey: "dueAmount").toString();
 
     return PageWrapper(
+     
       body: CommonContainer(
+        
+        verificationAmount:amount,
         showDetail: true,
         topbarName: 'Payment',
         title: 'Customer Detail',
