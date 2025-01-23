@@ -75,8 +75,6 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                       double.tryParse(widget.verificationAmount!) ?? 0.0;
                   final currentBalanceDouble =
                       double.tryParse(currentBalance) ?? 0.0;
-                  print(
-                      'This is the printed amount is: ${verificationAmountDouble} and ${currentBalanceDouble}');
 
                   if (verificationAmountDouble <= currentBalanceDouble) {
                     widget.onPressed?.call();
@@ -90,7 +88,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                             "Requested amount exceeds the current balance.",
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
-                        ),    
+                        ),
                       ),
                     );
                   }
