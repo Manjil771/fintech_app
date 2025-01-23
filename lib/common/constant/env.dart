@@ -4482,6 +4482,7 @@ class CoOperativeValue {
     coOperativeName: "Aichchhik Saving & Credit Co-operative Ltd.",
     appTitle: "Aichchhik iSmart",
   );
+
   static final CoOperative kishanKalyanCoop = CoOperative(
     appStoreID: "com.devanasoft.kishanKalyan",
     packageName: "com.devanasoft.kishanKalyan",
@@ -4497,5 +4498,6 @@ class CoOperativeValue {
     appTitle: "Kishan Kalyan iSmart",
   );
   static final CoOperative currentCoop = kishanKalyanCoop;
-}git
+}
+
 
