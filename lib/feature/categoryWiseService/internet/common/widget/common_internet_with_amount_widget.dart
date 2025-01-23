@@ -25,6 +25,7 @@ class CommonInternetWithAmountWidget extends StatefulWidget {
       : super(key: key);
 
   final ServiceList service;
+  
 
   @override
   State<CommonInternetWithAmountWidget> createState() =>
@@ -36,6 +37,7 @@ class _CommonInternetWithAmountWidgetState
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _setupBoxController = TextEditingController();
+  String _currentAmmount= ""; 
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -184,6 +186,11 @@ class _CommonInternetWithAmountWidgetState
                       val: value.toString(),
                       minAmount: widget.service.minValue,
                       maxAmount: widget.service.maxValue),
+                       onChanged: (value) {
+                  setState(() {
+                    _currentAmmount =value;
+                  });
+                },
                 )
               ],
             ),

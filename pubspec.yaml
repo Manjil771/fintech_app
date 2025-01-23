@@ -188,7 +188,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -330,7 +330,7 @@ flutter:
     # - assets/abhiyankrishi/
     # - assets/unnati/
     # - assets/skOdraha/
-    - assets/shreeKanchan/
+    # - assets/shreeKanchan/
     # - assets/arjunchaupari/
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
@@ -400,6 +400,8 @@ flutter:
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
+    - assets/kishanKalyan/
+
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
