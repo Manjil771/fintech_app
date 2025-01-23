@@ -4447,16 +4447,16 @@ class CoOperativeValue {
     bannerImage: "assets/atharwa/atharwa_banner.png",
     backgroundImage: "assets/atharwa/atharwa_background.png",
     clientCode: 'V31ZF8CUW3',
-    clientSecret: "154903",
+    clientSecret: "206955",
     coOperativeLogo: 'assets/atharwa/atharwa_logo.png',
     splashImage: "assets/atharwa/atharwa_splash.png",
     primaryColor: const Color(0xFF009245),
     coOperativeName: "Atharwa Saving and Credit Cooperative Society Ltd.",
     appTitle: "Atharwa iSmart",
   );
-  static final CoOperative shubhadipawaliCoop = CoOperative(
-    appStoreID: "com.devanasoft.shubhadipawali",
-    packageName: "com.devanasoft.shubhadipawali",
+  static final CoOperative shubhdipawaliCoop = CoOperative(
+    appStoreID: "com.devanasoft.shubhdipawali",
+    packageName: "com.devanasoft.shubhdipawali",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/shubhadipawali/shubhadipawali_banner.png",
     backgroundImage: "assets/shubhadipawali/shubhadipawali_background.png",
@@ -4465,9 +4465,8 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/shubhadipawali/shubhadipawali_logo.png',
     splashImage: "assets/shubhadipawali/shubhadipawali_splash.png",
     primaryColor: const Color(0xFF006838),
-    coOperativeName:
-        "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
-    appTitle: "Shubha Dipawali iSmart",
+    coOperativeName: "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
+    appTitle: "Shubh Dipawali iSmart",
   );
   static final CoOperative aichchhikCoop = CoOperative(
     appStoreID: "com.devanasoft.aichchhik",
@@ -4483,5 +4482,20 @@ class CoOperativeValue {
     coOperativeName: "Aichchhik Saving & Credit Co-operative Ltd.",
     appTitle: "Aichchhik iSmart",
   );
-  static final CoOperative currentCoop = shreeKanchan;
-}
+  static final CoOperative kishanKalyanCoop = CoOperative(
+    appStoreID: "com.devanasoft.kishanKalyan",
+    packageName: "com.devanasoft.kishanKalyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kishanKalyan/kishanKalyan_banner.png",
+    backgroundImage: "assets/kishanKalyan/kishanKalyan_background.png",
+    clientCode: '0F2BNACH4S',
+    clientSecret: "115868",
+    coOperativeLogo: 'assets/kishanKalyan/kishanKalyan_logo.png',
+    splashImage: "assets/kishanKalyan/kishanKalyan_splash.png",
+    primaryColor: const Color(0xFF008c3f),
+    coOperativeName: "Kishan Kalyan Savings & Credit Co-operative Ltd.",
+    appTitle: "Kishan Kalyan iSmart",
+  );
+  static final CoOperative currentCoop = kishanKalyanCoop;
+}git
+

@@ -69,6 +69,7 @@ class _CgPaymentWidgetState extends State<CgPaymentWidget> {
         child: Form(
           key: _formKey,
           child: CommonContainer(
+            
             showRecentTransaction: true,
             topbarName: "Payment",
             buttonName: 'Proceed',
@@ -117,6 +118,7 @@ class _CgPaymentWidgetState extends State<CgPaymentWidget> {
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
+                  textInputType: TextInputType.phone,
                   title: 'User Id',
                   controller: _usernameController,
                   hintText: 'Enter User Id',

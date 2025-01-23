@@ -10,23 +10,39 @@ class QRUtils {
   static Future<DataResponse<String>> checkQRCodeFromGallery() async {
     final File? _file = await ImagePickerUtils.getGallery();
     if (_file != null) {
+      String? resultFromPath;
+      String data = "";   
+      String error = "";
       try {
-        final Code resultFromPath =
-            await zx.readBarcodeImagePathString(_file.path, DecodeParams());
+        resultFromPath =
+            (await zx.readBarcodeImagePathString(_file.path, DecodeParams())).text; }catch(e){
+              error=error + "Error on 1 $e";
+            }
+        try{
+         data = await QrCodeUtils.decodeFrom(_file.path) ?? "";
 
-        final String data = await QrCodeUtils.decodeFrom(_file.path) ?? "";
-
-        final qrCodeResult = resultFromPath.text ?? "";
-        if (qrCodeResult.isEmpty) {
-          return DataResponse.error(
-              "QR Payload Decoded as : $qrCodeResult Or $data");
-        } else {
-          return DataResponse.success(qrCodeResult);
-        }
+        
       } on PlatformException catch (e) {
-        return DataResponse.error(
-            e.message ?? "Invalid QR Code. Message : empty");
+        error =error + "Error on 2 $e ";
+        // return DataResponse.error(
+        //     e.message ?? "Invalid QR Code. Message : empty");
       }
+
+      if(resultFromPath != null && resultFromPath.isNotEmpty){
+        return DataResponse.success(resultFromPath.trim());
+      }else if(data.isNotEmpty){
+        return DataResponse.success(data.trim());
+      }else{
+
+      // final qrCodeResult = resultFromPath ?? "";
+      //   if (qrCodeResult.isEmpty) {
+          return DataResponse.error(
+              "Error when decoding QR. Please try another image.");
+        // } else {
+        //   return DataResponse.success(qrCodeResult);
+        // }
+
+        }
     } else {
       return DataResponse.error("");
     }

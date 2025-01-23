@@ -98,6 +98,7 @@ class _InternetPaymentDeatilWidgetState
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        verificationAmount:amount,
         showDetail: true,
         topbarName: 'Payment',
         title: 'Internet Payment',
