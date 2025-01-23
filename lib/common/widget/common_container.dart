@@ -74,7 +74,7 @@ class CommonContainer extends StatefulWidget {
 class _CommonContainerState extends State<CommonContainer> {
   late DraggableScrollableController _controller;
   static const double initialChildSize = 0.20;
-  static const double minChildSize = 0.20;
+  static const double minChildSize = 0.06;
   static const double maxChildSize = 0.9;
 
   @override
@@ -94,7 +94,9 @@ class _CommonContainerState extends State<CommonContainer> {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-
+    //  final keyboardHeight = MediaQuery.of(context).viewInsets.bottom;
+    // bool isKeyboardOpen = MediaQuery.of(context).viewInsets.bottom > 0;
+    // print('is keyboard opened: ${isKeyboardOpen}');
     return PageWrapper(
       showAppBar: false,
       padding: EdgeInsets.zero,
@@ -117,6 +119,7 @@ class _CommonContainerState extends State<CommonContainer> {
                         widget.onBackPressed ?? () => NavigationService.pop()),
                 Expanded(
                   child: SingleChildScrollView(
+                    // padding: EdgeInsets.only(bottom: keyboardHeight + 50),
                     child: Container(
                       decoration: const BoxDecoration(
                           color: Colors.white,
@@ -259,7 +262,7 @@ class _CommonContainerState extends State<CommonContainer> {
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 8),
+                                    horizontal: 16, vertical: 3),
                                 child: Text(
                                   "Recent Transaction",
                                   style: _textTheme.titleLarge?.copyWith(
@@ -313,9 +316,9 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
   }
 
   @override
-  double get maxExtent => 60.0;
+  double get maxExtent => 55.0;
   @override
-  double get minExtent => 60.0;
+  double get minExtent => 55.0;
   @override
   bool shouldRebuild(covariant SliverPersistentHeaderDelegate oldDelegate) {
     return false;
