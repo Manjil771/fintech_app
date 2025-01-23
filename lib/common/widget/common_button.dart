@@ -90,7 +90,7 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                             "Insufficient Balance",
                             style: TextStyle(color: Colors.white, fontSize: 12),
                           ),
-                        ),    
+                        ),
                       ),
                     );
                   }
