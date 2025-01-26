@@ -4465,7 +4465,8 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/shubhadipawali/shubhadipawali_logo.png',
     splashImage: "assets/shubhadipawali/shubhadipawali_splash.png",
     primaryColor: const Color(0xFF006838),
-    coOperativeName: "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
+    coOperativeName:
+        "Shubha Dipawali Saving and Credit Co-operative Society Ltd",
     appTitle: "Shubh Dipawali iSmart",
   );
   static final CoOperative aichchhikCoop = CoOperative(
