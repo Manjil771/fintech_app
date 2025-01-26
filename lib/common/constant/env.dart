@@ -4240,7 +4240,7 @@ class CoOperativeValue {
     coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
     appTitle: "Pame iSmart",
   );
-  static final CoOperative sarba = CoOperative(
+  static final CoOperative sarbaKtmCoop = CoOperative(
     appStoreID: "com.devanasoft.sarba",
     packageName: "com.devanasoft.sarba",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4496,6 +4496,34 @@ class CoOperativeValue {
     coOperativeName: "Kishan Kalyan Savings & Credit Co-operative Ltd.",
     appTitle: "Kishan Kalyan iSmart",
   );
-  static final CoOperative currentCoop = kishanKalyanCoop;
-}git
+  static final CoOperative ainchoPainchoCoop = CoOperative(
+    appStoreID: "com.devanasoft.ainchoPaincho",
+    packageName: "com.devanasoft.ainchoPaincho",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ainchoPaincho/ainchoPaincho_banner.png",
+    backgroundImage: "assets/ainchoPaincho/ainchoPaincho_background.png",
+    clientCode: 'JSRG1FSZ9B',
+    clientSecret: "185568",
+    coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
+    splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
+    primaryColor: const Color(0xFF008c3f),
+    coOperativeName: "Aincho Paincho Savings and Credit Co-operative Society Ltd.",
+    appTitle: "Aincho Paincho iSmart",
+  );
+   static final CoOperative puimeCoop = CoOperative(
+    appStoreID: "com.devanasoft.puime",
+    packageName: "com.devanasoft.puime",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/puime/puime_banner.png",
+    backgroundImage: "assets/puime/puime_background.png",
+    clientCode: 'AEO08D7QAQ',
+    clientSecret: "176560",
+    coOperativeLogo: 'assets/puime/puime_logo.png',
+    splashImage: "assets/puime/puime_splash.png",
+    primaryColor: const Color(0xFF14a74d),
+    coOperativeName: "Puime Saving & Credit Co-operative Society Ltd.",
+    appTitle: "Puime iSmart",
+  );
+  static final CoOperative currentCoop = puimeCoop;
+}
 

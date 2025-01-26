@@ -400,7 +400,8 @@ flutter:
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
-    - assets/kishanKalyan/
+    # - assets/kishanKalyan/
+    - assets/puime/
 
 
     # sana kishan assets

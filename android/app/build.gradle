@@ -1944,6 +1944,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        puime {
+            dimension "app"
+            applicationId "com.devanasoft.puime"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
