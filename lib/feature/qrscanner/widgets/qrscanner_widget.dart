@@ -610,8 +610,11 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   _processScannedQR({
     required String qrCode,
   }) {
+    print("QR Code debug: $qrCode");
     try {
       final Map<String, dynamic> _decode = jsonDecode(qrCode);
+      print("QR Code debug 2: $_decode");
+
       WalletModel getWalletData(String walletName) {
         return widget.walletLists.firstWhere((element) =>
             element.name.toLowerCase().contains(walletName.toLowerCase()) &&

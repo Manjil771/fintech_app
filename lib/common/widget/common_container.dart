@@ -44,7 +44,7 @@ class CommonContainer extends StatefulWidget {
   const CommonContainer({
     this.serviceCategoryId = "",
     this.showDetail = false,
-    this.showRecentTransaction = true,
+    this.showRecentTransaction = false,
     this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,
@@ -160,33 +160,35 @@ class _CommonContainerState extends State<CommonContainer> {
                             ],
                           ),
                           SizedBox(height: _height * 0.01),
-                          if (widget.showAccountSelection)
-                            Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  widget.accountTitle,
-                                  style: const TextStyle(
-                                    fontFamily: Fonts.poppin,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: 14,
-                                    color: CustomTheme.lightTextColor,
-                                  ),
-                                ),
-                                PrimaryAccountBox(
-                                  validateMobileBankingStatus:
-                                      widget.validateMobileBankingStatus,
-                                ),
-                              ],
-                            ),
+                          widget.showAccountSelection
+                              ? Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Text(
+                                      widget.accountTitle,
+                                      style: const TextStyle(
+                                        fontFamily: Fonts.poppin,
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 14,
+                                        color: CustomTheme.lightTextColor,
+                                      ),
+                                    ),
+                                    PrimaryAccountBox(
+                                      validateMobileBankingStatus:
+                                          widget.validateMobileBankingStatus,
+                                    ),
+                                  ],
+                                )
+                              : Container(),
                           widget.body,
                           SizedBox(height: _height * 0.03),
-                          if (widget.showRoundBotton)
-                            CustomRoundedButtom(
-                              verificationAmount: widget.verificationAmount,
-                              title: widget.buttonName,
-                              onPressed: widget.onButtonPressed,
-                            ),
+                          widget.showRoundBotton
+                              ? CustomRoundedButtom(
+                                  verificationAmount: widget.verificationAmount,
+                                  title: widget.buttonName,
+                                  onPressed: widget.onButtonPressed,
+                                )
+                              : Container(),
                           SizedBox(height: _height * 0.25),
                           // Row(
                           //   mainAxisAlignment: MainAxisAlignment.end,

@@ -4497,5 +4497,5 @@ class CoOperativeValue {
     coOperativeName: "Kishan Kalyan Savings & Credit Co-operative Ltd.",
     appTitle: "Kishan Kalyan iSmart",
   );
-  static final CoOperative currentCoop = kishanKalyanCoop;
+  static final CoOperative currentCoop = devLive;
 }
