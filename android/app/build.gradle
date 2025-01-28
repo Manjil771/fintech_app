@@ -1950,6 +1950,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shikhardeep {
+            dimension "app"
+            applicationId "com.devanasoft.shikhardeep"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sandus {
+            dimension "app"
+            applicationId "com.devanasoft.sandus"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kasturi {
+            dimension "app"
+            applicationId "com.devanasoft.kasturi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ainchoPaincho {
+            dimension "app"
+            applicationId "com.devanasoft.ainchoPaincho"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

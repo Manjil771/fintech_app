@@ -102,7 +102,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/bhaktapur_saccos/
+    - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -401,7 +401,11 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/kishanKalyan/
-    - assets/puime/
+    # - assets/puime/
+    # - assets/shikhardeep/
+    # - assets/sandus/
+    - assets/kasturi/
+    # - assets/ainchoPaincho/
 
 
     # sana kishan assets
@@ -421,6 +425,7 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    
 
   fonts:
     - family: popinbold

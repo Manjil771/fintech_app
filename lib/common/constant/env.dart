@@ -4507,9 +4507,23 @@ class CoOperativeValue {
     clientSecret: "185568",
     coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
     splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
-    primaryColor: const Color(0xFF008c3f),
+    primaryColor: const Color(0xFF44b749),
     coOperativeName: "Aincho Paincho Savings and Credit Co-operative Society Ltd.",
     appTitle: "Aincho Paincho iSmart",
+  );
+  static final CoOperative sandusCoop = CoOperative(
+    appStoreID: "com.devanasoft.sandus",
+    packageName: "com.devanasoft.sandus",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sandus/sandus_banner.png",
+    backgroundImage: "assets/sandus/sandus_background.png",
+    clientCode: 'QBBU4Z7C6F',
+    clientSecret: "117625",
+    coOperativeLogo: 'assets/sandus/sandus_logo.png',
+    splashImage: "assets/sandus/sandus_splash.png",
+    primaryColor: const Color(0xFF17ae61),
+    coOperativeName: "Sandus Saving & Credit Co-operative Ltd.",
+    appTitle: "Sandus iSmart",
   );
    static final CoOperative puimeCoop = CoOperative(
     appStoreID: "com.devanasoft.puime",
@@ -4525,6 +4539,34 @@ class CoOperativeValue {
     coOperativeName: "Puime Saving & Credit Co-operative Society Ltd.",
     appTitle: "Puime iSmart",
   );
-  static final CoOperative currentCoop = puimeCoop;
+  static final CoOperative shikhardeepCoop = CoOperative(
+    appStoreID: "com.devanasoft.shikhardeep",
+    packageName: "com.devanasoft.shikhardeep",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shikhardeep/shikhardeep_banner.png",
+    backgroundImage: "assets/shikhardeep/shikhardeep_background.png",
+    clientCode: 'XC8TOJP9AL',
+    clientSecret: "156165",
+    coOperativeLogo: 'assets/shikhardeep/shikhardeep_logo.png',
+    splashImage: "assets/shikhardeep/shikhardeep_splash.png",
+    primaryColor: const Color(0xFF1c9f4e),
+    coOperativeName: "Shikhardeep Saving and Credit Co-operative Society Ltd.",
+    appTitle: "Shikhardeep iSmart",
+  );
+   static final CoOperative kasturiCoop = CoOperative(
+    appStoreID: "com.devanasoft.kasturi",
+    packageName: "com.devanasoft.kasturi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kasturi/kasturi_banner.png",
+    backgroundImage: "assets/kasturi/kasturi_background.png",
+    clientCode: 'KZ9NKTQU22',
+    clientSecret: "193972",
+    coOperativeLogo: 'assets/kasturi/kasturi_logo.png',
+    splashImage: "assets/kasturi/kasturi_splash.png",
+    primaryColor: const Color(0xFF20783c),
+    coOperativeName: "Kasturi Saving & Credit Co-operative Ltd.",
+    appTitle: "Kasturi iSmart",
+  );
+  static final CoOperative currentCoop = bhaktapurSaccos;
 }
 
