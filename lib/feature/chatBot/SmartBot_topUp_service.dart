@@ -47,7 +47,6 @@ class CategoryService {
     return filteredServices;
   }
 
-  // Initialize and fetch categories
   Future<void> initialize(BuildContext context) async {
     if (!_isInitialized) {
       await context.read<CategoryCubit>().fetchCategory();
@@ -219,34 +218,3 @@ class CategoryService {
   //   }
   // }
 }
-
-// Usage example:
-// // In your initialization (e.g., splash screen or app startup):
-// void initializeApp(BuildContext context) async {
-//   final categoryService = CategoryService();
-//   await categoryService.initialize(context);
-// }
-
-// // Add a BlocListener in your app's root or where categories are loaded:
-// BlocListener<CategoryCubit, CommonState>(
-//   listener: (context, state) {
-//     if (state is CommonDataFetchSuccess<CategoryList>) {
-//       CategoryService().updateCategoryList(state.data);
-//     }
-//   },
-//   child: YourWidget(),
-// )
-
-// // Then anywhere in your app, you can navigate like this:
-// void onTopupButtonPressed(BuildContext context) {
-//   CategoryService().navigateToMobileTopup(context);
-// }
-
-// void onBrokerButtonPressed(BuildContext context) {
-//   CategoryService().navigateToBrokerPayment(context);
-// }
-
-// // Or use the generic method for other services:
-// void onServiceButtonPressed(BuildContext context, String identifier) {
-//   CategoryService().navigateToService(context, identifier);
-// }

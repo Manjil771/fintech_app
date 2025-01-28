@@ -35,6 +35,18 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     }
   }
 
+  bool executeRecharge(String input) {
+    final regex = RegExp(r'^Recharge (\d+) with (\d+)$');
+    final match = regex.firstMatch(input);
+    if (match != null) {
+      _storedPhoneNumber = match.group(1);
+      _storedToUpAmount = match.group(2);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   void _scrollToBottom({
     Duration duration = const Duration(milliseconds: 300),
   }) {
@@ -139,6 +151,52 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     if (message.toLowerCase() == 'confirm') {
       UrlLauncher.launchPhone(context: context, phone: '9801132219');
     }
+    if (executeRecharge(message)) {
+      if (extractAndValidatePhoneNumber(_storedPhoneNumber) != "invalid") {
+        categoryService.topupWithAmount(context, _storedToUpAmount.toString(),
+            _storedPhoneNumber.toString());
+        setState(() {
+          _chatHistory.add({
+            'type': 'user',
+            'message': message,
+            'timestamp': DateTime.now(),
+          });
+          _chatHistory.add({
+            'type': 'assistant',
+            'message':
+                'Phone Number: $_storedPhoneNumber\nTop-Up Amount: $_storedToUpAmount. Once verify your transaction. Thank you!',
+            'timestamp': DateTime.now(),
+          });
+          _chatHistory.add({
+            'type': 'assistant',
+            'message': '"Lets start over!',
+            'timestamp': DateTime.now(),
+            'options': _getPromptOptionsWithBack(),
+          });
+          _pendingInputType = null;
+        });
+        _messageController.clear();
+        _scrollToBottom();
+        return;
+      } else {
+        setState(() {
+          _chatHistory.add({
+            'type': 'user',
+            'message': message,
+            'timestamp': DateTime.now(),
+          });
+          _chatHistory.add({
+            'type': 'assistant',
+            'message':
+                'Invalid phone number. Please enter a valid 10-digit number',
+            'timestamp': DateTime.now(),
+          });
+        });
+        _messageController.clear();
+        _scrollToBottom();
+        return;
+      }
+    }
 
     if (true) {
       _StoredForPayment.add(message);
@@ -172,7 +230,6 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     }
 
     if (message.toLowerCase() == 'top up') {
-      //  categoryService.navigateToMobileTopup(context);
       setState(() {
         _chatHistory.add({
           'type': 'assistant',
