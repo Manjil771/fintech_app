@@ -36,7 +36,8 @@ class ChatPrompts {
           'options': ['Confirm'],
         },
         'Popular Services': {
-          'question': '',
+          'question':
+              'Please select from the services below to learn more and proceed further.',
           'options': [
             'Broker Payment',
             'Electricity Payment',

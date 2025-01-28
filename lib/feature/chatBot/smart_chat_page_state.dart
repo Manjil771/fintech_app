@@ -102,10 +102,12 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
         _promptHistory.removeLast();
         _currentPromptKey = _promptHistory.last;
 
-        final previousResponse = _chatHistory[_chatHistory.length - 2];
+        //  final previousResponse = _chatHistory[_chatHistory.length - 2];
         _chatHistory.add({
           'type': 'assistant',
-          'message': previousResponse['message'],
+          //  'message': previousResponse['message'],
+          'message':
+              'Please select an option below to proceed further, as per your preference.',
           'timestamp': DateTime.now(),
           'options': _getPromptOptionsWithBack(),
         });
