@@ -9,7 +9,6 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/notification_count_widget.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/chatBot/smart_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
@@ -66,24 +65,6 @@ AppBar myAppbar({bool showBackButton = false, bool showChatBot = false}) {
     ),
     actions: [
       const NotificationCountIcon(),
-      showChatBot
-          ? InkWell(
-              onTap: () {
-                NavigationService.push(target: const SmartChatPage());
-              },
-              child: Row(
-                children: [
-                  Icon(
-                    Icons.chat_bubble_outline_outlined,
-                    color: CustomTheme.primaryColor,
-                  ),
-                  const SizedBox(
-                    width: 7,
-                  ),
-                ],
-              ),
-            )
-          : Container(),
       InkWell(
         onTap: () {
           showPopUpDialog(

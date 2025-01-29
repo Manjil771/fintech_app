@@ -98,7 +98,6 @@ class CategoryService {
     final topupCategory = _categoryList.firstWhere(
       (category) =>
           category.uniqueIdentifier.toLowerCase() == Slugs.topup.toLowerCase(),
-      // orElse: () => null,
     );
 
     categoryList = topupCategory;
@@ -106,6 +105,7 @@ class CategoryService {
     if (topupCategory != null) {
       NavigationService.push(
           target: CommonBillDetailPage(
+        verificationAmount: amount,
         serviceName: selectedService.first.service,
         service: getTopupType(mobileNumber).first,
         apiBody: const {},
@@ -135,7 +135,6 @@ class CategoryService {
       (category) =>
           category.uniqueIdentifier.toLowerCase() ==
           Slugs.brokerPage.toLowerCase(),
-      // orElse: () => null,
     );
 
     if (category != null) {
@@ -147,7 +146,6 @@ class CategoryService {
   void navigateToElectricityPayment(BuildContext context) {
     final category = _categoryList.firstWhere(
       (category) => category.uniqueIdentifier.toLowerCase() == "electricity",
-      // orElse: () => null,
     );
 
     if (category != null) {
@@ -159,7 +157,6 @@ class CategoryService {
   void navigateToAirlines(BuildContext context) {
     final category = _categoryList.firstWhere(
       (category) => category.uniqueIdentifier.toLowerCase() == "airlines",
-      // orElse: () => null,
     );
 
     if (category != null) {
@@ -171,7 +168,6 @@ class CategoryService {
   void navigateToMovie(BuildContext context) {
     final category = _categoryList.firstWhere(
       (category) => category.uniqueIdentifier.toLowerCase() == "movies",
-      // orElse: () => null,
     );
 
     if (category != null) {
@@ -185,7 +181,6 @@ class CategoryService {
           category.uniqueIdentifier.toLowerCase() == "landline" ||
           category.uniqueIdentifier.toString().toLowerCase() ==
               "category".toLowerCase(),
-      // orElse: () => null,
     );
 
     if (category != null) {
@@ -196,7 +191,6 @@ class CategoryService {
   void navigateToBusBooking(BuildContext context) {
     final category = _categoryList.firstWhere(
       (category) => category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
-      // orElse: () => null,
     );
 
     if (category != null) {

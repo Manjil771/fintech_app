@@ -2,7 +2,7 @@ class ChatPrompts {
   static Map<String, dynamic> prompts = {
     'start': {
       'question':
-          'Namaste! 🙏 I am Smart Fuche, your virtual assistant here at iSmart. Thank you for choosing us! How can I make your day smarter and brighter today?',
+          'Namaste! 🙏 I am Smart Fuche, your personal virtual assistant. Thank you for choosing us! How can I make your day smarter and brighter today?\n(Beta*)',
       'options': [
         'About Us',
         'Popular Services',
@@ -11,7 +11,7 @@ class ChatPrompts {
       ],
       'responses': {
         'About Us':
-            'iSmart digital wallet is a service developed by DevanaSoft Pvt. Ltd. to make your daily transaction easier. We are situated at Ghattaghar, Kathmandu',
+            'DevanaSoft Pvt. Ltd. is established to cater the growing needs in the space of FinTech with special focus on developing and deploying innovative products and services in the field of Digital Financial Services, Agriculture, Remittance Industry, Insurance Sector, Retail Payments, and Delivery and Distribution.',
         'Our Services':
             'We offer various services. Which one are you interested in?',
         'Top Up': 'Select your mobile network:',
@@ -21,12 +21,12 @@ class ChatPrompts {
       'nextPrompts': {
         'About Us': {
           'question': 'What would you like to know more about?',
-          'options': ['Team', 'Mission', 'Contact'],
+          'options': ['Team', 'Vision', 'Contact'],
           'responses': {
             'Team':
                 'Our team consists of dedicated professionals passionate about technology.',
-            'Mission':
-                'Our mission is to provide innovative digital solutions.',
+            'Vision':
+                'Become one of the leading Digital Financial Services Provider through Top Down and Bottom Up Approach targeting underdeveloped and developing countries.',
             'Contact':
                 'You can reach us at devanasoftpvtltd@gmail.com, or know more about us at devanasoft.com.np',
           }
