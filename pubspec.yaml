@@ -377,7 +377,7 @@ flutter:
     # - assets/aabhash/
 
     # - assets/nilpashan/
-    - assets/jhigu/
+    # - assets/jhigu/
     # - assets/godawari/
     # - assets/shreePaurakhi/
     # - assets/sarba/
@@ -404,8 +404,9 @@ flutter:
     # - assets/puime/
     # - assets/shikhardeep/
     # - assets/sandus/
-    - assets/kasturi/
+    # - assets/kasturi/
     # - assets/ainchoPaincho/
+    # - assets/nepal/
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

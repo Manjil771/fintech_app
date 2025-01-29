@@ -4568,5 +4568,19 @@ class CoOperativeValue {
     coOperativeName: "Kasturi Saving & Credit Co-operative Ltd.",
     appTitle: "Kasturi iSmart",
   );
-  static final CoOperative currentCoop = sarbaKtmCoop;
+  static final CoOperative nepalCoop = CoOperative(
+    appStoreID: "com.devanasoft.nepal",
+    packageName: "com.devanasoft.nepal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nepal/nepal_banner.png",
+    backgroundImage: "assets/nepal/nepal_background.png",
+    clientCode: 'UFMGXC59V3',
+    clientSecret: "157346",
+    coOperativeLogo: 'assets/nepal/nepal_logo.png',
+    splashImage: "assets/nepal/nepal_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Nepal Co-operative Society Ltd.",
+    appTitle: "Nepal Co-operative iSmart",
+  );
+  static final CoOperative currentCoop = sarbahitCoop;
 }

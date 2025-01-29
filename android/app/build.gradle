@@ -1974,6 +1974,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        nepal {
+            dimension "app"
+            applicationId "com.devanasoft.nepal"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

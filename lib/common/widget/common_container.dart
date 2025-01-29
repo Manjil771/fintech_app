@@ -44,7 +44,7 @@ class CommonContainer extends StatefulWidget {
   const CommonContainer({
     this.serviceCategoryId = "",
     this.showDetail = false,
-    this.showRecentTransaction = true,
+    this.showRecentTransaction = false,
     this.accountTitle = "From Account",
     this.showAccountSelection = false,
     this.verticalPadding = 20.0,
