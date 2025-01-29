@@ -4568,5 +4568,5 @@ class CoOperativeValue {
     coOperativeName: "Kasturi Saving & Credit Co-operative Ltd.",
     appTitle: "Kasturi iSmart",
   );
-  static final CoOperative currentCoop = bhaktapurSaccos;
+  static final CoOperative currentCoop = sarbaKtmCoop;
 }
