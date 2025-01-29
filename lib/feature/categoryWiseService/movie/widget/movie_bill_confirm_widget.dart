@@ -160,6 +160,7 @@ class MovieBillWidget extends StatelessWidget {
               _buildTotalAmount(textTheme),
               SizedBox(height: 28.hp),
               CustomRoundedButtom(
+                  verificationAmount: totalAmount,
                   title: "Proceed",
                   onPressed: () {
                     final List<String> seatIds = selectedSeats

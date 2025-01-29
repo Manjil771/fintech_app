@@ -33,6 +33,8 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
 
   final _formKey = GlobalKey<FormState>();
 
+  String _currentAmount = '';
+
   @override
   Widget build(BuildContext context) {
     final TextEditingController remarksController =
@@ -146,6 +148,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                     );
               }
             },
+            verificationAmount: _currentAmount,
             detail: widget.service.instructions,
             title: widget.service.service,
             showAccountSelection: true,
@@ -167,6 +170,11 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                     controller: amountController,
                     title: "Amount",
                     hintText: "XXXXX",
+                    onChanged: (value) {
+                      setState(() {
+                        _currentAmount = value;
+                      });
+                    },
                     validator: (value) => FormValidator.validateAmount(
                         val: value.toString(),
                         minAmount: widget.service.minValue,

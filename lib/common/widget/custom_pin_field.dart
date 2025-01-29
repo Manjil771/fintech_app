@@ -47,7 +47,7 @@ class CustomPinCodeField extends StatelessWidget {
           shape: PinCodeFieldShape.box,
           borderRadius: BorderRadius.circular(5),
           fieldHeight: fieldHeight ?? 60,
-          fieldWidth: fieldWidth ?? SizeUtils.width * 0.13,
+          fieldWidth: fieldWidth ?? SizeUtils.width * 0.12,
           borderWidth: 1,
           errorBorderColor: Colors.red,
           fieldOuterPadding: mainAxisAlignment == MainAxisAlignment.start

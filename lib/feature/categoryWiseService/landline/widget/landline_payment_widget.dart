@@ -31,7 +31,7 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
   final TextEditingController _amountController = TextEditingController();
 
   bool _isLoading = false;
-
+  String currentAmount = '';
   final _fromKey = GlobalKey<FormState>();
   ServiceList getService() {
     final service = widget.category.services.firstWhere(
@@ -75,6 +75,7 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
             buttonName: "Proceed",
             topbarName: "Landline",
             title: "LandLine Payment",
+            verificationAmount: currentAmount,
             detail: selectedService.instructions,
             body: Form(
               key: _fromKey,
@@ -95,6 +96,11 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                     title: "Amount",
                     hintText: "Enter the amount",
                     controller: _amountController,
+                    onChanged: (value) {
+                      setState(() {
+                        currentAmount = value;
+                      });
+                    },
                     validator: (val) => FormValidator.validateAmount(
                         val: val.toString(),
                         maxAmount: selectedService.maxValue,

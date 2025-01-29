@@ -19,7 +19,6 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-
 import '../../../../../common/util/size_utils.dart';
 
 class InternetPaymentDeatilWidget extends StatefulWidget {
@@ -99,6 +98,7 @@ class _InternetPaymentDeatilWidgetState
     final _height = SizeUtils.height;
     return PageWrapper(
       body: CommonContainer(
+        verificationAmount:amount,
         showDetail: true,
         topbarName: 'Payment',
         title: 'Internet Payment',

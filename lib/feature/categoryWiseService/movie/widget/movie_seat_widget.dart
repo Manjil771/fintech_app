@@ -98,8 +98,8 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                       Container(
                         width: double.infinity,
                         padding: const EdgeInsets.symmetric(
-                            horizontal: 0, vertical: 16),
-                        color: CustomTheme.testAppColor,
+                            horizontal: 1.5, vertical: 16),
+                        // color: CustomTheme.testAppColor,
                         child: Row(
                           children: [
                             IconButton(
@@ -108,29 +108,44 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                               },
                               icon: const Icon(
                                 CupertinoIcons.back,
-                                color: CustomTheme.white,
+                                // color: CustomTheme.white,
                               ),
+                            ),
+                            SizedBox(
+                              width: 1.5.h,
                             ),
                             Expanded(
                               child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
                                     res.details?.movieName ?? "",
                                     style: _textTheme.titleLarge!
-                                        .copyWith(color: Colors.white),
+                                        // .copyWith(color: Colors.white),
+                                        .copyWith(
+                                      fontSize: 15,
+                                      fontWeight: FontWeight.w900,
+                                    ),
                                   ),
-                                  SizedBox(height: 10.hp),
+                                  SizedBox(height: .7.h),
                                   Text(
                                     "${res.details!.theaterName} || ${res.details!.theaterAddress}",
                                     style: _textTheme.titleSmall!
-                                        .copyWith(color: Colors.white),
+                                        // .copyWith(color: Colors.white),
+                                        .copyWith(
+                                      fontSize: 12,
+                                    ),
                                   ),
                                   Text(
                                     "${res.details!.showDate} || ${res.details!.showTime} || ${res.details!.duration}",
                                     style: _textTheme.titleMedium!
-                                        .copyWith(color: Colors.white),
+                                        // .copyWith(color: Colors.white),
+                                        .copyWith(
+                                      fontSize: 12,
+                                      color:
+                                          CustomTheme.darkGray.withOpacity(0.8),
+                                    ),
                                   ),
                                 ],
                               ),
@@ -138,10 +153,12 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                           ],
                         ),
                       ),
+                      const Divider(),
                       TimerScreen(
                         minutes: int.parse(res.details?.holdTime ?? "5"),
                       ),
-                      const Divider(),
+                      // const Divider(),
+                      SizedBox(height: 1.h),
                       Expanded(
                         child: CustomScrollView(
                           slivers: [
@@ -168,13 +185,54 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                       ),
                       Container(
                         width: double.infinity,
-                        padding: const EdgeInsets.all(8),
-                        margin: const EdgeInsets.symmetric(vertical: 8),
-                        color: Colors.lightBlue.shade200,
-                        child: Text(
-                          "Screen This Side",
-                          textAlign: TextAlign.center,
-                          style: _textTheme.titleSmall,
+                        height: 5.h,
+                        margin: const EdgeInsets.symmetric(
+                            vertical: 8, horizontal: 16),
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                            begin: Alignment.topCenter,
+                            end: Alignment.bottomCenter,
+                            colors: [
+                              Colors.lightBlue.shade200.withOpacity(0.7),
+                              Colors.lightBlue.shade200,
+                            ],
+                          ),
+                          borderRadius: const BorderRadius.only(
+                            bottomLeft: Radius.circular(100),
+                            bottomRight: Radius.circular(100),
+                          ),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withOpacity(0.1),
+                              blurRadius: 5,
+                              spreadRadius: 1,
+                              offset: const Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Container(
+                          decoration: const BoxDecoration(
+                            border: Border(
+                              bottom: BorderSide(
+                                color: Colors.white54,
+                                width: 1,
+                              ),
+                            ),
+                          ),
+                          child: Center(
+                            child: Transform.scale(
+                              scaleY: 0.9,
+                              child: Text(
+                                "Screen This Side",
+                                textAlign: TextAlign.center,
+                                style: _textTheme.titleSmall?.copyWith(
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500,
+                                  letterSpacing: 1.2,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                       Row(
@@ -202,6 +260,7 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 1.5.h),
                       if (selectedSeatList.isNotEmpty)
                         Container(
                           decoration: BoxDecoration(
@@ -210,58 +269,63 @@ class _MovieSeatWidgetState extends State<MovieSeatWidget> {
                               border:
                                   Border.all(color: CustomTheme.darkerBlack)),
                           width: double.infinity,
-                          child: ListTile(
-                            contentPadding: const EdgeInsets.all(8),
-                            leading: Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                const Text("Total"),
-                                Text(
-                                  "Rs $totalPrice",
-                                  style: _textTheme.titleLarge!
-                                      .copyWith(fontWeight: FontWeight.bold),
+                          child: Padding(
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 7.0),
+                            child: ListTile(
+                              contentPadding: const EdgeInsets.all(8),
+                              leading: Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  const Text("Total"),
+                                  Text(
+                                    "Rs $totalPrice",
+                                    style: _textTheme.titleLarge!
+                                        .copyWith(fontWeight: FontWeight.bold),
+                                  ),
+                                ],
+                              ),
+                              title: Column(
+                                children: [
+                                  const Text("Selected Seats: "),
+                                  Wrap(
+                                    children: List.generate(
+                                        selectedSeatList.length,
+                                        (index) => Text(
+                                              (selectedSeatList[index]
+                                                          ?.seatName ??
+                                                      "") +
+                                                  " ",
+                                              style: _textTheme.titleLarge!
+                                                  .copyWith(
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            )),
+                                  )
+                                ],
+                              ),
+                              trailing: InkWell(
+                                onTap: () {
+                                  NavigationService.push(
+                                      target: MovieBillPage(
+                                          totalAmount: totalPrice.toString(),
+                                          movieDetails: res.details,
+                                          selectedSeats: selectedSeatList));
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 16, horizontal: 26),
+                                  margin: const EdgeInsets.all(4),
+                                  child: Text(
+                                    "Book",
+                                    style: _textTheme.displaySmall!.copyWith(
+                                        color: CustomTheme.white, fontSize: 16),
+                                  ),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: CustomTheme.primaryColor),
                                 ),
-                              ],
-                            ),
-                            title: Column(
-                              children: [
-                                const Text("Selected Seats: "),
-                                Wrap(
-                                  children: List.generate(
-                                      selectedSeatList.length,
-                                      (index) => Text(
-                                            (selectedSeatList[index]
-                                                        ?.seatName ??
-                                                    "") +
-                                                " ",
-                                            style: _textTheme.titleLarge!
-                                                .copyWith(
-                                                    fontWeight:
-                                                        FontWeight.bold),
-                                          )),
-                                )
-                              ],
-                            ),
-                            trailing: InkWell(
-                              onTap: () {
-                                NavigationService.push(
-                                    target: MovieBillPage(
-                                        totalAmount: totalPrice.toString(),
-                                        movieDetails: res.details,
-                                        selectedSeats: selectedSeatList));
-                              },
-                              child: Container(
-                                padding: const EdgeInsets.all(16),
-                                margin: const EdgeInsets.all(4),
-                                child: Text(
-                                  "Book",
-                                  style: _textTheme.displaySmall!.copyWith(
-                                      color: CustomTheme.white, fontSize: 16),
-                                ),
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: CustomTheme.testAppColor),
                               ),
                             ),
                           ),

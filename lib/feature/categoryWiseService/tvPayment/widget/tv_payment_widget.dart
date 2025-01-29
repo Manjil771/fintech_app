@@ -33,6 +33,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
   String? selectedDistrictValue;
   String? selectedProvinceValue;
   bool _isLoading = false;
+  String _currentAmount = '';
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   // getAmount() {
   //   if (amountController.text.isEmpty) {
@@ -93,6 +94,7 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
         }
       },
       child: CommonContainer(
+        verificationAmount: _currentAmount,
         showRecentTransaction: true,
         associatedId: widget.service.id.toString(),
         showAccountSelection: true,
@@ -144,7 +146,9 @@ class _TvPaymentWidgetState extends State<TvPaymentWidget> {
               CommonAmountBox(
                 onChanged: (value) {
                   amountController.text = value;
-                  setState(() {});
+                  setState(() {
+                    _currentAmount = value;
+                  });
                 },
                 textController: amountController,
                 service: widget.service,

@@ -33,7 +33,6 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/ui/screens/load_wallet_
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-
 import '../../../common/http/response.dart';
 
 class QRScannerWidgets extends StatefulWidget {
@@ -311,8 +310,13 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                             children: [
                               Expanded(
                                 flex: 2,
-                                child: Image.asset(
-                                  "assets/images/ismart_logo_only.png",
+                                child: CustomCachedNetworkImage(
+                                  url: RepositoryProvider.of<CoOperative>(
+                                              context)
+                                          .baseUrl +
+                                      filteredItems.last.imageUrl
+                                          .toString(), // Access the last image
+                                  fit: BoxFit.fitHeight,
                                   height: 60.hp,
                                 ),
                               ),
@@ -466,13 +470,17 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ...List.generate(
-                              filteredItems.length,
+                              filteredItems.length - 1,
                               (index) => CustomCachedNetworkImage(
                                 url: RepositoryProvider.of<CoOperative>(context)
                                         .baseUrl +
                                     filteredItems[index].imageUrl.toString(),
                                 fit: BoxFit.fitHeight,
                               ),
+                            ),
+                            Image.asset(
+                              "assets/images/ismart_logo_only.png",
+                              fit: BoxFit.fitHeight,
                             ),
                           ],
                         ),
