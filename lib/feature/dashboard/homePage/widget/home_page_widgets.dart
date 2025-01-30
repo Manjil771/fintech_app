@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -6,6 +7,7 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/smart_chat_page.dart';
@@ -186,34 +188,46 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                 },
               ),
             ),
-            Positioned(
-              bottom: 10,
-              right: 0,
-              child: InkWell(
-                onTap: () {
-                  NavigationService.push(target: const SmartChatPage());
-                },
-                child: Container(
-                  width: 110,
-                  height: 110,
-                  decoration: const BoxDecoration(
-                    // shape: BoxShape.circle,
-                    color: Colors.transparent,
-                  ),
-                  // child: ClipOval(
-                  //   // child: Container(
-                  //   //   color: Colors.pink,
-                  //   // ),
-                  //   // child: Image.network(
-                  //   //   'https://example.com/your-custom-gif.gif', // Replace with your GIF URL
-                  //   //   fit: BoxFit.cover,
-                  //   // ),
+            FutureBuilder(
+                future: SharedPref.getChatBotVisibility(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  final isChatBotVisible = snapshot.data ?? true;
+                  return isChatBotVisible
+                      ? Positioned(
+                          bottom: 10,
+                          right: 0,
+                          child: InkWell(
+                            onTap: () {
+                              NavigationService.push(
+                                  target: const SmartChatPage());
+                            },
+                            child: Container(
+                              width: 110,
+                              height: 110,
+                              decoration: const BoxDecoration(
+                                // shape: BoxShape.circle,
+                                color: Colors.transparent,
+                              ),
+                              // child: ClipOval(
+                              //   // child: Container(
+                              //   //   color: Colors.pink,
+                              //   // ),
+                              //   // child: Image.network(
+                              //   //   'https://example.com/your-custom-gif.gif', // Replace with your GIF URL
+                              //   //   fit: BoxFit.cover,
+                              //   // ),
 
-                  // ),
-                  child: Image.asset('assets/images/smart_fuchee.png'),
-                ),
-              ),
-            ),
+                              // ),
+                              child:
+                                  Image.asset('assets/images/smart_fuchee.png'),
+                            ),
+                          ),
+                        )
+                      : const SizedBox.shrink();
+                }),
           ],
         ),
       ),

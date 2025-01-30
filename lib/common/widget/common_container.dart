@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
@@ -73,14 +74,22 @@ class CommonContainer extends StatefulWidget {
 
 class _CommonContainerState extends State<CommonContainer> {
   late DraggableScrollableController _controller;
-  static const double initialChildSize = 0.20;
-  static const double minChildSize = 0.06;
+  double initialChildSize = 0.20;
+  static const double minChildSize = 0.05;
   static const double maxChildSize = 0.9;
 
   @override
   void initState() {
     super.initState();
     _controller = DraggableScrollableController();
+    _setShowLength();
+  }
+
+  Future<void> _setShowLength() async {
+    final bool isCompact = await SharedPref.getRecentTransVisibility();
+    setState(() {
+      initialChildSize = isCompact ? 0.05 : 0.20;
+    });
   }
 
   @override
@@ -226,7 +235,7 @@ class _CommonContainerState extends State<CommonContainer> {
               maxChildSize: maxChildSize,
               controller: _controller,
               snap: true,
-              snapSizes: const [initialChildSize, maxChildSize],
+              snapSizes: [initialChildSize, maxChildSize],
               builder:
                   (BuildContext context, ScrollController scrollController) {
                 return Container(
@@ -252,15 +261,15 @@ class _CommonContainerState extends State<CommonContainer> {
                             children: [
                               Container(
                                 padding:
-                                    const EdgeInsets.symmetric(vertical: 10),
-                                child: Container(
-                                  height: 4,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300],
-                                    borderRadius: BorderRadius.circular(2),
-                                  ),
-                                ),
+                                    const EdgeInsets.symmetric(vertical: 3),
+                                // child: Container(
+                                //   height: 4,
+                                //   width: 40,
+                                //   decoration: BoxDecoration(
+                                //     color: Colors.grey[300],
+                                //     borderRadius: BorderRadius.circular(2),
+                                //   ),
+                                // ),
                               ),
                               Padding(
                                 padding: const EdgeInsets.symmetric(

@@ -77,6 +77,7 @@ class Assets {
   static const String menuIcon = "assets/icon/menu_icon.svg";
   static const String sortIcon = "assets/icons/Group 1100.svg";
   static const String resetPinIcon = "assets/icons/Reset password.svg";
+  static const String preference = "assets/icons/preference.svg";
 
 // send money
   static const String sendMoneyIcon =
@@ -88,6 +89,7 @@ class Assets {
 
   static const String emiCalculator = "assets/icons/EMI Calculator.svg";
   static const String downloadIcon = "assets/icons/Download.svg";
+  static const String transactionLimit = "assets/icons/transLimit.svg";
   static const String settingIcon = "assets/icons/settings-svgrepo-com 1.svg";
   static const String contactUsIcon = "assets/icons/Contact us.svg";
   static const String successIcon = "assets/icons/transaction_success.svg";
