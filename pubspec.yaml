@@ -161,7 +161,7 @@ flutter:
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
-    # - assets/automobiles/
+    - assets/automobiles/
     # - assets/chandani/
 
     # - assets/annapurna/
@@ -188,7 +188,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -406,7 +406,8 @@ flutter:
     # - assets/sandus/
     # - assets/kasturi/
     # - assets/ainchoPaincho/
-
+    # - assets/nepal/
+    # - assets/aniwarya/
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
@@ -425,7 +426,6 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
-    
 
   fonts:
     - family: popinbold

@@ -4508,7 +4508,8 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
     splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
     primaryColor: const Color(0xFF44b749),
-    coOperativeName: "Aincho Paincho Savings and Credit Co-operative Society Ltd.",
+    coOperativeName:
+        "Aincho Paincho Savings and Credit Co-operative Society Ltd.",
     appTitle: "Aincho Paincho iSmart",
   );
   static final CoOperative sandusCoop = CoOperative(
@@ -4525,7 +4526,7 @@ class CoOperativeValue {
     coOperativeName: "Sandus Saving & Credit Co-operative Ltd.",
     appTitle: "Sandus iSmart",
   );
-   static final CoOperative puimeCoop = CoOperative(
+  static final CoOperative puimeCoop = CoOperative(
     appStoreID: "com.devanasoft.puime",
     packageName: "com.devanasoft.puime",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4553,7 +4554,7 @@ class CoOperativeValue {
     coOperativeName: "Shikhardeep Saving and Credit Co-operative Society Ltd.",
     appTitle: "Shikhardeep iSmart",
   );
-   static final CoOperative kasturiCoop = CoOperative(
+  static final CoOperative kasturiCoop = CoOperative(
     appStoreID: "com.devanasoft.kasturi",
     packageName: "com.devanasoft.kasturi",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -4567,6 +4568,33 @@ class CoOperativeValue {
     coOperativeName: "Kasturi Saving & Credit Co-operative Ltd.",
     appTitle: "Kasturi iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative nepalCoop = CoOperative(
+    appStoreID: "com.devanasoft.nepal",
+    packageName: "com.devanasoft.nepal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nepal/nepal_banner.png",
+    backgroundImage: "assets/nepal/nepal_background.png",
+    clientCode: 'UFMGXC59V3',
+    clientSecret: "157346",
+    coOperativeLogo: 'assets/nepal/nepal_logo.png',
+    splashImage: "assets/nepal/nepal_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Nepal Co-operative Society Ltd.",
+    appTitle: "Nepal Co-operative iSmart",
+  );
+  static final CoOperative aniwaryaCoop = CoOperative(
+    appStoreID: "com.devanasoft.aniwarya",
+    packageName: "com.devanasoft.aniwarya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aniwarya/aniwarya_banner.png",
+    backgroundImage: "assets/aniwarya/aniwarya_background.png",
+    clientCode: '34GE6LQLL8',
+    clientSecret: "176483",
+    coOperativeLogo: 'assets/aniwarya/aniwarya_logo.png',
+    splashImage: "assets/aniwarya/aniwarya_splash.png",
+    primaryColor: const Color(0xFF144e27),
+    coOperativeName: "Aniwarya Saving & Credit Co-operative Limited.",
+    appTitle: "Aniwarya iSmart",
+  );
+  static final CoOperative currentCoop = automobiles;
 }
-
