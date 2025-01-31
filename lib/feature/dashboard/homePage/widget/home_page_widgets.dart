@@ -197,7 +197,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   final isChatBotVisible = snapshot.data ?? true;
                   return isChatBotVisible
                       ? Positioned(
-                          bottom: 10,
+                          bottom: 0,
                           right: 0,
                           child: InkWell(
                             onTap: () {
@@ -205,24 +205,23 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   target: const SmartChatPage());
                             },
                             child: Container(
-                              width: 110,
-                              height: 110,
+                              width: 70,
+                              height: 70,
                               decoration: const BoxDecoration(
-                                // shape: BoxShape.circle,
+                                shape: BoxShape.circle,
                                 color: Colors.transparent,
                               ),
-                              // child: ClipOval(
-                              //   // child: Container(
-                              //   //   color: Colors.pink,
-                              //   // ),
-                              //   // child: Image.network(
-                              //   //   'https://example.com/your-custom-gif.gif', // Replace with your GIF URL
-                              //   //   fit: BoxFit.cover,
-                              //   // ),
-
-                              // ),
-                              child:
-                                  Image.asset('assets/images/smart_fuchee.png'),
+                              child: ClipOval(
+                                // child: Container(
+                                //   color: Colors.pink,
+                                // ),
+                                child: Image.asset(
+                                  'assets/images/ismart_logo_only.png',
+                                  fit: BoxFit.cover,
+                                ),
+                              ),
+                              // child:
+                              //     Image.asset('assets/images/smart_fuchee.png'),
                             ),
                           ),
                         )

@@ -71,7 +71,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
         },
         child: CommonContainer(
           onRecentTransactionPressed: (p0) {
-            NavigationService.pop();
+            //  NavigationService.pop();
             _amountController.text = p0.amount.toString();
             _mobileNumberController.text = p0.serviceTo;
             setState(() {});

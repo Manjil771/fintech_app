@@ -314,7 +314,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   : NavigationService.pop();
             },
             onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
+              //NavigationService.pop();
               bankNameRecentTransaction =
                   p0.requestDetail.destinationBankName.toString();
               _accountNameController.text =

@@ -15,6 +15,7 @@ import 'package:ismart/feature/appContact/resources/app_contact_repository.dart'
 import 'package:ismart/feature/more/authenticationScreen/biometric_screen.dart';
 import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
+import 'package:ismart/feature/more/transactionLimit/transaction_limit_widget.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
@@ -127,7 +128,9 @@ class _MoreWidgetState extends State<MoreWidget> {
           },
         ));
       },
-      () {},
+      () {
+        NavigationService.push(target: const TransactionLimitWidget());
+      },
       () {
         NavigationService.push(target: const CalculatorScreen());
       },

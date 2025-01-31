@@ -136,7 +136,7 @@ class _KuklPaymentWidgetState extends State<KuklPaymentWidget> {
         },
         child: CommonContainer(
             onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
+              // NavigationService.pop();
               selectedCounterValue = p0.requestDetail.counterCode.toString();
               _selectedCounterController.text =
                   p0.requestDetail.counterCode.toString();
