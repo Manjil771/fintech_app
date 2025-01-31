@@ -220,8 +220,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   fit: BoxFit.cover,
                                 ),
                               ),
-                              // child:
-                              //     Image.asset('assets/images/smart_fuchee.png'),
                             ),
                           ),
                         )

@@ -322,6 +322,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               _accountNumberController.text =
                   p0.requestDetail.destinationAccountNumber.toString();
               _amountController.text = p0.amount.toString();
+              _currentAmount = p0.amount.toString();
               _remarksController.text = p0.customerRemarks.toString();
               setState(() {});
             },
