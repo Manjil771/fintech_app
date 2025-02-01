@@ -67,6 +67,7 @@ class _MoreWidgetState extends State<MoreWidget> {
   final List<String> itemImage = [
     Assets.fingerPrintImage,
     "assets/icons/pin-code-svgrepo-com 1.svg",
+    Assets.transactionLimit,
     Assets.discountCalculator,
     Assets.downloadIcon,
     Assets.contactUsIcon,
@@ -77,6 +78,7 @@ class _MoreWidgetState extends State<MoreWidget> {
   final List names = [
     "Biometric",
     "Change Security Pin",
+    "Transaction Limits",
     "Calculator",
     "Downloads",
     "Support",
@@ -125,6 +127,7 @@ class _MoreWidgetState extends State<MoreWidget> {
           },
         ));
       },
+      () {},
       () {
         NavigationService.push(target: const CalculatorScreen());
       },

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -6,8 +7,10 @@ import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/chatBot/smart_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
@@ -67,74 +70,32 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         onRefresh: () async {
           NavigationService.pushReplacement(target: const DashboardPage());
         },
-        child: SingleChildScrollView(
-          child: ValueListenableBuilder<CustomerDetailModel?>(
-              valueListenable: customerDetail,
-              builder: (context, val, _) {
-                return Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const HomePageUserWidget(),
-                    SizedBox(height: _height * 0.02),
-                    if ((val?.instaLoanEnable ?? false) == true)
-                      const SmartLoanBannerWidget(),
-                    if (_shouldShowDifferentMenu)
-                      Container(
-                          height: 120.hp, child: const HomePageMoneyPage()),
-                    if (!_shouldShowDifferentMenu)
-                      Row(
-                        children: [
-                          Expanded(
-                              child: InkWell(
-                            borderRadius: BorderRadius.circular(12),
-                            onTap: () {
-                              NavigationService.pushNamed(
-                                routeName: Routes.loadFromKhalti,
-                              );
-                            },
-                            child: Container(
-                              alignment: Alignment.center,
-                              padding: const EdgeInsets.symmetric(vertical: 7),
-                              decoration: BoxDecoration(
-                                  boxShadow: [
-                                    BoxShadow(
-                                      color: Colors.grey.withOpacity(0.3),
-                                      offset: const Offset(7, 7),
-                                      blurRadius: 8,
-                                      spreadRadius: -5,
-                                    ),
-                                  ],
-                                  color: CustomTheme.white,
-                                  borderRadius: BorderRadius.circular(8)),
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  CircleAvatar(
-                                    backgroundColor:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    child: SvgPicture.asset(
-                                      Assets.reveiceMoneyIcon,
-                                      height: 18.hp,
-                                      color: _theme.primaryColor,
-                                    ),
-                                  ),
-                                  SizedBox(width: _width * 0.02),
-                                  Text(
-                                    "Receive",
-                                    style: _textTheme.titleLarge!
-                                        .copyWith(fontSize: 12),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          )),
-                          SizedBox(width: _width * 0.1),
-                          Expanded(
-                            child: InkWell(
+        child: Stack(
+          children: [
+            SingleChildScrollView(
+              child: ValueListenableBuilder<CustomerDetailModel?>(
+                valueListenable: customerDetail,
+                builder: (context, val, _) {
+                  return Column(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      const HomePageUserWidget(),
+                      SizedBox(height: _height * 0.02),
+                      if ((val?.instaLoanEnable ?? false) == true)
+                        const SmartLoanBannerWidget(),
+                      if (_shouldShowDifferentMenu)
+                        Container(
+                            height: 120.hp, child: const HomePageMoneyPage()),
+                      if (!_shouldShowDifferentMenu)
+                        Row(
+                          children: [
+                            Expanded(
+                                child: InkWell(
                               borderRadius: BorderRadius.circular(12),
                               onTap: () {
                                 NavigationService.pushNamed(
-                                    routeName: Routes.sendMoney);
+                                  routeName: Routes.loadFromKhalti,
+                                );
                               },
                               child: Container(
                                 alignment: Alignment.center,
@@ -158,28 +119,116 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       backgroundColor:
                                           _theme.primaryColor.withOpacity(0.05),
                                       child: SvgPicture.asset(
-                                        Assets.sendMoneyIcon,
-                                        height: 22.hp,
+                                        Assets.reveiceMoneyIcon,
+                                        height: 18.hp,
                                         color: _theme.primaryColor,
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
                                     Text(
-                                      "Send",
+                                      "Receive",
                                       style: _textTheme.titleLarge!
                                           .copyWith(fontSize: 12),
                                     ),
                                   ],
                                 ),
                               ),
+                            )),
+                            SizedBox(width: _width * 0.1),
+                            Expanded(
+                              child: InkWell(
+                                borderRadius: BorderRadius.circular(12),
+                                onTap: () {
+                                  NavigationService.pushNamed(
+                                      routeName: Routes.sendMoney);
+                                },
+                                child: Container(
+                                  alignment: Alignment.center,
+                                  padding:
+                                      const EdgeInsets.symmetric(vertical: 7),
+                                  decoration: BoxDecoration(
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color: Colors.grey.withOpacity(0.3),
+                                          offset: const Offset(7, 7),
+                                          blurRadius: 8,
+                                          spreadRadius: -5,
+                                        ),
+                                      ],
+                                      color: CustomTheme.white,
+                                      borderRadius: BorderRadius.circular(8)),
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      CircleAvatar(
+                                        backgroundColor: _theme.primaryColor
+                                            .withOpacity(0.05),
+                                        child: SvgPicture.asset(
+                                          Assets.sendMoneyIcon,
+                                          height: 22.hp,
+                                          color: _theme.primaryColor,
+                                        ),
+                                      ),
+                                      SizedBox(width: _width * 0.02),
+                                      Text(
+                                        "Send",
+                                        style: _textTheme.titleLarge!
+                                            .copyWith(fontSize: 12),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      const HomePageTabbarWidget(),
+                    ],
+                  );
+                },
+              ),
+            ),
+            FutureBuilder(
+                future: SharedPref.getChatBotVisibility(),
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const CircularProgressIndicator();
+                  }
+                  final isChatBotVisible = snapshot.data ?? true;
+                  return isChatBotVisible
+                      ? Positioned(
+                          bottom: 10,
+                          right: 0,
+                          child: InkWell(
+                            onTap: () {
+                              NavigationService.push(
+                                  target: const SmartChatPage());
+                            },
+                            child: Container(
+                              width: 110,
+                              height: 110,
+                              decoration: const BoxDecoration(
+                                // shape: BoxShape.circle,
+                                color: Colors.transparent,
+                              ),
+                              // child: ClipOval(
+                              //   // child: Container(
+                              //   //   color: Colors.pink,
+                              //   // ),
+                              //   // child: Image.network(
+                              //   //   'https://example.com/your-custom-gif.gif', // Replace with your GIF URL
+                              //   //   fit: BoxFit.cover,
+                              //   // ),
+
+                              // ),
+                              child:
+                                  Image.asset('assets/images/smart_fuchee.png'),
                             ),
                           ),
-                        ],
-                      ),
-                    const HomePageTabbarWidget(),
-                  ],
-                );
-              }),
+                        )
+                      : const SizedBox.shrink();
+                }),
+          ],
         ),
       ),
     );

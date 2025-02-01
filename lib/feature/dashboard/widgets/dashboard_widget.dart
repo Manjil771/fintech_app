@@ -522,6 +522,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                   return Future.value(true);
                 },
                 child: PageWrapper(
+                  showChatBot: true,
                   body: PageView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       itemBuilder: (context, index) {

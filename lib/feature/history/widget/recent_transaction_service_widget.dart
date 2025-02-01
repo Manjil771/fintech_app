@@ -128,6 +128,7 @@ class _RecentTransactionServiceWidgetState
         } else {
           return const Center(
             child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(
                   Icons.history,

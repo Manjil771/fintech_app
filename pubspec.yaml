@@ -24,7 +24,7 @@ dependencies:
   rxdart: "^0.27.7"
   logger: "^2.2.0"
   dio: "^5.4.2+1"
-  shared_preferences: "^2.0.13"
+  shared_preferences: "^2.0.13" ##use this to make setttings
   easy_localization: "^3.0.3"
   path_provider: "^2.1.4"
   open_filex: "^4.2.2"
