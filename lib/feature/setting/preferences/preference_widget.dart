@@ -13,29 +13,29 @@ class PreferenceWidget extends StatefulWidget {
 
 class _PreferenceWidgetState extends State<PreferenceWidget> {
   bool _isChatBotVisible = true;
-  bool _transactionLow = false;
+  // bool _transactionLow = false;
 
   @override
   void initState() {
     super.initState();
     _loadChatBotVisibility();
-    _loadcompactListVisibility();
+    // _loadcompactListVisibility();
   }
 
   // For transacation list compactness
-  Future<void> _loadcompactListVisibility() async {
-    final isCompact = await SharedPref.getRecentTransVisibility();
-    setState(() {
-      _transactionLow = isCompact;
-    });
-  }
+  // Future<void> _loadcompactListVisibility() async {
+  //   final isCompact = await SharedPref.getRecentTransVisibility();
+  //   setState(() {
+  //     _transactionLow = isCompact;
+  //   });
+  // }
 
-  Future<void> _compactListVisibility(bool value) async {
-    await SharedPref.setRecentTransVisibility(value);
-    setState(() {
-      _transactionLow = value;
-    });
-  }
+  // Future<void> _compactListVisibility(bool value) async {
+  //   await SharedPref.setRecentTransVisibility(value);
+  //   setState(() {
+  //     _transactionLow = value;
+  //   });
+  // }
 
 // for ChatBot visibility
   Future<void> _loadChatBotVisibility() async {
@@ -80,23 +80,23 @@ class _PreferenceWidgetState extends State<PreferenceWidget> {
                     _toggleChatBotVisibility(value);
                   }),
               const Divider(),
-              SwitchListTile(
-                  //  activeColor: CustomTheme.primaryColor.withOpacity(.9),
-                  activeTrackColor: CustomTheme.primaryColor,
-                  // inactiveThumbColor: CustomTheme.darkGray,
+              // SwitchListTile(
+              //     //  activeColor: CustomTheme.primaryColor.withOpacity(.9),
+              //     activeTrackColor: CustomTheme.primaryColor,
+              //     // inactiveThumbColor: CustomTheme.darkGray,
 
-                  // hoverColor: CustomTheme.primaryColor,
-                  title: const Text(
-                    'Transaction Compact View',
-                    style: TextStyle(
-                        fontSize: 15,
-                        fontWeight: FontWeight.w500,
-                        color: CustomTheme.lightTextColor),
-                  ),
-                  value: _transactionLow,
-                  onChanged: (value) {
-                    _compactListVisibility(value);
-                  }),
+              //     // hoverColor: CustomTheme.primaryColor,
+              //     title: const Text(
+              //       'Transaction Compact View',
+              //       style: TextStyle(
+              //           fontSize: 15,
+              //           fontWeight: FontWeight.w500,
+              //           color: CustomTheme.lightTextColor),
+              //     ),
+              //     value: _transactionLow,
+              //     onChanged: (value) {
+              //       _compactListVisibility(value);
+              //     }),
             ],
           ),
         ),

@@ -14,7 +14,7 @@ class SharedPref {
 
   static const _rememberNumber = "rememberNumber";
   static const showChatBot = "ChatBot";
-  static const showRecentTrans = "ShowTrans";
+  // static const showRecentTrans = "ShowTrans";
   static const _biometricLogin = "biometricLogin";
   static const _deviceUUID = "deviceUUID";
   static const _downloadedFilesList = "downloadedFilesList";
@@ -204,7 +204,7 @@ class SharedPref {
 
   static Future<bool> getChatBotVisibility() async {
     final _instance = await SharedPreferences.getInstance();
-    return _instance.getBool(showChatBot) ?? true;
+    return _instance.getBool(showChatBot) ?? false;
   }
 
   static Future<void> toggleChatBotVisibility() async {
@@ -213,18 +213,18 @@ class SharedPref {
   }
 
   //for RecentTransaction Height Toggle
-  static Future<void> setRecentTransVisibility(bool isVisible) async {
-    final _instance = await SharedPreferences.getInstance();
-    await _instance.setBool(showRecentTrans, isVisible);
-  }
+  // static Future<void> setRecentTransVisibility(bool isVisible) async {
+  //   final _instance = await SharedPreferences.getInstance();
+  //   await _instance.setBool(showRecentTrans, isVisible);
+  // }
 
-  static Future<bool> getRecentTransVisibility() async {
-    final _instance = await SharedPreferences.getInstance();
-    return _instance.getBool(showRecentTrans) ?? false;
-  }
+  // static Future<bool> getRecentTransVisibility() async {
+  //   final _instance = await SharedPreferences.getInstance();
+  //   return _instance.getBool(showRecentTrans) ?? false;
+  // }
 
-  static Future<void> toggleRecentTransVisibility() async {
-    final isVisible = await getChatBotVisibility();
-    await setChatBotVisibility(!isVisible);
-  }
+  // static Future<void> toggleRecentTransVisibility() async {
+  //   final isVisible = await getChatBotVisibility();
+  //   await setChatBotVisibility(!isVisible);
+  // }
 }

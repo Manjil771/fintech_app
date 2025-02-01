@@ -40,7 +40,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
     return PageWrapper(
       body: CommonContainer(
         onRecentTransactionPressed: (p0) {
-          NavigationService.pop();
+          // NavigationService.pop();
           _selectedCounterController.text =
               p0.requestDetail.officeCode.toString();
           recentTransactionOfficeCode = p0.requestDetail.officeCode.toString();

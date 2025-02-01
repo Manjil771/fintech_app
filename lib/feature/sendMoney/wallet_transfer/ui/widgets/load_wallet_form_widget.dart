@@ -189,7 +189,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
         child: CommonContainer(
           verificationAmount: _currentAmount,
           onRecentTransactionPressed: (p0) {
-            NavigationService.pop();
+            // NavigationService.pop();
 
             // widget.selectedWallet =
             // p0.requestDetail.destinationBankName.toString();

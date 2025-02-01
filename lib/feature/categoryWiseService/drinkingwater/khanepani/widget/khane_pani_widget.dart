@@ -160,7 +160,7 @@ class _KhanePaniWidgetState extends State<KhanePaniWidget> {
         },
         child: CommonContainer(
             onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
+              // NavigationService.pop();
               _customerIdController.text =
                   p0.requestDetail.serviceTo.toString();
               recentTransactionCounterCode =
