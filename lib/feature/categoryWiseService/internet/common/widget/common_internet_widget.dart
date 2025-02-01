@@ -37,6 +37,7 @@ class _CommonFindInternetUserWidgetState
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   bool _isLoading = false;
+  String _currentAmount = '';
 
   @override
   Widget build(BuildContext context) {
@@ -90,6 +91,7 @@ class _CommonFindInternetUserWidgetState
         child: Form(
           key: _formKey,
           child: CommonContainer(
+            verificationAmount: _currentAmount,
             showRecentTransaction: true,
             associatedId: widget.service.id.toString(),
             showDetail: true,
@@ -164,6 +166,11 @@ class _CommonFindInternetUserWidgetState
                         controller: _amountController,
                         title: "Amount",
                         hintText: "NPR",
+                        onChanged: (value) {
+                          setState(() {
+                            _currentAmount = value;
+                          });
+                        },
                         validator: (value) => FormValidator.validateAmount(
                             val: value.toString(),
                             minAmount: widget.service.minValue,
