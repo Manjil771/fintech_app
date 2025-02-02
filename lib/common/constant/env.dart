@@ -4596,5 +4596,5 @@ class CoOperativeValue {
     coOperativeName: "Aniwarya Saving & Credit Co-operative Limited.",
     appTitle: "Aniwarya iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = bhaktapurSaccos;
 }

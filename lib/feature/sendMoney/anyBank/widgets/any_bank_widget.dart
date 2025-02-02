@@ -533,10 +533,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               decimal: true),
                           controller: _amountController,
                           onChanged: (val) {
-                            _currentAmount = val;
+                            print("this is amount$_currentAmount");
+                            setState(() {
+                              _currentAmount = val;
+                            });
+
                             if (val != _amountController.text) {
                               charges = null;
-                              setState(() {});
+
+                              // setState(() {
+                              //   _currentAmount = val;
+                              // });
                             }
                           },
                           validator: (value) => FormValidator.validateAmount(

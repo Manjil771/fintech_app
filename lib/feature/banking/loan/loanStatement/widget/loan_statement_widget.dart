@@ -28,6 +28,9 @@ class LoanStatementWidget extends StatefulWidget {
 class _LoanStatementWidgetState extends State<LoanStatementWidget> {
   DateTime fromDate = DateTime.now().subtract(const Duration(days: 30));
   DateTime toDate = DateTime.now();
+  final _width = SizeUtils.width;
+    final _height = SizeUtils.height;
+     bool sortList = false;
   @override
   void initState() {
     fetchLoanStatement(
@@ -56,16 +59,18 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
   bool showInterestRate = false;
 
   List<Map<String, dynamic>> allData = [
-    {"key": "tranDate", "title": "Txn Date"},
+    {"key": "tranDate", "title": "Tran Date"},
     {"key": "interestDate", "title": "Interest Date"},
-    {"key": "statementReference", "title": "Description"},
+    {"key": "description", "title": "Description"},
     {"key": "issuedAmount", "title": "Issued Amount"},
-    {"key": "payment", "title": "Payment"},
-    {"key": "principal", "title": "Principal"},
+    {"key": "principalDebit", "title": "Principal Debit"},
+    {"key": "principalCredit", "title": "Principal Credit"},
+    {"key": "principle balance", "title": "Balance"},
     {"key": "interest", "title": "Interest"},
-    {"key": "fine", "title": "Fine"},
-    {"key": "discount", "title": "Discount"},
-    {"key": "balance", "title": "Balance"}
+    {"key": "rebate", "title": "Rebate"},
+    {"key": "penalty", "title": "Penalty"},
+    // {"key": "discount", "title": "Discount"},
+    {"key": "payment", "title": "Payment"}
   ];
 
   @override
@@ -80,52 +85,61 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
         topbarName: "Loan Statement",
         showRoundBotton: false,
         body: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              height: 40.hp,
+              height: _height * 0.05,
               child: Row(
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
                   Row(
                     children: List.generate(
                       predefinedPeriods.length,
-                      (index) => predefinedPeriodButton(
-                        predefinedPeriods[index],
-                        currentIndex == index,
+                      (index) => Padding(
+                        padding: const EdgeInsets.only(right: 4.0,left: 4),
+                        child: predefinedPeriodButton(
+                          predefinedPeriods[index],
+                          currentIndex == index,
+                        ),
                       ),
                     ),
                   ),
-                  InkWell(
-                    onTap: showFilterDialog,
-                    child: Container(
-                      height: 40.hp,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(6),
-                        border: Border.all(
-                          color: currentIndex == -1
-                              ? _theme.primaryColor
-                              : Colors.black54,
+                  Padding(
+                    padding: const EdgeInsets.only(left: 4.0),
+                    child: InkWell(
+                      onTap: showFilterDialog,
+                      child: Container(
+                        
+                        width: _width * 0.2,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(8),
+                          border: Border.all(
+                            color: currentIndex == -1
+                                ? _theme.primaryColor
+                                : Colors.black54,
+                          ),
                         ),
-                      ),
-                      margin: const EdgeInsets.only(left: 5),
-                      padding: const EdgeInsets.all(4),
-                      child: Row(
-                        children: [
-                          Text(
-                            "Filter",
-                            style: _textTheme.labelLarge!.copyWith(
-                              color: currentIndex == -1
-                                  ? _theme.primaryColor
-                                  : Colors.black54,
-                              fontWeight: FontWeight.bold,
+                        
+                        padding: const EdgeInsets.all(4),
+                        child: Row(
+                          children: [
+                            Text(
+                              "Filter",
+                              style: _textTheme.labelLarge!.copyWith(
+                                color: currentIndex == -1
+                                    ? _theme.primaryColor
+                                    : Colors.black54,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                          SizedBox(width: 20.wp),
-                          SvgPicture.asset(
-                            Assets.filterIcon,
-                            height: 25.hp,
-                          ),
-                        ],
+                            SizedBox(width: 10.wp),
+                            SvgPicture.asset(
+                              Assets.filterIcon,
+                              height: 25.hp,
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
@@ -161,36 +175,66 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                       ? Column(
                           children: [
                             if (response.detail.isNotEmpty)
-                              InkWell(
-                                onTap: () {
-                                  FileDownloadUtils.downloadFile(
-                                    downloadLink:
-                                        RepositoryProvider.of<CoOperative>(
-                                                    context)
-                                                .baseUrl +
-                                            response.detail,
-                                    fileName: FileDownloadUtils
-                                        .generateDownloadFileName(
-                                      name: "Loan Statement",
-                                      filetype: FileType.pdf,
-                                    ),
-                                    context: context,
-                                  );
-                                },
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: SvgPicture.asset(
-                                    Assets.downloadBorderIcon,
-                                    height: 20.hp,
-                                  ),
-                                ),
+                              Row(
+                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                children: [
+                                  InkWell(
+                                    onTap: () {
+                                      FileDownloadUtils.downloadFile(
+                                        downloadLink:
+                                            RepositoryProvider.of<CoOperative>(
+                                                        context)
+                                                    .baseUrl +
+                                                response.detail,
+                                        fileName: FileDownloadUtils
+                                            .generateDownloadFileName(
+                                          name: "Loan Statement",
+                                          filetype: FileType.pdf,
+                                        ),
+                                        context: context,
+                                      );
+                                    },
+                                    child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.end,
+                                    children: [
+                                      Text(
+                                        "Download  ",
+                                        style: _textTheme.labelLarge!
+                                            .copyWith(fontWeight: FontWeight.bold),
+                                      ),
+                                      SvgPicture.asset(
+                                        Assets.downloadIcon,
+                                        height: 20.hp,
+                                      ),
+                                    ],
+                                  )),
+                                  const Spacer(),
+                          Text(
+                            "Sorting",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12,
+                                letterSpacing: 0.3,
+                                color: CustomTheme.primaryColor),
+                          ),
+                          Switch(
+                            activeColor: CustomTheme.primaryColor,
+                            value: sortList,
+                            onChanged: (value) {
+                              setState(() {
+                                sortList = !sortList;
+                              });
+                            },
+                          ),
+                                ],
                               ),
+                               
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: DataTable(
                                 headingRowColor: MaterialStatePropertyAll(
                                     _theme.primaryColor.withOpacity(0.05)),
-                                columnSpacing: 10,
+                                columnSpacing: _width / 5,
                                 columns: [
                                   const DataColumn(label: Text('SN')),
                                   ...availableValues.map((e) =>

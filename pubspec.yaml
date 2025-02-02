@@ -102,7 +102,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/bhaktapur_saccos/
+    - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -161,7 +161,7 @@ flutter:
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
-    - assets/automobiles/
+    # - assets/automobiles/
     # - assets/chandani/
 
     # - assets/annapurna/
