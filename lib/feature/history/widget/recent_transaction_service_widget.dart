@@ -18,6 +18,7 @@ class RecentTransactionServiceWidget extends StatefulWidget {
   final String associatedId;
   final String service;
   final String serviceId;
+  final VoidCallback onListTap;
 
   final Function(RecentTransactionModel) onRecentTransactionPressed;
 
@@ -27,6 +28,7 @@ class RecentTransactionServiceWidget extends StatefulWidget {
       required this.associatedId,
       required this.service,
       required this.onRecentTransactionPressed,
+      required this.onListTap,
       required this.serviceId})
       : super(key: key);
 
@@ -91,6 +93,7 @@ class _RecentTransactionServiceWidgetState
                   final _detail = state.data[index];
                   return TransactionDetailBoxService(
                     onClickAction: () {
+                      widget.onListTap();
                       widget.onRecentTransactionPressed(_detail);
                     },
                     recentTransactionModel: _detail,

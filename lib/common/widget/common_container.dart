@@ -294,6 +294,13 @@ class _CommonContainerState extends State<CommonContainer> {
                           service: widget.serviceName,
                           serviceCategoryId: widget.serviceCategoryId,
                           associatedId: widget.associatedId,
+                          onListTap: () {
+                            _controller.animateTo(
+                              initialChildSize,
+                              duration: const Duration(milliseconds: 300),
+                              curve: Curves.easeInOut,
+                            );
+                          },
                         ),
                       ),
                     ],
