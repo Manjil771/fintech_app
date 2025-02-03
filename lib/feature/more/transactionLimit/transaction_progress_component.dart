@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -46,7 +47,7 @@ class _TransactionProgressComponentState
 
   Widget _buildExpandedContent(UtilityResponseData response) {
     return Padding(
-      padding: const EdgeInsets.only(top: 15, bottom: 16),
+      padding: const EdgeInsets.only(top: 15, bottom: 10),
       child: Column(
         children: [
           Row(
@@ -88,12 +89,12 @@ class _TransactionProgressComponentState
                   remainLimit: "Remaining Amount Transfer",
                   remainLimitVal:
                       "NPR ${response.detail["remainingDailyAmount"].toString()}",
-                  // percent: convertToFraction(
-                  //   double.parse(
-                  //       response.detail["dailyAmountLimit"].toString()),
-                  //   double.parse(response.detail["usedDailyAmount"].toString()),
-                  // ),
-                  percent: .4,
+                  percent: convertToFraction(
+                    double.parse(
+                        response.detail["dailyAmountLimit"].toString()),
+                    double.parse(response.detail["usedDailyAmount"].toString()),
+                  ),
+                  // percent: .4,
                   color: CustomTheme.primaryColor,
                   // color: CustomTheme.white,
                 ),
@@ -116,13 +117,13 @@ class _TransactionProgressComponentState
                   remainLimit: "Remaining Amount Transfer",
                   remainLimitVal:
                       "NPR ${response.detail["remainingMonthlyAmount"].toString()}",
-                  // percent: convertToFraction(
-                  //   double.parse(
-                  //       response.detail["monthlyAmountLimit"].toString()),
-                  //   double.parse(
-                  //       response.detail["usedMonthlyAmount"].toString()),
-                  // ),
-                  percent: .6,
+                  percent: convertToFraction(
+                    double.parse(
+                        response.detail["monthlyAmountLimit"].toString()),
+                    double.parse(
+                        response.detail["usedMonthlyAmount"].toString()),
+                  ),
+                  // percent: .6,
                   color: CustomTheme.primaryColor,
                   //color: CustomTheme.white,
                 ),
@@ -163,6 +164,32 @@ class _TransactionProgressComponentState
                 )
               ],
             ),
+          ),
+          const SizedBox(
+            height: 15,
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              const SizedBox(
+                width: 7,
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(5),
+                    color: Colors.transparent,
+                    border: Border.all(
+                      color: Colors.grey.withOpacity(.5),
+                    )),
+                alignment: Alignment.center,
+                height: 20,
+                width: 220,
+                child: Text(
+                  "Daily Transaction Limit: ${response.detail['perTransactionLimit']}",
+                  style: const TextStyle(color: Colors.black54),
+                ),
+              ),
+            ],
           )
         ],
       ),
@@ -246,39 +273,93 @@ class _TransactionProgressComponentState
                 padding: const EdgeInsets.symmetric(vertical: 5.0),
                 child: SizedBox(
                   width: double.infinity,
-                  child: Column(
-                    mainAxisSize: MainAxisSize.min,
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Text(
-                        widget.title,
-                        style: const TextStyle(fontSize: 20),
-                      ),
-                      if (limitData != null)
-                        AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 300),
-                          transitionBuilder:
-                              (Widget child, Animation<double> animation) {
-                            return SizeTransition(
-                              sizeFactor: animation,
-                              axisAlignment: -1.0,
-                              child: FadeTransition(
-                                opacity: animation,
-                                child: child,
-                              ),
-                            );
-                          },
-                          child: _isExpanded
-                              ? KeyedSubtree(
-                                  key: const ValueKey<String>('expanded'),
-                                  child: _buildExpandedContent(limitData),
-                                )
-                              : const SizedBox.shrink(
-                                  key: ValueKey<String>('collapsed'),
-                                ),
+                  child: Stack(children: [
+                    Positioned(
+                      right: 20,
+                      child: Container(
+                        alignment: AlignmentDirectional.topEnd,
+                        width: 20,
+                        height: 20,
+                        // color: Colors.pink,
+                        child: Icon(
+                          _isExpanded
+                              ? Icons.keyboard_arrow_up_rounded
+                              : Icons.keyboard_arrow_down_rounded,
+                          color: Colors.black45,
                         ),
-                    ],
-                  ),
+                      ),
+                    ),
+                    Column(
+                      mainAxisSize: MainAxisSize.min,
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Text(
+                          widget.title,
+                          style: const TextStyle(
+                              fontWeight: FontWeight.bold,
+                              fontSize: 16,
+                              color: Color(0xff1c1c1c)),
+                        ),
+                        Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Container(
+                                width: 90,
+                                height: 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color:
+                                      CustomTheme.primaryColor.withOpacity(.7),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 3,
+                              ),
+                              Container(
+                                width: 5,
+                                height: 3,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(4),
+                                  color:
+                                      CustomTheme.primaryColor.withOpacity(.7),
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                        // Divider(
+                        //   color: CustomTheme.primaryColor,
+                        // ),
+                        if (limitData != null)
+                          AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 300),
+                            transitionBuilder:
+                                (Widget child, Animation<double> animation) {
+                              return SizeTransition(
+                                sizeFactor: animation,
+                                axisAlignment: -1.0,
+                                child: FadeTransition(
+                                  opacity: animation,
+                                  child: child,
+                                ),
+                              );
+                            },
+                            child: _isExpanded
+                                ? KeyedSubtree(
+                                    key: const ValueKey<String>('expanded'),
+                                    child: _buildExpandedContent(limitData),
+                                  )
+                                : const SizedBox.shrink(
+                                    key: ValueKey<String>('collapsed'),
+                                  ),
+                          ),
+                      ],
+                    ),
+                  ]),
                 ),
               ),
             ),

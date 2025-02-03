@@ -4497,5 +4497,19 @@ class CoOperativeValue {
     coOperativeName: "Kishan Kalyan Savings & Credit Co-operative Ltd.",
     appTitle: "Kishan Kalyan iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative jmcCoop = CoOperative(
+    appStoreID: "com.devanasoft.jmc",
+    packageName: "com.devanasoft.jmc",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jmc/jmc_banner.png",
+    backgroundImage: "assets/jmc/jmc_background.png",
+    clientCode: 'V32TVBCZ6R',
+    clientSecret: "139453",
+    coOperativeLogo: 'assets/jmc/jmc_logo.png',
+    splashImage: "assets/jmc/jmc_splash.png",
+    primaryColor: const Color(0xFF00984a),
+    coOperativeName: "JMC Saving & Credit Co-operative Ltd.",
+    appTitle: "JMC iSmart",
+  );
+  static final CoOperative currentCoop = shreeKalideviCoop;
 }

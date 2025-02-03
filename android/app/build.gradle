@@ -1944,6 +1944,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        jmc {
+            dimension "app"
+            applicationId "com.devanasoft.jmc"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

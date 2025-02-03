@@ -171,7 +171,7 @@ flutter:
     # - assets/golden/
     # - assets/nayan/
     # - assets/rithepani/
-    # - assets/shreeSubhakamana/
+    - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
     # - assets/aarati/
@@ -189,7 +189,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -214,7 +214,7 @@ flutter:
     # - assets/eastwest/
     # - assets/babira/
     # - assets/ektaMultipurpose/
-    - assets/sarbahitDang/
+    # - assets/sarbahitDang/
     # - assets/shwetbhairab/
     # - assets/karmath/
     # - assets/shreeEkata/
@@ -396,7 +396,7 @@ flutter:
     # - assets/samriddhaNepal/
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
-    # - assets/shreeKalidevi/
+    - assets/shreeKalidevi/
     # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
@@ -420,6 +420,8 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    - assets/jmc/
+    
 
   fonts:
     - family: popinbold
