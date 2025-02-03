@@ -74,6 +74,7 @@ dependencies:
   khalti_checkout_flutter: "^1.0.0-dev.4"
   nepali_utils: ^3.0.6
   flutter_zxing: ^1.8.2
+  percent_indicator: ^4.2.4
 
 dev_dependencies:
   flutter_test:
