@@ -57,42 +57,61 @@ class _TransactionProgressComponentState
             children: [
               if (showCount) ...[
                 MyCircularBar(
-                  centerText: response.detail["usedDailyCount"].toString(),
+                  centerText: response.detail["usedDailyCount"]?.toString() ??
+                      'No Data',
                   title: "Count",
                   maxLimit: "Max limit in count",
-                  maxLimitVal: response.detail["dailyCountLimit"].toString(),
+                  maxLimitVal: response.detail["dailyCountLimit"]?.toString() ??
+                      'No Data',
                   primaryText: "Count",
-                  primaryDesc: response.detail["usedDailyCount"].toString(),
+                  primaryDesc: response.detail["usedDailyCount"]?.toString() ??
+                      'No Data',
                   remainLimit: "Remaning Limit Count",
                   remainLimitVal:
-                      response.detail["remainingDailyCount"].toString(),
+                      response.detail["remainingDailyCount"]?.toString() ??
+                          'No Data',
                   percent: convertToFraction(
-                    double.parse(response.detail["dailyCountLimit"].toString()),
-                    double.parse(response.detail["usedDailyCount"].toString()),
+                    double.parse(
+                      response.detail["dailyCountLimit"]?.toString() ??
+                          'No Data',
+                    ),
+                    double.parse(
+                      response.detail["usedDailyCount"]?.toString() ??
+                          'No Data',
+                    ),
                   ),
                   color: CustomTheme.primaryColor,
                 ),
                 MyCircularBar(
                   centerText: "${convertToFraction(
                         double.parse(
-                            response.detail["dailyAmountLimit"].toString()),
+                          response.detail["dailyAmountLimit"]?.toString() ??
+                              'No Data',
+                        ),
                         double.parse(
-                            response.detail["usedDailyAmount"].toString()),
+                          response.detail["usedDailyAmount"]?.toString() ??
+                              'No Data',
+                        ),
                       ) * 100}%",
                   title: "Amount Transfer",
                   maxLimit: "Max Amount Transfer",
                   maxLimitVal:
-                      "${response.detail["dailyAmountLimit"].toString()} per day",
+                      "${response.detail["dailyAmountLimit"]?.toString() ?? 'No Data'} per day",
                   primaryText: "Amount Transfer",
                   primaryDesc:
-                      "NPR ${response.detail['usedDailyAmount'].toString()}",
+                      "NPR ${response.detail['usedDailyAmount']?.toString() ?? 'No Data'}",
                   remainLimit: "Remaining Amount Transfer",
                   remainLimitVal:
-                      "NPR ${response.detail["remainingDailyAmount"].toString()}",
+                      "NPR ${response.detail["remainingDailyAmount"]?.toString() ?? 'No Data'}",
                   percent: convertToFraction(
                     double.parse(
-                        response.detail["dailyAmountLimit"].toString()),
-                    double.parse(response.detail["usedDailyAmount"].toString()),
+                      response.detail["dailyAmountLimit"]?.toString() ??
+                          'No Data',
+                    ),
+                    double.parse(
+                      response.detail["usedDailyAmount"]?.toString() ??
+                          'No Data',
+                    ),
                   ),
                   // percent: .4,
                   color: CustomTheme.primaryColor,
@@ -103,25 +122,33 @@ class _TransactionProgressComponentState
                 MyCircularBar(
                   centerText: "${convertToFraction(
                         double.parse(
-                            response.detail["dailyAmountLimit"].toString()),
+                          response.detail["dailyAmountLimit"]?.toString() ??
+                              'No Data',
+                        ),
                         double.parse(
-                            response.detail["usedDailyAmount"].toString()),
+                          response.detail["usedDailyAmount"]?.toString() ??
+                              'No Data',
+                        ),
                       ) * 100}%",
                   title: "Amount Transfer",
                   maxLimit: "Max Amount Transfer",
                   maxLimitVal:
-                      "${response.detail["monthlyAmountLimit"].toString()} per month",
+                      "${response.detail["monthlyAmountLimit"]?.toString() ?? 'No Data'} per month",
                   primaryText: "Amount Transfer",
                   primaryDesc:
-                      "NPR ${response.detail['usedMonthlyAmount'].toString()}",
+                      "NPR ${response.detail['usedMonthlyAmount']?.toString() ?? 'No Data'}",
                   remainLimit: "Remaining Amount Transfer",
                   remainLimitVal:
-                      "NPR ${response.detail["remainingMonthlyAmount"].toString()}",
+                      "NPR ${response.detail["remainingMonthlyAmount"]?.toString() ?? 'No Data'}",
                   percent: convertToFraction(
                     double.parse(
-                        response.detail["monthlyAmountLimit"].toString()),
+                      response.detail["monthlyAmountLimit"]?.toString() ??
+                          'No Data',
+                    ),
                     double.parse(
-                        response.detail["usedMonthlyAmount"].toString()),
+                      response.detail["usedMonthlyAmount"]?.toString() ??
+                          'No Data',
+                    ),
                   ),
                   // percent: .6,
                   color: CustomTheme.primaryColor,
@@ -185,7 +212,7 @@ class _TransactionProgressComponentState
                 height: 20,
                 width: 220,
                 child: Text(
-                  "Daily Transaction Limit: ${response.detail['perTransactionLimit']}",
+                  "Daily Transaction Limit: ${response.detail['perTransactionLimit']?.toString() ?? 'No Data'}",
                   style: const TextStyle(color: Colors.black54),
                 ),
               ),

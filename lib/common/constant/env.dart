@@ -4511,5 +4511,5 @@ class CoOperativeValue {
     coOperativeName: "JMC Saving & Credit Co-operative Ltd.",
     appTitle: "JMC iSmart",
   );
-  static final CoOperative currentCoop = shreeKalideviCoop;
+  static final CoOperative currentCoop = shreeNavaprabhat;
 }

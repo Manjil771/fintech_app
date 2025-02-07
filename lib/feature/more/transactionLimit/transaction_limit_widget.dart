@@ -16,39 +16,40 @@ class _TransactionLimitWidgetState extends State<TransactionLimitWidget> {
   @override
   Widget build(BuildContext context) {
     return const PageWrapper(
+        showBackButton: true,
         body: SingleChildScrollView(
-      // child: CommonContainer(
-      //     body: Text("Working , will be availbale in next update"),
-      //     topbarName: "Transition limit"),
-      child: Column(
-        children: [
-          TransactionProgressPage(
-            title: "Customer",
-            profileType: 'CustomerProfile',
-            isOpen: true,
-          ),
-          TransactionProgressPage(
-            title: "Wallet",
-            profileType: 'WalletProfile',
-            isOpen: false,
-          ),
-          TransactionProgressPage(
-            title: "Bank Transfer",
-            profileType: 'BankTransferProfile',
-            isOpen: false,
-          ),
-          TransactionProgressPage(
-            title: "QR",
-            profileType: 'QRProfile',
-            isOpen: false,
-          ),
-          TransactionProgressPage(
-            title: "iBanking",
-            profileType: 'IBankingProfile',
-            isOpen: false,
-          ),
-        ],
-      ),
-    ));
+          child: CommonContainer(
+              body: Text("Working , will be availbale in next update"),
+              topbarName: "Transition limit"),
+          // child: Column(
+          //   children: [
+          //     TransactionProgressPage(
+          //       title: "Customer",
+          //       profileType: 'CustomerProfile',
+          //       isOpen: true,
+          //     ),
+          //     TransactionProgressPage(
+          //       title: "Wallet",
+          //       profileType: 'WalletProfile',
+          //       isOpen: false,
+          //     ),
+          //     TransactionProgressPage(
+          //       title: "Bank Transfer",
+          //       profileType: 'BankTransferProfile',
+          //       isOpen: false,
+          //     ),
+          //     TransactionProgressPage(
+          //       title: "QR",
+          //       profileType: 'QRProfile',
+          //       isOpen: false,
+          //     ),
+          //     TransactionProgressPage(
+          //       title: "iBanking",
+          //       profileType: 'IBankingProfile',
+          //       isOpen: false,
+          //     ),
+          //   ],
+          // ),
+        ));
   }
 }
