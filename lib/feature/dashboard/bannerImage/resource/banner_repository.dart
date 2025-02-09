@@ -31,6 +31,7 @@ class BannerRepository {
     try {
       final _res = await bannerApiProvider.fetchBannerImages(
           bannerImageType: bannerImageType);
+          
       if (_res['data']?['code'] == "M0000") {
         final List<String> _rawBanners =
             List<String>.from(_res['data']?['details'] ?? []);

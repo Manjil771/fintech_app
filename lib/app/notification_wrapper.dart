@@ -12,7 +12,9 @@ import 'package:ismart/common/models/local_notification.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
   await Firebase.initializeApp();
@@ -30,7 +32,15 @@ class NotificationWrapper extends StatefulWidget {
 class _NotificationWrapperState extends State<NotificationWrapper> {
   Future<void> initialiseFirebase() async {
     if (!kIsWeb) {
-      await Firebase.initializeApp();
+      final _raised = await Firebase.initializeApp(
+        options: const FirebaseOptions(
+          apiKey: 'AIzaSyDtxGZ63t5k5Fq3Or-3NESUSkYDsBL885I',
+          appId: '1:484503989430:android:1bc2ea328370b4284aca17',
+          messagingSenderId: '484503989430',
+          projectId: 'ismart-7d185',
+          storageBucket: 'myapp-b9yt18.appspot.com',
+        ),
+      );
     }
   }
 
@@ -46,6 +56,37 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
         initialiseFCM();
         registerFirebaseBackgroundNotification();
         registerFirebaseToken();
+
+        AwesomeNotifications().initialize(
+            // set the icon to null if you want to use the default app icon
+            null,
+            [
+              NotificationChannel(
+                channelGroupKey: 'notification_group',
+                channelKey: NotificationUtils.notificationChannelKey,
+                channelName: 'Default Channel',
+                channelDescription: 'Default Notifications',
+                defaultColor: const Color(0xFF9D50DD),
+                ledColor: Colors.white,
+              )
+            ],
+            // Channel groups are only visual and are not required
+            channelGroups: [
+              NotificationChannelGroup(
+                channelGroupKey: 'notification_group',
+                channelGroupName: 'Notification Group',
+              )
+            ],
+            debug: true);
+
+        AwesomeNotifications().isNotificationAllowed().then((isAllowed) {
+          if (!isAllowed) {
+            // This is just a basic example. For real apps, you must show some
+            // friendly dialog box before call the request method.
+            // This is very important to not harm the user experience
+            AwesomeNotifications().requestPermissionToSendNotifications();
+          }
+        });
 
         listenRefreshToken();
         onForegroundMessageListen();
@@ -72,9 +113,9 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   registerFirebaseToken() async {
     final _token = await FirebaseMessaging.instance.getToken();
-    print("Firebase");
+    print("FirebaseTokenInitiated $_token");
     print(_token);
-    print("Firebase");
+    print("FirebaseTokenInitiated $_token");
     if (_token != null && userRepository.token.isNotEmpty) {
       await userRepository.updateNotificationToken();
     }
@@ -87,6 +128,9 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
   }
 
   Future<void> initialiseFCM() async {
+    AwesomeNotifications().requestPermissionToSendNotifications(
+      channelKey: NotificationUtils.notificationChannelKey,
+    );
     if (Platform.isIOS) {
       await FirebaseMessaging.instance.requestPermission(
         alert: true,
@@ -100,21 +144,18 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
       // ignore: unused_local_variable
       final _permissionValue =
           await PermissionUtils.notificationPermissionAvailable;
-      // if (!_permissionValue) {
-      //   showPopUpDialog(
-      //     context: context,
-      //     message:
-      //         "We need notification permission to send timely update about the app. You will be redirected to App Settings, Please allow notification permission from there.",
-      //     title: "Permission Denied",
-      //     buttonCallback: () {
-      //       openAppSettings();
-      //     },
-      //     showCancelButton: true,
-      //   );
-      // }
-
-      // AwesomeNotifications().requestPermissionToSendNotifications(
-      //     channelKey: NotificationUtils.notificationChannelKey);
+      if (!_permissionValue) {
+        showPopUpDialog(
+          context: context,
+          message:
+              "We need notification permission to send timely update about the app. You will be redirected to App Settings, Please allow notification permission from there.",
+          title: "Permission Denied",
+          buttonCallback: () {
+            openAppSettings();
+          },
+          showCancelButton: true,
+        );
+      }
     }
 
     await FirebaseMessaging.instance
@@ -215,7 +256,7 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
 
   Future<void> onForegroundMessageListen() async {
     FirebaseMessaging.onMessage.listen(
-      (RemoteMessage message) {
+      (RemoteMessage message) async {
         print("heard message");
         print(message);
         print(message.data);
@@ -226,25 +267,27 @@ class _NotificationWrapperState extends State<NotificationWrapper> {
           };
           // ignore: unused_local_variable
           LocalPushNotification? _pushNotification;
-          if (message.data.isNotEmpty) {
-            _pushNotification =
-                NotificationUtils.convertToLocalPushNofication(message.data);
-            AwesomeNotifications().createNotification(
-              content: NotificationContent(
-                title: notification.title,
-                body: notification.body,
-                displayOnForeground: true,
-                payload: _notificationPayload,
-                id: Random().nextInt(1000),
-                channelKey: NotificationUtils.notificationChannelKey,
-                autoDismissible: false,
-                category: NotificationCategory.Event,
-                wakeUpScreen: true,
-                displayOnBackground: true,
-                notificationLayout: NotificationLayout.BigText,
-              ),
-            );
-          }
+          // if (message.data.isNotEmpty) {
+          _pushNotification =
+              NotificationUtils.convertToLocalPushNofication(message.data);
+          final _notificationStatus =
+              await AwesomeNotifications().createNotification(
+            content: NotificationContent(
+              title: notification.title,
+              body: notification.body,
+              displayOnForeground: true,
+              // payload: NotificationContent(id: id, channelKey: channelKey),
+              id: Random().nextInt(1000),
+              channelKey: NotificationUtils.notificationChannelKey,
+              autoDismissible: false,
+              category: NotificationCategory.Event,
+              wakeUpScreen: true,
+              displayOnBackground: true,
+              notificationLayout: NotificationLayout.BigText,
+            ),
+          );
+          print("Notification Status $_notificationStatus");
+          // }
         }
       },
     );

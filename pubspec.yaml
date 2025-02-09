@@ -104,7 +104,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/bhaktapur_saccos/
+    - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -161,7 +161,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -404,6 +404,13 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/kishanKalyan/
+    # - assets/puime/
+    # - assets/shikhardeep/
+    # - assets/sandus/
+    # - assets/kasturi/
+    # - assets/ainchoPaincho/
+    # - assets/nepal/
+    # - assets/aniwarya/
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
@@ -423,7 +430,6 @@ flutter:
     # - assets/skBhawanipur/
     # - assets/skDeuri/
     - assets/jmc/
-    
 
   fonts:
     - family: popinbold

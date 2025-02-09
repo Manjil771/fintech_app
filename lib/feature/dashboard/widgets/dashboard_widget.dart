@@ -377,6 +377,8 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/models/downloaded_file.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/custom_toast.dart';
+import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -690,23 +692,44 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                               enlargeCenterPage: true,
                             ),
                             items: List.generate(offerBanners.length, (index) {
-                              return InkWell(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    border: Border.all(color: Colors.black),
-                                  ),
-                                  child: Image.network(
-                                    offerBanners[index],
-                                    width: double.infinity,
-                                    fit: BoxFit.fill,
-                                    errorBuilder:
-                                        (context, error, stackTrace) => Column(
-                                      children: [
-                                        Image.asset(
-                                            RepositoryProvider.of<CoOperative>(
-                                                    context)
-                                                .coOperativeLogo),
-                                      ],
+                              return GestureDetector(
+                                onLongPress: ()async{
+                                  final fileName = FileDownloadUtils.generateDownloadFileName(
+                                 name: "banner_$index",
+                                filetype: FileType.png, 
+                                  );
+
+       
+        final taskId = await FileDownloadUtils.downloadFile(
+          downloadLink: offerBanners[index],
+          fileName: fileName,
+          context: context,
+        );
+
+        if (taskId != null) {
+          CustomToast.success(message: "Downloading banner...");
+        } else {
+          CustomToast.error(message: "Failed to start download.");
+        }
+                                },
+                                child: InkWell(
+                                  child: Container(
+                                    decoration: BoxDecoration(
+                                      border: Border.all(color: Colors.black),
+                                    ),
+                                    child: Image.network(
+                                      offerBanners[index],
+                                      width: double.infinity,
+                                      fit: BoxFit.fill,
+                                      errorBuilder:
+                                          (context, error, stackTrace) => Column(
+                                        children: [
+                                          Image.asset(
+                                              RepositoryProvider.of<CoOperative>(
+                                                      context)
+                                                  .coOperativeLogo),
+                                        ],
+                                      ),
                                     ),
                                   ),
                                 ),

@@ -216,6 +216,7 @@ class UserRepository {
           appVersion: await DeviceUtils.getAppVersion,
           // deviceId: '',
         );
+        print(_);
       }
 
       return DataResponse.success(true);
