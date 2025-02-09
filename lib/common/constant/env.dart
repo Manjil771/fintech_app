@@ -4240,7 +4240,7 @@ class CoOperativeValue {
     coOperativeName: "Pame Saving & Credit Co-operative Ltd.",
     appTitle: "Pame iSmart",
   );
-  static final CoOperative sarba = CoOperative(
+  static final CoOperative sarbaKtmCoop = CoOperative(
     appStoreID: "com.devanasoft.sarba",
     packageName: "com.devanasoft.sarba",
     baseUrl: 'https://ismart.devanasoft.com.np/',

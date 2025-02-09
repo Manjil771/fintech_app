@@ -92,6 +92,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                   orElse: () => val.accountDetail.firstWhere(
                     (element) => element.accountType.toLowerCase() == "current",
                   ),
+              
                 );
 
                 return Column(
