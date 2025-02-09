@@ -16,6 +16,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
+import 'package:lottie/lottie.dart';
 
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
@@ -197,29 +198,35 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   final isChatBotVisible = snapshot.data ?? true;
                   return isChatBotVisible
                       ? Positioned(
-                          bottom: 0,
-                          right: 0,
+                          bottom: -10,
+                          right: -35,
                           child: InkWell(
                             onTap: () {
                               NavigationService.push(
                                   target: const SmartChatPage());
                             },
                             child: Container(
-                              width: 70,
-                              height: 70,
-                              decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
-                                color: Colors.transparent,
-                              ),
-                              child: ClipOval(
-                                // child: Container(
-                                //   color: Colors.pink,
-                                // ),
-                                child: Image.asset(
-                                  'assets/images/ismart_logo_only.png',
-                                  fit: BoxFit.cover,
-                                ),
-                              ),
+                              width: 140,
+                              height: 140,
+                              // decoration: const BoxDecoration(
+                              //   shape: BoxShape.rectangle,
+                              //   color: Colors.transparent,
+                              // ),
+                              // child: Lottie.asset(
+                              //   'assets/myBot.json',
+                              //   animate: true,
+                              //   fit: BoxFit.contain,
+                              // delegates: LottieDelegates(
+                              //   values: [
+                              //     ValueDelegate.color(
+
+                              //       const ['**', 'Stroke'],
+                              //       value: Colors.red,
+                              //     ),
+                              //   ],
+                              // ),
+                              // ),
+                              child: Image.asset("assets/smart_fuchee.png"),
                             ),
                           ),
                         )

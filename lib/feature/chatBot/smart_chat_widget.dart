@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
 import 'package:ismart/feature/chatBot/typing_animation.dart';
+import 'package:lottie/lottie.dart';
 import 'smart_chat_page_state.dart';
 
 extension SmartChatWidgets on SmartChatPageState {
@@ -99,7 +101,7 @@ extension SmartChatWidgets on SmartChatPageState {
                 ),
               );
             }).toList(),
-          )
+          ),
       ],
     );
   }
@@ -141,14 +143,26 @@ extension SmartChatWidgets on SmartChatPageState {
           Center(
             child: Container(
               margin: const EdgeInsets.only(bottom: 10),
-              child: IconButton(
-                icon: Icon(
-                  Icons.send,
-                  color: CustomTheme.primaryColor,
-                  size: 30,
-                ),
-                onPressed: () =>
-                    handleUserInput(categoryService, messageController.text),
+              child: Row(
+                children: [
+                  IconButton(
+                    icon: Icon(
+                      Icons.mic,
+                      color: CustomTheme.primaryColor,
+                      size: 30,
+                    ),
+                    onPressed: () {},
+                  ),
+                  IconButton(
+                    icon: Icon(
+                      Icons.send,
+                      color: CustomTheme.primaryColor,
+                      size: 30,
+                    ),
+                    onPressed: () => handleUserInput(
+                        categoryService, messageController.text),
+                  ),
+                ],
               ),
             ),
           ),

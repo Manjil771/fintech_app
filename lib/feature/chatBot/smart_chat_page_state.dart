@@ -231,8 +231,14 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
       }
     }
 
-    if (message.toLowerCase() == 'top up') {
+    if (message.toLowerCase() == 'top up' ||
+        message.toLowerCase().contains('top up')) {
       setState(() {
+        _chatHistory.add({
+          'type': 'user',
+          'message': message,
+          'timestamp': DateTime.now(),
+        });
         _chatHistory.add({
           'type': 'assistant',
           'message': 'Please enter your phone number (e.g., 98XXXXXXXX):',
@@ -292,7 +298,9 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     // Handle top-up amount validation if in that state
     if (_pendingInputType == 'top_up_amount') {
       final List<String> validAmounts = ['50', '100', '150', '200', '500'];
-      if (validAmounts.contains(message)) {
+      if (validAmounts.contains(message) ||
+          validAmounts
+              .any((amount) => message.toLowerCase().contains(amount))) {
         categoryService.topupWithAmount(
             context, message.toString(), _storedPhoneNumber.toString());
         setState(() {

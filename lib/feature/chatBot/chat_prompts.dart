@@ -40,6 +40,7 @@ class ChatPrompts {
               'Please select from the services below to learn more and proceed further.',
           'options': [
             'Broker Payment',
+            'Top up',
             'Electricity Payment',
             'Movie Ticket Booking',
             'Lanline Payment',
