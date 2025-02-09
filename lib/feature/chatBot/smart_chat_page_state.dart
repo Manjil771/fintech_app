@@ -37,7 +37,8 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
   }
 
   Future<bool> executeRecharge(String input) async {
-    final regex = RegExp(r'^recharge my account with (\d+)$');
+    final regex =
+        RegExp(r'^recharge my number with (\d+)$', caseSensitive: false);
     final match = regex.firstMatch(input);
     if (match != null) {
       _storedPhoneNumber = await SecureStorageService.appPhoneNumber;
