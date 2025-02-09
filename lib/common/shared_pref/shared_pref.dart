@@ -204,7 +204,7 @@ class SharedPref {
 
   static Future<bool> getChatBotVisibility() async {
     final _instance = await SharedPreferences.getInstance();
-    return _instance.getBool(showChatBot) ?? false;
+    return _instance.getBool(showChatBot) ?? true;
   }
 
   static Future<void> toggleChatBotVisibility() async {

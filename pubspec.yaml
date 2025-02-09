@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: "^1.0.4"
   intl: "^0.18.1"
+  lottie: ^3.1.0
   ##screen_brightness: ^2.0.1 ## added SKP on hold for now
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
@@ -115,7 +116,8 @@ flutter:
     # - assets/kipoo/
     # - assets/suryadev/
     # - assets/uddhamshil/
-    - assets/navaprabhat/
+    # - assets/navaprabhat/
+    # - assets/utkrishta/
     # - assets/vyas/
     # - assets/pratham/
     # - assets/newdhaulagiri/

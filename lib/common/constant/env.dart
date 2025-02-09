@@ -4511,5 +4511,19 @@ class CoOperativeValue {
     coOperativeName: "JMC Saving & Credit Co-operative Ltd.",
     appTitle: "JMC iSmart",
   );
-  static final CoOperative currentCoop = shreeNavaprabhat;
+  static final CoOperative utkrishta = CoOperative(
+    appStoreID: "com.devanasoft.utkrishta",
+    packageName: "com.devanasoft.utkrishta",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/utkrishta/utkrishta_banner.png",
+    backgroundImage: "assets/utkrishta/utkrishta_background.png",
+    clientCode: 'DIFO9N0HVL',
+    clientSecret: "185458",
+    coOperativeLogo: 'assets/utkrishta/utkrishta_logo.png',
+    splashImage: "assets/utkrishta/utkrishta_splash.png",
+    primaryColor: const Color(0xFF00a650),
+    coOperativeName: "utkrishta Saving & Credit Co-operative Ltd.",
+    appTitle: "Utkrishta iSmart",
+  );
+  static final CoOperative currentCoop = devLive;
 }
