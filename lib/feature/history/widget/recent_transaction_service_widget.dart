@@ -18,6 +18,7 @@ class RecentTransactionServiceWidget extends StatefulWidget {
   final String associatedId;
   final String service;
   final String serviceId;
+  final VoidCallback onListTap;
 
   final Function(RecentTransactionModel) onRecentTransactionPressed;
 
@@ -27,6 +28,7 @@ class RecentTransactionServiceWidget extends StatefulWidget {
       required this.associatedId,
       required this.service,
       required this.onRecentTransactionPressed,
+      required this.onListTap,
       required this.serviceId})
       : super(key: key);
 
@@ -82,83 +84,70 @@ class _RecentTransactionServiceWidgetState
                   _downloadNotifierValue.value = state.data;
                 }
               },
-              child: InkWell(
-                  child: Container(
-                    padding: const EdgeInsets.all(8),
-                    child: Row(
-                      children: [
-                        Text(
-                          "Recent Transaction",
-                          style: _textTheme.titleSmall!.copyWith(
-                              color: CustomTheme.primaryColor,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        const SizedBox(width: 5),
-                        RotatedBox(
-                          quarterTurns: 15,
-                          child: SvgPicture.asset(
-                            Assets.arrowRight,
-                            height: 15.hp,
-                          ),
-                        )
-                      ],
-                    ),
-                  ),
-                  onTap: () {
-                    showBottomSheet(
-                      context: context,
-                      builder: (context) => BottomSheetWrapper(
-                        showCancelButton: true,
-                        title: "Recent Transaction",
-                        child: Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.vertical,
-                            physics: const ScrollPhysics(),
-                            itemCount: state.data.length,
-                            itemBuilder: (context, index) {
-                              final _detail = state.data[index];
-                              return TransactionDetailBoxService(
-                                onClickAction: () {
-                                  widget.onRecentTransactionPressed(_detail);
-                                },
-                                recentTransactionModel: _detail,
-                                // onClickAction: () {
-                                //   context.read<TransactionDownloadCubit>().generateUrl(
-                                //         transactionId: _detail.transactionIdentifier,
-                                //       );
-                                //   showDialog(
-                                //     context: context,
-                                //     builder: (context) {
-                                //       return Dialog(
-                                //         insetPadding:
-                                //             const EdgeInsets.symmetric(horizontal: 18),
-                                //         child: Container(
-                                //           padding: const EdgeInsets.symmetric(vertical: 10),
-                                //           width: double.infinity,
-                                //           // height: _height * 0.5,
-                                //           child: TransactionDetailAlertWidget(
-                                //             recentTransactionModel: _detail,
-                                //             downloadUrlNotifier: _downloadNotifierValue,
-                                //           ),
-                                //         ),
-                                //       );
-                                //     },
-                                //   );
-                                //   // NavigationService.push(
-                                //   //   target: TransactionDetailScreen(
-                                //   //     recentTransactionModel: _detail,
-                                //   //   ),
-                                //   // );
-                                // },
-                              );
-                            },
-                          ),
-                        ),
-                      ),
-                    );
-                  }));
+              child: ListView.builder(
+                padding: const EdgeInsets.only(right: 10),
+                scrollDirection: Axis.vertical,
+                physics: const ClampingScrollPhysics(),
+                itemCount: state.data.length,
+                itemBuilder: (context, index) {
+                  final _detail = state.data[index];
+                  return TransactionDetailBoxService(
+                    onClickAction: () {
+                      widget.onListTap();
+                      widget.onRecentTransactionPressed(_detail);
+                    },
+                    recentTransactionModel: _detail,
+                    // onClickAction: () {
+                    //   context.read<TransactionDownloadCubit>().generateUrl(
+                    //         transactionId: _detail.transactionIdentifier,
+                    //       );
+                    //   showDialog(
+                    //     context: context,
+                    //     builder: (context) {
+                    //       return Dialog(
+                    //         insetPadding:
+                    //             const EdgeInsets.symmetric(horizontal: 18),
+                    //         child: Container(
+                    //           padding: const EdgeInsets.symmetric(vertical: 10),
+                    //           width: double.infinity,
+                    //           // height: _height * 0.5,
+                    //           child: TransactionDetailAlertWidget(
+                    //             recentTransactionModel: _detail,
+                    //             downloadUrlNotifier: _downloadNotifierValue,
+                    //           ),
+                    //         ),
+                    //       );
+                    //     },
+                    //   );
+                    //   // NavigationService.push(
+                    //   //   target: TransactionDetailScreen(
+                    //   //     recentTransactionModel: _detail,
+                    //   //   ),
+                    //   // );
+                    // },
+                  );
+                },
+              ));
         } else {
-          return Container();
+          return const Center(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Icon(
+                  Icons.history,
+                  color: CustomTheme.spanishGray,
+                  size: 32,
+                ),
+                Text(
+                  'There is no transaction yet.',
+                  style: TextStyle(
+                    fontSize: 16,
+                    color: CustomTheme.spanishGray,
+                  ),
+                ),
+              ],
+            ),
+          );
         }
       },
     );

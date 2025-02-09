@@ -35,6 +35,7 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
   final TextEditingController _remarksController = TextEditingController();
   bool _isLoading = false;
   String? _selectedBrokerCode;
+  String _currentAmount = '';
   final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
@@ -108,6 +109,7 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
           }
         },
         child: CommonContainer(
+          verificationAmount: _currentAmount,
           showRecentTransaction: true,
           associatedId: widget.service.id.toString(),
           title: widget.service.service,
@@ -175,6 +177,11 @@ class _BrokerPaymentWidgetState extends State<BrokerPaymentWidget> {
                 autovalidateMode: AutovalidateMode.onUserInteraction,
                 title: "Amount",
                 hintText: "NPR",
+                onChanged: (value) {
+                  setState(() {
+                    _currentAmount = value;
+                  });
+                },
                 controller: _amountController,
                 validator: (value) => FormValidator.validateAmount(
                     val: value.toString(),

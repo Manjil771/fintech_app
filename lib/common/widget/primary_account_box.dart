@@ -8,6 +8,10 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class PrimaryAccountBox extends StatefulWidget {
+  final bool? validateMobileBankingStatus;
+
+  const PrimaryAccountBox({super.key, this.validateMobileBankingStatus});
+
   @override
   State<PrimaryAccountBox> createState() => _PrimaryAccountBoxState();
 }
@@ -30,7 +34,10 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => const AccountDetailBox(),
+                builder: (context) => AccountDetailBox(
+                  validateMobileBankingStatus:
+                      widget.validateMobileBankingStatus,
+                ),
               );
             },
             child: Container(
@@ -105,8 +112,14 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
                       ),
                       SizedBox(width: _width * 0.03),
                       Expanded(
-                        child: Text("${selectedAcc?.accountType}",
-                            maxLines: 2, style: _theme.textTheme.labelLarge),
+                        child: Text(
+                            (selectedAcc?.accountTypeDescription)
+                                    .toString()
+                                    .isEmpty
+                                ? (selectedAcc?.accountNumber ?? "")
+                                : "${selectedAcc?.accountTypeDescription}",
+                            maxLines: 2,
+                            style: _theme.textTheme.labelLarge),
                       ),
                     ],
                   ),

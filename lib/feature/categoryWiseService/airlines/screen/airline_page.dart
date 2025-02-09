@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -7,12 +6,11 @@ import 'package:ismart/feature/categoryWiseService/airlines/screen/search_flight
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 
 class AirlinesIntroPage extends StatelessWidget {
-  final String cashbackAmount;
+  // final String cashbackAmount;
 
   final ServiceList service;
 
-  const AirlinesIntroPage(
-      {super.key, required this.service, required this.cashbackAmount});
+  const AirlinesIntroPage({super.key, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -23,8 +21,8 @@ class AirlinesIntroPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset("assets/images/book your flight-min.png"),
-            Column(
-              children: const [
+            const Column(
+              children: [
                 Text(
                   "Book Your Flight",
                   style: TextStyle(fontFamily: "popinbold", fontSize: 26),
@@ -46,7 +44,6 @@ class AirlinesIntroPage extends StatelessWidget {
                   NavigationService.pop();
                   NavigationService.push(
                       target: SearchFlightScreen(
-                    cashbackAmount: cashbackAmount,
                     service: service,
                   ));
                 })

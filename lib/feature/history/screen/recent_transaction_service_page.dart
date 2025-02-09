@@ -11,6 +11,7 @@ class RecentTransactionServiceScreen extends StatelessWidget {
   final String associatedId;
   final String? service;
   final String serviceId;
+  final VoidCallback onListTap;
 
   final Function(RecentTransactionModel) onRecentTransactionPressed;
 
@@ -20,6 +21,7 @@ class RecentTransactionServiceScreen extends StatelessWidget {
       required this.associatedId,
       this.service,
       required this.onRecentTransactionPressed,
+      required this.onListTap,
       required this.serviceId})
       : super(key: key);
 
@@ -46,6 +48,7 @@ class RecentTransactionServiceScreen extends StatelessWidget {
         associatedId: associatedId,
         serviceCategoryId: serviceCategoryId,
         serviceId: serviceId,
+        onListTap: onListTap,
       ),
     );
   }

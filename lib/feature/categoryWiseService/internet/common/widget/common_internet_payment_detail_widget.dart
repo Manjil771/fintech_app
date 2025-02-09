@@ -356,20 +356,38 @@ class _CommonInternetPaymentDeatilWidgetState
               target: TransactionPinScreen(
                 onValueCallback: (mpin) {
                   NavigationService.pop();
+                  final accountDetails = {
+                    "username": widget.username,
+                    "amount": getAmount(),
+                    "account_number":
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value
+                            ?.accountNumber,
+                    if (widget.detailFetchData.findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "session_id") !=
+                        null)
+                      "sessionId": widget.detailFetchData.findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "session_id",
+                      ),
+                    if (widget.detailFetchData.findValue(
+                            primaryKey: "hashResponse",
+                            secondaryKey: "customer_id") !=
+                        null)
+                      "customerId": widget.detailFetchData.findValue(
+                        primaryKey: "hashResponse",
+                        secondaryKey: "customer_id",
+                      ),
+                  };
+                  accountDetails.removeWhere((key, value) =>
+                      value == null || value.toString().isEmpty);
                   context.read<UtilityPaymentCubit>().makePayment(
                         mPin: mpin,
                         body: body,
                         serviceIdentifier: widget.service.uniqueIdentifier,
-                        accountDetails: {
-                          "username": widget.username,
-                          "amount": getAmount(),
-                          "account_number":
-                              RepositoryProvider.of<CustomerDetailRepository>(
-                                      context)
-                                  .selectedAccount
-                                  .value
-                                  ?.accountNumber,
-                        },
+                        accountDetails: accountDetails,
                         apiEndpoint: "/api/internetpay",
                       );
                 },

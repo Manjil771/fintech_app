@@ -40,6 +40,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
   final _formKey = GlobalKey<FormState>();
   bool isFixedAmount = false;
   bool _isLoading = false;
+  String _currentAmount = '';
   @override
   Widget build(BuildContext context) {
     final _height = SizeUtils.height;
@@ -81,6 +82,7 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                 amountController.text = state.data.findValueString("amount");
               }
               return CommonContainer(
+                  verificationAmount: _currentAmount,
                   showAccountSelection: true,
                   showDetail: false,
                   buttonName: "Procced",
@@ -120,6 +122,11 @@ class _PayloadWidgetState extends State<PayloadWidget> {
                                   value, "Amount"),
                           title: "Amount",
                           controller: amountController,
+                          onChanged: (value) {
+                            setState(() {
+                              _currentAmount = value;
+                            });
+                          },
                           readOnly: isFixedAmount,
                         ),
                         CustomTextField(

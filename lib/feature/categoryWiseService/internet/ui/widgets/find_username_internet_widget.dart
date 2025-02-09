@@ -74,7 +74,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
           key: _formKey,
           child: CommonContainer(
             onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
+              // NavigationService.pop();
               _usernameController.text = p0.requestDetail.serviceTo.toString();
               onButtonPressed(username: p0.requestDetail.serviceTo.toString());
             },
@@ -82,7 +82,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             serviceId: widget.service.id.toString(),
             showDetail: true,
             title: 'Internet Payment',
-            detail: 'Pay your internet bill of you ISP from here',
+            detail: 'Pay your internet bill of your ISP from here.',
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [

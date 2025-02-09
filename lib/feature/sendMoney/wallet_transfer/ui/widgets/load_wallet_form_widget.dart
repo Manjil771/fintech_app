@@ -38,6 +38,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _walletAccountController =
       TextEditingController();
+  String _currentAmount = '';
   final TextEditingController _remarksController = TextEditingController();
   checkAccount() {
     if (widget.phoneNumber != null) {
@@ -186,8 +187,9 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           )
         ],
         child: CommonContainer(
+          verificationAmount: _currentAmount,
           onRecentTransactionPressed: (p0) {
-            NavigationService.pop();
+            // NavigationService.pop();
 
             // widget.selectedWallet =
             // p0.requestDetail.destinationBankName.toString();
@@ -273,6 +275,11 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "Enter the amount",
+                  onChanged: (value) {
+                    setState(() {
+                      _currentAmount = value;
+                    });
+                  },
                   controller: _amountController,
                   validator: (value) => FormValidator.validateAmount(
                       val: value.toString(),

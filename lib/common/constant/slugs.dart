@@ -63,7 +63,6 @@ class Slugs {
   static String adsluOnlineTopup = "adslu_online_topup";
   static String ntFtthInternetTopup = "nt_ftth_internet_topup";
   static String cgnetTopup = "cgnet_topup";
-
   //nea
   static String neaOnlineTopup = "nea_online_topup";
   // khanepani
@@ -127,6 +126,8 @@ class Slugs {
 
   //rideSharing
   static String pathaoTopup = "pathao_topup";
+  static String tootleTopup = "tootle_topup";
+
   //App service managememt
   static String bankTransfer = "bank_transfer";
   static String loadWallet = "load_wallet";

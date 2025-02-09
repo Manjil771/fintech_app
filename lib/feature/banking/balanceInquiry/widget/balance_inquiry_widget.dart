@@ -61,11 +61,17 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                 builder: (context, value, child) {
                   if (value != null) {
                     final _detail = customerDetail.value!;
+                    final List<AccountDetail> showValidAccount = _detail
+                        .accountDetail
+                        .where((element) =>
+                            element.accountType.toLowerCase() == "saving" ||
+                            element.accountType.toLowerCase() == "current")
+                        .toList();
                     return Container(
                       child: ListView.builder(
                           physics: const NeverScrollableScrollPhysics(),
                           shrinkWrap: true,
-                          itemCount: _detail.accountDetail.length,
+                          itemCount: showValidAccount.length,
                           itemBuilder: (context, index) {
                             return Column(
                               children: [
@@ -97,7 +103,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 SizedBox(
                                                     height: _height * 0.005),
                                                 Text(
-                                                    "NPR ${_detail.accountDetail[index].actualBalance}",
+                                                    "NPR ${showValidAccount[index].actualBalance}",
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .displaySmall),
@@ -123,22 +129,23 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 context,
                                                 "Available Balance",
                                                 "NPR " +
-                                                    _detail.accountDetail[index]
-                                                        .availableBalance),
+                                                    showValidAccount[index]
+                                                        .availableBalance
+                                                        .toString()),
                                             detailROw(
                                                 context,
                                                 "Actual Balance",
                                                 "NPR " +
-                                                    _detail.accountDetail[index]
+                                                    showValidAccount[index]
                                                         .actualBalance),
                                             detailROw(context, "Member ID",
-                                                "${_detail.accountDetail[index].clientCode}"),
+                                                "${showValidAccount[index].clientCode}"),
                                             detailROw(context, "Acc Number",
-                                                "${_detail.accountDetail[index].mainCode}"),
-                                            if (_detail.accountDetail[index]
+                                                "${showValidAccount[index].mainCode}"),
+                                            if (showValidAccount[index]
                                                         .interestRate !=
                                                     "0" ||
-                                                _detail.accountDetail[index]
+                                                showValidAccount[index]
                                                         .interestRate
                                                         .toString() !=
                                                     "N/A")
@@ -147,19 +154,19 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                   detailROw(
                                                       context,
                                                       "Interest Rate",
-                                                      "${_detail.accountDetail[index].interestRate} %"),
+                                                      "${showValidAccount[index].interestRate} %"),
                                                   detailROw(
                                                       context,
-                                                      "Accured Interestj",
-                                                      "NPR ${_detail.accountDetail[index].accruedInterest}"),
+                                                      "Accured Interest",
+                                                      "NPR ${showValidAccount[index].accruedInterest}"),
                                                 ],
                                               ),
                                             detailROw(
                                                 context,
                                                 "Acc Holder’s Name",
-                                                "${_detail.accountDetail[index].accountHolderName}"),
+                                                "${showValidAccount[index].accountHolderName}"),
                                             detailROw(context, "Branch",
-                                                "${_detail.accountDetail[index].branchName}"),
+                                                "${showValidAccount[index].branchName}"),
                                           ],
                                         ),
                                       ),
@@ -176,7 +183,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .of<CoOperative>(context)
                                                 .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${_detail.accountDetail[index].accountHolderName} \nAccount NUmber: ${_detail.accountDetail[index].mainCode} \nBank Name: $bankName \nBranch Name: ${_detail.accountDetail[index].branchName} ',
+                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount NUmber: ${showValidAccount[index].mainCode} \nBank Name: $bankName \nBranch Name: ${showValidAccount[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,

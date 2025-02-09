@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.30+60
+version: 1.5.31+61
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -13,6 +13,8 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: "^1.0.4"
+  intl: "^0.18.1"
+  ##screen_brightness: ^2.0.1 ## added SKP on hold for now
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
   flutter_cache_manager: "^3.3.0"
@@ -22,9 +24,9 @@ dependencies:
   rxdart: "^0.27.7"
   logger: "^2.2.0"
   dio: "^5.4.2+1"
-  shared_preferences: "^2.0.13"
+  shared_preferences: "^2.0.13" ##use this to make setttings
   easy_localization: "^3.0.3"
-  path_provider: "^2.0.2"
+  path_provider: "^2.1.4"
   open_filex: "^4.2.2"
   encrypt: "^5.0.0"
   firebase_core: "^2.13.0"
@@ -32,8 +34,8 @@ dependencies:
   local_auth: "^2.1.6"
   flutter_secure_storage: "^8.0.0"
   pin_code_fields: "^8.0.1"
-  url_launcher: "^6.1.11"
-  flutter_inappwebview: "^6.0.0"
+  url_launcher: "^6.3.1"
+
   animations: "^2.0.7"
   qr_code_scanner: "^1.0.1"
   screenshot: "^2.3.0"
@@ -51,8 +53,8 @@ dependencies:
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
   qr_code_utils:
-    git: 
-      url: git@github.com:nsubash38/qr_code_test.git
+    git:
+      url: https://github.com/nsubash38/qr_code_test.git
       ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
   android_id: "^0.3.3"
@@ -71,6 +73,8 @@ dependencies:
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "^1.0.0-dev.4"
   nepali_utils: ^3.0.6
+  flutter_zxing: ^1.8.2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -81,6 +85,7 @@ dev_dependencies:
 dependency_overrides:
   http: "^1.1.0"
   package_info_plus: "^5.0.1"
+
 flutter:
   assets:
     - assets/translations/
@@ -89,17 +94,19 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/shreeFulbari/
+    # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    # - assets/bhaktapur_saccos/
+    - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
-    # - assets/gomaGanesh/s
+    # - assets/gomaGanesh/
     # - assets/alankar/
     # - assets/manank/
     # - assets/shreeaaju/
@@ -109,6 +116,7 @@ flutter:
     # - assets/uddhamshil/
     # - assets/navaprabhat/
     # - assets/vyas/
+    # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
@@ -121,7 +129,6 @@ flutter:
     # - assets/gandakibesi/
     # - assets/kripalu/
     # - assets/upadesh/
-    # - assets/bhanjyang/
     # - assets/nirika/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -133,6 +140,7 @@ flutter:
     # - assets/hamiSabaikokrishi/
     # - assets/machhapuchhre/
     # - assets/nawajosh/
+    # - assets/tikeshwar/
     # - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
@@ -153,6 +161,9 @@ flutter:
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
+    # - assets/automobiles/
+    # - assets/chandani/
+
     # - assets/annapurna/
     # - assets/kanchanjungha/
     # - assets/janasewa/
@@ -177,7 +188,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -227,7 +238,7 @@ flutter:
     # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
-    # - assets/samutthan/x
+    # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
     # - assets/hamroDahachok/
@@ -283,7 +294,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     # - assets/aagan/
-    - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
@@ -300,14 +311,12 @@ flutter:
     # - assets/shreeSansari/
     # - assets/chaulani/
     # - assets/mahilaAbhiyan/
-    # - assets/ajambari/
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
-    # - assets/amana/
     # - assets/sklakhanpur/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
@@ -315,15 +324,14 @@ flutter:
     # - assets/argha/
     # - assets/shreekrishna/
     # - assets/dupcheshwor/
-    # - assets/gagankalika/
     # - assets/camellia/
     # - assets/agrajMahila/
-    # - assets/mahabir/   
-    # - assets/abhiyankrishi/ 
-    # - assets/unnati/ 
+    # - assets/mahabir/
+    # - assets/abhiyankrishi/
+    # - assets/unnati/
     # - assets/skOdraha/
     # - assets/shreeKanchan/
-    # - assets/arjunchaupari/  
+    # - assets/arjunchaupari/
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/
     # - assets/shubhechha/
@@ -336,8 +344,71 @@ flutter:
     # - assets/megaplus/
     # - assets/shishuwa/
     # - assets/shuvkarya/
-    
-    
+    # - assets/sunischit/
+    # - assets/safal/
+    # - assets/shreeArunodaya/
+    # - assets/exotic/
+    # - assets/chaulani/
+    # - assets/arthaGanesh/
+    # - assets/janani/
+    # - assets/kshstrashakti/
+    # - assets/tokha/
+    # - assets/narayani/
+    # - assets/mahalaxmi/
+    # - assets/chadani/
+    # - assets/shreesapana/
+    # - assets/sampada/
+    # - assets/bishwakarma/
+    # - assets/pame/
+    # - assets/pratham/
+    # - assets/dhanalaxmi/
+    # - assets/samriddha/
+    # - assets/kohinoor/
+    # - assets/bhargo/
+    # - assets/sarbashakti/
+    # - assets/janakalyan/
+    # - assets/pathibhara/
+    # - assets/indrawati/
+    # - assets/siddhartha/
+    # - assets/shubhashreebalkumari/
+    # - assets/paurakhi/
+    # - assets/paschimanchal/
+    # - assets/sadasyaSewa/
+    # - assets/aabhash/
+
+    # - assets/nilpashan/
+    # - assets/jhigu/
+    # - assets/godawari/
+    # - assets/shreePaurakhi/
+    # - assets/sarba/
+    # - assets/prerana/
+    # - assets/nilgiree/
+    # - assets/sajha/
+    # - assets/samadhan/
+    # - assets/saptakaushika/
+    # - assets/aggrim/
+    # - assets/shreemalunga/
+    # - assets/people/
+    # - assets/shreechandani/
+    # - assets/subarnapur/
+    # - assets/narayaniMulti/
+    # - assets/samriddhaNepal/
+    # - assets/shreeTriganga/
+    # - assets/sanjeewani/
+    # - assets/shreeKalidevi/
+    # - assets/aakash/
+    # - assets/shubhadipawali/
+    # - assets/atharwa/
+    # - assets/aichchhik/
+    # - assets/kishanKalyan/
+    # - assets/puime/
+    # - assets/shikhardeep/
+    # - assets/sandus/
+    # - assets/kasturi/
+    # - assets/ainchoPaincho/
+    # - assets/nepal/
+    # - assets/aniwarya/
+
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
@@ -347,17 +418,15 @@ flutter:
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
     # - assets/skShankharpur/
-    # - assets/skDharan/  
-    # - assets/sklakhanpur/ 
-    # - assets/skDhankuta/ 
-    # - assets/skChisapani/ 
+    # - assets/skDharan/
+    # - assets/sklakhanpur/
+    # - assets/skDhankuta/
+    # - assets/skChisapani/
     # - assets/skWaling/
-    - assets/skglobal/
+    # - assets/skglobal/
+    # - assets/skBhawanipur/
     # - assets/skDeuri/
- 
- 
- 
- 
+
   fonts:
     - family: popinbold
       fonts:

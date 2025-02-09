@@ -233,13 +233,13 @@ class UserRepository {
     }
   }
 
-  Future<DataResponse<List<LoginCoOpValue>>> validateCoOperative({
-    required String username,
-  }) async {
+  Future<DataResponse<List<LoginCoOpValue>>> validateCoOperative(
+      {required String username, required String channelPartner}) async {
     final List<LoginCoOpValue> _allCoops = [];
     try {
       final _res = await authApiProvider.validateCoOperative(
         username: username,
+        channelPartner: channelPartner,
       );
 
       final List<Map<String, dynamic>> _coopList = List.from(

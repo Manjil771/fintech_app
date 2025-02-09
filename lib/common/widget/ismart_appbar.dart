@@ -14,7 +14,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 import '../../feature/authentication/resource/user_repository.dart';
 
-AppBar myAppbar({bool showBackButton = false}) {
+AppBar myAppbar({bool showBackButton = false, bool showChatBot = false}) {
   final _height = SizeUtils.height;
 
   Widget _getImageWidget() {
@@ -82,7 +82,7 @@ AppBar myAppbar({bool showBackButton = false}) {
           );
         },
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 18.0),
+          padding: const EdgeInsets.only(right: 18.0),
           child: SvgPicture.asset(
             Assets.logoutIcon,
             color: CustomTheme.primaryColor,

@@ -159,7 +159,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                     );
 
                                 NavigationService.push(
-                                    target: TransactionDetailWidget(
+                                    target: TransactionDetailPage(
                                   downloadUrlNotifier: _downloadNotifierValue,
                                   recentTransactionModel: _detail,
                                 ));

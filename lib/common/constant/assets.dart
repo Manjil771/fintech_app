@@ -24,6 +24,7 @@ class Assets {
   static const String notificationIcon = "assets/icons/Notification.svg";
   static const String marketPlaceIcon = "assets/icons/marketplace_icon.svg";
   static const String movieSeatIcon = "assets/icons/movie_seat.svg";
+  static const String downloadBorderIcon = "assets/icons/download_border.svg";
 
   static const String searchIcon = "assets/icons/search.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
@@ -76,6 +77,7 @@ class Assets {
   static const String menuIcon = "assets/icon/menu_icon.svg";
   static const String sortIcon = "assets/icons/Group 1100.svg";
   static const String resetPinIcon = "assets/icons/Reset password.svg";
+  static const String preference = "assets/icons/preference.svg";
 
 // send money
   static const String sendMoneyIcon =
@@ -87,6 +89,7 @@ class Assets {
 
   static const String emiCalculator = "assets/icons/EMI Calculator.svg";
   static const String downloadIcon = "assets/icons/Download.svg";
+  static const String transactionLimit = "assets/icons/transLimit.svg";
   static const String settingIcon = "assets/icons/settings-svgrepo-com 1.svg";
   static const String contactUsIcon = "assets/icons/Contact us.svg";
   static const String successIcon = "assets/icons/transaction_success.svg";
@@ -96,6 +99,10 @@ class Assets {
       "assets/images/infographics_10.png";
 
 //*********//
+  static const String instaLoanBanner = "assets/images/insta_lona_banner.png";
+  static const String instaLoanIcon = "assets/images/Group 1167.png";
+  static const String instaLoanSuccessIcon =
+      "assets/images/insta_loan_success copy.png";
 
 //remittance
   static const String findAgentsRemit = "assets/icons/find agents.svg";

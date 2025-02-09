@@ -161,6 +161,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 .toString()
                                 .toLowerCase() ==
                             "electricity") {
+                              
                           NavigationService.push(
                               target: ElectricityPaymentPage(
                             service: data.services[0],
@@ -171,8 +172,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                             "airlines") {
                           NavigationService.push(
                               target: AirlinesIntroPage(
-                            cashbackAmount:
-                                data.services[0].cashBackView.toString(),
                             service: data.services[0],
                           ));
                         } else if (data.uniqueIdentifier
@@ -218,35 +217,34 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                           );
                         }
                       },
-                      child: Column(
+                      child: Stack(
                         children: [
+                          data.isNew == true
+                              ? Container(
+                                  padding:
+                                      const EdgeInsets.symmetric(horizontal: 4),
+                                  decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(5)),
+                                  child: Align(
+                                    alignment: Alignment.topRight,
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          borderRadius:
+                                              BorderRadius.circular(4)),
+                                      padding: const EdgeInsets.all(2),
+                                      child: Text(
+                                        'New',
+                                        style: _textTheme.bodyLarge!.copyWith(
+                                            color: CustomTheme.white,
+                                            fontSize: 7),
+                                      ),
+                                    ),
+                                  ),
+                                )
+                              : Container(),
                           Column(
                             children: [
-                              data.isNew == true
-                                  ? Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        Container(
-                                          padding: const EdgeInsets.symmetric(
-                                              horizontal: 4),
-                                          decoration: BoxDecoration(
-                                              color: CustomTheme.primaryColor,
-                                              borderRadius:
-                                                  BorderRadius.circular(5)),
-                                          child: Align(
-                                            alignment: Alignment.topRight,
-                                            child: Text(
-                                              'New',
-                                              style: _textTheme.bodyLarge!
-                                                  .copyWith(
-                                                      color: CustomTheme.white,
-                                                      fontSize: 8),
-                                            ),
-                                          ),
-                                        ),
-                                      ],
-                                    )
-                                  : Container(),
                               Container(
                                 height: _height * 0.03,
                                 child: _imageUrl.toLowerCase().contains("svg")

@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/setting/preferences/preference_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SettingWidget extends StatefulWidget {
@@ -127,6 +128,15 @@ class _SettingWidgetState extends State<SettingWidget> {
                   },
                   detail: "Tap to reset your Security Pin.",
                   title: "Forget Pin"),
+
+              const Divider(thickness: 1),
+              CommonDetailBox(
+                  leadingImage: Assets.preference,
+                  onBoxPressed: () {
+                    NavigationService.push(target: const PreferenceWidget());
+                  },
+                  detail: "Tap to set your preferences.",
+                  title: "Preferences"),
 
               const Divider(thickness: 1),
               CommonDetailBox(

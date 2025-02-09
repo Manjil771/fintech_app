@@ -4,7 +4,7 @@ import 'package:ismart/feature/authentication/ui/resetPin/screen/reset_pin_scree
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/banking/balanceInquiry/widget/balance_inquiry_widget.dart';
 import 'package:ismart/feature/banking/cheque/screen/cheque_screen.dart';
-import 'package:ismart/feature/banking/loan/screen/loan_page.dart';
+import 'package:ismart/feature/banking/loan/screen/loan_choose_account_widget.dart';
 import 'package:ismart/feature/categoryWiseService/dataPack/screen/buy_datapack_screen.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/internet_list_screen.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/all_category_screen.dart';
@@ -85,6 +85,11 @@ class RouteGenerator {
           builder: (_) => const OtherCooperativePage(),
           settings: RouteSettings(name: settings.name),
         );
+      case Routes.chooseLoanAccountPage:
+        return MaterialPageRoute(
+          builder: (_) => ChooseAccountLoanWidget.ChooseLoanAccountWidget(),
+          settings: RouteSettings(name: settings.name),
+        );
       case Routes.reveiveMoney:
         return MaterialPageRoute(
           builder: (_) => const ReceiveMoneyPage(),
@@ -137,12 +142,12 @@ class RouteGenerator {
         );
       case Routes.emiCalculator:
         return MaterialPageRoute(
-          builder: (_) => EmiCalculatorPage(),
+          builder: (_) => const EmiCalculatorPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.discountCalculator:
         return MaterialPageRoute(
-          builder: (_) => DiscountCalculatorPage(),
+          builder: (_) => const DiscountCalculatorPage(),
           settings: RouteSettings(name: settings.name),
         );
       case Routes.loginPage:
@@ -201,11 +206,6 @@ class RouteGenerator {
       case Routes.settingPage:
         return MaterialPageRoute(
           builder: (_) => const SettingPage(),
-          settings: RouteSettings(name: settings.name),
-        );
-      case Routes.loanPage:
-        return MaterialPageRoute(
-          builder: (_) => const LoanPage(),
           settings: RouteSettings(name: settings.name),
         );
 

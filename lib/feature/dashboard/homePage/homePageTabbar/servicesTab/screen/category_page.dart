@@ -46,7 +46,7 @@ class _CategoryPageState extends State<CategoryPage> {
     return BlocProvider(
       create: (context) => CategoryCubit(
         servicesRepository: RepositoryProvider.of<CategoryRepository>(context),
-      ),
+      )..fetchCategory(),
       child: SingleChildScrollView(
         child: Column(
           children: [

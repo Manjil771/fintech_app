@@ -18,16 +18,27 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 // ignore: must_be_immutable
-class EtellerWidget extends StatelessWidget {
+class EtellerWidget extends StatefulWidget {
   final String payload;
   EtellerWidget({Key? key, required this.payload}) : super(key: key);
+
+  @override
+  State<EtellerWidget> createState() => _EtellerWidgetState();
+}
+
+class _EtellerWidgetState extends State<EtellerWidget> {
   final TextEditingController _amountController = TextEditingController();
+
   final TextEditingController _remarksController = TextEditingController();
+
   final _formKey = GlobalKey<FormState>();
+
   bool _isLoading = false;
+
   @override
   Widget build(BuildContext context) {
-    final jsonData = jsonDecode(payload);
+    String _currentAmount = '';
+    final jsonData = jsonDecode(widget.payload);
 
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
@@ -89,6 +100,7 @@ class EtellerWidget extends StatelessWidget {
           }
         },
         child: CommonContainer(
+            verificationAmount: _currentAmount,
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 NavigationService.push(
@@ -131,6 +143,11 @@ class EtellerWidget extends StatelessWidget {
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Amount"),
                     controller: _amountController,
+                    onChanged: (value) {
+                      setState(() {
+                        _currentAmount = value;
+                      });
+                    },
                     title: "Amount",
                   ),
                   CustomTextField(

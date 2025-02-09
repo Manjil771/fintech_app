@@ -210,7 +210,7 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                             color: CustomTheme.lightTextColor,
                           ),
                         ),
-                        PrimaryAccountBox(),
+                        const PrimaryAccountBox(),
                         Text(
                           "Flight Details",
                           style: _textTheme.headlineMedium,
@@ -316,11 +316,14 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Text(
-                      "Total Amount",
+                      "Total Paying",
                       style: _textTheme.headlineSmall,
                     ),
                     Text(
-                      "Rs " + widget.totalFare.toString(),
+                      "Rs " +
+                          widget.departureFlight!
+                              .getTotalFareAfterCashback()
+                              .toString(),
                       style: _textTheme.displaySmall!
                           .copyWith(color: _theme.primaryColor),
                     ),

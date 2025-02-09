@@ -7,7 +7,9 @@ import 'package:ismart/feature/authentication/resource/user_repository.dart';
 
 enum FileType {
   excel("xlsx"),
-  pdf("pdf");
+  pdf("pdf"),
+  jpeg("jpeg"),
+  png("png");
 
   final String extension;
   const FileType(this.extension);

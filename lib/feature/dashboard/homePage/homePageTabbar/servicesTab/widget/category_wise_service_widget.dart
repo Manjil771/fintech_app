@@ -18,11 +18,13 @@ import 'package:ismart/feature/categoryWiseService/governmentPayment/commonGovPa
 import 'package:ismart/feature/categoryWiseService/governmentPayment/traffic_fine/screens/traffic_fine_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/LifeInsurance/screen/life_insurance_page.dart';
 import 'package:ismart/feature/categoryWiseService/insurance/screen/non_life_insurance_page.dart';
+import 'package:ismart/feature/categoryWiseService/internet/cg/screens/cg_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/common/screen/common_internet_with_amount_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/subisu/screens/subisu_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/internet/ui/screens/find_username_internet_screen.dart';
 import 'package:ismart/feature/categoryWiseService/ridePayment/screen/ride_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/ridePayment/tootle/screen/tootle_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/commonTvPayment/screen/net_tv_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/tvPayment/screen/tv_payment_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -186,6 +188,12 @@ class _CategoriesWiseServicesWidgetState
           service: searchedService,
         ));
       } else if (serviceIdentifier.toLowerCase() ==
+          Slugs.cgnetTopup.toLowerCase()) {
+        NavigationService.push(
+            target: CgPaymentPage(
+          service: searchedService,
+        ));
+      } else if (serviceIdentifier.toLowerCase() ==
               Slugs.alishaTopup.toLowerCase() ||
           serviceIdentifier.toLowerCase() == Slugs.infonetTopup.toLowerCase() ||
           serviceIdentifier.toLowerCase() ==
@@ -218,17 +226,19 @@ class _CategoriesWiseServicesWidgetState
 
     if (widget.categoryIdentifier.toLowerCase() ==
         Slugs.rideSharing.toLowerCase()) {
-      NavigationService.push(
-          target: RidePaymentPage(
-        service: searchedService,
-      ));
+      if (serviceIdentifier == Slugs.tootleTopup) {
+        NavigationService.push(
+            target: TootlepaymentPage(
+          service: searchedService,
+        ));
+      } else {
+        NavigationService.push(
+            target: RidePaymentPage(
+          service: searchedService,
+        ));
+      }
     }
-    // if (serviceIdentifier == Slugs.pathaoTopup) {
-    //   NavigationService.push(
-    //       target: RidePaymentPage(
-    //     service: servicess,
-    //   ));
-    // }
+
     if (serviceIdentifier.toLowerCase() ==
         "khanepani_online_topup".toLowerCase()) {
       NavigationService.push(

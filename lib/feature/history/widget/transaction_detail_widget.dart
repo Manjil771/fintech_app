@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -13,6 +14,31 @@ import 'package:ismart/common/widget/screen_appbar.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+
+class TransactionDetailPage extends StatelessWidget {
+  final RecentTransactionModel recentTransactionModel;
+  final ValueNotifier<String> downloadUrlNotifier;
+  const TransactionDetailPage(
+      {super.key,
+      required this.recentTransactionModel,
+      required this.downloadUrlNotifier});
+
+  @override
+  Widget build(BuildContext context) {
+    return BlocProvider(
+      create: (context) => UtilityPaymentCubit(
+          utilityPaymentRepository:
+              RepositoryProvider.of<UtilityPaymentRepository>(context)),
+      child: TransactionDetailWidget(
+        downloadUrlNotifier: downloadUrlNotifier,
+        recentTransactionModel: recentTransactionModel,
+      ),
+    );
+  }
+}
 
 class TransactionDetailWidget extends StatefulWidget {
   final RecentTransactionModel recentTransactionModel;
@@ -30,6 +56,18 @@ class TransactionDetailWidget extends StatefulWidget {
 
 class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
   String? downloadUrl;
+  @override
+  void initState() {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+          serviceIdentifier: "",
+          accountDetails: {
+            "tranId": widget.recentTransactionModel.transactionIdentifier,
+          },
+          apiEndpoint: "/api/movie/ticket/download",
+        );
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // final e = widget.recentTransactionModel;
@@ -102,52 +140,109 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                       padding: const EdgeInsets.symmetric(vertical: 10),
                       child: Row(
                         children: [
-                          ValueListenableBuilder<String>(
-                              valueListenable: widget.downloadUrlNotifier,
-                              builder: (context, val, _) {
-                                if (val.isNotEmpty) {
-                                  return InkWell(
-                                    onTap: () {
-                                      FileDownloadUtils.downloadFile(
-                                        downloadLink:
-                                            widget.downloadUrlNotifier.value,
-                                        fileName: FileDownloadUtils
-                                            .generateDownloadFileName(
-                                          name: widget
-                                              .recentTransactionModel.service,
-                                          filetype: FileType.pdf,
+                          r.service == "Movie"
+                              ? BlocBuilder<UtilityPaymentCubit, CommonState>(
+                                  builder: (context, state) {
+                                    if (state is CommonStateSuccess<
+                                        UtilityResponseData>) {
+                                      final ticketUrl = state.data
+                                          .findValueString('ticketUrl');
+                                      final movieTicketPdfUrl =
+                                          RepositoryProvider.of<CoOperative>(
+                                                      context)
+                                                  .baseUrl +
+                                              ticketUrl;
+
+                                      return InkWell(
+                                        onTap: () {
+                                          FileDownloadUtils.downloadFile(
+                                            downloadLink: movieTicketPdfUrl,
+                                            fileName: FileDownloadUtils
+                                                .generateDownloadFileName(
+                                              name: widget
+                                                  .recentTransactionModel
+                                                  .service,
+                                              filetype: FileType.pdf,
+                                            ),
+                                            context: context,
+                                          );
+                                          widget.downloadUrlNotifier.value = "";
+                                          NavigationService.pop();
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 12, horizontal: 8),
+                                          decoration: BoxDecoration(
+                                              color: _theme.primaryColor
+                                                  .withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          child: Column(
+                                            children: [
+                                              SvgPicture.asset(
+                                                Assets.downloadIcon,
+                                                height: 25.hp,
+                                              ),
+                                              Text(
+                                                "   Ticket   ",
+                                                style: _textTheme.titleSmall,
+                                              ),
+                                            ],
+                                          ),
                                         ),
-                                        context: context,
                                       );
-                                      widget.downloadUrlNotifier.value = "";
-                                      NavigationService.pop();
-                                    },
-                                    child: Container(
-                                      padding: const EdgeInsets.symmetric(
-                                          vertical: 12, horizontal: 8),
-                                      decoration: BoxDecoration(
-                                          color: _theme.primaryColor
-                                              .withOpacity(0.05),
-                                          borderRadius:
-                                              BorderRadius.circular(8)),
-                                      child: Column(
-                                        children: [
-                                          SvgPicture.asset(
-                                            Assets.downloadIcon,
-                                            height: 25.hp,
+                                    } else {
+                                      return Container();
+                                    }
+                                  },
+                                )
+                              : ValueListenableBuilder<String>(
+                                  valueListenable: widget.downloadUrlNotifier,
+                                  builder: (context, val, _) {
+                                    if (val.isNotEmpty) {
+                                      return InkWell(
+                                        onTap: () {
+                                          FileDownloadUtils.downloadFile(
+                                            downloadLink: widget
+                                                .downloadUrlNotifier.value,
+                                            fileName: FileDownloadUtils
+                                                .generateDownloadFileName(
+                                              name: widget
+                                                  .recentTransactionModel
+                                                  .service,
+                                              filetype: FileType.pdf,
+                                            ),
+                                            context: context,
+                                          );
+                                          widget.downloadUrlNotifier.value = "";
+                                          NavigationService.pop();
+                                        },
+                                        child: Container(
+                                          padding: const EdgeInsets.symmetric(
+                                              vertical: 12, horizontal: 8),
+                                          decoration: BoxDecoration(
+                                              color: _theme.primaryColor
+                                                  .withOpacity(0.05),
+                                              borderRadius:
+                                                  BorderRadius.circular(8)),
+                                          child: Column(
+                                            children: [
+                                              SvgPicture.asset(
+                                                Assets.downloadIcon,
+                                                height: 25.hp,
+                                              ),
+                                              Text(
+                                                "Download",
+                                                style: _textTheme.titleSmall,
+                                              ),
+                                            ],
                                           ),
-                                          Text(
-                                            "Download",
-                                            style: _textTheme.titleSmall,
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  );
-                                } else {
-                                  return Container();
-                                }
-                              }),
+                                        ),
+                                      );
+                                    } else {
+                                      return Container();
+                                    }
+                                  }),
                           SizedBox(width: 20.wp),
                           InkWell(
                             onTap: () {

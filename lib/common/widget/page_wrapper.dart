@@ -19,12 +19,15 @@ class PageWrapper extends StatefulWidget {
   final Widget? floatinActionButton;
   final Widget? bottomNavBar;
   final Color? backgroundColor;
+  final bool showChatBot;
   final FloatingActionButtonLocation floatingActionButtonLocation;
   final FloatingActionButtonType floatingActionButtonType;
   final Function()? onBackPressed;
   final bool showBackButton;
+
   const PageWrapper({
     this.useOwnAppBar = false,
+    this.showChatBot = false,
     required this.body,
     this.showBackButton = false,
     this.useOwnScaffold = false,
@@ -84,7 +87,9 @@ class _PageWrapperState extends State<PageWrapper> {
         appBar: widget.showAppBar
             ? (widget.useOwnAppBar
                 ? widget.appBar
-                : myAppbar(showBackButton: widget.showBackButton))
+                : myAppbar(
+                    showBackButton: widget.showBackButton,
+                    showChatBot: widget.showChatBot))
             : null,
         body: Container(
           padding: widget.padding ??

@@ -26,6 +26,7 @@ class CommonBillDetailPage extends StatelessWidget {
   final Widget body;
   final ServiceList service;
   final String serviceName;
+  final String? verificationAmount;
 
   const CommonBillDetailPage(
       {super.key,
@@ -35,6 +36,7 @@ class CommonBillDetailPage extends StatelessWidget {
       required this.apiBody,
       required this.service,
       required this.serviceIdentifier,
+      this.verificationAmount,
       required this.serviceName});
   @override
   Widget build(BuildContext context) {
@@ -44,6 +46,7 @@ class CommonBillDetailPage extends StatelessWidget {
             RepositoryProvider.of<UtilityPaymentRepository>(context),
       ),
       child: CommonBillDetailWidget(
+        verificationAmount: verificationAmount,
         body: body,
         service: service,
         apiBody: apiBody,
@@ -64,6 +67,7 @@ class CommonBillDetailWidget extends StatefulWidget {
   final Widget body;
   final String serviceIdentifier;
   final String serviceName;
+  final String? verificationAmount;
 
   const CommonBillDetailWidget({
     super.key,
@@ -72,6 +76,7 @@ class CommonBillDetailWidget extends StatefulWidget {
     required this.body,
     required this.apiBody,
     required this.service,
+    this.verificationAmount,
     required this.serviceIdentifier,
     required this.serviceName,
   });
@@ -121,6 +126,8 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
               NavigationService.pushReplacement(
                   target: CommonTransactionSuccessPage(
                       serviceName: widget.serviceName,
+
+                      ///test
                       pdfUrl:
                           state.data.findValue(primaryKey: "airlinesPdfUrl"),
                       transactionID: state.data.transactionIdentifier,
@@ -216,6 +223,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                   ),
                   SizedBox(height: _height * 0.02),
                   CustomRoundedButtom(
+                      verificationAmount: widget.verificationAmount,
                       title: "Pay",
                       onPressed: () {
                         NavigationService.push(target: TransactionPinScreen(

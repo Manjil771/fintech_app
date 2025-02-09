@@ -61,6 +61,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
   String? bestMatchBankId;
   String? bestMatchBankName;
   String bankNameRecentTransaction = "";
+  String _currentAmount = '';
 
   @override
   void initState() {
@@ -313,7 +314,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   : NavigationService.pop();
             },
             onRecentTransactionPressed: (p0) {
-              NavigationService.pop();
+              //NavigationService.pop();
               bankNameRecentTransaction =
                   p0.requestDetail.destinationBankName.toString();
               _accountNameController.text =
@@ -321,6 +322,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
               _accountNumberController.text =
                   p0.requestDetail.destinationAccountNumber.toString();
               _amountController.text = p0.amount.toString();
+              _currentAmount = p0.amount.toString();
               _remarksController.text = p0.customerRemarks.toString();
               setState(() {});
             },
@@ -481,7 +483,6 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             },
                             listener: (context, state) {},
                           )),
-                  Text(selectedBank?.bankId ?? "".toString()),
 
                   CustomTextField(
                     title: "Account Number",
@@ -532,9 +533,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               decimal: true),
                           controller: _amountController,
                           onChanged: (val) {
+                            print("this is amount$_currentAmount");
+                            setState(() {
+                              _currentAmount = val;
+                            });
+
                             if (val != _amountController.text) {
                               charges = null;
-                              setState(() {});
+
+                              // setState(() {
+                              //   _currentAmount = val;
+                              // });
                             }
                           },
                           validator: (value) => FormValidator.validateAmount(
@@ -566,6 +575,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
             ),
             topbarName: "Bank Transfer",
             buttonName: charges != null ? "Confirm" : "Check Transfer",
+            verificationAmount: _currentAmount,
             onButtonPressed: () {
               // NavigationService.push(target: const LimitScreen());
               if (_formKey.currentState!.validate()) {

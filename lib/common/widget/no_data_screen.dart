@@ -34,6 +34,9 @@ class NoDataScreen extends StatelessWidget {
             style: _textTheme.displayLarge!.copyWith(fontSize: 20),
           ),
         ),
+        const SizedBox(
+          height: 8,
+        ),
         Text(
           details,
           textAlign: TextAlign.center,

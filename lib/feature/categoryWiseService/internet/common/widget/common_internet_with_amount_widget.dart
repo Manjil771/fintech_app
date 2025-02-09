@@ -36,6 +36,7 @@ class _CommonInternetWithAmountWidgetState
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
   final TextEditingController _setupBoxController = TextEditingController();
+  String _currentAmmount = "";
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -95,6 +96,7 @@ class _CommonInternetWithAmountWidgetState
         child: Form(
           key: _formKey,
           child: CommonContainer(
+            verificationAmount: _currentAmmount,
             showRecentTransaction: true,
             associatedId: widget.service.id.toString(),
             showDetail: true,
@@ -184,6 +186,11 @@ class _CommonInternetWithAmountWidgetState
                       val: value.toString(),
                       minAmount: widget.service.minValue,
                       maxAmount: widget.service.maxValue),
+                  onChanged: (value) {
+                    setState(() {
+                      _currentAmmount = value;
+                    });
+                  },
                 )
               ],
             ),
@@ -193,31 +200,33 @@ class _CommonInternetWithAmountWidgetState
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {
                 NavigationService.push(
-                    target: CommonBillDetailPage(
-                  serviceName: widget.service.service,
-                  body: Column(
-                    children: [
-                      KeyValueTile(
-                          title: "Username", value: _usernameController.text),
-                      KeyValueTile(
-                          title: "Amount", value: _amountController.text),
-                    ],
+                  target: CommonBillDetailPage(
+                    serviceName: widget.service.service,
+                    body: Column(
+                      children: [
+                        KeyValueTile(
+                            title: "Username", value: _usernameController.text),
+                        KeyValueTile(
+                            title: "Amount", value: _amountController.text),
+                      ],
+                    ),
+                    apiBody: const {},
+                    service: widget.service,
+                    serviceIdentifier: widget.service.uniqueIdentifier,
+                    accountDetails: {
+                      "account_number":
+                          RepositoryProvider.of<CustomerDetailRepository>(
+                                  context)
+                              .selectedAccount
+                              .value!
+                              .accountNumber,
+                      // "username": _usernameController.text,
+                      "phone_number": _usernameController.text,
+                      "amount": _amountController.text,
+                    },
+                    apiEndpoint: "api/topup",
                   ),
-                  apiBody: const {},
-                  service: widget.service,
-                  serviceIdentifier: widget.service.uniqueIdentifier,
-                  accountDetails: {
-                    "account_number":
-                        RepositoryProvider.of<CustomerDetailRepository>(context)
-                            .selectedAccount
-                            .value!
-                            .accountNumber,
-                    // "username": _usernameController.text,
-                    "phone_number": _usernameController.text,
-                    "amount": _amountController.text,
-                  },
-                  apiEndpoint: "api/topup",
-                ));
+                );
               }
             },
           ),

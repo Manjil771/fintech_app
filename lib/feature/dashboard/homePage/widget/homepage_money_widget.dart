@@ -37,62 +37,130 @@ class HomePageMoneyWidget extends StatelessWidget {
                           .contains("send".toLowerCase())) &&
                       item.status.toLowerCase() == "Active".toLowerCase())
                   .toList();
+              final AppServiceManagementModel filteredInstaLoan = state.data
+                  .firstWhere((item) =>
+                      (item.type
+                          .toString()
+                          .toLowerCase()
+                          .contains("loan".toLowerCase())) &&
+                      item.type
+                          .toString()
+                          .toLowerCase()
+                          .contains("uniqueIdentifier".toLowerCase()));
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
-                child: Row(
-                  // scrollDirection: Axis.horizontal,
+                child: Column(
                   children: [
-                    ...List.generate(
-                      filteredItems.length,
-                      (index) => InkWell(
-                        onTap: () {
-                          print("Onclick action");
-                          if (filteredItems[index]
-                              .uniqueIdentifier
-                              .toString()
-                              .toLowerCase()
-                              .contains("bank_transfer".toLowerCase())) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.anyBank);
-                          } else if (filteredItems[index]
-                              .uniqueIdentifier
-                              .toString()
-                              .toLowerCase()
-                              .contains(
-                                  "fund_transfer_dashboard".toLowerCase())) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.internalCooperative);
-                          } else if (filteredItems[index]
+                    // if (filteredInstaLoan.status.toLowerCase() == "active")
+                    Container(
+                      color: Colors.red,
+                      height: 200.hp,
+                      width: double.infinity,
+                      decoration: const BoxDecoration(
+                          image: DecorationImage(
+                        image: AssetImage(Assets.instaLoanBanner),
+                      )),
+                    ),
+                    Row(
+                      // scrollDirection: Axis.horizontal,
+                      children: [
+                        ...List.generate(
+                          filteredItems.length,
+                          (index) => InkWell(
+                            onTap: () {
+                              print("Onclick action");
+                              if (filteredItems[index]
                                   .uniqueIdentifier
                                   .toString()
-                                  .toLowerCase() ==
-                              "coop_transfer".toLowerCase()) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.otherCooperative);
-                          } else if (filteredItems[index]
+                                  .toLowerCase()
+                                  .contains("bank_transfer".toLowerCase())) {
+                                NavigationService.pushNamed(
+                                    routeName: Routes.anyBank);
+                              } else if (filteredItems[index]
                                   .uniqueIdentifier
                                   .toString()
-                                  .toLowerCase() ==
-                              "load_wallet".toLowerCase()) {
-                            NavigationService.pushNamed(
-                                routeName: Routes.listWalletScreen);
-                          }
-                        },
-                        child: Container(
-                          padding: const EdgeInsets.all(10.0),
-                          child: Column(
-                            children: [
-                              SvgPicture.network(
-                                "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
-                                    filteredItems[index].imageUrl.toString(),
-                                height: 20.hp,
-                                fit: BoxFit.fitHeight,
-                                color: CustomTheme.primaryColor,
+                                  .toLowerCase()
+                                  .contains("fund_transfer_dashboard"
+                                      .toLowerCase())) {
+                                NavigationService.pushNamed(
+                                    routeName: Routes.internalCooperative);
+                              } else if (filteredItems[index]
+                                      .uniqueIdentifier
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "coop_transfer".toLowerCase()) {
+                                NavigationService.pushNamed(
+                                    routeName: Routes.otherCooperative);
+                              } else if (filteredItems[index]
+                                      .uniqueIdentifier
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "load_wallet".toLowerCase()) {
+                                NavigationService.pushNamed(
+                                    routeName: Routes.listWalletScreen);
+                              }
+                            },
+                            child: Container(
+                              padding: const EdgeInsets.all(10.0),
+                              child: Column(
+                                children: [
+                                  SvgPicture.network(
+                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}" +
+                                        filteredItems[index]
+                                            .imageUrl
+                                            .toString(),
+                                    height: 20.hp,
+                                    fit: BoxFit.fitHeight,
+                                    color: CustomTheme.primaryColor,
+                                  ),
+                                  SizedBox(height: 5.hp),
+                                  Center(
+                                    child: Text(
+                                      filteredItems[index].name,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .labelMedium!
+                                          .copyWith(
+                                            fontSize: 12,
+                                            color: CustomTheme.primaryColor,
+                                          ),
+                                      textAlign: TextAlign.center,
+                                      overflow: TextOverflow.ellipsis,
+                                      maxLines: 1,
+                                    ),
+                                  )
+                                ],
                               ),
-                              SizedBox(height: 5.hp),
-                              Center(
-                                child: Text(
-                                  filteredItems[index].name,
+                            ),
+                          ),
+                        ),
+                        // ListView.builder(
+                        //   shrinkWrap: true,
+                        //   itemCount: filteredItems.length,
+                        //   scrollDirection: Axis.horizontal,
+                        //   // shrinkWrap: true,
+                        //   itemBuilder: (context, index) {
+                        //     return  },
+                        // ),
+
+                        InkWell(
+                          onTap: () {
+                            NavigationService.pushNamed(
+                                routeName: Routes.loadFromKhalti);
+                          },
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Column(
+                              children: [
+                                SvgPicture.asset(
+                                  Assets.reveiceMoneyIcon,
+                                  height: 20.hp,
+                                  color: CustomTheme.primaryColor,
+                                  fit: BoxFit.fitHeight,
+                                ),
+                                SizedBox(height: 5.hp),
+                                Text(
+                                  "Load Money",
                                   style: Theme.of(context)
                                       .textTheme
                                       .labelMedium!
@@ -103,54 +171,12 @@ class HomePageMoneyWidget extends StatelessWidget {
                                   textAlign: TextAlign.center,
                                   overflow: TextOverflow.ellipsis,
                                   maxLines: 1,
-                                ),
-                              )
-                            ],
+                                )
+                              ],
+                            ),
                           ),
                         ),
-                      ),
-                    ),
-                    // ListView.builder(
-                    //   shrinkWrap: true,
-                    //   itemCount: filteredItems.length,
-                    //   scrollDirection: Axis.horizontal,
-                    //   // shrinkWrap: true,
-                    //   itemBuilder: (context, index) {
-                    //     return  },
-                    // ),
-
-                    InkWell(
-                      onTap: () {
-                        NavigationService.pushNamed(
-                            routeName: Routes.loadFromKhalti);
-                      },
-                      child: Padding(
-                        padding: const EdgeInsets.all(10.0),
-                        child: Column(
-                          children: [
-                            SvgPicture.asset(
-                              Assets.reveiceMoneyIcon,
-                              height: 20.hp,
-                              color: CustomTheme.primaryColor,
-                              fit: BoxFit.fitHeight,
-                            ),
-                            SizedBox(height: 5.hp),
-                            Text(
-                              "Load Money",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(
-                                    fontSize: 12,
-                                    color: CustomTheme.primaryColor,
-                                  ),
-                              textAlign: TextAlign.center,
-                              overflow: TextOverflow.ellipsis,
-                              maxLines: 1,
-                            )
-                          ],
-                        ),
-                      ),
+                      ],
                     ),
                   ],
                 ),

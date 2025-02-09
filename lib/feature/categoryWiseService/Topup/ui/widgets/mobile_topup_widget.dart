@@ -32,6 +32,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _mobileNumberController = TextEditingController();
   final TextEditingController _amountController = TextEditingController();
+  String currentAmount = '';
   List<ServiceList> selectedService = [];
   List<ServiceList> getTopupType(String phoneNumber) {
     if (phoneNumber.startsWith("+977")) {
@@ -70,13 +71,14 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
         },
         child: CommonContainer(
           onRecentTransactionPressed: (p0) {
-            NavigationService.pop();
+            //  NavigationService.pop();
             _amountController.text = p0.amount.toString();
             _mobileNumberController.text = p0.serviceTo;
             setState(() {});
           },
           showRecentTransaction: true,
           showDetail: true,
+          verificationAmount: currentAmount,
           showAccountSelection: true,
           accountTitle: "From Account",
           buttonName: "Proceed",
@@ -185,6 +187,11 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                               textInputType: TextInputType.number,
                               hintText: "Enter the amount",
                               controller: _amountController,
+                              onChanged: (value) {
+                                setState(() {
+                                  currentAmount = value;
+                                });
+                              },
                               validator: (val) => FormValidator.validateAmount(
                                   val: val.toString(),
                                   maxAmount: selectedService.first.maxValue,
