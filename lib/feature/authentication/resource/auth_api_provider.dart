@@ -17,15 +17,15 @@ class AuthApiProvider {
   //   return await apiProvider.get('$baseUrl/user/profile', token: token);
   // }
 
-  // Future<dynamic> sendNotificationToken(
-  //     {required String notificationToken, required String token}) async {
-  //   final param = {"token": notificationToken};
-  //   return await apiProvider.post(
-  //     '$baseUrl/auth/firebase',
-  //     param,
-  //     token: token,
-  //   );
-  // }
+  Future<dynamic> sendNotificationToken(
+      {required String notificationToken, required String token}) async {
+    final param = {"token": notificationToken};
+    return await apiProvider.post(
+      '$baseUrl/auth/firebase',
+      param,
+      token: token,
+    );
+  }
 
   Future<dynamic> loginUser({
     required String username,
