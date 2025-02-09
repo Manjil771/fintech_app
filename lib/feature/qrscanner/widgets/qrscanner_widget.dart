@@ -697,7 +697,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         //   ));
         // }
       } else {
-        NavigationService.pushReplacement(
+        NavigationService.popUntilFirstPage();
+        NavigationService.push(
             target: EtellerPage(
           payload: qrCode,
         ));
