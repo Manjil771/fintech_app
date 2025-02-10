@@ -4525,5 +4525,5 @@ class CoOperativeValue {
     coOperativeName: "utkrishta Saving & Credit Co-operative Ltd.",
     appTitle: "Utkrishta iSmart",
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }
