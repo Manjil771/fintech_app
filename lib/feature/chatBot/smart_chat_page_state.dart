@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
 import 'package:ismart/feature/chatBot/chat_prompts.dart';
@@ -35,12 +36,15 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     }
   }
 
-  bool executeRecharge(String input) {
-    final regex = RegExp(r'^Recharge (\d+) with (\d+)$');
+  Future<bool> executeRecharge(String input) async {
+    final regex =
+        RegExp(r'^recharge my number with (\d+)$', caseSensitive: false);
     final match = regex.firstMatch(input);
     if (match != null) {
-      _storedPhoneNumber = match.group(1);
-      _storedToUpAmount = match.group(2);
+      _storedPhoneNumber = await SecureStorageService.appPhoneNumber;
+      // _storedPhoneNumber = match.group(1);
+      print("This is number i want : $_storedPhoneNumber");
+      _storedToUpAmount = match.group(1);
       return true;
     } else {
       return false;
@@ -153,7 +157,8 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     if (message.toLowerCase() == 'confirm') {
       UrlLauncher.launchPhone(context: context, phone: '9801132219');
     }
-    if (executeRecharge(message)) {
+
+    if (await executeRecharge(message)) {
       if (extractAndValidatePhoneNumber(_storedPhoneNumber) != "invalid") {
         categoryService.topupWithAmount(context, _storedToUpAmount.toString(),
             _storedPhoneNumber.toString());
@@ -231,8 +236,14 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
       }
     }
 
-    if (message.toLowerCase() == 'top up') {
+    if (message.toLowerCase() == 'top up' ||
+        message.toLowerCase().contains('top up')) {
       setState(() {
+        _chatHistory.add({
+          'type': 'user',
+          'message': message,
+          'timestamp': DateTime.now(),
+        });
         _chatHistory.add({
           'type': 'assistant',
           'message': 'Please enter your phone number (e.g., 98XXXXXXXX):',
@@ -292,7 +303,9 @@ abstract class SmartChatPageState extends State<SmartChatPage> {
     // Handle top-up amount validation if in that state
     if (_pendingInputType == 'top_up_amount') {
       final List<String> validAmounts = ['50', '100', '150', '200', '500'];
-      if (validAmounts.contains(message)) {
+      if (validAmounts.contains(message) ||
+          validAmounts
+              .any((amount) => message.toLowerCase().contains(amount))) {
         categoryService.topupWithAmount(
             context, message.toString(), _storedPhoneNumber.toString());
         setState(() {

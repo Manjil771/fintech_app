@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.31+61
+version: 1.5.35+65
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -14,6 +14,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: "^1.0.4"
   intl: "^0.18.1"
+  lottie: ^3.1.0
   ##screen_brightness: ^2.0.1 ## added SKP on hold for now
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
@@ -74,6 +75,7 @@ dependencies:
   khalti_checkout_flutter: "^1.0.0-dev.4"
   nepali_utils: ^3.0.6
   flutter_zxing: ^1.8.2
+  percent_indicator: ^4.2.4
 
 dev_dependencies:
   flutter_test:
@@ -102,7 +104,7 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    - assets/bhaktapur_saccos/
+    # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
     # - assets/arthaBag/
@@ -115,6 +117,7 @@ flutter:
     # - assets/suryadev/
     # - assets/uddhamshil/
     # - assets/navaprabhat/
+    # - assets/utkrishta/
     # - assets/vyas/
     # - assets/pratham/
     # - assets/newdhaulagiri/
@@ -158,7 +161,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    - assets/ajambari/
+    # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -188,7 +191,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -426,6 +429,7 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    # - assets/jmc/
 
   fonts:
     - family: popinbold

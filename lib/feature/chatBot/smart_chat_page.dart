@@ -9,6 +9,7 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+import 'package:lottie/lottie.dart';
 import 'smart_chat_page_state.dart';
 
 class SmartChatPage extends StatefulWidget {
@@ -62,10 +63,36 @@ class _SmartChatPageState extends SmartChatPageState {
         },
         child: PageWrapper(
           showBackButton: true,
-          body: Column(
+          body: Stack(
             children: [
-              Expanded(child: buildMessageList(_categoryService)),
-              buildUserInput(_categoryService),
+              Column(
+                children: [
+                  Expanded(child: buildMessageList(_categoryService)),
+                  buildUserInput(_categoryService),
+                ],
+              ),
+              Positioned(
+                bottom: 68,
+                child: Container(
+                  height: 80,
+                  width: 80,
+                  // child: Lottie.asset(
+                  //   'assets/myBot.json',
+                  //   animate: true,
+                  //   fit: BoxFit.contain,
+                  //   // delegates: LottieDelegates(
+                  //   //   values: [
+                  //   //     ValueDelegate.color(
+
+                  //   //       const ['**', 'Stroke'],
+                  //   //       value: Colors.red,
+                  //   //     ),
+                  //   //   ],
+                  //   // ),
+                  // ),
+                  child: Image.asset("assets/smart_fuchee.png"),
+                ),
+              ),
             ],
           ),
         ),
