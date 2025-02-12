@@ -4525,5 +4525,47 @@ class CoOperativeValue {
     coOperativeName: "utkrishta Saving & Credit Co-operative Ltd.",
     appTitle: "Utkrishta iSmart",
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative skDumarwana = CoOperative(
+    appStoreID: "com.devanasoft.skDumarwana",
+    packageName: "com.devanasoft.skDumarwana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/skDumarwana/skDumarwana_banner.png",
+    backgroundImage: "assets/skDumarwana/skDumarwana_background.png",
+    clientCode: '7SAAB1Z20P',
+    clientSecret: "198938",
+    coOperativeLogo: 'assets/skDumarwana/skDumarwana_logo.png',
+    splashImage: "assets/skDumarwana/skDumarwana_splash.png",
+    primaryColor: const Color(0xFF009A4E),
+    coOperativeName: "Sana Kisan Agriculture Cooperative Ltd Dumarwana",
+    appTitle: "SFACL Dumarwana iSmart",
+  );
+    static final CoOperative aniwarya = CoOperative(
+    appStoreID: "com.devanasoft.aniwarya",
+    packageName: "com.devanasoft.aniwarya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aniwarya/aniwarya_banner.png",
+    backgroundImage: "assets/aniwarya/aniwarya_background.png",
+    clientCode: '34GE6LQLL8',
+    clientSecret: "176483",
+    coOperativeLogo: 'assets/aniwarya/aniwarya_logo.png',
+    splashImage: "assets/aniwarya/aniwarya_splash.png",
+    primaryColor: const Color(0xFF144e27),
+    coOperativeName: "Aniwarya Saving & Credit Co-operative Limited",
+    appTitle: "Aniwarya iSmart",
+  );
+  static final CoOperative ainchoPainchoCoop = CoOperative(
+    appStoreID: "com.devanasoft.ainchoPaincho",
+    packageName: "com.devanasoft.ainchoPaincho",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ainchoPaincho/ainchoPaincho_banner.png",
+    backgroundImage: "assets/ainchoPaincho/ainchoPaincho_background.png",
+    clientCode: 'JSRG1FSZ9B',
+    clientSecret: "185568",
+    coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
+    splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
+    primaryColor: const Color(0xFF144e27),
+    coOperativeName: "Aincho Paincho Savings and Credit Co-operative Society Ltd.",
+    appTitle: "Aincho Paincho iSmart",
+  );
+  static final CoOperative currentCoop = ainchoPainchoCoop;
 }

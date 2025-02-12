@@ -1956,6 +1956,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        skDumarwana {
+            dimension "app"
+            applicationId "com.devanasoft.skDumarwana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aniwarya {
+            dimension "app"
+            applicationId "com.devanasoft.aniwarya"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ainchoPaincho {
+            dimension "app"
+            applicationId "com.devanasoft.ainchoPaincho"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
