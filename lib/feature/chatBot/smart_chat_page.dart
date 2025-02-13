@@ -9,7 +9,6 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
-import 'package:lottie/lottie.dart';
 import 'smart_chat_page_state.dart';
 
 class SmartChatPage extends StatefulWidget {

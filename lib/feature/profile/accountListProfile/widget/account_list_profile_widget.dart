@@ -72,8 +72,8 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                         title: CommonDetailBox(
                             showTrailingIcon: false,
                             leadingImage: Assets.profileIcon,
-                            title: _detail[index].accountTypeDescription ??
-                                _detail[index].accountType,
+                            title: _detail[index].accountType ??
+                                _detail[index].accountTypeDescription,
                             detail: "A/C : ${_detail[index].mainCode}",
                             onBoxPressed: () {
                               setState(() {
@@ -83,6 +83,7 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                             }),
                         children: [
                           Container(
+                            //lists of each saving
                             color: _theme.scaffoldBackgroundColor,
                             height: _height * 0.19,
                             padding: const EdgeInsets.symmetric(horizontal: 12),

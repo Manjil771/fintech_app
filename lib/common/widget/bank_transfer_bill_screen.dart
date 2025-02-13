@@ -203,8 +203,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                   ),
                   SizedBox(height: _height * 0.02),
                   CustomRoundedButtom(
-                      verificationAmount:
-                          sumAmounts(widget.amount ?? "", widget.amount ?? ''),
                       title: "Proceed",
                       onPressed: () {
                         NavigationService.push(target: TransactionPinScreen(
@@ -215,25 +213,20 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                                   otp: widget.otp,
                                   charge: widget.charge ?? "",
                                   amount: widget.amount ?? "",
-
                                   mpin: p0,
                                   remarks: widget.remarks ?? "",
                                   destinationBankInstrumentCode:
                                       widget.bankCode ?? "",
-
                                   destinationBankAccountName:
                                       widget.accountName ?? "",
-
                                   destinationBankAccountNumber:
                                       widget.accountNumber ?? "",
                                   destinationBankName: widget.bankName ?? "",
-
                                   sendingAccount: RepositoryProvider.of<
                                           CustomerDetailRepository>(context)
                                       .selectedAccount
                                       .value!
                                       .accountNumber,
-                                  //             );
                                 );
                           },
                         ));
@@ -245,11 +238,5 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
         ),
       ),
     );
-  }
-
-  String sumAmounts(String amount, String charge) {
-    int parsedAmount = int.tryParse(amount) ?? 0;
-    int parsedCharge = int.tryParse(charge) ?? 0;
-    return (parsedAmount + parsedCharge).toString();
   }
 }

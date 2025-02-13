@@ -65,7 +65,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                         .accountDetail
                         .where((element) =>
                             element.accountType.toLowerCase() == "saving" ||
-                            element.accountType.toLowerCase() == "current")
+                            element.accountType.toLowerCase() == "current" ||
+                            element.accountType.toLowerCase() == "fixeddeposit")
                         .toList();
                     return Container(
                       child: ListView.builder(
