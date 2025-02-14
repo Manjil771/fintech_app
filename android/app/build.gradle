@@ -621,7 +621,7 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-        skKhajurachhi {
+        skKhajurachhi{
             dimension "app"
             applicationId "com.devanasoft.skKhajurachhi"
             versionCode flutterVersionCode.toInteger()
