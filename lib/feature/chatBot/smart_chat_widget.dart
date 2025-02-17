@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
 import 'package:ismart/feature/chatBot/typing_animation.dart';
-import 'package:lottie/lottie.dart';
+// import 'package:lottie/lottie.dart';
 import 'smart_chat_page_state.dart';
 
 extension SmartChatWidgets on SmartChatPageState {
@@ -32,10 +31,6 @@ extension SmartChatWidgets on SmartChatPageState {
           color: CustomTheme.primaryColor.withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),
         ),
-        // child: const Text(
-        //   'Typing...',
-        //   style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic),
-        // ),
         child: const TypingIndicator(),
       ),
     );
@@ -114,26 +109,6 @@ extension SmartChatWidgets on SmartChatPageState {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            // child: TextField(
-            //   controller: messageController,
-            //   focusNode: focusNode,
-            //   style: const TextStyle(color: Colors.black),
-            //   decoration: InputDecoration(
-            //     hintText: 'Type a message...',
-            //     border: OutlineInputBorder(
-            //       borderRadius: BorderRadius.circular(12),
-            //     ),
-            //     focusedBorder: OutlineInputBorder(
-            //       borderRadius: BorderRadius.circular(10.0),
-            //       borderSide: BorderSide.none,
-            //     ),
-            //     contentPadding: const EdgeInsets.symmetric(
-            //       horizontal: 16,
-            //       vertical: 8,
-            //     ),
-            //   ),
-            //   onSubmitted: (value) => handleUserInput(value),
-            // ),
             child: CustomTextField(
               controller: messageController,
               hintText: 'Type a message...',

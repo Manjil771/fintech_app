@@ -3,6 +3,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -16,7 +17,9 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
-import 'package:lottie/lottie.dart';
+import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+// import 'package:lottie/lottie.dart';
 
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
@@ -203,29 +206,34 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           child: InkWell(
                             onTap: () {
                               NavigationService.push(
-                                  target: const SmartChatPage());
+                                  target: const SmartChatPage(
+                                      //  id: _response.detail['id']
+                                      ));
+                              // onButtonPressed();
                             },
+                            // child:
+                            //     BlocListener<UtilityPaymentCubit, CommonState>(
+                            //   listener: (context, state) {
+                            //     if (state is CommonStateSuccess<
+                            //         UtilityResponseData>) {
+                            //       final UtilityResponseData _response =
+                            //           state.data;
+                            //       if (_response.code == "M0000") {
+                            //         NavigationService.push(
+                            //             target: SmartChatPage(
+                            //                 id: _response.detail['id']));
+                            //       }
+                            //     }
+                            //   },
+                            //   child: Container(
+                            //     width: 140,
+                            //     height: 140,
+                            //     child: Image.asset("assets/smart_fuchee.png"),
+                            //   ),
+                            // ),
                             child: Container(
                               width: 140,
                               height: 140,
-                              // decoration: const BoxDecoration(
-                              //   shape: BoxShape.rectangle,
-                              //   color: Colors.transparent,
-                              // ),
-                              // child: Lottie.asset(
-                              //   'assets/myBot.json',
-                              //   animate: true,
-                              //   fit: BoxFit.contain,
-                              // delegates: LottieDelegates(
-                              //   values: [
-                              //     ValueDelegate.color(
-
-                              //       const ['**', 'Stroke'],
-                              //       value: Colors.red,
-                              //     ),
-                              //   ],
-                              // ),
-                              // ),
                               child: Image.asset("assets/smart_fuchee.png"),
                             ),
                           ),
@@ -236,6 +244,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         ),
       ),
     );
+  }
+
+  onButtonPressed() {
+    context.read<UtilityPaymentCubit>().fetchDetailsPost(
+        serviceIdentifier: "",
+        accountDetails: {},
+        apiEndpoint: "api/ai/create");
   }
 }
 // import 'package:flutter/material.dart';

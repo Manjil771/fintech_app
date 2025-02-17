@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.31+61
+version: 1.5.32+62
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -14,7 +14,7 @@ dependencies:
     sdk: flutter
   cupertino_icons: "^1.0.4"
   intl: "^0.18.1"
-  lottie: ^3.1.0
+  # lottie: ^3.1.0
   ##screen_brightness: ^2.0.1 ## added SKP on hold for now
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
@@ -90,6 +90,9 @@ dependency_overrides:
 
 flutter:
   assets:
+    # - assets/dhanrasi/
+    # - assets/kamdhenu/
+    # - assets/sambriddhi/
     - assets/translations/
     - assets/
     - assets/icons/
@@ -399,7 +402,7 @@ flutter:
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
     # - assets/shreeKalidevi/
-    # - assets/aakash/
+    - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
@@ -416,7 +419,7 @@ flutter:
     # - assets/sanakishanHathasuwa/
     # - assets/sanakishan/
     # - assets/skKhudunabari/
-    - assets/skKhajurgachhi/
+    # - assets/skKhajurgachhi/
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/

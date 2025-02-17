@@ -13,10 +13,11 @@ import 'smart_chat_page_state.dart';
 
 class SmartChatPage extends StatefulWidget {
   final String? receiverEmail;
-
+  final int? id;
   const SmartChatPage({
     Key? key,
     this.receiverEmail = "iSmart",
+    this.id,
   }) : super(key: key);
 
   @override
@@ -75,20 +76,6 @@ class _SmartChatPageState extends SmartChatPageState {
                 child: Container(
                   height: 80,
                   width: 80,
-                  // child: Lottie.asset(
-                  //   'assets/myBot.json',
-                  //   animate: true,
-                  //   fit: BoxFit.contain,
-                  //   // delegates: LottieDelegates(
-                  //   //   values: [
-                  //   //     ValueDelegate.color(
-
-                  //   //       const ['**', 'Stroke'],
-                  //   //       value: Colors.red,
-                  //   //     ),
-                  //   //   ],
-                  //   // ),
-                  // ),
                   child: Image.asset("assets/smart_fuchee.png"),
                 ),
               ),

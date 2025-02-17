@@ -4525,5 +4525,48 @@ class CoOperativeValue {
     coOperativeName: "utkrishta Saving & Credit Co-operative Ltd.",
     appTitle: "Utkrishta iSmart",
   );
-  static final CoOperative currentCoop = skKhajurgachhi;
+  static final CoOperative sambriddhi = CoOperative(
+    appStoreID: "com.devanasoft.sambriddhi",
+    packageName: "com.devanasoft.sambriddhi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sambriddhi/sambriddhi_banner.png",
+    backgroundImage: "assets/sambriddhi/sambriddhi_background.png",
+    clientCode: '8KRX8V52XL',
+    clientSecret: "211847",
+    coOperativeLogo: 'assets/sambriddhi/sambriddhi_logo.png',
+    splashImage: "assets/sambriddhi/sambriddhi_splash.png",
+    primaryColor: const Color(0xFF136638),
+    coOperativeName: "Sambriddhi Saving and Credit Cooperative Society Ltd.",
+    appTitle: 'Sambriddhi iSmart',
+  );
+
+  static final CoOperative kamdhenu = CoOperative(
+    appStoreID: "com.devanasoft.kamdhenu",
+    packageName: "com.devanasoft.kamdhenu",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kamdhenu/kamdhenu_banner.png",
+    backgroundImage: "assets/kamdhenu/kamdhenu_background.png",
+    clientCode: '3VSGSQ6JBH',
+    clientSecret: "122721",
+    coOperativeLogo: 'assets/kamdhenu/kamdhenu_logo.png',
+    splashImage: "assets/kamdhenu/kamdhenu_splash.png",
+    primaryColor: const Color(0xFF136638),
+    coOperativeName: "Kamdhenu Dairy Development Co-operative Ltd.",
+    appTitle: 'Kamdhenu iSmart',
+  );
+  static final CoOperative dhanrasi = CoOperative(
+    appStoreID: "com.devanasoft.dhanrasi",
+    packageName: "com.devanasoft.dhanrasi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/dhanrasi/dhanrasi_banner.png",
+    backgroundImage: "assets/dhanrasi/dhanrasi_background.png",
+    clientCode: '1Y8KJHXMO5',
+    clientSecret: "200273",
+    coOperativeLogo: 'assets/dhanrasi/dhanrasi_logo.png',
+    splashImage: "assets/dhanrasi/dhanrasi_splash.png",
+    primaryColor: const Color(0xFF00a74f),
+    coOperativeName: "Dhanrasi Multipurpose Co-operative Ltd.",
+    appTitle: 'Dhanrasi iSmart',
+  );
+  static final CoOperative currentCoop = development;
 }
