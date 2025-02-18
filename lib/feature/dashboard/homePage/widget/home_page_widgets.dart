@@ -205,36 +205,28 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                           right: -35,
                           child: InkWell(
                             onTap: () {
-                              NavigationService.push(
-                                  target: const SmartChatPage(
-                                      //  id: _response.detail['id']
-                                      ));
-                              // onButtonPressed();
+                              onButtonPressed();
                             },
-                            // child:
-                            //     BlocListener<UtilityPaymentCubit, CommonState>(
-                            //   listener: (context, state) {
-                            //     if (state is CommonStateSuccess<
-                            //         UtilityResponseData>) {
-                            //       final UtilityResponseData _response =
-                            //           state.data;
-                            //       if (_response.code == "M0000") {
-                            //         NavigationService.push(
-                            //             target: SmartChatPage(
-                            //                 id: _response.detail['id']));
-                            //       }
-                            //     }
-                            //   },
-                            //   child: Container(
-                            //     width: 140,
-                            //     height: 140,
-                            //     child: Image.asset("assets/smart_fuchee.png"),
-                            //   ),
-                            // ),
-                            child: Container(
-                              width: 140,
-                              height: 140,
-                              child: Image.asset("assets/smart_fuchee.png"),
+                            child:
+                                BlocListener<UtilityPaymentCubit, CommonState>(
+                              listener: (context, state) {
+                                if (state is CommonStateSuccess<
+                                    UtilityResponseData>) {
+                                  final UtilityResponseData _response =
+                                      state.data;
+                                  if (_response.code == "M0000") {
+                                    NavigationService.push(
+                                        target: SmartChatPage(
+                                      id: _response.detail['id'],
+                                    ));
+                                  }
+                                }
+                              },
+                              child: Container(
+                                width: 140,
+                                height: 140,
+                                child: Image.asset("assets/smart_fuchee.png"),
+                              ),
                             ),
                           ),
                         )
