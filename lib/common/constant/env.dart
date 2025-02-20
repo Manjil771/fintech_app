@@ -1115,8 +1115,8 @@ class CoOperativeValue {
   );
 
   static final CoOperative shreeSubhakamanaCoop = CoOperative(
-    appStoreID: "com.devanasoft.shreeSubhakamana",
-    packageName: "com.devanasoft.shreeSubhakamana",
+    appStoreID: "com.devanasoft.shreeShubhakamana",
+    packageName: "com.devanasoft.shreeShubhakamana",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/shreeSubhakamana/shree_subhakamana_banner.png",
     backgroundImage: "assets/shreeSubhakamana/shree_subhakamana_background.png",
@@ -4568,5 +4568,20 @@ class CoOperativeValue {
     coOperativeName: "Dhanrasi Multipurpose Co-operative Ltd.",
     appTitle: 'Dhanrasi iSmart',
   );
-  static final CoOperative currentCoop = development;
+  static final CoOperative currentCoop = supyaCoop;
+
+  static final CoOperative jayamahalaxmi = CoOperative(
+    appStoreID: "com.devanasoft.jayamahalaxmi",
+    packageName: "com.devanasoft.jayamahalaxmi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jayamahalaxmi/jayamahalaxmi_banner.png",
+    backgroundImage: "assets/jayamahalaxmi/jayamahalaxmi_background.png",
+    clientCode: 'NDRK7WXLL0',
+    clientSecret: "168558",
+    coOperativeLogo: 'assets/jayamahalaxmi/jayamahalaxmi_logo.png',
+    splashImage: "assets/jayamahalaxmi/jayamahalaxmi_splash.png",
+    primaryColor: const Color(0xFF036638),
+    coOperativeName: "Jaya Mahalaxmi Multipurpose Co-operative Society Ltd.",
+    appTitle: 'Jaya Mahalaxmi iSmart',
+  );
 }

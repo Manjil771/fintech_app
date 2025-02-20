@@ -90,6 +90,7 @@ dependency_overrides:
 
 flutter:
   assets:
+    # - assets/jayamahalaxmi/
     # - assets/dhanrasi/
     # - assets/kamdhenu/
     # - assets/sambriddhi/
@@ -311,7 +312,7 @@ flutter:
     # - assets/adarsha/
     # - assets/tapobhumi/
     # - assets/samudayik/
-    # - assets/supya/
+    - assets/supya/
     # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
@@ -402,7 +403,7 @@ flutter:
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
     # - assets/shreeKalidevi/
-    - assets/aakash/
+    # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
