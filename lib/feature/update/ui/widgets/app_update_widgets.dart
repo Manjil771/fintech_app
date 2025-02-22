@@ -57,7 +57,7 @@ class AppUpdateWidgets extends StatelessWidget {
               SizedBox(height: 40.hp),
               Text(
                 isForceUpdate
-                    ? "You need to update app to continue."
+                    ? "You need to update your app to continue."
                     : "A new update is available.",
                 style: _textTheme.displayLarge!.copyWith(
                   fontWeight: FontWeight.bold,
@@ -65,16 +65,16 @@ class AppUpdateWidgets extends StatelessWidget {
                 textAlign: TextAlign.center,
               ),
               SizedBox(height: 8.hp),
-              Text(
-                isForceUpdate
-                    ? "We added lots of new features and fix some bugs to make your experience as smooth as possible."
-                    : "We added lots of new features and fix some bugs to make your experience as smooth as possible.",
-                textAlign: TextAlign.center,
-                style: _textTheme.titleLarge!.copyWith(
-                  fontWeight: FontWeight.w400,
-                  color: CustomTheme.darkGray,
-                ),
-              ),
+              // Text(
+              //   isForceUpdate
+              //       ? "We added lots of new features and fix some bugs to make your experience as smooth as possible."
+              //       : "We added lots of new features and fix some bugs to make your experience as smooth as possible.",
+              //   textAlign: TextAlign.center,
+              //   style: _textTheme.titleLarge!.copyWith(
+              //     fontWeight: FontWeight.w400,
+              //     color: CustomTheme.darkGray,
+              //   ),
+              // ),
               const Spacer(),
               CustomRoundedButtom(
                 title: "Update Now",

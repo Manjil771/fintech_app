@@ -103,7 +103,7 @@ flutter:
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
-    # - assets/kabil/
+    - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
@@ -406,7 +406,7 @@ flutter:
     # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
-    - assets/aichchhik/
+    # - assets/aichchhik/
     # - assets/kishanKalyan/
     # - assets/puime/
     # - assets/shikhardeep/
