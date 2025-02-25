@@ -16,6 +16,11 @@ dependencies:
   intl: "^0.18.1"
   # lottie: ^3.1.0
   ##screen_brightness: ^2.0.1 ## added SKP on hold for now
+  just_audio: ^0.9.42
+  flutter_sound: ^9.1.0
+  audio_session: ^0.1.18
+  flutter_sound_record: ^3.3.2
+  # record: ^5.0.3
   flutter_svg: "^2.0.9"
   cached_network_image: "^3.3.1"
   flutter_cache_manager: "^3.3.0"
@@ -48,7 +53,7 @@ dependencies:
   jiffy: "^6.2.1"
   awesome_notifications: "^0.8.2"
   package_info_plus: "^5.0.1"
-  uuid: "^3.0.7"
+  uuid: "^4.5.1"
   permission_handler: "^11.0.1"
   mobile_scanner: "^4.0.1"
   flutter_native_image: "^0.0.6+1"
@@ -98,6 +103,7 @@ flutter:
     - assets/icons/
     - assets/events/
     - assets/images/
+    - assets/audio.wav
     # - assets/janadhara/
     # - assets/shreeFulbari/
     # - assets/digoBikash/
@@ -369,7 +375,7 @@ flutter:
     # - assets/pratham/
     # - assets/dhanalaxmi/
     # - assets/samriddha/
-    # - assets/kohinoor/
+    - assets/kohinoor/
     # - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/

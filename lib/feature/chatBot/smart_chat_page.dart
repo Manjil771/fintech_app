@@ -1,11 +1,18 @@
+import 'dart:io';
+
+import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_sound_record/flutter_sound_record.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
-import 'package:ismart/feature/chatBot/chat_prompts.dart';
+import 'package:ismart/feature/chatBot/exclusive_pages/chat_prompts.dart';
+import 'package:ismart/feature/chatBot/resources/cubits/audio_upload_cubit.dart';
 import 'package:ismart/feature/chatBot/typing_animation.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
@@ -13,10 +20,15 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/res
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:permission_handler/permission_handler.dart';
+import 'dart:async';
 
 class SmartChatPage extends StatefulWidget {
   final String? receiverEmail;
   final int id;
+  // final GlobalKey<_SmartChatPageState> widgetKey = GlobalKey();
 
   const SmartChatPage({
     Key? key,
@@ -33,9 +45,17 @@ class _SmartChatPageState extends State<SmartChatPage> {
   final ScrollController _scrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
   late final CategoryService _categoryService;
+  StreamSubscription? _playerStateSubscription;
+
+  //for sound record
+  final FlutterSoundRecord _recorder = FlutterSoundRecord();
+  String _recordedFilePath = '';
+  final AudioPlayer _audioPlayer = AudioPlayer();
+  bool _isRecording = false;
 
   final List<Map<String, dynamic>> _chatHistory = [];
   bool _isLoading = false;
+  bool _isloadingVoice = false;
 
   @override
   void initState() {
@@ -44,6 +64,149 @@ class _SmartChatPageState extends State<SmartChatPage> {
     _focusNode.addListener(_onFocusChange);
     _initializeCategoryService();
     _addInitialPrompt();
+    _requestPermissions();
+    _initAudioSession();
+  }
+
+  Future<void> _initAudioSession() async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+  }
+
+  Future<void> _requestPermissions() async {
+    await Permission.microphone.request();
+  }
+
+  Future<void> _startRecording() async {
+    try {
+      if (await Permission.microphone.isGranted) {
+        Directory tempDir = await getTemporaryDirectory();
+        _recordedFilePath = '${tempDir.path}/temp_recording.m4a';
+
+        if (!await _recorder.isRecording()) {
+          await _recorder.start(
+            path: _recordedFilePath,
+            encoder: AudioEncoder.AAC,
+            bitRate: 128000,
+            samplingRate: 44100,
+          );
+          setState(() {
+            _isRecording = true;
+          });
+        } else {
+          print('MicroPhone permission not granted');
+        }
+      }
+    } catch (e) {
+      print('Error starting recording: $e');
+    }
+  }
+
+  Future<File> loadAssetAsFile(String assetPath, String fileName) async {
+    final byteData = await rootBundle.load(assetPath);
+    final tempDir = await getTemporaryDirectory();
+    final file = File('${tempDir.path}/$fileName');
+    await file.writeAsBytes(byteData.buffer.asUint8List());
+    return file;
+  }
+
+  Future<void> _stopRecording(String _sessionId) async {
+    try {
+      if (await _recorder.isRecording()) {
+        await _recorder.stop();
+        if (mounted) {
+          setState(() {
+            _isRecording = false;
+          });
+        }
+        final File audioFile = File(_recordedFilePath);
+        final File audioStatic =
+            await loadAssetAsFile('assets/test2.wav', 'test2.wav');
+        if (_recordedFilePath.isNotEmpty && mounted) {
+          context
+              .read<AudioUploadCubit>()
+              .uploadAudio(audioFile: audioStatic, sessionId: _sessionId);
+        }
+      }
+    } catch (e) {
+      print("Eroor stopping the recording : $e");
+    }
+  }
+
+  Future<void> _playAudioResponse(String audioUrl) async {
+    try {
+      await _audioPlayer.stop();
+      await _audioPlayer.setUrl(audioUrl);
+      await _audioPlayer.play();
+    } catch (e) {
+      print('Error playing audio: $e');
+    }
+  }
+
+  void _showAudioDialog(String audioUrl) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        _playAudioResponse(audioUrl);
+        _playerStateSubscription?.cancel();
+        _playerStateSubscription =
+            _audioPlayer.playerStateStream.listen((playerState) {
+          if (playerState.processingState == ProcessingState.completed) {
+            if (Navigator.of(context).canPop()) {
+              NavigationService.pop();
+            }
+          }
+        });
+        // _audioPlayer.playerStateStream.listen((playerState) {
+
+        // });
+
+        return AlertDialog(
+          //backgroundColor: Colors.transparent,
+          title: const Center(
+              child: Text(
+            'Response',
+            style: TextStyle(
+              fontSize: 20,
+              color: CustomTheme.darkGray,
+            ),
+          )),
+          content: SizedBox(
+            height: 150,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TypingIndicator(
+                    dotColor: CustomTheme.primaryColor,
+                    dotSize: 35,
+                    dotSpacing: 12,
+                    duration: const Duration(milliseconds: 700),
+                  ),
+                  const SizedBox(height: 15),
+                  TextButton(
+                    onPressed: () {
+                      _audioPlayer.stop();
+                      NavigationService.pop();
+                    },
+                    child: const Text(
+                      'Stop',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: CustomTheme.darkGray,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    ).then((_) {
+      _playerStateSubscription?.cancel();
+    });
   }
 
   Future<void> _initializeCategoryService() async {
@@ -167,7 +330,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
           accountDetails: {},
           serviceIdentifier: '',
           body: {'message': message},
-          apiEndpoint: '/api/ai/message/${widget.id}',
+          apiEndpoint: 'api/ai/message/${widget.id}',
         );
   }
 
@@ -190,14 +353,14 @@ class _SmartChatPageState extends State<SmartChatPage> {
     );
   }
 
-  Widget _buildTypingIndicator() {
+  Widget _buildTypingIndicator({bool isRed = false}) {
     return Container(
       alignment: Alignment.centerLeft,
       margin: const EdgeInsets.symmetric(vertical: 4),
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
         decoration: BoxDecoration(
-          color: CustomTheme.primaryColor.withOpacity(0.9),
+          color: isRed ? Colors.red : CustomTheme.primaryColor.withOpacity(0.9),
           borderRadius: BorderRadius.circular(12),
         ),
         child: const TypingIndicator(),
@@ -213,25 +376,51 @@ class _SmartChatPageState extends State<SmartChatPage> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Expanded(
-            child: CustomTextField(
-              controller: _messageController,
-              //   focusNode: _focusNode,
-              hintText: 'Type a message...',
-              onSubmited: (value) => _handleMessage(context, value),
-            ),
-          ),
+              child: (_isRecording || _isloadingVoice)
+                  ? Padding(
+                      padding: const EdgeInsets.only(left: 8.0),
+                      child: Container(
+                        child: Row(
+                          children: [
+                            Text(
+                              _isloadingVoice ? "Waiting" : "Talking",
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.red,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              width: 5,
+                            ),
+                            _buildTypingIndicator(isRed: true),
+                          ],
+                        ),
+                      ),
+                    )
+                  : CustomTextField(
+                      controller: _messageController,
+                      //   focusNode: _focusNode,
+                      hintText: 'Type a message...',
+                      onSubmited: (value) => _handleMessage(context, value),
+                    )),
           Center(
             child: Container(
               margin: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                  IconButton(
-                    icon: Icon(
-                      Icons.mic,
-                      color: CustomTheme.primaryColor,
-                      size: 30,
+                  GestureDetector(
+                    onLongPressStart: (_) => _startRecording(),
+                    onLongPressEnd: (_) => _stopRecording(widget.id.toString()),
+                    child: IconButton(
+                      icon: Icon(
+                        Icons.mic,
+                        color: _isRecording
+                            ? Colors.grey
+                            : CustomTheme.primaryColor,
+                        size: 30,
+                      ),
+                      onPressed: () {},
                     ),
-                    onPressed: () {},
                   ),
                   IconButton(
                     icon: Icon(
@@ -266,6 +455,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
   @override
   Widget build(BuildContext context) {
     return Builder(
+      // key: widget.widgetKey,
       builder: (context) => MultiBlocProvider(
         providers: [
           BlocProvider(
@@ -283,6 +473,57 @@ class _SmartChatPageState extends State<SmartChatPage> {
         ],
         child: MultiBlocListener(
           listeners: [
+            BlocListener<AudioUploadCubit, CommonState>(
+              listener: (context, state) {
+                print("Current state SKP: ${state.runtimeType}");
+                if (state is CommonLoading) {
+                  if (mounted) {
+                    setState(() {
+                      _isloadingVoice = true;
+                    });
+                  }
+                }
+                if (state is CommonStateSuccess) {
+                  if (mounted) {
+                    setState(() {
+                      _isloadingVoice = false;
+                    });
+                  }
+                  try {
+                    print("State data: ${state.data}");
+                    final responseData = state.data;
+                    final String baseUrl = responseData["baseUrl"];
+                    final UtilityResponseData _res = responseData["response"];
+                    final String audioUrl = _res.detail['audioURL'];
+                    final String initialUrl = baseUrl + audioUrl;
+                    final String completeUrl = initialUrl
+                        .replaceAll("//", "/")
+                        .replaceFirst(":/", "://");
+                    print("complete URL : $completeUrl");
+                    if (completeUrl.isNotEmpty) {
+                      _showAudioDialog(completeUrl);
+                    } else {
+                      print('Error in audio path');
+                    }
+                  } catch (e) {
+                    print('Error processing audio response: $e');
+                  }
+                }
+                if (state is CommonError) {
+                  if (mounted) {
+                    setState(() {
+                      _isloadingVoice = false;
+                      _chatHistory.add({
+                        'type': 'assistant',
+                        'message': "Error in audio response!",
+                        'timestamp': DateTime.now(),
+                      });
+                      _messageController.clear();
+                    });
+                  }
+                }
+              },
+            ),
             BlocListener<CategoryCubit, CommonState>(
               listener: (context, state) {
                 if (state is CommonDataFetchSuccess<CategoryList>) {
@@ -317,19 +558,21 @@ class _SmartChatPageState extends State<SmartChatPage> {
             body: Builder(
               builder: (context) => Stack(
                 children: [
+                  !(_isRecording || _isloadingVoice)
+                      ? Positioned(
+                          bottom: 55,
+                          child: SizedBox(
+                            height: 65,
+                            width: 65,
+                            child: Image.asset("assets/smart_fuchee.png"),
+                          ),
+                        )
+                      : Container(),
                   Column(
                     children: [
                       Expanded(child: _buildMessageList(context)),
                       _buildUserInput(context),
                     ],
-                  ),
-                  Positioned(
-                    bottom: 68,
-                    child: SizedBox(
-                      height: 80,
-                      width: 80,
-                      child: Image.asset("assets/smart_fuchee.png"),
-                    ),
                   ),
                 ],
               ),
@@ -342,9 +585,12 @@ class _SmartChatPageState extends State<SmartChatPage> {
 
   @override
   void dispose() {
+    _playerStateSubscription?.cancel();
     _messageController.dispose();
     _focusNode.dispose();
     _scrollController.dispose();
+    _recorder.dispose();
+    _audioPlayer.dispose();
     super.dispose();
   }
 

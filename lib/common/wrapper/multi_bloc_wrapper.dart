@@ -4,6 +4,8 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/feature/authentication/cubit/login_cubit.dart';
 import 'package:ismart/feature/authentication/cubit/validate_co_op_cubit.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/chatBot/resources/audio_upload_repository.dart';
+import 'package:ismart/feature/chatBot/resources/cubits/audio_upload_cubit.dart';
 import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
@@ -44,6 +46,13 @@ class MultiBlocWrapper extends StatelessWidget {
           create: (context) => ImageUploadCubit(
             imageUploadRepository:
                 RepositoryProvider.of<ImageUploadRepository>(context),
+          ),
+          lazy: false,
+        ),
+        BlocProvider(
+          create: (context) => AudioUploadCubit(
+            audioUploadRepository:
+                RepositoryProvider.of<AudioUploadRepository>(context),
           ),
           lazy: false,
         ),
