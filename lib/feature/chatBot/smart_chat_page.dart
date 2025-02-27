@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:io';
 
 import 'package:audio_session/audio_session.dart';
@@ -23,7 +24,6 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
-import 'dart:async';
 
 class SmartChatPage extends StatefulWidget {
   final String? receiverEmail;
@@ -116,6 +116,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
         await _recorder.stop();
         if (mounted) {
           setState(() {
+            _isloadingVoice = true;
             _isRecording = false;
           });
         }
@@ -380,19 +381,27 @@ class _SmartChatPageState extends State<SmartChatPage> {
                   ? Padding(
                       padding: const EdgeInsets.only(left: 8.0),
                       child: Container(
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(8)),
                         child: Row(
                           children: [
-                            Text(
-                              _isloadingVoice ? "Waiting" : "Talking",
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.red,
-                                  fontWeight: FontWeight.w500),
+                            Padding(
+                              padding: const EdgeInsets.fromLTRB(10.0, 5, 5, 5),
+                              child: Text(
+                                _isloadingVoice ? "Processing" : "Listening",
+                                style: TextStyle(
+                                    fontSize: 16,
+                                    color: Colors.red.shade400,
+                                    fontWeight: FontWeight.w600),
+                              ),
                             ),
                             const SizedBox(
                               width: 5,
                             ),
-                            _buildTypingIndicator(isRed: true),
+                            TypingIndicator(
+                              dotColor: Colors.red.shade400,
+                            ),
                           ],
                         ),
                       ),
