@@ -4568,7 +4568,7 @@ class CoOperativeValue {
     coOperativeName: "Dhanrasi Multipurpose Co-operative Ltd.",
     appTitle: 'Dhanrasi iSmart',
   );
-  static final CoOperative currentCoop = skOdraha;
+  static final CoOperative currentCoop = adarshaCoop;
 
   static final CoOperative jayamahalaxmi = CoOperative(
     appStoreID: "com.devanasoft.jayamahalaxmi",
@@ -4590,7 +4590,8 @@ class CoOperativeValue {
     packageName: "com.devanasoft.shreeSiddhiSankalpa",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/shreeSiddhiSankalpa/shreeSiddhiSankalpa_banner.png",
-    backgroundImage: "assets/shreeSiddhiSankalpa/shreeSiddhiSankalpa_background.png",
+    backgroundImage:
+        "assets/shreeSiddhiSankalpa/shreeSiddhiSankalpa_background.png",
     clientCode: 'CKNFKHMIED',
     clientSecret: "135870",
     coOperativeLogo: 'assets/shreeSiddhiSankalpa/shreeSiddhiSankalpa_logo.png',
