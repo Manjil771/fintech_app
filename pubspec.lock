@@ -1522,18 +1522,18 @@ packages:
     dependency: transitive
     description:
       name: qr_code_utils_android
-      sha256: "73b114938245af2896f261001cbe14dffb54ebe950fcd1024e9a55cb4a3286b0"
+      sha256: cbdaff9077a7c36dab4028be48026138cd9f83fa1d4aa61e0f8432225ebc441d
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.3"
   qr_code_utils_ios:
     dependency: transitive
     description:
       name: qr_code_utils_ios
-      sha256: "1188bc1c1c9a9fb9a3c501b27855ec229a1cee86ecedd147966742d895fcd0d8"
+      sha256: "735aa2fc744420825a2a50b977e1926f629f7b88457436381bccb4f56e903a28"
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.1"
+    version: "0.0.2"
   recase:
     dependency: transitive
     description:
