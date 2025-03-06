@@ -1998,6 +1998,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        ashish {
+            dimension "app"
+            applicationId "com.devanasoft.ashish"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
