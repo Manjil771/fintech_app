@@ -90,7 +90,8 @@ dependency_overrides:
 
 flutter:
   assets:
-    - assets/ashish/
+    - assets/gauthali/
+    # - assets/ashish/
     # - assets/shreeSiddhiSankalpa/
     # - assets/jayamahalaxmi/
     # - assets/dhanrasi/

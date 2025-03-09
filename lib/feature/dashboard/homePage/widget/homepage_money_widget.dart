@@ -29,6 +29,8 @@ class HomePageMoneyWidget extends StatelessWidget {
           listener: (context, state) {},
           builder: (context, state) {
             if (state is CommonDataFetchSuccess<AppServiceManagementModel>) {
+              print("pragyan: ${state.data.first} ");
+
               final filteredItems = state.data
                   .where((item) =>
                       (item.type
@@ -47,6 +49,8 @@ class HomePageMoneyWidget extends StatelessWidget {
                           .toString()
                           .toLowerCase()
                           .contains("uniqueIdentifier".toLowerCase()));
+              print("Total items: ${state.data.length}");
+              print("Filtered items length: ${filteredItems.length}");
               return SingleChildScrollView(
                 scrollDirection: Axis.horizontal,
                 child: Column(

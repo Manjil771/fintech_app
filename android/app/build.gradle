@@ -2004,6 +2004,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        gauthali {
+            dimension "app"
+            applicationId "com.devanasoft.gauthali"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
