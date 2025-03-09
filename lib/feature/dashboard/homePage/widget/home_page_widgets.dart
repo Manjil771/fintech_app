@@ -89,7 +89,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                         const SmartLoanBannerWidget(),
                       if (_shouldShowDifferentMenu)
                         Container(
-                            height: 120.hp, child: const HomePageMoneyPage()),
+                            height: 65.hp, child: const HomePageMoneyPage()),
                       if (!_shouldShowDifferentMenu)
                         Row(
                           children: [

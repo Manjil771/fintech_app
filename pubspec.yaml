@@ -90,7 +90,7 @@ dependency_overrides:
 
 flutter:
   assets:
-    - assets/gauthali/
+    # - assets/gauthali/
     # - assets/ashish/
     # - assets/shreeSiddhiSankalpa/
     # - assets/jayamahalaxmi/
@@ -107,7 +107,7 @@ flutter:
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
