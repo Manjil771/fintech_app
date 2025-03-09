@@ -22,6 +22,14 @@ class HomePageMoneyWidget extends StatelessWidget {
           decoration: BoxDecoration(
             color: CustomTheme.white,
             borderRadius: BorderRadius.circular(8),
+            boxShadow: [
+              BoxShadow(
+                color: Colors.black.withOpacity(0.1),
+                blurRadius: 3,
+                spreadRadius: 1,
+                offset: const Offset(1, 2),
+              ),
+            ],
             // border: Border.all(color: CustomTheme.primaryColor),
           ),
           // padding: const EdgeInsets.symmetric(
@@ -33,8 +41,6 @@ class HomePageMoneyWidget extends StatelessWidget {
               builder: (context, state) {
                 if (state
                     is CommonDataFetchSuccess<AppServiceManagementModel>) {
-                  print("pragyan: ${state.data} ");
-
                   final filteredItems = state.data
                       .where((item) =>
                           (item.type
