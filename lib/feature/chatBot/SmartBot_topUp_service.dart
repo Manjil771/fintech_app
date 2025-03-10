@@ -8,7 +8,9 @@ import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/feature/categoryWiseService/Topup/ui/screens/mobile_topup_page.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/screen/airline_page.dart';
 import 'package:ismart/feature/categoryWiseService/broker/screen/broker_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_booking_page.dart';
+import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
 // import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
@@ -17,6 +19,7 @@ import 'package:ismart/feature/categoryWiseService/movie/screen/movie_page.dart'
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 // import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
 class CategoryService {
@@ -196,6 +199,24 @@ class CategoryService {
     if (category != null) {
       NavigationService.push(
           target: BusBookingPage(service: category.services.first));
+    }
+  }
+
+  void navigateToBusBooking2(BuildContext context, UtilityResponseData response,
+      String from, String to, String date) {
+    final category = _categoryList.firstWhere(
+      (category) => category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
+    );
+
+    if (category != null) {
+      NavigationService.push(
+        target: AvailableBusPage(
+          response: response,
+          service: category.services.first,
+          busModel: BusTopBarModel(
+              sectorFrom: from, sectorTo: to, selectedDate: date),
+        ),
+      );
     }
   }
 

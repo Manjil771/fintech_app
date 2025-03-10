@@ -11,6 +11,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
 import 'package:ismart/feature/chatBot/smart_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -216,7 +217,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       state.data;
                                   if (response.code == "M0000") {
                                     NavigationService.push(
-                                      target: SmartChatPage(
+                                      target: IntermediateChatPage(
                                         id: response.detail['id'],
                                       ),
                                     );

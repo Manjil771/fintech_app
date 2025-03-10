@@ -48,6 +48,9 @@ class _SmartChatPageState extends State<SmartChatPage> {
   late final CategoryService _categoryService;
   StreamSubscription? _playerStateSubscription;
 
+  String destinationFrom = '';
+  String destinationTo = '';
+
   //for sound record
   final FlutterSoundRecord _recorder = FlutterSoundRecord();
   String _recordedFilePath = '';
@@ -418,8 +421,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
     context.read<UtilityPaymentCubit>().fetchDetails(
         serviceIdentifier: "",
         accountDetails: {
-          "fromSector": from,
-          "toSector": to,
+          "fromSector": from.toUpperCase(),
+          "toSector": to.toUpperCase(),
           // "departureDate":
           //     "${departureDate.year}-${departureDate.month}-${departureDate.day}",
           "departureDate": "2025-3-11",
@@ -566,12 +569,12 @@ class _SmartChatPageState extends State<SmartChatPage> {
                   RepositoryProvider.of<CategoryRepository>(context),
             )..fetchCategory(),
           ),
-          BlocProvider(
-            create: (context) => UtilityPaymentCubit(
-              utilityPaymentRepository:
-                  RepositoryProvider.of<UtilityPaymentRepository>(context),
-            ),
-          ),
+          // BlocProvider(
+          //   create: (context) => UtilityPaymentCubit(
+          //     utilityPaymentRepository:
+          //         RepositoryProvider.of<UtilityPaymentRepository>(context),
+          //   ),
+          // ),
         ],
         child: MultiBlocListener(
           listeners: [
@@ -645,6 +648,26 @@ class _SmartChatPageState extends State<SmartChatPage> {
               listener: (context, state) {
                 if (state is CommonStateSuccess<UtilityResponseData>) {
                   final UtilityResponseData response = state.data;
+                  if (response.details.isNotEmpty) {
+                    for (var keyValue in response.details) {
+                      if (keyValue.title == "data" && keyValue.value is List) {
+                        final List dataList = keyValue.value as List;
+                        for (var item in dataList) {
+                          if (item is Map<String, dynamic> &&
+                              item.containsKey('ticketPrice')) {
+                            _categoryService.navigateToBusBooking2(
+                                context,
+                                response,
+                                destinationFrom,
+                                destinationTo,
+                                "2025-3-11");
+                            break;
+                          }
+                        }
+                      }
+                    }
+                    print("hey handsome hey handosme");
+                  }
                   if (response.detail["serviceIdentifier"] != null) {
                     print("there is payement request");
                     actionButton(response);
@@ -717,7 +740,17 @@ class _SmartChatPageState extends State<SmartChatPage> {
         context,
       );
     } else if (response.detail["serviceIdentifier"] == 'bus_ticket') {
-      _categoryService.navigateToBusBooking(context);
+      setState(() {
+        destinationFrom =
+            response.findValue(primaryKey: 'paymentData', secondaryKey: 'from');
+        destinationTo =
+            response.findValue(primaryKey: 'paymentData', secondaryKey: 'to');
+      });
+      _busBooking(
+        response.findValue(primaryKey: 'paymentData', secondaryKey: 'from'),
+        response.findValue(primaryKey: 'paymentData', secondaryKey: 'to'),
+      );
+      //  _categoryService.navigateToBusBooking(context);
     }
   }
 }
