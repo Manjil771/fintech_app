@@ -53,6 +53,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
   String _recordedFilePath = '';
   final AudioPlayer _audioPlayer = AudioPlayer();
   bool _isRecording = false;
+  bool _isAudioPlaying = false;
 
   final List<Map<String, dynamic>> _chatHistory = [];
   bool _isLoading = false;
@@ -81,7 +82,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
   Future<void> _startRecording() async {
     try {
       if (await Permission.microphone.isGranted) {
-        Directory tempDir = await getTemporaryDirectory();
+        final Directory tempDir = await getTemporaryDirectory();
         _recordedFilePath = '${tempDir.path}/temp_recording.m4a';
 
         if (!await _recorder.isRecording()) {
@@ -103,13 +104,13 @@ class _SmartChatPageState extends State<SmartChatPage> {
     }
   }
 
-  Future<File> loadAssetAsFile(String assetPath, String fileName) async {
-    final byteData = await rootBundle.load(assetPath);
-    final tempDir = await getTemporaryDirectory();
-    final file = File('${tempDir.path}/$fileName');
-    await file.writeAsBytes(byteData.buffer.asUint8List());
-    return file;
-  }
+  // Future<File> loadAssetAsFile(String assetPath, String fileName) async {
+  //   final byteData = await rootBundle.load(assetPath);
+  //   final tempDir = await getTemporaryDirectory();
+  //   final file = File('${tempDir.path}/$fileName');
+  //   await file.writeAsBytes(byteData.buffer.asUint8List());
+  //   return file;
+  // }
 
 //   Future<void> _startRecording() async {
 //     try {
@@ -193,8 +194,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
           });
         }
         final File audioFile = File(_recordedFilePath);
-        final File audioStatic =
-            await loadAssetAsFile('assets/test2.wav', 'test2.wav');
+        // final File audioStatic =
+        //     await loadAssetAsFile('assets/test2.wav', 'test2.wav');
         if (_recordedFilePath.isNotEmpty && mounted) {
           context
               .read<AudioUploadCubit>()
@@ -227,6 +228,9 @@ class _SmartChatPageState extends State<SmartChatPage> {
             _audioPlayer.playerStateStream.listen((playerState) {
           if (playerState.processingState == ProcessingState.completed) {
             if (Navigator.of(context).canPop()) {
+              setState(() {
+                _isAudioPlaying = false;
+              });
               NavigationService.pop();
             }
           }
@@ -261,6 +265,9 @@ class _SmartChatPageState extends State<SmartChatPage> {
                   TextButton(
                     onPressed: () {
                       _audioPlayer.stop();
+                      setState(() {
+                        _isAudioPlaying = false;
+                      });
                       NavigationService.pop();
                     },
                     child: const Text(
@@ -405,6 +412,20 @@ class _SmartChatPageState extends State<SmartChatPage> {
           body: {'message': message},
           apiEndpoint: 'api/ai/message/${widget.id}',
         );
+  }
+
+  void _busBooking(String from, String to, {String shift = "Both"}) {
+    context.read<UtilityPaymentCubit>().fetchDetails(
+        serviceIdentifier: "",
+        accountDetails: {
+          "fromSector": from,
+          "toSector": to,
+          // "departureDate":
+          //     "${departureDate.year}-${departureDate.month}-${departureDate.day}",
+          "departureDate": "2025-3-11",
+          "shift": shift,
+        },
+        apiEndpoint: "/api/busSewa/getTrips");
   }
 
   String _capitalizeFirstWord(String input) {
@@ -581,8 +602,16 @@ class _SmartChatPageState extends State<SmartChatPage> {
                         .replaceAll("//", "/")
                         .replaceFirst(":/", "://");
                     print("complete URL : $completeUrl");
-                    if (completeUrl.isNotEmpty) {
-                      _showAudioDialog(completeUrl);
+                    if (completeUrl.isNotEmpty ||
+                        _res.detail['serviceIdentifier'] != null) {
+                      setState(() {
+                        _isAudioPlaying = true;
+                      });
+                      if (_res.detail['serviceIdentifier'] != null) {
+                        actionButton(_res);
+                      } else {
+                        _showAudioDialog(completeUrl);
+                      }
                     } else {
                       print('Error in audio path');
                     }
@@ -687,6 +716,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
       _categoryService.navigateToMovie(
         context,
       );
+    } else if (response.detail["serviceIdentifier"] == 'bus_ticket') {
+      _categoryService.navigateToBusBooking(context);
     }
   }
 }
