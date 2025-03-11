@@ -1429,31 +1429,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.1"
-  qr_code_utils:
-    dependency: "direct main"
-    description:
-      path: "."
-      ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
-      resolved-ref: "5a9744ab63e9bc257e99267f733da8535ca0b614"
-      url: "https://github.com/nsubash38/qr_code_test.git"
-    source: git
-    version: "0.0.1"
-  qr_code_utils_android:
-    dependency: transitive
-    description:
-      name: qr_code_utils_android
-      sha256: "73b114938245af2896f261001cbe14dffb54ebe950fcd1024e9a55cb4a3286b0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
-  qr_code_utils_ios:
-    dependency: transitive
-    description:
-      name: qr_code_utils_ios
-      sha256: "1188bc1c1c9a9fb9a3c501b27855ec229a1cee86ecedd147966742d895fcd0d8"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.0.1"
   rxdart:
     dependency: "direct main"
     description:

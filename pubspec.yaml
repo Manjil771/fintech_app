@@ -53,10 +53,10 @@ dependencies:
   mobile_scanner: "^4.0.1"
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
-  qr_code_utils:
-    git:
-      url: https://github.com/nsubash38/qr_code_test.git
-      ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
+  # qr_code_utils:
+  #   git:
+  #     url: https://github.com/nsubash38/qr_code_test.git
+  #     ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
   android_id: "^0.3.3"
   fk_user_agent: "^2.1.0"
@@ -103,7 +103,8 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
-    # - assets/shreeFulbari/
+    # - assets/race/
+    # - assets/manipur/
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
@@ -173,6 +174,7 @@ flutter:
     # - assets/bishnudol/
     # - assets/automobiles/
     # - assets/chandani/
+    # - assets/mission/
 
     # - assets/annapurna/
     # - assets/kanchanjungha/
@@ -248,6 +250,7 @@ flutter:
     # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
+    # - assets/shreePhulbari/
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
@@ -264,7 +267,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    # - assets/shreeJamune/
+    - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
@@ -409,6 +412,7 @@ flutter:
     # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
+    # - assets/aichchhik/
     # - assets/aichchhik/
     # - assets/kishanKalyan/
     # - assets/puime/
