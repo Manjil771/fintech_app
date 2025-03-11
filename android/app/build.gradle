@@ -2010,6 +2010,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shreephulbari {
+            dimension "app"
+            applicationId "com.devanasoft.shreephulbari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
