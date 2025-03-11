@@ -54,12 +54,12 @@
 // }
 import 'dart:io';
 
-import 'package:flutter/services.dart';
-import 'package:flutter_zxing/flutter_zxing.dart';
+// import 'package:flutter/services.dart';
+// import 'package:flutter_zxing/flutter_zxing.dart';
 import 'package:ismart/common/http/response.dart';
 import 'package:ismart/common/util/image_picker_utils.dart';
 import 'package:mobile_scanner/mobile_scanner.dart';
-import 'package:qr_code_utils/qr_code_utils.dart';
+// import 'package:qr_code_utils/qr_code_utils.dart';
 
 class QRUtils {
   static Future<DataResponse<String>> checkQRCodeFromGallery() async {

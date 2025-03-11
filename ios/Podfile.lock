@@ -2,6 +2,8 @@ PODS:
   - awesome_notifications (0.8.1):
     - Flutter
     - IosAwnCore (~> 0.8.0)
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - connectivity_plus (0.0.1):
     - Flutter
     - FlutterMacOS
@@ -58,6 +60,8 @@ PODS:
   - flutter_native_image (0.0.1):
     - Flutter
   - flutter_secure_storage (6.0.0):
+    - Flutter
+  - flutter_zxing (0.0.1):
     - Flutter
   - fluttercontactpicker (4.6.0):
     - Flutter
@@ -162,8 +166,6 @@ PODS:
   - qr_code_scanner (0.2.0):
     - Flutter
     - MTBBarcodeScanner
-  - qr_code_utils_ios (0.0.1):
-    - Flutter
   - share_plus (0.0.1):
     - Flutter
   - shared_preferences_foundation (0.0.1):
@@ -179,6 +181,7 @@ PODS:
 
 DEPENDENCIES:
   - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
   - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
@@ -191,6 +194,7 @@ DEPENDENCIES:
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
+  - flutter_zxing (from `.symlinks/plugins/flutter_zxing/ios`)
   - fluttercontactpicker (from `.symlinks/plugins/fluttercontactpicker/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
@@ -202,7 +206,6 @@ DEPENDENCIES:
   - path_provider_foundation (from `.symlinks/plugins/path_provider_foundation/darwin`)
   - permission_handler_apple (from `.symlinks/plugins/permission_handler_apple/ios`)
   - qr_code_scanner (from `.symlinks/plugins/qr_code_scanner/ios`)
-  - qr_code_utils_ios (from `.symlinks/plugins/qr_code_utils_ios/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
   - sqflite (from `.symlinks/plugins/sqflite/darwin`)
@@ -236,6 +239,8 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   awesome_notifications:
     :path: ".symlinks/plugins/awesome_notifications/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   connectivity_plus:
     :path: ".symlinks/plugins/connectivity_plus/darwin"
   device_info_plus:
@@ -260,6 +265,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_native_image/ios"
   flutter_secure_storage:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
+  flutter_zxing:
+    :path: ".symlinks/plugins/flutter_zxing/ios"
   fluttercontactpicker:
     :path: ".symlinks/plugins/fluttercontactpicker/ios"
   fluttertoast:
@@ -282,8 +289,6 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/permission_handler_apple/ios"
   qr_code_scanner:
     :path: ".symlinks/plugins/qr_code_scanner/ios"
-  qr_code_utils_ios:
-    :path: ".symlinks/plugins/qr_code_utils_ios/ios"
   share_plus:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
@@ -294,58 +299,59 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  awesome_notifications: db394d2e061e4583ba0f738ddea611e3986cc3fb
-  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
-  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
+  awesome_notifications: 6b8f65ce5001b28127f51fd83db9754ebd198916
+  camera_avfoundation: 04b44aeb14070126c6529e5ab82cc7c9fca107cf
+  connectivity_plus: 3f6c9057f4cd64198dc826edfb0542892f825343
+  device_info_plus: 335f3ce08d2e174b9fdc3db3db0f4e3b1f66bd89
   Firebase: 797fd7297b7e1be954432743a0b3f90038e45a71
-  firebase_core: 100945864b4aedce3cfef0c62ab864858bf013cf
-  firebase_messaging: e65050bf9b187511d80ea3a4de7cf5573d2c7543
+  firebase_core: 2a80983e98480c7f02ff001358621c8d7f1ff8f0
+  firebase_messaging: 879b396d2be7aa1eaf044d50d2407d24c971b934
   FirebaseCore: 0326ec9b05fbed8f8716cddbf0e36894a13837f7
   FirebaseCoreInternal: df84dd300b561c27d5571684f389bf60b0a5c934
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
   FirebaseMessaging: 9f71037fd9db3376a4caa54e5a3949d1027b4b6e
-  fk_user_agent: 1f47ec39291e8372b1d692b50084b0d54103c545
+  fk_user_agent: 137145b086229251761678fe034da53753f4ce59
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
-  flutter_app_badger: b87fc231847b03b92ce1412aa351842e7e97932f
-  flutter_downloader: b7301ae057deadd4b1650dc7c05375f10ff12c39
-  flutter_fgbg: 31c0d1140a131daea2d342121808f6aa0dcd879d
-  flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
-  flutter_native_image: 9c0b7451838484458e5b0fae007b86a4c2d4bdfe
-  flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
-  fluttercontactpicker: d582836dea6b5d489f3d259f35d7817ae82ee5e6
-  fluttertoast: 9f2f8e81bb5ce18facb9748d7855bf5a756fe3db
+  flutter_app_badger: 16b371e989d04cd265df85be2c3851b49cb68d18
+  flutter_downloader: 78da0da1084e709cbfd3b723c7ea349c71681f09
+  flutter_fgbg: d3da78df78454b1808f0829a5da9cd17dfe16444
+  flutter_inappwebview_ios: 25b61a1b550d1068e4ddaf490fc1d03c2ce6828d
+  flutter_native_image: c0f200e4bc5da392b15878df38654cc85a78b090
+  flutter_secure_storage: 2c2ff13db9e0a5647389bff88b0ecac56e3f3418
+  flutter_zxing: e741c4f3335db8910e5c396c4291cdfb320859dc
+  fluttercontactpicker: 80c7145a181c97ee8ce6db0773750a6ff9c44099
+  fluttertoast: eaafdac812d1d69931004e881c87a8643b1c9111
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
   GoogleMLKit: 2bd0dc6253c4d4f227aad460f69215a504b2980e
   GoogleToolboxForMac: 8bef7c7c5cf7291c687cf5354f39f9db6399ad34
   GoogleUtilities: ea963c370a38a8069cc5f7ba4ca849a60b6d7d15
   GoogleUtilitiesComponents: 679b2c881db3b615a2777504623df6122dd20afe
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
-  image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
-  image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
+  image_cropper: 655b3ba703c9e15e3111e79151624d6154288774
+  image_picker_ios: 7fe1ff8e34c1790d6fff70a32484959f563a928a
   IosAwnCore: ed1b2b6d84962a758354dbacd9ce525c72ce28a9
-  local_auth_darwin: 4d56c90c2683319835a61274b57620df9c4520ab
+  local_auth_darwin: 059c13c837fd9493856f0de8e1004322695e5510
   MLImage: 7bb7c4264164ade9bf64f679b40fb29c8f33ee9b
   MLKitBarcodeScanning: 04e264482c5f3810cb89ebc134ef6b61e67db505
   MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
   MLKitVision: 8baa5f46ee3352614169b85250574fde38c36f49
-  mobile_scanner: 38dcd8a49d7d485f632b7de65e4900010187aef2
+  mobile_scanner: b67191637a5ea7ba15652ca208069d2bae1900ab
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
-  open_filex: 6e26e659846ec990262224a12ef1c528bb4edbe4
+  open_filex: 432f3cd11432da3e39f47fcc0df2b1603854eff1
   OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
-  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
-  path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
-  permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
+  package_info_plus: 566e1b7a2f3900e4b0020914ad3fc051dcc95596
+  path_provider_foundation: 080d55be775b7414fd5a5ef3ac137b97b097e564
+  permission_handler_apple: 4ed2196e43d0651e8ff7ca3483a069d469701f2d
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
-  qr_code_scanner: bb67d64904c3b9658ada8c402e8b4d406d5d796e
-  qr_code_utils_ios: 62daae676c2b6a69979dc1f64a842d6fa849aa82
-  share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
-  shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  qr_code_scanner: d77f94ecc9abf96d9b9b8fc04ef13f611e5a147a
+  share_plus: de6030e33b4e106470e09322d87cf2a4258d2d1d
+  shared_preferences_foundation: 9e1978ff2562383bd5676f64ec4e9aa8fa06a6f7
+  sqflite: c35dad70033b8862124f8337cc994a809fcd9fa3
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
-  url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
+  url_launcher_ios: 694010445543906933d732453a59da0a173ae33d
 
 PODFILE CHECKSUM: ed123503a51e2c9e6ef8115bcb50445eec5726a4
 
-COCOAPODS: 1.15.2
+COCOAPODS: 1.16.2
