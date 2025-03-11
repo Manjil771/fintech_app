@@ -1,4 +1,3 @@
-// lib/services/category_service.dart
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/slugs.dart';
@@ -11,16 +10,13 @@ import 'package:ismart/feature/categoryWiseService/broker/screen/broker_payment_
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/available_bus_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_booking_page.dart';
 import 'package:ismart/feature/categoryWiseService/busBooking/widget/bus_topbar_location_box.dart';
-// import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
-// import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/movie/screen/movie_page.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-// import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
 
 class CategoryService {
   static final CategoryService _instance = CategoryService._internal();
@@ -81,15 +77,16 @@ class CategoryService {
   // }
 
   void navigateToMobileTopup(BuildContext context) {
-    final topupCategory = _categoryList.firstWhere(
-      (category) =>
-          category.uniqueIdentifier.toLowerCase() == Slugs.topup.toLowerCase(),
-      // orElse: () => null,
-    );
-
-    if (topupCategory != null) {
+    try {
+      final topupCategory = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() ==
+            Slugs.topup.toLowerCase(),
+      );
       NavigationService.push(
           target: MobileTopupPage(categoryList: topupCategory));
+    } catch (e) {
+      print("No service availbale : $e");
     }
   }
 
@@ -98,14 +95,14 @@ class CategoryService {
     String amount,
     String mobileNumber,
   ) {
-    final topupCategory = _categoryList.firstWhere(
-      (category) =>
-          category.uniqueIdentifier.toLowerCase() == Slugs.topup.toLowerCase(),
-    );
-
-    categoryList = topupCategory;
-    getTopupType(mobileNumber);
-    if (topupCategory != null) {
+    try {
+      final topupCategory = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() ==
+            Slugs.topup.toLowerCase(),
+      );
+      categoryList = topupCategory;
+      getTopupType(mobileNumber);
       NavigationService.push(
           target: CommonBillDetailPage(
         verificationAmount: amount,
@@ -130,85 +127,98 @@ class CategoryService {
           ],
         ),
       ));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToBrokerPayment(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) =>
-          category.uniqueIdentifier.toLowerCase() ==
-          Slugs.brokerPage.toLowerCase(),
-    );
-
-    if (category != null) {
+    try {
+      final category = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() ==
+            Slugs.brokerPage.toLowerCase(),
+      );
       NavigationService.push(
           target: BrokerPaymentPage(service: category.services.first));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToElectricityPayment(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) => category.uniqueIdentifier.toLowerCase() == "electricity",
-    );
+    try {
+      final category = _categoryList.firstWhere(
+        (category) => category.uniqueIdentifier.toLowerCase() == "electricity",
+      );
 
-    if (category != null) {
       NavigationService.push(
           target: ElectricityPaymentPage(service: category.services[0]));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToAirlines(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) => category.uniqueIdentifier.toLowerCase() == "airlines",
-    );
-
-    if (category != null) {
+    try {
+      final category = _categoryList.firstWhere(
+        (category) => category.uniqueIdentifier.toLowerCase() == "airlines",
+      );
       NavigationService.push(
           target: AirlinesIntroPage(service: category.services[0]));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToMovie(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) => category.uniqueIdentifier.toLowerCase() == "movies",
-    );
-
-    if (category != null) {
+    try {
+      final category = _categoryList.firstWhere(
+        (category) => category.uniqueIdentifier.toLowerCase() == "movies",
+      );
       NavigationService.push(target: MoviePage(category: category));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToLandline(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) =>
-          category.uniqueIdentifier.toLowerCase() == "landline" ||
-          category.uniqueIdentifier.toString().toLowerCase() ==
-              "category".toLowerCase(),
-    );
+    try {
+      final category = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() == "landline" ||
+            category.uniqueIdentifier.toString().toLowerCase() ==
+                "category".toLowerCase(),
+      );
 
-    if (category != null) {
       NavigationService.push(target: LandlinePaymentPage(category: category));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToBusBooking(BuildContext context) {
-    final category = _categoryList.firstWhere(
-      (category) => category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
-    );
+    try {
+      final category = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
+      );
 
-    if (category != null) {
       NavigationService.push(
           target: BusBookingPage(service: category.services.first));
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 
   void navigateToBusBooking2(BuildContext context, UtilityResponseData response,
       String from, String to, String date) {
-    final category = _categoryList.firstWhere(
-      (category) => category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
-    );
+    try {
+      final category = _categoryList.firstWhere(
+        (category) =>
+            category.uniqueIdentifier.toLowerCase() == Slugs.busTicket,
+      );
 
-    if (category != null) {
       NavigationService.push(
         target: AvailableBusPage(
           response: response,
@@ -217,6 +227,8 @@ class CategoryService {
               sectorFrom: from, sectorTo: to, selectedDate: date),
         ),
       );
+    } catch (e) {
+      print("No service available: $e");
     }
   }
 

@@ -50,6 +50,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
 
   String destinationFrom = '';
   String destinationTo = '';
+  String destinationDate = '';
 
   //for sound record
   final FlutterSoundRecord _recorder = FlutterSoundRecord();
@@ -425,7 +426,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
           "toSector": to.toUpperCase(),
           // "departureDate":
           //     "${departureDate.year}-${departureDate.month}-${departureDate.day}",
-          "departureDate": "2025-3-11",
+          "departureDate": destinationDate,
           "shift": shift,
         },
         apiEndpoint: "/api/busSewa/getTrips");
@@ -660,7 +661,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
                                 response,
                                 destinationFrom,
                                 destinationTo,
-                                "2025-3-11");
+                                destinationDate);
                             break;
                           }
                         }
@@ -745,6 +746,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
             response.findValue(primaryKey: 'paymentData', secondaryKey: 'from');
         destinationTo =
             response.findValue(primaryKey: 'paymentData', secondaryKey: 'to');
+        destinationDate =
+            response.findValue(primaryKey: 'paymentData', secondaryKey: 'date');
       });
       _busBooking(
         response.findValue(primaryKey: 'paymentData', secondaryKey: 'from'),

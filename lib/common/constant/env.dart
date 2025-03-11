@@ -4568,5 +4568,20 @@ class CoOperativeValue {
     coOperativeName: "Dhanrasi Multipurpose Co-operative Ltd.",
     appTitle: 'Dhanrasi iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shreephulbari;
+
+  static final CoOperative shreephulbari = CoOperative(
+    appStoreID: "com.devanasoft.shreephulbari",
+    packageName: "com.devanasoft.shreephulbari",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreephulbari/shreephulbari_banner.png",
+    backgroundImage: "assets/shreephulbari/shreephulbari_background.png",
+    clientCode: 'HB5W40BC7B',
+    clientSecret: "182548",
+    coOperativeLogo: 'assets/shreephulbari/shreephulbari_logo.png',
+    splashImage: "assets/shreephulbari/shreephulbari_splash.png",
+    primaryColor: const Color(0xFF00a654),
+    coOperativeName: "Shree Phulbari Saving & Credit Co-operative Ltd.",
+    appTitle: 'Shreephulbari iSmart',
+  );
 }
