@@ -2016,6 +2016,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        bhimad {
+            dimension "app"
+            applicationId "com.devanasoft.bhimad"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
