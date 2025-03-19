@@ -184,7 +184,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
-    # - assets/shreeMyagde/
+    - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
@@ -220,7 +220,7 @@ flutter:
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/queenCoop/
-    # - assets/nayakiran/
+    - assets/nayakiran/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
