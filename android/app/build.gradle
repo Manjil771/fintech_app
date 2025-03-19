@@ -2022,6 +2022,48 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        universe {
+            dimension "app"
+            applicationId "com.devanasoft.universe"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        sandus {
+            dimension "app"
+            applicationId "com.devanasoft.sandus"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        maaLaxmi {
+            dimension "app"
+            applicationId "com.devanasoft.maaLaxmi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        infinity {
+            dimension "app"
+            applicationId "com.devanasoft.infinity"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+          moneyPlant {
+            dimension "app"
+            applicationId "com.devanasoft.moneyPlant"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        newGeneration {
+            dimension "app"
+            applicationId "com.devanasoft.newGeneration"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        skastam {
+            dimension "app"
+            applicationId "com.devanasoft.skastam"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

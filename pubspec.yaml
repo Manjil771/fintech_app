@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.32+62
+version: 1.5.30+60
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -36,6 +36,7 @@ dependencies:
   flutter_secure_storage: "^8.0.0"
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
+  url_launcher_ios: ^6.2.1
 
   animations: "^2.0.7"
   qr_code_scanner: "^1.0.1"
@@ -103,12 +104,13 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/maaLaxmi/
     # - assets/race/
     # - assets/manipur/
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
@@ -127,6 +129,10 @@ flutter:
     # - assets/navaprabhat/
     # - assets/utkrishta/
     # - assets/vyas/
+    # - assets/infinity/
+    # - assets/moneyPlant/
+    # - assets/newGeneration/
+    
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -152,7 +158,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/tikeshwar/
-    # - assets/fewa/
+    - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -267,7 +273,7 @@ flutter:
     # - assets/samyukta/
     # - assets/systematic/
     # - assets/systematic/
-    - assets/shreeJamune/
+    # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
@@ -422,6 +428,8 @@ flutter:
     # - assets/ainchoPaincho/
     # - assets/nepal/
     # - assets/aniwarya/
+    # - assets/universe/
+    
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
@@ -440,6 +448,9 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    # - assets/shreeFulbari/
+    # - assets/skastam/
+    
     # - assets/jmc/
 
   fonts:
