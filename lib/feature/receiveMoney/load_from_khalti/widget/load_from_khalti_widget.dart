@@ -74,7 +74,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
               final payConfig = KhaltiPayConfig(
                 publicKey: _data[1],
                 pidx: _data[0],
-                returnUrl: Uri.parse('https://ismart.devanasoft.com'),
+                // returnUrl: Uri.parse('https://ismart.devanasoft.com'),
                 environment: Environment.prod,
                 openInKhalti: true,
               );
@@ -85,7 +85,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                 onPaymentResult: (paymentResult, khalti) {
                   context.read<KhaltiTxnConfirmCubit>().completeKhaltiTxn(
                         amount: _amountController.text,
-                        status: paymentResult.status,
+                        status: paymentResult.payload?.status ?? "",
                         transaction_id:
                             paymentResult.payload?.transactionId ?? "",
                         pidx: paymentResult.payload?.pidx ?? "",

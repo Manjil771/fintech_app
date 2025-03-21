@@ -1,10 +1,11 @@
 PODS:
-  - awesome_notifications (0.8.1):
+  - awesome_notifications (0.10.0):
     - Flutter
-    - IosAwnCore (~> 0.8.0)
+    - IosAwnCore (~> 0.10.0)
+  - camera_avfoundation (0.0.1):
+    - Flutter
   - connectivity_plus (0.0.1):
     - Flutter
-    - FlutterMacOS
   - device_info_plus (0.0.1):
     - Flutter
   - Firebase/CoreOnly (10.22.0):
@@ -15,7 +16,7 @@ PODS:
   - firebase_core (2.27.0):
     - Firebase/CoreOnly (= 10.22.0)
     - Flutter
-  - firebase_messaging (14.7.19):
+  - firebase_messaging (14.7.10):
     - Firebase/Messaging (= 10.22.0)
     - firebase_core
     - Flutter
@@ -51,13 +52,15 @@ PODS:
   - flutter_inappwebview_ios (0.0.1):
     - Flutter
     - flutter_inappwebview_ios/Core (= 0.0.1)
-    - OrderedSet (~> 5.0)
+    - OrderedSet (~> 6.0.3)
   - flutter_inappwebview_ios/Core (0.0.1):
     - Flutter
-    - OrderedSet (~> 5.0)
+    - OrderedSet (~> 6.0.3)
   - flutter_native_image (0.0.1):
     - Flutter
   - flutter_secure_storage (6.0.0):
+    - Flutter
+  - flutter_zxing (0.0.1):
     - Flutter
   - fluttercontactpicker (4.6.0):
     - Flutter
@@ -118,9 +121,10 @@ PODS:
     - TOCropViewController (~> 2.6.1)
   - image_picker_ios (0.0.1):
     - Flutter
-  - IosAwnCore (0.8.0)
+  - IosAwnCore (0.10.0)
   - local_auth_darwin (0.0.1):
     - Flutter
+    - FlutterMacOS
   - MLImage (1.0.0-beta4)
   - MLKitBarcodeScanning (3.0.0):
     - MLKitCommon (~> 9.0)
@@ -150,7 +154,7 @@ PODS:
   - nanopb/encode (2.30910.0)
   - open_filex (0.0.2):
     - Flutter
-  - OrderedSet (5.0.0)
+  - OrderedSet (6.0.3)
   - package_info_plus (0.4.5):
     - Flutter
   - path_provider_foundation (0.0.1):
@@ -169,7 +173,7 @@ PODS:
   - shared_preferences_foundation (0.0.1):
     - Flutter
     - FlutterMacOS
-  - sqflite (0.0.3):
+  - sqflite_darwin (0.0.4):
     - Flutter
     - FlutterMacOS
   - Toast (4.1.1)
@@ -179,7 +183,8 @@ PODS:
 
 DEPENDENCIES:
   - awesome_notifications (from `.symlinks/plugins/awesome_notifications/ios`)
-  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/darwin`)
+  - camera_avfoundation (from `.symlinks/plugins/camera_avfoundation/ios`)
+  - connectivity_plus (from `.symlinks/plugins/connectivity_plus/ios`)
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
   - firebase_core (from `.symlinks/plugins/firebase_core/ios`)
   - firebase_messaging (from `.symlinks/plugins/firebase_messaging/ios`)
@@ -191,6 +196,7 @@ DEPENDENCIES:
   - flutter_inappwebview_ios (from `.symlinks/plugins/flutter_inappwebview_ios/ios`)
   - flutter_native_image (from `.symlinks/plugins/flutter_native_image/ios`)
   - flutter_secure_storage (from `.symlinks/plugins/flutter_secure_storage/ios`)
+  - flutter_zxing (from `.symlinks/plugins/flutter_zxing/ios`)
   - fluttercontactpicker (from `.symlinks/plugins/fluttercontactpicker/ios`)
   - fluttertoast (from `.symlinks/plugins/fluttertoast/ios`)
   - image_cropper (from `.symlinks/plugins/image_cropper/ios`)
@@ -205,7 +211,7 @@ DEPENDENCIES:
   - qr_code_utils_ios (from `.symlinks/plugins/qr_code_utils_ios/ios`)
   - share_plus (from `.symlinks/plugins/share_plus/ios`)
   - shared_preferences_foundation (from `.symlinks/plugins/shared_preferences_foundation/darwin`)
-  - sqflite (from `.symlinks/plugins/sqflite/darwin`)
+  - sqflite_darwin (from `.symlinks/plugins/sqflite_darwin/darwin`)
   - url_launcher_ios (from `.symlinks/plugins/url_launcher_ios/ios`)
 
 SPEC REPOS:
@@ -236,8 +242,10 @@ SPEC REPOS:
 EXTERNAL SOURCES:
   awesome_notifications:
     :path: ".symlinks/plugins/awesome_notifications/ios"
+  camera_avfoundation:
+    :path: ".symlinks/plugins/camera_avfoundation/ios"
   connectivity_plus:
-    :path: ".symlinks/plugins/connectivity_plus/darwin"
+    :path: ".symlinks/plugins/connectivity_plus/ios"
   device_info_plus:
     :path: ".symlinks/plugins/device_info_plus/ios"
   firebase_core:
@@ -260,6 +268,8 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/flutter_native_image/ios"
   flutter_secure_storage:
     :path: ".symlinks/plugins/flutter_secure_storage/ios"
+  flutter_zxing:
+    :path: ".symlinks/plugins/flutter_zxing/ios"
   fluttercontactpicker:
     :path: ".symlinks/plugins/fluttercontactpicker/ios"
   fluttertoast:
@@ -288,18 +298,19 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/share_plus/ios"
   shared_preferences_foundation:
     :path: ".symlinks/plugins/shared_preferences_foundation/darwin"
-  sqflite:
-    :path: ".symlinks/plugins/sqflite/darwin"
+  sqflite_darwin:
+    :path: ".symlinks/plugins/sqflite_darwin/darwin"
   url_launcher_ios:
     :path: ".symlinks/plugins/url_launcher_ios/ios"
 
 SPEC CHECKSUMS:
-  awesome_notifications: db394d2e061e4583ba0f738ddea611e3986cc3fb
-  connectivity_plus: ddd7f30999e1faaef5967c23d5b6d503d10434db
-  device_info_plus: c6fb39579d0f423935b0c9ce7ee2f44b71b9fce6
+  awesome_notifications: dd5518ff1c80be03d4f1c40f04da9d9cc2a37af5
+  camera_avfoundation: dd002b0330f4981e1bbcb46ae9b62829237459a4
+  connectivity_plus: 2a701ffec2c0ae28a48cf7540e279787e77c447d
+  device_info_plus: bf2e3232933866d73fe290f2942f2156cdd10342
   Firebase: 797fd7297b7e1be954432743a0b3f90038e45a71
   firebase_core: 100945864b4aedce3cfef0c62ab864858bf013cf
-  firebase_messaging: e65050bf9b187511d80ea3a4de7cf5573d2c7543
+  firebase_messaging: 3fe2a6ef9a502414c3cb912025c76a550571f25f
   FirebaseCore: 0326ec9b05fbed8f8716cddbf0e36894a13837f7
   FirebaseCoreInternal: df84dd300b561c27d5571684f389bf60b0a5c934
   FirebaseInstallations: 913cf60d0400ebd5d6b63a28b290372ab44590dd
@@ -309,9 +320,10 @@ SPEC CHECKSUMS:
   flutter_app_badger: b87fc231847b03b92ce1412aa351842e7e97932f
   flutter_downloader: b7301ae057deadd4b1650dc7c05375f10ff12c39
   flutter_fgbg: 31c0d1140a131daea2d342121808f6aa0dcd879d
-  flutter_inappwebview_ios: 97215cf7d4677db55df76782dbd2930c5e1c1ea0
+  flutter_inappwebview_ios: 6f63631e2c62a7c350263b13fa5427aedefe81d4
   flutter_native_image: 9c0b7451838484458e5b0fae007b86a4c2d4bdfe
-  flutter_secure_storage: 23fc622d89d073675f2eaa109381aefbcf5a49be
+  flutter_secure_storage: d33dac7ae2ea08509be337e775f6b59f1ff45f12
+  flutter_zxing: 19a866d17c8a87ee1026d68521c69d2f008635f6
   fluttercontactpicker: d582836dea6b5d489f3d259f35d7817ae82ee5e6
   fluttertoast: 9f2f8e81bb5ce18facb9748d7855bf5a756fe3db
   GoogleDataTransport: 6c09b596d841063d76d4288cc2d2f42cc36e1e2a
@@ -322,8 +334,8 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 3a63d75eecd6aa32c2fc79f578064e1214dfdec2
   image_cropper: a3291c624a953049bc6a02e1f8c8ceb162a24b25
   image_picker_ios: c560581cceedb403a6ff17f2f816d7fea1421fc1
-  IosAwnCore: ed1b2b6d84962a758354dbacd9ce525c72ce28a9
-  local_auth_darwin: 4d56c90c2683319835a61274b57620df9c4520ab
+  IosAwnCore: 653786a911089012092ce831f2945cd339855a89
+  local_auth_darwin: 66e40372f1c29f383a314c738c7446e2f7fdadc3
   MLImage: 7bb7c4264164ade9bf64f679b40fb29c8f33ee9b
   MLKitBarcodeScanning: 04e264482c5f3810cb89ebc134ef6b61e67db505
   MLKitCommon: c1b791c3e667091918d91bda4bba69a91011e390
@@ -332,8 +344,8 @@ SPEC CHECKSUMS:
   MTBBarcodeScanner: f453b33c4b7dfe545d8c6484ed744d55671788cb
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   open_filex: 6e26e659846ec990262224a12ef1c528bb4edbe4
-  OrderedSet: aaeb196f7fef5a9edf55d89760da9176ad40b93c
-  package_info_plus: 115f4ad11e0698c8c1c5d8a689390df880f47e85
+  OrderedSet: e539b66b644ff081c73a262d24ad552a69be3a94
+  package_info_plus: c0502532a26c7662a62a356cebe2692ec5fe4ec4
   path_provider_foundation: 2b6b4c569c0fb62ec74538f866245ac84301af46
   permission_handler_apple: 9878588469a2b0d0fc1e048d9f43605f92e6cec2
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
@@ -341,7 +353,7 @@ SPEC CHECKSUMS:
   qr_code_utils_ios: 62daae676c2b6a69979dc1f64a842d6fa849aa82
   share_plus: c3fef564749587fc939ef86ffb283ceac0baf9f5
   shared_preferences_foundation: fcdcbc04712aee1108ac7fda236f363274528f78
-  sqflite: 673a0e54cc04b7d6dba8d24fb8095b31c3a99eec
+  sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   Toast: 1f5ea13423a1e6674c4abdac5be53587ae481c4e
   TOCropViewController: edfd4f25713d56905ad1e0b9f5be3fbe0f59c863
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe

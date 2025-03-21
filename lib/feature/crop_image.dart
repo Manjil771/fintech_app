@@ -50,7 +50,9 @@ class _CropImageViewState extends State<CropImageView> {
             child: Crop(
               image: widget.selectedImage.readAsBytesSync(),
               onCropped: (a) {
-                _croppedValue = a;
+                if (a is CropSuccess) {
+                  _croppedValue = a.croppedImage;
+                }
               },
             ),
           ),

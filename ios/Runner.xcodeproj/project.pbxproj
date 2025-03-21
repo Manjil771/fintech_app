@@ -8,11 +8,11 @@
 
 /* Begin PBXBuildFile section */
 		1498D2341E8E89220040F4C2 /* GeneratedPluginRegistrant.m in Sources */ = {isa = PBXBuildFile; fileRef = 1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */; };
-		29DF56CD91F14D299FEC9FAA /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4629EFF73B7BC9A3A92590DD /* Pods_Runner.framework */; };
 		3B3967161E833CAA004F5970 /* AppFrameworkInfo.plist in Resources */ = {isa = PBXBuildFile; fileRef = 3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */; };
 		74858FAF1ED2DC5600515810 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74858FAE1ED2DC5600515810 /* AppDelegate.swift */; };
 		8F4CFE5A2A5BF126009234C2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */; };
 		8F583D782A4EB8F3006C2DA1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8F583D772A4EB8F3006C2DA1 /* GoogleService-Info.plist */; };
+		91D6DAB7067A4485115C8C21 /* Pods_Runner.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C46380A799F4E91980126E3 /* Pods_Runner.framework */; };
 		97C146FC1CF9000F007C117D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FA1CF9000F007C117D /* Main.storyboard */; };
 		97C146FE1CF9000F007C117D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FD1CF9000F007C117D /* Assets.xcassets */; };
 		97C147011CF9000F007C117D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 97C146FF1CF9000F007C117D /* LaunchScreen.storyboard */; };
@@ -32,112 +32,112 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		09E57125AB7303185EC325E5 /* Pods-Runner.release-golden.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-golden.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-golden.xcconfig"; sourceTree = "<group>"; };
-		0A39079569CBD425E165DF40 /* Pods-Runner.debug-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sarbahit.xcconfig"; sourceTree = "<group>"; };
-		0AF96220C942A386755B499B /* Pods-Runner.release-hetauda.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-hetauda.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-hetauda.xcconfig"; sourceTree = "<group>"; };
-		0B2060EAE240434E2999228A /* Pods-Runner.release-devshree.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-devshree.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-devshree.xcconfig"; sourceTree = "<group>"; };
-		0BE7BF6A8A0AA139A3607817 /* Pods-Runner.release-shubhasandesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhasandesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhasandesh.xcconfig"; sourceTree = "<group>"; };
-		0C1F394479BC3A650DEBE3E6 /* Pods-Runner.release-sanchar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sanchar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sanchar.xcconfig"; sourceTree = "<group>"; };
+		0031A1E79255D56919C9EEF1 /* Pods-Runner.release-aastha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aastha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aastha.xcconfig"; sourceTree = "<group>"; };
+		00F1D124EC7CF5CCB103C5BE /* Pods-Runner.release-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kamana.xcconfig"; sourceTree = "<group>"; };
+		015AED249DCC83173DAF86F8 /* Pods-Runner.profile-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-arthabag.xcconfig"; sourceTree = "<group>"; };
+		0262CD128AED2F15242F9DEC /* Pods-Runner.release-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemitra.xcconfig"; sourceTree = "<group>"; };
+		029190EAD90674D794527A8F /* Pods-Runner.profile-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nilgiri.xcconfig"; sourceTree = "<group>"; };
+		042F536CFC337AE7B30A9F77 /* Pods-Runner.release-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kabil.xcconfig"; sourceTree = "<group>"; };
+		04A3C666CCC8FA30DD7D55D7 /* Pods-Runner.release-dupcheshwor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dupcheshwor.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dupcheshwor.xcconfig"; sourceTree = "<group>"; };
+		06E0AA2F2B5E78FD9668AEDA /* Pods-Runner.debug-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sahakarya.xcconfig"; sourceTree = "<group>"; };
+		09200E4A0BCB20AC2D29DAD4 /* Pods-Runner.release-upakar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upakar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upakar.xcconfig"; sourceTree = "<group>"; };
+		0C62AEB7A47B6985071BEEDA /* Pods-Runner.release-rithepani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rithepani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rithepani.xcconfig"; sourceTree = "<group>"; };
+		0EA99544D600ABC487659C6A /* Pods-Runner.release-nayan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nayan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nayan.xcconfig"; sourceTree = "<group>"; };
+		1391C133CBAC4F27BB18E572 /* Pods-Runner.debug-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
+		144C1827CC8D5E2AF1F049DA /* Pods-Runner.release-rumjatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rumjatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rumjatar.xcconfig"; sourceTree = "<group>"; };
 		1498D2321E8E86230040F4C2 /* GeneratedPluginRegistrant.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GeneratedPluginRegistrant.h; sourceTree = "<group>"; };
 		1498D2331E8E89220040F4C2 /* GeneratedPluginRegistrant.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GeneratedPluginRegistrant.m; sourceTree = "<group>"; };
-		154C068D601EFC09E64353F8 /* Pods-Runner.profile-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-arthabag.xcconfig"; sourceTree = "<group>"; };
-		1664FB217B02E3E14AE4EE88 /* Pods-Runner.debug-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-uttarganga.xcconfig"; sourceTree = "<group>"; };
-		178D069088AA0DBA029FF48D /* Pods-Runner.release-shreehemja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreehemja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreehemja.xcconfig"; sourceTree = "<group>"; };
-		17AC599201D9CDB1ED32E257 /* Pods-Runner.release-parishrami.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-parishrami.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-parishrami.xcconfig"; sourceTree = "<group>"; };
-		18E12E9F69334A4DA472A54A /* Pods-Runner.profile-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
-		1A3BC810B78416ECF3BFEE03 /* Pods-Runner.profile-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
-		1A528DD381325D3469ED2FE0 /* Pods-Runner.release-paschimanchal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-paschimanchal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-paschimanchal.xcconfig"; sourceTree = "<group>"; };
-		1C8AC767ECDEAA8E48A25CF4 /* Pods-Runner.profile-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-ekata.xcconfig"; sourceTree = "<group>"; };
-		1ED10FD362E73D5C0AD0798D /* Pods-Runner.release-aarati.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aarati.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aarati.xcconfig"; sourceTree = "<group>"; };
-		22B8B4AA046A99DDC08DA267 /* Pods-Runner.release-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kipoo.xcconfig"; sourceTree = "<group>"; };
-		240D53B7F73A47AB061D60D9 /* Pods-Runner.release-sudarshan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sudarshan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sudarshan.xcconfig"; sourceTree = "<group>"; };
-		24772081340D6EB09551F613 /* Pods-Runner.release-nirika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nirika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nirika.xcconfig"; sourceTree = "<group>"; };
-		251A9AE56BE96DBA2DD1874E /* Pods-Runner.debug-sparkling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sparkling.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sparkling.xcconfig"; sourceTree = "<group>"; };
-		28F5F1BF430916BF10F7001D /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
-		2B7CEF0413D8CDCCA761687E /* Pods-Runner.release-thankotmahila.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-thankotmahila.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-thankotmahila.xcconfig"; sourceTree = "<group>"; };
-		2D2795110CE7E93AD69CE30A /* Pods-Runner.release-matribhumi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-matribhumi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-matribhumi.xcconfig"; sourceTree = "<group>"; };
-		2DE6BB4B0DD71482151FF809 /* Pods-Runner.release-bhugol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhugol.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhugol.xcconfig"; sourceTree = "<group>"; };
-		3141C1A7C4AE6EB88BCA4F49 /* Pods-Runner.profile-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-bhanjyang.xcconfig"; sourceTree = "<group>"; };
-		3243361A804F0ED2D80F35C3 /* Pods-Runner.release-avatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-avatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-avatar.xcconfig"; sourceTree = "<group>"; };
-		33E8B5D5A743C17C70941C72 /* Pods-Runner.debug-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kamana.xcconfig"; sourceTree = "<group>"; };
-		3544DBDB32D45A2EF5C22B35 /* Pods-Runner.release-upayogi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upayogi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upayogi.xcconfig"; sourceTree = "<group>"; };
-		36EE909A2F813D027669F897 /* Pods-Runner.debug-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil.xcconfig"; sourceTree = "<group>"; };
-		3845BE3B201C0CF30A158756 /* Pods-Runner.debug-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-ekata.xcconfig"; sourceTree = "<group>"; };
-		3908D5864D3B1414A0DBFEBD /* Pods-Runner.debug-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-alankar.xcconfig"; sourceTree = "<group>"; };
-		390D482190605704A049D250 /* Pods-Runner.release-eastwest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-eastwest.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-eastwest.xcconfig"; sourceTree = "<group>"; };
-		3A0B9A13441CD6B7FEA4811A /* Pods-Runner.release-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kripalu.xcconfig"; sourceTree = "<group>"; };
+		185625E868F95C8ADDACDA12 /* Pods-Runner.release-bishal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishal.xcconfig"; sourceTree = "<group>"; };
+		19AC2D8247DAA9B3B9673D1D /* Pods-Runner.release-metrang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-metrang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-metrang.xcconfig"; sourceTree = "<group>"; };
+		1AA62660A18A1595944EEA4E /* Pods-Runner.debug-kabil copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil copy.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil copy.xcconfig"; sourceTree = "<group>"; };
+		1AE151B16DB8AACD7AA4F1F5 /* Pods-Runner.release-bhugol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhugol.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhugol.xcconfig"; sourceTree = "<group>"; };
+		1C8410051B5B9D0A20FB2845 /* Pods-Runner.debug-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nilgiri.xcconfig"; sourceTree = "<group>"; };
+		1F15474AE0FABC8B475BDD3C /* Pods-Runner.profile-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kamana.xcconfig"; sourceTree = "<group>"; };
+		1F16829FDB1A3D8B55F9C010 /* Pods-Runner.release-sudarshan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sudarshan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sudarshan.xcconfig"; sourceTree = "<group>"; };
+		224679256490E51811787D1F /* Pods-Runner.release-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sahakarya.xcconfig"; sourceTree = "<group>"; };
+		22C1BDE981A820CC5AC1C63E /* Pods-Runner.release-sunshine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sunshine.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sunshine.xcconfig"; sourceTree = "<group>"; };
+		22D6FD563150CEDE8701268C /* Pods-Runner.release-matribhumi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-matribhumi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-matribhumi.xcconfig"; sourceTree = "<group>"; };
+		235C61D4AEF53B5C884F721A /* Pods-Runner.release-eastwest.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-eastwest.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-eastwest.xcconfig"; sourceTree = "<group>"; };
+		2481AAAB12B03F092EE6813B /* Pods-Runner.release-shreekalika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreekalika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreekalika.xcconfig"; sourceTree = "<group>"; };
+		249F3613BB0CB497E880EA2C /* Pods-Runner.release-sanchar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sanchar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sanchar.xcconfig"; sourceTree = "<group>"; };
+		24EAC45818604AE31EA618D2 /* Pods-Runner.debug-sparkling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sparkling.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sparkling.xcconfig"; sourceTree = "<group>"; };
+		27C3565E73BF49CD935447E1 /* Pods-Runner.release-subhodaya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-subhodaya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-subhodaya.xcconfig"; sourceTree = "<group>"; };
+		2D8BB6EF5355F9B7246725A1 /* Pods-Runner.profile-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nepalbachat.xcconfig"; sourceTree = "<group>"; };
+		2DD23EBD6B0502A810B7DDE1 /* Pods-Runner.release-punja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-punja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-punja.xcconfig"; sourceTree = "<group>"; };
+		3143EFF05AC71A8D6082B189 /* Pods-Runner.release-narayani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-narayani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-narayani.xcconfig"; sourceTree = "<group>"; };
+		3320C38608F253AA3C19E938 /* Pods-Runner.release-vaidhik.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-vaidhik.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-vaidhik.xcconfig"; sourceTree = "<group>"; };
+		33BC3C700D0D22327907222D /* Pods-Runner.release-digitalcoop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-digitalcoop.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-digitalcoop.xcconfig"; sourceTree = "<group>"; };
+		3458B0E9A4B5D0EBF59E3027 /* Pods-Runner.release-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
+		3564FC84553F72FB60E1212B /* Pods-Runner.release-thankotmahila.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-thankotmahila.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-thankotmahila.xcconfig"; sourceTree = "<group>"; };
+		365D2102CCB1B603896619E9 /* Pods-Runner.release-mangalpur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-mangalpur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-mangalpur.xcconfig"; sourceTree = "<group>"; };
+		365E426398C2C3BB64E74BCA /* Pods-Runner.debug-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sarbahit.xcconfig"; sourceTree = "<group>"; };
+		36EFDAC7342B26E6E6716389 /* Pods-Runner.release-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gomaganesh.xcconfig"; sourceTree = "<group>"; };
+		38B8B95847CD7E37B9D67616 /* Pods-Runner.profile-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-alankar.xcconfig"; sourceTree = "<group>"; };
+		3B0D27F05D4D07CFAC30B5BF /* Pods-Runner.release-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kipoo.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
-		3E4663A9A67F9C22B8433500 /* Pods-Runner.release-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nilgiri.xcconfig"; sourceTree = "<group>"; };
-		3EDF3B4301DADA25CE13A738 /* Pods-Runner.release-digitalcoop.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-digitalcoop.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-digitalcoop.xcconfig"; sourceTree = "<group>"; };
-		3F2B56AFCDBC8A720E53C4D1 /* Pods-Runner.release-metrang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-metrang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-metrang.xcconfig"; sourceTree = "<group>"; };
-		41DD337A27F78FF0941756B8 /* Pods-Runner.profile-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-janamukhi.xcconfig"; sourceTree = "<group>"; };
-		420FA74C859979F96165F2FC /* Pods-Runner.release-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sahakarya.xcconfig"; sourceTree = "<group>"; };
-		43FE2A94A1A77372A97FD30A /* Pods-Runner.release-ajambari.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ajambari.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ajambari.xcconfig"; sourceTree = "<group>"; };
-		44C21CBD3A89712366705634 /* Pods-Runner.debug-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-gomaganesh.xcconfig"; sourceTree = "<group>"; };
-		4617F8F5E181174CF9D0B896 /* Pods-Runner.release-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
-		4629EFF73B7BC9A3A92590DD /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		463F68A8B24A1E52558A8B29 /* Pods-Runner.release-subhodaya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-subhodaya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-subhodaya.xcconfig"; sourceTree = "<group>"; };
-		468ACECB9ED123E0E1E3AD0E /* Pods-Runner.debug-kabil copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil copy.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil copy.xcconfig"; sourceTree = "<group>"; };
-		469618ED05563CD6AEDBCD11 /* Pods-Runner.release-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ekata.xcconfig"; sourceTree = "<group>"; };
-		4931D340EEE08B83D96923C0 /* Pods-Runner.release-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
-		49CDBA8F82399D37EC60EC46 /* Pods-Runner.debug-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-bhanjyang.xcconfig"; sourceTree = "<group>"; };
-		4C4884D6C09F97D1B8AF30F1 /* Pods-Runner.release-myagdedugdha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-myagdedugdha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-myagdedugdha.xcconfig"; sourceTree = "<group>"; };
-		4FD8FE18E6C768374FFD4832 /* Pods-Runner.profile-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-uddhamsil.xcconfig"; sourceTree = "<group>"; };
-		4FF118B3A039CB92D82D8516 /* Pods-Runner.profile-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-manank.xcconfig"; sourceTree = "<group>"; };
-		50B4DFB04D09A6E5D6BF6133 /* Pods-Runner.release-shubhashreesaving.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreesaving.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreesaving.xcconfig"; sourceTree = "<group>"; };
-		529D97219556FE61929F2434 /* Pods-Runner.release-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemitra.xcconfig"; sourceTree = "<group>"; };
-		56BD088A4B61F97BBC15E83C /* Pods-Runner.release-tarkariphalafool.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-tarkariphalafool.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-tarkariphalafool.xcconfig"; sourceTree = "<group>"; };
-		56FB68D47F462B1B72A2249E /* Pods-Runner.release-shwetbhairab.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shwetbhairab.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shwetbhairab.xcconfig"; sourceTree = "<group>"; };
-		58A79779FF579A4BDBF81FA6 /* Pods-Runner.release-narayani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-narayani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-narayani.xcconfig"; sourceTree = "<group>"; };
-		5AF0A0DD0A938BB3BC560712 /* Pods-Runner.release-uttarbahini.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarbahini.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarbahini.xcconfig"; sourceTree = "<group>"; };
-		5BF87116D09263C57CA85C46 /* Pods-Runner.debug-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nilgiri.xcconfig"; sourceTree = "<group>"; };
-		5E9662CA61B72EA75118A9AC /* Pods-Runner.release-kaldhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kaldhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kaldhara.xcconfig"; sourceTree = "<group>"; };
-		5F3988CC42E29488BED71BA1 /* Pods-Runner.profile-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-aviyan.xcconfig"; sourceTree = "<group>"; };
-		6460E0B2C4951F2142C2DC59 /* Pods-Runner.release-wonderful.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-wonderful.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-wonderful.xcconfig"; sourceTree = "<group>"; };
-		66CEF19FF0601D73BE3D2552 /* Pods-Runner.debug-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janadhara.xcconfig"; sourceTree = "<group>"; };
-		67F3F6595C7B5BFB16B75B8A /* Pods-Runner.release-mangalpur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-mangalpur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-mangalpur.xcconfig"; sourceTree = "<group>"; };
-		699291C5709C3DC4B2BB35A3 /* Pods-Runner.release-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhanjyang.xcconfig"; sourceTree = "<group>"; };
-		6AB28876BE5D7BD8A52C5BFB /* Pods-Runner.release-batika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-batika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-batika.xcconfig"; sourceTree = "<group>"; };
-		6C228BD6C551E9A5EA475AD0 /* Pods-Runner.release-jamune.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-jamune.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-jamune.xcconfig"; sourceTree = "<group>"; };
-		6D5B08869225B08D2B2D164E /* Pods-Runner.profile-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-sarbahit.xcconfig"; sourceTree = "<group>"; };
-		6DADE0A7921C65A03F15B094 /* Pods-Runner.release-race.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-race.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-race.xcconfig"; sourceTree = "<group>"; };
-		6E18E55CE3E87A4A710C7AE0 /* Pods-Runner.release-rumjatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rumjatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rumjatar.xcconfig"; sourceTree = "<group>"; };
-		6E82362963D185F18411ED08 /* Pods-Runner.profile-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kipoo.xcconfig"; sourceTree = "<group>"; };
-		6FBE1693ECAB08EBCE0B7694 /* Pods-Runner.debug-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-aviyan.xcconfig"; sourceTree = "<group>"; };
-		6FF2446A0071C58CC8698595 /* Pods-Runner.release-jayshreematanavadurga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-jayshreematanavadurga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-jayshreematanavadurga.xcconfig"; sourceTree = "<group>"; };
-		7004228D445A329DEBD5BE01 /* Pods-Runner.release-kamananew.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kamananew.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kamananew.xcconfig"; sourceTree = "<group>"; };
-		70AC08269CA31AE1B2A745FF /* Pods-Runner.release-nawajosh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nawajosh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nawajosh.xcconfig"; sourceTree = "<group>"; };
-		7165329C35C4DBBA14F180BB /* Pods-Runner.release-sadasyasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sadasyasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sadasyasewa.xcconfig"; sourceTree = "<group>"; };
-		7267E05339BE7A7F0676F084 /* Pods-Runner.release-hamisabaikokrishi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-hamisabaikokrishi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-hamisabaikokrishi.xcconfig"; sourceTree = "<group>"; };
-		72B2CB4DF69C4D1E4E3149C3 /* Pods-Runner.release-bishalmulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishalmulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishalmulti.xcconfig"; sourceTree = "<group>"; };
+		3C46380A799F4E91980126E3 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3F3E0DB0CB70292CDB0F9D29 /* Pods-Runner.release-hetauda.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-hetauda.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-hetauda.xcconfig"; sourceTree = "<group>"; };
+		40738B94470FFBFBA702DD29 /* Pods-Runner.release-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ekata.xcconfig"; sourceTree = "<group>"; };
+		417D150A22C230704CEE3923 /* Pods-Runner.release-bhaktapur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhaktapur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhaktapur.xcconfig"; sourceTree = "<group>"; };
+		42C91899616C2F5820852AC2 /* Pods-Runner.release-shwetbhairab.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shwetbhairab.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shwetbhairab.xcconfig"; sourceTree = "<group>"; };
+		43E79A4DC2B0DDCE53A3CF86 /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
+		4430D98962594FA3BD5CE6A3 /* Pods-Runner.release-shubhashreemulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreemulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreemulti.xcconfig"; sourceTree = "<group>"; };
+		4AD71AF229F1530DBF783EFE /* Pods-Runner.release-myagdedugdha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-myagdedugdha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-myagdedugdha.xcconfig"; sourceTree = "<group>"; };
+		4B9EF25075B91B40DE6C7FA1 /* Pods-Runner.release-shreeaaju.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreeaaju.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreeaaju.xcconfig"; sourceTree = "<group>"; };
+		4CC831FC823FCD52A8438005 /* Pods-Runner.profile-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-ekata.xcconfig"; sourceTree = "<group>"; };
+		4E287BBA3BC2EF9DFF9D2CA1 /* Pods-Runner.release-queen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-queen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-queen.xcconfig"; sourceTree = "<group>"; };
+		4F651DF1178D1175B5DB056F /* Pods-Runner.release-fewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-fewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-fewa.xcconfig"; sourceTree = "<group>"; };
+		505477343673C3359566C0E7 /* Pods-Runner.release-sarbahitdang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbahitdang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbahitdang.xcconfig"; sourceTree = "<group>"; };
+		50728F0B25C14C81518E9D63 /* Pods-Runner.profile-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
+		514E82DCDA492A291001EFC5 /* Pods-Runner.release-avatar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-avatar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-avatar.xcconfig"; sourceTree = "<group>"; };
+		54B8B325818AA72E727B6BD9 /* Pods-Runner.release-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-manank.xcconfig"; sourceTree = "<group>"; };
+		54F80C0B5D72929E85D8A2EB /* Pods-Runner.profile-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kipoo.xcconfig"; sourceTree = "<group>"; };
+		559589569BE115C8D9CDC8CE /* Pods-Runner.profile-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kabil.xcconfig"; sourceTree = "<group>"; };
+		56101EAFD5CE27EE016B9513 /* Pods-Runner.debug-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nepalbachat.xcconfig"; sourceTree = "<group>"; };
+		56871EF2D44F7C76BF9F7BD1 /* Pods-Runner.release-bishnudol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishnudol.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishnudol.xcconfig"; sourceTree = "<group>"; };
+		56A528E2E7E627AE6896626B /* Pods-Runner.debug-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kipoo.xcconfig"; sourceTree = "<group>"; };
+		5703FAEF4B2359DD98C2D9BC /* Pods-Runner.release-puspanjali.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-puspanjali.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-puspanjali.xcconfig"; sourceTree = "<group>"; };
+		57848EE56BCB2F43375A314E /* Pods-Runner.release-lifevision.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-lifevision.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-lifevision.xcconfig"; sourceTree = "<group>"; };
+		57C21AEBB32F427759839061 /* Pods-Runner.profile-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-manank.xcconfig"; sourceTree = "<group>"; };
+		57D6DD2B72F293C890CB40F0 /* Pods-Runner.release-sunischit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sunischit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sunischit.xcconfig"; sourceTree = "<group>"; };
+		58EFC3F09C747E749E4B7D7A /* Pods-Runner.profile-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-sahakarya.xcconfig"; sourceTree = "<group>"; };
+		59FCE2FBA43E0B7A16336450 /* Pods-Runner.release-sanakishan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sanakishan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sanakishan.xcconfig"; sourceTree = "<group>"; };
+		61E4C20247D0D670C2F7361E /* Pods-Runner.release-kjismart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kjismart.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kjismart.xcconfig"; sourceTree = "<group>"; };
+		6345A3D69BF5F75DCFD6C89B /* Pods-Runner.debug-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-bhanjyang.xcconfig"; sourceTree = "<group>"; };
+		64483BAC3CD77308BD128AF3 /* Pods-Runner.release-abhibadan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-abhibadan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-abhibadan.xcconfig"; sourceTree = "<group>"; };
+		6484287CF36CD783F492D543 /* Pods-Runner.release-noor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-noor.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-noor.xcconfig"; sourceTree = "<group>"; };
+		6530ABADDA3C3D23AA6B16D7 /* Pods-Runner.release-aabhash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aabhash.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aabhash.xcconfig"; sourceTree = "<group>"; };
+		669A6B22C7BAC0DB97C8E0EE /* Pods-Runner.release-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nepalbachat.xcconfig"; sourceTree = "<group>"; };
+		69660DC7FB0A207C3D5DCE26 /* Pods-Runner.release-tarkariphalafool.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-tarkariphalafool.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-tarkariphalafool.xcconfig"; sourceTree = "<group>"; };
+		69EBCC1E5520B7744CC45122 /* Pods-Runner.release-aakashbani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aakashbani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aakashbani.xcconfig"; sourceTree = "<group>"; };
+		6BB127897CF0B672E1B6949F /* Pods-Runner.release-shubhashreesaving.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreesaving.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreesaving.xcconfig"; sourceTree = "<group>"; };
+		6BE70D4DD369E1BD8B01C308 /* Pods-Runner.release-ektamulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ektamulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ektamulti.xcconfig"; sourceTree = "<group>"; };
+		6C98056A487C71BEE7595C60 /* Pods-Runner.debug-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
+		6D8EC795C396AD9B80ABD8FD /* Pods-Runner.release-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janamukhi.xcconfig"; sourceTree = "<group>"; };
+		6EE734B515C8EF00C588F81F /* Pods-Runner.release-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kripalu.xcconfig"; sourceTree = "<group>"; };
+		6F23FD25CC63615F0FEAA91D /* Pods-Runner.release-tgway.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-tgway.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-tgway.xcconfig"; sourceTree = "<group>"; };
+		6F559CFB50C7D8C4F86D5B66 /* Pods-Runner.release-ajambari.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ajambari.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ajambari.xcconfig"; sourceTree = "<group>"; };
+		723833546B502DF02302B360 /* Pods-Runner.debug-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-uttarganga.xcconfig"; sourceTree = "<group>"; };
+		73AFCFFAD53DB8ECAE75CBDB /* Pods-Runner.release-batika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-batika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-batika.xcconfig"; sourceTree = "<group>"; };
 		74858FAD1ED2DC5600515810 /* Runner-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Runner-Bridging-Header.h"; sourceTree = "<group>"; };
 		74858FAE1ED2DC5600515810 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		749D04775018BC0984A19FE6 /* Pods-Runner.release-devshree.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-devshree.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-devshree.xcconfig"; sourceTree = "<group>"; };
+		76BE2751D347B385C6271217 /* Pods-Runner.release-machhapuchhre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-machhapuchhre.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-machhapuchhre.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
-		7B221CD1CC4326938F4FC96C /* Pods-Runner.release-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uddhamsil.xcconfig"; sourceTree = "<group>"; };
-		7D3C465F8C1E13651545E800 /* Pods-Runner.release-rithepani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-rithepani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-rithepani.xcconfig"; sourceTree = "<group>"; };
-		7E22ED43E29B39233D9C557A /* Pods-Runner.release-ektamulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ektamulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ektamulti.xcconfig"; sourceTree = "<group>"; };
-		7FFCA4898DB1D99207D71A60 /* Pods-Runner.release-immanuel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-immanuel.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-immanuel.xcconfig"; sourceTree = "<group>"; };
-		80FB3646F08E873D52ED3C0A /* Pods-Runner.release-punja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-punja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-punja.xcconfig"; sourceTree = "<group>"; };
-		837E553054D4F9BE8E8251A6 /* Pods-Runner.profile-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kamana.xcconfig"; sourceTree = "<group>"; };
-		83E2DE6862BFC73084EC6922 /* Pods-Runner.release-sagarmatha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sagarmatha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sagarmatha.xcconfig"; sourceTree = "<group>"; };
-		861BF61DBA23F2FE6D8985F6 /* Pods-Runner.release-kanchanjungha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kanchanjungha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kanchanjungha.xcconfig"; sourceTree = "<group>"; };
-		878CCD0F30070FE8A69832C5 /* Pods-Runner.release-aakashbani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aakashbani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aakashbani.xcconfig"; sourceTree = "<group>"; };
-		8AB0BB4133E7F787EDFD2275 /* Pods-Runner.release-myagde.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-myagde.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-myagde.xcconfig"; sourceTree = "<group>"; };
-		8B9DA2AEE3A168BB8BF14725 /* Pods-Runner.debug-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-uddhamsil.xcconfig"; sourceTree = "<group>"; };
-		8BA0E004ED92F59AE3E010EB /* Pods-Runner.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release.xcconfig"; sourceTree = "<group>"; };
-		8C1975C4C6A28E60633119A3 /* Pods-Runner.release-aastha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aastha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aastha.xcconfig"; sourceTree = "<group>"; };
-		8CD249DC5823877EBA2FD87B /* Pods-Runner.release-shreeaaju.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreeaaju.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreeaaju.xcconfig"; sourceTree = "<group>"; };
-		8D97F8E955A3B0F4382FC25F /* Pods-Runner.profile-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-vyas.xcconfig"; sourceTree = "<group>"; };
+		7D264DA8D66BB713AED11D20 /* Pods-Runner.release-supreme.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-supreme.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-supreme.xcconfig"; sourceTree = "<group>"; };
+		80A55FF7917B60BCEA89E9CC /* Pods-Runner.debug-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-manank.xcconfig"; sourceTree = "<group>"; };
+		8370BAED0F630644A856B095 /* Pods-Runner.release-paschimanchal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-paschimanchal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-paschimanchal.xcconfig"; sourceTree = "<group>"; };
+		84AE822BC14E1317DA6F7D48 /* Pods-Runner.release-babira.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-babira.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-babira.xcconfig"; sourceTree = "<group>"; };
+		85488380D418BDE1DE332624 /* Pods-Runner.debug-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-ekata.xcconfig"; sourceTree = "<group>"; };
+		85C18EC842CD6457EA8A787A /* Pods-Runner.profile-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-janamukhi.xcconfig"; sourceTree = "<group>"; };
+		8727B0ADDC0E47100B64077C /* Pods-Runner.release-khotangjaleshwori.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-khotangjaleshwori.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-khotangjaleshwori.xcconfig"; sourceTree = "<group>"; };
+		8C9703B2E695DDCCE10E5CE3 /* Pods-Runner.release-aarati.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aarati.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aarati.xcconfig"; sourceTree = "<group>"; };
+		8F1E9E6D1322D1EFECBB4267 /* Pods-Runner.debug-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janamukhi.xcconfig"; sourceTree = "<group>"; };
 		8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		8F583D772A4EB8F3006C2DA1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		8F93B5A52A4D6CE10022D0CC /* Runner.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Runner.entitlements; sourceTree = "<group>"; };
-		8FC4B88DB60ED58A9C361A19 /* Pods-Runner.debug-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kipoo.xcconfig"; sourceTree = "<group>"; };
-		901A4986C9EDB20AFA316E92 /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
-		90C7C020D937DF1A67ED0F09 /* Pods-Runner.release-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-arthabag.xcconfig"; sourceTree = "<group>"; };
-		94E973D209289DAE578EEAF2 /* Pods-Runner.release-dupcheshwor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dupcheshwor.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dupcheshwor.xcconfig"; sourceTree = "<group>"; };
-		965981D01508B03F69541D3D /* Pods-Runner.release-fewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-fewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-fewa.xcconfig"; sourceTree = "<group>"; };
-		96931B4DCC97A928E535C026 /* Pods-Runner.release-uttarganganew.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarganganew.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarganganew.xcconfig"; sourceTree = "<group>"; };
-		96A41CAAAA6F5D68AC20DF3A /* Pods-Runner.release-globalmulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-globalmulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-globalmulti.xcconfig"; sourceTree = "<group>"; };
+		917A0A7217C39B80B77A69AC /* Pods-Runner.release-shreekrishna.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreekrishna.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreekrishna.xcconfig"; sourceTree = "<group>"; };
+		97153197A87B35B15BC4B734 /* Pods-Runner.release-sagarmatha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sagarmatha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sagarmatha.xcconfig"; sourceTree = "<group>"; };
 		9740EEB21CF90195004384FC /* Debug.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Debug.xcconfig; path = Flutter/Debug.xcconfig; sourceTree = "<group>"; };
 		9740EEB31CF90195004384FC /* Generated.xcconfig */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xcconfig; name = Generated.xcconfig; path = Flutter/Generated.xcconfig; sourceTree = "<group>"; };
 		97C146EE1CF9000F007C117D /* Runner.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Runner.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -145,78 +145,78 @@
 		97C146FD1CF9000F007C117D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		97C147001CF9000F007C117D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		97C147021CF9000F007C117D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9896DD563898B0AE6375E874 /* Pods-Runner.release-shreesiddhiganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreesiddhiganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreesiddhiganesh.xcconfig"; sourceTree = "<group>"; };
-		9922A9A08FF903AFF6B97E6E /* Pods-Runner.profile-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-uttarganga.xcconfig"; sourceTree = "<group>"; };
-		993C7B78F6921137FBE3C113 /* Pods-Runner.release-sunischit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sunischit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sunischit.xcconfig"; sourceTree = "<group>"; };
-		9991761C9962C97A6AD58ED1 /* Pods-Runner.release-upayogisaccos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upayogisaccos.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upayogisaccos.xcconfig"; sourceTree = "<group>"; };
-		9A3C12AB2CD7BABB7C36515F /* Pods-Runner.release-bishal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishal.xcconfig"; sourceTree = "<group>"; };
-		9AE41AA400BFD0B47B11276B /* Pods-Runner.release-shreeekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreeekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreeekata.xcconfig"; sourceTree = "<group>"; };
-		9BEAE6C2BCC840DC22B1AA9B /* Pods-Runner.release-kjismart.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kjismart.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kjismart.xcconfig"; sourceTree = "<group>"; };
-		9E6C1C6A7FC24E5AEF27FDC3 /* Pods-Runner.release-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbahit.xcconfig"; sourceTree = "<group>"; };
-		A213AD890D8897471BD88C37 /* Pods-Runner.release-sparkling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sparkling.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sparkling.xcconfig"; sourceTree = "<group>"; };
-		A24B9D37849033B95F4CA7F3 /* Pods-Runner.release-shubhashreemulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreemulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreemulti.xcconfig"; sourceTree = "<group>"; };
-		A4B9E5BFA9B5CC9DB00C1DA6 /* Pods-Runner.profile-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-gomaganesh.xcconfig"; sourceTree = "<group>"; };
-		A8697EF5B58B4E10A9DD7AB2 /* Pods-Runner.release-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janadhara.xcconfig"; sourceTree = "<group>"; };
-		A963BF7BDAD84C94CD7751C1 /* Pods-Runner.release-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gomaganesh.xcconfig"; sourceTree = "<group>"; };
-		A97C35F530B8A5A927817F40 /* Pods-Runner.release-nayan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nayan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nayan.xcconfig"; sourceTree = "<group>"; };
-		AC4352AE8CA68147ABAB789D /* Pods-Runner.debug-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sahakarya.xcconfig"; sourceTree = "<group>"; };
-		ACD66F2CD0D8FE5E8FBEF44D /* Pods-Runner.release-sarbajyoti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbajyoti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbajyoti.xcconfig"; sourceTree = "<group>"; };
-		AE2B1010F1E2CF9744993068 /* Pods-Runner.debug-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nepalbachat.xcconfig"; sourceTree = "<group>"; };
-		AF3FA4773A840A2EA5E87F97 /* Pods-Runner.release-shreejanamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreejanamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreejanamukhi.xcconfig"; sourceTree = "<group>"; };
-		B02DD96586647E443506F3D9 /* Pods-Runner.profile-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-alankar.xcconfig"; sourceTree = "<group>"; };
-		B0AA60DE8BD3440C76696388 /* Pods-Runner.release-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aviyan.xcconfig"; sourceTree = "<group>"; };
-		B94B6AFAC5982EB710EF9370 /* Pods-Runner.release-sardikhola.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sardikhola.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sardikhola.xcconfig"; sourceTree = "<group>"; };
-		BA1BC9CFA134896112DC128E /* Pods-Runner.release-tgway.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-tgway.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-tgway.xcconfig"; sourceTree = "<group>"; };
-		BB8A99E0E35B0E3D1D021879 /* Pods-Runner.release-abhibadan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-abhibadan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-abhibadan.xcconfig"; sourceTree = "<group>"; };
-		BED9D4369F741731ADD22217 /* Pods-Runner.release-shreekalika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreekalika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreekalika.xcconfig"; sourceTree = "<group>"; };
-		BEF728B544ACEB4BBB91C98A /* Pods-Runner.release-exotic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-exotic.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-exotic.xcconfig"; sourceTree = "<group>"; };
-		C0281F043E162302059CBC42 /* Pods-Runner.release-shreekrishna.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreekrishna.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreekrishna.xcconfig"; sourceTree = "<group>"; };
-		C11C2BBCE814F358B000203C /* Pods-Runner.debug-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
-		C328057B6D57381E0A7CC0E2 /* Pods-Runner.release-puspanjali.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-puspanjali.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-puspanjali.xcconfig"; sourceTree = "<group>"; };
-		C34D20C0F6D5C8A612E1D8E7 /* Pods-Runner.release-vaidhik.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-vaidhik.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-vaidhik.xcconfig"; sourceTree = "<group>"; };
-		C3F88D1FE513EA604E4FB0BA /* Pods-Runner.debug-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kripalu.xcconfig"; sourceTree = "<group>"; };
-		C46E98C0B1A32446FF142FE6 /* Pods-Runner.profile-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-shreemitra.xcconfig"; sourceTree = "<group>"; };
-		C4FB55CF8EEE61C908B7D6E2 /* Pods-Runner.profile-sahakarya.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-sahakarya.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-sahakarya.xcconfig"; sourceTree = "<group>"; };
-		C78583F874D3B2B7E560AC74 /* Pods-Runner.release-queen.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-queen.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-queen.xcconfig"; sourceTree = "<group>"; };
-		C81B34D09E7B5D4249EA41CE /* Pods-Runner.release-annapurnahealth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-annapurnahealth.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-annapurnahealth.xcconfig"; sourceTree = "<group>"; };
-		C8E42EA615DC093E7745B025 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
-		C943FD0B49E613A4AA568F12 /* Pods-Runner.release-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-alankar.xcconfig"; sourceTree = "<group>"; };
-		CA3217E43C0D7674716DE6CB /* Pods-Runner.release-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nepalbachat.xcconfig"; sourceTree = "<group>"; };
-		CA6FA554299D9D00D7C753A8 /* Pods-Runner.debug-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janamukhi.xcconfig"; sourceTree = "<group>"; };
-		CDDBDACD7931F48D7BC2A514 /* Pods-Runner.debug-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-shreemitra.xcconfig"; sourceTree = "<group>"; };
-		CF89E522E65CA03AC4E1E1F6 /* Pods-Runner.release-sanakishan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sanakishan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sanakishan.xcconfig"; sourceTree = "<group>"; };
-		CFAF2678274C1658601B1B86 /* Pods-Runner.release-machhapuchhre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-machhapuchhre.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-machhapuchhre.xcconfig"; sourceTree = "<group>"; };
-		D01ECBC52FAD630B11443585 /* Pods-Runner.release-omshreeom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-omshreeom.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-omshreeom.xcconfig"; sourceTree = "<group>"; };
-		D1ACBFFEAA9FC9CBE81B6312 /* Pods-Runner.release-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janamukhi.xcconfig"; sourceTree = "<group>"; };
-		D29BBDA00AE72BDBD4C66EA7 /* Pods-Runner.release-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarganga.xcconfig"; sourceTree = "<group>"; };
-		D46C6EDF46026F225C309480 /* Pods-Runner.release-davisfall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-davisfall.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-davisfall.xcconfig"; sourceTree = "<group>"; };
-		D473405FCB7F738EDBCF4983 /* Pods-Runner.profile-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nilgiri.xcconfig"; sourceTree = "<group>"; };
-		D60058CEAADB8B4BE629B3B1 /* Pods-Runner.release-shreemiteree.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemiteree.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemiteree.xcconfig"; sourceTree = "<group>"; };
-		D67FE605AAFC40DB752B5EC1 /* Pods-Runner.profile-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-janadhara.xcconfig"; sourceTree = "<group>"; };
-		D7D02B7907D1EB362CD66400 /* Pods-Runner.debug-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
-		DB7B35741F3D4B440CE0E6A3 /* Pods-Runner.release-united.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-united.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-united.xcconfig"; sourceTree = "<group>"; };
-		DC20863C0AF1AD73D8A0CF5B /* Pods-Runner.release-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kabil.xcconfig"; sourceTree = "<group>"; };
-		DC34613689D0418E5A8FD433 /* Pods-Runner.release-noor.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-noor.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-noor.xcconfig"; sourceTree = "<group>"; };
-		DE8701E72D4EE2C649E9E0C5 /* Pods-Runner.release-sarbahitdang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbahitdang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbahitdang.xcconfig"; sourceTree = "<group>"; };
-		DF4C0B7E0C1EDE7CFF87D330 /* Pods-Runner.release-bishnudol.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishnudol.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishnudol.xcconfig"; sourceTree = "<group>"; };
-		E3B8D996F02229A7026BEBB1 /* Pods-Runner.release-aabhash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aabhash.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aabhash.xcconfig"; sourceTree = "<group>"; };
-		E6020CF620B797F83A02816E /* Pods-Runner.debug-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-vyas.xcconfig"; sourceTree = "<group>"; };
-		E829966F10D8EFF8DD793F80 /* Pods-Runner.debug-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-arthabag.xcconfig"; sourceTree = "<group>"; };
-		E89BFD6B492EEA0A5C34E595 /* Pods-Runner.release-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-vyas.xcconfig"; sourceTree = "<group>"; };
-		E949EFA26B4C5084F2876CC6 /* Pods-Runner.release-khotangjaleshwori.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-khotangjaleshwori.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-khotangjaleshwori.xcconfig"; sourceTree = "<group>"; };
-		EB2A1610B63C22EFE04335C2 /* Pods-Runner.debug-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-manank.xcconfig"; sourceTree = "<group>"; };
-		EBD62E2E1B8F10920B91B31F /* Pods-Runner.profile-nepalbachat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nepalbachat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nepalbachat.xcconfig"; sourceTree = "<group>"; };
-		ED105458CAAF648838B7EC7B /* Pods-Runner.release-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kamana.xcconfig"; sourceTree = "<group>"; };
-		ED475CE08F3C5A9C45A8510B /* Pods-Runner.release-sunshine.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sunshine.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sunshine.xcconfig"; sourceTree = "<group>"; };
-		ED5454B7D34E45CB29C55FCC /* Pods-Runner.release-lifevision.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-lifevision.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-lifevision.xcconfig"; sourceTree = "<group>"; };
-		EFF6BE3E58372BA608808D5F /* Pods-Runner.release-buddha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-buddha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-buddha.xcconfig"; sourceTree = "<group>"; };
-		F23D736C76DE49CCB7D331CE /* Pods-Runner.release-babira.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-babira.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-babira.xcconfig"; sourceTree = "<group>"; };
-		F3EFE57A65BC87A7AB6AC85A /* Pods-Runner.profile-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kripalu.xcconfig"; sourceTree = "<group>"; };
-		F44177FB5BAD99DCDD978EA3 /* Pods-Runner.release-bhaktapur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhaktapur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhaktapur.xcconfig"; sourceTree = "<group>"; };
-		F7709B77AB6DB22C4195A232 /* Pods-Runner.release-upakar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upakar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upakar.xcconfig"; sourceTree = "<group>"; };
-		F7B1EAF92F3FDF25E326B0A5 /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
-		F80B2998B33DA76E81298E77 /* Pods-Runner.release-supreme.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-supreme.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-supreme.xcconfig"; sourceTree = "<group>"; };
-		FBD6989C541AF556482A8D6B /* Pods-Runner.release-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-manank.xcconfig"; sourceTree = "<group>"; };
+		98CF7CD2E056F16899EBBB99 /* Pods-Runner.release-sarbajyoti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbajyoti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbajyoti.xcconfig"; sourceTree = "<group>"; };
+		98F7819FD34BAF19C1A73E44 /* Pods-Runner.release-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-arthabag.xcconfig"; sourceTree = "<group>"; };
+		9B3E62DD8AEB2154E2D46497 /* Pods-Runner.profile.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile.xcconfig"; sourceTree = "<group>"; };
+		9CF7365A266B7CF3F5DB5797 /* Pods-Runner.release-shreejanamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreejanamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreejanamukhi.xcconfig"; sourceTree = "<group>"; };
+		9F28D24D94C68852ED502487 /* Pods-Runner.release-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sarbahit.xcconfig"; sourceTree = "<group>"; };
+		9F55E36C71882F9A7C65EF71 /* Pods-Runner.debug-kamana.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kamana.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kamana.xcconfig"; sourceTree = "<group>"; };
+		9F99602152B7E7EE8CD30E88 /* Pods-Runner.release-exotic.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-exotic.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-exotic.xcconfig"; sourceTree = "<group>"; };
+		9FF9EDBA261C156B7619BFC2 /* Pods-Runner.release-parishrami.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-parishrami.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-parishrami.xcconfig"; sourceTree = "<group>"; };
+		A0E90568E4641C3B66DFB935 /* Pods-Runner.release-upayogisaccos.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upayogisaccos.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upayogisaccos.xcconfig"; sourceTree = "<group>"; };
+		A1FBCC9526F5DF1EE3CF42ED /* Pods-Runner.release-upayogi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-upayogi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-upayogi.xcconfig"; sourceTree = "<group>"; };
+		A362282101528AF32D26366B /* Pods-Runner.profile-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-sarbahit.xcconfig"; sourceTree = "<group>"; };
+		A365C7EB6BD6185C5DC0EBB4 /* Pods-Runner.debug-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-vyas.xcconfig"; sourceTree = "<group>"; };
+		A4C28417BC44BF320EB0245B /* Pods-Runner.release-kamananew.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kamananew.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kamananew.xcconfig"; sourceTree = "<group>"; };
+		A696F85BFC159CF9CB97FAB7 /* Pods-Runner.debug-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil.xcconfig"; sourceTree = "<group>"; };
+		A9E85050C1D63F0B98345285 /* Pods-Runner.release-uttarbahini.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarbahini.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarbahini.xcconfig"; sourceTree = "<group>"; };
+		AA93A034F3C3B7C467C16F6E /* Pods-Runner.release-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-alankar.xcconfig"; sourceTree = "<group>"; };
+		ABE382E460C97438846AD6ED /* Pods-Runner.release-sparkling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sparkling.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sparkling.xcconfig"; sourceTree = "<group>"; };
+		AE1B1E66CCA9C3607F264288 /* Pods-Runner.release-sadasyasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sadasyasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sadasyasewa.xcconfig"; sourceTree = "<group>"; };
+		AF8CBD8F2D6205D69816152E /* Pods-Runner.release-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uddhamsil.xcconfig"; sourceTree = "<group>"; };
+		B04CC80F611B762EB8498C8F /* Pods-Runner.debug-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-shreemitra.xcconfig"; sourceTree = "<group>"; };
+		B1D77DA6331273EE1CBD7A78 /* Pods-Runner.release-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janadhara.xcconfig"; sourceTree = "<group>"; };
+		B7DD89B9D69BFB0B2F906CD0 /* Pods-Runner.profile-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-uddhamsil.xcconfig"; sourceTree = "<group>"; };
+		B80B30A663B3F051060701CE /* Pods-Runner.release-kanchanjungha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kanchanjungha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kanchanjungha.xcconfig"; sourceTree = "<group>"; };
+		B9E389A354EDF204D94B1DD2 /* Pods-Runner.release-kaldhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kaldhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kaldhara.xcconfig"; sourceTree = "<group>"; };
+		BA17F532A88585DA9A39E78F /* Pods-Runner.profile-shreemitra.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-shreemitra.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-shreemitra.xcconfig"; sourceTree = "<group>"; };
+		BE1AC4A26D41096E64DB0D95 /* Pods-Runner.release-davisfall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-davisfall.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-davisfall.xcconfig"; sourceTree = "<group>"; };
+		C1131A818BA0E3625CCFBCDD /* Pods-Runner.release-nirika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nirika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nirika.xcconfig"; sourceTree = "<group>"; };
+		C1BBE024591119D5A9101F87 /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
+		C630B161171C0989F38D8C83 /* Pods-Runner.release-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhanjyang.xcconfig"; sourceTree = "<group>"; };
+		C63FE670EE9F95341AE3FAFE /* Pods-Runner.release-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
+		C826464460B4BB63E6A5D4A2 /* Pods-Runner.profile-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
+		C98CCD90B3162A5001B92F92 /* Pods-Runner.release-golden.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-golden.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-golden.xcconfig"; sourceTree = "<group>"; };
+		C9ADA0146EC60C9C6BE312FC /* Pods-Runner.release-shreeekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreeekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreeekata.xcconfig"; sourceTree = "<group>"; };
+		CBF225BC2C6F2141E9ED5908 /* Pods-Runner.release-wonderful.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-wonderful.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-wonderful.xcconfig"; sourceTree = "<group>"; };
+		CE2F080BF0B9EA1528E43C25 /* Pods-Runner.release-shreehemja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreehemja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreehemja.xcconfig"; sourceTree = "<group>"; };
+		CE3679641DD1743D0A5B23F3 /* Pods-Runner.profile-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-gomaganesh.xcconfig"; sourceTree = "<group>"; };
+		CF6A0D61BF1EF2BD9B5CC977 /* Pods-Runner.release-nawajosh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nawajosh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nawajosh.xcconfig"; sourceTree = "<group>"; };
+		D2C678B5EDAD23604D91B520 /* Pods-Runner.debug-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kripalu.xcconfig"; sourceTree = "<group>"; };
+		D4703ECE1FE14C11F07AD549 /* Pods-Runner.debug-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-arthabag.xcconfig"; sourceTree = "<group>"; };
+		D5AD96FCF6F1CED4FD06769D /* Pods-Runner.release-sardikhola.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sardikhola.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sardikhola.xcconfig"; sourceTree = "<group>"; };
+		D60B451580389125212D03AE /* Pods-Runner.release-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarganga.xcconfig"; sourceTree = "<group>"; };
+		D63D33BDAA0F6E47C57B175D /* Pods-Runner.release-omshreeom.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-omshreeom.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-omshreeom.xcconfig"; sourceTree = "<group>"; };
+		D6882F91DE473F51D519A301 /* Pods-Runner.release-myagde.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-myagde.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-myagde.xcconfig"; sourceTree = "<group>"; };
+		D6A3BC980D24E3A998632381 /* Pods-Runner.release-race.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-race.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-race.xcconfig"; sourceTree = "<group>"; };
+		D9B3DA56FEC8EC1E2DF3DF44 /* Pods-Runner.profile-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-aviyan.xcconfig"; sourceTree = "<group>"; };
+		DA6927338B601838BFD3DCC9 /* Pods-Runner.release-shreemiteree.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreemiteree.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreemiteree.xcconfig"; sourceTree = "<group>"; };
+		DC5B377E99E0F0FE51933C0E /* Pods-Runner.release-jamune.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-jamune.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-jamune.xcconfig"; sourceTree = "<group>"; };
+		E03A10293D787669BED447E0 /* Pods-Runner.release-bishalmulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bishalmulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bishalmulti.xcconfig"; sourceTree = "<group>"; };
+		E09C2A1CF3D23AD2AA45CA92 /* Pods-Runner.release-hamisabaikokrishi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-hamisabaikokrishi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-hamisabaikokrishi.xcconfig"; sourceTree = "<group>"; };
+		E162B465F40BD584D544DFAB /* Pods-Runner.profile-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-vyas.xcconfig"; sourceTree = "<group>"; };
+		E277FC148E4D7A90D20B9911 /* Pods-Runner.release-shubhasandesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhasandesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhasandesh.xcconfig"; sourceTree = "<group>"; };
+		E3516FD72E00FFEB475CDA4F /* Pods-Runner.release-united.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-united.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-united.xcconfig"; sourceTree = "<group>"; };
+		E5AAE9B5C6E2FF0F2F936F86 /* Pods-Runner.release-nilgiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nilgiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nilgiri.xcconfig"; sourceTree = "<group>"; };
+		E5C28DE04193532BAA292714 /* Pods-Runner.debug-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-aviyan.xcconfig"; sourceTree = "<group>"; };
+		E6EE78C7F350769E868C19EA /* Pods-Runner.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug.xcconfig"; sourceTree = "<group>"; };
+		E7AFCBB39DE53EFAD5E39297 /* Pods-Runner.profile-uttarganga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-uttarganga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-uttarganga.xcconfig"; sourceTree = "<group>"; };
+		E803AC1333C6C4C507E49756 /* Pods-Runner.debug-uddhamsil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-uddhamsil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-uddhamsil.xcconfig"; sourceTree = "<group>"; };
+		EBB29783ABF7431A159A8F80 /* Pods-Runner.debug-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-alankar.xcconfig"; sourceTree = "<group>"; };
+		ECEF56D09DC32F169B99E7EE /* Pods-Runner.release-globalmulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-globalmulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-globalmulti.xcconfig"; sourceTree = "<group>"; };
+		EF1F6DCAE9579D66D674390C /* Pods-Runner.release-vyas.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-vyas.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-vyas.xcconfig"; sourceTree = "<group>"; };
+		EF40A2AF228F0A946CBD7512 /* Pods-Runner.release-jayshreematanavadurga.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-jayshreematanavadurga.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-jayshreematanavadurga.xcconfig"; sourceTree = "<group>"; };
+		F0CC35D44999FF4FD9401D12 /* Pods-Runner.profile-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-kripalu.xcconfig"; sourceTree = "<group>"; };
+		F3D36236A6DE014E81161BE4 /* Pods-Runner.release-immanuel.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-immanuel.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-immanuel.xcconfig"; sourceTree = "<group>"; };
+		F461F206B318E4AF4D83D22E /* Pods-Runner.release-shreesiddhiganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shreesiddhiganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shreesiddhiganesh.xcconfig"; sourceTree = "<group>"; };
+		F52EE04B65DC0B41852E6267 /* Pods-Runner.release-uttarganganew.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarganganew.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarganganew.xcconfig"; sourceTree = "<group>"; };
+		F7FBBA9F5F2E695E88A48F25 /* Pods-Runner.debug-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-janadhara.xcconfig"; sourceTree = "<group>"; };
+		FA8A0634FF272C1FDA490AE1 /* Pods-Runner.release-aviyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-aviyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-aviyan.xcconfig"; sourceTree = "<group>"; };
+		FAF454A32740C60D9140B987 /* Pods-Runner.release-annapurnahealth.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-annapurnahealth.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-annapurnahealth.xcconfig"; sourceTree = "<group>"; };
+		FB3F13BC23E58CBCD238E69D /* Pods-Runner.profile-janadhara.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-janadhara.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-janadhara.xcconfig"; sourceTree = "<group>"; };
+		FC17ABE5018FCCB6B9678E85 /* Pods-Runner.profile-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-bhanjyang.xcconfig"; sourceTree = "<group>"; };
+		FD624988B041EF28620647E2 /* Pods-Runner.release-buddha.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-buddha.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-buddha.xcconfig"; sourceTree = "<group>"; };
+		FF678291B0150F40C7B117D5 /* Pods-Runner.debug-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-gomaganesh.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,7 +225,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F4CFE5A2A5BF126009234C2 /* libsqlite3.tbd in Frameworks */,
-				29DF56CD91F14D299FEC9FAA /* Pods_Runner.framework in Frameworks */,
+				91D6DAB7067A4485115C8C21 /* Pods_Runner.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -236,7 +236,7 @@
 			isa = PBXGroup;
 			children = (
 				8F4CFE592A5BF119009234C2 /* libsqlite3.tbd */,
-				4629EFF73B7BC9A3A92590DD /* Pods_Runner.framework */,
+				3C46380A799F4E91980126E3 /* Pods_Runner.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -291,174 +291,174 @@
 		BF0A424C9A5FF836E3DA92FD /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				F7B1EAF92F3FDF25E326B0A5 /* Pods-Runner.debug.xcconfig */,
-				8BA0E004ED92F59AE3E010EB /* Pods-Runner.release.xcconfig */,
-				36EE909A2F813D027669F897 /* Pods-Runner.debug-kabil.xcconfig */,
-				468ACECB9ED123E0E1E3AD0E /* Pods-Runner.debug-kabil copy.xcconfig */,
-				8B9DA2AEE3A168BB8BF14725 /* Pods-Runner.debug-uddhamsil.xcconfig */,
-				AE2B1010F1E2CF9744993068 /* Pods-Runner.debug-nepalbachat.xcconfig */,
-				5BF87116D09263C57CA85C46 /* Pods-Runner.debug-nilgiri.xcconfig */,
-				49CDBA8F82399D37EC60EC46 /* Pods-Runner.debug-bhanjyang.xcconfig */,
-				0A39079569CBD425E165DF40 /* Pods-Runner.debug-sarbahit.xcconfig */,
-				6FBE1693ECAB08EBCE0B7694 /* Pods-Runner.debug-aviyan.xcconfig */,
-				3845BE3B201C0CF30A158756 /* Pods-Runner.debug-ekata.xcconfig */,
-				C3F88D1FE513EA604E4FB0BA /* Pods-Runner.debug-kripalu.xcconfig */,
-				CA6FA554299D9D00D7C753A8 /* Pods-Runner.debug-janamukhi.xcconfig */,
-				C11C2BBCE814F358B000203C /* Pods-Runner.debug-dhaulagiri.xcconfig */,
-				D7D02B7907D1EB362CD66400 /* Pods-Runner.debug-nawaprabhat.xcconfig */,
-				E6020CF620B797F83A02816E /* Pods-Runner.debug-vyas.xcconfig */,
-				33E8B5D5A743C17C70941C72 /* Pods-Runner.debug-kamana.xcconfig */,
-				AC4352AE8CA68147ABAB789D /* Pods-Runner.debug-sahakarya.xcconfig */,
-				EB2A1610B63C22EFE04335C2 /* Pods-Runner.debug-manank.xcconfig */,
-				3908D5864D3B1414A0DBFEBD /* Pods-Runner.debug-alankar.xcconfig */,
-				8FC4B88DB60ED58A9C361A19 /* Pods-Runner.debug-kipoo.xcconfig */,
-				251A9AE56BE96DBA2DD1874E /* Pods-Runner.debug-sparkling.xcconfig */,
-				CDDBDACD7931F48D7BC2A514 /* Pods-Runner.debug-shreemitra.xcconfig */,
-				44C21CBD3A89712366705634 /* Pods-Runner.debug-gomaganesh.xcconfig */,
-				66CEF19FF0601D73BE3D2552 /* Pods-Runner.debug-janadhara.xcconfig */,
-				E829966F10D8EFF8DD793F80 /* Pods-Runner.debug-arthabag.xcconfig */,
-				1664FB217B02E3E14AE4EE88 /* Pods-Runner.debug-uttarganga.xcconfig */,
-				DC20863C0AF1AD73D8A0CF5B /* Pods-Runner.release-kabil.xcconfig */,
-				6FF2446A0071C58CC8698595 /* Pods-Runner.release-jayshreematanavadurga.xcconfig */,
-				96931B4DCC97A928E535C026 /* Pods-Runner.release-uttarganganew.xcconfig */,
-				7004228D445A329DEBD5BE01 /* Pods-Runner.release-kamananew.xcconfig */,
-				24772081340D6EB09551F613 /* Pods-Runner.release-nirika.xcconfig */,
-				C0281F043E162302059CBC42 /* Pods-Runner.release-shreekrishna.xcconfig */,
-				94E973D209289DAE578EEAF2 /* Pods-Runner.release-dupcheshwor.xcconfig */,
-				D01ECBC52FAD630B11443585 /* Pods-Runner.release-omshreeom.xcconfig */,
-				43FE2A94A1A77372A97FD30A /* Pods-Runner.release-ajambari.xcconfig */,
-				56BD088A4B61F97BBC15E83C /* Pods-Runner.release-tarkariphalafool.xcconfig */,
-				9991761C9962C97A6AD58ED1 /* Pods-Runner.release-upayogisaccos.xcconfig */,
-				D60058CEAADB8B4BE629B3B1 /* Pods-Runner.release-shreemiteree.xcconfig */,
-				50B4DFB04D09A6E5D6BF6133 /* Pods-Runner.release-shubhashreesaving.xcconfig */,
-				DB7B35741F3D4B440CE0E6A3 /* Pods-Runner.release-united.xcconfig */,
-				6460E0B2C4951F2142C2DC59 /* Pods-Runner.release-wonderful.xcconfig */,
-				A213AD890D8897471BD88C37 /* Pods-Runner.release-sparkling.xcconfig */,
-				ACD66F2CD0D8FE5E8FBEF44D /* Pods-Runner.release-sarbajyoti.xcconfig */,
-				96A41CAAAA6F5D68AC20DF3A /* Pods-Runner.release-globalmulti.xcconfig */,
-				0AF96220C942A386755B499B /* Pods-Runner.release-hetauda.xcconfig */,
-				56FB68D47F462B1B72A2249E /* Pods-Runner.release-shwetbhairab.xcconfig */,
-				A24B9D37849033B95F4CA7F3 /* Pods-Runner.release-shubhashreemulti.xcconfig */,
-				9BEAE6C2BCC840DC22B1AA9B /* Pods-Runner.release-kjismart.xcconfig */,
-				7165329C35C4DBBA14F180BB /* Pods-Runner.release-sadasyasewa.xcconfig */,
-				BB8A99E0E35B0E3D1D021879 /* Pods-Runner.release-abhibadan.xcconfig */,
-				4C4884D6C09F97D1B8AF30F1 /* Pods-Runner.release-myagdedugdha.xcconfig */,
-				17AC599201D9CDB1ED32E257 /* Pods-Runner.release-parishrami.xcconfig */,
-				67F3F6595C7B5BFB16B75B8A /* Pods-Runner.release-mangalpur.xcconfig */,
-				BED9D4369F741731ADD22217 /* Pods-Runner.release-shreekalika.xcconfig */,
-				7E22ED43E29B39233D9C557A /* Pods-Runner.release-ektamulti.xcconfig */,
-				F23D736C76DE49CCB7D331CE /* Pods-Runner.release-babira.xcconfig */,
-				3F2B56AFCDBC8A720E53C4D1 /* Pods-Runner.release-metrang.xcconfig */,
-				DE8701E72D4EE2C649E9E0C5 /* Pods-Runner.release-sarbahitdang.xcconfig */,
-				3544DBDB32D45A2EF5C22B35 /* Pods-Runner.release-upayogi.xcconfig */,
-				E949EFA26B4C5084F2876CC6 /* Pods-Runner.release-khotangjaleshwori.xcconfig */,
-				C328057B6D57381E0A7CC0E2 /* Pods-Runner.release-puspanjali.xcconfig */,
-				6C228BD6C551E9A5EA475AD0 /* Pods-Runner.release-jamune.xcconfig */,
-				F44177FB5BAD99DCDD978EA3 /* Pods-Runner.release-bhaktapur.xcconfig */,
-				0BE7BF6A8A0AA139A3607817 /* Pods-Runner.release-shubhasandesh.xcconfig */,
-				9896DD563898B0AE6375E874 /* Pods-Runner.release-shreesiddhiganesh.xcconfig */,
-				5E9662CA61B72EA75118A9AC /* Pods-Runner.release-kaldhara.xcconfig */,
-				878CCD0F30070FE8A69832C5 /* Pods-Runner.release-aakashbani.xcconfig */,
-				463F68A8B24A1E52558A8B29 /* Pods-Runner.release-subhodaya.xcconfig */,
-				ED5454B7D34E45CB29C55FCC /* Pods-Runner.release-lifevision.xcconfig */,
-				9AE41AA400BFD0B47B11276B /* Pods-Runner.release-shreeekata.xcconfig */,
-				1ED10FD362E73D5C0AD0798D /* Pods-Runner.release-aarati.xcconfig */,
-				C78583F874D3B2B7E560AC74 /* Pods-Runner.release-queen.xcconfig */,
-				390D482190605704A049D250 /* Pods-Runner.release-eastwest.xcconfig */,
-				0C1F394479BC3A650DEBE3E6 /* Pods-Runner.release-sanchar.xcconfig */,
-				DC34613689D0418E5A8FD433 /* Pods-Runner.release-noor.xcconfig */,
-				3243361A804F0ED2D80F35C3 /* Pods-Runner.release-avatar.xcconfig */,
-				ED475CE08F3C5A9C45A8510B /* Pods-Runner.release-sunshine.xcconfig */,
-				1A528DD381325D3469ED2FE0 /* Pods-Runner.release-paschimanchal.xcconfig */,
-				240D53B7F73A47AB061D60D9 /* Pods-Runner.release-sudarshan.xcconfig */,
-				178D069088AA0DBA029FF48D /* Pods-Runner.release-shreehemja.xcconfig */,
-				5AF0A0DD0A938BB3BC560712 /* Pods-Runner.release-uttarbahini.xcconfig */,
-				F7709B77AB6DB22C4195A232 /* Pods-Runner.release-upakar.xcconfig */,
-				3EDF3B4301DADA25CE13A738 /* Pods-Runner.release-digitalcoop.xcconfig */,
-				861BF61DBA23F2FE6D8985F6 /* Pods-Runner.release-kanchanjungha.xcconfig */,
-				8C1975C4C6A28E60633119A3 /* Pods-Runner.release-aastha.xcconfig */,
-				8AB0BB4133E7F787EDFD2275 /* Pods-Runner.release-myagde.xcconfig */,
-				2DE6BB4B0DD71482151FF809 /* Pods-Runner.release-bhugol.xcconfig */,
-				C34D20C0F6D5C8A612E1D8E7 /* Pods-Runner.release-vaidhik.xcconfig */,
-				CF89E522E65CA03AC4E1E1F6 /* Pods-Runner.release-sanakishan.xcconfig */,
-				DF4C0B7E0C1EDE7CFF87D330 /* Pods-Runner.release-bishnudol.xcconfig */,
-				6AB28876BE5D7BD8A52C5BFB /* Pods-Runner.release-batika.xcconfig */,
-				A97C35F530B8A5A927817F40 /* Pods-Runner.release-nayan.xcconfig */,
-				901A4986C9EDB20AFA316E92 /* Pods-Runner.release-janasewa.xcconfig */,
-				72B2CB4DF69C4D1E4E3149C3 /* Pods-Runner.release-bishalmulti.xcconfig */,
-				7D3C465F8C1E13651545E800 /* Pods-Runner.release-rithepani.xcconfig */,
-				C81B34D09E7B5D4249EA41CE /* Pods-Runner.release-annapurnahealth.xcconfig */,
-				F80B2998B33DA76E81298E77 /* Pods-Runner.release-supreme.xcconfig */,
-				7FFCA4898DB1D99207D71A60 /* Pods-Runner.release-immanuel.xcconfig */,
-				09E57125AB7303185EC325E5 /* Pods-Runner.release-golden.xcconfig */,
-				2B7CEF0413D8CDCCA761687E /* Pods-Runner.release-thankotmahila.xcconfig */,
-				EFF6BE3E58372BA608808D5F /* Pods-Runner.release-buddha.xcconfig */,
-				80FB3646F08E873D52ED3C0A /* Pods-Runner.release-punja.xcconfig */,
-				83E2DE6862BFC73084EC6922 /* Pods-Runner.release-sagarmatha.xcconfig */,
-				7267E05339BE7A7F0676F084 /* Pods-Runner.release-hamisabaikokrishi.xcconfig */,
-				6E18E55CE3E87A4A710C7AE0 /* Pods-Runner.release-rumjatar.xcconfig */,
-				B94B6AFAC5982EB710EF9370 /* Pods-Runner.release-sardikhola.xcconfig */,
-				AF3FA4773A840A2EA5E87F97 /* Pods-Runner.release-shreejanamukhi.xcconfig */,
-				8CD249DC5823877EBA2FD87B /* Pods-Runner.release-shreeaaju.xcconfig */,
-				CFAF2678274C1658601B1B86 /* Pods-Runner.release-machhapuchhre.xcconfig */,
-				9A3C12AB2CD7BABB7C36515F /* Pods-Runner.release-bishal.xcconfig */,
-				965981D01508B03F69541D3D /* Pods-Runner.release-fewa.xcconfig */,
-				D46C6EDF46026F225C309480 /* Pods-Runner.release-davisfall.xcconfig */,
-				70AC08269CA31AE1B2A745FF /* Pods-Runner.release-nawajosh.xcconfig */,
-				2D2795110CE7E93AD69CE30A /* Pods-Runner.release-matribhumi.xcconfig */,
-				7B221CD1CC4326938F4FC96C /* Pods-Runner.release-uddhamsil.xcconfig */,
-				CA3217E43C0D7674716DE6CB /* Pods-Runner.release-nepalbachat.xcconfig */,
-				3E4663A9A67F9C22B8433500 /* Pods-Runner.release-nilgiri.xcconfig */,
-				699291C5709C3DC4B2BB35A3 /* Pods-Runner.release-bhanjyang.xcconfig */,
-				9E6C1C6A7FC24E5AEF27FDC3 /* Pods-Runner.release-sarbahit.xcconfig */,
-				3A0B9A13441CD6B7FEA4811A /* Pods-Runner.release-kripalu.xcconfig */,
-				B0AA60DE8BD3440C76696388 /* Pods-Runner.release-aviyan.xcconfig */,
-				469618ED05563CD6AEDBCD11 /* Pods-Runner.release-ekata.xcconfig */,
-				D1ACBFFEAA9FC9CBE81B6312 /* Pods-Runner.release-janamukhi.xcconfig */,
-				4617F8F5E181174CF9D0B896 /* Pods-Runner.release-dhaulagiri.xcconfig */,
-				4931D340EEE08B83D96923C0 /* Pods-Runner.release-nawaprabhat.xcconfig */,
-				E89BFD6B492EEA0A5C34E595 /* Pods-Runner.release-vyas.xcconfig */,
-				ED105458CAAF648838B7EC7B /* Pods-Runner.release-kamana.xcconfig */,
-				420FA74C859979F96165F2FC /* Pods-Runner.release-sahakarya.xcconfig */,
-				C943FD0B49E613A4AA568F12 /* Pods-Runner.release-alankar.xcconfig */,
-				A963BF7BDAD84C94CD7751C1 /* Pods-Runner.release-gomaganesh.xcconfig */,
-				A8697EF5B58B4E10A9DD7AB2 /* Pods-Runner.release-janadhara.xcconfig */,
-				FBD6989C541AF556482A8D6B /* Pods-Runner.release-manank.xcconfig */,
-				90C7C020D937DF1A67ED0F09 /* Pods-Runner.release-arthabag.xcconfig */,
-				22B8B4AA046A99DDC08DA267 /* Pods-Runner.release-kipoo.xcconfig */,
-				529D97219556FE61929F2434 /* Pods-Runner.release-shreemitra.xcconfig */,
-				D29BBDA00AE72BDBD4C66EA7 /* Pods-Runner.release-uttarganga.xcconfig */,
-				28F5F1BF430916BF10F7001D /* Pods-Runner.profile-kabil.xcconfig */,
-				4FD8FE18E6C768374FFD4832 /* Pods-Runner.profile-uddhamsil.xcconfig */,
-				EBD62E2E1B8F10920B91B31F /* Pods-Runner.profile-nepalbachat.xcconfig */,
-				D473405FCB7F738EDBCF4983 /* Pods-Runner.profile-nilgiri.xcconfig */,
-				3141C1A7C4AE6EB88BCA4F49 /* Pods-Runner.profile-bhanjyang.xcconfig */,
-				6D5B08869225B08D2B2D164E /* Pods-Runner.profile-sarbahit.xcconfig */,
-				F3EFE57A65BC87A7AB6AC85A /* Pods-Runner.profile-kripalu.xcconfig */,
-				5F3988CC42E29488BED71BA1 /* Pods-Runner.profile-aviyan.xcconfig */,
-				1C8AC767ECDEAA8E48A25CF4 /* Pods-Runner.profile-ekata.xcconfig */,
-				41DD337A27F78FF0941756B8 /* Pods-Runner.profile-janamukhi.xcconfig */,
-				1A3BC810B78416ECF3BFEE03 /* Pods-Runner.profile-dhaulagiri.xcconfig */,
-				837E553054D4F9BE8E8251A6 /* Pods-Runner.profile-kamana.xcconfig */,
-				C4FB55CF8EEE61C908B7D6E2 /* Pods-Runner.profile-sahakarya.xcconfig */,
-				B02DD96586647E443506F3D9 /* Pods-Runner.profile-alankar.xcconfig */,
-				6E82362963D185F18411ED08 /* Pods-Runner.profile-kipoo.xcconfig */,
-				C46E98C0B1A32446FF142FE6 /* Pods-Runner.profile-shreemitra.xcconfig */,
-				4FF118B3A039CB92D82D8516 /* Pods-Runner.profile-manank.xcconfig */,
-				18E12E9F69334A4DA472A54A /* Pods-Runner.profile-nawaprabhat.xcconfig */,
-				8D97F8E955A3B0F4382FC25F /* Pods-Runner.profile-vyas.xcconfig */,
-				A4B9E5BFA9B5CC9DB00C1DA6 /* Pods-Runner.profile-gomaganesh.xcconfig */,
-				D67FE605AAFC40DB752B5EC1 /* Pods-Runner.profile-janadhara.xcconfig */,
-				154C068D601EFC09E64353F8 /* Pods-Runner.profile-arthabag.xcconfig */,
-				9922A9A08FF903AFF6B97E6E /* Pods-Runner.profile-uttarganga.xcconfig */,
-				C8E42EA615DC093E7745B025 /* Pods-Runner.profile.xcconfig */,
-				6DADE0A7921C65A03F15B094 /* Pods-Runner.release-race.xcconfig */,
-				993C7B78F6921137FBE3C113 /* Pods-Runner.release-sunischit.xcconfig */,
-				BEF728B544ACEB4BBB91C98A /* Pods-Runner.release-exotic.xcconfig */,
-				0B2060EAE240434E2999228A /* Pods-Runner.release-devshree.xcconfig */,
-				E3B8D996F02229A7026BEBB1 /* Pods-Runner.release-aabhash.xcconfig */,
-				58A79779FF579A4BDBF81FA6 /* Pods-Runner.release-narayani.xcconfig */,
-				BA1BC9CFA134896112DC128E /* Pods-Runner.release-tgway.xcconfig */,
+				E6EE78C7F350769E868C19EA /* Pods-Runner.debug.xcconfig */,
+				43E79A4DC2B0DDCE53A3CF86 /* Pods-Runner.release.xcconfig */,
+				A696F85BFC159CF9CB97FAB7 /* Pods-Runner.debug-kabil.xcconfig */,
+				1AA62660A18A1595944EEA4E /* Pods-Runner.debug-kabil copy.xcconfig */,
+				E803AC1333C6C4C507E49756 /* Pods-Runner.debug-uddhamsil.xcconfig */,
+				56101EAFD5CE27EE016B9513 /* Pods-Runner.debug-nepalbachat.xcconfig */,
+				1C8410051B5B9D0A20FB2845 /* Pods-Runner.debug-nilgiri.xcconfig */,
+				6345A3D69BF5F75DCFD6C89B /* Pods-Runner.debug-bhanjyang.xcconfig */,
+				365E426398C2C3BB64E74BCA /* Pods-Runner.debug-sarbahit.xcconfig */,
+				E5C28DE04193532BAA292714 /* Pods-Runner.debug-aviyan.xcconfig */,
+				85488380D418BDE1DE332624 /* Pods-Runner.debug-ekata.xcconfig */,
+				D2C678B5EDAD23604D91B520 /* Pods-Runner.debug-kripalu.xcconfig */,
+				8F1E9E6D1322D1EFECBB4267 /* Pods-Runner.debug-janamukhi.xcconfig */,
+				6C98056A487C71BEE7595C60 /* Pods-Runner.debug-dhaulagiri.xcconfig */,
+				1391C133CBAC4F27BB18E572 /* Pods-Runner.debug-nawaprabhat.xcconfig */,
+				A365C7EB6BD6185C5DC0EBB4 /* Pods-Runner.debug-vyas.xcconfig */,
+				9F55E36C71882F9A7C65EF71 /* Pods-Runner.debug-kamana.xcconfig */,
+				06E0AA2F2B5E78FD9668AEDA /* Pods-Runner.debug-sahakarya.xcconfig */,
+				80A55FF7917B60BCEA89E9CC /* Pods-Runner.debug-manank.xcconfig */,
+				EBB29783ABF7431A159A8F80 /* Pods-Runner.debug-alankar.xcconfig */,
+				56A528E2E7E627AE6896626B /* Pods-Runner.debug-kipoo.xcconfig */,
+				24EAC45818604AE31EA618D2 /* Pods-Runner.debug-sparkling.xcconfig */,
+				B04CC80F611B762EB8498C8F /* Pods-Runner.debug-shreemitra.xcconfig */,
+				FF678291B0150F40C7B117D5 /* Pods-Runner.debug-gomaganesh.xcconfig */,
+				F7FBBA9F5F2E695E88A48F25 /* Pods-Runner.debug-janadhara.xcconfig */,
+				D4703ECE1FE14C11F07AD549 /* Pods-Runner.debug-arthabag.xcconfig */,
+				723833546B502DF02302B360 /* Pods-Runner.debug-uttarganga.xcconfig */,
+				042F536CFC337AE7B30A9F77 /* Pods-Runner.release-kabil.xcconfig */,
+				3143EFF05AC71A8D6082B189 /* Pods-Runner.release-narayani.xcconfig */,
+				6F23FD25CC63615F0FEAA91D /* Pods-Runner.release-tgway.xcconfig */,
+				6530ABADDA3C3D23AA6B16D7 /* Pods-Runner.release-aabhash.xcconfig */,
+				749D04775018BC0984A19FE6 /* Pods-Runner.release-devshree.xcconfig */,
+				9F99602152B7E7EE8CD30E88 /* Pods-Runner.release-exotic.xcconfig */,
+				57D6DD2B72F293C890CB40F0 /* Pods-Runner.release-sunischit.xcconfig */,
+				D6A3BC980D24E3A998632381 /* Pods-Runner.release-race.xcconfig */,
+				EF40A2AF228F0A946CBD7512 /* Pods-Runner.release-jayshreematanavadurga.xcconfig */,
+				F52EE04B65DC0B41852E6267 /* Pods-Runner.release-uttarganganew.xcconfig */,
+				A4C28417BC44BF320EB0245B /* Pods-Runner.release-kamananew.xcconfig */,
+				C1131A818BA0E3625CCFBCDD /* Pods-Runner.release-nirika.xcconfig */,
+				917A0A7217C39B80B77A69AC /* Pods-Runner.release-shreekrishna.xcconfig */,
+				04A3C666CCC8FA30DD7D55D7 /* Pods-Runner.release-dupcheshwor.xcconfig */,
+				D63D33BDAA0F6E47C57B175D /* Pods-Runner.release-omshreeom.xcconfig */,
+				6F559CFB50C7D8C4F86D5B66 /* Pods-Runner.release-ajambari.xcconfig */,
+				69660DC7FB0A207C3D5DCE26 /* Pods-Runner.release-tarkariphalafool.xcconfig */,
+				A0E90568E4641C3B66DFB935 /* Pods-Runner.release-upayogisaccos.xcconfig */,
+				DA6927338B601838BFD3DCC9 /* Pods-Runner.release-shreemiteree.xcconfig */,
+				6BB127897CF0B672E1B6949F /* Pods-Runner.release-shubhashreesaving.xcconfig */,
+				E3516FD72E00FFEB475CDA4F /* Pods-Runner.release-united.xcconfig */,
+				CBF225BC2C6F2141E9ED5908 /* Pods-Runner.release-wonderful.xcconfig */,
+				ABE382E460C97438846AD6ED /* Pods-Runner.release-sparkling.xcconfig */,
+				98CF7CD2E056F16899EBBB99 /* Pods-Runner.release-sarbajyoti.xcconfig */,
+				ECEF56D09DC32F169B99E7EE /* Pods-Runner.release-globalmulti.xcconfig */,
+				3F3E0DB0CB70292CDB0F9D29 /* Pods-Runner.release-hetauda.xcconfig */,
+				42C91899616C2F5820852AC2 /* Pods-Runner.release-shwetbhairab.xcconfig */,
+				4430D98962594FA3BD5CE6A3 /* Pods-Runner.release-shubhashreemulti.xcconfig */,
+				61E4C20247D0D670C2F7361E /* Pods-Runner.release-kjismart.xcconfig */,
+				AE1B1E66CCA9C3607F264288 /* Pods-Runner.release-sadasyasewa.xcconfig */,
+				64483BAC3CD77308BD128AF3 /* Pods-Runner.release-abhibadan.xcconfig */,
+				4AD71AF229F1530DBF783EFE /* Pods-Runner.release-myagdedugdha.xcconfig */,
+				9FF9EDBA261C156B7619BFC2 /* Pods-Runner.release-parishrami.xcconfig */,
+				365D2102CCB1B603896619E9 /* Pods-Runner.release-mangalpur.xcconfig */,
+				2481AAAB12B03F092EE6813B /* Pods-Runner.release-shreekalika.xcconfig */,
+				6BE70D4DD369E1BD8B01C308 /* Pods-Runner.release-ektamulti.xcconfig */,
+				84AE822BC14E1317DA6F7D48 /* Pods-Runner.release-babira.xcconfig */,
+				19AC2D8247DAA9B3B9673D1D /* Pods-Runner.release-metrang.xcconfig */,
+				505477343673C3359566C0E7 /* Pods-Runner.release-sarbahitdang.xcconfig */,
+				A1FBCC9526F5DF1EE3CF42ED /* Pods-Runner.release-upayogi.xcconfig */,
+				8727B0ADDC0E47100B64077C /* Pods-Runner.release-khotangjaleshwori.xcconfig */,
+				5703FAEF4B2359DD98C2D9BC /* Pods-Runner.release-puspanjali.xcconfig */,
+				DC5B377E99E0F0FE51933C0E /* Pods-Runner.release-jamune.xcconfig */,
+				417D150A22C230704CEE3923 /* Pods-Runner.release-bhaktapur.xcconfig */,
+				E277FC148E4D7A90D20B9911 /* Pods-Runner.release-shubhasandesh.xcconfig */,
+				F461F206B318E4AF4D83D22E /* Pods-Runner.release-shreesiddhiganesh.xcconfig */,
+				B9E389A354EDF204D94B1DD2 /* Pods-Runner.release-kaldhara.xcconfig */,
+				69EBCC1E5520B7744CC45122 /* Pods-Runner.release-aakashbani.xcconfig */,
+				27C3565E73BF49CD935447E1 /* Pods-Runner.release-subhodaya.xcconfig */,
+				57848EE56BCB2F43375A314E /* Pods-Runner.release-lifevision.xcconfig */,
+				C9ADA0146EC60C9C6BE312FC /* Pods-Runner.release-shreeekata.xcconfig */,
+				8C9703B2E695DDCCE10E5CE3 /* Pods-Runner.release-aarati.xcconfig */,
+				4E287BBA3BC2EF9DFF9D2CA1 /* Pods-Runner.release-queen.xcconfig */,
+				235C61D4AEF53B5C884F721A /* Pods-Runner.release-eastwest.xcconfig */,
+				249F3613BB0CB497E880EA2C /* Pods-Runner.release-sanchar.xcconfig */,
+				6484287CF36CD783F492D543 /* Pods-Runner.release-noor.xcconfig */,
+				514E82DCDA492A291001EFC5 /* Pods-Runner.release-avatar.xcconfig */,
+				22C1BDE981A820CC5AC1C63E /* Pods-Runner.release-sunshine.xcconfig */,
+				8370BAED0F630644A856B095 /* Pods-Runner.release-paschimanchal.xcconfig */,
+				1F16829FDB1A3D8B55F9C010 /* Pods-Runner.release-sudarshan.xcconfig */,
+				CE2F080BF0B9EA1528E43C25 /* Pods-Runner.release-shreehemja.xcconfig */,
+				A9E85050C1D63F0B98345285 /* Pods-Runner.release-uttarbahini.xcconfig */,
+				09200E4A0BCB20AC2D29DAD4 /* Pods-Runner.release-upakar.xcconfig */,
+				33BC3C700D0D22327907222D /* Pods-Runner.release-digitalcoop.xcconfig */,
+				B80B30A663B3F051060701CE /* Pods-Runner.release-kanchanjungha.xcconfig */,
+				0031A1E79255D56919C9EEF1 /* Pods-Runner.release-aastha.xcconfig */,
+				D6882F91DE473F51D519A301 /* Pods-Runner.release-myagde.xcconfig */,
+				1AE151B16DB8AACD7AA4F1F5 /* Pods-Runner.release-bhugol.xcconfig */,
+				3320C38608F253AA3C19E938 /* Pods-Runner.release-vaidhik.xcconfig */,
+				59FCE2FBA43E0B7A16336450 /* Pods-Runner.release-sanakishan.xcconfig */,
+				56871EF2D44F7C76BF9F7BD1 /* Pods-Runner.release-bishnudol.xcconfig */,
+				73AFCFFAD53DB8ECAE75CBDB /* Pods-Runner.release-batika.xcconfig */,
+				0EA99544D600ABC487659C6A /* Pods-Runner.release-nayan.xcconfig */,
+				C1BBE024591119D5A9101F87 /* Pods-Runner.release-janasewa.xcconfig */,
+				E03A10293D787669BED447E0 /* Pods-Runner.release-bishalmulti.xcconfig */,
+				0C62AEB7A47B6985071BEEDA /* Pods-Runner.release-rithepani.xcconfig */,
+				FAF454A32740C60D9140B987 /* Pods-Runner.release-annapurnahealth.xcconfig */,
+				7D264DA8D66BB713AED11D20 /* Pods-Runner.release-supreme.xcconfig */,
+				F3D36236A6DE014E81161BE4 /* Pods-Runner.release-immanuel.xcconfig */,
+				C98CCD90B3162A5001B92F92 /* Pods-Runner.release-golden.xcconfig */,
+				3564FC84553F72FB60E1212B /* Pods-Runner.release-thankotmahila.xcconfig */,
+				FD624988B041EF28620647E2 /* Pods-Runner.release-buddha.xcconfig */,
+				2DD23EBD6B0502A810B7DDE1 /* Pods-Runner.release-punja.xcconfig */,
+				97153197A87B35B15BC4B734 /* Pods-Runner.release-sagarmatha.xcconfig */,
+				E09C2A1CF3D23AD2AA45CA92 /* Pods-Runner.release-hamisabaikokrishi.xcconfig */,
+				144C1827CC8D5E2AF1F049DA /* Pods-Runner.release-rumjatar.xcconfig */,
+				D5AD96FCF6F1CED4FD06769D /* Pods-Runner.release-sardikhola.xcconfig */,
+				9CF7365A266B7CF3F5DB5797 /* Pods-Runner.release-shreejanamukhi.xcconfig */,
+				4B9EF25075B91B40DE6C7FA1 /* Pods-Runner.release-shreeaaju.xcconfig */,
+				76BE2751D347B385C6271217 /* Pods-Runner.release-machhapuchhre.xcconfig */,
+				185625E868F95C8ADDACDA12 /* Pods-Runner.release-bishal.xcconfig */,
+				4F651DF1178D1175B5DB056F /* Pods-Runner.release-fewa.xcconfig */,
+				BE1AC4A26D41096E64DB0D95 /* Pods-Runner.release-davisfall.xcconfig */,
+				CF6A0D61BF1EF2BD9B5CC977 /* Pods-Runner.release-nawajosh.xcconfig */,
+				22D6FD563150CEDE8701268C /* Pods-Runner.release-matribhumi.xcconfig */,
+				AF8CBD8F2D6205D69816152E /* Pods-Runner.release-uddhamsil.xcconfig */,
+				669A6B22C7BAC0DB97C8E0EE /* Pods-Runner.release-nepalbachat.xcconfig */,
+				E5AAE9B5C6E2FF0F2F936F86 /* Pods-Runner.release-nilgiri.xcconfig */,
+				C630B161171C0989F38D8C83 /* Pods-Runner.release-bhanjyang.xcconfig */,
+				9F28D24D94C68852ED502487 /* Pods-Runner.release-sarbahit.xcconfig */,
+				6EE734B515C8EF00C588F81F /* Pods-Runner.release-kripalu.xcconfig */,
+				FA8A0634FF272C1FDA490AE1 /* Pods-Runner.release-aviyan.xcconfig */,
+				40738B94470FFBFBA702DD29 /* Pods-Runner.release-ekata.xcconfig */,
+				6D8EC795C396AD9B80ABD8FD /* Pods-Runner.release-janamukhi.xcconfig */,
+				C63FE670EE9F95341AE3FAFE /* Pods-Runner.release-dhaulagiri.xcconfig */,
+				3458B0E9A4B5D0EBF59E3027 /* Pods-Runner.release-nawaprabhat.xcconfig */,
+				EF1F6DCAE9579D66D674390C /* Pods-Runner.release-vyas.xcconfig */,
+				00F1D124EC7CF5CCB103C5BE /* Pods-Runner.release-kamana.xcconfig */,
+				224679256490E51811787D1F /* Pods-Runner.release-sahakarya.xcconfig */,
+				AA93A034F3C3B7C467C16F6E /* Pods-Runner.release-alankar.xcconfig */,
+				36EFDAC7342B26E6E6716389 /* Pods-Runner.release-gomaganesh.xcconfig */,
+				B1D77DA6331273EE1CBD7A78 /* Pods-Runner.release-janadhara.xcconfig */,
+				54B8B325818AA72E727B6BD9 /* Pods-Runner.release-manank.xcconfig */,
+				98F7819FD34BAF19C1A73E44 /* Pods-Runner.release-arthabag.xcconfig */,
+				3B0D27F05D4D07CFAC30B5BF /* Pods-Runner.release-kipoo.xcconfig */,
+				0262CD128AED2F15242F9DEC /* Pods-Runner.release-shreemitra.xcconfig */,
+				D60B451580389125212D03AE /* Pods-Runner.release-uttarganga.xcconfig */,
+				559589569BE115C8D9CDC8CE /* Pods-Runner.profile-kabil.xcconfig */,
+				B7DD89B9D69BFB0B2F906CD0 /* Pods-Runner.profile-uddhamsil.xcconfig */,
+				2D8BB6EF5355F9B7246725A1 /* Pods-Runner.profile-nepalbachat.xcconfig */,
+				029190EAD90674D794527A8F /* Pods-Runner.profile-nilgiri.xcconfig */,
+				FC17ABE5018FCCB6B9678E85 /* Pods-Runner.profile-bhanjyang.xcconfig */,
+				A362282101528AF32D26366B /* Pods-Runner.profile-sarbahit.xcconfig */,
+				F0CC35D44999FF4FD9401D12 /* Pods-Runner.profile-kripalu.xcconfig */,
+				D9B3DA56FEC8EC1E2DF3DF44 /* Pods-Runner.profile-aviyan.xcconfig */,
+				4CC831FC823FCD52A8438005 /* Pods-Runner.profile-ekata.xcconfig */,
+				85C18EC842CD6457EA8A787A /* Pods-Runner.profile-janamukhi.xcconfig */,
+				50728F0B25C14C81518E9D63 /* Pods-Runner.profile-dhaulagiri.xcconfig */,
+				1F15474AE0FABC8B475BDD3C /* Pods-Runner.profile-kamana.xcconfig */,
+				58EFC3F09C747E749E4B7D7A /* Pods-Runner.profile-sahakarya.xcconfig */,
+				38B8B95847CD7E37B9D67616 /* Pods-Runner.profile-alankar.xcconfig */,
+				54F80C0B5D72929E85D8A2EB /* Pods-Runner.profile-kipoo.xcconfig */,
+				BA17F532A88585DA9A39E78F /* Pods-Runner.profile-shreemitra.xcconfig */,
+				57C21AEBB32F427759839061 /* Pods-Runner.profile-manank.xcconfig */,
+				C826464460B4BB63E6A5D4A2 /* Pods-Runner.profile-nawaprabhat.xcconfig */,
+				E162B465F40BD584D544DFAB /* Pods-Runner.profile-vyas.xcconfig */,
+				CE3679641DD1743D0A5B23F3 /* Pods-Runner.profile-gomaganesh.xcconfig */,
+				FB3F13BC23E58CBCD238E69D /* Pods-Runner.profile-janadhara.xcconfig */,
+				015AED249DCC83173DAF86F8 /* Pods-Runner.profile-arthabag.xcconfig */,
+				E7AFCBB39DE53EFAD5E39297 /* Pods-Runner.profile-uttarganga.xcconfig */,
+				9B3E62DD8AEB2154E2D46497 /* Pods-Runner.profile.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -470,15 +470,15 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 97C147051CF9000F007C117D /* Build configuration list for PBXNativeTarget "Runner" */;
 			buildPhases = (
-				3AA25B4527E65D4F5D09EF08 /* [CP] Check Pods Manifest.lock */,
+				305AFBF58903CFCE39A0E681 /* [CP] Check Pods Manifest.lock */,
 				9740EEB61CF901F6004384FC /* Run Script */,
 				97C146EA1CF9000F007C117D /* Sources */,
 				97C146EB1CF9000F007C117D /* Frameworks */,
 				97C146EC1CF9000F007C117D /* Resources */,
 				9705A1C41CF9048500538489 /* Embed Frameworks */,
 				3B06AD1E1E4923F5004D2608 /* Thin Binary */,
-				3FBC756915B6DAC7D718410B /* [CP] Embed Pods Frameworks */,
-				CB307288C5CEAB87C7E3F6C3 /* [CP] Copy Pods Resources */,
+				E72FF6C45F2AF789A849037D /* [CP] Embed Pods Frameworks */,
+				B08E55D20EE01834453C0AF4 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -538,7 +538,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		3AA25B4527E65D4F5D09EF08 /* [CP] Check Pods Manifest.lock */ = {
+		305AFBF58903CFCE39A0E681 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -576,23 +576,6 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" embed_and_thin";
 		};
-		3FBC756915B6DAC7D718410B /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9740EEB61CF901F6004384FC /* Run Script */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
@@ -608,7 +591,7 @@
 			shellPath = /bin/sh;
 			shellScript = "/bin/sh \"$FLUTTER_ROOT/packages/flutter_tools/bin/xcode_backend.sh\" build\n";
 		};
-		CB307288C5CEAB87C7E3F6C3 /* [CP] Copy Pods Resources */ = {
+		B08E55D20EE01834453C0AF4 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -623,6 +606,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		E72FF6C45F2AF789A849037D /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Runner/Pods-Runner-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -715,6 +715,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -800,6 +801,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeSiddhiGaneshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -885,6 +887,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeEkataAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -970,6 +973,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PunjaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1055,6 +1059,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BuddhaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1140,6 +1145,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BishalMultiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1225,6 +1231,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanasewaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1310,6 +1317,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UpakarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1395,6 +1403,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KanchanjunghaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1480,6 +1489,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MachhapuchhreAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1565,6 +1575,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeAajuAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1650,6 +1661,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeJanamukhi;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1735,6 +1747,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SardikholaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1820,6 +1833,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = RumjatarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1905,6 +1919,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = HamiSabaikoAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -1990,6 +2005,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SagarmathaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2075,6 +2091,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = RithepaniAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2160,6 +2177,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = LifeVisionAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2245,6 +2263,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SubhodayaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2330,6 +2349,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ThankotMahilaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2415,13 +2435,14 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UttargangaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				COOP_NAME = "Uttarganga Coop iSmart";
 				CURRENT_PROJECT_VERSION = 007;
-				DEVELOPMENT_TEAM = 9WT4M3Z887;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
 				FLUTTER_BUILD_NAME = 0.0.24;
 				INFOPLIST_FILE = Runner/Info.plist;
@@ -2500,6 +2521,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UttargangaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2585,6 +2607,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UttargangaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2670,6 +2693,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AakashbaniAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2756,6 +2780,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KaldharaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2841,6 +2866,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SanakishanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -2926,6 +2952,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = VaidhikAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3011,6 +3038,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BhugolAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3096,6 +3124,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MyagdeAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3181,6 +3210,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KipooAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3266,6 +3296,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KipooAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3351,6 +3382,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KipooAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3436,6 +3468,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeMitraAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3521,6 +3554,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeMitraAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3606,6 +3640,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeMitraAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3691,6 +3726,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ManankAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3776,6 +3812,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ManankAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3861,6 +3898,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ManankAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -3947,6 +3985,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SadashyaSewaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4032,6 +4071,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NawaprabhatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4117,6 +4157,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NawaprabhatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4202,6 +4243,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NawaprabhatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4287,6 +4329,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = VyasAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4372,6 +4415,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = VyasAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4456,6 +4500,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = VyasAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4541,6 +4586,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DhaulagiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4626,6 +4672,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DhaulagiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4711,6 +4758,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DhaulagiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4796,6 +4844,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanamukhiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4881,6 +4930,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanamukhiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -4966,6 +5016,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanamukhiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5051,6 +5102,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = EkataAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5136,6 +5188,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KripaluAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5221,6 +5274,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KripaluAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5306,6 +5360,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = EkataAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5391,6 +5446,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KripaluAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5476,6 +5532,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = EkataAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5561,6 +5618,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AviyanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5646,6 +5704,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AviyanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5732,6 +5791,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AviyanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5817,6 +5877,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SarbahitAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5902,6 +5963,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SarbahitAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -5987,6 +6049,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SarbahitAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6072,6 +6135,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BhanjyangAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6157,6 +6221,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BhanjyangAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6242,6 +6307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BhanjyangAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6327,6 +6393,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NepalBachatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6412,6 +6479,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NepalBachatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6497,6 +6565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NepalBachatAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6582,6 +6651,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NilgiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6667,6 +6737,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NilgiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6752,6 +6823,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NilgiriAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6837,6 +6909,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = QueenAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -6922,6 +6995,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AaratiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7007,6 +7081,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SudarshanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7091,6 +7166,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PaschimanchalAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7176,6 +7252,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UddhamsilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7261,6 +7338,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UddhamsilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7346,6 +7424,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UddhamsilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7431,6 +7510,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MatribhumiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7516,6 +7596,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NawajoshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7601,6 +7682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DavisFallAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7686,6 +7768,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = FewaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7771,6 +7854,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BishalAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7856,6 +7940,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GoldenAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -7941,6 +8026,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8026,6 +8112,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8112,6 +8199,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8197,6 +8285,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanadharaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8282,6 +8371,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanadharaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8367,6 +8457,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JanadharaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8452,6 +8543,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SahakaryaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8539,6 +8631,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SahakaryaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8624,6 +8717,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SahakaryaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8709,6 +8803,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SunshineAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8794,6 +8889,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AvatarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8879,6 +8975,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NoorAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -8964,6 +9061,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SancharAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9049,6 +9147,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = EastWestAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9135,6 +9234,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KamanaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9221,6 +9321,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KamanaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9307,6 +9408,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KamanaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9392,6 +9494,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ArthabagAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9476,6 +9579,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ArthabagAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9561,6 +9665,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ArthabagAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9646,6 +9751,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AlankarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9732,6 +9838,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AlankarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9817,6 +9924,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AlankarAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9902,6 +10010,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GomaGaneshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -9988,6 +10097,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GomaGaneshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10073,6 +10183,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GomaGaneshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10158,6 +10269,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShubhaSandeshAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10243,6 +10355,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BatikaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10328,6 +10441,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BishnudolAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10413,6 +10527,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AasthaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10498,6 +10613,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UttarbahiniAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10583,6 +10699,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeHemjaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10668,6 +10785,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ImmanuelAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10753,6 +10871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SupremeAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10838,6 +10957,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AnnapurnaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -10923,6 +11043,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DigitalCoopAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11009,6 +11130,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NayanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11150,6 +11272,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11184,6 +11307,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11270,6 +11394,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = RaceAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11356,6 +11481,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KhotangJaleshworiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11442,6 +11568,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NarayaniAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11528,6 +11655,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = shreeKrishnaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11614,6 +11742,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DevshreeAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11700,6 +11829,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AbhibadanAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11786,6 +11916,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AjambariAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11872,6 +12003,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShwetBhairabAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -11958,6 +12090,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = HetaudaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12044,6 +12177,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = GlobalMultiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12130,6 +12264,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SarbajyotiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12215,6 +12350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KipooAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12301,6 +12437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SparklingAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12387,6 +12524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = WonderfulAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12473,6 +12611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = TGwayAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12558,6 +12697,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JamuneAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12644,6 +12784,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShubhashreeMultiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12730,6 +12871,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12816,6 +12958,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ExoticAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12903,6 +13046,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = TarakariphalafoolAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -12988,6 +13132,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KhotangJaleshworiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13073,6 +13218,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BhaktapurAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13158,6 +13304,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UpayogiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13245,6 +13392,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = NirikaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13330,6 +13478,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KabilAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13416,6 +13565,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SarbahitDangAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13502,6 +13652,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = BabiraAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13588,6 +13739,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = EktaMultiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13674,6 +13826,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeKalikaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13760,6 +13913,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MetrangAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13846,6 +14000,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MangalpurAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -13932,6 +14087,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ParishramiAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14020,6 +14176,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = MyagdeDugdhaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14106,6 +14263,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShreeMitereeAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14192,6 +14350,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = DupcheshworAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14278,6 +14437,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = OmShreeOmAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14364,6 +14524,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = SunischitAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14450,6 +14611,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = KamanaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14536,6 +14698,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UttargangaAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14622,6 +14785,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = JayShreeMataAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14708,6 +14872,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UnitedAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14794,6 +14959,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = ShubhaShreeSavingAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14880,6 +15046,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AabhashAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -14966,6 +15133,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = UpayogiSavingAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
@@ -15051,6 +15219,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = PuspanjaliAppIcon;
 				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";

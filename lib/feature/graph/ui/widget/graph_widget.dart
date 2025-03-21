@@ -25,10 +25,10 @@ class _GraphWidgetState extends State<GraphWidget> {
           final data = state.data.findValue(primaryKey: "balanceList");
           return Column(children: [
             SfCartesianChart(
-                primaryXAxis: CategoryAxis(),
-                legend: Legend(isVisible: false),
+                primaryXAxis: const CategoryAxis(),
+                legend: const Legend(isVisible: false),
                 tooltipBehavior: TooltipBehavior(enable: true),
-                series: <ChartSeries<dynamic, String>>[
+                series: <CartesianSeries<dynamic, String>>[
                   LineSeries<dynamic, String>(
                       dataSource: data,
                       xValueMapper: (dynamic sales, _) =>
@@ -42,11 +42,11 @@ class _GraphWidgetState extends State<GraphWidget> {
           return const CommonLoadingWidget();
         } else {
           return SfCartesianChart(
-              primaryXAxis: CategoryAxis(),
-              legend: Legend(isVisible: false),
-              series: <ChartSeries<dynamic, String>>[
+              primaryXAxis: const CategoryAxis(),
+              legend: const Legend(isVisible: false),
+              series: <CartesianSeries<dynamic, String>>[
                 LineSeries<dynamic, String>(
-                    dataSource: [],
+                    dataSource: const [],
                     xValueMapper: (dynamic sales, _) => sales["day"].toString(),
                     yValueMapper: (dynamic sales, _) => sales["balance"],
                     dataLabelSettings:
@@ -64,9 +64,6 @@ class _GraphWidgetState extends State<GraphWidget> {
 //   final String year;
 //   final double sales;
 // }
-
-
-
 
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
