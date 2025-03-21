@@ -14,11 +14,6 @@
 //       String? resultFromPath;
 //       String data = "";
 //       String error = "";
-
-//       // final controller = MobileScannerController(
-//       //   detectionSpeed: DetectionSpeed.normal,
-//       //   detectionTimeoutMs: 3000,
-//       // );
 //       try {
 //         resultFromPath =
 //             (await zx.readBarcodeImagePathString(_file.path, DecodeParams()))

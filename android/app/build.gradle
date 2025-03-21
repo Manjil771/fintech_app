@@ -1992,6 +1992,42 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shreeSiddhiSankalpa {
+            dimension "app"
+            applicationId "com.devanasoft.shreeSiddhiSankalpa"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreeSiddhiSankalpa {
+            dimension "app"
+            applicationId "com.devanasoft.shreeSiddhiSankalpa"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ashish {
+            dimension "app"
+            applicationId "com.devanasoft.ashish"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        gauthali {
+            dimension "app"
+            applicationId "com.devanasoft.gauthali"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreephulbari {
+            dimension "app"
+            applicationId "com.devanasoft.shreephulbari"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        bhimad {
+            dimension "app"
+            applicationId "com.devanasoft.bhimad"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
