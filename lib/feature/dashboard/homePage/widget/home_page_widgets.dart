@@ -199,7 +199,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   }
-                  final isChatBotVisible = snapshot.data ?? true;
+                  final isChatBotVisible = snapshot.data ?? false;
                   return isChatBotVisible
                       ? Positioned(
                           bottom: 5,

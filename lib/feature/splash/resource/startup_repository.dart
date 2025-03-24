@@ -146,10 +146,12 @@ class StartUpRepository {
         final _ = await ServiceHiveUtils.setAppService(
             item: _appServiceList, slug: "app_service");
         allServices = _appServiceList;
-        SharedPref.setChatBotVisibility(allServices
-            .map((e) => e.uniqueIdentifier)
-            .toList()
-            .contains("ai_chat"));
+        SharedPref.setChatBotVisibility(allServices.any((service) =>
+            service.uniqueIdentifier == 'ai_chat' &&
+            service.status == 'Active'));
+        SharedPref.setVoiceChatVisibility(allServices.any((service) =>
+            service.uniqueIdentifier == 'ai_voice' &&
+            service.status == 'Active'));
         return DataResponse.success(_appServiceList);
       } else {
         return DataResponse.error("No Transaction");

@@ -129,14 +129,14 @@ class _SettingWidgetState extends State<SettingWidget> {
                   detail: "Tap to reset your Security Pin.",
                   title: "Forget Pin"),
 
-              const Divider(thickness: 1),
-              CommonDetailBox(
-                  leadingImage: Assets.preference,
-                  onBoxPressed: () {
-                    NavigationService.push(target: const PreferenceWidget());
-                  },
-                  detail: "Tap to set your preferences.",
-                  title: "Preferences"),
+              // const Divider(thickness: 1),
+              // CommonDetailBox(
+              //     leadingImage: Assets.preference,
+              //     onBoxPressed: () {
+              //       NavigationService.push(target: const PreferenceWidget());
+              //     },
+              //     detail: "Tap to set your preferences.",
+              //     title: "Preferences"),
 
               const Divider(thickness: 1),
               CommonDetailBox(

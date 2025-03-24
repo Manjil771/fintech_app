@@ -3,12 +3,12 @@ import 'dart:io';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_sound_record/flutter_sound_record.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
@@ -514,20 +514,28 @@ class _SmartChatPageState extends State<SmartChatPage> {
               margin: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                  GestureDetector(
-                    onLongPressStart: (_) => _startRecording(),
-                    onLongPressEnd: (_) => _stopRecording(widget.id.toString()),
-                    child: IconButton(
-                      icon: Icon(
-                        Icons.mic,
-                        color: _isRecording
-                            ? Colors.grey
-                            : CustomTheme.primaryColor,
-                        size: 30,
-                      ),
-                      onPressed: () {},
-                    ),
-                  ),
+                  FutureBuilder(
+                      future: SharedPref.getVoiceChatVisibility(),
+                      builder: (context, snapshot) {
+                        final isVoiceChatVisible = snapshot.data ?? false;
+                        return isVoiceChatVisible
+                            ? GestureDetector(
+                                onLongPressStart: (_) => _startRecording(),
+                                onLongPressEnd: (_) =>
+                                    _stopRecording(widget.id.toString()),
+                                child: IconButton(
+                                  icon: Icon(
+                                    Icons.mic,
+                                    color: _isRecording
+                                        ? Colors.grey
+                                        : CustomTheme.primaryColor,
+                                    size: 30,
+                                  ),
+                                  onPressed: () {},
+                                ),
+                              )
+                            : const SizedBox.shrink();
+                      }),
                   IconButton(
                     icon: Icon(
                       Icons.send,
@@ -570,12 +578,6 @@ class _SmartChatPageState extends State<SmartChatPage> {
                   RepositoryProvider.of<CategoryRepository>(context),
             )..fetchCategory(),
           ),
-          // BlocProvider(
-          //   create: (context) => UtilityPaymentCubit(
-          //     utilityPaymentRepository:
-          //         RepositoryProvider.of<UtilityPaymentRepository>(context),
-          //   ),
-          // ),
         ],
         child: MultiBlocListener(
           listeners: [

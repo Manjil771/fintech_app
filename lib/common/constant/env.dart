@@ -4568,7 +4568,7 @@ class CoOperativeValue {
     coOperativeName: "Dhanrasi Multipurpose Co-operative Ltd.",
     appTitle: 'Dhanrasi iSmart',
   );
-  static final CoOperative currentCoop = shreephulbari;
+  static final CoOperative currentCoop = devLive;
 
   static final CoOperative shreephulbari = CoOperative(
     appStoreID: "com.devanasoft.shreephulbari",
