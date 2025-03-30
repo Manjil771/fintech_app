@@ -54,10 +54,10 @@ dependencies:
   mobile_scanner: "^4.0.1"
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
-  # qr_code_utils:
-  #   git:
-  #     url: https://github.com/nsubash38/qr_code_test.git
-  #     ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
+  qr_code_utils:
+    git:
+      url: https://github.com/nsubash38/qr_code_test.git
+      ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
   android_id: "^0.3.3"
   fk_user_agent: "^2.1.0"
@@ -91,6 +91,13 @@ dependency_overrides:
 
 flutter:
   assets:
+
+    # - assets/shreeBakhan/
+    # - assets/shreeChahana/
+    # - assets/bihani/
+    # - assets/nayapuime/
+    # - assets/bhimad/
+    # - assets/shreephulbari/
     # - assets/gauthali/
     # - assets/ashish/
     # - assets/shreeSiddhiSankalpa/
@@ -104,15 +111,15 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
-    # - assets/maaLaxmi/
-    # - assets/race/
-    # - assets/manipur/
+    # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
-    # - assets/uttarganga/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
+    # - assets/kabil/
+    - assets/uttarganga/
     # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
@@ -180,7 +187,6 @@ flutter:
     # - assets/bishnudol/
     # - assets/automobiles/
     # - assets/chandani/
-    # - assets/mission/
 
     # - assets/annapurna/
     # - assets/kanchanjungha/
@@ -227,6 +233,7 @@ flutter:
     # - assets/queenCoop/
     # - assets/queenCoop/
     # - assets/nayakiran/
+    # - assets/nayapusta/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/
@@ -256,7 +263,6 @@ flutter:
     # - assets/sparkling/
     # - assets/lifeVision/
     # - assets/pacific/
-    # - assets/shreePhulbari/
     # - assets/samutthan/
     # - assets/dhanaprapti/
     # - assets/globalMulti/
@@ -394,6 +400,8 @@ flutter:
     # - assets/paschimanchal/
     # - assets/sadasyaSewa/
     # - assets/aabhash/
+    # - assets/mirmire/
+    
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -421,7 +429,7 @@ flutter:
     # - assets/aichchhik/
     # - assets/aichchhik/
     # - assets/kishanKalyan/
-    # - assets/puime/
+    # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/
     # - assets/kasturi/
@@ -448,9 +456,6 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
-    # - assets/shreeFulbari/
-    # - assets/skastam/
-    
     # - assets/jmc/
 
   fonts:
