@@ -56,7 +56,9 @@ class CustomerDetailRepository {
         accountsList.value = _user.accountDetail;
 
         if (isCalledAtStartup) {
-          selectedAccount.value = accountsList.value.first;
+          selectedAccount.value = accountsList.value.firstWhere(
+              (account) => account.primary == 'true',
+              orElse: () => accountsList.value.first);
         } else {
           AccountDetail? _currentAccount = selectedAccount.value;
 
