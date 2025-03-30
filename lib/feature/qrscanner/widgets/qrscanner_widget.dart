@@ -312,10 +312,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                                 flex: 2,
                                 child: CustomCachedNetworkImage(
                                   url: RepositoryProvider.of<CoOperative>(
-                                              context)
-                                          .baseUrl +
-                                      filteredItems.last.imageUrl
-                                          .toString(), // Access the last image
+                                          context)
+                                      .coOperativeLogo
+                                      .toString(),
                                   fit: BoxFit.fitHeight,
                                   height: 60.hp,
                                 ),
@@ -470,7 +469,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
                             ...List.generate(
-                              filteredItems.length - 1,
+                              filteredItems.length,
                               (index) => CustomCachedNetworkImage(
                                 url: RepositoryProvider.of<CoOperative>(context)
                                         .baseUrl +
@@ -478,10 +477,10 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                                 fit: BoxFit.fitHeight,
                               ),
                             ),
-                            Image.asset(
-                              "assets/images/ismart_logo_only.png",
-                              fit: BoxFit.fitHeight,
-                            ),
+                            // Image.asset(
+                            //   "assets/images/ismart_logo_only.png",
+                            //   fit: BoxFit.fitHeight,
+                            // ),
                           ],
                         ),
                       ),
@@ -701,6 +700,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         NavigationService.push(
             target: EtellerPage(
           payload: qrCode,
+          remarks: widget.remarks,
         ));
       }
     }

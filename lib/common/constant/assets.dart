@@ -94,7 +94,7 @@ class Assets {
   static const String contactUsIcon = "assets/icons/Contact us.svg";
   static const String successIcon = "assets/icons/transaction_success.svg";
   static const String calanderIcon = "assets/icons/uit_calender.svg";
-  static const String forcedUpdateGraphics = "assets/images/infographic 20.png";
+  static const String forcedUpdateGraphics = "assets/images/infographic_20.png";
   static const String normalUpdateGraphics =
       "assets/images/infographics_10.png";
 

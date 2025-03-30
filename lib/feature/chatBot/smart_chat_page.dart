@@ -6,7 +6,6 @@ import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
 import 'package:ismart/feature/chatBot/smart_chat_widget.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 import 'smart_chat_page_state.dart';
@@ -42,12 +41,6 @@ class _SmartChatPageState extends SmartChatPageState {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(
-          create: (context) => CategoryCubit(
-            servicesRepository:
-                RepositoryProvider.of<CategoryRepository>(context),
-          )..fetchCategory(),
-        ),
         BlocProvider(
           create: (context) => UtilityPaymentCubit(
             utilityPaymentRepository:

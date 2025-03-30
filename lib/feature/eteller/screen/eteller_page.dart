@@ -5,12 +5,15 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/eteller/widget/eteller_widget.dart';
+import 'package:ismart/feature/payload/payload_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class EtellerPage extends StatelessWidget {
   final String payload;
-  const EtellerPage({Key? key, required this.payload}) : super(key: key);
+  final String? remarks;
+  const EtellerPage({Key? key, required this.payload, required this.remarks})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +48,9 @@ class EtellerPage extends StatelessWidget {
                 payload: decryptAES(payload,
                     RepositoryProvider.of<CoOperative>(context).clientCode)),
           )
-        : const PageWrapper(
-            showBackButton: true,
-            showAppBar: true,
-            body: NoDataScreen(
-                title: "Invalid Qr",
-                details: "Invalid Qr. Please Try after sometime."));
+        : PayloadPage(
+            remarks: remarks,
+            payload: payload,
+          );
   }
 }
