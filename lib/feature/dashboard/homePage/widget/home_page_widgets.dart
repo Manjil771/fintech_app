@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -12,7 +11,6 @@ import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
-import 'package:ismart/feature/chatBot/smart_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
@@ -20,7 +18,6 @@ import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-// import 'package:lottie/lottie.dart';
 
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';

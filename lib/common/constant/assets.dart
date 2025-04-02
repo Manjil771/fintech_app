@@ -17,6 +17,7 @@ class Assets {
   static const String loader = "assets/icons/ismart_loader_test2.gif";
 
   static const String profilePicture = "assets/images/profile.png";
+  static const String femaleProfilePicture = 'assets/images/femaleProfile.png';
   // static const String profilePicture =
   //     "assets/images/184451271-senior-man-avatar-smiling-elderly-man-with-beard-with-gray-hair-3d-vector-people-character-illustrat 1.png";
   static const String ismartLogo = "assets/ismartlogo.png";
@@ -94,7 +95,8 @@ class Assets {
   static const String contactUsIcon = "assets/icons/Contact us.svg";
   static const String successIcon = "assets/icons/transaction_success.svg";
   static const String calanderIcon = "assets/icons/uit_calender.svg";
-  static const String forcedUpdateGraphics = "assets/images/infographic 20.png";
+  static const String forcedUpdateGraphics =
+      "assets/images/infographics_10.png";
   static const String normalUpdateGraphics =
       "assets/images/infographics_10.png";
 
