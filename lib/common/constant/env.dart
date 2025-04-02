@@ -4657,5 +4657,5 @@ class CoOperativeValue {
     coOperativeName: "Bhimad Saving and Credit Co-operative Ltd.",
     appTitle: 'Bhimad iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }
