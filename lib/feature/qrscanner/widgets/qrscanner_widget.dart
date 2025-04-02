@@ -272,7 +272,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     item.status.toLowerCase() == "Active".toLowerCase(),
               )
               .toList();
-
           return Scaffold(
             body: Stack(
               children: [

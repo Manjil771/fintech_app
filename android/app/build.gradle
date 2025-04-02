@@ -1602,7 +1602,7 @@ android {
         }
         uddhamsil {
             dimension "app"
-            applicationId "com.devanasoft.uddhamshil"
+            applicationId "com.devanasoft.uddhamsil"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -2133,6 +2133,12 @@ android {
         skastam {
             dimension "app"
             applicationId "com.devanasoft.skastam"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        mahagauri {
+            dimension "app"
+            applicationId "com.devanasoft.mahagauri"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

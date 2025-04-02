@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.30+60
+version: 1.5.31+61
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -55,9 +55,9 @@ dependencies:
   flutter_native_image: "^0.0.6+1"
   image_picker: "^1.0.1"
   qr_code_utils:
-    git:
-      url: https://github.com/nsubash38/qr_code_test.git
-      ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
+    # git:
+    #   url: https://github.com/nsubash38/qr_code_test.git
+    #   ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
   android_id: "^0.3.3"
   fk_user_agent: "^2.1.0"
@@ -93,6 +93,7 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
+    # - assets/mahagauri/
     # - assets/shreeChahana/
     # - assets/bihani/
     # - assets/nayapuime/
@@ -115,11 +116,11 @@ flutter:
     # - assets/digoBikash/
     # - assets/sahakarya/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
-    - assets/uttarganga/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
@@ -165,7 +166,7 @@ flutter:
     # - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/tikeshwar/
-    - assets/fewa/
+    # - assets/fewa/
     # - assets/matribhumi/
     # - assets/gandakibesi/
     # - assets/batika/
@@ -196,6 +197,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
+    # - assets/shreeMyagde/
     # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
@@ -228,12 +230,11 @@ flutter:
     # - assets/darshan/
     # - assets/devshree/
     # - assets/uddhamshilKrishi/
-    # - assets/smartUddhamshil/
+    - assets/smartUddhamshil/
     # - assets/shreeDigopan/
     # - assets/queenCoop/
     # - assets/queenCoop/
     # - assets/nayakiran/
-    # - assets/nayapusta/
     # - assets/kendrabindu/
     # - assets/eastwest/
     # - assets/babira/

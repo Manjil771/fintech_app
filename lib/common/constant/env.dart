@@ -3219,7 +3219,7 @@ class CoOperativeValue {
     appStoreID: "com.devanasoft.skDharan",
     packageName: "com.devanasoft.skDharan",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/skDharan/skDharan_banner.png",
+    bannerImage: "assets/skDharan/skdharan_banner.png",
     backgroundImage: "assets/skDharan/skDharan_background.png",
     clientCode: 'HATT40NDZ6',
     clientSecret: "191118",
@@ -4899,6 +4899,19 @@ class CoOperativeValue {
     coOperativeName: "Astam Sana Kisan Krishi Sahakari Ltd.",
     appTitle: 'SFACL Astam iSmart',
   );
-
-  static final CoOperative currentCoop = fewaCoop;
+  static final CoOperative mahagauricoop = CoOperative(
+    appStoreID: "com.devanasoft.mahagauri",
+    packageName: "com.devanasoft.mahagauri",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/mahagauri/mahagauri_banner.png",
+    backgroundImage: "assets/mahagauri/mahagauri_background.png",
+    clientCode: 'K68LHIZ4QR',
+    clientSecret: "115886",
+    coOperativeLogo: 'assets/mahagauri/mahagauri_logo.png',
+    splashImage: "assets/mahagauri/mahagauri_splash.png",
+    primaryColor: const Color(0xFF00a54f),
+    coOperativeName: "Mahagauri Krishi Co-operative Ltd.",
+    appTitle: 'Mahagauri iSmart',
+  );
+  static final CoOperative currentCoop = uddhamshil;
 }
