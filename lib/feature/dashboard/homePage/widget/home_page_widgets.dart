@@ -199,7 +199,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   final isChatBotVisible = snapshot.data ?? false;
                   return isChatBotVisible
                       ? Positioned(
-                          bottom: 5,
+                          bottom: 4,
                           right: 7,
                           child: InkWell(
                             onTap: () {
@@ -233,9 +233,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     width: 1.0,
                                   ),
                                 ),
-                                child: const ClipOval(
-                                  child: AnimatedLogo(
-                                    logoPath: "assets/smart_fuchee.png",
+                                child: ClipOval(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 6),
+                                    child: Image.asset(
+                                      "assets/smart_fuchee.png",
+                                      fit: BoxFit.contain,
+                                    ),
                                   ),
                                 ),
                               ),
@@ -258,77 +262,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   }
 }
 
-class AnimatedLogo extends StatefulWidget {
-  final String logoPath;
 
-  const AnimatedLogo({
-    Key? key,
-    required this.logoPath,
-  }) : super(key: key);
-
-  @override
-  _AnimatedLogoState createState() => _AnimatedLogoState();
-}
-
-class _AnimatedLogoState extends State<AnimatedLogo>
-    with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  late Animation<double> _scaleAnimation;
-  late Animation<double> _rotationAnimation;
-
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(
-      duration: const Duration(seconds: 3),
-      vsync: this,
-    )..repeat(reverse: true);
-
-    _scaleAnimation = Tween<double>(begin: 1.05, end: 1.10).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-
-    _rotationAnimation = Tween<double>(begin: -0.02, end: 0.02).animate(
-      CurvedAnimation(
-        parent: _controller,
-        curve: Curves.easeInOut,
-      ),
-    );
-  }
-
-  @override
-  void dispose() {
-    _controller.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBuilder(
-      animation: _controller,
-      builder: (context, child) {
-        return Transform.scale(
-          scale: _scaleAnimation.value,
-          child: Transform.rotate(
-            angle: _rotationAnimation.value,
-            child: ClipOval(
-              child: Padding(
-                padding: const EdgeInsets.only(top: 6),
-                child: Image.asset(
-                  widget.logoPath,
-                  fit: BoxFit.contain,
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
-  }
-}
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_svg/flutter_svg.dart';

@@ -15,9 +15,10 @@ import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
 import 'package:ismart/feature/chatBot/exclusive_pages/chat_prompts.dart';
 import 'package:ismart/feature/chatBot/resources/cubits/audio_upload_cubit.dart';
 import 'package:ismart/feature/chatBot/typing_animation.dart';
+import 'package:ismart/feature/chatBot/utility/smartchat_busticket_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
+// import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:just_audio/just_audio.dart';
@@ -336,18 +337,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
         );
   }
 
-  void _busBooking(String from, String to, {String shift = "Both"}) {
-    context.read<UtilityPaymentCubit>().fetchDetails(
-        serviceIdentifier: "",
-        accountDetails: {
-          "fromSector": from.toUpperCase(),
-          "toSector": to.toUpperCase(),
-          // "departureDate":
-          //     "${departureDate.year}-${departureDate.month}-${departureDate.day}",
-          "departureDate": destinationDate,
-          "shift": shift,
-        },
-        apiEndpoint: "/api/busSewa/getTrips");
+  void _busBooking(String from, String to) {
+    context.read<SmartChatBusTicketCubit>().sendBusRequest(from: from, to: to);
   }
 
   String _capitalizeFirstWord(String input) {
@@ -488,148 +479,156 @@ class _SmartChatPageState extends State<SmartChatPage> {
   Widget build(BuildContext context) {
     return Builder(
       // key: widget.widgetKey,
-      builder: (context) => MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => CategoryCubit(
-              servicesRepository:
-                  RepositoryProvider.of<CategoryRepository>(context),
-            )..fetchCategory(),
-          ),
-        ],
-        child: MultiBlocListener(
-          listeners: [
-            BlocListener<AudioUploadCubit, CommonState>(
-              listener: (context, state) {
-                print("Current state SKP: ${state.runtimeType}");
-                if (state is CommonLoading) {
-                  if (mounted) {
-                    setState(() {
-                      _isloadingVoice = true;
-                    });
-                  }
+      builder: (context) => MultiBlocListener(
+        listeners: [
+          BlocListener<AudioUploadCubit, CommonState>(
+            listener: (context, state) {
+              print("Current state SKP: ${state.runtimeType}");
+              if (state is CommonLoading) {
+                if (mounted) {
+                  setState(() {
+                    _isloadingVoice = true;
+                  });
                 }
-                if (state is CommonStateSuccess) {
-                  if (mounted) {
+              }
+              if (state is CommonStateSuccess) {
+                if (mounted) {
+                  setState(() {
+                    _isloadingVoice = false;
+                  });
+                }
+                try {
+                  print("State data: ${state.data}");
+                  final responseData = state.data;
+                  final String baseUrl = responseData["baseUrl"];
+                  final UtilityResponseData _res = responseData["response"];
+                  final String audioUrl = _res.detail['audioURL'];
+                  final String initialUrl = baseUrl + audioUrl;
+                  final String completeUrl = initialUrl
+                      .replaceAll("//", "/")
+                      .replaceFirst(":/", "://");
+                  print("complete URL : $completeUrl");
+                  if (completeUrl.isNotEmpty ||
+                      _res.detail['serviceIdentifier'] != null) {
                     setState(() {
-                      _isloadingVoice = false;
+                      _isAudioPlaying = true;
                     });
-                  }
-                  try {
-                    print("State data: ${state.data}");
-                    final responseData = state.data;
-                    final String baseUrl = responseData["baseUrl"];
-                    final UtilityResponseData _res = responseData["response"];
-                    final String audioUrl = _res.detail['audioURL'];
-                    final String initialUrl = baseUrl + audioUrl;
-                    final String completeUrl = initialUrl
-                        .replaceAll("//", "/")
-                        .replaceFirst(":/", "://");
-                    print("complete URL : $completeUrl");
-                    if (completeUrl.isNotEmpty ||
-                        _res.detail['serviceIdentifier'] != null) {
-                      setState(() {
-                        _isAudioPlaying = true;
-                      });
-                      if (_res.detail['serviceIdentifier'] != null) {
-                        actionButton(_res);
-                      } else {
-                        _showAudioDialog(completeUrl);
-                      }
+                    if (_res.detail['serviceIdentifier'] != null) {
+                      actionButton(_res);
                     } else {
-                      print('Error in audio path');
+                      _showAudioDialog(completeUrl);
                     }
-                  } catch (e) {
-                    print('Error processing audio response: $e');
+                  } else {
+                    print('Error in audio path');
                   }
+                } catch (e) {
+                  print('Error processing audio response: $e');
                 }
-                if (state is CommonError) {
-                  if (mounted) {
-                    setState(() {
-                      _isloadingVoice = false;
-                      _chatHistory.add({
-                        'type': 'assistant',
-                        'message': "Error in audio response!",
-                        'timestamp': DateTime.now(),
-                      });
-                      _messageController.clear();
+              }
+              if (state is CommonError) {
+                if (mounted) {
+                  setState(() {
+                    _isloadingVoice = false;
+                    _chatHistory.add({
+                      'type': 'assistant',
+                      'message': "Error in audio response!",
+                      'timestamp': DateTime.now(),
                     });
-                  }
+                    _messageController.clear();
+                  });
                 }
-              },
-            ),
-            BlocListener<CategoryCubit, CommonState>(
-              listener: (context, state) {
-                if (state is CommonDataFetchSuccess<CategoryList>) {
-                  _categoryService.updateCategoryList(state.data);
-                }
-              },
-            ),
-            BlocListener<UtilityPaymentCubit, CommonState>(
-              listener: (context, state) {
-                if (state is CommonStateSuccess<UtilityResponseData>) {
-                  final UtilityResponseData response = state.data;
-                  if (response.details.isNotEmpty) {
-                    for (var keyValue in response.details) {
-                      if (keyValue.title == "data" && keyValue.value is List) {
-                        final List dataList = keyValue.value as List;
-                        for (var item in dataList) {
-                          if (item is Map<String, dynamic> &&
-                              item.containsKey('ticketPrice')) {
-                            _categoryService.navigateToBusBooking2(
-                                context,
-                                response,
-                                destinationFrom,
-                                destinationTo,
-                                destinationDate);
-                            break;
-                          }
+              }
+            },
+          ),
+          BlocListener<CategoryCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonDataFetchSuccess<CategoryList>) {
+                _categoryService.updateCategoryList(state.data);
+              }
+            },
+          ),
+          BlocListener<SmartChatBusTicketCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonStateSuccess) {
+                final responseData = state.data;
+                final String destinationFrom = responseData["from"];
+                final String destinationTo = responseData["to"];
+                context.read<UtilityPaymentCubit>().fetchDetails(
+                    serviceIdentifier: "",
+                    accountDetails: {
+                      "fromSector": destinationFrom.toUpperCase(),
+                      "toSector": destinationTo.toUpperCase(),
+                      "departureDate": destinationDate,
+                      "shift": 'Both',
+                    },
+                    apiEndpoint: "/api/busSewa/getTrips");
+              }
+            },
+          ),
+          BlocListener<UtilityPaymentCubit, CommonState>(
+            listener: (context, state) {
+              if (state is CommonStateSuccess<UtilityResponseData>) {
+                final UtilityResponseData response = state.data;
+                if (response.details.isNotEmpty) {
+                  for (var keyValue in response.details) {
+                    if (keyValue.title == "data" && keyValue.value is List) {
+                      final List dataList = keyValue.value as List;
+                      for (var item in dataList) {
+                        if (item is Map<String, dynamic> &&
+                            item.containsKey('ticketPrice')) {
+                          _categoryService.navigateToBusBooking2(
+                              context,
+                              response,
+                              destinationFrom,
+                              destinationTo,
+                              destinationDate);
+                          break;
                         }
                       }
                     }
-                    print("hey handsome hey handosme");
                   }
-                  if (response.detail["serviceIdentifier"] != null) {
-                    print("there is payement request");
-                    actionButton(response);
-                  }
-                  updateChatWithResponse(response.detail['message']);
-                } else if (state is CommonError) {
-                  setState(() {
-                    _chatHistory.add({
-                      'type': 'assistant',
-                      'message': "Something went wrong",
-                      'timestamp': DateTime.now(),
-                      'options': ['Start again']
-                    });
-                  });
+                  print("hey handsome hey handosme");
                 }
-              },
-            ),
-          ],
-          child: PageWrapper(
-            showBackButton: true,
-            body: Builder(
-              builder: (context) => Stack(
-                children: [
-                  !(_isRecording || _isloadingVoice)
-                      ? Positioned(
-                          bottom: 55,
-                          child: SizedBox(
-                            height: 65,
-                            width: 65,
-                            child: Image.asset("assets/smart_fuchee.png"),
-                          ),
-                        )
-                      : Container(),
-                  Column(
-                    children: [
-                      Expanded(child: _buildMessageList(context)),
-                      _buildUserInput(context),
-                    ],
-                  ),
-                ],
-              ),
+                if (response.detail["serviceIdentifier"] != null) {
+                  print("there is payement request");
+                  actionButton(response);
+                }
+                updateChatWithResponse(response.detail['message']);
+              } else if (state is CommonError) {
+                setState(() {
+                  _chatHistory.add({
+                    'type': 'assistant',
+                    'message': "Something went wrong",
+                    'timestamp': DateTime.now(),
+                    'options': ['Start again']
+                  });
+                });
+              }
+            },
+          ),
+        ],
+        child: PageWrapper(
+          showBackButton: true,
+          body: Builder(
+            builder: (context) => Stack(
+              children: [
+                // !(_isRecording || _isloadingVoice)
+                //     ? Positioned(
+                //         bottom: 55,
+                //         child: SizedBox(
+                //           height: 65,
+                //           width: 65,
+                //           child: Image.asset("assets/smart_fuchee.png"),
+                //         ),
+                //       )
+                //     : Container(),
+                Column(
+                  children: [
+                    Expanded(child: _buildMessageList(context)),
+                    _buildUserInput(context),
+                  ],
+                ),
+              ],
             ),
           ),
         ),
@@ -673,7 +672,18 @@ class _SmartChatPageState extends State<SmartChatPage> {
         response.findValue(primaryKey: 'paymentData', secondaryKey: 'from'),
         response.findValue(primaryKey: 'paymentData', secondaryKey: 'to'),
       );
-      //  _categoryService.navigateToBusBooking(context);
+    } else if (response.detail["serviceIdentifier"] == 'airlines') {
+      _categoryService.navigateToAirlines(
+        context,
+      );
+    } else if (response.detail["serviceIdentifier"] == 'landline') {
+      _categoryService.navigateToLandline(
+        context,
+      );
+    } else if (response.detail["serviceIdentifier"] == 'electricity') {
+      _categoryService.navigateToElectricityPayment(
+        context,
+      );
     }
   }
 }
