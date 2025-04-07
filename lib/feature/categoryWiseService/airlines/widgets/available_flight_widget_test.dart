@@ -83,7 +83,6 @@ class _AvailableFlightsListWidgetState extends State<AvailableFlightsListWidget>
     if (selectedInboundIndex != -1) {
       final double fareTotalInbound =
           _inboundValue[selectedInboundIndex].totalFare;
-
       totalPrice += fareTotalInbound;
     }
 
