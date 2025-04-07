@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -11,8 +10,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/chatBot/intermediate_smart_chat_page.dart';
-import 'package:ismart/feature/chatBot/smart_chat_page.dart';
+import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
@@ -20,7 +18,6 @@ import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-// import 'package:lottie/lottie.dart';
 
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
@@ -199,43 +196,49 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   }
-                  final isChatBotVisible = snapshot.data ?? true;
+                  final isChatBotVisible = snapshot.data ?? false;
                   return isChatBotVisible
                       ? Positioned(
-                          bottom: -10,
-                          right: -35,
+                          bottom: 5,
+                          right: 7,
                           child: InkWell(
                             onTap: () {
-                              NavigationService.push(
-                                  target: const SmartIntermeditate(
-                                      //  id: _response.detail['id']
-                                      ));
-                              // onButtonPressed();
+                              onButtonPressed();
                             },
-                            // child:
-                            //     BlocListener<UtilityPaymentCubit, CommonState>(
-                            //   listener: (context, state) {
-                            //     if (state is CommonStateSuccess<
-                            //         UtilityResponseData>) {
-                            //       final UtilityResponseData _response =
-                            //           state.data;
-                            //       if (_response.code == "M0000") {
-                            //         NavigationService.push(
-                            //             target: SmartChatPage(
-                            //                 id: _response.detail['id']));
-                            //       }
-                            //     }
-                            //   },
-                            //   child: Container(
-                            //     width: 140,
-                            //     height: 140,
-                            //     child: Image.asset("assets/smart_fuchee.png"),
-                            //   ),
-                            // ),
-                            child: Container(
-                              width: 140,
-                              height: 140,
-                              child: Image.asset("assets/smart_fuchee.png"),
+                            child:
+                                BlocListener<UtilityPaymentCubit, CommonState>(
+                              listener: (context, state) {
+                                if (state is CommonStateSuccess<
+                                    UtilityResponseData>) {
+                                  final UtilityResponseData response =
+                                      state.data;
+                                  if (response.code == "M0000") {
+                                    NavigationService.push(
+                                      target: IntermediateChatPage(
+                                        id: response.detail['id'],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: CustomTheme.white,
+                                  border: Border.all(
+                                    color: CustomTheme.primaryColor
+                                        .withOpacity(.7),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: const ClipOval(
+                                  child: AnimatedLogo(
+                                    logoPath: "assets/smart_fuchee.png",
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         )
@@ -252,6 +255,78 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         serviceIdentifier: "",
         accountDetails: {},
         apiEndpoint: "api/ai/create");
+  }
+}
+
+class AnimatedLogo extends StatefulWidget {
+  final String logoPath;
+
+  const AnimatedLogo({
+    Key? key,
+    required this.logoPath,
+  }) : super(key: key);
+
+  @override
+  _AnimatedLogoState createState() => _AnimatedLogoState();
+}
+
+class _AnimatedLogoState extends State<AnimatedLogo>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _controller;
+  late Animation<double> _scaleAnimation;
+  late Animation<double> _rotationAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      duration: const Duration(seconds: 3),
+      vsync: this,
+    )..repeat(reverse: true);
+
+    _scaleAnimation = Tween<double>(begin: 1.05, end: 1.10).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+
+    _rotationAnimation = Tween<double>(begin: -0.02, end: 0.02).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: Curves.easeInOut,
+      ),
+    );
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AnimatedBuilder(
+      animation: _controller,
+      builder: (context, child) {
+        return Transform.scale(
+          scale: _scaleAnimation.value,
+          child: Transform.rotate(
+            angle: _rotationAnimation.value,
+            child: ClipOval(
+              child: Padding(
+                padding: const EdgeInsets.only(top: 6),
+                child: Image.asset(
+                  widget.logoPath,
+                  fit: BoxFit.contain,
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+    );
   }
 }
 // import 'package:flutter/material.dart';

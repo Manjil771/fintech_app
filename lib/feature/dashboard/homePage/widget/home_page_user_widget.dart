@@ -41,6 +41,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   String bannerImage = "";
 
   String? imageUrl;
+  String? gender;
 
   @override
   void initState() {
@@ -85,6 +86,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                 builder: (context, val, _) {
                   if (val != null) {
                     imageUrl = val.imageUrl;
+                    gender = val.gender;
                     WidgetsBinding.instance.addPostFrameCallback(
                       (timeStamp) {
                         setState(() {});
@@ -108,17 +110,19 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                       NavigationService.pushNamed(
                                           routeName: Routes.profileScreen);
                                     },
-                                    child: (imageUrl != null &&
-                                            imageUrl!.isNotEmpty)
-                                        ? CustomRoundedImage(
-                                            height: 40,
-                                            image: imageUrl ?? "",
-                                            width: 40,
+                                    child: (gender?.toLowerCase() == 'male' ||
+                                            gender == null)
+                                        ? const CircleAvatar(
+                                            radius: 20,
+                                            backgroundImage: AssetImage(
+                                              Assets.profilePicture,
+                                            ),
+                                            backgroundColor: Colors.transparent,
                                           )
                                         : const CircleAvatar(
                                             radius: 20,
                                             backgroundImage: AssetImage(
-                                              Assets.profilePicture,
+                                              Assets.femaleProfilePicture,
                                             ),
                                             backgroundColor: Colors.transparent,
                                           ),

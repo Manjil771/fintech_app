@@ -21,7 +21,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 
 class ProfilePictureWidget extends StatefulWidget {
   final String imageUrl;
-  const ProfilePictureWidget({super.key, required this.imageUrl});
+  final String gender;
+  const ProfilePictureWidget(
+      {super.key, required this.imageUrl, required this.gender});
 
   @override
   State<ProfilePictureWidget> createState() => _ProfilePictureWidgetState();
@@ -123,7 +125,9 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
                 height: SizeUtils.height / 2,
                 width: double.infinity,
                 child: widget.imageUrl.isEmpty
-                    ? Image.asset(Assets.profilePicture)
+                    ? (widget.gender.toLowerCase() == 'male')
+                        ? Image.asset(Assets.profilePicture)
+                        : Image.asset(Assets.femaleProfilePicture)
                     : Image.network(
                         widget.imageUrl,
                         fit: BoxFit.cover,

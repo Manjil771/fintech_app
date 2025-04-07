@@ -2,6 +2,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
 import 'package:ismart/common/http/response.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/common/util/hive_utils.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
@@ -34,6 +35,8 @@ class StartUpRepository {
   List<String> defaultbanners = [];
 
   AppUpdate? appUpdate;
+
+  List<AppServiceManagementModel> allServices = [];
 
   Future<DataResponse<List<String>>> fetchBannerImages() async {
     banners.clear();
@@ -142,7 +145,13 @@ class StartUpRepository {
         );
         final _ = await ServiceHiveUtils.setAppService(
             item: _appServiceList, slug: "app_service");
-
+        allServices = _appServiceList;
+        SharedPref.setChatBotVisibility(allServices.any((service) =>
+            service.uniqueIdentifier == 'ai_chat' &&
+            service.status == 'Active'));
+        SharedPref.setVoiceChatVisibility(allServices.any((service) =>
+            service.uniqueIdentifier == 'ai_voice' &&
+            service.status == 'Active'));
         return DataResponse.success(_appServiceList);
       } else {
         return DataResponse.error("No Transaction");
