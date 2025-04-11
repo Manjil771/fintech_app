@@ -331,6 +331,9 @@ class _AirlinesBillDetailWidgetState extends State<AirlinesBillDetailWidget> {
                 ),
                 SizedBox(height: 10.hp),
                 CustomRoundedButtom(
+                    verificationAmount: widget.departureFlight!
+                        .getTotalFareAfterCashback()
+                        .toString(),
                     title: "Pay",
                     onPressed: () {
                       NavigationService.push(target: TransactionPinScreen(

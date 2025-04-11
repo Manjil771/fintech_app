@@ -6,8 +6,10 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class ProfilePictureScreen extends StatelessWidget {
   final String imageUrl;
+  final String gender;
 
-  const ProfilePictureScreen({super.key, required this.imageUrl});
+  const ProfilePictureScreen(
+      {super.key, required this.imageUrl, required this.gender});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +19,7 @@ class ProfilePictureScreen extends StatelessWidget {
               RepositoryProvider.of<UtilityPaymentRepository>(context)),
       child: ProfilePictureWidget(
         imageUrl: imageUrl,
+        gender: gender,
       ),
     );
   }

@@ -112,6 +112,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                   NavigationService.push(
                                       target: ProfilePictureScreen(
                                     imageUrl: val.imageUrl,
+                                    gender: val.gender,
                                   ));
                                   // showImagePickerBottomSheet(
                                   //   onGalleryPressed: () async {
@@ -142,8 +143,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                 color: _theme.primaryColor),
                                             shape: BoxShape.circle),
                                         child: val.imageUrl.isEmpty
-                                            ? const CircleAvatar(
-                                                child: Align(
+                                            ? CircleAvatar(
+                                                child: const Align(
                                                   alignment:
                                                       Alignment.bottomRight,
                                                   child: CircleAvatar(
@@ -156,8 +157,13 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                                   ),
                                                 ),
                                                 radius: 50,
-                                                backgroundImage: AssetImage(
-                                                    Assets.profilePicture),
+                                                backgroundImage: val.gender
+                                                            .toLowerCase() ==
+                                                        'male'
+                                                    ? const AssetImage(
+                                                        Assets.profilePicture)
+                                                    : const AssetImage(Assets
+                                                        .femaleProfilePicture),
                                               )
                                             : CustomRoundedImage(
                                                 height: 100,

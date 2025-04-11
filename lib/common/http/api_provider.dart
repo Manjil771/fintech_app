@@ -240,7 +240,7 @@ class ApiProvider {
   }
 
   upload(String url, File file,
-      {required int? userId, String token = ''}) async {
+      {required int? userId, String token = '', bool isAudio = false}) async {
     final DioClient _dio = DioClient(
       baseUrl: baseUrl,
     );
@@ -258,13 +258,24 @@ class ApiProvider {
       final String fileName = file.path.split('/').last;
       // final String _extention = file.path.split('.').last;
       // ignore: unused_local_variable
-      final String type = lookupMimeType(file.path)!.split('/').first;
+
+      final String fieldName = isAudio ? 'file' : 'image';
+
+      final parse.MediaType contentType;
+      if (isAudio) {
+        contentType = parse.MediaType('audio', 'wav');
+      } else {
+        final String typeSection =
+            lookupMimeType(file.path)?.split('/').first ?? 'image';
+
+        contentType = parse.MediaType(typeSection, file.path.split('.').last);
+      }
 
       final FormData formData = FormData.fromMap(<String, dynamic>{
-        'image': await MultipartFile.fromFile(
+        fieldName: await MultipartFile.fromFile(
           file.path,
           filename: fileName,
-          contentType: parse.MediaType('image', file.path.split('.').last),
+          contentType: contentType,
         ),
       });
       final Response<dynamic> response = await _dio.post(

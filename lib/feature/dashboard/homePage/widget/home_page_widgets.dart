@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
@@ -11,8 +10,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/chatBot/intermediate_smart_chat_page.dart';
-import 'package:ismart/feature/chatBot/smart_chat_page.dart';
+import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
@@ -20,7 +18,6 @@ import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
-// import 'package:lottie/lottie.dart';
 
 import '../../../splash/resource/startup_repository.dart';
 import 'home_page_tabbar_widget.dart';
@@ -199,43 +196,53 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                   if (snapshot.connectionState == ConnectionState.waiting) {
                     return const CircularProgressIndicator();
                   }
-                  final isChatBotVisible = snapshot.data ?? true;
+                  final isChatBotVisible = snapshot.data ?? false;
                   return isChatBotVisible
                       ? Positioned(
-                          bottom: -10,
-                          right: -35,
+                          bottom: 4,
+                          right: 7,
                           child: InkWell(
                             onTap: () {
-                              NavigationService.push(
-                                  target: const SmartIntermeditate(
-                                      //  id: _response.detail['id']
-                                      ));
-                              // onButtonPressed();
+                              onButtonPressed();
                             },
-                            // child:
-                            //     BlocListener<UtilityPaymentCubit, CommonState>(
-                            //   listener: (context, state) {
-                            //     if (state is CommonStateSuccess<
-                            //         UtilityResponseData>) {
-                            //       final UtilityResponseData _response =
-                            //           state.data;
-                            //       if (_response.code == "M0000") {
-                            //         NavigationService.push(
-                            //             target: SmartChatPage(
-                            //                 id: _response.detail['id']));
-                            //       }
-                            //     }
-                            //   },
-                            //   child: Container(
-                            //     width: 140,
-                            //     height: 140,
-                            //     child: Image.asset("assets/smart_fuchee.png"),
-                            //   ),
-                            // ),
-                            child: Container(
-                              width: 140,
-                              height: 140,
-                              child: Image.asset("assets/smart_fuchee.png"),
+                            child:
+                                BlocListener<UtilityPaymentCubit, CommonState>(
+                              listener: (context, state) {
+                                if (state is CommonStateSuccess<
+                                    UtilityResponseData>) {
+                                  final UtilityResponseData response =
+                                      state.data;
+                                  if (response.code == "M0000") {
+                                    NavigationService.push(
+                                      target: IntermediateChatPage(
+                                        id: response.detail['id'],
+                                      ),
+                                    );
+                                  }
+                                }
+                              },
+                              child: Container(
+                                width: 80,
+                                height: 80,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.circle,
+                                  color: CustomTheme.white,
+                                  border: Border.all(
+                                    color: CustomTheme.primaryColor
+                                        .withOpacity(.7),
+                                    width: 1.0,
+                                  ),
+                                ),
+                                child: ClipOval(
+                                  child: Padding(
+                                    padding: const EdgeInsets.only(top: 6),
+                                    child: Image.asset(
+                                      "assets/smart_fuchee.png",
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                              ),
                             ),
                           ),
                         )
@@ -254,6 +261,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
         apiEndpoint: "api/ai/create");
   }
 }
+
+
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:flutter_svg/flutter_svg.dart';

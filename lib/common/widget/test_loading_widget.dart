@@ -76,7 +76,7 @@ class _TestLoadingWidgetState extends State<TestLoadingWidget>
             child: CustomPaint(
               painter: _LoaderRingPainter(
                 ringColor: widget.ringColor,
-                ringWidth: 8.0, // Fixed ring width
+                ringWidth: 8.0,
                 outerSize: widget.size + (widget.padding * 2),
                 padding: widget.padding,
               ),

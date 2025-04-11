@@ -157,7 +157,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                                       transactionId:
                                           _detail.transactionIdentifier,
                                     );
-
                                 NavigationService.push(
                                     target: TransactionDetailPage(
                                   downloadUrlNotifier: _downloadNotifierValue,
