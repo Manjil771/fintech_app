@@ -4997,7 +4997,7 @@ class CoOperativeValue {
     clientSecret: "121014",
     coOperativeLogo: 'assets/besiShahar/besiShahar_logo.png',
     splashImage: "assets/besiShahar/besiShahar_splash.png",
-    primaryColor: const Color(0xFF168340),
+    primaryColor: const Color(0xFF3c9553),
     coOperativeName: "BesiShahar Saving & Credit Co-operative Ltd.",
     appTitle: 'BesiShahar iSmart',
   );
@@ -5015,5 +5015,5 @@ class CoOperativeValue {
     coOperativeName: "Shree Nawajyoti Saving & Credit Co-operative Ltd.",
     appTitle: 'Shree Nawajyoti iSmart',
   );
-  static final CoOperative currentCoop = shreeNawajyoticoop;
+  static final CoOperative currentCoop = besiShaharcoop;
 }

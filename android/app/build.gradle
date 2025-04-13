@@ -2184,6 +2184,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        besiShahar {
+            dimension "app"
+            applicationId "com.devanasoft.besiShahar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {

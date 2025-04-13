@@ -93,7 +93,8 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
-    - assets/shreeNawajyoti/
+    - assets/besiShahar/
+    # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
     # - assets/begnas/
