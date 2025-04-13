@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:android_id/android_id.dart';
+// import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:device_marketing_names/device_marketing_names.dart';
 import 'package:fk_user_agent/fk_user_agent.dart';
@@ -17,7 +17,7 @@ class DeviceUtils {
 
   static final DeviceInfoPlugin _deviceInfo = DeviceInfoPlugin();
 
-  static String _deviceId = "";
+  static const String _deviceId = "";
 
   static String _marketingName = "";
 
@@ -25,24 +25,24 @@ class DeviceUtils {
 
   static String _appVersion = "";
 
-  static Future<String> get getDeviceId async {
-    if (_deviceId.isNotEmpty) {
-      return _deviceId;
-    }
-    try {
-      if (Platform.isAndroid) {
-        _deviceId = await const AndroidId().getId() ?? "";
-        return _deviceId;
-      } else if (Platform.isIOS) {
-        final res = await _deviceInfo.iosInfo;
-        _deviceId = res.identifierForVendor ?? "";
-        return _deviceId;
-      }
-      return _deviceId;
-    } catch (e) {
-      return _deviceId;
-    }
-  }
+  // static Future<String> get getDeviceId async {
+  //   if (_deviceId.isNotEmpty) {
+  //     return _deviceId;
+  //   }
+  //   try {
+  //     if (Platform.isAndroid) {
+  //       _deviceId = await const AndroidId().getId() ?? "";
+  //       return _deviceId;
+  //     } else if (Platform.isIOS) {
+  //       final res = await _deviceInfo.iosInfo;
+  //       _deviceId = res.identifierForVendor ?? "";
+  //       return _deviceId;
+  //     }
+  //     return _deviceId;
+  //   } catch (e) {
+  //     return _deviceId;
+  //   }
+  // }
 
   static Future<String> get getAppVersion async {
     if (_appVersion.isNotEmpty) {
@@ -113,7 +113,8 @@ class DeviceUtils {
 
   static Future<Map<String, String>> get deviceInfoHeader async {
     final _uAgent = await userAgent;
-    final _deviceId = await getDeviceId;
+    // final _deviceId = await getDeviceId;
+    const _deviceId = "-1";
     final _marketName = await getMarketingName;
     final _aVersion = await getAppVersion;
     return {

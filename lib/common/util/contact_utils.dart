@@ -1,18 +1,18 @@
-import 'package:fluttercontactpicker/fluttercontactpicker.dart'
-    as flutter_contact_picker;
+import 'package:flutter_native_contact_picker/flutter_native_contact_picker.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ContactUtils {
   static Future<String?> get pickContact async {
+    final FlutterNativeContactPicker _contactPicker =
+        FlutterNativeContactPicker();
+
     try {
       final _contactPermission = await Permission.contacts.request();
       if (_contactPermission.isGranted) {
-        final _contact =
-            await flutter_contact_picker.FlutterContactPicker.pickPhoneContact(
-                askForPermission: true);
-        return _contact.phoneNumber?.number;
+        final _contact = await _contactPicker.selectContact();
+        return _contact?.selectedPhoneNumber ?? "";
       } else {
         SnackBarUtils.showErrorBar(
           context: NavigationService.context,

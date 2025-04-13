@@ -44,13 +44,14 @@ dependencies:
   url_launcher: "^6.3.1"
 
   animations: "^2.0.7"
-  qr_code_scanner: "^1.0.1"
+
   screenshot: ^3.0.0
   syncfusion_flutter_charts: ^28.2.11
   carousel_slider: ^5.0.0
   share_plus: ^7.2.2
   flutter_downloader: ^1.12.0
-  android_path_provider: "^0.3.0"
+  # android_path_provider: "^0.3.0"
+  android_path_provider: ^0.3.1
   jiffy: "^6.2.1"
   awesome_notifications: ^0.10.0
   package_info_plus: "^5.0.1"
@@ -64,7 +65,7 @@ dependencies:
     #   url: https://github.com/nsubash38/qr_code_test.git
     #   ref: 5a9744ab63e9bc257e99267f733da8535ca0b614
   flutter_fgbg: "^0.3.0"
-  android_id: "^0.3.3"
+  # android_id: "^0.3.3"
   fk_user_agent: "^2.1.0"
   device_marketing_names: ^1.0.2
   in_app_update: "^4.1.4"
@@ -75,7 +76,8 @@ dependencies:
   string_similarity: "^2.0.0"
   local_session_timeout: ^3.2.0
   crop_your_image: ^2.0.0
-  fluttercontactpicker: "^4.7.0"
+  # fluttercontactpicker: "^4.7.0"
+  flutter_native_contact_picker: ^0.0.10
   image_cropper: "^5.0.1"
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "1.0.0-dev.8"
