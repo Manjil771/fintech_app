@@ -1,7 +1,7 @@
 import 'dart:io';
 import 'dart:math';
 
-import 'package:flutter_native_image/flutter_native_image.dart';
+// import 'package:flutter_native_image/flutter_native_image.dart';
 import 'package:image_picker/image_picker.dart';
 
 class ImagePickerUtils {
@@ -18,14 +18,16 @@ class ImagePickerUtils {
           preferredCameraDevice:
               showOnlyFrontCamera ? CameraDevice.front : CameraDevice.rear);
 
-      return pickedFile != null ? compressVideo(File(pickedFile.path)) : null;
+      return pickedFile != null ? (File(pickedFile.path)) : null;
+      // return pickedFile != null ? compressVideo(File(pickedFile.path)) : null;
     } else {
       final pickedFile = await _picker.pickImage(
           source: ImageSource.camera,
           preferredCameraDevice:
               showOnlyFrontCamera ? CameraDevice.front : CameraDevice.rear);
 
-      return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
+      // return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
+      return pickedFile != null ? (File(pickedFile.path)) : null;
     }
     // return null;
   }
@@ -34,41 +36,43 @@ class ImagePickerUtils {
     if (isVideo) {
       final pickedFile = await _picker.pickVideo(source: ImageSource.gallery);
 
-      return pickedFile != null ? compressVideo(File(pickedFile.path)) : null;
+      return pickedFile != null ? (File(pickedFile.path)) : null;
+      // return pickedFile != null ? compressVideo(File(pickedFile.path)) : null;
     } else {
       final pickedFile = await _picker.pickImage(source: ImageSource.gallery);
 
-      return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
+      return pickedFile != null ? (File(pickedFile.path)) : null;
+      // return pickedFile != null ? compressImage(File(pickedFile.path)) : null;
     }
   }
 
-  static Future<File?> compressImage(File file) async {
-    final _fileSize = file.lengthSync() / 1024;
-    if (_fileSize.ceil() < _maxFileSize) {
-      return file;
-    }
-    final _percentage = 100 - (_maxFileSize / (file.lengthSync() / 1024));
-    final result = await FlutterNativeImage.compressImage(
-      file.absolute.path,
-      percentage: _percentage.ceil(),
-      quality: 80,
-    );
-    return result;
-  }
+  // static Future<File?> compressImage(File file) async {
+  //   final _fileSize = file.lengthSync() / 1024;
+  //   if (_fileSize.ceil() < _maxFileSize) {
+  //     return file;
+  //   }
+  //   final _percentage = 100 - (_maxFileSize / (file.lengthSync() / 1024));
+  //   final result = await FlutterNativeImage.compressImage(
+  //     file.absolute.path,
+  //     percentage: _percentage.ceil(),
+  //     quality: 80,
+  //   );
+  //   return result;
+  // }
 
-  static Future<File?> compressVideo(File file) async {
-    final _fileSize = file.lengthSync() / 1024;
-    if (_fileSize.ceil() < _maxFileSizeVideo) {
-      return file;
-    }
-    final _percentage = 100 - (_maxFileSize / (file.lengthSync() / 1024));
-    final result = await FlutterNativeImage.compressImage(
-      file.absolute.path,
-      percentage: _percentage.ceil(),
-      quality: 80,
-    );
-    return result;
-  }
+  // static Future<File?> compressVideo(File file) async {
+  //   final _fileSize = file.lengthSync() / 1024;
+  //   if (_fileSize.ceil() < _maxFileSizeVideo) {
+  //     return file;
+  //   }
+  //   final _percentage = 100 - (_maxFileSize / (file.lengthSync() / 1024));
+  //   final result = await FlutterNativeImage.compressImage(
+  //     file.absolute.path,
+  //     percentage: _percentage.ceil(),
+  //     quality: 80,
+  //   );
+  //   return result;
+  // }
 }
 
 getFileSize(String filepath, int decimals) async {

@@ -3,7 +3,7 @@ import 'dart:io';
 // import 'package:android_id/android_id.dart';
 import 'package:device_info_plus/device_info_plus.dart';
 import 'package:device_marketing_names/device_marketing_names.dart';
-import 'package:fk_user_agent/fk_user_agent.dart';
+// import 'package:fk_user_agent/fk_user_agent.dart';
 import 'package:package_info_plus/package_info_plus.dart';
 
 class DeviceUtils {
@@ -101,8 +101,9 @@ class DeviceUtils {
       if (_userAgent.isNotEmpty) {
         return _userAgent;
       } else {
-        await FkUserAgent.init();
-        _userAgent = FkUserAgent.userAgent ?? "";
+        // await FkUserAgent.init();
+        // _userAgent = FkUserAgent.userAgent ?? "";
+        _userAgent = "Dart/Flutter";
         print("Flutter User Agent : $_userAgent");
         return _userAgent;
       }

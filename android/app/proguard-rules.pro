@@ -1,0 +1,11 @@
+# Keep rules from missing_rules.txt (as suggested by the R8 error)
+-keep class javax.imageio.spi.ImageInputStreamSpi { *; }
+-keep class javax.imageio.spi.ImageOutputStreamSpi { *; }
+-keep class javax.imageio.spi.ImageReaderSpi { *; }
+-keep class javax.imageio.spi.ImageWriterSpi { *; }
+-keep class javax.imageio.spi.** { *; }
+-keep class com.github.jaiimageio.impl.** { *; }
+-keep interface javax.imageio.spi.ImageInputStreamSpi { *; }
+-keep interface javax.imageio.spi.ImageOutputStreamSpi { *; }
+-keep class javax.imageio.spi.ImageReaderSpi { *; }
+-keep class javax.imageio.spi.ImageWriterSpi { *; }

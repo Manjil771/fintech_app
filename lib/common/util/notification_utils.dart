@@ -1,6 +1,6 @@
 import 'package:awesome_notifications/awesome_notifications.dart';
 import 'package:flutter/widgets.dart';
-import 'package:flutter_app_badger/flutter_app_badger.dart';
+// import 'package:flutter_app_badger/flutter_app_badger.dart';
 import 'package:ismart/common/models/local_notification.dart';
 import 'package:ismart/common/util/url_launcher.dart';
 
@@ -43,11 +43,11 @@ class NotificationUtils {
         displayOnBackground: true,
       ),
     );
-    FlutterAppBadger.removeBadge();
+    // FlutterAppBadger.removeBadge();
   }
 
   static generateDownloadCompletedNotification(String filePath) async {
-    bool _isCreated = await AwesomeNotifications().createNotification(
+    final bool _isCreated = await AwesomeNotifications().createNotification(
       content: NotificationContent(
         id: 1001,
         channelKey: notificationChannelKey,
@@ -61,7 +61,7 @@ class NotificationUtils {
       ),
     );
     print("Notification has been created : $_isCreated");
-    FlutterAppBadger.removeBadge();
+    // FlutterAppBadger.removeBadge();
   }
 
   static generateDownloadFailedNotification() {
@@ -77,7 +77,7 @@ class NotificationUtils {
         displayOnBackground: true,
       ),
     );
-    FlutterAppBadger.removeBadge();
+    // FlutterAppBadger.removeBadge();
   }
 
   static generateDownloadCancelledNotification() {
@@ -93,6 +93,6 @@ class NotificationUtils {
         displayOnBackground: true,
       ),
     );
-    FlutterAppBadger.removeBadge();
+    // FlutterAppBadger.removeBadge();
   }
 }

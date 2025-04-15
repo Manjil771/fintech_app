@@ -1,14 +1,12 @@
 import 'dart:async';
-import 'dart:io';
 
 import 'package:audio_session/audio_session.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_sound_record/flutter_sound_record.dart';
+// import 'package:flutter_sound_record/flutter_sound_record.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
@@ -22,7 +20,6 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class SmartChatPage extends StatefulWidget {
@@ -52,10 +49,10 @@ class _SmartChatPageState extends State<SmartChatPage> {
   String destinationDate = '';
 
   //for sound record
-  final FlutterSoundRecord _recorder = FlutterSoundRecord();
-  String _recordedFilePath = '';
+  // final FlutterSoundRecord _recorder = FlutterSoundRecord();
+  final String _recordedFilePath = '';
   final AudioPlayer _audioPlayer = AudioPlayer();
-  bool _isRecording = false;
+  final bool _isRecording = false;
   bool _isAudioPlaying = false;
 
   final List<Map<String, dynamic>> _chatHistory = [];
@@ -82,54 +79,54 @@ class _SmartChatPageState extends State<SmartChatPage> {
     await Permission.microphone.request();
   }
 
-  Future<void> _startRecording() async {
-    try {
-      if (await Permission.microphone.isGranted) {
-        final Directory tempDir = await getTemporaryDirectory();
-        _recordedFilePath = '${tempDir.path}/temp_recording.m4a';
+  // Future<void> _startRecording() async {
+  //   try {
+  //     if (await Permission.microphone.isGranted) {
+  //       final Directory tempDir = await getTemporaryDirectory();
+  //       _recordedFilePath = '${tempDir.path}/temp_recording.m4a';
 
-        if (!await _recorder.isRecording()) {
-          await _recorder.start(
-            path: _recordedFilePath,
-            encoder: AudioEncoder.AAC,
-            bitRate: 128000,
-            samplingRate: 44100,
-          );
-          setState(() {
-            _isRecording = true;
-          });
-        } else {
-          print('MicroPhone permission not granted');
-        }
-      }
-    } catch (e) {
-      print('Error starting recording: $e');
-    }
-  }
+  //       if (!await _recorder.isRecording()) {
+  //         await _recorder.start(
+  //           path: _recordedFilePath,
+  //           encoder: AudioEncoder.AAC,
+  //           bitRate: 128000,
+  //           samplingRate: 44100,
+  //         );
+  //         setState(() {
+  //           _isRecording = true;
+  //         });
+  //       } else {
+  //         print('MicroPhone permission not granted');
+  //       }
+  //     }
+  //   } catch (e) {
+  //     print('Error starting recording: $e');
+  //   }
+  // }
 
-  Future<void> _stopRecording(String _sessionId) async {
-    try {
-      if (await _recorder.isRecording()) {
-        await _recorder.stop();
-        if (mounted) {
-          setState(() {
-            _isloadingVoice = true;
-            _isRecording = false;
-          });
-        }
-        final File audioFile = File(_recordedFilePath);
-        // final File audioStatic =
-        //     await loadAssetAsFile('assets/test2.wav', 'test2.wav');
-        if (_recordedFilePath.isNotEmpty && mounted) {
-          context
-              .read<AudioUploadCubit>()
-              .uploadAudio(audioFile: audioFile, sessionId: _sessionId);
-        }
-      }
-    } catch (e) {
-      print("Eroor stopping the recording : $e");
-    }
-  }
+  // Future<void> _stopRecording(String _sessionId) async {
+  //   try {
+  //     if (await _recorder.isRecording()) {
+  //       await _recorder.stop();
+  //       if (mounted) {
+  //         setState(() {
+  //           _isloadingVoice = true;
+  //           _isRecording = false;
+  //         });
+  //       }
+  //       final File audioFile = File(_recordedFilePath);
+  //       // final File audioStatic =
+  //       //     await loadAssetAsFile('assets/test2.wav', 'test2.wav');
+  //       if (_recordedFilePath.isNotEmpty && mounted) {
+  //         context
+  //             .read<AudioUploadCubit>()
+  //             .uploadAudio(audioFile: audioFile, sessionId: _sessionId);
+  //       }
+  //     }
+  //   } catch (e) {
+  //     print("Eroor stopping the recording : $e");
+  //   }
+  // }
 
   Future<void> _playAudioResponse(String audioUrl) async {
     try {
@@ -423,28 +420,29 @@ class _SmartChatPageState extends State<SmartChatPage> {
               margin: const EdgeInsets.only(bottom: 10),
               child: Row(
                 children: [
-                  FutureBuilder(
-                      future: SharedPref.getVoiceChatVisibility(),
-                      builder: (context, snapshot) {
-                        final isVoiceChatVisible = snapshot.data ?? false;
-                        return isVoiceChatVisible
-                            ? GestureDetector(
-                                onLongPressStart: (_) => _startRecording(),
-                                onLongPressEnd: (_) =>
-                                    _stopRecording(widget.id.toString()),
-                                child: IconButton(
-                                  icon: Icon(
-                                    Icons.mic,
-                                    color: _isRecording
-                                        ? Colors.grey
-                                        : CustomTheme.primaryColor,
-                                    size: 30,
-                                  ),
-                                  onPressed: () {},
-                                ),
-                              )
-                            : const SizedBox.shrink();
-                      }),
+                  // FutureBuilder(
+                  //     future: SharedPref.getVoiceChatVisibility(),
+                  //     builder: (context, snapshot) {
+                  //       final isVoiceChatVisible = snapshot.data ?? false;
+                  //       return isVoiceChatVisible
+                  //           ? GestureDetector(
+                  //               onLongPressStart: (_) => _startRecording(),
+                  //               onLongPressEnd: (_) =>
+                  //                   _stopRecording(widget.id.toString()),
+                  //               child: IconButton(
+                  //                 icon: Icon(
+                  //                   Icons.mic,
+                  //                   color: _isRecording
+                  //                       ? Colors.grey
+                  //                       : CustomTheme.primaryColor,
+                  //                   size: 30,
+                  //                 ),
+                  //                 onPressed: () {},
+                  //               ),
+                  //             )
+                  //           : const SizedBox.shrink();
+                  //     }),
+
                   IconButton(
                     icon: Icon(
                       Icons.send,
@@ -642,7 +640,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
     _messageController.dispose();
     _focusNode.dispose();
     _scrollController.dispose();
-    _recorder.dispose();
+    // _recorder.dispose();
     _audioPlayer.dispose();
     super.dispose();
   }
