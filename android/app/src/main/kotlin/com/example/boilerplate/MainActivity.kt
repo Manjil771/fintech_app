@@ -1,4 +1,4 @@
-package com.devanasoft.ismart
+package com.devanasoft.ismart.dev
 
 import io.flutter.embedding.android.FlutterFragmentActivity
 
