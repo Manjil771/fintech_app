@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/contact_utils.dart';
@@ -15,6 +16,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/more/transactionLimit/transaction_progress_page.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/cubit/wallet_send_cubit.dart';
 import 'package:ismart/feature/sendMoney/wallet_transfer/model/wallet_model.dart';
@@ -46,6 +48,30 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
     }
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void _toggleBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => Container(
+        height: 500,
+        decoration: const BoxDecoration(
+          color: CustomTheme.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: const TransactionProgressPage(
+          persistOpen: true,
+          title: "Wallet ",
+          profileType: 'WalletProfile',
+          isOpen: true,
+        ),
+      ),
+    );
+  }
+
   @override
   void initState() {
     checkAccount();
@@ -60,6 +86,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
+      scaffoldKey: _scaffoldKey,
       body: MultiBlocListener(
         listeners: [
           BlocListener<WalletSendCubit, CommonState>(
@@ -272,6 +299,8 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                             val, "Wallet Id"),
                       ),
                 CustomTextField(
+                  showTransLimit: true,
+                  transLimitFunc: _toggleBottomSheet,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
                   title: "Amount",
                   hintText: "Enter the amount",

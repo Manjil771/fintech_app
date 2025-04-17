@@ -1,7 +1,11 @@
 import 'dart:math';
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -16,6 +20,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/resource/app_service_repository.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/more/transactionLimit/transaction_progress_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/screen/bank_list_page.dart';
 import 'package:ismart/feature/sendMoney/anyBank/widgets/bank_transfer_otp_widget.dart';
 import 'package:ismart/feature/sendMoney/cubits/bank_charge_cubit.dart';
@@ -80,6 +85,30 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
     }
   }
 
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void _toggleBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => Container(
+        height: 500,
+        decoration: const BoxDecoration(
+          color: CustomTheme.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: const TransactionProgressPage(
+          persistOpen: true,
+          title: "Bank Transfer",
+          profileType: 'BankTransferProfile',
+          isOpen: true,
+        ),
+      ),
+    );
+  }
+
   String minAmount = "100";
   String maxAmount = "200000";
 
@@ -112,6 +141,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
             : NavigationService.pop();
       },
       child: PageWrapper(
+        scaffoldKey: _scaffoldKey,
         body: MultiBlocListener(
           listeners: [
             BlocListener<UtilityPaymentCubit, CommonState>(
@@ -526,6 +556,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               res.findValue(primaryKey: "maximum_amount");
                         }
                         return CustomTextField(
+                          showTransLimit: true,
+                          transLimitFunc: _toggleBottomSheet,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
                           title: "Amount",
                           hintText: "NPR",

@@ -4582,5 +4582,5 @@ class CoOperativeValue {
     coOperativeName: "Shree Phulbari Saving & Credit Co-operative Ltd.",
     appTitle: 'Shreephulbari iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

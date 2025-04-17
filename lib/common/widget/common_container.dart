@@ -203,27 +203,6 @@ class _CommonContainerState extends State<CommonContainer> {
                                 )
                               : Container(),
                           SizedBox(height: _height * 0.25),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.end,
-                          //   children: [
-                          //     if (widget.showRecentTransaction)
-                          //       RecentTransactionServiceScreen(
-                          //           serviceId: widget.serviceId ?? "",
-                          //           onRecentTransactionPressed:
-                          //               widget.onRecentTransactionPressed ?? (v) {},
-                          //           service: widget.serviceName,
-                          //           serviceCategoryId: widget.serviceCategoryId,
-                          //           associatedId: widget.associatedId),
-                          //   ],
-                          // ),
-                          // widget.body,
-                          // SizedBox(height: _height * 0.03),
-                          // widget.showRoundBotton
-                          //     ? CustomRoundedButtom(
-                          //         verificationAmount: widget.verificationAmount,
-                          //         title: widget.buttonName,
-                          //         onPressed: widget.onButtonPressed)
-                          //     : Container(),
                         ],
                       ),
                     ),
