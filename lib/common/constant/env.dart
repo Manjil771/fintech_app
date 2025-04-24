@@ -4582,5 +4582,25 @@ class CoOperativeValue {
     coOperativeName: "Shree Phulbari Saving & Credit Co-operative Ltd.",
     appTitle: 'Shreephulbari iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = janakalyanMultipurpose;
+
+  static final CoOperative janakalyanMultipurpose = CoOperative(
+    appStoreID: "com.devanasoft.janakalyanMultipurpose",
+    packageName: "com.devanasoft.janakalyanMultipurpose",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage:
+        "assets/janakalyanMultipurpose/janakalyanMultipurpose_banner.png",
+    backgroundImage:
+        "assets/janakalyanMultipurpose/janakalyanMultipurpose_background.jpg",
+    clientCode: 'RD4RZP7824',
+    clientSecret: "206351",
+    coOperativeLogo:
+        'assets/janakalyanMultipurpose/janakalyanMultipurpose_logo.png',
+    splashImage:
+        "assets/janakalyanMultipurpose/janakalyanMultipurpose_splash.png",
+    primaryColor: const Color(0xFF01A54F),
+    coOperativeName:
+        "Janakalyan Multipurpose Saving & Credit Co-operative Ltd.",
+    appTitle: 'Janakalyan Multipurpose iSmart',
+  );
 }

@@ -2022,6 +2022,12 @@ android {
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }
+        janakalyanMultipurpose {
+            dimension "app"
+            applicationId "com.devanasoft.janakalyanMultipurpose"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         }
 
         signingConfigs {
