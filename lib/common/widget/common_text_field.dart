@@ -12,6 +12,7 @@ class CustomTextField extends FormField<String> {
     Key? key,
     this.controller,
     ValueChanged<String>? onChanged,
+    bool showTransLimit = false,
     ValueChanged<String>? onSubmited,
     String hintText = "",
     bool showSearchIcon = false,
@@ -24,6 +25,7 @@ class CustomTextField extends FormField<String> {
     IconData? suffixIcon,
     bool showSuffixImage = false,
     VoidCallback? onSuffixPressed,
+    VoidCallback? transLimitFunc,
     int? maxLength,
     bool customHintTextStyle = false,
     double bottomMargin = 10,
@@ -146,6 +148,7 @@ class CustomTextField extends FormField<String> {
                             children: [
                               if (leading != null) leading,
                               Expanded(
+                                flex: showTransLimit ? 4 : 1,
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: CustomTheme.white,
@@ -222,6 +225,29 @@ class CustomTextField extends FormField<String> {
                                   ),
                                 ),
                               ),
+                              if (showTransLimit)
+                                Expanded(
+                                    flex: 1,
+                                    child: InkWell(
+                                      onTap: transLimitFunc,
+                                      child: Container(
+                                        margin: const EdgeInsets.all(10),
+                                        decoration: BoxDecoration(
+                                            border: Border.all(
+                                              width: 1,
+                                              color: CustomTheme.gray,
+                                            ),
+                                            borderRadius:
+                                                BorderRadius.circular(12)),
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(12.0),
+                                          child: Icon(
+                                            Icons.info_outline,
+                                            color: CustomTheme.primaryColor,
+                                          ),
+                                        ),
+                                      ),
+                                    )),
                               if (trailing != null) trailing,
                             ],
                           ),

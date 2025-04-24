@@ -8,10 +8,12 @@ class TransactionProgressPage extends StatelessWidget {
   final String title;
   final String profileType;
   final bool isOpen;
+  final bool persistOpen;
   const TransactionProgressPage(
       {super.key,
       required this.title,
       required this.profileType,
+      this.persistOpen = false,
       this.isOpen = false});
 
   @override
@@ -24,6 +26,7 @@ class TransactionProgressPage extends StatelessWidget {
         title: title,
         profileType: profileType,
         isOpen: isOpen,
+        persistOpen: persistOpen,
       ),
     );
   }

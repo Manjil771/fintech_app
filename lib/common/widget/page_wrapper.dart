@@ -20,12 +20,14 @@ class PageWrapper extends StatefulWidget {
   final Widget? bottomNavBar;
   final Color? backgroundColor;
   final bool showChatBot;
+  final GlobalKey<ScaffoldState>? scaffoldKey;
   final FloatingActionButtonLocation floatingActionButtonLocation;
   final FloatingActionButtonType floatingActionButtonType;
   final Function()? onBackPressed;
   final bool showBackButton;
 
   const PageWrapper({
+    this.scaffoldKey,
     this.useOwnAppBar = false,
     this.showChatBot = false,
     required this.body,
@@ -58,6 +60,7 @@ class _PageWrapperState extends State<PageWrapper> {
       return widget.body;
     } else {
       return Scaffold(
+        key: widget.scaffoldKey,
         floatingActionButton:
             widget.floatingActionButtonType == FloatingActionButtonType.Button
                 ? (widget.floatinActionButton != null

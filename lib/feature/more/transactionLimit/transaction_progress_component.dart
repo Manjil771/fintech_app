@@ -15,10 +15,12 @@ class TransactionProgressComponent extends StatefulWidget {
   final String title;
   final String profileType;
   final bool isOpen;
+  final bool persistOpen;
   const TransactionProgressComponent(
       {super.key,
       required this.title,
       required this.profileType,
+      required this.persistOpen,
       this.isOpen = false});
 
   @override
@@ -284,11 +286,13 @@ class _TransactionProgressComponentState
           color: Colors.white,
           child: InkWell(
             onTap: () {
-              setState(() {
-                _isExpanded = !_isExpanded;
-              });
-              if (_isExpanded) {
-                onButtonPressed();
+              if (!widget.persistOpen) {
+                setState(() {
+                  _isExpanded = !_isExpanded;
+                });
+                if (_isExpanded) {
+                  onButtonPressed();
+                }
               }
             },
             child: AnimatedSize(
