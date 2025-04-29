@@ -148,7 +148,7 @@ class CustomTextField extends FormField<String> {
                             children: [
                               if (leading != null) leading,
                               Expanded(
-                                flex: showTransLimit ? 4 : 1,
+                                flex: showTransLimit ? 3 : 1,
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: CustomTheme.white,
@@ -231,19 +231,24 @@ class CustomTextField extends FormField<String> {
                                     child: InkWell(
                                       onTap: transLimitFunc,
                                       child: Container(
-                                        margin: const EdgeInsets.all(10),
+                                        margin: const EdgeInsets.symmetric(
+                                            horizontal: 8),
                                         decoration: BoxDecoration(
                                             border: Border.all(
                                               width: 1,
                                               color: CustomTheme.gray,
                                             ),
                                             borderRadius:
-                                                BorderRadius.circular(12)),
-                                        child: Padding(
-                                          padding: const EdgeInsets.all(12.0),
-                                          child: Icon(
-                                            Icons.info_outline,
-                                            color: CustomTheme.primaryColor,
+                                                BorderRadius.circular(16)),
+                                        child: Center(
+                                          child: SizedBox(
+                                            width: 48,
+                                            height: 48,
+                                            child: Icon(
+                                              Icons.info_outline,
+                                              color: CustomTheme.primaryColor,
+                                              size: 24,
+                                            ),
                                           ),
                                         ),
                                       ),

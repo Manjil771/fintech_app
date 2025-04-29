@@ -72,18 +72,29 @@ class TransactionDetailBox extends StatelessWidget {
                     style: TextStyle(
                       fontFamily: "popinsemibold",
                       fontSize: 12,
-                      color: recentTransactionModel.debit
-                          ? Colors.red
-                          : Colors.green,
+                      color: (recentTransactionModel.status
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "complete" ||
+                              recentTransactionModel.status
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "approved")
+                          ? Colors.green
+                          : Colors.red,
                     ),
                   ),
                   Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(4),
-                      color: recentTransactionModel.status
-                                  .toString()
-                                  .toLowerCase() ==
-                              "Complete".toLowerCase()
+                      color: (recentTransactionModel.status
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "complete" ||
+                              recentTransactionModel.status
+                                      .toString()
+                                      .toLowerCase() ==
+                                  "approved")
                           ? Colors.green
                           : Colors.red,
                     ),
