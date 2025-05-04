@@ -4582,8 +4582,6 @@ class CoOperativeValue {
     coOperativeName: "Shree Phulbari Saving & Credit Co-operative Ltd.",
     appTitle: 'Shreephulbari iSmart',
   );
-  static final CoOperative currentCoop = janakalyanMultipurpose;
-
   static final CoOperative janakalyanMultipurpose = CoOperative(
     appStoreID: "com.devanasoft.janakalyanMultipurpose",
     packageName: "com.devanasoft.janakalyanMultipurpose",
@@ -4603,4 +4601,5 @@ class CoOperativeValue {
         "Janakalyan Multipurpose Saving & Credit Co-operative Ltd.",
     appTitle: 'Janakalyan Multipurpose iSmart',
   );
+  static final CoOperative currentCoop = exoticCoop;
 }

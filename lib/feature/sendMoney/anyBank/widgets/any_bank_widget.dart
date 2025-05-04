@@ -94,7 +94,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
         borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
       ),
       builder: (context) => Container(
-        height: 500,
+        // height: 500,
         decoration: const BoxDecoration(
           color: CustomTheme.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
