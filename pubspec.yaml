@@ -81,6 +81,7 @@ dependencies:
   nepali_utils: ^3.0.6
   flutter_zxing: ^1.8.2
   percent_indicator: ^4.2.4
+  # shimmer: ^3.0.0
 
 dev_dependencies:
   flutter_test:
@@ -332,7 +333,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
-    # - assets/shreekrishna/
+    - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
     # - assets/sklakhanpur/
