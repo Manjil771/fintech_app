@@ -4582,5 +4582,19 @@ class CoOperativeValue {
     coOperativeName: "Shree Phulbari Saving & Credit Co-operative Ltd.",
     appTitle: 'Shreephulbari iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative nepalCoop = CoOperative(
+    appStoreID: "com.devanasoft.nepalCoop",
+    packageName: "com.devanasoft.nepalCoop",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/nepalCoop/nepalCoop_banner.png",
+    backgroundImage: "assets/nepalCoop/nepalCoop_background.png",
+    clientCode: 'UFMGXC59V3',
+    clientSecret: "157346",
+    coOperativeLogo: 'assets/nepalCoop/nepalCoop_logo.png',
+    splashImage: "assets/nepalCoop/nepalCoop_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Nepal Co-operative Society Ltd.",
+    appTitle: 'Nepal Coop iSmart',
+  );
+  static final CoOperative currentCoop = exoticCoop;
 }

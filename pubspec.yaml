@@ -99,7 +99,8 @@ dependency_overrides:
 
 flutter:
   assets:
-    - assets/bhimad/
+    # - assets/bhimad/
+    - assets/nepalCoop/
     # - assets/shreephulbari/
     # - assets/gauthali/
     # - assets/ashish/
@@ -210,7 +211,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -369,7 +370,7 @@ flutter:
     # - assets/sunischit/
     # - assets/safal/
     # - assets/shreeArunodaya/
-    # - assets/exotic/
+    - assets/exotic/
     # - assets/chaulani/
     # - assets/arthaGanesh/
     # - assets/janani/

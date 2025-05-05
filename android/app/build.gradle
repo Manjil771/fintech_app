@@ -2022,6 +2022,13 @@ android {
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }
+            nepalCoop {
+                dimension "app"
+                applicationId "com.devanasoft.nepalCoop"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            
         }
 
         signingConfigs {
