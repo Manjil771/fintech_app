@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/primary_account_box.dart';
 import 'package:ismart/common/widget/scaffold_topbar.dart';
-import 'package:ismart/common/wrapper/bottom_sheet_wrapper.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_service_page.dart';
 
@@ -74,23 +71,30 @@ class CommonContainer extends StatefulWidget {
 
 class _CommonContainerState extends State<CommonContainer> {
   late DraggableScrollableController _controller;
-  double initialChildSize = 0.05;
-  static const double minChildSize = 0.05;
+  double initialChildSize = 0.07;
+  static const double minChildSize = 0.07;
   static const double maxChildSize = 0.9;
+  bool isExpanded = false;
 
   @override
   void initState() {
     super.initState();
     _controller = DraggableScrollableController();
-    // _setShowLength();
   }
 
-  // Future<void> _setShowLength() async {
-  //   final bool isCompact = await SharedPref.getRecentTransVisibility();
-  //   setState(() {
-  //     initialChildSize = isCompact ? 0.05 : 0.20;
-  //   });
-  // }
+  void _toggleSheet() {
+    isExpanded = !isExpanded;
+    setState(() {
+      if (isExpanded) {
+        _controller.animateTo(
+          isExpanded ? maxChildSize : minChildSize,
+          duration: const Duration(milliseconds: 300),
+          curve: Curves.easeInOut,
+        );
+        isExpanded = !isExpanded;
+      }
+    });
+  }
 
   @override
   void dispose() {
@@ -199,27 +203,6 @@ class _CommonContainerState extends State<CommonContainer> {
                                 )
                               : Container(),
                           SizedBox(height: _height * 0.25),
-                          // Row(
-                          //   mainAxisAlignment: MainAxisAlignment.end,
-                          //   children: [
-                          //     if (widget.showRecentTransaction)
-                          //       RecentTransactionServiceScreen(
-                          //           serviceId: widget.serviceId ?? "",
-                          //           onRecentTransactionPressed:
-                          //               widget.onRecentTransactionPressed ?? (v) {},
-                          //           service: widget.serviceName,
-                          //           serviceCategoryId: widget.serviceCategoryId,
-                          //           associatedId: widget.associatedId),
-                          //   ],
-                          // ),
-                          // widget.body,
-                          // SizedBox(height: _height * 0.03),
-                          // widget.showRoundBotton
-                          //     ? CustomRoundedButtom(
-                          //         verificationAmount: widget.verificationAmount,
-                          //         title: widget.buttonName,
-                          //         onPressed: widget.onButtonPressed)
-                          //     : Container(),
                         ],
                       ),
                     ),
@@ -238,72 +221,82 @@ class _CommonContainerState extends State<CommonContainer> {
               snapSizes: [initialChildSize, 0.2, maxChildSize],
               builder:
                   (BuildContext context, ScrollController scrollController) {
-                return Container(
-                  decoration: const BoxDecoration(
+                return GestureDetector(
+                  onTap: _toggleSheet,
+                  child: Container(
                     color: CustomTheme.white,
-                    borderRadius:
-                        BorderRadius.vertical(top: Radius.circular(20)),
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black12,
-                        blurRadius: 10,
-                        offset: Offset(0, -5),
-                      ),
-                    ],
-                  ),
-                  child: CustomScrollView(
-                    controller: scrollController,
-                    slivers: [
-                      SliverPersistentHeader(
-                        pinned: true,
-                        delegate: _SliverHeaderDelegate(
-                          child: Column(
-                            children: [
-                              Container(
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 4),
-                                child: Container(
-                                  height: 4,
-                                  width: 40,
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[300],
-                                    borderRadius: BorderRadius.circular(2),
-                                  ),
+                    child: SafeArea(
+                      top: false,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: CustomTheme.white,
+                          borderRadius: const BorderRadius.vertical(
+                              top: Radius.circular(20)),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.black.withAlpha(15),
+                              blurRadius: 4,
+                              offset: const Offset(0, -2),
+                            ),
+                          ],
+                        ),
+                        child: CustomScrollView(
+                          controller: scrollController,
+                          slivers: [
+                            SliverPersistentHeader(
+                              pinned: true,
+                              delegate: _SliverHeaderDelegate(
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      padding: const EdgeInsets.symmetric(
+                                          vertical: 4),
+                                      child: Container(
+                                        height: 4,
+                                        width: 40,
+                                        decoration: BoxDecoration(
+                                          color: Colors.grey[300],
+                                          borderRadius:
+                                              BorderRadius.circular(2),
+                                        ),
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding: const EdgeInsets.symmetric(
+                                          horizontal: 16, vertical: 3),
+                                      child: Text(
+                                        "Recent Transaction",
+                                        style: _textTheme.titleLarge?.copyWith(
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                    ),
+                                  ],
                                 ),
                               ),
-                              Padding(
-                                padding: const EdgeInsets.symmetric(
-                                    horizontal: 16, vertical: 3),
-                                child: Text(
-                                  "Recent Transaction",
-                                  style: _textTheme.titleLarge?.copyWith(
-                                    fontWeight: FontWeight.bold,
-                                  ),
-                                ),
+                            ),
+                            SliverFillRemaining(
+                              hasScrollBody: true,
+                              child: RecentTransactionServiceScreen(
+                                serviceId: widget.serviceId ?? "",
+                                onRecentTransactionPressed:
+                                    widget.onRecentTransactionPressed ?? (v) {},
+                                service: widget.serviceName,
+                                serviceCategoryId: widget.serviceCategoryId,
+                                associatedId: widget.associatedId,
+                                onListTap: () {
+                                  _controller.animateTo(
+                                    initialChildSize,
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                  );
+                                },
                               ),
-                            ],
-                          ),
+                            ),
+                          ],
                         ),
                       ),
-                      SliverFillRemaining(
-                        hasScrollBody: true,
-                        child: RecentTransactionServiceScreen(
-                          serviceId: widget.serviceId ?? "",
-                          onRecentTransactionPressed:
-                              widget.onRecentTransactionPressed ?? (v) {},
-                          service: widget.serviceName,
-                          serviceCategoryId: widget.serviceCategoryId,
-                          associatedId: widget.associatedId,
-                          onListTap: () {
-                            _controller.animateTo(
-                              initialChildSize,
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                            );
-                          },
-                        ),
-                      ),
-                    ],
+                    ),
                   ),
                 );
               },
