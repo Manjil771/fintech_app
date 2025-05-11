@@ -4596,5 +4596,19 @@ class CoOperativeValue {
     coOperativeName: "Nepal Co-operative Society Ltd.",
     appTitle: 'Nepal Coop iSmart',
   );
-  static final CoOperative currentCoop = exoticCoop;
+  static final CoOperative niyamanCoop = CoOperative(
+    appStoreID: "com.devanasoft.niyaman",
+    packageName: "com.devanasoft.niyaman",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/niyaman/niyaman_banner.png",
+    backgroundImage: "assets/niyaman/niyaman_background.png",
+    clientCode: 'ZECT5AZ6O8',
+    clientSecret: "205446",
+    coOperativeLogo: 'assets/niyaman/niyaman_logo.png',
+    splashImage: "assets/niyaman/niyaman_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Niyaman Multipurpose Co-operative Ltd.",
+    appTitle: 'Niyaman Multi iSmart',
+  );
+  static final CoOperative currentCoop = niyamanCoop;
 }
