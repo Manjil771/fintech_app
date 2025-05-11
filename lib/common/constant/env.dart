@@ -4969,7 +4969,7 @@ class CoOperativeValue {
     splashImage: "assets/rorang/rorang_splash.png",
     primaryColor: const Color(0xFF007e3d),
     coOperativeName: "Rorang Saving and Credit Co-operative Society Ltd.",
-    appTitle: 'RSACCOS iSmart',
+    appTitle: 'Rorang iSmart',
   );
   static final CoOperative janakalyanlamjungcoop = CoOperative(
     appStoreID: "com.devanasoft.janakalyanlamjung",
@@ -5137,9 +5137,23 @@ class CoOperativeValue {
     clientSecret: "202614",
     coOperativeLogo: 'assets/aadhunikjana/aadhunikjana_logo.png',
     splashImage: "assets/aadhunikjana/aadhunikjana_splash.png",
-    primaryColor: const Color(0xFF0d9347),
+    primaryColor: const Color(0xFF00a231),
     coOperativeName: "Aadhunik Jana Saving & Credit Co-operative Ltd",
     appTitle: 'Aadhunik Jana iSmart',
   );
-  static final CoOperative currentCoop = shreeFulbari;
+  static final CoOperative youthvisionCoop = CoOperative(
+    appStoreID: "com.devanasoft.youthvision",
+    packageName: "com.devanasoft.youthvision",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/youthvision/youthvision_banner.png",
+    backgroundImage: "assets/youthvision/youthvision_background.png",
+    clientCode: 'T3ZS8Q3LND',
+    clientSecret: "139401",
+    coOperativeLogo: 'assets/youthvision/youthvision_logo.png',
+    splashImage: "assets/youthvision/youthvision_splash.png",
+    primaryColor: const Color(0xFF0961ad),
+    coOperativeName: "Youth Vision Saving & Credit Co-operative Ltd",
+    appTitle: 'Youth Vision iSmart',
+  );
+  static final CoOperative currentCoop = aadhunikjanaCoop;
 }

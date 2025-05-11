@@ -2298,6 +2298,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        aadhunikjana {
+            dimension "app"
+            applicationId "com.devanasoft.aadhunikjana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        youthvision {
+            dimension "app"
+            applicationId "com.devanasoft.youthvision"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
