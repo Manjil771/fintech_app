@@ -126,7 +126,7 @@ class _RegisterMpinWidgetState extends State<RegisterMpinWidget> {
                             if (val == null) {
                               return "Please enter OTP.";
                             }
-                            if (val.length < 6) {
+                            if (val.length < 5) {
                               return "Please enter valid OTP.";
                             }
                             return null;

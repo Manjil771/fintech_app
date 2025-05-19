@@ -5155,5 +5155,33 @@ class CoOperativeValue {
     coOperativeName: "Youth Vision Saving & Credit Co-operative Ltd",
     appTitle: 'Youth Vision iSmart',
   );
-  static final CoOperative currentCoop = aadhunikjanaCoop;
+  static final CoOperative kasturiCoop = CoOperative(
+    appStoreID: "com.devanasoft.kasturi",
+    packageName: "com.devanasoft.kasturi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kasturi/kasturi_banner.PNG",
+    backgroundImage: "assets/kasturi/kasturi_background.PNG",
+    clientCode: 'KZ9NKTQU22',
+    clientSecret: "193972",
+    coOperativeLogo: 'assets/kasturi/kasturi_logo.PNG',
+    splashImage: "assets/kasturi/kasturi_splash.PNG",
+    primaryColor: const Color(0xFF0d9347),
+    coOperativeName: "Kasturi Saving & Credit Cooperative Ltd",
+    appTitle: 'Kasturi iSmart',
+  );
+  static final CoOperative shreemandanCoop = CoOperative(
+    appStoreID: "com.devanasoft.shreemandan",
+    packageName: "com.devanasoft.shreemandan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreemandan/shreemandan_banner.P NG",
+    backgroundImage: "assets/shreemandan/shreemandan_background.PNG",
+    clientCode: '0NX2WUC00G',
+    clientSecret: "158731",
+    coOperativeLogo: 'assets/shreemandan/shreemandan_logo.PNG',
+    splashImage: "assets/shreemandan/shreemandan_splash.PNG",
+    primaryColor: const Color(0xFF039544),
+    coOperativeName: "Shree Mandan Deupur Saving and Credit Co-operative Society Ltd",
+    appTitle: 'Shree Mandan Deupur iSmart',
+  );
+  static final CoOperative currentCoop = shreemandanCoop;
 }

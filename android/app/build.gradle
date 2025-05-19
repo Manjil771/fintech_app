@@ -2309,7 +2309,13 @@ android {
             applicationId "com.devanasoft.youthvision"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        }
+        } 
+         kasturi {
+            dimension "app"
+            applicationId "com.devanasoft.kasturi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        } 
     }
 
     signingConfigs {
