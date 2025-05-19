@@ -155,7 +155,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                                   index]
                                                               .interestRate) ??
                                                       0) >
-                                                  0.00000000001)
+                                                  0.1)
                                                 Column(
                                                   children: [
                                                     detailROw(

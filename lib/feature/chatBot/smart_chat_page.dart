@@ -66,18 +66,18 @@ class _SmartChatPageState extends State<SmartChatPage> {
     _focusNode.addListener(_onFocusChange);
     _initializeCategoryService();
     _addInitialPrompt();
-    _requestPermissions();
-    _initAudioSession();
+    // _requestPermissions();
+    // _initAudioSession();
   }
 
-  Future<void> _initAudioSession() async {
-    final session = await AudioSession.instance;
-    await session.configure(const AudioSessionConfiguration.speech());
-  }
+  // Future<void> _initAudioSession() async {
+  //   final session = await AudioSession.instance;
+  //   await session.configure(const AudioSessionConfiguration.speech());
+  // }
 
-  Future<void> _requestPermissions() async {
-    await Permission.microphone.request();
-  }
+  // Future<void> _requestPermissions() async {
+  //   await Permission.microphone.request();
+  // }
 
   // Future<void> _startRecording() async {
   //   try {
@@ -128,86 +128,86 @@ class _SmartChatPageState extends State<SmartChatPage> {
   //   }
   // }
 
-  Future<void> _playAudioResponse(String audioUrl) async {
-    try {
-      await _audioPlayer.stop();
-      await _audioPlayer.setUrl(audioUrl);
-      await _audioPlayer.play();
-    } catch (e) {
-      print('Error playing audio: $e');
-    }
-  }
+  // Future<void> _playAudioResponse(String audioUrl) async {
+  //   try {
+  //     await _audioPlayer.stop();
+  //     await _audioPlayer.setUrl(audioUrl);
+  //     await _audioPlayer.play();
+  //   } catch (e) {
+  //     print('Error playing audio: $e');
+  //   }
+  // }
 
-  void _showAudioDialog(String audioUrl) {
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) {
-        _playAudioResponse(audioUrl);
-        _playerStateSubscription?.cancel();
-        _playerStateSubscription =
-            _audioPlayer.playerStateStream.listen((playerState) {
-          if (playerState.processingState == ProcessingState.completed) {
-            if (Navigator.of(context).canPop()) {
-              setState(() {
-                _isAudioPlaying = false;
-              });
-              NavigationService.pop();
-            }
-          }
-        });
-        // _audioPlayer.playerStateStream.listen((playerState) {
+  // void _showAudioDialog(String audioUrl) {
+  //   showDialog(
+  //     context: context,
+  //     barrierDismissible: false,
+  //     builder: (context) {
+  //       _playAudioResponse(audioUrl);
+  //       _playerStateSubscription?.cancel();
+  //       _playerStateSubscription =
+  //           _audioPlayer.playerStateStream.listen((playerState) {
+  //         if (playerState.processingState == ProcessingState.completed) {
+  //           if (Navigator.of(context).canPop()) {
+  //             setState(() {
+  //               _isAudioPlaying = false;
+  //             });
+  //             NavigationService.pop();
+  //           }
+  //         }
+  //       });
+  //       // _audioPlayer.playerStateStream.listen((playerState) {
 
-        // });
+  //       // });
 
-        return AlertDialog(
-          title: const Center(
-              child: Text(
-            'Response',
-            style: TextStyle(
-              fontSize: 20,
-              color: CustomTheme.darkGray,
-            ),
-          )),
-          content: SizedBox(
-            height: 150,
-            child: Center(
-              child: Column(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  TypingIndicator(
-                    dotColor: CustomTheme.primaryColor,
-                    dotSize: 35,
-                    dotSpacing: 12,
-                    duration: const Duration(milliseconds: 700),
-                  ),
-                  const SizedBox(height: 15),
-                  TextButton(
-                    onPressed: () {
-                      _audioPlayer.stop();
-                      setState(() {
-                        _isAudioPlaying = false;
-                      });
-                      NavigationService.pop();
-                    },
-                    child: const Text(
-                      'Stop',
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: CustomTheme.darkGray,
-                          fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-        );
-      },
-    ).then((_) {
-      _playerStateSubscription?.cancel();
-    });
-  }
+  //       return AlertDialog(
+  //         title: const Center(
+  //             child: Text(
+  //           'Response',
+  //           style: TextStyle(
+  //             fontSize: 20,
+  //             color: CustomTheme.darkGray,
+  //           ),
+  //         )),
+  //         content: SizedBox(
+  //           height: 150,
+  //           child: Center(
+  //             child: Column(
+  //               mainAxisSize: MainAxisSize.min,
+  //               children: [
+  //                 TypingIndicator(
+  //                   dotColor: CustomTheme.primaryColor,
+  //                   dotSize: 35,
+  //                   dotSpacing: 12,
+  //                   duration: const Duration(milliseconds: 700),
+  //                 ),
+  //                 const SizedBox(height: 15),
+  //                 TextButton(
+  //                   onPressed: () {
+  //                     _audioPlayer.stop();
+  //                     setState(() {
+  //                       _isAudioPlaying = false;
+  //                     });
+  //                     NavigationService.pop();
+  //                   },
+  //                   child: const Text(
+  //                     'Stop',
+  //                     style: TextStyle(
+  //                         fontSize: 20,
+  //                         color: CustomTheme.darkGray,
+  //                         fontWeight: FontWeight.bold),
+  //                   ),
+  //                 ),
+  //               ],
+  //             ),
+  //           ),
+  //         ),
+  //       );
+  //     },
+  //   ).then((_) {
+  //     _playerStateSubscription?.cancel();
+  //   });
+  // }
 
   Future<void> _initializeCategoryService() async {
     await _categoryService.initialize(context);
@@ -514,7 +514,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
                     if (_res.detail['serviceIdentifier'] != null) {
                       actionButton(_res);
                     } else {
-                      _showAudioDialog(completeUrl);
+                      // _showAudioDialog(completeUrl);
                     }
                   } else {
                     print('Error in audio path');
@@ -601,6 +601,9 @@ class _SmartChatPageState extends State<SmartChatPage> {
                     'options': ['Start again']
                   });
                 });
+                Future.delayed(const Duration(seconds: 4), () {
+                  NavigationService.pop();
+                });
               }
             },
           ),
@@ -641,7 +644,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
     _focusNode.dispose();
     _scrollController.dispose();
     // _recorder.dispose();
-    _audioPlayer.dispose();
+    // _audioPlayer.dispose();
     super.dispose();
   }
 
