@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.31+60
+version: 1.5.30+60
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -42,6 +42,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
+  url_launcher_ios: ^6.2.1
 
   animations: "^2.0.7"
 
@@ -100,9 +101,41 @@ dependency_overrides:
 
 flutter:
   assets:
-    # - assets/janakalyanMultipurpose/
+
+    # - assets/shreeBakhan/
+    # - assets/aadhunikjana/
+    # - assets/naturalmulti/
+    # - assets/shreemandan/
+    # - assets/maruti/
+    # - assets/niyaman/
+    # - assets/youthvision/
+    # - assets/sahasradhara/
+    # - assets/race/
+    # - assets/arthikBikash/
+    # - assets/mission/
+    # - assets/development/
+    # - assets/premier/
+    # - assets/lamjung/
+    # - assets/swarnim/
+    # - assets/hamroNewa/
+    # - assets/janakalyanmulti/
+    # - assets/baglungmulti/
+
+    # - assets/besiShahar/
+    
+    # - assets/shreeNawajyoti/
+    # - assets/janakalyanlamjung/
+    # - assets/kundahar/
+    - assets/sahayatri/
+    # - assets/begnas/
+    # - assets/nagdhunga/
+    # - assets/rorang/
+    # - assets/sunganga/
+    # - assets/mahagauri/
+    # - assets/shreeChahana/
+    # - assets/bihani/
+    # - assets/nayapuime/
     # - assets/bhimad/
-    - assets/nepalCoop/
     # - assets/shreephulbari/
     # - assets/gauthali/
     # - assets/ashish/
@@ -125,6 +158,8 @@ flutter:
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
+    # - assets/uttarganga/
+    # - assets/kabil/
     # - assets/bhaktapur_saccos/
     # - assets/abhiyan/
     # - assets/kamana/
@@ -140,6 +175,10 @@ flutter:
     # - assets/navaprabhat/
     # - assets/utkrishta/
     # - assets/vyas/
+    # - assets/infinity/
+    # - assets/moneyPlant/
+    # - assets/newGeneration/
+    
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -196,6 +235,7 @@ flutter:
     # - assets/rithepani/
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
+    # - assets/shreeMyagde/
     # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
@@ -256,7 +296,7 @@ flutter:
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
-    # - assets/tanahunKalika/
+    # # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
@@ -399,6 +439,8 @@ flutter:
     # - assets/paschimanchal/
     # - assets/sadasyaSewa/
     # - assets/aabhash/
+    # - assets/mirmire/
+    
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -424,14 +466,17 @@ flutter:
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
+    # - assets/aichchhik/
     # - assets/kishanKalyan/
-    # - assets/puime/
+    # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/
     # - assets/kasturi/
     # - assets/ainchoPaincho/
     # - assets/nepal/
     # - assets/aniwarya/
+    # - assets/universe/
+    
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

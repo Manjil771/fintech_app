@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -348,6 +349,11 @@ class _LoginWidgetState extends State<LoginWidget> {
                     CustomPasswordField(
                       title: "Security Pin",
                       hintText: "Secrity Pin",
+                      maxLength: 6,
+                      inputFormatters: [
+                        FilteringTextInputFormatter.digitsOnly,
+                        LengthLimitingTextInputFormatter(6)
+                      ],
                       onTap: () async {
                         final CoOperative currentCoop =
                             RepositoryProvider.of<CoOperative>(context);
