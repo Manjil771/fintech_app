@@ -162,10 +162,16 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                         context,
                                                         "Interest Rate",
                                                         "${showValidAccount[index].interestRate} %"),
-                                                    detailROw(
-                                                        context,
-                                                        "Accured Interest",
-                                                        "NPR ${showValidAccount[index].accruedInterest}"),
+                                                    if ((double.tryParse(
+                                                                showValidAccount[
+                                                                        index]
+                                                                    .accruedInterest) ??
+                                                            0) >
+                                                        0.1)
+                                                      detailROw(
+                                                          context,
+                                                          "Accured Interest",
+                                                          "NPR ${showValidAccount[index].accruedInterest}"),
                                                   ],
                                                 ),
                                             detailROw(

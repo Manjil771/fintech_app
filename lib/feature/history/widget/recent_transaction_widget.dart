@@ -57,11 +57,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     return PageWrapper(
-      padding: EdgeInsets.zero,
-      showAppBar: false,
+      // padding: EdgeInsets.zero,
+      showAppBar: true,
       body: CommonContainer(
         showDetail: false,
-        showBackBotton: false,
+        showBackBotton: true,
         showRoundBotton: false,
         showTitleText: false,
         topbarName: "Recent Transaction",
