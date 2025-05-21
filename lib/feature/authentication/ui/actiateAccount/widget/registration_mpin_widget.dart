@@ -124,10 +124,10 @@ class _RegisterMpinWidgetState extends State<RegisterMpinWidget> {
                           controller: _textController,
                           validator: (val) {
                             if (val == null) {
-                              return "Please enter OTP.";
+                              return "Please enter pin.";
                             }
-                            if (val.length < 6) {
-                              return "Please enter valid OTP.";
+                            if (val.length < 5) {
+                              return "Please enter valid pin.";
                             }
                             return null;
                           },

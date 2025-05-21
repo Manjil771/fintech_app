@@ -69,6 +69,42 @@ class _BankingWidgetState extends State<BankingWidget> {
                         title: itemName[index],
                       ),
                     );
+                    // return GridView.builder(
+                    //   physics: const NeverScrollableScrollPhysics(),
+                    //   shrinkWrap: true,
+                    //   itemCount: (filteredItems.isEmpty ? 4 : itemName.length) +
+                    //       1, // Add one for static item
+                    //   gridDelegate:
+                    //       const SliverGridDelegateWithFixedCrossAxisCount(
+                    //     crossAxisCount: 2,
+                    //   ),
+                    //   itemBuilder: (context, index) {
+                    //     final isStaticItem = index ==
+                    //         (filteredItems.isEmpty ? 4 : itemName.length);
+                    //     if (isStaticItem) {
+                    //       return CommonGridViewContainer(
+                    //         onContainerPress: () {
+                    //           NavigationService.pushNamed(
+                    //             routeName: Routes.recentTransactionScreen,
+                    //           );
+                    //         },
+                    //         margin: const EdgeInsets.all(8),
+                    //         containerImage: Assets.historyIcon,
+                    //         title: 'History',
+                    //       );
+                    //     }
+
+                    //     return CommonGridViewContainer(
+                    //       onContainerPress: () {
+                    //         NavigationService.pushNamed(
+                    //             routeName: onPress[index]);
+                    //       },
+                    //       margin: const EdgeInsets.all(8),
+                    //       containerImage: images[index],
+                    //       title: itemName[index],
+                    //     );
+                    //   },
+                    // );
                   }
                   if (state is CommonLoading) {
                     return const CommonLoadingWidget();
@@ -88,7 +124,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     "Statement",
     // "Fund Transfer",
     'Cheque Request',
-    'Loan'
+    'Loan',
   ];
   final images = [
     Assets.accountInfo,
@@ -96,7 +132,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Assets.statement,
     // Assets.sendMoneyRemit,
     Assets.chequeBookIcon,
-    Assets.loanIcon
+    Assets.loanIcon,
   ];
   final onPress = [
     Routes.profileScreen,

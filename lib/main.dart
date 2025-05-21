@@ -18,7 +18,6 @@ Future<void> main() async {
     await FlutterDownloader.initialize();
   }
   await EasyLocalization.ensureInitialized();
-
   runZonedGuarded(() {
     HttpOverrides.global = MyHttpOverrides();
     runApp(

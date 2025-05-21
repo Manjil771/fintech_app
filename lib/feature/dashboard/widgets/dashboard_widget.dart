@@ -389,8 +389,10 @@ import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/home_page.dart';
 import 'package:ismart/feature/history/screen/recent_transaction_page.dart';
+import 'package:ismart/feature/history/widget/select_history_options.dart';
 import 'package:ismart/feature/more/screen/more_page.dart';
 import 'package:ismart/feature/qrscanner/screens/qrscanner_screen.dart';
+import 'package:ismart/feature/statement/fullStatement/ui/screen/choose_account_full_statement_page.dart';
 import 'package:open_filex/open_filex.dart';
 import 'package:permission_handler/permission_handler.dart';
 
@@ -411,7 +413,9 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const QRScannerScreens(),
-    const RecentTransactionScreen(),
+    // const RecentTransactionScreen(),
+    const SelectHistoryOptions(),
+    // const ChooseAccountFullStatementPage(),
     const MorePage()
   ];
 
@@ -693,24 +697,27 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                             ),
                             items: List.generate(offerBanners.length, (index) {
                               return GestureDetector(
-                                onLongPress: ()async{
-                                  final fileName = FileDownloadUtils.generateDownloadFileName(
-                                 name: "banner_$index",
-                                filetype: FileType.png, 
+                                onLongPress: () async {
+                                  final fileName = FileDownloadUtils
+                                      .generateDownloadFileName(
+                                    name: "banner_$index",
+                                    filetype: FileType.png,
                                   );
 
-       
-        final taskId = await FileDownloadUtils.downloadFile(
-          downloadLink: offerBanners[index],
-          fileName: fileName,
-          context: context,
-        );
+                                  final taskId =
+                                      await FileDownloadUtils.downloadFile(
+                                    downloadLink: offerBanners[index],
+                                    fileName: fileName,
+                                    context: context,
+                                  );
 
-        if (taskId != null) {
-          CustomToast.success(message: "Downloading banner...");
-        } else {
-          CustomToast.error(message: "Failed to start download.");
-        }
+                                  if (taskId != null) {
+                                    CustomToast.success(
+                                        message: "Downloading banner...");
+                                  } else {
+                                    CustomToast.error(
+                                        message: "Failed to start download.");
+                                  }
                                 },
                                 child: InkWell(
                                   child: Container(
@@ -722,12 +729,12 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                                       width: double.infinity,
                                       fit: BoxFit.fill,
                                       errorBuilder:
-                                          (context, error, stackTrace) => Column(
+                                          (context, error, stackTrace) =>
+                                              Column(
                                         children: [
-                                          Image.asset(
-                                              RepositoryProvider.of<CoOperative>(
-                                                      context)
-                                                  .coOperativeLogo),
+                                          Image.asset(RepositoryProvider.of<
+                                                  CoOperative>(context)
+                                              .coOperativeLogo),
                                         ],
                                       ),
                                     ),

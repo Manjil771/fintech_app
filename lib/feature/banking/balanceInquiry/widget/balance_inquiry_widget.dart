@@ -155,19 +155,20 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                                   index]
                                                               .interestRate) ??
                                                       0) >
-                                                  0.00000000001)
-                                                Column(
-                                                  children: [
-                                                    detailROw(
-                                                        context,
-                                                        "Interest Rate",
-                                                        "${showValidAccount[index].interestRate} %"),
-                                                    detailROw(
-                                                        context,
-                                                        "Accured Interest",
-                                                        "NPR ${showValidAccount[index].accruedInterest}"),
-                                                  ],
-                                                ),
+                                                  0.1)
+                                                detailROw(
+                                                    context,
+                                                    "Interest Rate",
+                                                    "${showValidAccount[index].interestRate} %"),
+                                            if ((double.tryParse(
+                                                        showValidAccount[index]
+                                                            .accruedInterest) ??
+                                                    0) >
+                                                0.1)
+                                              detailROw(
+                                                  context,
+                                                  "Accured Interest",
+                                                  "NPR ${showValidAccount[index].accruedInterest}"),
                                             detailROw(
                                                 context,
                                                 "Acc Holder’s Name",
