@@ -2340,6 +2340,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        janak {
+            dimension "app"
+            applicationId "com.devanasoft.janak"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

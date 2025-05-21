@@ -5226,5 +5226,19 @@ class CoOperativeValue {
     coOperativeName: "Sahayatri Saving and Credit Co-perative society Ltd",
     appTitle: 'Sahayatri iSmart',
   );
-  static final CoOperative currentCoop = sahayatriCoop;
+  static final CoOperative janakCoop = CoOperative(
+    appStoreID: "com.devanasoft.janak",
+    packageName: "com.devanasoft.janak",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janak/janak_banner.png",
+    backgroundImage: "assets/janak/janak_background.png",
+    clientCode: '0ND7DKW2CU',
+    clientSecret: "200396",
+    coOperativeLogo: 'assets/janak/janak_logo.png',
+    splashImage: "assets/janak/janak_splash.png",
+    primaryColor: const Color(0xFF2d3691),
+    coOperativeName: "Janak Shree Saving and Credit Co-operative Ltd",
+    appTitle: 'Janak iSmart',
+  );
+  static final CoOperative currentCoop = janakCoop;
 }

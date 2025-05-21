@@ -126,7 +126,8 @@ flutter:
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
-    - assets/sahayatri/
+    # - assets/sahayatri/
+    - assets/janak/
     # - assets/begnas/
     # - assets/nagdhunga/
     # - assets/rorang/
