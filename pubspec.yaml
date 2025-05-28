@@ -103,6 +103,11 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
+    # - assets/maaLaxmi/
+    # - assets/kanchanCoop/
+    - assets/janapremi/
+    # - assets/nawayuba/
+    # - assets/manipur/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
     # - assets/shreemandan/
@@ -127,7 +132,9 @@ flutter:
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
     # - assets/sahayatri/
-    - assets/janak/
+    # - assets/janak/
+    # - assets/adhikosh/
+    # - assets/lapha/
     # - assets/begnas/
     # - assets/nagdhunga/
     # - assets/rorang/
@@ -262,6 +269,7 @@ flutter:
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
+    # - assets/janasewamulti/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
