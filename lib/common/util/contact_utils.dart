@@ -18,7 +18,8 @@ class ContactUtils {
         final firstValidPhoneNumber = _contact?.phoneNumbers?.firstWhere(
           (number) => number.trim().isNotEmpty,
         );
-        return firstValidPhoneNumber ?? "";
+
+        return firstValidPhoneNumber ?? _contact?.selectedPhoneNumber ?? "";
       } else {
         SnackBarUtils.showErrorBar(
           context: NavigationService.context,
