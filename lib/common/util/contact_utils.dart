@@ -10,9 +10,15 @@ class ContactUtils {
 
     try {
       final _contactPermission = await Permission.contacts.request();
+
       if (_contactPermission.isGranted) {
         final _contact = await _contactPicker.selectContact();
-        return _contact?.selectedPhoneNumber ?? "";
+        print(
+            '---------------------------This is picked number : ${_contact?.selectedPhoneNumber}------------------------------------');
+        final firstValidPhoneNumber = _contact?.phoneNumbers?.firstWhere(
+          (number) => number.trim().isNotEmpty,
+        );
+        return firstValidPhoneNumber ?? "";
       } else {
         SnackBarUtils.showErrorBar(
           context: NavigationService.context,
