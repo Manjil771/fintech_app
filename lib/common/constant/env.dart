@@ -5338,5 +5338,19 @@ class CoOperativeValue {
     coOperativeName: "Abhyudaya Multipurpose Co-operative Ltd",
     appTitle: 'Abhyudaya iSmart',
   );
-  static final CoOperative currentCoop = abhyudayaCoop;
+  static final CoOperative kishankalyanCoop = CoOperative(
+    appStoreID: "com.devanasoft.kishanKalyan",
+    packageName: "com.devanasoft.kishanKalyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kishanKalyan/kishanKalyan_banner.png",
+    backgroundImage: "assets/kishanKalyan/kishanKalyan_background.png",
+    clientCode: '0F2BNACH4S',
+    clientSecret: "115868",
+    coOperativeLogo: 'assets/kishanKalyan/kishanKalyan_logo.png',
+    splashImage: "assets/kishanKalyan/kishanKalyan_splash.png",
+    primaryColor: const Color(0xFF8F2A4A),
+    coOperativeName: "Kishan Kalyan Savings & Credit Co-operative Ltd",
+    appTitle: 'Kishan Kalyan iSmart',
+  );
+  static final CoOperative currentCoop = kishankalyanCoop;
 }
