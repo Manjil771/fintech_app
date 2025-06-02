@@ -43,7 +43,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
     );
   }
 
-  bool sortList = false;
+  bool sortList = true;
   getList({required List dataList}) {
     return sortList == true ? dataList.reversed.toList() : dataList;
   }
@@ -64,7 +64,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         },
         showRoundBotton: false,
         verticalPadding: 0,
-        topbarName: "  Mini Statement",
+        topbarName: "Mini Statement",
         horizontalPadding: 0,
         showDetail: false,
         body: BlocConsumer<MiniStatementCubit, CommonState>(

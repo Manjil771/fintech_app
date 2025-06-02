@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -10,6 +11,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/more/transactionLimit/transaction_progress_page.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cubit.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_transfer_repository.dart';
@@ -58,9 +60,34 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
   InternalBranch? branchFromQr;
   bool _isLoading = false;
   InternalBranch? selectedIDFromQr;
+  final GlobalKey<ScaffoldState> _scaffoldKey = GlobalKey<ScaffoldState>();
+  void _toggleBottomSheet() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.transparent,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+      ),
+      builder: (context) => Container(
+        height: 500,
+        decoration: const BoxDecoration(
+          color: CustomTheme.white,
+          borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
+        ),
+        child: const TransactionProgressPage(
+          persistOpen: true,
+          title: "Internal Fund Transfer ",
+          profileType: 'CustomerProfile',
+          isOpen: true,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
+      scaffoldKey: _scaffoldKey,
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {
           if (state is CommonLoading && _isLoading == false) {
@@ -223,6 +250,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                       FormValidator.validateFieldNotEmpty(val, "Account Name"),
                 ),
                 CustomTextField(
+                  showTransLimit: true,
+                  transLimitFunc: _toggleBottomSheet,
                   title: "Amount",
                   textInputType: TextInputType.number,
                   hintText: "NPR",
