@@ -5240,5 +5240,19 @@ class CoOperativeValue {
     coOperativeName: "Janak Shree Saving and Credit Co-operative Ltd",
     appTitle: 'Janak iSmart',
   );
-  static final CoOperative currentCoop = janakCoop;
+  static final CoOperative ainchoPainchoCoop = CoOperative(
+    appStoreID: "com.devanasoft.ainchoPaincho",
+    packageName: "com.devanasoft.ainchoPaincho",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ainchoPaincho/ainchoPaincho_banner.png",
+    backgroundImage: "assets/ainchoPaincho/ainchoPaincho_background.png",
+    clientCode: 'JSRG1FSZ9B',
+    clientSecret: "185568",
+    coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
+    splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
+    primaryColor: const Color(0xFF44b749),
+    coOperativeName: "Aincho Paincho Saving and Credit Co-operative Ltd",
+    appTitle: 'Aincho Paincho iSmart',
+  );
+  static final CoOperative currentCoop = maaLaxmicoop;
 }
