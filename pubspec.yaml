@@ -103,9 +103,10 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
+    - assets/abhyudaya/
     # - assets/maaLaxmi/
     # - assets/kanchanCoop/
-    - assets/janapremi/
+    # - assets/janapremi/
     # - assets/nawayuba/
     # - assets/manipur/
     # - assets/aadhunikjana/
@@ -209,7 +210,7 @@ flutter:
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/hamiSabaikokrishi/
-    # - assets/machhapuchhre/
+    - assets/machhapuchhre/
     # - assets/nawajosh/
     # - assets/tikeshwar/
     # - assets/fewa/

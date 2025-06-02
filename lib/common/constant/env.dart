@@ -5324,5 +5324,19 @@ class CoOperativeValue {
     coOperativeName: "Janapremi Saving & Credit Co-operative Ltd",
     appTitle: 'Janapremi iSmart',
   );
-  static final CoOperative currentCoop = janapremiCoop;
+  static final CoOperative abhyudayaCoop = CoOperative(
+    appStoreID: "com.devanasoft.abhyudaya",
+    packageName: "com.devanasoft.abhyudaya",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/abhyudaya/abhyudaya_banner.png",
+    backgroundImage: "assets/abhyudaya/abhyudaya_background.png",
+    clientCode: 'QQ2D2C09VY',
+    clientSecret: "112055",
+    coOperativeLogo: 'assets/abhyudaya/abhyudaya_logo.png',
+    splashImage: "assets/abhyudaya/abhyudaya_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Abhyudaya Multipurpose Co-operative Ltd",
+    appTitle: 'Abhyudaya iSmart',
+  );
+  static final CoOperative currentCoop = abhyudayaCoop;
 }
