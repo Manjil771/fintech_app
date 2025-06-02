@@ -91,7 +91,7 @@ class CustomerDetailModel {
             json["accountDetail"].map((x) => AccountDetail.fromJson(x))),
         oauthTokenCount: json["oauthTokenCount"],
         firebaseToken: json["firebaseToken"],
-        gender: json["gender"],
+        gender: json["gender"] ?? "MALE",
         dateOfBirth: json["dateOfBirth"] != null
             ? DateTime.parse(json["dateOfBirth"])
             : null,

@@ -20,7 +20,7 @@ class CategoryCubit extends Cubit<CommonState> {
       final response = await servicesRepository.getCategoryList();
       emit(CommonDummyLoading());
       if (response.status == Status.Success && response.data != null) {
-        emit(CommonStateSuccess(data: response.data!));
+        emit(CommonDataFetchSuccess(data: response.data!));
       } else {
         emit(CommonError(
             message: response.message ?? "Error fetching customer detail."));

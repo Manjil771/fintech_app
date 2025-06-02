@@ -127,6 +127,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                         onSurffixImagePress: () async {
                           final String? pickedContact =
                               await ContactUtils.pickContact;
+
                           if (pickedContact != null) {
                             _mobileNumberController.text =
                                 removeSpecificPatterns(pickedContact);
