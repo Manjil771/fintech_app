@@ -5197,7 +5197,7 @@ class CoOperativeValue {
     coOperativeName: "Shree Mandan Deupur Saving and Credit Co-operative Society Ltd",
     appTitle: 'Shree Mandan Deupur iSmart',
   );
-  static final CoOperative currentCoop = shreemandanCoop;
+ 
   static final CoOperative naturalmultiCoop = CoOperative(
     appStoreID: "com.devanasoft.naturalmulti",
     packageName: "com.devanasoft.naturalmulti",
@@ -5226,7 +5226,7 @@ class CoOperativeValue {
     coOperativeName: "Maruti Saving and Credit Co-operative Ltd.",
     appTitle: 'Maruti iSmart',
   );
-  static final CoOperative shreemandanCoop = CoOperative(
+  static final CoOperative shreemandannCoop = CoOperative(
     appStoreID: "com.devanasoft.shreemandan",
     packageName: "com.devanasoft.shreemandan",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -5283,5 +5283,5 @@ class CoOperativeValue {
     coOperativeName: "Aincho Paincho Saving and Credit Co-operative Ltd",
     appTitle: 'Aincho Paincho iSmart',
   );
-  static final CoOperative currentCoop = maaLaxmicoop;
+   static final CoOperative currentCoop = shreemandanCoop;
 }
