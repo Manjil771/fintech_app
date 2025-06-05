@@ -13,6 +13,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/qr_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/custom_icon_button.dart';
 import 'package:ismart/common/widget/custom_shape_border.dart';
@@ -76,11 +77,11 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
     });
   }
 
-  @override
-  dispose() {
-    animationController.dispose();
-    super.dispose();
-  }
+  // @override
+  // dispose() {
+  //   animationController.dispose();
+  //   super.dispose();
+  // }
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +99,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         } else if (state is! CommonLoading && _isLoading) {
           _isLoading = false;
           NavigationService.pop();
-        } else if (state is CommonError) {
+        }
+
+        if (state is CommonError) {
           showPopUpDialog(
             context: context,
             message: state.message,
@@ -570,7 +573,10 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
             ),
           );
         } else {
-          return Container();
+          return Container(
+            color: CustomTheme.backgroundColor,
+            child: const CommonLoadingWidget(),
+          );
         }
       }),
     );
@@ -703,14 +709,14 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         ));
       }
     }
+  }
 
-    @override
-    void dispose() {
-      animationController.dispose();
-      cameraController.dispose();
-      _cameraSubscription?.cancel();
-      super.dispose();
-    }
+  @override
+  void dispose() {
+    animationController.dispose();
+    cameraController.dispose();
+    _cameraSubscription?.cancel();
+    super.dispose();
   }
 
   List<AppServiceManagementModel> appSeriveList = [
