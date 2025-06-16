@@ -69,7 +69,7 @@ class _MoreWidgetState extends State<MoreWidget> {
     Assets.fingerPrintImage,
     "assets/icons/pin-code-svgrepo-com 1.svg",
     Assets.transactionLimit,
-    Assets.discountCalculator,
+    // Assets.discountCalculator,
     Assets.downloadIcon,
     Assets.contactUsIcon,
     Assets.settingIcon,
@@ -80,7 +80,7 @@ class _MoreWidgetState extends State<MoreWidget> {
     "Biometric",
     "Change Security Pin",
     "Transaction Limits",
-    "Calculator",
+    // "Calculator",
     "Downloads",
     "Support",
     "Settings",
@@ -131,9 +131,9 @@ class _MoreWidgetState extends State<MoreWidget> {
       () {
         NavigationService.push(target: const TransactionLimitWidget());
       },
-      () {
-        NavigationService.push(target: const CalculatorScreen());
-      },
+      // () {
+      //   NavigationService.push(target: const CalculatorScreen());
+      // },
       () {
         NavigationService.pushNamed(routeName: Routes.downloadScreen);
       },
@@ -261,7 +261,7 @@ class _MoreWidgetState extends State<MoreWidget> {
               title: names[index]);
         },
       ),
-      topbarName: "More",
+      topbarName: "Profile",
       showBackBotton: false,
       showDetail: false,
       showRoundBotton: false,

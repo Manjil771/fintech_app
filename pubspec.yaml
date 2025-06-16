@@ -83,7 +83,7 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/janakalyanMultipurpose/
-    # - assets/bhimad/
+    - assets/bhimad/
     # - assets/shreephulbari/
     # - assets/gauthali/
     # - assets/ashish/

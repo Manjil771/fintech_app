@@ -322,7 +322,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 //         showBackButton: true,
 //         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
 //             builder: (context, state) {
-      
 
 //           if (state is CommonStateSuccess<UtilityResponseData>) {
 //             final res = state.data;

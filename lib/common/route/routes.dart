@@ -10,6 +10,7 @@ class Routes {
   static const internetUsername = "/find_internet_user";
   static const allServicesDashboard = "/all_services_dashboard";
   static const sendMoney = "/send_money";
+  static const calculator = '/calculator';
   static const anyBank = "/any_bank";
   static const profileScreen = "/profile_screen";
   static const electricityPayment = "/electricity_payment";

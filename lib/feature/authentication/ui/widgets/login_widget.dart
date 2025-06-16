@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/global_image_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -100,6 +101,7 @@ class _LoginWidgetState extends State<LoginWidget> {
   final List myBanners = [];
   @override
   void initState() {
+    GlobalImageState.loadFromPrefs();
     _checkBiometric();
     _bannerImages = RepositoryProvider.of<StartUpRepository>(context).banners;
     _defaultBannerImages =

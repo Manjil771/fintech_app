@@ -18,6 +18,7 @@ class SharedPref {
   static const _biometricLogin = "biometricLogin";
   static const _deviceUUID = "deviceUUID";
   static const _downloadedFilesList = "downloadedFilesList";
+  static const _profileImageState = "profileImageState";
 
   static Future addDownloadedFiles(DownloadedFile fileDetails) async {
     final _instance = await SharedPreferences.getInstance();
@@ -158,6 +159,17 @@ class SharedPref {
     return res ?? "";
   }
 
+  static Future setProfileImageState(int profileImageState) async {
+    final _instance = await SharedPreferences.getInstance();
+    await _instance.setInt(_profileImageState, profileImageState);
+  }
+
+  static Future<int> getProfileImageState() async {
+    final _instance = await SharedPreferences.getInstance();
+    final res = _instance.getInt(_profileImageState);
+    return res ?? 0;
+  }
+
   static Future deleteAccessToken() async {
     final _instance = await SharedPreferences.getInstance();
     await _instance.remove(_appAccessToken);
@@ -196,7 +208,6 @@ class SharedPref {
     return _instance.get(_deviceUUID);
   }
 
-//for ChatBot
   static Future<void> setChatBotVisibility(bool isVisible) async {
     final _instance = await SharedPreferences.getInstance();
     await _instance.setBool(showChatBot, isVisible);
