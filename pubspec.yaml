@@ -86,6 +86,11 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
+    - assets/taudaha/
+    # - assets/shreejanshil/
+    # - assets/janataagri/
+    # - assets/upasanawomen/
+    # - assets/mitra/
     # - assets/abhyudaya/
     # - assets/maaLaxmi/
     # - assets/kanchanCoop/
@@ -103,6 +108,7 @@ flutter:
     # - assets/arthikBikash/
     # - assets/mission/
     # - assets/development/
+    # - assets/artharaksha/
     # - assets/premier/
     # - assets/lamjung/
     # - assets/swarnim/
@@ -441,7 +447,7 @@ flutter:
     # - assets/shreePaurakhi/
     # - assets/sarba/
     # - assets/prerana/
-    - assets/nilgiree/
+    # - assets/nilgiree/
     # - assets/sajha/
     # - assets/samadhan/
     # - assets/saptakaushika/
@@ -460,7 +466,7 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    - assets/kishanKalyan/
+    # - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/
