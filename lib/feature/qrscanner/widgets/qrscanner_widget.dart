@@ -212,7 +212,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 showPopUpDialog(
                   context: context,
                   title: "INFO",
-                  message: "Invalid QR",
+                  message: _response.message.isEmpty
+                      ? "Invalid QR"
+                      : _response.message,
                   showCancelButton: false,
                   buttonCallback: () {
                     NavigationService.pop();
