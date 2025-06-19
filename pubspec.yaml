@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.37+67
+version: 1.5.39+69
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -26,6 +26,7 @@ dependencies:
   rxdart: ^0.28.0
   logger: "^2.2.0"
   dio: "^5.4.2+1"
+  nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
   easy_localization: "^3.0.3"
   path_provider: "^2.1.4"
@@ -83,7 +84,7 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/janakalyanMultipurpose/
-    - assets/bhimad/
+    # - assets/bhimad/
     # - assets/shreephulbari/
     # - assets/gauthali/
     # - assets/ashish/
@@ -248,7 +249,7 @@ flutter:
     # - assets/globalMulti/
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
-    # - assets/belchautara/
+    - assets/belchautara/
     # - assets/shubhashreeMulti/
     # - assets/shubhaShree/
     # - assets/yugbani/
@@ -299,7 +300,7 @@ flutter:
     # - assets/sunadevi/
     # - assets/samabeshi/
     # - assets/aagan/
-    - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/

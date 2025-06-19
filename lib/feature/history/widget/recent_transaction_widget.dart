@@ -17,6 +17,7 @@ import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_widget.dart';
+import 'package:nepali_date_picker/nepali_date_picker.dart';
 
 class RecentTransactionWidget extends StatefulWidget {
   const RecentTransactionWidget({Key? key}) : super(key: key);
@@ -187,12 +188,12 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   Future<void> showFilterDialog() async {
     DateTime tempFromDate = filterfromDate;
     DateTime tempToDate = filtertoDate;
-
+    bool _pickerAD = false;
     await showDialog(
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          builder: (context, setState) {
+          builder: (context, dialogSetState) {
             return Dialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18),
@@ -216,58 +217,213 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Select Date",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Select Date",
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.grey.shade300),
                           ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  dialogSetState(() {
+                                    _pickerAD = true;
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: _pickerAD
+                                        ? CustomTheme.primaryColor
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    "AD",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: _pickerAD
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  dialogSetState(() {
+                                    _pickerAD = false;
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: !_pickerAD
+                                        ? CustomTheme.primaryColor
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    "BS",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: !_pickerAD
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {
-                        final DateTime? picked = await showDatePicker(
-                          context: context,
-                          initialDate: tempFromDate,
-                          firstDate: DateTime(2021),
-                          lastDate: DateTime.now(),
-                        );
+                        DateTime? picked;
+
+                        if (_pickerAD) {
+                          picked = await showDatePicker(
+                            context: context,
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            initialDate: tempFromDate,
+                            firstDate: DateTime(2021),
+                            lastDate: DateTime.now(),
+                          );
+                        } else {
+                          final NepaliDateTime? pickedDate =
+                              await showMaterialDatePicker(
+                            context: context,
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            initialDate: NepaliDateTime.now(),
+                            firstDate: NepaliDateTime(2070),
+                            lastDate: NepaliDateTime(2090),
+                            initialDatePickerMode: DatePickerMode.day,
+                          );
+                          picked = pickedDate?.toDateTime();
+                        }
+
                         if (picked != null) {
-                          setState(() {
-                            tempFromDate = picked;
+                          dialogSetState(() {
+                            tempFromDate = picked!;
                             if (tempToDate.difference(tempFromDate).inDays >
                                 90) {
-                              tempToDate =
-                                  tempFromDate.add(const Duration(days: 90));
+                              tempToDate = DateTime.now();
                             }
                           });
                         }
                       },
                       title: "From Date",
                       hintText:
-                          "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
+                          "${tempFromDate.year}-${tempFromDate.month.toString().padLeft(2, '0')}-${tempFromDate.day.toString().padLeft(2, '0')}",
                       showSuffixImage: true,
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {
-                        final DateTime? picked = await showDatePicker(
-                          context: context,
-                          initialDate: tempToDate,
-                          firstDate: tempFromDate,
-                          lastDate: tempFromDate.add(const Duration(days: 90)),
-                        );
+                        DateTime? picked;
+
+                        if (_pickerAD) {
+                          picked = await showDatePicker(
+                            context: context,
+                            initialDate: tempToDate,
+                            firstDate: tempFromDate,
+                            lastDate: DateTime.now(),
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                          );
+                        } else {
+                          final NepaliDateTime? pickedDate =
+                              await showMaterialDatePicker(
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            context: context,
+                            initialDate: tempToDate.toNepaliDateTime(),
+                            firstDate: tempFromDate.toNepaliDateTime(),
+                            lastDate: NepaliDateTime.now(),
+                            initialDatePickerMode: DatePickerMode.day,
+                          );
+                          picked = pickedDate?.toDateTime();
+                        }
+
                         if (picked != null) {
-                          setState(() {
-                            tempToDate = picked;
+                          dialogSetState(() {
+                            tempToDate = picked!;
                           });
                         }
                       },
                       title: "To Date",
                       hintText:
-                          "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
+                          "${tempToDate.year}-${tempToDate.month.toString().padLeft(2, '0')}-${tempToDate.day.toString().padLeft(2, '0')}",
                       showSuffixImage: true,
                     ),
                     const SizedBox(height: 24),
@@ -294,6 +450,116 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
       },
     );
   }
+  // Future<void> showFilterDialog() async {
+  //   DateTime tempFromDate = filterfromDate;
+  //   DateTime tempToDate = filtertoDate;
+
+  //   await showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return StatefulBuilder(
+  //         builder: (context, setState) {
+  //           return Dialog(
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(18),
+  //             ),
+  //             elevation: 0,
+  //             backgroundColor: Colors.transparent,
+  //             child: Container(
+  //               padding: const EdgeInsets.all(18),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.white,
+  //                 shape: BoxShape.rectangle,
+  //                 borderRadius: BorderRadius.circular(18),
+  //                 boxShadow: const [
+  //                   BoxShadow(
+  //                     color: Colors.black26,
+  //                     blurRadius: 10.0,
+  //                     offset: Offset(0.0, 10.0),
+  //                   ),
+  //                 ],
+  //               ),
+  //               child: Column(
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 children: [
+  //                   Text(
+  //                     "Select Date",
+  //                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
+  //                           fontWeight: FontWeight.bold,
+  //                           fontSize: 16,
+  //                         ),
+  //                   ),
+  //                   const SizedBox(height: 16),
+  //                   CustomTextField(
+  //                     readOnly: true,
+  //                     onTap: () async {
+  //                       final DateTime? picked = await showDatePicker(
+  //                         context: context,
+  //                         initialDate: tempFromDate,
+  //                         firstDate: DateTime(2021),
+  //                         lastDate: DateTime.now(),
+  //                       );
+  //                       if (picked != null) {
+  //                         setState(() {
+  //                           tempFromDate = picked;
+  //                           if (tempToDate.difference(tempFromDate).inDays >
+  //                               90) {
+  //                             tempToDate =
+  //                                 tempFromDate.add(const Duration(days: 90));
+  //                           }
+  //                         });
+  //                       }
+  //                     },
+  //                     title: "From Date",
+  //                     hintText:
+  //                         "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
+  //                     showSuffixImage: true,
+  //                   ),
+  //                   const SizedBox(height: 16),
+  //                   CustomTextField(
+  //                     readOnly: true,
+  //                     onTap: () async {
+  //                       final DateTime? picked = await showDatePicker(
+  //                         context: context,
+  //                         initialDate: tempToDate,
+  //                         firstDate: tempFromDate,
+  //                         lastDate: tempFromDate.add(const Duration(days: 90)),
+  //                       );
+  //                       if (picked != null) {
+  //                         setState(() {
+  //                           tempToDate = picked;
+  //                         });
+  //                       }
+  //                     },
+  //                     title: "To Date",
+  //                     hintText:
+  //                         "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
+  //                     showSuffixImage: true,
+  //                   ),
+  //     const SizedBox(height: 24),
+  //     CustomRoundedButtom(
+  //       title: "View",
+  //       onPressed: () {
+  //         setState(() {
+  //           filterfromDate = tempFromDate;
+  //           filtertoDate = tempToDate;
+  //           fromDate = filterfromDate;
+  //           toDate = filtertoDate;
+  //           currentIndex = -1; // Custom range selected
+  //         });
+  //         getRecentTransaction(fromDate, toDate);
+  //         Navigator.of(context).pop();
+  //       },
+  //     ),
+  //   ],
+  // ),
+  //             ),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 
   final List<int> predefinedPeriods = [7, 15, 30, 60];
   Widget predefinedPeriodButton(int days, bool isSelected) {
