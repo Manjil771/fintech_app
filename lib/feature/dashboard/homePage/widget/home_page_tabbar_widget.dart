@@ -14,8 +14,8 @@ class _HomePageTabbarWidgetState extends State<HomePageTabbarWidget> {
   int _selectedIndex = 0;
   static final List<String> tabTitle = [
     "Instant Payments",
-    "Graph & Activities",
     "Favorite",
+    "Graph & Activities",
   ];
   @override
   Widget build(BuildContext context) {
@@ -57,8 +57,8 @@ class _HomePageTabbarWidgetState extends State<HomePageTabbarWidget> {
           const CategoryPage(
             showAllServices: false,
           ),
-        if (_selectedIndex == 1) const GraphPage(),
-        if (_selectedIndex == 2) ListFavAccountPage(),
+        if (_selectedIndex == 2) const GraphPage(),
+        if (_selectedIndex == 1) ListFavAccountPage(),
       ],
     );
   }

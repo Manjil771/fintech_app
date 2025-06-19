@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -8,9 +10,15 @@ class Assets {
           .coOperativeLogo;
 
   // static const String logoImage = "assets/ismartlogo.png";
-  static const String splashImage = "assets/images/splashscreen.jpg";
 
-  static const String fingerPrintImage = "assets/icons/fingerprint_setup.svg";
+  static const String splashImage = "assets/images/splashscreen.jpg";
+  static String get fingerPrintImage {
+    return Platform.isIOS
+        ? "assets/icons/Face_id_setup.svg"
+        : "assets/icons/fingerprint_setup.svg";
+  }
+
+  static const String faceIdImage = "assets/icons/Face_id_setup.svg";
   static const String translateImage = "assets/icons/languagetranslate.svg";
   static const String groupIcon = "assets/icons/Group 1035.svg";
   static const String verify = "assets/icons/verify your number.svg";

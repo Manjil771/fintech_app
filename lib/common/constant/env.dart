@@ -5451,5 +5451,19 @@ class CoOperativeValue {
     coOperativeName: "Janata Agriculture Co COperative",
     appTitle: 'Janata Agri iSmart',
   );
-  static final CoOperative currentCoop = taudahacoop;
+  static final CoOperative kasturicoop = CoOperative(
+    appStoreID: "com.devanasoft.kasturi",
+    packageName: "com.devanasoft.kasturi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/kasturi/kasturi_banner.png",
+    backgroundImage: "assets/kasturi/kasturi_background.png",
+    clientCode: 'KZ9NKTQU22',
+    clientSecret: "193972",
+    coOperativeLogo: 'assets/kasturi/kasturi_logo.png',
+    splashImage: "assets/kasturi/kasturi_splash.png",
+    primaryColor: const Color(0xFF54BE46),
+    coOperativeName: "kasturi Saving& credit COperative",
+    appTitle: 'Kasturi iSmart',
+  );
+  static final CoOperative currentCoop = kasturicoop;
 }

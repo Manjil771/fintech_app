@@ -34,6 +34,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
   bool _shouldShowDifferentMenu = false;
   // ignore: unused_field
   List<String> _bannerImages = [];
+  bool _isChatDismissed = false;
 
   _checkMenu() {
     final List<String> _clientCodesListForDifferentMenu = [
@@ -191,63 +192,93 @@ class _HomePageWidgetState extends State<HomePageWidget> {
               ),
             ),
             FutureBuilder(
-                future: SharedPref.getChatBotVisibility(),
-                builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
-                    return const CircularProgressIndicator();
-                  }
-                  final isChatBotVisible = snapshot.data ?? false;
-                  return isChatBotVisible
-                      ? Positioned(
-                          bottom: 4,
-                          right: 7,
-                          child: InkWell(
-                            onTap: () {
-                              onButtonPressed();
-                            },
-                            child:
-                                BlocListener<UtilityPaymentCubit, CommonState>(
-                              listener: (context, state) {
-                                if (state is CommonStateSuccess<
-                                    UtilityResponseData>) {
-                                  final UtilityResponseData response =
-                                      state.data;
-                                  if (response.code == "M0000") {
-                                    NavigationService.push(
-                                      target: IntermediateChatPage(
-                                        id: response.detail['id'],
-                                      ),
-                                    );
-                                  }
-                                }
-                              },
-                              child: Container(
-                                width: 80,
-                                height: 80,
-                                decoration: BoxDecoration(
-                                  shape: BoxShape.circle,
-                                  color: CustomTheme.white,
-                                  border: Border.all(
-                                    color: CustomTheme.primaryColor
-                                        .withOpacity(.7),
-                                    width: 1.0,
+              future: SharedPref.getChatBotVisibility(),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const CircularProgressIndicator();
+                }
+                final isChatBotVisible = snapshot.data ?? false;
+
+                if (!isChatBotVisible || _isChatDismissed)
+                  return const SizedBox.shrink();
+
+                return Positioned(
+                  bottom: 4,
+                  right: 7,
+                  child: Stack(
+                    alignment: Alignment.topRight,
+                    clipBehavior: Clip.none,
+                    children: [
+                      InkWell(
+                        onTap: () {
+                          onButtonPressed();
+                        },
+                        child: BlocListener<UtilityPaymentCubit, CommonState>(
+                          listener: (context, state) {
+                            if (state
+                                is CommonStateSuccess<UtilityResponseData>) {
+                              final UtilityResponseData response = state.data;
+                              if (response.code == "M0000") {
+                                NavigationService.push(
+                                  target: IntermediateChatPage(
+                                    id: response.detail['id'],
                                   ),
-                                ),
-                                child: ClipOval(
-                                  child: Padding(
-                                    padding: const EdgeInsets.only(top: 6),
-                                    child: Image.asset(
-                                      "assets/smart_fuchee.png",
-                                      fit: BoxFit.contain,
-                                    ),
-                                  ),
+                                );
+                              }
+                            }
+                          },
+                          child: Container(
+                            width: 80,
+                            height: 80,
+                            decoration: BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: CustomTheme.white,
+                              border: Border.all(
+                                color: CustomTheme.primaryColor.withOpacity(.7),
+                                width: 1.0,
+                              ),
+                            ),
+                            child: ClipOval(
+                              child: Padding(
+                                padding: const EdgeInsets.only(top: 6),
+                                child: Image.asset(
+                                  "assets/smart_fuchee.png",
+                                  fit: BoxFit.contain,
                                 ),
                               ),
                             ),
                           ),
-                        )
-                      : const SizedBox.shrink();
-                }),
+                        ),
+                      ),
+                      Positioned(
+                        top: -6,
+                        right: -6,
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              _isChatDismissed = true;
+                            });
+                          },
+                          child: Container(
+                            padding: const EdgeInsets.all(2),
+                            decoration: const BoxDecoration(
+                              shape: BoxShape.circle,
+                              color: Colors.red,
+                              // border: Border.all(color: Colors.white, width: 1),
+                            ),
+                            child: const Icon(
+                              Icons.close,
+                              size: 14,
+                              color: Colors.white,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                );
+              },
+            ),
           ],
         ),
       ),

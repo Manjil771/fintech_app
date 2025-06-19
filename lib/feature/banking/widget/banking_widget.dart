@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 
 class BankingWidget extends StatefulWidget {
   const BankingWidget({Key? key}) : super(key: key);
@@ -55,7 +56,7 @@ class _BankingWidgetState extends State<BankingWidget> {
                     return GridView.builder(
                       physics: const NeverScrollableScrollPhysics(),
                       shrinkWrap: true,
-                      itemCount: filteredItems.isEmpty ? 4 : itemName.length,
+                      itemCount: filteredItems.isEmpty ? 5 : itemName.length,
                       gridDelegate:
                           const SliverGridDelegateWithFixedCrossAxisCount(
                               crossAxisCount: 2),
@@ -124,6 +125,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     "Statement",
     // "Fund Transfer",
     'Cheque Request',
+    "Calculator",
     'Loan',
   ];
   final images = [
@@ -132,6 +134,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Assets.statement,
     // Assets.sendMoneyRemit,
     Assets.chequeBookIcon,
+    Assets.discountCalculator,
     Assets.loanIcon,
   ];
   final onPress = [
@@ -140,6 +143,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     Routes.statementPage,
     // Routes.internalCooperative,
     Routes.chequeScreen,
+    Routes.calculator,
     Routes.chooseLoanAccountPage,
   ];
 }
