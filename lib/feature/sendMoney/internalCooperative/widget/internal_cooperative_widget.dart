@@ -83,6 +83,16 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
       ),
     );
   }
+    @override
+  void initState() {
+    super.initState();
+    _accountNumberController.text = widget.accountNumber ?? "";
+    _accountNameController.text = widget.accountName ?? "";
+    _branchController.text = widget.branchName ?? "";
+    _remarksController.text = widget.remarks ?? "";
+    // branchId = widget.branchId;
+    // branchCode = widget.branchCodeQr;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -182,8 +192,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                     ? CustomTextField(
                         readOnly: true,
                         title: "Branch ${widget.branchCodeQr}",
-                        controller: _branchController
-                          ..text = widget.branchName ?? "",
+                        controller: _branchController,
                       )
                     : widget.branchCodeQr == null
                         ? CustomTextField(
@@ -237,15 +246,13 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 CustomTextField(
                   title: "Destination Account",
                   hintText: "Account Number",
-                  controller: _accountNumberController
-                    ..text = widget.accountNumber ?? "",
+                  controller: _accountNumberController,
                   validator: (val) => FormValidator.validateFieldNotEmpty(
                       val, "Account Number"),
                 ),
                 CustomTextField(
                   hintText: "Account Holder Name",
-                  controller: _accountNameController
-                    ..text = widget.accountName ?? "",
+                  controller: _accountNameController,
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Account Name"),
                 ),
