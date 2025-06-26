@@ -2032,14 +2032,24 @@ android {
                 storePassword keystoreProperties['storePassword']
             }
         }
-
-        buildTypes {
-            release {
-                signingConfig signingConfigs.release
-                minifyEnabled true
-                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-
-            }
+        skDumarwana {
+            dimension "app"
+            applicationId "com.devanasoft.skDumarwana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aniwarya {
+            dimension "app"
+            applicationId "com.devanasoft.aniwarya"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ainchoPaincho {
+            dimension "app"
+            applicationId "com.devanasoft.ainchoPaincho"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
     signingConfigs {
