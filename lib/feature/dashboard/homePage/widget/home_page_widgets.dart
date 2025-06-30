@@ -264,7 +264,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.red,
-                              // border: Border.all(color: Colors.white, width: 1),
                             ),
                             child: const Icon(
                               Icons.close,
