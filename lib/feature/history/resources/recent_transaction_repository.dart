@@ -30,10 +30,12 @@ class RecentTransactionRepository {
       required String serviceId,
       required String fromDate,
       required String toDate,
+      required int pageNo,
       required String service}) async {
     final List<RecentTransactionModel> _recentTxnList = [];
     try {
       final _res = await recentTransactionApiProvider.fetchRecentTransaction(
+        pageNo: pageNo,
         serviceId: serviceId,
         associatedId: associatedId,
         service: service,

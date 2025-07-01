@@ -21,6 +21,7 @@ class RecentTransactionApiProvider {
       required String serviceId,
       required String fromDate,
       required String toDate,
+      required int pageNo,
       required String service}) async {
     final _params = {
       "serviceOf": service,
@@ -29,6 +30,7 @@ class RecentTransactionApiProvider {
       if (serviceId.isNotEmpty) "serviceId": serviceId,
       "fromDate": fromDate,
       "toDate": toDate,
+      "pageNo": pageNo
     };
     final _uri = UrlUtils.getUri(
         url: coOperative.baseUrl + "/api/recentTransaction", params: _params);

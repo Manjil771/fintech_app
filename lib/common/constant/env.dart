@@ -4602,5 +4602,5 @@ class CoOperativeValue {
         "Janakalyan Multipurpose Saving & Credit Co-operative Ltd.",
     appTitle: 'Janakalyan Multipurpose iSmart',
   );
-  static final CoOperative currentCoop = development;
+  static final CoOperative currentCoop = devLive;
 }
