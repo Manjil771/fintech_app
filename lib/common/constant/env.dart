@@ -227,13 +227,14 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://45.117.153.192:8082/',
+    // baseUrl: 'http://45.117.153.192:8082/',
+    baseUrl: 'http://192.168.1.59:8080/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'HD2HUSLR73',
+    clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "166022",
+    clientSecret: "199204",
     splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",

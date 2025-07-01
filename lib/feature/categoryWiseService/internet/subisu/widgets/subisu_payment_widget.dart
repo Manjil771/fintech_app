@@ -27,7 +27,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
   final _usernameController = TextEditingController();
   final _mobileNumberController = TextEditingController();
   final _amountController = TextEditingController();
-  String _currentAmmount= ""; 
+  String _currentAmmount = "";
 
   @override
   Widget build(BuildContext context) {
@@ -37,7 +37,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
       body: Form(
         key: _formKey,
         child: CommonContainer(
-          verificationAmount:_currentAmmount,
+          verificationAmount: _currentAmmount,
           showRecentTransaction: true,
           associatedId: widget.service.id.toString(),
           showAccountSelection: true,
@@ -105,7 +105,7 @@ class _SubisuPaymentWidgetState extends State<SubisuPaymentWidget> {
                 textInputType: TextInputType.number,
                 onChanged: (value) {
                   setState(() {
-                    _currentAmmount =value;
+                    _currentAmmount = value;
                   });
                 },
               ),

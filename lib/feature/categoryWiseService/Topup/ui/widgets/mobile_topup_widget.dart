@@ -57,7 +57,6 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
     final _theme = Theme.of(context);
     final _textTheme = _theme.textTheme;
     final _height = SizeUtils.height;
-
     return PageWrapper(
       body: BlocListener<UtilityPaymentCubit, CommonState>(
         listener: (context, state) {

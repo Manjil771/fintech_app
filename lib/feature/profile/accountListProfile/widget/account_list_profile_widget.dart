@@ -154,7 +154,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                   children: [
                                     if (accuredInterest != "0" &&
                                         accuredInterest != "null" &&
-                                        accuredInterest != "n/a")
+                                        accuredInterest != "n/a" &&
+                                        accuredInterest != "N/A" &&
+                                        accuredInterest != "")
                                       Expanded(
                                         child: buildDetails(
                                             context,
@@ -164,7 +166,9 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                       ),
                                     if (interestRate != "0" &&
                                         interestRate != "null" &&
-                                        interestRate != "n/a")
+                                        interestRate != "n/a" &&
+                                        interestRate != "N/A" &&
+                                        interestRate != "")
                                       SizedBox(
                                         width: _width * 0.4,
                                         child: buildDetails(

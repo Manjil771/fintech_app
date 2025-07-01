@@ -46,7 +46,7 @@ class _CgPaymentWidgetState extends State<CgPaymentWidget> {
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final UtilityResponseData _response = state.data;
-            print("${state.data.toString()} this is my response check SKP ");
+
             if (_response.code == "M0000") {
               NavigationService.push(
                 target: CgPaymentDeatilScreen(
@@ -69,7 +69,6 @@ class _CgPaymentWidgetState extends State<CgPaymentWidget> {
         child: Form(
           key: _formKey,
           child: CommonContainer(
-            
             showRecentTransaction: true,
             topbarName: "Payment",
             buttonName: 'Proceed',
