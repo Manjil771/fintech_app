@@ -30,31 +30,31 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
     bool showPrimaryAccount = false;
-    // filterLoanType(CustomerDetailModel? customerDetail) {
-    //   final List showValidAccount = customerDetail!.accountDetail
-    //       .where((element) =>
-    //           element.accountType.toLowerCase() == "loan" ||
-    //           element.accountType.toLowerCase() == "od")
-    //       .toList();
-    //   return showValidAccount;
-    // }
-    List filterLoanType(CustomerDetailModel? customerDetail) {
-      if (customerDetail == null) return [];
-      return customerDetail.accountDetail;
+    filterLoanType(CustomerDetailModel? customerDetail) {
+      final List showValidAccount = customerDetail!.accountDetail
+          .where((element) =>
+              element.accountType.toLowerCase() == "loan" ||
+              element.accountType.toLowerCase() == "od")
+          .toList();
+      return showValidAccount;
     }
+    // List filterLoanType(CustomerDetailModel? customerDetail) {
+    //   if (customerDetail == null) return [];
+    //   return customerDetail.accountDetail;
+    // }
 
-    // filterOtherType(CustomerDetailModel? customerDetail) {
-    //   final List showValidAccount = customerDetail!.accountDetail
-    //       .where((element) =>
-    //           element.accountType.toLowerCase() != "loan" &&
-    //           element.accountType.toLowerCase() != "od")
-    //       .toList();
-    //   return showValidAccount;
-    // }
-    List filterOtherType(CustomerDetailModel? customerDetail) {
-      if (customerDetail == null) return [];
-      return customerDetail.accountDetail;
+    filterOtherType(CustomerDetailModel? customerDetail) {
+      final List showValidAccount = customerDetail!.accountDetail
+          .where((element) =>
+              element.accountType.toLowerCase() != "loan" &&
+              element.accountType.toLowerCase() != "od")
+          .toList();
+      return showValidAccount;
     }
+    // List filterOtherType(CustomerDetailModel? customerDetail) {
+    //   if (customerDetail == null) return [];
+    //   return customerDetail.accountDetail;
+    // }
 
     return PageWrapper(
       padding: EdgeInsets.zero,
