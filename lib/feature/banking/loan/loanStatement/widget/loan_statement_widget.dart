@@ -16,6 +16,7 @@ import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
+import 'package:nepali_date_picker/nepali_date_picker.dart';
 
 class LoanStatementWidget extends StatefulWidget {
   final String loanAccountNumber;
@@ -29,8 +30,10 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
   DateTime fromDate = DateTime.now().subtract(const Duration(days: 30));
   DateTime toDate = DateTime.now();
   final _width = SizeUtils.width;
-    final _height = SizeUtils.height;
-     bool sortList = false;
+  final _height = SizeUtils.height;
+  bool sortList = false;
+  // bool _pickerAD = true;
+
   @override
   void initState() {
     fetchLoanStatement(
@@ -97,10 +100,11 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                     children: List.generate(
                       predefinedPeriods.length,
                       (index) => Padding(
-                        padding: const EdgeInsets.only(right: 4.0,left: 4),
+                        padding: const EdgeInsets.only(right: 4.0, left: 4),
                         child: predefinedPeriodButton(
                           predefinedPeriods[index],
                           currentIndex == index,
+                          predefinedTimeFrame[index],
                         ),
                       ),
                     ),
@@ -110,7 +114,6 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                     child: InkWell(
                       onTap: showFilterDialog,
                       child: Container(
-                        
                         width: _width * 0.2,
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(8),
@@ -120,7 +123,6 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                 : Colors.black54,
                           ),
                         ),
-                        
                         padding: const EdgeInsets.all(4),
                         child: Row(
                           children: [
@@ -176,59 +178,62 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                           children: [
                             if (response.detail.isNotEmpty)
                               Row(
-                                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      FileDownloadUtils.downloadFile(
-                                        downloadLink:
-                                            RepositoryProvider.of<CoOperative>(
-                                                        context)
-                                                    .baseUrl +
-                                                response.detail,
-                                        fileName: FileDownloadUtils
-                                            .generateDownloadFileName(
-                                          name: "Loan Statement",
-                                          filetype: FileType.pdf,
-                                        ),
-                                        context: context,
-                                      );
-                                    },
-                                    child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [
-                                      Text(
-                                        "Download  ",
-                                        style: _textTheme.labelLarge!
-                                            .copyWith(fontWeight: FontWeight.bold),
-                                      ),
-                                      SvgPicture.asset(
-                                        Assets.downloadIcon,
-                                        height: 20.hp,
-                                      ),
-                                    ],
-                                  )),
+                                      onTap: () {
+                                        FileDownloadUtils.downloadFile(
+                                          downloadLink: RepositoryProvider.of<
+                                                      CoOperative>(context)
+                                                  .baseUrl +
+                                              response.detail,
+                                          fileName: FileDownloadUtils
+                                              .generateDownloadFileName(
+                                            name: "Loan Statement",
+                                            filetype: FileType.pdf,
+                                          ),
+                                          context: context,
+                                        );
+                                      },
+                                      child: Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.end,
+                                        children: [
+                                          Text(
+                                            "Download  ",
+                                            style: _textTheme.labelLarge!
+                                                .copyWith(
+                                                    fontWeight:
+                                                        FontWeight.bold),
+                                          ),
+                                          SvgPicture.asset(
+                                            Assets.downloadIcon,
+                                            height: 20.hp,
+                                          ),
+                                        ],
+                                      )),
                                   const Spacer(),
-                          Text(
-                            "Sorting",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                letterSpacing: 0.3,
-                                color: CustomTheme.primaryColor),
-                          ),
-                          Switch(
-                            activeColor: CustomTheme.primaryColor,
-                            value: sortList,
-                            onChanged: (value) {
-                              setState(() {
-                                sortList = !sortList;
-                              });
-                            },
-                          ),
+                                  Text(
+                                    "Sorting",
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 12,
+                                        letterSpacing: 0.3,
+                                        color: CustomTheme.primaryColor),
+                                  ),
+                                  Switch(
+                                    activeColor: CustomTheme.primaryColor,
+                                    value: sortList,
+                                    onChanged: (value) {
+                                      setState(() {
+                                        sortList = !sortList;
+                                      });
+                                    },
+                                  ),
                                 ],
                               ),
-                               
+
                             SingleChildScrollView(
                               scrollDirection: Axis.horizontal,
                               child: DataTable(
@@ -410,11 +415,12 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
     );
   }
 
-  final List<int> predefinedPeriods = [30, 60, 120];
-  Widget predefinedPeriodButton(int days, bool isSelected) {
+  final List<int> predefinedPeriods = [30, 90, 365];
+  final List<String> predefinedTimeFrame = ['1 Month', '3 Month', '1 Year'];
+  Widget predefinedPeriodButton(int days, bool isSelected, String frame) {
     return CustomRoundedButtom(
       color: CustomTheme.primaryColor.withOpacity(isSelected ? 1 : 0.5),
-      title: "$days days",
+      title: "$frame",
       onPressed: () => selectPredefinedPeriod(days),
       fontSize: 11,
     );
@@ -434,12 +440,12 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
   Future<void> showFilterDialog() async {
     DateTime tempFromDate = filterfromDate;
     DateTime tempToDate = filtertoDate;
-
+    bool _pickerAD = false;
     await showDialog(
       context: context,
       builder: (context) {
         return StatefulBuilder(
-          builder: (context, setState) {
+          builder: (context, dialogSetState) {
             return Dialog(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(18),
@@ -463,26 +469,139 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                 child: Column(
                   mainAxisSize: MainAxisSize.min,
                   children: [
-                    Text(
-                      "Select Date",
-                      style: Theme.of(context).textTheme.titleLarge!.copyWith(
-                            fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text(
+                          "Select Date",
+                          style:
+                              Theme.of(context).textTheme.titleLarge!.copyWith(
+                                    fontWeight: FontWeight.bold,
+                                    fontSize: 16,
+                                  ),
+                        ),
+                        Container(
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            border: Border.all(color: Colors.grey.shade300),
                           ),
+                          child: Row(
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  dialogSetState(() {
+                                    _pickerAD = true;
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: _pickerAD
+                                        ? CustomTheme.primaryColor
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    "AD",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: _pickerAD
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  dialogSetState(() {
+                                    _pickerAD = false;
+                                  });
+                                },
+                                child: Container(
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16, vertical: 8),
+                                  decoration: BoxDecoration(
+                                    color: !_pickerAD
+                                        ? CustomTheme.primaryColor
+                                        : Colors.transparent,
+                                    borderRadius: BorderRadius.circular(20),
+                                  ),
+                                  child: Text(
+                                    "BS",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.bold,
+                                      color: !_pickerAD
+                                          ? Colors.white
+                                          : Colors.black54,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {
-                        final DateTime? picked = await showDatePicker(
-                          context: context,
-                          initialDate: tempFromDate,
-                          firstDate: DateTime(2021),
-                          lastDate: DateTime.now(),
-                        );
+                        DateTime? picked;
+
+                        if (_pickerAD) {
+                          picked = await showDatePicker(
+                            context: context,
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            initialDate: tempFromDate,
+                            firstDate: DateTime(2021),
+                            lastDate: DateTime.now(),
+                          );
+                        } else {
+                          final NepaliDateTime? pickedDate =
+                              await showMaterialDatePicker(
+                            context: context,
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            initialDate: NepaliDateTime.now(),
+                            firstDate: NepaliDateTime(2070),
+                            lastDate: NepaliDateTime(2090),
+                            initialDatePickerMode: DatePickerMode.day,
+                          );
+                          picked = pickedDate?.toDateTime();
+                        }
+
                         if (picked != null) {
-                          setState(() {
-                            tempFromDate = picked;
+                          dialogSetState(() {
+                            tempFromDate = picked!;
                             if (tempToDate.difference(tempFromDate).inDays >
                                 90) {
                               tempToDate = DateTime.now();
@@ -492,28 +611,71 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                       },
                       title: "From Date",
                       hintText:
-                          "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
+                          "${tempFromDate.year}-${tempFromDate.month.toString().padLeft(2, '0')}-${tempFromDate.day.toString().padLeft(2, '0')}",
                       showSuffixImage: true,
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {
-                        final DateTime? picked = await showDatePicker(
-                          context: context,
-                          initialDate: tempToDate,
-                          firstDate: tempFromDate,
-                          lastDate: DateTime.now(),
-                        );
+                        DateTime? picked;
+
+                        if (_pickerAD) {
+                          picked = await showDatePicker(
+                            context: context,
+                            initialDate: tempToDate,
+                            firstDate: tempFromDate,
+                            lastDate: DateTime.now(),
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                          );
+                        } else {
+                          final NepaliDateTime? pickedDate =
+                              await showMaterialDatePicker(
+                            builder: (context, child) => Theme(
+                              data: Theme.of(context).copyWith(
+                                colorScheme: ColorScheme.light(
+                                  primary: CustomTheme.primaryColor,
+                                  onPrimary: Colors.white,
+                                ),
+                                textButtonTheme: TextButtonThemeData(
+                                  style: TextButton.styleFrom(
+                                    foregroundColor: CustomTheme.primaryColor,
+                                  ),
+                                ),
+                              ),
+                              child: child!,
+                            ),
+                            context: context,
+                            initialDate: tempToDate.toNepaliDateTime(),
+                            firstDate: tempFromDate.toNepaliDateTime(),
+                            lastDate: NepaliDateTime.now(),
+                            initialDatePickerMode: DatePickerMode.day,
+                          );
+                          picked = pickedDate?.toDateTime();
+                        }
+
                         if (picked != null) {
-                          setState(() {
-                            tempToDate = picked;
+                          dialogSetState(() {
+                            tempToDate = picked!;
                           });
                         }
                       },
                       title: "To Date",
                       hintText:
-                          "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
+                          "${tempToDate.year}-${tempToDate.month.toString().padLeft(2, '0')}-${tempToDate.day.toString().padLeft(2, '0')}",
                       showSuffixImage: true,
                     ),
                     const SizedBox(height: 24),
@@ -525,7 +687,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                           filtertoDate = tempToDate;
                           fromDate = filterfromDate;
                           toDate = filtertoDate;
-                          currentIndex = -1; // Custom range selected
+                          currentIndex = -1;
                         });
                         fetchLoanStatement(fromDate: fromDate, toDate: toDate);
                         Navigator.of(context).pop();
@@ -540,4 +702,169 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
       },
     );
   }
+  // Future<void> showFilterDialog() async {
+  //   DateTime tempFromDate = filterfromDate;
+  //   DateTime tempToDate = filtertoDate;
+
+  //   await showDialog(
+  //     context: context,
+  //     builder: (context) {
+  //       return StatefulBuilder(
+  //         builder: (context, setState) {
+  //           bool _pickerAD = true;
+  //           return Dialog(
+  //             shape: RoundedRectangleBorder(
+  //               borderRadius: BorderRadius.circular(18),
+  //             ),
+  //             elevation: 0,
+  //             backgroundColor: Colors.transparent,
+  //             child: Container(
+  //               padding: const EdgeInsets.all(18),
+  //               decoration: BoxDecoration(
+  //                 color: Colors.white,
+  //                 shape: BoxShape.rectangle,
+  //                 borderRadius: BorderRadius.circular(18),
+  //                 boxShadow: const [
+  //                   BoxShadow(
+  //                     color: Colors.black26,
+  //                     blurRadius: 10.0,
+  //                     offset: Offset(0.0, 10.0),
+  //                   ),
+  //                 ],
+  //               ),
+  //               child: Column(
+  //                 mainAxisSize: MainAxisSize.min,
+  //                 children: [
+  //                   Row(
+  //                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  //                     children: [
+  //                       Text(
+  //                         "Select Date",
+  //                         style:
+  //                             Theme.of(context).textTheme.titleLarge!.copyWith(
+  //                                   fontWeight: FontWeight.bold,
+  //                                   fontSize: 16,
+  //                                 ),
+  //                       ),
+  //                       Row(
+  //                         children: [
+  //                           InkWell(
+  //                             onTap: () {
+  //                               setState(() {
+  //                                 _pickerAD = true;
+  //                                 print("This is picked $_pickerAD");
+  //                               });
+  //                             },
+  //                             child: Text(
+  //                               "AD",
+  //                               style: TextStyle(
+  //                                   fontSize: 12,
+  //                                   color: _pickerAD
+  //                                       ? CustomTheme.primaryColor
+  //                                       : Colors.black),
+  //                             ),
+  //                           ),
+  //                           const SizedBox(
+  //                             width: 10,
+  //                           ),
+  //                           InkWell(
+  //                             onTap: () {
+  //                               setState(() {
+  //                                 _pickerAD = false;
+  //                                 print("This is picked $_pickerAD");
+  //                               });
+  //                             },
+  //                             child: Text(
+  //                               "BS",
+  //                               style: TextStyle(
+  //                                   fontSize: 12,
+  //                                   color: _pickerAD
+  //                                       ? Colors.black
+  //                                       : CustomTheme.primaryColor),
+  //                             ),
+  //                           )
+  //                         ],
+  //                       )
+  //                     ],
+  //                   ),
+  //                   const SizedBox(height: 16),
+  //                   CustomTextField(
+  //                     readOnly: true,
+  //                     onTap: () async {
+  //                       // final DateTime? picked = await showDatePicker(
+  //                       //   context: context,
+  //                       //   initialDate: tempFromDate,
+  //                       //   firstDate: DateTime(2021),
+  //                       //   lastDate: DateTime.now(),
+  //                       // );
+  //                       final NepaliDateTime? pickedDate =
+  //                           await showMaterialDatePicker(
+  //                         context: context,
+  //                         initialDate: NepaliDateTime.now(),
+  //                         firstDate: NepaliDateTime(2070),
+  //                         lastDate: NepaliDateTime(2090),
+  //                         initialDatePickerMode: DatePickerMode.day,
+  //                       );
+  //                       print('Picked date : ${pickedDate?.toDateTime()}');
+  //                       final picked = pickedDate?.toDateTime();
+  //                       if (picked != null) {
+  //                         setState(() {
+  //                           tempFromDate = picked;
+  //                           if (tempToDate.difference(tempFromDate).inDays >
+  //                               90) {
+  //                             tempToDate = DateTime.now();
+  //                           }
+  //                         });
+  //                       }
+  //                     },
+  //                     title: "From Date",
+  //                     hintText:
+  //                         "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
+  //                     showSuffixImage: true,
+  //                   ),
+  //                   const SizedBox(height: 16),
+  //                   CustomTextField(
+  //                     readOnly: true,
+  //                     onTap: () async {
+  //                       final DateTime? picked = await showDatePicker(
+  //                         context: context,
+  //                         initialDate: tempToDate,
+  //                         firstDate: tempFromDate,
+  //                         lastDate: DateTime.now(),
+  //                       );
+  //                       if (picked != null) {
+  //                         setState(() {
+  //                           tempToDate = picked;
+  //                         });
+  //                       }
+  //                     },
+  //                     title: "To Date",
+  //                     hintText:
+  //                         "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
+  //                     showSuffixImage: true,
+  //                   ),
+  //                   const SizedBox(height: 24),
+  //                   CustomRoundedButtom(
+  //                     title: "View",
+  //                     onPressed: () {
+  //                       setState(() {
+  //                         filterfromDate = tempFromDate;
+  //                         filtertoDate = tempToDate;
+  //                         fromDate = filterfromDate;
+  //                         toDate = filtertoDate;
+  //                         currentIndex = -1; // Custom range selected
+  //                       });
+  //                       fetchLoanStatement(fromDate: fromDate, toDate: toDate);
+  //                       Navigator.of(context).pop();
+  //                     },
+  //                   ),
+  //                 ],
+  //               ),
+  //             ),
+  //           );
+  //         },
+  //       );
+  //     },
+  //   );
+  // }
 }

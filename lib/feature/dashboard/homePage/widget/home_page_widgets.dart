@@ -129,7 +129,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     ),
                                     SizedBox(width: _width * 0.02),
                                     Text(
-                                      "Receive",
+                                      "Receive Money",
                                       style: _textTheme.titleLarge!
                                           .copyWith(fontSize: 12),
                                     ),
@@ -137,7 +137,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                               ),
                             )),
-                            SizedBox(width: _width * 0.1),
+                            SizedBox(width: _width * 0.06),
                             Expanded(
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
@@ -174,7 +174,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                       SizedBox(width: _width * 0.02),
                                       Text(
-                                        "Send",
+                                        "Send Money",
                                         style: _textTheme.titleLarge!
                                             .copyWith(fontSize: 12),
                                       ),

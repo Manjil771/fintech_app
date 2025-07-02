@@ -2430,6 +2430,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        kunphen {
+            dimension "app"
+            applicationId "com.devanasoft.kunphen"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janasambriddhi {
+            dimension "app"
+            applicationId "com.devanasoft.janasambriddhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aanbukhaireni {
+            dimension "app"
+            applicationId "com.devanasoft.aanbukhaireni"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

@@ -16,6 +16,7 @@ import 'package:ismart/feature/more/authenticationScreen/biometric_screen.dart';
 import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/more/transactionLimit/transaction_limit_widget.dart';
+import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
 import 'package:ismart/feature/setting/screen/setting_page.dart';
 
@@ -66,6 +67,7 @@ class MoreWidget extends StatefulWidget {
 
 class _MoreWidgetState extends State<MoreWidget> {
   final List<String> itemImage = [
+    Assets.accountInfo,
     Assets.fingerPrintImage,
     "assets/icons/pin-code-svgrepo-com 1.svg",
     Assets.transactionLimit,
@@ -77,6 +79,7 @@ class _MoreWidgetState extends State<MoreWidget> {
   ];
 
   final List names = [
+    "Account Info",
     "Biometric",
     "Change Security Pin",
     "Transaction Limits",
@@ -101,6 +104,11 @@ class _MoreWidgetState extends State<MoreWidget> {
   Widget build(BuildContext context) {
     final contactList = _supportContact.split(",");
     final List tapFunction = [
+      () {
+        NavigationService.push(
+          target: const ProfilePage(),
+        );
+      },
       () {
         NavigationService.push(
             target: AuthenticationScreen(

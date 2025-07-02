@@ -1,5 +1,6 @@
 {
   "appName": "This app",
+  "Security Pin": "",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   }
