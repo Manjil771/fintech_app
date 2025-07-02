@@ -204,9 +204,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     style:
                                         Theme.of(context).textTheme.titleSmall,
                                   ),
-                                  if (memberId.clientCode != "N/A")
+                                  if (memberId.clientCode != "N/A" &&
+                                      memberId.clientCode != "")
                                     Text(
-                                      memberId.clientCode,
+                                      "Member ID: ${memberId.clientCode}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall,
