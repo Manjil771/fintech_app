@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.39+69
+version: 1.5.30+60
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -99,6 +99,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    - assets/ainchoPaincho/14
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/

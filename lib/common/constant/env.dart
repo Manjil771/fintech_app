@@ -4602,5 +4602,20 @@ class CoOperativeValue {
         "Janakalyan Multipurpose Saving & Credit Co-operative Ltd.",
     appTitle: 'Janakalyan Multipurpose iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative ainchoPaincho = CoOperative(
+    appStoreID: "com.devanasoft.ainchoPaincho",
+    packageName: "com.devanasoft.ainchoPaincho",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ainchoPaincho/ainchoPaincho_banner.png",
+    backgroundImage: "assets/ainchoPaincho/ainchoPaincho_background.png",
+    clientCode: 'JSRG1FSZ9B',
+    clientSecret: "185568",
+    coOperativeLogo: 'assets/ainchoPaincho/ainchoPaincho_logo.png',
+    splashImage: "assets/ainchoPaincho/ainchoPaincho_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName:
+        "AinchoPaincho Savings and Credit Co-operative Society Ltd",
+    appTitle: 'AinchoPaincho iSmart',
+  );
+  static final CoOperative currentCoop = ainchoPaincho;
 }
