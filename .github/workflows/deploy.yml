@@ -3,9 +3,7 @@ name: Deploy to Play Store
 on:
   push:
     branches:
-      - main # or whatever your production branch is
-    tags:
-      - "v*" # optional: deploy when version tags are pushed
+      - feat/subash/proj_upgrade
 
 env:
   FLUTTER_VERSION: "3.27.0"
