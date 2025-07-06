@@ -17,7 +17,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 11 (for Gradle 8.x)
+      - name: Setup java 17 (for Gradle 8.x)
         uses: actions/setup-java@v3
         with:
           java-version: "17"
@@ -48,12 +48,12 @@ jobs:
 
       - name: Build APK
         run: |
-          export JAVA_HOME=$JAVA_HOME_11_X64
+          export JAVA_HOME=$JAVA_HOME_17_X64
           flutter build apk --release
 
       - name: Build App Bundle
         run: |
-          export JAVA_HOME=$JAVA_HOME_11_X64
+          export JAVA_HOME=$JAVA_HOME_17_X64
           flutter build appbundle --release
 
     #   - name: Upload Artifacts
