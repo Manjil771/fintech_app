@@ -2309,13 +2309,7 @@ android {
             applicationId "com.devanasoft.youthvision"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        } 
-         kasturi {
-            dimension "app"
-            applicationId "com.devanasoft.kasturi"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        } 
+        }
         niyaman {
             dimension "app"
             applicationId "com.devanasoft.niyaman"
@@ -2472,6 +2466,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         unitedhands {
+            dimension "app"
+            applicationId "com.devanasoft.unitedhands"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
@@ -2482,24 +2482,14 @@ android {
                 storePassword keystoreProperties['storePassword']
             }
         }
-        skDumarwana {
-            dimension "app"
-            applicationId "com.devanasoft.skDumarwana"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
-        aniwarya {
-            dimension "app"
-            applicationId "com.devanasoft.aniwarya"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
-        ainchoPaincho {
-            dimension "app"
-            applicationId "com.devanasoft.ainchoPaincho"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        }
+
+        buildTypes {
+            release {
+                signingConfig signingConfigs.release
+                minifyEnabled true
+                proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+
+            }
     }
 
     signingConfigs {
