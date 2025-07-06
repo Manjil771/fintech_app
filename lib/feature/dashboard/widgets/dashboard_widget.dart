@@ -413,8 +413,8 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const QRScannerScreens(),
-    // const RecentTransactionScreen(),
-    const SelectHistoryOptions(),
+    const RecentTransactionScreen(),
+    // const SelectHistoryOptions(),
     // const ChooseAccountFullStatementPage(),
     const MorePage()
   ];
