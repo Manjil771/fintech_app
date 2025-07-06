@@ -3,7 +3,9 @@ name: Deploy to Play Store
 on:
   push:
     branches:
-      - feat/subash/proj_upgrade
+      - main # or whatever your production branch is
+    tags:
+      - "v*" # optional: deploy when version tags are pushed
 
 env:
   FLUTTER_VERSION: "3.27.0"
@@ -17,10 +19,10 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up JDK 8
+      - name: Set up JDK 11 (for Gradle 8.x)
         uses: actions/setup-java@v3
         with:
-          java-version: "8"
+          java-version: "11"
           distribution: "temurin"
 
       - name: Set up Flutter
@@ -40,11 +42,21 @@ jobs:
       - name: Get Flutter dependencies
         run: flutter pub get
 
-      #   - name: Build APK
-      #     run: flutter build apk --release
+      #   - name: Verify Flutter format
+      #     run: flutter format --set-exit-if-changed .
+
+      #   - name: Analyze Flutter code
+      #     run: flutter analyze
+
+      - name: Build APK
+        run: |
+          export JAVA_HOME=$JAVA_HOME_11_X64
+          flutter build apk --release
 
       - name: Build App Bundle
-        run: flutter build appbundle --release
+        run: |
+          export JAVA_HOME=$JAVA_HOME_11_X64
+          flutter build appbundle --release
 
     #   - name: Upload Artifacts
     #     uses: actions/upload-artifact@v4
