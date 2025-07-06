@@ -9,6 +9,7 @@ import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 
 class BankingWidget extends StatefulWidget {
   const BankingWidget({Key? key}) : super(key: key);
@@ -119,27 +120,30 @@ class _BankingWidgetState extends State<BankingWidget> {
   }
 
   final itemName = [
-    "Account Info",
+    // "Account Info",
     "Balance Inquiry",
     "Statement",
     // "Fund Transfer",
     'Cheque Request',
+    "Calculator",
     'Loan',
   ];
   final images = [
-    Assets.accountInfo,
+    // Assets.accountInfo,
     Assets.balanceInquiry,
     Assets.statement,
     // Assets.sendMoneyRemit,
     Assets.chequeBookIcon,
+    Assets.discountCalculator,
     Assets.loanIcon,
   ];
   final onPress = [
-    Routes.profileScreen,
+    // Routes.profileScreen,
     Routes.balanceInquiry,
     Routes.statementPage,
     // Routes.internalCooperative,
     Routes.chequeScreen,
+    Routes.calculator,
     Routes.chooseLoanAccountPage,
   ];
 }

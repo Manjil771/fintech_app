@@ -6,8 +6,10 @@ import 'package:image_cropper/image_cropper.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/global_image_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/image_picker_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -16,6 +18,7 @@ import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/image_preview.dart';
+import 'package:ismart/feature/profile/widget/sliding_toggle_button.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -30,6 +33,7 @@ class ProfilePictureWidget extends StatefulWidget {
 }
 
 class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
+  int selected = 0;
   _handleImageUpload(File file) async {
     NavigationService.pop();
 
@@ -134,40 +138,71 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
                       ),
               ),
               SizedBox(height: 20.hp),
-              Row(
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Expanded(
-                      child: CustomRoundedButtom(
-                    title: "Add Picture",
-                    onPressed: () {
-                      showImagePickerBottomSheet(
-                        onGalleryPressed: () async {
-                          final res = await ImagePickerUtils.getGallery();
-                          if (res != null) {
-                            _handleImageUpload(res);
-                          }
-                        },
-                        onCameraPressed: () async {
-                          final res = await ImagePickerUtils.getCamera();
-                          if (res != null) {
-                            _handleImageUpload(res);
-                          }
-                        },
-                      );
-                    },
-                  )),
-                  if (widget.imageUrl.isNotEmpty)
-                    Expanded(
-                      child: CustomRoundedButtom(
-                        color: CustomTheme.googleColor,
+                  Row(
+                    children: [
+                      Expanded(
+                          child: CustomRoundedButtom(
+                        title: "Add Picture",
                         onPressed: () {
-                          context.read<UtilityPaymentCubit>().deleteReq(
-                              serviceIdentifier: "",
-                              accountDetails: {},
-                              apiEndpoint: "api/delete/customerProfileImage",
-                              mPin: "");
+                          showImagePickerBottomSheet(
+                            onGalleryPressed: () async {
+                              final res = await ImagePickerUtils.getGallery();
+                              if (res != null) {
+                                _handleImageUpload(res);
+                              }
+                            },
+                            onCameraPressed: () async {
+                              final res = await ImagePickerUtils.getCamera();
+                              if (res != null) {
+                                _handleImageUpload(res);
+                              }
+                            },
+                          );
                         },
-                        title: "Remove Picture",
+                      )),
+                      if (widget.imageUrl.isNotEmpty)
+                        Expanded(
+                          child: CustomRoundedButtom(
+                            color: CustomTheme.googleColor,
+                            onPressed: () {
+                              context.read<UtilityPaymentCubit>().deleteReq(
+                                  serviceIdentifier: "",
+                                  accountDetails: {},
+                                  apiEndpoint:
+                                      "api/delete/customerProfileImage",
+                                  mPin: "");
+                            },
+                            title: "Remove Picture",
+                          ),
+                        ),
+                    ],
+                  ),
+                  if (widget.imageUrl.isNotEmpty)
+                    Container(
+                      margin: const EdgeInsets.only(top: 16),
+                      child: Column(
+                        children: [
+                          const Text(
+                            "Profile Image Showcase Position",
+                            style: TextStyle(fontSize: 10),
+                          ),
+                          const SizedBox(
+                            height: 4,
+                          ),
+                          SlidingToggleButton(
+                              initialIndex: GlobalImageState.imageState.value,
+                              options: const ['Both', 'Top', 'Right'],
+                              onChanged: (index) async {
+                                setState(() {
+                                  selected = index;
+                                });
+                                await GlobalImageState.updateImageState(
+                                    selected);
+                              }),
+                        ],
                       ),
                     )
                 ],

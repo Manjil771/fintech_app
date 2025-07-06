@@ -25,6 +25,7 @@ dependencies:
   rxdart: ^0.28.0
   logger: "^2.2.0"
   dio: "^5.4.2+1"
+  nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
   easy_localization: "^3.0.3"
   path_provider: "^2.1.4"
@@ -36,6 +37,7 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
+  url_launcher_ios: ^6.2.1
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -82,9 +84,21 @@ dependency_overrides:
 
 flutter:
   assets:
-
     # - assets/shreeBakhan/
-    - assets/maaLaxmi/
+    # - assets/janasambriddhi/
+    - assets/hamro/
+    # - assets/aanbukhaireni/
+    # - assets/taudaha/
+    # - assets/shreejanshil/
+    # - assets/janataagri/
+    # - assets/upasanawomen/
+    # - assets/mitra/
+    # - assets/abhyudaya/
+    # - assets/maaLaxmi/
+    # - assets/kanchanCoop/
+    # - assets/janapremi/
+    # - assets/nawayuba/
+    # - assets/manipur/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
     # - assets/shreemandan/
@@ -93,9 +107,11 @@ flutter:
     # - assets/youthvision/
     # - assets/sahasradhara/
     # - assets/race/
+    # - assets/kunphen/
     # - assets/arthikBikash/
     # - assets/mission/
     # - assets/development/
+    # - assets/artharaksha/
     # - assets/premier/
     # - assets/lamjung/
     # - assets/swarnim/
@@ -104,12 +120,14 @@ flutter:
     # - assets/baglungmulti/
 
     # - assets/besiShahar/
-    
+
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
     # - assets/sahayatri/
     # - assets/janak/
+    # - assets/adhikosh/
+    # - assets/lapha/
     # - assets/begnas/
     # - assets/nagdhunga/
     # - assets/rorang/
@@ -133,6 +151,8 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/laxmiDeep/
+    # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
@@ -161,7 +181,7 @@ flutter:
     # - assets/infinity/
     # - assets/moneyPlant/
     # - assets/newGeneration/
-    
+
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -244,6 +264,7 @@ flutter:
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
+    # - assets/janasewamulti/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
@@ -342,6 +363,7 @@ flutter:
     # - assets/samabeshi/
     # - assets/aagan/
     # - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     - assets/asaan/
@@ -423,7 +445,6 @@ flutter:
     # - assets/sadasyaSewa/
     # - assets/aabhash/
     # - assets/mirmire/
-    
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -431,7 +452,7 @@ flutter:
     # - assets/shreePaurakhi/
     # - assets/sarba/
     # - assets/prerana/
-    - assets/nilgiree/
+    # - assets/nilgiree/
     # - assets/sajha/
     # - assets/samadhan/
     # - assets/saptakaushika/
@@ -459,7 +480,6 @@ flutter:
     # - assets/nepal/
     # - assets/aniwarya/
     # - assets/universe/
-    
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

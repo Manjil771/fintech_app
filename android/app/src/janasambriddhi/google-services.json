@@ -1,0 +1,154 @@
+{
+  "project_info": {
+    "project_number": "484503989430",
+    "project_id": "ismart-7d185",
+    "storage_bucket": "ismart-7d185.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484503989430:android:1bc2ea328370b4284aca17",
+        "android_client_info": {
+          "package_name": "com.devanasoft.ismart"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtxGZ63t5k5Fq3Or-3NESUSkYDsBL885I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "484503989430-o1vastjg1m7mugichg7geljab07c0rkj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.devanasoft.ismart"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484503989430:android:8bf3b5006e271f694aca17",
+        "android_client_info": {
+          "package_name": "com.devanasoft.janasambriddhi"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtxGZ63t5k5Fq3Or-3NESUSkYDsBL885I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "484503989430-o1vastjg1m7mugichg7geljab07c0rkj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.devanasoft.ismart"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484503989430:android:76ae01a7ff90b36f4aca17",
+        "android_client_info": {
+          "package_name": "com.devanasoft.kabil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtxGZ63t5k5Fq3Or-3NESUSkYDsBL885I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "484503989430-o1vastjg1m7mugichg7geljab07c0rkj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.devanasoft.ismart"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:484503989430:android:67bb092e1d73ab6a4aca17",
+        "android_client_info": {
+          "package_name": "com.devanasoft.sahakarya"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtxGZ63t5k5Fq3Or-3NESUSkYDsBL885I"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "484503989430-1a2cbj2vehpoqbfn9sk8nogees95cchm.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "484503989430-o1vastjg1m7mugichg7geljab07c0rkj.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.devanasoft.ismart"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

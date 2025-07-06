@@ -43,6 +43,7 @@ class _RecentTransactionServiceWidgetState
   void initState() {
     super.initState();
     context.read<RecentTransactionCubit>().fetchrecentTransaction(
+        pageNo: 1,
         serviceId: widget.serviceId,
         associatedId: widget.associatedId,
         service: widget.service,

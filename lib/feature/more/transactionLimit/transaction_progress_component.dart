@@ -213,7 +213,7 @@ class _TransactionProgressComponentState
                 height: 20,
                 width: 220,
                 child: Text(
-                  "Daily Transaction Limit: ${response.detail['perTransactionLimit']?.toString() ?? 'No Data'}",
+                  "Per Transaction Limit: ${response.detail['perTransactionLimit']?.toString() ?? 'No Data'}",
                   style: const TextStyle(color: Colors.black54),
                 ),
               ),

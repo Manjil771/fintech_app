@@ -38,6 +38,10 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
           .toList();
       return showValidAccount;
     }
+    // List filterLoanType(CustomerDetailModel? customerDetail) {
+    //   if (customerDetail == null) return [];
+    //   return customerDetail.accountDetail;
+    // }
 
     filterOtherType(CustomerDetailModel? customerDetail) {
       final List showValidAccount = customerDetail!.accountDetail
@@ -47,6 +51,10 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
           .toList();
       return showValidAccount;
     }
+    // List filterOtherType(CustomerDetailModel? customerDetail) {
+    //   if (customerDetail == null) return [];
+    //   return customerDetail.accountDetail;
+    // }
 
     return PageWrapper(
       padding: EdgeInsets.zero,
@@ -72,8 +80,12 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                         title: CommonDetailBox(
                             showTrailingIcon: false,
                             leadingImage: Assets.profileIcon,
-                            title: _detail[index].accountType ??
-                                _detail[index].accountTypeDescription,
+                            title: (_detail[index]
+                                        .accountTypeDescription
+                                        ?.isNotEmpty ??
+                                    false)
+                                ? _detail[index].accountTypeDescription
+                                : _detail[index].accountType,
                             detail: "A/C : ${_detail[index].mainCode}",
                             onBoxPressed: () {
                               setState(() {
@@ -152,9 +164,12 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                 ),
                                 Row(
                                   children: [
-                                    if (accuredInterest != "0" &&
+                                    if (accuredInterest != "0.0" &&
+                                        accuredInterest != "0" &&
                                         accuredInterest != "null" &&
-                                        accuredInterest != "n/a")
+                                        accuredInterest != "n/a" &&
+                                        accuredInterest != "N/A" &&
+                                        accuredInterest != "")
                                       Expanded(
                                         child: buildDetails(
                                             context,
@@ -163,8 +178,11 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                             "NPR ${_detail[index].accruedInterest}"),
                                       ),
                                     if (interestRate != "0" &&
+                                        interestRate != "0.0" &&
                                         interestRate != "null" &&
-                                        interestRate != "n/a")
+                                        interestRate != "n/a" &&
+                                        interestRate != "N/A" &&
+                                        interestRate != "")
                                       SizedBox(
                                         width: _width * 0.4,
                                         child: buildDetails(

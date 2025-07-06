@@ -17,6 +17,7 @@ import 'package:ismart/feature/categoryWiseService/broker/screen/broker_payment_
 import 'package:ismart/feature/categoryWiseService/busBooking/screen/bus_booking_page.dart';
 import 'package:ismart/feature/categoryWiseService/creditCard/screen/credit_card_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/electricity/screen/electricity_payment_page.dart';
+import 'package:ismart/feature/categoryWiseService/kalimati_rent_service/screens/kalimati_rent_page.dart';
 import 'package:ismart/feature/categoryWiseService/landline/screen/landline_payment_page.dart';
 import 'package:ismart/feature/categoryWiseService/movie/screen/movie_page.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
@@ -160,8 +161,15 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                         } else if (data.uniqueIdentifier
                                 .toString()
                                 .toLowerCase() ==
+                            "kalimati_rent_payment") {
+                          NavigationService.push(
+                              target: KalimatiRentPage(
+                            service: data.services[0],
+                          ));
+                        } else if (data.uniqueIdentifier
+                                .toString()
+                                .toLowerCase() ==
                             "electricity") {
-                              
                           NavigationService.push(
                               target: ElectricityPaymentPage(
                             service: data.services[0],

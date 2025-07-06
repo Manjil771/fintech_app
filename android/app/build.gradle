@@ -1916,7 +1916,7 @@ android {
         }
         sanjeewani {
             dimension "app"
-            applicationId "com.devanasoft.sanjeewani"
+            applicationId "com.devanasoft.sanjeewaniSaving"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -2352,18 +2352,126 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        lapha {
+            dimension "app"
+            applicationId "com.devanasoft.lapha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        adhikosh {
+            dimension "app"
+            applicationId "com.devanasoft.adhikosh"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janasewamulti {
+            dimension "app"
+            applicationId "com.devanasoft.janasewamulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kanchanCoop {
+            dimension "app"
+            applicationId "com.devanasoft.kanchanCoop"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        nawayuba {
+            dimension "app"
+            applicationId "com.devanasoft.nawayuba"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janapremi {
+            dimension "app"
+            applicationId "com.devanasoft.janapremi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        abhyudaya {
+            dimension "app"
+            applicationId "com.devanasoft.abhyudaya"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         artharaksha {
+            dimension "app"
+            applicationId "com.devanasoft.artharaksha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        shreejanshil {
+            dimension "app"
+            applicationId "com.devanasoft.shreejanshil"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        upasanawomen {
+            dimension "app"
+            applicationId "com.devanasoft.upasanawomen"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         janataagri {
+            dimension "app"
+            applicationId "com.devanasoft.janataagri"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        mitra {
+            dimension "app"
+            applicationId "com.devanasoft.mitra"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        taudaha {
+            dimension "app"
+            applicationId "com.devanasoft.taudaha"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kasturi {
+            dimension "app"
+            applicationId "com.devanasoft.kasturi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kunphen {
+            dimension "app"
+            applicationId "com.devanasoft.kunphen"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janasambriddhi {
+            dimension "app"
+            applicationId "com.devanasoft.janasambriddhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        aanbukhaireni {
+            dimension "app"
+            applicationId "com.devanasoft.aanbukhaireni"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
         ainchoPaincho {
             dimension "app"
             applicationId "com.devanasoft.ainchoPaincho"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        } 
-         kasturi {
+        }
+        laxmiDeep {
             dimension "app"
-            applicationId "com.devanasoft.kasturi"
+            applicationId "com.devanasoft.laxmiDeep"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        } 
+        }
+        hamro {
+            dimension "app"
+            applicationId "com.devanasoft.hamro"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

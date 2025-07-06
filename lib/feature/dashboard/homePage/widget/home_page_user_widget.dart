@@ -8,8 +8,10 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/global_image_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/account_list_box.dart';
@@ -39,7 +41,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
   ValueNotifier<dynamic> accountDetail = ValueNotifier([]);
 
   String bannerImage = "";
-
   String? imageUrl;
   String? gender;
 
@@ -106,27 +107,47 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               Row(
                                 children: [
                                   InkWell(
-                                    onTap: () {
-                                      NavigationService.pushNamed(
-                                          routeName: Routes.profileScreen);
-                                    },
-                                    child: (gender?.toLowerCase() == 'male' ||
-                                            gender == null)
-                                        ? const CircleAvatar(
-                                            radius: 20,
-                                            backgroundImage: AssetImage(
-                                              Assets.profilePicture,
-                                            ),
-                                            backgroundColor: Colors.transparent,
-                                          )
-                                        : const CircleAvatar(
-                                            radius: 20,
-                                            backgroundImage: AssetImage(
-                                              Assets.femaleProfilePicture,
-                                            ),
-                                            backgroundColor: Colors.transparent,
-                                          ),
-                                  ),
+                                      onTap: () {
+                                        NavigationService.pushNamed(
+                                            routeName: Routes.profileScreen);
+                                      },
+                                      child: ValueListenableBuilder(
+                                          valueListenable:
+                                              GlobalImageState.imageState,
+                                          builder:
+                                              (context, imageState, child) {
+                                            return (imageUrl != null &&
+                                                    imageUrl!.isNotEmpty &&
+                                                    (imageState == 0 ||
+                                                        imageState == 1))
+                                                ? CustomRoundedImage(
+                                                    height: 40,
+                                                    image: imageUrl ?? "",
+                                                    width: 40,
+                                                  )
+                                                : (gender?.toLowerCase() ==
+                                                            'male' ||
+                                                        gender == null)
+                                                    ? const CircleAvatar(
+                                                        radius: 20,
+                                                        backgroundImage:
+                                                            AssetImage(
+                                                          Assets.profilePicture,
+                                                        ),
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                      )
+                                                    : const CircleAvatar(
+                                                        radius: 20,
+                                                        backgroundImage:
+                                                            AssetImage(
+                                                          Assets
+                                                              .femaleProfilePicture,
+                                                        ),
+                                                        backgroundColor:
+                                                            Colors.transparent,
+                                                      );
+                                          })),
                                   SizedBox(width: _width * 0.02),
                                   Column(
                                     crossAxisAlignment:
@@ -383,58 +404,61 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
             },
           ),
         ),
-        if ((imageUrl != null && imageUrl!.isNotEmpty) ||
-            (widget.isPreview && widget.selectedImage != null))
-          Positioned(
-            right: 0,
-            bottom: 0,
-            child: Stack(
-              children: [
-                Container(
-                  // clipBehavior: Clip.antiAlias,
-                  // padding: const EdgeInsets.all(10),
-                  height: 160,
-                  width: 215,
-                  decoration: BoxDecoration(
-                    // border: Border.all(
-                    color: CustomTheme.white.withOpacity(0.15),
-                    // ),
-                    // shape: BoxShape.circle,
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(100),
-                      topRight: Radius.circular(100),
+        ValueListenableBuilder(
+          valueListenable: GlobalImageState.imageState,
+          builder: (context, imageState, child) {
+            if (((imageUrl != null && imageUrl!.isNotEmpty) ||
+                    (widget.isPreview && widget.selectedImage != null)) &&
+                (imageState == 0 || imageState == 2)) {
+              return Positioned(
+                right: 0,
+                bottom: 0,
+                child: Stack(
+                  children: [
+                    Container(
+                      height: 160,
+                      width: 215,
+                      decoration: BoxDecoration(
+                        color: CustomTheme.white.withOpacity(0.15),
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(100),
+                          topRight: Radius.circular(100),
+                        ),
+                      ),
                     ),
-                  ),
-                  // child:
-                ),
-                Positioned(
-                  bottom: 0,
-                  right: 7,
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.only(
-                      topLeft: Radius.circular(100),
-                      topRight: Radius.circular(100),
-                      bottomRight: Radius.circular(15),
-                      bottomLeft: Radius.circular(15),
+                    Positioned(
+                      bottom: 0,
+                      right: 7,
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.only(
+                          topLeft: Radius.circular(100),
+                          topRight: Radius.circular(100),
+                          bottomRight: Radius.circular(15),
+                          bottomLeft: Radius.circular(15),
+                        ),
+                        child: widget.selectedImage != null
+                            ? Image.file(
+                                widget.selectedImage!,
+                                height: 150,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              )
+                            : CustomCachedNetworkImage(
+                                url: imageUrl!,
+                                height: 150,
+                                width: 200,
+                                fit: BoxFit.cover,
+                              ),
+                      ),
                     ),
-                    child: widget.selectedImage != null
-                        ? Image.file(
-                            widget.selectedImage!,
-                            height: 150,
-                            width: 200,
-                            fit: BoxFit.cover,
-                          )
-                        : CustomCachedNetworkImage(
-                            url: imageUrl!,
-                            height: 150,
-                            width: 200,
-                            fit: BoxFit.cover,
-                          ),
-                  ),
+                  ],
                 ),
-              ],
-            ),
-          ),
+              );
+            } else {
+              return const SizedBox(); // Return fallback UI
+            }
+          },
+        )
       ],
     );
   }

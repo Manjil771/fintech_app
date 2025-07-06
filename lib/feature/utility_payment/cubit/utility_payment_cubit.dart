@@ -153,6 +153,7 @@ class UtilityPaymentCubit extends Cubit<CommonState> {
       apiEndpoint: apiEndpoint,
       body: body,
     );
+    print("--------------this is body $body");
     if (_res.status == Status.Success && _res.data != null) {
       emit(CommonStateSuccess<UtilityResponseData>(data: _res.data!));
     } else {

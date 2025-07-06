@@ -204,9 +204,10 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     style:
                                         Theme.of(context).textTheme.titleSmall,
                                   ),
-                                  if (memberId.clientCode != "N/A")
+                                  if (memberId.clientCode != "N/A" &&
+                                      memberId.clientCode != "")
                                     Text(
-                                      memberId.clientCode,
+                                      "Member ID: ${memberId.clientCode}",
                                       style: Theme.of(context)
                                           .textTheme
                                           .titleSmall,
@@ -322,7 +323,6 @@ class _ProfileWidgetState extends State<ProfileWidget> {
 //         showBackButton: true,
 //         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
 //             builder: (context, state) {
-      
 
 //           if (state is CommonStateSuccess<UtilityResponseData>) {
 //             final res = state.data;

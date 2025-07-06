@@ -15,7 +15,7 @@
 *.iws
 .idea/
 
-.vscode/
+.vscode/settings.json
 
 # The .vscode folder contains launch configuration and tasks you configure in
 # VS Code which you may wish to be included in version control, so this line
@@ -60,3 +60,6 @@ ios/fastlane/test_output/report.junit
 fastlane.yml
 Makefile
 test.text
+
+# FVM Version Cache
+.fvm/
