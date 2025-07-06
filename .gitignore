@@ -60,3 +60,6 @@ ios/fastlane/test_output/report.junit
 fastlane.yml
 Makefile
 test.text
+
+# FVM Version Cache
+.fvm/

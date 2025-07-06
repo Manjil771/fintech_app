@@ -2448,6 +2448,24 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        ainchoPaincho {
+            dimension "app"
+            applicationId "com.devanasoft.ainchoPaincho"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        laxmiDeep {
+            dimension "app"
+            applicationId "com.devanasoft.laxmiDeep"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        hamro {
+            dimension "app"
+            applicationId "com.devanasoft.hamro"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

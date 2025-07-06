@@ -227,13 +227,14 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    baseUrl: 'http://45.117.153.192:8082/',
+    // baseUrl: 'http://45.117.153.192:8082/',
+    baseUrl: 'http://192.168.1.59:8080/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'HD2HUSLR73',
+    clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,
-    clientSecret: "166022",
+    clientSecret: "199204",
     splashImage: "assets/images/ismart_splash.png",
     primaryColor: const Color(0xFF010C80),
     packageName: "com.devanasoft.ismart",
@@ -5522,6 +5523,33 @@ class CoOperativeValue {
         "AinchoPaincho Savings and Credit Co-operative Society Ltd",
     appTitle: 'AinchoPaincho iSmart',
   );
-
-  static final CoOperative currentCoop = janasambriddhicoop;
+  static final CoOperative laxmiDeep = CoOperative(
+    appStoreID: "com.devanasoft.laxmiDeep",
+    packageName: "com.devanasoft.laxmiDeep",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/laxmiDeep/laxmiDeep_banner.png",
+    backgroundImage: "assets/laxmiDeep/laxmiDeep_background.png",
+    clientCode: '54W671A6R4',
+    clientSecret: "179269",
+    coOperativeLogo: 'assets/laxmiDeep/laxmiDeep_logo.png',
+    splashImage: "assets/laxmiDeep/laxmiDeep_splash.png",
+    primaryColor: const Color(0xFF00923f),
+    coOperativeName: "Laxmi Deep Saving & Credit Co-operative Ltd",
+    appTitle: 'Laxmi Deep iSmart',
+  );
+  static final CoOperative hamro = CoOperative(
+    appStoreID: "com.devanasoft.hamro",
+    packageName: "com.devanasoft.hamro",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/hamro/hamro_banner.png",
+    backgroundImage: "assets/hamro/hamro_background.png",
+    clientCode: '7ZY2G53UE8',
+    clientSecret: "138817",
+    coOperativeLogo: 'assets/hamro/hamro_logo.png',
+    splashImage: "assets/hamro/hamro_splash.png",
+    primaryColor: const Color(0xFF00923f),
+    coOperativeName: "Hamro Saving and Credit Cooperative Ltd.",
+    appTitle: 'Hamro iSmart',
+  );
+  static final CoOperative currentCoop = hamro;
 }

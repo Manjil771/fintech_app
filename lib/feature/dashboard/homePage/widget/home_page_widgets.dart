@@ -10,6 +10,7 @@ import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/categoryWiseService/kalimati_rent_service/screens/kalimati_rent_page.dart';
 import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
@@ -138,6 +139,13 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             )),
                             SizedBox(width: _width * 0.06),
+                            // ElevatedButton.icon(
+                            //     onPressed: () {
+                            //       NavigationService.push(
+                            //           target: KalimatiRentPage());
+                            //     },
+                            //     label: Text('Kali')),
+                            // SizedBox(width: _width * 0.02),
                             Expanded(
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
@@ -264,7 +272,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             decoration: const BoxDecoration(
                               shape: BoxShape.circle,
                               color: Colors.red,
-                              // border: Border.all(color: Colors.white, width: 1),
                             ),
                             child: const Icon(
                               Icons.close,

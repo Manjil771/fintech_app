@@ -43,6 +43,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
 
   getRecentTransaction(DateTime fromDatee, DateTime toDatee) {
     context.read<RecentTransactionCubit>().fetchrecentTransaction(
+        pageNo: 1,
         fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
         toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
         serviceCategoryId: "",
