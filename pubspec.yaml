@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.39+69
+version: 1.5.30+60
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -38,6 +38,8 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
+  url_launcher_ios: ^6.2.1
+
   animations: "^2.0.7"
   screenshot: ^3.0.0
   syncfusion_flutter_charts: ^28.2.11
@@ -83,7 +85,58 @@ dependency_overrides:
 
 flutter:
   assets:
-    # - assets/janakalyanMultipurpose/
+    # - assets/shreeBakhan/
+    # - assets/janasambriddhi/
+    - assets/hamro/
+    # - assets/aanbukhaireni/
+    # - assets/taudaha/
+    # - assets/shreejanshil/
+    # - assets/janataagri/
+    # - assets/upasanawomen/
+    # - assets/mitra/
+    # - assets/abhyudaya/
+    # - assets/maaLaxmi/
+    # - assets/kanchanCoop/
+    # - assets/janapremi/
+    # - assets/nawayuba/
+    # - assets/manipur/
+    # - assets/aadhunikjana/
+    # - assets/naturalmulti/
+    # - assets/shreemandan/
+    # - assets/maruti/
+    # - assets/niyaman/
+    # - assets/youthvision/
+    # - assets/sahasradhara/
+    # - assets/race/
+    # - assets/kunphen/
+    # - assets/arthikBikash/
+    # - assets/mission/
+    # - assets/development/
+    # - assets/artharaksha/
+    # - assets/premier/
+    # - assets/lamjung/
+    # - assets/swarnim/
+    # - assets/hamroNewa/
+    # - assets/janakalyanmulti/
+    # - assets/baglungmulti/
+
+    # - assets/besiShahar/
+
+    # - assets/shreeNawajyoti/
+    # - assets/janakalyanlamjung/
+    # - assets/kundahar/
+    # - assets/sahayatri/
+    # - assets/janak/
+    # - assets/adhikosh/
+    # - assets/lapha/
+    # - assets/begnas/
+    # - assets/nagdhunga/
+    # - assets/rorang/
+    # - assets/sunganga/
+    # - assets/mahagauri/
+    # - assets/shreeChahana/
+    # - assets/bihani/
+    # - assets/nayapuime/
     # - assets/bhimad/
     # - assets/shreephulbari/
     # - assets/gauthali/
@@ -99,10 +152,13 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/laxmiDeep/
     # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
+    # - assets/kabil/
+    # - assets/uttarganga/
     # - assets/kabil/
     # - assets/uttarganga/
     # - assets/kabil/
@@ -123,6 +179,10 @@ flutter:
     # - assets/navaprabhat/
     # - assets/utkrishta/
     # - assets/vyas/
+    # - assets/infinity/
+    # - assets/moneyPlant/
+    # - assets/newGeneration/
+
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -180,6 +240,7 @@ flutter:
     # - assets/shreeSubhakamana/
     # - assets/bishalMulti/
     # - assets/shreeMyagde/
+    # - assets/shreeMyagde/
     # - assets/aarati/
     # - assets/vaidhik/
     # - assets/shreeKalika/
@@ -205,6 +266,7 @@ flutter:
     # - assets/jharana/
     # - assets/chaughada/
     # - assets/avatar/
+    # - assets/janasewamulti/
     # - assets/hetauda/
     # - assets/pragatishil/
     # - assets/youthvoice/
@@ -240,7 +302,7 @@ flutter:
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
-    # - assets/tanahunKalika/
+    # # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
@@ -303,6 +365,7 @@ flutter:
     # - assets/samabeshi/
     # - assets/aagan/
     # - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
@@ -322,7 +385,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
-    # - assets/shreekrishna/
+    # # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
     # - assets/sklakhanpur/
@@ -383,6 +446,7 @@ flutter:
     # - assets/paschimanchal/
     # - assets/sadasyaSewa/
     # - assets/aabhash/
+    # - assets/mirmire/
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -408,14 +472,16 @@ flutter:
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
+    # - assets/aichchhik/
     # - assets/kishanKalyan/
-    # - assets/puime/
+    # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/
     # - assets/kasturi/
     # - assets/ainchoPaincho/
     # - assets/nepal/
     # - assets/aniwarya/
+    # - assets/universe/
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/
