@@ -16,6 +16,7 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -92,6 +93,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             height: 65.hp, child: const HomePageMoneyPage()),
                       if (!_shouldShowDifferentMenu)
                         Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Expanded(
                                 child: InkWell(
@@ -129,16 +131,68 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
-                                    Text(
-                                      "Receive Money",
-                                      style: _textTheme.titleLarge!
-                                          .copyWith(fontSize: 12),
+                                    Flexible(
+                                      child: Text(
+                                        "Receive Money",
+                                        style: _textTheme.titleLarge!
+                                            .copyWith(fontSize: 12),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             )),
-                            SizedBox(width: _width * 0.06),
+                            SizedBox(width: _width * 0.05),
+
+                            Expanded(
+                                child: InkWell(
+                              borderRadius: BorderRadius.circular(12),
+                              onTap: () {
+                                NavigationService.push(
+                                  target: const ReceiveRemittancePage(),
+                                );
+                              },
+                              child: Container(
+                                alignment: Alignment.center,
+                                padding:
+                                    const EdgeInsets.symmetric(vertical: 7),
+                                decoration: BoxDecoration(
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.grey.withOpacity(0.3),
+                                        offset: const Offset(7, 7),
+                                        blurRadius: 8,
+                                        spreadRadius: -5,
+                                      ),
+                                    ],
+                                    color: CustomTheme.white,
+                                    borderRadius: BorderRadius.circular(8)),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    CircleAvatar(
+                                      backgroundColor:
+                                          _theme.primaryColor.withOpacity(0.05),
+                                      child: SvgPicture.asset(
+                                        Assets.reveiceMoneyIcon,
+                                        height: 18.hp,
+                                        color: _theme.primaryColor,
+                                      ),
+                                    ),
+                                    SizedBox(width: _width * 0.02),
+                                    Flexible(
+                                      child: Text(
+                                        "Remit",
+                                        style: _textTheme.titleLarge!
+                                            .copyWith(fontSize: 12),
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            )),
+                            SizedBox(width: _width * 0.05),
+
                             // ElevatedButton.icon(
                             //     onPressed: () {
                             //       NavigationService.push(
@@ -181,10 +235,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                       SizedBox(width: _width * 0.02),
-                                      Text(
-                                        "Send Money",
-                                        style: _textTheme.titleLarge!
-                                            .copyWith(fontSize: 12),
+                                      Flexible(
+                                        child: Text(
+                                          "Send Money",
+                                          style: _textTheme.titleLarge!
+                                              .copyWith(fontSize: 12),
+                                        ),
                                       ),
                                     ],
                                   ),

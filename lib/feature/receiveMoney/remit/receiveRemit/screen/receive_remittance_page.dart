@@ -14,10 +14,8 @@ class ReceiveRemittancePage extends StatelessWidget {
               RepositoryProvider.of<UtilityPaymentRepository>(context))
         ..fetchDetails(
             serviceIdentifier: "",
-            accountDetails: {
-              "type": "recieve",
-            },
-            apiEndpoint: "api/remittance/listRemittance"),
+            accountDetails: {},
+            apiEndpoint: "api/remittance/list"),
       child: const ReceiveRemittanceWidget(),
     );
   }
