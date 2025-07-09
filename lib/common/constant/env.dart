@@ -5551,5 +5551,36 @@ class CoOperativeValue {
     coOperativeName: "Hamro Saving and Credit Cooperative Ltd.",
     appTitle: 'Hamro iSmart',
   );
-  static final CoOperative currentCoop = hamro;
+  static final CoOperative unitedhands = CoOperative(
+    appStoreID: "com.devanasoft.unitedhands",
+    packageName: "com.devanasoft.unitedhands",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/unitedhands/unitedhands_banner.png",
+    backgroundImage: "assets/unitedhands/unitedhands_background.png",
+    clientCode: 'X1SGV9JQVT',
+    clientSecret: "149992",
+    coOperativeLogo: 'assets/unitedhands/unitedhands_logo.png',
+    splashImage: "assets/unitedhands/unitedhands_splash.png",
+    primaryColor: const Color(0xFF079247),
+    coOperativeName: "United Hands Saving and Credit Co operative Ltd",
+    appTitle: 'United Hands iSmart',
+  );
+  static final CoOperative santaneshwornaudhara = CoOperative(
+    appStoreID: "com.devanasoft.santaneshwornaudhara",
+    packageName: "com.devanasoft.santaneshwornaudhara",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/santaneshwornaudhara/santaneshwornaudhara_banner.png",
+    backgroundImage:
+        "assets/santaneshwornaudhara/santaneshwornaudhara_background.png",
+    clientCode: 'S4QJ7DIRYT',
+    clientSecret: "195548",
+    coOperativeLogo:
+        'assets/santaneshwornaudhara/santaneshwornaudhara_logo.png',
+    splashImage: "assets/santaneshwornaudhara/santaneshwornaudhara_splash.png",
+    primaryColor: const Color(0xFF079247),
+    coOperativeName:
+        "Santaneshwor Naudhara Saving & Credit Co-operative Society Ltd",
+    appTitle: 'Santaneshwor Naudhara iSmart',
+  );
+  static final CoOperative currentCoop = omshreeomCoop;
 }

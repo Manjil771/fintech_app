@@ -2466,6 +2466,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         unitedhands {
+            dimension "app"
+            applicationId "com.devanasoft.unitedhands"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         santaneshwornaudhara {
+            dimension "app"
+            applicationId "com.devanasoft.santaneshwornaudhara"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
