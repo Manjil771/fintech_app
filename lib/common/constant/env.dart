@@ -5577,10 +5577,10 @@ class CoOperativeValue {
     coOperativeLogo:
         'assets/santaneshwornaudhara/santaneshwornaudhara_logo.png',
     splashImage: "assets/santaneshwornaudhara/santaneshwornaudhara_splash.png",
-    primaryColor: const Color(0xFF079247),
+    primaryColor: const Color(0xFF009245),
     coOperativeName:
         "Santaneshwor Naudhara Saving & Credit Co-operative Society Ltd",
     appTitle: 'Santaneshwor Naudhara iSmart',
   );
-  static final CoOperative currentCoop = omshreeomCoop;
+  static final CoOperative currentCoop = santaneshwornaudhara;
 }

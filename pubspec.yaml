@@ -87,6 +87,7 @@ flutter:
   assets:
 
     # - assets/shreeBakhan/
+    - assets/santaneshwornaudhara/
     # - assets/unitedhands/
     # - assets/janasambriddhi/
     # - assets/hamro/
@@ -327,7 +328,7 @@ flutter:
     # - assets/systematic/
     # - assets/shreeJamune/
     # - assets/drabya/
-    - assets/omshreeom/
+    # - assets/omshreeom/
     # - assets/upayogi/
     # - assets/upayogi/
     # - assets/sakar/
