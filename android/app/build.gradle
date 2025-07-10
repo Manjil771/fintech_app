@@ -2478,6 +2478,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        patan {
+            dimension "app"
+            applicationId "com.devanasoft.patan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

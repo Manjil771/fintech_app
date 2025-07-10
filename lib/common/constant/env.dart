@@ -5582,5 +5582,19 @@ class CoOperativeValue {
         "Santaneshwor Naudhara Saving & Credit Co-operative Society Ltd",
     appTitle: 'Santaneshwor Naudhara iSmart',
   );
-  static final CoOperative currentCoop = santaneshwornaudhara;
+  static final CoOperative patan = CoOperative(
+    appStoreID: "com.devanasoft.patan",
+    packageName: "com.devanasoft.patan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/patan/patan_banner.png",
+    backgroundImage: "assets/patan/patan_background.png",
+    clientCode: 'DMHE7I60G9',
+    clientSecret: "185335",
+    coOperativeLogo: 'assets/patan/patan_logo.png',
+    splashImage: "assets/patan/patan_splash.png",
+    primaryColor: const Color(0xFF04A55D),
+    coOperativeName: "Patan Saving and Credit Cooperative Society Ltd.",
+    appTitle: 'Patan iSmart',
+  );
+  static final CoOperative currentCoop = patan;
 }
