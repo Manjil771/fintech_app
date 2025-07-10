@@ -27,32 +27,32 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
   Widget build(BuildContext context) {
     return BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
-        // TODO: implement listener
-      },
-      child: PageWrapper(
-          body: CommonContainer(
-        topbarName: "Remittance",
-        title: "Remittance",
-        detail: "Fetch your Remittance details from here",
-        buttonName: "Procced",
-        onButtonPressed: () {
-          onButtonPressed();
-          ;
-        },
-        body: Form(
-          key: _formKey,
-          child: Column(
-            children: [
-              CustomTextField(
-                title: "Pin",
-                hintText: "xxxxxxxxxx",
-                textInputType: TextInputType.number,
-                controller: _remittancepin,
-              )
-            ],
+        child:
+        PageWrapper(
+            body: CommonContainer(
+          topbarName: "Remittance",
+          title: "Remittance",
+          detail: "Fetch your Remittance details from here",
+          buttonName: "Procced",
+          onButtonPressed: () {
+            onButtonPressed();
+            ;
+          },
+          body: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CustomTextField(
+                  title: "Pin",
+                  hintText: "xxxxxxxxxx",
+                  textInputType: TextInputType.number,
+                  controller: _remittancepin,
+                )
+              ],
+            ),
           ),
-        ),
-      )),
+        ));
+      },
     );
   }
 
