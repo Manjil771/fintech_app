@@ -37,6 +37,7 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
         buttonName: "Procced",
         onButtonPressed: () {
           onButtonPressed();
+          ;
         },
         body: Form(
           key: _formKey,
