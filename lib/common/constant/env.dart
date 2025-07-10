@@ -227,8 +227,8 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    // baseUrl: 'http://45.117.153.192:8082/',
-    baseUrl: 'http://192.168.1.59:8080/',
+    baseUrl: 'http://45.117.153.192:8082/',
+    // baseUrl: 'http://192.168.1.59:8080/',
     bannerImage: "assets/images/ismart_banner.png",
     clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -5582,5 +5582,19 @@ class CoOperativeValue {
         "Santaneshwor Naudhara Saving & Credit Co-operative Society Ltd",
     appTitle: 'Santaneshwor Naudhara iSmart',
   );
-  static final CoOperative currentCoop = omshreeomCoop;
+  static final CoOperative patan = CoOperative(
+    appStoreID: "com.devanasoft.patan",
+    packageName: "com.devanasoft.patan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/patan/patan_banner.png",
+    backgroundImage: "assets/patan/patan_background.png",
+    clientCode: 'DMHE7I60G9',
+    clientSecret: "185335",
+    coOperativeLogo: 'assets/patan/patan_logo.png',
+    splashImage: "assets/patan/patan_splash.png",
+    primaryColor: const Color(0xFF04A55D),
+    coOperativeName: "Patan Saving and Credit Cooperative Society Ltd.",
+    appTitle: 'Patan iSmart',
+  );
+  static final CoOperative currentCoop = development;
 }

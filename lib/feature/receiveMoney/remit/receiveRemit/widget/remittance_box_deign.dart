@@ -39,8 +39,7 @@ class RemitBoxDesign extends StatelessWidget {
               ),
               child: CustomCachedNetworkImage(
                 fit: BoxFit.cover,
-                url: RepositoryProvider.of<CoOperative>(context).baseUrl +
-                    imageUrl,
+                url: imageUrl,
               ),
             ),
             // SizedBox(height: .hp),

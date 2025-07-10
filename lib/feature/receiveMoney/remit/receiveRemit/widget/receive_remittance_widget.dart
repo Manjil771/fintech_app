@@ -7,6 +7,7 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/refno_search_remittance.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_details_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -35,15 +36,19 @@ class ReceiveRemittanceWidget extends StatelessWidget {
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       onContainerPress: () {
                         NavigationService.push(
-                          target: RefnoSearchRemitPage(
-                            serviceId: res[index]["serviceName"],
-                            imageUrl: res[index]["image"],
-                            companyName: res[index]["company"],
-                          ),
-                        );
+                            target: RemittanceDetailsPage(
+                          companyID: res[index]["locationName"],
+                        ));
+                        // NavigationService.push(
+                        //   target: RefnoSearchRemitPage(
+                        //     serviceId: res[index]["serviceName"],
+                        //     imageUrl: res[index]["remitLogo"],
+                        //     companyName: res[index]["bankName"],
+                        //   ),
+                        // );
                       },
-                      title: res[index]["company"],
-                      imageUrl: res[index]["image"],
+                      title: res[index]["bankName"],
+                      imageUrl: res[index]["remitLogo"],
                     );
                   });
             } else if (state is CommonLoading) {
@@ -61,7 +66,6 @@ class ReceiveRemittanceWidget extends StatelessWidget {
     );
   }
 }
-
 
 // import 'package:flutter/material.dart';
 // import 'package:ismart/common/constant/assets.dart';
