@@ -1,4 +1,4 @@
-name: Deploy to Play Store
+name: Build appbundle
 
 on:
   push:
@@ -86,11 +86,6 @@ jobs:
           key: ${{ runner.os }}-android-build-${{ github.sha }}
           restore-keys: |
             ${{ runner.os }}-android-build-
-
-      # - name: Build APK
-      #   run: |
-      #     export JAVA_HOME=$JAVA_HOME_17_X64
-      #     flutter build apk --flavor prod --release
 
       - name: Build App Bundle
         run: |
