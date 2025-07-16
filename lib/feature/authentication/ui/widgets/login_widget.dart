@@ -33,6 +33,7 @@ import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
+import 'package:ismart/feature/authentication/ui/screens/forex_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
@@ -150,8 +151,11 @@ class _LoginWidgetState extends State<LoginWidget> {
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
     final List onTapFunction = [
+      // () {
+      //   NavigationService.pushNamed(routeName: Routes.forgotPin);
+      // },
       () {
-        NavigationService.pushNamed(routeName: Routes.forgotPin);
+        NavigationService.push(target: const ForexPage());
       },
       () {
         NavigationService.push(target: const ActivateAccountPage());
@@ -506,13 +510,9 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List nameList = [
-    "Reset Pin",
-    "Activate Account",
-    "Missed Call Banking"
-  ];
+  final List nameList = ["Forex", "Activate Account", "Missed Call Banking"];
   final List imageList = [
-    "assets/icons/Reset password.svg",
+    "assets/icons/forex.svg",
     "assets/icons/activate account.svg",
     "assets/icons/missedcall icon.svg",
   ];

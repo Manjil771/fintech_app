@@ -5565,5 +5565,5 @@ class CoOperativeValue {
     coOperativeName: "Hamro Saving and Credit Cooperative Ltd.",
     appTitle: 'Hamro iSmart',
   );
-  static final CoOperative currentCoop = triyuga;
+  static final CoOperative currentCoop = devLive;
 }

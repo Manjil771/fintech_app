@@ -14,7 +14,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 import '../../feature/authentication/resource/user_repository.dart';
 
-AppBar myAppbar({bool showBackButton = false, bool showChatBot = false}) {
+AppBar myAppbar({bool showBackButton = false, bool showChatBot = true}) {
   final _height = SizeUtils.height;
 
   Widget _getImageWidget() {
@@ -64,32 +64,33 @@ AppBar myAppbar({bool showBackButton = false, bool showChatBot = false}) {
       child: _getImageWidget(),
     ),
     actions: [
-      const NotificationCountIcon(),
-      InkWell(
-        onTap: () {
-          showPopUpDialog(
-            context: NavigationService.context,
-            message: "Are you sure you want to logout.",
-            title: "Alert",
-            buttonText: "Logout",
-            buttonCallback: () {
-              RepositoryProvider.of<UserRepository>(NavigationService.context)
-                  .logout();
-              NavigationService.pushNamedAndRemoveUntil(
-                routeName: Routes.loginPage,
-              );
-            },
-          );
-        },
-        child: Padding(
-          padding: const EdgeInsets.only(right: 18.0),
-          child: SvgPicture.asset(
-            Assets.logoutIcon,
-            color: CustomTheme.primaryColor,
-            height: _height * 0.025,
+      if (showChatBot) const NotificationCountIcon(),
+      if (showChatBot)
+        InkWell(
+          onTap: () {
+            showPopUpDialog(
+              context: NavigationService.context,
+              message: "Are you sure you want to logout.",
+              title: "Alert",
+              buttonText: "Logout",
+              buttonCallback: () {
+                RepositoryProvider.of<UserRepository>(NavigationService.context)
+                    .logout();
+                NavigationService.pushNamedAndRemoveUntil(
+                  routeName: Routes.loginPage,
+                );
+              },
+            );
+          },
+          child: Padding(
+            padding: const EdgeInsets.only(right: 18.0),
+            child: SvgPicture.asset(
+              Assets.logoutIcon,
+              color: CustomTheme.primaryColor,
+              height: _height * 0.025,
+            ),
           ),
         ),
-      ),
     ],
   );
 }
