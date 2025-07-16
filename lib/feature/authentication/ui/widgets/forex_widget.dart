@@ -23,7 +23,7 @@ class _ForexWidgetState extends State<ForexWidget> {
   Widget build(BuildContext context) {
     bool _isLoading = false;
     return PageWrapper(
-        padding: EdgeInsets.all(0),
+        padding: const EdgeInsets.all(0),
         showBackButton: true,
         showChatBot: false,
         body: BlocConsumer<UtilityPaymentCubit, CommonState>(
@@ -52,8 +52,6 @@ class _ForexWidgetState extends State<ForexWidget> {
               final List response = state.data.findValue(primaryKey: "data");
               return LayoutBuilder(
                 builder: (context, constraints) {
-                  final double screenWidth = constraints.maxWidth;
-
                   return SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     child: SingleChildScrollView(
@@ -70,7 +68,6 @@ class _ForexWidgetState extends State<ForexWidget> {
                             ),
                           ),
                           child: DataTable(
-                            horizontalMargin: screenWidth / 48,
                             columns: const [
                               DataColumn(label: Text('Currency')),
                               DataColumn(label: Text('Unit')),
