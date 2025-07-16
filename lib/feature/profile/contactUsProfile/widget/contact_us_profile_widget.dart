@@ -61,14 +61,24 @@ class _ContactUsProfileWidgetState extends State<ContactUsProfileWidget> {
                 final UtilityResponseData _res = state.data;
                 if (_res.code == "M0000") {
                   if (_res.details.isNotEmpty) {
-                    final _response = _res.details.first;
+                    final _response =
+                        _res.details.firstWhere((e) => e.title == 'data');
+
+                    for (final e in _res.details) {
+                      print('Title: ${e.title}');
+                      print('Value: ${e.value}');
+                    }
 
                     if (_response.value is List) {
                       final valueList = _response.value as List;
-
-                      if (valueList.isNotEmpty && valueList.first is Map) {
-                        final infoMap = valueList.first as Map<String, dynamic>;
-                        final htmlContent = infoMap['info'];
+                      final aboutUsMap = valueList.firstWhere(
+                        (element) =>
+                            element['title'].toLowerCase() as String ==
+                            'about us',
+                        orElse: () => null,
+                      );
+                      if (aboutUsMap != null && aboutUsMap['info'] != null) {
+                        final htmlContent = aboutUsMap['info'];
 
                         setState(() {
                           htmlData = htmlContent;
