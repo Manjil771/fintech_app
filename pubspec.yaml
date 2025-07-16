@@ -39,6 +39,7 @@ dependencies:
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
   url_launcher_ios: ^6.2.1
+  flutter_html: ^3.0.0
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -85,7 +86,6 @@ dependency_overrides:
 
 flutter:
   assets:
-
     # - assets/shreeBakhan/
     # - assets/nhugupala/
     # - assets/shreegorakhkali/
@@ -129,7 +129,7 @@ flutter:
     # - assets/baglungmulti/
 
     # - assets/besiShahar/
-    
+
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
@@ -190,7 +190,7 @@ flutter:
     # - assets/infinity/
     # - assets/moneyPlant/
     # - assets/newGeneration/
-    
+
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -265,6 +265,7 @@ flutter:
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
+    - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -454,7 +455,6 @@ flutter:
     # - assets/sadasyaSewa/
     # - assets/aabhash/
     # - assets/mirmire/
-    
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -490,7 +490,6 @@ flutter:
     # - assets/nepal/
     # - assets/aniwarya/
     # - assets/universe/
-    
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

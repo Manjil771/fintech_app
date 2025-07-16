@@ -29,7 +29,7 @@ class PageWrapper extends StatefulWidget {
   const PageWrapper({
     this.scaffoldKey,
     this.useOwnAppBar = false,
-    this.showChatBot = false,
+    this.showChatBot = true,
     required this.body,
     this.showBackButton = false,
     this.useOwnScaffold = false,

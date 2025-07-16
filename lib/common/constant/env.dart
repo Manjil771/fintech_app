@@ -5524,6 +5524,20 @@ class CoOperativeValue {
         "AinchoPaincho Savings and Credit Co-operative Society Ltd",
     appTitle: 'AinchoPaincho iSmart',
   );
+  static final CoOperative triyuga = CoOperative(
+    appStoreID: "com.devanasoft.triyuga",
+    packageName: "com.devanasoft.triyuga",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/triyuga/triyuga_banner.png",
+    backgroundImage: "assets/triyuga/triyuga_background.png",
+    clientCode: '0LCFK949Q8',
+    clientSecret: "178818",
+    coOperativeLogo: 'assets/triyuga/triyuga_logo.png',
+    splashImage: "assets/triyuga/triyuga_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "Triyuga Multipurpose Co-operative Ltd",
+    appTitle: 'Triyuga iSmart',
+  );
   static final CoOperative laxmiDeep = CoOperative(
     appStoreID: "com.devanasoft.laxmiDeep",
     packageName: "com.devanasoft.laxmiDeep",
