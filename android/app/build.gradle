@@ -1916,7 +1916,7 @@ android {
         }
         sanjeewani {
             dimension "app"
-            applicationId "com.devanasoft.sanjeewaniSaving"
+            applicationId "com.devanasoft.sanjeewaniSavingcoop"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -2334,9 +2334,9 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-         sahayatri {
+         sahayatricoop {
             dimension "app"
-            applicationId "com.devanasoft.sahayatri"
+            applicationId "com.devanasoft.sahayatricoop"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
@@ -2481,6 +2481,36 @@ android {
         patan {
             dimension "app"
             applicationId "com.devanasoft.patan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         pariwortan {
+            dimension "app"
+            applicationId "com.devanasoft.pariwortan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         sahayatriSaving {
+            dimension "app"
+            applicationId "com.devanasoft.sahayatriSaving"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+          shreegorakhkali {
+            dimension "app"
+            applicationId "com.devanasoft.shreegorakhkali"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+          nhugupala {
+            dimension "app"
+            applicationId "com.devanasoft.nhugupala"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         sahayatripokhara {
+            dimension "app"
+            applicationId "com.devanasoft.sahayatripokhara"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
