@@ -39,6 +39,7 @@ import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -162,6 +163,14 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
       () {
         miscallBanking();
+      },
+      () {
+        NavigationService.push(
+          target: CoOperativeBranchPage(
+            isfrontpage: true,
+            onBankSelected: (val) {},
+          ),
+        );
       },
     ];
 
@@ -474,16 +483,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ...List.generate(
-                            3,
-                            (index) => CommonBox(
-                                onContainerPress: onTapFunction[index],
-                                containerImage: imageList[index],
-                                title: nameList[index]))
-                      ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ...List.generate(
+                              4,
+                              (index) => CommonBox(
+                                  onContainerPress: onTapFunction[index],
+                                  containerImage: imageList[index],
+                                  title: nameList[index]))
+                        ],
+                      ),
                     ),
                     SizedBox(height: height * 0.022),
                     if (_bannerImages.isNotEmpty)
@@ -510,11 +522,17 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List nameList = ["Forex", "Activate Account", "Missed Call Banking"];
+  final List nameList = [
+    "Forex",
+    "Activate Account",
+    "Missed Call Banking",
+    "Branches"
+  ];
   final List imageList = [
     "assets/icons/forex.svg",
     "assets/icons/activate account.svg",
     "assets/icons/missedcall icon.svg",
+    "assets/icons/branch_icon.svg",
   ];
 
   miscallBanking() {

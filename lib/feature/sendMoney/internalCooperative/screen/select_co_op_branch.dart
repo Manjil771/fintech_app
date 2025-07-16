@@ -6,9 +6,11 @@ import 'package:ismart/feature/sendMoney/internalCooperative/resources/internal_
 import 'package:ismart/feature/sendMoney/internalCooperative/widget/select_coop_branch_widget.dart';
 
 class CoOperativeBranchPage extends StatelessWidget {
-  const CoOperativeBranchPage({Key? key, required this.onBankSelected})
+  const CoOperativeBranchPage(
+      {Key? key, required this.onBankSelected, this.isfrontpage = false})
       : super(key: key);
   final Function(InternalBranch) onBankSelected;
+  final bool isfrontpage;
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +24,7 @@ class CoOperativeBranchPage extends StatelessWidget {
         ),
       ],
       child: CoOpBranchListWidget(
-        onBankSelected: onBankSelected,
-      ),
+          onBankSelected: onBankSelected, isfrontpage: isfrontpage),
     );
   }
 }
