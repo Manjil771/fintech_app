@@ -63,12 +63,6 @@ class _ContactUsProfileWidgetState extends State<ContactUsProfileWidget> {
                   if (_res.details.isNotEmpty) {
                     final _response =
                         _res.details.firstWhere((e) => e.title == 'data');
-
-                    for (final e in _res.details) {
-                      print('Title: ${e.title}');
-                      print('Value: ${e.value}');
-                    }
-
                     if (_response.value is List) {
                       final valueList = _response.value as List;
                       final aboutUsMap = valueList.firstWhere(
