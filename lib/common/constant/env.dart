@@ -5681,5 +5681,19 @@ class CoOperativeValue {
     coOperativeName: "Nhugu Pala Saving & Credit Co-operative Society Ltd.",
     appTitle: 'Nhugu Pala iSmart',
   );
-  static final CoOperative currentCoop = sahayatripokharaCoop;
+  static final CoOperative samajkalyan = CoOperative(
+    appStoreID: "com.devanasoft.samajkalyan",
+    packageName: "com.devanasoft.samajkalyan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/samajkalyan/samajkalyan_banner.png",
+    backgroundImage: "assets/samajkalyan/samajkalyan_background.png",
+    clientCode: '40FGH48HSL',
+    clientSecret: "124462",
+    coOperativeLogo: 'assets/samajkalyan/samajkalyan_logo.png',
+    splashImage: "assets/samajkalyan/samajkalyan_splash.png",
+    primaryColor: const Color(0xFF39B54A),
+    coOperativeName: "Samaj Kalyan Saving & Credit Co-operative Ltd",
+    appTitle: 'Samaj Kalyan iSmart',
+  );
+  static final CoOperative currentCoop = samajkalyan;
 }
