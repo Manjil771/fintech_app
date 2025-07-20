@@ -1,4 +1,4 @@
-name: Build appbundle 1
+name: Build appbundle 2
 
 on:
   push:
