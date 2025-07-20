@@ -92,21 +92,19 @@ jobs:
           export JAVA_HOME=$JAVA_HOME_17_X64
           flutter build appbundle --flavor prod --release
 
-    #   - name: Upload Artifacts
-    #     uses: actions/upload-artifact@v4
-    #     with:
-    #       name: release-artifacts
-    #       path: |
-    #         build/app/outputs/flutter-apk/app-release.apk
-    #         build/app/outputs/bundle/release/app-release.aab
-    #       retention-days: 5
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          retention-days: 5
 
-    #   - name: Upload to Play Store
-    #     uses: r0adkll/upload-google-play@v1
-    #     with:
-    #       serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-    #       packageName: com.your.package.name # Replace with your package name
-    #       releaseFiles: build/app/outputs/bundle/release/app-release.aab
-    #       track: production # or beta/alpha/rollout
-    #       # status: completed # Uncomment for immediate rollout
-    #       # userFraction: 0.5 # Uncomment for percentage rollout
+      - name: Upload to Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          packageName: com.devanasoft.ismart
+          releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          track: beta # or beta/alpha/rollout
+          # status: completed # Uncomment for immediate rollout
+          # userFraction: 0.5 # Uncomment for percentage rollout
