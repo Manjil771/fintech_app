@@ -18,16 +18,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: "3.11"
-
-      - name: Install Google API packages
-        run: |
-          python -m pip install --upgrade pip
-          pip install google-api-python-client google-auth
-
       - name: Validate Google Play Access
         run: |
           echo "Testing Google Play API access..."
@@ -39,17 +29,14 @@ jobs:
           from googleapiclient.errors import HttpError
 
           try:
-              print('1. Loading credentials...')
               creds = service_account.Credentials.from_service_account_file('service_account.json')
-              
-              print('2. Building API client...')
               service = build('androidpublisher', 'v3', credentials=creds)
               
-              print('3. Testing API access...')
+              # Test API access by creating an edit
               edit = service.edits().insert(packageName='com.devanasoft.ismart').execute()
               print('✅ Success! Edit ID:', edit['id'])
               
-              print('4. Cleaning up test edit...')
+              # Clean up by deleting the test edit
               service.edits().delete(
                   packageName='com.devanasoft.ismart',
                   editId=edit['id']
@@ -57,14 +44,11 @@ jobs:
               
           except HttpError as e:
               print('❌ API Error:', e.reason)
-              print('Status code:', e.status_code)
-              print('Error details:', e.error_details)
+              print('Full error details:', e.content.decode())
               exit(1)
           except Exception as e:
               print('❌ Unexpected error:', str(e))
               exit(1)
-          finally:
-              print('5. Removing temporary files...')
           "
           rm service_account.json
 
