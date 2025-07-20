@@ -1,4 +1,4 @@
-name: Build appbundle 2
+name: Build appbundle v3
 
 on:
   push:
