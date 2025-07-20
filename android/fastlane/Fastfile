@@ -16,42 +16,26 @@
 default_platform(:android)
 
 platform :android do
-  desc "Deploy to Play Store"
-  lane :deploy do |options|
-    flavor = options[:flavor]
-    unless flavor
-      UI.user_error!("Flavor must be specified")
+  desc "Run tests and build the release App Bundle"
+  lane :build_and_test do
+    # Navigate to the project root to run flutter commands
+    Dir.chdir("..") do
+      sh("flutter", "pub", "get")
+      sh("flutter", "analyze")
+      # sh("flutter", "test")
+      sh("flutter", "build", "appbundle", "--release","flavour","kamdhenu","-t","lib/main.dart")
     end
+  end
 
-    # Ensure the keystore file is present
-    unless File.exist?("../app/ismart-keystore.jks")
-      UI.user_error!("Keystore file is missing. Ensure it's present at android/app/keystore.jks")
-    end
+  desc "Deploy to Google Play Internal track"
+  lane :deploy do
+    build_and_test # Run the build lane first
 
-    # Get the package name from the AndroidManifest.xml file
-    manifest_file = "../app/src/main/AndroidManifest.xml"
-    # package_name = File.read(manifest_file).match(/package="(.*?)"/)[1]
-
-    if flavor == 'prod'
-      package_name = "com.devanasoft.ismart"
-    else
-      package_name = "com.devanasoft.#{flavor}"
-    end
-	    # Run the custom version increment script
-    sh "ruby increment_version_code.rb"
-
-    # Build the app
-    gradle(task: "assemble#{flavor.capitalize}Release")
-
-    # Upload to Play Store
     upload_to_play_store(
-      package_name: package_name,
-      track: 'internal',  # or 'alpha', 'beta', 'production'
-      aab: "../build/app/outputs/bundle/#{flavor}Release/app-#{flavor}-release.aab",
-      json_key: "/home/ubuntu/secrets/creds.json",
-      skip_upload_metadata: true,
-      skip_upload_images: true,
-      skip_upload_screenshots: true
+      track: 'internal',
+      aab: '../build/app/outputs/bundle/release/app-release.aab',
+      # For deployment, you must set up Google Play credentials
+      # json_key: "path/to/your/play-store-credentials.json"
     )
   end
 end
