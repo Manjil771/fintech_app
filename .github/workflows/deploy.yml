@@ -1,13 +1,17 @@
-name: Test Google Play Credentials
+name: Build appbundle 2
 
 on:
-  workflow_dispatch: # Allows manual triggering
+  push:
+    branches:
+      - feat/subash/proj_upgrade
 
 env:
   ACTIONS_STEP_DEBUG: true
+  FLUTTER_VERSION: "3.27.0"
+  GRADLE_VERSION: "8.9"
 
 jobs:
-  test-credentials:
+  deploy:
     runs-on: ubuntu-latest
 
     steps:
@@ -48,114 +52,94 @@ jobs:
           "
           rm service_account.json
 
-# name: Build appbundle 2
+      - name: Setup java 17 (for Gradle 8.x)
+        uses: actions/setup-java@v3
+        with:
+          java-version: "17"
+          distribution: "temurin"
 
-# on:
-#   push:
-#     branches:
-#       - feat/subash/proj_upgrade
+      # Cache Flutter dependencies
+      - name: Cache Flutter dependencies
+        uses: actions/cache@v3
+        with:
+          path: |
+            /opt/hostedtoolcache/flutter
+            .pub-cache
+            ${{ github.workspace }}/.flutter
+          key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-
 
-# env:
-#   ACTIONS_STEP_DEBUG: true
-#   FLUTTER_VERSION: "3.27.0"
-#   GRADLE_VERSION: "8.9"
+      - name: Set up Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ env.FLUTTER_VERSION }}
+          channel: "stable"
+          cache: true
+          cache-key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
+          cache-path: ${{ github.workspace }}/.flutter
 
-# jobs:
-#   deploy:
-#     runs-on: ubuntu-latest
+      # Cache Gradle
+      - name: Cache Gradle
+        uses: actions/cache@v3
+        with:
+          path: |
+            ~/.gradle/caches
+            ~/.gradle/wrapper
+          key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+          restore-keys: |
+            ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-
 
-#     steps:
-#       - name: Checkout repository
-#         uses: actions/checkout@v4
+      - name: Set up Gradle
+        uses: gradle/gradle-build-action@v2
+        with:
+          gradle-version: ${{ env.GRADLE_VERSION }}
+          cache-read-only: false
 
-#       - name: Setup java 17 (for Gradle 8.x)
-#         uses: actions/setup-java@v3
-#         with:
-#           java-version: "17"
-#           distribution: "temurin"
+      - name: Run Flutter doctor
+        run: flutter doctor -v
 
-#       # Cache Flutter dependencies
-#       - name: Cache Flutter dependencies
-#         uses: actions/cache@v3
-#         with:
-#           path: |
-#             /opt/hostedtoolcache/flutter
-#             .pub-cache
-#             ${{ github.workspace }}/.flutter
-#           key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
-#           restore-keys: |
-#             ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-
+      # Cache Dart packages
+      - name: Cache Dart packages
+        uses: actions/cache@v3
+        with:
+          path: /opt/hostedtoolcache/flutter/.pub-cache
+          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-pub-
 
-#       - name: Set up Flutter
-#         uses: subosito/flutter-action@v2
-#         with:
-#           flutter-version: ${{ env.FLUTTER_VERSION }}
-#           channel: "stable"
-#           cache: true
-#           cache-key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
-#           cache-path: ${{ github.workspace }}/.flutter
+      - name: Get Flutter dependencies
+        run: flutter pub get
 
-#       # Cache Gradle
-#       - name: Cache Gradle
-#         uses: actions/cache@v3
-#         with:
-#           path: |
-#             ~/.gradle/caches
-#             ~/.gradle/wrapper
-#           key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-#           restore-keys: |
-#             ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-
+      # Cache Android build artifacts
+      - name: Cache Android build
+        uses: actions/cache@v3
+        with:
+          path: |
+            android/.gradle
+            android/build
+          key: ${{ runner.os }}-android-build-${{ github.sha }}
+          restore-keys: |
+            ${{ runner.os }}-android-build-
 
-#       - name: Set up Gradle
-#         uses: gradle/gradle-build-action@v2
-#         with:
-#           gradle-version: ${{ env.GRADLE_VERSION }}
-#           cache-read-only: false
+      - name: Build App Bundle
+        run: |
+          export JAVA_HOME=$JAVA_HOME_17_X64
+          flutter build appbundle --flavor prod --release
 
-#       - name: Run Flutter doctor
-#         run: flutter doctor -v
+      - name: Upload Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: release-artifacts
+          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          retention-days: 5
 
-#       # Cache Dart packages
-#       - name: Cache Dart packages
-#         uses: actions/cache@v3
-#         with:
-#           path: /opt/hostedtoolcache/flutter/.pub-cache
-#           key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
-#           restore-keys: |
-#             ${{ runner.os }}-pub-
-
-#       - name: Get Flutter dependencies
-#         run: flutter pub get
-
-#       # Cache Android build artifacts
-#       - name: Cache Android build
-#         uses: actions/cache@v3
-#         with:
-#           path: |
-#             android/.gradle
-#             android/build
-#           key: ${{ runner.os }}-android-build-${{ github.sha }}
-#           restore-keys: |
-#             ${{ runner.os }}-android-build-
-
-#       - name: Build App Bundle
-#         run: |
-#           export JAVA_HOME=$JAVA_HOME_17_X64
-#           flutter build appbundle --flavor prod --release
-
-#       - name: Upload Artifacts
-#         uses: actions/upload-artifact@v4
-#         with:
-#           name: release-artifacts
-#           path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
-#           retention-days: 5
-
-#       - name: Upload to Play Store
-#         uses: r0adkll/upload-google-play@v1
-#         with:
-#           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-#           packageName: com.devanasoft.ismart
-#           releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
-#           track: beta # or beta/alpha/rollout
-#           # status: completed # Uncomment for immediate rollout
-#           # userFraction: 0.5 # Uncomment for percentage rollout
+      - name: Upload to Play Store
+        uses: r0adkll/upload-google-play@v1
+        with:
+          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+          packageName: com.devanasoft.ismart
+          releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+          track: beta # or beta/alpha/rollout
+          # status: completed # Uncomment for immediate rollout
+          # userFraction: 0.5 # Uncomment for percentage rollout
