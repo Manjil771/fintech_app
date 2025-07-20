@@ -1,110 +1,161 @@
-name: Build appbundle 2
+name: Test Google Play Credentials
 
 on:
-  push:
-    branches:
-      - feat/subash/proj_upgrade
+  workflow_dispatch: # Allows manual triggering
 
 env:
-  FLUTTER_VERSION: "3.27.0"
-  GRADLE_VERSION: "8.9"
+  ACTIONS_STEP_DEBUG: true
 
 jobs:
-  deploy:
+  test-credentials:
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup java 17 (for Gradle 8.x)
-        uses: actions/setup-java@v3
-        with:
-          java-version: "17"
-          distribution: "temurin"
-
-      # Cache Flutter dependencies
-      - name: Cache Flutter dependencies
-        uses: actions/cache@v3
-        with:
-          path: |
-            /opt/hostedtoolcache/flutter
-            .pub-cache
-            ${{ github.workspace }}/.flutter
-          key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-
-
-      - name: Set up Flutter
-        uses: subosito/flutter-action@v2
-        with:
-          flutter-version: ${{ env.FLUTTER_VERSION }}
-          channel: "stable"
-          cache: true
-          cache-key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
-          cache-path: ${{ github.workspace }}/.flutter
-
-      # Cache Gradle
-      - name: Cache Gradle
-        uses: actions/cache@v3
-        with:
-          path: |
-            ~/.gradle/caches
-            ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-
-
-      - name: Set up Gradle
-        uses: gradle/gradle-build-action@v2
-        with:
-          gradle-version: ${{ env.GRADLE_VERSION }}
-          cache-read-only: false
-
-      - name: Run Flutter doctor
-        run: flutter doctor -v
-
-      # Cache Dart packages
-      - name: Cache Dart packages
-        uses: actions/cache@v3
-        with:
-          path: /opt/hostedtoolcache/flutter/.pub-cache
-          key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
-          restore-keys: |
-            ${{ runner.os }}-pub-
-
-      - name: Get Flutter dependencies
-        run: flutter pub get
-
-      # Cache Android build artifacts
-      - name: Cache Android build
-        uses: actions/cache@v3
-        with:
-          path: |
-            android/.gradle
-            android/build
-          key: ${{ runner.os }}-android-build-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-android-build-
-
-      - name: Build App Bundle
+      - name: Validate Google Play Access
         run: |
-          export JAVA_HOME=$JAVA_HOME_17_X64
-          flutter build appbundle --flavor prod --release
+          echo "Testing Google Play API access..."
+          echo '${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}' > service_account.json
 
-      - name: Upload Artifacts
-        uses: actions/upload-artifact@v4
-        with:
-          name: release-artifacts
-          path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
-          retention-days: 5
+          python3 -c "
+          from google.oauth2 import service_account
+          from googleapiclient.discovery import build
+          from googleapiclient.errors import HttpError
 
-      - name: Upload to Play Store
-        uses: r0adkll/upload-google-play@v1
-        with:
-          serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
-          packageName: com.devanasoft.ismart
-          releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
-          track: beta # or beta/alpha/rollout
-          # status: completed # Uncomment for immediate rollout
-          # userFraction: 0.5 # Uncomment for percentage rollout
+          try:
+              creds = service_account.Credentials.from_service_account_file('service_account.json')
+              service = build('androidpublisher', 'v3', credentials=creds)
+              
+              # Test API access by creating an edit
+              edit = service.edits().insert(packageName='com.devanasoft.ismart').execute()
+              print('✅ Success! Edit ID:', edit['id'])
+              
+              # Clean up by deleting the test edit
+              service.edits().delete(
+                  packageName='com.devanasoft.ismart',
+                  editId=edit['id']
+              ).execute()
+              
+          except HttpError as e:
+              print('❌ API Error:', e.reason)
+              print('Full error details:', e.content.decode())
+              exit(1)
+          except Exception as e:
+              print('❌ Unexpected error:', str(e))
+              exit(1)
+          "
+          rm service_account.json
+
+# name: Build appbundle 2
+
+# on:
+#   push:
+#     branches:
+#       - feat/subash/proj_upgrade
+
+# env:
+#   ACTIONS_STEP_DEBUG: true
+#   FLUTTER_VERSION: "3.27.0"
+#   GRADLE_VERSION: "8.9"
+
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
+
+#     steps:
+#       - name: Checkout repository
+#         uses: actions/checkout@v4
+
+#       - name: Setup java 17 (for Gradle 8.x)
+#         uses: actions/setup-java@v3
+#         with:
+#           java-version: "17"
+#           distribution: "temurin"
+
+#       # Cache Flutter dependencies
+#       - name: Cache Flutter dependencies
+#         uses: actions/cache@v3
+#         with:
+#           path: |
+#             /opt/hostedtoolcache/flutter
+#             .pub-cache
+#             ${{ github.workspace }}/.flutter
+#           key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
+#           restore-keys: |
+#             ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-
+
+#       - name: Set up Flutter
+#         uses: subosito/flutter-action@v2
+#         with:
+#           flutter-version: ${{ env.FLUTTER_VERSION }}
+#           channel: "stable"
+#           cache: true
+#           cache-key: ${{ runner.os }}-flutter-${{ env.FLUTTER_VERSION }}-${{ hashFiles('pubspec.lock') }}
+#           cache-path: ${{ github.workspace }}/.flutter
+
+#       # Cache Gradle
+#       - name: Cache Gradle
+#         uses: actions/cache@v3
+#         with:
+#           path: |
+#             ~/.gradle/caches
+#             ~/.gradle/wrapper
+#           key: ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-${{ hashFiles('**/*.gradle*', '**/gradle-wrapper.properties') }}
+#           restore-keys: |
+#             ${{ runner.os }}-gradle-${{ env.GRADLE_VERSION }}-
+
+#       - name: Set up Gradle
+#         uses: gradle/gradle-build-action@v2
+#         with:
+#           gradle-version: ${{ env.GRADLE_VERSION }}
+#           cache-read-only: false
+
+#       - name: Run Flutter doctor
+#         run: flutter doctor -v
+
+#       # Cache Dart packages
+#       - name: Cache Dart packages
+#         uses: actions/cache@v3
+#         with:
+#           path: /opt/hostedtoolcache/flutter/.pub-cache
+#           key: ${{ runner.os }}-pub-${{ hashFiles('pubspec.lock') }}
+#           restore-keys: |
+#             ${{ runner.os }}-pub-
+
+#       - name: Get Flutter dependencies
+#         run: flutter pub get
+
+#       # Cache Android build artifacts
+#       - name: Cache Android build
+#         uses: actions/cache@v3
+#         with:
+#           path: |
+#             android/.gradle
+#             android/build
+#           key: ${{ runner.os }}-android-build-${{ github.sha }}
+#           restore-keys: |
+#             ${{ runner.os }}-android-build-
+
+#       - name: Build App Bundle
+#         run: |
+#           export JAVA_HOME=$JAVA_HOME_17_X64
+#           flutter build appbundle --flavor prod --release
+
+#       - name: Upload Artifacts
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: release-artifacts
+#           path: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+#           retention-days: 5
+
+#       - name: Upload to Play Store
+#         uses: r0adkll/upload-google-play@v1
+#         with:
+#           serviceAccountJsonPlainText: ${{ secrets.GOOGLE_PLAY_SERVICE_ACCOUNT }}
+#           packageName: com.devanasoft.ismart
+#           releaseFiles: build/app/outputs/bundle/prodRelease/app-prod-release.aab
+#           track: beta # or beta/alpha/rollout
+#           # status: completed # Uncomment for immediate rollout
+#           # userFraction: 0.5 # Uncomment for percentage rollout
