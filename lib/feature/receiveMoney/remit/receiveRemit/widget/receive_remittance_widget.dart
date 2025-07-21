@@ -39,13 +39,6 @@ class ReceiveRemittanceWidget extends StatelessWidget {
                             target: RemittanceDetailsPage(
                           companyID: res[index]["locationName"],
                         ));
-                        // NavigationService.push(
-                        //   target: RefnoSearchRemitPage(
-                        //     serviceId: res[index]["serviceName"],
-                        //     imageUrl: res[index]["remitLogo"],
-                        //     companyName: res[index]["bankName"],
-                        //   ),
-                        // );
                       },
                       title: res[index]["bankName"],
                       imageUrl: res[index]["remitLogo"],

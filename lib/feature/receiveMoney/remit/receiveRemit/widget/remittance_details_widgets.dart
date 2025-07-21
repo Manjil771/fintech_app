@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/util/form_validator.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_detail_fetch.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RemittanceDetailsWidgets extends StatefulWidget {
   final String companyID;
 
-  RemittanceDetailsWidgets({super.key, required this.companyID});
+  const RemittanceDetailsWidgets({super.key, required this.companyID});
 
   @override
   State<RemittanceDetailsWidgets> createState() =>
@@ -26,7 +28,33 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
   @override
   Widget build(BuildContext context) {
     return BlocListener<UtilityPaymentCubit, CommonState>(
-      listener: (context, state) {},
+      listener: (context, state) {
+        if (state is CommonStateSuccess<UtilityResponseData>) {
+          final UtilityResponseData response = state.data;
+          if (response.code == "M0000") {
+            NavigationService.push(target: const RemittanceDetailFetch());
+          } else {
+            print("this is msg $response.message");
+            showPopUpDialog(
+                showCancelButton: false,
+                context: context,
+                message: response.message,
+                title: response.status,
+                buttonCallback: () {
+                  NavigationService.pop();
+                });
+          }
+        } else if (state is CommonError) {
+          showPopUpDialog(
+              showCancelButton: false,
+              context: context,
+              message: state.message,
+              title: "Error",
+              buttonCallback: () {
+                NavigationService.pop();
+              });
+        }
+      },
       child: PageWrapper(
           body: CommonContainer(
         topbarName: "Remittance",
@@ -35,7 +63,6 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
         buttonName: "Procced",
         onButtonPressed: () {
           onButtonPressed();
-          ;
         },
         body: Form(
           key: _formKey,
@@ -63,5 +90,21 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
           },
           apiEndpoint: "api/remittance/transactionDetail",
         );
+  }
+
+  void _showErrorDialog(String message) {
+    showDialog(
+      context: context,
+      builder: (ctx) => AlertDialog(
+        title: const Text("Error"),
+        content: Text(message),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.of(ctx).pop(),
+            child: const Text("OK"),
+          ),
+        ],
+      ),
+    );
   }
 }
