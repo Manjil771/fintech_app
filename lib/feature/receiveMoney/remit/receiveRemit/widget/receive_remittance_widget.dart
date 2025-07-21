@@ -6,7 +6,6 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/refno_search_remittance.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_details_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';

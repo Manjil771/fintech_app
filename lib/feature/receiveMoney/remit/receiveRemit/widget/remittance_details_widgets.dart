@@ -29,31 +29,31 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
   Widget build(BuildContext context) {
     return BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
-        if (state is CommonStateSuccess<UtilityResponseData>) {
-          final UtilityResponseData response = state.data;
-          if (response.code == "M0000") {
-            NavigationService.push(target: const RemittanceDetailFetch());
-          } else {
-            print("this is msg $response.message");
-            showPopUpDialog(
-                showCancelButton: false,
-                context: context,
-                message: response.message,
-                title: response.status,
-                buttonCallback: () {
-                  NavigationService.pop();
-                });
-          }
-        } else if (state is CommonError) {
-          showPopUpDialog(
-              showCancelButton: false,
-              context: context,
-              message: state.message,
-              title: "Error",
-              buttonCallback: () {
-                NavigationService.pop();
-              });
-        }
+        // if (state is CommonStateSuccess<UtilityResponseData>) {
+        //   final UtilityResponseData response = state.data;
+        //   if (response.code == "M0000") {
+        //     NavigationService.push(target: const RemittanceDetailFetch());
+        //   } else {
+        //     print("this is msg $response.message");
+        //     showPopUpDialog(
+        //         showCancelButton: false,
+        //         context: context,
+        //         message: response.message,
+        //         title: response.status,
+        //         buttonCallback: () {
+        //           NavigationService.pop();
+        //         });
+        //   }
+        // } else if (state is CommonError) {
+        //   showPopUpDialog(
+        //       showCancelButton: false,
+        //       context: context,
+        //       message: state.message,
+        //       title: "Error",
+        //       buttonCallback: () {
+        //         NavigationService.pop();
+        //       });
+        // }
       },
       child: PageWrapper(
           body: CommonContainer(
@@ -62,7 +62,25 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
         detail: "Fetch your Remittance details from here",
         buttonName: "Procced",
         onButtonPressed: () {
-          onButtonPressed();
+          // onButtonPressed();
+          NavigationService.push(
+            target: const RemittanceDetailFetch(data: {
+              "details": {
+                "receiverName": "NISHAN THAPA",
+                "receiverMobileNumber": "9869191849",
+                "receiverCity": "KATHMANDU",
+                "receiverCountary": "NPL",
+                "senderName": "SHYAM BDR THAPA",
+                "senderCountary": "JPN",
+                "pinNo": "66621470641",
+                "payoutAmount": "2552.0000",
+                "payoutCurrency": "NPR",
+                "payoutType": "Cash Pay",
+                "txnDate": "2025-05-30 14:56:48.340",
+                "tokenId": "460341",
+              }
+            }),
+          );
         },
         body: Form(
           key: _formKey,
