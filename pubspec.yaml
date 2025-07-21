@@ -87,8 +87,16 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/shreeBakhan/
+    # - assets/nhugupala/
+    # - assets/shreegorakhkali/
+    - assets/samajkalyan/
+    # - assets/sahayatripokhara/
+    # - assets/patan/
+    # - assets/pariwortan/ 
+    # - assets/santaneshwornaudhara/
+    # - assets/unitedhands/
     # - assets/janasambriddhi/
-    - assets/hamro/
+    # - assets/hamro/
     # - assets/aanbukhaireni/
     # - assets/taudaha/
     # - assets/shreejanshil/
