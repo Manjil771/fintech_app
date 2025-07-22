@@ -1,0 +1,8 @@
+Build appbundle:
+flutter build appbundle --flavor <flavor name here E.g. Subhasandesh> -t lib/<entry_point>.dart
+E.g.  flutter build appbundle --flavor triyuga -t lib/main.dart
+
+Build apk:
+flutter build apk --flavor <flavor_name> -t lib/<entry_point>.dart
+E.g. flutter build apk --flavor triyuga -t lib/main.dart
+

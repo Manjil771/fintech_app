@@ -7,6 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/chatBot/SmartBot_topUp_service.dart';
@@ -20,7 +21,11 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/mod
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:path_provider/path_provider.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:path/path.dart' as path;
+import 'package:record/record.dart';
+import 'dart:io';
 
 class SmartChatPage extends StatefulWidget {
   final String? receiverEmail;
@@ -42,18 +47,18 @@ class _SmartChatPageState extends State<SmartChatPage> {
   final ScrollController _scrollController = ScrollController();
   final FocusNode _focusNode = FocusNode();
   late final CategoryService _categoryService;
-  StreamSubscription? _playerStateSubscription;
 
   String destinationFrom = '';
   String destinationTo = '';
   String destinationDate = '';
 
-  //for sound record
-  // final FlutterSoundRecord _recorder = FlutterSoundRecord();
-  final String _recordedFilePath = '';
+  final AudioRecorder _audioRecorder = AudioRecorder();
   final AudioPlayer _audioPlayer = AudioPlayer();
-  final bool _isRecording = false;
+  String? _recordedFilePath;
+  bool _isRecording = false;
   bool _isAudioPlaying = false;
+  StreamSubscription? _recorderStatusSubscription;
+  StreamSubscription? _playerStateSubscription;
 
   final List<Map<String, dynamic>> _chatHistory = [];
   bool _isLoading = false;
@@ -67,147 +72,138 @@ class _SmartChatPageState extends State<SmartChatPage> {
     _initializeCategoryService();
     _addInitialPrompt();
     // _requestPermissions();
-    // _initAudioSession();
+    _initAudioSession();
   }
 
-  // Future<void> _initAudioSession() async {
-  //   final session = await AudioSession.instance;
-  //   await session.configure(const AudioSessionConfiguration.speech());
-  // }
+  Future<void> _initAudioSession() async {
+    final session = await AudioSession.instance;
+    await session.configure(const AudioSessionConfiguration.speech());
+  }
 
-  // Future<void> _requestPermissions() async {
-  //   await Permission.microphone.request();
-  // }
+  Future<bool> _requestPermissions() async {
+    final status = await Permission.microphone.request();
+    return status.isGranted;
+  }
 
-  // Future<void> _startRecording() async {
-  //   try {
-  //     if (await Permission.microphone.isGranted) {
-  //       final Directory tempDir = await getTemporaryDirectory();
-  //       _recordedFilePath = '${tempDir.path}/temp_recording.m4a';
+  Future<void> _startRecording() async {
+    if (await _requestPermissions()) {
+      final tempDir = await getTemporaryDirectory();
+      final fileName = 'recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
+      _recordedFilePath = path.join(tempDir.path, fileName);
 
-  //       if (!await _recorder.isRecording()) {
-  //         await _recorder.start(
-  //           path: _recordedFilePath,
-  //           encoder: AudioEncoder.AAC,
-  //           bitRate: 128000,
-  //           samplingRate: 44100,
-  //         );
-  //         setState(() {
-  //           _isRecording = true;
-  //         });
-  //       } else {
-  //         print('MicroPhone permission not granted');
-  //       }
-  //     }
-  //   } catch (e) {
-  //     print('Error starting recording: $e');
-  //   }
-  // }
+      await _audioRecorder.start(const RecordConfig(),
+          path: _recordedFilePath!);
 
-  // Future<void> _stopRecording(String _sessionId) async {
-  //   try {
-  //     if (await _recorder.isRecording()) {
-  //       await _recorder.stop();
-  //       if (mounted) {
-  //         setState(() {
-  //           _isloadingVoice = true;
-  //           _isRecording = false;
-  //         });
-  //       }
-  //       final File audioFile = File(_recordedFilePath);
-  //       // final File audioStatic =
-  //       //     await loadAssetAsFile('assets/test2.wav', 'test2.wav');
-  //       if (_recordedFilePath.isNotEmpty && mounted) {
-  //         context
-  //             .read<AudioUploadCubit>()
-  //             .uploadAudio(audioFile: audioFile, sessionId: _sessionId);
-  //       }
-  //     }
-  //   } catch (e) {
-  //     print("Eroor stopping the recording : $e");
-  //   }
-  // }
+      setState(() => _isRecording = true);
 
-  // Future<void> _playAudioResponse(String audioUrl) async {
-  //   try {
-  //     await _audioPlayer.stop();
-  //     await _audioPlayer.setUrl(audioUrl);
-  //     await _audioPlayer.play();
-  //   } catch (e) {
-  //     print('Error playing audio: $e');
-  //   }
-  // }
+      _recorderStatusSubscription =
+          _audioRecorder.onStateChanged().listen((state) {
+        if (state == RecordState.stop) {
+          setState(() => _isRecording = false);
+        }
+      });
+    }
+  }
 
-  // void _showAudioDialog(String audioUrl) {
-  //   showDialog(
-  //     context: context,
-  //     barrierDismissible: false,
-  //     builder: (context) {
-  //       _playAudioResponse(audioUrl);
-  //       _playerStateSubscription?.cancel();
-  //       _playerStateSubscription =
-  //           _audioPlayer.playerStateStream.listen((playerState) {
-  //         if (playerState.processingState == ProcessingState.completed) {
-  //           if (Navigator.of(context).canPop()) {
-  //             setState(() {
-  //               _isAudioPlaying = false;
-  //             });
-  //             NavigationService.pop();
-  //           }
-  //         }
-  //       });
-  //       // _audioPlayer.playerStateStream.listen((playerState) {
+  Future<void> _stopRecording(String sessionId) async {
+    await _audioRecorder.stop();
+    _recorderStatusSubscription?.cancel();
 
-  //       // });
+    if (_recordedFilePath != null) {
+      final File audioFile = File(_recordedFilePath!);
+      context
+          .read<AudioUploadCubit>()
+          .uploadAudio(audioFile: audioFile, sessionId: sessionId);
 
-  //       return AlertDialog(
-  //         title: const Center(
-  //             child: Text(
-  //           'Response',
-  //           style: TextStyle(
-  //             fontSize: 20,
-  //             color: CustomTheme.darkGray,
-  //           ),
-  //         )),
-  //         content: SizedBox(
-  //           height: 150,
-  //           child: Center(
-  //             child: Column(
-  //               mainAxisSize: MainAxisSize.min,
-  //               children: [
-  //                 TypingIndicator(
-  //                   dotColor: CustomTheme.primaryColor,
-  //                   dotSize: 35,
-  //                   dotSpacing: 12,
-  //                   duration: const Duration(milliseconds: 700),
-  //                 ),
-  //                 const SizedBox(height: 15),
-  //                 TextButton(
-  //                   onPressed: () {
-  //                     _audioPlayer.stop();
-  //                     setState(() {
-  //                       _isAudioPlaying = false;
-  //                     });
-  //                     NavigationService.pop();
-  //                   },
-  //                   child: const Text(
-  //                     'Stop',
-  //                     style: TextStyle(
-  //                         fontSize: 20,
-  //                         color: CustomTheme.darkGray,
-  //                         fontWeight: FontWeight.bold),
-  //                   ),
-  //                 ),
-  //               ],
-  //             ),
-  //           ),
-  //         ),
-  //       );
-  //     },
-  //   ).then((_) {
-  //     _playerStateSubscription?.cancel();
-  //   });
-  // }
+      setState(() => _isloadingVoice = true);
+    }
+  }
+
+  Future<void> _playAudioResponse(String audioUrl) async {
+    try {
+      await _audioPlayer.stop();
+      await _audioPlayer.setUrl(audioUrl);
+      await _audioPlayer.play();
+
+      setState(() => _isAudioPlaying = true);
+
+      _playerStateSubscription = _audioPlayer.playerStateStream.listen((state) {
+        if (state.processingState == ProcessingState.completed) {
+          setState(() => _isAudioPlaying = false);
+        }
+      });
+    } catch (e) {
+      print('Error playing audio: $e');
+      setState(() => _isAudioPlaying = false);
+    }
+  }
+
+  void _showAudioDialog(String audioUrl) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        _playAudioResponse(audioUrl);
+        _playerStateSubscription?.cancel();
+        _playerStateSubscription =
+            _audioPlayer.playerStateStream.listen((playerState) {
+          if (playerState.processingState == ProcessingState.completed) {
+            if (Navigator.of(context).canPop()) {
+              setState(() {
+                _isAudioPlaying = false;
+              });
+              NavigationService.pop();
+            }
+          }
+        });
+        return AlertDialog(
+          title: const Center(
+              child: Text(
+            'Response',
+            style: TextStyle(
+              fontSize: 20,
+              color: CustomTheme.darkGray,
+            ),
+          )),
+          content: SizedBox(
+            height: 150,
+            child: Center(
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  TypingIndicator(
+                    dotColor: CustomTheme.primaryColor,
+                    dotSize: 35,
+                    dotSpacing: 12,
+                    duration: const Duration(milliseconds: 700),
+                  ),
+                  const SizedBox(height: 15),
+                  TextButton(
+                    onPressed: () {
+                      _audioPlayer.stop();
+                      setState(() {
+                        _isAudioPlaying = false;
+                      });
+                      NavigationService.pop();
+                    },
+                    child: const Text(
+                      'Stop',
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: CustomTheme.darkGray,
+                          fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    ).then((_) {
+      _playerStateSubscription?.cancel();
+    });
+  }
 
   Future<void> _initializeCategoryService() async {
     await _categoryService.initialize(context);
@@ -442,7 +438,6 @@ class _SmartChatPageState extends State<SmartChatPage> {
                   //             )
                   //           : const SizedBox.shrink();
                   //     }),
-
                   IconButton(
                     icon: Icon(
                       Icons.send,
@@ -514,7 +509,7 @@ class _SmartChatPageState extends State<SmartChatPage> {
                     if (_res.detail['serviceIdentifier'] != null) {
                       actionButton(_res);
                     } else {
-                      // _showAudioDialog(completeUrl);
+                      _showAudioDialog(completeUrl);
                     }
                   } else {
                     print('Error in audio path');

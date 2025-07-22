@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.32+62
+version: 1.5.30+60
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -26,6 +26,7 @@ dependencies:
   rxdart: ^0.28.0
   logger: "^2.2.0"
   dio: "^5.4.2+1"
+  nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
   easy_localization: "^3.0.3"
   path_provider: "^2.1.4"
@@ -37,6 +38,8 @@ dependencies:
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
+  url_launcher_ios: ^6.2.1
+  flutter_html: ^3.0.0
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -83,12 +86,23 @@ dependency_overrides:
 
 flutter:
   assets:
-
     # - assets/shreeBakhan/
+    # - assets/nhugupala/
+    # - assets/shreegorakhkali/
+    - assets/sahayatripokhara/
+    # - assets/patan/
+    # - assets/pariwortan/ 
+    # - assets/santaneshwornaudhara/
+    # - assets/unitedhands/
+    # - assets/janasambriddhi/
+    # - assets/hamro/
+    # - assets/aanbukhaireni/
+    # - assets/taudaha/
+    # - assets/shreejanshil/
+    # - assets/janataagri/
+    # - assets/upasanawomen/
+    # - assets/mitra/
     # - assets/abhyudaya/
-    
-    # - assets/kishanKalyan/
-    # - assets/aabaddha/
     # - assets/maaLaxmi/
     # - assets/kanchanCoop/
     # - assets/janapremi/
@@ -103,9 +117,11 @@ flutter:
     # - assets/youthvision/
     # - assets/sahasradhara/
     # - assets/race/
+    # - assets/kunphen/
     # - assets/arthikBikash/
     # - assets/mission/
     # - assets/development/
+    # - assets/artharaksha/
     # - assets/premier/
     # - assets/lamjung/
     # - assets/swarnim/
@@ -114,7 +130,7 @@ flutter:
     # - assets/baglungmulti/
 
     # - assets/besiShahar/
-    
+
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
@@ -145,6 +161,8 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/laxmiDeep/
+    # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
     - assets/digoBikash/
     # - assets/sahakarya/
@@ -173,7 +191,7 @@ flutter:
     # - assets/infinity/
     # - assets/moneyPlant/
     # - assets/newGeneration/
-    
+
     # - assets/pratham/
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
@@ -248,6 +266,7 @@ flutter:
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
+    - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -355,6 +374,7 @@ flutter:
     # - assets/samabeshi/
     # - assets/aagan/
     # - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
     # - assets/asaan/
@@ -436,7 +456,6 @@ flutter:
     # - assets/sadasyaSewa/
     # - assets/aabhash/
     # - assets/mirmire/
-    
 
     # - assets/nilpashan/
     # - assets/jhigu/
@@ -472,7 +491,6 @@ flutter:
     # - assets/nepal/
     # - assets/aniwarya/
     # - assets/universe/
-    
 
     # sana kishan assets
     # - assets/sanakishanHathasuwa/

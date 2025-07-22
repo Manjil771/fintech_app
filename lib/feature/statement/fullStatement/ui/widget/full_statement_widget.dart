@@ -22,6 +22,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
+import 'package:nepali_date_picker/nepali_date_picker.dart';
 import 'package:path_provider/path_provider.dart';
 
 class FullStatementWidget extends StatefulWidget {
@@ -77,6 +78,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
     final _textTheme = _theme.textTheme;
     final _width = SizeUtils.width;
     final _height = SizeUtils.height;
+    bool _pickerAD = false;
     return PageWrapper(
       body: CommonContainer(
         showRoundBotton: false,
@@ -160,25 +162,184 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        Text(
-                                          "Filter",
-                                          style: _textTheme.labelLarge!
-                                              .copyWith(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.bold),
+                                        Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            Text(
+                                              "Filter",
+                                              style: _textTheme.labelLarge!
+                                                  .copyWith(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.bold),
+                                            ),
+                                            Container(
+                                              decoration: BoxDecoration(
+                                                borderRadius:
+                                                    BorderRadius.circular(20),
+                                                border: Border.all(
+                                                    color:
+                                                        Colors.grey.shade300),
+                                              ),
+                                              child: Row(
+                                                children: [
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _pickerAD = true;
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 16,
+                                                          vertical: 8),
+                                                      decoration: BoxDecoration(
+                                                        color: _pickerAD
+                                                            ? CustomTheme
+                                                                .primaryColor
+                                                            : Colors
+                                                                .transparent,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                      ),
+                                                      child: Text(
+                                                        "AD",
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: _pickerAD
+                                                              ? Colors.white
+                                                              : Colors.black54,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  InkWell(
+                                                    onTap: () {
+                                                      setState(() {
+                                                        _pickerAD = false;
+                                                      });
+                                                    },
+                                                    child: Container(
+                                                      padding: const EdgeInsets
+                                                          .symmetric(
+                                                          horizontal: 16,
+                                                          vertical: 8),
+                                                      decoration: BoxDecoration(
+                                                        color: !_pickerAD
+                                                            ? CustomTheme
+                                                                .primaryColor
+                                                            : Colors
+                                                                .transparent,
+                                                        borderRadius:
+                                                            BorderRadius
+                                                                .circular(20),
+                                                      ),
+                                                      child: Text(
+                                                        "BS",
+                                                        style: TextStyle(
+                                                          fontSize: 12,
+                                                          fontWeight:
+                                                              FontWeight.bold,
+                                                          color: !_pickerAD
+                                                              ? Colors.white
+                                                              : Colors.black54,
+                                                        ),
+                                                      ),
+                                                    ),
+                                                  ),
+                                                ],
+                                              ),
+                                            ),
+                                          ],
                                         ),
                                         PrimaryAccountBox(),
                                         CustomTextField(
                                           customHintTextStyle: true,
                                           readOnly: true,
+                                          // onTap: () async {
+                                          //   final DateTime? picked =
+                                          //       await showDatePicker(
+                                          //           context: context,
+                                          //           initialDate: fromDate,
+                                          //           firstDate:
+                                          //               DateTime(2000, 8),
+                                          //           lastDate: DateTime.now());
+                                          //   setState(() {
+                                          //     fromDateAlert = picked!;
+                                          //   });
+                                          // },
                                           onTap: () async {
-                                            final DateTime? picked =
-                                                await showDatePicker(
-                                                    context: context,
-                                                    initialDate: fromDate,
-                                                    firstDate:
-                                                        DateTime(2000, 8),
-                                                    lastDate: DateTime.now());
+                                            DateTime? picked;
+
+                                            if (_pickerAD) {
+                                              picked = await showDatePicker(
+                                                context: context,
+                                                builder: (context, child) =>
+                                                    Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        ColorScheme.light(
+                                                      primary: CustomTheme
+                                                          .primaryColor,
+                                                      onPrimary: Colors.white,
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        foregroundColor:
+                                                            CustomTheme
+                                                                .primaryColor,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                ),
+                                                initialDate: fromDate,
+                                                firstDate: DateTime(2000, 8),
+                                                lastDate: DateTime.now(),
+                                              );
+                                            } else {
+                                              final NepaliDateTime? pickedDate =
+                                                  await showMaterialDatePicker(
+                                                context: context,
+                                                builder: (context, child) =>
+                                                    Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        ColorScheme.light(
+                                                      primary: CustomTheme
+                                                          .primaryColor,
+                                                      onPrimary: Colors.white,
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        foregroundColor:
+                                                            CustomTheme
+                                                                .primaryColor,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                ),
+                                                initialDate:
+                                                    NepaliDateTime.now(),
+                                                firstDate: NepaliDateTime(2057),
+                                                lastDate: NepaliDateTime(2090),
+                                                initialDatePickerMode:
+                                                    DatePickerMode.day,
+                                              );
+                                              picked = pickedDate?.toDateTime();
+                                            }
                                             setState(() {
                                               fromDateAlert = picked!;
                                             });
@@ -195,17 +356,92 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           hintText:
                                               "${toDateAlert.year}-${toDateAlert.month}-${toDateAlert.day}",
                                           title: "To Date",
+                                          // onTap: () async {
+                                          //   final DateTime? picked =
+                                          //       await showDatePicker(
+                                          //           context: context,
+                                          //           initialDate: toDate,
+                                          //           firstDate:
+                                          //               DateTime(2020, 8),
+                                          //           lastDate: DateTime.now());
+                                          //   setState(() {
+                                          //     toDateAlert = picked!;
+                                          //   });
+                                          // },
                                           onTap: () async {
-                                            final DateTime? picked =
-                                                await showDatePicker(
-                                                    context: context,
-                                                    initialDate: toDate,
-                                                    firstDate:
-                                                        DateTime(2020, 8),
-                                                    lastDate: DateTime.now());
-                                            setState(() {
-                                              toDateAlert = picked!;
-                                            });
+                                            DateTime? picked;
+
+                                            if (_pickerAD) {
+                                              picked = await showDatePicker(
+                                                context: context,
+                                                initialDate: toDate,
+                                                firstDate: DateTime(2020, 8),
+                                                lastDate: DateTime.now(),
+                                                builder: (context, child) =>
+                                                    Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        ColorScheme.light(
+                                                      primary: CustomTheme
+                                                          .primaryColor,
+                                                      onPrimary: Colors.white,
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        foregroundColor:
+                                                            CustomTheme
+                                                                .primaryColor,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                ),
+                                              );
+                                            } else {
+                                              final NepaliDateTime? pickedDate =
+                                                  await showMaterialDatePicker(
+                                                builder: (context, child) =>
+                                                    Theme(
+                                                  data: Theme.of(context)
+                                                      .copyWith(
+                                                    colorScheme:
+                                                        ColorScheme.light(
+                                                      primary: CustomTheme
+                                                          .primaryColor,
+                                                      onPrimary: Colors.white,
+                                                    ),
+                                                    textButtonTheme:
+                                                        TextButtonThemeData(
+                                                      style:
+                                                          TextButton.styleFrom(
+                                                        foregroundColor:
+                                                            CustomTheme
+                                                                .primaryColor,
+                                                      ),
+                                                    ),
+                                                  ),
+                                                  child: child!,
+                                                ),
+                                                context: context,
+                                                initialDate:
+                                                    toDate.toNepaliDateTime(),
+                                                firstDate: DateTime(2020, 8)
+                                                    .toNepaliDateTime(),
+                                                lastDate: NepaliDateTime.now(),
+                                                initialDatePickerMode:
+                                                    DatePickerMode.day,
+                                              );
+                                              picked = pickedDate?.toDateTime();
+                                            }
+
+                                            if (picked != null) {
+                                              setState(() {
+                                                toDateAlert = picked!;
+                                              });
+                                            }
                                           },
                                         ),
                                         CustomRoundedButtom(

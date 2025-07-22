@@ -413,8 +413,8 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     const HomePage(),
     const Bankingpage(),
     const QRScannerScreens(),
-    // const RecentTransactionScreen(),
-    const SelectHistoryOptions(),
+    const RecentTransactionScreen(),
+    // const SelectHistoryOptions(),
     // const ChooseAccountFullStatementPage(),
     const MorePage()
   ];
@@ -618,13 +618,13 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                       ),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
-                          Assets.moreIcon,
+                          Assets.personIcon,
                           height: 20,
                           color: _currentIndex == 4
                               ? _theme.primaryColor
                               : CustomTheme.darkGray.withOpacity(0.5),
                         ),
-                        label: 'More',
+                        label: 'Profile',
                       ),
                       // BottomNavigationBarItem(
                       //   icon: SvgPicture.asset(

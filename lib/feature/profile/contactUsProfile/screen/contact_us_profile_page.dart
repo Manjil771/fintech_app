@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
+import 'package:ismart/feature/profile/contactUsProfile/screen/contact_us_wrapper.dart';
 import 'package:ismart/feature/profile/contactUsProfile/widget/contact_us_profile_widget.dart';
 
 class ContactUsProfilePage extends StatelessWidget {
@@ -47,7 +48,7 @@ class ContactUsProfilePage extends StatelessWidget {
       // _contactRepo.appContactDetail.findValue(primaryKey: "address"),
       // _contactRepo.appContactDetail.findValue(primaryKey: "email"),
     ];
-    return ContactUsProfileWidget(
+    return ContactUsWrapper(
       latitude: _contactRepo.appContactDetail
           .findValue(primaryKey: "latitude")
           .toString(),
