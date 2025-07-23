@@ -5709,5 +5709,19 @@ class CoOperativeValue {
     coOperativeName: "Kunchhal Saving & Credit Co-operative Ltd",
     appTitle: 'Kunchhal iSmart',
   );
-  static final CoOperative currentCoop = sadasyaSewaCoop;
+  static final CoOperative neela = CoOperative(
+    appStoreID: "com.devanasoft.neela",
+    packageName: "com.devanasoft.neela",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/neela/neela_banner.png",
+    backgroundImage: "assets/neela/neela_background.png",
+    clientCode: 'NEQ88F1BFY',
+    clientSecret: "140094",
+    coOperativeLogo: 'assets/neela/neela_logo.png',
+    splashImage: "assets/neela/neela_splash.png",
+    primaryColor: const Color(0xFF074F9F),
+    coOperativeName: "Neela Saving & Credit co-operative Ltd",
+    appTitle: 'Neela iSmart',
+  );
+  static final CoOperative currentCoop = exoticCoop;
 }

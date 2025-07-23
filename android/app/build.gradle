@@ -2532,6 +2532,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         neela {
+            dimension "app"
+            applicationId "com.devanasoft.neela"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
