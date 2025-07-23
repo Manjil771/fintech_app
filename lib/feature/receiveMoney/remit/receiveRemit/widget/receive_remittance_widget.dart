@@ -37,6 +37,8 @@ class ReceiveRemittanceWidget extends StatelessWidget {
                         NavigationService.push(
                             target: RemittanceDetailsPage(
                           companyID: res[index]["locationName"],
+                          imagePath: res[index]["remitLogo"],
+                          bankName: res[index]["bankName"],
                         ));
                       },
                       title: res[index]["bankName"],

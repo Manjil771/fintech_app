@@ -6,7 +6,14 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class RemittanceDetailsPage extends StatelessWidget {
   final String companyID;
-  const RemittanceDetailsPage({super.key, required this.companyID});
+  final String imagePath;
+  final String bankName;
+
+  const RemittanceDetailsPage(
+      {super.key,
+      required this.companyID,
+      required this.imagePath,
+      required this.bankName});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +23,9 @@ class RemittanceDetailsPage extends StatelessWidget {
           utilityPaymentRepository:
               RepositoryProvider.of<UtilityPaymentRepository>(context)),
       child: RemittanceDetailsWidgets(
+        imagePath: imagePath,
         companyID: companyID,
+        bankName: bankName,
       ),
     );
   }
