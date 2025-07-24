@@ -13,7 +13,11 @@ class RemittancepaymentPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
-              RepositoryProvider.of<UtilityPaymentRepository>(context)),
+              RepositoryProvider.of<UtilityPaymentRepository>(context))
+        ..fetchDetails(
+            serviceIdentifier: "",
+            accountDetails: {"id": id},
+            apiEndpoint: "api/remittance/getPaymentConfirmOptions"),
       child: RemitteancePaymentWidget(
         id: id,
       ),
