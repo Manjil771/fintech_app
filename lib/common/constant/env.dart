@@ -5723,5 +5723,33 @@ class CoOperativeValue {
     coOperativeName: "Neela Saving & Credit co-operative Ltd",
     appTitle: 'Neela iSmart',
   );
-  static final CoOperative currentCoop = exoticCoop;
+  static final CoOperative paryatan = CoOperative(
+    appStoreID: "com.devanasoft.paryatan",
+    packageName: "com.devanasoft.paryatan",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/paryatan/paryatan_banner.png",
+    backgroundImage: "assets/paryatan/paryatan_background.png",
+    clientCode: 'IM9UZY62TE',
+    clientSecret: "168024",
+    coOperativeLogo: 'assets/paryatan/paryatan_logo.png',
+    splashImage: "assets/paryatan/paryatan_splash.png",
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Tourism Society Co-Operative Ltd",
+    appTitle: 'Paryatan Samaj iSmart',
+  );
+  static final CoOperative arunjyoti = CoOperative(
+    appStoreID: "com.devanasoft.arunjyoti",
+    packageName: "com.devanasoft.arunjyoti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/arunjyoti/arunjyoti_banner.png",
+    backgroundImage: "assets/arunjyoti/arunjyoti_background.png",
+    clientCode: 'MAL669KAR7',
+    clientSecret: "154229",
+    coOperativeLogo: 'assets/arunjyoti/arunjyoti_logo.png',
+    splashImage: "assets/arunjyoti/arunjyoti_splash.png",
+    primaryColor: const Color(0xFF008d40),
+    coOperativeName: "Arunjyoti Social Entrepreneur women Co-operative Ltd",
+    appTitle: 'Arunjyoti iSmart',
+  );
+  static final CoOperative currentCoop = arunjyoti;
 }
