@@ -86,13 +86,14 @@ dependency_overrides:
 
 flutter:
   assets:
+    - assets/kunchhal/
     # - assets/shreeBakhan/
     # - assets/nhugupala/
     # - assets/shreegorakhkali/
-    - assets/samajkalyan/
+    # - assets/samajkalyan/
     # - assets/sahayatripokhara/
     # - assets/patan/
-    # - assets/pariwortan/ 
+    # - assets/pariwortan/
     # - assets/santaneshwornaudhara/
     # - assets/unitedhands/
     # - assets/janasambriddhi/
@@ -266,7 +267,7 @@ flutter:
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
-    - assets/triyuga/
+    # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -311,7 +312,7 @@ flutter:
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
-    # # - assets/tanahunKalika/
+    # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
@@ -394,7 +395,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
-    # # - assets/shreekrishna/
+    # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
     # - assets/sklakhanpur/
