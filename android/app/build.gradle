@@ -2526,6 +2526,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        samajkalyan {
+            dimension "app"
+            applicationId "com.devanasoft.samajkalyan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        kunchhal {
+            dimension "app"
+            applicationId "com.devanasoft.kunchhal"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
