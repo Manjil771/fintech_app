@@ -5751,5 +5751,5 @@ class CoOperativeValue {
     coOperativeName: "Arunjyoti Social Entrepreneur women Co-operative Ltd",
     appTitle: 'Arunjyoti iSmart',
   );
-  static final CoOperative currentCoop = arunjyoti;
+  static final CoOperative currentCoop = rorangcoop;
 }
