@@ -195,8 +195,8 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                   );
             }
           },
-          title: "Load Fund",
-          detail: "Load fund instantly to your account.",
+          title: "Receive Fund",
+          detail: "Receive fund instantly to your account.",
         ),
       ),
     );
