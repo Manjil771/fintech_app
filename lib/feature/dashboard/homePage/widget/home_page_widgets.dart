@@ -17,6 +17,7 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -149,7 +150,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               borderRadius: BorderRadius.circular(12),
                               onTap: () {
                                 NavigationService.push(
-                                  target: const ReceiveRemittancePage(),
+                                  target: const RemittancePage(),
                                 );
                               },
                               child: Container(

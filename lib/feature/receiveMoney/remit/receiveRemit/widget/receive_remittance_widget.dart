@@ -53,7 +53,7 @@ class ReceiveRemittanceWidget extends StatelessWidget {
             }
           },
         ),
-        topbarName: "Remittance",
+        topbarName: " All Remittance",
         showRoundBotton: false,
         showTitleText: false,
       ),

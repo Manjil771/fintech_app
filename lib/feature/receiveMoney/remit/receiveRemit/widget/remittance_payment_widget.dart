@@ -9,10 +9,7 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
-import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
-import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/paymentrelationship.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -31,6 +28,12 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
     return await SecureStorageService.appPhoneNumber;
   }
 
+  List<Map<String, dynamic>> extractListFromState(
+      CommonStateSuccess<UtilityResponseData> state, String key) {
+    final rawList = state.data.findValue<List<dynamic>>(primaryKey: key);
+    return List<Map<String, dynamic>>.from(rawList ?? []);
+  }
+
   @override
   Widget build(BuildContext context) {
     final _formKey = GlobalKey<FormState>();
@@ -41,15 +44,12 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
         builder: (context, state) {
       if (state is CommonStateSuccess<UtilityResponseData>) {
         final res = state.data.details;
-        print("This is data :${res.first} ");
-        final relationshipRawList = state.data
-            .findValue<List<dynamic>>(primaryKey: 'relationshipTypes');
-        final List<Map<String, dynamic>> relationships =
-            List<Map<String, dynamic>>.from(relationshipRawList ?? []);
 
-        // final relationshipList = (res["details"] as List);
+        final relationships = extractListFromState(state, 'relationships');
+        final relationshipTypes =
+            extractListFromState(state, 'relationshipTypes');
+        final purposes = extractListFromState(state, 'remittancePurposes');
 
-        print("this is relationship$relationships");
         return CommonContainer(
           topbarName: "Payment",
           title: "Remittance Payment",
@@ -111,33 +111,66 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
               children: [
                 CustomTextField(
                   title: "Relationship",
-                  hintText: "xxxxxxxxxx",
                   textInputType: TextInputType.number,
                   controller: relation,
-                  onTap: () {
-                    NavigationService.push(
-                        target: RelationshipListWidget(
-                      relationships: relationships,
-                      onRelationshipSelected: (relation) {
-                        // Handle selected relationship
-                        print("Selected: ${relation['text']}");
-                        Navigator.pop(
-                            context, relation); // or do any action you want
-                      },
-                    ));
+                  onTap: () async {
+                    final selectedRelation = await NavigationService.push(
+                      target: SelectableListWidget(
+                        title: "Realation",
+                        items: relationships,
+                        onItemSelected: (relationData) {
+                          Navigator.pop(context,
+                              relationData); // return the selected item
+                        },
+                      ),
+                    );
+
+                    if (selectedRelation != null) {
+                      relation.text = selectedRelation['text'] ?? '';
+                    }
                   },
                 ),
                 CustomTextField(
                   title: "Relationship Type",
-                  hintText: "xxxxxxxxxx",
                   textInputType: TextInputType.number,
                   controller: relationType,
+                  onTap: () async {
+                    final selectedRelation = await NavigationService.push(
+                      target: SelectableListWidget(
+                        title: "Relationship Type",
+                        items: relationshipTypes,
+                        onItemSelected: (relationData) {
+                          Navigator.pop(context,
+                              relationData); // return the selected item
+                        },
+                      ),
+                    );
+
+                    if (selectedRelation != null) {
+                      relationType.text = selectedRelation['text'] ?? '';
+                    }
+                  },
                 ),
                 CustomTextField(
                   title: "Purpose",
-                  hintText: "xxxxxxxxxx",
                   textInputType: TextInputType.number,
                   controller: puropse,
+                  onTap: () async {
+                    final selectedRelation = await NavigationService.push(
+                      target: SelectableListWidget(
+                        title: "Purpose",
+                        items: purposes,
+                        onItemSelected: (relationData) {
+                          Navigator.pop(context,
+                              relationData); // return the selected item
+                        },
+                      ),
+                    );
+
+                    if (selectedRelation != null) {
+                      puropse.text = selectedRelation['text'] ?? '';
+                    }
+                  },
                 )
               ],
             ),

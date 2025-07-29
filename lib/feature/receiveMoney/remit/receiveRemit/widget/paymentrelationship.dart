@@ -4,14 +4,16 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 
-class RelationshipListWidget extends StatelessWidget {
-  final List<Map<String, dynamic>> relationships;
-  final Function(Map<String, dynamic>) onRelationshipSelected;
+class SelectableListWidget extends StatelessWidget {
+  final String title;
+  final List<Map<String, dynamic>> items;
+  final Function(Map<String, dynamic>) onItemSelected;
 
-  const RelationshipListWidget({
+  const SelectableListWidget({
     Key? key,
-    required this.relationships,
-    required this.onRelationshipSelected,
+    required this.title,
+    required this.items,
+    required this.onItemSelected,
   }) : super(key: key);
 
   @override
@@ -30,7 +32,7 @@ class RelationshipListWidget extends StatelessWidget {
               padding: const EdgeInsets.symmetric(
                 horizontal: CustomTheme.symmetricHozPadding,
               ),
-              child: Text("Relationships", style: _textTheme.displayLarge),
+              child: Text(title, style: _textTheme.displayLarge),
             ),
           ),
           SliverToBoxAdapter(
@@ -39,7 +41,7 @@ class RelationshipListWidget extends StatelessWidget {
                 horizontal: CustomTheme.symmetricHozPadding,
               ),
               child: Text(
-                "Select your relationship",
+                "Select your $title",
                 style: _textTheme.titleLarge,
               ),
             ),
@@ -48,20 +50,19 @@ class RelationshipListWidget extends StatelessWidget {
           SliverList(
             delegate: SliverChildBuilderDelegate(
               (context, index) {
-                final item = relationships[index];
-                print("Total relationships loaded: ${relationships.length}");
+                final item = items[index];
                 return CustomListTile(
                   title: item['text'] ?? '',
                   description: item['value'] ?? '',
                   trailing: const SizedBox.shrink(),
                   imageUrl: "",
                   onPressed: () {
-                    onRelationshipSelected(item);
+                    onItemSelected(item);
                   },
                   horizontalPadding: CustomTheme.symmetricHozPadding,
                 );
               },
-              childCount: relationships.length,
+              childCount: items.length,
             ),
           ),
         ],
