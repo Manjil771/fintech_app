@@ -27,10 +27,6 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
   Set<int> expandedOtherAccounts = {};
   Set<int> expandedLoanAccounts = {};
 
-  void _handleShare() {
-    print('Share button pressed');
-  }
-
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
