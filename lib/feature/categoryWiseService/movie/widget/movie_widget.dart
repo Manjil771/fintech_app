@@ -40,6 +40,7 @@ class _MovieWidgetState extends State<MovieWidget> {
             listener: (context, state) {
               if (state is CommonLoading && _isLoading == false) {
                 _isLoading = true;
+
                 showLoadingDialogBox(context);
               } else if (state is! CommonLoading && _isLoading) {
                 _isLoading = false;

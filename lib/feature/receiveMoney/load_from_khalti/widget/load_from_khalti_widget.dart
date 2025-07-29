@@ -40,9 +40,7 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
   @override
   void initState() {
     // TODO: implement initState
-
     // _token = RepositoryProvider.of<UserRepository>(context).token;
-
     super.initState();
   }
 

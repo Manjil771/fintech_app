@@ -197,7 +197,6 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               ),
                               SizedBox(height: 10.hp),
                               // const Spacer(),
-
                               Row(
                                 children: [
                                   InkWell(
