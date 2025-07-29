@@ -15,7 +15,7 @@ class _HomePageTabbarWidgetState extends State<HomePageTabbarWidget> {
   static final List<String> tabTitle = [
     "Instant Payments",
     "Favorite",
-    "Graph & Activities",
+    "Graph",
   ];
   @override
   Widget build(BuildContext context) {
