@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
+import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
@@ -56,60 +57,40 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
           detail: "Pay your remittance bill from here",
           buttonName: "Pay",
           onButtonPressed: () {
-            NavigationService.push(target: TransactionPinScreen(
-              onValueCallback: (p0) {
-                NavigationService.pop();
+            if (_formKey.currentState!.validate()) {
+              NavigationService.push(target: TransactionPinScreen(
+                onValueCallback: (p0) {
+                  NavigationService.pop();
 
-                context.read<UtilityPaymentCubit>().makePayment(
-                  mPin: p0,
-                  serviceIdentifier: "",
-                  // serviceIdentifier: "traffic_fine_payments",
-                  apiEndpoint: "remittance/payTransactionConfirm",
-                  body: {},
-                  accountDetails: {
-                    "id": widget.id,
-                    "relationship": relation.text,
-                    "relationshipType": relationType.text,
-                    "remittancePurpose": puropse.text,
-                    // "mobileNumber":
-                    //     RepositoryProvider.of<CustomerDetailRepository>(context)
-                    //         .customerDetailModel
-                    //         .value
-                    //         ?.mobileNumber,
-                  },
-                );
-              },
-            ));
-
-            // onButtonPressed();
-            // NavigationService.push(
-            //   target: RemittanceDetailsFetchPage(
-            //     imagePath: widget.imagePath,
-            //     bankName: widget.bankName,
-            //     data: const {
-            //       "details": {
-            //         "receiverName": "NISHAN THAPA",
-            //         "receiverMobileNumber": "9869191849",
-            //         "receiverCity": "KATHMANDU",
-            //         "receiverCountary": "NPL",
-            //         "senderName": "SHYAM BDR THAPA",
-            //         "senderCountary": "JPN",
-            //         "pinNo": "66621470641",
-            //         "payoutAmount": "2552.0000",
-            //         "payoutCurrency": "NPR",
-            //         "payoutType": "Cash Pay",
-            //         "txnDate": "2025-05-30 14:56:48.340",
-            //         "tokenId": "460341",
-            //       }
-            //     },
-            //   ),
-            // );
+                  context.read<UtilityPaymentCubit>().makePayment(
+                    mPin: p0,
+                    serviceIdentifier: "",
+                    // serviceIdentifier: "traffic_fine_payments",
+                    apiEndpoint: "remittance/payTransactionConfirm",
+                    body: {},
+                    accountDetails: {
+                      "id": widget.id,
+                      "relationship": relation.text,
+                      "relationshipType": relationType.text,
+                      "remittancePurpose": puropse.text,
+                      // "mobileNumber":
+                      //     RepositoryProvider.of<CustomerDetailRepository>(context)
+                      //         .customerDetailModel
+                      //         .value
+                      //         ?.mobileNumber,
+                    },
+                  );
+                },
+              ));
+            }
           },
           body: Form(
             key: _formKey,
             child: Column(
               children: [
                 CustomTextField(
+                  validator: (val) =>
+                      FormValidator.validateFieldNotEmpty(val, "Relationship"),
                   title: "Relationship",
                   textInputType: TextInputType.number,
                   controller: relation,
@@ -131,6 +112,8 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
                   },
                 ),
                 CustomTextField(
+                  validator: (val) => FormValidator.validateFieldNotEmpty(
+                      val, "Relationship Type"),
                   title: "Relationship Type",
                   textInputType: TextInputType.number,
                   controller: relationType,
@@ -152,6 +135,8 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
                   },
                 ),
                 CustomTextField(
+                  validator: (val) =>
+                      FormValidator.validateFieldNotEmpty(val, "Purpose"),
                   title: "Purpose",
                   textInputType: TextInputType.number,
                   controller: puropse,

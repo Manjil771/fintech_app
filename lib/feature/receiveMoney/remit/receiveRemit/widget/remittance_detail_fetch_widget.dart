@@ -21,7 +21,8 @@ class RemittanceDetailFetchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final details = data['details'];
+    final details = data;
+
     final _height = SizeUtils.height;
 
     return PageWrapper(
