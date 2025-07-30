@@ -5,7 +5,12 @@
     "password" : "Password",
     "email" : "Email"
   },
+   "login":{
+    "login" :"Login"
+   },
+
   "dashboard" : {
     "dashboard" : "Dashboard"
   }
+
 }

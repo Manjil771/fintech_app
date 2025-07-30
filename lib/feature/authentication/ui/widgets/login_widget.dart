@@ -1,10 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/custom_locale.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -251,9 +254,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    const Text(
+                    Text(
+                      // LocaleKeys.login.tr(),
                       "Login",
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
                         color: Colors.black,
@@ -390,6 +394,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
+                    // IconButton(
+                    //     onPressed: () {
+                    //       final Locale currentLocale = context.locale;
+                    //       final Locale newLocale =
+                    //           currentLocale.languageCode == 'en'
+                    //               ? CustomLocale.nepali
+                    //               : CustomLocale.english;
+                    //       context.setLocale(newLocale);
+                    //     },
+                    //     icon: const Icon(Icons.language)),
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {

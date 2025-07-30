@@ -88,7 +88,10 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                           mainAxisSize: MainAxisSize.min,
                           children: [
                             IconButton(
-                              icon: const Icon(Icons.share),
+                              icon: Icon(
+                                Icons.share,
+                                size: 18.wp,
+                              ),
                               onPressed: () async {
                                 await Share.share(
                                   '${(widget.customerDetail.value?.bank?.toString().toLowerCase() != "n/a" && widget.customerDetail.value?.bank?.toString().toLowerCase() != "null") ? '\nCoop Name: ${widget.customerDetail.value?.bank}' : ''}'
@@ -272,7 +275,10 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                   mainAxisSize: MainAxisSize.min,
                                   children: [
                                     IconButton(
-                                      icon: const Icon(Icons.share),
+                                      icon: Icon(
+                                        Icons.share,
+                                        size: 18.wp,
+                                      ),
                                       onPressed: () async {
                                         await Share.share(
                                           '${(widget.customerDetail.value?.bank?.toString().toLowerCase() != "n/a" && widget.customerDetail.value?.bank?.toString().toLowerCase() != "null") ? '\nCoop Name: ${widget.customerDetail.value?.bank}' : ''}'

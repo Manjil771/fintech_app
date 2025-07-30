@@ -22,4 +22,7 @@ class LocaleKeys {
   static const error = "error";
   static const cancel = "cancel";
   static const done = "done";
+
+  //loginpage
+  static const login = "login.login";
 }
