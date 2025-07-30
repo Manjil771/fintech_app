@@ -14,6 +14,7 @@ import 'package:ismart/feature/more/calculator/calculator_screen.dart';
 import 'package:ismart/feature/more/discountCalculator/discount_calculator_page.dart';
 import 'package:ismart/feature/more/download/screens/downloads_page.dart';
 import 'package:ismart/feature/more/emiCalculator/emi_calculator_page.dart';
+import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/onboard/ui/screen/onboard_page.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/receiveMoney/connectIps/screen/connect_ips_page.dart';
@@ -74,6 +75,17 @@ class RouteGenerator {
       case Routes.profileScreen:
         return MaterialPageRoute(
           builder: (_) => const ProfilePage(),
+          settings: RouteSettings(name: settings.name),
+        );
+
+      case Routes.support:
+        return MaterialPageRoute(
+          builder: (_) => Container(),
+          settings: RouteSettings(name: settings.name),
+        );
+      case Routes.feedback:
+        return MaterialPageRoute(
+          builder: (_) => const FeedBackPage(),
           settings: RouteSettings(name: settings.name),
         );
 

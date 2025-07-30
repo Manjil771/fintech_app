@@ -41,6 +41,7 @@ class _NoticeWidgetState extends State<NoticeWidget> {
                 );
               } else {
                 final List response = _res.findValue(primaryKey: "data");
+                print("this is list$response");
 
                 return ListView.builder(
                     shrinkWrap: true,

@@ -211,6 +211,8 @@ class _CategoriesWiseServicesWidgetState
           serviceIdentifier.toLowerCase() ==
               Slugs.adsluOnlineTopup.toLowerCase() ||
           serviceIdentifier.toLowerCase() ==
+              Slugs.adsluOnlineTopup2.toLowerCase() ||
+          serviceIdentifier.toLowerCase() ==
               Slugs.metrolinkTopup.toLowerCase()) {
         NavigationService.push(
             target: CommonInternetWithAmountPage(
