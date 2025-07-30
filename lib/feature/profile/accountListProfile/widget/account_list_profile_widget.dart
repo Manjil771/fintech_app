@@ -7,6 +7,7 @@ import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
@@ -90,10 +91,12 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                               icon: const Icon(Icons.share),
                               onPressed: () async {
                                 await Share.share(
-                                  '${(_detail[index].actualBalance.toString().toLowerCase() != "n/a" && _detail[index].actualBalance.toString().toLowerCase() != "null") ? '\nActual Balance: NPR ${_detail[index].actualBalance}' : ''}'
-                                  '${(_detail[index].availableBalance.toString().toLowerCase() != "N/A".toLowerCase() && _detail[index].availableBalance.toString().toLowerCase() != "null") ? '\nAvailable Balance: NPR ${_detail[index].availableBalance}' : ''}'
-                                  '${(accuredInterest != "0.0" && accuredInterest != "0" && accuredInterest != "null" && accuredInterest != "n/a" && accuredInterest != "N/A" && accuredInterest != "") ? '\nAccrued Interest: NPR ${_detail[index].accruedInterest}' : ''}'
-                                  '${(interestRate != "0" && interestRate != "0.0" && interestRate != "null" && interestRate != "n/a" && interestRate != "N/A" && interestRate != "") ? '\nInterest Rate: ${_detail[index].interestRate}%' : ''}',
+                                  '${(widget.customerDetail.value?.bank?.toString().toLowerCase() != "n/a" && widget.customerDetail.value?.bank?.toString().toLowerCase() != "null") ? '\nCoop Name: ${widget.customerDetail.value?.bank}' : ''}'
+                                  '${(_detail[index].accountHolderName.toString().toLowerCase() != "n/a" && _detail[index].accountHolderName.toString().toLowerCase() != "null") ? '\nAccount Holder Name: ${_detail[index].accountHolderName}' : ''}'
+                                  '${(_detail[index].accountNumber.toString().toLowerCase() != "n/a" && _detail[index].accountNumber.toString().toLowerCase() != "null") ? '\nAccount Number: ${_detail[index].accountNumber.toString().toLowerCase()}' : ''}'
+                                  // '${(_detail[index].mobileNumber.toString().toLowerCase() != "n/a" && _detail[index].mobileNumber.toString().toLowerCase() != "null") ? '\nMobile Number: ${_detail[index].mobileNumber.toString().toLowerCase()}' : ''}'
+                                  '${'\nMobile Number: ${RepositoryProvider.of<CustomerDetailRepository>(context).customerDetailModel.value?.mobileNumber}'}'
+                                  '${(_detail[index].clientCode.toString().toLowerCase() != "n/a" && _detail[index].clientCode.toString().toLowerCase() != "null") ? '\nMember ID: ${_detail[index].clientCode.toString().toLowerCase()}' : ''}',
                                 );
                               },
                               splashRadius: 20,
@@ -272,10 +275,12 @@ class _AccountListProfileWidgetState extends State<AccountListProfileWidget> {
                                       icon: const Icon(Icons.share),
                                       onPressed: () async {
                                         await Share.share(
-                                          '${(res.findValueString("balance") != null && res.findValueString("balance") != "" && res.findValueString("balance").toLowerCase() != "null" && res.findValueString("balance").toLowerCase() != "n/a") ? '\nBalance: ${res.findValueString("balance")}' : ''}'
-                                          '${(res.findValueString("disbursedAmount") != null && res.findValueString("disbursedAmount") != "" && res.findValueString("disbursedAmount").toLowerCase() != "null" && res.findValueString("disbursedAmount").toLowerCase() != "n/a") ? '\nDisbursed Amount: ${res.findValueString("disbursedAmount")}' : ''}'
-                                          '${(res.findValueString("interestRate") != null && res.findValueString("interestRate") != "" && res.findValueString("interestRate") != "0" && res.findValueString("interestRate") != "0.0" && res.findValueString("interestRate").toLowerCase() != "null" && res.findValueString("interestRate").toLowerCase() != "n/a") ? '\nInterest Rate: ${res.findValueString("interestRate")}' : ''}'
-                                          '${(res.findValueString("duration") != null && res.findValueString("duration") != "" && res.findValueString("duration").toLowerCase() != "null" && res.findValueString("duration").toLowerCase() != "n/a") ? '\nDuration: ${res.findValueString("duration")}' : ''}',
+                                          '${(widget.customerDetail.value?.bank?.toString().toLowerCase() != "n/a" && widget.customerDetail.value?.bank?.toString().toLowerCase() != "null") ? '\nCoop Name: ${widget.customerDetail.value?.bank}' : ''}'
+                                          '${(_detail[index].accountHolderName.toString().toLowerCase() != "n/a" && _detail[index].accountHolderName.toString().toLowerCase() != "null") ? '\nAccount Holder Name: ${_detail[index].accountHolderName}' : ''}'
+                                          '${(_detail[index].accountNumber.toString().toLowerCase() != "n/a" && _detail[index].accountNumber.toString().toLowerCase() != "null") ? '\nAccount Number: ${_detail[index].accountNumber.toString().toLowerCase()}' : ''}'
+                                          // '${(_detail[index].mobileNumber.toString().toLowerCase() != "n/a" && _detail[index].mobileNumber.toString().toLowerCase() != "null") ? '\nMobile Number: ${_detail[index].mobileNumber.toString().toLowerCase()}' : ''}'
+                                          '${'\nMobile Number: ${RepositoryProvider.of<CustomerDetailRepository>(context).customerDetailModel.value?.mobileNumber}'}'
+                                          '${(_detail[index].clientCode.toString().toLowerCase() != "n/a" && _detail[index].clientCode.toString().toLowerCase() != "null") ? '\nMember ID: ${_detail[index].clientCode.toString().toLowerCase()}' : ''}',
                                         );
                                       },
                                       splashRadius: 20,
