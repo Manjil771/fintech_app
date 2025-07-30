@@ -307,7 +307,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
 
   final List<Map<String, dynamic>> fixedItems = [
     {
-      'name': 'Favourite',
+      'name': 'Favorite',
       'imageUrl': 'assets/icons/fav_icon.svg',
       'uniqueIdentifier': 'fixed_item_1',
     },
