@@ -5308,8 +5308,8 @@ class CoOperativeValue {
     coOperativeLogo: 'assets/nawayuba/nawayuba_logo.png',
     splashImage: "assets/nawayuba/nawayuba_splash.png",
     primaryColor: const Color(0xFF01008A),
-    coOperativeName: "Nawayuba Saving and Credit Co-operative Ltd",
-    appTitle: 'Nawayuba iSmart',
+    coOperativeName: "Nawayuwa Saving and Credit Co-operative Ltd",
+    appTitle: 'Nawayuwa iSmart',
   );
 
   static final CoOperative janapremiCoop = CoOperative(
@@ -5751,5 +5751,5 @@ class CoOperativeValue {
     coOperativeName: "Arunjyoti Social Entrepreneur women Co-operative Ltd",
     appTitle: 'Arunjyoti iSmart',
   );
-  static final CoOperative currentCoop = sundarbagmati;
+  static final CoOperative currentCoop = samajkalyan;
 }
