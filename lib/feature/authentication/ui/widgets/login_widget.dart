@@ -33,6 +33,7 @@ import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
+import 'package:ismart/feature/authentication/ui/screens/maps_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
@@ -158,6 +159,9 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
       () {
         miscallBanking();
+      },
+      () {
+        NavigationService.push(target: const MapsPage());
       },
     ];
 
@@ -474,7 +478,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         ...List.generate(
-                            3,
+                            4,
                             (index) => CommonBox(
                                 onContainerPress: onTapFunction[index],
                                 containerImage: imageList[index],
@@ -509,12 +513,14 @@ class _LoginWidgetState extends State<LoginWidget> {
   final List nameList = [
     "Reset Pin",
     "Activate Account",
-    "Missed Call Banking"
+    "Missed Call Banking",
+    "Maps",
   ];
   final List imageList = [
     "assets/icons/Reset password.svg",
     "assets/icons/activate account.svg",
     "assets/icons/missedcall icon.svg",
+    "assets/icons/maps.svg",
   ];
 
   miscallBanking() {
