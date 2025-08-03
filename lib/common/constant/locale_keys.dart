@@ -25,4 +25,19 @@ class LocaleKeys {
 
   //loginpage
   static const login = "login.login";
+  static const mobileNumber = "login.mobileNumber"; //use global
+  static const securityPin = "login.securityPin";
+  static const rememberMe = "login.rememberMe";
+  static const loginBtn = "login.loginBtn";
+  static const foreex = "login.foreex";
+  static const activateAccount = "login.activateAccount";
+  static const miscallBanking = "login.miscallBanking";
+  static const branches = "login.branches";
+  static const useBiometricToLogin = "login.useBiometricToLogin";
+
+  //forex
+  static const currency = "foreex.currency";
+  static const unit = "foreex.unit";
+  static const buyingRs = "foreex.buyingRs";
+  static const sellingRs = "foreex.sellingRs";
 }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -63,8 +64,8 @@ class ActivateAccountWidget extends StatelessWidget {
               showPopUpDialog(
                 context: context,
                 message: state.data.message,
-                title: "Message",
-                buttonText: "Proceed",
+                title: "Message".tr(),
+                buttonText: "Proceed".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pushReplacement(
@@ -166,7 +167,7 @@ class ActivateAccountWidget extends StatelessWidget {
                   }),
               SizedBox(height: 10.hp),
               CustomRoundedButtom(
-                  title: "Cancel",
+                  title: "Cancel".tr(),
                   onPressed: () {
                     NavigationService.pop();
                   }),

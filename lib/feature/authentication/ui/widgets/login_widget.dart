@@ -255,8 +255,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                   children: [
                     SizedBox(height: height * 0.01),
                     Text(
-                      // LocaleKeys.login.tr(),
-                      "Login",
+                      LocaleKeys.login.tr(),
+                      // "Login",
                       style: const TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
@@ -324,13 +324,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           leading: countryFlagWidget(),
                           readOnly:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
-                          title: "Mobile Number",
+                          title: LocaleKeys.mobileNumber.tr(),
                           customHintTextStyle:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
                           hintText:
                               rememberMe && _existingPhoneNumber.isNotEmpty
                                   ? maskPhoneNumber(_existingPhoneNumber)
-                                  : "Mobile Number",
+                                  : LocaleKeys.mobileNumber.tr(),
                           controller: phoneController,
                           textInputType: TextInputType.phone,
                           onTap: () {
@@ -366,8 +366,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security Pin",
-                      hintText: "Secrity Pin",
+                      title: LocaleKeys.securityPin.tr(),
+                      hintText: LocaleKeys.securityPin.tr(),
                       maxLength: 6,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -394,16 +394,16 @@ class _LoginWidgetState extends State<LoginWidget> {
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
-                    // IconButton(
-                    //     onPressed: () {
-                    //       final Locale currentLocale = context.locale;
-                    //       final Locale newLocale =
-                    //           currentLocale.languageCode == 'en'
-                    //               ? CustomLocale.nepali
-                    //               : CustomLocale.english;
-                    //       context.setLocale(newLocale);
-                    //     },
-                    //     icon: const Icon(Icons.language)),
+                    IconButton(
+                        onPressed: () {
+                          final Locale currentLocale = context.locale;
+                          final Locale newLocale =
+                              currentLocale.languageCode == 'en'
+                                  ? CustomLocale.nepali
+                                  : CustomLocale.english;
+                          context.setLocale(newLocale);
+                        },
+                        icon: const Icon(Icons.language)),
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
@@ -418,13 +418,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            const Text("Remember Me"),
+                            Text(
+                              LocaleKeys.rememberMe.tr(),
+                            ),
                           ],
                         );
                       },
                     ),
                     CustomRoundedButtom(
-                      title: "Login",
+                      title: LocaleKeys.loginBtn.tr(),
                       onPressed: () async {
                         // showDatePickerBottomSheet(
                         //   context: context,
@@ -486,7 +488,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     width: width * 0.03,
                                   ),
                                   Text(
-                                    "User Biometric to Login",
+                                    LocaleKeys.useBiometricToLogin.tr(),
                                     style: _theme.textTheme.labelMedium,
                                   ),
                                 ],
@@ -537,10 +539,10 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   final List nameList = [
-    "Forex",
-    "Activate Account",
-    "Missed Call Banking",
-    "Branches"
+    LocaleKeys.foreex.tr(),
+    LocaleKeys.activateAccount.tr(),
+    LocaleKeys.miscallBanking.tr(),
+    LocaleKeys.branches.tr(),
   ];
   final List imageList = [
     "assets/icons/forex.svg",

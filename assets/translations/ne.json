@@ -1,10 +1,29 @@
 {
   "appName": "This app",
+  "Message": "सन्देश",
+"Proceed": "अगाडि बढ्नुहोस्",
+"Cancel": "रद्द गर्नुहोस्",
   "Security Pin": "",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   },
-     "login":{
-        "login" :"लगइन"
-   }
+     "login": {
+    "login": "लगइन",
+    "mobileNumber": "मोबाइल नम्बर",
+    "securityPin": "सुरक्षा पिन",
+    "rememberMe": "मलाई सम्झनुहोस्",
+    "loginBtn": "लगइन गर्नुहोस्",
+    "foreex": "फरेक्स",
+    "activateAccount": "खाता सक्रिय गर्नुहोस्",
+    "miscallBanking": "मिस कल बैंकिङ",
+    "branches": "साखाहरू",
+    "useBiometricToLogin":"लगइनका लागि प्रयोगकर्ता बायोमेट्रिक"
+  },
+  "foreex": {
+  "currency": "मुद्रा",
+  "unit": "एकाई",
+  "buyingRs": "किन्ने मूल्य (रु.)",
+  "sellingRs": "बेच्ने मूल्य (रु.)"
+}
+
 }

@@ -1,16 +1,33 @@
 {
   "appName": "This app",
+  "Message" : "Message",
+  "Proceed":"Proceed",
+  "Cancel" : "Cancel",
   "auth": {
     "unableToLogin": "Unable to login",
     "password" : "Password",
     "email" : "Email"
   },
-   "login":{
-    "login" :"Login"
-   },
-
-  "dashboard" : {
+    "dashboard" : {
     "dashboard" : "Dashboard"
+  },
+    "login": {
+    "login": "Login",
+    "mobileNumber": "Mobile Number",
+    "securityPin": "Security Pin",
+    "rememberMe": "Remember Me",
+    "loginBtn": "Login",
+    "foreex": "Forex",
+    "activateAccount": "Activate Account",
+    "miscallBanking": "Missed Call Banking",
+    "branches": "Branches",
+    "useBiometricToLogin": "User Biometric to Login"
+  },
+  "foreex":{
+    "currency":"Currency",
+    "unit":"Unit",
+    "buyingRs":"Buying Rs.",
+    "sellingRs":"Selling Rs."
   }
 
 }
