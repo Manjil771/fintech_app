@@ -394,16 +394,17 @@ class _LoginWidgetState extends State<LoginWidget> {
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
-                    IconButton(
-                        onPressed: () {
-                          final Locale currentLocale = context.locale;
-                          final Locale newLocale =
-                              currentLocale.languageCode == 'en'
-                                  ? CustomLocale.nepali
-                                  : CustomLocale.english;
-                          context.setLocale(newLocale);
-                        },
-                        icon: const Icon(Icons.language)),
+                    //TODO: for the language toggle
+                    // IconButton(
+                    //     onPressed: () {
+                    //       final Locale currentLocale = context.locale;
+                    //       final Locale newLocale =
+                    //           currentLocale.languageCode == 'en'
+                    //               ? CustomLocale.nepali
+                    //               : CustomLocale.english;
+                    //       context.setLocale(newLocale);
+                    //     },
+                    //     icon: const Icon(Icons.language)),
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
