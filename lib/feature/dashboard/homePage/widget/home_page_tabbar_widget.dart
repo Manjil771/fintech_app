@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_page.dart';
 import 'package:ismart/feature/favorite/listFavAccount/screen/list_fav_account_page.dart';
 import 'package:ismart/feature/graph/ui/screen/graph_page.dart';
@@ -13,9 +15,9 @@ class HomePageTabbarWidget extends StatefulWidget {
 class _HomePageTabbarWidgetState extends State<HomePageTabbarWidget> {
   int _selectedIndex = 0;
   static final List<String> tabTitle = [
-    "Instant Payments",
-    "Favorite",
-    "Graph",
+    LocaleKeys.instantPayments.tr(),
+    LocaleKeys.favorite.tr(),
+    LocaleKeys.graph.tr(),
   ];
   @override
   Widget build(BuildContext context) {
