@@ -3796,8 +3796,8 @@ class CoOperativeValue {
 
 ////////////////////////
   static final CoOperative sampadaCoop = CoOperative(
-    appStoreID: "com.devanasoft.sampada",
-    packageName: "com.devanasoft.sampada",
+    appStoreID: "com.devanasoft.sampadaCoop",
+    packageName: "com.devanasoft.sampadaCoop",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sampada/sampada_banner.png",
     backgroundImage: "assets/sampada/sampada_background.png",
@@ -3807,7 +3807,7 @@ class CoOperativeValue {
     splashImage: "assets/sampada/sampada_splash.png",
     primaryColor: const Color(0xFF009444),
     coOperativeName: "Sampada Samudayik krishi Co-operative Ltd.",
-    appTitle: "Sampada Samudayik iSmart",
+    appTitle: "Sampada Coop iSmart",
   );
 
   static final CoOperative dhanalaxmiCoop = CoOperative(
