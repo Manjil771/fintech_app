@@ -2538,6 +2538,36 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         neela {
+            dimension "app"
+            applicationId "com.devanasoft.neela"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        paryatan {
+            dimension "app"
+            applicationId "com.devanasoft.paryatan"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        arunjyoti {
+            dimension "app"
+            applicationId "com.devanasoft.arunjyoti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        hamroSaving {
+            dimension "app"
+            applicationId "com.devanasoft.hamroSaving"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janachetana {
+            dimension "app"
+            applicationId "com.devanasoft.janachetana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

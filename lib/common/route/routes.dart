@@ -43,6 +43,9 @@ class Routes {
   static const forgotPin = '/forgot_pin';
   static const settingPage = '/setting_page';
   static const chooseLoanAccountPage = "/choose_loan_page";
+  // static const download = '/downlaod';
+  static const support = '/support';
+  static const feedback = "/feedback";
 
   static const loanSchedulePage = "/loan_schedule_account_choose_page";
   static const loanInformationPage = "/loan_information_account_choose_page";

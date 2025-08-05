@@ -61,6 +61,7 @@ class Slugs {
   static String ultranetTopup = "ultranet_topup";
   static String firstlinkTopup = "firstlink_topup";
   static String adsluOnlineTopup = "adslu_online_topup";
+  static String adsluOnlineTopup2 = "adslv_online_topup";
   static String ntFtthInternetTopup = "nt_ftth_internet_topup";
   static String cgnetTopup = "cgnet_topup";
   //nea

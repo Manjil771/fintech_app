@@ -147,6 +147,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/sendMoney/widget/fav_accounts_widget.dart';
 
 class SendMoneyWidget extends StatefulWidget {
   const SendMoneyWidget({Key? key}) : super(key: key);
@@ -210,60 +211,84 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                     Container(
                       height: _height * 0.6,
                       child: ListView.builder(
-                        itemCount: filteredItems.length,
+                        itemCount: filteredItems.length + fixedItems.length,
                         itemBuilder: (context, index) {
-                          return Column(
-                            children: [
-                              CommonDetailBox(
-                                isNetworkImage: true,
-                                title: filteredItems[index].name,
-                                leadingImage:
-                                    "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
-                                onBoxPressed: () {
-                                  // checkNivigation(filteredItems[index].name);
-                                  if (filteredItems[index]
-                                      .uniqueIdentifier
-                                      .toString()
-                                      .toLowerCase()
-                                      .contains(
-                                          "bank_transfer".toLowerCase())) {
-                                    NavigationService.pushNamed(
-                                        routeName: Routes.anyBank);
-                                  }
-                                  if (filteredItems[index]
-                                      .uniqueIdentifier
-                                      .toString()
-                                      .toLowerCase()
-                                      .contains("fund_transfer_dashboard"
-                                          .toLowerCase())) {
-                                    NavigationService.pushNamed(
-                                        routeName: Routes.internalCooperative);
-                                  } else if (filteredItems[index]
-                                          .uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      "coop_transfer".toLowerCase()) {
-                                    NavigationService.pushNamed(
-                                        routeName: Routes.otherCooperative);
-                                  } else if (filteredItems[index]
-                                          .uniqueIdentifier
-                                          .toString()
-                                          .toLowerCase() ==
-                                      "load_wallet".toLowerCase()) {
-                                    NavigationService.pushNamed(
-                                        routeName: Routes.listWalletScreen);
-                                  }
-                                  // else {
-                                  //   NavigationService.pushNamed(
-                                  //       routeName: Routes.mobileTopup);
-                                  // }
-                                },
-                                detail: checkDesc(
-                                    filteredItems[index].uniqueIdentifier),
-                              ),
-                              const Divider(thickness: 1)
-                            ],
-                          );
+                          final bool isFixedItem =
+                              index >= filteredItems.length;
+                          if (isFixedItem) {
+                            final int fixedIndex = index - filteredItems.length;
+                            final fixedItem = fixedItems[fixedIndex];
+
+                            return Column(
+                              children: [
+                                CommonDetailBox(
+                                  isNetworkImage: false,
+                                  title: fixedItem['name'],
+                                  leadingImage: fixedItem['imageUrl'],
+                                  onBoxPressed: () {
+                                    switch (fixedItem['uniqueIdentifier']) {
+                                      case 'fixed_item_1':
+                                        NavigationService.push(
+                                            target: const FavAccountsWidget());
+                                        break;
+                                    }
+                                  },
+                                  detail:
+                                      "Here is the list of your fav accounts",
+                                ),
+                                const Divider(thickness: 1)
+                              ],
+                            );
+                          } else {
+                            return Column(
+                              children: [
+                                CommonDetailBox(
+                                  isNetworkImage: true,
+                                  title: filteredItems[index].name,
+                                  leadingImage:
+                                      "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
+                                  onBoxPressed: () {
+                                    if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase()
+                                        .contains(
+                                            "bank_transfer".toLowerCase())) {
+                                      NavigationService.pushNamed(
+                                          routeName: Routes.anyBank);
+                                    }
+                                    if (filteredItems[index]
+                                        .uniqueIdentifier
+                                        .toString()
+                                        .toLowerCase()
+                                        .contains("fund_transfer_dashboard"
+                                            .toLowerCase())) {
+                                      NavigationService.pushNamed(
+                                          routeName:
+                                              Routes.internalCooperative);
+                                    } else if (filteredItems[index]
+                                            .uniqueIdentifier
+                                            .toString()
+                                            .toLowerCase() ==
+                                        "coop_transfer".toLowerCase()) {
+                                      NavigationService.pushNamed(
+                                          routeName: Routes.otherCooperative);
+                                    } else if (filteredItems[index]
+                                            .uniqueIdentifier
+                                            .toString()
+                                            .toLowerCase() ==
+                                        "load_wallet".toLowerCase()) {
+                                      NavigationService.pushNamed(
+                                          routeName: Routes.listWalletScreen);
+                                    }
+                                  },
+                                  detail: checkDesc(
+                                      filteredItems[index].uniqueIdentifier),
+                                ),
+                                const Divider(thickness: 1)
+                              ],
+                            );
+                          }
                         },
                       ),
                     )
@@ -274,19 +299,19 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
           } else if (state is CommonLoading) {
             return const CommonLoadingWidget();
           }
-          // else {
-          //   return const NoDataScreen(
-          //     title: "Services unavailable now.",
-          //     details:
-          //         'Currently all our services seem to be under maintenance. We will update you as soon as our services get back to operation.',
-          //   );
-          // }
-
           return Container();
         },
       ),
     );
   }
+
+  final List<Map<String, dynamic>> fixedItems = [
+    {
+      'name': 'Favorite',
+      'imageUrl': 'assets/icons/fav_icon.svg',
+      'uniqueIdentifier': 'fixed_item_1',
+    },
+  ];
 
   checkDesc(uniqueIdentifier) {
     if (uniqueIdentifier
