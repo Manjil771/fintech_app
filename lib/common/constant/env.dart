@@ -5751,5 +5751,19 @@ class CoOperativeValue {
     coOperativeName: "Arunjyoti Social Entrepreneur women Co-operative Ltd",
     appTitle: 'Arunjyoti iSmart',
   );
-  static final CoOperative currentCoop = kunchhal;
+  static final CoOperative gajacoop = CoOperative(
+    appStoreID: "com.devanasoft.gaja",
+    packageName: "com.devanagaja",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/gaja/gaja_banner.png",
+    backgroundImage: "assets/gaja/gaja_background.png",
+    clientCode: 'SUXS0Y649R',
+    clientSecret: "134037",
+    coOperativeLogo: 'assets/gaja/gaja_logo.png',
+    splashImage: "assets/gaja/gaja_splash.png",
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Gaja Saving & Credit Co-operative society Ltd",
+    appTitle: 'Gaja iSmart',
+  );
+  static final CoOperative currentCoop = siddhartha;
 }

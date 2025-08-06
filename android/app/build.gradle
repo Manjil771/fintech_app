@@ -2550,6 +2550,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        gaja {
+            dimension "app"
+            applicationId "com.devanasoft.gaja"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
