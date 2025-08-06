@@ -33,7 +33,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   final ScrollController _scrollController = ScrollController();
   DateTime toDate = DateTime.now();
   DateTime fromDate = DateTime.now().subtract(const Duration(days: 7));
-  String? categoryName;
+  String? categoryID;
   DateTime filtertoDate = DateTime.now();
   DateTime filterfromDate = DateTime.now().subtract(const Duration(days: 90));
   @override
@@ -46,10 +46,9 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
         context.read<RecentTransactionCubit>().fetchrecentTransaction(
               fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
               toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
-              serviceCategoryId: "",
+              serviceCategoryId: categoryID ?? '',
               associatedId: "",
               serviceId: "",
-              service: categoryName ?? "SERVICE",
             );
       }
     });
@@ -58,14 +57,13 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   int currentIndex = 0;
 
   getRecentTransaction(DateTime fromDatee, DateTime toDatee,
-      {String? categoryName}) {
+      {String? categoryID}) {
     context.read<RecentTransactionCubit>().fetchInitialrecentTransaction(
           fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
           toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
-          serviceCategoryId: "",
+          serviceCategoryId: categoryID ?? '',
           associatedId: "",
           serviceId: "",
-          service: categoryName ?? "SERVICE",
         );
   }
 
@@ -210,7 +208,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
     DateTime tempFromDate = filterfromDate;
     DateTime tempToDate = filtertoDate;
     bool _pickerAD = false;
-    String? selectedCategory;
+    CategoryList? selectedCategory;
 
     await showDialog(
       context: context,
@@ -318,15 +316,18 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       ],
                     ),
                     const SizedBox(height: 16),
+
+                    // Add the Category Dropdown here
                     CategoryDropdownWidget(
-                      onCategorySelected: (String? category) {
+                      onCategorySelected: (CategoryList? category) {
                         dialogSetState(() {
                           selectedCategory = category;
                         });
                       },
-                      hintText: "Select Service",
+                      hintText: "Select Category",
                     ),
                     const SizedBox(height: 16),
+
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {
@@ -469,11 +470,11 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                           toDate = filtertoDate;
                           currentIndex = -1;
                           if (selectedCategory != null) {
-                            categoryName = selectedCategory;
+                            categoryID = selectedCategory!.id.toString();
                           }
                         });
                         getRecentTransaction(fromDate, toDate,
-                            categoryName: selectedCategory);
+                            categoryID: selectedCategory!.id.toString());
                         Navigator.of(context).pop();
                       },
                     ),
