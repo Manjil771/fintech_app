@@ -90,12 +90,9 @@ class _SmartChatPageState extends State<SmartChatPage> {
       final tempDir = await getTemporaryDirectory();
       final fileName = 'recording_${DateTime.now().millisecondsSinceEpoch}.m4a';
       _recordedFilePath = path.join(tempDir.path, fileName);
-
       await _audioRecorder.start(const RecordConfig(),
           path: _recordedFilePath!);
-
       setState(() => _isRecording = true);
-
       _recorderStatusSubscription =
           _audioRecorder.onStateChanged().listen((state) {
         if (state == RecordState.stop) {
@@ -417,7 +414,8 @@ class _SmartChatPageState extends State<SmartChatPage> {
               child: Row(
                 children: [
                   // FutureBuilder(
-                  //     future: SharedPref.getVoiceChatVisibility(),
+                  //     // future: SharedPref.getVoiceChatVisibility(),
+                  //     future: Future.value(true),
                   //     builder: (context, snapshot) {
                   //       final isVoiceChatVisible = snapshot.data ?? false;
                   //       return isVoiceChatVisible
