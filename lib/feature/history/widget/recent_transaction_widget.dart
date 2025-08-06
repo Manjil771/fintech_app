@@ -13,9 +13,11 @@ import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/transaction_detail_box.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/history/cubit/receipt_download_cubit.dart';
 import 'package:ismart/feature/history/cubit/recent_transaction_cubit.dart';
 import 'package:ismart/feature/history/models/recent_transaction_model.dart';
+import 'package:ismart/feature/history/widget/category_dropdown_widget.dart';
 import 'package:ismart/feature/history/widget/transaction_detail_widget.dart';
 import 'package:nepali_date_picker/nepali_date_picker.dart';
 
@@ -31,7 +33,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   final ScrollController _scrollController = ScrollController();
   DateTime toDate = DateTime.now();
   DateTime fromDate = DateTime.now().subtract(const Duration(days: 7));
-
+  String? categoryName;
   DateTime filtertoDate = DateTime.now();
   DateTime filterfromDate = DateTime.now().subtract(const Duration(days: 90));
   @override
@@ -47,6 +49,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
               serviceCategoryId: "",
               associatedId: "",
               serviceId: "",
+              service: categoryName ?? "SERVICE",
             );
       }
     });
@@ -54,13 +57,15 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
 
   int currentIndex = 0;
 
-  getRecentTransaction(DateTime fromDatee, DateTime toDatee) {
+  getRecentTransaction(DateTime fromDatee, DateTime toDatee,
+      {String? categoryName}) {
     context.read<RecentTransactionCubit>().fetchInitialrecentTransaction(
           fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
           toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
           serviceCategoryId: "",
           associatedId: "",
           serviceId: "",
+          service: categoryName ?? "SERVICE",
         );
   }
 
@@ -205,6 +210,8 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
     DateTime tempFromDate = filterfromDate;
     DateTime tempToDate = filtertoDate;
     bool _pickerAD = false;
+    String? selectedCategory;
+
     await showDialog(
       context: context,
       builder: (context) {
@@ -237,7 +244,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Select Date",
+                          "Filter Options",
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.bold,
@@ -309,6 +316,15 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                           ),
                         ),
                       ],
+                    ),
+                    const SizedBox(height: 16),
+                    CategoryDropdownWidget(
+                      onCategorySelected: (String? category) {
+                        dialogSetState(() {
+                          selectedCategory = category;
+                        });
+                      },
+                      hintText: "Select Service",
                     ),
                     const SizedBox(height: 16),
                     CustomTextField(
@@ -444,16 +460,20 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     ),
                     const SizedBox(height: 24),
                     CustomRoundedButtom(
-                      title: "View",
+                      title: "Apply Filter",
                       onPressed: () {
                         setState(() {
                           filterfromDate = tempFromDate;
                           filtertoDate = tempToDate;
                           fromDate = filterfromDate;
                           toDate = filtertoDate;
-                          currentIndex = -1; // Custom range selected
+                          currentIndex = -1;
+                          if (selectedCategory != null) {
+                            categoryName = selectedCategory;
+                          }
                         });
-                        getRecentTransaction(fromDate, toDate);
+                        getRecentTransaction(fromDate, toDate,
+                            categoryName: selectedCategory);
                         Navigator.of(context).pop();
                       },
                     ),
@@ -466,116 +486,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
       },
     );
   }
-  // Future<void> showFilterDialog() async {
-  //   DateTime tempFromDate = filterfromDate;
-  //   DateTime tempToDate = filtertoDate;
-
-  //   await showDialog(
-  //     context: context,
-  //     builder: (context) {
-  //       return StatefulBuilder(
-  //         builder: (context, setState) {
-  //           return Dialog(
-  //             shape: RoundedRectangleBorder(
-  //               borderRadius: BorderRadius.circular(18),
-  //             ),
-  //             elevation: 0,
-  //             backgroundColor: Colors.transparent,
-  //             child: Container(
-  //               padding: const EdgeInsets.all(18),
-  //               decoration: BoxDecoration(
-  //                 color: Colors.white,
-  //                 shape: BoxShape.rectangle,
-  //                 borderRadius: BorderRadius.circular(18),
-  //                 boxShadow: const [
-  //                   BoxShadow(
-  //                     color: Colors.black26,
-  //                     blurRadius: 10.0,
-  //                     offset: Offset(0.0, 10.0),
-  //                   ),
-  //                 ],
-  //               ),
-  //               child: Column(
-  //                 mainAxisSize: MainAxisSize.min,
-  //                 children: [
-  //                   Text(
-  //                     "Select Date",
-  //                     style: Theme.of(context).textTheme.titleLarge!.copyWith(
-  //                           fontWeight: FontWeight.bold,
-  //                           fontSize: 16,
-  //                         ),
-  //                   ),
-  //                   const SizedBox(height: 16),
-  //                   CustomTextField(
-  //                     readOnly: true,
-  //                     onTap: () async {
-  //                       final DateTime? picked = await showDatePicker(
-  //                         context: context,
-  //                         initialDate: tempFromDate,
-  //                         firstDate: DateTime(2021),
-  //                         lastDate: DateTime.now(),
-  //                       );
-  //                       if (picked != null) {
-  //                         setState(() {
-  //                           tempFromDate = picked;
-  //                           if (tempToDate.difference(tempFromDate).inDays >
-  //                               90) {
-  //                             tempToDate =
-  //                                 tempFromDate.add(const Duration(days: 90));
-  //                           }
-  //                         });
-  //                       }
-  //                     },
-  //                     title: "From Date",
-  //                     hintText:
-  //                         "${tempFromDate.year}-${tempFromDate.month}-${tempFromDate.day}",
-  //                     showSuffixImage: true,
-  //                   ),
-  //                   const SizedBox(height: 16),
-  //                   CustomTextField(
-  //                     readOnly: true,
-  //                     onTap: () async {
-  //                       final DateTime? picked = await showDatePicker(
-  //                         context: context,
-  //                         initialDate: tempToDate,
-  //                         firstDate: tempFromDate,
-  //                         lastDate: tempFromDate.add(const Duration(days: 90)),
-  //                       );
-  //                       if (picked != null) {
-  //                         setState(() {
-  //                           tempToDate = picked;
-  //                         });
-  //                       }
-  //                     },
-  //                     title: "To Date",
-  //                     hintText:
-  //                         "${tempToDate.year}-${tempToDate.month}-${tempToDate.day}",
-  //                     showSuffixImage: true,
-  //                   ),
-  //     const SizedBox(height: 24),
-  //     CustomRoundedButtom(
-  //       title: "View",
-  //       onPressed: () {
-  //         setState(() {
-  //           filterfromDate = tempFromDate;
-  //           filtertoDate = tempToDate;
-  //           fromDate = filterfromDate;
-  //           toDate = filtertoDate;
-  //           currentIndex = -1; // Custom range selected
-  //         });
-  //         getRecentTransaction(fromDate, toDate);
-  //         Navigator.of(context).pop();
-  //       },
-  //     ),
-  //   ],
-  // ),
-  //             ),
-  //           );
-  //         },
-  //       );
-  //     },
-  //   );
-  // }
 
   final List<int> predefinedPeriods = [7, 15, 30, 60];
   Widget predefinedPeriodButton(int days, bool isSelected) {
