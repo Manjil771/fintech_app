@@ -34,6 +34,7 @@ class _EventWidgetState extends State<EventWidget> {
           builder: (context, state) {
             if (state is CommonStateSuccess<UtilityResponseData>) {
               final UtilityResponseData _res = state.data;
+
               if (_res.details.isEmpty) {
                 return NoDataScreen(
                   title: "",
@@ -48,6 +49,8 @@ class _EventWidgetState extends State<EventWidget> {
                     itemCount: response.length,
                     itemBuilder: (context, index) => InkWell(
                           onTap: () {
+                            final tappedImageUrl = response[index]["imageUrl"];
+                            print("Tapped Image URL: $tappedImageUrl");
                             if (selectedIdex != index) {
                               selectedIdex = index;
                               viewMore = !viewMore;
@@ -84,6 +87,41 @@ class _EventWidgetState extends State<EventWidget> {
                                   maxLines: selectedIdex == index ? 100 : 2,
                                   overflow: TextOverflow.ellipsis,
                                 ),
+                                SizedBox(height: 10.hp),
+                                response[index]["imageUrl"] != null &&
+                                        response[index]["imageUrl"].isNotEmpty
+                                    ? Container(
+                                        decoration: BoxDecoration(
+                                          border:
+                                              Border.all(color: Colors.grey),
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                        ),
+                                        child: ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(8),
+                                          child: Image.network(
+                                            "https://ismart.devanasoft.com.np${response[index]["imageUrl"]}",
+                                            fit: BoxFit.cover,
+                                            errorBuilder:
+                                                (context, error, stackTrace) {
+                                              return const Center(
+                                                  child:
+                                                      Icon(Icons.broken_image));
+                                            },
+                                            loadingBuilder: (context, child,
+                                                loadingProgress) {
+                                              if (loadingProgress == null)
+                                                return child;
+                                              return const Center(
+                                                  child:
+                                                      CircularProgressIndicator(
+                                                          strokeWidth: 2));
+                                            },
+                                          ),
+                                        ),
+                                      )
+                                    : const SizedBox.shrink(),
                                 Align(
                                   alignment: Alignment.centerRight,
                                   child: Text(

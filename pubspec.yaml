@@ -86,11 +86,17 @@ dependency_overrides:
 
 flutter:
   assets:
-    - assets/manakamana/
     # - assets/kunchhal/
     # - assets/shreeBakhan/
+    # - assets/gaja/
+    # - assets/arunjyoti/
+    # - assets/paryatan/
+    # - assets/ekata/
+    # - assets/sadasyaSewa/
+    # - assets/neela/
     # - assets/nhugupala/
     # - assets/shreegorakhkali/
+    # - assets/kunchhal/
     # - assets/samajkalyan/
     # - assets/sahayatripokhara/
     # - assets/patan/
@@ -198,7 +204,7 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    # - assets/ekata/
+
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -451,7 +457,7 @@ flutter:
     # - assets/janakalyan/
     # - assets/pathibhara/
     # - assets/indrawati/
-    # - assets/siddhartha/
+    - assets/siddhartha/
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
     # - assets/paschimanchal/
