@@ -28,6 +28,7 @@ class RecentTransactionWidget extends StatefulWidget {
 }
 
 class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
+  final ScrollController _scrollController = ScrollController();
   DateTime toDate = DateTime.now();
   DateTime fromDate = DateTime.now().subtract(const Duration(days: 7));
 
@@ -37,18 +38,30 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
   void initState() {
     super.initState();
     getRecentTransaction(fromDate, toDate);
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels >=
+          _scrollController.position.maxScrollExtent - 50) {
+        context.read<RecentTransactionCubit>().fetchrecentTransaction(
+              fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
+              toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
+              serviceCategoryId: "",
+              associatedId: "",
+              serviceId: "",
+            );
+      }
+    });
   }
 
   int currentIndex = 0;
 
   getRecentTransaction(DateTime fromDatee, DateTime toDatee) {
-    context.read<RecentTransactionCubit>().fetchrecentTransaction(
-        pageNo: 1,
-        fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
-        toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
-        serviceCategoryId: "",
-        associatedId: "",
-        serviceId: "");
+    context.read<RecentTransactionCubit>().fetchInitialrecentTransaction(
+          fromDate: "${fromDate.year}-${fromDate.month}-${fromDate.day}",
+          toDate: "${toDate.year}-${toDate.month}-${toDate.day}",
+          serviceCategoryId: "",
+          associatedId: "",
+          serviceId: "",
+        );
   }
 
   bool _isLoading = false;
@@ -62,6 +75,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
       padding: EdgeInsets.zero,
       showAppBar: false,
       body: CommonContainer(
+        controller: _scrollController,
         showDetail: false,
         showBackBotton: false,
         showRoundBotton: false,
@@ -145,8 +159,9 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                     child: Column(
                       children: [
                         ListView.builder(
-                          physics: const ScrollPhysics(),
                           shrinkWrap: true,
+                          // physics: const ClampingScrollPhysics(),
+                          physics: const ScrollPhysics(),
                           itemCount: state.data.length,
                           itemBuilder: (context, index) {
                             final _detail = state.data[index];
