@@ -2532,6 +2532,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        manakamana {
+            dimension "app"
+            applicationId "com.devanasoft.manakamana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

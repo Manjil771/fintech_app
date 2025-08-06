@@ -5709,5 +5709,19 @@ class CoOperativeValue {
     coOperativeName: "Kunchhal Saving & Credit Co-operative Ltd",
     appTitle: 'Kunchhal iSmart iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative manakamana = CoOperative(
+    appStoreID: "com.devanasoft.manakamana",
+    packageName: "com.devanasoft.manakamana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/manakamana/Manakamana_banner.png",
+    backgroundImage: "assets/manakamana/Manakamana_background.png",
+    clientCode: 'O5RJP4RFKJ',
+    clientSecret: "112411",
+    coOperativeLogo: 'assets/manakamana/Manakamana_logo.png',
+    splashImage: "assets/manakamana/Manakamana_splash.png",
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "MANAKAMANA Saving & Credit Co-operative Ltd.",
+    appTitle: 'Manakamana iSmart',
+  );
+  static final CoOperative currentCoop = manakamana;
 }
