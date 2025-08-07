@@ -5,8 +5,11 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class RemittancepaymentPage extends StatelessWidget {
-  final int id;
-  const RemittancepaymentPage({super.key, required this.id});
+  final String pinNo;
+  final String token;
+  final String id;
+  const RemittancepaymentPage(
+      {super.key, required this.id, required this.token, required this.pinNo});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +22,8 @@ class RemittancepaymentPage extends StatelessWidget {
             accountDetails: {"id": id},
             apiEndpoint: "api/remittance/getPaymentConfirmOptions"),
       child: RemitteancePaymentWidget(
+        pinNo: pinNo,
+        token: token,
         id: id,
       ),
     );

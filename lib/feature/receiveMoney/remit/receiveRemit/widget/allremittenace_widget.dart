@@ -114,9 +114,14 @@ class AllremittanceDetailsWidget extends StatelessWidget {
                         CustomRoundedButtom(
                             title: "Proceed",
                             onPressed: () {
+                              print(
+                                  "this is pipeline ${item["pinNo"]} ${item["id"]},${item["payTokenId"]}");
                               NavigationService.push(
-                                  target:
-                                      RemittancepaymentPage(id: item["id"]));
+                                  target: RemittancepaymentPage(
+                                pinNo: item["pinNo"].toString(),
+                                id: item["id"].toString(),
+                                token: item["payTokenId"].toString(),
+                              ));
                             }),
                       ],
                     ),

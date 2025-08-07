@@ -10,14 +10,22 @@ import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/show_yesno_popupbox.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
+import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
+
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/paymentrelationship.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RemitteancePaymentWidget extends StatefulWidget {
-  final int id;
-  const RemitteancePaymentWidget({super.key, required this.id});
+  final String pinNo;
+  final String id;
+  final String token;
+  const RemitteancePaymentWidget(
+      {super.key, required this.id, required this.token, required this.pinNo});
 
   @override
   State<RemitteancePaymentWidget> createState() =>
@@ -44,6 +52,7 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
     return PageWrapper(body: BlocBuilder<UtilityPaymentCubit, CommonState>(
         builder: (context, state) {
       if (state is CommonStateSuccess<UtilityResponseData>) {
+        print("this is pipeline ${widget.token} ${widget.id},${widget.pinNo}");
         final res = state.data.details;
 
         final relationships = extractListFromState(state, 'relationships');
@@ -58,30 +67,48 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
           buttonName: "Pay",
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
-              NavigationService.push(target: TransactionPinScreen(
-                onValueCallback: (p0) {
-                  NavigationService.pop();
+              showYesNoPopUpDialog(
+                context: context,
+                title: "Confirm",
+                message: "Do you want to proceed?",
+                onYes: () {
+                  NavigationService.push(target: TransactionPinScreen(
+                    onValueCallback: (p0) {
+                      NavigationService.pop();
 
-                  context.read<UtilityPaymentCubit>().makePayment(
-                    mPin: p0,
-                    serviceIdentifier: "",
-                    // serviceIdentifier: "traffic_fine_payments",
-                    apiEndpoint: "remittance/payTransactionConfirm",
-                    body: {},
-                    accountDetails: {
-                      "id": widget.id,
-                      "relationship": relation.text,
-                      "relationshipType": relationType.text,
-                      "remittancePurpose": puropse.text,
-                      // "mobileNumber":
-                      //     RepositoryProvider.of<CustomerDetailRepository>(context)
-                      //         .customerDetailModel
-                      //         .value
-                      //         ?.mobileNumber,
+                      context.read<UtilityPaymentCubit>().makePayment(
+                        mPin: p0,
+                        serviceIdentifier: "",
+                        // serviceIdentifier: "traffic_fine_payments",
+                        apiEndpoint: "remittance/payTransactionConfirm",
+                        body: {},
+                        accountDetails: {
+                          "id": widget.id,
+                          "relationship": relation.text,
+                          "relationshipType": relationType.text,
+                          "remittancePurpose": puropse.text,
+                          // "mobileNumber":
+                          //     RepositoryProvider.of<CustomerDetailRepository>(context)
+                          //         .customerDetailModel
+                          //         .value
+                          //         ?.mobileNumber,
+                        },
+                      );
                     },
-                  );
+                  ));
                 },
-              ));
+                onNo: () {
+                  context.read<UtilityPaymentCubit>().fetchDetails(
+                        serviceIdentifier: "",
+                        accountDetails: {
+                          "pinNo": widget.pinNo,
+                          "payTokenId": widget.token,
+                          "id": widget.id,
+                        },
+                        apiEndpoint: "api/remittance/receive/transactionUnlock",
+                      );
+                },
+              );
             }
           },
           body: Form(

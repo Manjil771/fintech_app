@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -42,7 +44,7 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
                 target: RemittanceDetailFetchWidget(
               path: widget.imagePath,
               bankName: widget.bankName,
-              data: {"details": response.details},
+              data: response,
             ));
           } else {
             print("this is msg $response.message");

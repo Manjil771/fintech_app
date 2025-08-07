@@ -6,9 +6,10 @@ import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RemittanceDetailFetchWidget extends StatelessWidget {
-  final Map<String, dynamic> data;
+  final UtilityResponseData data;
   final String path;
   final String bankName;
 
@@ -21,8 +22,6 @@ class RemittanceDetailFetchWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final details = data;
-
     final _height = SizeUtils.height;
 
     return PageWrapper(
@@ -75,53 +74,80 @@ class RemittanceDetailFetchWidget extends StatelessWidget {
                           style: Theme.of(context).textTheme.titleLarge),
                       SizedBox(height: _height * 0.02),
                       KeyValueTile(
-                        title: "Receiver Name",
-                        value: details["receiverName"] ?? "",
-                      ),
+                          title: "Receiver Name",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'receiverName')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Receiver Mobile Number",
-                        value: details["receiverMobileNumber"] ?? "",
-                      ),
+                          title: "Receiver Mobile Number",
+                          value: data.details
+                                  .firstWhere((val) =>
+                                      val.title == 'receiverMobileNumber')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Receiver City",
-                        value: details["receiverCity"] ?? "",
-                      ),
+                          title: "Receiver City",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'receiverCity')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Receiver Country",
-                        value: details["receiverCountary"] ?? "",
-                      ),
+                          title: "Receiver Country",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'receiverCountary')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Sender Name",
-                        value: details["senderName"] ?? "",
-                      ),
+                          title: "Sender Name",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'senderName')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Sender Country",
-                        value: details["senderCountary"] ?? "",
-                      ),
+                          title: "Sender Country",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'senderCountary')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "PIN No",
-                        value: details["pinNo"] ?? "",
-                      ),
+                          title: "PIN No",
+                          value: data.details
+                                  .firstWhere((val) => val.title == 'pinNo')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Payout Amount",
-                        value: details["payoutAmount"] ?? "",
-                      ),
+                          title: "Payout Amount",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'payoutAmount')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Payout Currency",
-                        value: details["payoutCurrency"] ?? "",
-                      ),
+                          title: "Payout Currency",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'payoutCurrency')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Payout Type",
-                        value: details["payoutType"] ?? "",
-                      ),
+                          title: "Payout Type",
+                          value: data.details
+                                  .firstWhere(
+                                      (val) => val.title == 'payoutType')
+                                  .value ??
+                              ""),
                       KeyValueTile(
-                        title: "Transaction Date",
-                        value: details["txnDate"] ?? "",
-                      ),
-                      KeyValueTile(
-                        title: "Token ID",
-                        value: details["tokenId"] ?? "",
-                      ),
+                          title: "Transaction Date",
+                          value: data.details
+                                  .firstWhere((val) => val.title == 'txnDate')
+                                  .value ??
+                              ""),
                     ],
                   ),
                 ),
