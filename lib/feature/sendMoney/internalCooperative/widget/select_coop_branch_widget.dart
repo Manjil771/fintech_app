@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
@@ -46,7 +48,7 @@ class _CoOpBranchListWidgetState extends State<CoOpBranchListWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Branches",
+                  LocaleKeys.branches.tr(),
                   style: _textTheme.displayLarge,
                 ),
               ),

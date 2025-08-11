@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/custom_locale.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/util/size_utils.dart';
 // import 'package:get/get.dart';
@@ -45,9 +47,18 @@ class IsmartTopWidget extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                // SvgPicture.asset(
-                //   Assets.translateImage,
-                //   height: _height * 0.03,
+                // InkWell(
+                //   onTap: () {
+                //     final Locale currentLocale = context.locale;
+                //     final Locale newLocale = currentLocale.languageCode == 'en'
+                //         ? CustomLocale.nepali
+                //         : CustomLocale.english;
+                //     context.setLocale(newLocale);
+                //   },
+                //   child: SvgPicture.asset(
+                //     Assets.translateImage,
+                //     height: _height * 0.03,
+                //   ),
                 // ),
                 SizedBox(width: 15.hp),
                 InkWell(

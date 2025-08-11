@@ -5,7 +5,6 @@ publish: none
 
 version: 1.5.30+60
 
-
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -87,14 +86,15 @@ dependency_overrides:
 
 flutter:
   assets:
-
+    # - assets/kunchhal/
     # - assets/shreeBakhan/
-    - assets/janachetana/
+    # - assets/janachetana/
+    - assets/janakalyanbahumukhi/
     # - assets/hamroSaving/
     # - assets/gaja/
     # - assets/arunjyoti/
     # - assets/paryatan/
-    - assets/ekata/
+    # - assets/ekata/
     # - assets/sadasyaSewa/
     # - assets/neela/
     # - assets/nhugupala/
@@ -208,7 +208,7 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    
+
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -422,7 +422,7 @@ flutter:
     # - assets/abhiyankrishi/
     - assets/unnati/
     # - assets/skOdraha/
-    # - assets/shreeKanchan/
+    - assets/shreeKanchan/
     # - assets/arjunchaupari/
     # - assets/sajiloSaving/
     # - assets/krishnaGandaki/

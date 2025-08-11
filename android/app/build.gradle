@@ -2574,6 +2574,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+         janakalyanbahumukhi {
+            dimension "app"
+            applicationId "com.devanasoft.janakalyanbahumukhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
