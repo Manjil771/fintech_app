@@ -69,7 +69,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                         title: "Trader Name",
                         value: payload['traderName'] ?? '-'),
                     KeyValueTile(
-                        title: "Shop ID",
+                        title: "Trader ID",
                         value: payload['shopIdentification'] ?? '-'),
                     KeyValueTile(
                         title: "Invoice Due Date",
