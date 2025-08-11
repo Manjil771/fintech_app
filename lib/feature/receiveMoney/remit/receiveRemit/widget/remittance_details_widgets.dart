@@ -6,6 +6,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/remittance_detail_fetch_widget.dart';
@@ -71,8 +72,8 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
       child: PageWrapper(
           body: CommonContainer(
         topbarName: "Remittance",
-        title: "Remittance",
-        detail: "Fetch your Remittance details from here",
+        title: widget.bankName,
+        // detail: "Fetch your Remittance details from here",
         buttonName: "Procced",
         onButtonPressed: () {
           onButtonPressed();
@@ -102,9 +103,17 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
         body: Form(
           key: _formKey,
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              Container(
+                height: 56,
+                padding: const EdgeInsets.all(8),
+                decoration: const BoxDecoration(),
+                child: CustomCachedNetworkImage(
+                    url: widget.imagePath, fit: BoxFit.contain),
+              ),
               CustomTextField(
-                title: "Pin",
+                title: "Remit Code",
                 hintText: "xxxxxxxxxx",
                 textInputType: TextInputType.number,
                 controller: _remittancepin,

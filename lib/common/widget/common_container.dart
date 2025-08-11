@@ -320,6 +320,7 @@ class _SliverHeaderDelegate extends SliverPersistentHeaderDelegate {
         top: Radius.circular(12),
       ),
       child: Material(
+        // color: CustomTheme.white,
         elevation: 0,
         child: child,
       ),

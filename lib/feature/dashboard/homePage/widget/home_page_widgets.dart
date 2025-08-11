@@ -16,6 +16,7 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
@@ -156,7 +157,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       borderRadius: BorderRadius.circular(12),
                                       onTap: () {
                                         NavigationService.push(
-                                          target: const RemittancePage(),
+                                          target: const ReceiveRemittancePage(),
+                                          // target:
+                                          //     const AllremittanceDetailsPage(),
                                         );
                                       },
                                       child: Container(
@@ -205,7 +208,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                   );
                                 }),
                             SizedBox(width: _width * 0.03),
-
+                            //purpose :
                             // ElevatedButton.icon(
                             //     onPressed: () {
                             //       NavigationService.push(
@@ -363,9 +366,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   onButtonPressed() {
     context.read<UtilityPaymentCubit>().fetchDetailsPost(
-        serviceIdentifier: "",
-        accountDetails: {},
-        apiEndpoint: "api/ai/create");
+          serviceIdentifier: "",
+          accountDetails: {},
+          apiEndpoint: "api/ai/create",
+        );
   }
 }
 

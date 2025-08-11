@@ -31,18 +31,17 @@ class RemitBoxDesign extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 70,
+              height: 56,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: _theme.primaryColor.withOpacity(0.05),
               ),
               child: CustomCachedNetworkImage(
-                fit: BoxFit.cover,
+                fit: BoxFit.contain,
                 url: imageUrl,
               ),
             ),
-            // SizedBox(height: .hp),
             Expanded(
               child: Text(
                 title,

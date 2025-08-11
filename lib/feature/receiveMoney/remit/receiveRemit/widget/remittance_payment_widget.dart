@@ -67,48 +67,72 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
           buttonName: "Pay",
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
-              showYesNoPopUpDialog(
-                context: context,
-                title: "Confirm",
-                message: "Do you want to proceed?",
-                onYes: () {
-                  NavigationService.push(target: TransactionPinScreen(
-                    onValueCallback: (p0) {
-                      NavigationService.pop();
+              NavigationService.push(target: TransactionPinScreen(
+                onValueCallback: (p0) {
+                  NavigationService.pop();
 
-                      context.read<UtilityPaymentCubit>().makePayment(
-                        mPin: p0,
-                        serviceIdentifier: "",
-                        // serviceIdentifier: "traffic_fine_payments",
-                        apiEndpoint: "remittance/payTransactionConfirm",
-                        body: {},
-                        accountDetails: {
-                          "id": widget.id,
-                          "relationship": relation.text,
-                          "relationshipType": relationType.text,
-                          "remittancePurpose": puropse.text,
-                          // "mobileNumber":
-                          //     RepositoryProvider.of<CustomerDetailRepository>(context)
-                          //         .customerDetailModel
-                          //         .value
-                          //         ?.mobileNumber,
-                        },
-                      );
+                  context.read<UtilityPaymentCubit>().makePayment(
+                    mPin: p0,
+                    serviceIdentifier: "",
+                    // serviceIdentifier: "traffic_fine_payments",
+                    apiEndpoint: "remittance/payTransactionConfirm",
+                    body: {},
+                    accountDetails: {
+                      "id": widget.id,
+                      "relationship": relation.text,
+                      "relationshipType": relationType.text,
+                      "remittancePurpose": puropse.text,
+                      // "mobileNumber":
+                      //     RepositoryProvider.of<CustomerDetailRepository>(context)
+                      //         .customerDetailModel
+                      //         .value
+                      //         ?.mobileNumber,
                     },
-                  ));
+                  );
                 },
-                onNo: () {
-                  context.read<UtilityPaymentCubit>().fetchDetails(
-                        serviceIdentifier: "",
-                        accountDetails: {
-                          "pinNo": widget.pinNo,
-                          "payTokenId": widget.token,
-                          "id": widget.id,
-                        },
-                        apiEndpoint: "api/remittance/receive/transactionUnlock",
-                      );
-                },
-              );
+              ));
+              // showYesNoPopUpDialog(
+              //   context: context,
+              //   title: "Confirm",
+              //   message: "Do you want to proceed?",
+              //   onYes: () {
+              //     NavigationService.push(target: TransactionPinScreen(
+              //       onValueCallback: (p0) {
+              //         NavigationService.pop();
+
+              //         context.read<UtilityPaymentCubit>().makePayment(
+              //           mPin: p0,
+              //           serviceIdentifier: "",
+              //           // serviceIdentifier: "traffic_fine_payments",
+              //           apiEndpoint: "remittance/payTransactionConfirm",
+              //           body: {},
+              //           accountDetails: {
+              //             "id": widget.id,
+              //             "relationship": relation.text,
+              //             "relationshipType": relationType.text,
+              //             "remittancePurpose": puropse.text,
+              //             // "mobileNumber":
+              //             //     RepositoryProvider.of<CustomerDetailRepository>(context)
+              //             //         .customerDetailModel
+              //             //         .value
+              //             //         ?.mobileNumber,
+              //           },
+              //         );
+              //       },
+              //     ));
+              //   },
+              //   onNo: () {
+              //     context.read<UtilityPaymentCubit>().fetchDetails(
+              //           serviceIdentifier: "",
+              //           accountDetails: {
+              //             "pinNo": widget.pinNo,
+              //             "payTokenId": widget.token,
+              //             "id": widget.id,
+              //           },
+              //           apiEndpoint: "api/remittance/receive/transactionUnlock",
+              //         );
+              //   },
+              // );
             }
           },
           body: Form(

@@ -25,24 +25,40 @@ class ReceiveRemittanceWidget extends StatelessWidget {
           builder: (context, state) {
             if (state is CommonStateSuccess<UtilityResponseData>) {
               final List res = state.data.findValue(primaryKey: "data");
+              final imeRemit =
+                  res.where((item) => item["bankName"] == "IME REMIT").toList();
+              final cityExpress = res
+                  .where((item) =>
+                      item["bankName"] == "CITY EXPRESS MONEY TRANSFER")
+                  .toList();
+              final others = res
+                  .where((item) =>
+                      item["bankName"] != "IME REMIT" &&
+                      item["bankName"] != "CITY EXPRESS MONEY TRANSFER")
+                  .toList();
+              final List reorderedList = [
+                ...imeRemit,
+                ...cityExpress,
+                ...others
+              ];
               return GridView.builder(
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: 3),
-                  itemCount: res.length,
+                  itemCount: reorderedList.length,
                   itemBuilder: (context, index) {
                     return RemitBoxDesign(
                       margin: const EdgeInsets.symmetric(horizontal: 10),
                       onContainerPress: () {
                         NavigationService.push(
                             target: RemittanceDetailsPage(
-                          companyID: res[index]["locationName"],
-                          imagePath: res[index]["remitLogo"],
-                          bankName: res[index]["bankName"],
+                          companyID: reorderedList[index]["locationName"],
+                          imagePath: reorderedList[index]["remitLogo"],
+                          bankName: reorderedList[index]["bankName"],
                         ));
                       },
-                      title: res[index]["bankName"],
-                      imageUrl: res[index]["remitLogo"],
+                      title: reorderedList[index]["bankName"],
+                      imageUrl: reorderedList[index]["remitLogo"],
                     );
                   });
             } else if (state is CommonLoading) {
