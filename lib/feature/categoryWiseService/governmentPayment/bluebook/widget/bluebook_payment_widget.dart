@@ -107,7 +107,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                             },
                             color: _isProvince
                                 ? CustomTheme.primaryColor
-                                : CustomTheme.primaryColor.withOpacity(0.6),
+                                : CustomTheme.primaryColor.withAlpha(153),
                           ),
                         ),
                         SizedBox(width: 10.wp),
@@ -120,10 +120,10 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                               print(_isProvince);
                             },
                             color: _isProvince
-                                ? CustomTheme.primaryColor.withOpacity(0.6)
+                                ? CustomTheme.primaryColor.withAlpha(153)
                                 : CustomTheme.primaryColor,
                           ),
-                        )
+                        ),
                       ],
                     ),
                     SizedBox(height: 10.hp),

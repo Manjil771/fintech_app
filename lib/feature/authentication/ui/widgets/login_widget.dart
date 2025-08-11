@@ -4,7 +4,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/custom_locale.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
@@ -394,17 +393,6 @@ class _LoginWidgetState extends State<LoginWidget> {
                       validator: (value) =>
                           FormValidator.validateFieldNotEmpty(value, "MPIN"),
                     ),
-                    //TODO: for the language toggle
-                    // IconButton(
-                    //     onPressed: () {
-                    //       final Locale currentLocale = context.locale;
-                    //       final Locale newLocale =
-                    //           currentLocale.languageCode == 'en'
-                    //               ? CustomLocale.nepali
-                    //               : CustomLocale.english;
-                    //       context.setLocale(newLocale);
-                    //     },
-                    //     icon: const Icon(Icons.language)),
                     ValueListenableBuilder<bool>(
                       valueListenable: _hasExistingLoginSaved,
                       builder: (context, val, _) {
