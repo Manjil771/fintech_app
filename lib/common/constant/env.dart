@@ -227,8 +227,8 @@ class CoOperativeValue {
 
   // DEV TEST70074
   static final CoOperative development = CoOperative(
-    // baseUrl: 'http://45.117.153.192:8082/',
-    baseUrl: 'http://192.168.1.59:8080/',
+    baseUrl: 'http://45.117.153.192:8082/',
+    // baseUrl: 'http://192.168.1.59:8080/',
     bannerImage: "assets/images/ismart_banner.png",
     clientCode: 'VBMRDWEVFV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
@@ -240,7 +240,7 @@ class CoOperativeValue {
     packageName: "com.devanasoft.ismart",
     appTitle: "iSmart Devanasoft",
     appStoreID: "",
-    shouldValidateCooperative: false,
+    shouldValidateCooperative: true,
   );
   static final CoOperative oxpanTest = CoOperative(
     baseUrl: 'http://103.198.9.203:8080/',
@@ -5709,6 +5709,21 @@ class CoOperativeValue {
     coOperativeName: "Kunchhal Saving & Credit Co-operative Ltd",
     appTitle: 'Kunchhal iSmart',
   );
+  static final CoOperative manakamana = CoOperative(
+    appStoreID: "com.devanasoft.manakamana",
+    packageName: "com.devanasoft.manakamana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/manakamana/Manakamana_banner.png",
+    backgroundImage: "assets/manakamana/Manakamana_background.png",
+    clientCode: 'O5RJP4RFKJ',
+    clientSecret: "112411",
+    coOperativeLogo: 'assets/manakamana/Manakamana_logo.png',
+    splashImage: "assets/manakamana/Manakamana_splash.png",
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "MANAKAMANA Saving & Credit Co-operative Ltd.",
+    appTitle: 'Manakamana iSmart',
+  );
+
   static final CoOperative neela = CoOperative(
     appStoreID: "com.devanasoft.neela",
     packageName: "com.devanasoft.neela",
@@ -5765,5 +5780,5 @@ class CoOperativeValue {
     coOperativeName: "Gaja Saving & Credit Co-operative society Ltd",
     appTitle: 'Gaja iSmart',
   );
-  static final CoOperative currentCoop = baglungmulti;
+  static final CoOperative currentCoop = sadasyaSewaCoop;
 }

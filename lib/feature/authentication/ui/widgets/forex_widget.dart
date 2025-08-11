@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -68,11 +70,23 @@ class _ForexWidgetState extends State<ForexWidget> {
                             ),
                           ),
                           child: DataTable(
-                            columns: const [
-                              DataColumn(label: Text('Currency')),
-                              DataColumn(label: Text('Unit')),
-                              DataColumn(label: Text('Buying Rs.')),
-                              DataColumn(label: Text('Selling Rs.')),
+                            columns: [
+                              DataColumn(
+                                  label: Text(
+                                LocaleKeys.currency.tr(),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                LocaleKeys.unit.tr(),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                LocaleKeys.buyingRs.tr(),
+                              )),
+                              DataColumn(
+                                  label: Text(
+                                LocaleKeys.sellingRs.tr(),
+                              )),
                             ],
                             rows: List.generate(
                               response.length,

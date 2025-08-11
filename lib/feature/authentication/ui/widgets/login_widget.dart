@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -251,9 +253,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      "Login",
-                      style: TextStyle(
+                    Text(
+                      LocaleKeys.login.tr(),
+                      // "Login",
+                      style: const TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
                         color: Colors.black,
@@ -320,13 +323,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           leading: countryFlagWidget(),
                           readOnly:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
-                          title: "Mobile Number",
+                          title: LocaleKeys.mobileNumber.tr(),
                           customHintTextStyle:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
                           hintText:
                               rememberMe && _existingPhoneNumber.isNotEmpty
                                   ? maskPhoneNumber(_existingPhoneNumber)
-                                  : "Mobile Number",
+                                  : LocaleKeys.mobileNumber.tr(),
                           controller: phoneController,
                           textInputType: TextInputType.phone,
                           onTap: () {
@@ -362,8 +365,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security Pin",
-                      hintText: "Secrity Pin",
+                      title: LocaleKeys.securityPin.tr(),
+                      hintText: LocaleKeys.securityPin.tr(),
                       maxLength: 6,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -404,13 +407,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            const Text("Remember Me"),
+                            Text(
+                              LocaleKeys.rememberMe.tr(),
+                            ),
                           ],
                         );
                       },
                     ),
                     CustomRoundedButtom(
-                      title: "Login",
+                      title: LocaleKeys.loginBtn.tr(),
                       onPressed: () async {
                         // showDatePickerBottomSheet(
                         //   context: context,
@@ -472,7 +477,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     width: width * 0.03,
                                   ),
                                   Text(
-                                    "User Biometric to Login",
+                                    LocaleKeys.useBiometricToLogin.tr(),
                                     style: _theme.textTheme.labelMedium,
                                   ),
                                 ],
@@ -523,10 +528,10 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   final List nameList = [
-    "Forex",
-    "Activate Account",
-    "Missed Call Banking",
-    "Branches"
+    LocaleKeys.foreex.tr(),
+    LocaleKeys.activateAccount.tr(),
+    LocaleKeys.miscallBanking.tr(),
+    LocaleKeys.branches.tr(),
   ];
   final List imageList = [
     "assets/icons/forex.svg",

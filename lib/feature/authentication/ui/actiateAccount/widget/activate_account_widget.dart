@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -63,8 +65,8 @@ class ActivateAccountWidget extends StatelessWidget {
               showPopUpDialog(
                 context: context,
                 message: state.data.message,
-                title: "Message",
-                buttonText: "Proceed",
+                title: "Message".tr(),
+                buttonText: "Proceed".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pushReplacement(
@@ -81,12 +83,12 @@ class ActivateAccountWidget extends StatelessWidget {
               const IsmartTopWidget(),
               SizedBox(height: 10.hp),
               Center(
-                  child: Text("Activate Your Service",
+                  child: Text(LocaleKeys.activateYourService.tr(),
                       style: _textTheme.displaySmall)),
               SizedBox(height: 10.hp),
               Center(
                 child: Text(
-                  "Enter your registered mobile number",
+                  LocaleKeys.enterRegisteredMobileNumber.tr(),
                   style: _textTheme.headlineSmall,
                 ),
               ),
@@ -105,20 +107,22 @@ class ActivateAccountWidget extends StatelessWidget {
                         validator: (value) =>
                             FormValidator.validatePhoneNumber(value),
                         controller: _mobileNumberController,
-                        title: "Mobile Number",
+                        title: LocaleKeys.mobileNumber.tr(),
                       ),
                       CustomTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         validator: (value) =>
                             FormValidator.validateFieldNotEmpty(
-                                value, "Account Number"),
+                          value,
+                          LocaleKeys.accountNumber.tr(),
+                        ),
                         controller: _accountNumberController,
-                        title: "Account Number",
+                        title: LocaleKeys.accountNumber.tr(),
                       ),
                       CustomTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
-                        title: "Branch",
-                        hintText: "Select Branch",
+                        title: LocaleKeys.branch.tr(),
+                        hintText: LocaleKeys.selectBranch.tr(),
                         readOnly: true,
                         controller: _branchController,
                         validator: (val) =>
@@ -142,7 +146,7 @@ class ActivateAccountWidget extends StatelessWidget {
               ),
               SizedBox(height: 20.hp),
               CustomRoundedButtom(
-                  title: "Sign Up",
+                  title: LocaleKeys.signUp.tr(),
                   onPressed: () {
                     _fromKey.currentState!.save();
                     if (_fromKey.currentState!.validate()) {
@@ -166,7 +170,7 @@ class ActivateAccountWidget extends StatelessWidget {
                   }),
               SizedBox(height: 10.hp),
               CustomRoundedButtom(
-                  title: "Cancel",
+                  title: "Cancel".tr(),
                   onPressed: () {
                     NavigationService.pop();
                   }),
