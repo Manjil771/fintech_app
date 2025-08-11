@@ -136,7 +136,7 @@ flutter:
     # - assets/swarnim/
     # - assets/hamroNewa/
     # - assets/janakalyanmulti/
-    # - assets/baglungmulti/
+    - assets/baglungmulti/
 
     # - assets/besiShahar/
 
@@ -302,7 +302,7 @@ flutter:
     # - assets/babira/
     # - assets/ektaMultipurpose/
     # - assets/sarbahitDang/
-    # - assets/shwetbhairab/
+    - assets/shwetbhairab/
     # - assets/karmath/
     # - assets/shreeEkata/
     # - assets/shreeSiddhiGanesh/
@@ -331,7 +331,7 @@ flutter:
     # - assets/globalMulti/
     # - assets/hamroDahachok/
     # - assets/shreeNawadeep/
-    # - assets/belchautara/
+    - assets/belchautara/
     # - assets/shubhashreeMulti/
     # - assets/shubhaShree/
     # - assets/yugbani/
