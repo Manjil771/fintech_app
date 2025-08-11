@@ -91,9 +91,10 @@ flutter:
     # - assets/shreeBakhan/
     - assets/janachetana/
     # - assets/hamroSaving/
+    # - assets/gaja/
     # - assets/arunjyoti/
     # - assets/paryatan/
-    # - assets/ekata/
+    - assets/ekata/
     # - assets/sadasyaSewa/
     # - assets/neela/
     # - assets/nhugupala/
@@ -419,7 +420,7 @@ flutter:
     # - assets/agrajMahila/
     # - assets/mahabir/
     # - assets/abhiyankrishi/
-    # - assets/unnati/
+    - assets/unnati/
     # - assets/skOdraha/
     # - assets/shreeKanchan/
     # - assets/arjunchaupari/

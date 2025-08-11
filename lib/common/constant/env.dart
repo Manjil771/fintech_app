@@ -3796,8 +3796,8 @@ class CoOperativeValue {
 
 ////////////////////////
   static final CoOperative sampadaCoop = CoOperative(
-    appStoreID: "com.devanasoft.sampada",
-    packageName: "com.devanasoft.sampada",
+    appStoreID: "com.devanasoft.sampadaCoop",
+    packageName: "com.devanasoft.sampadaCoop",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sampada/sampada_banner.png",
     backgroundImage: "assets/sampada/sampada_background.png",
@@ -3807,7 +3807,7 @@ class CoOperativeValue {
     splashImage: "assets/sampada/sampada_splash.png",
     primaryColor: const Color(0xFF009444),
     coOperativeName: "Sampada Samudayik krishi Co-operative Ltd.",
-    appTitle: "Sampada Samudayik iSmart",
+    appTitle: "Sampada Coop iSmart",
   );
 
   static final CoOperative dhanalaxmiCoop = CoOperative(
@@ -5808,5 +5808,20 @@ class CoOperativeValue {
     coOperativeName: "Janachetana Saing & Credit Co-operative Society Ltd.",
     appTitle: 'Janachetana iSmart',
   );
-  static final CoOperative currentCoop = janachetana;
+
+  static final CoOperative gajacoop = CoOperative(
+    appStoreID: "com.devanasoft.gaja",
+    packageName: "com.devanagaja",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/gaja/gaja_banner.png",
+    backgroundImage: "assets/gaja/gaja_background.png",
+    clientCode: 'SUXS0Y649R',
+    clientSecret: "134037",
+    coOperativeLogo: 'assets/gaja/gaja_logo.png',
+    splashImage: "assets/gaja/gaja_splash.png",
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Gaja Saving & Credit Co-operative society Ltd",
+    appTitle: 'Gaja iSmart',
+  );
+  static final CoOperative currentCoop = ekataCoop;
 }
