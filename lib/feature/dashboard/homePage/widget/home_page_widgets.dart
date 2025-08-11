@@ -106,8 +106,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 7),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 7, horizontal: 4),
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -143,56 +143,68 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 ),
                               ),
                             )),
-                            SizedBox(width: _width * 0.05),
+                            SizedBox(width: _width * 0.03),
 
-                            Expanded(
-                                child: InkWell(
-                              borderRadius: BorderRadius.circular(12),
-                              onTap: () {
-                                NavigationService.push(
-                                  target: const RemittancePage(),
-                                );
-                              },
-                              child: Container(
-                                alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 7),
-                                decoration: BoxDecoration(
-                                    boxShadow: [
-                                      BoxShadow(
-                                        color: Colors.grey.withOpacity(0.3),
-                                        offset: const Offset(7, 7),
-                                        blurRadius: 8,
-                                        spreadRadius: -5,
-                                      ),
-                                    ],
-                                    color: CustomTheme.white,
-                                    borderRadius: BorderRadius.circular(8)),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    CircleAvatar(
-                                      backgroundColor:
-                                          _theme.primaryColor.withOpacity(0.05),
-                                      child: SvgPicture.asset(
-                                        Assets.reveiceMoneyIcon,
-                                        height: 18.hp,
-                                        color: _theme.primaryColor,
+                            FutureBuilder(
+                                future: Future.value(true),
+                                builder: (context, snapshot) {
+                                  final isRemitVisible = snapshot.data ?? false;
+                                  if (!isRemitVisible)
+                                    return const SizedBox.shrink();
+                                  return Expanded(
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () {
+                                        NavigationService.push(
+                                          target: const RemittancePage(),
+                                        );
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 7, horizontal: 4),
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color: Colors.grey
+                                                    .withOpacity(0.3),
+                                                offset: const Offset(7, 7),
+                                                blurRadius: 8,
+                                                spreadRadius: -5,
+                                              ),
+                                            ],
+                                            color: CustomTheme.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor: _theme
+                                                  .primaryColor
+                                                  .withOpacity(0.05),
+                                              child: SvgPicture.asset(
+                                                Assets.reveiceMoneyIcon,
+                                                height: 18.hp,
+                                                color: _theme.primaryColor,
+                                              ),
+                                            ),
+                                            SizedBox(width: _width * 0.02),
+                                            Flexible(
+                                              child: Text(
+                                                "Remit",
+                                                style: _textTheme.titleLarge!
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
                                       ),
                                     ),
-                                    SizedBox(width: _width * 0.02),
-                                    Flexible(
-                                      child: Text(
-                                        "Remit",
-                                        style: _textTheme.titleLarge!
-                                            .copyWith(fontSize: 12),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            )),
-                            SizedBox(width: _width * 0.05),
+                                  );
+                                }),
+                            SizedBox(width: _width * 0.03),
 
                             // ElevatedButton.icon(
                             //     onPressed: () {
@@ -210,8 +222,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 7),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 7, horizontal: 4),
                                   decoration: BoxDecoration(
                                       boxShadow: [
                                         BoxShadow(

@@ -19,13 +19,12 @@ class _SelectHistoryOptionsState extends State<RemittancePage> {
   @override
   Widget build(BuildContext context) {
     return PageWrapper(
-      showBackButton: true,
       body: CommonContainer(
         showDetail: false,
         topbarName: "Remittance",
         showTitleText: false,
         showRoundBotton: false,
-        showBackBotton: false,
+        showBackBotton: true,
         body: Column(
           children: [
             Container(
