@@ -116,12 +116,13 @@ class AllremittanceDetailsWidget extends StatelessWidget {
                             onPressed: () {
                               print(
                                   "this is pipeline ${item["pinNo"]} ${item["id"]},${item["payTokenId"]}");
-                              NavigationService.push(
-                                  target: RemittancepaymentPage(
-                                pinNo: item["pinNo"].toString(),
-                                id: item["id"].toString(),
-                                token: item["payTokenId"].toString(),
-                              ));
+                              // NavigationService.push(
+                              //     target: RemittancepaymentPage(
+                              //   // pinNo: item["pinNo"].toString(),
+                              //   id: item["id"].toString(),
+                              //   categoryList: ,
+                              //   // token: item["payTokenId"].toString(),
+                              // ));
                             }),
                       ],
                     ),

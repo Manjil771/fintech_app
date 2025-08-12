@@ -21,11 +21,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class RemitteancePaymentWidget extends StatefulWidget {
-  final String pinNo;
   final String id;
-  final String token;
-  const RemitteancePaymentWidget(
-      {super.key, required this.id, required this.token, required this.pinNo});
+
+  const RemitteancePaymentWidget({super.key, required this.id});
 
   @override
   State<RemitteancePaymentWidget> createState() =>
@@ -52,14 +50,11 @@ class _RemitteancePaymentWidgetState extends State<RemitteancePaymentWidget> {
     return PageWrapper(body: BlocBuilder<UtilityPaymentCubit, CommonState>(
         builder: (context, state) {
       if (state is CommonStateSuccess<UtilityResponseData>) {
-        print("this is pipeline ${widget.token} ${widget.id},${widget.pinNo}");
         final res = state.data.details;
-
         final relationships = extractListFromState(state, 'relationships');
         final relationshipTypes =
             extractListFromState(state, 'relationshipTypes');
         final purposes = extractListFromState(state, 'remittancePurposes');
-
         return CommonContainer(
           topbarName: "Payment",
           title: "Remittance Payment",

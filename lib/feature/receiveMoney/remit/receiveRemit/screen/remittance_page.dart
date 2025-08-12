@@ -64,7 +64,7 @@ class _SelectHistoryOptionsState extends State<RemittancePage> {
     {
       'title': 'All Remittance',
       'image': Assets.remittanceIcon,
-      'screen': const ReceiveRemittancePage(), // your actual widget
+      // 'screen': const ReceiveRemittancePage(), // your actual widget
     },
     {
       'title': 'Remittance Transaction',

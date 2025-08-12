@@ -1,24 +1,48 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_details_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittancepayment_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 import 'remittance_box_deign.dart';
 
-class ReceiveRemittanceWidget extends StatelessWidget {
-  const ReceiveRemittanceWidget({Key? key}) : super(key: key);
+class ReceiveRemittanceWidget extends StatefulWidget {
+  final CategoryList categoryList;
+  const ReceiveRemittanceWidget({Key? key, required this.categoryList})
+      : super(key: key);
+
+  @override
+  State<ReceiveRemittanceWidget> createState() =>
+      _ReceiveRemittanceWidgetState();
+}
+
+class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
   @override
   Widget build(BuildContext context) {
+    final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
     return PageWrapper(
       padding: const EdgeInsets.symmetric(horizontal: 4),
       body: CommonContainer(
+        onRecentTransactionPressed: (v0) {
+          NavigationService.push(
+              target: RemittancepaymentPage(
+            id: v0.id.toString(),
+            categoryList: widget.categoryList,
+          ));
+        },
+        showRecentTransaction: true,
         horizontalPadding: 4,
         verticalPadding: 0,
         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
@@ -41,26 +65,31 @@ class ReceiveRemittanceWidget extends StatelessWidget {
                 ...cityExpress,
                 ...others
               ];
-              return GridView.builder(
-                  shrinkWrap: true,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3),
-                  itemCount: reorderedList.length,
-                  itemBuilder: (context, index) {
-                    return RemitBoxDesign(
-                      margin: const EdgeInsets.symmetric(horizontal: 10),
-                      onContainerPress: () {
-                        NavigationService.push(
-                            target: RemittanceDetailsPage(
-                          companyID: reorderedList[index]["locationName"],
-                          imagePath: reorderedList[index]["remitLogo"],
-                          bankName: reorderedList[index]["bankName"],
-                        ));
-                      },
-                      title: reorderedList[index]["bankName"],
-                      imageUrl: reorderedList[index]["remitLogo"],
-                    );
-                  });
+              return Stack(
+                children: [
+                  GridView.builder(
+                      shrinkWrap: true,
+                      gridDelegate:
+                          const SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 3),
+                      itemCount: reorderedList.length,
+                      itemBuilder: (context, index) {
+                        return RemitBoxDesign(
+                          margin: const EdgeInsets.symmetric(horizontal: 10),
+                          onContainerPress: () {
+                            NavigationService.push(
+                                target: RemittanceDetailsPage(
+                              companyID: reorderedList[index]["locationName"],
+                              imagePath: reorderedList[index]["remitLogo"],
+                              bankName: reorderedList[index]["bankName"],
+                            ));
+                          },
+                          title: reorderedList[index]["bankName"],
+                          imageUrl: reorderedList[index]["remitLogo"],
+                        );
+                      }),
+                ],
+              );
             } else if (state is CommonLoading) {
               return const CommonLoadingWidget();
             } else {

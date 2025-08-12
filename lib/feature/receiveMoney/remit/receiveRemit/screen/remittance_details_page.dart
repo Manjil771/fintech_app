@@ -17,7 +17,6 @@ class RemittanceDetailsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print("this is company id $companyID");
     return BlocProvider(
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
