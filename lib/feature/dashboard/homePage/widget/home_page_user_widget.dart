@@ -205,9 +205,10 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                     onTap: () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            const AccountDetailBox(
-                                          validateMobileBankingStatus: false,
+                                        builder: (context) => const Center(
+                                          child: AccountDetailBox(
+                                            validateMobileBankingStatus: false,
+                                          ),
                                         ),
                                       );
                                     },
