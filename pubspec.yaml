@@ -353,8 +353,7 @@ flutter:
     # - assets/shreeJamune/
     # - assets/drabya/
     # - assets/omshreeom/
-    # - assets/upayogi/
-    # - assets/upayogi/
+    - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -420,7 +419,7 @@ flutter:
     # - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
-    # - assets/dupcheshwor/
+    # - assets/dupche\shwor/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/
