@@ -393,7 +393,7 @@ flutter:
     # - assets/asaan/
     # - assets/babylon/
     # - assets/shakambhari/
-    # - assets/tarkariphalafool/
+    - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
