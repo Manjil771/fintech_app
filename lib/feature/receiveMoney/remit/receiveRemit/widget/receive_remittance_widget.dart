@@ -43,7 +43,7 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
           ));
         },
         showRecentTransaction: true,
-        horizontalPadding: 4,
+        // horizontalPadding: 0,
         verticalPadding: 0,
         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
           builder: (context, state) {
@@ -65,8 +65,31 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
                 ...cityExpress,
                 ...others
               ];
-              return Stack(
+              return Column(
                 children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      Container(
+                          height: 28,
+                          decoration: BoxDecoration(
+                              color: Colors.transparent,
+                              borderRadius: BorderRadius.circular(2)),
+                          child: FilledButton(
+                            style: ButtonStyle(
+                              backgroundColor: WidgetStatePropertyAll(
+                                  CustomTheme.white.withAlpha(200)),
+                              shape: WidgetStatePropertyAll(
+                                RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(6),
+                                ),
+                              ),
+                            ),
+                            onPressed: () {},
+                            child: const Text('Remit Pay'),
+                          )),
+                    ],
+                  ),
                   GridView.builder(
                       shrinkWrap: true,
                       gridDelegate:

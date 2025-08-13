@@ -208,7 +208,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     snapshot.data?.data?.firstWhere(
                                   (category) => category.name == "Remittance",
                                 );
-
                                 if (!isRemitVisible)
                                   return const SizedBox.shrink();
                                 return Expanded(
@@ -228,8 +227,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       decoration: BoxDecoration(
                                           boxShadow: [
                                             BoxShadow(
-                                              color:
-                                                  Colors.grey.withOpacity(0.3),
+                                              color: Colors.grey.withAlpha(75),
                                               offset: const Offset(7, 7),
                                               blurRadius: 8,
                                               spreadRadius: -5,
