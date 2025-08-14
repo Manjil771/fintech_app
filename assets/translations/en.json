@@ -1,11 +1,70 @@
 {
   "appName": "This app",
+  "Message" : "Message",
+  "Proceed":"Proceed",
+  "Cancel" : "Cancel",
+  
+  "TOP UP":"TOP UP",
+  "LANDLINE":"LANDLINE",
+  "INTERNET":"INTERNET",
+  "TV":"TV",
+  "KHANEPANI":"KHANEPANI",
+  "ELECTRICITY":"ELECTRICITY",
+  "Bus Ticketing":"Bus Ticketing",
+  "AIRLINES":"AIRLINES",
+  "Data Pack":"Data Pack",
+  "Insurance":"Insurance",
+  "View More": "View More",
+  "Movies":"Movies",
+
   "auth": {
     "unableToLogin": "Unable to login",
     "password" : "Password",
     "email" : "Email"
   },
-  "dashboard" : {
-    "dashboard" : "Dashboard"
-  }
+ "dashboard": {
+  "dashboard": "Dashboard",
+  "receiveMoney": "Receive Money",
+  "sendMoney": "Send Money",
+  "saving": "Saving",
+  "actualBalance": "Actual Balance",
+  "availableBalance": "Available Balance",
+  "instantPayments": "Instant Payments",
+  "favorite": "Favorite",
+  "graph": "Graph",
+  "event": "Event",
+  "notice": "Notice",
+  "home": "Home",
+  "banking": "Banking",
+  "scanQR": "Scan QR",
+  "history": "History",
+  "profile": "Profile"
+},
+"login": {
+  "login": "Login",
+  "mobileNumber": "Mobile Number",
+  "securityPin": "Security Pin",
+  "rememberMe": "Remember Me",
+  "loginBtn": "Login",
+  "foreex": "Forex",
+  "activateAccount": "Activate Account",
+  "miscallBanking": "Missed Call Banking",
+  "branches": "Branches",
+  "useBiometricToLogin": "User Biometric to Login"
+  },
+  "foreex":{
+    "currency":"Currency",
+    "unit":"Unit",
+    "buyingRs":"Buying Rs.",
+    "sellingRs":"Selling Rs."
+  },
+  "activateAccount": {
+  "activateYourService": "Activate Your Service",
+  "enterRegisteredMobileNumber": "Enter your registered mobile number",
+  "accountNumber": "Account Number",
+  "branch": "Branch",
+  "selectBranch": "Select Branch",
+  "signUp": "Sign Up"
+}
+
 }

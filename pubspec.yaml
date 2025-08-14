@@ -3,7 +3,8 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.30+65
+version: 1.5.34+64
+
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -38,6 +39,7 @@ dependencies:
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.1"
   url_launcher_ios: ^6.2.1
+  flutter_html: ^3.0.0
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -65,7 +67,7 @@ dependencies:
   flutter_native_contact_picker: ^0.0.10
   image_cropper: "^5.0.1"
   hive_flutter: "^1.1.0"
-  khalti_checkout_flutter: "1.0.0-dev.8"
+  khalti_checkout_flutter: "1.0.0-dev.8" ## upgrade to dev.9
   nepali_utils: ^3.0.6
   flutter_zxing: ^1.8.2
   percent_indicator: ^4.2.4
@@ -84,9 +86,25 @@ dependency_overrides:
 
 flutter:
   assets:
+    # - assets/kunchhal/
     # - assets/shreeBakhan/
+    # - assets/gaja/
+    # - assets/arunjyoti/
+    # - assets/paryatan/
+    # - assets/ekata/
+    # - assets/sadasyaSewa/
+    # - assets/neela/
+    # - assets/nhugupala/
+    # - assets/shreegorakhkali/
+    # - assets/kunchhal/
+    # - assets/samajkalyan/
+    # - assets/sahayatripokhara/
+    # - assets/patan/
+    # - assets/pariwortan/
+    # - assets/santaneshwornaudhara/
+    # - assets/unitedhands/
     # - assets/janasambriddhi/
-    - assets/hamro/
+    # - assets/hamro/
     # - assets/aanbukhaireni/
     # - assets/taudaha/
     # - assets/shreejanshil/
@@ -186,7 +204,7 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    # - assets/ekata/
+
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -256,6 +274,7 @@ flutter:
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
     # - assets/shubhaSandesh/
+    # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
     # - assets/indreni/
@@ -300,7 +319,7 @@ flutter:
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
-    # # - assets/tanahunKalika/
+    # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
@@ -369,7 +388,7 @@ flutter:
     - assets/asaan/
     # - assets/babylon/
     # - assets/shakambhari/
-    # - assets/tarkariphalafool/
+    - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -383,7 +402,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
-    # # - assets/shreekrishna/
+    # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
     # - assets/sklakhanpur/

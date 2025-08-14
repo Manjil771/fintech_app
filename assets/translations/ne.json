@@ -1,7 +1,69 @@
 {
   "appName": "This app",
+  "Message": "सन्देश",
+
+"TOP UP": "टप अप",
+"LANDLINE": "ल्याण्डलाइन",
+"INTERNET": "इन्टरनेट",
+"TV": "टिभी",
+"KHANEPANI": " खानेपानी",
+"ELECTRICITY": "विद्युत्",
+"Bus Ticketing": "बस टिकटिङ",
+"AIRLINES": "एयरलाइन्स",
+"Data Pack": "डेटा प्याक",
+"Insurance": "बीमा",
+"View More": "अझ धेरै हेर्नुहोस्",
+"Movies":"चलचित्रहरू",
+
+"Proceed": "अगाडि बढ्नुहोस्",
+"Cancel": "रद्द गर्नुहोस्",
   "Security Pin": "",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
-  }
+  },
+  "dashboard": {
+  "dashboard": "ड्यासबोर्ड",
+  "receiveMoney": "पैसा प्राप्त गर्नुहोस्",
+  "sendMoney": "पैसा पठाउनुहोस्",
+  "saving": "बचत",
+  "actualBalance": "वास्तविक शेष",
+  "availableBalance": "उपलब्ध शेष",
+  "instantPayments": "तात्कालिक भुक्तानी",
+  "favorite": "मनपर्ने",
+  "graph": "ग्राफ",
+  "event": "कार्यक्रम",
+  "notice": "सूचना",
+  "home": "गृहपृष्ठ",
+  "banking": "बैंकिङ",
+  "scanQR": "QR स्क्यान",
+  "history": "इतिहास",
+  "profile": "प्रोफाइल"
+},
+"login": {
+  "login": "लगइन",
+  "mobileNumber": "मोबाइल नम्बर",
+  "securityPin": "सुरक्षा पिन",
+  "rememberMe": "मलाई सम्झनुहोस्",
+  "loginBtn": "लगइन गर्नुहोस्",
+  "foreex": "फरेक्स",
+  "activateAccount": "खाता सक्रिय गर्नुहोस्",
+  "miscallBanking": "मिस कल बैंकिङ",
+  "branches": "साखाहरू",
+  "useBiometricToLogin":"लगइनका लागि प्रयोगकर्ता बायोमेट्रिक"
+  },
+  "foreex": {
+  "currency": "मुद्रा",
+  "unit": "एकाई",
+  "buyingRs": "किन्ने मूल्य (रु.)",
+  "sellingRs": "बेच्ने मूल्य (रु.)"
+},
+"activateAccount": {
+  "activateYourService": "तपाईंको सेवा सक्रिय गर्नुहोस्",
+  "enterRegisteredMobileNumber": "आफ्नो दर्ता गरिएको मोबाइल नम्बर प्रविष्ट गर्नुहोस्",
+  "accountNumber": "खाता नम्बर",
+  "branch": "साखा",
+  "selectBranch": "साखा चयन गर्नुहोस्",
+  "signUp": "साइन अप"
+}
+
 }

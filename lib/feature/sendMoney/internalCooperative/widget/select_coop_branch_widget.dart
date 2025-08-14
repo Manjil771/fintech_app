@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/custom_list_tile.dart';
@@ -10,9 +12,11 @@ import 'package:ismart/feature/sendMoney/internalCooperative/cubits/coop_list_cu
 import 'package:ismart/feature/sendMoney/internalCooperative/models/internal_branch.dart';
 
 class CoOpBranchListWidget extends StatefulWidget {
-  const CoOpBranchListWidget({Key? key, required this.onBankSelected})
+  const CoOpBranchListWidget(
+      {Key? key, required this.onBankSelected, this.isfrontpage = false})
       : super(key: key);
   final Function(InternalBranch) onBankSelected;
+  final bool isfrontpage;
   @override
   State<CoOpBranchListWidget> createState() => _CoOpBranchListWidgetState();
 }
@@ -44,12 +48,12 @@ class _CoOpBranchListWidgetState extends State<CoOpBranchListWidget> {
                   horizontal: CustomTheme.symmetricHozPadding,
                 ),
                 child: Text(
-                  "Branches",
+                  LocaleKeys.branches.tr(),
                   style: _textTheme.displayLarge,
                 ),
               ),
             ),
-          if (_showTitleAndDesc)
+          if (_showTitleAndDesc && !widget.isfrontpage)
             SliverToBoxAdapter(
               child: Padding(
                 padding: const EdgeInsets.symmetric(

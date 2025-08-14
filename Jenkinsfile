@@ -1,71 +1,41 @@
-// Jenkinsfile
 pipeline {
-    // 1. Specify the macOS agent by its label
-    agent { label 'macos' }
+    agent any // Run on any available Jenkins agent
 
     environment {
-        // Define path to Flutter SDK on the agent machine
-        FLUTTER_HOME = "/Users/nsubash38/development/flutter"
-        PATH = "$FLUTTER_HOME/bin:$PATH"
+        // Make sure Jenkins uses the PATH where Flutter is installed
+        PATH = "/opt/flutter/bin:${env.PATH}"
     }
 
     stages {
-        stage('Checkout') {
+        stage('Checkout Code') {
             steps {
-                // Clean the workspace before starting
-                cleanWs()
-                // Checkout code from Git
+                // Clones the repository from the URL configured in the job
                 checkout scm
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Build & Test with Fastlane') {
             steps {
-                // Ensure Flutter is ready
-                sh 'flutter clean'
-                sh 'flutter pub get'
-                // Install fastlane using Bundler
-                dir('ios') {
-                    sh 'bundle install'
+                // Navigate into the android directory to run fastlane
+                dir('android') {
+                    sh 'fastlane build_and_test'
                 }
             }
         }
 
-        stage('Run Tests') {
+        stage('Archive Build') {
             steps {
-                sh 'flutter analyze'
-                sh 'flutter test'
-            }
-        }
-
-        stage('Build and Upload to App Store') {
-            steps {
-                // Use the Credentials Binding plugin to securely access secrets
-                withCredentials([
-                    file(credentialsId: 'appstore-api-key-p8', variable: 'APPSTORE_KEY_FILE'),
-                    string(credentialsId: 'appstore-key-id', variable: 'APPSTORE_KEY_ID'),
-                    string(credentialsId: 'appstore-issuer-id', variable: 'APPSTORE_ISSUER_ID'),
-                    string(credentialsId: 'match-passphrase', variable: 'MATCH_PASSPHRASE')
-                ]) {
-                    // We need to Base64 encode the key file content to pass it as an environment variable
-                    script {
-                        // The 'sh' step with 'returnStdout: true' captures the command output
-                        env.APPSTORE_KEY_CONTENT = sh(script: "base64 ${env.APPSTORE_KEY_FILE}", returnStdout: true).trim()
-                    }
-
-                    // Navigate to the iOS directory to run fastlane
-                    dir('ios') {
-                        sh 'bundle exec fastlane release'
-                    }
-                }
+                // Save the generated .aab file as a build artifact in Jenkins
+                archiveArtifacts 'build/app/outputs/bundle/release/*.aab'
             }
         }
     }
 
     post {
+        // This block runs after all stages complete
         always {
-            // Clean up the workspace after the build
-            cleanWs()
+            echo 'Build finished.'
+            cleanWs() // Clean up the workspace
         }
     }
 }

@@ -48,6 +48,16 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             _isLoading = false;
             NavigationService.pop();
           }
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error",
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final UtilityResponseData _response = state.data;

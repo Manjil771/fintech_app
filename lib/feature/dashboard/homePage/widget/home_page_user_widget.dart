@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -197,16 +199,16 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               ),
                               SizedBox(height: 10.hp),
                               // const Spacer(),
-
                               Row(
                                 children: [
                                   InkWell(
                                     onTap: () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            const AccountDetailBox(
-                                          validateMobileBankingStatus: false,
+                                        builder: (context) => const Center(
+                                          child: AccountDetailBox(
+                                            validateMobileBankingStatus: false,
+                                          ),
                                         ),
                                       );
                                     },
@@ -325,7 +327,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Actual Balance",
+                                              LocaleKeys.actualBalance.tr(),
                                               style: _textTheme.titleSmall!
                                                   .copyWith(
                                                       fontSize: 11,
@@ -370,7 +372,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Available Balance",
+                                          LocaleKeys.availableBalance.tr(),
                                           style: _textTheme.titleSmall!
                                               .copyWith(
                                                   fontSize: 11,

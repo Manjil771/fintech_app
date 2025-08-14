@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -33,11 +35,13 @@ import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/authentication/ui/actiateAccount/screen/activate_account_page.dart';
+import 'package:ismart/feature/authentication/ui/screens/forex_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/biometric_login_page.dart';
 import 'package:ismart/feature/authentication/ui/widgets/common_box.dart';
 import 'package:ismart/feature/authentication/ui/widgets/coop_select_widget.dart';
 import 'package:ismart/feature/authentication/ui/widgets/otp_widget.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/sendMoney/internalCooperative/screen/select_co_op_branch.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -150,14 +154,25 @@ class _LoginWidgetState extends State<LoginWidget> {
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
     final List onTapFunction = [
+      // () {
+      //   NavigationService.pushNamed(routeName: Routes.forgotPin);
+      // },
       () {
-        NavigationService.pushNamed(routeName: Routes.forgotPin);
+        NavigationService.push(target: const ForexPage());
       },
       () {
         NavigationService.push(target: const ActivateAccountPage());
       },
       () {
         miscallBanking();
+      },
+      () {
+        NavigationService.push(
+          target: CoOperativeBranchPage(
+            isfrontpage: true,
+            onBankSelected: (val) {},
+          ),
+        );
       },
     ];
 
@@ -238,9 +253,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      "Login",
-                      style: TextStyle(
+                    Text(
+                      LocaleKeys.login.tr(),
+                      // "Login",
+                      style: const TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
                         color: Colors.black,
@@ -307,13 +323,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           leading: countryFlagWidget(),
                           readOnly:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
-                          title: "Mobile Number",
+                          title: LocaleKeys.mobileNumber.tr(),
                           customHintTextStyle:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
                           hintText:
                               rememberMe && _existingPhoneNumber.isNotEmpty
                                   ? maskPhoneNumber(_existingPhoneNumber)
-                                  : "Mobile Number",
+                                  : LocaleKeys.mobileNumber.tr(),
                           controller: phoneController,
                           textInputType: TextInputType.phone,
                           onTap: () {
@@ -349,8 +365,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security Pin",
-                      hintText: "Secrity Pin",
+                      title: LocaleKeys.securityPin.tr(),
+                      hintText: LocaleKeys.securityPin.tr(),
                       maxLength: 6,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -391,13 +407,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            const Text("Remember Me"),
+                            Text(
+                              LocaleKeys.rememberMe.tr(),
+                            ),
                           ],
                         );
                       },
                     ),
                     CustomRoundedButtom(
-                      title: "Login",
+                      title: LocaleKeys.loginBtn.tr(),
                       onPressed: () async {
                         // showDatePickerBottomSheet(
                         //   context: context,
@@ -459,7 +477,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     width: width * 0.03,
                                   ),
                                   Text(
-                                    "User Biometric to Login",
+                                    LocaleKeys.useBiometricToLogin.tr(),
                                     style: _theme.textTheme.labelMedium,
                                   ),
                                 ],
@@ -470,16 +488,19 @@ class _LoginWidgetState extends State<LoginWidget> {
                           }
                         }),
                     SizedBox(height: height * 0.014),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        ...List.generate(
-                            3,
-                            (index) => CommonBox(
-                                onContainerPress: onTapFunction[index],
-                                containerImage: imageList[index],
-                                title: nameList[index]))
-                      ],
+                    SingleChildScrollView(
+                      scrollDirection: Axis.horizontal,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          ...List.generate(
+                              4,
+                              (index) => CommonBox(
+                                  onContainerPress: onTapFunction[index],
+                                  containerImage: imageList[index],
+                                  title: nameList[index]))
+                        ],
+                      ),
                     ),
                     SizedBox(height: height * 0.022),
                     if (_bannerImages.isNotEmpty)
@@ -507,14 +528,16 @@ class _LoginWidgetState extends State<LoginWidget> {
   }
 
   final List nameList = [
-    "Reset Pin",
-    "Activate Account",
-    "Missed Call Banking"
+    LocaleKeys.foreex.tr(),
+    LocaleKeys.activateAccount.tr(),
+    LocaleKeys.miscallBanking.tr(),
+    LocaleKeys.branches.tr(),
   ];
   final List imageList = [
-    "assets/icons/Reset password.svg",
+    "assets/icons/forex.svg",
     "assets/icons/activate account.svg",
     "assets/icons/missedcall icon.svg",
+    "assets/icons/branch_icon.svg",
   ];
 
   miscallBanking() {
