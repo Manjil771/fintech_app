@@ -567,13 +567,13 @@ class ApiProvider {
     if (statusCode == 400) {
       return "Bad Request";
     } else if (statusCode == 404) {
-      return "Resource Not Found";
+      return "We’re currently performing scheduled maintenance to improve your experience. We'll be back shortly. Thank you for your patience!";
     } else if (statusCode == 422) {
       return "Bad Request";
     } else if (statusCode == 403 || statusCode == 402 || statusCode == 401) {
       return "Unauthorized";
     } else if (statusCode == 500) {
-      return "Internal Server Error";
+      return "Our service is currently experiencing issues. We're working to fix this as quickly as possible.";
     } else {
       return "Something went wrong";
     }
