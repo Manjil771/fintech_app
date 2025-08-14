@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.30+60
+version: 1.5.35+65
 
 
 ## kamana -24 Sep - kamana (khanepani updated)
@@ -51,7 +51,7 @@ dependencies:
   android_path_provider: ^0.3.1
   jiffy: "^6.2.1"
   awesome_notifications: ^0.10.0
-  package_info_plus: "^5.0.1"
+  package_info_plus: ^8.3.1
   uuid: ^4.5.1
   permission_handler: "^11.0.1"
   mobile_scanner: "^4.0.1"
@@ -88,7 +88,7 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
-    - assets/ujyalo/
+    # - assets/ujyalo/
     # - assets/setogurans/
     # - assets/asaMulti/
     # - assets/janakalyanbahumukhi/
@@ -150,7 +150,7 @@ flutter:
     # - assets/sahayatri/
     # - assets/janak/
     # - assets/adhikosh/
-    # - assets/lapha/
+    - assets/lapha/
     # - assets/begnas/
     # - assets/nagdhunga/
     # - assets/rorang/
@@ -393,7 +393,7 @@ flutter:
     # - assets/asaan/
     # - assets/babylon/
     # - assets/shakambhari/
-    - assets/tarkariphalafool/
+    # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/

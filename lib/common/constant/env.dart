@@ -5242,8 +5242,8 @@ class CoOperativeValue {
     appTitle: 'Janak iSmart',
   );
   static final CoOperative laphaCoop = CoOperative(
-    appStoreID: "com.devanasoft.lapha",
-    packageName: "com.devanasoft.lapha",
+    appStoreID: "com.devanasoft.laphaCoopSaving",
+    packageName: "com.devanasoft.laphaCoopSaving",
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/lapha/lapha_banner.png",
     backgroundImage: "assets/lapha/lapha_background.png",
@@ -5837,5 +5837,5 @@ class CoOperativeValue {
     coOperativeName: "Ujyalo Saving and Credit Co-operative Ltd.",
     appTitle: 'Ujyalo iSmart',
   );
-  static final CoOperative currentCoop = ujyalo;
+  static final CoOperative currentCoop = ajambariCoop;
 }
