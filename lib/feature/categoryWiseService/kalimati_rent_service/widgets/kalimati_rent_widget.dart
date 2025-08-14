@@ -69,7 +69,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                         title: "Trader Name",
                         value: payload['traderName'] ?? '-'),
                     KeyValueTile(
-                        title: "Shop ID",
+                        title: "Trader ID",
                         value: payload['shopIdentification'] ?? '-'),
                     KeyValueTile(
                         title: "Invoice Due Date",
@@ -107,7 +107,11 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                     "referenceNumber": payload['invoiceNumber'].toString(),
                     "shopId": payload['shopIdentification'].toString(),
                     "customerMobileNumber":
-                        SecureStorageService.appPhoneNumber.toString(),
+                        RepositoryProvider.of<CustomerDetailRepository>(
+                                        context)
+                                    .customerDetailModel
+                                    .value
+                                    ?.mobileNumber,
                     "amount": payload['totalAmount'] is String
                         ? double.parse(payload['totalAmount'])
                         : payload['totalAmount'] * 1.0,

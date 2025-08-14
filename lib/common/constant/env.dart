@@ -5852,5 +5852,5 @@ class CoOperativeValue {
     coOperativeName: "Shree Janakalyan Bahumukhi Sahakari Sanstha Ltd",
     appTitle: 'Janakalyan Bahumukhi iSmart',
   );
-  static final CoOperative currentCoop = janakalyanbahumukhi;
+  static final CoOperative currentCoop = bhargo;
 }
