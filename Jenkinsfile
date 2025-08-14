@@ -5,7 +5,7 @@ pipeline {
 
     environment {
         // Define path to Flutter SDK on the agent machine
-        FLUTTER_HOME = "/Users/jenkins/flutter"
+        FLUTTER_HOME = "/Users/nsubash38/development/flutter"
         PATH = "$FLUTTER_HOME/bin:$PATH"
     }
 
