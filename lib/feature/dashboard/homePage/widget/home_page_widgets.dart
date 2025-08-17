@@ -280,14 +280,6 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             //   },
                             // ),
                             SizedBox(width: _width * 0.03),
-                            //purpose :
-                            // ElevatedButton.icon(
-                            //     onPressed: () {
-                            //       NavigationService.push(
-                            //           target: KalimatiRentPage());
-                            //     },
-                            //     label: Text('Kali')),
-                            // SizedBox(width: _width * 0.02),
                             Expanded(
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
