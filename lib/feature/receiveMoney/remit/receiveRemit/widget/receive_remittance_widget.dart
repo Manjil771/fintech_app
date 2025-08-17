@@ -3,13 +3,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
-import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
-import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittancepayment_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -30,8 +27,6 @@ class ReceiveRemittanceWidget extends StatefulWidget {
 class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
   @override
   Widget build(BuildContext context) {
-    final _theme = Theme.of(context);
-    final _textTheme = _theme.textTheme;
     return PageWrapper(
       padding: const EdgeInsets.symmetric(horizontal: 4),
       body: CommonContainer(

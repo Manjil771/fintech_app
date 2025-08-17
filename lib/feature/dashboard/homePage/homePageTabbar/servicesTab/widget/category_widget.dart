@@ -97,7 +97,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               itemLength = _categoryList.length;
             }
           }
-
           if (itemLength > 0)
             return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),

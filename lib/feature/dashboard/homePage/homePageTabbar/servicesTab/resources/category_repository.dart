@@ -27,6 +27,7 @@ class CategoryRepository {
         userRepository: userRepository);
   }
   final ValueNotifier<bool> isRemitEnabled = ValueNotifier<bool>(false);
+
   Future<DataResponse<List<CategoryList>>> getCategoryList() async {
     List<CategoryList> _allServices = [];
     try {
