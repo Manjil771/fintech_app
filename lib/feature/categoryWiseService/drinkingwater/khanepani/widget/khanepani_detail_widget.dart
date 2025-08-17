@@ -135,86 +135,85 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
         buttonName: "Proceed",
         onButtonPressed: () {
           NavigationService.pushReplacement(
-              target: CommonBillDetailPage(
-                  serviceName: widget.service.service,
-                  accountDetails: {
-                    "account_number":
-                        RepositoryProvider.of<CustomerDetailRepository>(context)
-                            .selectedAccount
-                            .value!
-                            .accountNumber,
-                    "amount": _response.findValueString("total_dues"),
-                    "customer_code": _response.findValueString("customer_code"),
-                    "counter": widget.selectedCounter,
-                    "customer_name": _response.findValueString("customer_name")
-                  },
-                  apiEndpoint: "/api/khanepanipay",
-                  apiBody: const {},
-                  service: widget.service,
-                  serviceIdentifier: widget.service.uniqueIdentifier,
-                  body: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        KeyValueTile(
-                          title: "Customer Code",
-                          value: _response.findValueString("customer_code"),
-                        ),
-                        KeyValueTile(
-                          title: "Customer Name",
-                          value: _response.findValueString("customer_name"),
-                        ),
-                        KeyValueTile(
-                          title: "Counter Name",
-                          value: widget.selectedCounterName,
-                        ),
-                        KeyValueTile(
-                          title: "Address",
-                          value: _response.findValueString("address"),
-                        ),
-                        KeyValueTile(
-                          title: "Mobile Number",
-                          value: _response.findValueString("mobile_number"),
-                        ),
-                        KeyValueTile(
-                          title: "Current Month Dues",
-                          value:
-                              _response.findValueString("current_month_dues"),
-                        ),
-                        KeyValueTile(
-                          title: "Current Fine",
-                          value:
-                              _response.findValueString("current_month_fine"),
-                        ),
-                        KeyValueTile(
-                          title: "Discount",
-                          value: _response
-                              .findValueString("current_month_discount"),
-                        ),
-                        KeyValueTile(
-                          title: "Total Credit Sales Amount",
-                          value: _response
-                              .findValueString("total_credit_sales_amount"),
-                        ),
-                        KeyValueTile(
-                          title: "Total Advance Amount",
-                          value:
-                              _response.findValueString("total_advance_amount"),
-                        ),
-                        KeyValueTile(
-                          title: "Previous Dues",
-                          value: _response.findValueString("previous_dues"),
-                        ),
-                        KeyValueTile(
-                          title: "Service Charge",
-                          value: _response.findValueString("service_charge"),
-                        ),
-                        KeyValueTile(
-                          title: "Total Dues",
-                          titleFontWeight: FontWeight.bold,
-                          isRedColor: true,
-                          value: _response.findValueString("total_dues"),
-                        ),
-                      ])));
+            target: CommonBillDetailPage(
+              serviceName: widget.service.service,
+              accountDetails: {
+                "account_number":
+                    RepositoryProvider.of<CustomerDetailRepository>(context)
+                        .selectedAccount
+                        .value!
+                        .accountNumber,
+                "amount": _response.findValueString("total_dues"),
+                "customer_code": _response.findValueString("customer_code"),
+                "counter": widget.selectedCounter,
+                "customer_name": _response.findValueString("customer_name")
+              },
+              apiEndpoint: "/api/khanepanipay",
+              apiBody: const {},
+              service: widget.service,
+              serviceIdentifier: widget.service.uniqueIdentifier,
+              body: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  KeyValueTile(
+                    title: "Customer Code",
+                    value: _response.findValueString("customer_code"),
+                  ),
+                  KeyValueTile(
+                    title: "Customer Name",
+                    value: _response.findValueString("customer_name"),
+                  ),
+                  KeyValueTile(
+                    title: "Counter Name",
+                    value: widget.selectedCounterName,
+                  ),
+                  KeyValueTile(
+                    title: "Address",
+                    value: _response.findValueString("address"),
+                  ),
+                  KeyValueTile(
+                    title: "Mobile Number",
+                    value: _response.findValueString("mobile_number"),
+                  ),
+                  KeyValueTile(
+                    title: "Current Month Dues",
+                    value: _response.findValueString("current_month_dues"),
+                  ),
+                  KeyValueTile(
+                    title: "Current Fine",
+                    value: _response.findValueString("current_month_fine"),
+                  ),
+                  KeyValueTile(
+                    title: "Discount",
+                    value: _response.findValueString("current_month_discount"),
+                  ),
+                  KeyValueTile(
+                    title: "Total Credit Sales Amount",
+                    value:
+                        _response.findValueString("total_credit_sales_amount"),
+                  ),
+                  KeyValueTile(
+                    title: "Total Advance Amount",
+                    value: _response.findValueString("total_advance_amount"),
+                  ),
+                  KeyValueTile(
+                    title: "Previous Dues",
+                    value: _response.findValueString("previous_dues"),
+                  ),
+                  KeyValueTile(
+                    title: "Service Charge",
+                    value: _response.findValueString("service_charge"),
+                  ),
+                  KeyValueTile(
+                    title: "Total Dues",
+                    titleFontWeight: FontWeight.bold,
+                    isRedColor: true,
+                    value: _response.findValueString("total_dues"),
+                  ),
+                ],
+              ),
+            ),
+          );
         },
       ),
     );
