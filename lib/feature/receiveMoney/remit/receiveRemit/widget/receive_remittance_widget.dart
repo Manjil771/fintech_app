@@ -7,6 +7,7 @@ import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_details_page.dart';
 import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittancepayment_page.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
@@ -30,14 +31,7 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
     return PageWrapper(
       padding: const EdgeInsets.symmetric(horizontal: 4),
       body: CommonContainer(
-        onRecentTransactionPressed: (v0) {
-          NavigationService.push(
-              target: RemittancepaymentPage(
-            id: v0.id.toString(),
-          ));
-        },
         showRecentTransaction: true,
-        // horizontalPadding: 0,
         verticalPadding: 0,
         body: BlocBuilder<UtilityPaymentCubit, CommonState>(
           builder: (context, state) {
@@ -59,28 +53,41 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
                 ...cityExpress,
                 ...others
               ];
+
               return Column(
                 children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
                       Container(
-                          height: 28,
+                          height: 35,
                           decoration: BoxDecoration(
-                              color: Colors.transparent,
-                              borderRadius: BorderRadius.circular(2)),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(2),
+                          ),
                           child: FilledButton(
                             style: ButtonStyle(
                               backgroundColor: WidgetStatePropertyAll(
-                                  CustomTheme.white.withAlpha(200)),
+                                  CustomTheme.white.withAlpha(255)),
                               shape: WidgetStatePropertyAll(
                                 RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(6),
+                                  borderRadius: BorderRadius.circular(12),
+                                  side: BorderSide(
+                                    color: CustomTheme.primaryColor,
+                                    width: 1,
+                                  ),
                                 ),
                               ),
                             ),
-                            onPressed: () {},
-                            child: const Text('Remit Pay'),
+                            onPressed: () {
+                              _showSheet(
+                                context,
+                              );
+                            },
+                            child: Text(
+                              'Remit Pay',
+                              style: TextStyle(color: CustomTheme.primaryColor),
+                            ),
                           )),
                     ],
                   ),
@@ -121,62 +128,25 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
       ),
     );
   }
+
+  void _showSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      isScrollControlled: true,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return DraggableScrollableSheet(
+          expand: false,
+          minChildSize: 0.3,
+          maxChildSize: 0.8,
+          initialChildSize: 0.5,
+          builder: (context, scrollController) {
+            return AllremittanceDetailsPage(scrollController: scrollController);
+          },
+        );
+      },
+    );
+  }
 }
-
-// import 'package:flutter/material.dart';
-// import 'package:ismart/common/constant/assets.dart';
-// import 'package:ismart/common/util/size_utils.dart';
-// import 'package:ismart/common/widget/common_container.dart';
-// import 'package:ismart/common/widget/common_detail_box.dart';
-// import 'package:ismart/common/widget/page_wrapper.dart';
-
-// class ReceiveRemittanceWidget extends StatelessWidget {
-//   const ReceiveRemittanceWidget({Key? key}) : super(key: key);
-//   @override
-//   Widget build(BuildContext context) {
-//     final _theme = Theme.of(context);
-//     final _textTheme = _theme.textTheme;
-//     final _width = SizeUtils.width;
-//     final _height = SizeUtils.height;
-//     return PageWrapper(
-//       body: CommonContainer(
-//         verticalPadding: 0,
-//         body: Column(
-//           children: [
-//             CommonDetailBox(
-//               leadingImage: Assets.sendMoneyRemit,
-//               onBoxPressed: () {},
-//               title: "Send Money",
-//               detail: "Cash out your balance from our nearby agents",
-//             ),
-//             const Divider(),
-//             CommonDetailBox(
-//               leadingImage: Assets.receiveMoneyRemit,
-//               onBoxPressed: () {},
-//               title: "Receive Money",
-//               detail: "Receive Remittance directly on your bank",
-//             ),
-//             const Divider(),
-//             CommonDetailBox(
-//               leadingImage: Assets.findAgentsRemit,
-//               onBoxPressed: () {},
-//               title: "Find Agent",
-//               detail: "Cash out your balance from our nearby agents",
-//             ),
-//             const Divider(),
-//             CommonDetailBox(
-//               leadingImage: Assets.trackMoneyRmit,
-//               onBoxPressed: () {},
-//               title: "Track Money",
-//               detail: "Track status of your money transfer",
-//             ),
-//             const Divider(),
-//           ],
-//         ),
-//         topbarName: "Remittance",
-//         showRoundBotton: false,
-//         showTitleText: false,
-//       ),
-//     );
-//   }
-// }

@@ -156,7 +156,8 @@ class RemittanceDetailFetchWidget extends StatelessWidget {
                     title: "Procced",
                     onPressed: () {
                       NavigationService.push(
-                          target: const AllremittanceDetailsPage());
+                          // target: const AllremittanceDetailsPage(),
+                          target: Container());
                     }),
               ],
             ),

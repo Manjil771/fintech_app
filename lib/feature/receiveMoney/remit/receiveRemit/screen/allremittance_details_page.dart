@@ -5,7 +5,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class AllremittanceDetailsPage extends StatelessWidget {
-  const AllremittanceDetailsPage({Key? key}) : super(key: key);
+  final ScrollController scrollController;
+  const AllremittanceDetailsPage({Key? key, required this.scrollController})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -16,7 +18,7 @@ class AllremittanceDetailsPage extends StatelessWidget {
             serviceIdentifier: "",
             accountDetails: {},
             apiEndpoint: "api/remittance/getAllRemittance"),
-      child: const AllremittanceDetailsWidget(),
+      child: AllremittanceDetailsWidget(scrollController: scrollController),
     );
   }
 }
