@@ -10,10 +10,11 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class RemittancepaymentPage extends StatelessWidget {
-  final CategoryList categoryList;
   final String id;
-  const RemittancepaymentPage(
-      {super.key, required this.id, required this.categoryList});
+  const RemittancepaymentPage({
+    super.key,
+    required this.id,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,28 +22,28 @@ class RemittancepaymentPage extends StatelessWidget {
       create: (context) => UtilityPaymentCubit(
           utilityPaymentRepository:
               RepositoryProvider.of<UtilityPaymentRepository>(context)),
-      child: CommonBillDetailPage(
-        serviceName: categoryList.services[0].service,
-        accountDetails: {
-          "id": id,
-          "relationship": 'Self',
-          "relationshipType": 'Self',
-          "remittancePurpose": 'Business',
-        },
-        apiEndpoint: "remittance/payTransactionConfirm",
-        apiBody: const {},
-        service: categoryList.services[0],
-        serviceIdentifier: categoryList.services[0].uniqueIdentifier,
-        body: const Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            KeyValueTile(
-              title: "Customer Code",
-              value: '',
-            ),
-          ],
-        ),
-      ),
+      // child: CommonBillDetailPage(
+      //   serviceName: '',
+      //   accountDetails: {
+      //     "id": id,
+      //     "relationship": 'Self',
+      //     "relationshipType": 'Self',
+      //     "remittancePurpose": 'Business',
+      //   },
+      //   apiEndpoint: "remittance/payTransactionConfirm",
+      //   apiBody: const {},
+      //   service: '',
+      //   serviceIdentifier: categoryList.services[0].uniqueIdentifier,
+      //   body: const Column(
+      //     crossAxisAlignment: CrossAxisAlignment.start,
+      //     children: [
+      //       KeyValueTile(
+      //         title: "Customer Code",
+      //         value: '',
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }

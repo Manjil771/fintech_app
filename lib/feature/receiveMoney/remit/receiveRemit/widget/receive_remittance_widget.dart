@@ -18,9 +18,9 @@ import 'package:ismart/feature/utility_payment/models/utility_response_data.dart
 import 'remittance_box_deign.dart';
 
 class ReceiveRemittanceWidget extends StatefulWidget {
-  final CategoryList categoryList;
-  const ReceiveRemittanceWidget({Key? key, required this.categoryList})
-      : super(key: key);
+  const ReceiveRemittanceWidget({
+    Key? key,
+  }) : super(key: key);
 
   @override
   State<ReceiveRemittanceWidget> createState() =>
@@ -39,7 +39,6 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
           NavigationService.push(
               target: RemittancepaymentPage(
             id: v0.id.toString(),
-            categoryList: widget.categoryList,
           ));
         },
         showRecentTransaction: true,
