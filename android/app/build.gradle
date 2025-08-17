@@ -2580,6 +2580,30 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        janakalyanbahumukhi {
+            dimension "app"
+            applicationId "com.devanasoft.janakalyanbahumukhi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        setogurans {
+            dimension "app"
+            applicationId "com.devanasoft.setogurans"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        asaMulti {
+            dimension "app"
+            applicationId "com.devanasoft.asaMulti"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        ujyalo {
+            dimension "app"
+            applicationId "com.devanasoft.ujyalo"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

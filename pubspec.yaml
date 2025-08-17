@@ -5,6 +5,7 @@ publish: none
 
 version: 1.5.34+64
 
+
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -50,7 +51,7 @@ dependencies:
   android_path_provider: ^0.3.1
   jiffy: "^6.2.1"
   awesome_notifications: ^0.10.0
-  package_info_plus: "^5.0.1"
+  package_info_plus: ^8.3.1
   uuid: ^4.5.1
   permission_handler: "^11.0.1"
   mobile_scanner: "^4.0.1"
@@ -87,6 +88,10 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
+    # - assets/ujyalo/
+    # - assets/setogurans/
+    # - assets/asaMulti/
+    # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
     # - assets/janachetana/
     # - assets/janakalyanbahumukhi/
@@ -397,7 +402,7 @@ flutter:
     # - assets/adarsha/
     # - assets/tapobhumi/
     # - assets/samudayik/
-    # - assets/supya/
+    - assets/supya/
     # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
@@ -456,7 +461,7 @@ flutter:
     # - assets/dhanalaxmi/
     # - assets/samriddha/
     # - assets/kohinoor/
-    - assets/bhargo/
+    # - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/
     # - assets/pathibhara/

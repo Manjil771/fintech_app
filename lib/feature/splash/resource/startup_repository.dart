@@ -107,7 +107,8 @@ class StartUpRepository {
               whatsNew: "Bug Fixes",
             ),
           );
-          print(appUpdate);
+          print(
+              'This is current/minimum ios version: ${appUpdate?.ios.currentVersion}/ ${appUpdate?.ios.minimumVersionSupport} and This is current/minimumsupport Android version:${appUpdate?.android.currentVersion}/ ${appUpdate?.android.minimumVersionSupport} ');
           return DataResponse.success(_appConfig);
         } else {
           return DataResponse.error("Error while fetching app config.");

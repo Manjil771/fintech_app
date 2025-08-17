@@ -11,7 +11,7 @@ class UpdateWrapper extends StatelessWidget {
   //   "EHVNI7CZJ3",
   // ];
 
-  UpdateWrapper({required this.child});
+  const UpdateWrapper({required this.child});
 
   @override
   Widget build(BuildContext context) {
