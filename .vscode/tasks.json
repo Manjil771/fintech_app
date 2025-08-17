@@ -1,0 +1,22 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"type": "flutter",
+			"command": "flutter",
+			"args": [
+				"build",
+				"appbundle",
+				"--flavor kamana",
+				"-t lib/main_development.dart"
+			],
+			"group": {
+				"kind": "build",
+				"isDefault": true
+			},
+			"problemMatcher": [],
+			"label": "Kamana : Build App Bundle ",
+			"detail": ""
+		}
+	]
+}
