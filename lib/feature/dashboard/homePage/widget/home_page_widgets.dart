@@ -136,10 +136,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
-                                    Text(
-                                      LocaleKeys.receiveMoney.tr(),
-                                      style: _textTheme.titleLarge!
-                                          .copyWith(fontSize: 12),
+                                    Flexible(
+                                      child: Text(
+                                        LocaleKeys.receiveMoney.tr(),
+                                        style: _textTheme.titleLarge!
+                                            .copyWith(fontSize: 12),
+                                      ),
                                     ),
                                   ],
                                 ),
@@ -315,10 +317,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                       SizedBox(width: _width * 0.02),
-                                      Text(
-                                        LocaleKeys.sendMoney.tr(),
-                                        style: _textTheme.titleLarge!
-                                            .copyWith(fontSize: 12),
+                                      Flexible(
+                                        child: Text(
+                                          LocaleKeys.sendMoney.tr(),
+                                          style: _textTheme.titleLarge!
+                                              .copyWith(fontSize: 12),
+                                        ),
                                       ),
                                     ],
                                   ),

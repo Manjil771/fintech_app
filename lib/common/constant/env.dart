@@ -242,6 +242,22 @@ class CoOperativeValue {
     appStoreID: "",
     shouldValidateCooperative: true,
   );
+  static final CoOperative development2 = CoOperative(
+    baseUrl: 'http://45.117.153.192:8082/',
+    // baseUrl: 'http://192.168.1.59:8080/',
+    bannerImage: "assets/images/ismart_banner.png",
+    clientCode: 'VBMRDWEVFV',
+    backgroundImage: "assets/images/ismart_background_image.jpg",
+    coOperativeName: '',
+    coOperativeLogo: Assets.ismartLogo,
+    clientSecret: "199204",
+    splashImage: "assets/images/ismart_splash.png",
+    primaryColor: const Color(0xFF010C80),
+    packageName: "com.devanasoft.ismart",
+    appTitle: "iSmart Devanasoft",
+    appStoreID: "",
+    shouldValidateCooperative: true,
+  );
   static final CoOperative oxpanTest = CoOperative(
     baseUrl: 'http://103.198.9.203:8080/',
     bannerImage: "assets/images/ismart_banner.png",
@@ -5809,5 +5825,5 @@ class CoOperativeValue {
     coOperativeName: "Gaja Saving & Credit Co-operative society Ltd",
     appTitle: 'Gaja iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = development2;
 }
