@@ -5866,5 +5866,33 @@ class CoOperativeValue {
     coOperativeName: "Ujyalo Saving and Credit Co-operative Ltd.",
     appTitle: 'Ujyalo iSmart',
   );
-  static final CoOperative currentCoop = supyaCoop;
+  static final CoOperative satyeta = CoOperative(
+    appStoreID: "com.devanasoft.satyeta",
+    packageName: "com.devanasoft.satyeta",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/satyeta/satyeta_banner.png",
+    backgroundImage: "assets/satyeta/satyeta_background.png",
+    clientCode: '5N09WF2BCO',
+    clientSecret: "150472",
+    coOperativeLogo: 'assets/satyeta/satyeta_logo.png',
+    splashImage: "assets/satyeta/satyeta_splash.png",
+    primaryColor: const Color(0xFF229b58),
+    coOperativeName: "Satyeta Saving & Credit Co-operative Ltd",
+    appTitle: 'Satyeta iSmart',
+  );
+  static final CoOperative join = CoOperative(
+    appStoreID: "com.devanasoft.join",
+    packageName: "com.devanasoft.join",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/join/join_banner.png",
+    backgroundImage: "assets/join/join_background.png",
+    clientCode: 'DG7FMB1RL5',
+    clientSecret: "175291",
+    coOperativeLogo: 'assets/join/join_logo.png',
+    splashImage: "assets/join/join_splash.png",
+    primaryColor: const Color(0xFF014900),
+    coOperativeName: "Join Saving & Credit Co-operative Ltd",
+    appTitle: 'Join iSmart',
+  );
+  static final CoOperative currentCoop = join;
 }
