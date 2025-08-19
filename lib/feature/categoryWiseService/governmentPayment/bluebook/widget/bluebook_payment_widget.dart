@@ -702,18 +702,6 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
   File? _ownerInfo;
   File? _vehicleInfo;
   File? _vehicleNumberImage;
-  // Future<void> _pickImage(File thisImage) async {
-  //   final picker = ImagePicker();
-  //   final pickedFile = await picker.pickImage(source: ImageSource.gallery);
-
-  //   if (pickedFile != null) {
-  //     setState(() {
-  //       thisImage = File(pickedFile.path);
-  //     });
-  //   } else {
-  //     NavigationService.pop();
-  //   }
-  // }
   Future<void> _pickImage(Function(File) onImagePicked) async {
     final picker = ImagePicker();
     final pickedFile = await picker.pickImage(source: ImageSource.gallery);

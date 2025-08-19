@@ -11,6 +11,7 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cub
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/category_widget.dart';
 import 'package:ismart/feature/dashboard/notice/screen/notice_page.dart';
+import 'package:ismart/feature/market/screen/market_place_screen.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -52,6 +53,40 @@ class _CategoryPageState extends State<CategoryPage> {
           children: [
             CategoryWidget(
               showAllService: widget.showAllServices,
+            ),
+            SizedBox(height: 8.hp),
+            InkWell(
+              onTap: () {
+                NavigationService.push(target: const MarketPlaceScreen());
+              },
+              child: Container(
+                  decoration: const BoxDecoration(
+                    color: CustomTheme.white,
+                    borderRadius: BorderRadius.all(
+                      Radius.circular(10),
+                    ),
+                    border: Border(
+                      top: BorderSide(color: Colors.grey, width: 1),
+                      right: BorderSide(color: Colors.grey, width: 1),
+                    ),
+                  ),
+                  alignment: Alignment.center,
+                  width: double.infinity,
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(Icons.shopping_cart_outlined,
+                          color: CustomTheme.primaryColor),
+                      Text(
+                        "Market",
+                        style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w600,
+                            color: CustomTheme.primaryColor),
+                      ),
+                    ],
+                  ),
+                  height: 36.hp),
             ),
             SizedBox(height: 10.hp),
             if (_bannerImages.isNotEmpty)
