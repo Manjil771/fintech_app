@@ -341,10 +341,10 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                 // Item Total
                 Text(
                   '\$${(item.product.price * item.quantity).toStringAsFixed(2)}',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
-                    color: Colors.blue,
+                    color: CustomTheme.primaryColor,
                   ),
                 ),
               ],
