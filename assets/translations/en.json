@@ -2,7 +2,21 @@
   "appName": "This app",
   "Message" : "Message",
   "Proceed":"Proceed",
-  "Cancel" : "Cancel",
+  "cancel" : "Cancel",
+  "paymentdetails":"Payment Details",
+  "targetnumber":"Target Number",
+  "fromaccount":"From Account",
+  "cashback":"Cashback",
+  "pay": "Pay",
+  "entersecurity": "Enter Security Pin",
+  "enterPin": "Please enter your security pin to proceed",
+  "details_about_service": "Details about the payable amount for the service of {service} is shown below.",
+  "transactionID": "Transaction ID",
+  "initiator": "Initiator",
+  "datetime": "Date & Time",
+  "service": "Service",
+  "Done": "Done",
+  "transactionSucessful": "Transaction Successful",
   
   "TOP UP":"TOP UP",
   "LANDLINE":"LANDLINE",
@@ -65,6 +79,21 @@
   "branch": "Branch",
   "selectBranch": "Select Branch",
   "signUp": "Sign Up"
+},
+
+"topup":{
+   "mobileTopup" : "Mobile Topup",
+   "accountTitle" : "Account Title",
+   "title": "Mobile Top Up",
+   "detail": "Top up your mobile number",
+   "amount": "Amount",
+   "amountmoney":"Enter the amount"
+
+
+
+ 
+   
+   
 }
 
 }

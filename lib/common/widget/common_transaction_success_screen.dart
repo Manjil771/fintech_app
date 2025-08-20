@@ -5,6 +5,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
@@ -129,8 +130,8 @@ class _CommonTransactionSuccessfulWidgetState
                       height: _height * 0.08,
                     ),
                     SizedBox(height: _height * 0.02),
-                    const Text(
-                      "Transaction Successful",
+                     Text(
+                      LocaleKeys.transactionSuccessful.tr(),
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black,
@@ -184,23 +185,23 @@ class _CommonTransactionSuccessfulWidgetState
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Paymet Details",
+                                Text(LocaleKeys.paymentdetails.tr(),
                                     style:
                                         Theme.of(context).textTheme.titleLarge),
                                 SizedBox(height: _height * 0.01),
                                 KeyValueTile(
-                                    title: "Transaction ID",
+                                    title: LocaleKeys.transactionID.tr(),
                                     value: widget.transactionID),
                                 KeyValueTile(
-                                  title: "Initiator(Mobile Number)",
+                                  title: LocaleKeys.initiator.tr(),
                                   value: phoneNumber ?? "",
                                 ),
                                 KeyValueTile(
-                                    title: "Date Time",
+                                    title: LocaleKeys.datetime.tr(),
                                     value: DateFormat('EEEE, MMM d, HH:mm')
                                         .format(DateTime.now())),
                                 KeyValueTile(
-                                  title: "Service",
+                                  title: LocaleKeys.service.tr(),
                                   value: widget.service?.service ??
                                       (widget.serviceName),
                                 ),
@@ -210,7 +211,7 @@ class _CommonTransactionSuccessfulWidgetState
                           ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                      title: "Done",
+                      title: LocaleKeys.done.tr(),
                       onPressed: () {
                         NavigationService.pushNamedAndRemoveUntil(
                             routeName: Routes.dashboard);

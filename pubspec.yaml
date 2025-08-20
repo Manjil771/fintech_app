@@ -146,7 +146,7 @@ flutter:
     # - assets/lamjung/
     # - assets/swarnim/
     # - assets/hamroNewa/
-    - assets/janakalyanmulti/
+    # - assets/janakalyanmulti/
     # - assets/baglungmulti/
 
     # - assets/besiShahar/

@@ -14,9 +14,22 @@
 "Insurance": "बीमा",
 "View More": "अझ धेरै हेर्नुहोस्",
 "Movies":"चलचित्रहरू",
-
+"done": "पूरा भयो",
+"transactionSucessful": "लेनदेन सफल भयो",
 "Proceed": "अगाडि बढ्नुहोस्",
-"Cancel": "रद्द गर्नुहोस्",
+"cancel": "रद्द गर्नुहोस्",
+"details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
+"transactionID": "लेनदेन आईडी",
+"initiator": "प्रारम्भकर्ता",
+"datetime": "मिति र समय",
+"service": "सेवा",
+"paymentdetails": "भुक्तानी विवरण",
+"targetnumber": "लक्ष्य नम्बर",
+"fromaccount": "खाता बाट",
+"cashback": "क्यासब्याक",
+"pay": "भुक्तानी गर्नुहोस्",
+"entersecurity": "सुरक्षा पिन प्रविष्ट गर्नुहोस्",
+"enterPin": "अगाडि बढ्नका लागि कृपया आफ्नो सुरक्षा पिन प्रविष्ट गर्नुहोस्",
   "Security Pin": "",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
@@ -64,6 +77,17 @@
   "branch": "साखा",
   "selectBranch": "साखा चयन गर्नुहोस्",
   "signUp": "साइन अप"
+},
+"topup":{
+   "mobileTopup" : "टप अप",
+   "accountTitle" : "खाता शीर्षक",
+   "title": "मोबाइल टप अप",
+   "detail": "आफ्नो मोबाइल नम्बर टप अप गर्नुहोस्",
+   "amount": "रकम",
+   "amountmoney":"रकम हाल्नुहोस्"
+
+
+
 }
 
 }

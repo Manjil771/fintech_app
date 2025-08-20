@@ -21,6 +21,24 @@ class LocaleKeys {
   static const error = "error";
   static const cancel = "cancel";
   static const done = "done";
+  static const Proceed ="Proceed";
+  static const paymentdetails = "paymentdetails";
+  static const targetnumber ="targetnumber";
+  static const fromaccount = "fromaccount";
+  static const cashback = "cashback";
+  static const pay ="pay";
+  static const entersecurity = "entersecurity";
+  static const enterPin = "enterPin";
+  static const details_about_service ="details_about_service";
+  static const useBiometricToLogin= "useBiometricToLogin";
+  //new
+  static const transactionID = "transactionID";
+  static const initiator = "initiator";
+  static const datetime ='datetime';
+  static const service = 'service';
+  static const transactionSuccessful = "transactionSucessful";
+
+
 
   //loginpage
   static const login = "login.login";
@@ -32,7 +50,7 @@ class LocaleKeys {
   static const activateAccount = "login.activateAccount";
   static const miscallBanking = "login.miscallBanking";
   static const branches = "login.branches";
-  static const useBiometricToLogin = "login.useBiometricToLogin";
+ 
 
   //forex
   static const currency = "foreex.currency";
@@ -66,4 +84,19 @@ class LocaleKeys {
   static const scanQR = "dashboard.scanQR";
   static const history = "dashboard.history";
   static const profile = "dashboard.profile";
+
+
+  //mobile top
+  static const topup = "topup.mobileTopup";
+  static const accountTitle = "topup.accountTitle";
+  static const buttonName = "topup.buttonName";
+  static const title = "topup.title";
+  static const detail = "topup.detail";
+  static const amount = "topup.amount";
+  static const amountmoney = "topup.amountmoney";
+ 
+  
+
+  
+ 
 }
