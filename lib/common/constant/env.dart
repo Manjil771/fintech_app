@@ -5897,5 +5897,5 @@ class CoOperativeValue {
     coOperativeName: "Ujyalo Saving and Credit Co-operative Ltd.",
     appTitle: 'Ujyalo iSmart',
   );
-  static final CoOperative currentCoop = supyaCoop;
+  static final CoOperative currentCoop = setoguranscoop;
 }
