@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/market/widget/product.dart';
 import 'package:ismart/feature/market/widget/product_preferences.dart';
 
@@ -97,77 +99,17 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
       );
       return;
     }
-
-    showDialog(
+    showPopUpDialog(
       context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('Confirm Delivery'),
-          content: Column(
-            mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text('Total Items: $totalItems'),
-              Text('Total Amount: \$${totalPrice.toStringAsFixed(2)}'),
-              const SizedBox(height: 16),
-              const Text('Do you want to confirm your order?'),
-            ],
-          ),
-          actions: [
-            TextButton(
-              onPressed: () => Navigator.of(context).pop(),
-              child: const Text('Cancel'),
-            ),
-            ElevatedButton(
-              onPressed: () {
-                Navigator.of(context).pop();
-                _clearCart();
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Order confirmed! Thank you!')),
-                );
-              },
-              child: const Text('Confirm'),
-            ),
-          ],
-        );
+      message:
+          'Total Items: $totalItems \nTotal Amount: \$${totalPrice.toStringAsFixed(2)} \n',
+      title: "Do you want to confirm your order?",
+      showCancelButton: true,
+      buttonCallback: () {
+        NavigationService.pop();
       },
     );
   }
-
-  //  appBar: AppBar(
-  //       title: const Text('Shopping Cart'),
-  //       backgroundColor: Colors.blue,
-  //       foregroundColor: Colors.white,
-  //       actions: [
-  //         if (cartItems.isNotEmpty)
-  //           IconButton(
-  //             icon: const Icon(Icons.delete_sweep),
-  //             onPressed: () {
-  //               showDialog(
-  //                 context: context,
-  //                 builder: (context) => AlertDialog(
-  //                   title: const Text('Clear Cart'),
-  //                   content: const Text(
-  //                       'Are you sure you want to remove all items?'),
-  //                   actions: [
-  //                     TextButton(
-  //                       onPressed: () => Navigator.pop(context),
-  //                       child: const Text('Cancel'),
-  //                     ),
-  //                     TextButton(
-  //                       onPressed: () {
-  //                         Navigator.pop(context);
-  //                         _clearCart();
-  //                       },
-  //                       child: const Text('Clear All'),
-  //                     ),
-  //                   ],
-  //                 ),
-  //               );
-  //             },
-  //           ),
-  //       ],
-  //     ),
 
   @override
   Widget build(BuildContext context) {

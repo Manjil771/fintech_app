@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/market/widget/product.dart';
 import 'package:ismart/feature/market/widget/product_preferences.dart';
@@ -41,7 +42,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Product Image
                 Stack(
                   children: [
                     Container(
@@ -89,8 +89,6 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     ),
                   ],
                 ),
-
-                // Product Details
                 Container(
                   color: Colors.transparent,
                   padding: const EdgeInsets.all(20),
@@ -99,48 +97,45 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                     children: [
                       Text(
                         widget.product.name,
-                        style: const TextStyle(
-                          fontSize: 24,
+                        style: TextStyle(
+                          fontSize: 20.hp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                         ),
                       ),
-                      const SizedBox(height: 8),
+                      SizedBox(height: 4.hp),
                       Text(
                         widget.product.store,
-                        style: const TextStyle(
-                          fontSize: 16,
+                        style: TextStyle(
+                          fontSize: 14.hp,
                           color: Colors.red,
                           fontWeight: FontWeight.w500,
                         ),
                       ),
-                      const SizedBox(height: 16),
-
+                      SizedBox(height: 12.hp),
                       // Price
                       Row(
                         children: [
                           Text(
                             'Rs. ${widget.product.price}',
-                            style: const TextStyle(
-                              fontSize: 28,
+                            style: TextStyle(
+                              fontSize: 24.hp,
                               fontWeight: FontWeight.bold,
                               color: Colors.red,
                             ),
                           ),
-                          const SizedBox(width: 12),
+                          SizedBox(width: 10.wp),
                           Text(
                             'Rs. ${widget.product.originalPrice}',
                             style: TextStyle(
-                              fontSize: 18,
+                              fontSize: 14.hp,
                               color: Colors.grey[600],
                               decoration: TextDecoration.lineThrough,
                             ),
                           ),
                         ],
                       ),
-                      const SizedBox(height: 16),
-
-                      // Rating and Stock
+                      SizedBox(height: 12.hp),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -193,62 +188,67 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       const SizedBox(height: 24),
                       const Divider(),
                       const SizedBox(height: 16),
-
                       // Quantity Selector
-                      const Text(
-                        'Quantity',
-                        style: TextStyle(
-                          fontSize: 16,
-                          fontWeight: FontWeight.w600,
-                          color: Colors.black87,
-                        ),
-                      ),
-                      const SizedBox(height: 12),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          GestureDetector(
-                            onTap: () => updateQuantity(-1),
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]!),
-                                borderRadius: BorderRadius.circular(8),
-                              ),
-                              child: const Icon(Icons.remove, size: 20),
+                          Text(
+                            'Quantity',
+                            style: TextStyle(
+                              fontSize: 14.hp,
+                              fontWeight: FontWeight.w600,
+                              color: Colors.black87,
                             ),
                           ),
-                          Container(
-                            margin: const EdgeInsets.symmetric(horizontal: 16),
-                            padding: const EdgeInsets.symmetric(
-                                horizontal: 20, vertical: 8),
-                            decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[300]!),
-                              borderRadius: BorderRadius.circular(8),
-                              color: Colors.grey[50],
-                            ),
-                            child: Text(
-                              '$quantity',
-                              style: const TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w600,
+                          Row(
+                            children: [
+                              GestureDetector(
+                                onTap: () => updateQuantity(-1),
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: Colors.grey[300]!),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Icon(Icons.remove, size: 16.hp),
+                                ),
                               ),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () => updateQuantity(1),
-                            child: Container(
-                              padding: const EdgeInsets.all(8),
-                              decoration: BoxDecoration(
-                                border: Border.all(color: Colors.grey[300]!),
-                                borderRadius: BorderRadius.circular(8),
+                              Container(
+                                margin: EdgeInsets.symmetric(horizontal: 10.wp),
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 20, vertical: 8),
+                                decoration: BoxDecoration(
+                                  border: Border.all(color: Colors.grey[300]!),
+                                  borderRadius: BorderRadius.circular(8),
+                                  color: Colors.grey[50],
+                                ),
+                                child: Text(
+                                  '$quantity',
+                                  style: TextStyle(
+                                    fontSize: 14.hp,
+                                    fontWeight: FontWeight.w600,
+                                  ),
+                                ),
                               ),
-                              child: const Icon(Icons.add, size: 20),
-                            ),
-                          ),
+                              GestureDetector(
+                                onTap: () => updateQuantity(1),
+                                child: Container(
+                                  padding: const EdgeInsets.all(8),
+                                  decoration: BoxDecoration(
+                                    border:
+                                        Border.all(color: Colors.grey[300]!),
+                                    borderRadius: BorderRadius.circular(8),
+                                  ),
+                                  child: Icon(Icons.add, size: 16.hp),
+                                ),
+                              ),
+                            ],
+                          )
                         ],
                       ),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: 20.hp),
 
                       // Total Amount
                       Container(
@@ -261,18 +261,18 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text(
+                            Text(
                               'Total Amount:',
                               style: TextStyle(
-                                fontSize: 18,
+                                fontSize: 16.hp,
                                 fontWeight: FontWeight.w600,
                                 color: Colors.black87,
                               ),
                             ),
                             Text(
                               'Rs. ${widget.product.price * quantity}',
-                              style: const TextStyle(
-                                fontSize: 20,
+                              style: TextStyle(
+                                fontSize: 16.hp,
                                 fontWeight: FontWeight.bold,
                                 color: Colors.red,
                               ),
@@ -281,14 +281,14 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                         ),
                       ),
 
-                      const SizedBox(height: 24),
+                      SizedBox(height: 20.hp),
                       const Divider(),
                       const SizedBox(height: 16),
 
-                      const Text(
+                      Text(
                         'Description',
                         style: TextStyle(
-                          fontSize: 18,
+                          fontSize: 16.hp,
                           fontWeight: FontWeight.bold,
                           color: Colors.black87,
                         ),
@@ -297,7 +297,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       Text(
                         widget.product.description,
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 14.hp,
                           color: Colors.grey[700],
                           height: 1.5,
                         ),
@@ -351,8 +351,8 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           : widget.product.inStock
                               ? 'Add To Cart'
                               : 'Out of Stock',
-                      style: const TextStyle(
-                        fontSize: 18,
+                      style: TextStyle(
+                        fontSize: 14.hp,
                         fontWeight: FontWeight.bold,
                         color: Colors.white,
                       ),
