@@ -74,10 +74,15 @@
 		365D2102CCB1B603896619E9 /* Pods-Runner.release-mangalpur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-mangalpur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-mangalpur.xcconfig"; sourceTree = "<group>"; };
 		365E426398C2C3BB64E74BCA /* Pods-Runner.debug-sarbahit.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-sarbahit.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-sarbahit.xcconfig"; sourceTree = "<group>"; };
 		36EFDAC7342B26E6E6716389 /* Pods-Runner.release-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gomaganesh.xcconfig"; sourceTree = "<group>"; };
+		38A671E3D19CD616B442129A /* Pods-Runner.release-arthikbikash.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-arthikbikash.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-arthikbikash.xcconfig"; sourceTree = "<group>"; };
 		38B8B95847CD7E37B9D67616 /* Pods-Runner.profile-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-alankar.xcconfig"; sourceTree = "<group>"; };
+		38F8F8FA66FE12483F711283 /* Pods-Runner.release-sanjeewani.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sanjeewani.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sanjeewani.xcconfig"; sourceTree = "<group>"; };
 		3B0D27F05D4D07CFAC30B5BF /* Pods-Runner.release-kipoo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kipoo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kipoo.xcconfig"; sourceTree = "<group>"; };
 		3B3967151E833CAA004F5970 /* AppFrameworkInfo.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = AppFrameworkInfo.plist; path = Flutter/AppFrameworkInfo.plist; sourceTree = "<group>"; };
+		3B7CF79DBB9305EA26000EDA /* Pods-Runner.release-satyeta.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-satyeta.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-satyeta.xcconfig"; sourceTree = "<group>"; };
+		3C256F8C5CD03EB24B2DAE57 /* Pods-Runner.release-janakalyanbahumukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janakalyanbahumukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janakalyanbahumukhi.xcconfig"; sourceTree = "<group>"; };
 		3C46380A799F4E91980126E3 /* Pods_Runner.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Runner.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3DECD04665213639AC51B4E6 /* Pods-Runner.release-mahalaxmi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-mahalaxmi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-mahalaxmi.xcconfig"; sourceTree = "<group>"; };
 		3F3E0DB0CB70292CDB0F9D29 /* Pods-Runner.release-hetauda.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-hetauda.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-hetauda.xcconfig"; sourceTree = "<group>"; };
 		40738B94470FFBFBA702DD29 /* Pods-Runner.release-ekata.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ekata.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ekata.xcconfig"; sourceTree = "<group>"; };
 		417D150A22C230704CEE3923 /* Pods-Runner.release-bhaktapur.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhaktapur.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhaktapur.xcconfig"; sourceTree = "<group>"; };
@@ -121,6 +126,7 @@
 		6BB127897CF0B672E1B6949F /* Pods-Runner.release-shubhashreesaving.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-shubhashreesaving.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-shubhashreesaving.xcconfig"; sourceTree = "<group>"; };
 		6BE70D4DD369E1BD8B01C308 /* Pods-Runner.release-ektamulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ektamulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ektamulti.xcconfig"; sourceTree = "<group>"; };
 		6C98056A487C71BEE7595C60 /* Pods-Runner.debug-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
+		6CEAB91434520258D252EFF8 /* Pods-Runner.release-ujyalo.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-ujyalo.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-ujyalo.xcconfig"; sourceTree = "<group>"; };
 		6D8EC795C396AD9B80ABD8FD /* Pods-Runner.release-janamukhi.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janamukhi.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janamukhi.xcconfig"; sourceTree = "<group>"; };
 		6EE734B515C8EF00C588F81F /* Pods-Runner.release-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kripalu.xcconfig"; sourceTree = "<group>"; };
 		6F23FD25CC63615F0FEAA91D /* Pods-Runner.release-tgway.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-tgway.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-tgway.xcconfig"; sourceTree = "<group>"; };
@@ -133,8 +139,10 @@
 		749D04775018BC0984A19FE6 /* Pods-Runner.release-devshree.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-devshree.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-devshree.xcconfig"; sourceTree = "<group>"; };
 		76BE2751D347B385C6271217 /* Pods-Runner.release-machhapuchhre.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-machhapuchhre.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-machhapuchhre.xcconfig"; sourceTree = "<group>"; };
 		7AFA3C8E1D35360C0083082E /* Release.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; name = Release.xcconfig; path = Flutter/Release.xcconfig; sourceTree = "<group>"; };
+		7CA7CC635313595C295693C7 /* Pods-Runner.release-setogurans.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-setogurans.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-setogurans.xcconfig"; sourceTree = "<group>"; };
 		7D264DA8D66BB713AED11D20 /* Pods-Runner.release-supreme.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-supreme.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-supreme.xcconfig"; sourceTree = "<group>"; };
 		80A55FF7917B60BCEA89E9CC /* Pods-Runner.debug-manank.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-manank.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-manank.xcconfig"; sourceTree = "<group>"; };
+		80AB1262B455EDF61B939D2A /* Pods-Runner.release-janakalyan.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janakalyan.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janakalyan.xcconfig"; sourceTree = "<group>"; };
 		82F5FCA5594B71C428DAF877 /* Pods-Runner.release-baglungmulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-baglungmulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-baglungmulti.xcconfig"; sourceTree = "<group>"; };
 		8370BAED0F630644A856B095 /* Pods-Runner.release-paschimanchal.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-paschimanchal.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-paschimanchal.xcconfig"; sourceTree = "<group>"; };
 		84AE822BC14E1317DA6F7D48 /* Pods-Runner.release-babira.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-babira.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-babira.xcconfig"; sourceTree = "<group>"; };
@@ -172,6 +180,7 @@
 		A696F85BFC159CF9CB97FAB7 /* Pods-Runner.debug-kabil.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kabil.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kabil.xcconfig"; sourceTree = "<group>"; };
 		A9E85050C1D63F0B98345285 /* Pods-Runner.release-uttarbahini.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-uttarbahini.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-uttarbahini.xcconfig"; sourceTree = "<group>"; };
 		AA93A034F3C3B7C467C16F6E /* Pods-Runner.release-alankar.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-alankar.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-alankar.xcconfig"; sourceTree = "<group>"; };
+		AB5CAB289283D8806D6EFD3D /* Pods-Runner.release-gaja.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-gaja.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-gaja.xcconfig"; sourceTree = "<group>"; };
 		ABE382E460C97438846AD6ED /* Pods-Runner.release-sparkling.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sparkling.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sparkling.xcconfig"; sourceTree = "<group>"; };
 		ABEEA4C203F33F74256907DB /* Pods-Runner.release-devanasoft.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-devanasoft.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-devanasoft.xcconfig"; sourceTree = "<group>"; };
 		AE1B1E66CCA9C3607F264288 /* Pods-Runner.release-sadasyasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sadasyasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sadasyasewa.xcconfig"; sourceTree = "<group>"; };
@@ -186,6 +195,7 @@
 		BE1AC4A26D41096E64DB0D95 /* Pods-Runner.release-davisfall.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-davisfall.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-davisfall.xcconfig"; sourceTree = "<group>"; };
 		C1131A818BA0E3625CCFBCDD /* Pods-Runner.release-nirika.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nirika.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nirika.xcconfig"; sourceTree = "<group>"; };
 		C1BBE024591119D5A9101F87 /* Pods-Runner.release-janasewa.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-janasewa.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-janasewa.xcconfig"; sourceTree = "<group>"; };
+		C578B7E8C8D87FD2E94920D4 /* Pods-Runner.release-join.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-join.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-join.xcconfig"; sourceTree = "<group>"; };
 		C630B161171C0989F38D8C83 /* Pods-Runner.release-bhanjyang.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-bhanjyang.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-bhanjyang.xcconfig"; sourceTree = "<group>"; };
 		C63FE670EE9F95341AE3FAFE /* Pods-Runner.release-dhaulagiri.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-dhaulagiri.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-dhaulagiri.xcconfig"; sourceTree = "<group>"; };
 		C826464460B4BB63E6A5D4A2 /* Pods-Runner.profile-nawaprabhat.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-nawaprabhat.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-nawaprabhat.xcconfig"; sourceTree = "<group>"; };
@@ -196,6 +206,7 @@
 		CE3679641DD1743D0A5B23F3 /* Pods-Runner.profile-gomaganesh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.profile-gomaganesh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.profile-gomaganesh.xcconfig"; sourceTree = "<group>"; };
 		CF5BE85A52A726FEED2A6536 /* Pods-Runner.release-kabil copy.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-kabil copy.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-kabil copy.xcconfig"; sourceTree = "<group>"; };
 		CF6A0D61BF1EF2BD9B5CC977 /* Pods-Runner.release-nawajosh.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-nawajosh.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-nawajosh.xcconfig"; sourceTree = "<group>"; };
+		D0FD98C1E4C14DE680EBDA01 /* Pods-Runner.release-asamulti.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-asamulti.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-asamulti.xcconfig"; sourceTree = "<group>"; };
 		D2C678B5EDAD23604D91B520 /* Pods-Runner.debug-kripalu.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-kripalu.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-kripalu.xcconfig"; sourceTree = "<group>"; };
 		D4703ECE1FE14C11F07AD549 /* Pods-Runner.debug-arthabag.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.debug-arthabag.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.debug-arthabag.xcconfig"; sourceTree = "<group>"; };
 		D5AD96FCF6F1CED4FD06769D /* Pods-Runner.release-sardikhola.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Runner.release-sardikhola.xcconfig"; path = "Target Support Files/Pods-Runner/Pods-Runner.release-sardikhola.xcconfig"; sourceTree = "<group>"; };
@@ -495,6 +506,17 @@
 				35B92D00047641B48D3F8104 /* Pods-Runner.release-lapha.xcconfig */,
 				F58DE0AAB6C68ED4EAAC829A /* Pods-Runner.release-digobikash.xcconfig */,
 				F0A5897651F65A457B859241 /* Pods-Runner.release-bhargo.xcconfig */,
+				38F8F8FA66FE12483F711283 /* Pods-Runner.release-sanjeewani.xcconfig */,
+				AB5CAB289283D8806D6EFD3D /* Pods-Runner.release-gaja.xcconfig */,
+				7CA7CC635313595C295693C7 /* Pods-Runner.release-setogurans.xcconfig */,
+				D0FD98C1E4C14DE680EBDA01 /* Pods-Runner.release-asamulti.xcconfig */,
+				6CEAB91434520258D252EFF8 /* Pods-Runner.release-ujyalo.xcconfig */,
+				3B7CF79DBB9305EA26000EDA /* Pods-Runner.release-satyeta.xcconfig */,
+				C578B7E8C8D87FD2E94920D4 /* Pods-Runner.release-join.xcconfig */,
+				80AB1262B455EDF61B939D2A /* Pods-Runner.release-janakalyan.xcconfig */,
+				3DECD04665213639AC51B4E6 /* Pods-Runner.release-mahalaxmi.xcconfig */,
+				3C256F8C5CD03EB24B2DAE57 /* Pods-Runner.release-janakalyanbahumukhi.xcconfig */,
+				38A671E3D19CD616B442129A /* Pods-Runner.release-arthikbikash.xcconfig */,
 				5D8AA18C876C8503FCD9B137 /* Pods-Runner.release-hamrosaving.xcconfig */,
 				53FABB9A709D94C333FC3101 /* Pods-Runner.release-shreejanakalyan.xcconfig */,
 				DC3469A825E2D6AA34B3E640 /* Pods-Runner.release-gaja.xcconfig */,
@@ -4034,7 +4056,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.5.34;
+				FLUTTER_BUILD_NAME = 1.5.36;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Kabil iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -11527,7 +11549,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.5.30;
+				FLUTTER_BUILD_NAME = 1.5.36;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Babylon iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -11632,6 +11654,93 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "Release-utkrishta";
+		};
+		94492C9D2E4DDA99009D9DAE /* Release-sanjeewani */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-sanjeewani";
+		};
+		94492C9E2E4DDA99009D9DAE /* Release-sanjeewani */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = SanjeewaniAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Sanjeewani Coop iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Sanjeewani Coop iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.sanjeewaniSavingcoop;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-sanjeewani";
 		};
 		944BBC112E434F1F009B2ADD /* Release-belchautara */ = {
 			isa = XCBuildConfiguration;
@@ -12049,7 +12158,7 @@
 				CURRENT_PROJECT_VERSION = 007;
 				DEVELOPMENT_TEAM = XHKT78GUZR;
 				ENABLE_BITCODE = NO;
-				FLUTTER_BUILD_NAME = 1.5.33;
+				FLUTTER_BUILD_NAME = 1.5.36;
 				INFOPLIST_FILE = Runner/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Devanasoft iSmart";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
@@ -12504,6 +12613,528 @@
 			};
 			name = "Release-chetana";
 		};
+		94D014912E51A7F100F03BE9 /* Release-gaja */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-gaja";
+		};
+		94D014922E51A7F100F03BE9 /* Release-gaja */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = GajaAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Gaja iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Gaja iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.gaja;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-gaja";
+		};
+		94D014952E52EFA700F03BE9 /* Release-setogurans */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-setogurans";
+		};
+		94D014962E52EFA700F03BE9 /* Release-setogurans */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = SetoGuransAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Seto Gurans iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Seto Gurans iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.setogurans;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-setogurans";
+		};
+		94D014992E53224400F03BE9 /* Release-asaMulti */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-asaMulti";
+		};
+		94D0149A2E53224400F03BE9 /* Release-asaMulti */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AsaMultiAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Asa Multi iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Asa Multi iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.asaMulti;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-asaMulti";
+		};
+		94D0149B2E532B0600F03BE9 /* Release-ujyalo */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-ujyalo";
+		};
+		94D0149C2E532B0600F03BE9 /* Release-ujyalo */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = UjyaloAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Ujyalo iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Ujyalo iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.ujyalo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-ujyalo";
+		};
+		94D0149D2E5334E400F03BE9 /* Release-satyeta */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-satyeta";
+		};
+		94D0149E2E5334E400F03BE9 /* Release-satyeta */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = SatyetaAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Satyeta iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Satyeta iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.satyeta;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-satyeta";
+		};
+		94D0149F2E533CF100F03BE9 /* Release-join */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-join";
+		};
+		94D014A02E533CF100F03BE9 /* Release-join */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = JoinAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Join iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Join iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.join;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-join";
+		};
 		94D067F02E41D3EA00C22CB7 /* Release-kunchhal */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -12590,6 +13221,354 @@
 				VERSIONING_SYSTEM = "apple-generic";
 			};
 			name = "Release-kunchhal";
+		};
+		94DB30592E54487000EB1DE7 /* Release-janakalyan */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-janakalyan";
+		};
+		94DB305A2E54487000EB1DE7 /* Release-janakalyan */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = JanakalyanAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Shree Janakalyan iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Shree Janakalyan iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.janakalyan;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-janakalyan";
+		};
+		94DB305B2E5458F800EB1DE7 /* Release-janakalyanbahumukhi */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-janakalyanbahumukhi";
+		};
+		94DB305C2E5458F800EB1DE7 /* Release-janakalyanbahumukhi */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = JanakalyanbahumukhiAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Janakalyan Bahumukhi iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.30;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Janakalyan Bahumukhi iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.janakalyanbahumukhi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-janakalyanbahumukhi";
+		};
+		94DB305D2E546E7800EB1DE7 /* Release-mahalaxmi */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-mahalaxmi";
+		};
+		94DB305E2E546E7800EB1DE7 /* Release-mahalaxmi */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = MahalaxmiAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Mahalaxmi iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.36;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Mahalaxmi iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.mahalaxmi;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-mahalaxmi";
+		};
+		94DB30612E5494BC00EB1DE7 /* Release-arthikBikash */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				FLUTTER_BUILD_DIR = "";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = "Release-arthikBikash";
+		};
+		94DB30622E5494BC00EB1DE7 /* Release-arthikBikash */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AFA3C8E1D35360C0083082E /* Release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = ArthikBikashAppIcon;
+				BUILD_LIBRARY_FOR_DISTRIBUTION = NO;
+				CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES = YES;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Runner/Runner.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				COOP_NAME = "Arthik Bikash iSmart";
+				CURRENT_PROJECT_VERSION = 007;
+				DEVELOPMENT_TEAM = XHKT78GUZR;
+				ENABLE_BITCODE = NO;
+				FLUTTER_BUILD_NAME = 1.5.36;
+				INFOPLIST_FILE = Runner/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = "Arthik Bikash iSmart";
+				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.finance";
+				IPHONEOS_DEPLOYMENT_TARGET = 12.1;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 0.0.25;
+				PRODUCT_BUNDLE_IDENTIFIER = com.devanasoft.arthikBikash;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Runner/Runner-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				VERSIONING_SYSTEM = "apple-generic";
+			};
+			name = "Release-arthikBikash";
 		};
 		97C147031CF9000F007C117D /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -17061,6 +18040,17 @@
 				8FC9F6362A76DC8D0053DAF6 /* Debug-arthabag */,
 				8F79BA972A88D48A000D06BF /* Debug-uttarganga */,
 				8FC00C6E2A64D66800B2CFB7 /* Release-kabil */,
+				94DB30612E5494BC00EB1DE7 /* Release-arthikBikash */,
+				94DB305D2E546E7800EB1DE7 /* Release-mahalaxmi */,
+				94DB305B2E5458F800EB1DE7 /* Release-janakalyanbahumukhi */,
+				94DB30592E54487000EB1DE7 /* Release-janakalyan */,
+				94D0149F2E533CF100F03BE9 /* Release-join */,
+				94D0149D2E5334E400F03BE9 /* Release-satyeta */,
+				94D0149B2E532B0600F03BE9 /* Release-ujyalo */,
+				94D014992E53224400F03BE9 /* Release-asaMulti */,
+				94D014952E52EFA700F03BE9 /* Release-setogurans */,
+				94D014912E51A7F100F03BE9 /* Release-gaja */,
+				94492C9D2E4DDA99009D9DAE /* Release-sanjeewani */,
 				B6E16FA52E51CB05002397B8 /* Release-setogurans */,
 				B6E16FA32E51B0DC002397B8 /* Release-shreejanakalyan */,
 				B6E16FA12E51A553002397B8 /* Release-gaja */,
@@ -17257,6 +18247,17 @@
 				8FC9F6372A76DC8D0053DAF6 /* Debug-arthabag */,
 				8F79BA982A88D48A000D06BF /* Debug-uttarganga */,
 				8FC00C6F2A64D66800B2CFB7 /* Release-kabil */,
+				94DB30622E5494BC00EB1DE7 /* Release-arthikBikash */,
+				94DB305E2E546E7800EB1DE7 /* Release-mahalaxmi */,
+				94DB305C2E5458F800EB1DE7 /* Release-janakalyanbahumukhi */,
+				94DB305A2E54487000EB1DE7 /* Release-janakalyan */,
+				94D014A02E533CF100F03BE9 /* Release-join */,
+				94D0149E2E5334E400F03BE9 /* Release-satyeta */,
+				94D0149C2E532B0600F03BE9 /* Release-ujyalo */,
+				94D0149A2E53224400F03BE9 /* Release-asaMulti */,
+				94D014962E52EFA700F03BE9 /* Release-setogurans */,
+				94D014922E51A7F100F03BE9 /* Release-gaja */,
+				94492C9E2E4DDA99009D9DAE /* Release-sanjeewani */,
 				B6E16FA62E51CB05002397B8 /* Release-setogurans */,
 				B6E16FA42E51B0DC002397B8 /* Release-shreejanakalyan */,
 				B6E16FA22E51A553002397B8 /* Release-gaja */,

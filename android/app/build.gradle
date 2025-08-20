@@ -2315,13 +2315,7 @@ android {
             applicationId "com.devanasoft.youthvision"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
-        } 
-         kasturi {
-            dimension "app"
-            applicationId "com.devanasoft.kasturi"
-            versionCode flutterVersionCode.toInteger()
-            versionName flutterVersionName
-        } 
+        }
         niyaman {
             dimension "app"
             applicationId "com.devanasoft.niyaman"
@@ -2601,6 +2595,18 @@ android {
         ujyalo {
             dimension "app"
             applicationId "com.devanasoft.ujyalo"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        satyeta {
+            dimension "app"
+            applicationId "com.devanasoft.satyeta"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         join {
+            dimension "app"
+            applicationId "com.devanasoft.join"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

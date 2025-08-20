@@ -54,13 +54,14 @@ class _AppDevState extends State<AppDev> {
       child: MultiBlocWrapper(
         env: widget.env,
         child: NotificationWrapper(
+          // child: UpdateWrapper(
           child: SessionTimeoutManager(
             sessionConfig: sessionConfig,
             child: GestureDetector(
               behavior: HitTestBehavior.translucent,
               onTap: () {
                 final FocusScopeNode currentFocus = FocusScope.of(context);
-          
+
                 if (!currentFocus.hasPrimaryFocus &&
                     currentFocus.focusedChild != null) {
                   FocusManager.instance.primaryFocus?.unfocus();
@@ -79,6 +80,7 @@ class _AppDevState extends State<AppDev> {
                 onGenerateRoute: RouteGenerator.generateRoute,
               ),
             ),
+            // ),
           ),
         ),
       ),

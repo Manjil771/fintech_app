@@ -92,11 +92,11 @@
 //   }
 // }
 import 'dart:async';
+
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
-// import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
@@ -184,6 +184,7 @@ class _AppProdState extends State<AppProd> with WidgetsBindingObserver {
       child: MultiBlocWrapper(
         env: widget.env,
         child: NotificationWrapper(
+          // child: UpdateWrapper(
           child: GestureDetector(
             behavior: HitTestBehavior.translucent,
             onTap: () {
@@ -210,6 +211,7 @@ class _AppProdState extends State<AppProd> with WidgetsBindingObserver {
               onGenerateRoute: RouteGenerator.generateRoute,
             ),
           ),
+          // ),
         ),
       ),
     );
