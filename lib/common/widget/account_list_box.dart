@@ -158,7 +158,7 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                                                 ),
                                                 SizedBox(width: _width * 0.03),
                                                 Text(
-                                                  "NPR ${account.availableBalance}",
+                                                  "NPR ${formatNepaliCurrencyFromString(account.availableBalance)}",
                                                   style: TextStyle(
                                                       fontSize: 18,
                                                       fontFamily:
@@ -248,5 +248,29 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
         );
       },
     );
+  }
+
+  String formatNepaliCurrencyFromString([String? value]) {
+    if (value == null || value.trim().isEmpty) {
+      return "";
+    }
+    final int? amount = int.tryParse(value);
+    if (amount == null) {
+      return value;
+    }
+    final String numberStr = amount.toString();
+    final int len = numberStr.length;
+    if (len <= 3) return numberStr;
+    final String lastThree = numberStr.substring(len - 3);
+    String remaining = numberStr.substring(0, len - 3);
+    final List<String> parts = [];
+    while (remaining.length > 2) {
+      parts.insert(0, remaining.substring(remaining.length - 2));
+      remaining = remaining.substring(0, remaining.length - 2);
+    }
+    if (remaining.isNotEmpty) {
+      parts.insert(0, remaining);
+    }
+    return parts.join(",") + "," + lastThree;
   }
 }

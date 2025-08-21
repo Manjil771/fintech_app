@@ -6,3 +6,5 @@ Build apk:
 flutter build apk --flavor <flavor_name> -t lib/<entry_point>.dart
 E.g. flutter build apk --flavor triyuga -t lib/main.dart
 
+Note:
+Commented MarketPlace button from category_page.dart
