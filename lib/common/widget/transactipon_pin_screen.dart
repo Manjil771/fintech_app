@@ -106,7 +106,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         },
                         validator: (val) {
                           if (val == null || val.isEmpty) {
-                            return "PIN Code field cannot be empty";
+                            return "" + LocaleKeys.pincodeempty.tr();
                           } else if (val.length < 5) {
                             return "PIN code cannot be less than 5 characters.";
                           }

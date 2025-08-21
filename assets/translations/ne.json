@@ -16,8 +16,10 @@
 "Movies":"चलचित्रहरू",
 "done": "पूरा भयो",
 "transactionSucessful": "लेनदेन सफल भयो",
+"phonenumber": "फोन नम्बर",
 "Proceed": "अगाडि बढ्नुहोस्",
 "cancel": "रद्द गर्नुहोस्",
+"download": "डाउनलोड गर्नुहोस्",
 "details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
 "transactionID": "लेनदेन आईडी",
 "initiator": "प्रारम्भकर्ता",
@@ -31,6 +33,7 @@
 "entersecurity": "सुरक्षा पिन प्रविष्ट गर्नुहोस्",
 "enterPin": "अगाडि बढ्नका लागि कृपया आफ्नो सुरक्षा पिन प्रविष्ट गर्नुहोस्",
   "Security Pin": "",
+  "pincodeempty": "पिन कोड क्षेत्र खाली हुन सक्दैन",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   },
@@ -51,6 +54,7 @@
   "scanQR": "QR स्क्यान",
   "history": "इतिहास",
   "profile": "प्रोफाइल"
+  
 },
 "login": {
   "login": "लगइन",
@@ -85,9 +89,31 @@
    "detail": "आफ्नो मोबाइल नम्बर टप अप गर्नुहोस्",
    "amount": "रकम",
    "amountmoney":"रकम हाल्नुहोस्"
-
-
-
+   
+},
+"landline":{
+  "landline":"ल्याण्डलाइन नम्बर",
+  "landlineTopbar": "ल्याण्डलाइन",
+  "landlineInstructions": "ल्याण्डलाइन भुक्तानी"
+},
+"profileSetting": {
+  "profile": "प्रोफाइल",
+  "accountInfo": "खाता जानकारी",
+  "biometric": "बायोमेट्रिक",
+  "changepin": "पिन परिवर्तन",
+  "transactionLimit": "लेनदेन सीमा",
+  "profileSetting": "सेटिङ्स"
+},
+"bankingSetting": {
+  "balanceInquiry": "ब्यालेन्स सोधपुछ",
+  "statement": " ब्यालेन्स स्टेटमेन्ट",
+  "chequeRequest": " चेक अनुरोध",
+  "calculator": "क्याल्कुलेटर",
+  "support": " सहयोग",
+  "feedback": " प्रतिक्रिया",
+  "loan": " ऋण"
 }
+
+
 
 }

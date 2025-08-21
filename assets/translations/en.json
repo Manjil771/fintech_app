@@ -16,7 +16,11 @@
   "datetime": "Date & Time",
   "service": "Service",
   "Done": "Done",
+  "download": "Download",
   "transactionSucessful": "Transaction Successful",
+  "phonenumber": "Phone Number",
+  "pincodeempty":"Pincode field cannot be empty",
+
   
   "TOP UP":"TOP UP",
   "LANDLINE":"LANDLINE",
@@ -88,12 +92,42 @@
    "detail": "Top up your mobile number",
    "amount": "Amount",
    "amountmoney":"Enter the amount"
+   
 
 
 
  
    
    
-}
+},
+"landline":{
+  "landline":"Landline",
+  "landlineTopbar": "Landline",
+  "landlineInstructions": "Landline Payment"
+},
+  
+    
 
-}
+  "profileSetting": {
+    "profile": "Profile",
+    "accountInfo": "Account Info",
+    "biometric": "Biometric",
+    "changepin": "Change Pin",
+    "transactionLimit": "Transaction Limits",
+    "profileSetting": "Settings"
+  },
+    "bankingSetting": {
+      "balanceInquiry": "Balance Inquiry",
+      "statement": "Statement",
+      "chequeRequest": "Cheque Request",
+      "calculator": "Calculator",
+      "support": "Support",
+      "feedback": "Feedback",
+      "loan": "Loan"
+    }
+
+
+
+
+
+} 

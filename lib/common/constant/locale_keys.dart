@@ -22,6 +22,8 @@ class LocaleKeys {
   static const cancel = "cancel";
   static const done = "done";
   static const Proceed ="Proceed";
+  static const pincodeempty = "pincodeempty";
+  
   static const paymentdetails = "paymentdetails";
   static const targetnumber ="targetnumber";
   static const fromaccount = "fromaccount";
@@ -37,6 +39,9 @@ class LocaleKeys {
   static const datetime ='datetime';
   static const service = 'service';
   static const transactionSuccessful = "transactionSucessful";
+  static const phonenumber = "phonenumber";
+  static const download = "download";
+  
 
 
 
@@ -94,6 +99,38 @@ class LocaleKeys {
   static const detail = "topup.detail";
   static const amount = "topup.amount";
   static const amountmoney = "topup.amountmoney";
+
+
+  //  static const landline = "landline.landline";
+  static const landline = "landline.landline";
+  static const landlinePayment = "landline.landlinePayment";
+  static const landlineTopbar = "landline.landlineTopbar";
+  static const landlineInstructions= "landline.landlineInstructions";
+
+
+
+
+
+
+  // profile setting 
+  static const profileSetting = "profileSetting.profileSetting";
+  static const accountInfo = "profileSetting.accountInfo";
+  static const changepin = "profileSetting.changepin";
+  static const transactionLimit ="profileSetting.transactionLimit";
+  static const biometric ="profileSetting.biometric";
+
+
+  //banking screen
+  static const bankingSetting = "banking.bankingSetting";
+  static const balanceInquiry = "banking.balanceInquiry";
+  static const statement = "banking.statement";
+  static const chequeRequest = "banking.chequeRequest";
+  static const calculator = "banking.calculator";
+  static const support = "banking.support";
+  static const feedback = "banking.feedback";
+  static const loan = "banking.loan";
+
+  
  
   
 

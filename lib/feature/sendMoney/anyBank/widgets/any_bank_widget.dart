@@ -1,5 +1,6 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
@@ -7,6 +8,7 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -177,7 +179,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             imageUrl: selectedBank?.iconUrl ?? "",
                             body: Column(children: [
                               KeyValueTile(
-                                  title: "From Account",
+                                  title: LocaleKeys.fromaccount.tr(), 
                                   value: RepositoryProvider.of<
                                           CustomerDetailRepository>(context)
                                       .selectedAccount
@@ -237,7 +239,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         imageUrl: selectedBank?.iconUrl ?? "",
                         body: Column(children: [
                           KeyValueTile(
-                              title: "From Account",
+                              title: LocaleKeys.fromaccount.tr(), 
                               value: RepositoryProvider.of<
                                       CustomerDetailRepository>(context)
                                   .selectedAccount

@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -181,7 +183,7 @@ class _CommonContainerState extends State<CommonContainer> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      widget.accountTitle,
+                                    LocaleKeys.fromaccount.tr() ??  widget.accountTitle,
                                       style: const TextStyle(
                                         fontFamily: Fonts.poppin,
                                         fontWeight: FontWeight.w600,
