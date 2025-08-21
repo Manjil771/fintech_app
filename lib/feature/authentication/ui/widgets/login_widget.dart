@@ -1,7 +1,4 @@
-import 'dart:io';
-
 import 'package:easy_localization/easy_localization.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -149,21 +146,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     rememberMe = loginStatus.toString() == "true" ? true : false;
     setState(() {});
     return rememberMe;
-  }
-
-  Widget biometricIcon() {
-    if (Platform.isAndroid) {
-      return const Icon(
-        Icons.fingerprint,
-        size: 35,
-      );
-    } else if (Platform.isIOS) {
-      return const Icon(
-        CupertinoIcons.lock,
-        size: 35,
-      );
-    }
-    return const Icon(Icons.fingerprint, size: 35);
   }
 
   @override
@@ -487,7 +469,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                               child: Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  biometricIcon(),
+                                  const Icon(
+                                    Icons.fingerprint,
+                                    size: 35,
+                                  ),
                                   SizedBox(
                                     width: width * 0.03,
                                   ),
