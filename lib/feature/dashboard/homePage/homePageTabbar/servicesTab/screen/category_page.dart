@@ -54,40 +54,40 @@ class _CategoryPageState extends State<CategoryPage> {
             CategoryWidget(
               showAllService: widget.showAllServices,
             ),
-            SizedBox(height: 8.hp),
-            InkWell(
-              onTap: () {
-                NavigationService.push(target: const MarketPlaceScreen());
-              },
-              child: Container(
-                  decoration: const BoxDecoration(
-                    color: CustomTheme.white,
-                    borderRadius: BorderRadius.all(
-                      Radius.circular(10),
-                    ),
-                    border: Border(
-                      top: BorderSide(color: Colors.grey, width: 1),
-                      right: BorderSide(color: Colors.grey, width: 1),
-                    ),
-                  ),
-                  alignment: Alignment.center,
-                  width: double.infinity,
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(Icons.shopping_cart_outlined,
-                          color: CustomTheme.primaryColor),
-                      Text(
-                        "Market",
-                        style: TextStyle(
-                            fontSize: 14,
-                            fontWeight: FontWeight.w600,
-                            color: CustomTheme.primaryColor),
-                      ),
-                    ],
-                  ),
-                  height: 36.hp),
-            ),
+            // SizedBox(height: 8.hp),
+            // InkWell(
+            //   onTap: () {
+            //     NavigationService.push(target: const MarketPlaceScreen());
+            //   },
+            //   child: Container(
+            //       decoration: const BoxDecoration(
+            //         color: CustomTheme.white,
+            //         borderRadius: BorderRadius.all(
+            //           Radius.circular(10),
+            //         ),
+            //         border: Border(
+            //           top: BorderSide(color: Colors.grey, width: 1),
+            //           right: BorderSide(color: Colors.grey, width: 1),
+            //         ),
+            //       ),
+            //       alignment: Alignment.center,
+            //       width: double.infinity,
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           Icon(Icons.shopping_cart_outlined,
+            //               color: CustomTheme.primaryColor),
+            //           Text(
+            //             "Market",
+            //             style: TextStyle(
+            //                 fontSize: 14,
+            //                 fontWeight: FontWeight.w600,
+            //                 color: CustomTheme.primaryColor),
+            //           ),
+            //         ],
+            //       ),
+            //       height: 36.hp),
+            // ),
             SizedBox(height: 10.hp),
             if (_bannerImages.isNotEmpty)
               CustomCarousel(
