@@ -5894,5 +5894,19 @@ class CoOperativeValue {
     coOperativeName: "Join Saving & Credit Co-operative Ltd",
     appTitle: 'Join iSmart',
   );
-  static final CoOperative currentCoop = mahalaxmiCoop;
+  static final CoOperative sahayogi = CoOperative(
+    appStoreID: "com.devanasoft.sahayogi",
+    packageName: "com.devanasoft.sahayogi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sahayogi/sahayogi_banner.png",
+    backgroundImage: "assets/sahayogi/sahayogi_background.png",
+    clientCode: 'DG7FMB1RL5',
+    clientSecret: "175291",
+    coOperativeLogo: 'assets/sahayogi/sahayogi_logo.png',
+    splashImage: "assets/sahayogi/sahayogi_splash.png",
+    primaryColor: const Color(0xFF008d40),
+    coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
+    appTitle: 'Sahayogi iSmart',
+  );
+  static final CoOperative currentCoop = eastwestCoop;
 }

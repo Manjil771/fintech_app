@@ -2598,6 +2598,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        sahayogi {
+            dimension "app"
+            applicationId "com.devanasoft.sahayogi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {
