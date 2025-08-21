@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
+import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/market/widget/product.dart';
 import 'package:ismart/feature/market/widget/product_preferences.dart';
 
@@ -106,7 +107,12 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
       title: "Do you want to confirm your order?",
       showCancelButton: true,
       buttonCallback: () {
-        NavigationService.pop();
+        NavigationService.push(target: TransactionPinScreen(
+          onValueCallback: (val) {
+            NavigationService.pop();
+            NavigationService.pop();
+          },
+        ));
       },
     );
   }
@@ -174,7 +180,6 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
               ),
             ),
             const SizedBox(width: 12),
-
             // Product Details
             Expanded(
               child: Column(
@@ -201,7 +206,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                   Row(
                     children: [
                       Text(
-                        '\$${item.product.price}',
+                        '\Rs. ${item.product.price}',
                         style: const TextStyle(
                           fontWeight: FontWeight.bold,
                           fontSize: 16,
@@ -282,7 +287,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
 
                 // Item Total
                 Text(
-                  '\$${(item.product.price * item.quantity).toStringAsFixed(2)}',
+                  '\Rs. ${(item.product.price * item.quantity).toStringAsFixed(2)}',
                   style: TextStyle(
                     fontWeight: FontWeight.bold,
                     fontSize: 14,
@@ -330,7 +335,7 @@ class _ShoppingCartWidgetState extends State<ShoppingCartWidget> {
                     ),
                     const SizedBox(height: 4),
                     Text(
-                      'Total: \$${totalPrice.toStringAsFixed(2)}',
+                      'Total: \Rs. ${totalPrice.toStringAsFixed(2)}',
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,

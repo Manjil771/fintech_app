@@ -63,7 +63,12 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                       top: 16,
                       right: 16,
                       child: GestureDetector(
-                        onTap: widget.onFavoriteToggle,
+                        onTap: () {
+                          widget.onFavoriteToggle();
+                          // setState(() {
+                          //   widget.isFavorite = !widget.isFavorite;
+                          // });
+                        },
                         child: Container(
                           padding: const EdgeInsets.all(12),
                           decoration: const BoxDecoration(
