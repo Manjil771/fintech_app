@@ -191,7 +191,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .of<CoOperative>(context)
                                                 .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount NUmber: ${showValidAccount[index].mainCode} \nBank Name: $bankName \nBranch Name: ${showValidAccount[index].branchName} ',
+                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount Nmmber: ${showValidAccount[index].mainCode} \nCoop Name: ${customerDetail.value?.bank} \nBranch Name: ${showValidAccount[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,
