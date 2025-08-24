@@ -112,12 +112,10 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
                               itemBuilder: (context, index) {
                                 final AccountDetail account =
                                     validMobileBankingList[index];
-
                                 final _isSelectedAccount = account.accountNumber
                                     .toLowerCase()
                                     .contains(
                                         selectedAccount?.accountNumber ?? "");
-
                                 return Padding(
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 10),

@@ -208,7 +208,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                         NavigationService.push(target: TransactionPinScreen(
                           onValueCallback: (p0) {
                             NavigationService.pop();
-
                             context.read<SendToBankCubit>().sendMoneyToBank(
                                   otp: widget.otp,
                                   charge: widget.charge ?? "",

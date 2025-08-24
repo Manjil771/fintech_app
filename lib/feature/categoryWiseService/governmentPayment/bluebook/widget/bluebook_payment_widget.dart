@@ -179,7 +179,14 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                                   primaryKey: "totalPayableAmount")),
                         ],
                       ),
-                      accountDetails: const {},
+                      accountDetails: {
+                        "accountNumber":
+                            RepositoryProvider.of<CustomerDetailRepository>(
+                                    context)
+                                .selectedAccount
+                                .value!
+                                .accountNumber,
+                      },
                       apiEndpoint: "/api/vehicle/registration/pay",
                       apiBody: {
                         // "accountNumber":
@@ -188,19 +195,20 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         //         .selectedAccount
                         //         .value!
                         //         .accountNumber,
-                        "mobileNumber":
-                            _response.findValue(primaryKey: "phone"),
+                        // "mobileNumber":
+                        //     _response.findValue(primaryKey: "phone"),
                         "amount": _response.findValue(
                             primaryKey: "totalPayableAmount"),
-                        "remarks": "Bluebook Payment",
-                        "transactionIdentifier": "TXN123456",
-                        "bankName": "Nabil Bank",
-                        "verificationUniqueId": "VERIF123456",
-                        "customerName":
-                            _response.findValue(primaryKey: "fullName"),
-                        "address": "Kathmandu",
-                        "orderId": "BB-55BB65",
-                        "partnerTransactionId": "PTX-7890"
+                        // "remarks": "Bluebook Payment",
+                        // "transactionIdentifier": "TXN123456",
+                        // "bankName": "Nabil Bank",
+                        // "verificationUniqueId": "VERIF123456",
+                        // "customerName":
+                        //     _response.findValue(primaryKey: "fullName"),
+                        // "address": "Kathmandu",
+                        // "orderId": "BB-55BB65",
+                        // "partnerTransactionId": "PTX-7890"
+                        "sessionId": _response.findValue(primaryKey: "Orderid"),
                       },
                       service: widget.service,
                       serviceIdentifier: widget.service.uniqueIdentifier));
