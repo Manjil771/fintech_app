@@ -143,6 +143,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 "${showValidAccount[index].clientCode}"),
                                             detailROw(context, "Acc Number",
                                                 "${showValidAccount[index].mainCode}"),
+                                            detailROw(context, "Acc Type",
+                                                "${(showValidAccount[index].accountTypeDescription.isEmpty) ? showValidAccount[index].accountType : showValidAccount[index].accountTypeDescription}"),
                                             if (showValidAccount[index]
                                                         .interestRate !=
                                                     "0" ||
