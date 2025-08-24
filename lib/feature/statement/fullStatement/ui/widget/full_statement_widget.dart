@@ -273,7 +273,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                             ),
                                           ],
                                         ),
-                                        PrimaryAccountBox(),
+                                        const PrimaryAccountBox(),
                                         CustomTextField(
                                           customHintTextStyle: true,
                                           readOnly: true,
@@ -291,7 +291,6 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                           // },
                                           onTap: () async {
                                             DateTime? picked;
-
                                             if (_pickerAD) {
                                               picked = await showDatePicker(
                                                 context: context,
@@ -318,7 +317,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                   child: child!,
                                                 ),
                                                 initialDate: fromDate,
-                                                firstDate: DateTime(2000, 8),
+                                                firstDate: DateTime.now()
+                                                    .subtract(const Duration(
+                                                        days: 90)),
                                                 lastDate: DateTime.now(),
                                               );
                                             } else {
@@ -348,9 +349,11 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                   child: child!,
                                                 ),
                                                 initialDate:
-                                                    NepaliDateTime.now(),
-                                                firstDate: NepaliDateTime(2057),
-                                                lastDate: NepaliDateTime(2090),
+                                                    fromDate.toNepaliDateTime(),
+                                                firstDate: NepaliDateTime.now()
+                                                    .subtract(const Duration(
+                                                        days: 90)),
+                                                lastDate: NepaliDateTime.now(),
                                                 initialDatePickerMode:
                                                     DatePickerMode.day,
                                               );
@@ -391,7 +394,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               picked = await showDatePicker(
                                                 context: context,
                                                 initialDate: toDate,
-                                                firstDate: DateTime(2020, 8),
+                                                firstDate: DateTime.now()
+                                                    .subtract(const Duration(
+                                                        days: 90)),
                                                 lastDate: DateTime.now(),
                                                 builder: (context, child) =>
                                                     Theme(
@@ -444,8 +449,9 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                                 context: context,
                                                 initialDate:
                                                     toDate.toNepaliDateTime(),
-                                                firstDate: DateTime(2020, 8)
-                                                    .toNepaliDateTime(),
+                                                firstDate: NepaliDateTime.now()
+                                                    .subtract(const Duration(
+                                                        days: 90)),
                                                 lastDate: NepaliDateTime.now(),
                                                 initialDatePickerMode:
                                                     DatePickerMode.day,
