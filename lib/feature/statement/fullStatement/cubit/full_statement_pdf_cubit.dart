@@ -4,11 +4,11 @@ import 'package:ismart/common/http/response.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:ismart/feature/statement/fullStatement/resources/full_statement_repository.dart';
 
-class FullStatementCubit extends Cubit<CommonState> {
+class FullStatementPdfCubit extends Cubit<CommonState> {
   final FullStatementRepository fullStatementRepository;
-  FullStatementCubit({required this.fullStatementRepository})
+  FullStatementPdfCubit({required this.fullStatementRepository})
       : super(CommonInitial());
-  Future<dynamic> fetchFullStatement({
+  Future<dynamic> fetchFullStatementPdf({
     required String accountNumber,
     required DateTime fromDate,
     required DateTime toDate,

@@ -9,6 +9,7 @@ import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
@@ -21,6 +22,7 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_cubit.dart';
+import 'package:ismart/feature/statement/fullStatement/cubit/full_statement_pdf_cubit.dart';
 import 'package:ismart/feature/statement/fullStatement/model/full_statement_model.dart';
 import 'package:nepali_date_picker/nepali_date_picker.dart';
 import 'package:path_provider/path_provider.dart';
@@ -44,7 +46,8 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
   DateTime toDate = DateTime.now();
   ValueNotifier<FullStatementModel?> fullStatementDetail = ValueNotifier(null);
   ValueNotifier<CustomerDetailModel?> customerDetail = ValueNotifier(null);
-  void getData({required DateTime fromdate, required todate}) {
+  void getData(
+      {required DateTime fromdate, required todate, bool pdfDownload = false}) {
     context.read<FullStatementCubit>().fetchFullStatement(
         accountNumber: RepositoryProvider.of<CustomerDetailRepository>(context)
                 .selectedAccount
@@ -52,7 +55,20 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                 ?.accountNumber ??
             "",
         fromDate: fromdate,
-        toDate: todate);
+        toDate: todate,
+        pdfDownload: pdfDownload);
+  }
+
+  void getDataForPdf({required DateTime fromdate, required todate}) {
+    context.read<FullStatementPdfCubit>().fetchFullStatementPdf(
+        accountNumber: RepositoryProvider.of<CustomerDetailRepository>(context)
+                .selectedAccount
+                .value
+                ?.accountNumber ??
+            "",
+        fromDate: fromdate,
+        toDate: todate,
+        pdfDownload: true);
   }
 
   bool sortList = false;
@@ -492,191 +508,220 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                 ),
               ],
             ),
-            BlocBuilder<FullStatementCubit, CommonState>(
-              builder: (context, state) {
+            BlocListener<FullStatementPdfCubit, CommonState>(
+              listener: (context, state) {
                 if (state is CommonStateSuccess<FullStatementModel>) {
-                  final List<AccountStatementDtos> resData =
-                      state.data.accountStatementDtos;
-                  final selectedAccount =
-                      RepositoryProvider.of<CustomerDetailRepository>(context)
-                          .selectedAccount
-                          .value;
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          InkWell(
-                              onTap: () {
-                                FileDownloadUtils.downloadFile(
-                                  downloadLink:
-                                      RepositoryProvider.of<CoOperative>(
-                                                  context)
-                                              .baseUrl +
-                                          state.data.pdfUrl.toString(),
-                                  fileName: FileDownloadUtils
-                                      .generateDownloadFileName(
-                                    name: "Statement",
-                                    filetype: FileType.pdf,
-                                  ),
-                                  context: context,
-                                );
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.end,
-                                children: [
-                                  Text(
-                                    "Download  ",
-                                    style: _textTheme.labelLarge!
-                                        .copyWith(fontWeight: FontWeight.bold),
-                                  ),
-                                  SvgPicture.asset(
-                                    Assets.downloadIcon,
-                                    height: 20.hp,
-                                  ),
-                                ],
-                              )),
-                          const Spacer(),
-                          Text(
-                            "Sorting",
-                            style: TextStyle(
-                                fontWeight: FontWeight.w600,
-                                fontSize: 12,
-                                letterSpacing: 0.3,
-                                color: CustomTheme.primaryColor),
-                          ),
-                          Switch(
-                            activeColor: CustomTheme.primaryColor,
-                            value: sortList,
-                            onChanged: (value) {
-                              setState(() {
-                                sortList = !sortList;
-                              });
-                            },
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: _height * 0.01),
-                      state.data.accountStatementDtos.isEmpty
-                          ? const NoDataScreen(
-                              title: "No transactions yet",
-                              details: "Make Your First Transfer",
-                            )
-                          : Column(
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                SizedBox(height: _height * 0.01),
-                                Text("Account No. ${selectedAccount!.mainCode}",
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge),
-                                Container(
-                                  padding: const EdgeInsets.all(18),
-                                  width: double.infinity,
-                                  height: _height * 0.11,
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(8),
-                                    color: Theme.of(context)
-                                        .scaffoldBackgroundColor,
-                                    border: Border.all(
-                                        color: Theme.of(context).primaryColor),
-                                  ),
-                                  child: Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Opening Balance",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                          ),
-                                          Text(
-                                            "NPR ${state.data.openingBalance}",
-                                            style: TextStyle(
-                                                fontFamily: "popinBold",
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: Theme.of(context)
-                                                    .primaryColor),
-                                          ),
-                                        ],
-                                      ),
-                                      Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          Text(
-                                            "Closing Balance",
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                          ),
-                                          Text(
-                                            "NPR ${state.data.closingBalance}",
-                                            style: TextStyle(
-                                                fontFamily: "popinBold",
-                                                fontSize: 16,
-                                                fontWeight: FontWeight.w500,
-                                                color: Theme.of(context)
-                                                    .primaryColor),
-                                          ),
-                                        ],
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                                Container(
-                                  width: double.infinity,
-                                  height: 500,
-                                  padding: const EdgeInsets.only(bottom: 70),
-                                  child: ListView.builder(
-                                    itemCount: resData.length,
-                                    itemBuilder: (context, index) {
-                                      final data = getList(dataList: resData);
-                                      return StatementDetailBox(
-                                          balance:
-                                              data[index].balance.toString(),
-                                          isCredit: data[index].credit != 0
-                                              ? true
-                                              : false,
-                                          desc: data[index].remarks.toString(),
-                                          amount: data[index].credit == 0
-                                              ? data[index].debit.toString()
-                                              : data[index].credit.toString(),
-                                          dateTime: data[index]
-                                              .transactionDate
-                                              .toString(),
-                                          imageUrl: "",
-                                          status: data[index].credit != 0
-                                              ? "Deposit"
-                                              : "Withdrawl");
-                                    },
-                                  ),
-                                ),
-                                CustomRoundedButtom(
-                                    title: "Close",
-                                    onPressed: () {
-                                      NavigationService.push(
-                                          target: const DashboardPage());
-                                    })
-                              ],
-                            ),
-                    ],
+                  FileDownloadUtils.downloadFile(
+                    downloadLink:
+                        RepositoryProvider.of<CoOperative>(context).baseUrl +
+                            state.data.pdfUrl.toString(),
+                    fileName: FileDownloadUtils.generateDownloadFileName(
+                      name: "Statement",
+                      filetype: FileType.pdf,
+                    ),
+                    context: context,
                   );
-                } else if (state is CommonLoading) {
-                  return const CommonLoadingWidget();
-                } else {
-                  return const NoDataScreen(
-                    title: "No transactions yet",
-                    details: "Make Your First Transfer",
-                  );
+                } else if (state is CommonError) {
+                  SnackBarUtils.showErrorBar(
+                      context: context,
+                      message: "Unable to download the pdf. ${state.message}");
                 }
               },
+              child: BlocBuilder<FullStatementCubit, CommonState>(
+                builder: (context, state) {
+                  if (state is CommonStateSuccess<FullStatementModel>) {
+                    final List<AccountStatementDtos> resData =
+                        state.data.accountStatementDtos;
+                    final selectedAccount =
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .selectedAccount
+                            .value;
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            InkWell(
+                                onTap: () {
+                                  getDataForPdf(
+                                    fromdate: fromDate
+                                        .subtract(Duration(days: startDay)),
+                                    todate: toDate,
+                                  );
+                                  // FileDownloadUtils.downloadFile(
+                                  //   downloadLink:
+                                  //       RepositoryProvider.of<CoOperative>(
+                                  //                   context)
+                                  //               .baseUrl +
+                                  //           state.data.pdfUrl.toString(),
+                                  //   fileName: FileDownloadUtils
+                                  //       .generateDownloadFileName(
+                                  //     name: "Statement",
+                                  //     filetype: FileType.pdf,
+                                  //   ),
+                                  //   context: context,
+                                  // );
+                                },
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.end,
+                                  children: [
+                                    Text(
+                                      "Download  ",
+                                      style: _textTheme.labelLarge!.copyWith(
+                                          fontWeight: FontWeight.bold),
+                                    ),
+                                    SvgPicture.asset(
+                                      Assets.downloadIcon,
+                                      height: 20.hp,
+                                    ),
+                                  ],
+                                )),
+                            const Spacer(),
+                            Text(
+                              "Sorting",
+                              style: TextStyle(
+                                  fontWeight: FontWeight.w600,
+                                  fontSize: 12,
+                                  letterSpacing: 0.3,
+                                  color: CustomTheme.primaryColor),
+                            ),
+                            Switch(
+                              activeColor: CustomTheme.primaryColor,
+                              value: sortList,
+                              onChanged: (value) {
+                                setState(() {
+                                  sortList = !sortList;
+                                });
+                              },
+                            ),
+                          ],
+                        ),
+                        SizedBox(height: _height * 0.01),
+                        state.data.accountStatementDtos.isEmpty
+                            ? const NoDataScreen(
+                                title: "No transactions yet",
+                                details: "Make Your First Transfer",
+                              )
+                            : Column(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  SizedBox(height: _height * 0.01),
+                                  Text(
+                                      "Account No. ${selectedAccount!.mainCode}",
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge),
+                                  Container(
+                                    padding: const EdgeInsets.all(18),
+                                    width: double.infinity,
+                                    height: _height * 0.11,
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(8),
+                                      color: Theme.of(context)
+                                          .scaffoldBackgroundColor,
+                                      border: Border.all(
+                                          color:
+                                              Theme.of(context).primaryColor),
+                                    ),
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Opening Balance",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                            Text(
+                                              "NPR ${state.data.openingBalance}",
+                                              style: TextStyle(
+                                                  fontFamily: "popinBold",
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Theme.of(context)
+                                                      .primaryColor),
+                                            ),
+                                          ],
+                                        ),
+                                        Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.start,
+                                          children: [
+                                            Text(
+                                              "Closing Balance",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleLarge,
+                                            ),
+                                            Text(
+                                              "NPR ${state.data.closingBalance}",
+                                              style: TextStyle(
+                                                  fontFamily: "popinBold",
+                                                  fontSize: 16,
+                                                  fontWeight: FontWeight.w500,
+                                                  color: Theme.of(context)
+                                                      .primaryColor),
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    width: double.infinity,
+                                    height: 500,
+                                    padding: const EdgeInsets.only(bottom: 70),
+                                    child: ListView.builder(
+                                      itemCount: resData.length,
+                                      itemBuilder: (context, index) {
+                                        final data = getList(dataList: resData);
+                                        return StatementDetailBox(
+                                            balance:
+                                                data[index].balance.toString(),
+                                            isCredit: data[index].credit != 0
+                                                ? true
+                                                : false,
+                                            desc:
+                                                data[index].remarks.toString(),
+                                            amount: data[index].credit == 0
+                                                ? data[index].debit.toString()
+                                                : data[index].credit.toString(),
+                                            dateTime: data[index]
+                                                .transactionDate
+                                                .toString(),
+                                            imageUrl: "",
+                                            status: data[index].credit != 0
+                                                ? "Deposit"
+                                                : "Withdrawl");
+                                      },
+                                    ),
+                                  ),
+                                  CustomRoundedButtom(
+                                      title: "Close",
+                                      onPressed: () {
+                                        NavigationService.push(
+                                            target: const DashboardPage());
+                                      })
+                                ],
+                              ),
+                      ],
+                    );
+                  } else if (state is CommonLoading) {
+                    return const CommonLoadingWidget();
+                  } else {
+                    return const NoDataScreen(
+                      title: "No transactions yet",
+                      details: "Make Your First Transfer",
+                    );
+                  }
+                },
+              ),
             ),
           ],
         ),
