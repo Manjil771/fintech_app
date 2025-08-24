@@ -177,7 +177,7 @@ class _CommonContainerState extends State<CommonContainer> {
                               ),
                             ],
                           ),
-                          SizedBox(height: _height * 0.01),
+                          SizedBox(height: _height * 0.00),
                           widget.showAccountSelection
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -199,7 +199,7 @@ class _CommonContainerState extends State<CommonContainer> {
                                 )
                               : Container(),
                           widget.body,
-                          SizedBox(height: _height * 0.03),
+                          SizedBox(height: _height * 0.01),
                           widget.showRoundBotton
                               ? CustomRoundedButtom(
                                   verificationAmount: widget.verificationAmount,

@@ -19,6 +19,8 @@
 "phonenumber": "फोन नम्बर",
 "Proceed": "अगाडि बढ्नुहोस्",
 "cancel": "रद्द गर्नुहोस्",
+"view": "हेर्नुहोस्",
+"nrp": "रू",
 "download": "डाउनलोड गर्नुहोस्",
 "details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
 "transactionID": "लेनदेन आईडी",
@@ -104,7 +106,8 @@
   "transactionLimit": "लेनदेन सीमा",
   "profileSetting": "सेटिङ्स"
 },
-"bankingSetting": {
+"banking": {
+  "bankingSetting": "बैंकिङ सेटिङ",
   "balanceInquiry": "ब्यालेन्स सोधपुछ",
   "statement": " ब्यालेन्स स्टेटमेन्ट",
   "chequeRequest": " चेक अनुरोध",
@@ -112,7 +115,36 @@
   "support": " सहयोग",
   "feedback": " प्रतिक्रिया",
   "loan": " ऋण"
-}
+},
+"scanAndPay":{
+  "scanAndPay": "स्क्यान र भुक्तानी",
+  "alignQR": "कृपया QR कोडलाई फ्रेमभित्र मिलाउनुहोस्",
+  "showQR": "मेरो QR कोड देखाउनुहोस्"
+  
+},
+"balanceInquiry":{
+     "balanceinquiry": "ब्यालेन्स सोधपुछ",
+    "totalbalance": " कुल ब्यालेन्स",
+    "availablebalance": " उपलब्ध ब्यालेन्स",
+    "actualbalance": " वास्तविक ब्यालेन्स",
+    "memberID": " सदस्य आईडी",
+    "accNumber": " खाता नम्बर",
+    "interestRate": " ब्याज दर",
+    "accuredInterest": " अकृड ब्याज",
+    "accountHolderName": " खाता धारकको नाम",
+    "shareAccount": " शेयर खाता",
+    "detailAboutBalance": "तपाईंको खाता ब्यालेन्सको बारेमा विवरण तल दिइएको छ।"
+
+
+    },
+    "miniFullstatement": {
+      "toptext": " तपाईंले हेर्न चाहनु भएको स्टेटमेन्टको प्रकार चयन गर्नुहोस्",
+      "miniStatement": "मिनी स्टेटमेन्ट",
+      "fullStatement": "  पूर्ण स्टेटमेन्ट",
+      "statement": "स्टेटमेन्ट"
+  
+      }
+
 
 
 

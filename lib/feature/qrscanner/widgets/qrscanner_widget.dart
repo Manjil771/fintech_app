@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -328,7 +330,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         ),
                         SizedBox(height: 30.hp),
                         Text(
-                          "Scan and Pay",
+                          LocaleKeys.scanAndPay.tr(),
                           style: _textTheme.displayMedium!.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -336,7 +338,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         ),
                         SizedBox(height: 25.hp),
                         Text(
-                          "Please allign the QR within frame.",
+                          LocaleKeys.alignQR.tr(),
                           style: _textTheme.titleLarge!.copyWith(
                             color: Colors.white,
                           ),
@@ -543,7 +545,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                                   ),
                                   SizedBox(width: 8.wp),
                                   Text(
-                                    "Show my QR Code",
+                                    LocaleKeys.showQR.tr(),
                                     style: _textTheme.bodyLarge!.copyWith(
                                       color: _theme.primaryColor,
                                       fontWeight: FontWeight.bold,

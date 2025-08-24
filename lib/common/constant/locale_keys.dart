@@ -23,6 +23,7 @@ class LocaleKeys {
   static const done = "done";
   static const Proceed ="Proceed";
   static const pincodeempty = "pincodeempty";
+  static const view ="view";
   
   static const paymentdetails = "paymentdetails";
   static const targetnumber ="targetnumber";
@@ -31,6 +32,7 @@ class LocaleKeys {
   static const pay ="pay";
   static const entersecurity = "entersecurity";
   static const enterPin = "enterPin";
+  static const nrp = "nrp";
   static const details_about_service ="details_about_service";
   static const useBiometricToLogin= "useBiometricToLogin";
   //new
@@ -131,7 +133,36 @@ class LocaleKeys {
   static const loan = "banking.loan";
 
   
+ //qr scan and pay
+ static const scanAndPay = "scanAndPay.scanAndPay";
+ static const alignQR = "scanAndPay.alignQR";
+ static const showQR = "scanAndPay.showQR";
  
+ 
+ 
+ 
+ 
+ 
+ //balance inquiry
+ static const balanceinquiry = "balanceInquiry.balanceinquiry";
+ static const totalbalance = "balanceInquiry.totalbalance";
+  static const availablebalance = "balanceInquiry.availablebalance";
+  static const actualbalance = "balanceInquiry.actualbalance";
+  static const memberID = "balanceInquiry.memberID";
+  static const accNumber="balanceInquiry.accNumber";
+  static const interestRate = "balanceInquiry.interestRate";
+  static const accuredInterest ="balanceInquiry.accuredInterest";
+  static const accountHolderName = "balanceInquiry.accountHolderName";
+  static const shareAccount ="balanceInquiry.shareAccount";
+  static const detailAboutBalance ="balanceInquiry.detailAboutBalance";
+
+
+
+  //statement
+  static const miniFullstatement ="miniFullstatement.minifullstatement";
+  static const toptext ="miniFullstatement.toptext";
+  static const miniStatement =" miniFullstatement.miniStatement";
+  static const fullStatement =" miniFullstatement.fullStatement";
   
 
   

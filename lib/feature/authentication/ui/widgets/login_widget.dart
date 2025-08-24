@@ -764,7 +764,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
     },
     {
-      "title": "Mini Statement",
+      "title": LocaleKeys.miniStatement.tr(),
       "action": () {
         NavigationService.pop();
       },
