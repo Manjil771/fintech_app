@@ -57,6 +57,8 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
   final vehicleCubicCapacity = TextEditingController();
   final vehicleSeatCapacity = TextEditingController();
   final mobileNumberController = TextEditingController();
+  final fromDateController = TextEditingController();
+  final toDateController = TextEditingController();
 
   DateTime? toDate;
   DateTime? fromDate;
@@ -244,7 +246,6 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                           "full_name": fullNameController.text,
                           "email": emailController.text,
                           "mobile_number": mobileNumberController.text,
-                          // "mobile_number": "9865453082",
                           "pickup_location": pickupLocationValue ?? '',
                           "landmark": lanmarkLocationController.text,
                           "city": districtController.text,
@@ -522,6 +523,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         hintText: "4",
                       ),
                       CustomTextField(
+                        controller: fromDateController,
                         validator: (value) {
                           if (fromDate == null) {
                             return "Enter date here!";
@@ -558,15 +560,17 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                           if (picked != null) {
                             setState(() {
                               fromDate = picked!;
+                              fromDateController.text = picked!.toString();
                             });
                           }
                         },
                         title: "From Date(BS)",
                         hintText:
-                            "${filtertoDate.year}-${filtertoDate.month.toString().padLeft(2, '0')}-${filtertoDate.day.toString().padLeft(2, '0')}",
+                            "${fromDate?.year ?? 'XXXX'}-${fromDate?.month.toString().padLeft(2, '0') ?? 'XX'}-${fromDate?.day.toString().padLeft(2, '0') ?? 'XX'}",
                         showSuffixImage: true,
                       ),
                       CustomTextField(
+                        controller: toDateController,
                         validator: (value) {
                           if (toDate == null) {
                             return "Enter date here!";
@@ -602,12 +606,13 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                           if (picked != null) {
                             setState(() {
                               toDate = picked!;
+                              toDateController.text = picked!.toString();
                             });
                           }
                         },
                         title: "To Date(BS)",
                         hintText:
-                            "${filtertoDate.year}-${filtertoDate.month.toString().padLeft(2, '0')}-${filtertoDate.day.toString().padLeft(2, '0')}",
+                            "${toDate?.year ?? 'XXXX'}-${toDate?.month.toString().padLeft(2, '0') ?? "XX"}-${toDate?.day.toString().padLeft(2, '0') ?? 'XX'}",
                         showSuffixImage: true,
                       ),
                       CustomCheckbox(
