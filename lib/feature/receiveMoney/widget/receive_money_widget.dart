@@ -162,8 +162,8 @@ class _ReceiveMoneyWidgetState extends State<ReceiveMoneyWidget> {
                                         .toString()
                                         .toLowerCase() ==
                                     "remittance".toLowerCase()) {
-                                  NavigationService.push(
-                                      target: const ReceiveRemittancePage());
+                                  // NavigationService.push(
+                                  //     target: const ReceiveRemittancePage());
                                 } else if (filteredItems[index]
                                         .uniqueIdentifier
                                         .toString()

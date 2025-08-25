@@ -171,6 +171,7 @@ class CustomTextField extends FormField<String> {
                                     children: [
                                       Expanded(
                                         child: TextField(
+                                          enabled: enabled,
                                           obscureText: obscureText,
                                           restorationId: restorationId,
                                           controller:

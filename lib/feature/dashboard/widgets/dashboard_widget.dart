@@ -445,6 +445,31 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       FlutterDownloader.registerCallback(downloadCallback);
     }
     offerBanners = RepositoryProvider.of<BannerRepository>(context).banners;
+
+    // WidgetsBinding.instance.addPostFrameCallback((_) {
+    //   showDialog(
+    //     context: context,
+    //     barrierDismissible: false,
+    //     builder: (context) {
+    //       return Dialog(
+    //         insetPadding: EdgeInsets.zero,
+    //         backgroundColor: Colors.transparent,
+    //         shape: RoundedRectangleBorder(
+    //           borderRadius: BorderRadius.circular(16),
+    //         ),
+    //         child: Padding(
+    //           padding: const EdgeInsets.all(16.0),
+    //           child: Image.asset('assets/fathers_day.png'),
+    //         ),
+    //       );
+    //     },
+    //   );
+    //   Future.delayed(const Duration(seconds: 10), () {
+    //     if (mounted) {
+    //       NavigationService.pop();
+    //     }
+    //   });
+    // });
   }
 
   _performStartupActions() async {

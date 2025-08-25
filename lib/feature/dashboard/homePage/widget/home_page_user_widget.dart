@@ -354,7 +354,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         ),
                                         Text(
                                           showAmountDetail
-                                              ? "NPR ${selectedAcc?.actualBalance}"
+                                              ? "NPR ${formatNepaliCurrencyFromString(selectedAcc?.actualBalance)}"
                                               : "XXXXXXXXX",
                                           style: _textTheme.titleLarge!
                                               .copyWith(
@@ -380,7 +380,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         ),
                                         Text(
                                           showAmountDetail
-                                              ? "NPR ${selectedAcc?.availableBalance}"
+                                              ? "NPR ${formatNepaliCurrencyFromString(selectedAcc?.availableBalance)}"
                                               : "XXXXXXXXX",
                                           style: _textTheme.titleLarge!
                                               .copyWith(
@@ -463,6 +463,30 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
         )
       ],
     );
+  }
+
+  String formatNepaliCurrencyFromString([String? value]) {
+    if (value == null || value.trim().isEmpty) {
+      return "";
+    }
+    final int? amount = int.tryParse(value);
+    if (amount == null) {
+      return value;
+    }
+    final String numberStr = amount.toString();
+    final int len = numberStr.length;
+    if (len <= 3) return numberStr;
+    final String lastThree = numberStr.substring(len - 3);
+    String remaining = numberStr.substring(0, len - 3);
+    final List<String> parts = [];
+    while (remaining.length > 2) {
+      parts.insert(0, remaining.substring(remaining.length - 2));
+      remaining = remaining.substring(0, remaining.length - 2);
+    }
+    if (remaining.isNotEmpty) {
+      parts.insert(0, remaining);
+    }
+    return parts.join(",") + "," + lastThree;
   }
 }
 

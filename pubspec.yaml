@@ -15,6 +15,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: "^1.0.4"
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.1
+
   intl: ^0.19.0
   record: ^6.0.0
   just_audio: ^0.10.3
@@ -88,7 +91,7 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
-    # - assets/sahayogi/
+    - assets/sahayogi/
     # - assets/ujyalo/
     # - assets/setogurans/
     # - assets/satyeta/
@@ -102,7 +105,7 @@ flutter:
     # - assets/paryatan/
     # - assets/ekata/
     # - assets/sadasyaSewa/
-    - assets/neela/
+    # - assets/neela/
     # - assets/nhugupala/
     # - assets/shreegorakhkali/
     # - assets/kunchhal/
@@ -282,7 +285,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
