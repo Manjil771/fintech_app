@@ -257,7 +257,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                               int.tryParse(vehicleCubicCapacity.text),
                           "seat_capacity":
                               int.tryParse(vehicleSeatCapacity.text),
-                          "same_day_delivery": isSameDayDelivery,
+                          "same_day_delivery": false,
                           "start_date":
                               "${fromDate?.year}-${fromDate?.month}-${fromDate?.day}",
                           "end_date":
@@ -272,6 +272,11 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                               fileToBase64(_vehicleInfo) ?? "",
                           "vehicle_number_image":
                               fileToBase64(_vehicleNumberImage) ?? "",
+                          // "citizenship_front_image": "",
+                          // "citizenship_back_image": "",
+                          // "latest_owner_info_page_image": "",
+                          // "vehicle_info_page_image": "",
+                          // "vehicle_number_image": "",
                         },
                         apiEndpoint: "api/vehicle/registration/vehicle/details",
                         mPin: "");
@@ -615,15 +620,15 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                             "${toDate?.year ?? 'XXXX'}-${toDate?.month.toString().padLeft(2, '0') ?? "XX"}-${toDate?.day.toString().padLeft(2, '0') ?? 'XX'}",
                         showSuffixImage: true,
                       ),
-                      CustomCheckbox(
-                        selected: isSameDayDelivery,
-                        onChanged: (val) {
-                          setState(() {
-                            isSameDayDelivery = !isSameDayDelivery;
-                          });
-                        },
-                        title: "Same Day Delivery",
-                      ),
+                      // CustomCheckbox(
+                      //   selected: isSameDayDelivery,
+                      //   onChanged: (val) {
+                      //     setState(() {
+                      //       isSameDayDelivery = !isSameDayDelivery;
+                      //     });
+                      //   },
+                      //   title: "Same Day Delivery",
+                      // ),
                       const Text(
                         "Citizenship Front Image",
                         style: TextStyle(
