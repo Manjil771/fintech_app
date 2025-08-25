@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
@@ -97,7 +99,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                           SizedBox(width: 20.wp),
                           Text(
-                            "Event",
+                            LocaleKeys.event.tr(),
                             style: _textTheme.titleLarge!.copyWith(
                                 fontWeight: FontWeight.w500, fontSize: 12),
                           ),
@@ -136,7 +138,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                           SizedBox(width: 10.wp),
                           Text(
-                            "Notice",
+                            LocaleKeys.notice.tr(),
                             style: _textTheme.titleLarge!.copyWith(
                                 fontWeight: FontWeight.w500, fontSize: 12),
                           ),

@@ -24,7 +24,8 @@ class LocaleKeys {
   static const Proceed ="Proceed";
   static const pincodeempty = "pincodeempty";
   static const view ="view";
-  
+  static const allServices ="allServices";
+  static const chooseServiceProvider ="chooseServiceProvider";
   static const paymentdetails = "paymentdetails";
   static const targetnumber ="targetnumber";
   static const fromaccount = "fromaccount";
@@ -159,10 +160,11 @@ class LocaleKeys {
 
 
   //statement
-  static const miniFullstatement ="miniFullstatement.minifullstatement";
+  static const miniFullstatement ="miniFullstatement.miniFullstatement";
   static const toptext ="miniFullstatement.toptext";
-  static const miniStatement =" miniFullstatement.miniStatement";
-  static const fullStatement =" miniFullstatement.fullStatement";
+  static const miniStatement ="miniFullstatement.miniStatement";
+  static const fullStatement ="miniFullstatement.fullStatement";
+  static const statement1 ="miniFullstatement.statement1";
   
 
   

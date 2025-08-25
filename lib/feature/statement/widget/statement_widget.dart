@@ -17,7 +17,7 @@ class StatementWidget extends StatelessWidget {
     return PageWrapper(
       body: CommonContainer(
         showDetail: false,
-        topbarName: LocaleKeys.miniFullstatement.tr(),
+        topbarName: LocaleKeys.statement1.tr(),
         detail: LocaleKeys.toptext.tr(),
         showRoundBotton: false,
         body: Column(
