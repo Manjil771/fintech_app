@@ -145,12 +145,16 @@ class _LoanWidgetState extends State<LoanWidget> {
                                                 .findValueString("balance"),
                                             axis: Axis.vertical,
                                           ),
-                                        LoanKeyValueTile(
-                                          title: "Duration",
-                                          value: response
-                                              .findValueString("duration"),
-                                          axis: Axis.vertical,
-                                        ),
+                                        if (response
+                                                .findValueString("duration")
+                                                .toLowerCase() !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Duration",
+                                            value: response
+                                                .findValueString("duration"),
+                                            axis: Axis.vertical,
+                                          ),
                                       ],
                                     ),
                                     Padding(
@@ -170,12 +174,16 @@ class _LoanWidgetState extends State<LoanWidget> {
                                                   "interestRate"),
                                               axis: Axis.vertical,
                                             ),
-                                          LoanKeyValueTile(
-                                            title: "Matures On",
-                                            value: response
-                                                .findValueString("maturesOn"),
-                                            axis: Axis.vertical,
-                                          ),
+                                          if (response
+                                                  .findValueString("maturesOn")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Matures On",
+                                              value: response
+                                                  .findValueString("maturesOn"),
+                                              axis: Axis.vertical,
+                                            ),
                                           if (response
                                                   .findValueString(
                                                       "disbursedAmount")
