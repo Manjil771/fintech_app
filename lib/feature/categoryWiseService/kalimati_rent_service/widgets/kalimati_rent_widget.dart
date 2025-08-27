@@ -147,7 +147,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
           topbarName: "Rent Service",
           showAccountSelection: true,
           accountTitle: LocaleKeys.fromaccount.tr(), 
-          buttonName: "Proceed",
+          buttonName: LocaleKeys.Proceed.tr(),
           title: "Kalimati Rent Service",
           detail: "From here you can pay the rent.",
           body: Form(

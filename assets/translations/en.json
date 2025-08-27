@@ -8,7 +8,7 @@
   "targetnumber":"Target Number",
   "fromaccount":"From Account",
   "cashback":"Cashback",
-  "pay": "Pay",
+  "pay": "Payment",
   "allServices": "All Services",
   "entersecurity": "Enter Security Pin",
   "enterPin": "Please enter your security pin to proceed",
@@ -166,7 +166,13 @@
     "miniStatement": "Mini Statement",
     "fullStatement": "Full Statement"
 
+    },
+    "internet":{
+      "internet":"Internet",
+      "internetFetchDetails":"Provide Username to fecth details and pay respective amount"
+    
     }
+
 
 
 

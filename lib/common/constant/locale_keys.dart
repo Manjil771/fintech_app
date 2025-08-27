@@ -165,6 +165,12 @@ class LocaleKeys {
   static const miniStatement ="miniFullstatement.miniStatement";
   static const fullStatement ="miniFullstatement.fullStatement";
   static const statement1 ="miniFullstatement.statement1";
+
+
+  //internet 
+
+  static const internet = "internet.internet";
+  static const internetFetchDetails = "internet.internetFetchDetails";
   
 
   

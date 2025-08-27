@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
@@ -80,7 +82,7 @@ class _TvPaymentDeatilWidgetState extends State<TvPaymentDeatilWidget> {
         showDetail: true,
         topbarName: widget.service.serviceCategoryName,
         title: widget.service.service,
-        buttonName: 'Proceed',
+        buttonName: LocaleKeys.Proceed.tr(),
         detail: widget.service.instructions,
         showAccountSelection: true,
         body: BlocListener<UtilityPaymentCubit, CommonState>(

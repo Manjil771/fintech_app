@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -85,7 +87,7 @@ class _TootlePaymentWidgetState extends State<TootlePaymentWidget> {
                     apiEndpoint: "/api/tootle/detail",
                   );
           },
-          buttonName: "Proceed",
+          buttonName: LocaleKeys.Proceed.tr(),
           title: "Ride Payment",
           topbarName: widget.service.service,
           body: Column(

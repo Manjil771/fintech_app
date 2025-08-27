@@ -145,6 +145,11 @@
       "fullStatement": "  पूर्ण स्टेटमेन्ट",
       "statement1": "स्टेटमेन्ट"
   
+      },
+      "internet":{
+        "internet":"Internet",
+        "internetFetchDetails":"भुक्तानी गर्न र सम्बन्धित रकम तिर्न विवरण ल्याउन प्रयोगकर्ता नाम प्रदान गर्नुहोस्"
+      
       }
 
 

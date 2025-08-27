@@ -94,7 +94,7 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
             showRoundBotton: true,
             showTitleText: true,
             showAccountSelection: true,
-            buttonName: 'Proceed',
+            buttonName: LocaleKeys.Proceed.tr(),
             accountTitle: LocaleKeys.fromaccount.tr(), 
             onButtonPressed: () {
               _formKey.currentState!.save();

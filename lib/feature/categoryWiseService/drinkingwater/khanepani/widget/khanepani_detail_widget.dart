@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/text_utils.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
@@ -132,7 +134,7 @@ class _KhanepaniDetailsWidgetsState extends State<KhanepaniDetailsWidgets> {
         ),
         showDetail: true,
         topbarName: widget.service.serviceCategoryName,
-        buttonName: "Proceed",
+        buttonName: LocaleKeys.Proceed.tr(),
         onButtonPressed: () {
           NavigationService.pushReplacement(
               target: CommonBillDetailPage(
