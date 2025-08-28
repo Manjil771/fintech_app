@@ -5916,13 +5916,13 @@ class CoOperativeValue {
     baseUrl: 'https://ismart.devanasoft.com.np/',
     bannerImage: "assets/sahayogi/sahayogi_banner.png",
     backgroundImage: "assets/sahayogi/sahayogi_background.png",
-    clientCode: 'DG7FMB1RL5',
-    clientSecret: "175291",
+    clientCode: 'RVV4EDMYST',
+    clientSecret: "173871",
     coOperativeLogo: 'assets/sahayogi/sahayogi_logo.png',
     splashImage: "assets/sahayogi/sahayogi_splash.png",
     primaryColor: const Color(0xFF008d40),
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = neela;
+  static final CoOperative currentCoop = kishankalyanCoop;
 }
