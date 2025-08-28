@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.40+70
+version: 1.5.34+64
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -53,7 +53,7 @@ dependencies:
   android_path_provider: ^0.3.1
   jiffy: "^6.2.1"
   awesome_notifications: ^0.10.0
-  package_info_plus: "^5.0.1"
+  package_info_plus: ^8.3.1
   uuid: ^4.5.1
   permission_handler: "^11.0.1"
   mobile_scanner: "^4.0.1"
@@ -90,6 +90,14 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
+    - assets/sahayogi/
+    # - assets/ujyalo/
+    # - assets/setogurans/
+    # - assets/satyeta/
+    # - assets/join/
+    # - assets/asaMulti/
+
+    # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
     # - assets/gaja/
     # - assets/arunjyoti/
@@ -236,7 +244,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    # - assets/sanchar/
+    - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
     # - assets/iconsoftCoop/
@@ -388,10 +396,11 @@ flutter:
     # - assets/sadasyaSewa/
     # - assets/aagraj/
     # - assets/karmashil/
-    # - assets/asaan/
+    - assets/asaan/
     # - assets/babylon/
+
     # - assets/shakambhari/
-    # - assets/tarkariphalafool/
+    - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -498,7 +507,7 @@ flutter:
     # - assets/shikhardeep/
     # - assets/sandus/
     # - assets/kasturi/
-    # - assets/ainchoPaincho/
+    - assets/ainchoPaincho/
     # - assets/nepal/
     # - assets/aniwarya/
     # - assets/universe/
