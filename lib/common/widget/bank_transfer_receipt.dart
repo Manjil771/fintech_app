@@ -138,16 +138,16 @@ class BankTransferReciptWidget extends StatelessWidget {
                             right: 0.wp,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.white,
                                 border: Border.all(
                                   color: Colors.grey.shade300,
                                   width: 1,
                                 ),
                                 borderRadius: BorderRadius.circular(8),
-                              ), // smooth corners
+                              ),
                               child: Padding(
                                 padding: EdgeInsets.symmetric(
                                   horizontal: 8.wp,
+                                  vertical: 4.hp,
                                 ),
                                 child: CustomCachedNetworkImage(
                                   url: imageUrl ?? '',
