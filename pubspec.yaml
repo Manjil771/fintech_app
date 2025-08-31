@@ -502,7 +502,7 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    - assets/kishanKalyan/
+    # - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/
@@ -520,7 +520,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    # - assets/skShankharpur/
+    - assets/skShankharpur/
     # - assets/skDharan/
     # - assets/sklakhanpur/
     # - assets/skDhankuta/

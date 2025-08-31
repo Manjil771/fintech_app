@@ -3,6 +3,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/text_utils.dart';
 
 class StatementDetailBox extends StatelessWidget {
   final bool isCredit;
@@ -64,7 +65,8 @@ class StatementDetailBox extends StatelessWidget {
                   Text(dateTime,
                       style: Theme.of(context).textTheme.labelMedium!.copyWith(
                           fontWeight: FontWeight.w700, color: Colors.black87)),
-                  Text(desc, style: Theme.of(context).textTheme.labelLarge),
+                  Text(TextUtils.fixEncodingIfNeeded(desc),
+                      style: Theme.of(context).textTheme.labelLarge),
                 ],
               ),
             ),
