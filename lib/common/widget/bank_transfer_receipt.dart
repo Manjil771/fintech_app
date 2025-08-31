@@ -123,10 +123,13 @@ class BankTransferReciptWidget extends StatelessWidget {
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(message,
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall),
+                                Flexible(
+                                  child: Text(message,
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall),
+                                ),
                               ],
                             ),
                             SizedBox(height: _height * 0.02),

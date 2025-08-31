@@ -161,10 +161,13 @@ class _CommonTransactionSuccessfulWidgetState
                             Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Text(widget.message,
-                                    textAlign: TextAlign.center,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall),
+                                Flexible(
+                                  child: Text(widget.message,
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall),
+                                ),
                               ],
                             ),
                             SizedBox(height: _height * 0.02),
@@ -244,7 +247,8 @@ class _CommonTransactionSuccessfulWidgetState
                                         Theme.of(context).textTheme.titleLarge),
                                 SizedBox(height: _height * 0.01),
                                 Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     Flexible(
