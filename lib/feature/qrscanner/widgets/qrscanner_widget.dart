@@ -299,6 +299,16 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     ),
                   ),
                 ),
+                // Positioned(
+                //     top: 17.h,
+                //     right: 15.w,
+                //     child: Text(
+                //       "This is the data iteam",
+                //       style: TextStyle(
+                //           fontSize: 20,
+                //           fontWeight: FontWeight.w700,
+                //           color: Colors.yellow),
+                //     )),
                 Positioned(
                   top: 0,
                   left: 0,

@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
@@ -25,6 +26,9 @@ class CategoryRepository {
         coOperative: coOperative,
         userRepository: userRepository);
   }
+  final ValueNotifier<bool> isRemitEnabled = ValueNotifier<bool>(false);
+  ValueNotifier<CategoryList?> remitCategory = ValueNotifier(null);
+
   Future<DataResponse<List<CategoryList>>> getCategoryList() async {
     List<CategoryList> _allServices = [];
     try {
@@ -57,7 +61,11 @@ class CategoryRepository {
 
         final _ = await ServiceHiveUtils.setUtilitiesServices(
             item: _allServices, slug: "wallet_service");
-
+        if (_allServices.any((category) => category.name == "Remittance")) {
+          remitCategory.value = _allServices
+              .firstWhere((category) => category.name == 'Remittance');
+          isRemitEnabled.value = true;
+        }
         return DataResponse.success(_allServices);
       } else {
         return DataResponse.error("error message");

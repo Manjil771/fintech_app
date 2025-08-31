@@ -5,7 +5,9 @@ import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart'
 import 'package:ismart/feature/utility_payment/resources/utility_payment_repository.dart';
 
 class ReceiveRemittancePage extends StatelessWidget {
-  const ReceiveRemittancePage({Key? key}) : super(key: key);
+  const ReceiveRemittancePage({
+    Key? key,
+  }) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
@@ -14,10 +16,8 @@ class ReceiveRemittancePage extends StatelessWidget {
               RepositoryProvider.of<UtilityPaymentRepository>(context))
         ..fetchDetails(
             serviceIdentifier: "",
-            accountDetails: {
-              "type": "recieve",
-            },
-            apiEndpoint: "api/remittance/listRemittance"),
+            accountDetails: {},
+            apiEndpoint: "api/remittance/list"),
       child: const ReceiveRemittanceWidget(),
     );
   }

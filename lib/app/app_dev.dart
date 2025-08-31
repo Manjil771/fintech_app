@@ -2,7 +2,6 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
@@ -54,33 +53,33 @@ class _AppDevState extends State<AppDev> {
       child: MultiBlocWrapper(
         env: widget.env,
         child: NotificationWrapper(
-          child: UpdateWrapper(
-            child: SessionTimeoutManager(
-              sessionConfig: sessionConfig,
-              child: GestureDetector(
-                behavior: HitTestBehavior.translucent,
-                onTap: () {
-                  final FocusScopeNode currentFocus = FocusScope.of(context);
+          // child: UpdateWrapper(
+          child: SessionTimeoutManager(
+            sessionConfig: sessionConfig,
+            child: GestureDetector(
+              behavior: HitTestBehavior.translucent,
+              onTap: () {
+                final FocusScopeNode currentFocus = FocusScope.of(context);
 
-                  if (!currentFocus.hasPrimaryFocus &&
-                      currentFocus.focusedChild != null) {
-                    FocusManager.instance.primaryFocus?.unfocus();
-                  }
-                },
-                child: MaterialApp(
-                  locale: context.locale,
-                  navigatorKey: NavigationService.navigationKey,
-                  supportedLocales: context.supportedLocales,
-                  localizationsDelegates: context.localizationDelegates,
-                  debugShowCheckedModeBanner: false,
-                  darkTheme: CustomTheme.lightTheme,
-                  theme: CustomTheme.lightTheme,
-                  title: widget.env.appTitle,
-                  initialRoute: Routes.root,
-                  onGenerateRoute: RouteGenerator.generateRoute,
-                ),
+                if (!currentFocus.hasPrimaryFocus &&
+                    currentFocus.focusedChild != null) {
+                  FocusManager.instance.primaryFocus?.unfocus();
+                }
+              },
+              child: MaterialApp(
+                locale: context.locale,
+                navigatorKey: NavigationService.navigationKey,
+                supportedLocales: context.supportedLocales,
+                localizationsDelegates: context.localizationDelegates,
+                debugShowCheckedModeBanner: false,
+                darkTheme: CustomTheme.lightTheme,
+                theme: CustomTheme.lightTheme,
+                title: widget.env.appTitle,
+                initialRoute: Routes.root,
+                onGenerateRoute: RouteGenerator.generateRoute,
               ),
             ),
+            // ),
           ),
         ),
       ),

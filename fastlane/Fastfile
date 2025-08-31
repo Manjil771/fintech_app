@@ -1,0 +1,42 @@
+# ios/fastlane/Fastfile
+default_platform(:ios)
+
+platform :ios do
+  desc "Build and upload to App Store Connect (TestFlight)"
+  lane :release do
+    # 1. Authenticate using the App Store Connect API Key
+    # These values will be passed as environment variables from Jenkins.
+    app_store_connect_api_key(
+      key_id: ENV['APPSTORE_KEY_ID'],
+      issuer_id: ENV['APPSTORE_ISSUER_ID'],
+      key_content: ENV['APPSTORE_KEY_CONTENT'], # Base64 encoded key content
+      is_key_content_base64: true,
+      duration: 1200 # Optional: session duration in seconds
+    )
+
+    # 2. Use 'fastlane match' to sync certificates and profiles
+    # The passphrase will be injected by Jenkins.
+    match(
+      type: "appstore",
+      app_identifier: "com.yourcompany.yourapp",
+      git_url: "URL_to_your_private_cert_repo.git",
+      readonly: true
+    )
+
+    # 3. Increment the build number in Xcode for a unique version
+    increment_build_number(
+      xcodeproj: "Runner.xcodeproj"
+    )
+
+    # 4. Build the Flutter app, generating the .ipa
+    # Go back to the root to run Flutter commands
+    Dir.chdir("../") do
+        sh("flutter", "build", "ipa", "--release", "--export-options-plist=ios/ExportOptions.plist")
+    end
+
+    # 5. Upload the .ipa file to App Store Connect
+    upload_to_app_store(
+        skip_waiting_for_build_processing: true # Don't let the CI job wait
+    )
+  end
+end

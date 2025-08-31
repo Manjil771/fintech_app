@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/update/model/appVersion.dart';
 import 'package:ismart/feature/update/model/app_update.dart';
 

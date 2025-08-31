@@ -16,8 +16,12 @@ import 'package:ismart/feature/categoryWiseService/kalimati_rent_service/screens
 import 'package:ismart/feature/chatBot/intermediate_chat_page.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/screen/homepage_money_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/allremittance_details_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_page.dart';
 import 'package:ismart/feature/smartloan/widget/smart_loan_banner_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
@@ -94,6 +98,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             height: 65.hp, child: const HomePageMoneyPage()),
                       if (!_shouldShowDifferentMenu)
                         Row(
+                          // mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
                             Expanded(
                                 child: InkWell(
@@ -105,8 +110,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               },
                               child: Container(
                                 alignment: Alignment.center,
-                                padding:
-                                    const EdgeInsets.symmetric(vertical: 7),
+                                padding: const EdgeInsets.symmetric(
+                                    vertical: 7, horizontal: 4),
                                 decoration: BoxDecoration(
                                     boxShadow: [
                                       BoxShadow(
@@ -131,23 +136,152 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                       ),
                                     ),
                                     SizedBox(width: _width * 0.02),
-                                    Text(
-                                      LocaleKeys.receiveMoney.tr(),
-                                      style: _textTheme.titleLarge!
-                                          .copyWith(fontSize: 12),
+                                    Flexible(
+                                      child: Text(
+                                        LocaleKeys.receiveMoney.tr(),
+                                        style: _textTheme.titleLarge!
+                                            .copyWith(fontSize: 12),
+                                      ),
                                     ),
                                   ],
                                 ),
                               ),
                             )),
-                            SizedBox(width: _width * 0.06),
-                            // ElevatedButton.icon(
-                            //     onPressed: () {
-                            //       NavigationService.push(
-                            //           target: KalimatiRentPage());
-                            //     },
-                            //     label: Text('Kali')),
-                            // SizedBox(width: _width * 0.02),
+                            SizedBox(width: _width * 0.03),
+                            ValueListenableBuilder<bool>(
+                              valueListenable:
+                                  RepositoryProvider.of<CategoryRepository>(
+                                          context)
+                                      .isRemitEnabled,
+                              builder: (context, isEnabled, _) {
+                                if (isEnabled) {
+                                  return Expanded(
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () {
+                                        NavigationService.push(
+                                          target: const ReceiveRemittancePage(),
+                                        );
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 7, horizontal: 4),
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color:
+                                                    Colors.grey.withAlpha(75),
+                                                offset: const Offset(7, 7),
+                                                blurRadius: 8,
+                                                spreadRadius: -5,
+                                              ),
+                                            ],
+                                            color: CustomTheme.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor: _theme
+                                                  .primaryColor
+                                                  .withOpacity(0.05),
+                                              child: SvgPicture.asset(
+                                                Assets.reveiceMoneyIcon,
+                                                height: 18.hp,
+                                                color: _theme.primaryColor,
+                                              ),
+                                            ),
+                                            SizedBox(width: _width * 0.02),
+                                            Flexible(
+                                              child: Text(
+                                                "Remit",
+                                                style: _textTheme.titleLarge!
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+
+                                return const SizedBox.shrink();
+                              },
+                            ),
+                            // FutureBuilder(
+                            //   future: Future.value(context
+                            //       .read<CategoryRepository>()
+                            //       .getCategoryList()),
+                            //   builder: (context, snapshot) {
+                            //     final bool isRemitVisible = snapshot.data?.data
+                            //             ?.any((category) =>
+                            //                 category.name == "Remittance") ??
+                            //         false;
+                            //     final remitCategory =
+                            //         snapshot.data?.data?.firstWhere(
+                            //       (category) => category.name == "Remittance",
+                            //     );
+                            //     if (!isRemitVisible)
+                            //       return const SizedBox.shrink();
+                            //     return Expanded(
+                            //       child: InkWell(
+                            //         borderRadius: BorderRadius.circular(12),
+                            //         onTap: () {
+                            //           NavigationService.push(
+                            //             target: ReceiveRemittancePage(
+                            //               categoryList: remitCategory!,
+                            //             ),
+                            //           );
+                            //         },
+                            //         child: Container(
+                            //           alignment: Alignment.center,
+                            //           padding: const EdgeInsets.symmetric(
+                            //               vertical: 7, horizontal: 4),
+                            //           decoration: BoxDecoration(
+                            //               boxShadow: [
+                            //                 BoxShadow(
+                            //                   color: Colors.grey.withAlpha(75),
+                            //                   offset: const Offset(7, 7),
+                            //                   blurRadius: 8,
+                            //                   spreadRadius: -5,
+                            //                 ),
+                            //               ],
+                            //               color: CustomTheme.white,
+                            //               borderRadius:
+                            //                   BorderRadius.circular(8)),
+                            //           child: Row(
+                            //             mainAxisAlignment:
+                            //                 MainAxisAlignment.center,
+                            //             children: [
+                            //               CircleAvatar(
+                            //                 backgroundColor: _theme.primaryColor
+                            //                     .withOpacity(0.05),
+                            //                 child: SvgPicture.asset(
+                            //                   Assets.reveiceMoneyIcon,
+                            //                   height: 18.hp,
+                            //                   color: _theme.primaryColor,
+                            //                 ),
+                            //               ),
+                            //               SizedBox(width: _width * 0.02),
+                            //               Flexible(
+                            //                 child: Text(
+                            //                   "Remit",
+                            //                   style: _textTheme.titleLarge!
+                            //                       .copyWith(fontSize: 12),
+                            //                 ),
+                            //               ),
+                            //             ],
+                            //           ),
+                            //         ),
+                            //       ),
+                            //     );
+                            //   },
+                            // ),
+                            SizedBox(width: _width * 0.03),
                             Expanded(
                               child: InkWell(
                                 borderRadius: BorderRadius.circular(12),
@@ -157,8 +291,8 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                 },
                                 child: Container(
                                   alignment: Alignment.center,
-                                  padding:
-                                      const EdgeInsets.symmetric(vertical: 7),
+                                  padding: const EdgeInsets.symmetric(
+                                      vertical: 7, horizontal: 4),
                                   decoration: BoxDecoration(
                                       boxShadow: [
                                         BoxShadow(
@@ -183,10 +317,12 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                         ),
                                       ),
                                       SizedBox(width: _width * 0.02),
-                                      Text(
-                                        LocaleKeys.sendMoney.tr(),
-                                        style: _textTheme.titleLarge!
-                                            .copyWith(fontSize: 12),
+                                      Flexible(
+                                        child: Text(
+                                          LocaleKeys.sendMoney.tr(),
+                                          style: _textTheme.titleLarge!
+                                              .copyWith(fontSize: 12),
+                                        ),
                                       ),
                                     ],
                                   ),
@@ -296,9 +432,10 @@ class _HomePageWidgetState extends State<HomePageWidget> {
 
   onButtonPressed() {
     context.read<UtilityPaymentCubit>().fetchDetailsPost(
-        serviceIdentifier: "",
-        accountDetails: {},
-        apiEndpoint: "api/ai/create");
+          serviceIdentifier: "",
+          accountDetails: {},
+          apiEndpoint: "api/ai/create",
+        );
   }
 }
 

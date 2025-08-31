@@ -143,6 +143,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                 "${showValidAccount[index].clientCode}"),
                                             detailROw(context, "Acc Number",
                                                 "${showValidAccount[index].mainCode}"),
+                                            detailROw(context, "Acc Type",
+                                                "${(showValidAccount[index].accountTypeDescription.isEmpty) ? showValidAccount[index].accountType : showValidAccount[index].accountTypeDescription}"),
                                             if (showValidAccount[index]
                                                         .interestRate !=
                                                     "0" ||
@@ -191,7 +193,7 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .of<CoOperative>(context)
                                                 .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount NUmber: ${showValidAccount[index].mainCode} \nBank Name: $bankName \nBranch Name: ${showValidAccount[index].branchName} ',
+                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount Number: ${showValidAccount[index].mainCode} \nCoop Name: ${customerDetail.value?.bank} \nBranch Name: ${showValidAccount[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,

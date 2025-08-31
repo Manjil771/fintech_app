@@ -48,10 +48,14 @@ class FullStatementRepository {
     required String accountNumber,
     required DateTime fromDate,
     required DateTime toDate,
+    required bool pdfDownload,
   }) async {
     try {
       final _res = await fullStatementAPIProvider.fetchFullStatement(
-          accountNumber: accountNumber, fromDate: fromDate, toDate: toDate);
+          accountNumber: accountNumber,
+          fromDate: fromDate,
+          toDate: toDate,
+          pdfDownload: pdfDownload);
       print(_res.toString());
 
       if (_res['data']['details'] != null) {
