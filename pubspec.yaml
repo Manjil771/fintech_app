@@ -88,7 +88,7 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
-    # - assets/sahayogi/
+    - assets/sahayogi/
     # - assets/ujyalo/
     # - assets/setogurans/
     # - assets/satyeta/
@@ -102,7 +102,7 @@ flutter:
     # - assets/paryatan/
     # - assets/ekata/
     # - assets/sadasyaSewa/
-    - assets/neela/
+    # - assets/neela/
     # - assets/nhugupala/
     # - assets/shreegorakhkali/
     # - assets/kunchhal/
@@ -124,7 +124,7 @@ flutter:
     # - assets/maaLaxmi/
     # - assets/kanchanCoop/
     # - assets/janapremi/
-    # - assets/nawayuba/
+    - assets/nawayuba/
     # - assets/manipur/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
@@ -151,7 +151,7 @@ flutter:
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
-    # - assets/sahayatri/
+    - assets/sahayatri/
     # - assets/janak/
     # - assets/adhikosh/
     # - assets/lapha/
@@ -242,7 +242,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    - assets/sanchar/
+    # - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
     # - assets/iconsoftCoop/
