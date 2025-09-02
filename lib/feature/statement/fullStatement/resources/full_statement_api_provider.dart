@@ -20,12 +20,13 @@ class FullStatementAPIProvider {
     required String accountNumber,
     required DateTime fromDate,
     required DateTime toDate,
+    required bool pdfDownload,
   }) async {
     final _body = {
       "accountNumber": accountNumber,
       "fromDate": "${fromDate.year}-${fromDate.month}-${fromDate.day}",
       "toDate": "${toDate.year}-${toDate.month}-${toDate.day}",
-      "pdf": true
+      "pdf": pdfDownload
     };
     print("loading");
     final _uri = UrlUtils.getUri(

@@ -27,9 +27,14 @@ class LoadWalletFormWidget extends StatefulWidget {
   final String? phoneNumber;
   final WalletModel selectedWallet;
   final String? remarks;
+  final String? imageUrl;
 
   const LoadWalletFormWidget(
-      {Key? key, required this.selectedWallet, this.phoneNumber, this.remarks})
+      {Key? key,
+      required this.selectedWallet,
+      this.phoneNumber,
+      this.remarks,
+      this.imageUrl})
       : super(key: key);
 
   @override
@@ -103,6 +108,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 if (state.data.code == "M0000") {
                   NavigationService.pushReplacement(
                       target: CommonTransactionSuccessPage(
+                          imageUrl: widget.imageUrl,
                           serviceName: "Load Wallet",
                           body: Column(children: [
                             KeyValueTile(

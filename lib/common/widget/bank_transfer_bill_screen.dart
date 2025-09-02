@@ -130,6 +130,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
           if (state is CommonStateSuccess) {
             NavigationService.pushReplacement(
               target: BankTransferReciptPage(
+                imageUrl: widget.iamgeUrl.toString(),
                 transactionID: state.data.toString(),
                 body: widget.body,
                 message: "Transaction Success for the Service",
@@ -208,7 +209,6 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
                         NavigationService.push(target: TransactionPinScreen(
                           onValueCallback: (p0) {
                             NavigationService.pop();
-
                             context.read<SendToBankCubit>().sendMoneyToBank(
                                   otp: widget.otp,
                                   charge: widget.charge ?? "",

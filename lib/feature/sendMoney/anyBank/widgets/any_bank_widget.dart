@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -209,6 +210,10 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                 title: "Remarks",
                                 value: _remarksController.text,
                               ),
+                              KeyValueTile(
+                                  title: "Date and Time",
+                                  value: DateFormat('dd-MM-yyyy hh:mm a')
+                                      .format(DateTime.now())),
                             ]),
                             serviceName: "Bank Transfer",
                             message:

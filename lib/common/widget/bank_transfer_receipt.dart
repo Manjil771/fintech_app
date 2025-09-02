@@ -1,14 +1,18 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
@@ -18,6 +22,7 @@ import 'package:ismart/feature/history/resources/recent_transaction_repository.d
 
 class BankTransferReciptPage extends StatelessWidget {
   final Widget body;
+  final String? imageUrl;
   final String message;
   final ServiceList? service;
   final String transactionID;
@@ -28,6 +33,7 @@ class BankTransferReciptPage extends StatelessWidget {
   const BankTransferReciptPage(
       {super.key,
       required this.body,
+      this.imageUrl,
       required this.message,
       this.service,
       required this.transactionID,
@@ -44,6 +50,7 @@ class BankTransferReciptPage extends StatelessWidget {
         ..generateUrl(transactionId: transactionID),
       child: BankTransferReciptWidget(
         body: body,
+        imageUrl: imageUrl,
         transactionID: transactionID,
         message: message,
         service: service,
@@ -54,6 +61,7 @@ class BankTransferReciptPage extends StatelessWidget {
 
 class BankTransferReciptWidget extends StatelessWidget {
   final Widget body;
+  final String? imageUrl;
   final String message;
   final String transactionID;
 
@@ -61,6 +69,7 @@ class BankTransferReciptWidget extends StatelessWidget {
   const BankTransferReciptWidget({
     super.key,
     required this.body,
+    this.imageUrl,
     required this.message,
     required this.service,
     required this.transactionID,
@@ -86,23 +95,74 @@ class BankTransferReciptWidget extends StatelessWidget {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SvgPicture.asset(
-                      Assets.successIcon,
-                      height: _height * 0.08,
+                    Stack(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // SvgPicture.asset(
+                            //   Assets.successIcon,
+                            //   height: _height * 0.08,
+                            // ),
+                            CustomCachedNetworkImage(
+                              url: RepositoryProvider.of<CoOperative>(context)
+                                  .coOperativeLogo
+                                  .toString(),
+                              fit: BoxFit.fitHeight,
+                              height: _height * 0.08,
+                            ),
+                            SizedBox(height: _height * 0.02),
+                            const Text(
+                              "Transaction Successful",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: _height * 0.02),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(message,
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: _height * 0.02),
+                          ],
+                        ),
+                        if (imageUrl != null)
+                          Positioned(
+                            bottom: 0,
+                            right: 0.wp,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey.shade300,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                  horizontal: 8.wp,
+                                  vertical: 4.hp,
+                                ),
+                                child: CustomCachedNetworkImage(
+                                  url: imageUrl ?? '',
+                                  fit: BoxFit.contain,
+                                  height: 30.hp,
+                                  width: 30.wp,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
-                    SizedBox(height: _height * 0.02),
-                    const Text(
-                      "Transaction Successful",
-                      style: TextStyle(
-                          fontSize: 20,
-                          color: Colors.black,
-                          fontWeight: FontWeight.w500),
-                    ),
-                    SizedBox(height: _height * 0.02),
-                    Text(message,
-                        textAlign: TextAlign.center,
-                        style: Theme.of(context).textTheme.titleSmall),
-                    SizedBox(height: _height * 0.02),
                     const Divider(thickness: 1),
                     SizedBox(height: _height * 0.02),
                     Container(
@@ -119,8 +179,32 @@ class BankTransferReciptWidget extends StatelessWidget {
                           Text("Payment Details",
                               style: Theme.of(context).textTheme.titleLarge),
                           SizedBox(height: _height * 0.01),
-                          KeyValueTile(
-                              title: "Transaction ID", value: transactionID),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Flexible(
+                                child: KeyValueTile(
+                                    bottomPadding: 0,
+                                    title: "Transaction ID",
+                                    value: transactionID),
+                              ),
+                              IconButton(
+                                icon: Icon(
+                                  Icons.copy,
+                                  size: 18.hp,
+                                ),
+                                tooltip: 'Copy Transaction ID',
+                                onPressed: () async {
+                                  await Clipboard.setData(
+                                      ClipboardData(text: transactionID));
+                                  SnackBarUtils.showSuccessBar(
+                                      context: context,
+                                      message: "Transaction ID copied!");
+                                },
+                              )
+                            ],
+                          ),
                           body,
                         ],
                       ),
@@ -131,7 +215,6 @@ class BankTransferReciptWidget extends StatelessWidget {
                         onPressed: () {
                           NavigationService.pushReplacementNamed(
                               routeName: Routes.dashboard);
-
                           // NavigationService.pushReplacement(
                           //     target: const DashboardPage());
                         }),

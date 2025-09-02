@@ -80,6 +80,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
           if (state is CommonDataFetchSuccess<CategoryList>) {
             _categoryList = state.data;
+            _categoryList
+                .removeWhere((category) => category.name == "Remittance");
           }
         },
         builder: (context, state) {
@@ -96,7 +98,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               itemLength = _categoryList.length;
             }
           }
-
           if (itemLength > 0)
             return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),

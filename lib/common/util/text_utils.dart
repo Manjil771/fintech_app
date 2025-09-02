@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
 enum TextSizeType { Width, Height }
@@ -19,6 +21,19 @@ class TextUtils {
       'firstname': fname,
       'lastname': lname,
     };
+  }
+
+  static String fixEncodingIfNeeded(String input) {
+    final nepaliOrEnglish = RegExp(r'^[\u0900-\u097Fa-zA-Z0-9\s.,!?-]+$');
+    if (nepaliOrEnglish.hasMatch(input)) {
+      return input;
+    } else {
+      try {
+        return utf8.decode(latin1.encode(input));
+      } catch (e) {
+        return input;
+      }
+    }
   }
 
   static String get generateGreet {

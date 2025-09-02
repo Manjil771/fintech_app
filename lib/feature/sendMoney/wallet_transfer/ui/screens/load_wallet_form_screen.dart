@@ -9,9 +9,14 @@ import 'package:ismart/feature/sendMoney/wallet_transfer/ui/widgets/load_wallet_
 class LoadWalletFormScreen extends StatelessWidget {
   final String? phoneNumber;
   final String? remarks;
+  final String? imageUrl;
 
   const LoadWalletFormScreen(
-      {Key? key, required this.selectedWallet, this.phoneNumber, this.remarks})
+      {Key? key,
+      required this.selectedWallet,
+      this.phoneNumber,
+      this.remarks,
+      this.imageUrl})
       : super(key: key);
 
   final WalletModel selectedWallet;
@@ -33,6 +38,7 @@ class LoadWalletFormScreen extends StatelessWidget {
         )
       ],
       child: LoadWalletFormWidget(
+        imageUrl: imageUrl,
         remarks: remarks,
         phoneNumber: phoneNumber,
         selectedWallet: selectedWallet,
