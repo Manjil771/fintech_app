@@ -322,6 +322,17 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           apiEndpoint: "/api/otp/request",
                         );
                   }
+                  // else {
+                  //   showPopUpDialog(
+                  //     context: context,
+                  //     message: "",
+                  //     title: "Error",
+                  //     buttonCallback: () {
+                  //       NavigationService.pop();
+                  //     },
+                  //     showCancelButton: false,
+                  //   );
+                  // }
                 } else if (state is CommonError) {
                   showPopUpDialog(
                     context: context,

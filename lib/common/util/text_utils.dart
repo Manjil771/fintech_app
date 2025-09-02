@@ -64,6 +64,24 @@ class TextUtils {
     return (value?.toString() ?? "").isNotEmpty ? value.toString() : "-";
   }
 
+  static String extractFineStatus([double? amount, String? status]) {
+    if (amount == null ||
+        amount <= 0 ||
+        status == null ||
+        status.trim().isEmpty) {
+      return "-";
+    }
+    final String firstLetter = status[0];
+    final RegExp regex = RegExp(r'(\d+(\.\d+)?)%');
+    final Match? match = regex.firstMatch(status);
+    if (match == null) return "-";
+
+    final double percent = double.tryParse(match.group(1)!) ?? 0;
+    if (percent == 0) return "-";
+    final double result = (percent * amount) / 100;
+    return "($firstLetter) ${result.toStringAsFixed(1)}";
+  }
+
   static String formatTemplateMessage(
       {required String templateMessage,
       String recipientName = "",
