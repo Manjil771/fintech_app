@@ -72,8 +72,11 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
     {"key": "interest", "title": "Interest"},
     {"key": "rebate", "title": "Rebate"},
     {"key": "penalty", "title": "Penalty"},
+    {"key": "principleBalance", "title": "Principle Balance"},
+    {"key": "fine", "title": "Fine"},
     // {"key": "discount", "title": "Discount"},
-    {"key": "payment", "title": "Payment"}
+    {"key": "payment", "title": "Payment"},
+    {"key": "lin", "title": "Lin"},
   ];
 
   @override
