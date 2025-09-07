@@ -5,6 +5,7 @@ import 'package:ismart/feature/appServiceManagement/resource/app_service_reposit
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
 import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 part 'startup_state.dart';
 
@@ -28,15 +29,20 @@ class StartupCubit extends Cubit<StartupState> {
     await startUpRepository.fetchdefaultBannerImages();
     await bannerRepository.fetchBannerImages(bannerImageType: "OfferBanner");
     await startUpRepository.getAppService();
+    bool isVpnConnected = await VpnConnectionDetector.isVpnActive();
 
     if (isFirstTime) {
       await SharedPref.setFirstTimeAppOpen(false);
     }
     Future.delayed(const Duration(milliseconds: 800));
-    emit(StartupSuccess(
-      isFirstTime: isFirstTime,
-      isLogged: userRepository.isLoggedIn.value,
-      // isLogged: true,
-    ));
+    if (isVpnConnected) {
+      VpnDetected();
+    } else {
+      emit(StartupSuccess(
+        isFirstTime: isFirstTime,
+        isLogged: userRepository.isLoggedIn.value,
+        // isLogged: true,
+      ));
+    }
   }
 }

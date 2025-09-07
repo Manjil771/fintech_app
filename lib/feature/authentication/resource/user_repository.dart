@@ -14,12 +14,12 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
-import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class UserRepository {
   ApiProvider apiProvider;
@@ -56,12 +56,24 @@ class UserRepository {
     return Color(int.parse(hex.replaceFirst("0x", ""), radix: 16));
   }
 
-  // Future<void> fetchAppColor(String clientId) async {
-  //  final response = await apiProvider.get(Uri.parse("${env.baseUrl}/app-config/$clientId"),
-  //       userId: 0);
+  Color parseHexColorServer(String hexColor) {
+    hexColor = hexColor.replaceFirst('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor';
+    }
+    return Color(int.parse(hexColor, radix: 16));
+  }
 
-  //    final colorHex =
-  // }
+  Future<void> fetchAppColor(String clientId) async {
+    final response = await apiProvider
+        .get(Uri.parse("${env.baseUrl}/app-config/$clientId"), userId: 0);
+    final UtilityResponseData _responseData =
+        UtilityResponseData.fromJson(response['data'] ?? {});
+    final color = _responseData.findValue(primaryKey: 'ibankingPrimaryColor');
+    if (color != null) {
+      CustomTheme().initializeTheme(parseHexColorServer(color));
+    }
+  }
 
   updateCoopValue(LoginCoOpValue coop) {
     if (!RepositoryProvider.of<CoOperative>(NavigationService.context)
@@ -83,6 +95,12 @@ class UserRepository {
       } catch (e) {
         print("Invalid color format for clientId: ${coop.clientId}, error: $e");
         CustomTheme().initializeTheme(CustomTheme.testAppColor);
+      }
+    } else {
+      try {
+        fetchAppColor(coop.clientId);
+      } catch (e) {
+        print("Switch to dynamic coop color failed!");
       }
     }
 
