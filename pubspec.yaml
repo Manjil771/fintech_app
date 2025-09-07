@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.33+63
+version: 1.5.31+61
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -90,14 +90,15 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
-    - assets/sahayogi/
+    # - assets/shikhar/
+    # - assets/sahayogi/
     # - assets/ujyalo/
     # - assets/setogurans/
     # - assets/satyeta/
     # - assets/join/
     # - assets/asaMulti/
 
-    # - assets/janakalyanbahumukhi/
+    - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
     # - assets/gaja/
     # - assets/arunjyoti/
@@ -110,6 +111,7 @@ flutter:
     # - assets/kunchhal/
     # - assets/samajkalyan/
     # - assets/sahayatripokhara/
+    # - assets/manakamana/
     # - assets/patan/
     # - assets/pariwortan/
     # - assets/santaneshwornaudhara/
@@ -126,7 +128,7 @@ flutter:
     # - assets/maaLaxmi/
     # - assets/kanchanCoop/
     # - assets/janapremi/
-    - assets/nawayuba/
+    # - assets/nawayuba/
     # - assets/manipur/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
@@ -153,7 +155,7 @@ flutter:
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
-    - assets/sahayatri/
+    # - assets/sahayatri/
     # - assets/janak/
     # - assets/adhikosh/
     # - assets/lapha/
@@ -520,7 +522,7 @@ flutter:
     # - assets/skKohabara/
     # - assets/skPatigaun/
     # - assets/skJhurkiya/
-    - assets/skShankharpur/
+    # - assets/skShankharpur/
     # - assets/skDharan/
     # - assets/sklakhanpur/
     # - assets/skDhankuta/

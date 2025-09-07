@@ -2604,6 +2604,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        shikhar {
+            dimension "app"
+            applicationId "com.devanasoft.shikhar"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

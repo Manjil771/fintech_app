@@ -5924,5 +5924,20 @@ class CoOperativeValue {
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = sahayatriCoop;
+  static final CoOperative shikhar = CoOperative(
+    //aps
+    appStoreID: "com.devanasoft.shikhar",
+    packageName: "com.devanasoft.shikhar",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shikhar/shikhar_banner.png",
+    backgroundImage: "assets/shikhar/shikhar_background.png",
+    clientCode: 'BBTOM544KH',
+    clientSecret: "203362",
+    coOperativeLogo: 'assets/shikhar/shikhar_logo.png',
+    splashImage: "assets/shikhar/shikhar_splash.png",
+    primaryColor: const Color(0xFF070b63),
+    coOperativeName: "Shikhar saving & Credit Co- operative Society Ltd",
+    appTitle: 'Shikhar iSmart',
+  );
+  static final CoOperative currentCoop = janakalyanbahumukhi;
 }
