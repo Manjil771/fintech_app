@@ -303,7 +303,11 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                       children: [
                         customKeyValue(title: "Service", value: r.service),
                         customKeyValue(
-                            title: "From Account", value: r.accountNumber),
+                            title: "Branch Code",
+                            value: r.accountNumber.substring(0, 3)),
+                        customKeyValue(
+                            title: "Account",
+                            value: r.accountNumber.substring(3)),
                         customKeyValue(
                             title: "Charge", value: r.charge.toString()),
                         customKeyValue(
@@ -596,4 +600,3 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
 //               ),
 //             ),
 //           );
-  

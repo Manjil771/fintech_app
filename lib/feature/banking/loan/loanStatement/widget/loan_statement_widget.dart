@@ -65,17 +65,17 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
     {"key": "tranDate", "title": "Tran Date"},
     {"key": "interestDate", "title": "Interest Date"},
     {"key": "description", "title": "Description"},
-    {"key": "issuedAmount", "title": "Issued Amount"},
-    {"key": "principalDebit", "title": "Principal Debit"},
-    {"key": "principalCredit", "title": "Principal Credit"},
     {"key": "principle balance", "title": "Balance"},
+    {"key": "payment", "title": "Payment"},
+    {"key": "issuedAmount", "title": "Issued Amount"},
     {"key": "interest", "title": "Interest"},
     {"key": "rebate", "title": "Rebate"},
     {"key": "penalty", "title": "Penalty"},
     {"key": "principleBalance", "title": "Principle Balance"},
     {"key": "fine", "title": "Fine"},
     // {"key": "discount", "title": "Discount"},
-    {"key": "payment", "title": "Payment"},
+    {"key": "principalDebit", "title": "Principal Debit"},
+    {"key": "principalCredit", "title": "Principal Credit"},
     {"key": "lin", "title": "Lin"},
   ];
 
@@ -245,8 +245,10 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                 columnSpacing: _width / 5,
                                 columns: [
                                   const DataColumn(label: Text('SN')),
-                                  ...availableValues.map((e) =>
-                                      DataColumn(label: Text(e['title'])))
+                                  for (var data in allData)
+                                    if (firstItem[data['key']] != 'N/A' &&
+                                        firstItem[data['key']] != null)
+                                      DataColumn(label: Text(data['title']))
 
                                   // const DataColumn(
                                   //     label: Text(
@@ -283,9 +285,12 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                                                   .withOpacity(0.03)),
                                       cells: [
                                         DataCell(Text("${index + 1}")),
-                                        ...availableValues.map((e) => DataCell(
-                                            Text(_response[index][e['key']]
-                                                .toString()))),
+                                        for (var data in allData)
+                                          if (firstItem[data['key']] != 'N/A' &&
+                                              firstItem[data['key']] != null)
+                                            DataCell(Text(_response[index]
+                                                    [data['key']]
+                                                .toString())),
                                         // DataCell(Text(_response[index]
                                         //         ['tranDate'] ??
                                         //     '')),

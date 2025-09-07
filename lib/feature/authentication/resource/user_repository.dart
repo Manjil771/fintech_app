@@ -14,6 +14,7 @@ import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/device_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
+import 'package:ismart/common/util/url_utils.dart';
 import 'package:ismart/feature/authentication/enum/login_response_value.dart';
 import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
@@ -54,6 +55,13 @@ class UserRepository {
   Color parseColor(String hex) {
     return Color(int.parse(hex.replaceFirst("0x", ""), radix: 16));
   }
+
+  // Future<void> fetchAppColor(String clientId) async {
+  //  final response = await apiProvider.get(Uri.parse("${env.baseUrl}/app-config/$clientId"),
+  //       userId: 0);
+
+  //    final colorHex =
+  // }
 
   updateCoopValue(LoginCoOpValue coop) {
     if (!RepositoryProvider.of<CoOperative>(NavigationService.context)

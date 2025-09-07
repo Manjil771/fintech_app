@@ -5,6 +5,7 @@ import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -290,7 +291,10 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                 ],
               );
             } else {
-              return Container();
+              return const NoDataScreen(
+                title: 'No data found.',
+                details: "",
+              );
             }
           },
         ),
