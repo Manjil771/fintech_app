@@ -93,7 +93,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
-
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
   }

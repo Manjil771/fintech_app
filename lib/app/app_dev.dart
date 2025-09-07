@@ -66,18 +66,24 @@ class _AppDevState extends State<AppDev> {
                   FocusManager.instance.primaryFocus?.unfocus();
                 }
               },
-              child: MaterialApp(
-                locale: context.locale,
-                navigatorKey: NavigationService.navigationKey,
-                supportedLocales: context.supportedLocales,
-                localizationsDelegates: context.localizationDelegates,
-                debugShowCheckedModeBanner: false,
-                darkTheme: CustomTheme.lightTheme,
-                theme: CustomTheme.lightTheme,
-                title: widget.env.appTitle,
-                initialRoute: Routes.root,
-                onGenerateRoute: RouteGenerator.generateRoute,
-              ),
+              child: ValueListenableBuilder(
+                  valueListenable: CustomTheme.primaryColorNotifier,
+                  builder: (context, primaryColor, child) {
+                    return MaterialApp(
+                      locale: context.locale,
+                      navigatorKey: NavigationService.navigationKey,
+                      supportedLocales: context.supportedLocales,
+                      localizationsDelegates: context.localizationDelegates,
+                      debugShowCheckedModeBanner: false,
+                      darkTheme: CustomTheme.lightTheme
+                          .copyWith(primaryColor: primaryColor),
+                      theme: CustomTheme.lightTheme
+                          .copyWith(primaryColor: primaryColor),
+                      title: widget.env.appTitle,
+                      initialRoute: Routes.root,
+                      onGenerateRoute: RouteGenerator.generateRoute,
+                    );
+                  }),
             ),
             // ),
           ),

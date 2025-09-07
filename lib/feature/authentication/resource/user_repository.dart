@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/coop_color.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
@@ -48,6 +51,10 @@ class UserRepository {
     }
   }
 
+  Color parseColor(String hex) {
+    return Color(int.parse(hex.replaceFirst("0x", ""), radix: 16));
+  }
+
   updateCoopValue(LoginCoOpValue coop) {
     if (!RepositoryProvider.of<CoOperative>(NavigationService.context)
         .shouldValidateCooperative) {
@@ -60,9 +67,19 @@ class UserRepository {
         _baseUrl + coop.banner.replaceFirst("/", "");
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientCode =
         coop.clientId;
+
+    if (CoopColor.Coopcolors.containsKey(coop.clientId)) {
+      try {
+        final color = parseColor(CoopColor.Coopcolors[coop.clientId]!);
+        CustomTheme().initializeTheme(color);
+      } catch (e) {
+        print("Invalid color format for clientId: ${coop.clientId}, error: $e");
+        CustomTheme().initializeTheme(CustomTheme.testAppColor);
+      }
+    }
+
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientSecret =
         coop.clientSecret;
-
     RepositoryProvider.of<CoOperative>(NavigationService.context)
         .coOperativeName = coop.bank;
     RepositoryProvider.of<CoOperative>(NavigationService.context)
