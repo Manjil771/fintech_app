@@ -11,8 +11,6 @@ class StartupInitial extends StartupState {}
 
 class StartupLoading extends StartupState {}
 
-class VpnDetected extends StartupState {}
-
 class StartupSuccess extends StartupState {
   final bool isFirstTime;
   final bool isLogged;

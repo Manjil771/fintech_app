@@ -53,17 +53,6 @@ class _SplashWidgetState extends State<SplashWidget> {
             }
           });
         }
-        if (state is VpnDetected) {
-          showPopUpDialog(
-              context: context,
-              showCancelButton: false,
-              title: 'VPN detected',
-              message:
-                  'Please disable the VPN!For your protection and to ensure secure transactions, please disable VPN before continuing.',
-              buttonCallback: () {
-                SystemNavigator.pop();
-              });
-        }
       },
       child: Scaffold(
         // backgroundColor: CustomTheme.testAppColor,

@@ -163,7 +163,7 @@ class CoOperativeValue {
 
 //  DEV TEST700746
   static final CoOperative devLive = CoOperative(
-    backgroundImage: "assets/images/ismart_background_image.jpg",
+    backgroundImage: "assets/global_background.png",
     bannerImage: "assets/images/ismart_banner.png",
     coOperativeLogo: Assets.ismartLogo,
     clientCode: 'EHVNI7CZJ3',
@@ -5924,5 +5924,5 @@ class CoOperativeValue {
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = shubhaSandeshCoop;
 }

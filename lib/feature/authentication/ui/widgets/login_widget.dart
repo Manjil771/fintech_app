@@ -25,6 +25,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
@@ -46,6 +47,7 @@ import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -102,6 +104,27 @@ class _LoginWidgetState extends State<LoginWidget> {
     return _existingPhoneNumber;
   }
 
+  Future<void> checkVpnActivation() async {
+    final bool isVpnConnected = await VpnConnectionDetector.isVpnActive();
+    if (isVpnConnected) {
+      showPopUpDialog(
+          cancelButtonCallback: () {
+            SystemNavigator.pop();
+          },
+          context: context,
+          buttonText: 'Retry',
+          title: 'Possible VPN detected!',
+          message:
+              'For your protection and to ensure secure transactions, please disable VPN before continuing and retry.',
+          buttonCallback: () async {
+            await Future.delayed(const Duration(seconds: 2));
+            if (await VpnConnectionDetector.isVpnActive()) {
+              Future.microtask(() => checkVpnActivation());
+            }
+          });
+    }
+  }
+
   final List myBanners = [];
   @override
   void initState() {
@@ -114,6 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     // appService =
     // RepositoryProvider.of<AppServiceRepository>(context).appService;
     getLoginStatus();
+    checkVpnActivation();
     super.initState();
   }
 
