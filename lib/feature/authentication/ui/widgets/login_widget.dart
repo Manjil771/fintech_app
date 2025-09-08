@@ -256,10 +256,15 @@ class _LoginWidgetState extends State<LoginWidget> {
               );
             }
           } else if (state is CommonError) {
-            SnackBarUtils.showErrorBar(
-              context: context,
-              message: state.message,
-            );
+            showPopUpDialog(
+                context: context,
+                showCancelButton: false,
+                buttonText: 'Okay',
+                title: 'Unauthorized!',
+                message: state.message,
+                buttonCallback: () async {
+                  NavigationService.pop();
+                });
           }
         },
         child: ListView(

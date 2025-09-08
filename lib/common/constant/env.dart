@@ -5924,5 +5924,5 @@ class CoOperativeValue {
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative currentCoop = devLive;
 }
