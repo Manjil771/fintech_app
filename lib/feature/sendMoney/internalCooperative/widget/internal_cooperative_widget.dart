@@ -83,7 +83,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
       ),
     );
   }
-    @override
+
+  @override
   void initState() {
     super.initState();
     _accountNumberController.text = widget.accountNumber ?? "";
@@ -133,13 +134,14 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                             .accountNumber),
                     KeyValueTile(
                         title: "To Account",
-                        value: _accountNumberController.text),
+                        value:
+                            "${branchId ?? widget.branchCodeQr.toString()}${_accountNumberController.text}"),
                     KeyValueTile(
-                        title: "Account Holder Name",
+                        title: "Destination A/C Name",
                         value: _accountNameController.text),
-                    KeyValueTile(
-                        title: "Branch Code",
-                        value: branchId ?? widget.branchCodeQr.toString()),
+                    // KeyValueTile(
+                    //     title: "Branch Code",
+                    //     value: branchId ?? widget.branchCodeQr.toString()),
                     KeyValueTile(
                         title: "Remarks", value: _remarksController.text),
                     KeyValueTile(

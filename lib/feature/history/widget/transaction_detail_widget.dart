@@ -285,7 +285,7 @@ class _TransactionDetailWidgetState extends State<TransactionDetailWidget> {
                     ),
                     const Divider(),
                     Text(
-                      "Destination",
+                      "Destination A/C No.",
                       style: _textTheme.titleSmall!
                           .copyWith(color: CustomTheme.darkGray, fontSize: 11),
                     ),
