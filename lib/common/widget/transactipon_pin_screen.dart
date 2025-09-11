@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
 import 'package:ismart/common/util/fingerprint_utils.dart';
@@ -76,12 +78,12 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       ),
                       SizedBox(height: _height * 0.02),
                       Text(
-                        "Enter your Security Pin",
+                        LocaleKeys.entersecurity.tr(),
                         style: Theme.of(context).textTheme.headlineMedium,
                       ),
                       SizedBox(height: _height * 0.01),
                       Text(
-                        "Please enter your Security Pin to proceed.",
+                        LocaleKeys.enterPin.tr(),
                         style: Theme.of(context).textTheme.headlineSmall,
                         textAlign: TextAlign.center,
                       ),
@@ -104,7 +106,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                         },
                         validator: (val) {
                           if (val == null || val.isEmpty) {
-                            return "PIN Code field cannot be empty";
+                            return "" + LocaleKeys.pincodeempty.tr();
                           } else if (val.length < 5) {
                             return "PIN code cannot be less than 5 characters.";
                           }
@@ -113,7 +115,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       ),
                       SizedBox(height: _height * 0.05),
                       CustomRoundedButtom(
-                        title: "Proceed",
+                        title: LocaleKeys.Proceed.tr(),
                         onPressed: () {
                           if (_formKey.currentState!.validate()) {
                             widget.onValueCallback(pinValue);
@@ -156,7 +158,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                                         width: width * 0.03,
                                       ),
                                       Text(
-                                        "User Biometric ",
+                                        LocaleKeys.useBiometricToLogin.tr(),
                                         style: _theme.textTheme.labelMedium,
                                       ),
                                     ],
@@ -170,8 +172,8 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                           onPressed: () {
                             NavigationService.pop();
                           },
-                          child: const Text(
-                            "Cancel",
+                          child:  Text(
+                            LocaleKeys.cancel.tr(),
                             style: TextStyle(
                               fontSize: 14,
                               fontWeight: FontWeight.bold,

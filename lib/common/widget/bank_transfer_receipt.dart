@@ -1,11 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
-import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
@@ -163,6 +163,19 @@ class BankTransferReciptWidget extends StatelessWidget {
                           ),
                       ],
                     ),
+                    SizedBox(height: _height * 0.02),
+                    Text(
+                      LocaleKeys.transactionSuccessful.tr(),
+                      style: const TextStyle(
+                          fontSize: 20,
+                          color: Colors.black,
+                          fontWeight: FontWeight.w500),
+                    ),
+                    SizedBox(height: _height * 0.02),
+                    Text(message,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleSmall),
+                    SizedBox(height: _height * 0.02),
                     const Divider(thickness: 1),
                     SizedBox(height: _height * 0.02),
                     Container(
@@ -211,7 +224,7 @@ class BankTransferReciptWidget extends StatelessWidget {
                     ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                        title: "Done",
+                        title: LocaleKeys.done.tr(),
                         onPressed: () {
                           NavigationService.pushReplacementNamed(
                               routeName: Routes.dashboard);

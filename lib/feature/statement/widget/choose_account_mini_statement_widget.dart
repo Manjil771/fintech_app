@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -14,9 +16,9 @@ class ChooseAccountMiniStatementWidget extends StatelessWidget {
         showDetail: true,
         showAccountSelection: true,
         accountTitle: "Select Account",
-        topbarName: "Mini Statement",
+        topbarName: LocaleKeys.miniStatement.tr(),
         detail: "Select the Account you want to view statement of",
-        buttonName: "View",
+        buttonName: LocaleKeys.view.tr(),
         onButtonPressed: () {
           NavigationService.pushReplacement(target: const MiniStatementPage());
         },

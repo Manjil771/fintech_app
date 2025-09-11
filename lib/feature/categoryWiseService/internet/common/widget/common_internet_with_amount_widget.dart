@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -140,7 +142,7 @@ class _CommonInternetWithAmountWidgetState
                 ),
                 SizedBox(height: _height * 0.03),
                 Text(
-                    "Provide Username to fetch details and pay respective amount.",
+                    LocaleKeys.accountTitle.tr(),
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
@@ -195,7 +197,7 @@ class _CommonInternetWithAmountWidgetState
               ],
             ),
             topbarName: 'Payment',
-            buttonName: 'Proceed',
+            buttonName: LocaleKeys.Proceed.tr(),
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {

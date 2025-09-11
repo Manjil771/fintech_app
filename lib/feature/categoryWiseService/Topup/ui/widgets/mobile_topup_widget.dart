@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/contact_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -79,11 +81,11 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
           showDetail: true,
           verificationAmount: currentAmount,
           showAccountSelection: true,
-          accountTitle: "From Account",
-          buttonName: "Proceed",
-          topbarName: "Top Up",
-          title: "Mobile Top Up",
-          detail: "Topup your mobile number.",
+          accountTitle: LocaleKeys.accountTitle.tr(),
+          buttonName: LocaleKeys.Proceed.tr(),
+          topbarName: LocaleKeys.topup.tr(),
+          title: LocaleKeys.title.tr(),
+          detail: LocaleKeys.detail.tr(),
           serviceCategoryId: widget.categoryList.id.toString(),
           body: Form(
             key: _formKey,
@@ -95,7 +97,7 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                     Expanded(
                       child: CustomTextField(
                         suffixImage: "assets/icons/Contact from phone.svg",
-                        title: "Mobile Number",
+                        title: LocaleKeys.mobileNumber.tr(),
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         hintText: "xxxxxxxxxx",
                         validator: (value) {
@@ -183,9 +185,9 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                             CustomTextField(
                               autovalidateMode:
                                   AutovalidateMode.onUserInteraction,
-                              title: "Amount",
+                              title: LocaleKeys.amount.tr(), 
                               textInputType: TextInputType.number,
-                              hintText: "Enter the amount",
+                              hintText: LocaleKeys.amountmoney.tr(),
                               controller: _amountController,
                               onChanged: (value) {
                                 setState(() {
@@ -236,9 +238,9 @@ class _MobileTopUpWidgetState extends State<MobileTopUpWidget> {
                   apiEndpoint: "/api/topup",
                   body: Column(
                     children: [
-                      KeyValueTile(title: "Target Number", value: phoneNumber),
+                      KeyValueTile(title: LocaleKeys.targetnumber.tr(), value: phoneNumber),
                       KeyValueTile(
-                          title: "Amount", value: _amountController.text),
+                          title: LocaleKeys.amount.tr(), value: _amountController.text),
                     ],
                   ),
                 ));

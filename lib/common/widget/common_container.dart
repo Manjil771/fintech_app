@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -175,13 +177,13 @@ class _CommonContainerState extends State<CommonContainer> {
                               ),
                             ],
                           ),
-                          SizedBox(height: _height * 0.01),
+                          SizedBox(height: _height * 0.00),
                           widget.showAccountSelection
                               ? Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                      widget.accountTitle,
+                                    LocaleKeys.fromaccount.tr() ??  widget.accountTitle,
                                       style: const TextStyle(
                                         fontFamily: Fonts.poppin,
                                         fontWeight: FontWeight.w600,
@@ -197,7 +199,7 @@ class _CommonContainerState extends State<CommonContainer> {
                                 )
                               : Container(),
                           widget.body,
-                          SizedBox(height: _height * 0.03),
+                          SizedBox(height: _height * 0.01),
                           widget.showRoundBotton
                               ? CustomRoundedButtom(
                                   verificationAmount: widget.verificationAmount,

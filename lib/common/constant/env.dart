@@ -5811,6 +5811,35 @@ class CoOperativeValue {
     coOperativeName: "Arunjyoti Social Entrepreneur women Co-operative Ltd",
     appTitle: 'Arunjyoti iSmart',
   );
+  static final CoOperative hamroSaving = CoOperative(
+    appStoreID: "com.devanasoft.hamroSaving",
+    packageName: "com.devanasoft.hamroSaving",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/hamroSaving/hamroSaving_banner.png",
+    backgroundImage: "assets/hamroSaving/hamroSaving_background.png",
+    clientCode: 'EH154K4P2E',
+    clientSecret: "130191",
+    coOperativeLogo: 'assets/hamroSaving/hamroSaving_logo.png',
+    splashImage: "assets/hamroSaving/hamroSaving_splash.png",
+    primaryColor: const Color(0xFF00984b),
+    coOperativeName: "Hamro Saving & Credit Co-operative Ltd",
+    appTitle: 'Hamro Saving iSmart',
+  );
+  static final CoOperative janachetana = CoOperative(
+    appStoreID: "com.devanasoft.janachetana",
+    packageName: "com.devanasoft.janachetana",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/janachetana/janachetana_banner.png",
+    backgroundImage: "assets/janachetana/janachetana_background.png",
+    clientCode: 'HJPGAJ4PWN',
+    clientSecret: "154404",
+    coOperativeLogo: 'assets/janachetana/janachetana_logo.png',
+    splashImage: "assets/janachetana/janachetana_splash.png",
+    primaryColor: const Color(0xFF432b74),
+    coOperativeName: "Janachetana Saing & Credit Co-operative Society Ltd.",
+    appTitle: 'Janachetana iSmart',
+  );
+
   static final CoOperative gajacoop = CoOperative(
     appStoreID: "com.devanasoft.gaja",
     packageName: "com.devanagaja",
@@ -5825,6 +5854,7 @@ class CoOperativeValue {
     coOperativeName: "Gaja Saving & Credit Co-operative society Ltd",
     appTitle: 'Gaja iSmart',
   );
+
   static final CoOperative janakalyanbahumukhi = CoOperative(
     appStoreID: "com.devanasoft.janakalyanbahumukhi",
     packageName: "com.devanasoft.janakalyanbahumukhi",

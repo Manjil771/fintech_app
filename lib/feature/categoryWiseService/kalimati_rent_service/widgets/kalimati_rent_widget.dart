@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -144,8 +146,8 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
         child: CommonContainer(
           topbarName: "Rent Service",
           showAccountSelection: true,
-          accountTitle: "From Account",
-          buttonName: "Proceed",
+          accountTitle: LocaleKeys.fromaccount.tr(), 
+          buttonName: LocaleKeys.Proceed.tr(),
           title: "Kalimati Rent Service",
           detail: "From here you can pay the rent.",
           body: Form(

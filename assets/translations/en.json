@@ -2,7 +2,28 @@
   "appName": "This app",
   "Message" : "Message",
   "Proceed":"Proceed",
-  "Cancel" : "Cancel",
+  "cancel" : "Cancel",
+  "view": "View",
+  "paymentdetails":"Payment Details",
+  "targetnumber":"Target Number",
+  "fromaccount":"From Account",
+  "cashback":"Cashback",
+  "pay": "Payment",
+  "allServices": "All Services",
+  "entersecurity": "Enter Security Pin",
+  "enterPin": "Please enter your security pin to proceed",
+  "details_about_service": "Details about the payable amount for the service of {service} is shown below.",
+  "transactionID": "Transaction ID",
+  "initiator": "Initiator",
+  "datetime": "Date & Time",
+  "service": "Service",
+  "Done": "Done",
+  "download": "Download",
+  "chooseServiceProvider": "Choose Service Provider",
+  "transactionSucessful": "Transaction Successful",
+  "phonenumber": "Phone Number",
+  "pincodeempty":"Pincode field cannot be empty",
+
   
   "TOP UP":"TOP UP",
   "LANDLINE":"LANDLINE",
@@ -38,7 +59,8 @@
   "banking": "Banking",
   "scanQR": "Scan QR",
   "history": "History",
-  "profile": "Profile"
+  "profile": "Profile",
+  "nrp": "NRP"
 },
 "login": {
   "login": "Login",
@@ -65,6 +87,96 @@
   "branch": "Branch",
   "selectBranch": "Select Branch",
   "signUp": "Sign Up"
-}
+},
 
-}
+"topup":{
+   "mobileTopup" : "Mobile Topup",
+   "accountTitle" : "Account Title",
+   "title": "Mobile Top Up",
+   "detail": "Top up your mobile number",
+   "amount": "Amount",
+   "amountmoney":"Enter the amount"
+   
+
+
+
+ 
+   
+   
+},
+"landline":{
+  "landline":"Landline",
+  "landlineTopbar": "Landline",
+  "landlineInstructions": "Landline Payment"
+},
+  
+    
+
+  "profileSetting": {
+    "profile": "Profile",
+    "accountInfo": "Account Info",
+    "biometric": "Biometric",
+    "changepin": "Change Pin",
+    "transactionLimit": "Transaction Limits",
+    "profileSetting": "Settings"
+  },
+    "banking": {
+      "bankingSetting": "Banking Settings",
+      "balanceInquiry": "Balance Inquiry",
+      "statement": "Statement",
+      "chequeRequest": "Cheque Request",
+      "calculator": "Calculator",
+      "support": "Support",
+      "feedback": "Feedback",
+      "loan": "Loan"
+    },
+   
+   
+   
+    "scanAndPay":{
+      "scanAndPay": "Scan and Pay",
+      "alignQR": "Please align the QR code within the frame",
+      "showQR": "Scan QR"
+      
+    },
+
+
+    "balanceInquiry":{
+     "balanceinquiry": "Balance Inquiry",
+    "totalbalance": "Total Balance",
+    "availablebalance": "Available Balance",
+    "actualbalance": "Actual Balance",
+    "memberID": "Member ID",
+    "accNumber": "Account Number",
+    "interestRate": "Interest Rate",
+    "accuredInterest": "Accrued Interest",
+    "accountHolderName": "Account Holder Name",
+    "shareAccount": "Share Account Details",
+    "detailAboutBalance": "Details about the account are shown below."
+
+
+  
+
+
+
+    },
+   "miniFullstatement": {
+    "statement1": "Statement",
+    "toptext": " Select the type of statement you want to view",
+    "miniStatement": "Mini Statement",
+    "fullStatement": "Full Statement"
+
+    },
+    "internet":{
+      "internet":"Internet",
+      "internetFetchDetails":"Provide Username to fecth details and pay respective amount"
+    
+    }
+
+
+
+
+
+
+
+} 

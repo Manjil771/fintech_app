@@ -2556,9 +2556,21 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
-         manakamana {
+        hamroSaving {
             dimension "app"
-            applicationId "com.devanasoft.manakamana"
+            applicationId "com.devanasoft.hamroSaving"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+        janachetana {
+            dimension "app"
+            applicationId "com.devanasoft.janachetana"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
+         janakalyanbahumukhi {
+            dimension "app"
+            applicationId "com.devanasoft.janakalyanbahumukhi"
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }

@@ -100,6 +100,9 @@ flutter:
 
     # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
+    # - assets/janachetana/
+    # - assets/janakalyanbahumukhi/
+    # - assets/hamroSaving/
     # - assets/gaja/
     # - assets/arunjyoti/
     # - assets/paryatan/
@@ -129,6 +132,7 @@ flutter:
     # - assets/janapremi/
     # - assets/nawayuba/
     # - assets/manipur/
+    # - assets/maaLaxmi/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
     # - assets/shreemandan/
@@ -254,7 +258,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -357,7 +361,6 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -406,7 +409,7 @@ flutter:
     # - assets/adarsha/
     # - assets/tapobhumi/
     # - assets/samudayik/
-    # - assets/supya/
+    - assets/supya/
     # - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
@@ -424,7 +427,7 @@ flutter:
     # - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
-    # - assets/dupcheshwor/
+    # - assets/dupche\shwor/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/

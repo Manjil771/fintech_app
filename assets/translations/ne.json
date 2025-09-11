@@ -14,10 +14,30 @@
 "Insurance": "बीमा",
 "View More": "अझ धेरै हेर्नुहोस्",
 "Movies":"चलचित्रहरू",
-
+"done": "पूरा भयो",
+"transactionSucessful": "लेनदेन सफल भयो",
+"phonenumber": "फोन नम्बर",
 "Proceed": "अगाडि बढ्नुहोस्",
-"Cancel": "रद्द गर्नुहोस्",
+"cancel": "रद्द गर्नुहोस्",
+"view": "हेर्नुहोस्",
+"allServices": "सबै सेवाहरू",
+"chooseServiceProvider": "सेवा प्रदायक चयन गर्नुहोस्",
+"nrp": "रू",
+"download": "डाउनलोड गर्नुहोस्",
+"details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
+"transactionID": "लेनदेन आईडी",
+"initiator": "प्रारम्भकर्ता",
+"datetime": "मिति र समय",
+"service": "सेवा",
+"paymentdetails": "भुक्तानी विवरण",
+"targetnumber": "लक्ष्य नम्बर",
+"fromaccount": "खाता बाट",
+"cashback": "क्यासब्याक",
+"pay": "भुक्तानी गर्नुहोस्",
+"entersecurity": "सुरक्षा पिन प्रविष्ट गर्नुहोस्",
+"enterPin": "अगाडि बढ्नका लागि कृपया आफ्नो सुरक्षा पिन प्रविष्ट गर्नुहोस्",
   "Security Pin": "",
+  "pincodeempty": "पिन कोड क्षेत्र खाली हुन सक्दैन",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   },
@@ -38,6 +58,7 @@
   "scanQR": "QR स्क्यान",
   "history": "इतिहास",
   "profile": "प्रोफाइल"
+  
 },
 "login": {
   "login": "लगइन",
@@ -64,6 +85,74 @@
   "branch": "साखा",
   "selectBranch": "साखा चयन गर्नुहोस्",
   "signUp": "साइन अप"
-}
+},
+"topup":{
+   "mobileTopup" : "टप अप",
+   "accountTitle" : "खाता शीर्षक",
+   "title": "मोबाइल टप अप",
+   "detail": "आफ्नो मोबाइल नम्बर टप अप गर्नुहोस्",
+   "amount": "रकम",
+   "amountmoney":"रकम हाल्नुहोस्"
+   
+},
+"landline":{
+  "landline":"ल्याण्डलाइन नम्बर",
+  "landlineTopbar": "ल्याण्डलाइन",
+  "landlineInstructions": "ल्याण्डलाइन भुक्तानी"
+},
+"profileSetting": {
+  "profile": "प्रोफाइल",
+  "accountInfo": "खाता जानकारी",
+  "biometric": "बायोमेट्रिक",
+  "changepin": "पिन परिवर्तन",
+  "transactionLimit": "लेनदेन सीमा",
+  "profileSetting": "सेटिङ्स"
+},
+"banking": {
+  "bankingSetting": "बैंकिङ सेटिङ",
+  "balanceInquiry": "ब्यालेन्स सोधपुछ",
+  "statement": " ब्यालेन्स स्टेटमेन्ट",
+  "chequeRequest": " चेक अनुरोध",
+  "calculator": "क्याल्कुलेटर",
+  "support": " सहयोग",
+  "feedback": " प्रतिक्रिया",
+  "loan": " ऋण"
+},
+"scanAndPay":{
+  "scanAndPay": "स्क्यान र भुक्तानी",
+  "alignQR": "कृपया QR कोडलाई फ्रेमभित्र मिलाउनुहोस्",
+  "showQR": "मेरो QR कोड देखाउनुहोस्"
+  
+},
+"balanceInquiry":{
+     "balanceinquiry": "ब्यालेन्स सोधपुछ",
+    "totalbalance": " कुल ब्यालेन्स",
+    "availablebalance": " उपलब्ध ब्यालेन्स",
+    "actualbalance": " वास्तविक ब्यालेन्स",
+    "memberID": " सदस्य आईडी",
+    "accNumber": " खाता नम्बर",
+    "interestRate": " ब्याज दर",
+    "accuredInterest": " अकृड ब्याज",
+    "accountHolderName": " खाता धारकको नाम",
+    "shareAccount": " शेयर खाता",
+    "detailAboutBalance": "तपाईंको खाता ब्यालेन्सको बारेमा विवरण तल दिइएको छ।"
+
+
+    },
+    "miniFullstatement": {
+      "toptext": " तपाईंले हेर्न चाहनु भएको स्टेटमेन्टको प्रकार चयन गर्नुहोस्",
+      "miniStatement": "मिनी स्टेटमेन्ट",
+      "fullStatement": "  पूर्ण स्टेटमेन्ट",
+      "statement1": "स्टेटमेन्ट"
+  
+      },
+      "internet":{
+        "internet":"Internet",
+        "internetFetchDetails":"भुक्तानी गर्न र सम्बन्धित रकम तिर्न विवरण ल्याउन प्रयोगकर्ता नाम प्रदान गर्नुहोस्"
+      
+      }
+
+
+
 
 }

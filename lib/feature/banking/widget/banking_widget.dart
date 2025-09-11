@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -37,7 +39,7 @@ class _BankingWidgetState extends State<BankingWidget> {
     final contactList = _supportContact.split(",");
     return CommonContainer(
       showDetail: false,
-      topbarName: "Banking",
+      topbarName: LocaleKeys.banking.tr(),
       showTitleText: false,
       showRoundBotton: false,
       showBackBotton: false,
@@ -252,16 +254,15 @@ class _BankingWidgetState extends State<BankingWidget> {
   }
 
   final itemName = [
-    // "Account Info",
-    "Balance Inquiry",
-    "Statement",
-    // "Fund Transfer",
-    'Cheque Request',
-    "Calculator",
-    "Downloads",
-    "Support",
-    "Feedback",
-    'Loan',
+    LocaleKeys.balanceInquiry.tr(),
+    LocaleKeys.	statement.tr(),
+    LocaleKeys.chequeRequest.tr(),
+    LocaleKeys.calculator.tr(),
+     LocaleKeys.download.tr(),
+    LocaleKeys.support.tr(),
+    LocaleKeys.feedback.tr(),
+    LocaleKeys.loan.tr(),
+   
   ];
   final images = [
     // Assets.accountInfo,

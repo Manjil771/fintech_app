@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/models/common_contact_model.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -140,8 +142,8 @@ class BusBillDetailWidget extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
-                        "From Account",
+                       Text(
+                       LocaleKeys.fromaccount.tr(), 
                         style: TextStyle(
                           fontFamily: Fonts.poppin,
                           fontWeight: FontWeight.w600,

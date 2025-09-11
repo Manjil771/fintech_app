@@ -532,7 +532,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
     return Stack(
-      children: [
+      children: [ 
         _currentIndex == 2
             ? const QRScannerScreens()
             : WillPopScope(

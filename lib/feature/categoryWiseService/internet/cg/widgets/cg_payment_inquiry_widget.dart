@@ -1,7 +1,9 @@
 import 'package:animations/animations.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_bill_details_screen.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -69,7 +71,7 @@ class _CgPaymentInquiryWidgetState extends State<CgPaymentInquiryWidget> {
         showDetail: true,
         topbarName: 'Payment',
         title: 'CG Net Payment',
-        buttonName: 'Proceed',
+        buttonName: LocaleKeys.Proceed.tr(),
         detail: 'Pay your CG Net subscription from here',
         showAccountSelection: true,
         body: Column(

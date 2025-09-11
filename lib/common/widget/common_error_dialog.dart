@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -72,7 +74,7 @@ class LoadingDialogBox extends StatelessWidget {
                     ),
                   SizedBox(height: 20.hp),
                   CustomRoundedButtom(
-                    title: "Done",
+                    title: LocaleKeys.done.tr(),
                     onPressed: () {
                       NavigationService.pop();
                     },
