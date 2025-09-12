@@ -108,7 +108,7 @@ class _BankingWidgetState extends State<BankingWidget> {
                                         ),
                                       ),
                                       Text(
-                                        "Choose Option",
+                                        "Choose Option".tr(),
                                         style: _textTheme.labelLarge!.copyWith(
                                           color: CustomTheme.darkerBlack,
                                           fontWeight: FontWeight.bold,
@@ -255,14 +255,13 @@ class _BankingWidgetState extends State<BankingWidget> {
 
   final itemName = [
     LocaleKeys.balanceInquiry.tr(),
-    LocaleKeys.	statement.tr(),
+    LocaleKeys.statement.tr(),
     LocaleKeys.chequeRequest.tr(),
     LocaleKeys.calculator.tr(),
-     LocaleKeys.download.tr(),
+    LocaleKeys.download.tr(),
     LocaleKeys.support.tr(),
     LocaleKeys.feedback.tr(),
     LocaleKeys.loan.tr(),
-   
   ];
   final images = [
     // Assets.accountInfo,

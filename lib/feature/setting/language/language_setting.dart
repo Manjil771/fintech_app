@@ -85,7 +85,7 @@ class _LanguageSettingState extends State<LanguageSetting> {
             ],
           ),
         ),
-        topbarName: "Language",
+        topbarName: "Language".tr(),
       )),
     );
   }

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -67,10 +68,10 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           color: CustomTheme.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
-        child: const TransactionProgressPage(
+        child: TransactionProgressPage(
           persistOpen: true,
-          title: "Wallet ",
-          profileType: 'WalletProfile',
+          title: "Wallet".tr(),
+          profileType: "WalletProfile".tr(),
           isOpen: true,
         ),
       ),
@@ -109,20 +110,20 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   NavigationService.pushReplacement(
                       target: CommonTransactionSuccessPage(
                           imageUrl: widget.imageUrl,
-                          serviceName: "Load Wallet",
+                          serviceName: "Load Wallet".tr(),
                           body: Column(children: [
                             KeyValueTile(
-                                title: "Wallet",
+                                title: "Wallet".tr(),
                                 value: _response.findValue(
                                   primaryKey: "walletName",
                                 )),
                             KeyValueTile(
-                                title: "To Account",
+                                title: "To Account".tr(),
                                 value: _response.findValue(
                                   primaryKey: "descOneFieldValue",
                                 )),
                             KeyValueTile(
-                                title: "Amount",
+                                title: "Amount".tr(),
                                 value: _response.findValue(
                                   primaryKey: "amount",
                                 )),
@@ -146,7 +147,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                 showPopUpDialog(
                   context: context,
                   message: state.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   buttonCallback: () {
                     NavigationService.pop();
                   },
@@ -176,8 +177,9 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   showPopUpDialog(
                     context: context,
                     message:
-                        "Wallet ID Validated successfully. Do you want to continue transfer?",
-                    title: "Confirm",
+                        "Wallet ID Validated successfully. Do you want to continue transfer?"
+                            .tr(),
+                    title: "Confirm".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                       NavigationService.push(target: TransactionPinScreen(
@@ -235,13 +237,14 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
           associatedId: widget.selectedWallet.id.toString(),
           showRecentTransaction: true,
           showDetail: true,
-          serviceName: "WALLET",
+          serviceName: "WALLET".tr(),
           showAccountSelection: true,
-          topbarName: "Load Wallet",
+          topbarName: "Load Wallet".tr(),
           title: "Load ${widget.selectedWallet.name}",
           detail:
               "Load money to your preferred ${widget.selectedWallet.name} account",
-          buttonName: _isAccountValidated ? "Load Wallet" : "Check Transfer",
+          buttonName:
+              _isAccountValidated ? "Load Wallet".tr() : "Check Transfer".tr(),
           onButtonPressed: () {
             if (!_isAccountValidated && _validationResult == null) {
               if (_formKey.currentState!.validate()) {
@@ -299,7 +302,7 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                         },
                       )
                     : CustomTextField(
-                        title: "Wallet Id",
+                        title: "Wallet Id".tr(),
                         controller: _walletAccountController,
                         validator: (val) => FormValidator.validateFieldNotEmpty(
                             val, "Wallet Id"),
@@ -308,8 +311,8 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   showTransLimit: true,
                   transLimitFunc: _toggleBottomSheet,
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  title: "Amount",
-                  hintText: "Enter the amount",
+                  title: "Amount".tr(),
+                  hintText: "Enter the amount".tr(),
                   onChanged: (value) {
                     setState(() {
                       _currentAmount = value;
@@ -334,8 +337,8 @@ class _LoadWalletFormWidgetState extends State<LoadWalletFormWidget> {
                   textInputType: TextInputType.number,
                 ),
                 CustomTextField(
-                  title: "Remarks",
-                  hintText: "Remarks",
+                  title: "Remarks".tr(),
+                  hintText: "Remarks".tr(),
                   controller: _remarksController..text = widget.remarks ?? "",
                   validator: (val) =>
                       FormValidator.validateFieldNotEmpty(val, "Remarks"),

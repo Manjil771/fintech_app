@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/profile/accountListProfile/screen/acoount_list_profile_page.dart';
@@ -23,17 +24,18 @@ class _ProfileTabBarWidgetState extends State<ProfileTabBarWidget> {
         length: 3,
         child: Column(
           children: [
-            const TabBar(
+            TabBar(
               isScrollable: true,
               labelColor: Colors.black,
-              unselectedLabelColor: Color(0xFF989898),
-              labelStyle: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              unselectedLabelColor: const Color(0xFF989898),
+              labelStyle:
+                  const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
               indicatorColor: Colors.transparent,
               automaticIndicatorColorAdjustment: true,
               tabs: [
-                Tab(text: "General Info"),
-                Tab(text: "Account List"),
-                Tab(text: "Contact Us"),
+                Tab(text: "General Info".tr()),
+                Tab(text: "Account List".tr()),
+                Tab(text: "Contact Us".tr()),
               ],
             ),
             Expanded(

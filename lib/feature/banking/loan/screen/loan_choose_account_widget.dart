@@ -43,10 +43,11 @@ class _ChooseAccountLoanWidgetState extends State<ChooseAccountLoanWidget> {
                       return CommonContainer(
                         showRoundBotton: showValidAccount.isNotEmpty,
                         showAccountSelection: false,
-                        accountTitle: "Select Account",
-                        topbarName: "Loan",
+                        accountTitle: "Select Account".tr(),
+                        topbarName: "Loan".tr(),
                         detail:
-                            "Select the Account you want to view loan detail.",
+                            "Select the Account you want to view loan detail."
+                                .tr(),
                         buttonName: LocaleKeys.Proceed.tr(),
                         onButtonPressed: () {
                           NavigationService.pushReplacement(

@@ -183,7 +183,8 @@ class _CommonContainerState extends State<CommonContainer> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                     Text(
-                                    LocaleKeys.fromaccount.tr() ??  widget.accountTitle,
+                                      LocaleKeys.fromaccount.tr() ??
+                                          widget.accountTitle,
                                       style: const TextStyle(
                                         fontFamily: Fonts.poppin,
                                         fontWeight: FontWeight.w600,
@@ -270,7 +271,7 @@ class _CommonContainerState extends State<CommonContainer> {
                                       padding: const EdgeInsets.symmetric(
                                           horizontal: 16, vertical: 3),
                                       child: Text(
-                                        "Recent Transaction",
+                                        "Recent Transaction".tr(),
                                         style: _textTheme.titleLarge?.copyWith(
                                           fontWeight: FontWeight.bold,
                                         ),

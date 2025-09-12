@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -44,7 +45,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
           showTitleText: false,
           showRoundBotton: false,
           verticalPadding: 0,
-          topbarName: "Calculator",
+          topbarName: "Calculator".tr(),
           body: Column(
             children: [
               CommonDetailBox(
@@ -54,7 +55,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                         target: const DiscountCalculatorPage());
                   },
                   detail: "",
-                  title: "Discount Calculator"),
+                  title: "Discount Calculator".tr()),
               const Divider(thickness: 1),
               CommonDetailBox(
                   leadingImage: Assets.emiCalculator,
@@ -62,7 +63,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     NavigationService.push(target: const EmiCalculatorPage());
                   },
                   detail: "",
-                  title: "EMI Calculator"),
+                  title: "EMI Calculator".tr()),
               const Divider(thickness: 1),
               CommonDetailBox(
                   leadingImage: Assets.calenderIconDark,
@@ -70,7 +71,7 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                     NavigationService.push(target: const DateCalculatorPage());
                   },
                   detail: "",
-                  title: "Date Converter"),
+                  title: "Date Converter".tr()),
               const Divider(thickness: 1),
             ],
           ),

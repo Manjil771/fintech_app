@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -49,7 +50,7 @@ class _SettingWidgetState extends State<SettingWidget> {
           showTitleText: false,
           showRoundBotton: false,
           verticalPadding: 0,
-          topbarName: "Setting",
+          topbarName: "Setting".tr(),
           body: Column(
             children: [
               // // checkBioMetric() == false
@@ -116,11 +117,11 @@ class _SettingWidgetState extends State<SettingWidget> {
 
               // const Divider(thickness: 1),
 
-              const CommonDetailBox(
+              CommonDetailBox(
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
-                  detail: "View complete privacy policy",
-                  title: "Privacy Policy"),
+                  detail: "View complete privacy policy".tr(),
+                  title: "Privacy Policy".tr()),
               const Divider(thickness: 1),
 
               CommonDetailBox(
@@ -128,8 +129,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: () {
                     NavigationService.pushNamed(routeName: Routes.forgotPin);
                   },
-                  detail: "Tap to reset your Security Pin.",
-                  title: "Forget Pin"),
+                  detail: "Tap to reset your Security Pin.".tr(),
+                  title: "Forget Pin".tr()),
 
               // const Divider(thickness: 1),
               // CommonDetailBox(
@@ -145,17 +146,17 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: () {
                     NavigationService.push(target: const LanguageSetting());
                   },
-                  detail: "Tap to select the language.",
-                  title: "Language"),
+                  detail: "Tap to select the language.".tr(),
+                  title: "Language".tr()),
 
               const Divider(thickness: 1),
               CommonDetailBox(
                 onBoxPressed: () {
                   showPopUpDialog(
                     context: context,
-                    message: "Are you sure you want to logout.",
-                    title: "Alert",
-                    buttonText: "Logout",
+                    message: "Are you sure you want to logout.".tr(),
+                    title: "Alert".tr(),
+                    buttonText: "Logout".tr(),
                     buttonCallback: () {
                       RepositoryProvider.of<UserRepository>(context).logout();
                       NavigationService.pushNamedAndRemoveUntil(
@@ -165,8 +166,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                   );
                 },
                 leadingImage: Assets.logoutIcon,
-                title: "Logout",
-                detail: "Logout from this application.",
+                title: "Logout".tr(),
+                detail: "Logout from this application.".tr(),
               ),
               const Divider(thickness: 1),
             ],

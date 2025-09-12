@@ -18,6 +18,7 @@ class LocaleKeys {
   static const email = "auth.email";
   static const pleaseEnterValidField = "auth.pleaseEnterValidField";
 
+  static const Remarks = "Remarks";
   static const error = "error";
   static const cancel = "cancel";
   static const done = "done";
