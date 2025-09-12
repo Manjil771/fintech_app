@@ -1,5 +1,6 @@
 {
   "appName": "This app",
+  "NPR":"NPR",
   "Message" : "Message",
   "Proceed":"Proceed",
   "cancel" : "Cancel",
@@ -8,7 +9,7 @@
   "targetnumber":"Target Number",
   "fromaccount":"From Account",
   "cashback":"Cashback",
-  "pay": "Payment",
+  "pay":"Payment",
   "allServices": "All Services",
   "entersecurity": "Enter Security Pin",
   "enterPin": "Please enter your security pin to proceed",
@@ -59,8 +60,8 @@
   "banking": "Banking",
   "scanQR": "Scan QR",
   "history": "History",
-  "profile": "Profile",
-  "nrp": "NRP"
+  "profile": "Profile"
+
 },
 "login": {
   "login": "Login",
@@ -171,9 +172,12 @@
       "internet":"Internet",
       "internetFetchDetails":"Provide Username to fecth details and pay respective amount"
     
-    }
+    },
 
-
+  "RecentTransaction":"Recent Transaction",
+  "Filter":"फिल्टर",
+  "FilterOptions": "Filter Options",
+   "No transactions yet.":"No transactions yet."
 
 
 

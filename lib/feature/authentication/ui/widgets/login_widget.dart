@@ -173,6 +173,12 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final List nameList = [
+      LocaleKeys.foreex.tr(),
+      LocaleKeys.activateAccount.tr(),
+      LocaleKeys.miscallBanking.tr(),
+      LocaleKeys.branches.tr(),
+    ];
     final height = SizeUtils.height;
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
@@ -555,12 +561,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List nameList = [
-    LocaleKeys.foreex.tr(),
-    LocaleKeys.activateAccount.tr(),
-    LocaleKeys.miscallBanking.tr(),
-    LocaleKeys.branches.tr(),
-  ];
   final List imageList = [
     "assets/icons/forex.svg",
     "assets/icons/activate account.svg",

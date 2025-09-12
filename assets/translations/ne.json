@@ -1,7 +1,7 @@
 {
-  "appName": "This app",
-  "Message": "सन्देश",
-
+"appName": "This app",
+"NPR":"रू",
+"Message": "सन्देश",
 "TOP UP": "टप अप",
 "LANDLINE": "ल्याण्डलाइन",
 "INTERNET": "इन्टरनेट",
@@ -22,7 +22,6 @@
 "view": "हेर्नुहोस्",
 "allServices": "सबै सेवाहरू",
 "chooseServiceProvider": "सेवा प्रदायक चयन गर्नुहोस्",
-"nrp": "रू",
 "download": "डाउनलोड गर्नुहोस्",
 "details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
 "transactionID": "लेनदेन आईडी",
@@ -150,7 +149,12 @@
         "internet":"Internet",
         "internetFetchDetails":"भुक्तानी गर्न र सम्बन्धित रकम तिर्न विवरण ल्याउन प्रयोगकर्ता नाम प्रदान गर्नुहोस्"
       
-      }
+      },
+
+      "RecentTransaction":"हालको लेनदेन",
+      "Filter":"फिल्टर",
+      "FilterOptions" :"फिल्टर विकल्प",
+      "No transactions yet.":"अहिलेसम्म कुनै लेनदेन छैन।"
 
 
 

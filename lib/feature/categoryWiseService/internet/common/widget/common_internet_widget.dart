@@ -136,8 +136,7 @@ class _CommonFindInternetUserWidgetState
                   ],
                 ),
                 SizedBox(height: _height * 0.03),
-                Text(
-                    LocaleKeys.internetFetchDetails.tr(),
+                Text(LocaleKeys.internetFetchDetails.tr(),
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
@@ -167,7 +166,7 @@ class _CommonFindInternetUserWidgetState
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: _amountController,
                         title: LocaleKeys.amount.tr(),
-                        hintText: LocaleKeys.nrp.tr(),
+                        hintText: LocaleKeys.NPR.tr(),
                         onChanged: (value) {
                           setState(() {
                             _currentAmount = value;

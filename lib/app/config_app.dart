@@ -186,6 +186,16 @@ import 'package:ismart/app/app_dev.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'dart:async';
+import 'dart:io';
+
+import 'package:easy_localization/easy_localization.dart';
+import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
+import 'package:ismart/app/config_app.dart';
+import 'package:ismart/app/local_wrapper.dart';
+import 'package:ismart/common/util/log.dart';
 
 class ConfigApp extends StatelessWidget {
   @override
@@ -252,16 +262,24 @@ class _ConfigurationPageState extends State<ConfigurationPage> {
         primaryColor: const Color(0xFF010C80),
         packageName: "com.devanasoft.ismart",
         appStoreID: "com.devanasoft.ismart",
-        shouldValidateCooperative: true,
         coOperativeName: "ISMART DEMO APPKTM",
         appTitle: "iSmart Devanasoft",
       );
-
-      Navigator.of(context).pushReplacement(
-        MaterialPageRoute(
-          builder: (context) => AppDev(env: dynamicCoop),
-        ),
-      );
+      // Navigator.of(context).push(
+      //   MaterialPageRoute(
+      //     builder: (context) => AppDev(env: dynamicCoop),
+      //   ),
+      // );
+      WidgetsFlutterBinding.ensureInitialized();
+      await EasyLocalization.ensureInitialized();
+      runZonedGuarded(() {
+        runApp(
+          LocalWrapper(child: AppDev(env: dynamicCoop)),
+        );
+      }, (e, s) {
+        Log.e(e);
+        Log.d(s);
+      });
     }
   }
 

@@ -9,6 +9,8 @@ import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/more/widget/more_widget.dart';
+import 'package:ismart/feature/setting/language/language_setting.dart';
 import 'package:ismart/feature/setting/preferences/preference_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -137,6 +139,14 @@ class _SettingWidgetState extends State<SettingWidget> {
               //     },
               //     detail: "Tap to set your preferences.",
               //     title: "Preferences"),
+              const Divider(thickness: 1),
+              CommonDetailBox(
+                  leadingImage: Assets.translateImage,
+                  onBoxPressed: () {
+                    NavigationService.push(target: const LanguageSetting());
+                  },
+                  detail: "Tap to select the language.",
+                  title: "Language"),
 
               const Divider(thickness: 1),
               CommonDetailBox(

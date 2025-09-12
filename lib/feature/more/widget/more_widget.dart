@@ -86,7 +86,7 @@ class _MoreWidgetState extends State<MoreWidget> {
     LocaleKeys.changepin.tr(),
     LocaleKeys.transactionLimit.tr(),
     LocaleKeys.profileSetting.tr(),
-    
+
     // "Calculator",
     // "Downloads",
     // "Support",

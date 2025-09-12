@@ -99,17 +99,20 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text(LocaleKeys.totalbalance.tr(),
+                                                Text(
+                                                    LocaleKeys.totalbalance
+                                                        .tr(),
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .titleSmall),
                                                 SizedBox(
                                                     height: _height * 0.005),
-                                               Text(
-                                               "${LocaleKeys.nrp.tr()} ${showValidAccount[index].actualBalance}",
-                                                   style: Theme.of(context).textTheme.displaySmall,
-                                                      ),
-
+                                                Text(
+                                                  "${LocaleKeys.NPR.tr()} ${showValidAccount[index].actualBalance}",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall,
+                                                ),
                                               ],
                                             ),
                                             _getCoOpLogo(),
@@ -130,20 +133,25 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                           children: [
                                             detailROw(
                                                 context,
-                                                LocaleKeys.availablebalance.tr(),
-                                               LocaleKeys.nrp.tr()+ 
+                                                LocaleKeys.availablebalance
+                                                    .tr(),
+                                                LocaleKeys.NPR.tr() +
                                                     showValidAccount[index]
                                                         .availableBalance
                                                         .toString()),
                                             detailROw(
                                                 context,
                                                 LocaleKeys.actualbalance.tr(),
-                                                LocaleKeys.nrp.tr() +
+                                                LocaleKeys.NPR.tr() +
                                                     showValidAccount[index]
                                                         .actualBalance),
-                                            detailROw(context, LocaleKeys.memberID.tr(),
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.memberID.tr(),
                                                 "${showValidAccount[index].clientCode}"),
-                                            detailROw(context, LocaleKeys.accNumber.tr(),
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.accNumber.tr(),
                                                 "${showValidAccount[index].mainCode}"),
                                             detailROw(context, "Acc Type",
                                                 "${(showValidAccount[index].accountTypeDescription.isEmpty) ? showValidAccount[index].accountType : showValidAccount[index].accountTypeDescription}"),
@@ -162,7 +170,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                   0.1)
                                                 detailROw(
                                                     context,
-                                                    LocaleKeys.interestRate.tr(),
+                                                    LocaleKeys.interestRate
+                                                        .tr(),
                                                     "${showValidAccount[index].interestRate} %"),
                                             if ((double.tryParse(
                                                         showValidAccount[index]
@@ -170,15 +179,18 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     0) >
                                                 0.1)
                                               detailROw(
-                                                  context,
-                                         LocaleKeys.accuredInterest.tr(),
-                              "${LocaleKeys.nrp.tr()} ${showValidAccount[index].accruedInterest}",
-                                            ),
+                                                context,
+                                                LocaleKeys.accuredInterest.tr(),
+                                                "${LocaleKeys.NPR.tr()} ${showValidAccount[index].accruedInterest}",
+                                              ),
                                             detailROw(
                                                 context,
-                                                LocaleKeys.accountHolderName.tr(),
+                                                LocaleKeys.accountHolderName
+                                                    .tr(),
                                                 "${showValidAccount[index].accountHolderName}"),
-                                            detailROw(context, LocaleKeys.branch.tr(),
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.branch.tr(),
                                                 "${showValidAccount[index].branchName}"),
                                           ],
                                         ),

@@ -109,6 +109,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
           children: [
             Row(
               children: [
+                SizedBox(height: _height * 0.06),
                 Expanded(
                   child: Container(
                     height: _height * 0.04,

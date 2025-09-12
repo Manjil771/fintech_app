@@ -47,19 +47,19 @@ class IsmartTopWidget extends StatelessWidget {
           Container(
             child: Row(
               children: [
-                InkWell(
-                  onTap: () {
-                    final Locale currentLocale = context.locale;
-                    final Locale newLocale = currentLocale.languageCode == 'en'
-                        ? CustomLocale.nepali
-                        : CustomLocale.english;
-                    context.setLocale(newLocale);
-                  },
-                  child: SvgPicture.asset(
-                    Assets.translateImage,
-                    height: _height * 0.03,
-                  ),
-                ),
+                // InkWell(
+                //   onTap: () {
+                //     final Locale currentLocale = context.locale;
+                //     final Locale newLocale = currentLocale.languageCode == 'en'
+                //         ? CustomLocale.nepali
+                //         : CustomLocale.english;
+                //     context.setLocale(newLocale);
+                //   },
+                //   child: SvgPicture.asset(
+                //     Assets.translateImage,
+                //     height: _height * 0.03,
+                //   ),
+                // ),
                 SizedBox(width: 15.hp),
                 InkWell(
                   onTap: supportAction
