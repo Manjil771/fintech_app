@@ -3,8 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.31+61
-
+version: 1.5.33+63
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -91,7 +90,8 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
-    - assets/sahayogi/
+    # - assets/hamroSaving/
+    # - assets/sahayogi/
     # - assets/ujyalo/
     # - assets/setogurans/
     # - assets/satyeta/
@@ -154,7 +154,7 @@ flutter:
     # - assets/shreeNawajyoti/
     # - assets/janakalyanlamjung/
     # - assets/kundahar/
-    # - assets/sahayatri/
+    - assets/sahayatri/
     # - assets/janak/
     # - assets/adhikosh/
     # - assets/lapha/
@@ -245,7 +245,7 @@ flutter:
     # - assets/nepalbachat/
     # - assets/nilgiri/
     # - assets/davisfall/
-    - assets/sanchar/
+    # - assets/sanchar/
     # - assets/rumjatar/
     # - assets/supreme/
     # - assets/iconsoftCoop/
@@ -285,7 +285,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -406,8 +406,8 @@ flutter:
     # - assets/adarsha/
     # - assets/tapobhumi/
     # - assets/samudayik/
-    - assets/supya/
-    # - assets/shreepathibhara/
+    # - assets/supya/
+    - assets/shreepathibhara/
     # - assets/maryadit/
     # - assets/shreeSansari/
     # - assets/chaulani/
@@ -503,7 +503,7 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    # - assets/kishanKalyan/
+    - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/

@@ -95,18 +95,24 @@ class _LoanWidgetState extends State<LoanWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        LoanKeyValueTile(
-                                          title: "Interest Type",
-                                          value: response
-                                              .findValueString("interestType"),
-                                          axis: Axis.vertical,
-                                        ),
-                                        LoanKeyValueTile(
-                                          title: "Issued On",
-                                          value: response
-                                              .findValueString("issuedOn"),
-                                          axis: Axis.vertical,
-                                        ),
+                                        if (response.findValueString(
+                                                "interestType") !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Interest Type",
+                                            value: response.findValueString(
+                                                "interestType"),
+                                            axis: Axis.vertical,
+                                          ),
+                                        if (response
+                                                .findValueString("issuedOn") !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Issued On",
+                                            value: response
+                                                .findValueString("issuedOn"),
+                                            axis: Axis.vertical,
+                                          ),
                                         if (response
                                                 .findValueString(
                                                     "principalInstallments")
@@ -129,18 +135,26 @@ class _LoanWidgetState extends State<LoanWidget> {
                                                 "interestInstallments"),
                                             axis: Axis.vertical,
                                           ),
-                                        LoanKeyValueTile(
-                                          title: "Balance",
-                                          value: response
-                                              .findValueString("balance"),
-                                          axis: Axis.vertical,
-                                        ),
-                                        LoanKeyValueTile(
-                                          title: "Duration",
-                                          value: response
-                                              .findValueString("duration"),
-                                          axis: Axis.vertical,
-                                        ),
+                                        if (response
+                                                .findValueString("balance")
+                                                .toLowerCase() !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Balance",
+                                            value: response
+                                                .findValueString("balance"),
+                                            axis: Axis.vertical,
+                                          ),
+                                        if (response
+                                                .findValueString("duration")
+                                                .toLowerCase() !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Duration",
+                                            value: response
+                                                .findValueString("duration"),
+                                            axis: Axis.vertical,
+                                          ),
                                       ],
                                     ),
                                     Padding(
@@ -149,24 +163,38 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          LoanKeyValueTile(
-                                            title: "Interest Rate",
-                                            value: response.findValueString(
-                                                "interestRate"),
-                                            axis: Axis.vertical,
-                                          ),
-                                          LoanKeyValueTile(
-                                            title: "Matures On",
-                                            value: response
-                                                .findValueString("maturesOn"),
-                                            axis: Axis.vertical,
-                                          ),
-                                          LoanKeyValueTile(
-                                            title: "Disbursed Amount",
-                                            value: response.findValueString(
-                                                "disbursedAmount"),
-                                            axis: Axis.vertical,
-                                          ),
+                                          if (response
+                                                  .findValueString(
+                                                      "interestRate")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Interest Rate",
+                                              value: response.findValueString(
+                                                  "interestRate"),
+                                              axis: Axis.vertical,
+                                            ),
+                                          if (response
+                                                  .findValueString("maturesOn")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Matures On",
+                                              value: response
+                                                  .findValueString("maturesOn"),
+                                              axis: Axis.vertical,
+                                            ),
+                                          if (response
+                                                  .findValueString(
+                                                      "disbursedAmount")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Disbursed Amount",
+                                              value: response.findValueString(
+                                                  "disbursedAmount"),
+                                              axis: Axis.vertical,
+                                            ),
                                         ],
                                       ),
                                     ),
