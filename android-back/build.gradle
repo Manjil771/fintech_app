@@ -15,6 +15,14 @@ buildscript {
     }
 }
 
+android {
+    packagingOptions {
+        jniLibs {
+            useLegacyPackaging true 
+        }
+    }
+}
+
 allprojects {
     repositories {
         google()
