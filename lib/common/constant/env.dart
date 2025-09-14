@@ -5939,5 +5939,5 @@ class CoOperativeValue {
     coOperativeName: "Shikhar saving & Credit Co- operative Society Ltd",
     appTitle: 'Shikhar iSmart',
   );
-  static final CoOperative currentCoop = janakalyanbahumukhi;
+  static final CoOperative currentCoop = sarbashakti;
 }

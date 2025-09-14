@@ -98,7 +98,7 @@ flutter:
     # - assets/join/
     # - assets/asaMulti/
 
-    - assets/janakalyanbahumukhi/
+    # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
     # - assets/gaja/
     # - assets/arunjyoti/
@@ -462,12 +462,12 @@ flutter:
     # - assets/sampada/
     # - assets/bishwakarma/
     # - assets/pame/
-    # - assets/pratham/
+    # - assets/pratham/z
     # - assets/dhanalaxmi/
     # - assets/samriddha/
     # - assets/kohinoor/
     # - assets/bhargo/
-    # - assets/sarbashakti/
+    - assets/sarbashakti/
     # - assets/janakalyan/
     # - assets/pathibhara/
     # - assets/indrawati/
