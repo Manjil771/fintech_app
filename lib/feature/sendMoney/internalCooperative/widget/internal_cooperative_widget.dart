@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -83,7 +85,8 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
       ),
     );
   }
-    @override
+
+  @override
   void initState() {
     super.initState();
     _accountNumberController.text = widget.accountNumber ?? "";
@@ -125,7 +128,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                 body: Column(
                   children: [
                     KeyValueTile(
-                        title: "From Account",
+                        title: LocaleKeys.fromaccount.tr(),
                         value: RepositoryProvider.of<CustomerDetailRepository>(
                                 context)
                             .selectedAccount
@@ -133,15 +136,16 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                             .accountNumber),
                     KeyValueTile(
                         title: "To Account",
-                        value: _accountNumberController.text),
+                        value:
+                            "${branchId ?? widget.branchCodeQr.toString()}${_accountNumberController.text}"),
                     KeyValueTile(
-                        title: "Account Holder Name",
+                        title: "Destination A/C Name",
                         value: _accountNameController.text),
+                    // KeyValueTile(
+                    //     title: "Branch Code",
+                    //     value: branchId ?? widget.branchCodeQr.toString()),
                     KeyValueTile(
-                        title: "Branch Code",
-                        value: branchId ?? widget.branchCodeQr.toString()),
-                    KeyValueTile(
-                        title: "Remarks", value: _remarksController.text),
+                        title: "Remarks".tr(), value: _remarksController.text),
                     KeyValueTile(
                         title: "Total Amount", value: _amountController.text),
                   ],
@@ -173,7 +177,7 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -196,13 +200,13 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                       )
                     : widget.branchCodeQr == null
                         ? CustomTextField(
-                            title: "Branch",
-                            hintText: "Select Branch",
+                            title: "Branch".tr(),
+                            hintText: "Select Branch".tr(),
                             readOnly: true,
                             controller: _branchController,
                             validator: (val) =>
                                 FormValidator.validateFieldNotEmpty(
-                                    val, "Branch"),
+                                    val, "Branch".tr()),
                             onTap: () {
                               NavigationService.push(
                                 target: CoOperativeBranchPage(
@@ -244,24 +248,24 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                               listener: (context, state) {},
                             )),
                 CustomTextField(
-                  title: "Destination Account",
-                  hintText: "Account Number",
+                  title: "Destination Account".tr(),
+                  hintText: "Account Number".tr(),
                   controller: _accountNumberController,
                   validator: (val) => FormValidator.validateFieldNotEmpty(
                       val, "Account Number"),
                 ),
                 CustomTextField(
-                  hintText: "Account Holder Name",
+                  hintText: "Account Holder Name".tr(),
                   controller: _accountNameController,
-                  validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Account Name"),
+                  validator: (val) => FormValidator.validateFieldNotEmpty(
+                      val, "Account Name".tr()),
                 ),
                 CustomTextField(
                   showTransLimit: true,
                   transLimitFunc: _toggleBottomSheet,
-                  title: "Amount",
+                  title: "Amount".tr(),
                   textInputType: TextInputType.number,
-                  hintText: "NPR",
+                  hintText: "NPR".tr(),
                   onChanged: (value) {
                     setState(() {
                       _currentAmount = value;
@@ -269,20 +273,20 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
                   },
                   controller: _amountController,
                   validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Amount"),
+                      FormValidator.validateFieldNotEmpty(val, "Amount".tr()),
                 ),
                 const SizedBox(height: 10),
                 CustomTextField(
-                  title: "Remarks",
-                  hintText: "Remarks",
+                  title: "Remarks".tr(),
+                  hintText: "Remarks".tr(),
                   controller: _remarksController..text = widget.remarks ?? "",
                   validator: (val) =>
-                      FormValidator.validateFieldNotEmpty(val, "Remarks"),
+                      FormValidator.validateFieldNotEmpty(val, "Remarks".tr()),
                 )
               ],
             ),
           ),
-          topbarName: "Fund Transfer",
+          topbarName: "Fund Transfer".tr(),
           showDetail: true,
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
@@ -299,9 +303,9 @@ class _InternalCooperativeWidgetState extends State<InternalCooperativeWidget> {
             }
           },
           showAccountSelection: true,
-          buttonName: "Proceed",
-          title: "Internal Cooperative",
-          detail: "Send Money to account maintained at same Coop.",
+          buttonName: "Proceed".tr(),
+          title: "Internal Cooperative".tr(),
+          detail: "Send Money to account maintained at same Coop.".tr(),
         ),
       ),
     );

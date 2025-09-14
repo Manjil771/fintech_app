@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:flutter/services.dart';
 
 enum TextSizeType { Width, Height }
@@ -19,6 +21,19 @@ class TextUtils {
       'firstname': fname,
       'lastname': lname,
     };
+  }
+
+  static String fixEncodingIfNeeded(String input) {
+    final nepaliOrEnglish = RegExp(r'^[\u0900-\u097Fa-zA-Z0-9\s.,!?-]+$');
+    if (nepaliOrEnglish.hasMatch(input)) {
+      return input;
+    } else {
+      try {
+        return utf8.decode(latin1.encode(input));
+      } catch (e) {
+        return input;
+      }
+    }
   }
 
   static String get generateGreet {
@@ -47,6 +62,24 @@ class TextUtils {
 
   static String replaceEmptyWithDash(dynamic value) {
     return (value?.toString() ?? "").isNotEmpty ? value.toString() : "-";
+  }
+
+  static String extractFineStatus([double? amount, String? status]) {
+    if (amount == null ||
+        amount <= 0 ||
+        status == null ||
+        status.trim().isEmpty) {
+      return "-";
+    }
+    final String firstLetter = status[0];
+    final RegExp regex = RegExp(r'(\d+(\.\d+)?)%');
+    final Match? match = regex.firstMatch(status);
+    if (match == null) return "-";
+
+    final double percent = double.tryParse(match.group(1)!) ?? 0;
+    if (percent == 0) return "-";
+    final double result = (percent * amount) / 100;
+    return "($firstLetter) ${result.toStringAsFixed(1)}";
   }
 
   static String formatTemplateMessage(

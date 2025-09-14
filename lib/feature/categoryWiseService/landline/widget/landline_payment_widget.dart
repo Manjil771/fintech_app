@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -72,9 +74,9 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
           child: CommonContainer(
             showDetail: true,
             showAccountSelection: true,
-            buttonName: "Proceed",
-            topbarName: "Landline",
-            title: "LandLine Payment",
+            buttonName: LocaleKeys.Proceed.tr(),
+            topbarName: LocaleKeys.landlineTopbar.tr(),
+            title: LocaleKeys.landlineInstructions.tr(),
             verificationAmount: currentAmount,
             detail: selectedService.instructions,
             body: Form(
@@ -83,7 +85,7 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                 children: [
                   CustomTextField(
                     textInputType: TextInputType.number,
-                    title: "Landline Number",
+                    title: LocaleKeys.landline.tr(),
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     hintText: "xxxxxxxxxx",
                     controller: _phoneNumberController,
@@ -93,8 +95,8 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                   CustomTextField(
                     textInputType: TextInputType.number,
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Amount",
-                    hintText: "Enter the amount",
+                    title:LocaleKeys.amount.tr(),
+                    hintText: LocaleKeys.amountmoney.tr(),
                     controller: _amountController,
                     onChanged: (value) {
                       setState(() {
@@ -136,10 +138,10 @@ class _LandlinePaymentWidgetState extends State<LandlinePaymentWidget> {
                   body: Column(
                     children: [
                       KeyValueTile(
-                          title: "Phone Number",
+                          title: LocaleKeys.phonenumber.tr(),
                           value: _phoneNumberController.text),
                       KeyValueTile(
-                          title: "Amount", value: _amountController.text),
+                          title: LocaleKeys.amount.tr(), value: _amountController.text),
                     ],
                   ),
                 ));

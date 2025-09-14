@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
@@ -14,7 +15,7 @@ class _TransactionLimitWidgetState extends State<TransactionLimitWidget> {
   bool showCount = true;
   @override
   Widget build(BuildContext context) {
-    return const PageWrapper(
+    return PageWrapper(
         showBackButton: true,
         body: SingleChildScrollView(
           // child: CommonContainer(
@@ -26,22 +27,22 @@ class _TransactionLimitWidgetState extends State<TransactionLimitWidget> {
           child: Column(
             children: [
               TransactionProgressPage(
-                title: "Internal Fund Transfer ",
+                title: "Internal Fund Transfer".tr(),
                 profileType: 'CustomerProfile',
                 isOpen: true,
               ),
               TransactionProgressPage(
-                title: "Wallet ",
+                title: "Wallet".tr(),
                 profileType: 'WalletProfile',
                 isOpen: false,
               ),
               TransactionProgressPage(
-                title: "Bank Transfer",
+                title: "Bank Transfer".tr(),
                 profileType: 'BankTransferProfile',
                 isOpen: false,
               ),
               TransactionProgressPage(
-                title: "Scan and Pay Profile",
+                title: "Scan and Pay Profile".tr(),
                 profileType: 'QRProfile',
                 isOpen: false,
               ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +54,7 @@ class _LoanWidgetState extends State<LoanWidget> {
     final _textTheme = _theme.textTheme;
     return PageWrapper(
         body: CommonContainer(
-            title: "Loan Information",
+            title: "Loan Information".tr(),
             showRoundBotton: false,
             body: BlocBuilder<UtilityPaymentCubit, CommonState>(
               builder: (context, state) {
@@ -72,12 +73,12 @@ class _LoanWidgetState extends State<LoanWidget> {
                               child: Column(
                                 children: [
                                   LoanKeyValueTile(
-                                    title: "Product Name",
+                                    title: "Product Name".tr(),
                                     value: response.findValueString("product"),
                                     axis: Axis.horizontal,
                                   ),
                                   LoanKeyValueTile(
-                                    title: "Account Number",
+                                    title: "Account Number".tr(),
                                     value: response
                                         .findValueString("accountNumber"),
                                     axis: Axis.horizontal,
@@ -242,7 +243,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         color: _theme.primaryColor,
                                       ),
                                       Text(
-                                        "Loan Statement",
+                                        "Loan Statement".tr(),
                                         style: _textTheme.titleLarge!.copyWith(
                                             color: _theme.primaryColor,
                                             fontWeight: FontWeight.bold),
@@ -285,7 +286,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         color: _theme.primaryColor,
                                       ),
                                       Text(
-                                        "Loan Schedule",
+                                        "Loan Schedule".tr(),
                                         style: _textTheme.titleLarge!.copyWith(
                                             color: _theme.primaryColor,
                                             fontWeight: FontWeight.bold),
@@ -355,7 +356,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                   }
                 } else if (state is CommonError) {
                   return NoDataScreen(
-                      title: "No Data Found", details: state.message);
+                      title: "No Data Found".tr(), details: state.message);
                 } else if (state is CommonLoading) {
                   return const CommonLoadingWidget();
                 } else {
@@ -365,6 +366,6 @@ class _LoanWidgetState extends State<LoanWidget> {
                 }
               },
             ),
-            topbarName: "Loan"));
+            topbarName: "Loan".tr()));
   }
 }

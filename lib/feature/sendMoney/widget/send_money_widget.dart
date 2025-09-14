@@ -132,10 +132,12 @@
 //   }
 // }
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -244,7 +246,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                               children: [
                                 CommonDetailBox(
                                   isNetworkImage: true,
-                                  title: filteredItems[index].name,
+                                  title: filteredItems[index].name.tr(),
                                   leadingImage:
                                       "${RepositoryProvider.of<CoOperative>(context).baseUrl}${filteredItems[index].imageUrl}",
                                   onBoxPressed: () {
@@ -283,7 +285,8 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                                     }
                                   },
                                   detail: checkDesc(
-                                      filteredItems[index].uniqueIdentifier),
+                                          filteredItems[index].uniqueIdentifier)
+                                      .tr(),
                                 ),
                                 const Divider(thickness: 1)
                               ],
@@ -295,7 +298,7 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
                   ],
                 ),
                 showTitleText: false,
-                topbarName: "Send Money");
+                topbarName: "Send Money".tr());
           } else if (state is CommonLoading) {
             return const CommonLoadingWidget();
           }
@@ -307,13 +310,13 @@ class _SendMoneyWidgetState extends State<SendMoneyWidget> {
 
   final List<Map<String, dynamic>> fixedItems = [
     {
-      'name': 'Favorite',
+      'name': LocaleKeys.favorite.tr(),
       'imageUrl': 'assets/icons/fav_icon.svg',
       'uniqueIdentifier': 'fixed_item_1',
     },
   ];
 
-  checkDesc(uniqueIdentifier) {
+  String checkDesc(uniqueIdentifier) {
     if (uniqueIdentifier
         .toString()
         .toLowerCase()

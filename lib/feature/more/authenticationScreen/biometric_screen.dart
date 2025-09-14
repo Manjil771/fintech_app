@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -55,7 +56,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
           showTitleText: false,
           showRoundBotton: false,
           verticalPadding: 0,
-          topbarName: "Biometric",
+          topbarName: "Biometric".tr(),
           body: Column(
             children: [
               Column(
@@ -64,7 +65,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                     height: 40.hp,
                   ),
                   Text(
-                    "Biometric Settings",
+                    "Biometric Settings".tr(),
                     style: _textTheme.headlineMedium!.copyWith(
                       fontWeight: FontWeight.bold,
                     ),
@@ -80,7 +81,8 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                     height: 20.hp,
                   ),
                   Text(
-                    "Enable/ Disable biometric login to login and payemnt without your MPIN.",
+                    "Enable/ Disable biometric login to login and payemnt without your MPIN."
+                        .tr(),
                     style: _textTheme.bodyLarge,
                     textAlign: TextAlign.center,
                   ),
@@ -89,7 +91,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                   ),
                   _isBiometricEnabled.value == true
                       ? CustomRoundedButtom(
-                          title: "Disable Now",
+                          title: "Disable Now".tr(),
                           onPressed: () async {
                             NavigationService.push(target: TransactionPinScreen(
                               onValueCallback: (p0) {
@@ -97,7 +99,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                 if (p0 == mPin) {
                                   SnackBarUtils.showSuccessBar(
                                     context: context,
-                                    message: "Biometric Disable",
+                                    message: "Biometric Disable".tr(),
                                   );
                                   SharedPref.setBiometricLogin(false);
                                   setState(() {});
@@ -105,7 +107,8 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                                   SnackBarUtils.showErrorBar(
                                     context: context,
                                     message:
-                                        "Pin doesnot match. Please try again.",
+                                        "Pin doesnot match. Please try again."
+                                            .tr(),
                                   );
                                 }
                                 NavigationService.pop();
@@ -114,7 +117,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                           },
                         )
                       : CustomRoundedButtom(
-                          title: "Enable Now",
+                          title: "Enable Now".tr(),
                           onPressed: () async {
                             final bool _isFingerprintAvailable =
                                 await FingerPrintUtils.hasFingerPrint;
@@ -122,13 +125,13 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
                               widget.onValueCallback(
                                 await FingerPrintUtils.verifyFingerPrint(
                                   context: context,
-                                  reason: "Enable biometric login.",
+                                  reason: "Enable biometric login.".tr(),
                                 ),
                               );
                               SharedPref.setBiometricLogin(true);
                               SnackBarUtils.showSuccessBar(
                                 context: context,
-                                message: "Biometric Enabled",
+                                message: "Biometric Enabled".tr(),
                               );
                               NavigationService.pop();
                               setState(() {});
@@ -145,7 +148,7 @@ class _AuthenticationScreenState extends State<AuthenticationScreen> {
   }
 }
 
-// 
+//
 //import 'package:flutter/material.dart';
 // import 'package:ismart/app/theme.dart';
 // import 'package:ismart/common/navigation/navigation_service.dart';

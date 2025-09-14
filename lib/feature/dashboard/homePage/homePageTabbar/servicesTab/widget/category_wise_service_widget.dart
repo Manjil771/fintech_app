@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -80,7 +82,7 @@ class _CategoriesWiseServicesWidgetState
     return PageWrapper(
       body: CommonContainer(
           showRoundBotton: false,
-          title: "Choose Service Povider",
+          title: LocaleKeys.chooseServiceProvider.tr(),
           body: Column(
             children: [
               const SizedBox(height: 10),

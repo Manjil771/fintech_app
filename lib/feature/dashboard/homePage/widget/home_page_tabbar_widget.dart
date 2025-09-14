@@ -14,13 +14,19 @@ class HomePageTabbarWidget extends StatefulWidget {
 
 class _HomePageTabbarWidgetState extends State<HomePageTabbarWidget> {
   int _selectedIndex = 0;
-  static final List<String> tabTitle = [
-    LocaleKeys.instantPayments.tr(),
-    LocaleKeys.favorite.tr(),
-    LocaleKeys.graph.tr(),
-  ];
+  // static final List<String> tabTitle = [
+  //   LocaleKeys.instantPayments.tr(),
+  //   LocaleKeys.favorite.tr(),
+  //   LocaleKeys.graph.tr(),
+  // ];
+
   @override
   Widget build(BuildContext context) {
+    final List<String> tabTitle = [
+      LocaleKeys.instantPayments.tr(),
+      LocaleKeys.favorite.tr(),
+      LocaleKeys.graph.tr(),
+    ];
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [

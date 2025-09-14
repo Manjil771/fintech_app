@@ -130,6 +130,7 @@ class _BankTransferBillWidgetState extends State<BankTransferBillWidget> {
           if (state is CommonStateSuccess) {
             NavigationService.pushReplacement(
               target: BankTransferReciptPage(
+                imageUrl: widget.iamgeUrl.toString(),
                 transactionID: state.data.toString(),
                 body: widget.body,
                 message: "Transaction Success for the Service",

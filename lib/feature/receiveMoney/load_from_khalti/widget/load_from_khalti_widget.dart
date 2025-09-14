@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
@@ -153,8 +155,8 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                 CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     textInputType: TextInputType.number,
-                    title: "Amount",
-                    hintText: "NPR ",
+                    title: LocaleKeys.amount.tr(),
+                    hintText: LocaleKeys.NPR.tr(),
                     controller: _amountController,
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Amount")
@@ -170,8 +172,8 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                     ),
                 CustomTextField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  title: "Remarks",
-                  hintText: "Remarks",
+                  title: LocaleKeys.Remarks.tr(),
+                  hintText: LocaleKeys.Remarks.tr(),
                   controller: _remarksController,
                   validator: (value) =>
                       FormValidator.validateFieldNotEmpty(value, "Remarks"),
@@ -179,8 +181,8 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
               ],
             ),
           ),
-          topbarName: "Receive Money",
-          buttonName: "Proceed",
+          topbarName: "Receive Money".tr(),
+          buttonName: LocaleKeys.Proceed.tr(),
           onButtonPressed: () {
             if (_formKey.currentState!.validate()) {
               context.read<ReceiveMoneyCubit>().loadFromKhalti(
@@ -195,8 +197,8 @@ class _LoadFromKhaltiWidgetState extends State<LoadFromKhaltiWidget> {
                   );
             }
           },
-          title: "Receive Fund",
-          detail: "Receive fund instantly to your account.",
+          title: "Receive Fund".tr(),
+          detail: "Receive fund instantly to your account.".tr(),
         ),
       ),
     );

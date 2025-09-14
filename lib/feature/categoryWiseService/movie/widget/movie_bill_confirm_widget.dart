@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -161,7 +163,7 @@ class MovieBillWidget extends StatelessWidget {
               SizedBox(height: 28.hp),
               CustomRoundedButtom(
                   verificationAmount: totalAmount,
-                  title: "Proceed",
+                  title: LocaleKeys.Proceed.tr(),
                   onPressed: () {
                     final List<String> seatIds = selectedSeats
                         .map((seat) => seat?.seatId ?? "")

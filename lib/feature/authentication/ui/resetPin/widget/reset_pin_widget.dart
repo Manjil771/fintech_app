@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -62,7 +63,7 @@ class ResetPinWidget extends StatelessWidget {
                 showPopUpDialog(
                   context: context,
                   message: state.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   showCancelButton: false,
                   buttonCallback: () {
                     NavigationService.pop();
@@ -117,8 +118,8 @@ class ResetPinWidget extends StatelessWidget {
                                 mPin: "");
                           }
                         },
-                        buttonName: "Proceed",
-                        title: "Reset Pin",
+                        buttonName: "Proceed".tr(),
+                        title: "Reset Pin".tr(),
                         showDetail: false,
                         body: Form(
                           key: _fromKey,
@@ -128,7 +129,7 @@ class ResetPinWidget extends StatelessWidget {
                                 controller: _mobileNumberController,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                title: "Mobile Number",
+                                title: "Mobile Number".tr(),
                                 validator: (value) =>
                                     FormValidator.validateFieldNotEmpty(
                                         value, "Mobile Number"),
@@ -137,13 +138,13 @@ class ResetPinWidget extends StatelessWidget {
                                 controller: _accountNumberController,
                                 autovalidateMode:
                                     AutovalidateMode.onUserInteraction,
-                                title: "Account Number",
+                                title: "Account Number".tr(),
                                 validator: (value) =>
                                     FormValidator.validateFieldNotEmpty(
                                         value, "Account Number"),
                               ),
                               CustomTextField(
-                                  title: "Branch",
+                                  title: "Branch".tr(),
                                   hintText: "Select Branch",
                                   readOnly: true,
                                   controller: _branchController,
@@ -164,7 +165,7 @@ class ResetPinWidget extends StatelessWidget {
                             ],
                           ),
                         ),
-                        topbarName: "Reset Pin"),
+                        topbarName: "Reset Pin".tr()),
                   ),
                 )
               ],

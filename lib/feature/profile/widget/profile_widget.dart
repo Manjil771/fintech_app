@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -266,7 +267,7 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                                     ),
                                     SizedBox(width: 8.wp),
                                     Text(
-                                      "Show my QR",
+                                      "Show my QR".tr(),
                                       style: _textTheme.bodyLarge!.copyWith(
                                         color: _theme.primaryColor,
                                         fontWeight: FontWeight.bold,

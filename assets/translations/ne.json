@@ -1,7 +1,7 @@
 {
-  "appName": "This app",
-  "Message": "सन्देश",
-
+"appName": "This app",
+"NPR":"रू",
+"Message": "सन्देश",
 "TOP UP": "टप अप",
 "LANDLINE": "ल्याण्डलाइन",
 "INTERNET": "इन्टरनेट",
@@ -14,10 +14,134 @@
 "Insurance": "बीमा",
 "View More": "अझ धेरै हेर्नुहोस्",
 "Movies":"चलचित्रहरू",
-
+"done": "पूरा भयो",
+"transactionSucessful": "लेनदेन सफल भयो",
+"phonenumber": "फोन नम्बर",
 "Proceed": "अगाडि बढ्नुहोस्",
-"Cancel": "रद्द गर्नुहोस्",
+"cancel": "रद्द गर्नुहोस्",
+"view": "हेर्नुहोस्",
+"allServices": "सबै सेवाहरू",
+"chooseServiceProvider": "सेवा प्रदायक चयन गर्नुहोस्",
+"download": "डाउनलोड गर्नुहोस्",
+"details_about_service": "{service} सेवाको तिर्नुपर्ने रकम तल देखाइएको छ।",
+"transactionID": "लेनदेन आईडी",
+"initiator": "प्रारम्भकर्ता",
+"datetime": "मिति र समय",
+"service": "सेवा",
+"paymentdetails": "भुक्तानी विवरण",
+"targetnumber": "लक्ष्य नम्बर",
+"fromaccount": "खाता बाट",
+"cashback": "क्यासब्याक",
+"pay": "भुक्तानी गर्नुहोस्",
+"Remarks":"टिप्पणीहरू",
+"Send Money":"पैसा पठाउनुहोस्",
+"Bank Transfer":"बैंक स्थानान्तरण",
+"Coop Transfer" : "कोप स्थानान्तरण",
+"Wallets":"वालेटहरू",
+"Send Money to accounts maintained at different banks": "विभिन्न बैंकमा रहेका खातामा पैसा पठाउनुहोस्",
+"Send Money to accounts maintained at same cooperative": "उही सहकारीमा रहेका खातामा पैसा पठाउनुहोस्",
+"Send Money to accounts maintained at different cooperative": "विभिन्न सहकारीमा रहेका खातामा पैसा पठाउनुहोस्",
+"Load Money to your Account": "आफ्नो खातामा पैसा हाल्नुहोस्",
+
+ "Check Transfer": "ट्रान्सफर जाँच्नुहोस्",
+  "Select Bank":"बैंक चयन गर्नुहोस्",
+  "Confirm": "पुष्टि गर्नुहोस्",
+  "Amount": "रकम",
+  "Mobile Number": "मोबाइल नम्बर",
+  "Account Holder Name": "खाताधारकको नाम",
+  "Account Number": "खाता नम्बर",
+  "Error": "त्रुटि",
+  "Recent Transaction":"हालको लेनदेन",
+
+  "Internal Cooperative": "आन्तरिक सहकारी",
+  "Send Money to account maintained at same Coop.": "उही सहकारीमा रहेको खातामा पैसा पठाउनुहोस्",
+  "Fund Transfer": "निधि स्थानान्तरण",
+  "Branch": "शाखा",
+  "Select Branch": "शाखा छान्नुहोस्",
+  "Destination Account": "गन्तव्य खाता",
+
+   "Wallet Transfer": "वालेट ट्रान्सफर",
+  "Load Money to your preferred wallet account": "तपाईंको रोजाइको वालेट खातामा पैसा हाल्नुहोस्",
+  "Load Wallet": "वालेट लोड गर्नुहोस्",
+  "No Wallet Found": "कुनै वालेट फेला परेन",
+  "Wallet": "वालेट",
+  "WalletProfile": "वालेट प्रोफाइल",
+  "To Account": "खातामा",
+  "Wallet ID Validated successfully. Do you want to continue transfer?": "वालेट आईडी सफलतापूर्वक प्रमाणित भयो। के तपाईं ट्रान्सफर जारी राख्न चाहनुहुन्छ?",
+  "WALLET": "वालेट",
+   "Wallet Id": "वालेट आइडी",
+  "Enter the amount": "रकम प्रविष्ट गर्नुहोस्",
+
+   "Show my QR": "मेरो QR देखाउनुहोस्",
+  "General Info": "साधारण जानकारी",
+  "Account List": "खाताको सूची",
+  "Contact Us": "हामीलाई सम्पर्क गर्नुहोस्",
+  "Personal Details": "व्यक्तिगत विवरण",
+  "Check for Updates": "अपडेटहरू जाँच्नुहोस्",
+  "Are you sure you want to logout.": "के तपाईं पक्का लगआउट गर्न चाहनुहुन्छ?",
+  "Alert": "चेतावनी",
+  "Logout": "लगआउट",
+  "Never miss out any update.": "कुनै पनि अपडेट छुटाउन नगर्नुहोस्।",
+  "Logout from this application.": "यो एप्लिकेशनबाट लगआउट गर्नुहोस्।",
+
+   "Cheque Request": "चेक अनुरोध",
+  "Cheque Stop": "चेक रोक्नुहोस्",
+  "Select Number": "नम्बर छान्नुहोस्",
+  "Select Cheque Leaves": "चेक पाना छान्नुहोस्",
+  "Enter Cheque Number": "चेक नम्बर प्रविष्ट गर्नुहोस्",
+
+   "Calculator": "क्यालकुलेटर",
+  "Discount Calculator": "छूट क्यालकुलेटर",
+  "EMI Calculator": "ईएमआई क्यालकुलेटर",
+  "Date Converter": "मिति रूपान्तरण",
+  "All your downloaded documents are stored here.": "तपाईंले डाउनलोड गरेका सबै कागजातहरू यहाँ संग्रहित हुन्छन्।",
+  "Downloads": "डाउनलोडहरू",
+  "No downloads available.": "कुनै डाउनलोड उपलब्ध छैन।",
+  "Report a Problem": "समस्या रिपोर्ट गर्नुहोस्",
+  "Submit": "पेश गर्नुहोस्",
+  "Transaction Identifier": "लेनदेन पहिचायक",
+  "Date": "मिति",
+  "Picture": "तस्बिर",
+  "Upload Picture": "तस्बिर अपलोड गर्नुहोस्",
+  "Report Issue": "समस्या रिपोर्ट गर्नुहोस्",
+
+   "Choose Option": "विकल्प छान्नुहोस्",
+  "Select Account": "खाता छान्नुहोस्",
+  "Loan": "ऋण",
+  "Select the Account you want to view loan detail.": "जसको विवरण हेर्न चाहानुहुन्छ त्यस खाता छान्नुहोस्।",
+  "Loan Information": "ऋण जानकारी",
+  "Product Name": "उत्पादन नाम",
+  "Loan Statement": "ऋण विवरण",
+  "Loan Schedule": "ऋण तालिका",
+  "No Data Found": "कुनै डेटा फेला परेन",
+
+   "Biometric": "बायोमेट्रिक",
+  "Biometric Settings": "बायोमेट्रिक सेटिङ्स",
+  "Enable/ Disable biometric login to login and payemnt without your MPIN.": "MPIN बिना लगइन र भुक्तानी गर्न बायोमेट्रिक लगइन सक्षम/अक्षम गर्नुहोस्।",
+  "Disable Now": "अहिल्यै अक्षम गर्नुहोस्",
+  "Biometric Disable": "बायोमेट्रिक अक्षम भयो",
+  "Pin doesnot match. Please try again.": "PIN मेल खाँदैन। कृपया फेरि प्रयास गर्नुहोस्।",
+  "Enable Now": "अहिल्यै सक्षम गर्नुहोस्",
+  "Enable biometric login.": "बायोमेट्रिक लगइन सक्षम गर्नुहोस्।",
+  "Biometric Enabled": "बायोमेट्रिक सक्षम भयो",
+
+   "Setting": "सेटिङ",
+  "Privacy Policy": "गोपनीयता नीति",
+  "View complete privacy policy": "पूर्ण गोपनीयता नीति हेर्नुहोस्",
+  "Forget Pin": "PIN बिर्सनुभयो",
+  "Tap to reset your Security Pin.": "तपाईंको सुरक्षा PIN रिसेट गर्न ट्याप गर्नुहोस्।",
+  "Tap to select the language.": "भाषा छान्न ट्याप गर्नुहोस्।",
+  "Language": "भाषा",
+  "Reset Pin": "PIN रिसेट गर्नुहोस्",
+
+   "Internal Fund Transfer": "आन्तरिक निधि स्थानान्तरण",
+  "Scan and Pay Profile": "स्क्यान गरेर भुक्तानी प्रोफाइल",
+
+
+"entersecurity": "सुरक्षा पिन प्रविष्ट गर्नुहोस्",
+"enterPin": "अगाडि बढ्नका लागि कृपया आफ्नो सुरक्षा पिन प्रविष्ट गर्नुहोस्",
   "Security Pin": "",
+  "pincodeempty": "पिन कोड क्षेत्र खाली हुन सक्दैन",
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   },
@@ -38,6 +162,7 @@
   "scanQR": "QR स्क्यान",
   "history": "इतिहास",
   "profile": "प्रोफाइल"
+  
 },
 "login": {
   "login": "लगइन",
@@ -64,6 +189,82 @@
   "branch": "साखा",
   "selectBranch": "साखा चयन गर्नुहोस्",
   "signUp": "साइन अप"
-}
+},
+"topup":{
+   "mobileTopup" : "टप अप",
+   "accountTitle" : "खाता शीर्षक",
+   "title": "मोबाइल टप अप",
+   "detail": "आफ्नो मोबाइल नम्बर टप अप गर्नुहोस्",
+   "amount": "रकम",
+   "amountmoney":"रकम हाल्नुहोस्"
+   
+},
+"landline":{
+  "landline":"ल्याण्डलाइन नम्बर",
+  "landlineTopbar": "ल्याण्डलाइन",
+  "landlineInstructions": "ल्याण्डलाइन भुक्तानी"
+},
+"profileSetting": {
+  "profile": "प्रोफाइल",
+  "accountInfo": "खाता जानकारी",
+  "biometric": "बायोमेट्रिक",
+  "changepin": "पिन परिवर्तन",
+  "transactionLimit": "लेनदेन सीमा",
+  "profileSetting": "सेटिङ्स"
+},
+"banking": {
+  "bankingSetting": "बैंकिङ सेटिङ",
+  "balanceInquiry": "ब्यालेन्स सोधपुछ",
+  "statement": " ब्यालेन्स स्टेटमेन्ट",
+  "chequeRequest": " चेक अनुरोध",
+  "calculator": "क्याल्कुलेटर",
+  "support": " सहयोग",
+  "feedback": " प्रतिक्रिया",
+  "loan": " ऋण"
+},
+"scanAndPay":{
+  "scanAndPay": "स्क्यान र भुक्तानी",
+  "alignQR": "कृपया QR कोडलाई फ्रेमभित्र मिलाउनुहोस्",
+  "showQR": "मेरो QR कोड देखाउनुहोस्"
+  
+},
+"balanceInquiry":{
+     "balanceinquiry": "ब्यालेन्स सोधपुछ",
+    "totalbalance": " कुल ब्यालेन्स",
+    "availablebalance": " उपलब्ध ब्यालेन्स",
+    "actualbalance": " वास्तविक ब्यालेन्स",
+    "memberID": " सदस्य आईडी",
+    "accNumber": " खाता नम्बर",
+    "interestRate": " ब्याज दर",
+    "accuredInterest": " अकृड ब्याज",
+    "accountHolderName": " खाता धारकको नाम",
+    "shareAccount": " शेयर खाता",
+    "detailAboutBalance": "तपाईंको खाता ब्यालेन्सको बारेमा विवरण तल दिइएको छ।"
+
+
+    },
+    "miniFullstatement": {
+      "toptext": " तपाईंले हेर्न चाहनु भएको स्टेटमेन्टको प्रकार चयन गर्नुहोस्",
+      "miniStatement": "मिनी स्टेटमेन्ट",
+      "fullStatement": "  पूर्ण स्टेटमेन्ट",
+      "statement1": "स्टेटमेन्ट"
+  
+      },
+      "internet":{
+        "internet":"Internet",
+        "internetFetchDetails":"भुक्तानी गर्न र सम्बन्धित रकम तिर्न विवरण ल्याउन प्रयोगकर्ता नाम प्रदान गर्नुहोस्"
+      
+      },
+
+      "RecentTransaction":"हालको लेनदेन",
+      "Filter":"फिल्टर",
+      "FilterOptions" :"फिल्टर विकल्प",
+      "No transactions yet.":"अहिलेसम्म कुनै लेनदेन छैन।",
+      "Receive Money": "पैसा प्राप्त गर्नुहोस्",
+      "Receive Fund":"कोष प्राप्त गर्नुहोस्",
+      "Receive fund instantly to your account.":"आफ्नो खातामा तुरुन्तै रकम प्राप्त गर्नुहोस्।"
+
+
+
 
 }

@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/favorite/listFavAccount/screen/list_fav_account_page.dart';
@@ -17,7 +19,7 @@ class _FavAccountsWidgetState extends State<FavAccountsWidget> {
         title: '',
         body: CommonContainer(
             verticalPadding: 0,
-            topbarName: "Favourite",
+            topbarName: LocaleKeys.favorite.tr(),
             showRoundBotton: false,
             body: ListFavAccountPage()));
   }

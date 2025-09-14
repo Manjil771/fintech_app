@@ -464,7 +464,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
     //       );
     //     },
     //   );
-    //   Future.delayed(const Duration(seconds: 10), () {
+    //   Future.delayed(const Duration(seconds: 4), () {
     //     if (mounted) {
     //       NavigationService.pop();
     //     }

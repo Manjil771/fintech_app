@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -134,8 +136,7 @@ class _CommonFindInternetUserWidgetState
                   ],
                 ),
                 SizedBox(height: _height * 0.03),
-                Text(
-                    "Provide Username to fetch details and pay respective amount.",
+                Text(LocaleKeys.internetFetchDetails.tr(),
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
@@ -164,8 +165,8 @@ class _CommonFindInternetUserWidgetState
                     ? CustomTextField(
                         autovalidateMode: AutovalidateMode.onUserInteraction,
                         controller: _amountController,
-                        title: "Amount",
-                        hintText: "NPR",
+                        title: LocaleKeys.amount.tr(),
+                        hintText: LocaleKeys.NPR.tr(),
                         onChanged: (value) {
                           setState(() {
                             _currentAmount = value;
@@ -179,7 +180,7 @@ class _CommonFindInternetUserWidgetState
                     : Container()
               ],
             ),
-            topbarName: 'Payment',
+            topbarName: LocaleKeys.pay.tr(),
             buttonName: 'Proceed',
             onButtonPressed: () {
               _formKey.currentState!.save();

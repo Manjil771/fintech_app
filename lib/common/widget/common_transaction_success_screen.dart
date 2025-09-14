@@ -1,16 +1,21 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/util/snackbar_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/key_value_tile.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/feature/categoryWiseService/airlines/model/airlines_avliable_list_model.dart';
@@ -28,6 +33,7 @@ class CommonTransactionSuccessPage extends StatelessWidget {
   final Flight? departure;
   final Flight? arrival;
   final String serviceName;
+  final String? imageUrl;
 
   const CommonTransactionSuccessPage(
       {super.key,
@@ -38,6 +44,7 @@ class CommonTransactionSuccessPage extends StatelessWidget {
       this.pdfUrl,
       this.departure,
       this.arrival,
+      this.imageUrl,
       required this.serviceName});
 
   @override
@@ -49,6 +56,7 @@ class CommonTransactionSuccessPage extends StatelessWidget {
         ..generateUrl(transactionId: transactionID),
       child: CommonTransactionSuccessfulWidget(
         body: body,
+        imageUrl: imageUrl,
         arrival: arrival,
         departure: departure,
         transactionID: transactionID,
@@ -67,6 +75,7 @@ class CommonTransactionSuccessfulWidget extends StatefulWidget {
   final String? pdfUrl;
   final Flight? departure;
   final Flight? arrival;
+  final String? imageUrl;
   final String serviceName;
 
   final ServiceList? service;
@@ -74,6 +83,7 @@ class CommonTransactionSuccessfulWidget extends StatefulWidget {
       {super.key,
       required this.body,
       required this.message,
+      this.imageUrl,
       required this.service,
       required this.transactionID,
       this.pdfUrl,
@@ -124,14 +134,76 @@ class _CommonTransactionSuccessfulWidgetState
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    SvgPicture.asset(
-                      Assets.successIcon,
-                      height: _height * 0.08,
+                    Stack(
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            // SvgPicture.asset(
+                            //   Assets.successIcon,
+                            //   height: _height * 0.08,
+                            // ),
+                            CustomCachedNetworkImage(
+                              url: RepositoryProvider.of<CoOperative>(context)
+                                  .coOperativeLogo
+                                  .toString(),
+                              fit: BoxFit.fitHeight,
+                              height: _height * 0.08,
+                            ),
+                            SizedBox(height: _height * 0.02),
+                            const Text(
+                              "Transaction Successful",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            SizedBox(height: _height * 0.02),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Flexible(
+                                  child: Text(widget.message,
+                                      textAlign: TextAlign.center,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleSmall),
+                                ),
+                              ],
+                            ),
+                            SizedBox(height: _height * 0.02),
+                          ],
+                        ),
+                        if (widget.imageUrl != null)
+                          Positioned(
+                            bottom: 0,
+                            right: 0.wp,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(
+                                  color: Colors.grey.shade300,
+                                  width: 1,
+                                ),
+                                borderRadius: BorderRadius.circular(8),
+                              ),
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: 8.wp, vertical: 4.hp),
+                                child: CustomCachedNetworkImage(
+                                  url: widget.imageUrl ?? '',
+                                  fit: BoxFit.contain,
+                                  height: 30.hp,
+                                  width: 30.wp,
+                                ),
+                              ),
+                            ),
+                          ),
+                      ],
                     ),
                     SizedBox(height: _height * 0.02),
-                    const Text(
-                      "Transaction Successful",
-                      style: TextStyle(
+                    Text(
+                      LocaleKeys.transactionSuccessful.tr(),
+                      style: const TextStyle(
                           fontSize: 20,
                           color: Colors.black,
                           fontWeight: FontWeight.w500),
@@ -184,23 +256,47 @@ class _CommonTransactionSuccessfulWidgetState
                             child: Column(
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
-                                Text("Paymet Details",
+                                Text(LocaleKeys.paymentdetails.tr(),
                                     style:
                                         Theme.of(context).textTheme.titleLarge),
                                 SizedBox(height: _height * 0.01),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      child: KeyValueTile(
+                                          bottomPadding: 0,
+                                          title: LocaleKeys.transactionID.tr(),
+                                          value: widget.transactionID),
+                                    ),
+                                    IconButton(
+                                      icon: Icon(
+                                        Icons.copy,
+                                        size: 18.hp,
+                                      ),
+                                      tooltip: 'Copy Transaction ID',
+                                      onPressed: () async {
+                                        await Clipboard.setData(ClipboardData(
+                                            text: widget.transactionID));
+                                        SnackBarUtils.showSuccessBar(
+                                            context: context,
+                                            message: "Transaction ID copied!");
+                                      },
+                                    )
+                                  ],
+                                ),
                                 KeyValueTile(
-                                    title: "Transaction ID",
-                                    value: widget.transactionID),
-                                KeyValueTile(
-                                  title: "Initiator(Mobile Number)",
+                                  title: LocaleKeys.initiator.tr(),
                                   value: phoneNumber ?? "",
                                 ),
                                 KeyValueTile(
-                                    title: "Date Time",
+                                    title: LocaleKeys.datetime.tr(),
                                     value: DateFormat('EEEE, MMM d, HH:mm')
                                         .format(DateTime.now())),
                                 KeyValueTile(
-                                  title: "Service",
+                                  title: LocaleKeys.service.tr(),
                                   value: widget.service?.service ??
                                       (widget.serviceName),
                                 ),
@@ -210,7 +306,7 @@ class _CommonTransactionSuccessfulWidgetState
                           ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                      title: "Done",
+                      title: LocaleKeys.done.tr(),
                       onPressed: () {
                         NavigationService.pushNamedAndRemoveUntil(
                             routeName: Routes.dashboard);

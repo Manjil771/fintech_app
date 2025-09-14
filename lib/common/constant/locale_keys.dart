@@ -18,9 +18,33 @@ class LocaleKeys {
   static const email = "auth.email";
   static const pleaseEnterValidField = "auth.pleaseEnterValidField";
 
+  static const Remarks = "Remarks";
   static const error = "error";
   static const cancel = "cancel";
   static const done = "done";
+  static const Proceed = "Proceed";
+  static const pincodeempty = "pincodeempty";
+  static const view = "view";
+  static const allServices = "allServices";
+  static const chooseServiceProvider = "chooseServiceProvider";
+  static const paymentdetails = "paymentdetails";
+  static const targetnumber = "targetnumber";
+  static const fromaccount = "fromaccount";
+  static const cashback = "cashback";
+  static const pay = "pay";
+  static const entersecurity = "entersecurity";
+  static const enterPin = "enterPin";
+  static const NPR = "NPR";
+  static const details_about_service = "details_about_service";
+  static const useBiometricToLogin = "useBiometricToLogin";
+  //new
+  static const transactionID = "transactionID";
+  static const initiator = "initiator";
+  static const datetime = 'datetime';
+  static const service = 'service';
+  static const transactionSuccessful = "transactionSucessful";
+  static const phonenumber = "phonenumber";
+  static const download = "download";
 
   //loginpage
   static const login = "login.login";
@@ -32,7 +56,6 @@ class LocaleKeys {
   static const activateAccount = "login.activateAccount";
   static const miscallBanking = "login.miscallBanking";
   static const branches = "login.branches";
-  static const useBiometricToLogin = "login.useBiometricToLogin";
 
   //forex
   static const currency = "foreex.currency";
@@ -66,4 +89,71 @@ class LocaleKeys {
   static const scanQR = "dashboard.scanQR";
   static const history = "dashboard.history";
   static const profile = "dashboard.profile";
+
+  //mobile top
+  static const topup = "topup.mobileTopup";
+  static const accountTitle = "topup.accountTitle";
+  static const buttonName = "topup.buttonName";
+  static const title = "topup.title";
+  static const detail = "topup.detail";
+  static const amount = "topup.amount";
+  static const amountmoney = "topup.amountmoney";
+
+  //  static const landline = "landline.landline";
+  static const landline = "landline.landline";
+  static const landlinePayment = "landline.landlinePayment";
+  static const landlineTopbar = "landline.landlineTopbar";
+  static const landlineInstructions = "landline.landlineInstructions";
+
+  // profile setting
+  static const profileSetting = "profileSetting.profileSetting";
+  static const accountInfo = "profileSetting.accountInfo";
+  static const changepin = "profileSetting.changepin";
+  static const transactionLimit = "profileSetting.transactionLimit";
+  static const biometric = "profileSetting.biometric";
+
+  //banking screen
+  static const bankingSetting = "banking.bankingSetting";
+  static const balanceInquiry = "banking.balanceInquiry";
+  static const statement = "banking.statement";
+  static const chequeRequest = "banking.chequeRequest";
+  static const calculator = "banking.calculator";
+  static const support = "banking.support";
+  static const feedback = "banking.feedback";
+  static const loan = "banking.loan";
+
+  //qr scan and pay
+  static const scanAndPay = "scanAndPay.scanAndPay";
+  static const alignQR = "scanAndPay.alignQR";
+  static const showQR = "scanAndPay.showQR";
+
+  //balance inquiry
+  static const balanceinquiry = "balanceInquiry.balanceinquiry";
+  static const totalbalance = "balanceInquiry.totalbalance";
+  static const availablebalance = "balanceInquiry.availablebalance";
+  static const actualbalance = "balanceInquiry.actualbalance";
+  static const memberID = "balanceInquiry.memberID";
+  static const accNumber = "balanceInquiry.accNumber";
+  static const interestRate = "balanceInquiry.interestRate";
+  static const accuredInterest = "balanceInquiry.accuredInterest";
+  static const accountHolderName = "balanceInquiry.accountHolderName";
+  static const shareAccount = "balanceInquiry.shareAccount";
+  static const detailAboutBalance = "balanceInquiry.detailAboutBalance";
+
+  //statement
+  static const miniFullstatement = "miniFullstatement.miniFullstatement";
+  static const toptext = "miniFullstatement.toptext";
+  static const miniStatement = "miniFullstatement.miniStatement";
+  static const fullStatement = "miniFullstatement.fullStatement";
+  static const statement1 = "miniFullstatement.statement1";
+
+  //internet
+
+  static const internet = "internet.internet";
+  static const internetFetchDetails = "internet.internetFetchDetails";
+
+  //recent transactions
+  static const recentTransaction = "RecentTransaction";
+  static const Filter = "Filter";
+  static const FilterOptions = "FilterOptions";
 }

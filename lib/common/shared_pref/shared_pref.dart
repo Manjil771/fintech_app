@@ -14,6 +14,7 @@ class SharedPref {
 
   static const _rememberNumber = "rememberNumber";
   static const showChatBot = "ChatBot";
+  static const language = "Language";
   static const _enableVoiceChat = 'VoiceChat';
   static const _biometricLogin = "biometricLogin";
   static const _deviceUUID = "deviceUUID";

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -83,7 +85,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
         showBackBotton: false,
         showRoundBotton: false,
         showTitleText: false,
-        topbarName: "Recent Transaction",
+        topbarName: LocaleKeys.recentTransaction.tr(),
         body: Column(
           children: [
             Container(
@@ -118,7 +120,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       child: Row(
                         children: [
                           Text(
-                            "Filter",
+                            LocaleKeys.Filter.tr(),
                             style: _textTheme.labelLarge!.copyWith(
                               color: currentIndex == -1
                                   ? _theme.primaryColor
@@ -191,7 +193,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                   );
                 } else {
                   return NoDataScreen(
-                    title: "No transactions yet.",
+                    title: "No transactions yet.".tr(),
                     details:
                         "Could not find transaction for date ${fromDate.year}-${fromDate.month}-${fromDate.day} to ${toDate.year}-${toDate.month}-${toDate.day}",
                   );
@@ -242,7 +244,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Text(
-                          "Filter Options",
+                          LocaleKeys.FilterOptions.tr(),
                           style:
                               Theme.of(context).textTheme.titleLarge!.copyWith(
                                     fontWeight: FontWeight.bold,
@@ -316,8 +318,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       ],
                     ),
                     const SizedBox(height: 16),
-
-                    // Add the Category Dropdown here
                     CategoryDropdownWidget(
                       onCategorySelected: (CategoryList? category) {
                         dialogSetState(() {
@@ -327,7 +327,6 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                       hintText: "Select Category",
                     ),
                     const SizedBox(height: 16),
-
                     CustomTextField(
                       readOnly: true,
                       onTap: () async {

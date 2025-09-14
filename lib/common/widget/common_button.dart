@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class CustomRoundedButtom extends StatefulWidget {
@@ -81,18 +83,27 @@ class CustomRoundedButtomState extends State<CustomRoundedButtom> {
                   if (verificationAmountDouble <= currentBalanceDouble) {
                     widget.onPressed?.call();
                   } else {
-                    ScaffoldMessenger.of(context).showSnackBar(
-                      const SnackBar(
-                        backgroundColor: Colors.red,
-                        content: Align(
-                          alignment: Alignment.center,
-                          child: Text(
-                            "Insufficient Balance",
-                            style: TextStyle(color: Colors.white, fontSize: 12),
-                          ),
-                        ),
-                      ),
-                    );
+                    // ScaffoldMessenger.of(context).showSnackBar(
+                    //   const SnackBar(
+                    //     backgroundColor: Colors.red,
+                    //     content: Align(
+                    //       alignment: Alignment.center,
+                    //       child: Text(
+                    //         "Insufficient Balance",
+                    //         style: TextStyle(color: Colors.white, fontSize: 12),
+                    //       ),
+                    //     ),
+                    //   ),
+                    // );
+                    showPopUpDialog(
+                        context: context,
+                        showCancelButton: false,
+                        buttonText: 'Okay',
+                        title: 'Insufficient Balance!',
+                        message: 'Please add funds to proceed.',
+                        buttonCallback: () async {
+                          NavigationService.pop();
+                        });
                   }
                 },
           borderRadius: BorderRadius.circular(15),

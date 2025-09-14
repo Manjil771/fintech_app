@@ -39,6 +39,7 @@ class _WalletBoxWidgetState extends State<WalletBoxWidget> {
         NavigationService.push(
           target: LoadWalletFormScreen(
             selectedWallet: widget.wallet,
+            imageUrl: _iconUrl,
           ),
         );
       },

@@ -25,6 +25,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
@@ -46,6 +47,7 @@ import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -93,7 +95,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
-
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
   }
@@ -101,6 +102,27 @@ class _LoginWidgetState extends State<LoginWidget> {
   String _getPhoneNumber() {
     if (phoneController.text.isNotEmpty) return phoneController.text;
     return _existingPhoneNumber;
+  }
+
+  Future<void> checkVpnActivation() async {
+    final bool isVpnConnected = await VpnConnectionDetector.isVpnActive();
+    if (isVpnConnected) {
+      showPopUpDialog(
+          cancelButtonCallback: () {
+            SystemNavigator.pop();
+          },
+          context: context,
+          buttonText: 'Retry',
+          title: 'Possible VPN detected!',
+          message:
+              'For your protection and to ensure secure transactions, please disable VPN before continuing and retry.',
+          buttonCallback: () async {
+            await Future.delayed(const Duration(seconds: 2));
+            if (await VpnConnectionDetector.isVpnActive()) {
+              Future.microtask(() => checkVpnActivation());
+            }
+          });
+    }
   }
 
   final List myBanners = [];
@@ -115,6 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     // appService =
     // RepositoryProvider.of<AppServiceRepository>(context).appService;
     getLoginStatus();
+    checkVpnActivation();
     super.initState();
   }
 
@@ -150,6 +173,12 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final List nameList = [
+      LocaleKeys.foreex.tr(),
+      LocaleKeys.activateAccount.tr(),
+      LocaleKeys.miscallBanking.tr(),
+      LocaleKeys.branches.tr(),
+    ];
     final height = SizeUtils.height;
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
@@ -233,10 +262,15 @@ class _LoginWidgetState extends State<LoginWidget> {
               );
             }
           } else if (state is CommonError) {
-            SnackBarUtils.showErrorBar(
-              context: context,
-              message: state.message,
-            );
+            showPopUpDialog(
+                context: context,
+                showCancelButton: false,
+                buttonText: 'Okay',
+                title: 'Unauthorized!',
+                message: state.message,
+                buttonCallback: () async {
+                  NavigationService.pop();
+                });
           }
         },
         child: ListView(
@@ -527,12 +561,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List nameList = [
-    LocaleKeys.foreex.tr(),
-    LocaleKeys.activateAccount.tr(),
-    LocaleKeys.miscallBanking.tr(),
-    LocaleKeys.branches.tr(),
-  ];
   final List imageList = [
     "assets/icons/forex.svg",
     "assets/icons/activate account.svg",
@@ -764,7 +792,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
     },
     {
-      "title": "Mini Statement",
+      "title": LocaleKeys.miniStatement.tr(),
       "action": () {
         NavigationService.pop();
       },
