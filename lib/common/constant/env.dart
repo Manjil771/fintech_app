@@ -5190,12 +5190,12 @@ class CoOperativeValue {
     appStoreID: "com.devanasoft.kasturi",
     packageName: "com.devanasoft.kasturi",
     baseUrl: 'https://ismart.devanasoft.com.np/',
-    bannerImage: "assets/kasturi/kasturi_banner.PNG",
-    backgroundImage: "assets/kasturi/kasturi_background.PNG",
+    bannerImage: "assets/kasturi/kasturi_banner.png",
+    backgroundImage: "assets/kasturi/kasturi_background.png",
     clientCode: 'KZ9NKTQU22',
     clientSecret: "193972",
-    coOperativeLogo: 'assets/kasturi/kasturi_logo.PNG',
-    splashImage: "assets/kasturi/kasturi_splash.PNG",
+    coOperativeLogo: 'assets/kasturi/kasturi_logo.png',
+    splashImage: "assets/kasturi/kasturi_splash.png",
     primaryColor: const Color(0xFF0d9347),
     coOperativeName: "Kasturi Saving & Credit Cooperative Ltd",
     appTitle: 'Kasturi iSmart',
@@ -5954,5 +5954,5 @@ class CoOperativeValue {
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop;
+  static final CoOperative currentCoop = devLive;
 }

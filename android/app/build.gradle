@@ -31,7 +31,7 @@ if (keystorePropertiesFile.exists()) {
 android {
     namespace "com.devanasoft.ismart" // Uncomment this line
     compileSdk 36
-    ndkVersion "27.0.12077973"
+    ndkVersion "28.0.12433566"
 
     compileOptions {
         
