@@ -146,7 +146,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     final String firstTwo = number.substring(0, 2);
     final String lastTwo = number.substring(number.length - 2);
     final String masked = firstTwo + "******" + lastTwo;
-
     return masked;
   }
 

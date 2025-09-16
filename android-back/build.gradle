@@ -9,19 +9,19 @@ buildscript {
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:7.1.1'
+        classpath 'com.android.tools.build:gradle:8.7.2'
         classpath 'com.google.gms:google-services:4.3.5'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
 }
 
-android {
-    packagingOptions {
-        jniLibs {
-            useLegacyPackaging true 
-        }
-    }
-}
+// android {
+//     packagingOptions {
+//         jniLibs {
+//             useLegacyPackaging true 
+//         }
+//     }
+// }
 
 allprojects {
     repositories {
