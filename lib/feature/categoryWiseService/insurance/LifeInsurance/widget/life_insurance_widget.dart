@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -233,7 +234,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
             showPopUpDialog(
                 context: context,
                 message: _response.message,
-                title: "Error",
+                title: "Error".tr(),
                 buttonCallback: () {
                   NavigationService.pop();
                 },
@@ -243,7 +244,7 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
           showPopUpDialog(
             context: context,
             message: state.message,
-            title: "Error",
+            title: "Error".tr(),
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
@@ -252,13 +253,13 @@ class _LifeInsurcnceWidgetState extends State<LifeInsurcnceWidget> {
         }
       },
       child: CommonContainer(
-        title: widget.service.service,
-        detail: widget.service.instructions,
+        title: widget.service.service.tr(),
+        detail: widget.service.instructions.tr(),
         // detail: "Pay for your Insurance premium from here.",
         showDetail: true,
         showAccountSelection: true,
         topbarName: widget.service.serviceCategoryName,
-        buttonName: "Show Details",
+        buttonName: "Show Details".tr(),
         body: Form(
           autovalidateMode: AutovalidateMode.onUserInteraction,
           key: _formKey,

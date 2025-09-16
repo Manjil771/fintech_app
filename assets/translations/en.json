@@ -33,7 +33,37 @@
   "Load Money to your Account":"Load Money to your Account",
   "Coop Transfer" :  "Coop Transfer",
   "Wallets":"Wallets",
+   "Search": "Search",
 
+    "Rent Service": "Rent Service",
+  "Kalimati Rent Service": "Kalimati Rent Service",
+  "From here you can pay the rent.": "From here you can pay the rent.",
+  "Select Counter": "Select Counter",
+  "Select From List": "Select From List",
+  "Please Select Counter": "Please Select Counter",
+  "Electricity": "Electricity",
+  "Book Your Flight": "Book Your Flight",
+  "Book airplane tickets in a convenient manner.": "Book airplane tickets in a convenient manner.",
+  "Get Started": "Get Started",
+  "Book Flight": "Book Flight",
+  "Search Flight": "Search Flight",
+  "Search Bus": "Search Bus",
+  "Bus Sewa": "Bus Sewa",
+  "Bus sewa": "Bus sewa",
+
+
+  "Pay your internet bill of your ISP from here.": "Pay your internet bill of your ISP from here.",
+  "Provide Username to fetch details and pay respective amount.": "Provide Username to fetch details and pay respective amount.",
+  "Govt. Payment": "Govt. Payment",
+  "Ride Payment": "Ride Payment",
+  "Rider Id": "Rider Id",
+  "All": "All",
+  "Data": "Data",
+  "Voice": "Voice",
+  "Combo": "Combo",
+  "Roaming": "Roaming",
+  "Show Details": "Show Details",
+  "Insurance Payment": "Insurance Payment",
 
   "Check Transfer":"Check Transfer",
   "Select Bank":"Select Bank",
@@ -144,6 +174,10 @@
   "View More": "View More",
   "Movies":"Movies",
 
+   "Payment": "Payment",
+  "Internet Payment": "Internet Payment",
+  "Pay your internet bill of you ISP from here": "Pay your internet bill of your ISP from here",
+
   "auth": {
     "unableToLogin": "Unable to login",
     "password" : "Password",
@@ -208,9 +242,6 @@
   "landlineTopbar": "Landline",
   "landlineInstructions": "Landline Payment"
 },
-  
-    
-
   "profileSetting": {
     "profile": "Profile",
     "accountInfo": "Account Info",
@@ -229,17 +260,11 @@
       "feedback": "Feedback",
       "loan": "Loan"
     },
-   
-   
-   
     "scanAndPay":{
       "scanAndPay": "Scan and Pay",
       "alignQR": "Please align the QR code within the frame",
       "showQR": "Scan QR"
-      
     },
-
-
     "balanceInquiry":{
      "balanceinquiry": "Balance Inquiry",
     "totalbalance": "Total Balance",
@@ -252,26 +277,18 @@
     "accountHolderName": "Account Holder Name",
     "shareAccount": "Share Account Details",
     "detailAboutBalance": "Details about the account are shown below."
-
-
-  
-
-
-
     },
    "miniFullstatement": {
     "statement1": "Statement",
     "toptext": " Select the type of statement you want to view",
     "miniStatement": "Mini Statement",
     "fullStatement": "Full Statement"
-
     },
     "internet":{
       "internet":"Internet",
       "internetFetchDetails":"Provide Username to fecth details and pay respective amount"
     
     },
-
   "RecentTransaction":"Recent Transaction",
   "Filter":"फिल्टर",
   "FilterOptions": "Filter Options",
@@ -279,9 +296,4 @@
   "Receive Money": "Receive Money",
   "Receive Fund":"Receive Fund",
   "Receive fund instantly to your account.":"Receive fund instantly to your account."
-
-
-
-
-
 } 

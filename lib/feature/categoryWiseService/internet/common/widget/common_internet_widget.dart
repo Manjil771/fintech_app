@@ -60,7 +60,7 @@ class _CommonFindInternetUserWidgetState
             showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 buttonCallback: () {
                   NavigationService.pop();
                 },
@@ -181,7 +181,7 @@ class _CommonFindInternetUserWidgetState
               ],
             ),
             topbarName: LocaleKeys.pay.tr(),
-            buttonName: 'Proceed',
+            buttonName: 'Proceed'.tr(),
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {

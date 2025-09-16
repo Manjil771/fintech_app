@@ -87,7 +87,7 @@ class _CategoriesWiseServicesWidgetState
             children: [
               const SizedBox(height: 10),
               CustomTextField(
-                hintText: "Search",
+                hintText: "Search".tr(),
                 showSearchIcon: true,
                 onChanged: (val) {
                   _updateSearchList(val);
@@ -145,7 +145,7 @@ class _CategoriesWiseServicesWidgetState
             ],
           ),
           showDetail: false,
-          topbarName: widget.topBarName),
+          topbarName: widget.topBarName.tr()),
     );
   }
 

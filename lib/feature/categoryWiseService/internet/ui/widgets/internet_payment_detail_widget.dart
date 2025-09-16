@@ -103,10 +103,10 @@ class _InternetPaymentDeatilWidgetState
         verificationAmount:
             AmountUtils.getAmountInRupees(amount: amount).toString(),
         showDetail: true,
-        topbarName: 'Payment',
-        title: 'Internet Payment',
+        topbarName: 'Payment'.tr(),
+        title: 'Internet Payment'.tr(),
         buttonName: LocaleKeys.Proceed.tr(),
-        detail: 'Pay your internet bill of you ISP from here',
+        detail: 'Pay your internet bill of you ISP from here'.tr(),
         showAccountSelection: true,
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -121,7 +121,7 @@ class _InternetPaymentDeatilWidgetState
               showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -137,7 +137,7 @@ class _InternetPaymentDeatilWidgetState
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Error",
+                    title: "Error".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -208,7 +208,7 @@ class _InternetPaymentDeatilWidgetState
                         .toString(),
                   ),
                   KeyValueTile(
-                    title: "Amount",
+                    title: "Amount".tr(),
                     value: AmountUtils.getAmountInRupees(amount: amount)
                         .toString(),
                   ),

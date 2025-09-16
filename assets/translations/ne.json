@@ -104,6 +104,36 @@
   "Picture": "तस्बिर",
   "Upload Picture": "तस्बिर अपलोड गर्नुहोस्",
   "Report Issue": "समस्या रिपोर्ट गर्नुहोस्",
+   "Search": "खोज्नुहोस्",
+
+  "Rent Service": "भाडा सेवा",
+  "Kalimati Rent Service": "कलिमाटी भाडा सेवा",
+  "From here you can pay the rent.": "यहाँबाट तपाईं भाडा तिर्न सक्नुहुन्छ।",
+  "Select Counter": "काउन्टर छान्नुहोस्",
+  "Select From List": "सूचीबाट छान्नुहोस्",
+  "Please Select Counter": "कृपया काउन्टर छान्नुहोस्",
+  "Electricity": "बिजुली",
+  "Book Your Flight": "तपाईंको उडान बुक गर्नुहोस्",
+  "Book airplane tickets in a convenient manner.": "सजिलो तरिकाले हवाईजहाजको टिकट बुक गर्नुहोस्।",
+  "Get Started": "सुरु गर्नुहोस्",
+  "Book Flight": "उडान बुक गर्नुहोस्",
+  "Search Flight": "उडान खोज्नुहोस्",
+  "Search Bus": "बस खोज्नुहोस्",
+  "Bus Sewa": "बस सेवा",
+  "Bus sewa": "बस सेवा",
+  
+  "Pay your internet bill of your ISP from here.": "यहाँबाट आफ्नो इन्टरनेट सेवा प्रदायक (ISP) को बिल तिर्नुहोस्।",
+  "Provide Username to fetch details and pay respective amount.": "विवरण ल्याउन र सम्बन्धित रकम तिर्न प्रयोगकर्ता नाम प्रविष्ट गर्नुहोस्।",
+  "Govt. Payment": "सरकारी भुक्तानी",
+  "Ride Payment": "राइड भुक्तानी",
+  "Rider Id": "राइडर आईडी",
+  "All": "सबै",
+  "Data": "डाटा",
+  "Voice": "भ्वाइस",
+  "Combo": "कम्बो",
+  "Roaming": "रोमिङ",
+  "Show Details": "विवरण देखाउनुहोस्",
+  "Insurance Payment": "बीमा भुक्तानी",
 
    "Choose Option": "विकल्प छान्नुहोस्",
   "Select Account": "खाता छान्नुहोस्",
@@ -140,6 +170,12 @@
 "enterPin": "अगाडि बढ्नका लागि कृपया आफ्नो सुरक्षा पिन प्रविष्ट गर्नुहोस्",
   "Security Pin": "",
   "pincodeempty": "पिन कोड क्षेत्र खाली हुन सक्दैन",
+
+   "Payment": "भुक्तानी",
+  "Internet Payment": "इन्टरनेट भुक्तानी",
+  "Pay your internet bill of you ISP from here": "यहाँबाट आफ्नो इन्टरनेट सेवा प्रदायक (ISP) को बिल तिर्नुहोस्",
+
+
   "auth": {
     "unableToLogin": "लगइन गर्न असमर्थ"
   },

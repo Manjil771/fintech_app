@@ -54,7 +54,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 buttonCallback: () {
                   NavigationService.pop();
                 },
@@ -74,7 +74,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
               showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   buttonCallback: () {
                     NavigationService.pop();
                   },
@@ -93,8 +93,8 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             showRecentTransaction: true,
             serviceId: widget.service.id.toString(),
             showDetail: true,
-            title: 'Internet Payment',
-            detail: 'Pay your internet bill of your ISP from here.',
+            title: 'Internet Payment'.tr(),
+            detail: 'Pay your internet bill of your ISP from here.'.tr(),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -133,7 +133,8 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                 ),
                 SizedBox(height: _height * 0.03),
                 Text(
-                    "Provide Username to fetch details and pay respective amount.",
+                    "Provide Username to fetch details and pay respective amount."
+                        .tr(),
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
@@ -145,7 +146,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                 ),
               ],
             ),
-            topbarName: 'Payment',
+            topbarName: 'Payment'.tr(),
             buttonName: LocaleKeys.Proceed.tr(),
             onButtonPressed: () {
               _formKey.currentState!.save();

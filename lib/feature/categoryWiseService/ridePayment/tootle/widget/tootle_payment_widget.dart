@@ -49,7 +49,7 @@ class _TootlePaymentWidgetState extends State<TootlePaymentWidget> {
           showPopUpDialog(
             context: context,
             message: state.message,
-            title: "Error",
+            title: "Error".tr(),
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
@@ -88,7 +88,7 @@ class _TootlePaymentWidgetState extends State<TootlePaymentWidget> {
                   );
           },
           buttonName: LocaleKeys.Proceed.tr(),
-          title: "Ride Payment",
+          title: "Ride Payment".tr(),
           topbarName: widget.service.service,
           body: Column(
             crossAxisAlignment: CrossAxisAlignment.start,

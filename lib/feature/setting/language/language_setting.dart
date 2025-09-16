@@ -82,6 +82,50 @@ class _LanguageSettingState extends State<LanguageSetting> {
                 },
               ),
               const Divider(),
+              RadioListTile<Locale>(
+                title: const Text(
+                  "भोजपुरी",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: CustomTheme.lightTextColor),
+                ),
+                value: CustomLocale.bhojpuri,
+                groupValue: currentLocale,
+                onChanged: (value) async {
+                  setState(() {
+                    currentLocale = CustomLocale.bhojpuri;
+                  });
+                  context.setLocale(CustomLocale.bhojpuri);
+                  showLoadingDialogBox(context);
+                  await Future.delayed(const Duration(seconds: 2));
+                  NavigationService.pop();
+                  NavigationService.push(target: const DashboardPage());
+                },
+              ),
+              const Divider(),
+              RadioListTile<Locale>(
+                title: const Text(
+                  "मैथली",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: CustomTheme.lightTextColor),
+                ),
+                value: CustomLocale.maithali,
+                groupValue: currentLocale,
+                onChanged: (value) async {
+                  setState(() {
+                    currentLocale = CustomLocale.maithali;
+                  });
+                  context.setLocale(CustomLocale.maithali);
+                  showLoadingDialogBox(context);
+                  await Future.delayed(const Duration(seconds: 2));
+                  NavigationService.pop();
+                  NavigationService.push(target: const DashboardPage());
+                },
+              ),
+              const Divider(),
             ],
           ),
         ),

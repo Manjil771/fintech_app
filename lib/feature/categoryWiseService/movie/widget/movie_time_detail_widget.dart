@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -254,11 +255,11 @@ class _MovieTimeDetailWidgetState extends State<MovieTimeDetailWidget> {
             } else {
               return Scaffold(
                   body: NoDataScreen(
-                      title: "No Data Found",
+                      title: "No Data Found".tr(),
                       details: res.findValueString("message")));
             }
           } else if (state is CommonError) {
-            return NoDataScreen(title: "Error", details: state.message);
+            return NoDataScreen(title: "Error".tr(), details: state.message);
           } else if (state is CommonLoading) {
             return const CommonLoadingWidget();
           } else {

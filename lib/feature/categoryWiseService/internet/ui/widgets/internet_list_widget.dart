@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -115,7 +116,7 @@ class InternetListWidget extends StatelessWidget {
                                   borderRadius: BorderRadius.circular(8),
                                   borderSide:
                                       const BorderSide(color: Colors.black12)),
-                              hintText: "Search",
+                              hintText: "Search".tr(),
                               hintStyle: const TextStyle(fontSize: 16)),
                         ),
                       ),

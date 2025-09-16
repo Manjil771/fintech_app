@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -54,10 +55,10 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,
-        title: widget.service.service,
-        detail: widget.service.instructions,
-        topbarName: widget.service.serviceCategoryName,
-        buttonName: 'Search Bus',
+        title: widget.service.service.tr(),
+        detail: widget.service.instructions.tr(),
+        topbarName: widget.service.serviceCategoryName.tr(),
+        buttonName: 'Search Bus'.tr(),
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
             if (state is CommonLoading && _isLoading == false) {
@@ -71,7 +72,7 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
               showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -97,7 +98,7 @@ class _BusBookingWidgetState extends State<BusBookingWidget> {
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Message",
+                    title: "Message".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                     },

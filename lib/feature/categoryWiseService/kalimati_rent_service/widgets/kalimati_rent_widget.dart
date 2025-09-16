@@ -46,7 +46,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -109,11 +109,10 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                     "referenceNumber": payload['invoiceNumber'].toString(),
                     "shopId": payload['shopIdentification'].toString(),
                     "customerMobileNumber":
-                        RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .customerDetailModel
-                                    .value
-                                    ?.mobileNumber,
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .customerDetailModel
+                            .value
+                            ?.mobileNumber,
                     "amount": payload['totalAmount'] is String
                         ? double.parse(payload['totalAmount'])
                         : payload['totalAmount'] * 1.0,
@@ -144,12 +143,12 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
           }
         },
         child: CommonContainer(
-          topbarName: "Rent Service",
+          topbarName: "Rent Service".tr(),
           showAccountSelection: true,
-          accountTitle: LocaleKeys.fromaccount.tr(), 
+          accountTitle: LocaleKeys.fromaccount.tr(),
           buttonName: LocaleKeys.Proceed.tr(),
-          title: "Kalimati Rent Service",
-          detail: "From here you can pay the rent.",
+          title: "Kalimati Rent Service".tr(),
+          detail: "From here you can pay the rent.".tr(),
           body: Form(
             key: _formKey,
             child: Row(

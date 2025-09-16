@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -21,16 +22,16 @@ class AirlinesIntroPage extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             Image.asset("assets/images/book your flight-min.png"),
-            const Column(
+            Column(
               children: [
                 Text(
-                  "Book Your Flight",
-                  style: TextStyle(fontFamily: "popinbold", fontSize: 26),
+                  "Book Your Flight".tr(),
+                  style: const TextStyle(fontFamily: "popinbold", fontSize: 26),
                 ),
                 Text(
-                  "Book airplane tickets in a convenient manner.",
+                  "Book airplane tickets in a convenient manner.".tr(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                       fontFamily: "popinmedium",
                       fontSize: 16,
                       fontWeight: FontWeight.w500,
@@ -39,7 +40,7 @@ class AirlinesIntroPage extends StatelessWidget {
               ],
             ),
             CustomRoundedButtom(
-                title: "Get Started",
+                title: "Get Started".tr(),
                 onPressed: () {
                   NavigationService.pop();
                   NavigationService.push(

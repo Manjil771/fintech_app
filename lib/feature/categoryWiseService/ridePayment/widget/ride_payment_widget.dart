@@ -55,7 +55,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -78,12 +78,13 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                         body: Column(
                           children: [
                             KeyValueTile(
-                                title: "Rider Id",
+                                title: "Rider Id".tr(),
                                 value: riderIDController.text),
                             KeyValueTile(
-                                title: "Amount", value: amountController.text),
+                                title: "Amount".tr(),
+                                value: amountController.text),
                             KeyValueTile(
-                                title: "Remarks",
+                                title: "Remarks".tr(),
                                 value: remarksController.text),
                           ],
                         ),
@@ -161,7 +162,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                 children: [
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Rider Id",
+                    title: "Rider Id".tr(),
                     hintText: widget.service.labelSample,
                     controller: riderIDController,
                     validator: (value) =>
@@ -170,7 +171,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: amountController,
-                    title: "Amount",
+                    title: "Amount".tr(),
                     hintText: "XXXXX",
                     onChanged: (value) {
                       setState(() {
@@ -184,7 +185,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                   ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Remarks",
+                    title: "Remarks".tr(),
                     controller: remarksController,
                     hintText: "remarks",
                     validator: (value) =>
@@ -193,7 +194,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                 ],
               ),
             ),
-            topbarName: "Ride Payment"),
+            topbarName: "Ride Payment".tr()),
       ),
     );
   }
