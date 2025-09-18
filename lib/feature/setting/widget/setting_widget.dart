@@ -43,6 +43,7 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
     return Scaffold(
       body: PageWrapper(
         body: CommonContainer(

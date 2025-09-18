@@ -172,6 +172,7 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
     final List nameList = [
       LocaleKeys.foreex.tr(),
       LocaleKeys.activateAccount.tr(),

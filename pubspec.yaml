@@ -31,7 +31,7 @@ dependencies:
   dio: ^5.9.0
   nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
-  easy_localization: "^3.0.3"
+  easy_localization: "^3.0.8"
   path_provider: "^2.1.4"
   open_filex: "^4.2.2"
   encrypt: "^5.0.0"
@@ -478,7 +478,7 @@ flutter:
     # - assets/paurakhi/
     # - assets/paschimanchal/
     # - assets/sadasyaSewa/
-    - assets/aabhash/
+    # - assets/aabhash/
     # - assets/mirmire/
 
     # - assets/nilpashan/

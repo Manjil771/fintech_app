@@ -246,7 +246,7 @@ class CoOperativeValue {
     baseUrl: 'http://45.117.153.192:8082/',
     // baseUrl: 'http://192.168.1.59:8080/',
     bannerImage: "assets/images/ismart_banner.png",
-    clientCode: 'VBMRDWEVFV',
+    clientCode: 'M0DDC4TCKV',
     backgroundImage: "assets/images/ismart_background_image.jpg",
     coOperativeName: '',
     coOperativeLogo: Assets.ismartLogo,

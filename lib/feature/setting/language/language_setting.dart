@@ -54,9 +54,9 @@ class _LanguageSettingState extends State<LanguageSetting> {
                   });
                   context.setLocale(CustomLocale.english);
                   showLoadingDialogBox(context);
-                  await Future.delayed(const Duration(seconds: 2));
+                  await Future.delayed(const Duration(seconds: 1));
                   NavigationService.pop();
-                  NavigationService.push(target: const DashboardPage());
+                  // NavigationService.push(target: const DashboardPage());
                 },
               ),
               const Divider(),
@@ -76,9 +76,9 @@ class _LanguageSettingState extends State<LanguageSetting> {
                   });
                   context.setLocale(CustomLocale.nepali);
                   showLoadingDialogBox(context);
-                  await Future.delayed(const Duration(seconds: 2));
+                  await Future.delayed(const Duration(seconds: 1));
                   NavigationService.pop();
-                  NavigationService.push(target: const DashboardPage());
+                  // NavigationService.push(target: const DashboardPage());
                 },
               ),
               const Divider(),
@@ -98,9 +98,11 @@ class _LanguageSettingState extends State<LanguageSetting> {
                   });
                   context.setLocale(CustomLocale.bhojpuri);
                   showLoadingDialogBox(context);
-                  await Future.delayed(const Duration(seconds: 2));
+                  await Future.delayed(const Duration(seconds: 1));
                   NavigationService.pop();
-                  NavigationService.push(target: const DashboardPage());
+                  // WidgetsBinding.instance.addPostFrameCallback((_) {
+                  //   NavigationService.push(target: const DashboardPage());
+                  // });
                 },
               ),
               const Divider(),
@@ -120,9 +122,35 @@ class _LanguageSettingState extends State<LanguageSetting> {
                   });
                   context.setLocale(CustomLocale.maithali);
                   showLoadingDialogBox(context);
-                  await Future.delayed(const Duration(seconds: 2));
+                  await Future.delayed(const Duration(seconds: 1));
                   NavigationService.pop();
-                  NavigationService.push(target: const DashboardPage());
+                  // WidgetsBinding.instance.addPostFrameCallback((_) {
+                  //   NavigationService.push(target: const DashboardPage());
+                  // });
+                },
+              ),
+              const Divider(),
+              RadioListTile<Locale>(
+                title: const Text(
+                  "नेवारी",
+                  style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500,
+                      color: CustomTheme.lightTextColor),
+                ),
+                value: CustomLocale.newari,
+                groupValue: currentLocale,
+                onChanged: (value) async {
+                  setState(() {
+                    currentLocale = CustomLocale.newari;
+                  });
+                  context.setLocale(CustomLocale.newari);
+                  showLoadingDialogBox(context);
+                  await Future.delayed(const Duration(seconds: 1));
+                  NavigationService.pop();
+                  // WidgetsBinding.instance.addPostFrameCallback((_) {
+                  //   NavigationService.push(target: const DashboardPage());
+                  // });
                 },
               ),
               const Divider(),

@@ -1,7 +1,9 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/app/fallback_cupertino_localisation.dart';
 import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/customLocalization.dart';
 // import 'package:ismart/app/update_wrapper.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
@@ -74,7 +76,14 @@ class _AppDevState extends State<AppDev> {
                       locale: context.locale,
                       navigatorKey: NavigationService.navigationKey,
                       supportedLocales: context.supportedLocales,
-                      localizationsDelegates: context.localizationDelegates,
+                      // localizationsDelegates: context.localizationDelegates,
+                      localizationsDelegates: [
+                        const CustomBhojpuriLocalizationsDelegate(),
+                        const CustomMaithiliLocalizationsDelegate(),
+                        const CustomNewariLocalizationsDelegate(),
+                        const FallbackCupertinoLocalisationsDelegate(),
+                        ...context.localizationDelegates,
+                      ],
                       debugShowCheckedModeBanner: false,
                       darkTheme: CustomTheme.lightTheme
                           .copyWith(primaryColor: primaryColor),

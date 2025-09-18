@@ -173,6 +173,7 @@ class _CategoriesWiseServicesWidgetState
     if (serviceIdentifier.toLowerCase() == "digital_dakshina_service") {
       NavigationService.push(
           target: QRScannerScreens(
+        isDigitalDakxhina: true,
         remarks: searchedService.instructions,
       ));
     }

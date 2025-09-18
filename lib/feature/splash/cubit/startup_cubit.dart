@@ -27,6 +27,7 @@ class StartupCubit extends Cubit<StartupState> {
     await startUpRepository.fetchAppConfig();
     await startUpRepository.fetchdefaultBannerImages();
     await bannerRepository.fetchBannerImages(bannerImageType: "OfferBanner");
+    await bannerRepository.fetchEventPoster(bannerImageType: "EventFestivals");
     await startUpRepository.getAppService();
 
     if (isFirstTime) {

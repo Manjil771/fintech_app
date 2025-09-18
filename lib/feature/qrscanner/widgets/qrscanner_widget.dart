@@ -41,10 +41,12 @@ import '../../../common/http/response.dart';
 class QRScannerWidgets extends StatefulWidget {
   final List<WalletModel> walletLists;
   final String? remarks;
+  final bool? isDigitalDakxhina;
 
   const QRScannerWidgets({
     Key? key,
     this.remarks,
+    this.isDigitalDakxhina,
     required this.walletLists,
   }) : super(key: key);
 
@@ -58,6 +60,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   late AnimationController animationController;
   late Animation<double> _animation;
   bool _isLoading = false;
+  List<String> eventPosters = [];
   MobileScannerController cameraController = MobileScannerController();
   StreamSubscription? _cameraSubscription;
 
@@ -77,8 +80,47 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         animationController.forward();
       }
     });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (eventPosters.isNotEmpty && (widget.isDigitalDakxhina ?? false)) {
+        _showFestivalPoster();
+      }
+    });
   }
 
+  _showFestivalPoster() async {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return Dialog(
+          insetPadding: EdgeInsets.zero,
+          backgroundColor: Colors.transparent,
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Padding(
+            padding: const EdgeInsets.all(16.0),
+            child: Image.network(
+              eventPosters[0],
+              width: double.infinity,
+              fit: BoxFit.fill,
+              errorBuilder: (context, error, stackTrace) => Column(
+                children: [
+                  Image.asset(RepositoryProvider.of<CoOperative>(context)
+                      .coOperativeLogo),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
+    );
+    Future.delayed(const Duration(seconds: 4), () {
+      if (mounted) {
+        NavigationService.pop();
+      }
+    });
+  }
   // @override
   // dispose() {
   //   animationController.dispose();

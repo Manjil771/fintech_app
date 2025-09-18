@@ -80,19 +80,6 @@ class _MoreWidgetState extends State<MoreWidget> {
     // Assets.feedBackIcon
   ];
 
-  final List names = [
-    LocaleKeys.accountInfo.tr(),
-    LocaleKeys.biometric.tr(),
-    LocaleKeys.changepin.tr(),
-    LocaleKeys.transactionLimit.tr(),
-    LocaleKeys.profileSetting.tr(),
-
-    // "Calculator",
-    // "Downloads",
-    // "Support",
-    // "Settings",
-    // "FeedBack",
-  ];
   String mPin = "";
   @override
   void initState() {
@@ -106,6 +93,20 @@ class _MoreWidgetState extends State<MoreWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
+    final List names = [
+      LocaleKeys.accountInfo.tr(),
+      LocaleKeys.biometric.tr(),
+      LocaleKeys.changepin.tr(),
+      LocaleKeys.transactionLimit.tr(),
+      LocaleKeys.profileSetting.tr(),
+
+      // "Calculator",
+      // "Downloads",
+      // "Support",
+      // "Settings",
+      // "FeedBack",
+    ];
     final contactList = _supportContact.split(",");
     final List tapFunction = [
       () {
