@@ -5954,5 +5954,20 @@ class CoOperativeValue {
     coOperativeName: "Sahayogi Saving & Credit Cooperative Ltd.",
     appTitle: 'Sahayogi iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative akkaladevi = CoOperative(
+    appStoreID: "com.devanasoft.akkaladevi",
+    packageName: "com.devanasoft.akkaladevi",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/akkaladevi/akkaladevi_banner.png",
+    backgroundImage: "assets/akkaladevi/akkaladevi_background.png",
+    clientCode: 'WUEPOLJNJQ',
+    clientSecret: "211771",
+    coOperativeLogo: 'assets/akkaladevi/akkaladevi_logo.png',
+    splashImage: "assets/akkaladevi/akkaladevi_splash.png",
+    primaryColor: const Color(0xFF009444),
+    coOperativeName: "Akkaladevi Agriculture Co-operative Ltd",
+    appTitle: 'Akkaladevi iSmart',
+  );
+  static final CoOperative currentCoop = akkaladevi;
 }
+  

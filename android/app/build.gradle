@@ -2621,6 +2621,12 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        akkaladevi {
+            dimension "app"
+            applicationId "com.devanasoft.akkaladevi"
+            versionCode flutterVersionCode.toInteger()
+            versionName flutterVersionName
+        }
     }
 
         signingConfigs {

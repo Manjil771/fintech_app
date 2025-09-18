@@ -91,6 +91,8 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
+    - assets/akkaladevi/
+    # - assets/hamroSaving/
     # - assets/sahayogi/
     # - assets/ujyalo/
     # - assets/setogurans/
