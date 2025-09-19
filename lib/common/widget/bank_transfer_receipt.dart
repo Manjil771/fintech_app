@@ -111,28 +111,28 @@ class BankTransferReciptWidget extends StatelessWidget {
                               fit: BoxFit.fitHeight,
                               height: _height * 0.08,
                             ),
-                            SizedBox(height: _height * 0.02),
-                            const Text(
-                              "Transaction Successful",
-                              style: TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.black,
-                                  fontWeight: FontWeight.w500),
-                            ),
-                            SizedBox(height: _height * 0.02),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Flexible(
-                                  child: Text(message,
-                                      textAlign: TextAlign.center,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall),
-                                ),
-                              ],
-                            ),
-                            SizedBox(height: _height * 0.02),
+                            // SizedBox(height: _height * 0.02),
+                            // const Text(
+                            //   "Transaction Successful",
+                            //   style: TextStyle(
+                            //       fontSize: 20,
+                            //       color: Colors.black,
+                            //       fontWeight: FontWeight.w500),
+                            // ),
+                            // SizedBox(height: _height * 0.02),
+                            // Row(
+                            //   mainAxisAlignment: MainAxisAlignment.center,
+                            //   children: [
+                            //     Flexible(
+                            //       child: Text(message,
+                            //           textAlign: TextAlign.center,
+                            //           style: Theme.of(context)
+                            //               .textTheme
+                            //               .titleSmall),
+                            //     ),
+                            //   ],
+                            // ),
+                            // SizedBox(height: _height * 0.02),
                           ],
                         ),
                         if (imageUrl != null)
