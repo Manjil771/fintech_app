@@ -467,7 +467,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       context: context,
       barrierDismissible: false,
       barrierColor: Colors.black54,
-      transitionDuration: const Duration(milliseconds: 200),
+      transitionDuration: const Duration(milliseconds: 300),
       pageBuilder: (context, animation, secondaryAnimation) {
         return Center(
           child: FadeTransition(
