@@ -5968,6 +5968,5 @@ class CoOperativeValue {
     coOperativeName: "Akkaladevi Agriculture Co-operative Ltd",
     appTitle: 'Akkaladevi iSmart',
   );
-  static final CoOperative currentCoop = akkaladevi;
+  static final CoOperative currentCoop = devLive;
 }
-  

@@ -456,41 +456,58 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
         AppSession.runOnce(() {
           _showFestivalPoster();
         });
+        // _showFestivalPoster();
       }
     });
   }
 
   _showFestivalPoster() async {
-    showDialog(
+    await Future.delayed(const Duration(seconds: 1));
+    showGeneralDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) {
-        return Dialog(
-          insetPadding: EdgeInsets.zero,
-          backgroundColor: Colors.transparent,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(16),
-          ),
-          child: Padding(
-            padding: const EdgeInsets.all(16.0),
-            child: Image.network(
-              eventPosters[0],
-              width: double.infinity,
-              fit: BoxFit.fill,
-              errorBuilder: (context, error, stackTrace) => Column(
-                children: [
-                  Image.asset(RepositoryProvider.of<CoOperative>(context)
-                      .coOperativeLogo),
-                ],
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 200),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: FadeTransition(
+            opacity: animation,
+            child: Dialog(
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(
+                  eventPosters[0],
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) => Column(
+                    children: [
+                      Image.asset(
+                        RepositoryProvider.of<CoOperative>(context)
+                            .coOperativeLogo,
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),
         );
       },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
     );
     Future.delayed(const Duration(seconds: 4), () {
       if (mounted) {
-        NavigationService.pop();
+        Navigator.of(context).pop();
       }
     });
   }
