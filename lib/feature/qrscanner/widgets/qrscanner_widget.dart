@@ -25,6 +25,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/eteller/screen/eteller_page.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
@@ -80,6 +81,8 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         animationController.forward();
       }
     });
+    eventPosters =
+        RepositoryProvider.of<BannerRepository>(context).eventPosters;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (eventPosters.length > 1 &&
           eventPosters[1].isNotEmpty &&
