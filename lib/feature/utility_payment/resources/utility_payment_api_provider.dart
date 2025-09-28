@@ -1,7 +1,11 @@
+import 'package:flutter/services.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
+import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/url_utils.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 class UtilityPaymentAPIProvider {
   UtilityPaymentAPIProvider({
@@ -107,6 +111,19 @@ class UtilityPaymentAPIProvider {
     final _params = {
       ...accountDetails,
     };
+    final bool isVpnConnected = await VpnConnectionDetector.isVpnActive();
+    if (isVpnConnected) {
+      showPopUpDialog(
+          showCancelButton: false,
+          context: NavigationService.context,
+          buttonText: 'Exit',
+          title: 'Possible VPN detected!',
+          message:
+              'To protect your account and ensure secure transactions, please turn off your VPN and try again.',
+          buttonCallback: () async {
+            SystemNavigator.pop();
+          });
+    }
     if (serviceIdentifier.isNotEmpty) {
       _params["service_identifier"] = "$serviceIdentifier";
     }

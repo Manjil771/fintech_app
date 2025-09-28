@@ -139,8 +139,9 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                     Flexible(
                                       child: Text(
                                         LocaleKeys.receiveMoney.tr(),
-                                        style: _textTheme.titleLarge!
-                                            .copyWith(fontSize: 12),
+                                        style: _textTheme.titleLarge!.copyWith(
+                                          fontSize: 12,
+                                        ),
                                       ),
                                     ),
                                   ],

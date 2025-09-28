@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -66,7 +67,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
               showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -89,7 +90,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                 showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   showCancelButton: false,
                   buttonCallback: () {
                     NavigationService.pop();
@@ -104,8 +105,8 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
               children: [
                 CustomTextField(
                   autovalidateMode: AutovalidateMode.onUserInteraction,
-                  title: "Select Counter ",
-                  hintText: "Select From List",
+                  title: "Select Counter".tr(),
+                  hintText: "Select From List".tr(),
                   readOnly: true,
                   suffixIcon: Icons.arrow_downward,
                   showSearchIcon: true,
@@ -123,7 +124,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                   },
                   validator: (value) {
                     if (_selectedCounterController.text.isEmpty) {
-                      return "Please Select Counter";
+                      return "Please Select Counter".tr();
                     }
                     return null;
                   },
@@ -151,7 +152,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
             ),
           ),
         ),
-        buttonName: "Procced",
+        buttonName: "Procced".tr(),
         onButtonPressed: () {
           if (_formKey.currentState!.validate()) {
             context.read<UtilityPaymentCubit>().fetchDetails(
@@ -166,7 +167,7 @@ class _ElectricityPaymentWidgetState extends State<ElectricityPaymentWidget> {
                 );
           }
         },
-        topbarName: "Electricity",
+        topbarName: "Electricity".tr(),
       ),
     );
   }

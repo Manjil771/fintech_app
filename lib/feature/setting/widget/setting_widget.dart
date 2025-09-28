@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -9,6 +10,8 @@ import 'package:ismart/common/widget/common_detail_box.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/resource/user_repository.dart';
+import 'package:ismart/feature/more/widget/more_widget.dart';
+import 'package:ismart/feature/setting/language/language_setting.dart';
 import 'package:ismart/feature/setting/preferences/preference_widget.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -40,6 +43,7 @@ class _SettingWidgetState extends State<SettingWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
     return Scaffold(
       body: PageWrapper(
         body: CommonContainer(
@@ -47,7 +51,7 @@ class _SettingWidgetState extends State<SettingWidget> {
           showTitleText: false,
           showRoundBotton: false,
           verticalPadding: 0,
-          topbarName: "Setting",
+          topbarName: "Setting".tr(),
           body: Column(
             children: [
               // // checkBioMetric() == false
@@ -114,11 +118,11 @@ class _SettingWidgetState extends State<SettingWidget> {
 
               // const Divider(thickness: 1),
 
-              const CommonDetailBox(
+              CommonDetailBox(
                   leadingImage: "assets/icons/privacy policy.svg",
                   onBoxPressed: _launchUrl,
-                  detail: "View complete privacy policy",
-                  title: "Privacy Policy"),
+                  detail: "View complete privacy policy".tr(),
+                  title: "Privacy Policy".tr()),
               const Divider(thickness: 1),
 
               CommonDetailBox(
@@ -126,8 +130,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                   onBoxPressed: () {
                     NavigationService.pushNamed(routeName: Routes.forgotPin);
                   },
-                  detail: "Tap to reset your Security Pin.",
-                  title: "Forget Pin"),
+                  detail: "Tap to reset your Security Pin.".tr(),
+                  title: "Forget Pin".tr()),
 
               // const Divider(thickness: 1),
               // CommonDetailBox(
@@ -137,15 +141,23 @@ class _SettingWidgetState extends State<SettingWidget> {
               //     },
               //     detail: "Tap to set your preferences.",
               //     title: "Preferences"),
+              const Divider(thickness: 1),
+              CommonDetailBox(
+                  leadingImage: Assets.translateImage,
+                  onBoxPressed: () {
+                    NavigationService.push(target: const LanguageSetting());
+                  },
+                  detail: "Tap to select the language.".tr(),
+                  title: "Language".tr()),
 
               const Divider(thickness: 1),
               CommonDetailBox(
                 onBoxPressed: () {
                   showPopUpDialog(
                     context: context,
-                    message: "Are you sure you want to logout.",
-                    title: "Alert",
-                    buttonText: "Logout",
+                    message: "Are you sure you want to logout.".tr(),
+                    title: "Alert".tr(),
+                    buttonText: "Logout".tr(),
                     buttonCallback: () {
                       RepositoryProvider.of<UserRepository>(context).logout();
                       NavigationService.pushNamedAndRemoveUntil(
@@ -155,8 +167,8 @@ class _SettingWidgetState extends State<SettingWidget> {
                   );
                 },
                 leadingImage: Assets.logoutIcon,
-                title: "Logout",
-                detail: "Logout from this application.",
+                title: "Logout".tr(),
+                detail: "Logout from this application.".tr(),
               ),
               const Divider(thickness: 1),
             ],

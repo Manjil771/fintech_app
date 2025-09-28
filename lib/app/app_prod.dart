@@ -95,8 +95,10 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/app/fallback_cupertino_localisation.dart';
 import 'package:ismart/app/notification_wrapper.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/customLocalization.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/route_generator.dart';
@@ -202,7 +204,14 @@ class _AppProdState extends State<AppProd> with WidgetsBindingObserver {
                 return widget!;
               },
               supportedLocales: context.supportedLocales,
-              localizationsDelegates: context.localizationDelegates,
+              // localizationsDelegates: context.localizationDelegates,
+              localizationsDelegates: [
+                ...context.localizationDelegates,
+                const CustomBhojpuriLocalizationsDelegate(),
+                const CustomMaithiliLocalizationsDelegate(),
+                const CustomNewariLocalizationsDelegate(),
+                const FallbackCupertinoLocalisationsDelegate(),
+              ],
               debugShowCheckedModeBanner: false,
               darkTheme: CustomTheme.lightTheme,
               theme: CustomTheme.lightTheme,

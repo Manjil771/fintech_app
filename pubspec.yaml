@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.31+61
+version: 1.5.45+75
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -28,10 +28,10 @@ dependencies:
   flutter_bloc: ^9.1.0
   rxdart: ^0.28.0
   logger: "^2.2.0"
-  dio: "^5.4.2+1"
+  dio: ^5.9.0
   nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
-  easy_localization: "^3.0.3"
+  easy_localization: "^3.0.8"
   path_provider: "^2.1.4"
   open_filex: "^4.2.2"
   encrypt: "^5.0.0"
@@ -43,6 +43,7 @@ dependencies:
   url_launcher: "^6.3.1"
   url_launcher_ios: ^6.2.1
   flutter_html: ^3.0.0
+  vpn_connection_detector: ^1.0.10
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -90,6 +91,8 @@ dependency_overrides:
 flutter:
   assets:
     # - assets/kunchhal/
+    # - assets/akkaladevi/
+    # - assets/hamroSaving/
     # - assets/shikhar/
     # - assets/sahayogi/
     # - assets/ujyalo/
@@ -100,6 +103,9 @@ flutter:
 
     # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
+    # - assets/janachetana/
+    # - assets/janakalyanbahumukhi/
+    # - assets/hamroSaving/
     # - assets/gaja/
     # - assets/arunjyoti/
     # - assets/paryatan/
@@ -130,6 +136,7 @@ flutter:
     # - assets/janapremi/
     # - assets/nawayuba/
     # - assets/manipur/
+    # - assets/maaLaxmi/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
     # - assets/shreemandan/
@@ -358,7 +365,6 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -425,7 +431,7 @@ flutter:
     # - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
-    # - assets/dupcheshwor/
+    # - assets/dupche\shwor/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/

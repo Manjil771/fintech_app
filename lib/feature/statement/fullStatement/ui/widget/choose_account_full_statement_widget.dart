@@ -1,4 +1,6 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -21,7 +23,7 @@ class _ChooseAccountFullStatementWidgetState
         validateMobileBankingStatus: false,
         showDetail: true,
         showAccountSelection: true,
-        topbarName: "Full Statement",
+        topbarName: LocaleKeys.fullStatement.tr(),
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {

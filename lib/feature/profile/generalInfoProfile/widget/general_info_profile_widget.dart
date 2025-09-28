@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -76,7 +77,7 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                     print(showPersonalDetail.toString());
                   },
                   leadingImage: Assets.profileIcon,
-                  title: "Personal Details",
+                  title: "Personal Details".tr(),
                   detail: "Phone Number, Name , Address etc.",
                 ),
                 Visibility(
@@ -155,16 +156,16 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                     }
                   },
                   leadingImage: Assets.downloadIcon,
-                  title: "Check for Updates",
-                  detail: "Never miss out any update.",
+                  title: "Check for Updates".tr(),
+                  detail: "Never miss out any update.".tr(),
                 ),
                 CommonDetailBox(
                   onBoxPressed: () {
                     showPopUpDialog(
                       context: context,
-                      message: "Are you sure you want to logout.",
-                      title: "Alert",
-                      buttonText: "Logout",
+                      message: "Are you sure you want to logout.".tr(),
+                      title: "Alert".tr(),
+                      buttonText: "Logout".tr(),
                       buttonCallback: () {
                         RepositoryProvider.of<UserRepository>(context).logout();
                         NavigationService.pushNamedAndRemoveUntil(
@@ -174,8 +175,8 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                     );
                   },
                   leadingImage: Assets.logoutIcon,
-                  title: "Logout",
-                  detail: "Logout from this application.",
+                  title: "Logout".tr(),
+                  detail: "Logout from this application.".tr(),
                 ),
                 const SizedBox(
                   height: 20,

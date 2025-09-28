@@ -15,11 +15,13 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class QRScannerScreens extends StatelessWidget {
   final String? remarks;
+  final bool? isDigitalDakxhina;
   // final ValueChanged<MpqrcDetail> onScanned;
   // final QRType type;
   const QRScannerScreens({
     Key? key,
     this.remarks,
+    this.isDigitalDakxhina,
     // required this.onScanned,
     // required this.type,
   }) : super(key: key);
@@ -54,6 +56,7 @@ class QRScannerScreens extends StatelessWidget {
               final qrScannerWidgets = QRScannerWidgets(
                 walletLists: _walletList,
                 remarks: remarks,
+                isDigitalDakxhina: isDigitalDakxhina,
               );
               return qrScannerWidgets;
             }

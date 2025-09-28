@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
@@ -36,7 +37,7 @@ class _SelectDatapackWidgetState extends State<SelectDatapackWidget> {
       body: CommonContainer(
         verticalPadding: 0,
         showRoundBotton: false,
-        topbarName: 'Data Pack',
+        topbarName: 'Data Pack'.tr(),
 
         // title: 'Buy Data Packs',
         // detail: 'Buy your data packs from here',
@@ -72,7 +73,7 @@ class _SelectDatapackWidgetState extends State<SelectDatapackWidget> {
                     length: 5,
                     child: Column(
                       children: [
-                        const TabBar(
+                        TabBar(
                           isScrollable: true,
                           labelColor: Colors.black,
                           unselectedLabelColor: Color(0xFF989898),
@@ -81,12 +82,12 @@ class _SelectDatapackWidgetState extends State<SelectDatapackWidget> {
                           indicatorColor: Colors.transparent,
                           automaticIndicatorColorAdjustment: true,
                           tabs: [
-                            Tab(text: "All"),
-                            Tab(text: "Data"),
-                            Tab(text: "Voice"),
-                            Tab(text: "Combo"),
+                            Tab(text: "All".tr()),
+                            Tab(text: "Data".tr()),
+                            Tab(text: "Voice".tr()),
+                            Tab(text: "Combo".tr()),
                             Tab(
-                              text: "Roaming",
+                              text: "Roaming".tr(),
                             )
                           ],
                         ),

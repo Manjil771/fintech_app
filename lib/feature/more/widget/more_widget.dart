@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 // import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -78,17 +80,6 @@ class _MoreWidgetState extends State<MoreWidget> {
     // Assets.feedBackIcon
   ];
 
-  final List names = [
-    "Account Info",
-    "Biometric",
-    "Change Security Pin",
-    "Transaction Limits",
-    // "Calculator",
-    // "Downloads",
-    // "Support",
-    "Settings",
-    // "FeedBack",
-  ];
   String mPin = "";
   @override
   void initState() {
@@ -102,6 +93,20 @@ class _MoreWidgetState extends State<MoreWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
+    final List names = [
+      LocaleKeys.accountInfo.tr(),
+      LocaleKeys.biometric.tr(),
+      LocaleKeys.changepin.tr(),
+      LocaleKeys.transactionLimit.tr(),
+      LocaleKeys.profileSetting.tr(),
+
+      // "Calculator",
+      // "Downloads",
+      // "Support",
+      // "Settings",
+      // "FeedBack",
+    ];
     final contactList = _supportContact.split(",");
     final List tapFunction = [
       () {
@@ -269,7 +274,7 @@ class _MoreWidgetState extends State<MoreWidget> {
               title: names[index]);
         },
       ),
-      topbarName: "Profile",
+      topbarName: LocaleKeys.profile.tr(),
       showBackBotton: false,
       showDetail: false,
       showRoundBotton: false,

@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/fonts.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -170,8 +172,8 @@ class _NonLifeInsurcnceWidgetState extends State<NonLifeInsurcnceWidget> {
                     ),
                   ],
                 ),
-                const Text(
-                  "From Account",
+                 Text(
+                  LocaleKeys.fromaccount.tr(), 
                   style: TextStyle(
                     fontFamily: Fonts.poppin,
                     fontWeight: FontWeight.w600,

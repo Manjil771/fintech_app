@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -53,8 +54,8 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
         showRecentTransaction: true,
         showTitleText: false,
         showDetail: false,
-        topbarName: 'Book Flight',
-        buttonName: 'Search Flight',
+        topbarName: 'Book Flight'.tr(),
+        buttonName: 'Search Flight'.tr(),
         body: BlocListener<AirlinesCubit, CommonState>(
           listener: (context, state) {
             if (state is CommonLoading && _isLoading == false) {
@@ -68,7 +69,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
               showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -101,7 +102,7 @@ class _SearchFlightWidgetState extends State<SearchFlightWidget> {
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Error",
+                    title: "Error".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                     },

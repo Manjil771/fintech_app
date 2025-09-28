@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -44,7 +46,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -107,11 +109,10 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                     "referenceNumber": payload['invoiceNumber'].toString(),
                     "shopId": payload['shopIdentification'].toString(),
                     "customerMobileNumber":
-                        RepositoryProvider.of<CustomerDetailRepository>(
-                                        context)
-                                    .customerDetailModel
-                                    .value
-                                    ?.mobileNumber,
+                        RepositoryProvider.of<CustomerDetailRepository>(context)
+                            .customerDetailModel
+                            .value
+                            ?.mobileNumber,
                     "amount": payload['totalAmount'] is String
                         ? double.parse(payload['totalAmount'])
                         : payload['totalAmount'] * 1.0,
@@ -142,12 +143,12 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
           }
         },
         child: CommonContainer(
-          topbarName: "Rent Service",
+          topbarName: "Rent Service".tr(),
           showAccountSelection: true,
-          accountTitle: "From Account",
-          buttonName: "Proceed",
-          title: "Kalimati Rent Service",
-          detail: "From here you can pay the rent.",
+          accountTitle: LocaleKeys.fromaccount.tr(),
+          buttonName: LocaleKeys.Proceed.tr(),
+          title: "Kalimati Rent Service".tr(),
+          detail: "From here you can pay the rent.".tr(),
           body: Form(
             key: _formKey,
             child: Row(

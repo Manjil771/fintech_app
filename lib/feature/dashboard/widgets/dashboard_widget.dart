@@ -373,6 +373,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/app_session.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/locale_keys.dart';
@@ -384,6 +385,7 @@ import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
@@ -433,6 +435,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   }
 
   List<String> offerBanners = [];
+  List<String> eventPosters = [];
   @override
   void initState() {
     super.initState();
@@ -445,31 +448,68 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       FlutterDownloader.registerCallback(downloadCallback);
     }
     offerBanners = RepositoryProvider.of<BannerRepository>(context).banners;
+    eventPosters =
+        RepositoryProvider.of<BannerRepository>(context).eventPosters;
 
-    // WidgetsBinding.instance.addPostFrameCallback((_) {
-    //   showDialog(
-    //     context: context,
-    //     barrierDismissible: false,
-    //     builder: (context) {
-    //       return Dialog(
-    //         insetPadding: EdgeInsets.zero,
-    //         backgroundColor: Colors.transparent,
-    //         shape: RoundedRectangleBorder(
-    //           borderRadius: BorderRadius.circular(16),
-    //         ),
-    //         child: Padding(
-    //           padding: const EdgeInsets.all(16.0),
-    //           child: Image.asset('assets/fathers_day.png'),
-    //         ),
-    //       );
-    //     },
-    //   );
-    //   Future.delayed(const Duration(seconds: 10), () {
-    //     if (mounted) {
-    //       NavigationService.pop();
-    //     }
-    //   });
-    // });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (eventPosters.isNotEmpty) {
+        AppSession.runOnce(() {
+          _showFestivalPoster();
+        });
+        // _showFestivalPoster();
+      }
+    });
+  }
+
+  _showFestivalPoster() async {
+    await Future.delayed(const Duration(seconds: 1));
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: FadeTransition(
+            opacity: animation,
+            child: Dialog(
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(
+                  eventPosters[0],
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) => Column(
+                    children: [
+                      Image.asset(
+                        RepositoryProvider.of<CoOperative>(context)
+                            .coOperativeLogo,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+    Future.delayed(const Duration(seconds: 4), () {
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
+    });
   }
 
   _performStartupActions() async {

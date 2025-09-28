@@ -1,8 +1,10 @@
 import 'package:animations/animations.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/amount_utils.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -101,10 +103,10 @@ class _InternetPaymentDeatilWidgetState
         verificationAmount:
             AmountUtils.getAmountInRupees(amount: amount).toString(),
         showDetail: true,
-        topbarName: 'Payment',
-        title: 'Internet Payment',
-        buttonName: 'Proceed',
-        detail: 'Pay your internet bill of you ISP from here',
+        topbarName: 'Payment'.tr(),
+        title: 'Internet Payment'.tr(),
+        buttonName: LocaleKeys.Proceed.tr(),
+        detail: 'Pay your internet bill of you ISP from here'.tr(),
         showAccountSelection: true,
         body: BlocListener<UtilityPaymentCubit, CommonState>(
           listener: (context, state) {
@@ -119,7 +121,7 @@ class _InternetPaymentDeatilWidgetState
               showPopUpDialog(
                 context: context,
                 message: state.message,
-                title: "Error",
+                title: "Error".tr(),
                 showCancelButton: false,
                 buttonCallback: () {
                   NavigationService.pop();
@@ -135,7 +137,7 @@ class _InternetPaymentDeatilWidgetState
                 showPopUpDialog(
                     context: context,
                     message: _response.message,
-                    title: "Error",
+                    title: "Error".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -206,7 +208,7 @@ class _InternetPaymentDeatilWidgetState
                         .toString(),
                   ),
                   KeyValueTile(
-                    title: "Amount",
+                    title: "Amount".tr(),
                     value: AmountUtils.getAmountInRupees(amount: amount)
                         .toString(),
                   ),

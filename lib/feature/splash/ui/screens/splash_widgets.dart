@@ -1,13 +1,16 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
 import 'package:ismart/feature/dashboard/screen/dashboard_page.dart';
 import 'package:ismart/feature/splash/cubit/startup_cubit.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/update/cubit/update_cubit.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 class SplashWidget extends StatefulWidget {
   @override
@@ -40,7 +43,7 @@ class _SplashWidgetState extends State<SplashWidget> {
           //   NavigationService.pushReplacement(target: const LoginPage());
           // }
 
-          Future.delayed(const Duration(seconds: 1), () {
+          Future.delayed(const Duration(seconds: 3), () {
             final _updateValue = RepositoryProvider.of<StartUpRepository>(
                     NavigationService.context)
                 .appUpdate;

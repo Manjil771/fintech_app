@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -21,10 +22,10 @@ class _WalletListWidgetState extends State<WalletListWidget> {
     return PageWrapper(
       body: CommonContainer(
         showDetail: true,
-        title: "Wallet Transfer",
-        detail: "Load Money to your preferred wallet account",
+        title: "Wallet Transfer".tr(),
+        detail: "Load Money to your preferred wallet account".tr(),
         showRoundBotton: false,
-        topbarName: "Load Wallet",
+        topbarName: "Load Wallet".tr(),
         showTitleText: true,
         body: Container(
           decoration: const BoxDecoration(
@@ -57,8 +58,8 @@ class _WalletListWidgetState extends State<WalletListWidget> {
                           WalletBoxWidget(wallet: _walletsList[index]),
                     );
                   } else if (state is CommonError) {
-                    return const NoDataScreen(
-                        title: "No Wallet Found", details: "");
+                    return NoDataScreen(
+                        title: "No Wallet Found".tr(), details: "");
                   }
                   return Container();
                 },

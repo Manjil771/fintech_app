@@ -1,5 +1,7 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -15,8 +17,8 @@ class StatementWidget extends StatelessWidget {
     return PageWrapper(
       body: CommonContainer(
         showDetail: false,
-        topbarName: "Statement",
-        detail: "Select the type of statement you want to  view",
+        topbarName: LocaleKeys.statement1.tr(),
+        detail: LocaleKeys.toptext.tr(),
         showRoundBotton: false,
         body: Column(
           children: [
@@ -32,12 +34,12 @@ class StatementWidget extends StatelessWidget {
                               routeName: Routes.chooseAccountMiniStatement);
                         },
                         containerImage: Assets.miniStatement,
-                        title: "Mini Statement"),
+                        title: LocaleKeys.miniStatement.tr()),
                   ),
                   Expanded(
                     child: CommonGridViewContainer(
-                        containerImage: Assets.miniStatement,
-                        title: "Full Statement",
+                        containerImage: Assets.miniStatement.tr(),
+                        title: LocaleKeys.fullStatement.tr(),
                         onContainerPress: () {
                           NavigationService.pushNamed(
                               routeName: Routes.chooseAccountFullStatement);

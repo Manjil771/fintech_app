@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -78,7 +80,7 @@ class _OTPWidgetState extends State<OTPWidget> {
                   ),
                   SizedBox(height: _height * 0.03),
                   CustomRoundedButtom(
-                      title: "Proceed",
+                      title: LocaleKeys.Proceed.tr(),
                       onPressed: () {
                         if (_otpKey.currentState!.validate()) {
                           widget.onValueCallback(otpCodeInput);
