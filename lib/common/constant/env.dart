@@ -5969,7 +5969,7 @@ class CoOperativeValue {
     coOperativeName: "Shikhar saving & Credit Co- operative Society Ltd",
     appTitle: 'Shikhar iSmart',
   );
-  static final CoOperative currentCoop = sarbashakti;
+
   static final CoOperative akkaladevi = CoOperative(
     appStoreID: "com.devanasoft.akkaladevi",
     packageName: "com.devanasoft.akkaladevi",
@@ -5984,5 +5984,6 @@ class CoOperativeValue {
     coOperativeName: "Akkaladevi Agriculture Co-operative Ltd",
     appTitle: 'Akkaladevi iSmart',
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = kishanKalyanCoop ;
 }
+ 
