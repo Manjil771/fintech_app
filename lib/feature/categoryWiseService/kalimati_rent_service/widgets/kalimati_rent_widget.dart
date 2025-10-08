@@ -156,10 +156,10 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
                 Expanded(
                   child: CustomTextField(
                     controller: _shopNumber,
-                    title: "Enter the shop Id",
-                    hintText: "Shop Number here",
+                    title: "Enter the Trader Id",
+                    hintText: "Trader Id here",
                     validator: (value) => FormValidator.validateFieldNotEmpty(
-                        value, "Shop Number"),
+                        value, "Trader Id"),
                   ),
                 ),
               ],
