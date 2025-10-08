@@ -777,10 +777,10 @@ packages:
     dependency: "direct main"
     description:
       name: flutter_zxing
-      sha256: "5b2670f151a6d96643204ff3a781e073739c23a91ef5fc39742bf13fb8287b4c"
+      sha256: "32e31beff338d260591d3865b01194f2ab9b8217b107f8ec50d0b77628507b7f"
       url: "https://pub.dev"
     source: hosted
-    version: "1.8.2"
+    version: "1.9.1"
   fluttertoast:
     dependency: "direct main"
     description:

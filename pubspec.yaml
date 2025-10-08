@@ -190,6 +190,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    - assets/ppmulti/
     # - assets/laxmiDeep/
     # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
@@ -381,7 +382,8 @@ flutter:
     # - assets/wonderful/
     # - assets/bhudev/
     # - assets/shreeGodawari/
-    - assets/navadurga/
+    # - assets/navadurga/
+    # - assets/civil/
     # - assets/lamosanghu/
     # - assets/greenhouse/
     # - assets/prime/

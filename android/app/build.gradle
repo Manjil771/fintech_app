@@ -2633,6 +2633,18 @@ android {
             versionCode flutterVersionCode.toInteger()
             versionName flutterVersionName
         }
+        ppmulti {
+                dimension "app"
+                applicationId "com.devanasoft.ppmulti"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            civil {
+                dimension "app"
+                applicationId "com.devanasoft.civil"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
     }
 
         signingConfigs {

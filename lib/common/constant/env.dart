@@ -5984,6 +5984,49 @@ class CoOperativeValue {
     coOperativeName: "Akkaladevi Agriculture Co-operative Ltd",
     appTitle: 'Akkaladevi iSmart',
   );
-  static final CoOperative currentCoop = kishanKalyanCoop ;
+  static final CoOperative civil = CoOperative(
+    appStoreID: "com.devanasoft.civil",
+    packageName: "com.devanasoft.civil",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/civil/civil_banner.png",
+    backgroundImage: "assets/civil/civil_background.png",
+    clientCode: 'NAPFYVKAKU',
+    clientSecret: "179462",
+    coOperativeLogo: 'assets/civil/civil_logo.png',
+    splashImage: "assets/civil/civil_splash.png",
+    primaryColor: const Color(0xFF0070b8),
+    coOperativeName: "Civil Byabasayee Multipurpose Co-operative ltd",
+    appTitle: 'Civil iSmart',
+  );
+  static final CoOperative ppmulti = CoOperative(
+    appStoreID: "com.devanasoft.ppmulti",
+    packageName: "com.devanasoft.ppmulti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ppmulti/ppmulti_banner.png",
+    backgroundImage: "assets/ppmulti/ppmulti_background.png",
+    clientCode: 'BBYHY0CJAW',
+    clientSecret: "167775",
+    coOperativeLogo: 'assets/ppmulti/ppmulti_logo.png',
+    splashImage: "assets/pp/ppmulti_splash.png",
+    primaryColor: const Color(0xFF009245),
+    coOperativeName: "P.P MULTIPURPOSE CO-OPERATIVE LTD",
+    appTitle: 'PP Multi iSmart',
+  );
+ 
+  static final CoOperative aviyanMulti = CoOperative(
+    appStoreID: "com.devanasoft.aviyanMulti",
+    packageName: "com.devanasoft.aviyanMulti",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/aviyanMulti/aviyanMulti_banner.png",
+    backgroundImage: "assets/aviyanMulti/aviyanMulti_background.png",
+    clientCode: 'IQ96QW3TRI',
+    clientSecret: "192706",
+    coOperativeLogo: 'assets/aviyanMulti/aviyanMulti_logo.png',
+    splashImage: "assets/aviyanMulti/aviyanMulti_splash.png",
+    primaryColor: const Color(0xFF1A7847),
+    coOperativeName: "Aviyan Nepal multipurpose cooperative society limited",
+    appTitle: 'Aviyan iSmart',
+  );
+  static final CoOperative currentCoop = ppmulti ;
 }
  

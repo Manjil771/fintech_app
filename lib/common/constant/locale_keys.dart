@@ -20,8 +20,11 @@ class LocaleKeys {
 
   static const Remarks = "Remarks";
   static const error = "error";
+  
   static const cancel = "cancel";
   static const done = "done";
+  static const search = "search";
+  static const nrp = "nrp";
   static const Proceed = "Proceed";
   static const pincodeempty = "pincodeempty";
   static const view = "view";
@@ -37,6 +40,7 @@ class LocaleKeys {
   static const NPR = "NPR";
   static const details_about_service = "details_about_service";
   static const useBiometricToLogin = "useBiometricToLogin";
+  static const username = "username";
   //new
   static const transactionID = "transactionID";
   static const initiator = "initiator";
@@ -151,9 +155,10 @@ class LocaleKeys {
 
   static const internet = "internet.internet";
   static const internetFetchDetails = "internet.internetFetchDetails";
+  static const internetUsername = "internet.internetUsername";
 
   //recent transactions
   static const recentTransaction = "RecentTransaction";
   static const Filter = "Filter";
   static const FilterOptions = "FilterOptions";
-}
+}                                                                                                                                                                                                                                                                                                  
