@@ -463,7 +463,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 Positioned(
                   right: 0,
                   left: 0,
-                  bottom: 60,
+                  bottom: 60.hp,
                   child: Container(
                     height: _verticalMaxSize,
                     child: Column(
@@ -485,25 +485,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ValueListenableBuilder(
-                        valueListenable: cameraController.torchState,
-                        builder: (context, flashStatus, _) {
-                          return CustomIconButton(
-                            icon: flashStatus == TorchState.on
-                                ? Icons.flash_on_rounded
-                                : Icons.flash_off_rounded,
-                            shadow: false,
-                            iconSize: 22,
-                            verticalPadding: 6,
-                            horizontalPadding: 6,
-                            backgroundColor: Colors.transparent,
-                            iconColor: Colors.white,
-                            onPressed: () async {
-                              await cameraController.toggleTorch();
-                            },
-                          );
-                        },
-                      ),
                       CustomIconButton(
                         icon: Icons.image,
                         shadow: false,
@@ -531,13 +512,32 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           }
                         },
                       ),
+                      ValueListenableBuilder(
+                        valueListenable: cameraController.torchState,
+                        builder: (context, flashStatus, _) {
+                          return CustomIconButton(
+                            icon: flashStatus == TorchState.on
+                                ? Icons.flash_on_rounded
+                                : Icons.flash_off_rounded,
+                            shadow: false,
+                            iconSize: 22,
+                            verticalPadding: 6,
+                            horizontalPadding: 6,
+                            backgroundColor: Colors.transparent,
+                            iconColor: Colors.white,
+                            onPressed: () async {
+                              await cameraController.toggleTorch();
+                            },
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
                 Positioned(
                   right: 0,
                   left: 0,
-                  bottom: 260,
+                  bottom: 260.hp,
                   child: Container(
                     height: 40.hp,
                     child: Center(

@@ -19,6 +19,7 @@ class CustomTextField extends FormField<String> {
     bool readOnly = false,
     TextFieldType type = TextFieldType.Outline,
     String title = "",
+    Widget? titleWidget,
     bool required = false,
     EdgeInsets? margin,
     TextInputType textInputType = TextInputType.text,
@@ -116,6 +117,7 @@ class CustomTextField extends FormField<String> {
                               if (title.isNotEmpty)
                                 RichText(
                                   text: TextSpan(
+                                    
                                     text: title,
                                     style: const TextStyle(
                                       fontFamily: Fonts.poppin,
@@ -126,8 +128,9 @@ class CustomTextField extends FormField<String> {
                                     children: [
                                       if (required)
                                         TextSpan(
-                                          text: "*",
+                                          text: " *",
                                           style: TextStyle(
+                                            
                                             fontFamily: Fonts.poppin,
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,

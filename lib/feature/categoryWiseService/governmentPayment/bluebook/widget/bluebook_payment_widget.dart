@@ -298,7 +298,8 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                             FormValidator.validateFieldNotEmpty(
                                 value, "Full Name"),
                         title: "Full Name",
-                        hintText: "Full Name*",
+                        hintText: "Full Name",
+                        required: true,
                       ),
                       CustomTextField(
                         onTap: () {
@@ -317,6 +318,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                                 showCancelButton: true,
                                 showTopDivider: true,
                                 title: "Province",
+                                
                                 items: provincesList,
                               ),
                             ),
@@ -327,6 +329,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                                 value, "Province"),
                         readOnly: true,
                         title: "Province",
+                        required: true,
                         controller: provinceController,
                         hintText: "Select From List",
                       ),
@@ -372,6 +375,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         readOnly: true,
                         title: "Districts",
                         controller: districtController,
+                        required: true,
                         hintText: "Select From List",
                       ),
                       CustomTextField(
@@ -415,6 +419,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         },
                         readOnly: true,
                         title: "PickUp Location",
+                        required: true,
                         controller: pickUpLocationController,
                         hintText: "Select From List",
                       ),
@@ -424,19 +429,21 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                             FormValidator.validateFieldNotEmpty(
                                 value, "Lanmark Location"),
                         title: "Landmark Location",
-                        hintText: "***buddhanagar",
+                        required: true,
+                        hintText: "Buddhanagar",
                       ),
                       CustomTextField(
                         controller: mobileNumberController,
                         validator: (value) =>
                             FormValidator.validatePhoneNumber(value),
                         title: "Mobile Number",
-                        hintText: "9866######",
+                        required: true,
+                        hintText: "9866XXXXXX",
                       ),
                       CustomTextField(
                         controller: emailController,
-                        validator: (value) =>
-                            FormValidator.validateEmail(value),
+                        // validator: (value) =>
+                        //     FormValidator.validateEmail(value),
                         title: "Email",
                         hintText: "****@gmail.com",
                       ),
@@ -450,6 +457,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         title: "Has Insurance",
                       ),
                       CustomTextField(
+                        required: true,
                         validator: (value) =>
                             FormValidator.validateFieldNotEmpty(
                                 value, "Vehicles Type"),
@@ -466,6 +474,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                                 });
                               },
                               showTopDivider: true,
+                              
                               title: "Vehicle Type",
                               items: const [
                                 "2 Wheeler",
@@ -481,6 +490,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         hintText: "Select From List",
                       ),
                       CustomTextField(
+                        required: true,
                         validator: (value) =>
                             FormValidator.validateFieldNotEmpty(
                                 value, "Vehicles Nature"),
@@ -496,6 +506,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                                 });
                               },
                               showTopDivider: true,
+                              
                               title: "Vehicle nature",
                               items: const [
                                 "Electric",
@@ -516,6 +527,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                             FormValidator.validateFieldNotEmpty(
                                 value, "Vehicle Cubic Capacity"),
                         title: "Vehicle Cubic Capacity",
+                        required: true,
                         hintText: "220",
                       ),
                       CustomTextField(
@@ -524,6 +536,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         validator: (value) =>
                             FormValidator.validateFieldNotEmpty(
                                 value, "Vehicle Seat Capacity"),
+                                required: true,
                         title: "Vehicle Seat Capacity",
                         hintText: "4",
                       ),
@@ -570,6 +583,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                           }
                         },
                         title: "From Date(BS)",
+                        required: true,
                         hintText:
                             "${fromDate?.year ?? 'XXXX'}-${fromDate?.month.toString().padLeft(2, '0') ?? 'XX'}-${fromDate?.day.toString().padLeft(2, '0') ?? 'XX'}",
                         showSuffixImage: true,
@@ -616,236 +630,237 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                           }
                         },
                         title: "To Date(BS)",
+                        required: true,
                         hintText:
                             "${toDate?.year ?? 'XXXX'}-${toDate?.month.toString().padLeft(2, '0') ?? "XX"}-${toDate?.day.toString().padLeft(2, '0') ?? 'XX'}",
                         showSuffixImage: true,
                       ),
-                      // CustomCheckbox(
-                      //   selected: isSameDayDelivery,
-                      //   onChanged: (val) {
-                      //     setState(() {
-                      //       isSameDayDelivery = !isSameDayDelivery;
-                      //     });
-                      //   },
-                      //   title: "Same Day Delivery",
+                      // // CustomCheckbox(
+                      // //   selected: isSameDayDelivery,
+                      // //   onChanged: (val) {
+                      // //     setState(() {
+                      // //       isSameDayDelivery = !isSameDayDelivery;
+                      // //     });
+                      // //   },
+                      // //   title: "Same Day Delivery",
+                      // // ),
+                      // const Text(
+                      //   "Citizenship Front Image",
+                      //   style: TextStyle(
+                      //     fontFamily: Fonts.poppin,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontSize: 14,
+                      //     color: CustomTheme.lightTextColor,
+                      //   ),
                       // ),
-                      const Text(
-                        "Citizenship Front Image",
-                        style: TextStyle(
-                          fontFamily: Fonts.poppin,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: CustomTheme.lightTextColor,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _pickImage((file) => _citizenshipFront = file);
-                        },
-                        child: _citizenshipFront == null
-                            ? Container(
-                                width: _width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    borderRadius: BorderRadius.circular(18)),
-                                height: _height * 0.2,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        Assets.uploadImageIcon,
-                                        height: 50.hp,
-                                      ),
-                                      SizedBox(height: 10.hp),
-                                      Text(
-                                        "Upload Picture(Optional)",
-                                        style: _textTheme.titleSmall,
-                                      )
-                                    ]),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                height: 140.hp,
-                                child: Image.file(_citizenshipFront!),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 6.hp,
-                      ),
-                      const Text(
-                        "Citizenship Back Image",
-                        style: TextStyle(
-                          fontFamily: Fonts.poppin,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: CustomTheme.lightTextColor,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _pickImage((file) => _citizenshipBack = file);
-                        },
-                        child: _citizenshipBack == null
-                            ? Container(
-                                width: _width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    borderRadius: BorderRadius.circular(18)),
-                                height: _height * 0.2,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        Assets.uploadImageIcon,
-                                        height: 50.hp,
-                                      ),
-                                      SizedBox(height: 10.hp),
-                                      Text(
-                                        "Upload Picture(Optional)",
-                                        style: _textTheme.titleSmall,
-                                      )
-                                    ]),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                height: 140.hp,
-                                child: Image.file(_citizenshipBack!),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 6.hp,
-                      ),
-                      const Text(
-                        "Owner Info Image",
-                        style: TextStyle(
-                          fontFamily: Fonts.poppin,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: CustomTheme.lightTextColor,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _pickImage((file) => _ownerInfo = file);
-                        },
-                        child: _ownerInfo == null
-                            ? Container(
-                                width: _width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    borderRadius: BorderRadius.circular(18)),
-                                height: _height * 0.2,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        Assets.uploadImageIcon,
-                                        height: 50.hp,
-                                      ),
-                                      SizedBox(height: 10.hp),
-                                      Text(
-                                        "Upload Picture(Optional)",
-                                        style: _textTheme.titleSmall,
-                                      )
-                                    ]),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                height: 140.hp,
-                                child: Image.file(_ownerInfo!),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 6.hp,
-                      ),
-                      const Text(
-                        "Vehicle Info Image",
-                        style: TextStyle(
-                          fontFamily: Fonts.poppin,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: CustomTheme.lightTextColor,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _pickImage((file) => _vehicleInfo = file);
-                        },
-                        child: _vehicleInfo == null
-                            ? Container(
-                                width: _width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    borderRadius: BorderRadius.circular(18)),
-                                height: _height * 0.2,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        Assets.uploadImageIcon,
-                                        height: 50.hp,
-                                      ),
-                                      SizedBox(height: 10.hp),
-                                      Text(
-                                        "Upload Picture(Optional)",
-                                        style: _textTheme.titleSmall,
-                                      )
-                                    ]),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                height: 140.hp,
-                                child: Image.file(_vehicleInfo!),
-                              ),
-                      ),
-                      SizedBox(
-                        height: 6.hp,
-                      ),
-                      const Text(
-                        "Vehicle Number Image",
-                        style: TextStyle(
-                          fontFamily: Fonts.poppin,
-                          fontWeight: FontWeight.w600,
-                          fontSize: 14,
-                          color: CustomTheme.lightTextColor,
-                        ),
-                      ),
-                      InkWell(
-                        onTap: () {
-                          _pickImage((file) => _vehicleNumberImage = file);
-                        },
-                        child: _vehicleNumberImage == null
-                            ? Container(
-                                width: _width,
-                                decoration: BoxDecoration(
-                                    color:
-                                        _theme.primaryColor.withOpacity(0.05),
-                                    borderRadius: BorderRadius.circular(18)),
-                                height: _height * 0.2,
-                                child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Image.asset(
-                                        Assets.uploadImageIcon,
-                                        height: 50.hp,
-                                      ),
-                                      SizedBox(height: 10.hp),
-                                      Text(
-                                        "Upload Picture(Optional)",
-                                        style: _textTheme.titleSmall,
-                                      )
-                                    ]),
-                              )
-                            : Container(
-                                alignment: Alignment.center,
-                                height: 140.hp,
-                                child: Image.file(_vehicleNumberImage!),
-                              ),
-                      ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage((file) => _citizenshipFront = file);
+                      //   },
+                      //   child: _citizenshipFront == null
+                      //       ? Container(
+                      //           width: _width,
+                      //           decoration: BoxDecoration(
+                      //               color:
+                      //                   _theme.primaryColor.withOpacity(0.05),
+                      //               borderRadius: BorderRadius.circular(18)),
+                      //           height: _height * 0.2,
+                      //           child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 Image.asset(
+                      //                   Assets.uploadImageIcon,
+                      //                   height: 50.hp,
+                      //                 ),
+                      //                 SizedBox(height: 10.hp),
+                      //                 Text(
+                      //                   "Upload Picture(Optional)",
+                      //                   style: _textTheme.titleSmall,
+                      //                 )
+                      //               ]),
+                      //         )
+                      //       : Container(
+                      //           alignment: Alignment.center,
+                      //           height: 140.hp,
+                      //           child: Image.file(_citizenshipFront!),
+                      //         ),
+                      // ),
+                      // SizedBox(
+                      //   height: 6.hp,
+                      // ),
+                      // const Text(
+                      //   "Citizenship Back Image",
+                      //   style: TextStyle(
+                      //     fontFamily: Fonts.poppin,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontSize: 14,
+                      //     color: CustomTheme.lightTextColor,
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage((file) => _citizenshipBack = file);
+                      //   },
+                      //   child: _citizenshipBack == null
+                      //       ? Container(
+                      //           width: _width,
+                      //           decoration: BoxDecoration(
+                      //               color:
+                      //                   _theme.primaryColor.withOpacity(0.05),
+                      //               borderRadius: BorderRadius.circular(18)),
+                      //           height: _height * 0.2,
+                      //           child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 Image.asset(
+                      //                   Assets.uploadImageIcon,
+                      //                   height: 50.hp,
+                      //                 ),
+                      //                 SizedBox(height: 10.hp),
+                      //                 Text(
+                      //                   "Upload Picture(Optional)",
+                      //                   style: _textTheme.titleSmall,
+                      //                 )
+                      //               ]),
+                      //         )
+                      //       : Container(
+                      //           alignment: Alignment.center,
+                      //           height: 140.hp,
+                      //           child: Image.file(_citizenshipBack!),
+                      //         ),
+                      // ),
+                      // SizedBox(
+                      //   height: 6.hp,
+                      // ),
+                      // const Text(
+                      //   "Owner Info Image",
+                      //   style: TextStyle(
+                      //     fontFamily: Fonts.poppin,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontSize: 14,
+                      //     color: CustomTheme.lightTextColor,
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage((file) => _ownerInfo = file);
+                      //   },
+                      //   child: _ownerInfo == null
+                      //       ? Container(
+                      //           width: _width,
+                      //           decoration: BoxDecoration(
+                      //               color:
+                      //                   _theme.primaryColor.withOpacity(0.05),
+                      //               borderRadius: BorderRadius.circular(18)),
+                      //           height: _height * 0.2,
+                      //           child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 Image.asset(
+                      //                   Assets.uploadImageIcon,
+                      //                   height: 50.hp,
+                      //                 ),
+                      //                 SizedBox(height: 10.hp),
+                      //                 Text(
+                      //                   "Upload Picture(Optional)",
+                      //                   style: _textTheme.titleSmall,
+                      //                 )
+                      //               ]),
+                      //         )
+                      //       : Container(
+                      //           alignment: Alignment.center,
+                      //           height: 140.hp,
+                      //           child: Image.file(_ownerInfo!),
+                      //         ),
+                      // ),
+                      // SizedBox(
+                      //   height: 6.hp,
+                      // ),
+                      // const Text(
+                      //   "Vehicle Info Image",
+                      //   style: TextStyle(
+                      //     fontFamily: Fonts.poppin,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontSize: 14,
+                      //     color: CustomTheme.lightTextColor,
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage((file) => _vehicleInfo = file);
+                      //   },
+                      //   child: _vehicleInfo == null
+                      //       ? Container(
+                      //           width: _width,
+                      //           decoration: BoxDecoration(
+                      //               color:
+                      //                   _theme.primaryColor.withOpacity(0.05),
+                      //               borderRadius: BorderRadius.circular(18)),
+                      //           height: _height * 0.2,
+                      //           child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 Image.asset(
+                      //                   Assets.uploadImageIcon,
+                      //                   height: 50.hp,
+                      //                 ),
+                      //                 SizedBox(height: 10.hp),
+                      //                 Text(
+                      //                   "Upload Picture(Optional)",
+                      //                   style: _textTheme.titleSmall,
+                      //                 )
+                      //               ]),
+                      //         )
+                      //       : Container(
+                      //           alignment: Alignment.center,
+                      //           height: 140.hp,
+                      //           child: Image.file(_vehicleInfo!),
+                      //         ),
+                      // ),
+                      // SizedBox(
+                      //   height: 6.hp,
+                      // ),
+                      // const Text(
+                      //   "Vehicle Number Image",
+                      //   style: TextStyle(
+                      //     fontFamily: Fonts.poppin,
+                      //     fontWeight: FontWeight.w600,
+                      //     fontSize: 14,
+                      //     color: CustomTheme.lightTextColor,
+                      //   ),
+                      // ),
+                      // InkWell(
+                      //   onTap: () {
+                      //     _pickImage((file) => _vehicleNumberImage = file);
+                      //   },
+                      //   child: _vehicleNumberImage == null
+                      //       ? Container(
+                      //           width: _width,
+                      //           decoration: BoxDecoration(
+                      //               color:
+                      //                   _theme.primaryColor.withOpacity(0.05),
+                      //               borderRadius: BorderRadius.circular(18)),
+                      //           height: _height * 0.2,
+                      //           child: Column(
+                      //               mainAxisAlignment: MainAxisAlignment.center,
+                      //               children: [
+                      //                 Image.asset(
+                      //                   Assets.uploadImageIcon,
+                      //                   height: 50.hp,
+                      //                 ),
+                      //                 SizedBox(height: 10.hp),
+                      //                 Text(
+                      //                   "Upload Picture(Optional)",
+                      //                   style: _textTheme.titleSmall,
+                      //                 )
+                      //               ]),
+                      //         )
+                      //       : Container(
+                      //           alignment: Alignment.center,
+                      //           height: 140.hp,
+                      //           child: Image.file(_vehicleNumberImage!),
+                      //         ),
+                      // ),
                     ],
                   ),
                 ),

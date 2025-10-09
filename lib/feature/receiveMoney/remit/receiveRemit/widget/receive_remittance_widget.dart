@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
+import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/no_data_screen.dart';
@@ -56,6 +57,9 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
 
               return Column(
                 children: [
+                  SizedBox(
+                    height: 5.hp,
+                  ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [

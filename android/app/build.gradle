@@ -2645,6 +2645,12 @@ android {
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }
+             darshan {
+                dimension "app"
+                applicationId "com.devanasoft.darshan"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
     }
 
         signingConfigs {
