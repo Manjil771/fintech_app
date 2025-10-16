@@ -278,7 +278,8 @@ class _BankingWidgetState extends State<BankingWidget> {
   final onPress = [
     // Routes.profileScreen,
     Routes.balanceInquiry,
-    Routes.statementPage,
+    // Routes.statementPage,
+    Routes.chooseAccountFullStatement,
     // Routes.internalCooperative,
     Routes.chequeScreen,
     Routes.calculator,

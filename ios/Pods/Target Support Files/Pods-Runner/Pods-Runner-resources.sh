@@ -186,6 +186,21 @@ fi
 if [[ "$CONFIGURATION" == "Release-sandus" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
 fi
+if [[ "$CONFIGURATION" == "Release-ekta" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-tathali" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-darshan" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-aviyanMulti" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-nawatara" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
 if [[ "$CONFIGURATION" == "Release-sarbashakti" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
 fi

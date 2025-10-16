@@ -90,8 +90,14 @@ dependency_overrides:
 
 flutter:
   assets:
+
     # - assets/kunchhal/
+    - assets/loyal/
+    # - assets/ekta/
+    # - assets/aviyanMulti/
     # - assets/darshan/
+    # - assets/tathali/
+    # - assets/hanumandhoka/
     # - assets/nawatara/
     # - assets/nayapusta/
     # - assets/akkaladevi/
@@ -264,7 +270,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    # - assets/punja/
+    - assets/punja/
     # - assets/immanuel/
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/

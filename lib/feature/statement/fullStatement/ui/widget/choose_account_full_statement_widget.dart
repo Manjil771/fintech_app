@@ -23,7 +23,7 @@ class _ChooseAccountFullStatementWidgetState
         validateMobileBankingStatus: false,
         showDetail: true,
         showAccountSelection: true,
-        topbarName: LocaleKeys.fullStatement.tr(),
+        topbarName: LocaleKeys.statement.tr(),
         detail: "Select the Account you want to view statement of",
         buttonName: "View",
         onButtonPressed: () {

@@ -78,7 +78,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       showAppBar: false,
       body: RefreshIndicator(
         onRefresh: () async {
-          NavigationService.pushReplacement(target: const DashboardPage());
+          // NavigationService.pushReplacement(target: const DashboardPage());
         },
         child: Stack(
           children: [

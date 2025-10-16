@@ -272,6 +272,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                               fileToBase64(_vehicleInfo) ?? "",
                           "vehicle_number_image":
                               fileToBase64(_vehicleNumberImage) ?? "",
+
                           // "citizenship_front_image": "",
                           // "citizenship_back_image": "",
                           // "latest_owner_info_page_image": "",

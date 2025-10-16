@@ -19,10 +19,20 @@
 			<key>orderHint</key>
 			<integer>22</integer>
 		</dict>
+		<key>Darshan.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>189</integer>
+		</dict>
 		<key>DigoBikash.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>37</integer>
+		</dict>
+		<key>Ekta.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>186</integer>
 		</dict>
 		<key>Join.xcscheme_^#shared#^_</key>
 		<dict>
@@ -99,6 +109,11 @@
 			<key>orderHint</key>
 			<integer>120</integer>
 		</dict>
+		<key>Runner 4.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>267</integer>
+		</dict>
 		<key>Runner.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
@@ -153,6 +168,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>168</integer>
+		</dict>
+		<key>Tathali.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>268</integer>
 		</dict>
 		<key>Upayogi Saving iSmart.xcscheme_^#shared#^_</key>
 		<dict>
@@ -238,6 +258,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>16</integer>
+		</dict>
+		<key>aviyanMulti.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>188</integer>
 		</dict>
 		<key>babira.xcscheme_^#shared#^_</key>
 		<dict>
@@ -568,6 +593,11 @@
 		<dict>
 			<key>orderHint</key>
 			<integer>90</integer>
+		</dict>
+		<key>nawatara.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>187</integer>
 		</dict>
 		<key>nayan.xcscheme_^#shared#^_</key>
 		<dict>

@@ -2651,6 +2651,42 @@ android {
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }
+             nawatara {
+                dimension "app"
+                applicationId "com.devanasoft.nawatara"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+        ekta {
+                dimension "app"
+                applicationId "com.devanasoft.ekta"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+             aviyanMulti {
+                dimension "app"
+                applicationId "com.devanasoft.aviyanMulti"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            tathali {
+                dimension "app"
+                applicationId "com.devanasoft.tathali"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            hanumandhoka {
+                dimension "app"
+                applicationId "com.devanasoft.hanumandhoka"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            loyal {
+                dimension "app"
+                applicationId "com.devanasoft.loyal"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
     }
 
         signingConfigs {

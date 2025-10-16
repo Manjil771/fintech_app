@@ -104,7 +104,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
         verticalPadding: 0,
         showTitleText: false,
         buttonName: "Close",
-        topbarName: LocaleKeys.fullStatement.tr(),
+        topbarName: LocaleKeys.statement.tr(),
         body: Column(
           children: [
             Row(

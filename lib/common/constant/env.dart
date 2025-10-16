@@ -6028,6 +6028,7 @@ class CoOperativeValue {
     appTitle: 'Aviyan iSmart',
   );
    static final CoOperative nawatara = CoOperative(
+    //aps
     appStoreID: "com.devanasoft.nawatara",
     packageName: "com.devanasoft.nawatara",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -6041,6 +6042,65 @@ class CoOperativeValue {
     coOperativeName: "Nawatara Saving and Credit Co-operative Society Ltd.",
     appTitle: 'Nawatara iSmart',
   );
-  static final CoOperative currentCoop = shubhaSandeshCoop ;
+  static final CoOperative ekta = CoOperative(
+        //aps
+    appStoreID: "com.devanasoft.ekta",
+    packageName: "com.devanasoft.ekta",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/ekta/ekta_banner.png",
+    backgroundImage: "assets/ekta/ekta_background.png",
+    clientCode: 'ET9FZALGJ5',
+    clientSecret: "151588",
+    coOperativeLogo: 'assets/ekta/ekta_logo.png',
+    splashImage: "assets/ekta/ekta_splash.png",
+    primaryColor: const Color(0xFF049450),
+    coOperativeName: "Ekta Saving And Credit Co-operative Ltd.",
+    appTitle: 'Ekta iSmart',
+  );
+  static final CoOperative tathali = CoOperative(
+
+    appStoreID: "com.devanasoft.tathali",
+    packageName: "com.devanasoft.tathali",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/tathali/tathali_banner.png",
+    backgroundImage: "assets/tathali/tathali_background.png",
+    clientCode: 'INHH6ZZGCX',
+    clientSecret: "157719",
+    coOperativeLogo: 'assets/tathali/tathali_logo.png',
+    splashImage: "assets/tathali/tathali_splash.png",
+    primaryColor: const Color(0xFF006838),
+    coOperativeName: "Tathali Saving & Credit Co-operative Ltd.",
+    appTitle: 'Tathali iSmart',
+  );
+   static final CoOperative hanumandhoka = CoOperative(
+
+    appStoreID: "com.devanasoft.hanumandhoka",
+    packageName: "com.devanasoft.hanumandhoka",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/hanumandhoka/hanumandhoka_banner.png",
+    backgroundImage: "assets/hanumandhoka/hanumandhoka_background.png",
+    clientCode: 'VXJBRMJZZ9',
+    clientSecret: "206132",
+    coOperativeLogo: 'assets/hanumandhoka/hanumandhoka_logo.png',
+    splashImage: "assets/hanumandhoka/hanumandhoka_splash.png",
+    primaryColor: const Color(0xFF0067B2),
+    coOperativeName: "Hanumandhoka Multipurpose Co-operative Ltd.",
+    appTitle: 'Hanumandhoka iSmart',
+  );
+   static final CoOperative loyal = CoOperative(
+    appStoreID: "com.devanasoft.loyal",
+    packageName: "com.devanasoft.loyal",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/loyal/loyal_banner.png",
+    backgroundImage: "assets/loyal/loyal_background.png",
+    clientCode: 'FMGR0LW91L',
+    clientSecret: "125623",
+    coOperativeLogo: 'assets/loyal/loyal_logo.png',
+    splashImage: "assets/loyal/loyal_splash.png",
+    primaryColor: const Color(0xFF00AEEF),
+    coOperativeName: "Loyal Saving & Credit C0-operative limited ",
+    appTitle: 'Loyal iSmart',
+  );
+  static final CoOperative currentCoop = loyal;
 }
  
