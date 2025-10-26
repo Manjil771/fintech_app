@@ -6101,6 +6101,34 @@ class CoOperativeValue {
     coOperativeName: "Loyal Saving & Credit C0-operative limited ",
     appTitle: 'Loyal iSmart',
   );
+     static final CoOperative marma = CoOperative(
+    appStoreID: "com.devanasoft.marma",
+    packageName: "com.devanasoft.marma",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/marma/marma_banner.png",
+    backgroundImage: "assets/marma/marma_background.JPG",
+    clientCode: 'OK67LQ6ZHZ',
+    clientSecret: "161268",
+    coOperativeLogo: 'assets/marma/marma_logo.png',
+    splashImage: "assets/marma/marma_splash.png",
+    primaryColor: const Color(0xFF259347),
+    coOperativeName: "Marma Multipurose Co-operative Ltd. ",
+    appTitle: 'Marma iSmart',
+  );
+     static final CoOperative jagaruk = CoOperative(
+    appStoreID: "com.devanasoft.jagaruk",
+    packageName: "com.devanasoft.jagaruk",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/jagaruk/jagaruk_banner.png",
+    backgroundImage: "assets/jagaruk/jagaruk_background.png",
+    clientCode: 'AKH4YDKFYB',
+    clientSecret: "131775",
+    coOperativeLogo: 'assets/jagaruk/jagaruk_logo.png',
+    splashImage: "assets/jagaruk/jagaruk_splash.png",
+    primaryColor: const Color(0xFF0287c0),
+    coOperativeName: "Jagaruk Agriculture Cooperative ltd.",
+    appTitle: 'Jagaruk iSmart',
+  );
   static final CoOperative currentCoop = loyal;
 }
  

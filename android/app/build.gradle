@@ -2687,6 +2687,18 @@ android {
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }
+            marma {
+                dimension "app"
+                applicationId "com.devanasoft.marma"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+             jagaruk {
+                dimension "app"
+                applicationId "com.devanasoft.jagaruk"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
     }
 
         signingConfigs {

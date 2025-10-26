@@ -92,11 +92,13 @@ flutter:
   assets:
 
     # - assets/kunchhal/
+    - assets/marma/
     - assets/loyal/
     # - assets/ekta/
     # - assets/aviyanMulti/
     # - assets/darshan/
     # - assets/tathali/
+    # - assets/jagaruk/
     # - assets/hanumandhoka/
     # - assets/nawatara/
     # - assets/nayapusta/
@@ -198,7 +200,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
-    - assets/ppmulti/
+    # - assets/ppmulti/
     # - assets/laxmiDeep/
     # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
