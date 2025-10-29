@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
@@ -97,17 +99,20 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                               crossAxisAlignment:
                                                   CrossAxisAlignment.start,
                                               children: [
-                                                Text("Total Balance",
+                                                Text(
+                                                    LocaleKeys.totalbalance
+                                                        .tr(),
                                                     style: Theme.of(context)
                                                         .textTheme
                                                         .titleSmall),
                                                 SizedBox(
                                                     height: _height * 0.005),
                                                 Text(
-                                                    "NPR ${showValidAccount[index].actualBalance}",
-                                                    style: Theme.of(context)
-                                                        .textTheme
-                                                        .displaySmall),
+                                                  "${LocaleKeys.NPR.tr()} ${showValidAccount[index].actualBalance}",
+                                                  style: Theme.of(context)
+                                                      .textTheme
+                                                      .displaySmall,
+                                                ),
                                               ],
                                             ),
                                             _getCoOpLogo(),
@@ -128,21 +133,28 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                           children: [
                                             detailROw(
                                                 context,
-                                                "Available Balance",
-                                                "NPR " +
+                                                LocaleKeys.availablebalance
+                                                    .tr(),
+                                                LocaleKeys.NPR.tr() +
                                                     showValidAccount[index]
                                                         .availableBalance
                                                         .toString()),
                                             detailROw(
                                                 context,
-                                                "Actual Balance",
-                                                "NPR " +
+                                                LocaleKeys.actualbalance.tr(),
+                                                LocaleKeys.NPR.tr() +
                                                     showValidAccount[index]
                                                         .actualBalance),
-                                            detailROw(context, "Member ID",
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.memberID.tr(),
                                                 "${showValidAccount[index].clientCode}"),
-                                            detailROw(context, "Acc Number",
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.accNumber.tr(),
                                                 "${showValidAccount[index].mainCode}"),
+                                            detailROw(context, "Acc Type",
+                                                "${(showValidAccount[index].accountTypeDescription.isEmpty) ? showValidAccount[index].accountType : showValidAccount[index].accountTypeDescription}"),
                                             if (showValidAccount[index]
                                                         .interestRate !=
                                                     "0" ||
@@ -158,7 +170,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                   0.1)
                                                 detailROw(
                                                     context,
-                                                    "Interest Rate",
+                                                    LocaleKeys.interestRate
+                                                        .tr(),
                                                     "${showValidAccount[index].interestRate} %"),
                                             if ((double.tryParse(
                                                         showValidAccount[index]
@@ -166,14 +179,18 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     0) >
                                                 0.1)
                                               detailROw(
-                                                  context,
-                                                  "Accured Interest",
-                                                  "NPR ${showValidAccount[index].accruedInterest}"),
+                                                context,
+                                                LocaleKeys.accuredInterest.tr(),
+                                                "${LocaleKeys.NPR.tr()} ${showValidAccount[index].accruedInterest}",
+                                              ),
                                             detailROw(
                                                 context,
-                                                "Acc Holder’s Name",
+                                                LocaleKeys.accountHolderName
+                                                    .tr(),
                                                 "${showValidAccount[index].accountHolderName}"),
-                                            detailROw(context, "Branch",
+                                            detailROw(
+                                                context,
+                                                LocaleKeys.branch.tr(),
                                                 "${showValidAccount[index].branchName}"),
                                           ],
                                         ),
@@ -191,13 +208,13 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
                                                     .of<CoOperative>(context)
                                                 .appTitle;
                                             await Share.share(
-                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount NUmber: ${showValidAccount[index].mainCode} \nBank Name: $bankName \nBranch Name: ${showValidAccount[index].branchName} ',
+                                              'Account Holder Name: ${showValidAccount[index].accountHolderName} \nAccount Number: ${showValidAccount[index].mainCode} \nCoop Name: ${customerDetail.value?.bank} \nBranch Name: ${showValidAccount[index].branchName} ',
                                             );
                                           },
                                           isNetworkImage: false,
                                           containerImage:
                                               'assets/icons/share.svg',
-                                          title: 'Share Account Details',
+                                          title: LocaleKeys.shareAccount.tr(),
                                         ),
                                       ),
                                       Expanded(child: Container()
@@ -222,8 +239,8 @@ class _BalanceInquiryWidgetState extends State<BalanceInquiryWidget> {
             ),
           ],
         ),
-        topbarName: "Balance Inquiry",
-        detail: "Details about your account is shown below.",
+        topbarName: LocaleKeys.balanceinquiry.tr(),
+        detail: LocaleKeys.detailAboutBalance.tr(),
       ),
     );
   }

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_button.dart';
@@ -183,10 +185,20 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                           ),
                   ),
                   SizedBox(height: _height * 0.02),
-                  Text(
-                      "Details about the payable amount for the service of ${widget.service.service} is shown below.",
-                      textAlign: TextAlign.center,
-                      style: Theme.of(context).textTheme.titleSmall),
+                  Padding(
+                    padding: const EdgeInsets.only(right: 30, left: 45),
+                    child: Text(
+                                    tr(
+                    LocaleKeys.details_about_service,
+                                     namedArgs: {
+                    "service": widget.service.service,
+                      },
+                     ),
+                                     textAlign: TextAlign.center,
+                                style: Theme.of(context).textTheme.titleSmall,
+                     ),
+                  ),
+
                   SizedBox(height: _height * 0.02),
                   const Divider(thickness: 1),
                   SizedBox(height: _height * 0.02),
@@ -202,11 +214,11 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
-                        Text("Paymet Details",
+                        Text(LocaleKeys.paymentdetails.tr(),
                             style: Theme.of(context).textTheme.titleLarge),
                         SizedBox(height: _height * 0.02),
                         KeyValueTile(
-                            title: "From Account",
+                            title: LocaleKeys.fromaccount.tr(),
                             value:
                                 RepositoryProvider.of<CustomerDetailRepository>(
                                         context)
@@ -216,7 +228,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                         SizedBox(height: 5.hp),
                         widget.body,
                         KeyValueTile(
-                            title: "Cashback",
+                            title: LocaleKeys.cashback.tr(),
                             value: "${widget.service.cashBackView ?? 0} %")
                       ],
                     ),
@@ -224,7 +236,7 @@ class _CommonBillDetailWidgetState extends State<CommonBillDetailWidget> {
                   SizedBox(height: _height * 0.02),
                   CustomRoundedButtom(
                       verificationAmount: widget.verificationAmount,
-                      title: "Pay",
+                      title: LocaleKeys.pay.tr(),
                       onPressed: () {
                         NavigationService.push(target: TransactionPinScreen(
                           onValueCallback: (p0) {

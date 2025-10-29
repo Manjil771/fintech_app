@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -53,7 +54,7 @@ class _LoanWidgetState extends State<LoanWidget> {
     final _textTheme = _theme.textTheme;
     return PageWrapper(
         body: CommonContainer(
-            title: "Loan Information",
+            title: "Loan Information".tr(),
             showRoundBotton: false,
             body: BlocBuilder<UtilityPaymentCubit, CommonState>(
               builder: (context, state) {
@@ -72,12 +73,12 @@ class _LoanWidgetState extends State<LoanWidget> {
                               child: Column(
                                 children: [
                                   LoanKeyValueTile(
-                                    title: "Product Name",
+                                    title: "Product Name".tr(),
                                     value: response.findValueString("product"),
                                     axis: Axis.horizontal,
                                   ),
                                   LoanKeyValueTile(
-                                    title: "Account Number",
+                                    title: "Account Number".tr(),
                                     value: response
                                         .findValueString("accountNumber"),
                                     axis: Axis.horizontal,
@@ -95,18 +96,24 @@ class _LoanWidgetState extends State<LoanWidget> {
                                       crossAxisAlignment:
                                           CrossAxisAlignment.start,
                                       children: [
-                                        LoanKeyValueTile(
-                                          title: "Interest Type",
-                                          value: response
-                                              .findValueString("interestType"),
-                                          axis: Axis.vertical,
-                                        ),
-                                        LoanKeyValueTile(
-                                          title: "Issued On",
-                                          value: response
-                                              .findValueString("issuedOn"),
-                                          axis: Axis.vertical,
-                                        ),
+                                        if (response.findValueString(
+                                                "interestType") !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Interest Type",
+                                            value: response.findValueString(
+                                                "interestType"),
+                                            axis: Axis.vertical,
+                                          ),
+                                        if (response
+                                                .findValueString("issuedOn") !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Issued On",
+                                            value: response
+                                                .findValueString("issuedOn"),
+                                            axis: Axis.vertical,
+                                          ),
                                         if (response
                                                 .findValueString(
                                                     "principalInstallments")
@@ -129,18 +136,26 @@ class _LoanWidgetState extends State<LoanWidget> {
                                                 "interestInstallments"),
                                             axis: Axis.vertical,
                                           ),
-                                        LoanKeyValueTile(
-                                          title: "Balance",
-                                          value: response
-                                              .findValueString("balance"),
-                                          axis: Axis.vertical,
-                                        ),
-                                        LoanKeyValueTile(
-                                          title: "Duration",
-                                          value: response
-                                              .findValueString("duration"),
-                                          axis: Axis.vertical,
-                                        ),
+                                        if (response
+                                                .findValueString("balance")
+                                                .toLowerCase() !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Balance",
+                                            value: response
+                                                .findValueString("balance"),
+                                            axis: Axis.vertical,
+                                          ),
+                                        if (response
+                                                .findValueString("duration")
+                                                .toLowerCase() !=
+                                            'null')
+                                          LoanKeyValueTile(
+                                            title: "Duration",
+                                            value: response
+                                                .findValueString("duration"),
+                                            axis: Axis.vertical,
+                                          ),
                                       ],
                                     ),
                                     Padding(
@@ -149,24 +164,38 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         crossAxisAlignment:
                                             CrossAxisAlignment.start,
                                         children: [
-                                          LoanKeyValueTile(
-                                            title: "Interest Rate",
-                                            value: response.findValueString(
-                                                "interestRate"),
-                                            axis: Axis.vertical,
-                                          ),
-                                          LoanKeyValueTile(
-                                            title: "Matures On",
-                                            value: response
-                                                .findValueString("maturesOn"),
-                                            axis: Axis.vertical,
-                                          ),
-                                          LoanKeyValueTile(
-                                            title: "Disbursed Amount",
-                                            value: response.findValueString(
-                                                "disbursedAmount"),
-                                            axis: Axis.vertical,
-                                          ),
+                                          if (response
+                                                  .findValueString(
+                                                      "interestRate")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Interest Rate",
+                                              value: response.findValueString(
+                                                  "interestRate"),
+                                              axis: Axis.vertical,
+                                            ),
+                                          if (response
+                                                  .findValueString("maturesOn")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Matures On",
+                                              value: response
+                                                  .findValueString("maturesOn"),
+                                              axis: Axis.vertical,
+                                            ),
+                                          if (response
+                                                  .findValueString(
+                                                      "disbursedAmount")
+                                                  .toLowerCase() !=
+                                              'null')
+                                            LoanKeyValueTile(
+                                              title: "Disbursed Amount",
+                                              value: response.findValueString(
+                                                  "disbursedAmount"),
+                                              axis: Axis.vertical,
+                                            ),
                                         ],
                                       ),
                                     ),
@@ -214,7 +243,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         color: _theme.primaryColor,
                                       ),
                                       Text(
-                                        "Loan Statement",
+                                        "Loan Statement".tr(),
                                         style: _textTheme.titleLarge!.copyWith(
                                             color: _theme.primaryColor,
                                             fontWeight: FontWeight.bold),
@@ -257,7 +286,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                                         color: _theme.primaryColor,
                                       ),
                                       Text(
-                                        "Loan Schedule",
+                                        "Loan Schedule".tr(),
                                         style: _textTheme.titleLarge!.copyWith(
                                             color: _theme.primaryColor,
                                             fontWeight: FontWeight.bold),
@@ -327,7 +356,7 @@ class _LoanWidgetState extends State<LoanWidget> {
                   }
                 } else if (state is CommonError) {
                   return NoDataScreen(
-                      title: "No Data Found", details: state.message);
+                      title: "No Data Found".tr(), details: state.message);
                 } else if (state is CommonLoading) {
                   return const CommonLoadingWidget();
                 } else {
@@ -337,6 +366,6 @@ class _LoanWidgetState extends State<LoanWidget> {
                 }
               },
             ),
-            topbarName: "Loan"));
+            topbarName: "Loan".tr()));
   }
 }

@@ -105,12 +105,7 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
             ?.cast<Map<String, dynamic>>() ??
         [];
     return [
-      [
-        "Due Date",
-        "Bill Amt",
-        "Remarks",
-        "Payable",
-      ],
+      ["Due Date", "Bill Amt", "Remarks", "Rebate/Penalty", "Payable"],
       ..._temp.map<List<String>>(
         (e) => [
           TextUtils.replaceEmptyWithDash(e["_billDate"]),
@@ -118,6 +113,11 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
                   amount: TextUtils.replaceEmptyWithDash(e["_billAmount"]))
               .toString(),
           TextUtils.replaceEmptyWithDash(e["_description"]),
+          TextUtils.extractFineStatus(
+              double.tryParse(AmountUtils.getAmountInRupees(
+                      amount: TextUtils.replaceEmptyWithDash(e["_billAmount"]))
+                  .toString()),
+              e["_status"]),
           AmountUtils.getAmountInRupees(
                   amount: TextUtils.replaceEmptyWithDash(e["_amount"]))
               .toString(),
@@ -140,7 +140,6 @@ class _ElectricityDetailsWidgetsState extends State<ElectricityDetailsWidgets> {
           _isLoading = false;
           Navigator.pop(context);
         }
-
         if (state is CommonStateSuccess<UtilityResponseData>) {
           final UtilityResponseData _response = state.data;
           if (_response.status.toLowerCase() == "success".toLowerCase()) {

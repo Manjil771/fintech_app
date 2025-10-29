@@ -1,10 +1,13 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/common_container.dart';
+import 'package:ismart/common/widget/no_data_screen.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
@@ -64,7 +67,7 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
         },
         showRoundBotton: false,
         verticalPadding: 0,
-        topbarName: "Mini Statement",
+        topbarName: LocaleKeys.miniStatement.tr(),
         horizontalPadding: 0,
         showDetail: false,
         body: BlocConsumer<MiniStatementCubit, CommonState>(
@@ -290,7 +293,10 @@ class _MiniStatementWidgetState extends State<MiniStatementWidget> {
                 ],
               );
             } else {
-              return Container();
+              return const NoDataScreen(
+                title: 'No data found.',
+                details: "",
+              );
             }
           },
         ),

@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -5,6 +6,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -23,6 +25,7 @@ import 'package:ismart/common/widget/ismart_top_widget.dart';
 import 'package:ismart/common/widget/login_common_text_field.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_loading_dialog.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appContact/cubit/app_contact_cubit.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
@@ -44,6 +47,7 @@ import 'package:ismart/feature/splash/resource/startup_repository.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 import 'package:uuid/uuid.dart';
+import 'package:vpn_connection_detector/vpn_connection_detector.dart';
 
 class LoginWidget extends StatefulWidget {
   const LoginWidget({Key? key}) : super(key: key);
@@ -91,7 +95,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     if (isLocalBiometricEnabled != null && isLocalBiometricEnabled) {
       _isBiometricEnabled.value = true;
     }
-
     _existingPhoneNumber = await SecureStorageService.appPhoneNumber;
     _hasExistingLoginSaved.value = _existingPhoneNumber.isNotEmpty;
   }
@@ -99,6 +102,27 @@ class _LoginWidgetState extends State<LoginWidget> {
   String _getPhoneNumber() {
     if (phoneController.text.isNotEmpty) return phoneController.text;
     return _existingPhoneNumber;
+  }
+
+  Future<void> checkVpnActivation() async {
+    final bool isVpnConnected = await VpnConnectionDetector.isVpnActive();
+    if (isVpnConnected) {
+      showPopUpDialog(
+          cancelButtonCallback: () {
+            SystemNavigator.pop();
+          },
+          context: context,
+          buttonText: 'Retry',
+          title: 'Possible VPN detected!',
+          message:
+              'For your protection and to ensure secure transactions, please disable VPN before continuing and retry.',
+          buttonCallback: () async {
+            await Future.delayed(const Duration(seconds: 2));
+            if (await VpnConnectionDetector.isVpnActive()) {
+              Future.microtask(() => checkVpnActivation());
+            }
+          });
+    }
   }
 
   final List myBanners = [];
@@ -113,6 +137,7 @@ class _LoginWidgetState extends State<LoginWidget> {
     // appService =
     // RepositoryProvider.of<AppServiceRepository>(context).appService;
     getLoginStatus();
+    checkVpnActivation();
     super.initState();
   }
 
@@ -121,7 +146,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     final String firstTwo = number.substring(0, 2);
     final String lastTwo = number.substring(number.length - 2);
     final String masked = firstTwo + "******" + lastTwo;
-
     return masked;
   }
 
@@ -148,6 +172,13 @@ class _LoginWidgetState extends State<LoginWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
+    final List nameList = [
+      LocaleKeys.foreex.tr(),
+      LocaleKeys.activateAccount.tr(),
+      LocaleKeys.miscallBanking.tr(),
+      LocaleKeys.branches.tr(),
+    ];
     final height = SizeUtils.height;
     final width = SizeUtils.width;
     final _theme = Theme.of(context);
@@ -231,10 +262,15 @@ class _LoginWidgetState extends State<LoginWidget> {
               );
             }
           } else if (state is CommonError) {
-            SnackBarUtils.showErrorBar(
-              context: context,
-              message: state.message,
-            );
+            showPopUpDialog(
+                context: context,
+                showCancelButton: false,
+                buttonText: 'Okay',
+                title: 'Unauthorized!',
+                message: state.message,
+                buttonCallback: () async {
+                  NavigationService.pop();
+                });
           }
         },
         child: ListView(
@@ -251,9 +287,10 @@ class _LoginWidgetState extends State<LoginWidget> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     SizedBox(height: height * 0.01),
-                    const Text(
-                      "Login",
-                      style: TextStyle(
+                    Text(
+                      LocaleKeys.login.tr(),
+                      // "Login",
+                      style: const TextStyle(
                         fontFamily: "popinbold",
                         fontSize: 26,
                         color: Colors.black,
@@ -320,13 +357,13 @@ class _LoginWidgetState extends State<LoginWidget> {
                           leading: countryFlagWidget(),
                           readOnly:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
-                          title: "Mobile Number",
+                          title: LocaleKeys.mobileNumber.tr(),
                           customHintTextStyle:
                               rememberMe && _existingPhoneNumber.isNotEmpty,
                           hintText:
                               rememberMe && _existingPhoneNumber.isNotEmpty
                                   ? maskPhoneNumber(_existingPhoneNumber)
-                                  : "Mobile Number",
+                                  : LocaleKeys.mobileNumber.tr(),
                           controller: phoneController,
                           textInputType: TextInputType.phone,
                           onTap: () {
@@ -362,8 +399,8 @@ class _LoginWidgetState extends State<LoginWidget> {
                     ),
                     SizedBox(height: height * 0.01),
                     CustomPasswordField(
-                      title: "Security Pin",
-                      hintText: "Secrity Pin",
+                      title: LocaleKeys.securityPin.tr(),
+                      hintText: LocaleKeys.securityPin.tr(),
                       maxLength: 6,
                       inputFormatters: [
                         FilteringTextInputFormatter.digitsOnly,
@@ -404,13 +441,15 @@ class _LoginWidgetState extends State<LoginWidget> {
                                 });
                               },
                             ),
-                            const Text("Remember Me"),
+                            Text(
+                              LocaleKeys.rememberMe.tr(),
+                            ),
                           ],
                         );
                       },
                     ),
                     CustomRoundedButtom(
-                      title: "Login",
+                      title: LocaleKeys.loginBtn.tr(),
                       onPressed: () async {
                         // showDatePickerBottomSheet(
                         //   context: context,
@@ -472,7 +511,7 @@ class _LoginWidgetState extends State<LoginWidget> {
                                     width: width * 0.03,
                                   ),
                                   Text(
-                                    "User Biometric to Login",
+                                    LocaleKeys.useBiometricToLogin.tr(),
                                     style: _theme.textTheme.labelMedium,
                                   ),
                                 ],
@@ -522,12 +561,6 @@ class _LoginWidgetState extends State<LoginWidget> {
     );
   }
 
-  final List nameList = [
-    "Forex",
-    "Activate Account",
-    "Missed Call Banking",
-    "Branches"
-  ];
   final List imageList = [
     "assets/icons/forex.svg",
     "assets/icons/activate account.svg",
@@ -759,7 +792,7 @@ class _LoginWidgetState extends State<LoginWidget> {
       },
     },
     {
-      "title": "Mini Statement",
+      "title": LocaleKeys.miniStatement.tr(),
       "action": () {
         NavigationService.pop();
       },

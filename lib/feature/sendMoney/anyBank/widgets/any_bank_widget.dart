@@ -1,12 +1,15 @@
 import 'dart:math';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:intl/intl.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -99,9 +102,9 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
           color: CustomTheme.white,
           borderRadius: BorderRadius.vertical(top: Radius.circular(24)),
         ),
-        child: const TransactionProgressPage(
+        child: TransactionProgressPage(
           persistOpen: true,
-          title: "Bank Transfer",
+          title: "Bank Transfer".tr(),
           profileType: 'BankTransferProfile',
           isOpen: true,
         ),
@@ -177,7 +180,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             imageUrl: selectedBank?.iconUrl ?? "",
                             body: Column(children: [
                               KeyValueTile(
-                                  title: "From Account",
+                                  title: LocaleKeys.fromaccount.tr(),
                                   value: RepositoryProvider.of<
                                           CustomerDetailRepository>(context)
                                       .selectedAccount
@@ -202,15 +205,19 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                 value: charges ?? "0",
                               ),
                               KeyValueTile(
-                                title: "Amount",
+                                title: "Amount".tr(),
                                 value: _amountController.text,
                               ),
                               KeyValueTile(
                                 title: "Remarks",
                                 value: _remarksController.text,
                               ),
+                              KeyValueTile(
+                                  title: "Date and Time",
+                                  value: DateFormat('dd-MM-yyyy hh:mm a')
+                                      .format(DateTime.now())),
                             ]),
-                            serviceName: "Bank Transfer",
+                            serviceName: "Bank Transfer".tr(),
                             message:
                                 "Details for payment of service Bank Transfer is shown below.",
                             charge: charges.toString(),
@@ -237,7 +244,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                         imageUrl: selectedBank?.iconUrl ?? "",
                         body: Column(children: [
                           KeyValueTile(
-                              title: "From Account",
+                              title: LocaleKeys.fromaccount.tr(),
                               value: RepositoryProvider.of<
                                       CustomerDetailRepository>(context)
                                   .selectedAccount
@@ -266,11 +273,11 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                             value: _amountController.text,
                           ),
                           KeyValueTile(
-                            title: "Remarks",
+                            title: "Remarks".tr(),
                             value: _remarksController.text,
                           ),
                         ]),
-                        serviceName: "Bank Transfer",
+                        serviceName: "Bank Transfer".tr(),
                         message:
                             "Details for payment of service Bank Transfer is shown below.",
                         charge: charges.toString(),
@@ -317,11 +324,22 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           apiEndpoint: "/api/otp/request",
                         );
                   }
+                  // else {
+                  //   showPopUpDialog(
+                  //     context: context,
+                  //     message: "",
+                  //     title: "Error",
+                  //     buttonCallback: () {
+                  //       NavigationService.pop();
+                  //     },
+                  //     showCancelButton: false,
+                  //   );
+                  // }
                 } else if (state is CommonError) {
                   showPopUpDialog(
                     context: context,
                     message: state.message,
-                    title: "Error",
+                    title: "Error".tr(),
                     buttonCallback: () {
                       NavigationService.pop();
                     },
@@ -385,7 +403,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               height: _height * 0.04,
                               child: Center(
                                 child: Text(
-                                  "Account Number",
+                                  "Account Number".tr(),
                                   style: _textTheme.titleSmall,
                                 ),
                               ),
@@ -410,7 +428,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                               height: _height * 0.04,
                               child: Center(
                                 child: Text(
-                                  "Mobile Number",
+                                  "Mobile Number".tr(),
                                   style: _textTheme.titleSmall,
                                 ),
                               ),
@@ -430,8 +448,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   // ),
                   widget.bankName == null && bankNameRecentTransaction.isEmpty
                       ? CustomTextField(
-                          hintText: "Select Bank",
-                          title: "Select Bank",
+                          hintText: "Select Bank".tr(),
+                          title: "Select Bank".tr(),
                           readOnly: widget.bankCode != null,
                           controller: _selectedBankController,
                           onTap:
@@ -515,7 +533,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           )),
 
                   CustomTextField(
-                    title: "Account Number",
+                    title: "Account Number".tr(),
                     hintText: "Destination Account Number",
                     controller: _accountNumberController,
                     validator: (val) => FormValidator.validateFieldNotEmpty(
@@ -523,7 +541,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                   ),
                   mobilePhoneTransfer
                       ? CustomTextField(
-                          title: "Mobile Number",
+                          title: "Mobile Number".tr(),
                           hintText: "Account Holder Phone Number",
                           //controller: _accountNameController,
                           validator: (val) =>
@@ -531,7 +549,7 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                                   val, "Phone Number"),
                         )
                       : CustomTextField(
-                          hintText: "Account Holder Name",
+                          hintText: "Account Holder Name".tr(),
                           controller: _accountNameController,
                           validator: (val) =>
                               FormValidator.validateFieldNotEmpty(
@@ -559,8 +577,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                           showTransLimit: true,
                           transLimitFunc: _toggleBottomSheet,
                           autovalidateMode: AutovalidateMode.onUserInteraction,
-                          title: "Amount",
-                          hintText: "NPR",
+                          title: "Amount".tr(),
+                          hintText: "NPR".tr(),
                           textInputType: const TextInputType.numberWithOptions(
                               decimal: true),
                           controller: _amountController,
@@ -596,8 +614,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                     ),
                   ),
                   CustomTextField(
-                    title: "Remarks",
-                    hintText: "Remarks",
+                    title: "Remarks".tr(),
+                    hintText: "Remarks".tr(),
                     controller: _remarksController..text = widget.remarks ?? "",
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Remarks"),
@@ -605,8 +623,9 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                 ],
               ),
             ),
-            topbarName: "Bank Transfer",
-            buttonName: charges != null ? "Confirm" : "Check Transfer",
+            topbarName: "Bank Transfer".tr(),
+            buttonName:
+                charges != null ? "Confirm".tr() : "Check Transfer".tr(),
             verificationAmount: _currentAmount,
             onButtonPressed: () {
               // NavigationService.push(target: const LimitScreen());
@@ -622,8 +641,8 @@ class _AnyBankWidgetState extends State<AnyBankWidget> {
                     );
               }
             },
-            title: "Bank Transfer",
-            detail: "Transfer funds to accounts held at various banks.",
+            title: "Bank Transfer".tr(),
+            detail: "Send Money to accounts maintained at different banks".tr(),
           ),
         ),
       ),

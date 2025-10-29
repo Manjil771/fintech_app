@@ -24,7 +24,6 @@ class _ProfilePageState extends State<ProfilePage> {
   }
 }
 
-
 // import 'package:flutter/material.dart';
 // import 'package:flutter_bloc/flutter_bloc.dart';
 // import 'package:ismart/common/constant/env.dart';

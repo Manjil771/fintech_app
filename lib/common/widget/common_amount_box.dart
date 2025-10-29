@@ -63,7 +63,7 @@ class _CommonAmountBoxState extends State<CommonAmountBox> {
                       padding: const EdgeInsets.symmetric(
                           vertical: 5, horizontal: 18),
                       decoration: BoxDecoration(
-                          border: Border.all(color: _theme.primaryColor),
+                          border: Border.all(color: Colors.white),
                           borderRadius: BorderRadius.circular(8)),
                       child: Text(
                         priceRangeList[index].toString(),

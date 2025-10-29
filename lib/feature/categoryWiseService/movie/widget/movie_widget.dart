@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -34,12 +35,13 @@ class _MovieWidgetState extends State<MovieWidget> {
           showDetail: true,
           verticalPadding: 0,
           horizontalPadding: 0,
-          topbarName: widget.service.serviceCategoryName,
+          topbarName: "Movies".tr(),
           showRoundBotton: false,
           body: BlocConsumer<UtilityPaymentCubit, CommonState>(
             listener: (context, state) {
               if (state is CommonLoading && _isLoading == false) {
                 _isLoading = true;
+
                 showLoadingDialogBox(context);
               } else if (state is! CommonLoading && _isLoading) {
                 _isLoading = false;
@@ -49,7 +51,7 @@ class _MovieWidgetState extends State<MovieWidget> {
                 showPopUpDialog(
                   context: context,
                   message: state.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   showCancelButton: false,
                   buttonCallback: () {
                     NavigationService.pop();
@@ -64,7 +66,7 @@ class _MovieWidgetState extends State<MovieWidget> {
                   showPopUpDialog(
                       context: context,
                       message: _response.message,
-                      title: "Message",
+                      title: "Message".tr(),
                       buttonCallback: () {
                         NavigationService.pop();
                       },
@@ -98,7 +100,8 @@ class _MovieWidgetState extends State<MovieWidget> {
                   )),
                 );
               } else if (state is CommonError) {
-                return NoDataScreen(title: "Error", details: state.message);
+                return NoDataScreen(
+                    title: "Error".tr(), details: state.message);
               } else if (state is CommonLoading) {
                 return const Column(
                   mainAxisAlignment: MainAxisAlignment.center,

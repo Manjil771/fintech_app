@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -35,7 +36,7 @@ class ChequeBlockWidget extends StatelessWidget {
           showPopUpDialog(
             context: context,
             message: state.message,
-            title: "Error",
+            title: "Error".tr(),
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
@@ -75,14 +76,14 @@ class ChequeBlockWidget extends StatelessWidget {
             PrimaryAccountBox(),
             CustomTextField(
               controller: chequeNumberController,
-              title: "Enter Cheque Number",
+              title: "Enter Cheque Number".tr(),
               hintText: "XXXXXXXXX",
               validator: (value) =>
                   FormValidator.validateFieldNotEmpty(value, "Cheque Number"),
             ),
             SizedBox(height: _height * 0.02),
             CustomRoundedButtom(
-                title: "Confirm",
+                title: "Confirm".tr(),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     NavigationService.push(target: TransactionPinScreen(

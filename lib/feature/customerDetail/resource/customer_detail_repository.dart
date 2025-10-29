@@ -76,6 +76,7 @@ class CustomerDetailRepository {
         RepositoryProvider.of<FullStatementRepository>(
                 NavigationService.context)
             .getFullStatement(
+          pdfDownload: false,
           accountNumber: selectedAccount.value?.accountNumber ?? "",
           fromDate: DateTime.now().subtract(const Duration(days: 365)),
           toDate: DateTime.now(),

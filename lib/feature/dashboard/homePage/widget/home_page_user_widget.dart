@@ -2,6 +2,7 @@
 
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
@@ -9,6 +10,7 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/constant/global_image_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -197,16 +199,16 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                               ),
                               SizedBox(height: 10.hp),
                               // const Spacer(),
-
                               Row(
                                 children: [
                                   InkWell(
                                     onTap: () {
                                       showDialog(
                                         context: context,
-                                        builder: (context) =>
-                                            const AccountDetailBox(
-                                          validateMobileBankingStatus: false,
+                                        builder: (context) => const Center(
+                                          child: AccountDetailBox(
+                                            validateMobileBankingStatus: false,
+                                          ),
                                         ),
                                       );
                                     },
@@ -325,7 +327,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         Row(
                                           children: [
                                             Text(
-                                              "Actual Balance",
+                                              LocaleKeys.actualBalance.tr(),
                                               style: _textTheme.titleSmall!
                                                   .copyWith(
                                                       fontSize: 11,
@@ -352,7 +354,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         ),
                                         Text(
                                           showAmountDetail
-                                              ? "NPR ${selectedAcc?.actualBalance}"
+                                              ? "NPR ${formatNepaliCurrencyFromString(selectedAcc?.actualBalance)}"
                                               : "XXXXXXXXX",
                                           style: _textTheme.titleLarge!
                                               .copyWith(
@@ -370,7 +372,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                           CrossAxisAlignment.start,
                                       children: [
                                         Text(
-                                          "Available Balance",
+                                          LocaleKeys.availableBalance.tr(),
                                           style: _textTheme.titleSmall!
                                               .copyWith(
                                                   fontSize: 11,
@@ -378,7 +380,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         ),
                                         Text(
                                           showAmountDetail
-                                              ? "NPR ${selectedAcc?.availableBalance}"
+                                              ? "NPR ${formatNepaliCurrencyFromString(selectedAcc?.availableBalance)}"
                                               : "XXXXXXXXX",
                                           style: _textTheme.titleLarge!
                                               .copyWith(
@@ -461,6 +463,30 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
         )
       ],
     );
+  }
+
+  String formatNepaliCurrencyFromString([String? value]) {
+    if (value == null || value.trim().isEmpty) {
+      return "";
+    }
+    final int? amount = int.tryParse(value);
+    if (amount == null) {
+      return value;
+    }
+    final String numberStr = amount.toString();
+    final int len = numberStr.length;
+    if (len <= 3) return numberStr;
+    final String lastThree = numberStr.substring(len - 3);
+    String remaining = numberStr.substring(0, len - 3);
+    final List<String> parts = [];
+    while (remaining.length > 2) {
+      parts.insert(0, remaining.substring(remaining.length - 2));
+      remaining = remaining.substring(0, remaining.length - 2);
+    }
+    if (remaining.isNotEmpty) {
+      parts.insert(0, remaining);
+    }
+    return parts.join(",") + "," + lastThree;
   }
 }
 

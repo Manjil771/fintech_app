@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -9,6 +10,7 @@ import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/profile/screen/profile_picture_screen.dart';
 import 'package:ismart/feature/profile/screen/profile_screen_tabbar_page.dart';
+import 'package:ismart/feature/qrCode/shareQr/screen/share_qr_page.dart';
 
 import '../../../app/theme.dart';
 
@@ -80,6 +82,8 @@ class _ProfileWidgetState extends State<ProfileWidget> {
   @override
   Widget build(BuildContext context) {
     final _theme = Theme.of(context);
+    final _textTheme = _theme.textTheme;
+
     final _height = SizeUtils.height;
     return PageWrapper(
         showBackButton: true,
@@ -101,118 +105,177 @@ class _ProfileWidgetState extends State<ProfileWidget> {
                       decoration: BoxDecoration(
                           color: CustomTheme.white,
                           borderRadius: BorderRadius.circular(18)),
-                      padding: const EdgeInsets.symmetric(
-                          horizontal: 15, vertical: 30),
-                      child: Row(
+                      padding: const EdgeInsets.only(
+                          left: 15, right: 15, top: 30, bottom: 10),
+                      child: Stack(
                         children: [
                           Column(
                             children: [
-                              InkWell(
-                                onTap: () {
-                                  NavigationService.push(
-                                      target: ProfilePictureScreen(
-                                    imageUrl: val.imageUrl,
-                                    gender: val.gender,
-                                  ));
-                                  // showImagePickerBottomSheet(
-                                  //   onGalleryPressed: () async {
-                                  //     final res = await ImagePickerUtils
-                                  //         .getGallery();
-                                  //     if (res != null) {
-                                  //       _handleImageUpload(res);
-                                  //     }
-                                  //     // NavigationService.pop();
-                                  //   },
-                                  //   onCameraPressed: () async {
-                                  //     final res = await ImagePickerUtils
-                                  //         .getCamera();
-                                  //     if (res != null) {
-                                  //       _handleImageUpload(res);
-                                  //     }
-                                  //     // NavigationService.pop();
-                                  //   },
-                                  // );
-                                },
-                                child: Column(
-                                  children: [
-                                    Container(
-                                        padding: const EdgeInsets.all(8),
-                                        decoration: BoxDecoration(
-                                            border: Border.all(
-                                                width: 2,
-                                                color: _theme.primaryColor),
-                                            shape: BoxShape.circle),
-                                        child: val.imageUrl.isEmpty
-                                            ? CircleAvatar(
-                                                child: const Align(
-                                                  alignment:
-                                                      Alignment.bottomRight,
-                                                  child: CircleAvatar(
-                                                    radius: 15,
-                                                    child: Icon(
-                                                      Icons.add_a_photo_rounded,
-                                                      size: 15,
-                                                      color: Colors.white,
+                              Row(
+                                children: [
+                                  Column(
+                                    children: [
+                                      InkWell(
+                                        onTap: () {
+                                          NavigationService.push(
+                                              target: ProfilePictureScreen(
+                                            imageUrl: val.imageUrl,
+                                            gender: val.gender,
+                                          ));
+                                          // showImagePickerBottomSheet(
+                                          //   onGalleryPressed: () async {
+                                          //     final res = await ImagePickerUtils
+                                          //         .getGallery();
+                                          //     if (res != null) {
+                                          //       _handleImageUpload(res);
+                                          //     }
+                                          //     // NavigationService.pop();
+                                          //   },
+                                          //   onCameraPressed: () async {
+                                          //     final res = await ImagePickerUtils
+                                          //         .getCamera();
+                                          //     if (res != null) {
+                                          //       _handleImageUpload(res);
+                                          //     }
+                                          //     // NavigationService.pop();
+                                          //   },
+                                          // );
+                                        },
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              padding: const EdgeInsets.all(8),
+                                              decoration: BoxDecoration(
+                                                  border: Border.all(
+                                                      width: 2,
+                                                      color:
+                                                          _theme.primaryColor),
+                                                  shape: BoxShape.circle),
+                                              child: val.imageUrl.isEmpty
+                                                  ? CircleAvatar(
+                                                      child: const Align(
+                                                        alignment: Alignment
+                                                            .bottomRight,
+                                                        child: CircleAvatar(
+                                                          radius: 15,
+                                                          child: Icon(
+                                                            Icons
+                                                                .add_a_photo_rounded,
+                                                            size: 15,
+                                                            color: Colors.white,
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      radius: 50,
+                                                      backgroundImage: val
+                                                                  .gender
+                                                                  .toLowerCase() ==
+                                                              'male'
+                                                          ? const AssetImage(
+                                                              Assets
+                                                                  .profilePicture)
+                                                          : const AssetImage(Assets
+                                                              .femaleProfilePicture),
+                                                    )
+                                                  : CustomRoundedImage(
+                                                      height: 100,
+                                                      image: val.imageUrl,
+                                                      width: 100,
                                                     ),
-                                                  ),
-                                                ),
-                                                radius: 50,
-                                                backgroundImage: val.gender
-                                                            .toLowerCase() ==
-                                                        'male'
-                                                    ? const AssetImage(
-                                                        Assets.profilePicture)
-                                                    : const AssetImage(Assets
-                                                        .femaleProfilePicture),
-                                              )
-                                            : CustomRoundedImage(
-                                                height: 100,
-                                                image: val.imageUrl,
-                                                width: 100,
-                                              )),
-                                  ],
-                                ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  SizedBox(width: 15.wp),
+                                  Expanded(
+                                    child: Center(
+                                      child: Column(
+                                        crossAxisAlignment:
+                                            CrossAxisAlignment.start,
+                                        children: [
+                                          Text(
+                                            val.fullName,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .displaySmall,
+                                          ),
+                                          Text(
+                                            val.mobileNumber,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge,
+                                          ),
+                                          if (val.email.toString().isNotEmpty)
+                                            Text(
+                                              val.email,
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall,
+                                            ),
+                                          Text(
+                                            val.addressOne,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleSmall,
+                                          ),
+                                          if (memberId.clientCode != "N/A" &&
+                                              memberId.clientCode != "")
+                                            Text(
+                                              "Member ID: ${memberId.clientCode}",
+                                              style: Theme.of(context)
+                                                  .textTheme
+                                                  .titleSmall,
+                                            ),
+                                        ],
+                                      ),
+                                    ),
+                                  ),
+                                ],
+                              ),
+                              SizedBox(
+                                height: 25.hp,
                               ),
                             ],
                           ),
-                          SizedBox(width: 15.wp),
-                          Expanded(
-                            child: Center(
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Text(
-                                    val.fullName,
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .displaySmall,
-                                  ),
-                                  Text(
-                                    val.mobileNumber,
-                                    style:
-                                        Theme.of(context).textTheme.titleLarge,
-                                  ),
-                                  if (val.email.toString().isNotEmpty)
-                                    Text(
-                                      val.email,
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
+                          Positioned(
+                            bottom: 0,
+                            // left: 0,
+                            right: 0,
+                            child: InkWell(
+                              onTap: () {
+                                NavigationService.pushReplacement(
+                                    target: ShareQrPage());
+                              },
+                              child: Container(
+                                decoration: BoxDecoration(
+                                    color:
+                                        CustomTheme.primaryColor.withAlpha(35),
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(5))),
+                                width: 150.wp,
+                                height: 35.hp,
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Icon(
+                                      Icons.qr_code,
+                                      size: 22,
+                                      color: _theme.primaryColor,
                                     ),
-                                  Text(
-                                    val.addressOne,
-                                    style:
-                                        Theme.of(context).textTheme.titleSmall,
-                                  ),
-                                  if (memberId.clientCode != "N/A" &&
-                                      memberId.clientCode != "")
+                                    SizedBox(width: 8.wp),
                                     Text(
-                                      "Member ID: ${memberId.clientCode}",
-                                      style: Theme.of(context)
-                                          .textTheme
-                                          .titleSmall,
+                                      "Show my QR".tr(),
+                                      style: _textTheme.bodyLarge!.copyWith(
+                                        color: _theme.primaryColor,
+                                        fontWeight: FontWeight.bold,
+                                        fontSize: 13,
+                                      ),
                                     ),
-                                ],
+                                  ],
+                                ),
                               ),
                             ),
                           ),

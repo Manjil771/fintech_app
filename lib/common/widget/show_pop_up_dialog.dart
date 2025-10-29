@@ -13,6 +13,7 @@ showPopUpDialog({
   required String message,
   required String title,
   required Function() buttonCallback,
+  Function()? cancelButtonCallback,
   bool showCancelButton = true,
   bool isSuccessPopUp = false,
   String? buttonText,
@@ -25,6 +26,7 @@ showPopUpDialog({
         child: Opacity(
           opacity: a1.value,
           child: PopUpDialogWidget(
+            cancelButtonCallback: cancelButtonCallback,
             buttonCallback: buttonCallback,
             message: message,
             title: title,
@@ -54,6 +56,7 @@ class PopUpDialogWidget extends StatefulWidget {
     required this.showCancelButton,
     required this.isSuccessPopUp,
     this.buttonText,
+    this.cancelButtonCallback,
   }) : super(key: key);
   final String message;
   final String title;
@@ -61,6 +64,7 @@ class PopUpDialogWidget extends StatefulWidget {
   final bool isSuccessPopUp;
   final Function() buttonCallback;
   final String? buttonText;
+  final Function()? cancelButtonCallback;
 
   @override
   State<PopUpDialogWidget> createState() => _LoadingDialogBoxState();
@@ -140,9 +144,10 @@ class _LoadingDialogBoxState extends State<PopUpDialogWidget> {
                           title: LocaleKeys.cancel.tr(),
                           color: Colors.white,
                           textColor: _theme.primaryColor,
-                          onPressed: () {
-                            NavigationService.pop();
-                          },
+                          onPressed: widget.cancelButtonCallback ??
+                              () {
+                                NavigationService.pop();
+                              },
                         ),
                       ),
                     if (widget.showCancelButton)

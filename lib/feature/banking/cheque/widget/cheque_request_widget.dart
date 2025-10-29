@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
@@ -49,7 +50,7 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
           showPopUpDialog(
             context: context,
             message: state.message,
-            title: "Error",
+            title: "Error".tr(),
             showCancelButton: false,
             buttonCallback: () {
               NavigationService.pop();
@@ -92,7 +93,7 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
                 showBottomSheet(
                   context: context,
                   builder: (context) => BottomSheetWrapper(
-                    title: "Select Number",
+                    title: "Select Number".tr(),
                     child: Container(
                       width: double.infinity,
                       child: SingleChildScrollView(
@@ -169,14 +170,14 @@ class _ChequeRequestWidgetState extends State<ChequeRequestWidget> {
                 );
               },
               controller: chequeLeavesController,
-              title: "Select Cheque Leaves",
+              title: "Select Cheque Leaves".tr(),
               hintText: "10",
               validator: (value) =>
                   FormValidator.validateFieldNotEmpty(value, "Cheque Number"),
             ),
             SizedBox(height: _height * 0.02),
             CustomRoundedButtom(
-                title: "Confirm",
+                title: "Confirm".tr(),
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     NavigationService.push(target: TransactionPinScreen(

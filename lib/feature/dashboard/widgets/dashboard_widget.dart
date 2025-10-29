@@ -365,6 +365,7 @@ import 'dart:isolate';
 import 'dart:ui';
 
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -372,8 +373,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/app_session.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/models/downloaded_file.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/shared_pref/shared_pref.dart';
@@ -382,6 +385,7 @@ import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/notification_utils.dart';
 import 'package:ismart/common/util/permission_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/banking/screen/banking_page.dart';
@@ -431,6 +435,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
   }
 
   List<String> offerBanners = [];
+  List<String> eventPosters = [];
   @override
   void initState() {
     super.initState();
@@ -443,6 +448,68 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
       FlutterDownloader.registerCallback(downloadCallback);
     }
     offerBanners = RepositoryProvider.of<BannerRepository>(context).banners;
+    eventPosters =
+        RepositoryProvider.of<BannerRepository>(context).eventPosters;
+
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (eventPosters.isNotEmpty) {
+        AppSession.runOnce(() {
+          _showFestivalPoster();
+        });
+        // _showFestivalPoster();
+      }
+    });
+  }
+
+  _showFestivalPoster() async {
+    await Future.delayed(const Duration(seconds: 1));
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: FadeTransition(
+            opacity: animation,
+            child: Dialog(
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(
+                  eventPosters[0],
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) => Column(
+                    children: [
+                      Image.asset(
+                        RepositoryProvider.of<CoOperative>(context)
+                            .coOperativeLogo,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+    Future.delayed(const Duration(seconds: 4), () {
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
+    });
   }
 
   _performStartupActions() async {
@@ -587,7 +654,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                                 ? _theme.primaryColor
                                 : CustomTheme.darkGray.withOpacity(0.5),
                           ),
-                          label: 'Home'),
+                          label: LocaleKeys.home.tr()),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
                           Assets.bankingIcon,
@@ -596,7 +663,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                               ? _theme.primaryColor
                               : CustomTheme.darkGray.withOpacity(0.5),
                         ),
-                        label: 'Banking',
+                        label: LocaleKeys.banking.tr(),
                       ),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
@@ -604,7 +671,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                           height: 25,
                           color: CustomTheme.white,
                         ),
-                        label: 'Scan QR',
+                        label: LocaleKeys.scanQR.tr(),
                       ),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
@@ -614,7 +681,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                               ? _theme.primaryColor
                               : CustomTheme.darkGray.withOpacity(0.5),
                         ),
-                        label: 'History',
+                        label: LocaleKeys.history.tr(),
                       ),
                       BottomNavigationBarItem(
                         icon: SvgPicture.asset(
@@ -624,7 +691,7 @@ class _DashBoardWidgetState extends State<DashBoardWidget> {
                               ? _theme.primaryColor
                               : CustomTheme.darkGray.withOpacity(0.5),
                         ),
-                        label: 'Profile',
+                        label: LocaleKeys.profile.tr(),
                       ),
                       // BottomNavigationBarItem(
                       //   icon: SvgPicture.asset(

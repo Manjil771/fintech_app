@@ -1,9 +1,11 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -73,7 +75,7 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
                   color: CustomTheme.white,
                   borderRadius: BorderRadius.circular(18),
                 ),
-                padding: const EdgeInsets.all(18),
+                padding:  EdgeInsets.all(18),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
@@ -81,9 +83,9 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
                       Assets.successIcon,
                       height: _height * 0.08,
                     ),
-                    SizedBox(height: _height * 0.02),
-                    const Text(
-                      "Transaction Successful",
+                    SizedBox(height: _height * 0.06),
+                     Text(
+                      LocaleKeys.transactionSuccessful.tr(),
                       style: TextStyle(
                           fontSize: 20,
                           color: Colors.black,
@@ -107,18 +109,18 @@ class TopUpTransactionReceiptWidget extends StatelessWidget {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Paymet Details",
+                          Text(LocaleKeys.paymentdetails.tr(),
                               style: Theme.of(context).textTheme.titleLarge),
                           SizedBox(height: _height * 0.01),
                           KeyValueTile(
-                              title: "Transaction ID", value: transactionID),
+                              title: LocaleKeys.transactionID, value: transactionID),
                           body,
                         ],
                       ),
                     ),
                     SizedBox(height: _height * 0.02),
                     CustomRoundedButtom(
-                        title: "Done",
+                        title: LocaleKeys.done.tr(),
                         onPressed: () {
                           NavigationService.popUntilFirstPage();
                         }),

@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
@@ -92,8 +94,8 @@ class _BuyDatapackWidgetState extends State<BuyDatapackWidget> {
             showRoundBotton: true,
             showTitleText: true,
             showAccountSelection: true,
-            buttonName: 'Proceed',
-            accountTitle: 'From Account',
+            buttonName: LocaleKeys.Proceed.tr(),
+            accountTitle: LocaleKeys.fromaccount.tr(), 
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {

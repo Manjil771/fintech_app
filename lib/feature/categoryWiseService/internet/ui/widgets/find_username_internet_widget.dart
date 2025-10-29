@@ -1,7 +1,9 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
 import 'package:ismart/common/widget/common_container.dart';
@@ -48,6 +50,16 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             _isLoading = false;
             NavigationService.pop();
           }
+          if (state is CommonError) {
+            showPopUpDialog(
+                context: context,
+                message: state.message,
+                title: "Error".tr(),
+                buttonCallback: () {
+                  NavigationService.pop();
+                },
+                showCancelButton: false);
+          }
 
           if (state is CommonStateSuccess<UtilityResponseData>) {
             final UtilityResponseData _response = state.data;
@@ -62,7 +74,7 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
               showPopUpDialog(
                   context: context,
                   message: _response.message,
-                  title: "Error",
+                  title: "Error".tr(),
                   buttonCallback: () {
                     NavigationService.pop();
                   },
@@ -81,8 +93,8 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
             showRecentTransaction: true,
             serviceId: widget.service.id.toString(),
             showDetail: true,
-            title: 'Internet Payment',
-            detail: 'Pay your internet bill of your ISP from here.',
+            title: 'Internet Payment'.tr(),
+            detail: 'Pay your internet bill of your ISP from here.'.tr(),
             body: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
@@ -121,7 +133,8 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                 ),
                 SizedBox(height: _height * 0.03),
                 Text(
-                    "Provide Username to fetch details and pay respective amount.",
+                    "Provide Username to fetch details and pay respective amount."
+                        .tr(),
                     style: Theme.of(context).textTheme.labelMedium),
                 SizedBox(height: _height * 0.03),
                 CustomTextField(
@@ -133,8 +146,8 @@ class _FindInternetUserWidgetState extends State<FindInternetUserWidget> {
                 ),
               ],
             ),
-            topbarName: 'Payment',
-            buttonName: 'Proceed',
+            topbarName: 'Payment'.tr(),
+            buttonName: LocaleKeys.Proceed.tr(),
             onButtonPressed: () {
               _formKey.currentState!.save();
               if (_formKey.currentState!.validate()) {

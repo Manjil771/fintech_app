@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/models/downloaded_file.dart';
@@ -34,10 +35,10 @@ class _DownloadWidgetState extends State<DownloadWidget> {
     return PageWrapper(
       body: CommonContainer(
           showRoundBotton: false,
-          title: "Downloads",
-          detail: "All your downloaded documents are stored here.",
+          title: "Downloads".tr(),
+          detail: "All your downloaded documents are stored here.".tr(),
           showDetail: true,
-          topbarName: "More",
+          topbarName: "Downloads".tr(),
           body: Container(
             height: 500.hp,
             child: _dowloadedFiles.isNotEmpty
@@ -56,10 +57,10 @@ class _DownloadWidgetState extends State<DownloadWidget> {
                       );
                     },
                   )
-                : const Center(
+                : Center(
                     child: Text(
-                      "No downloads available.",
-                      style: TextStyle(
+                      "No downloads available.".tr(),
+                      style: const TextStyle(
                         fontWeight: FontWeight.bold,
                         fontSize: 15,
                       ),

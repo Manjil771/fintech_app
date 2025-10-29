@@ -3,8 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.32+62
-
+version: 1.5.40+70
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -15,6 +14,9 @@ dependencies:
   flutter:
     sdk: flutter
   cupertino_icons: "^1.0.4"
+  flutter_map: ^4.0.0
+  latlong2: ^0.8.1
+
   intl: ^0.19.0
   record: ^6.0.0
   just_audio: ^0.10.3
@@ -26,10 +28,10 @@ dependencies:
   flutter_bloc: ^9.1.0
   rxdart: ^0.28.0
   logger: "^2.2.0"
-  dio: "^5.4.2+1"
+  dio: ^5.9.0
   nepali_date_picker: ^6.0.2
   shared_preferences: "^2.0.13" ##use this to make setttings
-  easy_localization: "^3.0.3"
+  easy_localization: "^3.0.8"
   path_provider: "^2.1.4"
   open_filex: "^4.2.2"
   encrypt: "^5.0.0"
@@ -41,6 +43,7 @@ dependencies:
   url_launcher: "^6.3.1"
   url_launcher_ios: ^6.2.1
   flutter_html: ^3.0.0
+  vpn_connection_detector: ^1.0.10
 
   animations: "^2.0.7"
   screenshot: ^3.0.0
@@ -51,7 +54,7 @@ dependencies:
   android_path_provider: ^0.3.1
   jiffy: "^6.2.1"
   awesome_notifications: ^0.10.0
-  package_info_plus: "^5.0.1"
+  package_info_plus: ^8.3.1
   uuid: ^4.5.1
   permission_handler: "^11.0.1"
   mobile_scanner: "^4.0.1"
@@ -68,7 +71,7 @@ dependencies:
   flutter_native_contact_picker: ^0.0.10
   image_cropper: "^5.0.1"
   hive_flutter: "^1.1.0"
-  khalti_checkout_flutter: "1.0.0-dev.8"
+  khalti_checkout_flutter: "1.0.0-dev.8" ## upgrade to dev.9
   nepali_utils: ^3.0.6
   flutter_zxing: ^1.8.2
   percent_indicator: ^4.2.4
@@ -88,7 +91,33 @@ dependency_overrides:
 flutter:
   assets:
 
+    # - assets/kunchhal/
+    - assets/marma/
+    - assets/loyal/
+    # - assets/ekta/
+    # - assets/aviyanMulti/
+    # - assets/darshan/
+    # - assets/tathali/
+    # - assets/jagaruk/
+    # - assets/hanumandhoka/
+    # - assets/nawatara/
+    # - assets/nayapusta/
+    # - assets/akkaladevi/
+    # - assets/hamroSaving/
+    # - assets/shikhar/
+    # - assets/sahayogi/
+    # - assets/ujyalo/
+    # - assets/setogurans/
+    # - assets/satyeta/
+    # - assets/join/
+    # - assets/asaMulti/
+
+    # - assets/janakalyanbahumukhi/
     # - assets/shreeBakhan/
+    # - assets/janachetana/
+    # - assets/janakalyanbahumukhi/
+    # - assets/hamroSaving/
+    # - assets/gaja/
     # - assets/arunjyoti/
     # - assets/paryatan/
     # - assets/ekata/
@@ -99,8 +128,9 @@ flutter:
     # - assets/kunchhal/
     # - assets/samajkalyan/
     # - assets/sahayatripokhara/
+    # - assets/manakamana/
     # - assets/patan/
-    # - assets/pariwortan/ 
+    # - assets/pariwortan/
     # - assets/santaneshwornaudhara/
     # - assets/unitedhands/
     # - assets/janasambriddhi/
@@ -117,6 +147,7 @@ flutter:
     # - assets/janapremi/
     # - assets/nawayuba/
     # - assets/manipur/
+    # - assets/maaLaxmi/
     # - assets/aadhunikjana/
     # - assets/naturalmulti/
     # - assets/shreemandan/
@@ -148,7 +179,7 @@ flutter:
     # - assets/lapha/
     # - assets/begnas/
     # - assets/nagdhunga/
-    - assets/rorang/
+    # - assets/rorang/
     # - assets/sunganga/
     # - assets/mahagauri/
     # - assets/shreeChahana/
@@ -169,6 +200,7 @@ flutter:
     - assets/events/
     - assets/images/
     # - assets/janadhara/
+    # - assets/ppmulti/
     # - assets/laxmiDeep/
     # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
@@ -204,7 +236,7 @@ flutter:
     # - assets/newdhaulagiri/
     # - assets/shreejanamukhi/
     # - assets/bishal/
-    
+
     # - assets/sardikhola/
     # - assets/kripalu/
     # - assets/sarbahit/
@@ -240,7 +272,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    # - assets/punja/
+    - assets/punja/
     # - assets/immanuel/
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
@@ -273,7 +305,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -319,7 +351,7 @@ flutter:
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
-    # # - assets/tanahunKalika/
+    # - assets/tanahunKalika/
     # - assets/khullabajar/
     # - assets/chandani/
     # - assets/sparkling/
@@ -345,7 +377,6 @@ flutter:
     # - assets/drabya/
     # - assets/omshreeom/
     # - assets/upayogi/
-    # - assets/upayogi/
     # - assets/sakar/
     # - assets/aayam/
     # - assets/kaldhara/
@@ -362,6 +393,7 @@ flutter:
     # - assets/bhudev/
     # - assets/shreeGodawari/
     # - assets/navadurga/
+    # - assets/civil/
     # - assets/lamosanghu/
     # - assets/greenhouse/
     # - assets/prime/
@@ -387,8 +419,9 @@ flutter:
     # - assets/karmashil/
     # - assets/asaan/
     # - assets/babylon/
+
     # - assets/shakambhari/
-    # - assets/tarkariphalafool/
+    - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -402,7 +435,7 @@ flutter:
     # - assets/sundarbagmati/
     # - assets/amana/
     # - assets/sklakhanpur/
-    # # - assets/shreekrishna/
+    # - assets/shreekrishna/
     # - assets/dupcheshwor/
     # - assets/shreebadhai/
     # - assets/sklakhanpur/
@@ -411,7 +444,7 @@ flutter:
     # - assets/gagankalika/
     # - assets/argha/
     # - assets/shreekrishna/
-    # - assets/dupcheshwor/
+    # - assets/dupche\shwor/
     # - assets/camellia/
     # - assets/agrajMahila/
     # - assets/mahabir/
@@ -448,7 +481,7 @@ flutter:
     # - assets/sampada/
     # - assets/bishwakarma/
     # - assets/pame/
-    # - assets/pratham/
+    # - assets/pratham/z
     # - assets/dhanalaxmi/
     # - assets/samriddha/
     # - assets/kohinoor/
@@ -461,7 +494,7 @@ flutter:
     # - assets/shubhashreebalkumari/
     # - assets/paurakhi/
     # - assets/paschimanchal/
-    - assets/sadasyaSewa/
+    # - assets/sadasyaSewa/
     # - assets/aabhash/
     # - assets/mirmire/
 
@@ -493,7 +526,7 @@ flutter:
     # - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
-    # - assets/sandus/
+    - assets/sandus/
     # - assets/kasturi/
     # - assets/ainchoPaincho/
     # - assets/nepal/
@@ -517,6 +550,7 @@ flutter:
     # - assets/skglobal/
     # - assets/skBhawanipur/
     # - assets/skDeuri/
+    # - assets/skDumarwana/
     # - assets/jmc/
 
   fonts:

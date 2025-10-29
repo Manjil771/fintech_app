@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
@@ -58,7 +59,7 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -80,8 +81,8 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
           }
         },
         child: CommonContainer(
-            title: "Report a Problem",
-            buttonName: "Submit",
+            title: "Report a Problem".tr(),
+            buttonName: "Submit".tr(),
             onButtonPressed: () {
               if (_formKey.currentState!.validate()) {
                 context.read<UtilityPaymentCubit>().makePayment(
@@ -103,27 +104,27 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
                 children: [
                   CustomTextField(
                     controller: messageController,
-                    title: "Date",
+                    title: "Date".tr(),
                     customHintTextStyle: true,
                     hintText: dateNow.toString(),
                   ),
                   if (widget.transactionIdentifier != null)
                     CustomTextField(
-                      title: "Transaction Identifier",
+                      title: "Transaction Identifier".tr(),
                       hintText: widget.transactionIdentifier.toString(),
                       customHintTextStyle: true,
                     ),
                   CustomTextField(
                     maxLine: 3,
-                    hintText: "Message",
-                    title: "Message",
+                    hintText: "Message".tr(),
+                    title: "Message".tr(),
                     textInputType: TextInputType.multiline,
                     validator: (value) =>
                         FormValidator.validateFieldNotEmpty(value, "Message"),
                   ),
-                  const Text(
-                    "Picture",
-                    style: TextStyle(
+                  Text(
+                    "Picture".tr(),
+                    style: const TextStyle(
                       fontFamily: Fonts.poppin,
                       fontWeight: FontWeight.w600,
                       fontSize: 14,
@@ -150,7 +151,7 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
                                   ),
                                   SizedBox(height: 10.hp),
                                   Text(
-                                    "Upload Picture",
+                                    "Upload Picture".tr(),
                                     style: _textTheme.titleSmall,
                                   )
                                 ]),
@@ -164,7 +165,7 @@ class _FeedBackWidgetState extends State<FeedBackWidget> {
                 ],
               ),
             ),
-            topbarName: "Report Issue"),
+            topbarName: "Report Issue".tr()),
       ),
     );
   }

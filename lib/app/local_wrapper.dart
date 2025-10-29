@@ -9,7 +9,13 @@ class LocalWrapper extends StatelessWidget {
   Widget build(BuildContext context) {
     return EasyLocalization(
       useOnlyLangCode: true,
-      supportedLocales: const [CustomLocale.english, CustomLocale.nepali],
+      supportedLocales: const [
+        Locale("en"),
+        Locale("ne"),
+        Locale("bho"),
+        Locale("mai"),
+        Locale("new"),
+      ],
       path: "assets/translations",
       fallbackLocale: CustomLocale.english,
       child: _child,

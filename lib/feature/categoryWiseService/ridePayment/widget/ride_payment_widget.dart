@@ -1,6 +1,8 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/form_validator.dart';
@@ -53,7 +55,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
             showPopUpDialog(
               context: context,
               message: state.message,
-              title: "Error",
+              title: "Error".tr(),
               showCancelButton: false,
               buttonCallback: () {
                 NavigationService.pop();
@@ -76,12 +78,13 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                         body: Column(
                           children: [
                             KeyValueTile(
-                                title: "Rider Id",
+                                title: "Rider Id".tr(),
                                 value: riderIDController.text),
                             KeyValueTile(
-                                title: "Amount", value: amountController.text),
+                                title: "Amount".tr(),
+                                value: amountController.text),
                             KeyValueTile(
-                                title: "Remarks",
+                                title: "Remarks".tr(),
                                 value: remarksController.text),
                           ],
                         ),
@@ -152,14 +155,14 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
             detail: widget.service.instructions,
             title: widget.service.service,
             showAccountSelection: true,
-            buttonName: "Proceed",
+            buttonName: LocaleKeys.Proceed.tr(),
             body: Form(
               key: _formKey,
               child: Column(
                 children: [
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Rider Id",
+                    title: "Rider Id".tr(),
                     hintText: widget.service.labelSample,
                     controller: riderIDController,
                     validator: (value) =>
@@ -168,7 +171,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: amountController,
-                    title: "Amount",
+                    title: "Amount".tr(),
                     hintText: "XXXXX",
                     onChanged: (value) {
                       setState(() {
@@ -182,7 +185,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                   ),
                   CustomTextField(
                     autovalidateMode: AutovalidateMode.onUserInteraction,
-                    title: "Remarks",
+                    title: "Remarks".tr(),
                     controller: remarksController,
                     hintText: "remarks",
                     validator: (value) =>
@@ -191,7 +194,7 @@ class _RidePaymentWidgetState extends State<RidePaymentWidget> {
                 ],
               ),
             ),
-            topbarName: "Ride Payment"),
+            topbarName: "Ride Payment".tr()),
       ),
     );
   }

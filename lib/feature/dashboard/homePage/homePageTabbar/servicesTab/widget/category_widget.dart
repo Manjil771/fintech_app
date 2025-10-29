@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -79,6 +80,8 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
           if (state is CommonDataFetchSuccess<CategoryList>) {
             _categoryList = state.data;
+            _categoryList
+                .removeWhere((category) => category.name == "Remittance");
           }
         },
         builder: (context, state) {
@@ -95,7 +98,6 @@ class _CategoryWidgetState extends State<CategoryWidget> {
               itemLength = _categoryList.length;
             }
           }
-
           if (itemLength > 0)
             return GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
@@ -125,7 +127,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                             padding: const EdgeInsets.only(top: 8),
                             child: Center(
                               child: Text(
-                                "View More",
+                                "View More".tr(),
                                 textAlign: TextAlign.center,
                                 style: _textTheme.titleSmall!
                                     .copyWith(fontSize: 11.5),
@@ -282,7 +284,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                                 padding: const EdgeInsets.only(top: 8),
                                 child: Center(
                                   child: Text(
-                                    "${data.name}",
+                                    "${data.name.tr()}",
                                     maxLines: 2,
                                     textAlign: TextAlign.center,
                                     style: _textTheme.titleSmall!

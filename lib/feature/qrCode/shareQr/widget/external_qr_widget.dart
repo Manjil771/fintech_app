@@ -51,9 +51,7 @@ class ExternalQrWidget extends StatelessWidget {
       final directory = await getTemporaryDirectory();
       const tempFileName = 'screenshot.png';
       final tempFilePath = '${directory.path}/$tempFileName';
-
       await File(tempFilePath).writeAsBytes(image);
-
       return XFile(tempFilePath);
     } catch (e) {
       print('Error creating temp image file: $e');

@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 class CommonState extends Equatable {
   const CommonState({this.statusCode});
   final int? statusCode;
+
   @override
   List<Object?> get props => [];
 }

@@ -1,8 +1,11 @@
 import 'dart:async';
+import 'dart:ui';
 
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
+import 'package:ismart/common/constant/coop_color.dart';
 import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/http/api_provider.dart';
 import 'package:ismart/common/http/custom_exception.dart';
@@ -16,6 +19,7 @@ import 'package:ismart/feature/authentication/model/coop_value.dart';
 import 'package:ismart/feature/authentication/model/user.dart';
 import 'package:ismart/feature/authentication/resource/auth_api_provider.dart';
 import 'package:ismart/feature/authentication/ui/screens/login_page.dart';
+import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
 class UserRepository {
   ApiProvider apiProvider;
@@ -48,6 +52,29 @@ class UserRepository {
     }
   }
 
+  Color parseColor(String hex) {
+    return Color(int.parse(hex.replaceFirst("0x", ""), radix: 16));
+  }
+
+  Color parseHexColorServer(String hexColor) {
+    hexColor = hexColor.replaceFirst('#', '');
+    if (hexColor.length == 6) {
+      hexColor = 'FF$hexColor';
+    }
+    return Color(int.parse(hexColor, radix: 16));
+  }
+
+  Future<void> fetchAppColor(String clientId) async {
+    final response = await apiProvider
+        .get(Uri.parse("${env.baseUrl}/app-config/$clientId"), userId: 0);
+    final UtilityResponseData _responseData =
+        UtilityResponseData.fromJson(response['data'] ?? {});
+    final color = _responseData.findValue(primaryKey: 'ibankingPrimaryColor');
+    if (color != null) {
+      CustomTheme().initializeTheme(parseHexColorServer(color));
+    }
+  }
+
   updateCoopValue(LoginCoOpValue coop) {
     if (!RepositoryProvider.of<CoOperative>(NavigationService.context)
         .shouldValidateCooperative) {
@@ -60,9 +87,25 @@ class UserRepository {
         _baseUrl + coop.banner.replaceFirst("/", "");
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientCode =
         coop.clientId;
+
+    if (CoopColor.Coopcolors.containsKey(coop.clientId)) {
+      try {
+        final color = parseColor(CoopColor.Coopcolors[coop.clientId]!);
+        CustomTheme().initializeTheme(color);
+      } catch (e) {
+        print("Invalid color format for clientId: ${coop.clientId}, error: $e");
+        CustomTheme().initializeTheme(CustomTheme.testAppColor);
+      }
+    } else {
+      try {
+        fetchAppColor(coop.clientId);
+      } catch (e) {
+        print("Switch to dynamic coop color failed!");
+      }
+    }
+
     RepositoryProvider.of<CoOperative>(NavigationService.context).clientSecret =
         coop.clientSecret;
-
     RepositoryProvider.of<CoOperative>(NavigationService.context)
         .coOperativeName = coop.bank;
     RepositoryProvider.of<CoOperative>(NavigationService.context)

@@ -1,20 +1,22 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ismart/app/theme.dart';
+// import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
-import 'package:ismart/common/route/routes.dart';
+// import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/secure_storage_service.dart';
-import 'package:ismart/common/util/size_utils.dart';
+// import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/util/snackbar_utils.dart';
-import 'package:ismart/common/util/url_launcher.dart';
+// import 'package:ismart/common/util/url_launcher.dart';
 import 'package:ismart/common/widget/common_container.dart';
 import 'package:ismart/common/widget/common_gridview_container.dart';
 import 'package:ismart/common/widget/transactipon_pin_screen.dart';
 import 'package:ismart/feature/appContact/resources/app_contact_repository.dart';
 import 'package:ismart/feature/more/authenticationScreen/biometric_screen.dart';
-import 'package:ismart/feature/more/calculator/calculator_screen.dart';
-import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
+// import 'package:ismart/feature/more/calculator/calculator_screen.dart';
+// import 'package:ismart/feature/more/feedback/screen/feedback_page.dart';
 import 'package:ismart/feature/more/transactionLimit/transaction_limit_widget.dart';
 import 'package:ismart/feature/profile/screen/profile_page.dart';
 import 'package:ismart/feature/setting/changeMpin/screen/change_mpin_page.dart';
@@ -72,23 +74,12 @@ class _MoreWidgetState extends State<MoreWidget> {
     "assets/icons/pin-code-svgrepo-com 1.svg",
     Assets.transactionLimit,
     // Assets.discountCalculator,
-    Assets.downloadIcon,
-    Assets.contactUsIcon,
+    // Assets.downloadIcon,
+    // Assets.contactUsIcon,
     Assets.settingIcon,
-    Assets.feedBackIcon
+    // Assets.feedBackIcon
   ];
 
-  final List names = [
-    "Account Info",
-    "Biometric",
-    "Change Security Pin",
-    "Transaction Limits",
-    // "Calculator",
-    "Downloads",
-    "Support",
-    "Settings",
-    "FeedBack",
-  ];
   String mPin = "";
   @override
   void initState() {
@@ -102,6 +93,20 @@ class _MoreWidgetState extends State<MoreWidget> {
 
   @override
   Widget build(BuildContext context) {
+    context.locale;
+    final List names = [
+      LocaleKeys.accountInfo.tr(),
+      LocaleKeys.biometric.tr(),
+      LocaleKeys.changepin.tr(),
+      LocaleKeys.transactionLimit.tr(),
+      LocaleKeys.profileSetting.tr(),
+
+      // "Calculator",
+      // "Downloads",
+      // "Support",
+      // "Settings",
+      // "FeedBack",
+    ];
     final contactList = _supportContact.split(",");
     final List tapFunction = [
       () {
@@ -142,116 +147,116 @@ class _MoreWidgetState extends State<MoreWidget> {
       // () {
       //   NavigationService.push(target: const CalculatorScreen());
       // },
-      () {
-        NavigationService.pushNamed(routeName: Routes.downloadScreen);
-      },
-      () async {
-        final _textTheme = Theme.of(NavigationService.context).textTheme;
-        showModalBottomSheet(
-          context: NavigationService.context,
-          shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(30.hp),
-              topRight: Radius.circular(30.hp),
-            ),
-          ),
-          builder: (context) => Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.vertical(
-                top: Radius.circular(24),
-              ),
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Container(
-                  margin: const EdgeInsets.only(top: 24, bottom: 24),
-                  height: 4,
-                  width: 55,
-                  decoration: BoxDecoration(
-                    color: CustomTheme.lightGray.withOpacity(0.4),
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                ),
-                Text(
-                  "Choose Option",
-                  style: _textTheme.labelLarge!.copyWith(
-                    color: CustomTheme.darkerBlack,
-                    fontWeight: FontWeight.bold,
-                    fontSize: 15,
-                  ),
-                ),
-                const Divider(
-                  height: 40,
-                ),
-                ...List.generate(
-                  contactList.length,
-                  (index) {
-                    return InkWell(
-                      onTap: () {
-                        NavigationService.pop();
-                        UrlLauncher.launchPhone(
-                          context: NavigationService.context,
-                          phone: contactList[index],
-                        );
-                      },
-                      child: Container(
-                        padding: EdgeInsets.symmetric(
-                          horizontal: 15.hp,
-                          vertical: 15.hp,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Column(
-                                  crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
-                                    Text(
-                                      "Call Support",
-                                      style: _textTheme.bodyLarge!.copyWith(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.bold,
-                                        color: CustomTheme.primaryColor,
-                                      ),
-                                    ),
-                                    const SizedBox(height: 6),
-                                    Text(
-                                      contactList[index],
-                                      style: _textTheme.bodyLarge!.copyWith(
-                                        color: CustomTheme.darkGray,
-                                      ),
-                                    )
-                                  ],
-                                ),
-                                Icon(
-                                  Icons.arrow_forward_ios,
-                                  color: CustomTheme.primaryColor,
-                                )
-                              ],
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-              ],
-            ),
-          ),
-        );
-      },
+      // () {
+      //   NavigationService.pushNamed(routeName: Routes.downloadScreen);
+      // },
+      // () async {
+      //   final _textTheme = Theme.of(NavigationService.context).textTheme;
+      //   showModalBottomSheet(
+      //     context: NavigationService.context,
+      //     shape: RoundedRectangleBorder(
+      //       borderRadius: BorderRadius.only(
+      //         topLeft: Radius.circular(30.hp),
+      //         topRight: Radius.circular(30.hp),
+      //       ),
+      //     ),
+      //     builder: (context) => Container(
+      //       decoration: const BoxDecoration(
+      //         borderRadius: BorderRadius.vertical(
+      //           top: Radius.circular(24),
+      //         ),
+      //       ),
+      //       child: Column(
+      //         mainAxisSize: MainAxisSize.min,
+      //         crossAxisAlignment: CrossAxisAlignment.center,
+      //         children: [
+      //           Container(
+      //             margin: const EdgeInsets.only(top: 24, bottom: 24),
+      //             height: 4,
+      //             width: 55,
+      //             decoration: BoxDecoration(
+      //               color: CustomTheme.lightGray.withOpacity(0.4),
+      //               borderRadius: BorderRadius.circular(4),
+      //             ),
+      //           ),
+      //           Text(
+      //             "Choose Option",
+      //             style: _textTheme.labelLarge!.copyWith(
+      //               color: CustomTheme.darkerBlack,
+      //               fontWeight: FontWeight.bold,
+      //               fontSize: 15,
+      //             ),
+      //           ),
+      //           const Divider(
+      //             height: 40,
+      //           ),
+      //           ...List.generate(
+      //             contactList.length,
+      //             (index) {
+      //               return InkWell(
+      //                 onTap: () {
+      //                   NavigationService.pop();
+      //                   UrlLauncher.launchPhone(
+      //                     context: NavigationService.context,
+      //                     phone: contactList[index],
+      //                   );
+      //                 },
+      //                 child: Container(
+      //                   padding: EdgeInsets.symmetric(
+      //                     horizontal: 15.hp,
+      //                     vertical: 15.hp,
+      //                   ),
+      //                   child: Column(
+      //                     children: [
+      //                       Row(
+      //                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //                         children: [
+      //                           Column(
+      //                             crossAxisAlignment: CrossAxisAlignment.start,
+      //                             children: [
+      //                               Text(
+      //                                 "Call Support",
+      //                                 style: _textTheme.bodyLarge!.copyWith(
+      //                                   fontSize: 12,
+      //                                   fontWeight: FontWeight.bold,
+      //                                   color: CustomTheme.primaryColor,
+      //                                 ),
+      //                               ),
+      //                               const SizedBox(height: 6),
+      //                               Text(
+      //                                 contactList[index],
+      //                                 style: _textTheme.bodyLarge!.copyWith(
+      //                                   color: CustomTheme.darkGray,
+      //                                 ),
+      //                               )
+      //                             ],
+      //                           ),
+      //                           Icon(
+      //                             Icons.arrow_forward_ios,
+      //                             color: CustomTheme.primaryColor,
+      //                           )
+      //                         ],
+      //                       )
+      //                     ],
+      //                   ),
+      //                 ),
+      //               );
+      //             },
+      //           ),
+      //           const SizedBox(
+      //             height: 30,
+      //           ),
+      //         ],
+      //       ),
+      //     ),
+      //   );
+      // },
       () {
         NavigationService.push(target: const SettingPage());
       },
-      () {
-        NavigationService.push(target: const FeedBackPage());
-      },
+      // () {
+      //   NavigationService.push(target: const FeedBackPage());
+      // },
     ];
 
     return CommonContainer(
@@ -269,7 +274,7 @@ class _MoreWidgetState extends State<MoreWidget> {
               title: names[index]);
         },
       ),
-      topbarName: "Profile",
+      topbarName: LocaleKeys.profile.tr(),
       showBackBotton: false,
       showDetail: false,
       showRoundBotton: false,

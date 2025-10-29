@@ -1,8 +1,10 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
 import 'package:ismart/common/widget/custom_carousel.dart';
@@ -11,6 +13,7 @@ import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cub
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/widget/category_widget.dart';
 import 'package:ismart/feature/dashboard/notice/screen/notice_page.dart';
+import 'package:ismart/feature/market/screen/market_place_screen.dart';
 import 'package:ismart/feature/splash/resource/startup_repository.dart';
 
 class CategoryPage extends StatefulWidget {
@@ -53,6 +56,40 @@ class _CategoryPageState extends State<CategoryPage> {
             CategoryWidget(
               showAllService: widget.showAllServices,
             ),
+            // SizedBox(height: 8.hp),
+            // InkWell(
+            //   onTap: () {
+            //     NavigationService.push(target: const MarketPlaceScreen());
+            //   },
+            //   child: Container(
+            //       decoration: const BoxDecoration(
+            //         color: CustomTheme.white,
+            //         borderRadius: BorderRadius.all(
+            //           Radius.circular(10),
+            //         ),
+            //         border: Border(
+            //           top: BorderSide(color: Colors.grey, width: 1),
+            //           right: BorderSide(color: Colors.grey, width: 1),
+            //         ),
+            //       ),
+            //       alignment: Alignment.center,
+            //       width: double.infinity,
+            //       child: Row(
+            //         mainAxisAlignment: MainAxisAlignment.center,
+            //         children: [
+            //           Icon(Icons.shopping_cart_outlined,
+            //               color: CustomTheme.primaryColor),
+            //           Text(
+            //             "Market",
+            //             style: TextStyle(
+            //                 fontSize: 14,
+            //                 fontWeight: FontWeight.w600,
+            //                 color: CustomTheme.primaryColor),
+            //           ),
+            //         ],
+            //       ),
+            //       height: 36.hp),
+            // ),
             SizedBox(height: 10.hp),
             if (_bannerImages.isNotEmpty)
               CustomCarousel(
@@ -97,7 +134,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                           SizedBox(width: 20.wp),
                           Text(
-                            "Event",
+                            LocaleKeys.event.tr(),
                             style: _textTheme.titleLarge!.copyWith(
                                 fontWeight: FontWeight.w500, fontSize: 12),
                           ),
@@ -136,7 +173,7 @@ class _CategoryPageState extends State<CategoryPage> {
                           ),
                           SizedBox(width: 10.wp),
                           Text(
-                            "Notice",
+                            LocaleKeys.notice.tr(),
                             style: _textTheme.titleLarge!.copyWith(
                                 fontWeight: FontWeight.w500, fontSize: 12),
                           ),

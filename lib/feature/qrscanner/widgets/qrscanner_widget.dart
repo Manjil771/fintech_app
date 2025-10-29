@@ -1,12 +1,14 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
@@ -23,6 +25,7 @@ import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/appServiceManagement/cubit/app_service_cubit.dart';
 import 'package:ismart/feature/appServiceManagement/model/app_service_management_model.dart';
+import 'package:ismart/feature/dashboard/bannerImage/resource/banner_repository.dart';
 import 'package:ismart/feature/eteller/screen/eteller_page.dart';
 import 'package:ismart/feature/favorite/addAccount/screen/add_fav_account_page.dart';
 import 'package:ismart/feature/payload/payload_page.dart';
@@ -39,10 +42,12 @@ import '../../../common/http/response.dart';
 class QRScannerWidgets extends StatefulWidget {
   final List<WalletModel> walletLists;
   final String? remarks;
+  final bool? isDigitalDakxhina;
 
   const QRScannerWidgets({
     Key? key,
     this.remarks,
+    this.isDigitalDakxhina,
     required this.walletLists,
   }) : super(key: key);
 
@@ -56,6 +61,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   late AnimationController animationController;
   late Animation<double> _animation;
   bool _isLoading = false;
+  List<String> eventPosters = [];
   MobileScannerController cameraController = MobileScannerController();
   StreamSubscription? _cameraSubscription;
 
@@ -75,8 +81,67 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
         animationController.forward();
       }
     });
+    eventPosters =
+        RepositoryProvider.of<BannerRepository>(context).eventPosters;
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (eventPosters.length > 1 &&
+          eventPosters[1].isNotEmpty &&
+          (widget.isDigitalDakxhina ?? false)) {
+        _showFestivalPoster();
+      }
+    });
   }
 
+  _showFestivalPoster() async {
+    await Future.delayed(const Duration(seconds: 1));
+    showGeneralDialog(
+      context: context,
+      barrierDismissible: false,
+      barrierColor: Colors.black54,
+      transitionDuration: const Duration(milliseconds: 300),
+      pageBuilder: (context, animation, secondaryAnimation) {
+        return Center(
+          child: FadeTransition(
+            opacity: animation,
+            child: Dialog(
+              insetPadding: EdgeInsets.zero,
+              backgroundColor: Colors.transparent,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16),
+              ),
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Image.network(
+                  eventPosters[1],
+                  width: double.infinity,
+                  fit: BoxFit.fill,
+                  errorBuilder: (context, error, stackTrace) => Column(
+                    children: [
+                      Image.asset(
+                        RepositoryProvider.of<CoOperative>(context)
+                            .coOperativeLogo,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ),
+        );
+      },
+      transitionBuilder: (context, animation, secondaryAnimation, child) {
+        return FadeTransition(
+          opacity: animation,
+          child: child,
+        );
+      },
+    );
+    Future.delayed(const Duration(seconds: 4), () {
+      if (mounted) {
+        Navigator.of(context).pop();
+      }
+    });
+  }
   // @override
   // dispose() {
   //   animationController.dispose();
@@ -299,6 +364,16 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                     ),
                   ),
                 ),
+                // Positioned(
+                //     top: 17.h,
+                //     right: 15.w,
+                //     child: Text(
+                //       "This is the data iteam",
+                //       style: TextStyle(
+                //           fontSize: 20,
+                //           fontWeight: FontWeight.w700,
+                //           color: Colors.yellow),
+                //     )),
                 Positioned(
                   top: 0,
                   left: 0,
@@ -328,7 +403,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         ),
                         SizedBox(height: 30.hp),
                         Text(
-                          "Scan and Pay",
+                          LocaleKeys.scanAndPay.tr(),
                           style: _textTheme.displayMedium!.copyWith(
                             color: Colors.white,
                             fontWeight: FontWeight.bold,
@@ -336,7 +411,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         ),
                         SizedBox(height: 25.hp),
                         Text(
-                          "Please allign the QR within frame.",
+                          LocaleKeys.alignQR.tr(),
                           style: _textTheme.titleLarge!.copyWith(
                             color: Colors.white,
                           ),
@@ -388,7 +463,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                 Positioned(
                   right: 0,
                   left: 0,
-                  bottom: 60,
+                  bottom: 60.hp,
                   child: Container(
                     height: _verticalMaxSize,
                     child: Column(
@@ -410,25 +485,6 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      ValueListenableBuilder(
-                        valueListenable: cameraController.torchState,
-                        builder: (context, flashStatus, _) {
-                          return CustomIconButton(
-                            icon: flashStatus == TorchState.on
-                                ? Icons.flash_on_rounded
-                                : Icons.flash_off_rounded,
-                            shadow: false,
-                            iconSize: 22,
-                            verticalPadding: 6,
-                            horizontalPadding: 6,
-                            backgroundColor: Colors.transparent,
-                            iconColor: Colors.white,
-                            onPressed: () async {
-                              await cameraController.toggleTorch();
-                            },
-                          );
-                        },
-                      ),
                       CustomIconButton(
                         icon: Icons.image,
                         shadow: false,
@@ -456,13 +512,32 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                           }
                         },
                       ),
+                      ValueListenableBuilder(
+                        valueListenable: cameraController.torchState,
+                        builder: (context, flashStatus, _) {
+                          return CustomIconButton(
+                            icon: flashStatus == TorchState.on
+                                ? Icons.flash_on_rounded
+                                : Icons.flash_off_rounded,
+                            shadow: false,
+                            iconSize: 22,
+                            verticalPadding: 6,
+                            horizontalPadding: 6,
+                            backgroundColor: Colors.transparent,
+                            iconColor: Colors.white,
+                            onPressed: () async {
+                              await cameraController.toggleTorch();
+                            },
+                          );
+                        },
+                      ),
                     ],
                   ),
                 ),
                 Positioned(
                   right: 0,
                   left: 0,
-                  bottom: 260,
+                  bottom: 260.hp,
                   child: Container(
                     height: 40.hp,
                     child: Center(
@@ -543,7 +618,7 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                                   ),
                                   SizedBox(width: 8.wp),
                                   Text(
-                                    "Show my QR Code",
+                                    LocaleKeys.showQR.tr(),
                                     style: _textTheme.bodyLarge!.copyWith(
                                       color: _theme.primaryColor,
                                       fontWeight: FontWeight.bold,

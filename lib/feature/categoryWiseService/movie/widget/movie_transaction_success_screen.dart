@@ -6,6 +6,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/route/routes.dart';
 import 'package:ismart/common/util/file_download_utils.dart';
@@ -148,8 +149,8 @@ class _MovieTransactionSuccessfulWidgetState
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [
-                        const Text(
-                          "Transaction Successful",
+                         Text(
+                          LocaleKeys.transactionSuccessful,
                           style: TextStyle(
                               fontSize: 20,
                               color: Colors.black,
@@ -181,7 +182,7 @@ class _MovieTransactionSuccessfulWidgetState
                         widget.body,
                         SizedBox(height: _height * 0.02),
                         CustomRoundedButtom(
-                          title: "Done",
+                          title: LocaleKeys.done.tr(),
                           onPressed: () {
                             NavigationService.pushNamedAndRemoveUntil(
                                 routeName: Routes.dashboard);

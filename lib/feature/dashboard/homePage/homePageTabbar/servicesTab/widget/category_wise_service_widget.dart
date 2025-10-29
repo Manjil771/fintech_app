@@ -1,9 +1,11 @@
 import 'dart:async';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/env.dart';
+import 'package:ismart/common/constant/locale_keys.dart';
 import 'package:ismart/common/constant/slugs.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
@@ -80,12 +82,12 @@ class _CategoriesWiseServicesWidgetState
     return PageWrapper(
       body: CommonContainer(
           showRoundBotton: false,
-          title: "Choose Service Povider",
+          title: LocaleKeys.chooseServiceProvider.tr(),
           body: Column(
             children: [
               const SizedBox(height: 10),
               CustomTextField(
-                hintText: "Search",
+                hintText: "Search".tr(),
                 showSearchIcon: true,
                 onChanged: (val) {
                   _updateSearchList(val);
@@ -143,7 +145,7 @@ class _CategoriesWiseServicesWidgetState
             ],
           ),
           showDetail: false,
-          topbarName: widget.topBarName),
+          topbarName: widget.topBarName.tr()),
     );
   }
 
@@ -171,6 +173,7 @@ class _CategoriesWiseServicesWidgetState
     if (serviceIdentifier.toLowerCase() == "digital_dakshina_service") {
       NavigationService.push(
           target: QRScannerScreens(
+        isDigitalDakxhina: true,
         remarks: searchedService.instructions,
       ));
     }
@@ -210,6 +213,8 @@ class _CategoriesWiseServicesWidgetState
               Slugs.pokharainternetTopup.toLowerCase() ||
           serviceIdentifier.toLowerCase() ==
               Slugs.adsluOnlineTopup.toLowerCase() ||
+          serviceIdentifier.toLowerCase() ==
+              Slugs.adsluOnlineTopup2.toLowerCase() ||
           serviceIdentifier.toLowerCase() ==
               Slugs.metrolinkTopup.toLowerCase()) {
         NavigationService.push(

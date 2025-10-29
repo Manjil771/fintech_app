@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ismart/app/theme.dart';
-import 'package:ismart/common/constant/env.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 
 class RemitBoxDesign extends StatelessWidget {
@@ -31,19 +29,17 @@ class RemitBoxDesign extends StatelessWidget {
         child: Column(
           children: [
             Container(
-              height: 70,
+              height: 56,
               padding: const EdgeInsets.all(8),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: _theme.primaryColor.withOpacity(0.05),
               ),
               child: CustomCachedNetworkImage(
-                fit: BoxFit.cover,
-                url: RepositoryProvider.of<CoOperative>(context).baseUrl +
-                    imageUrl,
+                fit: BoxFit.contain,
+                url: imageUrl,
               ),
             ),
-            // SizedBox(height: .hp),
             Expanded(
               child: Text(
                 title,

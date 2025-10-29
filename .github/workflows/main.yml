@@ -1,0 +1,31 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: self-hosted
+
+    steps:
+    - name: Checkout Code
+      uses: actions/checkout@v3
+
+    - name: Build Application
+      run: |
+        # Add your build commands here
+        npm install
+        npm run build
+
+    - name: Deploy to Server
+      uses: appleboy/ssh-action@master
+      with:
+        host: 118.91.169.52
+        username: ismart
+        key: 10.36.5.4
+        script: |
+          cd /var/www/myapp
+          git pull origin main
+          # Add any post-deployment commands, like restarting a service
+          sudo systemctl restart myapp.service
