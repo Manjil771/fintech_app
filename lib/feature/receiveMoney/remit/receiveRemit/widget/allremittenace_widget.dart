@@ -115,6 +115,12 @@ class AllremittanceDetailsWidget extends StatelessWidget {
                                 onPressed: () {
                                   NavigationService.push(
                                       target: RemittancepaymentPage(
+                                    amount: item["amount"].toString(),
+                                    date: item["date"] ?? "",
+                                    paymentType: item["payType"] ?? "",
+                                    senderCountry: item["senderCountry"] ?? "",
+                                    senderName: item["senderName"] ?? "",
+                                    status: item["status"] ?? "",
                                     service: val!.services.first,
                                     id: item["id"].toString(),
                                   ));
