@@ -37,10 +37,10 @@ class MultiBlocWrapper extends StatelessWidget {
           ),
         ),
 
-        BlocProvider(
-          create: (context) => UpdateCubit(),
-          lazy: false,
-        ),
+        // BlocProvider(
+        //   create: (context) => UpdateCubit(),
+        //   lazy: false,
+        // ),
 
         BlocProvider(
           create: (context) => ImageUploadCubit(

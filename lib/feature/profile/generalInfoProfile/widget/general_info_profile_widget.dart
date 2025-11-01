@@ -137,23 +137,27 @@ class _GeneralInfoProfileWidgetState extends State<GeneralInfoProfileWidget> {
                 ,
                 CommonDetailBox(
                   onBoxPressed: () async {
-                    final _isUpdateAvailable =
-                        await InAppUpdateUtils.isUpdateAvailable;
-                    if (_isUpdateAvailable) {
-                      if (Platform.isAndroid) {
-                        InAppUpdateUtils.startFlexibleUpdate();
-                      } else {
-                        UrlLauncher.launchWebsite(
-                          context: context,
-                          url: Constants.appleAppStore,
-                        );
-                      }
-                    } else {
-                      SnackBarUtils.showErrorBar(
+                    // final _isUpdateAvailable =
+                    //     await InAppUpdateUtils.isUpdateAvailable;
+                    // if (_isUpdateAvailable) {
+                    //   if (Platform.isAndroid) {
+                    //     InAppUpdateUtils.startFlexibleUpdate();
+                    //   } else {
+                    //     UrlLauncher.launchWebsite(
+                    //       context: context,
+                    //       url: Constants.appleAppStore,
+                    //     );
+                    //   }
+                    // } else {
+                    //   SnackBarUtils.showErrorBar(
+                    //     context: context,
+                    //     message: "No updates available.",
+                    //   );
+                    // }
+                       SnackBarUtils.showErrorBar(
                         context: context,
                         message: "No updates available.",
                       );
-                    }
                   },
                   leadingImage: Assets.downloadIcon,
                   title: "Check for Updates".tr(),

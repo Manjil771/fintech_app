@@ -1,11 +1,11 @@
 buildscript {
     ext {
-        kotlin_version = '1.9.10'
-        agp_version = '8.4.1'  
+        kotlin_version = '1.9.25'
+        agp_version = '8.7.3'  
     }
-    ext.compileSdkVersion = 36
+    ext.compileSdkVersion = 35
     ext.minSdkVersion = 23
-    ext.targetSdkVersion = 36
+    ext.targetSdkVersion = 35
     repositories {
         google()
         mavenCentral()
@@ -14,8 +14,8 @@ buildscript {
 
     dependencies {
         classpath "com.android.tools.build:gradle:$agp_version"
-        classpath 'com.google.gms:google-services:4.4.1'
-        classpath 'com.google.firebase:firebase-crashlytics-gradle:2.9.9' // Update to latest
+        classpath 'com.google.gms:google-services:4.4.2'
+        classpath 'com.google.firebase:firebase-crashlytics-gradle:3.0.2' // Update to latest
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.9.10"
     }
 }
