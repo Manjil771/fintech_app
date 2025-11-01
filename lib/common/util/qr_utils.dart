@@ -99,30 +99,23 @@ class QRUtils {
       detectionTimeoutMs: 3000,
     );
 
-    try {
-      Barcode? detectedBarcode;
-      final subscription = controller.barcodes.listen((capture) {
-        if (capture.barcodes.isNotEmpty) {
-          detectedBarcode = capture.barcodes.firstWhere(
-            (barcode) => barcode.rawValue != null,
-            orElse: () => capture.barcodes.first,
-          );
-        }
-      });
-
-      final success = await controller.analyzeImage(fileToScan.path);
-      await Future.delayed(const Duration(milliseconds: 500));
-      subscription.cancel();
-
-      if (success && detectedBarcode != null) {
-        return DataResponse.success(detectedBarcode!.rawValue!.trim());
-      } else {
-        return DataResponse.error("No QR code found in the image");
-      }
-    } catch (e) {
-      return DataResponse.error("QR decoding error: ${e.toString()}");
-    } finally {
-      controller.dispose();
+  try {
+  final BarcodeCapture? capture = await controller.analyzeImage(fileToScan.path);
+  if (capture != null && capture.barcodes.isNotEmpty) {
+    final detectedBarcode = capture.barcodes.firstWhere(
+      (barcode) => barcode.rawValue != null,
+      orElse: () => capture.barcodes.first,
+    );
+    
+    if (detectedBarcode.rawValue != null) {
+      return DataResponse.success(detectedBarcode.rawValue!.trim());
     }
+  }
+  return DataResponse.error("No QR code found in the image");
+} catch (e) {
+  return DataResponse.error("QR decoding error: ${e.toString()}");
+} finally {
+  controller.dispose();
+}
   }
 }
