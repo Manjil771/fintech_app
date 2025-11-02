@@ -55,7 +55,7 @@ android {
 
     defaultConfig {
         applicationId "com.devanasoft.ismart"
-        minSdkVersion 25
+        minSdkVersion 23
         targetSdkVersion 36
         // versionCode localProperties.getProperty('flutter.versionCode', '1').toInteger()
         // versionName localProperties.getProperty('flutter.versionName', '1.0')
@@ -2696,6 +2696,24 @@ android {
              jagaruk {
                 dimension "app"
                 applicationId "com.devanasoft.jagaruk"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            bhadrawati {
+                dimension "app"
+                applicationId "com.devanasoft.bhadrawati"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            sorna {
+                dimension "app"
+                applicationId "com.devanasoft.sorna"
+                versionCode flutterVersionCode.toInteger()
+                versionName flutterVersionName
+            }
+            shreeMallaj {
+                dimension "app"
+                applicationId "com.devanasoft.shreeMallaj"
                 versionCode flutterVersionCode.toInteger()
                 versionName flutterVersionName
             }

@@ -93,12 +93,15 @@ flutter:
 
     # - assets/kunchhal/
     - assets/marma/
-    - assets/loyal/
+    - assets/shreeMallaj/
+    # - assets/loyal/
+    - assets/bhadrawati/
     # - assets/ekta/
     # - assets/aviyanMulti/
     # - assets/darshan/
     # - assets/tathali/
-    # - assets/jagaruk/
+    - assets/jagaruk/
+    - assets/sorna/
     # - assets/hanumandhoka/
     # - assets/nawatara/
     # - assets/nayapusta/
@@ -139,7 +142,7 @@ flutter:
     # - assets/taudaha/
     # - assets/shreejanshil/
     # - assets/janataagri/
-    # - assets/upasanawomen/
+    - assets/upasanawomen/
     # - assets/mitra/
     # - assets/abhyudaya/
     # - assets/maaLaxmi/

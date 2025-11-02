@@ -6073,7 +6073,7 @@ class CoOperativeValue {
     appTitle: 'Tathali iSmart',
   );
    static final CoOperative hanumandhoka = CoOperative(
-
+//aps
     appStoreID: "com.devanasoft.hanumandhoka",
     packageName: "com.devanasoft.hanumandhoka",
     baseUrl: 'https://ismart.devanasoft.com.np/',
@@ -6129,6 +6129,48 @@ class CoOperativeValue {
     coOperativeName: "Jagaruk Agriculture Cooperative ltd.",
     appTitle: 'Jagaruk iSmart',
   );
-  static final CoOperative currentCoop = loyal;
+       static final CoOperative bhadrawati = CoOperative(
+    appStoreID: "com.devanasoft.bhadrawati",
+    packageName: "com.devanasoft.bhadrawati",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/bhadrawati/bhadrawati_banner.png",
+    backgroundImage: "assets/bhadrawati/bhadrawati_background.png",
+    clientCode: 'TU4GEAG91H',
+    clientSecret: "118811",
+    coOperativeLogo: 'assets/bhadrawati/bhadrawati_logo.png',
+    splashImage: "assets/bhadrawati/bhadrawati_splash.png",
+    primaryColor: const Color(0xFF00A651),
+    coOperativeName: "Bhadrawati Saving and Credit co-operative limited",
+    appTitle: 'Bhadrawati iSmart',
+  );
+         static final CoOperative sorna = CoOperative(
+    appStoreID: "com.devanasoft.sorna",
+    packageName: "com.devanasoft.sorna",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/sorna/sorna_banner.png",
+    backgroundImage: "assets/sorna/sorna_background.png",
+    clientCode: 'PTWPGCF7GZ',
+    clientSecret: "172871",
+    coOperativeLogo: 'assets/sorna/sorna_logo.png',
+    splashImage: "assets/sorna/sorna_splash.png",
+    primaryColor: const Color(0xFF333691),
+    coOperativeName: "Sorna Multipuropse Co-opertaive Ltd",
+    appTitle: 'Sorna iSmart',
+  );
+           static final CoOperative shreeMallaj = CoOperative(
+    appStoreID: "com.devanasoft.shreeMallaj",
+    packageName: "com.devanasoft.shreeMallaj",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreeMallaj/shreeMallaj_banner.png",
+    backgroundImage: "assets/shreeMallaj/shreeMallaj_background.png",
+    clientCode: '3298SDQ7FG',
+    clientSecret: "177877",
+    coOperativeLogo: 'assets/shreeMallaj/shreeMallaj_logo.png',
+    splashImage: "assets/shreeMallaj/shreeMallaj_splash.png",
+    primaryColor: const Color(0xFF0000ff),
+    coOperativeName: "Shree Mallaj Multipurpose Co-operative Society Ltd.",
+    appTitle: 'Shree Mallaj iSmart',
+  );
+  static final CoOperative currentCoop = upasanawomencoop;
 }
  
