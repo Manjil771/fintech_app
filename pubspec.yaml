@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.40+70
+version: 1.5.43+73
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -69,7 +69,7 @@ dependencies:
   local_session_timeout: ^3.2.0
   crop_your_image: ^2.0.0
   flutter_native_contact_picker: ^0.0.10
-  image_cropper: "^11.0.0"
+  # image_cropper: "^11.0.0"
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "1.0.0-dev.8" ## upgrade to dev.9
   nepali_utils: ^3.0.6
@@ -84,7 +84,7 @@ dev_dependencies:
   flutter_launcher_icons: ^0.14.1
   icons_launcher: ^3.0.2
 dependency_overrides:
-  image_cropper_platform_interface: 6.0.3
+  # image_cropper_platform_interface: 6.0.3
   http: "^1.2.2"
   package_info_plus: ^8.3.1
   flutter_inappwebview_ios: ^1.1.2
@@ -261,7 +261,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -407,7 +407,7 @@ flutter:
     # - assets/babylon/
 
     # - assets/shakambhari/
-    - assets/tarkariphalafool/
+    # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/

@@ -877,30 +877,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.5.4"
-  image_cropper:
-    dependency: "direct main"
-    description:
-      name: image_cropper
-      sha256: "46c8f9aae51c8350b2a2982462f85a129e77b04675d35b09db5499437d7a996b"
-      url: "https://pub.dev"
-    source: hosted
-    version: "11.0.0"
-  image_cropper_for_web:
-    dependency: transitive
-    description:
-      name: image_cropper_for_web
-      sha256: e09749714bc24c4e3b31fbafa2e5b7229b0ff23e8b14d4ba44bd723b77611a0f
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.0"
-  image_cropper_platform_interface:
-    dependency: "direct overridden"
-    description:
-      name: image_cropper_platform_interface
-      sha256: "04d0eebd5f901a4109f486d211c888f1fb25c6b70704a405fb1505cb742b05f0"
-      url: "https://pub.dev"
-    source: hosted
-    version: "6.0.3"
   image_picker:
     dependency: "direct main"
     description:

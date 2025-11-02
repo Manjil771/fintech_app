@@ -3,9 +3,9 @@ buildscript {
         kotlin_version = '1.9.25'
         agp_version = '8.7.3'  
     }
-    ext.compileSdkVersion = 35
+    ext.compileSdkVersion = 36
     ext.minSdkVersion = 23
-    ext.targetSdkVersion = 35
+    ext.targetSdkVersion = 36
     repositories {
         google()
         mavenCentral()

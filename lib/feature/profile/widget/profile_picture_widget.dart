@@ -2,7 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:image_cropper/image_cropper.dart';
+// import 'package:image_cropper/image_cropper.dart';
 import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
 import 'package:ismart/common/constant/assets.dart';
@@ -37,28 +37,28 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
   _handleImageUpload(File file) async {
     NavigationService.pop();
 
-    CroppedFile? croppedFile = await ImageCropper().cropImage(
-      sourcePath: file.path,
-    aspectRatio:const CropAspectRatio(ratioX: 1, ratioY: 1),
-      uiSettings: [
-        AndroidUiSettings(
-            toolbarTitle: 'Crop Image',
-            toolbarColor: Colors.deepOrange,
-            toolbarWidgetColor: Colors.white,
-            initAspectRatio: CropAspectRatioPreset.original,
-            lockAspectRatio: false),
-        IOSUiSettings(
-          title: 'Crop Image',
-        ),
-        WebUiSettings(
-          context: context,
-        ),
-      ],
-    );
-    if (croppedFile != null) {
+    // CroppedFile? croppedFile = await ImageCropper().cropImage(
+    //   sourcePath: file.path,
+    // aspectRatio:const CropAspectRatio(ratioX: 1, ratioY: 1),
+    //   uiSettings: [
+    //     AndroidUiSettings(
+    //         toolbarTitle: 'Crop Image',
+    //         toolbarColor: Colors.deepOrange,
+    //         toolbarWidgetColor: Colors.white,
+    //         initAspectRatio: CropAspectRatioPreset.original,
+    //         lockAspectRatio: false),
+    //     IOSUiSettings(
+    //       title: 'Crop Image',
+    //     ),
+    //     WebUiSettings(
+    //       context: context,
+    //     ),
+    //   ],
+    // );
+    if (file != null) {
       NavigationService.push(
         target: ImagePreviewWidget(
-          selectedImage: File(croppedFile.path),
+          selectedImage: File(file.path),
         ),
       );
     }
