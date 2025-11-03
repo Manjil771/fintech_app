@@ -190,7 +190,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                                                   .primaryColor
                                                   .withOpacity(0.05),
                                               child: SvgPicture.asset(
-                                                Assets.reveiceMoneyIcon,
+                                                Assets.remitIncome,
                                                 height: 18.hp,
                                                 color: _theme.primaryColor,
                                               ),

@@ -17,6 +17,7 @@ class CustomTextField extends FormField<String> {
     String hintText = "",
     bool showSearchIcon = false,
     bool readOnly = false,
+    TextStyle? titleStyle,
     TextFieldType type = TextFieldType.Outline,
     String title = "",
     bool required = false,
@@ -117,7 +118,7 @@ class CustomTextField extends FormField<String> {
                                 RichText(
                                   text: TextSpan(
                                     text: title,
-                                    style: const TextStyle(
+                                    style: titleStyle ?? const TextStyle(
                                       fontFamily: Fonts.poppin,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14,
