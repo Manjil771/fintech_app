@@ -54,6 +54,11 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GTMSessionFetcher-GTMSessionFetcher_Core_Privacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GTMSessionFetcher.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -74,6 +79,16 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
+		<key>GoogleToolboxForMac-GoogleToolboxForMac_Logger_Privacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>GoogleToolboxForMac-GoogleToolboxForMac_Privacy.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
 		<key>GoogleToolboxForMac.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -85,11 +100,6 @@
 			<false/>
 		</dict>
 		<key>GoogleUtilities.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>GoogleUtilitiesComponents.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -144,16 +154,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>TOCropViewController-TOCropViewControllerBundle.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
-		<key>TOCropViewController.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>audio_session.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -195,6 +195,11 @@
 			<false/>
 		</dict>
 		<key>firebase_core.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>firebase_messaging-firebase_messaging_Privacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>
@@ -259,11 +264,6 @@
 			<key>isShown</key>
 			<false/>
 		</dict>
-		<key>image_cropper.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false/>
-		</dict>
 		<key>image_picker_ios-image_picker_ios_privacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
@@ -285,6 +285,11 @@
 			<false/>
 		</dict>
 		<key>local_auth_darwin.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false/>
+		</dict>
+		<key>mobile_scanner-mobile_scanner_privacy.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false/>

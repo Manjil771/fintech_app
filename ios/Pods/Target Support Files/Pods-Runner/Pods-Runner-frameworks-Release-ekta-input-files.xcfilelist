@@ -9,7 +9,6 @@ ${BUILT_PRODUCTS_DIR}/GoogleToolboxForMac/GoogleToolboxForMac.framework
 ${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
 ${BUILT_PRODUCTS_DIR}/OrderedSet/OrderedSet.framework
 ${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
-${BUILT_PRODUCTS_DIR}/TOCropViewController/TOCropViewController.framework
 ${BUILT_PRODUCTS_DIR}/audio_session/audio_session.framework
 ${BUILT_PRODUCTS_DIR}/camera_avfoundation/camera_avfoundation.framework
 ${BUILT_PRODUCTS_DIR}/connectivity_plus/connectivity_plus.framework
@@ -21,7 +20,6 @@ ${BUILT_PRODUCTS_DIR}/flutter_native_contact_picker/flutter_native_contact_picke
 ${BUILT_PRODUCTS_DIR}/flutter_secure_storage/flutter_secure_storage.framework
 ${BUILT_PRODUCTS_DIR}/flutter_zxing/flutter_zxing.framework
 ${BUILT_PRODUCTS_DIR}/fluttertoast/fluttertoast.framework
-${BUILT_PRODUCTS_DIR}/image_cropper/image_cropper.framework
 ${BUILT_PRODUCTS_DIR}/image_picker_ios/image_picker_ios.framework
 ${BUILT_PRODUCTS_DIR}/just_audio/just_audio.framework
 ${BUILT_PRODUCTS_DIR}/local_auth_darwin/local_auth_darwin.framework

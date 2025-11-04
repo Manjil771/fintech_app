@@ -6171,6 +6171,34 @@ class CoOperativeValue {
     coOperativeName: "Shree Mallaj Multipurpose Co-operative Society Ltd.",
     appTitle: 'Shree Mallaj iSmart',
   );
-  static final CoOperative currentCoop = upasanawomencoop;
+           static final CoOperative shreepatalGanga = CoOperative(
+    appStoreID: "com.devanasoft.shreepatalGanga",
+    packageName: "com.devanasoft.shreepatalGanga",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/shreepatalGanga/shreepatalGanga_banner.png",
+    backgroundImage: "assets/shreepatalGanga/shreepatalGanga_background.png",
+    clientCode: 'LR5FTNOQD9',
+    clientSecret: "133710",
+    coOperativeLogo: 'assets/shreepatalGanga/shreepatalGanga_logo.png',
+    splashImage: "assets/shreepatalGanga/shreepatalGanga_splash.png",
+    primaryColor: const Color(0xFF08A665),
+    coOperativeName: "Shree patalGanga Saving and Credit Co-operative Ltd.",
+    appTitle: 'Shree PatalGanga iSmart',
+  );
+            static final CoOperative goldstar = CoOperative(
+    appStoreID: "com.devanasoft.goldstar",
+    packageName: "com.devanasoft.goldstar",
+    baseUrl: 'https://ismart.devanasoft.com.np/',
+    bannerImage: "assets/goldstar/goldstar_banner.png",
+    backgroundImage: "assets/goldstar/goldstar_background.png",
+    clientCode: 'MZCZINUAHR',
+    clientSecret: "192274",
+    coOperativeLogo: 'assets/goldstar/goldstar_logo.png',
+    splashImage: "assets/goldstar/goldstar_splash.png",
+    primaryColor: const Color(0xFF17ae61),
+    coOperativeName: "Gold star Saving & Credit Co-operative ltd.	",
+    appTitle: 'Gold star iSmart',
+  );
+  static final CoOperative currentCoop = nilgiriCoop;
 }
  

@@ -1,5 +1,7 @@
 framework module MLKitBarcodeScanning {
   umbrella header "MLKitBarcodeScanning.h"
+  
+
   export *
   module * { export * }
   link "c++"
@@ -16,6 +18,7 @@ framework module MLKitBarcodeScanning {
   link framework "CoreTelephony"
   link framework "CoreVideo"
   link framework "Foundation"
+  link framework "OSLog"
   link framework "QuartzCore"
   link framework "Security"
   link framework "SystemConfiguration"
