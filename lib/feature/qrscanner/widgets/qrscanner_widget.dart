@@ -513,8 +513,9 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
                         },
                       ),
                       ValueListenableBuilder(
-                        valueListenable: cameraController.torchState,
-                        builder: (context, flashStatus, _) {
+                        valueListenable: cameraController,
+                        builder: (context, controllerValue, _) {
+                          final flashStatus = controllerValue.torchState;
                           return CustomIconButton(
                             icon: flashStatus == TorchState.on
                                 ? Icons.flash_on_rounded
@@ -671,22 +672,32 @@ class _QRScannerWidgetsState extends State<QRScannerWidgets>
   //     }
   //   });
   // }
-  void _onQRCodeDetect(
-    BarcodeCapture barcodeCapture,
-  ) {
-    _cameraSubscription = cameraController.barcodes.listen((code) {
-      _cameraSubscription = cameraController.barcodes.listen((code) {
-        final List _rawData = List.from(code.raw ?? []);
-        if (_rawData.isNotEmpty) {
-          final rawValue = _rawData.first["rawValue"];
-          if (rawValue != null && _isScanned == false && mounted) {
-            _isScanned = true;
-            _processScannedQR(qrCode: rawValue ?? "");
-          }
-        }
-      });
-    });
+  // void _onQRCodeDetect(
+  //   BarcodeCapture barcodeCapture,
+  // ) {
+  //   _cameraSubscription = cameraController.barcodes.listen((code) {
+  //     _cameraSubscription = cameraController.barcodes.listen((code) {
+  //       final List _rawData = List.from(code.raw ?? []);
+  //       if (_rawData.isNotEmpty) {
+  //         final rawValue = _rawData.first["rawValue"];
+  //         if (rawValue != null && _isScanned == false && mounted) {
+  //           _isScanned = true;
+  //           _processScannedQR(qrCode: rawValue ?? "");
+  //         }
+  //       }
+  //     });
+  //   });
+  // }
+void _onQRCodeDetect(BarcodeCapture barcodeCapture) {
+  for (final barcode in barcodeCapture.barcodes) {
+    final rawValue = barcode.rawValue;
+    if (rawValue != null && !_isScanned && mounted) {
+      _isScanned = true;
+      _processScannedQR(qrCode: rawValue);
+      break; 
+    }
   }
+}
 
   _processScannedQR({
     required String qrCode,

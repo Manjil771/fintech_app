@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.46+76
+version: 1.5.43+73
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -17,7 +17,7 @@ dependencies:
   flutter_map: ^4.0.0
   latlong2: ^0.8.1
 
-  intl: ^0.19.0
+  intl: ^0.20.2
   record: ^6.0.0
   just_audio: ^0.10.3
   flutter_svg: "^2.0.9"
@@ -30,46 +30,46 @@ dependencies:
   logger: "^2.2.0"
   dio: ^5.9.0
   nepali_date_picker: ^6.0.2
-  shared_preferences: "^2.0.13" ##use this to make setttings
+  shared_preferences: ^2.3.3 ##use this to make setttings
   easy_localization: "^3.0.8"
-  path_provider: "^2.1.4"
-  open_filex: "^4.2.2"
+  path_provider: "^2.1.5"
+  open_filex: "^4.5.0"
   encrypt: "^5.0.0"
-  firebase_core: "^2.13.0"
-  firebase_messaging: "^14.6.1"
-  local_auth: "^2.1.6"
+  firebase_core: "^3.8.1"
+  firebase_messaging: "^15.1.5"
+  local_auth: "^2.3.0"
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
-  url_launcher: "^6.3.1"
+  url_launcher: "^6.3.2"
   url_launcher_ios: ^6.2.1
   flutter_html: ^3.0.0
   vpn_connection_detector: ^1.0.10
 
-  animations: "^2.0.7"
+  animations: "^2.0.11"
   screenshot: ^3.0.0
   syncfusion_flutter_charts: ^28.2.11
   carousel_slider: ^5.0.0
   share_plus: ^10.1.4
   flutter_downloader: ^1.12.0
   android_path_provider: ^0.3.1
-  jiffy: "^6.2.1"
+  jiffy: "^6.3.1"
   awesome_notifications: ^0.10.0
   package_info_plus: ^8.3.1
   uuid: ^4.5.1
-  permission_handler: "^11.0.1"
-  mobile_scanner: "^4.0.1"
-  image_picker: "^1.0.1"
-  flutter_fgbg: "^0.3.0"
+  permission_handler: "^11.3.1"
+  mobile_scanner: "^5.2.3"
+  image_picker: "^1.1.2"
+  flutter_fgbg: "^0.6.0"
   device_marketing_names: ^1.0.2
-  in_app_update: "^4.1.4"
-  new_version_plus: "^0.0.12"
-  fluttertoast: "^8.2.2"
+  # in_app_update: "^4.1.4"
+  # new_version_plus: "^0.0.12"
+  fluttertoast: "^8.2.8"
   sliver_tools: "^0.2.12"
   string_similarity: "^2.0.0"
   local_session_timeout: ^3.2.0
   crop_your_image: ^2.0.0
   flutter_native_contact_picker: ^0.0.10
-  image_cropper: "^5.0.1"
+  # image_cropper: "^11.0.0"
   hive_flutter: "^1.1.0"
   khalti_checkout_flutter: "1.0.0-dev.8" ## upgrade to dev.9
   nepali_utils: ^3.0.6
@@ -79,13 +79,14 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  build_runner: "^2.4.0"
-  change_app_package_name: "^1.0.0"
-  flutter_launcher_icons:
-  icons_launcher: ^3.0.1
+  build_runner: "^2.4.13"
+  change_app_package_name: "^1.4.0"
+  flutter_launcher_icons: ^0.14.1
+  icons_launcher: ^3.0.2
 dependency_overrides:
-  http: "^1.1.0"
-  package_info_plus: ^8.3.0
+  # image_cropper_platform_interface: 6.0.3
+  http: "^1.2.2"
+  package_info_plus: ^8.3.1
   flutter_inappwebview_ios: ^1.1.2
 
 flutter:
@@ -291,7 +292,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -406,7 +407,7 @@ flutter:
     # - assets/babylon/
 
     # - assets/shakambhari/
-    - assets/tarkariphalafool/
+    # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/

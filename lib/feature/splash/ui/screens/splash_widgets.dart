@@ -47,10 +47,10 @@ class _SplashWidgetState extends State<SplashWidget> {
             final _updateValue = RepositoryProvider.of<StartUpRepository>(
                     NavigationService.context)
                 .appUpdate;
-            if (_updateValue != null) {
-              BlocProvider.of<UpdateCubit>(NavigationService.context)
-                  .showUpdate(_updateValue);
-            }
+            // if (_updateValue != null) {
+            //   BlocProvider.of<UpdateCubit>(NavigationService.context)
+            //       .showUpdate(_updateValue);
+            // }
           });
         }
       },

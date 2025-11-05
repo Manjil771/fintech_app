@@ -17,9 +17,10 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 class TransactionPinScreen extends StatefulWidget {
   final Function(String) onValueCallback;
   final bool showBiometric;
+  final ValueNotifier<bool>? valuenotify;
 
   const TransactionPinScreen(
-      {super.key, required this.onValueCallback, this.showBiometric = true});
+      {super.key, required this.onValueCallback, this.showBiometric = true,  this.valuenotify,});
   @override
   State<TransactionPinScreen> createState() => _TransactionPinScreenState();
 }
@@ -92,7 +93,7 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                       CustomPinCodeField(
                         // length: 5,
                         controller: _pinCodeController,
-
+                        //  length: 6,
                         length: RepositoryProvider.of<CustomerDetailRepository>(
                                         context)
                                     .customerDetailModel
@@ -170,7 +171,13 @@ class _TransactionPinScreenState extends State<TransactionPinScreen> {
                             }),
                       TextButton(
                           onPressed: () {
+                             if(  widget.valuenotify  != null){
+                              setState(() {
+                                widget.valuenotify?.value = false;
+                              });
+                             }
                             NavigationService.pop();
+                           
                           },
                           child:  Text(
                             LocaleKeys.cancel.tr(),

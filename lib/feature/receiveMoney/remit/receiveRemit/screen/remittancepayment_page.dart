@@ -8,24 +8,9 @@ import 'package:ismart/feature/utility_payment/resources/utility_payment_reposit
 
 class RemittancepaymentPage extends StatelessWidget {
   final ServiceList service;
-  final String senderName;
-  final String senderCountry;
-  final String amount;
-  final String paymentType;
-  final String date;
-  final String status;
   final String id;
-  const RemittancepaymentPage({
-    super.key,
-    required this.service,
-    required this.senderName,
-    required this.senderCountry,
-    required this.amount,
-    required this.paymentType,
-    required this.date,
-    required this.status,
-    required this.id,
-  });
+  const RemittancepaymentPage(
+      {super.key, required this.id, required this.service});
 
   @override
   Widget build(BuildContext context) {
@@ -43,57 +28,14 @@ class RemittancepaymentPage extends StatelessWidget {
         },
         apiEndpoint: "remittance/payTransactionConfirm",
         apiBody: const {},
-        service: ServiceList(
-            url: Url.URL,
-            id: 0,
-            uniqueIdentifier: "remittance",
-            service: "Remittance Payment",
-            status: Status.ACTIVE,
-            labelName: "",
-            labelMaxLength: "10",
-            labelMinLength: "",
-            labelSample: "",
-            labelPrefix: "",
-            instructions: "",
-            fixedlabelSize: true,
-            priceInput: true,
-            notificationUrl: "remittance",
-            minValue: 0.0,
-            maxValue: 5000.0,
-            icon: '',
-            categoryId: 21,
-            serviceCategoryName: "",
-            webView: true,
-            isNew: true,
-            appOrder: 0,
-            isSmsMode: true),
+        service: service,
         serviceIdentifier: '',
-        body: Column(
+        body: const Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             KeyValueTile(
-              title: "Sender Name",
-              value: senderName,
-            ),
-            KeyValueTile(
-              title: "Sender Country",
-              value: senderCountry,
-            ),
-            KeyValueTile(
-              title: "Amount",
-              value: amount,
-            ),
-            KeyValueTile(
-              title: "Payment type",
-              value: paymentType,
-            ),
-            KeyValueTile(
-              title: "Date",
-              value: date,
-            ),
-            KeyValueTile(
-              title: "Status",
-              value: status,
+              title: "Customer Code",
+              value: '',
             ),
           ],
         ),

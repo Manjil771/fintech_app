@@ -1,15 +1,22 @@
-import 'dart:convert';
+// import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/common/data_state.dart';
+import 'package:ismart/common/constant/fonts.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/widget/common_container.dart';
+// import 'package:ismart/common/widget/common_loading_widget.dart';
 import 'package:ismart/common/widget/common_text_field.dart';
 import 'package:ismart/common/widget/custom_cached_network_image.dart';
 import 'package:ismart/common/widget/page_wrapper.dart';
+import 'package:ismart/common/widget/show_loading_dialog.dart';
 import 'package:ismart/common/widget/show_pop_up_dialog.dart';
-import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/remittance_detail_fetch_widget.dart';
+import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
+// import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/resources/category_repository.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/remitanceDetailFetchPage.dart';
+// import 'package:ismart/feature/receiveMoney/remit/receiveRemit/widget/remittance_detail_fetch_widget.dart';
 import 'package:ismart/feature/utility_payment/cubit/utility_payment_cubit.dart';
 import 'package:ismart/feature/utility_payment/models/utility_response_data.dart';
 
@@ -38,16 +45,22 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
   Widget build(BuildContext context) {
     return BlocListener<UtilityPaymentCubit, CommonState>(
       listener: (context, state) {
+        if (state is CommonLoading ) { 
+                showLoadingDialogBox(context);
+              } else if (state is! CommonLoading ) {
+                NavigationService.pop();
+              }
         if (state is CommonStateSuccess<UtilityResponseData>) {
           final UtilityResponseData response = state.data;
           if (response.code == "M0000") {
             NavigationService.push(
-                target: RemittanceDetailFetchWidget(
+                target: RemittanceDetailFetchPage(
               path: widget.imagePath,
               bankName: widget.bankName,
               data: response,
             ));
-          } else {
+          }
+           else {
             print("this is msg $response.message");
             showPopUpDialog(
                 showCancelButton: false,
@@ -71,7 +84,9 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
       },
       child: PageWrapper(
           body: CommonContainer(
-        topbarName: "Remittance",
+           showDetail: true,
+           detail: "You can receive your own remittance from abroad.",
+        topbarName: "Receive Remit",
         title: widget.bankName,
         // detail: "Fetch your Remittance details from here",
         buttonName: "Procced",
@@ -112,9 +127,41 @@ class _RemittanceDetailsWidgetsState extends State<RemittanceDetailsWidgets> {
                 child: CustomCachedNetworkImage(
                     url: widget.imagePath, fit: BoxFit.contain),
               ),
+                CustomTextField(
+                  titleStyle:const TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: CustomTheme.gray,
+                    ),
+                  readOnly: true,
+                  enabled: false,
+                title: "Receiver Name",
+                customHintTextStyle: false,
+                hintText: '${RepositoryProvider.of<CustomerDetailRepository>(
+                                          context).customerDetailModel.value?.fullName ?? ''}',
+                textInputType: TextInputType.number,
+               
+              ),
+                CustomTextField(
+                  readOnly: true,
+                  enabled: false,
+                    titleStyle:const TextStyle(
+                      fontFamily: Fonts.poppin,
+                      fontWeight: FontWeight.w400,
+                      fontSize: 14,
+                      color: CustomTheme.gray,
+                    ),
+                  customHintTextStyle: false,
+                title: "Receiver Mobile Number",
+                hintText: '${RepositoryProvider.of<CustomerDetailRepository>(
+                                          context).customerDetailModel.value?.mobileNumber ?? ''}',
+                textInputType: TextInputType.number,
+               
+              ),
               CustomTextField(
                 title: "Remit Code",
-                hintText: "xxxxxxxxxx",
+                hintText: "Enter Remit Code",
                 textInputType: TextInputType.number,
                 controller: _remittancepin,
               )
