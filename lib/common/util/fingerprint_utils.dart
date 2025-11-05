@@ -15,12 +15,12 @@ class FingerPrintUtils {
           localizedReason: reason.isNotEmpty
               ? reason
               : LocaleKeys.pleaseAuthenticateToVerifyPin.tr(),
-          options: const AuthenticationOptions(
-            biometricOnly: true,
-            sensitiveTransaction: true,
-            stickyAuth: false,
-            useErrorDialogs: true,
-          ),
+          // options: const AuthenticationOptions(
+          //   biometricOnly: true,
+          //   sensitiveTransaction: true,
+          //   stickyAuth: false,
+          //   useErrorDialogs: true,
+          // ),
         );
         return didAuthenticate;
       } else {
