@@ -327,7 +327,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               );
                                             } else {
                                               final NepaliDateTime? pickedDate =
-                                                  await showMaterialDatePicker(
+                                                  await showNepaliDatePicker(
                                                 context: context,
                                                 builder: (context, child) =>
                                                     Theme(
@@ -426,7 +426,7 @@ class _FullStatementWidgetState extends State<FullStatementWidget> {
                                               );
                                             } else {
                                               final NepaliDateTime? pickedDate =
-                                                  await showMaterialDatePicker(
+                                                  await showNepaliDatePicker(
                                                 builder: (context, child) =>
                                                     Theme(
                                                   data: Theme.of(context)

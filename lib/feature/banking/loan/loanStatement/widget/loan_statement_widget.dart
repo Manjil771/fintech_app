@@ -583,7 +583,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                           );
                         } else {
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             context: context,
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
@@ -651,7 +651,7 @@ class _LoanStatementWidgetState extends State<LoanStatementWidget> {
                           );
                         } else {
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.light(

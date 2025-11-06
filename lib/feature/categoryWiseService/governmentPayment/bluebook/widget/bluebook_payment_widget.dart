@@ -539,7 +539,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         onTap: () async {
                           DateTime? picked;
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.light(
@@ -586,7 +586,7 @@ class _BlueBookRenewalWidgetState extends State<BlueBookRenewalWidget> {
                         onTap: () async {
                           DateTime? picked;
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.light(
