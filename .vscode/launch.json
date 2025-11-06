@@ -10,6 +10,7 @@
             "type": "dart",
             "flutterMode": "debug",
             "program": "lib/main_development.dart",
+            
         },
         {
             "name": "Development",

@@ -1,7 +1,12 @@
+<<<<<<< HEAD
 import UIKit
 import Flutter
 import Firebase
 import flutter_downloader
+=======
+import Flutter
+import UIKit
+>>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {
@@ -9,6 +14,7 @@ import flutter_downloader
     _ application: UIApplication,
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?
   ) -> Bool {
+<<<<<<< HEAD
     FirebaseApp.configure()
     GeneratedPluginRegistrant.register(with: self)
     FlutterDownloaderPlugin.setPluginRegistrantCallback(registerPlugins)
@@ -21,3 +27,9 @@ private func registerPlugins(registry: FlutterPluginRegistry) {
        FlutterDownloaderPlugin.register(with: registry.registrar(forPlugin: "FlutterDownloaderPlugin")!)
     }
 }
+=======
+    GeneratedPluginRegistrant.register(with: self)
+    return super.application(application, didFinishLaunchingWithOptions: launchOptions)
+  }
+}
+>>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70

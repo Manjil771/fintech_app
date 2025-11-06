@@ -37,6 +37,7 @@ class Assets {
 
   static const String searchIcon = "assets/icons/search.svg";
   static const String reveiceMoneyIcon = "assets/icons/fa_download.svg";
+  static const String remitIncome = "assets/icons/remit_globe.svg";
   static const String topupPaymentIcon = "assets/icons/Top up payment.svg";
   static const String electricityIcon = "assets/icons/Electricity payment.svg";
   static const String internetIcon = "assets/icons/internet payment.svg";

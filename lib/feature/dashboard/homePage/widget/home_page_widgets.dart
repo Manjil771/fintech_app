@@ -78,7 +78,11 @@ class _HomePageWidgetState extends State<HomePageWidget> {
       showAppBar: false,
       body: RefreshIndicator(
         onRefresh: () async {
+<<<<<<< HEAD
           // NavigationService.pushReplacement(target: const DashboardPage());
+=======
+          NavigationService.pushReplacement(target: const DashboardPage());
+>>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
         },
         child: Stack(
           children: [
@@ -149,6 +153,7 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                               ),
                             )),
                             SizedBox(width: _width * 0.03),
+<<<<<<< HEAD
                             // ValueListenableBuilder<bool>(
                             //   valueListenable:
                             //       RepositoryProvider.of<CategoryRepository>(
@@ -212,6 +217,71 @@ class _HomePageWidgetState extends State<HomePageWidget> {
                             //     return const SizedBox.shrink();
                             //   },
                             // ),
+=======
+                            ValueListenableBuilder<bool>(
+                              valueListenable:
+                                  RepositoryProvider.of<CategoryRepository>(
+                                          context)
+                                      .isRemitEnabled,
+                              builder: (context, isEnabled, _) {
+                                if (isEnabled) {
+                                  return Expanded(
+                                    child: InkWell(
+                                      borderRadius: BorderRadius.circular(12),
+                                      onTap: () {
+                                        NavigationService.push(
+                                          target: const ReceiveRemittancePage(),
+                                        );
+                                      },
+                                      child: Container(
+                                        alignment: Alignment.center,
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 7, horizontal: 4),
+                                        decoration: BoxDecoration(
+                                            boxShadow: [
+                                              BoxShadow(
+                                                color:
+                                                    Colors.grey.withAlpha(75),
+                                                offset: const Offset(7, 7),
+                                                blurRadius: 8,
+                                                spreadRadius: -5,
+                                              ),
+                                            ],
+                                            color: CustomTheme.white,
+                                            borderRadius:
+                                                BorderRadius.circular(8)),
+                                        child: Row(
+                                          mainAxisAlignment:
+                                              MainAxisAlignment.center,
+                                          children: [
+                                            CircleAvatar(
+                                              backgroundColor: _theme
+                                                  .primaryColor
+                                                  .withOpacity(0.05),
+                                              child: SvgPicture.asset(
+                                                Assets.remitIncome,
+                                                height: 18.hp,
+                                                color: _theme.primaryColor,
+                                              ),
+                                            ),
+                                            SizedBox(width: _width * 0.02),
+                                            Flexible(
+                                              child: Text(
+                                                "Remit",
+                                                style: _textTheme.titleLarge!
+                                                    .copyWith(fontSize: 12),
+                                              ),
+                                            ),
+                                          ],
+                                        ),
+                                      ),
+                                    ),
+                                  );
+                                }
+                                return const SizedBox.shrink();
+                              },
+                            ),
+>>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
                             // FutureBuilder(
                             //   future: Future.value(context
                             //       .read<CategoryRepository>()

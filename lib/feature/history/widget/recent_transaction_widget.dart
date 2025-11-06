@@ -355,7 +355,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                           );
                         } else {
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             context: context,
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
@@ -423,7 +423,7 @@ class _RecentTransactionWidgetState extends State<RecentTransactionWidget> {
                           );
                         } else {
                           final NepaliDateTime? pickedDate =
-                              await showMaterialDatePicker(
+                              await showNepaliDatePicker(
                             builder: (context, child) => Theme(
                               data: Theme.of(context).copyWith(
                                 colorScheme: ColorScheme.light(
