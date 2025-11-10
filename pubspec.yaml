@@ -93,6 +93,8 @@ flutter:
   assets:
 
     # - assets/kunchhal/
+    - assets/karobar/
+    - assets/arthanjali/
     - assets/marma/
     - assets/shreeMallaj/
     # - assets/loyal/
@@ -145,7 +147,7 @@ flutter:
     # - assets/taudaha/
     # - assets/shreejanshil/
     # - assets/janataagri/
-    - assets/upasanawomen/
+    # - assets/upasanawomen/
     # - assets/mitra/
     # - assets/abhyudaya/
     # - assets/maaLaxmi/
@@ -208,7 +210,7 @@ flutter:
     # - assets/janadhara/
     # - assets/ppmulti/
     # - assets/laxmiDeep/
-    # - assets/ainchoPaincho/
+    - assets/ainchoPaincho/
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
@@ -427,7 +429,7 @@ flutter:
     # - assets/babylon/
 
     # - assets/shakambhari/
-    # - assets/tarkariphalafool/
+    - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -529,10 +531,10 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    # - assets/kishanKalyan/
+    - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
-    - assets/sandus/
+    # - assets/sandus/
     # - assets/kasturi/
     # - assets/ainchoPaincho/
     # - assets/nepal/

@@ -26,10 +26,7 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-<<<<<<< HEAD
-=======
       customLLDBInitFile = "$(SRCROOT)/Flutter/ephemeral/flutter_lldbinit"
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
       shouldUseLaunchSchemeArgsEnv = "YES">
       <MacroExpansion>
          <BuildableReference
@@ -41,14 +38,6 @@
          </BuildableReference>
       </MacroExpansion>
       <Testables>
-<<<<<<< HEAD
-      </Testables>
-   </TestAction>
-   <LaunchAction
-      buildConfiguration = "Release-nepalCoop"
-      selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
-      selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-=======
          <TestableReference
             skipped = "NO"
             parallelizable = "YES">
@@ -67,16 +56,12 @@
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
       customLLDBInitFile = "$(SRCROOT)/Flutter/ephemeral/flutter_lldbinit"
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-<<<<<<< HEAD
-=======
       enableGPUValidationMode = "1"
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
       allowLocationSimulation = "YES">
       <BuildableProductRunnable
          runnableDebuggingMode = "0">
@@ -90,11 +75,7 @@
       </BuildableProductRunnable>
    </LaunchAction>
    <ProfileAction
-<<<<<<< HEAD
-      buildConfiguration = "Release-nepalCoop"
-=======
       buildConfiguration = "Profile"
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
       shouldUseLaunchSchemeArgsEnv = "YES"
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
@@ -114,11 +95,7 @@
       buildConfiguration = "Debug">
    </AnalyzeAction>
    <ArchiveAction
-<<<<<<< HEAD
-      buildConfiguration = "Release-nepalCoop"
-=======
       buildConfiguration = "Release"
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
       revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>

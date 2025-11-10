@@ -9,15 +9,33 @@ import 'package:ismart/feature/customerDetail/resource/customer_detail_repositor
 
 class PrimaryAccountBox extends StatefulWidget {
   final bool? validateMobileBankingStatus;
+  final bool? showRentSavingOnly;
 
-  const PrimaryAccountBox({super.key, this.validateMobileBankingStatus});
+  const PrimaryAccountBox({super.key, this.validateMobileBankingStatus , this.showRentSavingOnly});
 
   @override
   State<PrimaryAccountBox> createState() => _PrimaryAccountBoxState();
 }
 
 class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
+
   bool showAmount = true;
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+        final _customerDetailRepo =
+            RepositoryProvider.of<CustomerDetailRepository>(context);
+          if (
+            widget.showRentSavingOnly == false )  {
+              _customerDetailRepo.selectedAccount.value = _customerDetailRepo.accountsList.value.firstWhere(
+              (account) => account.primary == 'true',
+              orElse: () => _customerDetailRepo.accountsList.value.first);
+          
+        }
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,9 +52,12 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
             onTap: () {
               showDialog(
                 context: context,
-                builder: (context) => AccountDetailBox(
-                  validateMobileBankingStatus:
-                      widget.validateMobileBankingStatus,
+                builder: (context) => Center(
+                  child: AccountDetailBox(
+                    showRentSavingOnly : widget.showRentSavingOnly,
+                    validateMobileBankingStatus:
+                        widget.validateMobileBankingStatus,
+                  ),
                 ),
               );
             },

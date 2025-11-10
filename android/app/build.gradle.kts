@@ -426,6 +426,7 @@ fun formatFlavorName(flavorName: String): String {
         "join" -> "Join"
         "sahayogi" -> "Sahayogi"
         "akkaladevi" -> "Akkaladevi"
+        "goldstar" -> "Goldstar"
         else -> {
             val parts = flavorName.replace(Regex("(?<=[a-z])(?=[A-Z])|(?<=[A-Z])(?=[A-Z][a-z])"), " ")
                                   .split(" ")
@@ -3269,10 +3270,38 @@ android {
             versionName = flutterVersionName
             resValue("string", "app_name", formatFlavorName(name))
         }
+        create("goldstar") {
+            dimension = "app"
+            applicationId = "com.devanasoft.goldstar"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "goldstar")
+        }
+        create("shreeMallaj") {
+            dimension = "app"
+            applicationId = "com.devanasoft.shreeMallaj"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "shreeMallaj")
+        }
+        create("karobar") {
+            dimension = "app"
+            applicationId = "com.devanasoft.karobar"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "karobar")
+        }
+         create("arthanjali") {
+            dimension = "app"
+            applicationId = "com.devanasoft.arthanjali"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "arthanjali")
+        }
     }
 
     signingConfigs {
-        create("release") {
+        create("release") {                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
             if (keystorePropertiesFile.exists()) {
                 storeFile = file(keystoreProperties["storeFile"] as String)
                 storePassword = keystoreProperties["storePassword"] as String

@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-import UIKit
-import Flutter
-import Firebase
-import flutter_downloader
-=======
 import Flutter
 import UIKit
->>>>>>> dc3cd6b60e68459cd1b3fc67bc4dab1a45f5ce70
 
 @main
 @objc class AppDelegate: FlutterAppDelegate {

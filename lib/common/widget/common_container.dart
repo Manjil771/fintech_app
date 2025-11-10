@@ -15,6 +15,7 @@ import '../util/size_utils.dart';
 
 class CommonContainer extends StatefulWidget {
   final bool? validateMobileBankingStatus;
+  final bool? showRentSavingOnly;
   final Widget body;
   final String? serviceName;
   final String serviceCategoryId;
@@ -43,6 +44,7 @@ class CommonContainer extends StatefulWidget {
 
   final Function()? onButtonPressed;
   const CommonContainer({
+    this.showRentSavingOnly = false,
     this.controller,
     this.serviceCategoryId = "",
     this.showDetail = false,
@@ -193,6 +195,7 @@ class _CommonContainerState extends State<CommonContainer> {
                                       ),
                                     ),
                                     PrimaryAccountBox(
+                                      showRentSavingOnly : widget.showRentSavingOnly, 
                                       validateMobileBankingStatus:
                                           widget.validateMobileBankingStatus,
                                     ),

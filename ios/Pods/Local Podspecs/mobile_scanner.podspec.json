@@ -1,8 +1,8 @@
 {
   "name": "mobile_scanner",
-  "version": "6.0.2",
-  "summary": "An universal scanner for Flutter based on MLKit.",
-  "description": "An universal scanner for Flutter based on MLKit.",
+  "version": "7.0.0",
+  "summary": "An universal scanner for Flutter based on the Vision API.",
+  "description": "An universal scanner for Flutter based on the Vision API.",
   "homepage": "https://github.com/juliansteenbakker/mobile_scanner",
   "license": {
     "file": "../LICENSE"
@@ -13,26 +13,29 @@
   "source": {
     "path": "."
   },
-  "source_files": "Classes/**/*",
-  "dependencies": {
-    "Flutter": [],
-    "GoogleMLKit/BarcodeScanning": [
-      "~> 7.0.0"
-    ]
+  "source_files": "mobile_scanner/Sources/mobile_scanner/**/*.swift",
+  "ios": {
+    "dependencies": {
+      "Flutter": []
+    }
+  },
+  "osx": {
+    "dependencies": {
+      "FlutterMacOS": []
+    }
   },
   "platforms": {
-    "ios": "15.5.0"
+    "ios": "12.0",
+    "osx": "10.14"
   },
-  "static_framework": true,
   "pod_target_xcconfig": {
     "DEFINES_MODULE": "YES",
-    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "i386 armv7 arm64",
-    "EXCLUDED_ARCHS[sdk=iphoneos*]": "armv7"
+    "EXCLUDED_ARCHS[sdk=iphonesimulator*]": "i386"
   },
   "swift_versions": "5.0",
   "resource_bundles": {
     "mobile_scanner_privacy": [
-      "Resources/PrivacyInfo.xcprivacy"
+      "mobile_scanner/Sources/mobile_scanner/Resources/PrivacyInfo.xcprivacy"
     ]
   },
   "swift_version": "5.0"
