@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.40+70
+version: 1.5.47+77
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -93,21 +93,21 @@ flutter:
   assets:
 
     # - assets/kunchhal/
-    - assets/karobar/
-    - assets/arthanjali/
-    - assets/marma/
-    - assets/shreeMallaj/
+    # - assets/karobar/
+    # - assets/arthanjali/
+    # - assets/marma/
+    # - assets/shreeMallaj/
     # - assets/loyal/
-    - assets/bhadrawati/
-    - assets/ekta/
+    # - assets/bhadrawati/
+    # - assets/ekta/
     # - assets/aviyanMulti/
     # - assets/darshan/
     # - assets/tathali/
-    - assets/jagaruk/
-    - assets/sorna/
+    # - assets/jagaruk/
+    # - assets/sorna/
     # - assets/hanumandhoka/
-    - assets/shreepatalGanga/
-    - assets/goldstar/
+    # - assets/shreepatalGanga/
+    # - assets/goldstar/
     # - assets/nawatara/
     # - assets/nayapusta/
     # - assets/akkaladevi/
@@ -210,7 +210,7 @@ flutter:
     # - assets/janadhara/
     # - assets/ppmulti/
     # - assets/laxmiDeep/
-    - assets/ainchoPaincho/
+    # - assets/ainchoPaincho/
     # - assets/shreeFulbari/
     # - assets/digoBikash/
     # - assets/sahakarya/
@@ -258,7 +258,7 @@ flutter:
     # - assets/batika/
     # - assets/bhugol/
     # - assets/nepalbachat/
-    - assets/nilgiri/
+    # - assets/nilgiri/
     # - assets/davisfall/
     # - assets/sanchar/
     # - assets/hamiSabaikokrishi/
@@ -280,7 +280,7 @@ flutter:
     # - assets/sagarmatha/
     # - assets/royalGorkha/
     # - assets/buddhaCoop/
-    - assets/punja/
+    # - assets/punja/
     # - assets/immanuel/
     # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
@@ -313,7 +313,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
+    # - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -531,7 +531,7 @@ flutter:
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    - assets/kishanKalyan/
+    # - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/

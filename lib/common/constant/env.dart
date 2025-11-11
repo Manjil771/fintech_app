@@ -6229,6 +6229,6 @@ class CoOperativeValue {
     coOperativeName: "Arthanjali multipurpose Co-operative Ltd.",
     appTitle: 'Arthanjali iSmart'
   );
-  static final CoOperative currentCoop = devLive;
+  static final CoOperative currentCoop = tarkariphalafoolCoop;
 }
  
