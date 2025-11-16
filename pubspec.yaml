@@ -3,7 +3,7 @@ name: ismart
 description: A new Flutter project.
 publish: none
 
-version: 1.5.47+77
+version: 1.5.44+74
 
 ## kamana -24 Sep - kamana (khanepani updated)
 
@@ -37,7 +37,7 @@ dependencies:
   encrypt: "^5.0.0"
   firebase_core: ^4.2.1
   firebase_messaging: ^16.0.4
-  local_auth: ^3.0.0
+  local_auth: ^2.1.6
   flutter_secure_storage: ^9.2.4
   pin_code_fields: "^8.0.1"
   url_launcher: "^6.3.2"
@@ -93,7 +93,14 @@ flutter:
   assets:
 
     # - assets/kunchhal/
+    - assets/sajhedari/
+    - assets/madiMulti/
+    - assets/namaste/
+    - assets/bajrangabali/
+    - assets/samargra/
     # - assets/karobar/
+    # - assets/mahilapariwaratn/
+    # - assets/arnikomajdur/
     # - assets/arthanjali/
     # - assets/marma/
     # - assets/shreeMallaj/
@@ -114,7 +121,7 @@ flutter:
     # - assets/hamroSaving/
     # - assets/shikhar/
     # - assets/sahayogi/
-    # - assets/ujyalo/
+    - assets/ujyalo/
     # - assets/setogurans/
     # - assets/satyeta/
     # - assets/join/
@@ -282,7 +289,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    # - assets/ajambari/
+    - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -313,7 +320,7 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    # - assets/shubhaSandesh/
+    - assets/shubhaSandesh/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -526,12 +533,12 @@ flutter:
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
     # - assets/shreeKalidevi/
-    # - assets/aakash/
+    - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    # - assets/kishanKalyan/
+    - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/

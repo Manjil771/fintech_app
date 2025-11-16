@@ -3298,6 +3298,55 @@ android {
             versionName = flutterVersionName
             resValue("string", "app_name", "arthanjali")
         }
+        create("samargra") {
+            dimension = "app"
+            applicationId = "com.devanasoft.samargra"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "samargra")
+        }
+        create("mahilapariwaratn") {
+            dimension = "app"
+            applicationId = "com.devanasoft.mahilapariwaratn"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "mahilapariwaratn")
+        }
+        create("arnikomajdur") {
+            dimension = "app"
+            applicationId = "com.devanasoft.arnikomajdur"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "arnikomajdur")
+        }
+        create("sajhedari") {
+            dimension = "app"
+            applicationId = "com.devanasoft.sajhedari"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "sajhedari")
+        }
+        create("namaste") {
+            dimension = "app"
+            applicationId = "com.devanasoft.namaste"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "namaste")
+        }
+        create("madiMulti") {
+            dimension = "app"
+            applicationId = "com.devanasoft.madiMulti"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "madiMulti")
+        }
+        create("bajrangabali") {
+            dimension = "app"
+            applicationId = "com.devanasoft.bajrangabali"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "bajrangabali")
+        }
     }
 
     signingConfigs {
