@@ -207,7 +207,7 @@ class _HomePageUserWidgetState extends State<HomePageUserWidget> {
                                         context: context,
                                         builder: (context) => const Center(
                                           child: AccountDetailBox(
-                                            validateMobileBankingStatus: false,
+                                            validateMobileBankingStatus: true,
                                           ),
                                         ),
                                       );

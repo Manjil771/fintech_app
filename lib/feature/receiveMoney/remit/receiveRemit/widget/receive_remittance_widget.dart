@@ -47,7 +47,8 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
               final others = res
                   .where((item) =>
                       item["bankName"] != "IME REMIT" &&
-                      item["bankName"] != "CITY EXPRESS MONEY TRANSFER")
+                      item["bankName"] != "CITY EXPRESS MONEY TRANSFER" &&
+                      item["bankName"] != null)
                   .toList();
               final List reorderedList = [
                 ...imeRemit,
@@ -60,41 +61,41 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
                   SizedBox(
                     height: 5.hp,
                   ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      Container(
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: Colors.transparent,
-                            borderRadius: BorderRadius.circular(2),
-                          ),
-                          child: FilledButton(
-                            style: ButtonStyle(
-                              backgroundColor: WidgetStatePropertyAll(
-                                  CustomTheme.white.withAlpha(255)),
-                              shape: WidgetStatePropertyAll(
-                                RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(12),
-                                  side: BorderSide(
-                                    color: CustomTheme.primaryColor,
-                                    width: 1,
-                                  ),
-                                ),
-                              ),
-                            ),
-                            onPressed: () {
-                              _showSheet(
-                                context,
-                              );
-                            },
-                            child: Text(
-                              'Remit Pay',
-                              style: TextStyle(color: CustomTheme.primaryColor),
-                            ),
-                          )),
-                    ],
-                  ),
+                  // Row(
+                  //   mainAxisAlignment: MainAxisAlignment.end,
+                  //   children: [
+                  //     Container(
+                  //         height: 35,
+                  //         decoration: BoxDecoration(
+                  //           color: Colors.transparent,
+                  //           borderRadius: BorderRadius.circular(2),
+                  //         ),
+                  //         child: FilledButton(
+                  //           style: ButtonStyle(
+                  //             backgroundColor: WidgetStatePropertyAll(
+                  //                 CustomTheme.white.withAlpha(255)),
+                  //             shape: WidgetStatePropertyAll(
+                  //               RoundedRectangleBorder(
+                  //                 borderRadius: BorderRadius.circular(12),
+                  //                 side: BorderSide(
+                  //                   color: CustomTheme.primaryColor,
+                  //                   width: 1,
+                  //                 ),
+                  //               ),
+                  //             ),
+                  //           ),
+                  //           onPressed: () {
+                  //             _showSheet(
+                  //               context,
+                  //             );
+                  //           },
+                  //           child: Text(
+                  //             'Remit Pay',
+                  //             style: TextStyle(color: CustomTheme.primaryColor),
+                  //           ),
+                  //         )),
+                  //   ],
+                  // ),
                   GridView.builder(
                       shrinkWrap: true,
                       gridDelegate:
@@ -126,7 +127,7 @@ class _ReceiveRemittanceWidgetState extends State<ReceiveRemittanceWidget> {
             }
           },
         ),
-        topbarName: " All Remittance",
+        topbarName: "Receive Remit",
         showRoundBotton: false,
         showTitleText: false,
       ),

@@ -1,6 +1,6 @@
 {
   "name": "record_ios",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "summary": "record package for iOS implementation",
   "description": "A Flutter plugin for voice recording.",
   "homepage": "https://github.com/llfbandit/record/tree/master/record_ios",

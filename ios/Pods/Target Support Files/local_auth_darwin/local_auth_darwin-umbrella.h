@@ -10,9 +10,6 @@
 #endif
 #endif
 
-#import "FLALocalAuthPlugin.h"
-#import "FLALocalAuthPlugin_Test.h"
-#import "messages.g.h"
 
 FOUNDATION_EXPORT double local_auth_darwinVersionNumber;
 FOUNDATION_EXPORT const unsigned char local_auth_darwinVersionString[];

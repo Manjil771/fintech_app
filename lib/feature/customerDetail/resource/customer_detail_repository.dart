@@ -60,10 +60,10 @@ class CustomerDetailRepository {
               (account) => account.primary == 'true',
               orElse: () => accountsList.value.first);
         } else {
-          AccountDetail? _currentAccount = selectedAccount.value;
+         final AccountDetail? _currentAccount = selectedAccount.value;
 
           if (_currentAccount != null) {
-            List<AccountDetail> __ = accountsList.value
+           final List<AccountDetail> __ = accountsList.value
                 .where((element) =>
                     element.accountNumber == _currentAccount.accountNumber)
                 .toList();

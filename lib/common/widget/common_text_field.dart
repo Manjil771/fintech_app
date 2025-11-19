@@ -17,9 +17,9 @@ class CustomTextField extends FormField<String> {
     String hintText = "",
     bool showSearchIcon = false,
     bool readOnly = false,
+    TextStyle? titleStyle,
     TextFieldType type = TextFieldType.Outline,
     String title = "",
-    Widget? titleWidget,
     bool required = false,
     EdgeInsets? margin,
     TextInputType textInputType = TextInputType.text,
@@ -117,9 +117,8 @@ class CustomTextField extends FormField<String> {
                               if (title.isNotEmpty)
                                 RichText(
                                   text: TextSpan(
-                                    
                                     text: title,
-                                    style: const TextStyle(
+                                    style: titleStyle ?? const TextStyle(
                                       fontFamily: Fonts.poppin,
                                       fontWeight: FontWeight.w600,
                                       fontSize: 14,
@@ -128,9 +127,8 @@ class CustomTextField extends FormField<String> {
                                     children: [
                                       if (required)
                                         TextSpan(
-                                          text: " *",
+                                          text: "*",
                                           style: TextStyle(
-                                            
                                             fontFamily: Fonts.poppin,
                                             fontSize: 14,
                                             fontWeight: FontWeight.bold,

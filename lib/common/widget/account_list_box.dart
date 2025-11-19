@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -5,18 +6,21 @@ import 'package:ismart/app/theme.dart';
 import 'package:ismart/common/constant/assets.dart';
 import 'package:ismart/common/navigation/navigation_service.dart';
 import 'package:ismart/common/util/size_utils.dart';
+import 'package:ismart/common/widget/show_pop_up_dialog.dart';
 import 'package:ismart/feature/customerDetail/model/customer_detail_model.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 
 class AccountDetailBox extends StatefulWidget {
   final Function()? onPressed;
   final bool? validateMobileBankingStatus;
+  final bool? showRentSavingOnly;
   // ValueNotifier<CustomerDetailModel?> customerDetail;
 
   const AccountDetailBox({
     super.key,
     this.onPressed,
     this.validateMobileBankingStatus = true,
+    this.showRentSavingOnly = false,
   });
 
   @override
@@ -24,6 +28,26 @@ class AccountDetailBox extends StatefulWidget {
 }
 
 class _AccountDetailBoxState extends State<AccountDetailBox> {
+
+// @override
+//   void initState() {
+//     super.initState();
+//     WidgetsBinding.instance.addPostFrameCallback((_) {
+//         final _customerDetailRepo =
+//             RepositoryProvider.of<CustomerDetailRepository>(context);
+//           if (
+//             widget.showRentSavingOnly == false )  {
+//               _customerDetailRepo.selectedAccount.value = _customerDetailRepo.accountsList.value.firstWhere(
+//               (account) => account.primary == 'true',
+//               orElse: () => _customerDetailRepo.accountsList.value.first);
+          
+//         }
+  
+//     });
+//   }
+
+
+
   @override
   Widget build(BuildContext context) {
     final _customerDetailRepo =
@@ -41,14 +65,32 @@ class _AccountDetailBoxState extends State<AccountDetailBox> {
           valueListenable: _customerDetailRepo.customerDetailModel,
           builder: (context, val, _) {
             if (val != null) {
-              final List showValidAccount = val.accountDetail
+               List showValidAccount = [];
+
+              if( widget.showRentSavingOnly == true){
+                  showValidAccount = val.accountDetail
+                  .where((element) =>
+                      element.accountType.toLowerCase() == "rentsaving")
+                  .toList();
+              } else {
+                    showValidAccount = val.accountDetail
                   .where((element) =>
                       element.accountType.toLowerCase() == "saving" ||
-                      element.accountType.toLowerCase() == "current")
+                      element.accountType.toLowerCase() == "current" 
+                      // ||
+                      // (element.accountType.toLowerCase() == "rentsaving" &&
+                      //     widget.showRentSavingOnly == true
+                          
+                      //     )
+                      
+                      )
                   .toList();
+
+              }
               final List validMobileBankingList =
                   widget.validateMobileBankingStatus == true
-                      ? showValidAccount
+                      ? 
+                    showValidAccount
                           .where((element) =>
                               element.mobileBanking.toString().toLowerCase() !=
                               "false")

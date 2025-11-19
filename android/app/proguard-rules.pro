@@ -19,6 +19,14 @@
 -keep class java.awt.color.** { *; }
 -keep class java.awt.image.** { *; }
 
+# Keep OkHttp classes
+-keep class okhttp3.** { *; }
+-dontwarn okhttp3.**
+
+# Keep ucrop classes
+-keep class com.yalantis.ucrop.** { *; }
+-dontwarn com.yalantis.ucrop.**
+
 # Keep rules for the missing javax.imageio classes (beyond spi)
 -keep class javax.imageio.IIOException { *; }
 -keep class javax.imageio.IIOImage { *; }

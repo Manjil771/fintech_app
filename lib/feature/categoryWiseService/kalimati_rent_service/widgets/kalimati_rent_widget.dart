@@ -30,6 +30,39 @@ class KalimatiRentWidget extends StatefulWidget {
 class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
   final _formKey = GlobalKey<FormState>();
   final TextEditingController _shopNumber = TextEditingController();
+  
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+     
+        final _customerDetailRepo =
+            RepositoryProvider.of<CustomerDetailRepository>(context);
+        if (
+            _customerDetailRepo.accountsList.value.any((account) => account.accountType.toLowerCase() == "rentsaving")
+            ){
+          _customerDetailRepo.selectedAccount.value =
+              _customerDetailRepo.accountsList.value.firstWhere(
+                  (account) => account.accountType.toLowerCase() == "rentsaving",
+                  orElse: (){         
+            return _customerDetailRepo.accountsList.value.first; } );
+          
+        }else{
+              showPopUpDialog(
+              context: NavigationService.context,
+              message: "You have no Rent Saving Account in cooperative to use this service. Please contact cooperative.",
+              title: "Error".tr(),
+              showCancelButton: false,
+              buttonCallback: () {
+                NavigationService.pop();
+                NavigationService.pop();
+              },
+            );   
+        }
+    
+    });
+  }
+
   bool _isLoading = false;
   @override
   Widget build(BuildContext context) {
@@ -143,6 +176,7 @@ class _KalimatiRentWidgetState extends State<KalimatiRentWidget> {
           }
         },
         child: CommonContainer(
+          showRentSavingOnly: true,
           topbarName: "Rent Service".tr(),
           showAccountSelection: true,
           accountTitle: LocaleKeys.fromaccount.tr(),

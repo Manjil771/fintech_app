@@ -37,16 +37,9 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
   _handleImageUpload(File file) async {
     NavigationService.pop();
 
-    CroppedFile? croppedFile = await ImageCropper().cropImage(
+    final CroppedFile? croppedFile = await ImageCropper().cropImage(
       sourcePath: file.path,
-      aspectRatioPresets: [
-        CropAspectRatioPreset.square,
-        CropAspectRatioPreset.ratio3x2,
-        CropAspectRatioPreset.original,
-        CropAspectRatioPreset.ratio4x3,
-        CropAspectRatioPreset.ratio16x9
-      ],
-      cropStyle: CropStyle.circle,
+      aspectRatio: const CropAspectRatio(ratioX: 1, ratioY: 1),
       uiSettings: [
         AndroidUiSettings(
             toolbarTitle: 'Crop Image',
@@ -65,7 +58,7 @@ class _ProfilePictureWidgetState extends State<ProfilePictureWidget> {
     if (croppedFile != null) {
       NavigationService.push(
         target: ImagePreviewWidget(
-          selectedImage: File(croppedFile.path),
+          selectedImage: File(file.path),
         ),
       );
     }
