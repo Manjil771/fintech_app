@@ -210,7 +210,7 @@ class CustomTheme {
           bodyLarge: TextStyle(fontSize: 12, color: lightTextColor),
           bodyMedium: TextStyle(fontSize: 10, color: lightTextColor),
         ),
-        bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
+        // bottomAppBarTheme: const BottomAppBarTheme(color: Colors.white),
       );
 
   static ThemeData get darkTheme => ThemeData(
@@ -240,6 +240,6 @@ class CustomTheme {
           bodyLarge: TextStyle(fontSize: 12, color: darkTextColor),
           bodyMedium: TextStyle(fontSize: 10, color: darkTextColor),
         ),
-        bottomAppBarTheme: const BottomAppBarTheme(color: darkGray),
+        // bottomAppBarTheme: const BottomAppBarTheme(color: darkGray),
       );
 }
