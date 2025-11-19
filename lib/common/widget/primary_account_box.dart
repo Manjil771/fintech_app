@@ -21,21 +21,21 @@ class _PrimaryAccountBoxState extends State<PrimaryAccountBox> {
 
   bool showAmount = true;
 
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-        final _customerDetailRepo =
-            RepositoryProvider.of<CustomerDetailRepository>(context);
-          if (
-            widget.showRentSavingOnly == false )  {
-              _customerDetailRepo.selectedAccount.value = _customerDetailRepo.accountsList.value.firstWhere(
-              (account) => account.primary == 'true',
-              orElse: () => _customerDetailRepo.accountsList.value.first);
+  // @override
+  // void initState() {
+  //   super.initState();
+  //   WidgetsBinding.instance.addPostFrameCallback((_) {
+  //       final _customerDetailRepo =
+  //           RepositoryProvider.of<CustomerDetailRepository>(context);
+  //         if (
+  //           widget.showRentSavingOnly == false )  {
+  //             _customerDetailRepo.selectedAccount.value = _customerDetailRepo.accountsList.value.firstWhere(
+  //             (account) => account.primary == 'true',
+  //             orElse: () => _customerDetailRepo.accountsList.value.first);
           
-        }
-    });
-  }
+  //       }
+  //   });
+  // }
 
   @override
   Widget build(BuildContext context) {

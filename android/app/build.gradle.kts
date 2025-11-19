@@ -3347,6 +3347,27 @@ android {
             versionName = flutterVersionName
             resValue("string", "app_name", "bajrangabali")
         }
+        create("model") {
+            dimension = "app"
+            applicationId = "com.devanasoft.model"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "model")
+        }
+        create("luniva") {
+            dimension = "app"
+            applicationId = "com.devanasoft.luniva"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "luniva")
+        }
+          create("mangaldeep") {
+            dimension = "app"
+            applicationId = "com.devanasoft.mangaldeep"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "mangaldeep")
+        }
     }
 
     signingConfigs {

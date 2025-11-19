@@ -18,10 +18,20 @@ Future<void> main() async {
     WidgetsFlutterBinding.ensureInitialized();
 
     if (!kIsWeb) {
-      await FlutterDownloader.initialize();
+      try {
+        await FlutterDownloader.initialize(
+          debug: true, // Set to false in production
+          ignoreSsl: false, // Set to true if you have SSL issues
+        );
+      } catch (e) {
+        Log.e('FlutterDownloader initialization failed: $e');
+        // Continue app execution even if downloader fails
+      }
     }
+    
     await EasyLocalization.ensureInitialized();
     HttpOverrides.global = MyHttpOverrides();
+    
     runApp(
       LocalWrapper(child: AppDev(env: CoOperativeValue.currentCoop)),
     );

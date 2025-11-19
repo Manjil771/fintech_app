@@ -13,7 +13,7 @@ import 'package:ismart/common/util/log.dart';
 import 'main_development.dart';
 
 Future<void> main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+WidgetsFlutterBinding.ensureInitialized();
   if (!kIsWeb) {
     await FlutterDownloader.initialize();
   }
