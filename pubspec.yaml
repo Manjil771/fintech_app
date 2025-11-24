@@ -5,6 +5,7 @@ publish: none
 
 version: 1.5.40+70
 
+
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -93,18 +94,21 @@ flutter:
   assets:
 
     # - assets/kunchhal/
-    - assets/sajhedari/
-    - assets/gongabu/
-    - assets/madiMulti/
-    - assets/namaste/
-    - assets/bajrangabali/
-    - assets/samargra/
-    - assets/model/
-    - assets/luniva/
-    # - assets/karobar/
+    # - assets/sajhedari/
+    # - assets/gongabu/
+    # - assets/madiMulti/
+    # - assets/namaste/
+    # - assets/bajrangabali/
+    # - assets/samargra/
+    # - assets/model/
+    # - assets/luniva/
+    #  - assets/karobar/
     # - assets/mahilapariwaratn/
-    - assets/arnikomajdur/
-    - assets/arthanjali/
+    # - assets/arnikomajdur/
+    # - assets/arthanjali/
+    # - assets/nepalKishan/
+    - assets/sundarbazar/
+    - assets/salleni/
     # - assets/marma/
     # - assets/shreeMallaj/
     # - assets/loyal/
@@ -149,7 +153,7 @@ flutter:
     # - assets/manakamana/
     # - assets/patan/
     # - assets/pariwortan/
-    - assets/santaneshwornaudhara/
+    # - assets/santaneshwornaudhara/
     # - assets/unitedhands/
     # - assets/janasambriddhi/
     # - assets/hamro/
@@ -292,7 +296,7 @@ flutter:
     # - assets/buddhaCoop/
     # - assets/punja/
     # - assets/immanuel/
-    - assets/ajambari/
+    # - assets/ajambari/
     # - assets/thankotMahilaJagaran/
     # - assets/bishnudol/
     # - assets/automobiles/
@@ -323,8 +327,8 @@ flutter:
     # - assets/sunshine/
     # - assets/sunshineLaxmi/
     # - assets/sudarshan/
-    - assets/shubhaSandesh/
-    - assets/mangaldeep/
+    # - assets/shubhaSandesh/
+    # - assets/mangaldeep/
     # - assets/triyuga/
     # - assets/sudarshan/
     # - assets/metrang/
@@ -367,6 +371,7 @@ flutter:
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
+    - assets/shankhadhar/
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
@@ -440,7 +445,7 @@ flutter:
     # - assets/babylon/
 
     # - assets/shakambhari/
-    - assets/tarkariphalafool/
+    # - assets/tarkariphalafool/
     # - assets/abhinna/
     # - assets/adarsha/
     # - assets/tapobhumi/
@@ -503,7 +508,7 @@ flutter:
     # - assets/pratham/z
     # - assets/dhanalaxmi/
     # - assets/samriddha/
-    - assets/kohinoor/
+    # - assets/kohinoor/
     # - assets/bhargo/
     # - assets/sarbashakti/
     # - assets/janakalyan/
@@ -537,12 +542,12 @@ flutter:
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
     # - assets/shreeKalidevi/
-    - assets/aakash/
+    # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/
     # - assets/aichchhik/
     # - assets/aichchhik/
-    - assets/kishanKalyan/
+    # - assets/kishanKalyan/
     # - assets/nayapuime/
     # - assets/shikhardeep/
     # - assets/sandus/

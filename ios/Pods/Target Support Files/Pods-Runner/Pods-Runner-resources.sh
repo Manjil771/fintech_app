@@ -216,6 +216,22 @@ if [[ "$CONFIGURATION" == "Release-sandus" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
 fi
+if [[ "$CONFIGURATION" == "Release-arthanjali" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-sundarbazar" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-pariwortan" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
+if [[ "$CONFIGURATION" == "Release-samargra" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
 if [[ "$CONFIGURATION" == "Release-ekta" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"

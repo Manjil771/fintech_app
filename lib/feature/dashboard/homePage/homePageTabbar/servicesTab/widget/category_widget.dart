@@ -24,6 +24,8 @@ import 'package:ismart/feature/categoryWiseService/movie/screen/movie_page.dart'
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/cubit/category_cubit.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/model/category_model.dart';
 import 'package:ismart/feature/dashboard/homePage/homePageTabbar/servicesTab/screen/category_wise_services_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/receive_remittance_page.dart';
+import 'package:ismart/feature/receiveMoney/remit/receiveRemit/screen/remittance_page.dart';
 
 class CategoryWidget extends StatefulWidget {
   final bool showAllService;
@@ -80,6 +82,13 @@ class _CategoryWidgetState extends State<CategoryWidget> {
 
           if (state is CommonDataFetchSuccess<CategoryList>) {
             _categoryList = state.data;
+            for (var item in _categoryList) {
+  print("Category: ${item.name}");
+  for (var service in item.services) {
+    print("  yooooo → ${service.serviceCategoryName} / ${service.uniqueIdentifier}");
+  }
+}
+           
             _categoryList
                 .removeWhere((category) => category.name == "Remittance");
           }
@@ -144,6 +153,7 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                     final filteredItems = data.services
                         .where((item) => item.cashBackView != null)
                         .toList();
+                        
 
                     final _imageUrl =
                         "${RepositoryProvider.of<CoOperative>(context).baseUrl}${data.imageUrl}";
@@ -155,11 +165,13 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               target: MobileTopupPage(categoryList: data));
                           return;
                         }
+                        
                         if (data.uniqueIdentifier.toString().toLowerCase() ==
                             Slugs.brokerPage) {
                           NavigationService.push(
                               target: BrokerPaymentPage(
                                   service: data.services.first));
+                    
                         } else if (data.uniqueIdentifier
                                 .toString()
                                 .toLowerCase() ==
@@ -176,15 +188,17 @@ class _CategoryWidgetState extends State<CategoryWidget> {
                               target: ElectricityPaymentPage(
                             service: data.services[0],
                           ));
-                        } else if (data.uniqueIdentifier
-                                .toString()
-                                .toLowerCase() ==
-                            "airlines") {
-                          NavigationService.push(
-                              target: AirlinesIntroPage(
-                            service: data.services[0],
-                          ));
-                        } else if (data.uniqueIdentifier
+                        } 
+                        // else if (data.uniqueIdentifier
+                        //         .toString()
+                        //         .toLowerCase() ==
+                        //     "remittance") {
+                        //   NavigationService.push(
+                        //       target: ReceiveRemittancePage(
+                           
+                        //   ));
+                        // } 
+                        else if (data.uniqueIdentifier
                                 .toString()
                                 .toLowerCase() ==
                             "credit_card") {

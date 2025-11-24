@@ -1415,6 +1415,13 @@ android {
             versionName = flutterVersionName
             resValue("string", "app_name", formatFlavorName(name))
         }
+        create("shankhadhar") {
+            dimension = "app"
+            applicationId = "com.devanasoft.shankhadhar"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", formatFlavorName(name))
+        }
         create("shakambhari") {
             dimension = "app"
             applicationId = "com.devanasoft.shakambhari"
@@ -3367,6 +3374,27 @@ android {
             versionCode = flutterVersionCode.toInt()
             versionName = flutterVersionName
             resValue("string", "app_name", "mangaldeep")
+        }
+          create("nepalKishan") {
+            dimension = "app"
+            applicationId = "com.devanasoft.nepalKishan"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "nepalKishan")
+        }
+          create("sundarbazar") {
+            dimension = "app"
+            applicationId = "com.devanasoft.sundarbazar"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "sundarbazar")
+        }
+          create("salleni") {
+            dimension = "app"
+            applicationId = "com.devanasoft.salleni"
+            versionCode = flutterVersionCode.toInt()
+            versionName = flutterVersionName
+            resValue("string", "app_name", "salleni")
         }
     }
 

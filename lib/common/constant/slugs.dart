@@ -15,6 +15,7 @@ class Slugs {
   static String dematShare = "demat_share";
   static String worldCupPackage = "world_cup_package";
 
+
   static String brokerPage = "broker";
 //Service
   static String brokerPayment = "broker_payment";
