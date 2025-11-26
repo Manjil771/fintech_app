@@ -10,6 +10,7 @@ import 'package:ismart/feature/customerDetail/cubit/customer_detail_cubit.dart';
 import 'package:ismart/feature/customerDetail/resource/customer_detail_repository.dart';
 import 'package:ismart/feature/profile/resources/cubits/image_upload_cubit.dart';
 import 'package:ismart/feature/profile/resources/image_upload_repository.dart';
+// ignore: unused_import
 import 'package:ismart/feature/update/cubit/update_cubit.dart';
 
 class MultiBlocWrapper extends StatelessWidget {

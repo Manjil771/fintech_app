@@ -208,6 +208,10 @@ if [[ "$CONFIGURATION" == "Release-kabil" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
 fi
+if [[ "$CONFIGURATION" == "Release-pacific" ]]; then
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
+  install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"
+fi
 if [[ "$CONFIGURATION" == "Release-kabil copy-1" ]]; then
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/firebase_messaging/firebase_messaging_Privacy.bundle"
   install_resource "${PODS_CONFIGURATION_BUILD_DIR}/permission_handler_apple/permission_handler_apple_privacy.bundle"

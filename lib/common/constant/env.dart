@@ -6391,6 +6391,6 @@ class CoOperativeValue {
     coOperativeName: "Mangaldeep Saving & Credit Co-operative Society Limited",
     appTitle: 'Mangaldeep iSmart'
   );
-  static final CoOperative currentCoop = sajhedari;
+  static final CoOperative currentCoop = pacificCoop;
 }
  
