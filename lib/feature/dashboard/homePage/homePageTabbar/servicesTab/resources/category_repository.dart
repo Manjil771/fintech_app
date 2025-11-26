@@ -31,6 +31,7 @@ class CategoryRepository {
 
   Future<DataResponse<List<CategoryList>>> getCategoryList() async {
     List<CategoryList> _allServices = [];
+    
     try {
       final _res = await categoryApiProvider.fetchServices();
 
@@ -66,6 +67,10 @@ class CategoryRepository {
               .firstWhere((category) => category.name == 'Remittance');
           isRemitEnabled.value = true;
         }
+        print("📌 CATEGORY NAMES FROM API:");
+for (var category in _allServices) {
+  print("name of service ${category.name}");
+}
         return DataResponse.success(_allServices);
       } else {
         return DataResponse.error("error message");

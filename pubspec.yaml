@@ -5,6 +5,7 @@ publish: none
 
 version: 1.5.40+70
 
+
 ## kamana -24 Sep - kamana (khanepani updated)
 
 environment:
@@ -93,18 +94,21 @@ flutter:
   assets:
 
     # - assets/kunchhal/
-    - assets/sajhedari/
-    - assets/gongabu/
-    - assets/madiMulti/
-    - assets/namaste/
-    - assets/bajrangabali/
-    - assets/samargra/
-    - assets/model/
-    - assets/luniva/
-    # - assets/karobar/
+    # - assets/sajhedari/
+    # - assets/gongabu/
+    # - assets/madiMulti/
+    # - assets/namaste/
+    # - assets/bajrangabali/
+    # - assets/samargra/
+    # - assets/model/
+    # - assets/luniva/
+    #  - assets/karobar/
     # - assets/mahilapariwaratn/
     # - assets/arnikomajdur/
     # - assets/arthanjali/
+    # - assets/nepalKishan/
+    - assets/sundarbazar/
+    - assets/salleni/
     # - assets/marma/
     # - assets/shreeMallaj/
     # - assets/loyal/
@@ -367,6 +371,7 @@ flutter:
     # - assets/starlight/
     # - assets/shreeMarsyangdi/
     # - assets/puspanjali/
+    - assets/shankhadhar/
     # - assets/autobikash/
     # - assets/amrapali/
     # - assets/abhibadan/
@@ -536,7 +541,7 @@ flutter:
     # - assets/samriddhaNepal/
     # - assets/shreeTriganga/
     # - assets/sanjeewani/
-    # # - assets/shreeKalidevi/
+    # - assets/shreeKalidevi/
     # - assets/aakash/
     # - assets/shubhadipawali/
     # - assets/atharwa/

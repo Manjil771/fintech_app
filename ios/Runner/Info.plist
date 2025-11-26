@@ -2,8 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>NSMicrophoneUsageDescription</key>
-    <string>We use microphone to record your audio for you to chat with our AI assistant.</string> 
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>
@@ -47,6 +45,8 @@
 	<string>iSmart would like to use Contacts to let you topup easily.</string>
 	<key>NSFaceIDUsageDescription</key>
 	<string>Enable Biometric Login</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>We use microphone to record your audio for you to chat with our AI assistant.</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app needs photos access to get QR code from photo library</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
